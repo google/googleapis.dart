@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/x114uLAdo7We9s8BOFRemUcydyU\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/aE5XnXblJMQy68d2aZIGrlTQ05U\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -574,6 +574,44 @@
                         "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
+                        "https://www.googleapis.com/auth/devstorage.read_write"
+                    ]
+                },
+                "lockRetentionPolicy": {
+                    "description": "Locks retention policy on a bucket.",
+                    "httpMethod": "POST",
+                    "id": "storage.buckets.lockRetentionPolicy",
+                    "parameterOrder": [
+                        "bucket",
+                        "ifMetagenerationMatch"
+                    ],
+                    "parameters": {
+                        "bucket": {
+                            "description": "Name of a bucket.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "ifMetagenerationMatch": {
+                            "description": "Makes the operation conditional on whether bucket's current metageneration matches the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "userProject": {
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "b/{bucket}/lockRetentionPolicy",
+                    "response": {
+                        "$ref": "Bucket"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
                 },
@@ -1996,7 +2034,7 @@
                             "type": "string"
                         },
                         "kmsKeyName": {
-                            "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
+                            "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. Limited availability; usable only by enabled projects.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2717,7 +2755,7 @@
             }
         }
     },
-    "revision": "20171101",
+    "revision": "20171212",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2740,7 +2778,7 @@
                     "description": "The bucket's billing configuration.",
                     "properties": {
                         "requesterPays": {
-                            "description": "When set to true, bucket is requester pays.",
+                            "description": "When set to true, Requester Pays is enabled for this bucket.",
                             "type": "boolean"
                         }
                     },
@@ -2781,6 +2819,10 @@
                     },
                     "type": "array"
                 },
+                "defaultEventBasedHold": {
+                    "description": "Defines the default value for Event-Based hold on newly created objects in this bucket. Event-Based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here bucket-level retention is 3 years and the event is loan being paid in full. In this example these objects will be held intact for any number of years until the event has occurred (hold is released) and then 3 more years after that. Objects under Event-Based hold cannot be deleted, overwritten or archived until the hold is removed.",
+                    "type": "boolean"
+                },
                 "defaultObjectAcl": {
                     "description": "Default access controls to apply to new objects when no ACL is provided.",
                     "items": {
@@ -2792,6 +2834,7 @@
                     "description": "Encryption configuration used by default for newly inserted objects, when no encryption config is specified.",
                     "properties": {
                         "defaultKmsKeyName": {
+                            "description": "A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. Limited availability; usable only by enabled projects.",
                             "type": "string"
                         }
                     },
@@ -2802,7 +2845,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The ID of the bucket. For buckets, the id and name properities are the same.",
+                    "description": "The ID of the bucket. For buckets, the id and name properties are the same.",
                     "type": "string"
                 },
                 "kind": {
@@ -2929,6 +2972,26 @@
                     "description": "The project number of the project the bucket belongs to.",
                     "format": "uint64",
                     "type": "string"
+                },
+                "retentionPolicy": {
+                    "description": "Defines the retention policy for a bucket. The Retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via the UpdateBucketMetadata RPC. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.",
+                    "properties": {
+                        "effectiveTime": {
+                            "description": "The time from which policy was enforced and effective. RFC 3339 format.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "isLocked": {
+                            "description": "Once locked, an object retention policy cannot be modified.",
+                            "type": "boolean"
+                        },
+                        "retentionPeriod": {
+                            "description": "Specifies the duration that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.",
+                            "format": "int64",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 },
                 "selfLink": {
                     "description": "The URI of this bucket.",
@@ -3233,6 +3296,11 @@
                     "type": "string"
                 },
                 "payload_format": {
+                    "annotations": {
+                        "required": [
+                            "storage.notifications.insert"
+                        ]
+                    },
                     "default": "JSON_API_V1",
                     "description": "The desired content of the Payload.",
                     "type": "string"
@@ -3339,6 +3407,10 @@
                     "description": "HTTP 1.1 Entity tag for the object.",
                     "type": "string"
                 },
+                "eventBasedHold": {
+                    "description": "Defines the Event-Based hold for an object. Event-Based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here bucket-level retention is 3 years and the event is loan being paid in full. In this example these objects will be held intact for any number of years until the event has occurred (hold is released) and then 3 more years after that.",
+                    "type": "boolean"
+                },
                 "generation": {
                     "description": "The content generation of this object. Used for object versioning.",
                     "format": "int64",
@@ -3354,7 +3426,7 @@
                     "type": "string"
                 },
                 "kmsKeyName": {
-                    "description": "Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.",
+                    "description": "Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key. Limited availability; usable only by enabled projects.",
                     "type": "string"
                 },
                 "md5Hash": {
@@ -3396,6 +3468,11 @@
                     },
                     "type": "object"
                 },
+                "retentionExpirationTime": {
+                    "description": "Specifies the earliest time that the object's retention period expires. This value is server-determined and is in RFC 3339 format. Note 1: This field is not provided for objects with an active Event-Based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when TemporaryHold is set (so that the user can reason about policy without having to first unset the TemporaryHold).",
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "selfLink": {
                     "description": "The link to this object.",
                     "type": "string"
@@ -3408,6 +3485,10 @@
                 "storageClass": {
                     "description": "Storage class of the object.",
                     "type": "string"
+                },
+                "temporaryHold": {
+                    "description": "Defines the temporary hold for an object. This flag is used to enforce a temporary hold on an object. While it is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing.",
+                    "type": "boolean"
                 },
                 "timeCreated": {
                     "description": "The creation time of the object in RFC 3339 format.",

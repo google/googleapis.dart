@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QsthGWG9JYScjn9llsqMMChWCIQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/IPcVNse7nmUQLqz58rbBGkdlX1c\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3541,7 +3541,7 @@
             }
         }
     },
-    "revision": "20171129",
+    "revision": "20171215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -9642,19 +9642,6 @@
             "description": "A video resource represents a YouTube video.",
             "id": "Video",
             "properties": {
-                "accessToken": {
-                    "annotations": {
-                        "required": [
-                            "youtube.videos.getRating",
-                            "youtube.videos.list",
-                            "youtube.videos.rate",
-                            "youtube.videos.reportAbuse",
-                            "youtube.videos.update"
-                        ]
-                    },
-                    "description": "The access token to uniquely identify a revocable unlisted video.",
-                    "type": "string"
-                },
                 "ageGating": {
                     "$ref": "VideoAgeGating",
                     "description": "Age restriction details related to a video. This data can only be retrieved by the video owner."

@@ -19,6 +19,7 @@ const core.String USER_AGENT = 'dart-api-client androiddeviceprovisioning/v1';
 class AndroiddeviceprovisioningApi {
   final commons.ApiRequester _requester;
 
+  CustomersResourceApi get customers => new CustomersResourceApi(_requester);
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
   PartnersResourceApi get partners => new PartnersResourceApi(_requester);
 
@@ -27,6 +28,664 @@ class AndroiddeviceprovisioningApi {
       core.String servicePath: ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+class CustomersResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersConfigurationsResourceApi get configurations =>
+      new CustomersConfigurationsResourceApi(_requester);
+  CustomersDevicesResourceApi get devices =>
+      new CustomersDevicesResourceApi(_requester);
+  CustomersDpcsResourceApi get dpcs => new CustomersDpcsResourceApi(_requester);
+
+  CustomersResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// List the user's customer accounts.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomerListCustomersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomerListCustomersResponse> list(
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/customers';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new CustomerListCustomersResponse.fromJson(data));
+  }
+}
+
+class CustomersConfigurationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersConfigurationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new configuration. Once created, a customer can apply the
+  /// configuration to devices.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer that manages the configuration. An API
+  /// resource name
+  /// in the format `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Configuration].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Configuration> create(Configuration request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/configurations';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Configuration.fromJson(data));
+  }
+
+  /// Deletes an unused configuration. The API call fails if the customer has
+  /// devices with the configuration applied.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The configuration to delete. An API resource name in
+  /// the format
+  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the
+  /// configuration is applied to any devices, the API call fails.
+  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the details of a configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The configuration to get. An API resource name in the
+  /// format
+  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Configuration].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Configuration> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Configuration.fromJson(data));
+  }
+
+  /// Lists a customer's configurations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer that manages the listed configurations.
+  /// An API
+  /// resource name in the format `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomerListConfigurationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomerListConfigurationsResponse> list(core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/configurations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new CustomerListConfigurationsResponse.fromJson(data));
+  }
+
+  /// Updates a configuration's field values.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The API resource name in the format
+  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
+  /// the server.
+  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  ///
+  /// [updateMask] - Required. The field mask applied to the target
+  /// `Configuration` before
+  /// updating the fields. To learn more about using field masks, read
+  /// [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in
+  /// the Protocol Buffers documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Configuration].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Configuration> patch(Configuration request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Configuration.fromJson(data));
+  }
+}
+
+class CustomersDevicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersDevicesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Applies a Configuration to the device to register the device for
+  /// zero-touch
+  /// enrollment. After applying a configuration to a device, the device
+  /// automatically provisions itself on first boot, or next factory reset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer managing the device. An API resource
+  /// name in the
+  /// format `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> applyConfiguration(
+      CustomerApplyConfigurationRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices:applyConfiguration';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the details of a device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The device to get. An API resource name in the format
+  /// `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`.
+  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Device].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Device> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Device.fromJson(data));
+  }
+
+  /// Lists a customer's devices.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer managing the devices. An API resource
+  /// name in the
+  /// format `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [pageToken] - A token specifying which result page to return.
+  ///
+  /// [pageSize] - The maximum number of devices to show in a page of results.
+  /// The default
+  /// value returns all the devices in a single page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomerListDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomerListDevicesResponse> list(core.String parent,
+      {core.String pageToken, core.String pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = [pageSize];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new CustomerListDevicesResponse.fromJson(data));
+  }
+
+  /// Removes a configuration from device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer managing the device in the format
+  /// `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeConfiguration(
+      CustomerRemoveConfigurationRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices:removeConfiguration';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Unclaims a device from a customer and removes it from zero-touch
+  /// enrollment.
+  ///
+  /// After removing a device, a customer must contact their reseller to
+  /// register
+  /// the device into zero-touch enrollment again.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer managing the device. An API resource
+  /// name in the
+  /// format `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> unclaim(
+      CustomerUnclaimDeviceRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices:unclaim';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+}
+
+class CustomersDpcsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersDpcsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the DPCs (device policy controllers) that support zero-touch
+  /// enrollment.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer that can use the DPCs in configurations.
+  /// An API
+  /// resource name in the format `customers/[CUSTOMER_ID]`.
+  /// Value must have pattern "^customers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomerListDpcsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomerListDpcsResponse> list(core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dpcs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new CustomerListDpcsResponse.fromJson(data));
+  }
 }
 
 class OperationsResourceApi {
@@ -851,6 +1510,139 @@ class Company {
   }
 }
 
+/// A configuration collects the provisioning options for Android devices. Each
+/// configuration combines the following:
+///
+/// * The EMM device policy controller (DPC) installed on the devices.
+/// * EMM policies enforced on the devices.
+/// * Metadata displayed on the device to help users during setup.
+///
+/// Customers can add as many configurations as they need. However, zero-touch
+/// enrollment works best when a customer sets a default configuration that's
+/// applied to any new devices the organization purchases.
+class Configuration {
+  /// Required. The name of the organization. Zero-touch enrollment shows this
+  /// organization name to device users during device provisioning.
+  core.String companyName;
+
+  /// Output only. The ID of the configuration. Assigned by the server.
+  core.String configurationId;
+
+  /// Required. A short name that describes the configuration's purpose. For
+  /// example, _Sales team_ or _Temporary employees_. The zero-touch enrollment
+  /// portal displays this name to IT admins.
+  core.String configurationName;
+
+  /// Required. The email address that device users can contact to get help.
+  /// Zero-touch enrollment shows this email address to device users before
+  /// device provisioning. The value is validated on input.
+  core.String contactEmail;
+
+  /// Required. The telephone number that device users can call, using another
+  /// device, to get help. Zero-touch enrollment shows this number to device
+  /// users before device provisioning. Accepts numerals, spaces, the plus sign,
+  /// hyphens, and parentheses.
+  core.String contactPhone;
+
+  /// A message, containing one or two sentences, to help device users get help
+  /// or give them more details about what’s happening to their device.
+  /// Zero-touch enrollment shows this message before the device is provisioned.
+  core.String customMessage;
+
+  /// The JSON-formatted EMM provisioning extras that are passed to the DPC.
+  core.String dpcExtras;
+
+  /// Required. The resource name of the selected DPC (device policy controller)
+  /// in the format `customers/[CUSTOMER_ID]/dpcs / * `. To list the supported
+  /// DPCs,
+  /// call
+  /// `customers.dpcs.list`.
+  core.String dpcResourcePath;
+
+  /// Required. Whether this is the default configuration that zero-touch
+  /// enrollment applies to any new devices the organization purchases in the
+  /// future. Only one customer configuration can be the default. Setting this
+  /// value to `true`, changes the previous default configuration's `isDefault`
+  /// value to `false`.
+  core.bool isDefault;
+
+  /// Output only. The API resource name in the format
+  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
+  /// the server.
+  core.String name;
+
+  Configuration();
+
+  Configuration.fromJson(core.Map _json) {
+    if (_json.containsKey("companyName")) {
+      companyName = _json["companyName"];
+    }
+    if (_json.containsKey("configurationId")) {
+      configurationId = _json["configurationId"];
+    }
+    if (_json.containsKey("configurationName")) {
+      configurationName = _json["configurationName"];
+    }
+    if (_json.containsKey("contactEmail")) {
+      contactEmail = _json["contactEmail"];
+    }
+    if (_json.containsKey("contactPhone")) {
+      contactPhone = _json["contactPhone"];
+    }
+    if (_json.containsKey("customMessage")) {
+      customMessage = _json["customMessage"];
+    }
+    if (_json.containsKey("dpcExtras")) {
+      dpcExtras = _json["dpcExtras"];
+    }
+    if (_json.containsKey("dpcResourcePath")) {
+      dpcResourcePath = _json["dpcResourcePath"];
+    }
+    if (_json.containsKey("isDefault")) {
+      isDefault = _json["isDefault"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (companyName != null) {
+      _json["companyName"] = companyName;
+    }
+    if (configurationId != null) {
+      _json["configurationId"] = configurationId;
+    }
+    if (configurationName != null) {
+      _json["configurationName"] = configurationName;
+    }
+    if (contactEmail != null) {
+      _json["contactEmail"] = contactEmail;
+    }
+    if (contactPhone != null) {
+      _json["contactPhone"] = contactPhone;
+    }
+    if (customMessage != null) {
+      _json["customMessage"] = customMessage;
+    }
+    if (dpcExtras != null) {
+      _json["dpcExtras"] = dpcExtras;
+    }
+    if (dpcResourcePath != null) {
+      _json["dpcResourcePath"] = dpcResourcePath;
+    }
+    if (isDefault != null) {
+      _json["isDefault"] = isDefault;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// Request message to create a customer.
 class CreateCustomerRequest {
   /// Required. The company data to populate the new customer. Must contain a
@@ -872,6 +1664,204 @@ class CreateCustomerRequest {
         new core.Map<core.String, core.Object>();
     if (customer != null) {
       _json["customer"] = (customer).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request message for customer to assign a configuration to device.
+class CustomerApplyConfigurationRequest {
+  /// Required. The configuration applied to the device in the format
+  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+  core.String configuration;
+
+  /// Required. The device the configuration is applied to.
+  DeviceReference device;
+
+  CustomerApplyConfigurationRequest();
+
+  CustomerApplyConfigurationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("configuration")) {
+      configuration = _json["configuration"];
+    }
+    if (_json.containsKey("device")) {
+      device = new DeviceReference.fromJson(_json["device"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (configuration != null) {
+      _json["configuration"] = configuration;
+    }
+    if (device != null) {
+      _json["device"] = (device).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response message of customer's listing configuration.
+class CustomerListConfigurationsResponse {
+  /// The configurations.
+  core.List<Configuration> configurations;
+
+  CustomerListConfigurationsResponse();
+
+  CustomerListConfigurationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("configurations")) {
+      configurations = _json["configurations"]
+          .map((value) => new Configuration.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (configurations != null) {
+      _json["configurations"] =
+          configurations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for listing my customers.
+class CustomerListCustomersResponse {
+  /// Customers the current user can act as.
+  core.List<Company> customers;
+
+  /// Token to retrieve the next page of results, or empty if there are no
+  /// more results in the list.
+  core.String nextPageToken;
+
+  CustomerListCustomersResponse();
+
+  CustomerListCustomersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("customers")) {
+      customers = _json["customers"]
+          .map((value) => new Company.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customers != null) {
+      _json["customers"] = customers.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message of customer's liting devices.
+class CustomerListDevicesResponse {
+  /// The customer's devices.
+  core.List<Device> devices;
+
+  /// A token used to access the next page of results. Omitted if no further
+  /// results are available.
+  core.String nextPageToken;
+
+  CustomerListDevicesResponse();
+
+  CustomerListDevicesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("devices")) {
+      devices =
+          _json["devices"].map((value) => new Device.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (devices != null) {
+      _json["devices"] = devices.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message of customer's listing DPCs.
+class CustomerListDpcsResponse {
+  /// The list of DPCs available to the customer that support zero-touch
+  /// enrollment.
+  core.List<Dpc> dpcs;
+
+  CustomerListDpcsResponse();
+
+  CustomerListDpcsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("dpcs")) {
+      dpcs = _json["dpcs"].map((value) => new Dpc.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dpcs != null) {
+      _json["dpcs"] = dpcs.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Request message for customer to remove the configuration from device.
+class CustomerRemoveConfigurationRequest {
+  /// Required. The device to remove the configuration from.
+  DeviceReference device;
+
+  CustomerRemoveConfigurationRequest();
+
+  CustomerRemoveConfigurationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("device")) {
+      device = new DeviceReference.fromJson(_json["device"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (device != null) {
+      _json["device"] = (device).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request message for customer to unclaim a device.
+class CustomerUnclaimDeviceRequest {
+  /// Required. The device to unclaim.
+  DeviceReference device;
+
+  CustomerUnclaimDeviceRequest();
+
+  CustomerUnclaimDeviceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("device")) {
+      device = new DeviceReference.fromJson(_json["device"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (device != null) {
+      _json["device"] = (device).toJson();
     }
     return _json;
   }
@@ -1074,6 +2064,49 @@ class DeviceMetadata {
   }
 }
 
+/// A `DeviceReference` is an API abstraction that lets you supply a _device_
+/// argument to a method using one of the following identifier types:
+///
+/// * A numeric API resource ID.
+/// * Real-world hardware IDs, such as IMEI number, belonging to the
+/// manufactured
+///   device.
+///
+/// Methods that operate on devices take a `DeviceReference` as a parameter type
+/// because it's more flexible for the caller. To learn more about device
+/// identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+class DeviceReference {
+  /// The ID of the device.
+  core.String deviceId;
+
+  /// The hardware IDs of the device.
+  DeviceIdentifier deviceIdentifier;
+
+  DeviceReference();
+
+  DeviceReference.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceId")) {
+      deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("deviceIdentifier")) {
+      deviceIdentifier =
+          new DeviceIdentifier.fromJson(_json["deviceIdentifier"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceId != null) {
+      _json["deviceId"] = deviceId;
+    }
+    if (deviceIdentifier != null) {
+      _json["deviceIdentifier"] = (deviceIdentifier).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Long running operation metadata.
 class DevicesLongRunningOperationMetadata {
   /// Number of devices parsed in your requests.
@@ -1154,6 +2187,57 @@ class DevicesLongRunningOperationResponse {
     }
     if (successCount != null) {
       _json["successCount"] = successCount;
+    }
+    return _json;
+  }
+}
+
+/// An EMM's DPC ([device policy controller](/android/work/dpc/build-dpc)).
+/// Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a
+/// device to maintain the customer's mobile policies. All the DPCs listed by
+/// the
+/// API support zero-touch enrollment and are available in Google Play.
+class Dpc {
+  /// Output only. The title of the DPC app in Google Play. For example, _Google
+  /// Apps Device Policy_. Useful in an application's user interface.
+  core.String dpcName;
+
+  /// Output only. The API resource name in the format
+  /// `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by
+  /// the server. To maintain a reference to a DPC across customer accounts,
+  /// persist and match the last path component (`DPC_ID`).
+  core.String name;
+
+  /// Output only. The DPC's Android application ID that looks like a Java
+  /// package name. Zero-touch enrollment installs the DPC app onto a device
+  /// using this identifier.
+  core.String packageName;
+
+  Dpc();
+
+  Dpc.fromJson(core.Map _json) {
+    if (_json.containsKey("dpcName")) {
+      dpcName = _json["dpcName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dpcName != null) {
+      _json["dpcName"] = dpcName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
     }
     return _json;
   }

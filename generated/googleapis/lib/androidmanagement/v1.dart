@@ -1600,6 +1600,10 @@ class Device {
   /// will be in this state until they have applied policy.
   core.String appliedState;
 
+  /// Device settings information. This information is only available when
+  /// deviceSettingsEnabled is true in the device's policy.
+  DeviceSettings deviceSettings;
+
   /// If the device state is DISABLED, an optional message that is displayed on
   /// the device indicating the reason the device is disabled. This field may be
   /// modified by an update request.
@@ -1717,6 +1721,9 @@ class Device {
     if (_json.containsKey("appliedState")) {
       appliedState = _json["appliedState"];
     }
+    if (_json.containsKey("deviceSettings")) {
+      deviceSettings = new DeviceSettings.fromJson(_json["deviceSettings"]);
+    }
     if (_json.containsKey("disabledReason")) {
       disabledReason = new UserFacingMessage.fromJson(_json["disabledReason"]);
     }
@@ -1810,6 +1817,9 @@ class Device {
     if (appliedState != null) {
       _json["appliedState"] = appliedState;
     }
+    if (deviceSettings != null) {
+      _json["deviceSettings"] = (deviceSettings).toJson();
+    }
     if (disabledReason != null) {
       _json["disabledReason"] = (disabledReason).toJson();
     }
@@ -1879,6 +1889,91 @@ class Device {
     }
     if (userName != null) {
       _json["userName"] = userName;
+    }
+    return _json;
+  }
+}
+
+/// Information about security related device settings on device.
+class DeviceSettings {
+  /// If the ADB is enabled Settings.Global.ADB_ENABLED.
+  core.bool adbEnabled;
+
+  /// If the developer mode is enabled
+  /// Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.
+  core.bool developmentSettingsEnabled;
+
+  /// Encryption status from DevicePolicyManager.
+  /// Possible string values are:
+  /// - "ENCRYPTION_STATUS_UNSPECIFIED" : Unspecified. No device should have
+  /// this type.
+  /// - "UNSUPPORTED" : Encryption is not supported by the device.
+  /// - "INACTIVE" : Encryption is supported by the device, but not currently
+  /// active.
+  /// - "ACTIVATING" : Encryption is not currently active, but is currently
+  /// being activated.
+  /// - "ACTIVE" : Encryption is active
+  /// - "ACTIVE_DEFAULT_KEY" : Encryption is active, but an encryption key is
+  /// not set by the user
+  /// - "ACTIVE_PER_USER" : Encrpyiton is active, and the encryption key is tied
+  /// to the user profile.
+  core.String encryptionStatus;
+
+  /// Device secured with PIN/password.
+  core.bool isDeviceSecure;
+
+  /// Whether the storage encryption is enabled
+  /// DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE or
+  /// DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.
+  core.bool isEncrypted;
+
+  /// If installing apps from unknown sources is enabled.
+  /// Settings.Secure.INSTALL_NON_MARKET_APPS.
+  core.bool unknownSourcesEnabled;
+
+  DeviceSettings();
+
+  DeviceSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("adbEnabled")) {
+      adbEnabled = _json["adbEnabled"];
+    }
+    if (_json.containsKey("developmentSettingsEnabled")) {
+      developmentSettingsEnabled = _json["developmentSettingsEnabled"];
+    }
+    if (_json.containsKey("encryptionStatus")) {
+      encryptionStatus = _json["encryptionStatus"];
+    }
+    if (_json.containsKey("isDeviceSecure")) {
+      isDeviceSecure = _json["isDeviceSecure"];
+    }
+    if (_json.containsKey("isEncrypted")) {
+      isEncrypted = _json["isEncrypted"];
+    }
+    if (_json.containsKey("unknownSourcesEnabled")) {
+      unknownSourcesEnabled = _json["unknownSourcesEnabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (adbEnabled != null) {
+      _json["adbEnabled"] = adbEnabled;
+    }
+    if (developmentSettingsEnabled != null) {
+      _json["developmentSettingsEnabled"] = developmentSettingsEnabled;
+    }
+    if (encryptionStatus != null) {
+      _json["encryptionStatus"] = encryptionStatus;
+    }
+    if (isDeviceSecure != null) {
+      _json["isDeviceSecure"] = isDeviceSecure;
+    }
+    if (isEncrypted != null) {
+      _json["isEncrypted"] = isEncrypted;
+    }
+    if (unknownSourcesEnabled != null) {
+      _json["unknownSourcesEnabled"] = unknownSourcesEnabled;
     }
     return _json;
   }
@@ -3334,7 +3429,7 @@ class PersistentPreferredActivity {
 /// A policy, which governs behavior for a device.
 class Policy {
   /// Account types that cannot be managed by the user. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.List<core.String> accountTypesWithManagementDisabled;
 
   /// Whether adding new users and profiles is disabled.
@@ -3343,8 +3438,9 @@ class Policy {
   /// Whether adjusting the master volume is disabled.
   core.bool adjustVolumeDisabled;
 
-  /// Configuration for an always-on VPN connection. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// Configuration for an always-on VPN connection. Use with
+  /// vpn_config_disabled to prevent modification of this setting. <i>Requires
+  /// the beta version of the Android Device Policy app.</i>
   AlwaysOnVpnPackage alwaysOnVpnPackage;
 
   /// Policy applied to apps.
@@ -3361,24 +3457,24 @@ class Policy {
   core.bool blockApplicationsEnabled;
 
   /// Whether configuring bluetooth is disabled. <i>Requires the beta version of
-  /// Android Cloud Policy.</i>
+  /// the Android Device Policy app.</i>
   core.bool bluetoothConfigDisabled;
 
   /// Whether bluetooth contact sharing is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool bluetoothContactSharingDisabled;
 
   /// Whether bluetooth is disabled. Prefer this setting over
   /// bluetooth_config_disabled because bluetooth_config_disabled can be
-  /// bypassed by the user. <i>Requires the beta version of Android Cloud
-  /// Policy.</i>
+  /// bypassed by the user. <i>Requires the beta version of the Android Device
+  /// Policy app.</i>
   core.bool bluetoothDisabled;
 
   /// Whether all cameras on the device are disabled.
   core.bool cameraDisabled;
 
   /// Whether configuring cell broadcast is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool cellBroadcastsConfigDisabled;
 
   /// Rules declaring which mitigating actions to take when a device is not
@@ -3388,15 +3484,15 @@ class Policy {
   core.List<ComplianceRule> complianceRules;
 
   /// Whether creating windows besides app windows is disabled. <i>Requires the
-  /// beta version of Android Cloud Policy.</i>
+  /// beta version of the Android Device Policy app.</i>
   core.bool createWindowsDisabled;
 
   /// Whether configuring user credentials is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool credentialsConfigDisabled;
 
   /// Whether roaming data services are disabled. <i>Requires the beta version
-  /// of Android Cloud Policy.</i>
+  /// of the Android Device Policy app.</i>
   core.bool dataRoamingDisabled;
 
   /// Whether the user is allowed to enable debugging features.
@@ -3413,7 +3509,7 @@ class Policy {
   core.String defaultPermissionPolicy;
 
   /// Whether application verification is forced to be enabled. <i>Requires the
-  /// beta version of Android Cloud Policy.</i>
+  /// beta version of the Android Device Policy app.</i>
   core.bool ensureVerifyAppsEnabled;
 
   /// Whether factory resetting from settings is disabled.
@@ -3431,7 +3527,7 @@ class Policy {
   core.bool funDisabled;
 
   /// Whether user installation of apps is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool installAppsDisabled;
 
   /// Whether the user is allowed to enable the "Unknown Sources" setting, which
@@ -3442,11 +3538,11 @@ class Policy {
   core.bool keyguardDisabled;
 
   /// Disabled keyguard customizations, such as widgets. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.List<core.String> keyguardDisabledFeatures;
 
   /// A message displayed to the user in the device administators settings
-  /// screen. <i>Requires the beta version of Android Cloud Policy.</i>
+  /// screen. <i>Requires the beta version of the Android Device Policy app.</i>
   UserFacingMessage longSupportMessage;
 
   /// Maximum time in milliseconds for user activity until the device will lock.
@@ -3454,14 +3550,14 @@ class Policy {
   core.String maximumTimeToLock;
 
   /// Whether configuring mobile networks is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool mobileNetworksConfigDisabled;
 
   /// Whether adding or removing accounts is disabled.
   core.bool modifyAccountsDisabled;
 
   /// Whether the user mounting physical external media is disabled. <i>Requires
-  /// the beta version of Android Cloud Policy.</i>
+  /// the beta version of the Android Device Policy app.</i>
   core.bool mountPhysicalMediaDisabled;
 
   /// The name of the policy in the form
@@ -3479,7 +3575,7 @@ class Policy {
   core.bool networkEscapeHatchEnabled;
 
   /// Whether resetting network settings is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool networkResetDisabled;
 
   /// Network configuration for the device. See configure networks for more
@@ -3490,11 +3586,11 @@ class Policy {
   core.Map<core.String, core.Object> openNetworkConfiguration;
 
   /// Whether using NFC to beam out data from apps is disabled. <i>Requires the
-  /// beta version of Android Cloud Policy.</i>
+  /// beta version of the Android Device Policy app.</i>
   core.bool outgoingBeamDisabled;
 
-  /// Whether outgoing calls are disabled. <i>Requires the beta version of
-  /// Android Cloud Policy.</i>
+  /// Whether outgoing calls are disabled. <i>Requires the beta version of the
+  /// Android Device Policy app.</i>
   core.bool outgoingCallsDisabled;
 
   /// Password requirements.
@@ -3502,8 +3598,8 @@ class Policy {
 
   /// If present, only input methods provided by packages in this list are
   /// permitted. If this field is present, but the list is empty, then only
-  /// system input methods are permitted. <i>Requires the beta version of
-  /// Android Cloud Policy.</i>
+  /// system input methods are permitted. <i>Requires the beta version of the
+  /// Android Device Policy app.</i>
   PackageNameList permittedInputMethods;
 
   /// Default intent handler activities.
@@ -3514,7 +3610,7 @@ class Policy {
   /// configurations like general internal filtering a global HTTP proxy may be
   /// useful. If the proxy is not accessible, network access may break. The
   /// global proxy is only a recommendation and some apps may ignore it.
-  /// <i>Requires the beta version of Android Cloud Policy.</i>
+  /// <i>Requires the beta version of the Android Device Policy app.</i>
   ProxyInfo recommendedGlobalProxy;
 
   /// Whether removing other users is disabled.
@@ -3527,20 +3623,20 @@ class Policy {
   core.bool screenCaptureDisabled;
 
   /// Whether changing the user icon is disabled. <i>Requires the beta version
-  /// of Android Cloud Policy.</i>
+  /// of the Android Device Policy app.</i>
   core.bool setUserIconDisabled;
 
   /// Whether changing the wallpaper is disabled. <i>Requires the beta version
-  /// of Android Cloud Policy.</i>
+  /// of the Android Device Policy app.</i>
   core.bool setWallpaperDisabled;
 
   /// A message displayed to the user in the settings screen wherever
   /// functionality has been disabled by the admin. <i>Requires the beta version
-  /// of Android Cloud Policy.</i>
+  /// of the Android Device Policy app.</i>
   UserFacingMessage shortSupportMessage;
 
   /// Whether sending or receiving SMS messages is disabled. <i>Requires the
-  /// beta version of Android Cloud Policy.</i>
+  /// beta version of the Android Device Policy app.</i>
   core.bool smsDisabled;
 
   /// Whether the status bar is disabled. This disables notifications, quick
@@ -3562,11 +3658,11 @@ class Policy {
   SystemUpdate systemUpdate;
 
   /// Whether configuring tethering and portable hotspots is disabled.
-  /// <i>Requires the beta version of Android Cloud Policy.</i>
+  /// <i>Requires the beta version of the Android Device Policy app.</i>
   core.bool tetheringConfigDisabled;
 
   /// Whether user uninstallation of applications is disabled. <i>Requires the
-  /// beta version of Android Cloud Policy.</i>
+  /// beta version of the Android Device Policy app.</i>
   core.bool uninstallAppsDisabled;
 
   /// Whether the microphone is muted and adjusting microphone volume is
@@ -3574,15 +3670,15 @@ class Policy {
   core.bool unmuteMicrophoneDisabled;
 
   /// Whether transferring files over USB is disabled. <i>Requires the beta
-  /// version of Android Cloud Policy.</i>
+  /// version of the Android Device Policy app.</i>
   core.bool usbFileTransferDisabled;
 
   /// The version of the policy. This is a read-only field. The version is
   /// incremented each time the policy is updated.
   core.String version;
 
-  /// Whether configuring VPN is disabled. <i>Requires the beta version of
-  /// Android Cloud Policy.</i>
+  /// Whether configuring VPN is disabled. <i>Requires the beta version of the
+  /// Android Device Policy app.</i>
   core.bool vpnConfigDisabled;
 
   /// Whether configuring WiFi access points is disabled.
@@ -4132,6 +4228,12 @@ class SoftwareInfo {
   /// Build time.
   core.String androidBuildTime;
 
+  /// The Android Device Policy app version code.
+  core.int androidDevicePolicyVersionCode;
+
+  /// The Android Device Policy app version as displayed to the user.
+  core.String androidDevicePolicyVersionName;
+
   /// The user visible Android version string, e.g. 6.0.1.
   core.String androidVersion;
 
@@ -4152,6 +4254,12 @@ class SoftwareInfo {
     }
     if (_json.containsKey("androidBuildTime")) {
       androidBuildTime = _json["androidBuildTime"];
+    }
+    if (_json.containsKey("androidDevicePolicyVersionCode")) {
+      androidDevicePolicyVersionCode = _json["androidDevicePolicyVersionCode"];
+    }
+    if (_json.containsKey("androidDevicePolicyVersionName")) {
+      androidDevicePolicyVersionName = _json["androidDevicePolicyVersionName"];
     }
     if (_json.containsKey("androidVersion")) {
       androidVersion = _json["androidVersion"];
@@ -4175,6 +4283,12 @@ class SoftwareInfo {
     }
     if (androidBuildTime != null) {
       _json["androidBuildTime"] = androidBuildTime;
+    }
+    if (androidDevicePolicyVersionCode != null) {
+      _json["androidDevicePolicyVersionCode"] = androidDevicePolicyVersionCode;
+    }
+    if (androidDevicePolicyVersionName != null) {
+      _json["androidDevicePolicyVersionName"] = androidDevicePolicyVersionName;
     }
     if (androidVersion != null) {
       _json["androidVersion"] = androidVersion;
@@ -4275,6 +4389,9 @@ class Status {
 
 /// Settings controlling the behavior of status reports.
 class StatusReportingSettings {
+  /// Whether device settings reporting is enabled.
+  core.bool deviceSettingsEnabled;
+
   /// Whether displays reporting is enabled.
   core.bool displayInfoEnabled;
 
@@ -4296,6 +4413,9 @@ class StatusReportingSettings {
   StatusReportingSettings();
 
   StatusReportingSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceSettingsEnabled")) {
+      deviceSettingsEnabled = _json["deviceSettingsEnabled"];
+    }
     if (_json.containsKey("displayInfoEnabled")) {
       displayInfoEnabled = _json["displayInfoEnabled"];
     }
@@ -4319,6 +4439,9 @@ class StatusReportingSettings {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (deviceSettingsEnabled != null) {
+      _json["deviceSettingsEnabled"] = deviceSettingsEnabled;
+    }
     if (displayInfoEnabled != null) {
       _json["displayInfoEnabled"] = displayInfoEnabled;
     }

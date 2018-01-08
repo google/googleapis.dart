@@ -636,10 +636,6 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
-  /// [producerProjectId] - Include services produced by the specified project.
-  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -649,6 +645,10 @@ class ServicesResourceApi {
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
+  ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,10 +661,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.int pageSize,
-      core.String producerProjectId,
-      core.String consumerId,
+      {core.String consumerId,
       core.String pageToken,
+      core.int pageSize,
+      core.String producerProjectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -673,17 +673,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (producerProjectId != null) {
-      _queryParams["producerProjectId"] = [producerProjectId];
-    }
     if (consumerId != null) {
       _queryParams["consumerId"] = [consumerId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (producerProjectId != null) {
+      _queryParams["producerProjectId"] = [producerProjectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1422,6 +1422,8 @@ class ServicesRolloutsResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
+  /// [pageSize] - The max number of items to include in the response list.
+  ///
   /// [filter] - Use `filter` to return subset of rollouts.
   /// The following filters are supported:
   ///   -- To limit the results to only those in
@@ -1432,8 +1434,6 @@ class ServicesRolloutsResourceApi {
   ///      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
   ///
   /// [pageToken] - The token of the page to retrieve.
-  ///
-  /// [pageSize] - The max number of items to include in the response list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1446,9 +1446,9 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceRolloutsResponse> list(core.String serviceName,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1460,14 +1460,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7156,7 +7156,8 @@ class Usage {
 ///       - selector: "google.example.library.v1.LibraryService.CreateBook"
 ///         allow_unregistered_calls: true
 class UsageRule {
-  /// True, if the method allows unregistered calls; false otherwise.
+  /// If true, the selected method allows unregistered calls, e.g. calls
+  /// that don't identify any user or application.
   core.bool allowUnregisteredCalls;
 
   /// Selects the methods to which this rule applies. Use '*' to indicate all
@@ -7165,10 +7166,10 @@ class UsageRule {
   /// Refer to selector for syntax details.
   core.String selector;
 
-  /// True, if the method should skip service control. If so, no control plane
-  /// feature (like quota and billing) will be enabled.
-  /// This flag is used by ESP to allow some Endpoints customers to bypass
-  /// Google internal checks.
+  /// If true, the selected method should skip service control and the control
+  /// plane features, such as quota and billing, will not be available.
+  /// This flag is used by Google Cloud Endpoints to bypass checks for internal
+  /// methods, such as service health check methods.
   core.bool skipServiceControl;
 
   UsageRule();

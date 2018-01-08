@@ -653,23 +653,6 @@ class PeopleResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
-  ///
-  /// [resourceNames] - The resource names of the people to provide information
-  /// about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///   `people/`<var>account_id</var>.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  ///
-  /// You can include up to 50 resource names in one request.
-  ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// each person are
   /// returned. Valid values are:
@@ -701,6 +684,23 @@ class PeopleResourceApi {
   /// * taglines
   /// * urls
   ///
+  /// [requestMask_includeField] - **Required.** Comma-separated list of person
+  /// fields to be included in the
+  /// response. Each path should start with `person.`: for example,
+  /// `person.names` or `person.photos`.
+  ///
+  /// [resourceNames] - The resource names of the people to provide information
+  /// about.
+  ///
+  /// - To get information about the authenticated user, specify `people/me`.
+  /// - To get information about a google account, specify
+  ///   `people/`<var>account_id</var>.
+  /// - To get information about a contact, specify the resource name that
+  ///   identifies the contact as returned by
+  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  ///
+  /// You can include up to 50 resource names in one request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -712,9 +712,9 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetPeopleResponse> getBatchGet(
-      {core.String requestMask_includeField,
+      {core.String personFields,
+      core.String requestMask_includeField,
       core.List<core.String> resourceNames,
-      core.String personFields,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -723,14 +723,14 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
     if (resourceNames != null) {
       _queryParams["resourceNames"] = resourceNames;
-    }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

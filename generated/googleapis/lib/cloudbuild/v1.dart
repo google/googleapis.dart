@@ -404,11 +404,11 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of results to return in the list.
-  ///
-  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,9 +421,9 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -435,14 +435,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -996,6 +996,15 @@ class Build {
   /// Default time is ten minutes.
   core.String timeout;
 
+  /// Stores timing information for phases of the build.
+  /// Valid keys are:
+  /// - BUILD: time to execute all build steps
+  /// - PUSH: time to push all specified images.
+  /// - FETCHSOURCE: time to fetch source.
+  /// If the build does not specify source, or does not specify images,
+  /// these keys will not be included.
+  core.Map<core.String, TimeSpan> timing;
+
   Build();
 
   Build.fromJson(core.Map _json) {
@@ -1062,6 +1071,12 @@ class Build {
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
     }
+    if (_json.containsKey("timing")) {
+      timing = commons.mapMap<core.Map<core.String, core.Object>, TimeSpan>(
+          _json["timing"],
+          (core.Map<core.String, core.Object> item) =>
+              new TimeSpan.fromJson(item));
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1126,6 +1141,11 @@ class Build {
     }
     if (timeout != null) {
       _json["timeout"] = timeout;
+    }
+    if (timing != null) {
+      _json["timing"] =
+          commons.mapMap<TimeSpan, core.Map<core.String, core.Object>>(
+              timing, (TimeSpan item) => (item).toJson());
     }
     return _json;
   }
@@ -1303,6 +1323,9 @@ class BuildStep {
   /// crypto key. These values must be specified in the build's secrets.
   core.List<core.String> secretEnv;
 
+  /// Stores timing information for executing this build step.
+  TimeSpan timing;
+
   /// List of volumes to mount into the build step.
   ///
   /// Each volume will be created as an empty volume prior to execution of the
@@ -1344,6 +1367,9 @@ class BuildStep {
     if (_json.containsKey("secretEnv")) {
       secretEnv = _json["secretEnv"];
     }
+    if (_json.containsKey("timing")) {
+      timing = new TimeSpan.fromJson(_json["timing"]);
+    }
     if (_json.containsKey("volumes")) {
       volumes =
           _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
@@ -1376,6 +1402,9 @@ class BuildStep {
     }
     if (secretEnv != null) {
       _json["secretEnv"] = secretEnv;
+    }
+    if (timing != null) {
+      _json["timing"] = (timing).toJson();
     }
     if (volumes != null) {
       _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
@@ -1492,6 +1521,9 @@ class BuiltImage {
   /// presented to `docker push`.
   core.String name;
 
+  /// Stores timing information for pushing the specified image.
+  TimeSpan pushTiming;
+
   BuiltImage();
 
   BuiltImage.fromJson(core.Map _json) {
@@ -1500,6 +1532,9 @@ class BuiltImage {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("pushTiming")) {
+      pushTiming = new TimeSpan.fromJson(_json["pushTiming"]);
     }
   }
 
@@ -1511,6 +1546,9 @@ class BuiltImage {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (pushTiming != null) {
+      _json["pushTiming"] = (pushTiming).toJson();
     }
     return _json;
   }
@@ -2201,6 +2239,38 @@ class StorageSource {
     }
     if (object != null) {
       _json["object"] = object;
+    }
+    return _json;
+  }
+}
+
+/// Stores start and end times for a build execution phase.
+class TimeSpan {
+  /// End of time span.
+  core.String endTime;
+
+  /// Start of time span.
+  core.String startTime;
+
+  TimeSpan();
+
+  TimeSpan.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }

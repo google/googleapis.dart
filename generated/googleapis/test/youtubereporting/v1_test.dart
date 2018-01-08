@@ -65,6 +65,344 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterGdataBlobstore2Info = 0;
+buildGdataBlobstore2Info() {
+  var o = new api.GdataBlobstore2Info();
+  buildCounterGdataBlobstore2Info++;
+  if (buildCounterGdataBlobstore2Info < 3) {
+    o.blobGeneration = "foo";
+    o.blobId = "foo";
+    o.downloadReadHandle = "foo";
+    o.readToken = "foo";
+    o.uploadMetadataContainer = "foo";
+  }
+  buildCounterGdataBlobstore2Info--;
+  return o;
+}
+
+checkGdataBlobstore2Info(api.GdataBlobstore2Info o) {
+  buildCounterGdataBlobstore2Info++;
+  if (buildCounterGdataBlobstore2Info < 3) {
+    unittest.expect(o.blobGeneration, unittest.equals('foo'));
+    unittest.expect(o.blobId, unittest.equals('foo'));
+    unittest.expect(o.downloadReadHandle, unittest.equals('foo'));
+    unittest.expect(o.readToken, unittest.equals('foo'));
+    unittest.expect(o.uploadMetadataContainer, unittest.equals('foo'));
+  }
+  buildCounterGdataBlobstore2Info--;
+}
+
+core.int buildCounterGdataCompositeMedia = 0;
+buildGdataCompositeMedia() {
+  var o = new api.GdataCompositeMedia();
+  buildCounterGdataCompositeMedia++;
+  if (buildCounterGdataCompositeMedia < 3) {
+    o.blobRef = "foo";
+    o.blobstore2Info = buildGdataBlobstore2Info();
+    o.cosmoBinaryReference = "foo";
+    o.crc32cHash = 42;
+    o.inline = "foo";
+    o.length = "foo";
+    o.md5Hash = "foo";
+    o.objectId = buildGdataObjectId();
+    o.path = "foo";
+    o.referenceType = "foo";
+    o.sha1Hash = "foo";
+  }
+  buildCounterGdataCompositeMedia--;
+  return o;
+}
+
+checkGdataCompositeMedia(api.GdataCompositeMedia o) {
+  buildCounterGdataCompositeMedia++;
+  if (buildCounterGdataCompositeMedia < 3) {
+    unittest.expect(o.blobRef, unittest.equals('foo'));
+    checkGdataBlobstore2Info(o.blobstore2Info);
+    unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
+    unittest.expect(o.crc32cHash, unittest.equals(42));
+    unittest.expect(o.inline, unittest.equals('foo'));
+    unittest.expect(o.length, unittest.equals('foo'));
+    unittest.expect(o.md5Hash, unittest.equals('foo'));
+    checkGdataObjectId(o.objectId);
+    unittest.expect(o.path, unittest.equals('foo'));
+    unittest.expect(o.referenceType, unittest.equals('foo'));
+    unittest.expect(o.sha1Hash, unittest.equals('foo'));
+  }
+  buildCounterGdataCompositeMedia--;
+}
+
+core.int buildCounterGdataContentTypeInfo = 0;
+buildGdataContentTypeInfo() {
+  var o = new api.GdataContentTypeInfo();
+  buildCounterGdataContentTypeInfo++;
+  if (buildCounterGdataContentTypeInfo < 3) {
+    o.bestGuess = "foo";
+    o.fromBytes = "foo";
+    o.fromFileName = "foo";
+    o.fromHeader = "foo";
+    o.fromUrlPath = "foo";
+  }
+  buildCounterGdataContentTypeInfo--;
+  return o;
+}
+
+checkGdataContentTypeInfo(api.GdataContentTypeInfo o) {
+  buildCounterGdataContentTypeInfo++;
+  if (buildCounterGdataContentTypeInfo < 3) {
+    unittest.expect(o.bestGuess, unittest.equals('foo'));
+    unittest.expect(o.fromBytes, unittest.equals('foo'));
+    unittest.expect(o.fromFileName, unittest.equals('foo'));
+    unittest.expect(o.fromHeader, unittest.equals('foo'));
+    unittest.expect(o.fromUrlPath, unittest.equals('foo'));
+  }
+  buildCounterGdataContentTypeInfo--;
+}
+
+core.int buildCounterGdataDiffChecksumsResponse = 0;
+buildGdataDiffChecksumsResponse() {
+  var o = new api.GdataDiffChecksumsResponse();
+  buildCounterGdataDiffChecksumsResponse++;
+  if (buildCounterGdataDiffChecksumsResponse < 3) {
+    o.checksumsLocation = buildGdataCompositeMedia();
+    o.chunkSizeBytes = "foo";
+    o.objectLocation = buildGdataCompositeMedia();
+    o.objectSizeBytes = "foo";
+    o.objectVersion = "foo";
+  }
+  buildCounterGdataDiffChecksumsResponse--;
+  return o;
+}
+
+checkGdataDiffChecksumsResponse(api.GdataDiffChecksumsResponse o) {
+  buildCounterGdataDiffChecksumsResponse++;
+  if (buildCounterGdataDiffChecksumsResponse < 3) {
+    checkGdataCompositeMedia(o.checksumsLocation);
+    unittest.expect(o.chunkSizeBytes, unittest.equals('foo'));
+    checkGdataCompositeMedia(o.objectLocation);
+    unittest.expect(o.objectSizeBytes, unittest.equals('foo'));
+    unittest.expect(o.objectVersion, unittest.equals('foo'));
+  }
+  buildCounterGdataDiffChecksumsResponse--;
+}
+
+core.int buildCounterGdataDiffDownloadResponse = 0;
+buildGdataDiffDownloadResponse() {
+  var o = new api.GdataDiffDownloadResponse();
+  buildCounterGdataDiffDownloadResponse++;
+  if (buildCounterGdataDiffDownloadResponse < 3) {
+    o.objectLocation = buildGdataCompositeMedia();
+  }
+  buildCounterGdataDiffDownloadResponse--;
+  return o;
+}
+
+checkGdataDiffDownloadResponse(api.GdataDiffDownloadResponse o) {
+  buildCounterGdataDiffDownloadResponse++;
+  if (buildCounterGdataDiffDownloadResponse < 3) {
+    checkGdataCompositeMedia(o.objectLocation);
+  }
+  buildCounterGdataDiffDownloadResponse--;
+}
+
+core.int buildCounterGdataDiffUploadRequest = 0;
+buildGdataDiffUploadRequest() {
+  var o = new api.GdataDiffUploadRequest();
+  buildCounterGdataDiffUploadRequest++;
+  if (buildCounterGdataDiffUploadRequest < 3) {
+    o.checksumsInfo = buildGdataCompositeMedia();
+    o.objectInfo = buildGdataCompositeMedia();
+    o.objectVersion = "foo";
+  }
+  buildCounterGdataDiffUploadRequest--;
+  return o;
+}
+
+checkGdataDiffUploadRequest(api.GdataDiffUploadRequest o) {
+  buildCounterGdataDiffUploadRequest++;
+  if (buildCounterGdataDiffUploadRequest < 3) {
+    checkGdataCompositeMedia(o.checksumsInfo);
+    checkGdataCompositeMedia(o.objectInfo);
+    unittest.expect(o.objectVersion, unittest.equals('foo'));
+  }
+  buildCounterGdataDiffUploadRequest--;
+}
+
+core.int buildCounterGdataDiffUploadResponse = 0;
+buildGdataDiffUploadResponse() {
+  var o = new api.GdataDiffUploadResponse();
+  buildCounterGdataDiffUploadResponse++;
+  if (buildCounterGdataDiffUploadResponse < 3) {
+    o.objectVersion = "foo";
+    o.originalObject = buildGdataCompositeMedia();
+  }
+  buildCounterGdataDiffUploadResponse--;
+  return o;
+}
+
+checkGdataDiffUploadResponse(api.GdataDiffUploadResponse o) {
+  buildCounterGdataDiffUploadResponse++;
+  if (buildCounterGdataDiffUploadResponse < 3) {
+    unittest.expect(o.objectVersion, unittest.equals('foo'));
+    checkGdataCompositeMedia(o.originalObject);
+  }
+  buildCounterGdataDiffUploadResponse--;
+}
+
+core.int buildCounterGdataDiffVersionResponse = 0;
+buildGdataDiffVersionResponse() {
+  var o = new api.GdataDiffVersionResponse();
+  buildCounterGdataDiffVersionResponse++;
+  if (buildCounterGdataDiffVersionResponse < 3) {
+    o.objectSizeBytes = "foo";
+    o.objectVersion = "foo";
+  }
+  buildCounterGdataDiffVersionResponse--;
+  return o;
+}
+
+checkGdataDiffVersionResponse(api.GdataDiffVersionResponse o) {
+  buildCounterGdataDiffVersionResponse++;
+  if (buildCounterGdataDiffVersionResponse < 3) {
+    unittest.expect(o.objectSizeBytes, unittest.equals('foo'));
+    unittest.expect(o.objectVersion, unittest.equals('foo'));
+  }
+  buildCounterGdataDiffVersionResponse--;
+}
+
+core.int buildCounterGdataDownloadParameters = 0;
+buildGdataDownloadParameters() {
+  var o = new api.GdataDownloadParameters();
+  buildCounterGdataDownloadParameters++;
+  if (buildCounterGdataDownloadParameters < 3) {
+    o.allowGzipCompression = true;
+    o.ignoreRange = true;
+  }
+  buildCounterGdataDownloadParameters--;
+  return o;
+}
+
+checkGdataDownloadParameters(api.GdataDownloadParameters o) {
+  buildCounterGdataDownloadParameters++;
+  if (buildCounterGdataDownloadParameters < 3) {
+    unittest.expect(o.allowGzipCompression, unittest.isTrue);
+    unittest.expect(o.ignoreRange, unittest.isTrue);
+  }
+  buildCounterGdataDownloadParameters--;
+}
+
+buildUnnamed1135() {
+  var o = new core.List<api.GdataCompositeMedia>();
+  o.add(buildGdataCompositeMedia());
+  o.add(buildGdataCompositeMedia());
+  return o;
+}
+
+checkUnnamed1135(core.List<api.GdataCompositeMedia> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGdataCompositeMedia(o[0]);
+  checkGdataCompositeMedia(o[1]);
+}
+
+core.int buildCounterGdataMedia = 0;
+buildGdataMedia() {
+  var o = new api.GdataMedia();
+  buildCounterGdataMedia++;
+  if (buildCounterGdataMedia < 3) {
+    o.algorithm = "foo";
+    o.bigstoreObjectRef = "foo";
+    o.blobRef = "foo";
+    o.blobstore2Info = buildGdataBlobstore2Info();
+    o.compositeMedia = buildUnnamed1135();
+    o.contentType = "foo";
+    o.contentTypeInfo = buildGdataContentTypeInfo();
+    o.cosmoBinaryReference = "foo";
+    o.crc32cHash = 42;
+    o.diffChecksumsResponse = buildGdataDiffChecksumsResponse();
+    o.diffDownloadResponse = buildGdataDiffDownloadResponse();
+    o.diffUploadRequest = buildGdataDiffUploadRequest();
+    o.diffUploadResponse = buildGdataDiffUploadResponse();
+    o.diffVersionResponse = buildGdataDiffVersionResponse();
+    o.downloadParameters = buildGdataDownloadParameters();
+    o.filename = "foo";
+    o.hash = "foo";
+    o.hashVerified = true;
+    o.inline = "foo";
+    o.isPotentialRetry = true;
+    o.length = "foo";
+    o.md5Hash = "foo";
+    o.mediaId = "foo";
+    o.objectId = buildGdataObjectId();
+    o.path = "foo";
+    o.referenceType = "foo";
+    o.sha1Hash = "foo";
+    o.sha256Hash = "foo";
+    o.timestamp = "foo";
+    o.token = "foo";
+  }
+  buildCounterGdataMedia--;
+  return o;
+}
+
+checkGdataMedia(api.GdataMedia o) {
+  buildCounterGdataMedia++;
+  if (buildCounterGdataMedia < 3) {
+    unittest.expect(o.algorithm, unittest.equals('foo'));
+    unittest.expect(o.bigstoreObjectRef, unittest.equals('foo'));
+    unittest.expect(o.blobRef, unittest.equals('foo'));
+    checkGdataBlobstore2Info(o.blobstore2Info);
+    checkUnnamed1135(o.compositeMedia);
+    unittest.expect(o.contentType, unittest.equals('foo'));
+    checkGdataContentTypeInfo(o.contentTypeInfo);
+    unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
+    unittest.expect(o.crc32cHash, unittest.equals(42));
+    checkGdataDiffChecksumsResponse(o.diffChecksumsResponse);
+    checkGdataDiffDownloadResponse(o.diffDownloadResponse);
+    checkGdataDiffUploadRequest(o.diffUploadRequest);
+    checkGdataDiffUploadResponse(o.diffUploadResponse);
+    checkGdataDiffVersionResponse(o.diffVersionResponse);
+    checkGdataDownloadParameters(o.downloadParameters);
+    unittest.expect(o.filename, unittest.equals('foo'));
+    unittest.expect(o.hash, unittest.equals('foo'));
+    unittest.expect(o.hashVerified, unittest.isTrue);
+    unittest.expect(o.inline, unittest.equals('foo'));
+    unittest.expect(o.isPotentialRetry, unittest.isTrue);
+    unittest.expect(o.length, unittest.equals('foo'));
+    unittest.expect(o.md5Hash, unittest.equals('foo'));
+    unittest.expect(o.mediaId, unittest.equals('foo'));
+    checkGdataObjectId(o.objectId);
+    unittest.expect(o.path, unittest.equals('foo'));
+    unittest.expect(o.referenceType, unittest.equals('foo'));
+    unittest.expect(o.sha1Hash, unittest.equals('foo'));
+    unittest.expect(o.sha256Hash, unittest.equals('foo'));
+    unittest.expect(o.timestamp, unittest.equals('foo'));
+    unittest.expect(o.token, unittest.equals('foo'));
+  }
+  buildCounterGdataMedia--;
+}
+
+core.int buildCounterGdataObjectId = 0;
+buildGdataObjectId() {
+  var o = new api.GdataObjectId();
+  buildCounterGdataObjectId++;
+  if (buildCounterGdataObjectId < 3) {
+    o.bucketName = "foo";
+    o.generation = "foo";
+    o.objectName = "foo";
+  }
+  buildCounterGdataObjectId--;
+  return o;
+}
+
+checkGdataObjectId(api.GdataObjectId o) {
+  buildCounterGdataObjectId++;
+  if (buildCounterGdataObjectId < 3) {
+    unittest.expect(o.bucketName, unittest.equals('foo'));
+    unittest.expect(o.generation, unittest.equals('foo'));
+    unittest.expect(o.objectName, unittest.equals('foo'));
+  }
+  buildCounterGdataObjectId--;
+}
+
 core.int buildCounterJob = 0;
 buildJob() {
   var o = new api.Job();
@@ -94,14 +432,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed1126() {
+buildUnnamed1136() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed1126(core.List<api.Job> o) {
+checkUnnamed1136(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -112,7 +450,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed1126();
+    o.jobs = buildUnnamed1136();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -122,20 +460,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed1126(o.jobs);
+    checkUnnamed1136(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed1127() {
+buildUnnamed1137() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed1127(core.List<api.ReportType> o) {
+checkUnnamed1137(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -147,7 +485,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed1127();
+    o.reportTypes = buildUnnamed1137();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -157,19 +495,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1127(o.reportTypes);
+    checkUnnamed1137(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed1128() {
+buildUnnamed1138() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed1128(core.List<api.Report> o) {
+checkUnnamed1138(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -181,7 +519,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed1128();
+    o.reports = buildUnnamed1138();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -191,28 +529,9 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1128(o.reports);
+    checkUnnamed1138(o.reports);
   }
   buildCounterListReportsResponse--;
-}
-
-core.int buildCounterMedia = 0;
-buildMedia() {
-  var o = new api.Media();
-  buildCounterMedia++;
-  if (buildCounterMedia < 3) {
-    o.resourceName = "foo";
-  }
-  buildCounterMedia--;
-  return o;
-}
-
-checkMedia(api.Media o) {
-  buildCounterMedia++;
-  if (buildCounterMedia < 3) {
-    unittest.expect(o.resourceName, unittest.equals('foo'));
-  }
-  buildCounterMedia--;
 }
 
 core.int buildCounterReport = 0;
@@ -280,6 +599,94 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GdataBlobstore2Info", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataBlobstore2Info();
+      var od = new api.GdataBlobstore2Info.fromJson(o.toJson());
+      checkGdataBlobstore2Info(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataCompositeMedia", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataCompositeMedia();
+      var od = new api.GdataCompositeMedia.fromJson(o.toJson());
+      checkGdataCompositeMedia(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataContentTypeInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataContentTypeInfo();
+      var od = new api.GdataContentTypeInfo.fromJson(o.toJson());
+      checkGdataContentTypeInfo(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataDiffChecksumsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataDiffChecksumsResponse();
+      var od = new api.GdataDiffChecksumsResponse.fromJson(o.toJson());
+      checkGdataDiffChecksumsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataDiffDownloadResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataDiffDownloadResponse();
+      var od = new api.GdataDiffDownloadResponse.fromJson(o.toJson());
+      checkGdataDiffDownloadResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataDiffUploadRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataDiffUploadRequest();
+      var od = new api.GdataDiffUploadRequest.fromJson(o.toJson());
+      checkGdataDiffUploadRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataDiffUploadResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataDiffUploadResponse();
+      var od = new api.GdataDiffUploadResponse.fromJson(o.toJson());
+      checkGdataDiffUploadResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataDiffVersionResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataDiffVersionResponse();
+      var od = new api.GdataDiffVersionResponse.fromJson(o.toJson());
+      checkGdataDiffVersionResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataDownloadParameters", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataDownloadParameters();
+      var od = new api.GdataDownloadParameters.fromJson(o.toJson());
+      checkGdataDownloadParameters(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataMedia", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataMedia();
+      var od = new api.GdataMedia.fromJson(o.toJson());
+      checkGdataMedia(od);
+    });
+  });
+
+  unittest.group("obj-schema-GdataObjectId", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGdataObjectId();
+      var od = new api.GdataObjectId.fromJson(o.toJson());
+      checkGdataObjectId(od);
+    });
+  });
+
   unittest.group("obj-schema-Job", () {
     unittest.test("to-json--from-json", () {
       var o = buildJob();
@@ -309,14 +716,6 @@ main() {
       var o = buildListReportsResponse();
       var od = new api.ListReportsResponse.fromJson(o.toJson());
       checkListReportsResponse(od);
-    });
-  });
-
-  unittest.group("obj-schema-Media", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildMedia();
-      var od = new api.Media.fromJson(o.toJson());
-      checkMedia(od);
     });
   });
 
@@ -514,10 +913,10 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
-      var arg_pageSize = 42;
-      var arg_onBehalfOfContentOwner = "foo";
       var arg_pageToken = "foo";
       var arg_includeSystemManaged = true;
+      var arg_pageSize = 42;
+      var arg_onBehalfOfContentOwner = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -549,14 +948,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["includeSystemManaged"].first,
             unittest.equals("$arg_includeSystemManaged"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -567,10 +966,10 @@ main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               pageToken: arg_pageToken,
               includeSystemManaged: arg_includeSystemManaged,
+              pageSize: arg_pageSize,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListJobsResponse response) {
         checkListJobsResponse(response);
@@ -653,12 +1052,12 @@ main() {
       api.JobsReportsResourceApi res =
           new api.YoutubereportingApi(mock).jobs.reports;
       var arg_jobId = "foo";
-      var arg_pageSize = 42;
       var arg_onBehalfOfContentOwner = "foo";
       var arg_startTimeBefore = "foo";
       var arg_createdAfter = "foo";
-      var arg_startTimeAtOrAfter = "foo";
       var arg_pageToken = "foo";
+      var arg_startTimeAtOrAfter = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -699,18 +1098,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["startTimeBefore"].first,
             unittest.equals(arg_startTimeBefore));
         unittest.expect(
             queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
-        unittest.expect(queryMap["startTimeAtOrAfter"].first,
-            unittest.equals(arg_startTimeAtOrAfter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["startTimeAtOrAfter"].first,
+            unittest.equals(arg_startTimeAtOrAfter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -721,12 +1120,12 @@ main() {
       }), true);
       res
           .list(arg_jobId,
-              pageSize: arg_pageSize,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               startTimeBefore: arg_startTimeBefore,
               createdAfter: arg_createdAfter,
-              startTimeAtOrAfter: arg_startTimeAtOrAfter,
               pageToken: arg_pageToken,
+              startTimeAtOrAfter: arg_startTimeAtOrAfter,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListReportsResponse response) {
         checkListReportsResponse(response);
@@ -779,13 +1178,13 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildMedia());
+        var resp = convert.JSON.encode(buildGdataMedia());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .download(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Media response) {
-        checkMedia(response);
+          .then(unittest.expectAsync1(((api.GdataMedia response) {
+        checkGdataMedia(response);
       })));
     });
   });
@@ -795,10 +1194,10 @@ main() {
       var mock = new HttpServerMock();
       api.ReportTypesResourceApi res =
           new api.YoutubereportingApi(mock).reportTypes;
-      var arg_pageSize = 42;
-      var arg_onBehalfOfContentOwner = "foo";
       var arg_pageToken = "foo";
       var arg_includeSystemManaged = true;
+      var arg_pageSize = 42;
+      var arg_onBehalfOfContentOwner = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -830,14 +1229,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["includeSystemManaged"].first,
             unittest.equals("$arg_includeSystemManaged"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -848,10 +1247,10 @@ main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               pageToken: arg_pageToken,
               includeSystemManaged: arg_includeSystemManaged,
+              pageSize: arg_pageSize,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListReportTypesResponse response) {
         checkListReportTypesResponse(response);

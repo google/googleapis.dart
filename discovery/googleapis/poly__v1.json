@@ -5,7 +5,7 @@
     "canonicalName": "Poly Service",
     "description": "The Poly API provides read-only access to assets hosted on <a href=\"https://poly.google.com\">poly.google.com</a>.\n",
     "discoveryVersion": "v1",
-    "documentationLink": "https://devsite.googleplex.com/poly/",
+    "documentationLink": "https://developers.google.com/poly/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -16,6 +16,55 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -32,13 +81,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -52,55 +101,6 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -134,6 +134,28 @@
                     "id": "poly.assets.list",
                     "parameterOrder": [],
                     "parameters": {
+                        "pageToken": {
+                            "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from next_page_token.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxComplexity": {
+                            "description": "Returns assets that are of the specified complexity or less. Defaults to\nCOMPLEX. For example, a request for\nMEDIUM assets also includes\nSIMPLE assets.",
+                            "enum": [
+                                "COMPLEXITY_UNSPECIFIED",
+                                "COMPLEX",
+                                "MEDIUM",
+                                "SIMPLE"
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "keywords": {
                             "description": "One or more search terms to be matched against all text that Poly has\nindexed for assets, which includes display_name,\ndescription, and tags. Multiple keywords should be\nseparated by spaces.",
                             "location": "query",
@@ -158,28 +180,6 @@
                             "description": "Filter assets based on the specified category. Supported values are:\n`animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`, `scenes`,\n`technology`, and `transport`.",
                             "location": "query",
                             "type": "string"
-                        },
-                        "pageToken": {
-                            "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from next_page_token.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "maxComplexity": {
-                            "description": "Returns assets that are of the specified complexity or less. Defaults to\nCOMPLEX. For example, a request for\nMEDIUM assets also includes\nSIMPLE assets.",
-                            "enum": [
-                                "COMPLEXITY_UNSPECIFIED",
-                                "COMPLEX",
-                                "MEDIUM",
-                                "SIMPLE"
-                            ],
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "pageSize": {
-                            "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
                         }
                     },
                     "path": "v1/assets",
@@ -247,12 +247,6 @@
                                 "name"
                             ],
                             "parameters": {
-                                "pageSize": {
-                                    "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
                                 "visibility": {
                                     "description": "The visibility of the assets to be returned.\nDefaults to VISIBILITY_UNSPECIFIED which returns all assets.",
                                     "enum": [
@@ -284,6 +278,12 @@
                                     "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
                                 }
                             },
                             "path": "v1/{+name}/assets",
@@ -296,51 +296,9 @@
             }
         }
     },
-    "revision": "20171130",
+    "revision": "20171218",
     "rootUrl": "https://poly.googleapis.com/",
     "schemas": {
-        "File": {
-            "description": "Represents a file in Poly, which can be a root,\nresource, or thumbnail file.",
-            "id": "File",
-            "properties": {
-                "url": {
-                    "description": "The URL where the file data can be retrieved.",
-                    "type": "string"
-                },
-                "contentType": {
-                    "description": "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).",
-                    "type": "string"
-                },
-                "relativePath": {
-                    "description": "The path of the resource file relative to the root file.\nFor root or thumbnail files, this is just the filename.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListLikedAssetsResponse": {
-            "description": "A response message from a request to list.",
-            "id": "ListLikedAssetsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token.",
-                    "type": "string"
-                },
-                "assets": {
-                    "description": "A list of assets that match the criteria specified in the request.",
-                    "items": {
-                        "$ref": "Asset"
-                    },
-                    "type": "array"
-                },
-                "totalSize": {
-                    "description": "The total number of assets in the list, without pagination.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
         "ListAssetsResponse": {
             "description": "A response message from a request to list.",
             "id": "ListAssetsResponse",
@@ -368,14 +326,6 @@
             "description": "The same asset can be represented in different formats, for example,\na [WaveFront .obj](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with its\ncorresponding .mtl file or a [Khronos glTF](//www.khronos.org/gltf) file\nwith its corresponding .glb binary data. A format refers to a specific\nrepresentation of an asset and contains all information needed to\nretrieve and describe this representation.",
             "id": "Format",
             "properties": {
-                "root": {
-                    "$ref": "File",
-                    "description": "The root of the file hierarchy. This will always be populated.\nFor some format_types - such as `TILT`, which are self-contained -\nthis is all of the data.\n\nOther types - such as `OBJ` - often reference other data elements.\nThese are contained in the resources field."
-                },
-                "formatType": {
-                    "description": "A short string that identifies the format type of this representation.\nPossible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.",
-                    "type": "string"
-                },
                 "resources": {
                     "description": "A list of dependencies of the root element. May include, but is not\nlimited to, materials, textures, and shader programs.",
                     "items": {
@@ -386,6 +336,14 @@
                 "formatComplexity": {
                     "$ref": "FormatComplexity",
                     "description": "Complexity stats about this representation of the asset."
+                },
+                "root": {
+                    "$ref": "File",
+                    "description": "The root of the file hierarchy. This will always be populated.\nFor some format_types - such as `TILT`, which are self-contained -\nthis is all of the data.\n\nOther types - such as `OBJ` - often reference other data elements.\nThese are contained in the resources field."
+                },
+                "formatType": {
+                    "description": "A short string that identifies the format type of this representation.\nPossible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -394,41 +352,6 @@
             "description": "Represents and describes an asset in the Poly library. An asset is a 3D model\nor scene created using [Tilt Brush](//www.tiltbrush.com),\n[Blocks](//vr.google.com/blocks/), or any 3D program that produces a file\nthat can be upload to Poly.",
             "id": "Asset",
             "properties": {
-                "formats": {
-                    "description": "A list of Formats where each\nformat describes one representation of the asset.",
-                    "items": {
-                        "$ref": "Format"
-                    },
-                    "type": "array"
-                },
-                "presentationParams": {
-                    "$ref": "PresentationParams",
-                    "description": "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."
-                },
-                "thumbnail": {
-                    "$ref": "File",
-                    "description": "The thumbnail image for the asset."
-                },
-                "description": {
-                    "description": "The human-readable description, set by the asset's author.",
-                    "type": "string"
-                },
-                "visibility": {
-                    "description": "The visibility of the asset and who can access it.",
-                    "enum": [
-                        "VISIBILITY_UNSPECIFIED",
-                        "PRIVATE",
-                        "UNLISTED",
-                        "PUBLIC"
-                    ],
-                    "enumDescriptions": [
-                        "Unknown (and invalid) visibility.",
-                        "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account.",
-                        "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets.",
-                        "Access to the asset and its underlying files and resources is available\nto anyone."
-                    ],
-                    "type": "string"
-                },
                 "authorName": {
                     "description": "The author's publicly visible name. Use this name when giving credit to the\nauthor. For more information, see [Licensing](/poly/discover/licensing).",
                     "type": "string"
@@ -468,6 +391,41 @@
                 "isCurated": {
                     "description": "Whether this asset has been curated by the Poly team.",
                     "type": "boolean"
+                },
+                "formats": {
+                    "description": "A list of Formats where each\nformat describes one representation of the asset.",
+                    "items": {
+                        "$ref": "Format"
+                    },
+                    "type": "array"
+                },
+                "thumbnail": {
+                    "$ref": "File",
+                    "description": "The thumbnail image for the asset."
+                },
+                "presentationParams": {
+                    "$ref": "PresentationParams",
+                    "description": "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."
+                },
+                "description": {
+                    "description": "The human-readable description, set by the asset's author.",
+                    "type": "string"
+                },
+                "visibility": {
+                    "description": "The visibility of the asset and who can access it.",
+                    "enum": [
+                        "VISIBILITY_UNSPECIFIED",
+                        "PRIVATE",
+                        "UNLISTED",
+                        "PUBLIC"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown (and invalid) visibility.",
+                        "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account.",
+                        "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets.",
+                        "Access to the asset and its underlying files and resources is available\nto anyone."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -476,10 +434,6 @@
             "description": "Hints for displaying the asset, based on information available when the asset\nwas uploaded.",
             "id": "PresentationParams",
             "properties": {
-                "orientingRotation": {
-                    "$ref": "Quaternion",
-                    "description": "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."
-                },
                 "colorSpace": {
                     "description": "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps.",
                     "enum": [
@@ -493,6 +447,10 @@
                         "Colors should be converted to linear by assuming gamma = 2.0."
                     ],
                     "type": "string"
+                },
+                "orientingRotation": {
+                    "$ref": "Quaternion",
+                    "description": "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."
                 }
             },
             "type": "object"
@@ -528,15 +486,15 @@
             "description": "Information on the complexity of this Format.",
             "id": "FormatComplexity",
             "properties": {
-                "lodHint": {
-                    "description": "A non-negative integer that represents the level of detail (LOD) of this\nformat relative to other formats of the same asset with the same\nformat_type.\nThis hint allows you to sort formats from the most-detailed (0) to\nleast-detailed (integers greater than 0).",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "triangleCount": {
                     "description": "The estimated number of triangles.",
                     "format": "int64",
                     "type": "string"
+                },
+                "lodHint": {
+                    "description": "A non-negative integer that represents the level of detail (LOD) of this\nformat relative to other formats of the same asset with the same\nformat_type.\nThis hint allows you to sort formats from the most-detailed (0) to\nleast-detailed (integers greater than 0).",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -545,6 +503,10 @@
             "description": "A response message from a request to list.",
             "id": "ListUserAssetsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token.",
+                    "type": "string"
+                },
                 "totalSize": {
                     "description": "The total number of assets in the list, without pagination.",
                     "format": "int32",
@@ -556,10 +518,6 @@
                         "$ref": "UserAsset"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -571,6 +529,48 @@
                 "asset": {
                     "$ref": "Asset",
                     "description": "An Asset."
+                }
+            },
+            "type": "object"
+        },
+        "File": {
+            "description": "Represents a file in Poly, which can be a root,\nresource, or thumbnail file.",
+            "id": "File",
+            "properties": {
+                "contentType": {
+                    "description": "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).",
+                    "type": "string"
+                },
+                "relativePath": {
+                    "description": "The path of the resource file relative to the root file.\nFor root or thumbnail files, this is just the filename.",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "The URL where the file data can be retrieved.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListLikedAssetsResponse": {
+            "description": "A response message from a request to list.",
+            "id": "ListLikedAssetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token.",
+                    "type": "string"
+                },
+                "assets": {
+                    "description": "A list of assets that match the criteria specified in the request.",
+                    "items": {
+                        "$ref": "Asset"
+                    },
+                    "type": "array"
+                },
+                "totalSize": {
+                    "description": "The total number of assets in the list, without pagination.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

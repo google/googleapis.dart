@@ -1,3 +1,34 @@
+## 0.40.0
+
+* [api] classroom:v1
+* [api] content:v2
+* [api] content:v2sandbox
+* [api] androiddeviceprovisioning:v1
+* [api] monitoring:v3
+* [api] storage:v1
+* [api] androidpublisher:v2
+* [api] androidmanagement:v1
+* [api] cloudtrace:v2
+* [api] youtubereporting:v1
+* [api] servicecontrol:v1
+* [api] cloudbuild:v1
+* [api] calendar:v3
+* [api] slides:v1
+* [api] bigquery:v2
+* [api] ml:v1
+* [api] sheets:v4
+* [api] testing:v1
+* [api] safebrowsing:v4
+* [api] androidenterprise:v1
+* [api] admin:reports_v1
+* [api] admin:directory_v1
+* [api-breaking] cloudtrace:v2
+* [api-breaking] youtubereporting:v1
+* [api-breaking] iam:v1
+* [api-breaking] speech:v1
+* [api-breaking] youtube:v3
+* [api-removed] consumersurveys:v2
+
 ## 0.47.1
 
 * [api-new] oslogin:v1

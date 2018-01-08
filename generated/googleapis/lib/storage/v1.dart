@@ -801,6 +801,66 @@ class BucketsResourceApi {
     return _response.then((data) => new Buckets.fromJson(data));
   }
 
+  /// Locks retention policy on a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of a bucket.
+  ///
+  /// [ifMetagenerationMatch] - Makes the operation conditional on whether
+  /// bucket's current metageneration matches the given value.
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Bucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Bucket> lockRetentionPolicy(
+      core.String bucket, core.String ifMetagenerationMatch,
+      {core.String userProject, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (ifMetagenerationMatch == null) {
+      throw new core.ArgumentError(
+          "Parameter ifMetagenerationMatch is required.");
+    }
+    _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'b/' +
+        commons.Escaper.ecapeVariable('$bucket') +
+        '/lockRetentionPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Bucket.fromJson(data));
+  }
+
   /// Updates a bucket. Changes to the bucket will be readable immediately after
   /// writing, but configuration changes may take time to propagate. This method
   /// supports patch semantics.
@@ -2882,7 +2942,8 @@ class ObjectsResourceApi {
   /// [kmsKeyName] - Resource name of the Cloud KMS key, of the form
   /// projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key,
   /// that will be used to encrypt the object. Overrides the object metadata's
-  /// kms_key_name value, if any.
+  /// kms_key_name value, if any. Limited availability; usable only by enabled
+  /// projects.
   ///
   /// [name] - Name of the object. Required when the object metadata is not
   /// otherwise provided. Overrides the object metadata's name value, if any.
@@ -3916,7 +3977,7 @@ class ProjectsServiceAccountResourceApi {
 
 /// The bucket's billing configuration.
 class BucketBilling {
-  /// When set to true, bucket is requester pays.
+  /// When set to true, Requester Pays is enabled for this bucket.
   core.bool requesterPays;
 
   BucketBilling();
@@ -3994,6 +4055,9 @@ class BucketCors {
 /// Encryption configuration used by default for newly inserted objects, when no
 /// encryption config is specified.
 class BucketEncryption {
+  /// A Cloud KMS key that will be used to encrypt objects inserted into this
+  /// bucket, if no encryption method is specified. Limited availability; usable
+  /// only by enabled projects.
   core.String defaultKmsKeyName;
 
   BucketEncryption();
@@ -4239,6 +4303,58 @@ class BucketOwner {
   }
 }
 
+/// Defines the retention policy for a bucket. The Retention policy enforces a
+/// minimum retention time for all objects contained in the bucket, based on
+/// their creation time. Any attempt to overwrite or delete objects younger than
+/// the retention period will result in a PERMISSION_DENIED error. An unlocked
+/// retention policy can be modified or removed from the bucket via the
+/// UpdateBucketMetadata RPC. A locked retention policy cannot be removed or
+/// shortened in duration for the lifetime of the bucket. Attempting to remove
+/// or decrease period of a locked retention policy will result in a
+/// PERMISSION_DENIED error.
+class BucketRetentionPolicy {
+  /// The time from which policy was enforced and effective. RFC 3339 format.
+  core.DateTime effectiveTime;
+
+  /// Once locked, an object retention policy cannot be modified.
+  core.bool isLocked;
+
+  /// Specifies the duration that objects need to be retained. Retention
+  /// duration must be greater than zero and less than 100 years. Note that
+  /// enforcement of retention periods less than a day is not guaranteed. Such
+  /// periods should only be used for testing purposes.
+  core.String retentionPeriod;
+
+  BucketRetentionPolicy();
+
+  BucketRetentionPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("effectiveTime")) {
+      effectiveTime = core.DateTime.parse(_json["effectiveTime"]);
+    }
+    if (_json.containsKey("isLocked")) {
+      isLocked = _json["isLocked"];
+    }
+    if (_json.containsKey("retentionPeriod")) {
+      retentionPeriod = _json["retentionPeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (effectiveTime != null) {
+      _json["effectiveTime"] = (effectiveTime).toIso8601String();
+    }
+    if (isLocked != null) {
+      _json["isLocked"] = isLocked;
+    }
+    if (retentionPeriod != null) {
+      _json["retentionPeriod"] = retentionPeriod;
+    }
+    return _json;
+  }
+}
+
 /// The bucket's versioning configuration.
 class BucketVersioning {
   /// While set to true, versioning is fully enabled for this bucket.
@@ -4312,6 +4428,19 @@ class Bucket {
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
   core.List<BucketCors> cors;
 
+  /// Defines the default value for Event-Based hold on newly created objects in
+  /// this bucket. Event-Based hold is a way to retain objects indefinitely
+  /// until an event occurs, signified by the hold's release. After being
+  /// released, such objects will be subject to bucket-level retention (if any).
+  /// One sample use case of this flag is for banks to hold loan documents for
+  /// at least 3 years after loan is paid in full. Here bucket-level retention
+  /// is 3 years and the event is loan being paid in full. In this example these
+  /// objects will be held intact for any number of years until the event has
+  /// occurred (hold is released) and then 3 more years after that. Objects
+  /// under Event-Based hold cannot be deleted, overwritten or archived until
+  /// the hold is removed.
+  core.bool defaultEventBasedHold;
+
   /// Default access controls to apply to new objects when no ACL is provided.
   core.List<ObjectAccessControl> defaultObjectAcl;
 
@@ -4322,7 +4451,7 @@ class Bucket {
   /// HTTP 1.1 Entity tag for the bucket.
   core.String etag;
 
-  /// The ID of the bucket. For buckets, the id and name properities are the
+  /// The ID of the bucket. For buckets, the id and name properties are the
   /// same.
   core.String id;
 
@@ -4356,6 +4485,17 @@ class Bucket {
 
   /// The project number of the project the bucket belongs to.
   core.String projectNumber;
+
+  /// Defines the retention policy for a bucket. The Retention policy enforces a
+  /// minimum retention time for all objects contained in the bucket, based on
+  /// their creation time. Any attempt to overwrite or delete objects younger
+  /// than the retention period will result in a PERMISSION_DENIED error. An
+  /// unlocked retention policy can be modified or removed from the bucket via
+  /// the UpdateBucketMetadata RPC. A locked retention policy cannot be removed
+  /// or shortened in duration for the lifetime of the bucket. Attempting to
+  /// remove or decrease period of a locked retention policy will result in a
+  /// PERMISSION_DENIED error.
+  BucketRetentionPolicy retentionPolicy;
 
   /// The URI of this bucket.
   core.String selfLink;
@@ -4398,6 +4538,9 @@ class Bucket {
       cors =
           _json["cors"].map((value) => new BucketCors.fromJson(value)).toList();
     }
+    if (_json.containsKey("defaultEventBasedHold")) {
+      defaultEventBasedHold = _json["defaultEventBasedHold"];
+    }
     if (_json.containsKey("defaultObjectAcl")) {
       defaultObjectAcl = _json["defaultObjectAcl"]
           .map((value) => new ObjectAccessControl.fromJson(value))
@@ -4439,6 +4582,10 @@ class Bucket {
     if (_json.containsKey("projectNumber")) {
       projectNumber = _json["projectNumber"];
     }
+    if (_json.containsKey("retentionPolicy")) {
+      retentionPolicy =
+          new BucketRetentionPolicy.fromJson(_json["retentionPolicy"]);
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -4470,6 +4617,9 @@ class Bucket {
     }
     if (cors != null) {
       _json["cors"] = cors.map((value) => (value).toJson()).toList();
+    }
+    if (defaultEventBasedHold != null) {
+      _json["defaultEventBasedHold"] = defaultEventBasedHold;
     }
     if (defaultObjectAcl != null) {
       _json["defaultObjectAcl"] =
@@ -4510,6 +4660,9 @@ class Bucket {
     }
     if (projectNumber != null) {
       _json["projectNumber"] = projectNumber;
+    }
+    if (retentionPolicy != null) {
+      _json["retentionPolicy"] = (retentionPolicy).toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -5234,6 +5387,17 @@ class Object {
   /// HTTP 1.1 Entity tag for the object.
   core.String etag;
 
+  /// Defines the Event-Based hold for an object. Event-Based hold is a way to
+  /// retain objects indefinitely until an event occurs, signified by the hold's
+  /// release. After being released, such objects will be subject to
+  /// bucket-level retention (if any). One sample use case of this flag is for
+  /// banks to hold loan documents for at least 3 years after loan is paid in
+  /// full. Here bucket-level retention is 3 years and the event is loan being
+  /// paid in full. In this example these objects will be held intact for any
+  /// number of years until the event has occurred (hold is released) and then 3
+  /// more years after that.
+  core.bool eventBasedHold;
+
   /// The content generation of this object. Used for object versioning.
   core.String generation;
 
@@ -5245,7 +5409,7 @@ class Object {
   core.String kind;
 
   /// Cloud KMS Key used to encrypt this object, if the object is encrypted by
-  /// such a key.
+  /// such a key. Limited availability; usable only by enabled projects.
   core.String kmsKeyName;
 
   /// MD5 hash of the data; encoded using base64. For more information about
@@ -5270,6 +5434,14 @@ class Object {
   /// The owner of the object. This will always be the uploader of the object.
   ObjectOwner owner;
 
+  /// Specifies the earliest time that the object's retention period expires.
+  /// This value is server-determined and is in RFC 3339 format. Note 1: This
+  /// field is not provided for objects with an active Event-Based hold, since
+  /// retention expiration is unknown until the hold is removed. Note 2: This
+  /// value can be provided even when TemporaryHold is set (so that the user can
+  /// reason about policy without having to first unset the TemporaryHold).
+  core.DateTime retentionExpirationTime;
+
   /// The link to this object.
   core.String selfLink;
 
@@ -5278,6 +5450,13 @@ class Object {
 
   /// Storage class of the object.
   core.String storageClass;
+
+  /// Defines the temporary hold for an object. This flag is used to enforce a
+  /// temporary hold on an object. While it is set to true, the object is
+  /// protected against deletion and overwrites. A common use case of this flag
+  /// is regulatory investigations where objects need to be retained while the
+  /// investigation is ongoing.
+  core.bool temporaryHold;
 
   /// The creation time of the object in RFC 3339 format.
   core.DateTime timeCreated;
@@ -5332,6 +5511,9 @@ class Object {
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
+    if (_json.containsKey("eventBasedHold")) {
+      eventBasedHold = _json["eventBasedHold"];
+    }
     if (_json.containsKey("generation")) {
       generation = _json["generation"];
     }
@@ -5362,6 +5544,10 @@ class Object {
     if (_json.containsKey("owner")) {
       owner = new ObjectOwner.fromJson(_json["owner"]);
     }
+    if (_json.containsKey("retentionExpirationTime")) {
+      retentionExpirationTime =
+          core.DateTime.parse(_json["retentionExpirationTime"]);
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -5370,6 +5556,9 @@ class Object {
     }
     if (_json.containsKey("storageClass")) {
       storageClass = _json["storageClass"];
+    }
+    if (_json.containsKey("temporaryHold")) {
+      temporaryHold = _json["temporaryHold"];
     }
     if (_json.containsKey("timeCreated")) {
       timeCreated = core.DateTime.parse(_json["timeCreated"]);
@@ -5422,6 +5611,9 @@ class Object {
     if (etag != null) {
       _json["etag"] = etag;
     }
+    if (eventBasedHold != null) {
+      _json["eventBasedHold"] = eventBasedHold;
+    }
     if (generation != null) {
       _json["generation"] = generation;
     }
@@ -5452,6 +5644,10 @@ class Object {
     if (owner != null) {
       _json["owner"] = (owner).toJson();
     }
+    if (retentionExpirationTime != null) {
+      _json["retentionExpirationTime"] =
+          (retentionExpirationTime).toIso8601String();
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -5460,6 +5656,9 @@ class Object {
     }
     if (storageClass != null) {
       _json["storageClass"] = storageClass;
+    }
+    if (temporaryHold != null) {
+      _json["temporaryHold"] = temporaryHold;
     }
     if (timeCreated != null) {
       _json["timeCreated"] = (timeCreated).toIso8601String();

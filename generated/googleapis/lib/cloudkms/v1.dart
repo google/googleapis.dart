@@ -100,11 +100,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -117,9 +117,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,14 +131,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -779,13 +779,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeysResponse.next_page_token.
+  ///
   /// [pageSize] - Optional limit on the number of CryptoKeys to include in the
   /// response.  Further CryptoKeys can subsequently be obtained by
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeysResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -798,7 +798,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -809,11 +809,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -17,11 +17,11 @@
                 "https://www.googleapis.com/auth/admin.directory.group": {
                     "description": "View and manage the provisioning of groups on your domain"
                 },
-                "https://mail.google.com/": {
-                    "description": "Read, send, delete, and manage your email"
-                },
                 "https://www.googleapis.com/auth/spreadsheets": {
                     "description": "View and manage your spreadsheets in Google Drive"
+                },
+                "https://mail.google.com/": {
+                    "description": "Read, send, delete, and manage your email"
                 },
                 "https://www.googleapis.com/auth/forms": {
                     "description": "View and manage your forms in Google Drive"
@@ -54,34 +54,19 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "pp": {
             "default": "true",
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -106,6 +91,11 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -116,11 +106,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -137,6 +122,21 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         }
@@ -184,9 +184,74 @@
             }
         }
     },
-    "revision": "20171130",
+    "revision": "20171220",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
+        "ScriptStackTraceElement": {
+            "description": "A stack trace through the script that shows where the execution failed.",
+            "id": "ScriptStackTraceElement",
+            "properties": {
+                "function": {
+                    "description": "The name of the function that failed.",
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "description": "The line number where the script failed.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ExecutionError": {
+            "description": "An object that provides information about the nature of an error resulting\nfrom an attempted execution of a script function using the Apps Script API.\nIf a run call\nsucceeds but the script function (or Apps Script itself) throws an exception,\nthe response body's error field\ncontains a\nStatus object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
+            "id": "ExecutionError",
+            "properties": {
+                "errorMessage": {
+                    "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
+                    "type": "string"
+                },
+                "scriptStackTraceElements": {
+                    "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
+                    "items": {
+                        "$ref": "ScriptStackTraceElement"
+                    },
+                    "type": "array"
+                },
+                "errorType": {
+                    "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's error field contains this `Status` object.",
+            "id": "Status",
+            "properties": {
+                "details": {
+                    "description": "An array that contains a single ExecutionError object that provides information about the nature of the error.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "code": {
+                    "description": "The status code. For this API, this value either: <ul> <li> 3, indicating an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [google.rpc.Status.details](google.rpc.Status.details) field, or localized by the client.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExecutionRequest": {
             "description": "A request to run the function in a script. The script is identified by the\nspecified `script_id`. Executing a function on a script returns results\nbased on the implementation of the script.",
             "id": "ExecutionRequest",
@@ -243,71 +308,6 @@
                 "error": {
                     "$ref": "Status",
                     "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field contains a Status object. The `Status` object's `details` field contains an array with a single ExecutionError object that provides information about the nature of the error."
-                }
-            },
-            "type": "object"
-        },
-        "ScriptStackTraceElement": {
-            "description": "A stack trace through the script that shows where the execution failed.",
-            "id": "ScriptStackTraceElement",
-            "properties": {
-                "lineNumber": {
-                    "description": "The line number where the script failed.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "function": {
-                    "description": "The name of the function that failed.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ExecutionError": {
-            "description": "An object that provides information about the nature of an error resulting\nfrom an attempted execution of a script function using the Apps Script API.\nIf a run call\nsucceeds but the script function (or Apps Script itself) throws an exception,\nthe response body's error field\ncontains a\nStatus object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
-            "id": "ExecutionError",
-            "properties": {
-                "errorType": {
-                    "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
-                    "type": "string"
-                },
-                "errorMessage": {
-                    "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
-                    "type": "string"
-                },
-                "scriptStackTraceElements": {
-                    "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
-                    "items": {
-                        "$ref": "ScriptStackTraceElement"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Status": {
-            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's error field contains this `Status` object.",
-            "id": "Status",
-            "properties": {
-                "details": {
-                    "description": "An array that contains a single ExecutionError object that provides information about the nature of the error.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
-                "code": {
-                    "description": "The status code. For this API, this value either: <ul> <li> 3, indicating an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [google.rpc.Status.details](google.rpc.Status.details) field, or localized by the client.",
-                    "type": "string"
                 }
             },
             "type": "object"

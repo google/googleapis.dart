@@ -698,19 +698,19 @@ class ProjectsAgentEntityTypesResourceApi {
   /// Format: `projects/<Project ID>/agent`.
   /// Value must have pattern "^projects/[^/]+/agent$".
   ///
-  /// [languageCode] - Optional. The language to list entity synonyms for. If
-  /// not specified,
-  /// the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
-  ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
   /// list request.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By
   /// default 100 and at most 1000.
+  ///
+  /// [languageCode] - Optional. The language to list entity synonyms for. If
+  /// not specified,
+  /// the agent's default language is used.
+  /// [More than a dozen
+  /// languages](https://dialogflow.com/docs/reference/language) are supported.
+  /// Note: languages must be enabled in the agent, before they can be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -723,9 +723,9 @@ class ProjectsAgentEntityTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEntityTypesResponse> list(core.String parent,
-      {core.String languageCode,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String languageCode,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -737,14 +737,14 @@ class ProjectsAgentEntityTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1251,18 +1251,18 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
   /// Value must have pattern "^projects/[^/]+/agent/intents/[^/]+$".
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
-  /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
-  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
-  ///
   /// [languageCode] - Optional. The language to retrieve training phrases,
   /// parameters and rich
   /// messages for. If not specified, the agent's default language is used.
   /// [More than a dozen
   /// languages](https://dialogflow.com/docs/reference/language) are supported.
   /// Note: languages must be enabled in the agent, before they can be used.
+  ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
+  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1275,7 +1275,7 @@ class ProjectsAgentIntentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Intent> get(core.String name,
-      {core.String intentView, core.String languageCode, core.String $fields}) {
+      {core.String languageCode, core.String intentView, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1286,11 +1286,11 @@ class ProjectsAgentIntentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (intentView != null) {
-      _queryParams["intentView"] = [intentView];
-    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if (intentView != null) {
+      _queryParams["intentView"] = [intentView];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1315,12 +1315,6 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent`.
   /// Value must have pattern "^projects/[^/]+/agent$".
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
-  /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
-  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
-  ///
   /// [languageCode] - Optional. The language to list training phrases,
   /// parameters and rich
   /// messages for. If not specified, the agent's default language is used.
@@ -1335,6 +1329,12 @@ class ProjectsAgentIntentsResourceApi {
   /// page. By
   /// default 100 and at most 1000.
   ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
+  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1346,10 +1346,10 @@ class ProjectsAgentIntentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIntentsResponse> list(core.String parent,
-      {core.String intentView,
-      core.String languageCode,
+      {core.String languageCode,
       core.String pageToken,
       core.int pageSize,
+      core.String intentView,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1361,9 +1361,6 @@ class ProjectsAgentIntentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (intentView != null) {
-      _queryParams["intentView"] = [intentView];
-    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
@@ -1372,6 +1369,9 @@ class ProjectsAgentIntentsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (intentView != null) {
+      _queryParams["intentView"] = [intentView];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3044,6 +3044,7 @@ class EventInput {
 class ExportAgentRequest {
   /// Warning: Exporting agents to a URI is not implemented yet.
   /// This feature is coming soon.
+  ///
   /// Optional. The Google Cloud Storage URI to export the agent to.
   /// Note: The URI must start with
   /// "gs://". If left unspecified, the serialized agent is returned inline.
@@ -3070,6 +3071,19 @@ class ExportAgentRequest {
 /// The response message for Agents.ExportAgent.
 class ExportAgentResponse {
   /// The exported agent.
+  ///
+  /// Example for how to export an agent to a zip file via a command line:
+  ///
+  /// curl \
+  /// 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:export'\
+  ///   -X POST \
+  ///   -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+  ///   -H 'Accept: application/json' \
+  ///   -H 'Content-Type: application/json' \
+  ///   --compressed \
+  ///   --data-binary '{}' \
+  /// | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)". * / \1/' \
+  /// | base64 --decode > <agent zip file>
   core.String agentContent;
   core.List<core.int> get agentContentAsBytes {
     return convert.BASE64.decode(agentContent);
@@ -3081,7 +3095,7 @@ class ExportAgentResponse {
   }
 
   /// The URI to a file containing the exported agent. This field is populated
-  /// only if `agent_uri`
+  /// only if `agent_uri` is specified in `ExportAgentRequest`.
   core.String agentUri;
 
   ExportAgentResponse();
@@ -3111,6 +3125,19 @@ class ExportAgentResponse {
 /// The request message for Agents.ImportAgent.
 class ImportAgentRequest {
   /// The agent to import.
+  ///
+  /// Example for how to import an agent via the command line:
+  ///
+  /// curl \
+  /// 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:import\
+  ///    -X POST \
+  ///    -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+  ///    -H 'Accept: application/json' \
+  ///    -H 'Content-Type: application/json' \
+  ///    --compressed \
+  ///    --data-binary "{
+  ///       'agentContent': '$(cat <agent zip file> | base64 -w 0)'
+  ///    }"
   core.String agentContent;
   core.List<core.int> get agentContentAsBytes {
     return convert.BASE64.decode(agentContent);
@@ -3123,6 +3150,7 @@ class ImportAgentRequest {
 
   /// Warning: Importing agents from a URI is not implemented yet.
   /// This feature is coming soon.
+  ///
   /// The URI to a Google Cloud Storage file containing the agent to import.
   /// Note: The URI must start with "gs://".
   core.String agentUri;
@@ -4821,12 +4849,12 @@ class OriginalDetectIntentRequest {
 
 /// Represents the query input. It can contain either:
 ///
-/// 1.  an audio config which
-///     instructs the speech recognizer how to process the speech audio,
+/// 1.  An audio config which
+///     instructs the speech recognizer how to process the speech audio.
 ///
-/// 2.  a conversational query in the form of text, or
+/// 2.  A conversational query in the form of text,.
 ///
-/// 3.  an event that specifies which intent to trigger.
+/// 3.  An event that specifies which intent to trigger.
 class QueryInput {
   /// Instructs the speech recognizer how to process the speech audio.
   InputAudioConfig audioConfig;
@@ -5135,6 +5163,19 @@ class QueryResult {
 /// The request message for Agents.RestoreAgent.
 class RestoreAgentRequest {
   /// The agent to restore.
+  ///
+  /// Example for how to restore an agent via the command line:
+  ///
+  /// curl \
+  /// 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:restore\
+  ///    -X POST \
+  ///    -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+  ///    -H 'Accept: application/json' \
+  ///    -H 'Content-Type: application/json' \
+  ///    --compressed \
+  ///    --data-binary "{
+  ///        'agentContent': '$(cat <agent zip file> | base64 -w 0)'
+  ///    }" \
   core.String agentContent;
   core.List<core.int> get agentContentAsBytes {
     return convert.BASE64.decode(agentContent);
@@ -5147,6 +5188,7 @@ class RestoreAgentRequest {
 
   /// Warning: Restoring agents from a URI is not implemented yet.
   /// This feature is coming soon.
+  ///
   /// The URI to a Google Cloud Storage file containing the agent to restore.
   /// Note: The URI must start with "gs://".
   core.String agentUri;

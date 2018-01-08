@@ -124,15 +124,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
-  /// [location] - The location that contains this job.
-  ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
   /// to request additional results in a long list.
@@ -149,6 +140,15 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
+  /// [location] - The location that contains this job.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -160,11 +160,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String filter,
-      core.String location,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
+      core.String location,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -176,12 +176,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -190,6 +184,12 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -217,6 +217,8 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
+  /// [location] - The location that contains this job.
+  ///
   /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [view] - The level of information requested in response.
@@ -225,8 +227,6 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-  ///
-  /// [location] - The location that contains this job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -239,9 +239,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(Job request, core.String projectId,
-      {core.String replaceJobId,
+      {core.String location,
+      core.String replaceJobId,
       core.String view,
-      core.String location,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -256,14 +256,14 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -704,11 +704,11 @@ class ProjectsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [location] - The location which contains the job specified by job_id.
-  ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now
   /// (i.e. return up to the latest messages available).
+  ///
+  /// [location] - The location which contains the job specified by job_id.
   ///
   /// [startTime] - If specified, return only messages with timestamps >=
   /// start_time.
@@ -744,8 +744,8 @@ class ProjectsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String jobId,
-      {core.String location,
-      core.String endTime,
+      {core.String endTime,
+      core.String location,
       core.String startTime,
       core.String pageToken,
       core.int pageSize,
@@ -764,11 +764,11 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
@@ -1232,6 +1232,13 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
   /// to request additional results in a long list.
@@ -1248,13 +1255,6 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1267,10 +1267,10 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
       core.String projectId, core.String location,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1285,6 +1285,9 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1293,9 +1296,6 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1921,14 +1921,14 @@ class ProjectsLocationsTemplatesResourceApi {
   ///
   /// [location] - The location to which to direct the request.
   ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed.
-  /// Defaults to false.
-  ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed.
+  /// Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1942,7 +1942,7 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request,
       core.String projectId, core.String location,
-      {core.bool validateOnly, core.String gcsPath, core.String $fields}) {
+      {core.String gcsPath, core.bool validateOnly, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1959,11 +1959,11 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2050,15 +2050,15 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
-  /// Possible string values are:
-  /// - "METADATA_ONLY" : A METADATA_ONLY.
-  ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [location] - The location to which to direct the request.
+  ///
+  /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
+  /// Possible string values are:
+  /// - "METADATA_ONLY" : A METADATA_ONLY.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2071,9 +2071,9 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(core.String projectId,
-      {core.String view,
-      core.String gcsPath,
+      {core.String gcsPath,
       core.String location,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2085,14 +2085,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
     }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

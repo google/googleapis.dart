@@ -685,9 +685,18 @@ class ProjectsResourceApi {
 
   /// Lists Projects that are visible to the user and satisfy the
   /// specified filter. This method returns Projects in an unspecified order.
-  /// New Projects do not necessarily appear at the end of the list.
+  /// This method is eventually consistent with project mutations; this means
+  /// that a newly created project may not appear in the results or recent
+  /// updates to an existing project may not be reflected in the results. To
+  /// retrieve the latest state of a project, use the GetProjectmethod.
   ///
   /// Request parameters:
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListProjects
+  /// that indicates from where listing should continue.
+  ///
+  /// Optional.
   ///
   /// [pageSize] - The maximum number of Projects to return in the response.
   /// The server can return fewer Projects than requested.
@@ -728,12 +737,6 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListProjects
-  /// that indicates from where listing should continue.
-  ///
-  /// Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -745,9 +748,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -756,14 +759,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -780,7 +783,7 @@ class ProjectsResourceApi {
     return _response.then((data) => new ListProjectsResponse.fromJson(data));
   }
 
-  /// Sets the IAM access control policy for the specified Project. Replaces
+  /// Sets the IAM access control policy for the specified Project. Overwrites
   /// any existing policy.
   ///
   /// The following constraints apply when using `setIamPolicy()`:
@@ -812,7 +815,8 @@ class ProjectsResourceApi {
   /// IAM policies will be rejected until the lack of a ToS-accepting owner is
   /// rectified.
   ///
-  /// + Calling this method requires enabling the App Engine Admin API.
+  /// + This method will replace the existing policy, and cannot be used to
+  /// append additional IAM settings.
   ///
   /// Note: Removing service accounts from policies or changing their roles
   /// can render services completely inoperable. It is important to understand
@@ -1803,8 +1807,8 @@ class Project {
 
   /// An optional reference to a parent Resource.
   ///
-  /// The only supported parent type is "organization". Once set, the parent
-  /// cannot be modified. The `parent` can be set on creation or using the
+  /// Supported parent types include "organization" and "folder". Once set, the
+  /// parent cannot be cleared. The `parent` can be set on creation or using the
   /// `UpdateProject` method; the end user must have the
   /// `resourcemanager.projects.create` permission on the parent.
   ///

@@ -1509,6 +1509,13 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [conferenceDataVersion] - Version number of conference data supported by
+  /// the API client. Version 0 assumes no conference data support and ignores
+  /// conference data in the event's body. Version 1 enables support for copying
+  /// of ConferenceData as well as for creating new conferences using the
+  /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
@@ -1523,7 +1530,9 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> import(Event request, core.String calendarId,
-      {core.bool supportsAttachments, core.String $fields}) {
+      {core.int conferenceDataVersion,
+      core.bool supportsAttachments,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1536,6 +1545,9 @@ class EventsResourceApi {
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if (conferenceDataVersion != null) {
+      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
@@ -1567,6 +1579,13 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [conferenceDataVersion] - Version number of conference data supported by
+  /// the API client. Version 0 assumes no conference data support and ignores
+  /// conference data in the event's body. Version 1 enables support for copying
+  /// of ConferenceData as well as for creating new conferences using the
+  /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
@@ -1588,7 +1607,8 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> insert(Event request, core.String calendarId,
-      {core.int maxAttendees,
+      {core.int conferenceDataVersion,
+      core.int maxAttendees,
       core.bool sendNotifications,
       core.bool supportsAttachments,
       core.String $fields}) {
@@ -1604,6 +1624,9 @@ class EventsResourceApi {
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if (conferenceDataVersion != null) {
+      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
     }
     if (maxAttendees != null) {
       _queryParams["maxAttendees"] = ["${maxAttendees}"];
@@ -2059,6 +2082,13 @@ class EventsResourceApi {
   /// cannot handle the absence of an email address value in the mentioned
   /// places. Optional. The default is False.
   ///
+  /// [conferenceDataVersion] - Version number of conference data supported by
+  /// the API client. Version 0 assumes no conference data support and ignores
+  /// conference data in the event's body. Version 1 enables support for copying
+  /// of ConferenceData as well as for creating new conferences using the
+  /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
@@ -2083,6 +2113,7 @@ class EventsResourceApi {
   async.Future<Event> patch(
       Event request, core.String calendarId, core.String eventId,
       {core.bool alwaysIncludeEmail,
+      core.int conferenceDataVersion,
       core.int maxAttendees,
       core.bool sendNotifications,
       core.bool supportsAttachments,
@@ -2105,6 +2136,9 @@ class EventsResourceApi {
     }
     if (alwaysIncludeEmail != null) {
       _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+    }
+    if (conferenceDataVersion != null) {
+      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
     }
     if (maxAttendees != null) {
       _queryParams["maxAttendees"] = ["${maxAttendees}"];
@@ -2211,6 +2245,13 @@ class EventsResourceApi {
   /// cannot handle the absence of an email address value in the mentioned
   /// places. Optional. The default is False.
   ///
+  /// [conferenceDataVersion] - Version number of conference data supported by
+  /// the API client. Version 0 assumes no conference data support and ignores
+  /// conference data in the event's body. Version 1 enables support for copying
+  /// of ConferenceData as well as for creating new conferences using the
+  /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
@@ -2235,6 +2276,7 @@ class EventsResourceApi {
   async.Future<Event> update(
       Event request, core.String calendarId, core.String eventId,
       {core.bool alwaysIncludeEmail,
+      core.int conferenceDataVersion,
       core.int maxAttendees,
       core.bool sendNotifications,
       core.bool supportsAttachments,
@@ -2257,6 +2299,9 @@ class EventsResourceApi {
     }
     if (alwaysIncludeEmail != null) {
       _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+    }
+    if (conferenceDataVersion != null) {
+      _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
     }
     if (maxAttendees != null) {
       _queryParams["maxAttendees"] = ["${maxAttendees}"];
@@ -2911,6 +2956,10 @@ class AclRule {
 }
 
 class Calendar {
+  /// Conferencing properties for this calendar, for example what types of
+  /// conferences are allowed.
+  ConferenceProperties conferenceProperties;
+
   /// Description of the calendar. Optional.
   core.String description;
 
@@ -2937,6 +2986,10 @@ class Calendar {
   Calendar();
 
   Calendar.fromJson(core.Map _json) {
+    if (_json.containsKey("conferenceProperties")) {
+      conferenceProperties =
+          new ConferenceProperties.fromJson(_json["conferenceProperties"]);
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -2963,6 +3016,9 @@ class Calendar {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (conferenceProperties != null) {
+      _json["conferenceProperties"] = (conferenceProperties).toJson();
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -3104,6 +3160,10 @@ class CalendarListEntry {
   /// properties and can be ignored when using these properties. Optional.
   core.String colorId;
 
+  /// Conferencing properties for this calendar, for example what types of
+  /// conferences are allowed.
+  ConferenceProperties conferenceProperties;
+
   /// The default reminders that the authenticated user has for this calendar.
   core.List<EventReminder> defaultReminders;
 
@@ -3171,6 +3231,10 @@ class CalendarListEntry {
     if (_json.containsKey("colorId")) {
       colorId = _json["colorId"];
     }
+    if (_json.containsKey("conferenceProperties")) {
+      conferenceProperties =
+          new ConferenceProperties.fromJson(_json["conferenceProperties"]);
+    }
     if (_json.containsKey("defaultReminders")) {
       defaultReminders = _json["defaultReminders"]
           .map((value) => new EventReminder.fromJson(value))
@@ -3232,6 +3296,9 @@ class CalendarListEntry {
     }
     if (colorId != null) {
       _json["colorId"] = colorId;
+    }
+    if (conferenceProperties != null) {
+      _json["conferenceProperties"] = (conferenceProperties).toJson();
     }
     if (defaultReminders != null) {
       _json["defaultReminders"] =
@@ -3525,6 +3592,406 @@ class Colors {
     }
     if (updated != null) {
       _json["updated"] = (updated).toIso8601String();
+    }
+    return _json;
+  }
+}
+
+class ConferenceData {
+  /// The ID of the conference.
+  /// Can be used by developers to keep track of conferences, should not be
+  /// displayed to users.
+  /// Values for solution types:
+  /// - "eventHangout": unset
+  /// - "eventNamedHangout": the name of the Hangout.
+  /// - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
+  /// Optional.
+  core.String conferenceId;
+
+  /// The conference solution, such as Hangouts or Hangouts Meet.
+  /// Unset for a conference with failed create request.
+  /// Either conferenceSolution and at least one entryPoint, or createRequest is
+  /// required.
+  ConferenceSolution conferenceSolution;
+
+  /// A request to generate a new conference and attach it to the event. The
+  /// data is generated asynchronously. To see whether the data is present check
+  /// the status field.
+  /// Either conferenceSolution and at least one entryPoint, or createRequest is
+  /// required.
+  CreateConferenceRequest createRequest;
+
+  /// Information about individual conference entry points, such as URLs or
+  /// phone numbers.
+  /// All of them must belong to the same conference.
+  /// Either conferenceSolution and at least one entryPoint, or createRequest is
+  /// required.
+  core.List<EntryPoint> entryPoints;
+
+  /// Additional notes (such as instructions from the domain administrator,
+  /// legal notices) to display to the user. Can contain HTML. The maximum
+  /// length is 2048 characters. Optional.
+  core.String notes;
+
+  /// The signature of the conference data.
+  /// Genereated on server side. Must be preserved while copying the conference
+  /// data between events, otherwise the conference data will not be copied.
+  /// Unset for a conference with failed create request.
+  /// Optional for a conference with a pending create request.
+  core.String signature;
+
+  ConferenceData();
+
+  ConferenceData.fromJson(core.Map _json) {
+    if (_json.containsKey("conferenceId")) {
+      conferenceId = _json["conferenceId"];
+    }
+    if (_json.containsKey("conferenceSolution")) {
+      conferenceSolution =
+          new ConferenceSolution.fromJson(_json["conferenceSolution"]);
+    }
+    if (_json.containsKey("createRequest")) {
+      createRequest =
+          new CreateConferenceRequest.fromJson(_json["createRequest"]);
+    }
+    if (_json.containsKey("entryPoints")) {
+      entryPoints = _json["entryPoints"]
+          .map((value) => new EntryPoint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("notes")) {
+      notes = _json["notes"];
+    }
+    if (_json.containsKey("signature")) {
+      signature = _json["signature"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (conferenceId != null) {
+      _json["conferenceId"] = conferenceId;
+    }
+    if (conferenceSolution != null) {
+      _json["conferenceSolution"] = (conferenceSolution).toJson();
+    }
+    if (createRequest != null) {
+      _json["createRequest"] = (createRequest).toJson();
+    }
+    if (entryPoints != null) {
+      _json["entryPoints"] =
+          entryPoints.map((value) => (value).toJson()).toList();
+    }
+    if (notes != null) {
+      _json["notes"] = notes;
+    }
+    if (signature != null) {
+      _json["signature"] = signature;
+    }
+    return _json;
+  }
+}
+
+class ConferenceProperties {
+  /// The types of conference solutions that are supported for this calendar.
+  /// The possible values are:
+  /// - "eventHangout"
+  /// - "eventNamedHangout"
+  /// - "hangoutsMeet"  Optional.
+  core.List<core.String> allowedConferenceSolutionTypes;
+
+  ConferenceProperties();
+
+  ConferenceProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedConferenceSolutionTypes")) {
+      allowedConferenceSolutionTypes = _json["allowedConferenceSolutionTypes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowedConferenceSolutionTypes != null) {
+      _json["allowedConferenceSolutionTypes"] = allowedConferenceSolutionTypes;
+    }
+    return _json;
+  }
+}
+
+class ConferenceRequestStatus {
+  /// The current status of the conference create request. Read-only.
+  /// The possible values are:
+  /// - "pending": the conference create request is still being processed.
+  /// - "success": the conference create request succeeded, the entry points are
+  /// populated.
+  /// - "failure": the conference create request failed, there are no entry
+  /// points.
+  core.String statusCode;
+
+  ConferenceRequestStatus();
+
+  ConferenceRequestStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("statusCode")) {
+      statusCode = _json["statusCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (statusCode != null) {
+      _json["statusCode"] = statusCode;
+    }
+    return _json;
+  }
+}
+
+class ConferenceSolution {
+  /// The user-visible icon for this solution. Read-only.
+  core.String iconUri;
+
+  /// The key which can uniquely identify the conference solution for this
+  /// event.
+  ConferenceSolutionKey key;
+
+  /// The user-visible name of this solution. Not localized. Read-only.
+  core.String name;
+
+  ConferenceSolution();
+
+  ConferenceSolution.fromJson(core.Map _json) {
+    if (_json.containsKey("iconUri")) {
+      iconUri = _json["iconUri"];
+    }
+    if (_json.containsKey("key")) {
+      key = new ConferenceSolutionKey.fromJson(_json["key"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (iconUri != null) {
+      _json["iconUri"] = iconUri;
+    }
+    if (key != null) {
+      _json["key"] = (key).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+class ConferenceSolutionKey {
+  /// The conference solution type.
+  /// If a client encounters an unfamiliar or empty type, it should still be
+  /// able to display the entry points. However, it should disallow
+  /// modifications.
+  /// The possible values are:
+  /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
+  /// - "eventNamedHangout" for Classic Hangouts for GSuite users
+  /// (http://hangouts.google.com)
+  /// - "hangoutsMeet" for Hangouts Meet (http://meet.google.com)
+  core.String type;
+
+  ConferenceSolutionKey();
+
+  ConferenceSolutionKey.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class CreateConferenceRequest {
+  /// The conference solution, such as Hangouts or Hangouts Meet.
+  ConferenceSolutionKey conferenceSolutionKey;
+
+  /// The client-generated unique ID for this request.
+  /// Clients should regenerate this ID for every new request. If an ID provided
+  /// is the same as for the previous request, the request is ignored.
+  core.String requestId;
+
+  /// The status of the conference create request.
+  ConferenceRequestStatus status;
+
+  CreateConferenceRequest();
+
+  CreateConferenceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("conferenceSolutionKey")) {
+      conferenceSolutionKey =
+          new ConferenceSolutionKey.fromJson(_json["conferenceSolutionKey"]);
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+    if (_json.containsKey("status")) {
+      status = new ConferenceRequestStatus.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (conferenceSolutionKey != null) {
+      _json["conferenceSolutionKey"] = (conferenceSolutionKey).toJson();
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+class EntryPoint {
+  /// The Access Code to access the conference. The maximum length is 128
+  /// characters.
+  /// When creating new conference data, populate only the subset of
+  /// {meetingCode, accessCode, passcode, password, pin} fields that match the
+  /// terminology that the conference provider uses. Only the populated fields
+  /// should be displayed.
+  /// Optional.
+  core.String accessCode;
+
+  /// The type of the conference entry point.
+  /// Possible values are:
+  /// - "video" - joining a conference over HTTP. A conference can have zero or
+  /// one video entry point.
+  /// - "phone" - joining a conference by dialing a phone number. A conference
+  /// can have zero or more phone entry points.
+  /// - "sip" - joining a conference over SIP. A conference can have zero or one
+  /// sip entry point.
+  /// - "more" - further conference joining instructions, for example additional
+  /// phone numbers. A conference can have zero or one more entry point. A
+  /// conference with only a more entry point is not a valid conference.
+  core.String entryPointType;
+
+  /// The label for the URI.Visible to end users. Not localized. The maximum
+  /// length is 512 characters.
+  /// Examples:
+  /// - for video: meet.google.com/aaa-bbbb-ccc
+  /// - for phone: +1 123 268 2601
+  /// - for sip: sip:12345678@myprovider.com
+  /// - for more: should not be filled
+  /// Optional.
+  core.String label;
+
+  /// The Meeting Code to access the conference. The maximum length is 128
+  /// characters.
+  /// When creating new conference data, populate only the subset of
+  /// {meetingCode, accessCode, passcode, password, pin} fields that match the
+  /// terminology that the conference provider uses. Only the populated fields
+  /// should be displayed.
+  /// Optional.
+  core.String meetingCode;
+
+  /// The Passcode to access the conference. The maximum length is 128
+  /// characters.
+  /// When creating new conference data, populate only the subset of
+  /// {meetingCode, accessCode, passcode, password, pin} fields that match the
+  /// terminology that the conference provider uses. Only the populated fields
+  /// should be displayed.
+  core.String passcode;
+
+  /// The Password to access the conference. The maximum length is 128
+  /// characters.
+  /// When creating new conference data, populate only the subset of
+  /// {meetingCode, accessCode, passcode, password, pin} fields that match the
+  /// terminology that the conference provider uses. Only the populated fields
+  /// should be displayed.
+  /// Optional.
+  core.String password;
+
+  /// The PIN to access the conference. The maximum length is 128 characters.
+  /// When creating new conference data, populate only the subset of
+  /// {meetingCode, accessCode, passcode, password, pin} fields that match the
+  /// terminology that the conference provider uses. Only the populated fields
+  /// should be displayed.
+  /// Optional.
+  core.String pin;
+
+  /// The "URI" of the entry point. The maximum length is 1300 characters.
+  /// Format:
+  /// - for video, http: or https: schema is required.
+  /// - for phone, tel: schema is required. The URI should include the entire
+  /// dial sequence (e.g., tel:+12345678900,,,123456789;1234).
+  /// - for sip, sip: schema is required, e.g., sip:12345678@myprovider.com.
+  /// - for more, http: or https: schema is required.
+  core.String uri;
+
+  EntryPoint();
+
+  EntryPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("accessCode")) {
+      accessCode = _json["accessCode"];
+    }
+    if (_json.containsKey("entryPointType")) {
+      entryPointType = _json["entryPointType"];
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("meetingCode")) {
+      meetingCode = _json["meetingCode"];
+    }
+    if (_json.containsKey("passcode")) {
+      passcode = _json["passcode"];
+    }
+    if (_json.containsKey("password")) {
+      password = _json["password"];
+    }
+    if (_json.containsKey("pin")) {
+      pin = _json["pin"];
+    }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accessCode != null) {
+      _json["accessCode"] = accessCode;
+    }
+    if (entryPointType != null) {
+      _json["entryPointType"] = entryPointType;
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (meetingCode != null) {
+      _json["meetingCode"] = meetingCode;
+    }
+    if (passcode != null) {
+      _json["passcode"] = passcode;
+    }
+    if (password != null) {
+      _json["password"] = password;
+    }
+    if (pin != null) {
+      _json["pin"] = pin;
+    }
+    if (uri != null) {
+      _json["uri"] = uri;
     }
     return _json;
   }
@@ -3900,6 +4367,12 @@ class Event {
   /// section of the colors definition (see the  colors endpoint). Optional.
   core.String colorId;
 
+  /// The conference-related information, such as details of a Hangouts Meet
+  /// conference. To create new conference details use the createRequest field.
+  /// To persist your changes, remember to set the conferenceDataVersion request
+  /// parameter to 1 for all event modification requests.
+  ConferenceData conferenceData;
+
   /// Creation time of the event (as a RFC3339 timestamp). Read-only.
   core.DateTime created;
 
@@ -4079,6 +4552,9 @@ class Event {
     if (_json.containsKey("colorId")) {
       colorId = _json["colorId"];
     }
+    if (_json.containsKey("conferenceData")) {
+      conferenceData = new ConferenceData.fromJson(_json["conferenceData"]);
+    }
     if (_json.containsKey("created")) {
       created = core.DateTime.parse(_json["created"]);
     }
@@ -4197,6 +4673,9 @@ class Event {
     }
     if (colorId != null) {
       _json["colorId"] = colorId;
+    }
+    if (conferenceData != null) {
+      _json["conferenceData"] = (conferenceData).toJson();
     }
     if (created != null) {
       _json["created"] = (created).toIso8601String();

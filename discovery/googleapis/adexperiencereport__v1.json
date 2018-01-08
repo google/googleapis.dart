@@ -25,16 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -56,6 +46,11 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -66,11 +61,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -110,6 +100,16 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -164,26 +164,43 @@
     "revision": "20171129",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
+        "ViolatingSitesResponse": {
+            "description": "Response message for ListViolatingSites.",
+            "id": "ViolatingSitesResponse",
+            "properties": {
+                "violatingSites": {
+                    "description": "A list of summaries of violating sites.",
+                    "items": {
+                        "$ref": "SiteSummaryResponse"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SiteSummaryResponse": {
+            "description": "Response message for GetSiteSummary.",
+            "id": "SiteSummaryResponse",
+            "properties": {
+                "mobileSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "Summary for the mobile review of the site."
+                },
+                "reviewedSite": {
+                    "description": "The name of the site reviewed.",
+                    "type": "string"
+                },
+                "desktopSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "Summary for the desktop review of the site."
+                }
+            },
+            "type": "object"
+        },
         "PlatformSummary": {
             "description": "Summary of the ad experience rating of a site for a specific platform.",
             "id": "PlatformSummary",
             "properties": {
-                "betterAdsStatus": {
-                    "description": "The status of the site reviewed for the Better Ads Standards.",
-                    "enum": [
-                        "UNKNOWN",
-                        "PASSING",
-                        "WARNING",
-                        "FAILING"
-                    ],
-                    "enumDescriptions": [
-                        "Not reviewed.",
-                        "Passing.",
-                        "Warning.",
-                        "Failing."
-                    ],
-                    "type": "string"
-                },
                 "enforcementTime": {
                     "description": "The date on which ad filtering begins.",
                     "format": "google-datetime",
@@ -236,39 +253,22 @@
                     "description": "The last time that the site changed status.",
                     "format": "google-datetime",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ViolatingSitesResponse": {
-            "description": "Response message for ListViolatingSites.",
-            "id": "ViolatingSitesResponse",
-            "properties": {
-                "violatingSites": {
-                    "description": "A list of summaries of violating sites.",
-                    "items": {
-                        "$ref": "SiteSummaryResponse"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "SiteSummaryResponse": {
-            "description": "Response message for GetSiteSummary.",
-            "id": "SiteSummaryResponse",
-            "properties": {
-                "mobileSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "Summary for the mobile review of the site."
                 },
-                "reviewedSite": {
-                    "description": "The name of the site reviewed.",
+                "betterAdsStatus": {
+                    "description": "The status of the site reviewed for the Better Ads Standards.",
+                    "enum": [
+                        "UNKNOWN",
+                        "PASSING",
+                        "WARNING",
+                        "FAILING"
+                    ],
+                    "enumDescriptions": [
+                        "Not reviewed.",
+                        "Passing.",
+                        "Warning.",
+                        "Failing."
+                    ],
                     "type": "string"
-                },
-                "desktopSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "Summary for the desktop review of the site."
                 }
             },
             "type": "object"

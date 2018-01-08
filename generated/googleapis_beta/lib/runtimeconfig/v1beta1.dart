@@ -814,11 +814,6 @@ class ProjectsConfigsVariablesResourceApi {
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
   /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
   ///
-  /// [filter] - Filters variables by matching the specified filter. For
-  /// example:
-  ///
-  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
-  ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken`
   /// returned by a previous list request to get the next page of results.
@@ -833,6 +828,11 @@ class ProjectsConfigsVariablesResourceApi {
   /// are fewer
   /// elements than the specified number, returns all elements.
   ///
+  /// [filter] - Filters variables by matching the specified filter. For
+  /// example:
+  ///
+  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -844,10 +844,10 @@ class ProjectsConfigsVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.bool returnValues,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -859,9 +859,6 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -870,6 +867,9 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1818,8 +1818,8 @@ class RuntimeConfig {
   ///     projects/[PROJECT_ID]/configs/[CONFIG_NAME]
   ///
   /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an
-  /// arbitrary name that matches
-  /// [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression.
+  /// arbitrary name that matches the
+  /// `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression.
   /// The length of `[CONFIG_NAME]` must be less than 64 characters.
   ///
   /// You pick the RuntimeConfig resource name, but the server will validate

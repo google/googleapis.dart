@@ -118,6 +118,30 @@
             "resources": {
                 "filterSets": {
                     "methods": {
+                        "delete": {
+                            "description": "Deletes the requested filter set from the account with the given account\nID.",
+                            "httpMethod": "DELETE",
+                            "id": "adexchangebuyer2.bidders.filterSets.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Full name of the resource to delete.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                    "location": "path",
+                                    "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/{+name}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
                         "get": {
                             "description": "Retrieves the requested filter set for the account with the given account\nID.",
                             "httpMethod": "GET",
@@ -150,11 +174,6 @@
                                 "ownerName"
                             ],
                             "parameters": {
-                                "pageToken": {
-                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilterSetsResponse.nextPageToken\nreturned from the previous call to the\naccounts.filterSets.list\nmethod.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "pageSize": {
                                     "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
                                     "format": "int32",
@@ -166,6 +185,11 @@
                                     "location": "path",
                                     "pattern": "^bidders/[^/]+$",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilterSetsResponse.nextPageToken\nreturned from the previous call to the\naccounts.filterSets.list\nmethod.",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -208,33 +232,183 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/adexchange.buyer"
                             ]
-                        },
-                        "delete": {
-                            "description": "Deletes the requested filter set from the account with the given account\nID.",
-                            "httpMethod": "DELETE",
-                            "id": "adexchangebuyer2.bidders.filterSets.delete",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "Full name of the resource to delete.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                    "location": "path",
-                                    "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/{+name}",
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
                         }
                     },
                     "resources": {
+                        "filteredBids": {
+                            "methods": {
+                                "list": {
+                                    "description": "List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.bidders.filterSets.filteredBids.list",
+                                    "parameterOrder": [
+                                        "filterSetName"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "filterSetName": {
+                                            "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                            "location": "path",
+                                            "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidsResponse.nextPageToken\nreturned from the previous call to the filteredBids.list\nmethod.",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/{+filterSetName}/filteredBids",
+                                    "response": {
+                                        "$ref": "ListFilteredBidsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                }
+                            },
+                            "resources": {
+                                "creatives": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative.",
+                                            "httpMethod": "GET",
+                                            "id": "adexchangebuyer2.bidders.filterSets.filteredBids.creatives.list",
+                                            "parameterOrder": [
+                                                "filterSetName",
+                                                "creativeStatusId"
+                                            ],
+                                            "parameters": {
+                                                "filterSetName": {
+                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                                    "location": "path",
+                                                    "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "creativeStatusId": {
+                                                    "description": "The ID of the creative status for which to retrieve a breakdown by\ncreative.\nSee\n[creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).",
+                                                    "format": "int32",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByCreativeResponse.nextPageToken\nreturned from the previous call to the filteredBids.creatives.list\nmethod.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "path": "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
+                                            "response": {
+                                                "$ref": "ListCreativeStatusBreakdownByCreativeResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/adexchange.buyer"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "details": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail.",
+                                            "httpMethod": "GET",
+                                            "id": "adexchangebuyer2.bidders.filterSets.filteredBids.details.list",
+                                            "parameterOrder": [
+                                                "filterSetName",
+                                                "creativeStatusId"
+                                            ],
+                                            "parameters": {
+                                                "pageSize": {
+                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "filterSetName": {
+                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                                    "location": "path",
+                                                    "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "creativeStatusId": {
+                                                    "description": "The ID of the creative status for which to retrieve a breakdown by detail.\nSee\n[creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).\nDetails are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.",
+                                                    "format": "int32",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByDetailResponse.nextPageToken\nreturned from the previous call to the filteredBids.details.list\nmethod.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
+                                            "response": {
+                                                "$ref": "ListCreativeStatusBreakdownByDetailResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/adexchange.buyer"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "nonBillableWinningBids": {
+                            "methods": {
+                                "list": {
+                                    "description": "List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.bidders.filterSets.nonBillableWinningBids.list",
+                                    "parameterOrder": [
+                                        "filterSetName"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "filterSetName": {
+                                            "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                            "location": "path",
+                                            "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListNonBillableWinningBidsResponse.nextPageToken\nreturned from the previous call to the nonBillableWinningBids.list\nmethod.",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/{+filterSetName}/nonBillableWinningBids",
+                                    "response": {
+                                        "$ref": "ListNonBillableWinningBidsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                }
+                            }
+                        },
                         "losingBids": {
                             "methods": {
                                 "list": {
@@ -284,6 +458,12 @@
                                         "filterSetName"
                                     ],
                                     "parameters": {
+                                        "pageSize": {
+                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
                                         "filterSetName": {
                                             "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
                                             "location": "path",
@@ -295,12 +475,6 @@
                                             "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListImpressionMetricsResponse.nextPageToken\nreturned from the previous call to the impressionMetrics.list\nmethod.",
                                             "location": "query",
                                             "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
                                         }
                                     },
                                     "path": "v2beta1/{+filterSetName}/impressionMetrics",
@@ -323,6 +497,12 @@
                                         "filterSetName"
                                     ],
                                     "parameters": {
+                                        "pageSize": {
+                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
                                         "filterSetName": {
                                             "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
                                             "location": "path",
@@ -334,12 +514,6 @@
                                             "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidMetricsResponse.nextPageToken\nreturned from the previous call to the bidMetrics.list\nmethod.",
                                             "location": "query",
                                             "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
                                         }
                                     },
                                     "path": "v2beta1/{+filterSetName}/bidMetrics",
@@ -440,6 +614,12 @@
                                         "filterSetName"
                                     ],
                                     "parameters": {
+                                        "pageSize": {
+                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
                                         "filterSetName": {
                                             "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
                                             "location": "path",
@@ -451,12 +631,6 @@
                                             "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidRequestsResponse.nextPageToken\nreturned from the previous call to the filteredBidRequests.list\nmethod.",
                                             "location": "query",
                                             "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
                                         }
                                     },
                                     "path": "v2beta1/{+filterSetName}/filteredBidRequests",
@@ -468,180 +642,6 @@
                                     ]
                                 }
                             }
-                        },
-                        "nonBillableWinningBids": {
-                            "methods": {
-                                "list": {
-                                    "description": "List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.bidders.filterSets.nonBillableWinningBids.list",
-                                    "parameterOrder": [
-                                        "filterSetName"
-                                    ],
-                                    "parameters": {
-                                        "pageSize": {
-                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "filterSetName": {
-                                            "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                            "location": "path",
-                                            "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "pageToken": {
-                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListNonBillableWinningBidsResponse.nextPageToken\nreturned from the previous call to the nonBillableWinningBids.list\nmethod.",
-                                            "location": "query",
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/{+filterSetName}/nonBillableWinningBids",
-                                    "response": {
-                                        "$ref": "ListNonBillableWinningBidsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                }
-                            }
-                        },
-                        "filteredBids": {
-                            "methods": {
-                                "list": {
-                                    "description": "List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.bidders.filterSets.filteredBids.list",
-                                    "parameterOrder": [
-                                        "filterSetName"
-                                    ],
-                                    "parameters": {
-                                        "filterSetName": {
-                                            "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                            "location": "path",
-                                            "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "pageToken": {
-                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidsResponse.nextPageToken\nreturned from the previous call to the filteredBids.list\nmethod.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        }
-                                    },
-                                    "path": "v2beta1/{+filterSetName}/filteredBids",
-                                    "response": {
-                                        "$ref": "ListFilteredBidsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                }
-                            },
-                            "resources": {
-                                "details": {
-                                    "methods": {
-                                        "list": {
-                                            "description": "List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail.",
-                                            "httpMethod": "GET",
-                                            "id": "adexchangebuyer2.bidders.filterSets.filteredBids.details.list",
-                                            "parameterOrder": [
-                                                "filterSetName",
-                                                "creativeStatusId"
-                                            ],
-                                            "parameters": {
-                                                "filterSetName": {
-                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                                    "location": "path",
-                                                    "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "creativeStatusId": {
-                                                    "description": "The ID of the creative status for which to retrieve a breakdown by detail.\nSee\n[creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).\nDetails are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.",
-                                                    "format": "int32",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "integer"
-                                                },
-                                                "pageToken": {
-                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByDetailResponse.nextPageToken\nreturned from the previous call to the filteredBids.details.list\nmethod.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "path": "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
-                                            "response": {
-                                                "$ref": "ListCreativeStatusBreakdownByDetailResponse"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/adexchange.buyer"
-                                            ]
-                                        }
-                                    }
-                                },
-                                "creatives": {
-                                    "methods": {
-                                        "list": {
-                                            "description": "List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative.",
-                                            "httpMethod": "GET",
-                                            "id": "adexchangebuyer2.bidders.filterSets.filteredBids.creatives.list",
-                                            "parameterOrder": [
-                                                "filterSetName",
-                                                "creativeStatusId"
-                                            ],
-                                            "parameters": {
-                                                "filterSetName": {
-                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                                    "location": "path",
-                                                    "pattern": "^bidders/[^/]+/filterSets/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "creativeStatusId": {
-                                                    "description": "The ID of the creative status for which to retrieve a breakdown by\ncreative.\nSee\n[creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).",
-                                                    "format": "int32",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "integer"
-                                                },
-                                                "pageToken": {
-                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByCreativeResponse.nextPageToken\nreturned from the previous call to the filteredBids.creatives.list\nmethod.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "path": "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
-                                            "response": {
-                                                "$ref": "ListCreativeStatusBreakdownByCreativeResponse"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/adexchange.buyer"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
                         }
                     }
                 },
@@ -649,30 +649,6 @@
                     "resources": {
                         "filterSets": {
                             "methods": {
-                                "delete": {
-                                    "description": "Deletes the requested filter set from the account with the given account\nID.",
-                                    "httpMethod": "DELETE",
-                                    "id": "adexchangebuyer2.bidders.accounts.filterSets.delete",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Full name of the resource to delete.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                            "location": "path",
-                                            "pattern": "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/{+name}",
-                                    "response": {
-                                        "$ref": "Empty"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
                                 "get": {
                                     "description": "Retrieves the requested filter set for the account with the given account\nID.",
                                     "httpMethod": "GET",
@@ -763,87 +739,33 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/adexchange.buyer"
                                     ]
+                                },
+                                "delete": {
+                                    "description": "Deletes the requested filter set from the account with the given account\nID.",
+                                    "httpMethod": "DELETE",
+                                    "id": "adexchangebuyer2.bidders.accounts.filterSets.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Full name of the resource to delete.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                            "location": "path",
+                                            "pattern": "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/{+name}",
+                                    "response": {
+                                        "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
                                 }
                             },
                             "resources": {
-                                "filteredBidRequests": {
-                                    "methods": {
-                                        "list": {
-                                            "description": "List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason.",
-                                            "httpMethod": "GET",
-                                            "id": "adexchangebuyer2.bidders.accounts.filterSets.filteredBidRequests.list",
-                                            "parameterOrder": [
-                                                "filterSetName"
-                                            ],
-                                            "parameters": {
-                                                "filterSetName": {
-                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                                    "location": "path",
-                                                    "pattern": "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "pageToken": {
-                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidRequestsResponse.nextPageToken\nreturned from the previous call to the filteredBidRequests.list\nmethod.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "path": "v2beta1/{+filterSetName}/filteredBidRequests",
-                                            "response": {
-                                                "$ref": "ListFilteredBidRequestsResponse"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/adexchange.buyer"
-                                            ]
-                                        }
-                                    }
-                                },
-                                "nonBillableWinningBids": {
-                                    "methods": {
-                                        "list": {
-                                            "description": "List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason.",
-                                            "httpMethod": "GET",
-                                            "id": "adexchangebuyer2.bidders.accounts.filterSets.nonBillableWinningBids.list",
-                                            "parameterOrder": [
-                                                "filterSetName"
-                                            ],
-                                            "parameters": {
-                                                "filterSetName": {
-                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
-                                                    "location": "path",
-                                                    "pattern": "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "pageToken": {
-                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListNonBillableWinningBidsResponse.nextPageToken\nreturned from the previous call to the nonBillableWinningBids.list\nmethod.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "path": "v2beta1/{+filterSetName}/nonBillableWinningBids",
-                                            "response": {
-                                                "$ref": "ListNonBillableWinningBidsResponse"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/adexchange.buyer"
-                                            ]
-                                        }
-                                    }
-                                },
                                 "filteredBids": {
                                     "methods": {
                                         "list": {
@@ -894,12 +816,6 @@
                                                         "creativeStatusId"
                                                     ],
                                                     "parameters": {
-                                                        "pageSize": {
-                                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                            "format": "int32",
-                                                            "location": "query",
-                                                            "type": "integer"
-                                                        },
                                                         "filterSetName": {
                                                             "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
                                                             "location": "path",
@@ -918,6 +834,12 @@
                                                             "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByCreativeResponse.nextPageToken\nreturned from the previous call to the filteredBids.creatives.list\nmethod.",
                                                             "location": "query",
                                                             "type": "string"
+                                                        },
+                                                        "pageSize": {
+                                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                            "format": "int32",
+                                                            "location": "query",
+                                                            "type": "integer"
                                                         }
                                                     },
                                                     "path": "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
@@ -941,12 +863,6 @@
                                                         "creativeStatusId"
                                                     ],
                                                     "parameters": {
-                                                        "pageSize": {
-                                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                            "format": "int32",
-                                                            "location": "query",
-                                                            "type": "integer"
-                                                        },
                                                         "filterSetName": {
                                                             "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
                                                             "location": "path",
@@ -965,6 +881,12 @@
                                                             "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByDetailResponse.nextPageToken\nreturned from the previous call to the filteredBids.details.list\nmethod.",
                                                             "location": "query",
                                                             "type": "string"
+                                                        },
+                                                        "pageSize": {
+                                                            "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                            "format": "int32",
+                                                            "location": "query",
+                                                            "type": "integer"
                                                         }
                                                     },
                                                     "path": "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
@@ -976,6 +898,45 @@
                                                     ]
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "nonBillableWinningBids": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason.",
+                                            "httpMethod": "GET",
+                                            "id": "adexchangebuyer2.bidders.accounts.filterSets.nonBillableWinningBids.list",
+                                            "parameterOrder": [
+                                                "filterSetName"
+                                            ],
+                                            "parameters": {
+                                                "filterSetName": {
+                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                                    "location": "path",
+                                                    "pattern": "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListNonBillableWinningBidsResponse.nextPageToken\nreturned from the previous call to the nonBillableWinningBids.list\nmethod.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "path": "v2beta1/{+filterSetName}/nonBillableWinningBids",
+                                            "response": {
+                                                "$ref": "ListNonBillableWinningBidsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/adexchange.buyer"
+                                            ]
                                         }
                                     }
                                 },
@@ -1067,6 +1028,12 @@
                                                 "filterSetName"
                                             ],
                                             "parameters": {
+                                                "pageSize": {
+                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
                                                 "filterSetName": {
                                                     "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
                                                     "location": "path",
@@ -1078,12 +1045,6 @@
                                                     "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidMetricsResponse.nextPageToken\nreturned from the previous call to the bidMetrics.list\nmethod.",
                                                     "location": "query",
                                                     "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
                                                 }
                                             },
                                             "path": "v2beta1/{+filterSetName}/bidMetrics",
@@ -1173,6 +1134,45 @@
                                             ]
                                         }
                                     }
+                                },
+                                "filteredBidRequests": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason.",
+                                            "httpMethod": "GET",
+                                            "id": "adexchangebuyer2.bidders.accounts.filterSets.filteredBidRequests.list",
+                                            "parameterOrder": [
+                                                "filterSetName"
+                                            ],
+                                            "parameters": {
+                                                "filterSetName": {
+                                                    "description": "Name of the filter set that should be applied to the requested metrics.\nFor example:\n\n- For a bidder-level filter set for bidder 123:\n  `bidders/123/filterSets/abc`\n\n- For an account-level filter set for the buyer account representing bidder\n  123: `bidders/123/accounts/123/filterSets/abc`\n\n- For an account-level filter set for the child seat buyer account 456\n  whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`",
+                                                    "location": "path",
+                                                    "pattern": "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "pageToken": {
+                                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidRequestsResponse.nextPageToken\nreturned from the previous call to the filteredBidRequests.list\nmethod.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "path": "v2beta1/{+filterSetName}/filteredBidRequests",
+                                            "response": {
+                                                "$ref": "ListFilteredBidRequestsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/adexchange.buyer"
+                                            ]
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1224,16 +1224,6 @@
                                 "accountId"
                             ],
                             "parameters": {
-                                "pageToken": {
-                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientsResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.list method.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "partnerClientId": {
-                                    "description": "Optional unique identifier (from the standpoint of an Ad Exchange sponsor\nbuyer partner) of the client to return.\nIf specified, at most one client will be returned in the response.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "accountId": {
                                     "description": "Unique numerical account ID of the sponsor buyer to list the clients for.",
                                     "format": "int64",
@@ -1246,6 +1236,16 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientsResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.list method.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "partnerClientId": {
+                                    "description": "Optional unique identifier (from the standpoint of an Ad Exchange sponsor\nbuyer partner) of the client to return.\nIf specified, at most one client will be returned in the response.",
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "v2beta1/accounts/{accountId}/clients",
@@ -1320,127 +1320,6 @@
                         }
                     },
                     "resources": {
-                        "invitations": {
-                            "methods": {
-                                "get": {
-                                    "description": "Retrieves an existing client user invitation.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.accounts.clients.invitations.get",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId",
-                                        "invitationId"
-                                    ],
-                                    "parameters": {
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer that the user invitation\nto be retrieved is associated with. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "invitationId": {
-                                            "description": "Numerical identifier of the user invitation to retrieve. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
-                                    "response": {
-                                        "$ref": "ClientUserInvitation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
-                                "list": {
-                                    "description": "Lists all the client users invitations for a client\nwith a given account ID.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.accounts.clients.invitations.list",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId"
-                                    ],
-                                    "parameters": {
-                                        "pageToken": {
-                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUserInvitationsResponse.nextPageToken\nreturned from the previous call to the\nclients.invitations.list\nmethod.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. Server may return fewer clients than requested.\nIf unspecified, server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer to list invitations for.\n(required)\nYou must either specify a string representation of a\nnumerical account identifier or the `-` character\nto list all the invitations for all the clients\nof a given sponsor buyer.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
-                                    "response": {
-                                        "$ref": "ListClientUserInvitationsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
-                                "create": {
-                                    "description": "Creates and sends out an email invitation to access\nan Ad Exchange client buyer account.",
-                                    "httpMethod": "POST",
-                                    "id": "adexchangebuyer2.accounts.clients.invitations.create",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId"
-                                    ],
-                                    "parameters": {
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer that the user\nshould be associated with. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
-                                    "request": {
-                                        "$ref": "ClientUserInvitation"
-                                    },
-                                    "response": {
-                                        "$ref": "ClientUserInvitation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                }
-                            }
-                        },
                         "users": {
                             "methods": {
                                 "list": {
@@ -1452,11 +1331,6 @@
                                         "clientAccountId"
                                     ],
                                     "parameters": {
-                                        "pageToken": {
-                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUsersResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.users.list method.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
                                         "accountId": {
                                             "description": "Numerical account ID of the sponsor buyer of the client to list users for.\n(required)",
                                             "format": "int64",
@@ -1474,6 +1348,11 @@
                                             "description": "The account ID of the client buyer to list users for. (required)\nYou must specify either a string representation of a\nnumerical account identifier or the `-` character\nto list all the client users for all the clients\nof a given sponsor buyer.",
                                             "location": "path",
                                             "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUsersResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.users.list method.",
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -1495,13 +1374,6 @@
                                         "userId"
                                     ],
                                     "parameters": {
-                                        "userId": {
-                                            "description": "Numerical identifier of the user to retrieve. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "accountId": {
                                             "description": "Numerical account ID of the client's sponsor buyer. (required)",
                                             "format": "int64",
@@ -1511,6 +1383,13 @@
                                         },
                                         "clientAccountId": {
                                             "description": "Numerical account ID of the client buyer\nthat the user to be retrieved is associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "description": "Numerical identifier of the user to retrieve. (required)",
                                             "format": "int64",
                                             "location": "path",
                                             "required": true,
@@ -1569,11 +1448,228 @@
                                     ]
                                 }
                             }
+                        },
+                        "invitations": {
+                            "methods": {
+                                "get": {
+                                    "description": "Retrieves an existing client user invitation.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.accounts.clients.invitations.get",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId",
+                                        "invitationId"
+                                    ],
+                                    "parameters": {
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer that the user invitation\nto be retrieved is associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "invitationId": {
+                                            "description": "Numerical identifier of the user invitation to retrieve. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
+                                    "response": {
+                                        "$ref": "ClientUserInvitation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all the client users invitations for a client\nwith a given account ID.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.accounts.clients.invitations.list",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId"
+                                    ],
+                                    "parameters": {
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Requested page size. Server may return fewer clients than requested.\nIf unspecified, server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer to list invitations for.\n(required)\nYou must either specify a string representation of a\nnumerical account identifier or the `-` character\nto list all the invitations for all the clients\nof a given sponsor buyer.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUserInvitationsResponse.nextPageToken\nreturned from the previous call to the\nclients.invitations.list\nmethod.",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
+                                    "response": {
+                                        "$ref": "ListClientUserInvitationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                },
+                                "create": {
+                                    "description": "Creates and sends out an email invitation to access\nan Ad Exchange client buyer account.",
+                                    "httpMethod": "POST",
+                                    "id": "adexchangebuyer2.accounts.clients.invitations.create",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId"
+                                    ],
+                                    "parameters": {
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer that the user\nshould be associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
+                                    "request": {
+                                        "$ref": "ClientUserInvitation"
+                                    },
+                                    "response": {
+                                        "$ref": "ClientUserInvitation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                }
+                            }
                         }
                     }
                 },
                 "creatives": {
                     "methods": {
+                        "stopWatching": {
+                            "description": "Stops watching a creative. Will stop push notifications being sent to the\ntopics when the creative changes status.",
+                            "httpMethod": "POST",
+                            "id": "adexchangebuyer2.accounts.creatives.stopWatching",
+                            "parameterOrder": [
+                                "accountId",
+                                "creativeId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "The account of the creative to stop notifications for.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "creativeId": {
+                                    "description": "The creative ID of the creative to stop notifications for.\nSpecify \"-\" to specify stopping account level notifications.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching",
+                            "request": {
+                                "$ref": "StopWatchingCreativeRequest"
+                            },
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets a creative.",
+                            "httpMethod": "GET",
+                            "id": "adexchangebuyer2.accounts.creatives.get",
+                            "parameterOrder": [
+                                "accountId",
+                                "creativeId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "The account the creative belongs to.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "creativeId": {
+                                    "description": "The ID of the creative to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/creatives/{creativeId}",
+                            "response": {
+                                "$ref": "Creative"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
+                        "watch": {
+                            "description": "Watches a creative. Will result in push notifications being sent to the\ntopic when the creative changes status.",
+                            "httpMethod": "POST",
+                            "id": "adexchangebuyer2.accounts.creatives.watch",
+                            "parameterOrder": [
+                                "accountId",
+                                "creativeId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "The account of the creative to watch.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "creativeId": {
+                                    "description": "The creative ID to watch for status changes.\nSpecify \"-\" to watch all creatives under the above account.\nIf both creative-level and account-level notifications are\nsent, only a single notification will be sent to the\ncreative-level notification topic.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/creatives/{creativeId}:watch",
+                            "request": {
+                                "$ref": "WatchCreativeRequest"
+                            },
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
                         "update": {
                             "description": "Updates a creative.",
                             "httpMethod": "PUT",
@@ -1615,6 +1711,11 @@
                                 "accountId"
                             ],
                             "parameters": {
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativesResponse.next_page_token\nreturned from the previous call to 'ListCreatives' method.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "accountId": {
                                     "description": "The account to list the creatives from.\nSpecify \"-\" to list all creatives the current user has access to.",
                                     "location": "path",
@@ -1628,12 +1729,7 @@
                                     "type": "integer"
                                 },
                                 "query": {
-                                    "description": "An optional query string to filter creatives. If no filter is specified,\nall active creatives will be returned.\nSupported queries are:\n<ul>\n<li>accountId=<i>account_id_string</i>\n<li>creativeId=<i>creative_id_string</i>\n<li>dealsStatus: {approved, conditionally_approved, disapproved,\n                   not_checked}\n<li>openAuctionStatus: {approved, conditionally_approved, disapproved,\n                          not_checked}\n<li>attribute: {a numeric attribute from the list of attributes}\n<li>disapprovalReason: {a reason from\nDisapprovalReason\n</ul>\nExample: 'accountId=12345 AND (dealsStatus:disapproved AND\ndisapprovalReason:unacceptable_content) OR attribute:47'",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "pageToken": {
-                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativesResponse.next_page_token\nreturned from the previous call to 'ListCreatives' method.",
+                                    "description": "An optional query string to filter creatives. If no filter is specified,\nall active creatives will be returned.\nSupported queries are:\n<ul>\n<li>accountId=<i>account_id_string</i>\n<li>creativeId=<i>creative_id_string</i>\n<li>dealsStatus: {approved, conditionally_approved, disapproved,\n                   not_checked}\n<li>openAuctionStatus: {approved, conditionally_approved, disapproved,\n                          not_checked}\n<li>attribute: {a numeric attribute from the list of attributes}\n<li>disapprovalReason: {a reason from\nDisapprovalReason}\n</ul>\nExample: 'accountId=12345 AND (dealsStatus:disapproved AND\ndisapprovalReason:unacceptable_content) OR attribute:47'",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -1680,102 +1776,6 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/adexchange.buyer"
                             ]
-                        },
-                        "stopWatching": {
-                            "description": "Stops watching a creative. Will stop push notifications being sent to the\ntopics when the creative changes status.",
-                            "httpMethod": "POST",
-                            "id": "adexchangebuyer2.accounts.creatives.stopWatching",
-                            "parameterOrder": [
-                                "accountId",
-                                "creativeId"
-                            ],
-                            "parameters": {
-                                "accountId": {
-                                    "description": "The account of the creative to stop notifications for.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "creativeId": {
-                                    "description": "The creative ID of the creative to stop notifications for.\nSpecify \"-\" to specify stopping account level notifications.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching",
-                            "request": {
-                                "$ref": "StopWatchingCreativeRequest"
-                            },
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
-                        },
-                        "watch": {
-                            "description": "Watches a creative. Will result in push notifications being sent to the\ntopic when the creative changes status.",
-                            "httpMethod": "POST",
-                            "id": "adexchangebuyer2.accounts.creatives.watch",
-                            "parameterOrder": [
-                                "accountId",
-                                "creativeId"
-                            ],
-                            "parameters": {
-                                "accountId": {
-                                    "description": "The account of the creative to watch.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "creativeId": {
-                                    "description": "The creative ID to watch for status changes.\nSpecify \"-\" to watch all creatives under the above account.\nIf both creative-level and account-level notifications are\nsent, only a single notification will be sent to the\ncreative-level notification topic.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/creatives/{creativeId}:watch",
-                            "request": {
-                                "$ref": "WatchCreativeRequest"
-                            },
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
-                        },
-                        "get": {
-                            "description": "Gets a creative.",
-                            "httpMethod": "GET",
-                            "id": "adexchangebuyer2.accounts.creatives.get",
-                            "parameterOrder": [
-                                "accountId",
-                                "creativeId"
-                            ],
-                            "parameters": {
-                                "accountId": {
-                                    "description": "The account the creative belongs to.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "creativeId": {
-                                    "description": "The ID of the creative to retrieve.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/creatives/{creativeId}",
-                            "response": {
-                                "$ref": "Creative"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
                         }
                     },
                     "resources": {
@@ -1790,12 +1790,6 @@
                                         "creativeId"
                                     ],
                                     "parameters": {
-                                        "creativeId": {
-                                            "description": "The creative ID to list the associations from.\nSpecify \"-\" to list all creatives under the above account.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "pageToken": {
                                             "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListDealAssociationsResponse.next_page_token\nreturned from the previous call to 'ListDealAssociations' method.",
                                             "location": "query",
@@ -1816,6 +1810,12 @@
                                         "query": {
                                             "description": "An optional query string to filter deal associations. If no filter is\nspecified, all associations will be returned.\nSupported queries are:\n<ul>\n<li>accountId=<i>account_id_string</i>\n<li>creativeId=<i>creative_id_string</i>\n<li>dealsId=<i>deals_id_string</i>\n<li>dealsStatus:{approved, conditionally_approved, disapproved,\n                  not_checked}\n<li>openAuctionStatus:{approved, conditionally_approved, disapproved,\n                         not_checked}\n</ul>\nExample: 'dealsId=12345 AND dealsStatus:disapproved'",
                                             "location": "query",
+                                            "type": "string"
+                                        },
+                                        "creativeId": {
+                                            "description": "The creative ID to list the associations from.\nSpecify \"-\" to list all creatives under the above account.",
+                                            "location": "path",
+                                            "required": true,
                                             "type": "string"
                                         }
                                     },
@@ -1869,14 +1869,14 @@
                                         "creativeId"
                                     ],
                                     "parameters": {
-                                        "creativeId": {
-                                            "description": "The ID of the creative associated with the deal.",
+                                        "accountId": {
+                                            "description": "The account the creative belongs to.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
-                                        "accountId": {
-                                            "description": "The account the creative belongs to.",
+                                        "creativeId": {
+                                            "description": "The ID of the creative associated with the deal.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -1900,7 +1900,7 @@
             }
         }
     },
-    "revision": "20171115",
+    "revision": "20171219",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "ClientUser": {
@@ -1944,16 +1944,16 @@
             "description": "The association between a creative and a deal.",
             "id": "CreativeDealAssociation",
             "properties": {
-                "dealsId": {
-                    "description": "The externalDealId for the deal associated with the creative.",
-                    "type": "string"
-                },
                 "accountId": {
                     "description": "The account the creative belongs to.",
                     "type": "string"
                 },
                 "creativeId": {
                     "description": "The ID of the creative associated with the deal.",
+                    "type": "string"
+                },
+                "dealsId": {
+                    "description": "The externalDealId for the deal associated with the creative.",
                     "type": "string"
                 }
             },
@@ -2144,16 +2144,16 @@
                     "$ref": "NativeContent",
                     "description": "A native creative."
                 },
-                "video": {
-                    "$ref": "VideoContent",
-                    "description": "A video creative."
-                },
                 "servingRestrictions": {
                     "description": "@OutputOnly The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction).",
                     "items": {
                         "$ref": "ServingRestriction"
                     },
                     "type": "array"
+                },
+                "video": {
+                    "$ref": "VideoContent",
+                    "description": "A video creative."
                 },
                 "agencyId": {
                     "description": "The agency ID for this creative.",
@@ -2167,6 +2167,10 @@
                     },
                     "type": "array"
                 },
+                "adChoicesDestinationUrl": {
+                    "description": "The link to AdChoices destination page.",
+                    "type": "string"
+                },
                 "detectedSensitiveCategories": {
                     "description": "@OutputOnly Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids.",
                     "items": {
@@ -2174,10 +2178,6 @@
                         "type": "integer"
                     },
                     "type": "array"
-                },
-                "adChoicesDestinationUrl": {
-                    "description": "The link to AdChoices destination page.",
-                    "type": "string"
                 },
                 "restrictedCategories": {
                     "description": "All restricted categories for the ads that may be shown from this creative.",
@@ -2201,16 +2201,16 @@
             "description": "@OutputOnly Filtering reasons for this creative during a period of a single\nday (from midnight to midnight Pacific).",
             "id": "FilteringStats",
             "properties": {
-                "date": {
-                    "$ref": "Date",
-                    "description": "The day during which the data was collected.\nThe data is collected from 00:00:00 to 23:59:59 PT.\nDuring switches from PST to PDT and back, the day may\ncontain 23 or 25 hours of data instead of the usual 24."
-                },
                 "reasons": {
                     "description": "The set of filtering reasons for this date.",
                     "items": {
                         "$ref": "Reason"
                     },
                     "type": "array"
+                },
+                "date": {
+                    "$ref": "Date",
+                    "description": "The day during which the data was collected.\nThe data is collected from 00:00:00 to 23:59:59 PT.\nDuring switches from PST to PDT and back, the day may\ncontain 23 or 25 hours of data instead of the usual 24."
                 }
             },
             "type": "object"
@@ -2226,28 +2226,15 @@
             },
             "type": "object"
         },
-        "ListCreativeStatusBreakdownByCreativeResponse": {
-            "description": "Response message for listing all creatives associated with a given filtered\nbid reason.",
-            "id": "ListCreativeStatusBreakdownByCreativeResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByCreativeRequest.pageToken\nfield in the subsequent call to the filteredBids.creatives.list\nmethod to retrieve the next page of results.",
-                    "type": "string"
-                },
-                "filteredBidCreativeRows": {
-                    "description": "List of rows, with counts of bids with a given creative status aggregated\nby creative.",
-                    "items": {
-                        "$ref": "FilteredBidCreativeRow"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "Client": {
             "description": "A client resource represents a client buyer&mdash;an agency,\na brand, or an advertiser customer of the sponsor buyer.\nUsers associated with the client buyer have restricted access to\nthe Ad Exchange Marketplace and certain other sections\nof the Ad Exchange Buyer UI based on the role\ngranted to the client buyer.\nAll fields are required unless otherwise specified.",
             "id": "Client",
             "properties": {
+                "clientAccountId": {
+                    "description": "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "entityName": {
                     "description": "The name of the entity. This field is automatically fetched based on\nthe type and ID.\nThe value of this field is ignored in create and update operations.",
                     "type": "string"
@@ -2314,10 +2301,23 @@
                     "description": "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListCreativeStatusBreakdownByCreativeResponse": {
+            "description": "Response message for listing all creatives associated with a given filtered\nbid reason.",
+            "id": "ListCreativeStatusBreakdownByCreativeResponse",
+            "properties": {
+                "filteredBidCreativeRows": {
+                    "description": "List of rows, with counts of bids with a given creative status aggregated\nby creative.",
+                    "items": {
+                        "$ref": "FilteredBidCreativeRow"
+                    },
+                    "type": "array"
                 },
-                "clientAccountId": {
-                    "description": "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations.",
-                    "format": "int64",
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByCreativeRequest.pageToken\nfield in the subsequent call to the filteredBids.creatives.list\nmethod to retrieve the next page of results.",
                     "type": "string"
                 }
             },
@@ -2384,10 +2384,6 @@
                     "$ref": "AbsoluteDateRange",
                     "description": "An absolute date range, defined by a start date and an end date.\nInterpreted relative to Pacific time zone."
                 },
-                "creativeId": {
-                    "description": "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses buyer-level troubleshooting data, i.e.\none whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.",
-                    "type": "string"
-                },
                 "environment": {
                     "description": "The environment on which to filter; optional.",
                     "enum": [
@@ -2402,9 +2398,63 @@
                     ],
                     "type": "string"
                 },
-                "relativeDateRange": {
-                    "$ref": "RelativeDateRange",
-                    "description": "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."
+                "dealId": {
+                    "description": "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e. one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "format": {
+                    "description": "DEPRECATED: use repeated formats field instead.\nThe format on which to filter; optional.",
+                    "enum": [
+                        "FORMAT_UNSPECIFIED",
+                        "DISPLAY",
+                        "VIDEO"
+                    ],
+                    "enumDescriptions": [
+                        "A placeholder for an undefined format; indicates that no format filter\nwill be applied.",
+                        "The ad impression is display format (i.e. an image).",
+                        "The ad impression is video format."
+                    ],
+                    "type": "string"
+                },
+                "timeSeriesGranularity": {
+                    "description": "The granularity of time intervals if a time series breakdown is desired;\noptional.",
+                    "enum": [
+                        "TIME_SERIES_GRANULARITY_UNSPECIFIED",
+                        "HOURLY",
+                        "DAILY"
+                    ],
+                    "enumDescriptions": [
+                        "A placeholder for an unspecified interval; no time series is applied.\nAll rows in response will contain data for the entire requested time range.",
+                        "Indicates that data will be broken down by the hour.",
+                        "Indicates that data will be broken down by the day."
+                    ],
+                    "type": "string"
+                },
+                "realtimeTimeRange": {
+                    "$ref": "RealtimeTimeRange",
+                    "description": "An open-ended realtime time range, defined by the aggregation start\ntimestamp."
+                },
+                "formats": {
+                    "description": "The list of formats on which to filter; may be empty. The filters\nrepresented by multiple formats are ORed together (i.e. if non-empty,\nresults must match any one of the formats).",
+                    "enumDescriptions": [
+                        "A placeholder for an undefined format; indicates that no format filter\nwill be applied.",
+                        "The ad impression is display format (i.e. an image).",
+                        "The ad impression is video format."
+                    ],
+                    "items": {
+                        "enum": [
+                            "FORMAT_UNSPECIFIED",
+                            "DISPLAY",
+                            "VIDEO"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "creativeId": {
+                    "description": "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e. one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern.",
+                    "type": "string"
                 },
                 "platforms": {
                     "description": "The list of platforms on which to filter; may be empty. The filters\nrepresented by multiple platforms are ORed together (i.e. if non-empty,\nresults must match any one of the platforms).",
@@ -2425,41 +2475,12 @@
                     },
                     "type": "array"
                 },
+                "relativeDateRange": {
+                    "$ref": "RelativeDateRange",
+                    "description": "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."
+                },
                 "name": {
-                    "description": "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n- `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\ndata)\n- `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level\ntroubleshooting data)\n\nThis field is required in create operations.",
-                    "type": "string"
-                },
-                "format": {
-                    "description": "The format on which to filter; optional.",
-                    "enum": [
-                        "FORMAT_UNSPECIFIED",
-                        "DISPLAY",
-                        "VIDEO"
-                    ],
-                    "enumDescriptions": [
-                        "A placeholder for an undefined format; indicates that no format filter\nwill be applied.",
-                        "The ad impression is display format (i.e. an image).",
-                        "The ad impression is video format."
-                    ],
-                    "type": "string"
-                },
-                "dealId": {
-                    "description": "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses buyer-level troubleshooting data, i.e.\none whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "timeSeriesGranularity": {
-                    "description": "The granularity of time intervals if a time series breakdown is desired;\noptional.",
-                    "enum": [
-                        "TIME_SERIES_GRANULARITY_UNSPECIFIED",
-                        "HOURLY",
-                        "DAILY"
-                    ],
-                    "enumDescriptions": [
-                        "A placeholder for an unspecified interval; no time series is applied.\nAll rows in response will contain data for the entire requested time range.",
-                        "Indicates that data will be broken down by the hour.",
-                        "Indicates that data will be broken down by the day."
-                    ],
+                    "description": "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n- `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\ndata)\n- `bidders/*/accounts/*/filterSets/*` (for accessing account-level\ntroubleshooting data)\n\nThis field is required in create operations.",
                     "type": "string"
                 },
                 "sellerNetworkIds": {
@@ -2469,28 +2490,6 @@
                         "type": "integer"
                     },
                     "type": "array"
-                },
-                "realtimeTimeRange": {
-                    "$ref": "RealtimeTimeRange",
-                    "description": "An open-ended realtime time range, defined by the aggregation start\ntimestamp."
-                }
-            },
-            "type": "object"
-        },
-        "ListDealAssociationsResponse": {
-            "description": "A response for listing creative and deal associations",
-            "id": "ListDealAssociationsResponse",
-            "properties": {
-                "associations": {
-                    "description": "The list of associations.",
-                    "items": {
-                        "$ref": "CreativeDealAssociation"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2515,10 +2514,22 @@
             },
             "type": "object"
         },
-        "StopWatchingCreativeRequest": {
-            "description": "A request for stopping notifications for changes to creative Status.",
-            "id": "StopWatchingCreativeRequest",
-            "properties": {},
+        "ListDealAssociationsResponse": {
+            "description": "A response for listing creative and deal associations",
+            "id": "ListDealAssociationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results.",
+                    "type": "string"
+                },
+                "associations": {
+                    "description": "The list of associations.",
+                    "items": {
+                        "$ref": "CreativeDealAssociation"
+                    },
+                    "type": "array"
+                }
+            },
             "type": "object"
         },
         "Disapproval": {
@@ -2731,24 +2742,16 @@
             },
             "type": "object"
         },
+        "StopWatchingCreativeRequest": {
+            "description": "A request for stopping notifications for changes to creative Status.",
+            "id": "StopWatchingCreativeRequest",
+            "properties": {},
+            "type": "object"
+        },
         "ServingRestriction": {
             "description": "@OutputOnly A representation of the status of an ad in a\nspecific context. A context here relates to where something ultimately serves\n(for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,\nor the type of auction).",
             "id": "ServingRestriction",
             "properties": {
-                "disapprovalReasons": {
-                    "description": "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.",
-                    "items": {
-                        "$ref": "Disapproval"
-                    },
-                    "type": "array"
-                },
-                "contexts": {
-                    "description": "The contexts for the restriction.",
-                    "items": {
-                        "$ref": "ServingContext"
-                    },
-                    "type": "array"
-                },
                 "status": {
                     "description": "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review).",
                     "enum": [
@@ -2762,6 +2765,20 @@
                         "The ad is pending review in this context."
                     ],
                     "type": "string"
+                },
+                "disapprovalReasons": {
+                    "description": "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.",
+                    "items": {
+                        "$ref": "Disapproval"
+                    },
+                    "type": "array"
+                },
+                "contexts": {
+                    "description": "The contexts for the restriction.",
+                    "items": {
+                        "$ref": "ServingContext"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2831,16 +2848,16 @@
             "description": "Response message for listing all reasons that bids were filtered from the\nauction.",
             "id": "ListFilteredBidsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidsRequest.pageToken\nfield in the subsequent call to the filteredBids.list\nmethod to retrieve the next page of results.",
-                    "type": "string"
-                },
                 "creativeStatusRows": {
                     "description": "List of rows, with counts of filtered bids aggregated by filtering reason\n(i.e. creative status).",
                     "items": {
                         "$ref": "CreativeStatusRow"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidsRequest.pageToken\nfield in the subsequent call to the filteredBids.list\nmethod to retrieve the next page of results.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2867,6 +2884,45 @@
             },
             "type": "object"
         },
+        "HtmlContent": {
+            "description": "HTML content for a creative.",
+            "id": "HtmlContent",
+            "properties": {
+                "height": {
+                    "description": "The height of the HTML snippet in pixels.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "width": {
+                    "description": "The width of the HTML snippet in pixels.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "snippet": {
+                    "description": "The HTML snippet that displays the ad when inserted in the web page.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListCreativesResponse": {
+            "description": "A response for listing creatives.",
+            "id": "ListCreativesResponse",
+            "properties": {
+                "creatives": {
+                    "description": "The list of creatives.",
+                    "items": {
+                        "$ref": "Creative"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListFilteredBidRequestsResponse": {
             "description": "Response message for listing all reasons that bid requests were filtered and\nnot sent to the buyer.",
             "id": "ListFilteredBidRequestsResponse",
@@ -2885,59 +2941,20 @@
             },
             "type": "object"
         },
-        "ListCreativesResponse": {
-            "description": "A response for listing creatives.",
-            "id": "ListCreativesResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results.",
-                    "type": "string"
-                },
-                "creatives": {
-                    "description": "The list of creatives.",
-                    "items": {
-                        "$ref": "Creative"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "HtmlContent": {
-            "description": "HTML content for a creative.",
-            "id": "HtmlContent",
-            "properties": {
-                "width": {
-                    "description": "The width of the HTML snippet in pixels.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "snippet": {
-                    "description": "The HTML snippet that displays the ad when inserted in the web page.",
-                    "type": "string"
-                },
-                "height": {
-                    "description": "The height of the HTML snippet in pixels.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
         "ListBidMetricsResponse": {
             "description": "Response message for listing the metrics that are measured in number of bids.",
             "id": "ListBidMetricsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListBidMetricsRequest.pageToken\nfield in the subsequent call to the bidMetrics.list\nmethod to retrieve the next page of results.",
-                    "type": "string"
-                },
                 "bidMetricsRows": {
                     "description": "List of rows, each containing a set of bid metrics.",
                     "items": {
                         "$ref": "BidMetricsRow"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListBidMetricsRequest.pageToken\nfield in the subsequent call to the bidMetrics.list\nmethod to retrieve the next page of results.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3010,21 +3027,21 @@
             "description": "The set of metrics that are measured in numbers of impressions, representing\nhow many impressions with the specified dimension values were considered\neligible at each stage of the bidding funnel.",
             "id": "ImpressionMetricsRow",
             "properties": {
-                "availableImpressions": {
-                    "$ref": "MetricValue",
-                    "description": "The number of impressions available to the buyer on Ad Exchange.\nIn some cases this value may be unavailable."
-                },
                 "rowDimensions": {
                     "$ref": "RowDimensions",
                     "description": "The values of all dimensions associated with metric values in this row."
                 },
-                "inventoryMatches": {
+                "availableImpressions": {
                     "$ref": "MetricValue",
-                    "description": "The number of impressions that match the buyer's inventory pretargeting."
+                    "description": "The number of impressions available to the buyer on Ad Exchange.\nIn some cases this value may be unavailable."
                 },
                 "bidRequests": {
                     "$ref": "MetricValue",
                     "description": "The number of impressions for which Ad Exchange sent the buyer a bid\nrequest."
+                },
+                "inventoryMatches": {
+                    "$ref": "MetricValue",
+                    "description": "The number of impressions that match the buyer's inventory pretargeting."
                 },
                 "responsesWithBids": {
                     "$ref": "MetricValue",
@@ -3063,16 +3080,16 @@
             "description": "Response message for listing the metrics that are measured in number of\nimpressions.",
             "id": "ListImpressionMetricsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListImpressionMetricsRequest.pageToken\nfield in the subsequent call to the impressionMetrics.list\nmethod to retrieve the next page of results.",
+                    "type": "string"
+                },
                 "impressionMetricsRows": {
                     "description": "List of rows, each containing a set of impression metrics.",
                     "items": {
                         "$ref": "ImpressionMetricsRow"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListImpressionMetricsRequest.pageToken\nfield in the subsequent call to the impressionMetrics.list\nmethod to retrieve the next page of results.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -3081,13 +3098,17 @@
             "description": "The set of metrics that are measured in numbers of bids, representing how\nmany bids with the specified dimension values were considered eligible at\neach stage of the bidding funnel;",
             "id": "BidMetricsRow",
             "properties": {
-                "viewableImpressions": {
-                    "$ref": "MetricValue",
-                    "description": "The number of bids for which the corresponding impression was viewable (as\ndefined by Active View)."
+                "rowDimensions": {
+                    "$ref": "RowDimensions",
+                    "description": "The values of all dimensions associated with metric values in this row."
                 },
                 "impressionsWon": {
                     "$ref": "MetricValue",
                     "description": "The number of bids that won an impression."
+                },
+                "viewableImpressions": {
+                    "$ref": "MetricValue",
+                    "description": "The number of bids for which the corresponding impression was viewable (as\ndefined by Active View)."
                 },
                 "measurableImpressions": {
                     "$ref": "MetricValue",
@@ -3104,10 +3125,6 @@
                 "bidsInAuction": {
                     "$ref": "MetricValue",
                     "description": "The number of bids that were permitted to compete in the auction."
-                },
-                "rowDimensions": {
-                    "$ref": "RowDimensions",
-                    "description": "The values of all dimensions associated with metric values in this row."
                 }
             },
             "type": "object"
@@ -3166,6 +3183,10 @@
             "description": "The number of winning bids with the specified dimension values for which the\nbuyer was not billed, as described by the specified status.",
             "id": "NonBillableWinningBidStatusRow",
             "properties": {
+                "bidCount": {
+                    "$ref": "MetricValue",
+                    "description": "The number of bids with the specified status."
+                },
                 "status": {
                     "description": "The status specifying why the winning bids were not billed.",
                     "enum": [
@@ -3183,10 +3204,6 @@
                 "rowDimensions": {
                     "$ref": "RowDimensions",
                     "description": "The values of all dimensions associated with metric values in this row."
-                },
-                "bidCount": {
-                    "$ref": "MetricValue",
-                    "description": "The number of bids with the specified status."
                 }
             },
             "type": "object"
@@ -3195,10 +3212,6 @@
             "description": "The number of filtered bids with the specified dimension values, among those\nfiltered due to the requested filtering reason (i.e. creative status), that\nhave the specified detail.",
             "id": "FilteredBidDetailRow",
             "properties": {
-                "rowDimensions": {
-                    "$ref": "RowDimensions",
-                    "description": "The values of all dimensions associated with metric values in this row."
-                },
                 "bidCount": {
                     "$ref": "MetricValue",
                     "description": "The number of bids with the specified detail."
@@ -3207,6 +3220,10 @@
                     "description": "The ID of the detail. The associated value can be looked up in the\ndictionary file corresponding to the DetailType in the response message.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "rowDimensions": {
+                    "$ref": "RowDimensions",
+                    "description": "The values of all dimensions associated with metric values in this row."
                 }
             },
             "type": "object"
@@ -3252,13 +3269,13 @@
             "description": "An interval of time, with an absolute start and end.",
             "id": "TimeInterval",
             "properties": {
-                "startTime": {
-                    "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+                "endTime": {
+                    "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
                     "format": "google-datetime",
                     "type": "string"
                 },
-                "endTime": {
-                    "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+                "startTime": {
+                    "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
                     "format": "google-datetime",
                     "type": "string"
                 }
@@ -3301,27 +3318,43 @@
             },
             "type": "object"
         },
-        "ListClientsResponse": {
-            "id": "ListClientsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list method\nto retrieve the next page of results.",
-                    "type": "string"
-                },
-                "clients": {
-                    "description": "The returned list of clients.",
-                    "items": {
-                        "$ref": "Client"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "NativeContent": {
             "description": "Native content for a creative.",
             "id": "NativeContent",
             "properties": {
+                "body": {
+                    "description": "A long description of the ad.",
+                    "type": "string"
+                },
+                "starRating": {
+                    "description": "The app rating in the app store. Must be in the range [0-5].",
+                    "format": "double",
+                    "type": "number"
+                },
+                "videoUrl": {
+                    "description": "The URL to fetch a native video ad.",
+                    "type": "string"
+                },
+                "logo": {
+                    "$ref": "Image",
+                    "description": "A smaller image, for the advertiser's logo."
+                },
+                "clickLinkUrl": {
+                    "description": "The URL that the browser/SDK will load when the user clicks the ad.",
+                    "type": "string"
+                },
+                "priceDisplayText": {
+                    "description": "The price of the promoted app including currency info.",
+                    "type": "string"
+                },
+                "image": {
+                    "$ref": "Image",
+                    "description": "A large image."
+                },
+                "clickTrackingUrl": {
+                    "description": "The URL to use for click tracking.",
+                    "type": "string"
+                },
                 "advertiserName": {
                     "description": "The name of the advertiser or sponsor, to be displayed in the ad creative.",
                     "type": "string"
@@ -3341,39 +3374,23 @@
                 "callToAction": {
                     "description": "A label for the button that the user is supposed to click.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListClientsResponse": {
+            "id": "ListClientsResponse",
+            "properties": {
+                "clients": {
+                    "description": "The returned list of clients.",
+                    "items": {
+                        "$ref": "Client"
+                    },
+                    "type": "array"
                 },
-                "body": {
-                    "description": "A long description of the ad.",
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list method\nto retrieve the next page of results.",
                     "type": "string"
-                },
-                "starRating": {
-                    "description": "The app rating in the app store. Must be in the range [0-5].",
-                    "format": "double",
-                    "type": "number"
-                },
-                "videoUrl": {
-                    "description": "The URL to fetch a native video ad.",
-                    "type": "string"
-                },
-                "clickLinkUrl": {
-                    "description": "The URL that the browser/SDK will load when the user clicks the ad.",
-                    "type": "string"
-                },
-                "logo": {
-                    "$ref": "Image",
-                    "description": "A smaller image, for the advertiser's logo."
-                },
-                "priceDisplayText": {
-                    "description": "The price of the promoted app including currency info.",
-                    "type": "string"
-                },
-                "clickTrackingUrl": {
-                    "description": "The URL to use for click tracking.",
-                    "type": "string"
-                },
-                "image": {
-                    "$ref": "Image",
-                    "description": "A large image."
                 }
             },
             "type": "object"
@@ -3400,6 +3417,14 @@
             "description": "The serving context for this restriction.",
             "id": "ServingContext",
             "properties": {
+                "location": {
+                    "$ref": "LocationContext",
+                    "description": "Matches impressions coming from users *or* publishers in a specific\nlocation."
+                },
+                "auctionType": {
+                    "$ref": "AuctionContext",
+                    "description": "Matches impressions for a particular auction type."
+                },
                 "all": {
                     "description": "Matches all contexts.",
                     "enum": [
@@ -3421,14 +3446,6 @@
                 "platform": {
                     "$ref": "PlatformContext",
                     "description": "Matches impressions coming from a particular platform."
-                },
-                "location": {
-                    "$ref": "LocationContext",
-                    "description": "Matches impressions coming from users *or* publishers in a specific\nlocation."
-                },
-                "auctionType": {
-                    "$ref": "AuctionContext",
-                    "description": "Matches impressions for a particular auction type."
                 }
             },
             "type": "object"
@@ -3437,10 +3454,6 @@
             "description": "An image resource. You may provide a larger image than was requested,\nso long as the aspect ratio is preserved.",
             "id": "Image",
             "properties": {
-                "url": {
-                    "description": "The URL of the image.",
-                    "type": "string"
-                },
                 "height": {
                     "description": "Image height in pixels.",
                     "format": "int32",
@@ -3450,6 +3463,10 @@
                     "description": "Image width in pixels.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "url": {
+                    "description": "The URL of the image.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3458,16 +3475,16 @@
             "description": "Response message for listing filter sets.",
             "id": "ListFilterSetsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListFilterSetsRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.list\nmethod to retrieve the next page of results.",
-                    "type": "string"
-                },
                 "filterSets": {
                     "description": "The filter sets belonging to the buyer.",
                     "items": {
                         "$ref": "FilterSet"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListFilterSetsRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.list\nmethod to retrieve the next page of results.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3476,6 +3493,10 @@
             "description": "The number of impressions with the specified dimension values that were\nconsidered to have no applicable bids, as described by the specified status.",
             "id": "BidResponseWithoutBidsStatusRow",
             "properties": {
+                "impressionCount": {
+                    "$ref": "MetricValue",
+                    "description": "The number of impressions for which there was a bid response with the\nspecified status."
+                },
                 "status": {
                     "description": "The status specifying why the bid responses were considered to have no\napplicable bids.",
                     "enum": [
@@ -3495,10 +3516,6 @@
                 "rowDimensions": {
                     "$ref": "RowDimensions",
                     "description": "The values of all dimensions associated with metric values in this row."
-                },
-                "impressionCount": {
-                    "$ref": "MetricValue",
-                    "description": "The number of impressions for which there was a bid response with the\nspecified status."
                 }
             },
             "type": "object"
@@ -3507,6 +3524,11 @@
             "description": "An invitation for a new client user to get access to the Ad Exchange\nBuyer UI.\nAll fields are required unless otherwise specified.",
             "id": "ClientUserInvitation",
             "properties": {
+                "clientAccountId": {
+                    "description": "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "invitationId": {
                     "description": "The unique numerical ID of the invitation that is sent to the user.\nThe value of this field is ignored in create operations.",
                     "format": "int64",
@@ -3515,45 +3537,6 @@
                 "email": {
                     "description": "The email address to which the invitation is sent. Email\naddresses should be unique among all client users under each sponsor\nbuyer.",
                     "type": "string"
-                },
-                "clientAccountId": {
-                    "description": "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListClientUserInvitationsResponse": {
-            "id": "ListClientUserInvitationsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
-                    "type": "string"
-                },
-                "invitations": {
-                    "description": "The returned list of client users.",
-                    "items": {
-                        "$ref": "ClientUserInvitation"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ListClientUsersResponse": {
-            "id": "ListClientUsersResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
-                    "type": "string"
-                },
-                "users": {
-                    "description": "The returned list of client users.",
-                    "items": {
-                        "$ref": "ClientUser"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -3592,6 +3575,40 @@
                 "nextPageToken": {
                     "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByDetailRequest.pageToken\nfield in the subsequent call to the filteredBids.details.list\nmethod to retrieve the next page of results.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListClientUsersResponse": {
+            "id": "ListClientUsersResponse",
+            "properties": {
+                "users": {
+                    "description": "The returned list of client users.",
+                    "items": {
+                        "$ref": "ClientUser"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListClientUserInvitationsResponse": {
+            "id": "ListClientUserInvitationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
+                    "type": "string"
+                },
+                "invitations": {
+                    "description": "The returned list of client users.",
+                    "items": {
+                        "$ref": "ClientUserInvitation"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

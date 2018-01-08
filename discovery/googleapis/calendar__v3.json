@@ -17,7 +17,7 @@
     "description": "Manipulates events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Q0eL-_qqDCDntK3SWODbYQnjwcQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/sJ40bAEXpU3TFbXccqoyZ4jTl_8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -861,6 +861,14 @@
                             "required": true,
                             "type": "string"
                         },
+                        "conferenceDataVersion": {
+                            "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "1",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
                         "supportsAttachments": {
                             "description": "Whether API client performing operation supports event attachments. Optional. The default is False.",
                             "location": "query",
@@ -891,6 +899,14 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "conferenceDataVersion": {
+                            "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "1",
+                            "minimum": "0",
+                            "type": "integer"
                         },
                         "maxAttendees": {
                             "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.",
@@ -1194,6 +1210,14 @@
                             "required": true,
                             "type": "string"
                         },
+                        "conferenceDataVersion": {
+                            "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "1",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
                         "eventId": {
                             "description": "Event identifier.",
                             "location": "path",
@@ -1283,6 +1307,14 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "conferenceDataVersion": {
+                            "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "1",
+                            "minimum": "0",
+                            "type": "integer"
                         },
                         "eventId": {
                             "description": "Event identifier.",
@@ -1572,7 +1604,7 @@
             }
         }
     },
-    "revision": "20171126",
+    "revision": "20171217",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -1660,6 +1692,10 @@
         "Calendar": {
             "id": "Calendar",
             "properties": {
+                "conferenceProperties": {
+                    "$ref": "ConferenceProperties",
+                    "description": "Conferencing properties for this calendar, for example what types of conferences are allowed."
+                },
                 "description": {
                     "description": "Description of the calendar. Optional.",
                     "type": "string"
@@ -1741,6 +1777,10 @@
                 "colorId": {
                     "description": "The color of the calendar. This is an ID referring to an entry in the calendar section of the colors definition (see the colors endpoint). This property is superseded by the backgroundColor and foregroundColor properties and can be ignored when using these properties. Optional.",
                     "type": "string"
+                },
+                "conferenceProperties": {
+                    "$ref": "ConferenceProperties",
+                    "description": "Conferencing properties for this calendar, for example what types of conferences are allowed."
                 },
                 "defaultReminders": {
                     "description": "The default reminders that the authenticated user has for this calendar.",
@@ -1951,6 +1991,146 @@
             },
             "type": "object"
         },
+        "ConferenceData": {
+            "id": "ConferenceData",
+            "properties": {
+                "conferenceId": {
+                    "description": "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:  \n- \"eventHangout\": unset\n- \"eventNamedHangout\": the name of the Hangout.\n- \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".  Optional.",
+                    "type": "string"
+                },
+                "conferenceSolution": {
+                    "$ref": "ConferenceSolution",
+                    "description": "The conference solution, such as Hangouts or Hangouts Meet.\nUnset for a conference with failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."
+                },
+                "createRequest": {
+                    "$ref": "CreateConferenceRequest",
+                    "description": "A request to generate a new conference and attach it to the event. The data is generated asynchronously. To see whether the data is present check the status field.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."
+                },
+                "entryPoints": {
+                    "description": "Information about individual conference entry points, such as URLs or phone numbers.\nAll of them must belong to the same conference.\nEither conferenceSolution and at least one entryPoint, or createRequest is required.",
+                    "items": {
+                        "$ref": "EntryPoint"
+                    },
+                    "type": "array"
+                },
+                "notes": {
+                    "description": "Additional notes (such as instructions from the domain administrator, legal notices) to display to the user. Can contain HTML. The maximum length is 2048 characters. Optional.",
+                    "type": "string"
+                },
+                "signature": {
+                    "description": "The signature of the conference data.\nGenereated on server side. Must be preserved while copying the conference data between events, otherwise the conference data will not be copied.\nUnset for a conference with failed create request.\nOptional for a conference with a pending create request.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConferenceProperties": {
+            "id": "ConferenceProperties",
+            "properties": {
+                "allowedConferenceSolutionTypes": {
+                    "description": "The types of conference solutions that are supported for this calendar.\nThe possible values are:  \n- \"eventHangout\" \n- \"eventNamedHangout\" \n- \"hangoutsMeet\"  Optional.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ConferenceRequestStatus": {
+            "id": "ConferenceRequestStatus",
+            "properties": {
+                "statusCode": {
+                    "description": "The current status of the conference create request. Read-only.\nThe possible values are:  \n- \"pending\": the conference create request is still being processed.\n- \"success\": the conference create request succeeded, the entry points are populated.\n- \"failure\": the conference create request failed, there are no entry points.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConferenceSolution": {
+            "id": "ConferenceSolution",
+            "properties": {
+                "iconUri": {
+                    "description": "The user-visible icon for this solution. Read-only.",
+                    "type": "string"
+                },
+                "key": {
+                    "$ref": "ConferenceSolutionKey",
+                    "description": "The key which can uniquely identify the conference solution for this event."
+                },
+                "name": {
+                    "description": "The user-visible name of this solution. Not localized. Read-only.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConferenceSolutionKey": {
+            "id": "ConferenceSolutionKey",
+            "properties": {
+                "type": {
+                    "description": "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:  \n- \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n- \"eventNamedHangout\" for Classic Hangouts for GSuite users (http://hangouts.google.com)\n- \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CreateConferenceRequest": {
+            "id": "CreateConferenceRequest",
+            "properties": {
+                "conferenceSolutionKey": {
+                    "$ref": "ConferenceSolutionKey",
+                    "description": "The conference solution, such as Hangouts or Hangouts Meet."
+                },
+                "requestId": {
+                    "description": "The client-generated unique ID for this request.\nClients should regenerate this ID for every new request. If an ID provided is the same as for the previous request, the request is ignored.",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "ConferenceRequestStatus",
+                    "description": "The status of the conference create request."
+                }
+            },
+            "type": "object"
+        },
+        "EntryPoint": {
+            "id": "EntryPoint",
+            "properties": {
+                "accessCode": {
+                    "description": "The Access Code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional.",
+                    "type": "string"
+                },
+                "entryPointType": {
+                    "description": "The type of the conference entry point.\nPossible values are:  \n- \"video\" - joining a conference over HTTP. A conference can have zero or one video entry point.\n- \"phone\" - joining a conference by dialing a phone number. A conference can have zero or more phone entry points.\n- \"sip\" - joining a conference over SIP. A conference can have zero or one sip entry point.\n- \"more\" - further conference joining instructions, for example additional phone numbers. A conference can have zero or one more entry point. A conference with only a more entry point is not a valid conference.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "The label for the URI.Visible to end users. Not localized. The maximum length is 512 characters.\nExamples:  \n- for video: meet.google.com/aaa-bbbb-ccc\n- for phone: +1 123 268 2601\n- for sip: sip:12345678@myprovider.com\n- for more: should not be filled  \nOptional.",
+                    "type": "string"
+                },
+                "meetingCode": {
+                    "description": "The Meeting Code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional.",
+                    "type": "string"
+                },
+                "passcode": {
+                    "description": "The Passcode to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "The Password to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional.",
+                    "type": "string"
+                },
+                "pin": {
+                    "description": "The PIN to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional.",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "The \"URI\" of the entry point. The maximum length is 1300 characters.\nFormat:  \n- for video, http: or https: schema is required.\n- for phone, tel: schema is required. The URI should include the entire dial sequence (e.g., tel:+12345678900,,,123456789;1234).\n- for sip, sip: schema is required, e.g., sip:12345678@myprovider.com.\n- for more, http: or https: schema is required.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Error": {
             "id": "Error",
             "properties": {
@@ -1995,6 +2175,10 @@
                 "colorId": {
                     "description": "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the  colors endpoint). Optional.",
                     "type": "string"
+                },
+                "conferenceData": {
+                    "$ref": "ConferenceData",
+                    "description": "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."
                 },
                 "created": {
                     "description": "Creation time of the event (as a RFC3339 timestamp). Read-only.",

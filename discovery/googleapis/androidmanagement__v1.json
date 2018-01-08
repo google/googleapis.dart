@@ -744,7 +744,7 @@
             }
         }
     },
-    "revision": "20171127",
+    "revision": "20171211",
     "rootUrl": "https://androidmanagement.googleapis.com/",
     "schemas": {
         "Device": {
@@ -858,6 +858,10 @@
                     "description": "The last time the device sent a status report.",
                     "format": "google-datetime",
                     "type": "string"
+                },
+                "deviceSettings": {
+                    "$ref": "DeviceSettings",
+                    "description": "Device settings information. This information is only available when deviceSettingsEnabled is true in the device's policy."
                 },
                 "name": {
                     "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}",
@@ -1400,7 +1404,7 @@
             "id": "Policy",
             "properties": {
                 "outgoingCallsDisabled": {
-                    "description": "Whether outgoing calls are disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether outgoing calls are disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "screenCaptureDisabled": {
@@ -1408,11 +1412,11 @@
                     "type": "boolean"
                 },
                 "bluetoothDisabled": {
-                    "description": "Whether bluetooth is disabled. Prefer this setting over bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by the user. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether bluetooth is disabled. Prefer this setting over bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by the user. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "installAppsDisabled": {
-                    "description": "Whether user installation of apps is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether user installation of apps is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "factoryResetDisabled": {
@@ -1447,12 +1451,12 @@
                     "type": "array"
                 },
                 "networkResetDisabled": {
-                    "description": "Whether resetting network settings is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether resetting network settings is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "shortSupportMessage": {
                     "$ref": "UserFacingMessage",
-                    "description": "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin. <i>Requires the beta version of Android Cloud Policy.</i>"
+                    "description": "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin. <i>Requires the beta version of the Android Device Policy app.</i>"
                 },
                 "wifiConfigDisabled": {
                     "description": "Whether configuring WiFi access points is disabled.",
@@ -1463,7 +1467,7 @@
                     "type": "boolean"
                 },
                 "keyguardDisabledFeatures": {
-                    "description": "Disabled keyguard customizations, such as widgets. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Disabled keyguard customizations, such as widgets. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "enumDescriptions": [
                         "This value is ignored.",
                         "Disable the camera on secure keyguard screens (e.g. PIN).",
@@ -1515,12 +1519,12 @@
                     "type": "boolean"
                 },
                 "setUserIconDisabled": {
-                    "description": "Whether changing the user icon is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether changing the user icon is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "recommendedGlobalProxy": {
                     "$ref": "ProxyInfo",
-                    "description": "The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it. <i>Requires the beta version of Android Cloud Policy.</i>"
+                    "description": "The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it. <i>Requires the beta version of the Android Device Policy app.</i>"
                 },
                 "applications": {
                     "description": "Policy applied to apps.",
@@ -1530,11 +1534,11 @@
                     "type": "array"
                 },
                 "outgoingBeamDisabled": {
-                    "description": "Whether using NFC to beam out data from apps is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether using NFC to beam out data from apps is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "credentialsConfigDisabled": {
-                    "description": "Whether configuring user credentials is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether configuring user credentials is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "autoTimeRequired": {
@@ -1542,26 +1546,26 @@
                     "type": "boolean"
                 },
                 "smsDisabled": {
-                    "description": "Whether sending or receiving SMS messages is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether sending or receiving SMS messages is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "permittedInputMethods": {
                     "$ref": "PackageNameList",
-                    "description": "If present, only input methods provided by packages in this list are permitted. If this field is present, but the list is empty, then only system input methods are permitted. <i>Requires the beta version of Android Cloud Policy.</i>"
+                    "description": "If present, only input methods provided by packages in this list are permitted. If this field is present, but the list is empty, then only system input methods are permitted. <i>Requires the beta version of the Android Device Policy app.</i>"
                 },
                 "adjustVolumeDisabled": {
                     "description": "Whether adjusting the master volume is disabled.",
                     "type": "boolean"
                 },
                 "accountTypesWithManagementDisabled": {
-                    "description": "Account types that cannot be managed by the user. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Account types that cannot be managed by the user. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "vpnConfigDisabled": {
-                    "description": "Whether configuring VPN is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether configuring VPN is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "frpAdminEmails": {
@@ -1573,10 +1577,10 @@
                 },
                 "alwaysOnVpnPackage": {
                     "$ref": "AlwaysOnVpnPackage",
-                    "description": "Configuration for an always-on VPN connection. <i>Requires the beta version of Android Cloud Policy.</i>"
+                    "description": "Configuration for an always-on VPN connection. Use with vpn_config_disabled to prevent modification of this setting. <i>Requires the beta version of the Android Device Policy app.</i>"
                 },
                 "tetheringConfigDisabled": {
-                    "description": "Whether configuring tethering and portable hotspots is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether configuring tethering and portable hotspots is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "name": {
@@ -1584,7 +1588,7 @@
                     "type": "string"
                 },
                 "uninstallAppsDisabled": {
-                    "description": "Whether user uninstallation of applications is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether user uninstallation of applications is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "funDisabled": {
@@ -1612,19 +1616,19 @@
                     "type": "boolean"
                 },
                 "mountPhysicalMediaDisabled": {
-                    "description": "Whether the user mounting physical external media is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether the user mounting physical external media is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "ensureVerifyAppsEnabled": {
-                    "description": "Whether application verification is forced to be enabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether application verification is forced to be enabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "mobileNetworksConfigDisabled": {
-                    "description": "Whether configuring mobile networks is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether configuring mobile networks is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "dataRoamingDisabled": {
-                    "description": "Whether roaming data services are disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether roaming data services are disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "statusBarDisabled": {
@@ -1633,7 +1637,7 @@
                 },
                 "longSupportMessage": {
                     "$ref": "UserFacingMessage",
-                    "description": "A message displayed to the user in the device administators settings screen. <i>Requires the beta version of Android Cloud Policy.</i>"
+                    "description": "A message displayed to the user in the device administators settings screen. <i>Requires the beta version of the Android Device Policy app.</i>"
                 },
                 "cameraDisabled": {
                     "description": "Whether all cameras on the device are disabled.",
@@ -1644,7 +1648,7 @@
                     "description": "Password requirements."
                 },
                 "setWallpaperDisabled": {
-                    "description": "Whether changing the wallpaper is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether changing the wallpaper is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "version": {
@@ -1668,19 +1672,19 @@
                     "type": "boolean"
                 },
                 "bluetoothContactSharingDisabled": {
-                    "description": "Whether bluetooth contact sharing is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether bluetooth contact sharing is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "bluetoothConfigDisabled": {
-                    "description": "Whether configuring bluetooth is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether configuring bluetooth is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "cellBroadcastsConfigDisabled": {
-                    "description": "Whether configuring cell broadcast is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether configuring cell broadcast is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "usbFileTransferDisabled": {
-                    "description": "Whether transferring files over USB is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether transferring files over USB is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "removeUserDisabled": {
@@ -1692,7 +1696,7 @@
                     "type": "boolean"
                 },
                 "createWindowsDisabled": {
-                    "description": "Whether creating windows besides app windows is disabled. <i>Requires the beta version of Android Cloud Policy.</i>",
+                    "description": "Whether creating windows besides app windows is disabled. <i>Requires the beta version of the Android Device Policy app.</i>",
                     "type": "boolean"
                 },
                 "persistentPreferredActivities": {
@@ -1816,6 +1820,10 @@
                 },
                 "hardwareStatusEnabled": {
                     "description": "Whether hardware status reporting is enabled.",
+                    "type": "boolean"
+                },
+                "deviceSettingsEnabled": {
+                    "description": "Whether device settings reporting is enabled.",
                     "type": "boolean"
                 },
                 "softwareInfoEnabled": {
@@ -1955,6 +1963,10 @@
                     "description": "Android build Id string meant for displaying to the user, e.g. shamu-userdebug 6.0.1 MOB30I 2756745 dev-keys.",
                     "type": "string"
                 },
+                "androidDevicePolicyVersionName": {
+                    "description": "The Android Device Policy app version as displayed to the user.",
+                    "type": "string"
+                },
                 "androidBuildTime": {
                     "description": "Build time.",
                     "format": "google-datetime",
@@ -1971,6 +1983,11 @@
                 "deviceKernelVersion": {
                     "description": "Kernel version, e.g. 2.6.32.9-g103d848.",
                     "type": "string"
+                },
+                "androidDevicePolicyVersionCode": {
+                    "description": "The Android Device Policy app version code.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -2432,6 +2449,55 @@
                     "description": "The minimum desired Android Framework API level. If the device does not meet the minimum requirement, this condition is satisfied. Must be greater than zero.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceSettings": {
+            "description": "Information about security related device settings on device.",
+            "id": "DeviceSettings",
+            "properties": {
+                "developmentSettingsEnabled": {
+                    "description": "If the developer mode is enabled Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.",
+                    "type": "boolean"
+                },
+                "adbEnabled": {
+                    "description": "If the ADB is enabled Settings.Global.ADB_ENABLED.",
+                    "type": "boolean"
+                },
+                "isDeviceSecure": {
+                    "description": "Device secured with PIN/password.",
+                    "type": "boolean"
+                },
+                "isEncrypted": {
+                    "description": "Whether the storage encryption is enabled DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE or DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.",
+                    "type": "boolean"
+                },
+                "unknownSourcesEnabled": {
+                    "description": "If installing apps from unknown sources is enabled. Settings.Secure.INSTALL_NON_MARKET_APPS.",
+                    "type": "boolean"
+                },
+                "encryptionStatus": {
+                    "description": "Encryption status from DevicePolicyManager.",
+                    "enum": [
+                        "ENCRYPTION_STATUS_UNSPECIFIED",
+                        "UNSUPPORTED",
+                        "INACTIVE",
+                        "ACTIVATING",
+                        "ACTIVE",
+                        "ACTIVE_DEFAULT_KEY",
+                        "ACTIVE_PER_USER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. No device should have this type.",
+                        "Encryption is not supported by the device.",
+                        "Encryption is supported by the device, but not currently active.",
+                        "Encryption is not currently active, but is currently being activated.",
+                        "Encryption is active",
+                        "Encryption is active, but an encryption key is not set by the user",
+                        "Encrpyiton is active, and the encryption key is tied to the user profile."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"

@@ -4,9 +4,6 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
-                },
-                "https://www.googleapis.com/auth/cloud-speech": {
-                    "description": "Convert speech to text using Google speech recognition technology"
                 }
             }
         }
@@ -117,46 +114,6 @@
     },
     "protocol": "rest",
     "resources": {
-        "speech": {
-            "methods": {
-                "asyncrecognize": {
-                    "description": "Performs asynchronous speech recognition: receive results via the\n[google.longrunning.Operations]\n(/speech/reference/rest/v1beta1/operations#Operation)\ninterface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
-                    "httpMethod": "POST",
-                    "id": "speech.speech.asyncrecognize",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/speech:asyncrecognize",
-                    "request": {
-                        "$ref": "AsyncRecognizeRequest"
-                    },
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-speech"
-                    ]
-                },
-                "syncrecognize": {
-                    "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
-                    "httpMethod": "POST",
-                    "id": "speech.speech.syncrecognize",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/speech:syncrecognize",
-                    "request": {
-                        "$ref": "SyncRecognizeRequest"
-                    },
-                    "response": {
-                        "$ref": "SyncRecognizeResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-speech"
-                    ]
-                }
-            }
-        },
         "operations": {
             "methods": {
                 "list": {
@@ -192,8 +149,7 @@
                         "$ref": "ListOperationsResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-speech"
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
                 "get": {
@@ -217,8 +173,7 @@
                         "$ref": "Operation"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-speech"
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
                 "cancel": {
@@ -242,8 +197,7 @@
                         "$ref": "Empty"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-speech"
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
                 "delete": {
@@ -267,16 +221,101 @@
                         "$ref": "Empty"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-speech"
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
+        },
+        "speech": {
+            "methods": {
+                "asyncrecognize": {
+                    "description": "Performs asynchronous speech recognition: receive results via the\n[google.longrunning.Operations]\n(/speech/reference/rest/v1beta1/operations#Operation)\ninterface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
+                    "httpMethod": "POST",
+                    "id": "speech.speech.asyncrecognize",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/speech:asyncrecognize",
+                    "request": {
+                        "$ref": "AsyncRecognizeRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "syncrecognize": {
+                    "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
+                    "httpMethod": "POST",
+                    "id": "speech.speech.syncrecognize",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/speech:syncrecognize",
+                    "request": {
+                        "$ref": "SyncRecognizeRequest"
+                    },
+                    "response": {
+                        "$ref": "SyncRecognizeResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 }
             }
         }
     },
-    "revision": "20171129",
+    "revision": "20171213",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
+        "SpeechRecognitionAlternative": {
+            "description": "Alternative hypotheses (a.k.a. n-best list).",
+            "id": "SpeechRecognitionAlternative",
+            "properties": {
+                "confidence": {
+                    "description": "*Output-only* The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is typically provided only for the top hypothesis, and\nonly for `is_final=true` results. Clients should not rely on the\n`confidence` field as it is not guaranteed to be accurate, or even set, in\nany of the results.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "transcript": {
+                    "description": "*Output-only* Transcript text representing the words that the user spoke.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpeechContext": {
+            "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases\nin the results.",
+            "id": "SpeechContext",
+            "properties": {
+                "phrases": {
+                    "description": "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech/limits#content).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "ListOperationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SpeechRecognitionResult": {
             "description": "A speech recognition result corresponding to a portion of the audio.",
             "id": "SpeechRecognitionResult",
@@ -287,6 +326,21 @@
                         "$ref": "SpeechRecognitionAlternative"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AsyncRecognizeRequest": {
+            "description": "The top-level message sent by the client for the `AsyncRecognize` method.",
+            "id": "AsyncRecognizeRequest",
+            "properties": {
+                "config": {
+                    "$ref": "RecognitionConfig",
+                    "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request."
+                },
+                "audio": {
+                    "$ref": "RecognitionAudio",
+                    "description": "*Required* The audio data to be recognized."
                 }
             },
             "type": "object"
@@ -307,25 +361,22 @@
             },
             "type": "object"
         },
-        "AsyncRecognizeRequest": {
-            "description": "The top-level message sent by the client for the `AsyncRecognize` method.",
-            "id": "AsyncRecognizeRequest",
-            "properties": {
-                "config": {
-                    "$ref": "RecognitionConfig",
-                    "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request."
-                },
-                "audio": {
-                    "$ref": "RecognitionAudio",
-                    "description": "*Required* The audio data to be recognized."
-                }
-            },
-            "type": "object"
-        },
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
             "id": "Operation",
             "properties": {
+                "error": {
+                    "$ref": "Status",
+                    "description": "The error result of the operation in case of failure or cancellation."
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+                    "type": "object"
+                },
                 "done": {
                     "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
                     "type": "boolean"
@@ -341,18 +392,6 @@
                 "name": {
                     "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
                     "type": "string"
-                },
-                "error": {
-                    "$ref": "Status",
-                    "description": "The error result of the operation in case of failure or cancellation."
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-                    "type": "object"
                 }
             },
             "type": "object"
@@ -425,6 +464,15 @@
             "description": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
             "id": "Status",
             "properties": {
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
+                },
                 "details": {
                     "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
                     "items": {
@@ -435,15 +483,6 @@
                         "type": "object"
                     },
                     "type": "array"
-                },
-                "code": {
-                    "description": "The status code, which should be an enum value of google.rpc.Code.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -466,54 +505,6 @@
             "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
             "id": "Empty",
             "properties": {},
-            "type": "object"
-        },
-        "ListOperationsResponse": {
-            "description": "The response message for Operations.ListOperations.",
-            "id": "ListOperationsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                },
-                "operations": {
-                    "description": "A list of operations that matches the specified filter in the request.",
-                    "items": {
-                        "$ref": "Operation"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "SpeechContext": {
-            "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases\nin the results.",
-            "id": "SpeechContext",
-            "properties": {
-                "phrases": {
-                    "description": "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech/limits#content).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "SpeechRecognitionAlternative": {
-            "description": "Alternative hypotheses (a.k.a. n-best list).",
-            "id": "SpeechRecognitionAlternative",
-            "properties": {
-                "confidence": {
-                    "description": "*Output-only* The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is typically provided only for the top hypothesis, and\nonly for `is_final=true` results. Clients should not rely on the\n`confidence` field as it is not guaranteed to be accurate, or even set, in\nany of the results.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "transcript": {
-                    "description": "*Output-only* Transcript text representing the words that the user spoke.",
-                    "type": "string"
-                }
-            },
             "type": "object"
         }
     },
