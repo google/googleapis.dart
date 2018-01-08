@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/x3x7q2yEMA_PuKZstVD0FE-8mXU\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9A6MCd6ZDPrgoMo0spT4UVq7MRk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -1822,7 +1822,7 @@
                     ]
                 },
                 "resize": {
-                    "description": "Resizes the specified persistent disk.",
+                    "description": "Resizes the specified persistent disk. You can only increase the size of the disk.",
                     "httpMethod": "POST",
                     "id": "compute.disks.resize",
                     "parameterOrder": [
@@ -7265,7 +7265,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patches the specified network with the data included in the request.",
+                    "description": "Patches the specified network with the data included in the request. Only the following fields can be modified: routingConfig.routingMode.",
                     "httpMethod": "PATCH",
                     "id": "compute.networks.patch",
                     "parameterOrder": [
@@ -13570,7 +13570,7 @@
             }
         }
     },
-    "revision": "20171127",
+    "revision": "20171207",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -13590,7 +13590,7 @@
             "type": "object"
         },
         "AcceleratorType": {
-            "description": "An Accelerator Type resource.",
+            "description": "An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (== resource_for v1.acceleratorTypes ==)",
             "id": "AcceleratorType",
             "properties": {
                 "creationTimestamp": {
@@ -13986,7 +13986,7 @@
             "type": "object"
         },
         "Address": {
-            "description": "A reserved address resource.",
+            "description": "A reserved address resource. (== resource_for beta.addresses ==) (== resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses ==)",
             "id": "Address",
             "properties": {
                 "address": {
@@ -14070,7 +14070,7 @@
                     "type": "string"
                 },
                 "subnetwork": {
-                    "description": "For external addresses, this field should not be used.\n\nThe URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range.",
+                    "description": "The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.",
                     "type": "string"
                 },
                 "users": {
@@ -14529,7 +14529,7 @@
             "type": "object"
         },
         "Autoscaler": {
-            "description": "Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances.",
+            "description": "Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine instances in managed instance groups according to an autoscaling policy that you define. For more information, read Autoscaling Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers ==)",
             "id": "Autoscaler",
             "properties": {
                 "autoscalingPolicy": {
@@ -15277,7 +15277,7 @@
             "type": "object"
         },
         "BackendService": {
-            "description": "A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.",
+            "description": "A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity. (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)",
             "id": "BackendService",
             "properties": {
                 "affinityCookieTtlSec": {
@@ -15830,7 +15830,7 @@
             "type": "object"
         },
         "Commitment": {
-            "description": "Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.\n\nCommitted use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new commitment to continue receiving discounts.",
+            "description": "Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.\n\nCommitted use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new commitment to continue receiving discounts. (== resource_for beta.commitments ==) (== resource_for v1.commitments ==)",
             "id": "Commitment",
             "properties": {
                 "creationTimestamp": {
@@ -16313,7 +16313,7 @@
             "type": "object"
         },
         "Disk": {
-            "description": "A Disk resource.",
+            "description": "A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)",
             "id": "Disk",
             "properties": {
                 "creationTimestamp": {
@@ -16685,7 +16685,7 @@
             "type": "object"
         },
         "DiskType": {
-            "description": "A DiskType resource.",
+            "description": "A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==)",
             "id": "DiskType",
             "properties": {
                 "creationTimestamp": {
@@ -17414,7 +17414,7 @@
             "type": "object"
         },
         "ForwardingRule": {
-            "description": "A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple.",
+            "description": "A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for beta.globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (== resource_for v1.regionForwardingRules ==)",
             "id": "ForwardingRule",
             "properties": {
                 "IPAddress": {
@@ -17871,7 +17871,7 @@
             "id": "GuestOsFeature",
             "properties": {
                 "type": {
-                    "description": "The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows images, the server might also populate this property with the value WINDOWS to indicate that this is a Windows image.",
+                    "description": "The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.",
                     "enum": [
                         "FEATURE_TYPE_UNSPECIFIED",
                         "VIRTIO_SCSI_MULTIQUEUE",
@@ -18575,7 +18575,7 @@
             "type": "object"
         },
         "Image": {
-            "description": "An Image resource.",
+            "description": "An Image resource. (== resource_for beta.images ==) (== resource_for v1.images ==)",
             "id": "Image",
             "properties": {
                 "archiveSizeBytes": {
@@ -18605,7 +18605,7 @@
                     "type": "string"
                 },
                 "guestOsFeatures": {
-                    "description": "A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.\n\nFor newer Windows images, the server might also populate this property with the value WINDOWS to indicate that this is a Windows image.",
+                    "description": "A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.",
                     "items": {
                         "$ref": "GuestOsFeature"
                     },
@@ -18853,7 +18853,7 @@
             "type": "object"
         },
         "Instance": {
-            "description": "An Instance resource.",
+            "description": "An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.instances ==)",
             "id": "Instance",
             "properties": {
                 "canIpForward": {
@@ -19117,6 +19117,7 @@
             "type": "object"
         },
         "InstanceGroup": {
+            "description": "InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (== resource_for v1.regionInstanceGroups ==)",
             "id": "InstanceGroup",
             "properties": {
                 "creationTimestamp": {
@@ -19412,7 +19413,7 @@
             "type": "object"
         },
         "InstanceGroupManager": {
-            "description": "An Instance Group Manager resource.",
+            "description": "An Instance Group Manager resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for v1.regionInstanceGroupManagers ==)",
             "id": "InstanceGroupManager",
             "properties": {
                 "baseInstanceName": {
@@ -20434,7 +20435,7 @@
             "type": "object"
         },
         "InstanceTemplate": {
-            "description": "An Instance Template resource.",
+            "description": "An Instance Template resource. (== resource_for beta.instanceTemplates ==) (== resource_for v1.instanceTemplates ==)",
             "id": "InstanceTemplate",
             "properties": {
                 "creationTimestamp": {
@@ -20804,7 +20805,7 @@
             "type": "object"
         },
         "Interconnect": {
-            "description": "Represents an Interconnects resource. The Interconnects resource is a dedicated connection between Google's network and your on-premises network. For more information, see the  Dedicated overview page.",
+            "description": "Represents an Interconnects resource. The Interconnects resource is a dedicated connection between Google's network and your on-premises network. For more information, see the  Dedicated overview page. (== resource_for v1.interconnects ==) (== resource_for beta.interconnects ==)",
             "id": "Interconnect",
             "properties": {
                 "adminEnabled": {
@@ -20936,7 +20937,7 @@
             "type": "object"
         },
         "InterconnectAttachment": {
-            "description": "Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating VLAN Attachments.",
+            "description": "Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating VLAN Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)",
             "id": "InterconnectAttachment",
             "properties": {
                 "cloudRouterIpAddress": {
@@ -21813,7 +21814,7 @@
             "type": "object"
         },
         "MachineType": {
-            "description": "A Machine Type resource.",
+            "description": "A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes ==)",
             "id": "MachineType",
             "properties": {
                 "creationTimestamp": {
@@ -22379,7 +22380,7 @@
             "type": "object"
         },
         "Network": {
-            "description": "Represents a Network resource. Read Networks and Firewalls for more information.",
+            "description": "Represents a Network resource. Read Networks and Firewalls for more information. (== resource_for v1.networks ==) (== resource_for beta.networks ==)",
             "id": "Network",
             "properties": {
                 "IPv4Range": {
@@ -22665,6 +22666,11 @@
                     "type": "boolean"
                 },
                 "name": {
+                    "annotations": {
+                        "required": [
+                            "compute.networks.addPeering"
+                        ]
+                    },
                     "description": "Name of the peering, which should conform to RFC1035.",
                     "type": "string"
                 },
@@ -22686,7 +22692,7 @@
             "type": "object"
         },
         "Operation": {
-            "description": "An Operation resource, used to manage asynchronous API requests.",
+            "description": "An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations ==)",
             "id": "Operation",
             "properties": {
                 "clientOperationId": {
@@ -23265,7 +23271,7 @@
             "type": "object"
         },
         "Project": {
-            "description": "A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked otherwise, values can only be modified in the console.",
+            "description": "A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked otherwise, values can only be modified in the console. (== resource_for v1.projects ==) (== resource_for beta.projects ==)",
             "id": "Project",
             "properties": {
                 "commonInstanceMetadata": {
@@ -23505,7 +23511,7 @@
             "type": "object"
         },
         "Region": {
-            "description": "Region resource.",
+            "description": "Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions ==)",
             "id": "Region",
             "properties": {
                 "creationTimestamp": {
@@ -24284,7 +24290,7 @@
             "type": "object"
         },
         "Route": {
-            "description": "Represents a Route resource. A route specifies how certain packets should be handled by the network. Routes are associated with instances by tags and the set of routes for a particular instance is called its routing table.\n\nFor each packet leaving an instance, the system searches that instance's routing table for a single best matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet is then forwarded as specified by the nextHop field of the winning route - either to another instance destination, an instance gateway, or a Google Compute Engine-operated gateway.\n\nPackets that do not match any route in the sending instance's routing table are dropped.",
+            "description": "Represents a Route resource. A route specifies how certain packets should be handled by the network. Routes are associated with instances by tags and the set of routes for a particular instance is called its routing table.\n\nFor each packet leaving an instance, the system searches that instance's routing table for a single best matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet is then forwarded as specified by the nextHop field of the winning route - either to another instance destination, an instance gateway, or a Google Compute Engine-operated gateway.\n\nPackets that do not match any route in the sending instance's routing table are dropped. (== resource_for beta.routes ==) (== resource_for v1.routes ==)",
             "id": "Route",
             "properties": {
                 "creationTimestamp": {
@@ -25263,7 +25269,7 @@
             "type": "object"
         },
         "Snapshot": {
-            "description": "A persistent disk snapshot resource.",
+            "description": "A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots ==)",
             "id": "Snapshot",
             "properties": {
                 "creationTimestamp": {
@@ -25484,7 +25490,7 @@
             "type": "object"
         },
         "SslCertificate": {
-            "description": "An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to the load balancer to serve secure connections from the user.",
+            "description": "An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to the load balancer to serve secure connections from the user. (== resource_for beta.sslCertificates ==) (== resource_for v1.sslCertificates ==)",
             "id": "SslCertificate",
             "properties": {
                 "certificate": {
@@ -25638,7 +25644,7 @@
             "type": "object"
         },
         "Subnetwork": {
-            "description": "A Subnetwork resource.",
+            "description": "A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)",
             "id": "Subnetwork",
             "properties": {
                 "creationTimestamp": {
@@ -26105,7 +26111,7 @@
             "type": "object"
         },
         "TargetHttpProxy": {
-            "description": "A TargetHttpProxy resource. This resource defines an HTTP proxy.",
+            "description": "A TargetHttpProxy resource. This resource defines an HTTP proxy. (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)",
             "id": "TargetHttpProxy",
             "properties": {
                 "creationTimestamp": {
@@ -26268,7 +26274,7 @@
             "type": "object"
         },
         "TargetHttpsProxy": {
-            "description": "A TargetHttpsProxy resource. This resource defines an HTTPS proxy.",
+            "description": "A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (== resource_for beta.targetHttpsProxies ==) (== resource_for v1.targetHttpsProxies ==)",
             "id": "TargetHttpsProxy",
             "properties": {
                 "creationTimestamp": {
@@ -26425,7 +26431,7 @@
             "type": "object"
         },
         "TargetInstance": {
-            "description": "A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of certain protocols.",
+            "description": "A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of certain protocols. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances ==)",
             "id": "TargetInstance",
             "properties": {
                 "creationTimestamp": {
@@ -26795,7 +26801,7 @@
             "type": "object"
         },
         "TargetPool": {
-            "description": "A TargetPool resource. This resource defines a pool of instances, an associated HttpHealthCheck resource, and the fallback target pool.",
+            "description": "A TargetPool resource. This resource defines a pool of instances, an associated HttpHealthCheck resource, and the fallback target pool. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)",
             "id": "TargetPool",
             "properties": {
                 "backupPool": {
@@ -27311,7 +27317,7 @@
             "type": "object"
         },
         "TargetSslProxy": {
-            "description": "A TargetSslProxy resource. This resource defines an SSL proxy.",
+            "description": "A TargetSslProxy resource. This resource defines an SSL proxy. (== resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)",
             "id": "TargetSslProxy",
             "properties": {
                 "creationTimestamp": {
@@ -27508,7 +27514,7 @@
             "type": "object"
         },
         "TargetTcpProxy": {
-            "description": "A TargetTcpProxy resource. This resource defines a TCP proxy.",
+            "description": "A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies ==)",
             "id": "TargetTcpProxy",
             "properties": {
                 "creationTimestamp": {
@@ -27670,7 +27676,7 @@
             "type": "object"
         },
         "TargetVpnGateway": {
-            "description": "Represents a Target VPN gateway resource.",
+            "description": "Represents a Target VPN gateway resource. (== resource_for beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)",
             "id": "TargetVpnGateway",
             "properties": {
                 "creationTimestamp": {
@@ -28357,6 +28363,7 @@
             "type": "object"
         },
         "VpnTunnel": {
+            "description": "VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)",
             "id": "VpnTunnel",
             "properties": {
                 "creationTimestamp": {
@@ -28931,7 +28938,7 @@
             "type": "object"
         },
         "Zone": {
-            "description": "A Zone resource.",
+            "description": "A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)",
             "id": "Zone",
             "properties": {
                 "availableCpuPlatforms": {

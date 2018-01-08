@@ -289,11 +289,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -306,9 +306,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -320,14 +320,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -711,9 +711,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
@@ -723,6 +720,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -735,9 +735,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.List<core.String> dataSourceIds,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -749,14 +749,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -792,8 +792,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -812,6 +810,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [updateMask] - Required list of fields to be updated in this request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -823,8 +823,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String updateMask,
-      core.String authorizationCode,
+      {core.String authorizationCode,
+      core.String updateMask,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -839,11 +839,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1033,6 +1033,11 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [runAttempt] - Indicates how run attempts are to be pulled.
+  /// Possible string values are:
+  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+  /// - "LATEST" : A LATEST.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransferRunsRequest` list results. For multiple-page
@@ -1046,11 +1051,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
-  /// [runAttempt] - Indicates how run attempts are to be pulled.
-  /// Possible string values are:
-  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-  /// - "LATEST" : A LATEST.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1062,10 +1062,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String runAttempt,
+      core.String pageToken,
       core.List<core.String> states,
       core.int pageSize,
-      core.String runAttempt,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1077,6 +1077,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1085,9 +1088,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1691,6 +1691,11 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [runAttempt] - Indicates how run attempts are to be pulled.
+  /// Possible string values are:
+  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+  /// - "LATEST" : A LATEST.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransferRunsRequest` list results. For multiple-page
@@ -1704,11 +1709,6 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
-  /// [runAttempt] - Indicates how run attempts are to be pulled.
-  /// Possible string values are:
-  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-  /// - "LATEST" : A LATEST.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1720,10 +1720,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String runAttempt,
+      core.String pageToken,
       core.List<core.String> states,
       core.int pageSize,
-      core.String runAttempt,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1735,6 +1735,9 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1743,9 +1746,6 @@ class ProjectsTransferConfigsRunsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1950,7 +1950,7 @@ class DataSource {
   /// for the data source.
   core.bool manualRunsDisabled;
 
-  /// The minimum interval between two consecutive scheduled runs.
+  /// The minimum interval for scheduler to schedule runs.
   core.String minimumScheduleInterval;
 
   /// Data source resource name.
@@ -2927,7 +2927,7 @@ class TransferMessage {
 }
 
 /// Represents a data transfer run.
-/// Next id: 24
+/// Next id: 27
 class TransferRun {
   /// Output only. Data source id.
   core.String dataSourceId;

@@ -1,12 +1,13 @@
 packages:
 - googleapis:
-    version: 0.47.1
+    version: 0.48.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
     apis:
+    - abusiveexperiencereport:v1  # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1  # https://developers.google.com/amp/cache/
     - adexchangebuyer:v1.3  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangebuyer:v1.4  # https://developers.google.com/ad-exchange/buyer-rest/
@@ -40,12 +41,12 @@ packages:
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudiot:v1  # https://cloud.google.com/iot
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
+    - cloudshell:v1  # https://cloud.google.com/shell/docs/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
     - cloudresourcemanager:v2beta1  # https://cloud.google.com/resource-manager/
     - cloudtrace:v1 # v2 included
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
-    - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
     - container:v1  # https://cloud.google.com/container-engine/
     - content:v2  # https://developers.google.com/shopping-content/
     - content:v2sandbox
@@ -56,6 +57,7 @@ packages:
     - dfareporting:v2.8  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v3.0  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
+    - digitalassetlinks:v1  # https://developers.google.com/digital-asset-links/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
@@ -114,7 +116,7 @@ packages:
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - storage:v1  # https://developers.google.com/storage/
     - streetviewpublish:v1  # https://developers.google.com/streetview/publish/
-    - surveys:v2  #
+    - surveys:v2
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tagmanager:v2  # https://developers.google.com/tag-manager/
     - testing:v1  # https://developers.google.com/cloud-test-lab/
@@ -130,7 +132,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.42.0
+    version: 0.43.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -148,6 +150,7 @@ packages:
     - dialogflow:v2beta1  # https://cloud.google.com/dialogflow-enterprise/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - dlp:v2beta1 # https://cloud.google.com/dlp/
+    - dlp:v2beta2 # https://cloud.google.com/dlp/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - firestore:v1beta1  # https://cloud.google.com/firestore
     - language:v1beta1  # https://cloud.google.com/natural-language/
@@ -180,6 +183,7 @@ skipped_apis:
 - blogger:v2  # v3 included
 - cloudfunctions:v1beta2 # v1 included
 - cloudiot:v1beta1  # v1 included
+- cloudshell:v1alpha1 # v1 included
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
@@ -192,7 +196,6 @@ skipped_apis:
 - datastore:v1beta3  # v1 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
-- dfareporting:v2.7 # v2.8 included
 - genomics:v1alpha2 # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included

@@ -121,6 +121,8 @@ class CoursesResourceApi {
       new CoursesStudentsResourceApi(_requester);
   CoursesTeachersResourceApi get teachers =>
       new CoursesTeachersResourceApi(_requester);
+  CoursesTopicsResourceApi get topics =>
+      new CoursesTopicsResourceApi(_requester);
 
   CoursesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -949,12 +951,6 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the
-  /// server may assign a maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
   /// [announcementStates] - Restriction on the `state` of announcements
   /// returned.
   /// If this argument is left unspecified, the default value is `PUBLISHED`.
@@ -974,6 +970,12 @@ class CoursesAnnouncementsResourceApi {
   /// The list request
   /// must be otherwise identical to the one that resulted in this token.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the
+  /// server may assign a maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -985,10 +987,10 @@ class CoursesAnnouncementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(core.String courseId,
-      {core.int pageSize,
-      core.List<core.String> announcementStates,
+      {core.List<core.String> announcementStates,
       core.String orderBy,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1000,9 +1002,6 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (announcementStates != null) {
       _queryParams["announcementStates"] = announcementStates;
     }
@@ -1011,6 +1010,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1774,15 +1776,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the
-  /// student with the specified identifier. The identifier can be one of the
-  /// following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
-  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are
   /// restricted by the requested value.
@@ -1810,6 +1803,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the
+  /// student with the specified identifier. The identifier can be one of the
+  /// following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1822,11 +1824,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String userId,
-      core.String late,
+      {core.String late,
       core.String pageToken,
       core.List<core.String> states,
       core.int pageSize,
+      core.String userId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1841,9 +1843,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
-    }
     if (late != null) {
       _queryParams["late"] = [late];
     }
@@ -1855,6 +1854,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2886,6 +2888,144 @@ class CoursesTeachersResourceApi {
   }
 }
 
+class CoursesTopicsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CoursesTopicsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Returns a topic.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the
+  /// requested course or topic, or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course or topic does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  ///
+  /// [id] - Identifier of the topic.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Topic].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Topic> get(core.String courseId, core.String id,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/topics/' +
+        commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Topic.fromJson(data));
+  }
+
+  /// Returns the list of topics that the requester is permitted to view.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the requested course or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [pageToken] - nextPageToken
+  /// value returned from a previous
+  /// list call,
+  /// indicating that the subsequent page of results should be returned.
+  ///
+  /// The list request
+  /// must be otherwise identical to the one that resulted in this token.
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the
+  /// server may assign a maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTopicResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTopicResponse> list(core.String courseId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListTopicResponse.fromJson(data));
+  }
+}
+
 class InvitationsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -3109,10 +3249,6 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [courseId] - Restricts returned invitations to those for a course with the
-  /// specified
-  /// identifier.
-  ///
   /// [userId] - Restricts returned invitations to those for a specific user.
   /// The identifier
   /// can be one of the following:
@@ -3133,6 +3269,10 @@ class InvitationsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [courseId] - Restricts returned invitations to those for a course with the
+  /// specified
+  /// identifier.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3144,10 +3284,10 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list(
-      {core.String courseId,
-      core.String userId,
+      {core.String userId,
       core.String pageToken,
       core.int pageSize,
+      core.String courseId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -3156,9 +3296,6 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (courseId != null) {
-      _queryParams["courseId"] = [courseId];
-    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
     }
@@ -3167,6 +3304,9 @@ class InvitationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseId != null) {
+      _queryParams["courseId"] = [courseId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3910,6 +4050,14 @@ class UserProfilesGuardiansResourceApi {
   /// * the string literal `"-"`, indicating that results should be returned for
   ///   all students that the requesting user has access to view.
   ///
+  /// [pageToken] - nextPageToken
+  /// value returned from a previous
+  /// list call,
+  /// indicating that the subsequent page of results should be returned.
+  ///
+  /// The list request
+  /// must be otherwise identical to the one that resulted in this token.
+  ///
   /// [invitedEmailAddress] - Filter results by the email address that the
   /// original invitation was sent
   /// to, resulting in this guardian link.
@@ -3920,14 +4068,6 @@ class UserProfilesGuardiansResourceApi {
   /// server may assign a maximum.
   ///
   /// The server may return fewer than the specified number of results.
-  ///
-  /// [pageToken] - nextPageToken
-  /// value returned from a previous
-  /// list call,
-  /// indicating that the subsequent page of results should be returned.
-  ///
-  /// The list request
-  /// must be otherwise identical to the one that resulted in this token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3940,9 +4080,9 @@ class UserProfilesGuardiansResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGuardiansResponse> list(core.String studentId,
-      {core.String invitedEmailAddress,
+      {core.String pageToken,
+      core.String invitedEmailAddress,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -3954,14 +4094,14 @@ class UserProfilesGuardiansResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5988,6 +6128,39 @@ class ListTeachersResponse {
   }
 }
 
+/// Response when listing topics.
+class ListTopicResponse {
+  /// Token identifying the next page of results to return. If empty, no further
+  /// results are available.
+  core.String nextPageToken;
+
+  /// Topic items that match the request.
+  core.List<Topic> topic;
+
+  ListTopicResponse();
+
+  ListTopicResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("topic")) {
+      topic = _json["topic"].map((value) => new Topic.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (topic != null) {
+      _json["topic"] = topic.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Material attached to course work.
 ///
 /// When creating attachments, setting the `form` field is not supported.
@@ -6917,6 +7090,65 @@ class TimeOfDay {
     }
     if (seconds != null) {
       _json["seconds"] = seconds;
+    }
+    return _json;
+  }
+}
+
+/// Topic created by a teacher for the course
+class Topic {
+  /// Identifier of the course.
+  ///
+  /// Read-only.
+  core.String courseId;
+
+  /// The name of the topic, generated by the user.
+  /// Leading and trailing whitespaces, if any, will be trimmed. Also, multiple
+  /// consecutive whitespaces will be collapsed into one inside the name.
+  /// Topic names are case sensitive, and must be no longer than 100 characters.
+  core.String name;
+
+  /// Unique identifier for the topic.
+  ///
+  /// Read-only.
+  core.String topicId;
+
+  /// The time the topic was last updated by the system.
+  ///
+  /// Read-only.
+  core.String updateTime;
+
+  Topic();
+
+  Topic.fromJson(core.Map _json) {
+    if (_json.containsKey("courseId")) {
+      courseId = _json["courseId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("topicId")) {
+      topicId = _json["topicId"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (courseId != null) {
+      _json["courseId"] = courseId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (topicId != null) {
+      _json["topicId"] = topicId;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }

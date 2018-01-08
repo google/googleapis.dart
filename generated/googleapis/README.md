@@ -68,6 +68,12 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Abusive Experience Report API - abusiveexperiencereport v1
+
+View Abusive Experience Report data, and get a list of sites that have a significant number of abusive experiences.
+
+Official API documentation: https://developers.google.com/abusive-experience-report/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Accelerated Mobile Pages (AMP) URL API - acceleratedmobilepageurl v1
 
 Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).
@@ -282,6 +288,13 @@ The Google Cloud Resource Manager API provides methods for creating, reading, an
 
 Official API documentation: https://cloud.google.com/resource-manager
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Shell API - cloudshell v1
+
+Allows users to start, configure, and connect to interactive shell sessions running in the cloud.
+
+
+Official API documentation: https://cloud.google.com/shell/docs/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v1
 
 Sends application trace data to Stackdriver Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API.
@@ -302,13 +315,9 @@ Creates and runs virtual machines on Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/compute/docs/reference/latest/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Consumer Surveys API - consumersurveys v2
-
-Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
 
-The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
+The Google Kubernetes Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
 
 Official API documentation: https://cloud.google.com/container-engine/
 
@@ -360,6 +369,12 @@ Official API documentation: https://developers.google.com/doubleclick-advertiser
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Digital Asset Links API - digitalassetlinks v1
+
+API for discovering relationships between online assets such as web sites or mobile apps.
+
+Official API documentation: https://developers.google.com/digital-asset-links/
 
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
@@ -595,7 +610,7 @@ Official API documentation: https://developers.google.com/+/domains/
 The Poly API provides read-only access to assets hosted on <a href="https://poly.google.com">poly.google.com</a>.
 
 
-Official API documentation: https://devsite.googleplex.com/poly/
+Official API documentation: https://developers.google.com/poly/
 
 #### ![Logo](https://www.google.com/images/icons/feature/predictionapi-16.png) Prediction API - prediction v1.6
 

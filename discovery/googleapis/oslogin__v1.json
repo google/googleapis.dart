@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/compute": {
-                    "description": "View and manage your Google Compute Engine resources"
-                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/compute": {
+                    "description": "View and manage your Google Compute Engine resources"
                 }
             }
         }
@@ -28,38 +28,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
@@ -113,6 +81,38 @@
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -239,17 +239,17 @@
                                 "name"
                             ],
                             "parameters": {
-                                "updateMask": {
-                                    "description": "Mask to control which fields get updated. Updates all if not present.",
-                                    "format": "google-fieldmask",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "name": {
                                     "description": "The fingerprint of the public key to update. Public keys are identified by\ntheir SHA-256 fingerprint. The fingerprint of the public key is in format\n`users/{user}/sshPublicKeys/{fingerprint}`.",
                                     "location": "path",
                                     "pattern": "^users/[^/]+/sshPublicKeys/[^/]+$",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Mask to control which fields get updated. Updates all if not present.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -299,54 +299,9 @@
             }
         }
     },
-    "revision": "20171120",
+    "revision": "20171211",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
-        "PosixAccount": {
-            "description": "The POSIX account information associated with a Google account.",
-            "id": "PosixAccount",
-            "properties": {
-                "accountId": {
-                    "description": "Output only. A POSIX account identifier.",
-                    "type": "string"
-                },
-                "gid": {
-                    "description": "The default group ID.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "uid": {
-                    "description": "The user ID.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "username": {
-                    "description": "The username of the POSIX account.",
-                    "type": "string"
-                },
-                "shell": {
-                    "description": "The path to the logic shell for this account.",
-                    "type": "string"
-                },
-                "homeDirectory": {
-                    "description": "The path to the home directory for this account.",
-                    "type": "string"
-                },
-                "gecos": {
-                    "description": "The GECOS (user information) entry for this account.",
-                    "type": "string"
-                },
-                "systemId": {
-                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
-                    "type": "string"
-                },
-                "primary": {
-                    "description": "Only one POSIX account can be marked as primary.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
         "LoginProfile": {
             "description": "The user profile information used for logging in to a virtual machine on\nGoogle Compute Engine.",
             "id": "LoginProfile",
@@ -409,6 +364,51 @@
                 "loginProfile": {
                     "$ref": "LoginProfile",
                     "description": "The login profile information for the user."
+                }
+            },
+            "type": "object"
+        },
+        "PosixAccount": {
+            "description": "The POSIX account information associated with a Google account.",
+            "id": "PosixAccount",
+            "properties": {
+                "primary": {
+                    "description": "Only one POSIX account can be marked as primary.",
+                    "type": "boolean"
+                },
+                "accountId": {
+                    "description": "Output only. A POSIX account identifier.",
+                    "type": "string"
+                },
+                "gid": {
+                    "description": "The default group ID.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "The user ID.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "The username of the POSIX account.",
+                    "type": "string"
+                },
+                "shell": {
+                    "description": "The path to the logic shell for this account.",
+                    "type": "string"
+                },
+                "homeDirectory": {
+                    "description": "The path to the home directory for this account.",
+                    "type": "string"
+                },
+                "gecos": {
+                    "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
+                },
+                "systemId": {
+                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
+                    "type": "string"
                 }
             },
             "type": "object"

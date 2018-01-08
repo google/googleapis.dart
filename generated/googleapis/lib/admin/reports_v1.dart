@@ -31,6 +31,8 @@ class AdminApi {
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   CustomerUsageReportsResourceApi get customerUsageReports =>
       new CustomerUsageReportsResourceApi(_requester);
+  EntityUsageReportsResourceApi get entityUsageReports =>
+      new EntityUsageReportsResourceApi(_requester);
   UserUsageReportResourceApi get userUsageReport =>
       new UserUsageReportResourceApi(_requester);
 
@@ -400,6 +402,115 @@ class CustomerUsageReportsResourceApi {
     }
 
     _url = 'usage/dates/' + commons.Escaper.ecapeVariable('$date');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new UsageReports.fromJson(data));
+  }
+}
+
+class EntityUsageReportsResourceApi {
+  final commons.ApiRequester _requester;
+
+  EntityUsageReportsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves a report which is a collection of properties / statistics for a
+  /// set of objects.
+  ///
+  /// Request parameters:
+  ///
+  /// [entityType] - Type of object. Should be one of - gplus_communities.
+  /// Value must have pattern "(gplus_communities)".
+  ///
+  /// [entityKey] - Represents the key of object for which the data should be
+  /// filtered.
+  ///
+  /// [date] - Represents the date in yyyy-mm-dd format for which the data is to
+  /// be fetched.
+  /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
+  ///
+  /// [customerId] - Represents the customer for which the data is to be
+  /// fetched.
+  /// Value must have pattern "C.+".
+  ///
+  /// [filters] - Represents the set of filters including parameter operator
+  /// value.
+  /// Value must have pattern
+  /// "(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
+  ///
+  /// [maxResults] - Maximum number of results to return. Maximum allowed is
+  /// 1000
+  ///
+  /// [pageToken] - Token to specify next page.
+  ///
+  /// [parameters] - Represents the application name, parameter name pairs to
+  /// fetch in csv as app_name1:param_name1, app_name2:param_name2.
+  /// Value must have pattern "(((gplus)):[^,]+,)*(((gplus)):[^,]+)".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UsageReports].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UsageReports> get(
+      core.String entityType, core.String entityKey, core.String date,
+      {core.String customerId,
+      core.String filters,
+      core.int maxResults,
+      core.String pageToken,
+      core.String parameters,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (entityType == null) {
+      throw new core.ArgumentError("Parameter entityType is required.");
+    }
+    if (entityKey == null) {
+      throw new core.ArgumentError("Parameter entityKey is required.");
+    }
+    if (date == null) {
+      throw new core.ArgumentError("Parameter date is required.");
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
+    if (filters != null) {
+      _queryParams["filters"] = [filters];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (parameters != null) {
+      _queryParams["parameters"] = [parameters];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'usage/' +
+        commons.Escaper.ecapeVariable('$entityType') +
+        '/' +
+        commons.Escaper.ecapeVariable('$entityKey') +
+        '/dates/' +
+        commons.Escaper.ecapeVariable('$date');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -964,13 +1075,17 @@ class UsageReportEntity {
   /// Obfuscated customer id for the record.
   core.String customerId;
 
+  /// Object key. Only relevant if entity.type = "OBJECT" Note: external-facing
+  /// name of report is "Entities" rather than "Objects".
+  core.String entityId;
+
   /// Obfuscated user id for the record.
   core.String profileId;
 
-  /// The type of item, can be a customer or user.
+  /// The type of item, can be customer, user, or entity (aka. object).
   core.String type;
 
-  /// user's email.
+  /// user's email. Only relevant if entity.type = "USER"
   core.String userEmail;
 
   UsageReportEntity();
@@ -978,6 +1093,9 @@ class UsageReportEntity {
   UsageReportEntity.fromJson(core.Map _json) {
     if (_json.containsKey("customerId")) {
       customerId = _json["customerId"];
+    }
+    if (_json.containsKey("entityId")) {
+      entityId = _json["entityId"];
     }
     if (_json.containsKey("profileId")) {
       profileId = _json["profileId"];
@@ -995,6 +1113,9 @@ class UsageReportEntity {
         new core.Map<core.String, core.Object>();
     if (customerId != null) {
       _json["customerId"] = customerId;
+    }
+    if (entityId != null) {
+      _json["entityId"] = entityId;
     }
     if (profileId != null) {
       _json["profileId"] = profileId;

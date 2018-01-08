@@ -15,7 +15,7 @@
     "description": "Manages the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/jaYfrc5Po9fYu5zMoC7jTk55tSA\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-HO9dhVgxPgZ9hKtuist_vTUbZU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2804,7 +2804,7 @@
             }
         }
     },
-    "revision": "20171123",
+    "revision": "20171206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Administrator": {
@@ -3770,12 +3770,31 @@
                     "description": "The name of the author of the product (for example, the app developer).",
                     "type": "string"
                 },
+                "availableCountries": {
+                    "description": "The countries which this app is available in.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "availableTracks": {
                     "description": "The tracks that are visible to the enterprise.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "category": {
+                    "description": "The app category (e.g. RACING, SOCIAL, etc.)",
+                    "type": "string"
+                },
+                "contentRating": {
+                    "description": "The content rating for this app.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A localized promotional description, if available.",
+                    "type": "string"
                 },
                 "detailsUrl": {
                     "description": "A link to the (consumer) Google Play details page for the product.",
@@ -3794,6 +3813,23 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#product\".",
                     "type": "string"
                 },
+                "lastUpdatedTimestampMillis": {
+                    "description": "The time (in milliseconds since epoch) when application was last published. (Timestamp is approximate within 7 days of actual publish time.)",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "minAndroidSdkVersion": {
+                    "description": "The minimum Android SDK necessary to run the app.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "permissions": {
+                    "description": "The permissions required for this app.",
+                    "items": {
+                        "$ref": "ProductPermission"
+                    },
+                    "type": "array"
+                },
                 "productId": {
                     "description": "A string of the form app:<package name>. For example, app:com.google.android.gm represents the Gmail app.",
                     "type": "string"
@@ -3802,9 +3838,20 @@
                     "description": "Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this means the product is not generally available anymore (even though it might still be available to people who own it).",
                     "type": "string"
                 },
+                "recentChanges": {
+                    "description": "A description of the recent changes made to the app.",
+                    "type": "string"
+                },
                 "requiresContainerApp": {
                     "description": "Deprecated.",
                     "type": "boolean"
+                },
+                "screenshotUrls": {
+                    "description": "A list of screenshot links representing the app.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "signingCertificate": {
                     "$ref": "ProductSigningCertificate",

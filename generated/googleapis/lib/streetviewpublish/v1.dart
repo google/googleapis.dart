@@ -157,6 +157,8 @@ class PhotoResourceApi {
   /// create the requested Photo.
   /// * google.rpc.Code.NOT_FOUND if the requested
   /// Photo does not exist.
+  /// * google.rpc.Code.UNAVAILABLE if the requested
+  /// Photo is still being indexed.
   ///
   /// Request parameters:
   ///
@@ -291,6 +293,8 @@ class PhotoResourceApi {
   /// create the requested photo.
   /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
   /// * google.rpc.Code.NOT_FOUND if the requested photo does not exist.
+  /// * google.rpc.Code.UNAVAILABLE if the requested
+  /// Photo is still being indexed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -582,6 +586,9 @@ class PhotosResourceApi {
 
   /// Lists all the Photos that belong to
   /// the user.
+  ///
+  /// <aside class="note"><b>Note:</b> Recently created photos that are still
+  /// being indexed are not returned in the response.</aside>
   ///
   /// Request parameters:
   ///

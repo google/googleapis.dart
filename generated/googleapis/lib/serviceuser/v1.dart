@@ -250,11 +250,11 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
+  ///
+  /// [pageSize] - Requested size of the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -267,7 +267,7 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<SearchServicesResponse> search(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -275,11 +275,11 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4581,7 +4581,8 @@ class Usage {
 ///       - selector: "google.example.library.v1.LibraryService.CreateBook"
 ///         allow_unregistered_calls: true
 class UsageRule {
-  /// True, if the method allows unregistered calls; false otherwise.
+  /// If true, the selected method allows unregistered calls, e.g. calls
+  /// that don't identify any user or application.
   core.bool allowUnregisteredCalls;
 
   /// Selects the methods to which this rule applies. Use '*' to indicate all
@@ -4590,10 +4591,10 @@ class UsageRule {
   /// Refer to selector for syntax details.
   core.String selector;
 
-  /// True, if the method should skip service control. If so, no control plane
-  /// feature (like quota and billing) will be enabled.
-  /// This flag is used by ESP to allow some Endpoints customers to bypass
-  /// Google internal checks.
+  /// If true, the selected method should skip service control and the control
+  /// plane features, such as quota and billing, will not be available.
+  /// This flag is used by Google Cloud Endpoints to bypass checks for internal
+  /// methods, such as service health check methods.
   core.bool skipServiceControl;
 
   UsageRule();

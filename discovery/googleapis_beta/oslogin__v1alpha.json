@@ -34,6 +34,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
@@ -66,13 +76,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -107,16 +117,6 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         }
@@ -307,25 +307,13 @@
             }
         }
     },
-    "revision": "20171120",
+    "revision": "20171211",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
         "PosixAccount": {
             "description": "The POSIX account information associated with a Google account.",
             "id": "PosixAccount",
             "properties": {
-                "homeDirectory": {
-                    "description": "The path to the home directory for this account.",
-                    "type": "string"
-                },
-                "systemId": {
-                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
-                    "type": "string"
-                },
-                "gecos": {
-                    "description": "The GECOS (user information) entry for this account.",
-                    "type": "string"
-                },
                 "primary": {
                     "description": "Only one POSIX account can be marked as primary.",
                     "type": "boolean"
@@ -351,6 +339,18 @@
                 "shell": {
                     "description": "The path to the logic shell for this account.",
                     "type": "string"
+                },
+                "homeDirectory": {
+                    "description": "The path to the home directory for this account.",
+                    "type": "string"
+                },
+                "systemId": {
+                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
+                    "type": "string"
+                },
+                "gecos": {
+                    "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -359,17 +359,6 @@
             "description": "The user profile information used for logging in to a virtual machine on\nGoogle Compute Engine.",
             "id": "LoginProfile",
             "properties": {
-                "name": {
-                    "description": "A unique user ID for identifying the user.",
-                    "type": "string"
-                },
-                "posixAccounts": {
-                    "description": "The list of POSIX accounts associated with the Directory API user.",
-                    "items": {
-                        "$ref": "PosixAccount"
-                    },
-                    "type": "array"
-                },
                 "suspended": {
                     "description": "Indicates if the user is suspended.",
                     "type": "boolean"
@@ -380,6 +369,17 @@
                     },
                     "description": "A map from SSH public key fingerprint to the associated key object.",
                     "type": "object"
+                },
+                "name": {
+                    "description": "A unique user ID for identifying the user.",
+                    "type": "string"
+                },
+                "posixAccounts": {
+                    "description": "The list of POSIX accounts associated with the Directory API user.",
+                    "items": {
+                        "$ref": "PosixAccount"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -394,6 +394,10 @@
             "description": "The SSH public key information associated with a Google account.",
             "id": "SshPublicKey",
             "properties": {
+                "key": {
+                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
+                    "type": "string"
+                },
                 "expirationTimeUsec": {
                     "description": "An expiration time in microseconds since epoch.",
                     "format": "int64",
@@ -401,10 +405,6 @@
                 },
                 "fingerprint": {
                     "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
-                    "type": "string"
-                },
-                "key": {
-                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
                     "type": "string"
                 }
             },

@@ -209,14 +209,6 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. Server may return fewer jobs than
-  /// requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically,
   /// this is the value of
@@ -227,6 +219,14 @@ class JobsResourceApi {
   /// returned; otherwise only
   /// user-created jobs will be returned. System-managed jobs can neither be
   /// modified nor deleted.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer jobs than
+  /// requested.
+  /// If unspecified, server will pick an appropriate default.
+  ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If
+  /// not set, the user is acting for himself (his own channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -239,10 +239,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.int pageSize,
-      core.String onBehalfOfContentOwner,
-      core.String pageToken,
+      {core.String pageToken,
       core.bool includeSystemManaged,
+      core.int pageSize,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -251,17 +251,17 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,10 +349,6 @@ class JobsReportsResourceApi {
   ///
   /// [jobId] - The ID of the job.
   ///
-  /// [pageSize] - Requested page size. Server may return fewer report types
-  /// than requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
   /// the user is acting on. If
   /// not set, the user is acting for himself (his own channel).
@@ -364,15 +360,19 @@ class JobsReportsResourceApi {
   /// [createdAfter] - If set, only reports created after the specified
   /// date/time are returned.
   ///
-  /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
-  /// than or equal the
-  /// specified date/time are returned.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically,
   /// this is the value of
   /// ListReportsResponse.next_page_token
   /// returned in response to the previous call to the `ListReports` method.
+  ///
+  /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
+  /// than or equal the
+  /// specified date/time are returned.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer report types
+  /// than requested.
+  /// If unspecified, server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -385,12 +385,12 @@ class JobsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> list(core.String jobId,
-      {core.int pageSize,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
       core.String startTimeBefore,
       core.String createdAfter,
-      core.String startTimeAtOrAfter,
       core.String pageToken,
+      core.String startTimeAtOrAfter,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -402,9 +402,6 @@ class JobsReportsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -414,11 +411,14 @@ class JobsReportsResourceApi {
     if (createdAfter != null) {
       _queryParams["createdAfter"] = [createdAfter];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (startTimeAtOrAfter != null) {
       _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -459,7 +459,7 @@ class MediaResourceApi {
   ///
   /// Completes with a
   ///
-  /// - [Media] for Metadata downloads (see [downloadOptions]).
+  /// - [GdataMedia] for Metadata downloads (see [downloadOptions]).
   ///
   /// - [commons.Media] for Media downloads (see [downloadOptions]).
   ///
@@ -498,7 +498,7 @@ class MediaResourceApi {
         downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Media.fromJson(data));
+      return _response.then((data) => new GdataMedia.fromJson(data));
     } else {
       return _response;
     }
@@ -514,14 +514,6 @@ class ReportTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. Server may return fewer report types
-  /// than requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically,
   /// this is the value of
@@ -532,6 +524,14 @@ class ReportTypesResourceApi {
   /// will be returned;
   /// otherwise only the report types that can be used to create new reporting
   /// jobs will be returned.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer report types
+  /// than requested.
+  /// If unspecified, server will pick an appropriate default.
+  ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If
+  /// not set, the user is acting for himself (his own channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -544,10 +544,10 @@ class ReportTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportTypesResponse> list(
-      {core.int pageSize,
-      core.String onBehalfOfContentOwner,
-      core.String pageToken,
+      {core.String pageToken,
       core.bool includeSystemManaged,
+      core.int pageSize,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -556,17 +556,17 @@ class ReportTypesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -601,6 +601,937 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// gdata
+class GdataBlobstore2Info {
+  /// gdata
+  core.String blobGeneration;
+
+  /// gdata
+  core.String blobId;
+
+  /// gdata
+  core.String downloadReadHandle;
+  core.List<core.int> get downloadReadHandleAsBytes {
+    return convert.BASE64.decode(downloadReadHandle);
+  }
+
+  void set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
+    downloadReadHandle =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.String readToken;
+
+  /// gdata
+  core.String uploadMetadataContainer;
+  core.List<core.int> get uploadMetadataContainerAsBytes {
+    return convert.BASE64.decode(uploadMetadataContainer);
+  }
+
+  void set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
+    uploadMetadataContainer =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GdataBlobstore2Info();
+
+  GdataBlobstore2Info.fromJson(core.Map _json) {
+    if (_json.containsKey("blobGeneration")) {
+      blobGeneration = _json["blobGeneration"];
+    }
+    if (_json.containsKey("blobId")) {
+      blobId = _json["blobId"];
+    }
+    if (_json.containsKey("downloadReadHandle")) {
+      downloadReadHandle = _json["downloadReadHandle"];
+    }
+    if (_json.containsKey("readToken")) {
+      readToken = _json["readToken"];
+    }
+    if (_json.containsKey("uploadMetadataContainer")) {
+      uploadMetadataContainer = _json["uploadMetadataContainer"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (blobGeneration != null) {
+      _json["blobGeneration"] = blobGeneration;
+    }
+    if (blobId != null) {
+      _json["blobId"] = blobId;
+    }
+    if (downloadReadHandle != null) {
+      _json["downloadReadHandle"] = downloadReadHandle;
+    }
+    if (readToken != null) {
+      _json["readToken"] = readToken;
+    }
+    if (uploadMetadataContainer != null) {
+      _json["uploadMetadataContainer"] = uploadMetadataContainer;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataCompositeMedia {
+  /// gdata
+  core.String blobRef;
+  core.List<core.int> get blobRefAsBytes {
+    return convert.BASE64.decode(blobRef);
+  }
+
+  void set blobRefAsBytes(core.List<core.int> _bytes) {
+    blobRef =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  GdataBlobstore2Info blobstore2Info;
+
+  /// gdata
+  core.String cosmoBinaryReference;
+  core.List<core.int> get cosmoBinaryReferenceAsBytes {
+    return convert.BASE64.decode(cosmoBinaryReference);
+  }
+
+  void set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
+    cosmoBinaryReference =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.int crc32cHash;
+
+  /// gdata
+  core.String inline;
+  core.List<core.int> get inlineAsBytes {
+    return convert.BASE64.decode(inline);
+  }
+
+  void set inlineAsBytes(core.List<core.int> _bytes) {
+    inline =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.String length;
+
+  /// gdata
+  core.String md5Hash;
+  core.List<core.int> get md5HashAsBytes {
+    return convert.BASE64.decode(md5Hash);
+  }
+
+  void set md5HashAsBytes(core.List<core.int> _bytes) {
+    md5Hash =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  GdataObjectId objectId;
+
+  /// gdata
+  core.String path;
+
+  /// gdata
+  /// Possible string values are:
+  /// - "PATH" : gdata
+  /// - "BLOB_REF" : gdata
+  /// - "INLINE" : gdata
+  /// - "BIGSTORE_REF" : gdata
+  /// - "COSMO_BINARY_REFERENCE" : gdata
+  core.String referenceType;
+
+  /// gdata
+  core.String sha1Hash;
+  core.List<core.int> get sha1HashAsBytes {
+    return convert.BASE64.decode(sha1Hash);
+  }
+
+  void set sha1HashAsBytes(core.List<core.int> _bytes) {
+    sha1Hash =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GdataCompositeMedia();
+
+  GdataCompositeMedia.fromJson(core.Map _json) {
+    if (_json.containsKey("blobRef")) {
+      blobRef = _json["blobRef"];
+    }
+    if (_json.containsKey("blobstore2Info")) {
+      blobstore2Info =
+          new GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
+    }
+    if (_json.containsKey("cosmoBinaryReference")) {
+      cosmoBinaryReference = _json["cosmoBinaryReference"];
+    }
+    if (_json.containsKey("crc32cHash")) {
+      crc32cHash = _json["crc32cHash"];
+    }
+    if (_json.containsKey("inline")) {
+      inline = _json["inline"];
+    }
+    if (_json.containsKey("length")) {
+      length = _json["length"];
+    }
+    if (_json.containsKey("md5Hash")) {
+      md5Hash = _json["md5Hash"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = new GdataObjectId.fromJson(_json["objectId"]);
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("referenceType")) {
+      referenceType = _json["referenceType"];
+    }
+    if (_json.containsKey("sha1Hash")) {
+      sha1Hash = _json["sha1Hash"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (blobRef != null) {
+      _json["blobRef"] = blobRef;
+    }
+    if (blobstore2Info != null) {
+      _json["blobstore2Info"] = (blobstore2Info).toJson();
+    }
+    if (cosmoBinaryReference != null) {
+      _json["cosmoBinaryReference"] = cosmoBinaryReference;
+    }
+    if (crc32cHash != null) {
+      _json["crc32cHash"] = crc32cHash;
+    }
+    if (inline != null) {
+      _json["inline"] = inline;
+    }
+    if (length != null) {
+      _json["length"] = length;
+    }
+    if (md5Hash != null) {
+      _json["md5Hash"] = md5Hash;
+    }
+    if (objectId != null) {
+      _json["objectId"] = (objectId).toJson();
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (referenceType != null) {
+      _json["referenceType"] = referenceType;
+    }
+    if (sha1Hash != null) {
+      _json["sha1Hash"] = sha1Hash;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataContentTypeInfo {
+  /// gdata
+  core.String bestGuess;
+
+  /// gdata
+  core.String fromBytes;
+
+  /// gdata
+  core.String fromFileName;
+
+  /// gdata
+  core.String fromHeader;
+
+  /// gdata
+  core.String fromUrlPath;
+
+  GdataContentTypeInfo();
+
+  GdataContentTypeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("bestGuess")) {
+      bestGuess = _json["bestGuess"];
+    }
+    if (_json.containsKey("fromBytes")) {
+      fromBytes = _json["fromBytes"];
+    }
+    if (_json.containsKey("fromFileName")) {
+      fromFileName = _json["fromFileName"];
+    }
+    if (_json.containsKey("fromHeader")) {
+      fromHeader = _json["fromHeader"];
+    }
+    if (_json.containsKey("fromUrlPath")) {
+      fromUrlPath = _json["fromUrlPath"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bestGuess != null) {
+      _json["bestGuess"] = bestGuess;
+    }
+    if (fromBytes != null) {
+      _json["fromBytes"] = fromBytes;
+    }
+    if (fromFileName != null) {
+      _json["fromFileName"] = fromFileName;
+    }
+    if (fromHeader != null) {
+      _json["fromHeader"] = fromHeader;
+    }
+    if (fromUrlPath != null) {
+      _json["fromUrlPath"] = fromUrlPath;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataDiffChecksumsResponse {
+  /// gdata
+  GdataCompositeMedia checksumsLocation;
+
+  /// gdata
+  core.String chunkSizeBytes;
+
+  /// gdata
+  GdataCompositeMedia objectLocation;
+
+  /// gdata
+  core.String objectSizeBytes;
+
+  /// gdata
+  core.String objectVersion;
+
+  GdataDiffChecksumsResponse();
+
+  GdataDiffChecksumsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("checksumsLocation")) {
+      checksumsLocation =
+          new GdataCompositeMedia.fromJson(_json["checksumsLocation"]);
+    }
+    if (_json.containsKey("chunkSizeBytes")) {
+      chunkSizeBytes = _json["chunkSizeBytes"];
+    }
+    if (_json.containsKey("objectLocation")) {
+      objectLocation =
+          new GdataCompositeMedia.fromJson(_json["objectLocation"]);
+    }
+    if (_json.containsKey("objectSizeBytes")) {
+      objectSizeBytes = _json["objectSizeBytes"];
+    }
+    if (_json.containsKey("objectVersion")) {
+      objectVersion = _json["objectVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (checksumsLocation != null) {
+      _json["checksumsLocation"] = (checksumsLocation).toJson();
+    }
+    if (chunkSizeBytes != null) {
+      _json["chunkSizeBytes"] = chunkSizeBytes;
+    }
+    if (objectLocation != null) {
+      _json["objectLocation"] = (objectLocation).toJson();
+    }
+    if (objectSizeBytes != null) {
+      _json["objectSizeBytes"] = objectSizeBytes;
+    }
+    if (objectVersion != null) {
+      _json["objectVersion"] = objectVersion;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataDiffDownloadResponse {
+  /// gdata
+  GdataCompositeMedia objectLocation;
+
+  GdataDiffDownloadResponse();
+
+  GdataDiffDownloadResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("objectLocation")) {
+      objectLocation =
+          new GdataCompositeMedia.fromJson(_json["objectLocation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectLocation != null) {
+      _json["objectLocation"] = (objectLocation).toJson();
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataDiffUploadRequest {
+  /// gdata
+  GdataCompositeMedia checksumsInfo;
+
+  /// gdata
+  GdataCompositeMedia objectInfo;
+
+  /// gdata
+  core.String objectVersion;
+
+  GdataDiffUploadRequest();
+
+  GdataDiffUploadRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("checksumsInfo")) {
+      checksumsInfo = new GdataCompositeMedia.fromJson(_json["checksumsInfo"]);
+    }
+    if (_json.containsKey("objectInfo")) {
+      objectInfo = new GdataCompositeMedia.fromJson(_json["objectInfo"]);
+    }
+    if (_json.containsKey("objectVersion")) {
+      objectVersion = _json["objectVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (checksumsInfo != null) {
+      _json["checksumsInfo"] = (checksumsInfo).toJson();
+    }
+    if (objectInfo != null) {
+      _json["objectInfo"] = (objectInfo).toJson();
+    }
+    if (objectVersion != null) {
+      _json["objectVersion"] = objectVersion;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataDiffUploadResponse {
+  /// gdata
+  core.String objectVersion;
+
+  /// gdata
+  GdataCompositeMedia originalObject;
+
+  GdataDiffUploadResponse();
+
+  GdataDiffUploadResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("objectVersion")) {
+      objectVersion = _json["objectVersion"];
+    }
+    if (_json.containsKey("originalObject")) {
+      originalObject =
+          new GdataCompositeMedia.fromJson(_json["originalObject"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectVersion != null) {
+      _json["objectVersion"] = objectVersion;
+    }
+    if (originalObject != null) {
+      _json["originalObject"] = (originalObject).toJson();
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataDiffVersionResponse {
+  /// gdata
+  core.String objectSizeBytes;
+
+  /// gdata
+  core.String objectVersion;
+
+  GdataDiffVersionResponse();
+
+  GdataDiffVersionResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("objectSizeBytes")) {
+      objectSizeBytes = _json["objectSizeBytes"];
+    }
+    if (_json.containsKey("objectVersion")) {
+      objectVersion = _json["objectVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectSizeBytes != null) {
+      _json["objectSizeBytes"] = objectSizeBytes;
+    }
+    if (objectVersion != null) {
+      _json["objectVersion"] = objectVersion;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataDownloadParameters {
+  /// gdata
+  core.bool allowGzipCompression;
+
+  /// gdata
+  core.bool ignoreRange;
+
+  GdataDownloadParameters();
+
+  GdataDownloadParameters.fromJson(core.Map _json) {
+    if (_json.containsKey("allowGzipCompression")) {
+      allowGzipCompression = _json["allowGzipCompression"];
+    }
+    if (_json.containsKey("ignoreRange")) {
+      ignoreRange = _json["ignoreRange"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowGzipCompression != null) {
+      _json["allowGzipCompression"] = allowGzipCompression;
+    }
+    if (ignoreRange != null) {
+      _json["ignoreRange"] = ignoreRange;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataMedia {
+  /// gdata
+  core.String algorithm;
+
+  /// gdata
+  core.String bigstoreObjectRef;
+  core.List<core.int> get bigstoreObjectRefAsBytes {
+    return convert.BASE64.decode(bigstoreObjectRef);
+  }
+
+  void set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
+    bigstoreObjectRef =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.String blobRef;
+  core.List<core.int> get blobRefAsBytes {
+    return convert.BASE64.decode(blobRef);
+  }
+
+  void set blobRefAsBytes(core.List<core.int> _bytes) {
+    blobRef =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  GdataBlobstore2Info blobstore2Info;
+
+  /// gdata
+  core.List<GdataCompositeMedia> compositeMedia;
+
+  /// gdata
+  core.String contentType;
+
+  /// gdata
+  GdataContentTypeInfo contentTypeInfo;
+
+  /// gdata
+  core.String cosmoBinaryReference;
+  core.List<core.int> get cosmoBinaryReferenceAsBytes {
+    return convert.BASE64.decode(cosmoBinaryReference);
+  }
+
+  void set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
+    cosmoBinaryReference =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.int crc32cHash;
+
+  /// gdata
+  GdataDiffChecksumsResponse diffChecksumsResponse;
+
+  /// gdata
+  GdataDiffDownloadResponse diffDownloadResponse;
+
+  /// gdata
+  GdataDiffUploadRequest diffUploadRequest;
+
+  /// gdata
+  GdataDiffUploadResponse diffUploadResponse;
+
+  /// gdata
+  GdataDiffVersionResponse diffVersionResponse;
+
+  /// gdata
+  GdataDownloadParameters downloadParameters;
+
+  /// gdata
+  core.String filename;
+
+  /// gdata
+  core.String hash;
+
+  /// gdata
+  core.bool hashVerified;
+
+  /// gdata
+  core.String inline;
+  core.List<core.int> get inlineAsBytes {
+    return convert.BASE64.decode(inline);
+  }
+
+  void set inlineAsBytes(core.List<core.int> _bytes) {
+    inline =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.bool isPotentialRetry;
+
+  /// gdata
+  core.String length;
+
+  /// gdata
+  core.String md5Hash;
+  core.List<core.int> get md5HashAsBytes {
+    return convert.BASE64.decode(md5Hash);
+  }
+
+  void set md5HashAsBytes(core.List<core.int> _bytes) {
+    md5Hash =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.String mediaId;
+  core.List<core.int> get mediaIdAsBytes {
+    return convert.BASE64.decode(mediaId);
+  }
+
+  void set mediaIdAsBytes(core.List<core.int> _bytes) {
+    mediaId =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  GdataObjectId objectId;
+
+  /// gdata
+  core.String path;
+
+  /// gdata
+  /// Possible string values are:
+  /// - "PATH" : gdata
+  /// - "BLOB_REF" : gdata
+  /// - "INLINE" : gdata
+  /// - "GET_MEDIA" : gdata
+  /// - "COMPOSITE_MEDIA" : gdata
+  /// - "BIGSTORE_REF" : gdata
+  /// - "DIFF_VERSION_RESPONSE" : gdata
+  /// - "DIFF_CHECKSUMS_RESPONSE" : gdata
+  /// - "DIFF_DOWNLOAD_RESPONSE" : gdata
+  /// - "DIFF_UPLOAD_REQUEST" : gdata
+  /// - "DIFF_UPLOAD_RESPONSE" : gdata
+  /// - "COSMO_BINARY_REFERENCE" : gdata
+  /// - "ARBITRARY_BYTES" : gdata
+  core.String referenceType;
+
+  /// gdata
+  core.String sha1Hash;
+  core.List<core.int> get sha1HashAsBytes {
+    return convert.BASE64.decode(sha1Hash);
+  }
+
+  void set sha1HashAsBytes(core.List<core.int> _bytes) {
+    sha1Hash =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.String sha256Hash;
+  core.List<core.int> get sha256HashAsBytes {
+    return convert.BASE64.decode(sha256Hash);
+  }
+
+  void set sha256HashAsBytes(core.List<core.int> _bytes) {
+    sha256Hash =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// gdata
+  core.String timestamp;
+
+  /// gdata
+  core.String token;
+
+  GdataMedia();
+
+  GdataMedia.fromJson(core.Map _json) {
+    if (_json.containsKey("algorithm")) {
+      algorithm = _json["algorithm"];
+    }
+    if (_json.containsKey("bigstoreObjectRef")) {
+      bigstoreObjectRef = _json["bigstoreObjectRef"];
+    }
+    if (_json.containsKey("blobRef")) {
+      blobRef = _json["blobRef"];
+    }
+    if (_json.containsKey("blobstore2Info")) {
+      blobstore2Info =
+          new GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
+    }
+    if (_json.containsKey("compositeMedia")) {
+      compositeMedia = _json["compositeMedia"]
+          .map((value) => new GdataCompositeMedia.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("contentType")) {
+      contentType = _json["contentType"];
+    }
+    if (_json.containsKey("contentTypeInfo")) {
+      contentTypeInfo =
+          new GdataContentTypeInfo.fromJson(_json["contentTypeInfo"]);
+    }
+    if (_json.containsKey("cosmoBinaryReference")) {
+      cosmoBinaryReference = _json["cosmoBinaryReference"];
+    }
+    if (_json.containsKey("crc32cHash")) {
+      crc32cHash = _json["crc32cHash"];
+    }
+    if (_json.containsKey("diffChecksumsResponse")) {
+      diffChecksumsResponse = new GdataDiffChecksumsResponse.fromJson(
+          _json["diffChecksumsResponse"]);
+    }
+    if (_json.containsKey("diffDownloadResponse")) {
+      diffDownloadResponse =
+          new GdataDiffDownloadResponse.fromJson(_json["diffDownloadResponse"]);
+    }
+    if (_json.containsKey("diffUploadRequest")) {
+      diffUploadRequest =
+          new GdataDiffUploadRequest.fromJson(_json["diffUploadRequest"]);
+    }
+    if (_json.containsKey("diffUploadResponse")) {
+      diffUploadResponse =
+          new GdataDiffUploadResponse.fromJson(_json["diffUploadResponse"]);
+    }
+    if (_json.containsKey("diffVersionResponse")) {
+      diffVersionResponse =
+          new GdataDiffVersionResponse.fromJson(_json["diffVersionResponse"]);
+    }
+    if (_json.containsKey("downloadParameters")) {
+      downloadParameters =
+          new GdataDownloadParameters.fromJson(_json["downloadParameters"]);
+    }
+    if (_json.containsKey("filename")) {
+      filename = _json["filename"];
+    }
+    if (_json.containsKey("hash")) {
+      hash = _json["hash"];
+    }
+    if (_json.containsKey("hashVerified")) {
+      hashVerified = _json["hashVerified"];
+    }
+    if (_json.containsKey("inline")) {
+      inline = _json["inline"];
+    }
+    if (_json.containsKey("isPotentialRetry")) {
+      isPotentialRetry = _json["isPotentialRetry"];
+    }
+    if (_json.containsKey("length")) {
+      length = _json["length"];
+    }
+    if (_json.containsKey("md5Hash")) {
+      md5Hash = _json["md5Hash"];
+    }
+    if (_json.containsKey("mediaId")) {
+      mediaId = _json["mediaId"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = new GdataObjectId.fromJson(_json["objectId"]);
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("referenceType")) {
+      referenceType = _json["referenceType"];
+    }
+    if (_json.containsKey("sha1Hash")) {
+      sha1Hash = _json["sha1Hash"];
+    }
+    if (_json.containsKey("sha256Hash")) {
+      sha256Hash = _json["sha256Hash"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("token")) {
+      token = _json["token"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (algorithm != null) {
+      _json["algorithm"] = algorithm;
+    }
+    if (bigstoreObjectRef != null) {
+      _json["bigstoreObjectRef"] = bigstoreObjectRef;
+    }
+    if (blobRef != null) {
+      _json["blobRef"] = blobRef;
+    }
+    if (blobstore2Info != null) {
+      _json["blobstore2Info"] = (blobstore2Info).toJson();
+    }
+    if (compositeMedia != null) {
+      _json["compositeMedia"] =
+          compositeMedia.map((value) => (value).toJson()).toList();
+    }
+    if (contentType != null) {
+      _json["contentType"] = contentType;
+    }
+    if (contentTypeInfo != null) {
+      _json["contentTypeInfo"] = (contentTypeInfo).toJson();
+    }
+    if (cosmoBinaryReference != null) {
+      _json["cosmoBinaryReference"] = cosmoBinaryReference;
+    }
+    if (crc32cHash != null) {
+      _json["crc32cHash"] = crc32cHash;
+    }
+    if (diffChecksumsResponse != null) {
+      _json["diffChecksumsResponse"] = (diffChecksumsResponse).toJson();
+    }
+    if (diffDownloadResponse != null) {
+      _json["diffDownloadResponse"] = (diffDownloadResponse).toJson();
+    }
+    if (diffUploadRequest != null) {
+      _json["diffUploadRequest"] = (diffUploadRequest).toJson();
+    }
+    if (diffUploadResponse != null) {
+      _json["diffUploadResponse"] = (diffUploadResponse).toJson();
+    }
+    if (diffVersionResponse != null) {
+      _json["diffVersionResponse"] = (diffVersionResponse).toJson();
+    }
+    if (downloadParameters != null) {
+      _json["downloadParameters"] = (downloadParameters).toJson();
+    }
+    if (filename != null) {
+      _json["filename"] = filename;
+    }
+    if (hash != null) {
+      _json["hash"] = hash;
+    }
+    if (hashVerified != null) {
+      _json["hashVerified"] = hashVerified;
+    }
+    if (inline != null) {
+      _json["inline"] = inline;
+    }
+    if (isPotentialRetry != null) {
+      _json["isPotentialRetry"] = isPotentialRetry;
+    }
+    if (length != null) {
+      _json["length"] = length;
+    }
+    if (md5Hash != null) {
+      _json["md5Hash"] = md5Hash;
+    }
+    if (mediaId != null) {
+      _json["mediaId"] = mediaId;
+    }
+    if (objectId != null) {
+      _json["objectId"] = (objectId).toJson();
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (referenceType != null) {
+      _json["referenceType"] = referenceType;
+    }
+    if (sha1Hash != null) {
+      _json["sha1Hash"] = sha1Hash;
+    }
+    if (sha256Hash != null) {
+      _json["sha256Hash"] = sha256Hash;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    if (token != null) {
+      _json["token"] = token;
+    }
+    return _json;
+  }
+}
+
+/// gdata
+class GdataObjectId {
+  /// gdata
+  core.String bucketName;
+
+  /// gdata
+  core.String generation;
+
+  /// gdata
+  core.String objectName;
+
+  GdataObjectId();
+
+  GdataObjectId.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketName")) {
+      bucketName = _json["bucketName"];
+    }
+    if (_json.containsKey("generation")) {
+      generation = _json["generation"];
+    }
+    if (_json.containsKey("objectName")) {
+      objectName = _json["objectName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketName != null) {
+      _json["bucketName"] = bucketName;
+    }
+    if (generation != null) {
+      _json["generation"] = generation;
+    }
+    if (objectName != null) {
+      _json["objectName"] = objectName;
+    }
     return _json;
   }
 }
@@ -784,29 +1715,6 @@ class ListReportsResponse {
     }
     if (reports != null) {
       _json["reports"] = reports.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// Media resource.
-class Media {
-  /// Name of the media resource.
-  core.String resourceName;
-
-  Media();
-
-  Media.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceName")) {
-      resourceName = _json["resourceName"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (resourceName != null) {
-      _json["resourceName"] = resourceName;
     }
     return _json;
   }

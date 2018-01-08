@@ -1,3 +1,13 @@
+## 0.43.0
+
+* [api] dlp:v2beta1
+* [api] adexchangebuyer2:v2beta1
+* [api] cloudtasks:v2beta2
+* [api] tpu:v1alpha1
+* [api-breaking] cloudtasks:v2beta2
+* [api-breaking] cloudtasks:v2beta2
+* [api-breaking] speech:v1beta1
+
 ## 0.42.0
 * [api-new] dialogflow:v2beta1
 * [api-new] tpu:v1alpha1

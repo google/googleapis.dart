@@ -536,6 +536,19 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were appended. By default, responses
+  /// do not include the updated values.
+  ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
   /// [insertDataOption] - How the input data should be inserted.
   /// Possible string values are:
   /// - "OVERWRITE" : A OVERWRITE.
@@ -557,19 +570,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were appended. By default, responses
-  /// do not include the updated values.
-  ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -582,11 +582,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String insertDataOption,
+      {core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
+      core.String insertDataOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
-      core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -604,6 +604,12 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (insertDataOption != null) {
       _queryParams["insertDataOption"] = [insertDataOption];
     }
@@ -614,12 +620,6 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1176,6 +1176,14 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to update.
   ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were updated. By default, responses
+  /// do not include the updated values.
+  /// If the range to write was larger than than the range actually written,
+  /// the response will include all values in the requested range (excluding
+  /// trailing empty rows and columns).
+  ///
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -1200,14 +1208,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were updated. By default, responses
-  /// do not include the updated values.
-  /// If the range to write was larger than than the range actually written,
-  /// the response will include all values in the requested range (excluding
-  /// trailing empty rows and columns).
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1220,10 +1220,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String responseValueRenderOption,
+      {core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
-      core.bool includeValuesInResponse,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1241,6 +1241,9 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -1251,9 +1254,6 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2040,6 +2040,14 @@ class BasicChartDomain {
 /// For example, if charting stock prices over time, multiple series may exist,
 /// one for the "Open Price", "High Price", "Low Price" and "Close Price".
 class BasicChartSeries {
+  /// The line style of this series. Valid only if the
+  /// chartType is AREA,
+  /// LINE, or SCATTER.
+  /// COMBO charts are also supported if the
+  /// series chart type is
+  /// AREA or LINE.
+  LineStyle lineStyle;
+
   /// The data being visualized in this chart series.
   ChartData series;
 
@@ -2091,6 +2099,9 @@ class BasicChartSeries {
   BasicChartSeries();
 
   BasicChartSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("lineStyle")) {
+      lineStyle = new LineStyle.fromJson(_json["lineStyle"]);
+    }
     if (_json.containsKey("series")) {
       series = new ChartData.fromJson(_json["series"]);
     }
@@ -2105,6 +2116,9 @@ class BasicChartSeries {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (lineStyle != null) {
+      _json["lineStyle"] = (lineStyle).toJson();
+    }
     if (series != null) {
       _json["series"] = (series).toJson();
     }
@@ -4144,6 +4158,9 @@ class ChartSpec {
   /// This field is optional.
   TextPosition titleTextPosition;
 
+  /// A waterfall chart specification.
+  WaterfallChartSpec waterfallChart;
+
   ChartSpec();
 
   ChartSpec.fromJson(core.Map _json) {
@@ -4200,6 +4217,9 @@ class ChartSpec {
     if (_json.containsKey("titleTextPosition")) {
       titleTextPosition = new TextPosition.fromJson(_json["titleTextPosition"]);
     }
+    if (_json.containsKey("waterfallChart")) {
+      waterfallChart = new WaterfallChartSpec.fromJson(_json["waterfallChart"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4255,6 +4275,9 @@ class ChartSpec {
     }
     if (titleTextPosition != null) {
       _json["titleTextPosition"] = (titleTextPosition).toJson();
+    }
+    if (waterfallChart != null) {
+      _json["waterfallChart"] = (waterfallChart).toJson();
     }
     return _json;
   }
@@ -6916,6 +6939,52 @@ class IterativeCalculationSettings {
     }
     if (maxIterations != null) {
       _json["maxIterations"] = maxIterations;
+    }
+    return _json;
+  }
+}
+
+/// Properties that describe the style of a line.
+class LineStyle {
+  /// The dash type of the line.
+  /// Possible string values are:
+  /// - "LINE_DASH_TYPE_UNSPECIFIED" : Default value, do not use.
+  /// - "INVISIBLE" : No dash type, which is equivalent to a non-visible line.
+  /// - "CUSTOM" : A custom dash for a line. Modifying the exact custom dash
+  /// style is
+  /// currently unsupported.
+  /// - "SOLID" : A solid line.
+  /// - "DOTTED" : A dotted line.
+  /// - "MEDIUM_DASHED" : A dashed line where the dashes have "medium" length.
+  /// - "MEDIUM_DASHED_DOTTED" : A line that alternates between a "medium" dash
+  /// and a dot.
+  /// - "LONG_DASHED" : A dashed line where the dashes have "long" length.
+  /// - "LONG_DASHED_DOTTED" : A line that alternates between a "long" dash and
+  /// a dot.
+  core.String type;
+
+  /// The thickness of the line, in px.
+  core.int width;
+
+  LineStyle();
+
+  LineStyle.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (width != null) {
+      _json["width"] = width;
     }
     return _json;
   }
@@ -10549,6 +10618,210 @@ class ValueRange {
     }
     if (values != null) {
       _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/// Styles for a waterfall chart column.
+class WaterfallChartColumnStyle {
+  /// The color of the column.
+  Color color;
+
+  /// The label of the column's legend.
+  core.String label;
+
+  WaterfallChartColumnStyle();
+
+  WaterfallChartColumnStyle.fromJson(core.Map _json) {
+    if (_json.containsKey("color")) {
+      color = new Color.fromJson(_json["color"]);
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (color != null) {
+      _json["color"] = (color).toJson();
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    return _json;
+  }
+}
+
+/// The domain of a waterfall chart.
+class WaterfallChartDomain {
+  /// The data of the WaterfallChartDomain.
+  ChartData data;
+
+  /// True to reverse the order of the domain values (horizontal axis).
+  core.bool reversed;
+
+  WaterfallChartDomain();
+
+  WaterfallChartDomain.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = new ChartData.fromJson(_json["data"]);
+    }
+    if (_json.containsKey("reversed")) {
+      reversed = _json["reversed"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (data != null) {
+      _json["data"] = (data).toJson();
+    }
+    if (reversed != null) {
+      _json["reversed"] = reversed;
+    }
+    return _json;
+  }
+}
+
+/// A single series of data for a waterfall chart.
+class WaterfallChartSeries {
+  /// The data being visualized in this series.
+  ChartData data;
+
+  /// True to hide the subtotal column from the end of the series. By default,
+  /// a subtotal column will appear at the end of each series. Setting this
+  /// field to true will hide that subtotal column for this series.
+  core.bool hideTrailingSubtotal;
+
+  /// Styles for all columns in this series with negative values.
+  WaterfallChartColumnStyle negativeColumnsStyle;
+
+  /// Styles for all columns in this series with positive values.
+  WaterfallChartColumnStyle positiveColumnsStyle;
+
+  /// Styles for all subtotal columns in this series.
+  WaterfallChartColumnStyle subtotalColumnsStyle;
+
+  WaterfallChartSeries();
+
+  WaterfallChartSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = new ChartData.fromJson(_json["data"]);
+    }
+    if (_json.containsKey("hideTrailingSubtotal")) {
+      hideTrailingSubtotal = _json["hideTrailingSubtotal"];
+    }
+    if (_json.containsKey("negativeColumnsStyle")) {
+      negativeColumnsStyle =
+          new WaterfallChartColumnStyle.fromJson(_json["negativeColumnsStyle"]);
+    }
+    if (_json.containsKey("positiveColumnsStyle")) {
+      positiveColumnsStyle =
+          new WaterfallChartColumnStyle.fromJson(_json["positiveColumnsStyle"]);
+    }
+    if (_json.containsKey("subtotalColumnsStyle")) {
+      subtotalColumnsStyle =
+          new WaterfallChartColumnStyle.fromJson(_json["subtotalColumnsStyle"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (data != null) {
+      _json["data"] = (data).toJson();
+    }
+    if (hideTrailingSubtotal != null) {
+      _json["hideTrailingSubtotal"] = hideTrailingSubtotal;
+    }
+    if (negativeColumnsStyle != null) {
+      _json["negativeColumnsStyle"] = (negativeColumnsStyle).toJson();
+    }
+    if (positiveColumnsStyle != null) {
+      _json["positiveColumnsStyle"] = (positiveColumnsStyle).toJson();
+    }
+    if (subtotalColumnsStyle != null) {
+      _json["subtotalColumnsStyle"] = (subtotalColumnsStyle).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A waterfall chart.
+class WaterfallChartSpec {
+  /// The line style for the connector lines.
+  LineStyle connectorLineStyle;
+
+  /// The domain data (horizontal axis) for the waterfall chart.
+  WaterfallChartDomain domain;
+
+  /// True to interpret the first value as a total.
+  core.bool firstValueIsTotal;
+
+  /// True to hide connector lines between columns.
+  core.bool hideConnectorLines;
+
+  /// The data this waterfall chart is visualizing.
+  core.List<WaterfallChartSeries> series;
+
+  /// The stacked type.
+  /// Possible string values are:
+  /// - "WATERFALL_STACKED_TYPE_UNSPECIFIED" : Default value, do not use.
+  /// - "STACKED" : Values corresponding to the same domain (horizontal axis)
+  /// value will be
+  /// stacked vertically.
+  /// - "SEQUENTIAL" : Series will spread out along the horizontal axis.
+  core.String stackedType;
+
+  WaterfallChartSpec();
+
+  WaterfallChartSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("connectorLineStyle")) {
+      connectorLineStyle = new LineStyle.fromJson(_json["connectorLineStyle"]);
+    }
+    if (_json.containsKey("domain")) {
+      domain = new WaterfallChartDomain.fromJson(_json["domain"]);
+    }
+    if (_json.containsKey("firstValueIsTotal")) {
+      firstValueIsTotal = _json["firstValueIsTotal"];
+    }
+    if (_json.containsKey("hideConnectorLines")) {
+      hideConnectorLines = _json["hideConnectorLines"];
+    }
+    if (_json.containsKey("series")) {
+      series = _json["series"]
+          .map((value) => new WaterfallChartSeries.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("stackedType")) {
+      stackedType = _json["stackedType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (connectorLineStyle != null) {
+      _json["connectorLineStyle"] = (connectorLineStyle).toJson();
+    }
+    if (domain != null) {
+      _json["domain"] = (domain).toJson();
+    }
+    if (firstValueIsTotal != null) {
+      _json["firstValueIsTotal"] = firstValueIsTotal;
+    }
+    if (hideConnectorLines != null) {
+      _json["hideConnectorLines"] = hideConnectorLines;
+    }
+    if (series != null) {
+      _json["series"] = series.map((value) => (value).toJson()).toList();
+    }
+    if (stackedType != null) {
+      _json["stackedType"] = stackedType;
     }
     return _json;
   }

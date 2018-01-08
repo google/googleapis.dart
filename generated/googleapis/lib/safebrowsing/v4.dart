@@ -24,6 +24,7 @@ class SafebrowsingApi {
   EncodedUpdatesResourceApi get encodedUpdates =>
       new EncodedUpdatesResourceApi(_requester);
   FullHashesResourceApi get fullHashes => new FullHashesResourceApi(_requester);
+  ThreatHitsResourceApi get threatHits => new ThreatHitsResourceApi(_requester);
   ThreatListUpdatesResourceApi get threatListUpdates =>
       new ThreatListUpdatesResourceApi(_requester);
   ThreatListsResourceApi get threatLists =>
@@ -48,11 +49,11 @@ class EncodedFullHashesResourceApi {
   ///
   /// [encodedRequest] - A serialized FindFullHashesRequest proto.
   ///
-  /// [clientVersion] - The version of the client implementation.
-  ///
   /// [clientId] - A client ID that (hopefully) uniquely identifies the client
   /// implementation
   /// of the Safe Browsing API.
+  ///
+  /// [clientVersion] - The version of the client implementation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -65,7 +66,7 @@ class EncodedFullHashesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
-      {core.String clientVersion, core.String clientId, core.String $fields}) {
+      {core.String clientId, core.String clientVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,11 +77,11 @@ class EncodedFullHashesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -206,6 +207,55 @@ class FullHashesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new FindFullHashesResponse.fromJson(data));
+  }
+}
+
+class ThreatHitsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ThreatHitsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Reports a Safe Browsing threat list hit to Google. Only projects with
+  /// TRUSTED_REPORTER visibility can use this method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> create(ThreatHit request, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v4/threatHits';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -472,6 +522,27 @@ class Constraints {
     if (supportedCompressions != null) {
       _json["supportedCompressions"] = supportedCompressions;
     }
+    return _json;
+  }
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
+class Empty {
+  Empty();
+
+  Empty.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1330,6 +1401,108 @@ class ThreatEntrySet {
   }
 }
 
+class ThreatHit {
+  /// Client-reported identification.
+  ClientInfo clientInfo;
+
+  /// The threat entry responsible for the hit. Full hash should be reported for
+  /// hash-based hits.
+  ThreatEntry entry;
+
+  /// The platform type reported.
+  /// Possible string values are:
+  /// - "PLATFORM_TYPE_UNSPECIFIED" : Unknown platform.
+  /// - "WINDOWS" : Threat posed to Windows.
+  /// - "LINUX" : Threat posed to Linux.
+  /// - "ANDROID" : Threat posed to Android.
+  /// - "OSX" : Threat posed to OS X.
+  /// - "IOS" : Threat posed to iOS.
+  /// - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
+  /// - "ALL_PLATFORMS" : Threat posed to all defined platforms.
+  /// - "CHROME" : Threat posed to Chrome.
+  core.String platformType;
+
+  /// The resources related to the threat hit.
+  core.List<ThreatSource> resources;
+
+  /// The threat type reported.
+  /// Possible string values are:
+  /// - "THREAT_TYPE_UNSPECIFIED" : Unknown.
+  /// - "MALWARE" : Malware threat type.
+  /// - "SOCIAL_ENGINEERING" : Social engineering threat type.
+  /// - "UNWANTED_SOFTWARE" : Unwanted software threat type.
+  /// - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
+  /// threat type.
+  /// - "SOCIAL_ENGINEERING_INTERNAL" : Social engineering threat type for
+  /// internal use.
+  /// - "API_ABUSE" : API abuse threat type.
+  /// - "MALICIOUS_BINARY" : Malicious binary threat type.
+  /// - "CSD_WHITELIST" : Client side detection whitelist threat type.
+  /// - "CSD_DOWNLOAD_WHITELIST" : Client side download detection whitelist
+  /// threat type.
+  /// - "CLIENT_INCIDENT" : Client incident threat type.
+  /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
+  /// incident threats.
+  /// This enum was never launched and should be re-used for the next list.
+  /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
+  /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
+  /// subresource filter. Interstitial
+  /// will not be shown for patterns from this list.
+  core.String threatType;
+
+  /// Details about the user that encountered the threat.
+  UserInfo userInfo;
+
+  ThreatHit();
+
+  ThreatHit.fromJson(core.Map _json) {
+    if (_json.containsKey("clientInfo")) {
+      clientInfo = new ClientInfo.fromJson(_json["clientInfo"]);
+    }
+    if (_json.containsKey("entry")) {
+      entry = new ThreatEntry.fromJson(_json["entry"]);
+    }
+    if (_json.containsKey("platformType")) {
+      platformType = _json["platformType"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"]
+          .map((value) => new ThreatSource.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("threatType")) {
+      threatType = _json["threatType"];
+    }
+    if (_json.containsKey("userInfo")) {
+      userInfo = new UserInfo.fromJson(_json["userInfo"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clientInfo != null) {
+      _json["clientInfo"] = (clientInfo).toJson();
+    }
+    if (entry != null) {
+      _json["entry"] = (entry).toJson();
+    }
+    if (platformType != null) {
+      _json["platformType"] = platformType;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    if (threatType != null) {
+      _json["threatType"] = threatType;
+    }
+    if (userInfo != null) {
+      _json["userInfo"] = (userInfo).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The information regarding one or more threats that a client submits when
 /// checking for matches in threat lists.
 class ThreatInfo {
@@ -1572,6 +1745,107 @@ class ThreatMatch {
     }
     if (threatType != null) {
       _json["threatType"] = threatType;
+    }
+    return _json;
+  }
+}
+
+/// A single resource related to a threat hit.
+class ThreatSource {
+  /// Referrer of the resource. Only set if the referrer is available.
+  core.String referrer;
+
+  /// The remote IP of the resource in ASCII format. Either IPv4 or IPv6.
+  core.String remoteIp;
+
+  /// The type of source reported.
+  /// Possible string values are:
+  /// - "THREAT_SOURCE_TYPE_UNSPECIFIED" : Unknown.
+  /// - "MATCHING_URL" : The URL that matched the threat list (for which
+  /// GetFullHash returned a
+  /// valid hash).
+  /// - "TAB_URL" : The final top-level URL of the tab that the client was
+  /// browsing when the
+  /// match occurred.
+  /// - "TAB_REDIRECT" : A redirect URL that was fetched before hitting the
+  /// final TAB_URL.
+  /// - "TAB_RESOURCE" : A resource loaded within the final TAB_URL.
+  core.String type;
+
+  /// The URL of the resource.
+  core.String url;
+
+  ThreatSource();
+
+  ThreatSource.fromJson(core.Map _json) {
+    if (_json.containsKey("referrer")) {
+      referrer = _json["referrer"];
+    }
+    if (_json.containsKey("remoteIp")) {
+      remoteIp = _json["remoteIp"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (referrer != null) {
+      _json["referrer"] = referrer;
+    }
+    if (remoteIp != null) {
+      _json["remoteIp"] = remoteIp;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/// Details about the user that encountered the threat.
+class UserInfo {
+  /// The UN M.49 region code associated with the user's location.
+  core.String regionCode;
+
+  /// Unique user identifier defined by the client.
+  core.String userId;
+  core.List<core.int> get userIdAsBytes {
+    return convert.BASE64.decode(userId);
+  }
+
+  void set userIdAsBytes(core.List<core.int> _bytes) {
+    userId =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  UserInfo();
+
+  UserInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
     }
     return _json;
   }

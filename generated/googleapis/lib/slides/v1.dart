@@ -19,6 +19,10 @@ class SlidesApi {
   /// View and manage the files in your Google Drive
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
+  /// View and manage Google Drive files and folders that you have opened or
+  /// created with this app
+  static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
+
   /// View the files in your Google Drive
   static const DriveReadonlyScope =
       "https://www.googleapis.com/auth/drive.readonly";
@@ -696,6 +700,15 @@ class CreateImageRequest {
   /// ratio, the image is scaled and centered with respect to the size in order
   /// to maintain aspect ratio. The provided transform is applied after this
   /// operation.
+  ///
+  /// The PageElementProperties.size property is
+  /// optional. If you don't specify the size, the default size of the image is
+  /// used.
+  ///
+  /// The PageElementProperties.transform property is
+  /// optional. If you don't specify a transform, the image will be placed at
+  /// the
+  /// top left corner of the page.
   PageElementProperties elementProperties;
 
   /// A user-supplied object ID.
@@ -1663,6 +1676,15 @@ class CreateTableResponse {
 /// Creates a video.
 class CreateVideoRequest {
   /// The element properties for the video.
+  ///
+  /// The PageElementProperties.size property is
+  /// optional. If you don't specify a size, a default size is chosen by the
+  /// server.
+  ///
+  /// The PageElementProperties.transform property is
+  /// optional. The transform must not have shear components.
+  /// If you don't specify a transform, the video will be placed at the top left
+  /// corner of the page.
   PageElementProperties elementProperties;
 
   /// The video source's unique identifier for this video.

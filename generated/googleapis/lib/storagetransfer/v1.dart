@@ -201,8 +201,6 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
   /// [filter] - A list of query parameters specified as JSON text in the form
   /// of
   /// {"project_id":"my_project_id",
@@ -216,6 +214,8 @@ class TransferJobsResourceApi {
   ///
   /// [pageToken] - The list page token.
   ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -227,9 +227,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -238,14 +238,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -472,8 +472,6 @@ class TransferOperationsResourceApi {
   /// [name] - The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
   ///
-  /// [pageToken] - The list page token.
-  ///
   /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [filter] - A list of query parameters specified as JSON text in the form
@@ -483,6 +481,8 @@ class TransferOperationsResourceApi {
   /// `operation_names`, and `transfer_statuses` support multiple values, they
   /// must be specified with array notation. `job_names`, `operation_names`, and
   /// `transfer_statuses` are optional.
+  ///
+  /// [pageToken] - The list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -495,9 +495,9 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -509,14 +509,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

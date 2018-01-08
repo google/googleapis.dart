@@ -3427,7 +3427,8 @@ class DisksResourceApi {
     return _response.then((data) => new DiskList.fromJson(data));
   }
 
-  /// Resizes the specified persistent disk.
+  /// Resizes the specified persistent disk. You can only increase the size of
+  /// the disk.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13621,7 +13622,8 @@ class NetworksResourceApi {
     return _response.then((data) => new NetworkList.fromJson(data));
   }
 
-  /// Patches the specified network with the data included in the request.
+  /// Patches the specified network with the data included in the request. Only
+  /// the following fields can be modified: routingConfig.routingMode.
   ///
   /// [request] - The metadata request object.
   ///
@@ -25422,7 +25424,8 @@ class AcceleratorConfig {
   }
 }
 
-/// An Accelerator Type resource.
+/// An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (==
+/// resource_for v1.acceleratorTypes ==)
 class AcceleratorType {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -26096,7 +26099,9 @@ class AccessConfig {
   }
 }
 
-/// A reserved address resource.
+/// A reserved address resource. (== resource_for beta.addresses ==) (==
+/// resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (==
+/// resource_for v1.globalAddresses ==)
 class Address {
   /// The static IP address represented by this resource.
   core.String address;
@@ -26157,10 +26162,10 @@ class Address {
   /// - "RESERVED"
   core.String status;
 
-  /// For external addresses, this field should not be used.
-  ///
   /// The URL of the subnetwork in which to reserve the address. If an IP
-  /// address is specified, it must be within the subnetwork's IP range.
+  /// address is specified, it must be within the subnetwork's IP range. This
+  /// field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
+  /// purposes.
   core.String subnetwork;
 
   /// [Output Only] The URLs of the resources that are using this address.
@@ -27095,7 +27100,9 @@ class AttachedDiskInitializeParams {
 /// Represents an Autoscaler resource. Autoscalers allow you to automatically
 /// scale virtual machine instances in managed instance groups according to an
 /// autoscaling policy that you define. For more information, read Autoscaling
-/// Groups of Instances.
+/// Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for
+/// v1.autoscalers ==) (== resource_for beta.regionAutoscalers ==) (==
+/// resource_for v1.regionAutoscalers ==)
 class Autoscaler {
   /// The configuration parameters for the autoscaling algorithm. You can define
   /// one or more of the policies for an autoscaler: cpuUtilization,
@@ -28424,7 +28431,8 @@ class BackendBucketList {
 }
 
 /// A BackendService resource. This resource defines a group of backend virtual
-/// machines and their serving capacity.
+/// machines and their serving capacity. (== resource_for v1.backendService ==)
+/// (== resource_for beta.backendService ==)
 class BackendService {
   /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If
   /// set to 0, the cookie is non-persistent and lasts only until the end of the
@@ -29424,7 +29432,8 @@ class CacheKeyPolicy {
 /// Committed use discounts are subject to Google Cloud Platform's Service
 /// Specific Terms. By purchasing a committed use discount, you agree to these
 /// terms. Committed use discounts will not renew, so you must purchase a new
-/// commitment to continue receiving discounts.
+/// commitment to continue receiving discounts. (== resource_for
+/// beta.commitments ==) (== resource_for v1.commitments ==)
 class Commitment {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -30258,7 +30267,8 @@ class DeprecationStatus {
   }
 }
 
-/// A Disk resource.
+/// A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks
+/// ==)
 class Disk {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -30983,7 +30993,8 @@ class DiskMoveRequest {
   }
 }
 
-/// A DiskType resource.
+/// A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for
+/// v1.diskTypes ==)
 class DiskType {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -32257,7 +32268,11 @@ class FirewallList {
 
 /// A ForwardingRule resource. A ForwardingRule resource specifies which pool of
 /// target virtual machines to forward a packet to if it matches the given
-/// [IPAddress, IPProtocol, ports] tuple.
+/// [IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules
+/// ==) (== resource_for v1.forwardingRules ==) (== resource_for
+/// beta.globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==)
+/// (== resource_for beta.regionForwardingRules ==) (== resource_for
+/// v1.regionForwardingRules ==)
 class ForwardingRule {
   /// The IP address that this forwarding rule is serving on behalf of.
   ///
@@ -33093,9 +33108,8 @@ class GlobalSetLabelsRequest {
 
 /// Guest OS features.
 class GuestOsFeature {
-  /// The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
-  /// supported. For newer Windows images, the server might also populate this
-  /// property with the value WINDOWS to indicate that this is a Windows image.
+  /// The ID of a supported feature. Read  Enabling guest operating system
+  /// features to see a list of available options.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "VIRTIO_SCSI_MULTIQUEUE"
@@ -34431,7 +34445,8 @@ class ImageRawDisk {
   }
 }
 
-/// An Image resource.
+/// An Image resource. (== resource_for beta.images ==) (== resource_for
+/// v1.images ==)
 class Image {
   /// Size of the image tar.gz archive stored in Google Cloud Storage (in
   /// bytes).
@@ -34456,15 +34471,9 @@ class Image {
   /// name of the image family must comply with RFC1035.
   core.String family;
 
-  /// A list of features to enable on the guest OS. Applicable for bootable
-  /// images only. Currently, only one feature can be enabled,
-  /// VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own
-  /// queue. For Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on
-  /// images with driver version 1.2.0.1621 or higher. Linux images with kernel
-  /// versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
-  ///
-  /// For newer Windows images, the server might also populate this property
-  /// with the value WINDOWS to indicate that this is a Windows image.
+  /// A list of features to enable on the guest operating system. Applicable
+  /// only for bootable images. Read  Enabling guest operating system features
+  /// to see a list of available options.
   core.List<GuestOsFeature> guestOsFeatures;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -34919,7 +34928,8 @@ class ImageList {
   }
 }
 
-/// An Instance resource.
+/// An Instance resource. (== resource_for beta.instances ==) (== resource_for
+/// v1.instances ==)
 class Instance {
   /// Allows this instance to send and receive packets with non-matching
   /// destination or source IPs. This is required if you plan to use this
@@ -35416,6 +35426,9 @@ class InstanceAggregatedList {
   }
 }
 
+/// InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for
+/// v1.instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (==
+/// resource_for v1.regionInstanceGroups ==)
 class InstanceGroup {
   /// [Output Only] The creation timestamp for this instance group in RFC3339
   /// text format.
@@ -35945,7 +35958,10 @@ class InstanceGroupList {
   }
 }
 
-/// An Instance Group Manager resource.
+/// An Instance Group Manager resource. (== resource_for
+/// beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==)
+/// (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for
+/// v1.regionInstanceGroupManagers ==)
 class InstanceGroupManager {
   /// The base instance name to use for instances in this group. The value must
   /// be 1-58 characters long. Instances are named by appending a hyphen and a
@@ -37770,7 +37786,8 @@ class InstanceReference {
   }
 }
 
-/// An Instance Template resource.
+/// An Instance Template resource. (== resource_for beta.instanceTemplates ==)
+/// (== resource_for v1.instanceTemplates ==)
 class InstanceTemplate {
   /// [Output Only] The creation timestamp for this instance template in RFC3339
   /// text format.
@@ -38410,7 +38427,8 @@ class InstancesStartWithEncryptionKeyRequest {
 
 /// Represents an Interconnects resource. The Interconnects resource is a
 /// dedicated connection between Google's network and your on-premises network.
-/// For more information, see the  Dedicated overview page.
+/// For more information, see the  Dedicated overview page. (== resource_for
+/// v1.interconnects ==) (== resource_for beta.interconnects ==)
 class Interconnect {
   /// Administrative status of the interconnect. When this is set to true, the
   /// Interconnect is functional and can carry traffic. When set to false, no
@@ -38656,7 +38674,9 @@ class Interconnect {
 }
 
 /// Represents an InterconnectAttachment (VLAN attachment) resource. For more
-/// information, see  Creating VLAN Attachments.
+/// information, see  Creating VLAN Attachments. (== resource_for
+/// beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments
+/// ==)
 class InterconnectAttachment {
   /// [Output Only] IPv4 address + prefix length to be configured on Cloud
   /// Router Interface for this interconnect attachment.
@@ -40165,7 +40185,8 @@ class MachineTypeScratchDisks {
   }
 }
 
-/// A Machine Type resource.
+/// A Machine Type resource. (== resource_for v1.machineTypes ==) (==
+/// resource_for beta.machineTypes ==)
 class MachineType {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -41155,7 +41176,8 @@ class NamedPort {
 }
 
 /// Represents a Network resource. Read Networks and Firewalls for more
-/// information.
+/// information. (== resource_for v1.networks ==) (== resource_for beta.networks
+/// ==)
 class Network {
   /// The range of internal addresses that are legal on this network. This range
   /// is a CIDR specification, for example: 192.168.0.0/16. Provided by the
@@ -41938,7 +41960,11 @@ class OperationWarnings {
   }
 }
 
-/// An Operation resource, used to manage asynchronous API requests.
+/// An Operation resource, used to manage asynchronous API requests. (==
+/// resource_for v1.globalOperations ==) (== resource_for beta.globalOperations
+/// ==) (== resource_for v1.regionOperations ==) (== resource_for
+/// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (==
+/// resource_for beta.zoneOperations ==)
 class Operation {
   /// [Output Only] Reserved for future use.
   core.String clientOperationId;
@@ -42801,7 +42827,8 @@ class PathRule {
 
 /// A Project resource. Projects can only be created in the Google Cloud
 /// Platform Console. Unless marked otherwise, values can only be modified in
-/// the console.
+/// the console. (== resource_for v1.projects ==) (== resource_for beta.projects
+/// ==)
 class Project {
   /// Metadata key/value pairs available to all instances contained in this
   /// project. See Custom metadata for more information.
@@ -43139,7 +43166,8 @@ class Quota {
   }
 }
 
-/// Region resource.
+/// Region resource. (== resource_for beta.regions ==) (== resource_for
+/// v1.regions ==)
 class Region {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -44589,7 +44617,7 @@ class RouteWarnings {
 /// or a Google Compute Engine-operated gateway.
 ///
 /// Packets that do not match any route in the sending instance's routing table
-/// are dropped.
+/// are dropped. (== resource_for beta.routes ==) (== resource_for v1.routes ==)
 class Route {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -46186,7 +46214,8 @@ class ServiceAccount {
   }
 }
 
-/// A persistent disk snapshot resource.
+/// A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (==
+/// resource_for v1.snapshots ==)
 class Snapshot {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -46594,7 +46623,8 @@ class SnapshotList {
 
 /// An SslCertificate resource. This resource provides a mechanism to upload an
 /// SSL key and certificate to the load balancer to serve secure connections
-/// from the user.
+/// from the user. (== resource_for beta.sslCertificates ==) (== resource_for
+/// v1.sslCertificates ==)
 class SslCertificate {
   /// A local certificate file. The certificate must be in PEM format. The
   /// certificate chain must be no greater than 5 certs long. The chain must
@@ -46873,7 +46903,8 @@ class SslCertificateList {
   }
 }
 
-/// A Subnetwork resource.
+/// A Subnetwork resource. (== resource_for beta.subnetworks ==) (==
+/// resource_for v1.subnetworks ==)
 class Subnetwork {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -47730,7 +47761,9 @@ class Tags {
   }
 }
 
-/// A TargetHttpProxy resource. This resource defines an HTTP proxy.
+/// A TargetHttpProxy resource. This resource defines an HTTP proxy. (==
+/// resource_for beta.targetHttpProxies ==) (== resource_for
+/// v1.targetHttpProxies ==)
 class TargetHttpProxy {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -48023,7 +48056,9 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
   }
 }
 
-/// A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
+/// A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (==
+/// resource_for beta.targetHttpsProxies ==) (== resource_for
+/// v1.targetHttpsProxies ==)
 class TargetHttpsProxy {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -48309,7 +48344,8 @@ class TargetHttpsProxyList {
 }
 
 /// A TargetInstance resource. This resource defines an endpoint instance that
-/// terminates traffic of certain protocols.
+/// terminates traffic of certain protocols. (== resource_for
+/// beta.targetInstances ==) (== resource_for v1.targetInstances ==)
 class TargetInstance {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -48935,7 +48971,8 @@ class TargetInstancesScopedList {
 }
 
 /// A TargetPool resource. This resource defines a pool of instances, an
-/// associated HttpHealthCheck resource, and the fallback target pool.
+/// associated HttpHealthCheck resource, and the fallback target pool. (==
+/// resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)
 class TargetPool {
   /// This field is applicable only when the containing target pool is serving a
   /// forwarding rule as the primary pool, and its failoverRatio field is
@@ -49853,7 +49890,9 @@ class TargetSslProxiesSetSslCertificatesRequest {
   }
 }
 
-/// A TargetSslProxy resource. This resource defines an SSL proxy.
+/// A TargetSslProxy resource. This resource defines an SSL proxy. (==
+/// resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies
+/// ==)
 class TargetSslProxy {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -50191,7 +50230,9 @@ class TargetTcpProxiesSetProxyHeaderRequest {
   }
 }
 
-/// A TargetTcpProxy resource. This resource defines a TCP proxy.
+/// A TargetTcpProxy resource. This resource defines a TCP proxy. (==
+/// resource_for beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies
+/// ==)
 class TargetTcpProxy {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -50471,7 +50512,8 @@ class TargetTcpProxyList {
   }
 }
 
-/// Represents a Target VPN gateway resource.
+/// Represents a Target VPN gateway resource. (== resource_for
+/// beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
 class TargetVpnGateway {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -51689,6 +51731,8 @@ class UsageExportLocation {
   }
 }
 
+/// VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for
+/// v1.vpnTunnels ==)
 class VpnTunnel {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -52608,7 +52652,8 @@ class XpnResourceId {
   }
 }
 
-/// A Zone resource.
+/// A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones
+/// ==)
 class Zone {
   /// [Output Only] Available cpu/platform selections for the zone.
   core.List<core.String> availableCpuPlatforms;

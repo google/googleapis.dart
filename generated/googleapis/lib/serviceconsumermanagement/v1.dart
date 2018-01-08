@@ -208,11 +208,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -225,9 +225,9 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -239,14 +239,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5397,7 +5397,8 @@ class Usage {
 ///       - selector: "google.example.library.v1.LibraryService.CreateBook"
 ///         allow_unregistered_calls: true
 class UsageRule {
-  /// True, if the method allows unregistered calls; false otherwise.
+  /// If true, the selected method allows unregistered calls, e.g. calls
+  /// that don't identify any user or application.
   core.bool allowUnregisteredCalls;
 
   /// Selects the methods to which this rule applies. Use '*' to indicate all
@@ -5406,10 +5407,10 @@ class UsageRule {
   /// Refer to selector for syntax details.
   core.String selector;
 
-  /// True, if the method should skip service control. If so, no control plane
-  /// feature (like quota and billing) will be enabled.
-  /// This flag is used by ESP to allow some Endpoints customers to bypass
-  /// Google internal checks.
+  /// If true, the selected method should skip service control and the control
+  /// plane features, such as quota and billing, will not be available.
+  /// This flag is used by Google Cloud Endpoints to bypass checks for internal
+  /// methods, such as service health check methods.
   core.bool skipServiceControl;
 
   UsageRule();

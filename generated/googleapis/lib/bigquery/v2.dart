@@ -2254,6 +2254,9 @@ class ErrorProto {
 }
 
 class ExplainQueryStage {
+  /// Number of parallel input segments completed.
+  core.String completedParallelInputs;
+
   /// Milliseconds the average shard spent on CPU-bound tasks.
   core.String computeMsAvg;
 
@@ -2271,6 +2274,9 @@ class ExplainQueryStage {
 
   /// Human-readable name for stage.
   core.String name;
+
+  /// Number of parallel input segments to be processed.
+  core.String parallelInputs;
 
   /// Milliseconds the average shard spent reading input.
   core.String readMsAvg;
@@ -2330,6 +2336,9 @@ class ExplainQueryStage {
   ExplainQueryStage();
 
   ExplainQueryStage.fromJson(core.Map _json) {
+    if (_json.containsKey("completedParallelInputs")) {
+      completedParallelInputs = _json["completedParallelInputs"];
+    }
     if (_json.containsKey("computeMsAvg")) {
       computeMsAvg = _json["computeMsAvg"];
     }
@@ -2347,6 +2356,9 @@ class ExplainQueryStage {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("parallelInputs")) {
+      parallelInputs = _json["parallelInputs"];
     }
     if (_json.containsKey("readMsAvg")) {
       readMsAvg = _json["readMsAvg"];
@@ -2409,6 +2421,9 @@ class ExplainQueryStage {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (completedParallelInputs != null) {
+      _json["completedParallelInputs"] = completedParallelInputs;
+    }
     if (computeMsAvg != null) {
       _json["computeMsAvg"] = computeMsAvg;
     }
@@ -2426,6 +2441,9 @@ class ExplainQueryStage {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (parallelInputs != null) {
+      _json["parallelInputs"] = parallelInputs;
     }
     if (readMsAvg != null) {
       _json["readMsAvg"] = readMsAvg;
@@ -4062,6 +4080,9 @@ class JobStatistics2 {
   /// CREATE/DROP TABLE/VIEW queries.
   TableReference ddlTargetTable;
 
+  /// [Output-only] The original estimate of bytes processed for the job.
+  core.String estimatedBytesProcessed;
+
   /// [Output-only] The number of rows affected by a DML statement. Present only
   /// for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
@@ -4078,7 +4099,21 @@ class JobStatistics2 {
   TableSchema schema;
 
   /// [Output-only, Experimental] The type of query statement, if valid.
+  /// Possible values (new values might be added in the future): "SELECT":
+  /// SELECT query. "INSERT": INSERT query; see
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// "UPDATE": UPDATE query; see
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// "DELETE": DELETE query; see
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT.
+  /// "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ...
+  /// "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW
+  /// ... AS SELECT ... "DROP_VIEW": DROP VIEW query.
   core.String statementType;
+
+  /// [Output-only] Describes a timeline of job execution.
+  core.List<QueryTimelineSample> timeline;
 
   /// [Output-only] Total bytes billed for the job.
   core.String totalBytesBilled;
@@ -4108,6 +4143,9 @@ class JobStatistics2 {
     if (_json.containsKey("ddlTargetTable")) {
       ddlTargetTable = new TableReference.fromJson(_json["ddlTargetTable"]);
     }
+    if (_json.containsKey("estimatedBytesProcessed")) {
+      estimatedBytesProcessed = _json["estimatedBytesProcessed"];
+    }
     if (_json.containsKey("numDmlAffectedRows")) {
       numDmlAffectedRows = _json["numDmlAffectedRows"];
     }
@@ -4126,6 +4164,11 @@ class JobStatistics2 {
     }
     if (_json.containsKey("statementType")) {
       statementType = _json["statementType"];
+    }
+    if (_json.containsKey("timeline")) {
+      timeline = _json["timeline"]
+          .map((value) => new QueryTimelineSample.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("totalBytesBilled")) {
       totalBytesBilled = _json["totalBytesBilled"];
@@ -4158,6 +4201,9 @@ class JobStatistics2 {
     if (ddlTargetTable != null) {
       _json["ddlTargetTable"] = (ddlTargetTable).toJson();
     }
+    if (estimatedBytesProcessed != null) {
+      _json["estimatedBytesProcessed"] = estimatedBytesProcessed;
+    }
     if (numDmlAffectedRows != null) {
       _json["numDmlAffectedRows"] = numDmlAffectedRows;
     }
@@ -4173,6 +4219,9 @@ class JobStatistics2 {
     }
     if (statementType != null) {
       _json["statementType"] = statementType;
+    }
+    if (timeline != null) {
+      _json["timeline"] = timeline.map((value) => (value).toJson()).toList();
     }
     if (totalBytesBilled != null) {
       _json["totalBytesBilled"] = totalBytesBilled;
@@ -4949,6 +4998,74 @@ class QueryResponse {
   }
 }
 
+class QueryTimelineSample {
+  /// Total number of active workers. This does not correspond directly to slot
+  /// usage. This is the largest value observed since the last sample.
+  core.int activeInputs;
+
+  /// Total parallel units of work completed by this query.
+  core.int completedInputs;
+
+  /// Total parallel units of work completed by the currently active stages.
+  core.int completedInputsForActiveStages;
+
+  /// Milliseconds elapsed since the start of query execution.
+  core.String elapsedMs;
+
+  /// Total parallel units of work remaining for the active stages.
+  core.String pendingInputs;
+
+  /// Cumulative slot-ms consumed by the query.
+  core.String totalSlotMs;
+
+  QueryTimelineSample();
+
+  QueryTimelineSample.fromJson(core.Map _json) {
+    if (_json.containsKey("activeInputs")) {
+      activeInputs = _json["activeInputs"];
+    }
+    if (_json.containsKey("completedInputs")) {
+      completedInputs = _json["completedInputs"];
+    }
+    if (_json.containsKey("completedInputsForActiveStages")) {
+      completedInputsForActiveStages = _json["completedInputsForActiveStages"];
+    }
+    if (_json.containsKey("elapsedMs")) {
+      elapsedMs = _json["elapsedMs"];
+    }
+    if (_json.containsKey("pendingInputs")) {
+      pendingInputs = _json["pendingInputs"];
+    }
+    if (_json.containsKey("totalSlotMs")) {
+      totalSlotMs = _json["totalSlotMs"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (activeInputs != null) {
+      _json["activeInputs"] = activeInputs;
+    }
+    if (completedInputs != null) {
+      _json["completedInputs"] = completedInputs;
+    }
+    if (completedInputsForActiveStages != null) {
+      _json["completedInputsForActiveStages"] = completedInputsForActiveStages;
+    }
+    if (elapsedMs != null) {
+      _json["elapsedMs"] = elapsedMs;
+    }
+    if (pendingInputs != null) {
+      _json["pendingInputs"] = pendingInputs;
+    }
+    if (totalSlotMs != null) {
+      _json["totalSlotMs"] = totalSlotMs;
+    }
+    return _json;
+  }
+}
+
 class Streamingbuffer {
   /// [Output-only] A lower-bound estimate of the number of bytes currently in
   /// the streaming buffer.
@@ -5009,7 +5126,9 @@ class Table {
 
   /// [Optional] The time when this table expires, in milliseconds since the
   /// epoch. If not present, the table will persist indefinitely. Expired tables
-  /// will be deleted and their storage reclaimed.
+  /// will be deleted and their storage reclaimed. The defaultTableExpirationMs
+  /// property of the encapsulating dataset can be used to set a default
+  /// expirationTime on newly created tables.
   core.String expirationTime;
 
   /// [Optional] Describes the data format, location, and other properties of a

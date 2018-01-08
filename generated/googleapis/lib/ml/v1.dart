@@ -35,6 +35,8 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
   ProjectsModelsResourceApi get models =>
       new ProjectsModelsResourceApi(_requester);
   ProjectsOperationsResourceApi get operations =>
@@ -93,8 +95,8 @@ class ProjectsResourceApi {
 
   /// Performs prediction on the data in the request.
   /// Cloud ML Engine implements a custom `predict` verb on top of an HTTP POST
-  /// method. For details of the format, see the **guide to the
-  /// [predict request format](/ml-engine/docs/v1/predict-request)**.
+  /// method. <p>For details of the request and response format, see the **guide
+  /// to the [predict request format](/ml-engine/docs/v1/predict-request)**.
   ///
   /// [request] - The metadata request object.
   ///
@@ -349,10 +351,24 @@ class ProjectsJobsResourceApi {
 
   /// Lists the jobs in the project.
   ///
+  /// If there are no jobs that match the request parameters, the list
+  /// request returns an empty response body: {}.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
+  /// You can filter on the value of one or more attributes of the job object.
+  /// For example, retrieve jobs with a job identifier that starts with
+  /// 'census':
+  /// <p><code>gcloud ml-engine jobs list --filter='jobId:census*'</code>
+  /// <p>List all failed jobs with names that start with 'rnn':
+  /// <p><code>gcloud ml-engine jobs list --filter='jobId:rnn*
+  /// AND state:FAILED'</code>
+  /// <p>For more examples, see the guide to
+  /// <a href="/ml-engine/docs/monitor-training">monitoring jobs</a>.
   ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
@@ -366,8 +382,6 @@ class ProjectsJobsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
-  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -379,9 +393,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -393,14 +407,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -608,6 +622,124 @@ class ProjectsJobsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new GoogleIamV1TestIamPermissionsResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the complete list of CMLE capabilities in a location, along with their
+  /// location-specific properties.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the location.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudMlV1Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudMlV1Location> get(core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleCloudMlV1Location.fromJson(data));
+  }
+
+  /// List all locations that provides at least one type of CMLE capability.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project for which available locations
+  /// are to be
+  /// listed (since some locations might be whitelisted for specific projects).
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
+  ///
+  /// [pageSize] - Optional. The number of locations to retrieve per "page" of
+  /// results. If there
+  /// are more remaining results than this number, the response message will
+  /// contain a valid value in the `next_page_token` field.
+  ///
+  /// The default value is 20, and the maximum page size is 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudMlV1ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudMlV1ListLocationsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GoogleCloudMlV1ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -822,6 +954,9 @@ class ProjectsModelsResourceApi {
   ///
   /// Each project can contain multiple models, and each model can have multiple
   /// versions.
+  ///
+  /// If there are no models that match the request parameters, the list request
+  /// returns an empty response body: {}.
   ///
   /// Request parameters:
   ///
@@ -1258,9 +1393,12 @@ class ProjectsModelsVersionsResourceApi {
 
   /// Gets basic information about all the versions of a model.
   ///
-  /// If you expect that a model has a lot of versions, or if you need to handle
+  /// If you expect that a model has many versions, or if you need to handle
   /// only a limited number of results at a time, you can request that the list
-  /// be retrieved in batches (called pages):
+  /// be retrieved in batches (called pages).
+  ///
+  /// If there are no versions that match the request parameters, the list
+  /// request returns an empty response body: {}.
   ///
   /// Request parameters:
   ///
@@ -1360,7 +1498,7 @@ class ProjectsModelsVersionsResourceApi {
   /// `etag` value in your version resource.
   ///
   /// Currently the only supported update masks are `description`, `labels`, and
-  /// `etag`.
+  /// `etag`, and `expire_time`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1873,6 +2011,42 @@ class GoogleCloudMlV1CancelJobRequest {
   }
 }
 
+class GoogleCloudMlV1Capability {
+  /// Available accelerators for the capability.
+  core.List<core.String> availableAccelerators;
+
+  ///
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED"
+  /// - "TRAINING"
+  /// - "BATCH_PREDICTION"
+  /// - "ONLINE_PREDICTION"
+  core.String type;
+
+  GoogleCloudMlV1Capability();
+
+  GoogleCloudMlV1Capability.fromJson(core.Map _json) {
+    if (_json.containsKey("availableAccelerators")) {
+      availableAccelerators = _json["availableAccelerators"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (availableAccelerators != null) {
+      _json["availableAccelerators"] = availableAccelerators;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// Returns service account information associated with a project.
 class GoogleCloudMlV1GetConfigResponse {
   /// The service account Cloud ML uses to access resources in the project.
@@ -2244,6 +2418,40 @@ class GoogleCloudMlV1ListJobsResponse {
   }
 }
 
+class GoogleCloudMlV1ListLocationsResponse {
+  /// Locations where at least one type of CMLE capability is available.
+  core.List<GoogleCloudMlV1Location> locations;
+
+  /// Optional. Pass this token as the `page_token` field of the request for a
+  /// subsequent call.
+  core.String nextPageToken;
+
+  GoogleCloudMlV1ListLocationsResponse();
+
+  GoogleCloudMlV1ListLocationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"]
+          .map((value) => new GoogleCloudMlV1Location.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Response message for the ListModels method.
 class GoogleCloudMlV1ListModelsResponse {
   /// The list of models.
@@ -2309,6 +2517,38 @@ class GoogleCloudMlV1ListVersionsResponse {
     }
     if (versions != null) {
       _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class GoogleCloudMlV1Location {
+  /// Capabilities available in the location.
+  core.List<GoogleCloudMlV1Capability> capabilities;
+  core.String name;
+
+  GoogleCloudMlV1Location();
+
+  GoogleCloudMlV1Location.fromJson(core.Map _json) {
+    if (_json.containsKey("capabilities")) {
+      capabilities = _json["capabilities"]
+          .map((value) => new GoogleCloudMlV1Capability.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (capabilities != null) {
+      _json["capabilities"] =
+          capabilities.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -2393,6 +2633,8 @@ class GoogleCloudMlV1Model {
   /// Optional. The list of regions where the model is going to be deployed.
   /// Currently only one region per model is supported.
   /// Defaults to 'us-central1' if nothing is set.
+  /// See the <a href="/ml-engine/docs/regions">available regions</a> for
+  /// ML Engine services.
   /// Note:
   /// *   No matter where a model is deployed, it can always be accessed by
   ///     users from anywhere, both for online and batch prediction.
@@ -2709,10 +2951,12 @@ class GoogleCloudMlV1PredictionInput {
   /// Required. The format of the input data files.
   /// Possible string values are:
   /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
-  /// - "TEXT" : The source file is a text file with instances separated by the
-  /// new-line character.
-  /// - "TF_RECORD" : The source file is a TFRecord file.
-  /// - "TF_RECORD_GZIP" : The source file is a GZIP-compressed TFRecord file.
+  /// - "JSON" : Each line of the file is a JSON dictionary representing one
+  /// record.
+  /// - "TEXT" : Deprecated. Use JSON instead.
+  /// - "TF_RECORD" : INPUT ONLY. The source file is a TFRecord file.
+  /// - "TF_RECORD_GZIP" : INPUT ONLY. The source file is a GZIP-compressed
+  /// TFRecord file.
   core.String dataFormat;
 
   /// Required. The Google Cloud Storage location of the input data files.
@@ -2734,6 +2978,8 @@ class GoogleCloudMlV1PredictionInput {
   core.String outputPath;
 
   /// Required. The Google Compute Engine region to run the prediction job in.
+  /// See the <a href="/ml-engine/docs/regions">available regions</a> for
+  /// ML Engine services.
   core.String region;
 
   /// Optional. The Google Cloud ML runtime version to use for this batch
@@ -2906,7 +3152,13 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
   }
 }
 
-/// Represents input parameters for a training job.
+/// Represents input parameters for a training job. When using the
+/// gcloud command to submit your training job, you can specify
+/// the input parameters as command-line arguments and/or in a YAML
+/// configuration
+/// file referenced from the --config command-line argument. For
+/// details, see the guide to
+/// <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
 class GoogleCloudMlV1TrainingInput {
   /// Optional. Command line arguments to pass to the program.
   core.List<core.String> args;
@@ -2976,14 +3228,14 @@ class GoogleCloudMlV1TrainingInput {
   ///   <dd>
   /// A machine equivalent to <code suppresswarning="true">standard</code> that
   ///   also includes a single NVIDIA Tesla P100 GPU. The availability of these
-  ///   GPUs is in the Alpha launch stage.
+  ///   GPUs is in the Beta launch stage.
   ///   </dd>
   ///   <dt>complex_model_m_p100</dt>
   ///   <dd>
   ///   A machine equivalent to
   ///   <code suppresswarning="true">complex_model_m</code> that also includes
   ///   four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
-  ///   the Alpha launch stage.
+  ///   the Beta launch stage.
   ///   </dd>
   /// </dl>
   ///
@@ -3017,10 +3269,14 @@ class GoogleCloudMlV1TrainingInput {
   core.String pythonModule;
 
   /// Optional. The version of Python used in training. If not set, the default
-  /// version is '2.7'.
+  /// version is '2.7'. Python '3.5' is available when `runtime_version` is set
+  /// to '1.4' and above. Python '2.7' works with all supported runtime
+  /// versions.
   core.String pythonVersion;
 
   /// Required. The Google Compute Engine region to run the training job in.
+  /// See the <a href="/ml-engine/docs/regions">available regions</a> for
+  /// ML Engine services.
   core.String region;
 
   /// Optional. The Google Cloud ML runtime version to use for training.  If not

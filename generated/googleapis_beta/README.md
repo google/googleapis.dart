@@ -135,6 +135,12 @@ The Google Data Loss Prevention API provides methods for detection of privacy-se
 
 Official API documentation: https://cloud.google.com/dlp/docs/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DLP API - dlp v2beta2
+
+The Google Data Loss Prevention API provides methods for detection of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.
+
+Official API documentation: https://cloud.google.com/dlp/docs/
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v2beta1
 
 Configures and serves authoritative DNS records.

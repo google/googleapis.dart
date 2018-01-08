@@ -16,6 +16,40 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
@@ -37,13 +71,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
@@ -65,40 +99,6 @@
         },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
             "location": "query",
             "type": "string"
         }
@@ -163,14 +163,32 @@
     "revision": "20171129",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
+        "RemoteConfigParameter": {
+            "description": "While default_value and conditional_values are each optional, at least one of\nthe two is required - otherwise, the parameter is meaningless (and an\nexception will be thrown by the validation logic).",
+            "id": "RemoteConfigParameter",
+            "properties": {
+                "defaultValue": {
+                    "$ref": "RemoteConfigParameterValue",
+                    "description": "Optional - value to set the parameter to, when none of the named conditions\nevaluate to <code>true</code>."
+                },
+                "description": {
+                    "description": "Optional.\nA description for this Parameter. Length must be less than or equal to\n100 characters (or more precisely, unicode code points, which is defined in\njava/com/google/wireless/android/config/ConstsExporter.java).\nA description may contain any Unicode characters",
+                    "type": "string"
+                },
+                "conditionalValues": {
+                    "additionalProperties": {
+                        "$ref": "RemoteConfigParameterValue"
+                    },
+                    "description": "Optional - a map of (condition_name, value). The condition_name of the\nhighest priority (the one listed first in the conditions array) determines\nthe value of this parameter.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "RemoteConfigCondition": {
             "description": "A single RemoteConfig Condition.  A list of these (because order matters) are\npart of a single RemoteConfig template.",
             "id": "RemoteConfigCondition",
             "properties": {
-                "name": {
-                    "description": "Required.\nA non empty and unique name of this condition.",
-                    "type": "string"
-                },
                 "description": {
                     "description": "Optional.\nA description for this Condition. Length must be less than or equal to\n100 characters (or more precisely, unicode code points, which is defined in\njava/com/google/wireless/android/config/ConstsExporter.java).\nA description may contain any Unicode characters",
                     "type": "string"
@@ -210,6 +228,10 @@
                         "Teal"
                     ],
                     "type": "string"
+                },
+                "name": {
+                    "description": "Required.\nA non empty and unique name of this condition.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -245,28 +267,6 @@
                         "$ref": "RemoteConfigParameter"
                     },
                     "description": "Map of parameter keys to their optional default values and optional submap\nof (condition name : value). Order doesn't affect semantics, and so is\nsorted by the server. The 'key' values of the params must be unique.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "RemoteConfigParameter": {
-            "description": "While default_value and conditional_values are each optional, at least one of\nthe two is required - otherwise, the parameter is meaningless (and an\nexception will be thrown by the validation logic).",
-            "id": "RemoteConfigParameter",
-            "properties": {
-                "defaultValue": {
-                    "$ref": "RemoteConfigParameterValue",
-                    "description": "Optional - value to set the parameter to, when none of the named conditions\nevaluate to <code>true</code>."
-                },
-                "description": {
-                    "description": "Optional.\nA description for this Parameter. Length must be less than or equal to\n100 characters (or more precisely, unicode code points, which is defined in\njava/com/google/wireless/android/config/ConstsExporter.java).\nA description may contain any Unicode characters",
-                    "type": "string"
-                },
-                "conditionalValues": {
-                    "additionalProperties": {
-                        "$ref": "RemoteConfigParameterValue"
-                    },
-                    "description": "Optional - a map of (condition_name, value). The condition_name of the\nhighest priority (the one listed first in the conditions array) determines\nthe value of this parameter.",
                     "type": "object"
                 }
             },

@@ -771,12 +771,12 @@ class RiskAnalysisOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^riskAnalysis/operations$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The list page size. The maximum allowed value is 256 and the
   /// default is 100.
   ///
   /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -789,9 +789,9 @@ class RiskAnalysisOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -803,14 +803,14 @@ class RiskAnalysisOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2030,6 +2030,34 @@ class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
   /// The native way to select the alphabet. Must be in the range [2, 62].
   core.int radix;
 
+  /// The custom info type to annotate the surrogate with.
+  /// This annotation will be applied to the surrogate by prefixing it with
+  /// the name of the custom info type followed by the number of
+  /// characters comprising the surrogate. The following scheme defines the
+  /// format: info_type_name(surrogate_character_count):surrogate
+  ///
+  /// For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and
+  /// the surrogate is 'abc', the full replacement value
+  /// will be: 'MY_TOKEN_INFO_TYPE(3):abc'
+  ///
+  /// This annotation identifies the surrogate when inspecting content using the
+  /// custom info type
+  /// [`SurrogateType`](/dlp/docs/reference/rest/v2beta1/InspectConfig#surrogatetype).
+  /// This facilitates reversal of the surrogate when it occurs in free text.
+  ///
+  /// In order for inspection to work properly, the name of this info type must
+  /// not occur naturally anywhere in your data; otherwise, inspection may
+  /// find a surrogate that does not correspond to an actual identifier.
+  /// Therefore, choose your custom info type name carefully after considering
+  /// what your data looks like. One way to select a name that has a high chance
+  /// of yielding reliable detection is to include one or more unicode
+  /// characters
+  /// that are highly improbable to exist in your data.
+  /// For example, assuming your data is entered from a regular ASCII keyboard,
+  /// the symbol with the hex code point 29DD might be used like so:
+  /// ⧝MY_TOKEN_TYPE
+  GooglePrivacyDlpV2beta1InfoType surrogateInfoType;
+
   GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig();
 
   GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig.fromJson(core.Map _json) {
@@ -2048,6 +2076,10 @@ class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
     }
     if (_json.containsKey("radix")) {
       radix = _json["radix"];
+    }
+    if (_json.containsKey("surrogateInfoType")) {
+      surrogateInfoType = new GooglePrivacyDlpV2beta1InfoType.fromJson(
+          _json["surrogateInfoType"]);
     }
   }
 
@@ -2069,6 +2101,9 @@ class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
     if (radix != null) {
       _json["radix"] = radix;
     }
+    if (surrogateInfoType != null) {
+      _json["surrogateInfoType"] = (surrogateInfoType).toJson();
+    }
     return _json;
   }
 }
@@ -2083,6 +2118,9 @@ class GooglePrivacyDlpV2beta1CustomInfoType {
   /// that do not conflict with built-in info types or other custom info types.
   GooglePrivacyDlpV2beta1InfoType infoType;
 
+  /// Surrogate info type.
+  GooglePrivacyDlpV2beta1SurrogateType surrogateType;
+
   GooglePrivacyDlpV2beta1CustomInfoType();
 
   GooglePrivacyDlpV2beta1CustomInfoType.fromJson(core.Map _json) {
@@ -2094,6 +2132,10 @@ class GooglePrivacyDlpV2beta1CustomInfoType {
       infoType =
           new GooglePrivacyDlpV2beta1InfoType.fromJson(_json["infoType"]);
     }
+    if (_json.containsKey("surrogateType")) {
+      surrogateType = new GooglePrivacyDlpV2beta1SurrogateType.fromJson(
+          _json["surrogateType"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2104,6 +2146,9 @@ class GooglePrivacyDlpV2beta1CustomInfoType {
     }
     if (infoType != null) {
       _json["infoType"] = (infoType).toJson();
+    }
+    if (surrogateType != null) {
+      _json["surrogateType"] = (surrogateType).toJson();
     }
     return _json;
   }
@@ -5173,6 +5218,26 @@ class GooglePrivacyDlpV2beta1SummaryResult {
   }
 }
 
+/// Message for detecting output from deidentification transformations
+/// such as
+/// [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2beta1/content/deidentify#CryptoReplaceFfxFpeConfig).
+/// These types of transformations are
+/// those that perform pseudonymization, thereby producing a "surrogate" as
+/// output. This should be used in conjunction with a field on the
+/// transformation such as `surrogate_info_type`. This custom info type does
+/// not support the use of `detection_rules`.
+class GooglePrivacyDlpV2beta1SurrogateType {
+  GooglePrivacyDlpV2beta1SurrogateType();
+
+  GooglePrivacyDlpV2beta1SurrogateType.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Structured content to inspect. Up to 50,000 `Value`s per request allowed.
 class GooglePrivacyDlpV2beta1Table {
   core.List<GooglePrivacyDlpV2beta1FieldId> headers;
@@ -5318,12 +5383,15 @@ class GooglePrivacyDlpV2beta1TimePartConfig {
 }
 
 /// Summary of a single tranformation.
+/// Only one of 'transformation', 'field_transformation', or 'record_suppress'
+/// will be set.
 class GooglePrivacyDlpV2beta1TransformationSummary {
   /// Set if the transformation was limited to a specific FieldId.
   GooglePrivacyDlpV2beta1FieldId field;
 
-  /// The field transformation that was applied. This list will contain
-  /// multiple only in the case of errors.
+  /// The field transformation that was applied.
+  /// If multiple field transformations are requested for a single field,
+  /// this list will contain all of them; otherwise, only one is supplied.
   core.List<GooglePrivacyDlpV2beta1FieldTransformation> fieldTransformations;
 
   /// Set if the transformation was limited to a specific info_type.
@@ -5335,6 +5403,9 @@ class GooglePrivacyDlpV2beta1TransformationSummary {
 
   /// The specific transformation these stats apply to.
   GooglePrivacyDlpV2beta1PrimitiveTransformation transformation;
+
+  /// Total size in bytes that were transformed in some way.
+  core.String transformedBytes;
 
   GooglePrivacyDlpV2beta1TransformationSummary();
 
@@ -5367,6 +5438,9 @@ class GooglePrivacyDlpV2beta1TransformationSummary {
           new GooglePrivacyDlpV2beta1PrimitiveTransformation.fromJson(
               _json["transformation"]);
     }
+    if (_json.containsKey("transformedBytes")) {
+      transformedBytes = _json["transformedBytes"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5390,6 +5464,9 @@ class GooglePrivacyDlpV2beta1TransformationSummary {
     }
     if (transformation != null) {
       _json["transformation"] = (transformation).toJson();
+    }
+    if (transformedBytes != null) {
+      _json["transformedBytes"] = transformedBytes;
     }
     return _json;
   }
@@ -5457,6 +5534,11 @@ class GooglePrivacyDlpV2beta1UnwrappedCryptoKey {
 }
 
 /// Set of primitive values supported by the system.
+/// Note that for the purposes of inspection or transformation, the number
+/// of bytes considered to comprise a 'Value' is based on its representation
+/// as a UTF-8 encoded string. For example, if 'integer_value' is set to
+/// 123456789, the number of bytes would be counted as 9, even though an
+/// int64 only holds up to 8 bytes of data.
 class GooglePrivacyDlpV2beta1Value {
   core.bool booleanValue;
   GoogleTypeDate dateValue;

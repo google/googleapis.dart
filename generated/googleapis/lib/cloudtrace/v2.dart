@@ -130,7 +130,7 @@ class ProjectsTracesSpansResourceApi {
   ///
   /// [SPAN_ID] is a unique identifier for a span within a trace; it
   /// is a 16-character hexadecimal encoding of an 8-byte array.
-  /// Value must have pattern "^projects/[^/]+/traces/[^/]+$".
+  /// Value must have pattern "^projects/[^/]+/traces/[^/]+/spans/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -142,7 +142,7 @@ class ProjectsTracesSpansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Span> create(Span request, core.String name,
+  async.Future<Span> createSpan(Span request, core.String name,
       {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -161,7 +161,7 @@ class ProjectsTracesSpansResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/spans';
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url, "POST",
         body: _body,

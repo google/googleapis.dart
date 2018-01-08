@@ -290,6 +290,11 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [childrenOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+  /// parentName field contains the group name. If no groups have this parent,
+  /// the results are empty.
+  ///
   /// [descendantsOfGroup] - A group name:
   /// "projects/{project_id_or_number}/groups/{group_id}". Returns the
   /// descendants of the specified group. This is a superset of the results
@@ -311,11 +316,6 @@ class ProjectsGroupsResourceApi {
   /// ancestor. If the specified group has no immediate parent, the results are
   /// empty.
   ///
-  /// [childrenOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-  /// parentName field contains the group name. If no groups have this parent,
-  /// the results are empty.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -327,11 +327,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.String descendantsOfGroup,
+      {core.String childrenOfGroup,
+      core.String descendantsOfGroup,
       core.String pageToken,
       core.int pageSize,
       core.String ancestorsOfGroup,
-      core.String childrenOfGroup,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -342,6 +342,9 @@ class ProjectsGroupsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (childrenOfGroup != null) {
+      _queryParams["childrenOfGroup"] = [childrenOfGroup];
     }
     if (descendantsOfGroup != null) {
       _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
@@ -354,9 +357,6 @@ class ProjectsGroupsResourceApi {
     }
     if (ancestorsOfGroup != null) {
       _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
-    }
-    if (childrenOfGroup != null) {
-      _queryParams["childrenOfGroup"] = [childrenOfGroup];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -448,6 +448,13 @@ class ProjectsGroupsMembersResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
   /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [filter] - An optional list filter describing the members to be returned.
@@ -461,13 +468,6 @@ class ProjectsGroupsMembersResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -479,11 +479,11 @@ class ProjectsGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(core.String name,
-      {core.String interval_endTime,
+      {core.int pageSize,
+      core.String interval_startTime,
+      core.String interval_endTime,
       core.String filter,
       core.String pageToken,
-      core.String interval_startTime,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -495,6 +495,12 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
     if (interval_endTime != null) {
       _queryParams["interval.endTime"] = [interval_endTime];
     }
@@ -503,12 +509,6 @@ class ProjectsGroupsMembersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -820,11 +820,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
   ///
@@ -833,6 +828,11 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// the following filter returns only Google Compute Engine descriptors that
   /// have an id label:
   /// resource.type = starts_with("gce_") AND resource.label:id
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -845,9 +845,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -859,14 +859,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -956,6 +956,25 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
+  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
+  /// per-time series alignment, each time series will contain data points only
+  /// on the period boundaries. If perSeriesAligner is not specified or equals
+  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
+  /// an error is returned.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return. When view field sets to FULL, it limits the number of Points
+  /// server will return; if view field is HEADERS, it limits the number of
+  /// TimeSeries server will return.
+  ///
+  /// [orderBy] - Specifies the order in which the points of the time series
+  /// should be returned. By default, results are not ordered. Currently, this
+  /// field must be left blank.
+  ///
   /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
   /// series. Not all reducer functions may be applied to all time series,
   /// depending on the metric type and the value type of the original time
@@ -1039,25 +1058,6 @@ class ProjectsTimeSeriesResourceApi {
   /// aggregated into a single output time series. If crossSeriesReducer is not
   /// defined, this field is ignored.
   ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
-  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
-  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
-  /// per-time series alignment, each time series will contain data points only
-  /// on the period boundaries. If perSeriesAligner is not specified or equals
-  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
-  /// an error is returned.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. When view field sets to FULL, it limits the number of Points
-  /// server will return; if view field is HEADERS, it limits the number of
-  /// TimeSeries server will return.
-  ///
-  /// [orderBy] - Specifies the order in which the points of the time series
-  /// should be returned. By default, results are not ordered. Currently, this
-  /// field must be left blank.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1069,17 +1069,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.String aggregation_crossSeriesReducer,
+      {core.String interval_endTime,
+      core.String aggregation_alignmentPeriod,
+      core.int pageSize,
+      core.String orderBy,
+      core.String aggregation_crossSeriesReducer,
       core.String filter,
       core.String aggregation_perSeriesAligner,
       core.String pageToken,
       core.String interval_startTime,
       core.String view,
       core.List<core.String> aggregation_groupByFields,
-      core.String interval_endTime,
-      core.String aggregation_alignmentPeriod,
-      core.int pageSize,
-      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1090,6 +1090,20 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (aggregation_alignmentPeriod != null) {
+      _queryParams["aggregation.alignmentPeriod"] = [
+        aggregation_alignmentPeriod
+      ];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (aggregation_crossSeriesReducer != null) {
       _queryParams["aggregation.crossSeriesReducer"] = [
@@ -1115,20 +1129,6 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams["aggregation.alignmentPeriod"] = [
-        aggregation_alignmentPeriod
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3136,6 +3136,54 @@ class MonitoredResourceDescriptor {
   }
 }
 
+/// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+/// contain the minimum set of information to uniquely identify a monitored
+/// resource instance. There is some other useful auxiliary metadata. Google
+/// Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
+/// metadata for cloud resources of all types , and stores the metadata in this
+/// message.
+class MonitoredResourceMetadata {
+  /// Output only. Values for predefined system metadata labels. System labels
+  /// are a kind of metadata extracted by Google Stackdriver. Stackdriver
+  /// determines what system labels are useful and how to obtain their values.
+  /// Some examples: "machine_image", "vpc", "subnet_id", "security_group",
+  /// "name", etc. System label values can be only strings, Boolean values, or a
+  /// list of strings. For example:
+  /// { "name": "my-test-instance",
+  ///   "security_group": ["a", "b", "c"],
+  ///   "spot_instance": false }
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> systemLabels;
+
+  /// Output only. A map of user-defined metadata labels.
+  core.Map<core.String, core.String> userLabels;
+
+  MonitoredResourceMetadata();
+
+  MonitoredResourceMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("systemLabels")) {
+      systemLabels = _json["systemLabels"];
+    }
+    if (_json.containsKey("userLabels")) {
+      userLabels = _json["userLabels"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (systemLabels != null) {
+      _json["systemLabels"] = systemLabels;
+    }
+    if (userLabels != null) {
+      _json["userLabels"] = userLabels;
+    }
+    return _json;
+  }
+}
+
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
 class Option {
@@ -3259,7 +3307,8 @@ class ResourceGroup {
   /// The resource type of the group members.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Default value (not valid).
-  /// - "INSTANCE" : A group of instances (could be either GCE or AWS_EC2).
+  /// - "INSTANCE" : A group of instances from Google Cloud Platform (GCP) or
+  /// Amazon Web Services (AWS).
   /// - "AWS_ELB_LOAD_BALANCER" : A group of AWS load balancers.
   core.String resourceType;
 
@@ -3459,6 +3508,11 @@ class TimeInterval {
 /// monitored resource and a fully-specified metric. This type is used for both
 /// listing and creating time series.
 class TimeSeries {
+  /// Output only. The associated monitored resource metadata. When reading a a
+  /// timeseries, this field will include metadata labels that are explicitly
+  /// named in the reduction. When creating a timeseries, this field is ignored.
+  MonitoredResourceMetadata metadata;
+
   /// The associated metric. A fully-specified metric used to identify the time
   /// series.
   Metric metric;
@@ -3514,6 +3568,9 @@ class TimeSeries {
   TimeSeries();
 
   TimeSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("metadata")) {
+      metadata = new MonitoredResourceMetadata.fromJson(_json["metadata"]);
+    }
     if (_json.containsKey("metric")) {
       metric = new Metric.fromJson(_json["metric"]);
     }
@@ -3535,6 +3592,9 @@ class TimeSeries {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
     if (metric != null) {
       _json["metric"] = (metric).toJson();
     }
@@ -3711,7 +3771,7 @@ class UptimeCheckConfig {
   /// InternalCheckers configured for the project that owns this CheckConfig.
   core.List<InternalChecker> internalCheckers;
 
-  /// Denotes whether this check is a check that egresses from InternalCheckers.
+  /// Denotes whether this is a check that egresses from InternalCheckers.
   core.bool isInternal;
 
   /// The monitored resource associated with the configuration.

@@ -1525,7 +1525,8 @@ class PermissionsResourceApi {
   ///
   /// [fileId] - The ID of the file or Team Drive.
   ///
-  /// [emailMessage] - A custom message to include in the notification email.
+  /// [emailMessage] - A plain text custom message to include in the
+  /// notification email.
   ///
   /// [sendNotificationEmail] - Whether to send a notification email when
   /// sharing to users or groups. This defaults to true for users and groups,

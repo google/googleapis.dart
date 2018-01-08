@@ -319,6 +319,8 @@ class ProjectsRegionsClustersResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
   /// [pageSize] - Optional. The standard List page size.
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
@@ -333,8 +335,6 @@ class ProjectsRegionsClustersResourceApi {
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
   ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -347,9 +347,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -364,14 +364,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -405,6 +405,14 @@ class ProjectsRegionsClustersResourceApi {
   /// request.
   ///
   /// [clusterName] - Required. The cluster name.
+  ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
+  /// Dataproc image versions 1.2 and higher.
   ///
   /// [updateMask] - Required. Specifies the path, relative to Cluster, of the
   /// field to update. For example, to change the number of workers in a cluster
@@ -451,7 +459,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String updateMask, core.String $fields}) {
+      {core.String gracefulDecommissionTimeout,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -470,6 +480,11 @@ class ProjectsRegionsClustersResourceApi {
     }
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
+    }
+    if (gracefulDecommissionTimeout != null) {
+      _queryParams["gracefulDecommissionTimeout"] = [
+        gracefulDecommissionTimeout
+      ];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2396,8 +2411,7 @@ class JobReference {
   }
 }
 
-/// Job scheduling options.Beta Feature: These options are available for testing
-/// purposes only. They may be changed before final release.
+/// Job scheduling options.
 class JobScheduling {
   /// Optional. Maximum number of times per hour a driver may be restarted as a
   /// result of driver terminating with non-zero code before job is reported

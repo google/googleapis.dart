@@ -101,11 +101,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,9 +118,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -132,14 +132,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -637,11 +637,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -654,9 +654,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -668,14 +668,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -923,16 +923,25 @@ class Node {
   /// Required.
   core.String cidrBlock;
 
-  /// The time when the node was created.
   /// Output only.
+  /// The time when the node was created.
   core.String createTime;
 
   /// The user-supplied description of the TPU. Maximum of 512 characters.
   core.String description;
 
+  /// The health status of the TPU node.
+  /// Possible string values are:
+  /// - "HEALTH_UNSPECIFIED" : Health status is unknown: not initialized or
+  /// failed to retrieve.
+  /// - "HEALTHY" : The resource is healthy.
+  /// - "UNHEALTHY" : The resource is unhealthy.
+  /// - "TIMEOUT" : The resource is unresponsive.
+  core.String health;
+
+  /// Output only.
   /// If this field is populated, it contains a description of why the TPU Node
   /// is unhealthy.
-  /// Output only.
   core.String healthDescription;
 
   /// Output only.
@@ -940,6 +949,7 @@ class Node {
   /// The network address for the TPU Node as visible to GCE instances.
   core.String ipAddress;
 
+  /// Output only.
   /// The immutable name of the TPU
   core.String name;
 
@@ -959,15 +969,15 @@ class Node {
   /// The network port for the TPU Node as visible to GCE instances.
   core.String port;
 
+  /// Output only.
   /// The service account used to run the tensor flow services within the node.
   /// To share resources, including Google Cloud Storage data, with the
   /// Tensorflow job running in the Node, this account must have permissions to
   /// that data.
-  /// Output only.
   core.String serviceAccount;
 
-  /// The current state for the TPU Node.
   /// Output only.
+  /// The current state for the TPU Node.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : TPU node state is not known/set.
   /// - "CREATING" : TPU node is being created.
@@ -998,6 +1008,9 @@ class Node {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("health")) {
+      health = _json["health"];
     }
     if (_json.containsKey("healthDescription")) {
       healthDescription = _json["healthDescription"];
@@ -1044,6 +1057,9 @@ class Node {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (health != null) {
+      _json["health"] = health;
     }
     if (healthDescription != null) {
       _json["healthDescription"] = healthDescription;

@@ -50,53 +50,53 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed831() {
+buildUnnamed836() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed831(core.List<api.StringCount> o) {
+checkUnnamed836(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed832() {
+buildUnnamed837() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed832(core.List<api.StringCount> o) {
+checkUnnamed837(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed833() {
+buildUnnamed838() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed833(core.List<api.StringCount> o) {
+checkUnnamed838(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed834() {
+buildUnnamed839() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed834(core.List<api.StringCount> o) {
+checkUnnamed839(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
@@ -107,11 +107,11 @@ buildAnalyticsSnapshot() {
   var o = new api.AnalyticsSnapshot();
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    o.browsers = buildUnnamed831();
-    o.countries = buildUnnamed832();
+    o.browsers = buildUnnamed836();
+    o.countries = buildUnnamed837();
     o.longUrlClicks = "foo";
-    o.platforms = buildUnnamed833();
-    o.referrers = buildUnnamed834();
+    o.platforms = buildUnnamed838();
+    o.referrers = buildUnnamed839();
     o.shortUrlClicks = "foo";
   }
   buildCounterAnalyticsSnapshot--;
@@ -121,11 +121,11 @@ buildAnalyticsSnapshot() {
 checkAnalyticsSnapshot(api.AnalyticsSnapshot o) {
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    checkUnnamed831(o.browsers);
-    checkUnnamed832(o.countries);
+    checkUnnamed836(o.browsers);
+    checkUnnamed837(o.countries);
     unittest.expect(o.longUrlClicks, unittest.equals('foo'));
-    checkUnnamed833(o.platforms);
-    checkUnnamed834(o.referrers);
+    checkUnnamed838(o.platforms);
+    checkUnnamed839(o.referrers);
     unittest.expect(o.shortUrlClicks, unittest.equals('foo'));
   }
   buildCounterAnalyticsSnapshot--;
@@ -208,14 +208,14 @@ checkUrl(api.Url o) {
   buildCounterUrl--;
 }
 
-buildUnnamed835() {
+buildUnnamed840() {
   var o = new core.List<api.Url>();
   o.add(buildUrl());
   o.add(buildUrl());
   return o;
 }
 
-checkUnnamed835(core.List<api.Url> o) {
+checkUnnamed840(core.List<api.Url> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrl(o[0]);
   checkUrl(o[1]);
@@ -226,7 +226,7 @@ buildUrlHistory() {
   var o = new api.UrlHistory();
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    o.items = buildUnnamed835();
+    o.items = buildUnnamed840();
     o.itemsPerPage = 42;
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -239,7 +239,7 @@ buildUrlHistory() {
 checkUrlHistory(api.UrlHistory o) {
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    checkUnnamed835(o.items);
+    checkUnnamed840(o.items);
     unittest.expect(o.itemsPerPage, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));

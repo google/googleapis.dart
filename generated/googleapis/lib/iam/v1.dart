@@ -222,8 +222,6 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -234,6 +232,8 @@ class OrganizationsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -246,10 +246,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.bool showDeleted,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.bool showDeleted,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -261,9 +261,6 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -272,6 +269,9 @@ class OrganizationsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -635,6 +635,8 @@ class ProjectsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -645,8 +647,6 @@ class ProjectsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,10 +659,10 @@ class ProjectsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.bool showDeleted,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
-      core.bool showDeleted,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -674,6 +674,9 @@ class ProjectsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -682,9 +685,6 @@ class ProjectsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1865,12 +1865,6 @@ class BindingDelta {
   /// - "REMOVE" : Removal of a Binding.
   core.String action;
 
-  /// The condition that is associated with this binding.
-  /// This field is GOOGLE_INTERNAL.
-  /// This field is not logged in IAM side because it's only for audit logging.
-  /// Optional
-  Expr condition;
-
   /// A single identity requesting access for a Cloud Platform resource.
   /// Follows the same format of Binding.members.
   /// Required
@@ -1887,9 +1881,6 @@ class BindingDelta {
     if (_json.containsKey("action")) {
       action = _json["action"];
     }
-    if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
-    }
     if (_json.containsKey("member")) {
       member = _json["member"];
     }
@@ -1903,9 +1894,6 @@ class BindingDelta {
         new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
-    }
-    if (condition != null) {
-      _json["condition"] = (condition).toJson();
     }
     if (member != null) {
       _json["member"] = member;
@@ -1958,7 +1946,6 @@ class CreateServiceAccountKeyRequest {
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
-  /// - "KEY_ALG_GCS_SYMMETRIC_HMAC" : HMAC.
   core.String keyAlgorithm;
 
   /// The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
@@ -2050,68 +2037,6 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
-/// Represents an expression text. Example:
-///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
-class Expr {
-  /// An optional description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
-  core.String description;
-
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
-  core.String expression;
-
-  /// An optional string indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
-  core.String location;
-
-  /// An optional title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
-  core.String title;
-
-  Expr();
-
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
-    }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
-    }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (expression != null) {
-      _json["expression"] = expression;
-    }
-    if (location != null) {
-      _json["location"] = location;
-    }
-    if (title != null) {
-      _json["title"] = title;
-    }
     return _json;
   }
 }
@@ -2820,7 +2745,6 @@ class ServiceAccountKey {
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
-  /// - "KEY_ALG_GCS_SYMMETRIC_HMAC" : HMAC.
   core.String keyAlgorithm;
 
   /// The resource name of the service account key in the following format

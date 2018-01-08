@@ -97,13 +97,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [name] - The name of the operation's parent resource.
   ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -116,10 +116,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String name,
+      {core.String filter,
+      core.String name,
       core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -128,6 +128,9 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
@@ -136,9 +139,6 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -181,11 +181,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -198,9 +198,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -212,14 +212,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -460,10 +460,21 @@ class ProjectsLocationsFunctionsResourceApi {
 
   /// Returns a signed URL for uploading a function source code.
   /// For more information about the signed URL usage see:
-  /// https://cloud.google.com/storage/docs/access-control/signed-urls
+  /// https://cloud.google.com/storage/docs/access-control/signed-urls.
   /// Once the function source code upload is complete, the used signed
   /// URL should be provided in CreateFunction or UpdateFunction request
   /// as a reference to the function source code.
+  ///
+  /// When uploading source code to the generated signed URL, please follow
+  /// these restrictions:
+  ///
+  /// * Source file type should be a zip file.
+  /// * Source file size should not exceed 100MB limit.
+  ///
+  /// When making a HTTP PUT request, these two headers need to be specified:
+  ///
+  /// * `content-type: application/zip`
+  /// * `x-google-content-length-range: 0,104857600`
   ///
   /// [request] - The metadata request object.
   ///
@@ -472,6 +483,7 @@ class ProjectsLocationsFunctionsResourceApi {
   /// [parent] - The project and location in which the Google Cloud Storage
   /// signed URL
   /// should be generated, specified in the format `projects / * /locations / *
+  /// `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -927,21 +939,19 @@ class CloudFunction {
 /// service.
 class EventTrigger {
   /// Required. The type of event to observe. For example:
-  /// `google.storage.object.finalized` and
-  /// `google.firebase.analytics.event.log`.
+  /// `providers/cloud.storage/eventTypes/object.change` and
+  /// `providers/cloud.pubsub/eventTypes/topic.publish`.
   ///
-  /// Event type consists of three parts:
-  ///  1. namespace: The domain name of the organization in reverse-domain
-  ///     notation (e.g. `acme.net` appears as `net.acme`) and any orginization
-  /// specific subdivisions. If the organization's top-level domain is `com`,
-  ///     the top-level domain is ommited (e.g. `google.com` appears as
-  ///     `google`). For example, `google.storage` and
-  ///     `google.firebase.analytics`.
-  ///  2. resource type: The type of resource on which event ocurs. For
-  ///     example, the Google Cloud Storage API includes the type `object`.
-  ///  3. action: The action that generates the event. For example, actions for
-  ///     a Google Cloud Storage Object include 'finalize' and 'delete'.
-  /// These parts are lower case and joined by '.'.
+  /// Event types match pattern `providers / * /eventTypes / * .*`.
+  /// The pattern contains:
+  ///
+  /// 1. namespace: For example, `cloud.storage` and
+  ///    `google.firebase.analytics`.
+  /// 2. resource type: The type of resource on which event occurs. For
+  ///    example, the Google Cloud Storage API includes the type `object`.
+  /// 3. action: The action that generates the event. For example, action for
+  ///    a Google Cloud Storage Object is 'change'.
+  /// These parts are lower case.
   core.String eventType;
 
   /// Specifies policy for failed executions.

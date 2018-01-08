@@ -432,14 +432,6 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a
-  /// previous ListInstancesResponse.
-  ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -461,6 +453,14 @@ class ProjectsInstancesResourceApi {
   ///                                  it has the label "env" with its value
   ///                                  containing "dev".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a
+  /// previous ListInstancesResponse.
+  ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -472,9 +472,9 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -486,14 +486,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1407,11 +1407,11 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1424,9 +1424,9 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1438,14 +1438,14 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1877,10 +1877,6 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a previous
-  /// ListSessionsResponse.
-  ///
   /// [pageSize] - Number of sessions to be returned in the response. If 0 or
   /// less, defaults
   /// to the server's maximum allowed page size.
@@ -1897,6 +1893,10 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   ///   * `labels.env:dev` --> The session has the label "env" and the value of
   ///                        the label contains the string "dev".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1908,9 +1908,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1922,14 +1922,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

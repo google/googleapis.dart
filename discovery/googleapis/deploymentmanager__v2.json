@@ -24,7 +24,7 @@
     "description": "Declares, configures, and deploys complex solutions on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/D-L_dIptFR8Egm9hGO0e12E4f00\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/x5GVV-qWcUbfydXzUyeB5YAS9GI\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -919,7 +919,7 @@
             }
         }
     },
-    "revision": "20171102",
+    "revision": "20171214",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1347,7 +1347,7 @@
             "type": "object"
         },
         "Operation": {
-            "description": "An Operation resource, used to manage asynchronous API requests.",
+            "description": "An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations ==)",
             "id": "Operation",
             "properties": {
                 "clientOperationId": {

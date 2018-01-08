@@ -20,10 +20,6 @@ class SpeechApi {
   static const CloudPlatformScope =
       "https://www.googleapis.com/auth/cloud-platform";
 
-  /// Convert speech to text using Google speech recognition technology
-  static const CloudSpeechScope =
-      "https://www.googleapis.com/auth/cloud-speech";
-
   final commons.ApiRequester _requester;
 
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);

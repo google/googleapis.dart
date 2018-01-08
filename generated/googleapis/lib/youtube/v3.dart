@@ -16771,9 +16771,6 @@ class TokenPagination {
 
 /// A video resource represents a YouTube video.
 class Video {
-  /// The access token to uniquely identify a revocable unlisted video.
-  core.String accessToken;
-
   /// Age restriction details related to a video. This data can only be
   /// retrieved by the video owner.
   VideoAgeGating ageGating;
@@ -16857,9 +16854,6 @@ class Video {
   Video();
 
   Video.fromJson(core.Map _json) {
-    if (_json.containsKey("accessToken")) {
-      accessToken = _json["accessToken"];
-    }
     if (_json.containsKey("ageGating")) {
       ageGating = new VideoAgeGating.fromJson(_json["ageGating"]);
     }
@@ -16929,9 +16923,6 @@ class Video {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (accessToken != null) {
-      _json["accessToken"] = accessToken;
-    }
     if (ageGating != null) {
       _json["ageGating"] = (ageGating).toJson();
     }

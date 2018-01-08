@@ -7148,8 +7148,20 @@ class Product {
   /// The name of the author of the product (for example, the app developer).
   core.String authorName;
 
+  /// The countries which this app is available in.
+  core.List<core.String> availableCountries;
+
   /// The tracks that are visible to the enterprise.
   core.List<core.String> availableTracks;
+
+  /// The app category (e.g. RACING, SOCIAL, etc.)
+  core.String category;
+
+  /// The content rating for this app.
+  core.String contentRating;
+
+  /// A localized promotional description, if available.
+  core.String description;
 
   /// A link to the (consumer) Google Play details page for the product.
   core.String detailsUrl;
@@ -7171,6 +7183,17 @@ class Product {
   /// "androidenterprise#product".
   core.String kind;
 
+  /// The time (in milliseconds since epoch) when application was last
+  /// published. (Timestamp is approximate within 7 days of actual publish
+  /// time.)
+  core.String lastUpdatedTimestampMillis;
+
+  /// The minimum Android SDK necessary to run the app.
+  core.int minAndroidSdkVersion;
+
+  /// The permissions required for this app.
+  core.List<ProductPermission> permissions;
+
   /// A string of the form app:<package name>. For example,
   /// app:com.google.android.gm represents the Gmail app.
   core.String productId;
@@ -7180,8 +7203,14 @@ class Product {
   /// anymore (even though it might still be available to people who own it).
   core.String productPricing;
 
+  /// A description of the recent changes made to the app.
+  core.String recentChanges;
+
   /// Deprecated.
   core.bool requiresContainerApp;
+
+  /// A list of screenshot links representing the app.
+  core.List<core.String> screenshotUrls;
 
   /// The certificate used to sign this product.
   ProductSigningCertificate signingCertificate;
@@ -7208,8 +7237,20 @@ class Product {
     if (_json.containsKey("authorName")) {
       authorName = _json["authorName"];
     }
+    if (_json.containsKey("availableCountries")) {
+      availableCountries = _json["availableCountries"];
+    }
     if (_json.containsKey("availableTracks")) {
       availableTracks = _json["availableTracks"];
+    }
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
+    if (_json.containsKey("contentRating")) {
+      contentRating = _json["contentRating"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
     }
     if (_json.containsKey("detailsUrl")) {
       detailsUrl = _json["detailsUrl"];
@@ -7223,14 +7264,31 @@ class Product {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("lastUpdatedTimestampMillis")) {
+      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
+    }
+    if (_json.containsKey("minAndroidSdkVersion")) {
+      minAndroidSdkVersion = _json["minAndroidSdkVersion"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"]
+          .map((value) => new ProductPermission.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
     if (_json.containsKey("productPricing")) {
       productPricing = _json["productPricing"];
     }
+    if (_json.containsKey("recentChanges")) {
+      recentChanges = _json["recentChanges"];
+    }
     if (_json.containsKey("requiresContainerApp")) {
       requiresContainerApp = _json["requiresContainerApp"];
+    }
+    if (_json.containsKey("screenshotUrls")) {
+      screenshotUrls = _json["screenshotUrls"];
     }
     if (_json.containsKey("signingCertificate")) {
       signingCertificate =
@@ -7257,8 +7315,20 @@ class Product {
     if (authorName != null) {
       _json["authorName"] = authorName;
     }
+    if (availableCountries != null) {
+      _json["availableCountries"] = availableCountries;
+    }
     if (availableTracks != null) {
       _json["availableTracks"] = availableTracks;
+    }
+    if (category != null) {
+      _json["category"] = category;
+    }
+    if (contentRating != null) {
+      _json["contentRating"] = contentRating;
+    }
+    if (description != null) {
+      _json["description"] = description;
     }
     if (detailsUrl != null) {
       _json["detailsUrl"] = detailsUrl;
@@ -7272,14 +7342,30 @@ class Product {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (lastUpdatedTimestampMillis != null) {
+      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
+    }
+    if (minAndroidSdkVersion != null) {
+      _json["minAndroidSdkVersion"] = minAndroidSdkVersion;
+    }
+    if (permissions != null) {
+      _json["permissions"] =
+          permissions.map((value) => (value).toJson()).toList();
+    }
     if (productId != null) {
       _json["productId"] = productId;
     }
     if (productPricing != null) {
       _json["productPricing"] = productPricing;
     }
+    if (recentChanges != null) {
+      _json["recentChanges"] = recentChanges;
+    }
     if (requiresContainerApp != null) {
       _json["requiresContainerApp"] = requiresContainerApp;
+    }
+    if (screenshotUrls != null) {
+      _json["screenshotUrls"] = screenshotUrls;
     }
     if (signingCertificate != null) {
       _json["signingCertificate"] = (signingCertificate).toJson();

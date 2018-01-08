@@ -100,11 +100,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -117,9 +117,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,14 +131,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -168,6 +168,11 @@ class ProjectsLocationsQueuesResourceApi {
       : _requester = client;
 
   /// Creates a queue.
+  ///
+  /// Queues created with this method allow tasks to live for a maximum of 31
+  /// days. After a task is 31 days old, the task will be deleted regardless of
+  /// whether
+  /// it was dispatched or not.
   ///
   /// WARNING: Using this method may have unintended side effects if you are
   /// using an App Engine `queue.yaml` or `queue.xml` file to manage your
@@ -496,6 +501,11 @@ class ProjectsLocationsQueuesResourceApi {
   /// This method creates the queue if it does not exist and updates
   /// the queue if it does exist.
   ///
+  /// Queues created with this method allow tasks to live for a maximum of 31
+  /// days. After a task is 31 days old, the task will be deleted regardless of
+  /// whether
+  /// it was dispatched or not.
+  ///
   /// WARNING: Using this method may have unintended side effects if you are
   /// using an App Engine `queue.yaml` or `queue.xml` file to manage your
   /// queues.
@@ -515,6 +525,9 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
   ///    hyphens (-), colons (:), or periods (.).
+  ///    For more information, see
+  /// [Identifying
+  /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location.
   ///    The list of available locations can be obtained by calling
   ///    google.cloud.location.Locations.ListLocations.
@@ -890,11 +903,11 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
   /// Acknowledges a pull task.
   ///
-  /// The lease holder, that is, the entity that received this task in
+  /// The pull worker, that is, the entity that received this task in
   /// a PullTasksResponse, must call this method to indicate that
   /// the work associated with the task has finished.
   ///
-  /// The lease holder must acknowledge a task within the
+  /// The pull worker must acknowledge a task within the
   /// PullTasksRequest.lease_duration or the lease will expire and
   /// the task will become ready to be returned in a different
   /// PullTasksResponse. After the task is acknowledged, it will
@@ -962,7 +975,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
   /// Cancel a pull task's lease.
   ///
-  /// The lease holder can use this method to cancel a task's lease
+  /// The pull worker can use this method to cancel a task's lease
   /// by setting Task.schedule_time to now. This will make the task
   /// available to be leased to the next caller of CloudTasks.PullTasks.
   ///
@@ -1207,6 +1220,77 @@ class ProjectsLocationsQueuesTasksResourceApi {
     return _response.then((data) => new Task.fromJson(data));
   }
 
+  ///
+  /// Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+  ///
+  /// This method is invoked by the pull worker to obtain a
+  /// lease. The pull worker must acknowledge the task via
+  /// CloudTasks.AcknowledgeTask after they have performed the work
+  /// associated with the task.
+  ///
+  /// The payload is intended to store data that the pull worker needs
+  /// to perform the work associated with the task. To return the
+  /// payloads in the LeaseTasksResponse, set
+  /// LeaseTasksRequest.response_view to Task.View.FULL.
+  ///
+  /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per
+  /// queue. google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit
+  /// is exceeded. google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
+  /// RateLimits.max_tasks_dispatched_per_second is exceeded.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required.
+  ///
+  /// The queue name. For example:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LeaseTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LeaseTasksResponse> lease(
+      LeaseTasksRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/tasks:lease';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LeaseTasksResponse.fromJson(data));
+  }
+
   /// Lists the tasks in a queue.
   ///
   /// By default response_view is Task.View.BASIC; not all
@@ -1319,15 +1403,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
     return _response.then((data) => new ListTasksResponse.fromJson(data));
   }
 
+  ///
   /// Pulls tasks from a pull queue and acquires a lease on them for a
   /// specified PullTasksRequest.lease_duration.
   ///
-  /// This method is invoked by the lease holder to obtain the
-  /// lease. The lease holder must acknowledge the task via
+  /// This method is invoked by the pull worker to obtain the
+  /// lease. The pull worker must acknowledge the task via
   /// CloudTasks.AcknowledgeTask after they have performed the work
   /// associated with the task.
   ///
-  /// The payload is intended to store data that the lease holder needs
+  /// The payload is intended to store data that the pull worker needs
   /// to perform the work associated with the task. To return the
   /// payloads in the PullTasksResponse, set
   /// PullTasksRequest.response_view to Task.View.FULL.
@@ -1392,7 +1477,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
   /// Renew the current lease of a pull task.
   ///
-  /// The lease holder can use this method to extend the lease by a new
+  /// The pull worker can use this method to extend the lease by a new
   /// duration, starting from now. The new task lease will be
   /// returned in Task.schedule_time.
   ///
@@ -1460,7 +1545,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// target, even if the queue is Queue.State.PAUSED.
   ///
   /// The dispatched task is returned. That is, the task that is returned
-  /// contains the Task.task_status after the task is dispatched but
+  /// contains the Task.status after the task is dispatched but
   /// before the task is received by its target.
   ///
   /// If Cloud Tasks receives a successful response from the task's
@@ -1536,8 +1621,8 @@ class AcknowledgeTaskRequest {
   ///
   /// The task's current schedule time, available in the Task.schedule_time
   /// returned in PullTasksResponse.tasks or
-  /// CloudTasks.RenewLease. This restriction is to check that
-  /// the caller is acknowledging the correct task.
+  /// CloudTasks.RenewLease. This restriction is to ensure that your task
+  /// worker currently holds the lease.
   core.String scheduleTime;
 
   AcknowledgeTaskRequest();
@@ -1592,13 +1677,11 @@ class AcknowledgeTaskRequest {
 ///
 /// * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
 ///
-/// The task will be sent to a task handler by an HTTP
-/// request using the specified AppEngineHttpRequest.http_method (for example
-/// POST, HTTP GET, etc). The task attempt has succeeded if the task handler
-/// returns an HTTP response code in the range [200 - 299]. Error 503 is
-/// considered an App Engine system error instead of an application error.
-/// Requests returning error 503 will be retried regardless of retry
-/// configuration and not counted against retry counts.
+/// The task attempt has succeeded if the app's request handler returns
+/// an HTTP response code in the range [`200` - `299`]. `503` is
+/// considered an App Engine system error instead of an application
+/// error. Requests returning error `503` will be retried regardless of
+/// retry configuration and not counted against retry counts.
 /// Any other response code or a failure to receive a response before the
 /// deadline is a failed attempt.
 class AppEngineHttpRequest {
@@ -1641,10 +1724,16 @@ class AppEngineHttpRequest {
   /// * `X-Google-*`
   /// * `X-AppEngine-*`
   ///
-  /// In addition, some App Engine headers, which contain
-  /// task-specific information, are also be sent to the task handler; see
+  /// In addition, Cloud Tasks sets some headers when the task is dispatched,
+  /// such as headers containing information about the task; see
   /// [request
   /// headers](/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
+  /// These headers are set only when the task is dispatched, so they are not
+  /// visible when the task is returned in a Cloud Tasks response.
+  ///
+  /// Although there is no specific limit for the maximum number of headers or
+  /// the size, there is a limit on the maximum size of the Task. For more
+  /// information, see the CloudTasks.CreateTask documentation.
   core.Map<core.String, core.String> headers;
 
   /// The HTTP method to use for the request. The default is POST.
@@ -1656,8 +1745,8 @@ class AppEngineHttpRequest {
   /// handler](/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
   /// and the documentation for the request handlers in the language your app is
   /// written in e.g.
-  /// [python
-  /// RequestHandler](/appengine/docs/python/tools/webapp/requesthandlerclass).
+  /// [Python Request
+  /// Handler](/appengine/docs/python/tools/webapp/requesthandlerclass).
   /// Possible string values are:
   /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
   /// - "POST" : HTTP Post
@@ -1760,30 +1849,6 @@ class AppEngineHttpTarget {
   AppEngineHttpTarget();
 
   AppEngineHttpTarget.fromJson(core.Map _json) {
-    if (_json.containsKey("appEngineRoutingOverride")) {
-      appEngineRoutingOverride =
-          new AppEngineRouting.fromJson(_json["appEngineRoutingOverride"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (appEngineRoutingOverride != null) {
-      _json["appEngineRoutingOverride"] = (appEngineRoutingOverride).toJson();
-    }
-    return _json;
-  }
-}
-
-/// Deprecated. Use AppEngineHttpTarget.
-class AppEngineQueueConfig {
-  /// Deprecated. Use AppEngineHttpTarget.app_engine_routing_override.
-  AppEngineRouting appEngineRoutingOverride;
-
-  AppEngineQueueConfig();
-
-  AppEngineQueueConfig.fromJson(core.Map _json) {
     if (_json.containsKey("appEngineRoutingOverride")) {
       appEngineRoutingOverride =
           new AppEngineRouting.fromJson(_json["appEngineRoutingOverride"]);
@@ -1956,81 +2021,6 @@ class AppEngineRouting {
   }
 }
 
-/// Deprecated. Use AppEngineHttpRequest.
-class AppEngineTaskTarget {
-  /// Deprecated. Use AppEngineHttpRequest.app_engine_routing.
-  AppEngineRouting appEngineRouting;
-
-  /// Deprecated. Use AppEngineHttpRequest.headers.
-  core.Map<core.String, core.String> headers;
-
-  /// Deprecated. Use AppEngineHttpRequest.http_method.
-  /// Possible string values are:
-  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
-  /// - "POST" : HTTP Post
-  /// - "GET" : HTTP Get
-  /// - "HEAD" : HTTP Head
-  /// - "PUT" : HTTP Put
-  /// - "DELETE" : HTTP Delete
-  core.String httpMethod;
-
-  /// Deprecated. Use AppEngineHttpRequest.payload.
-  core.String payload;
-  core.List<core.int> get payloadAsBytes {
-    return convert.BASE64.decode(payload);
-  }
-
-  void set payloadAsBytes(core.List<core.int> _bytes) {
-    payload =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// Deprecated. Use AppEngineHttpRequest.relative_url.
-  core.String relativeUrl;
-
-  AppEngineTaskTarget();
-
-  AppEngineTaskTarget.fromJson(core.Map _json) {
-    if (_json.containsKey("appEngineRouting")) {
-      appEngineRouting =
-          new AppEngineRouting.fromJson(_json["appEngineRouting"]);
-    }
-    if (_json.containsKey("headers")) {
-      headers = _json["headers"];
-    }
-    if (_json.containsKey("httpMethod")) {
-      httpMethod = _json["httpMethod"];
-    }
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
-    }
-    if (_json.containsKey("relativeUrl")) {
-      relativeUrl = _json["relativeUrl"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (appEngineRouting != null) {
-      _json["appEngineRouting"] = (appEngineRouting).toJson();
-    }
-    if (headers != null) {
-      _json["headers"] = headers;
-    }
-    if (httpMethod != null) {
-      _json["httpMethod"] = httpMethod;
-    }
-    if (payload != null) {
-      _json["payload"] = payload;
-    }
-    if (relativeUrl != null) {
-      _json["relativeUrl"] = relativeUrl;
-    }
-    return _json;
-  }
-}
-
 /// The status of a task attempt.
 class AttemptStatus {
   /// Output only. The time that this attempt was dispatched.
@@ -2180,8 +2170,8 @@ class CancelLeaseRequest {
   ///
   /// The task's current schedule time, available in the Task.schedule_time
   /// returned in PullTasksResponse.tasks or
-  /// CloudTasks.RenewLease. This restriction is to check that
-  /// the caller is canceling the correct task.
+  /// CloudTasks.RenewLease. This restriction is to ensure that your task
+  /// worker currently holds the lease.
   core.String scheduleTime;
 
   CancelLeaseRequest();
@@ -2257,10 +2247,10 @@ class CreateTaskRequest {
   /// Explicitly specifying a task ID enables task de-duplication.  If
   /// a task's ID is identical to that of an existing task or a task
   /// that was deleted or completed recently then the call will fail
-  /// with google.rpc.Code.ALREADY_EXISTS. If the task's queue was
-  /// created using Cloud Tasks, then another task with the same name
-  /// can't be created for ~1hour after the original task was deleted
-  /// or completed. If the task's queue was created using queue.yaml or
+  /// with google.rpc.Code.ALREADY_EXISTS.
+  /// If the task's queue was created using Cloud Tasks, then another task with
+  /// the same name can't be created for ~1hour after the original task was
+  /// deleted or completed. If the task's queue was created using queue.yaml or
   /// queue.xml, then another task with the same name can't be created
   /// for ~9days after the original task was deleted or completed.
   ///
@@ -2329,6 +2319,142 @@ class GetIamPolicyRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Request message for pulling tasks using CloudTasks.LeaseTasks.
+class LeaseTasksRequest {
+  /// `filter` can be used to specify a subset of tasks to lease.
+  ///
+  /// When `filter` is set to `tag=<my-tag>` then the
+  /// LeaseTasksResponse will contain only tasks whose
+  /// PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
+  /// 500 bytes.
+  ///
+  /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
+  /// the same tag as the task with the oldest schedule_time will be returned.
+  ///
+  /// Grammar Syntax:
+  ///
+  /// * `filter = "tag=" tag | "tag_function=" function`
+  ///
+  /// * `tag = string | bytes`
+  ///
+  /// * `function = "oldest_tag()"`
+  ///
+  /// The `oldest_tag()` function returns tasks which have the same tag as the
+  /// oldest task (ordered by schedule time).
+  core.String filter;
+
+  /// The duration of the lease.
+  ///
+  /// Each task returned in the LeaseTasksResponse will have its
+  /// Task.schedule_time set to the current time plus the
+  /// `lease_duration`. A task that has been returned in a
+  /// LeaseTasksResponse is leased -- that task will not be
+  /// returned in a different LeaseTasksResponse before the
+  /// Task.schedule_time.
+  ///
+  /// After the pull worker has successfully finished the work
+  /// associated with the task, the pull worker must call
+  /// CloudTasks.AcknowledgeTask. If the task is not acknowledged
+  /// via CloudTasks.AcknowledgeTask before the
+  /// Task.schedule_time then it will be returned in a later
+  /// LeaseTasksResponse so that another pull worker can process
+  /// it.
+  ///
+  /// The maximum lease duration is 1 week.
+  /// `lease_duration` will be truncated to the nearest second.
+  core.String leaseDuration;
+
+  /// The maximum number of tasks to lease. The maximum that can be
+  /// requested is 1000.
+  core.int maxTasks;
+
+  /// The response_view specifies which subset of the Task will be
+  /// returned.
+  ///
+  /// By default response_view is Task.View.BASIC; not all
+  /// information is retrieved by default because some data, such as
+  /// payloads, might be desirable to return only when needed because
+  /// of its large size or because of the sensitivity of data that it
+  /// contains.
+  ///
+  /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
+  /// [Google IAM](/iam/) permission on the
+  /// Task.name resource.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Unspecified. Defaults to BASIC.
+  /// - "BASIC" : The basic view omits fields which can be large or can contain
+  /// sensitive data.
+  ///
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
+  /// - "FULL" : All information is returned.
+  ///
+  /// Authorization for Task.View.FULL requires
+  /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
+  /// permission on the Queue.name resource.
+  core.String responseView;
+
+  LeaseTasksRequest();
+
+  LeaseTasksRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("leaseDuration")) {
+      leaseDuration = _json["leaseDuration"];
+    }
+    if (_json.containsKey("maxTasks")) {
+      maxTasks = _json["maxTasks"];
+    }
+    if (_json.containsKey("responseView")) {
+      responseView = _json["responseView"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (leaseDuration != null) {
+      _json["leaseDuration"] = leaseDuration;
+    }
+    if (maxTasks != null) {
+      _json["maxTasks"] = maxTasks;
+    }
+    if (responseView != null) {
+      _json["responseView"] = responseView;
+    }
+    return _json;
+  }
+}
+
+/// Response message for leasing tasks using CloudTasks.LeaseTasks.
+class LeaseTasksResponse {
+  /// The leased tasks.
+  core.List<Task> tasks;
+
+  LeaseTasksResponse();
+
+  LeaseTasksResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("tasks")) {
+      tasks = _json["tasks"].map((value) => new Task.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tasks != null) {
+      _json["tasks"] = tasks.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -2673,19 +2799,6 @@ class PullMessage {
   }
 }
 
-/// Deprecated. Use PullTarget.
-class PullQueueConfig {
-  PullQueueConfig();
-
-  PullQueueConfig.fromJson(core.Map _json) {}
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
 /// Pull target.
 class PullTarget {
   PullTarget();
@@ -2695,54 +2808,6 @@ class PullTarget {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
-/// Deprecated. Use PullMessage.
-class PullTaskTarget {
-  /// Deprecated. Use PullMessage.payload.
-  core.String payload;
-  core.List<core.int> get payloadAsBytes {
-    return convert.BASE64.decode(payload);
-  }
-
-  void set payloadAsBytes(core.List<core.int> _bytes) {
-    payload =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// Deprecated. Use PullMessage.tag.
-  core.String tag;
-  core.List<core.int> get tagAsBytes {
-    return convert.BASE64.decode(tag);
-  }
-
-  void set tagAsBytes(core.List<core.int> _bytes) {
-    tag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  PullTaskTarget();
-
-  PullTaskTarget.fromJson(core.Map _json) {
-    if (_json.containsKey("payload")) {
-      payload = _json["payload"];
-    }
-    if (_json.containsKey("tag")) {
-      tag = _json["tag"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (payload != null) {
-      _json["payload"] = payload;
-    }
-    if (tag != null) {
-      _json["tag"] = tag;
-    }
     return _json;
   }
 }
@@ -2780,12 +2845,12 @@ class PullTasksRequest {
   /// returned in a different PullTasksResponse before the
   /// Task.schedule_time.
   ///
-  /// After the lease holder has successfully finished the work
-  /// associated with the task, the lease holder must call
+  /// After the pull worker has successfully finished the work
+  /// associated with the task, the pull worker must call
   /// CloudTasks.AcknowledgeTask. If the task is not acknowledged
   /// via CloudTasks.AcknowledgeTask before the
   /// Task.schedule_time then it will be returned in a later
-  /// PullTasksResponse so that another lease holder can process
+  /// PullTasksResponse so that another pull worker can process
   /// it.
   ///
   /// The maximum lease duration is 1 week.
@@ -2905,9 +2970,6 @@ class Queue {
   /// An App Engine queue is a queue that has an AppEngineHttpTarget.
   AppEngineHttpTarget appEngineHttpTarget;
 
-  /// Deprecated. Use Queue.app_engine_http_target.
-  AppEngineQueueConfig appEngineQueueConfig;
-
   /// The queue name.
   ///
   /// The queue name must have the following format:
@@ -2915,6 +2977,9 @@ class Queue {
   ///
   /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
   ///    hyphens (-), colons (:), or periods (.).
+  ///    For more information, see
+  /// [Identifying
+  /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location.
   ///    The list of available locations can be obtained by calling
   ///    google.cloud.location.Locations.ListLocations.
@@ -2925,9 +2990,6 @@ class Queue {
   /// Caller-specified and required in CreateQueueRequest, after which
   /// it becomes output only.
   core.String name;
-
-  /// Deprecated. Use Queue.pull_target.
-  PullQueueConfig pullQueueConfig;
 
   /// Pull target.
   ///
@@ -2982,6 +3044,12 @@ class Queue {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "RUNNING" : The queue is running. Tasks can be dispatched.
+  ///
+  /// If the queue was created using Cloud Tasks and the queue has had no
+  /// activity (method calls or task dispatches) for 30 days, the queue may
+  /// take a few minutes to re-activate. Some method calls may return
+  /// google.rpc.Code.NOT_FOUND and tasks may not be dispatched for a few
+  /// minutes until the queue has been re-activated.
   /// - "PAUSED" : Tasks are paused by the user. If the queue is paused then
   /// Cloud
   /// Tasks will stop delivering tasks from it, but more tasks can
@@ -3010,15 +3078,8 @@ class Queue {
       appEngineHttpTarget =
           new AppEngineHttpTarget.fromJson(_json["appEngineHttpTarget"]);
     }
-    if (_json.containsKey("appEngineQueueConfig")) {
-      appEngineQueueConfig =
-          new AppEngineQueueConfig.fromJson(_json["appEngineQueueConfig"]);
-    }
     if (_json.containsKey("name")) {
       name = _json["name"];
-    }
-    if (_json.containsKey("pullQueueConfig")) {
-      pullQueueConfig = new PullQueueConfig.fromJson(_json["pullQueueConfig"]);
     }
     if (_json.containsKey("pullTarget")) {
       pullTarget = new PullTarget.fromJson(_json["pullTarget"]);
@@ -3043,14 +3104,8 @@ class Queue {
     if (appEngineHttpTarget != null) {
       _json["appEngineHttpTarget"] = (appEngineHttpTarget).toJson();
     }
-    if (appEngineQueueConfig != null) {
-      _json["appEngineQueueConfig"] = (appEngineQueueConfig).toJson();
-    }
     if (name != null) {
       _json["name"] = name;
-    }
-    if (pullQueueConfig != null) {
-      _json["pullQueueConfig"] = (pullQueueConfig).toJson();
     }
     if (pullTarget != null) {
       _json["pullTarget"] = (pullTarget).toJson();
@@ -3205,8 +3260,8 @@ class RenewLeaseRequest {
   ///
   /// The task's current schedule time, available in the Task.schedule_time
   /// returned in PullTasksResponse.tasks or
-  /// CloudTasks.RenewLease. This restriction is to check that
-  /// the caller is renewing the correct task.
+  /// CloudTasks.RenewLease. This restriction is to ensure that your task
+  /// worker currently holds the lease.
   core.String scheduleTime;
 
   RenewLeaseRequest();
@@ -3575,9 +3630,6 @@ class Task {
   /// An App Engine task is a task that has AppEngineHttpRequest set.
   AppEngineHttpRequest appEngineHttpRequest;
 
-  /// Deprecated. Use Task.app_engine_http_request.
-  AppEngineTaskTarget appEngineTaskTarget;
-
   /// Output only. The time that the task was created.
   ///
   /// `create_time` will be truncated to the nearest second.
@@ -3590,6 +3642,9 @@ class Task {
   ///
   /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
   ///    hyphens (-), colons (:), or periods (.).
+  ///    For more information, see
+  /// [Identifying
+  /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the task's location.
   ///    The list of available locations can be obtained by calling
   ///    google.cloud.location.Locations.ListLocations.
@@ -3609,23 +3664,20 @@ class Task {
   /// A pull task is a task that has PullMessage set.
   PullMessage pullMessage;
 
-  /// Deprecated. Use Task.pull_message.
-  PullTaskTarget pullTaskTarget;
-
   /// The time when the task is scheduled to be attempted.
+  ///
+  /// For App Engine queues, this is when the task will be attempted or retried.
   ///
   /// For pull queues, this is the time when the task is available to
   /// be leased; if a task is currently leased, this is the time when
   /// the current lease expires, that is, the time that the task was
   /// leased plus the PullTasksRequest.lease_duration.
   ///
-  /// For App Engine queues, this is when the task will be attempted or retried.
-  ///
   /// `schedule_time` will be truncated to the nearest microsecond.
   core.String scheduleTime;
 
   /// Output only. The task status.
-  TaskStatus taskStatus;
+  TaskStatus status;
 
   /// Output only. The view specifies which subset of the Task has
   /// been returned.
@@ -3652,10 +3704,6 @@ class Task {
       appEngineHttpRequest =
           new AppEngineHttpRequest.fromJson(_json["appEngineHttpRequest"]);
     }
-    if (_json.containsKey("appEngineTaskTarget")) {
-      appEngineTaskTarget =
-          new AppEngineTaskTarget.fromJson(_json["appEngineTaskTarget"]);
-    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -3665,14 +3713,11 @@ class Task {
     if (_json.containsKey("pullMessage")) {
       pullMessage = new PullMessage.fromJson(_json["pullMessage"]);
     }
-    if (_json.containsKey("pullTaskTarget")) {
-      pullTaskTarget = new PullTaskTarget.fromJson(_json["pullTaskTarget"]);
-    }
     if (_json.containsKey("scheduleTime")) {
       scheduleTime = _json["scheduleTime"];
     }
-    if (_json.containsKey("taskStatus")) {
-      taskStatus = new TaskStatus.fromJson(_json["taskStatus"]);
+    if (_json.containsKey("status")) {
+      status = new TaskStatus.fromJson(_json["status"]);
     }
     if (_json.containsKey("view")) {
       view = _json["view"];
@@ -3685,9 +3730,6 @@ class Task {
     if (appEngineHttpRequest != null) {
       _json["appEngineHttpRequest"] = (appEngineHttpRequest).toJson();
     }
-    if (appEngineTaskTarget != null) {
-      _json["appEngineTaskTarget"] = (appEngineTaskTarget).toJson();
-    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3697,14 +3739,11 @@ class Task {
     if (pullMessage != null) {
       _json["pullMessage"] = (pullMessage).toJson();
     }
-    if (pullTaskTarget != null) {
-      _json["pullTaskTarget"] = (pullTaskTarget).toJson();
-    }
     if (scheduleTime != null) {
       _json["scheduleTime"] = scheduleTime;
     }
-    if (taskStatus != null) {
-      _json["taskStatus"] = (taskStatus).toJson();
+    if (status != null) {
+      _json["status"] = (status).toJson();
     }
     if (view != null) {
       _json["view"] = view;
@@ -3719,13 +3758,13 @@ class TaskStatus {
   ///
   /// This count includes tasks which have been dispatched but haven't
   /// received a response.
-  core.String attemptDispatchCount;
+  core.int attemptDispatchCount;
 
   /// Output only. The number of attempts which have received a response.
   ///
   /// This field is not calculated for
   /// [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
-  core.String attemptResponseCount;
+  core.int attemptResponseCount;
 
   /// Output only. The status of the task's first attempt.
   ///

@@ -757,6 +757,67 @@ class OrdersResourceApi {
         .then((data) => new OrdersReturnLineItemResponse.fromJson(data));
   }
 
+  /// Sets (overrides) merchant provided annotations on the line item.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrdersSetLineItemMetadataResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrdersSetLineItemMetadataResponse> setlineitemmetadata(
+      OrdersSetLineItemMetadataRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orders/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/setLineItemMetadata';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new OrdersSetLineItemMetadataResponse.fromJson(data));
+  }
+
   /// Marks line item(s) as shipped.
   ///
   /// [request] - The metadata request object.
@@ -816,6 +877,68 @@ class OrdersResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new OrdersShipLineItemsResponse.fromJson(data));
+  }
+
+  /// Updates ship by and delivery by dates for a line item.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrdersUpdateLineItemShippingDetailsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrdersUpdateLineItemShippingDetailsResponse>
+      updatelineitemshippingdetails(
+          OrdersUpdateLineItemShippingDetailsRequest request,
+          core.String merchantId,
+          core.String orderId,
+          {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orders/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/updateLineItemShippingDetails';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new OrdersUpdateLineItemShippingDetailsResponse.fromJson(data));
   }
 
   /// Updates the merchant order ID for a given order.
@@ -1456,6 +1579,9 @@ class OrderDeliveryDetails {
 }
 
 class OrderLineItem {
+  /// Annotations that are attached to the line item.
+  core.List<OrderMerchantProvidedAnnotation> annotations;
+
   /// Cancellations of the line item.
   core.List<OrderCancellation> cancellations;
 
@@ -1504,6 +1630,11 @@ class OrderLineItem {
   OrderLineItem();
 
   OrderLineItem.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations = _json["annotations"]
+          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("cancellations")) {
       cancellations = _json["cancellations"]
           .map((value) => new OrderCancellation.fromJson(value))
@@ -1556,6 +1687,10 @@ class OrderLineItem {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] =
+          annotations.map((value) => (value).toJson()).toList();
+    }
     if (cancellations != null) {
       _json["cancellations"] =
           cancellations.map((value) => (value).toJson()).toList();
@@ -1913,6 +2048,39 @@ class OrderLineItemShippingDetailsMethod {
     }
     if (minDaysInTransit != null) {
       _json["minDaysInTransit"] = minDaysInTransit;
+    }
+    return _json;
+  }
+}
+
+class OrderMerchantProvidedAnnotation {
+  /// Key for additional merchant provided (as key-value pairs) annotation about
+  /// the line item.
+  core.String key;
+
+  /// Value for additional merchant provided (as key-value pairs) annotation
+  /// about the line item.
+  core.String value;
+
+  OrderMerchantProvidedAnnotation();
+
+  OrderMerchantProvidedAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -2799,8 +2967,15 @@ class OrdersCustomBatchRequestEntry {
   /// Required for returnLineItem method.
   OrdersCustomBatchRequestEntryReturnLineItem returnLineItem;
 
+  /// Required for setLineItemMetadata method.
+  OrdersCustomBatchRequestEntrySetLineItemMetadata setLineItemMetadata;
+
   /// Required for shipLineItems method.
   OrdersCustomBatchRequestEntryShipLineItems shipLineItems;
+
+  /// Required for updateLineItemShippingDate method.
+  OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails
+      updateLineItemShippingDetails;
 
   /// Required for updateShipment method.
   OrdersCustomBatchRequestEntryUpdateShipment updateShipment;
@@ -2842,9 +3017,19 @@ class OrdersCustomBatchRequestEntry {
       returnLineItem = new OrdersCustomBatchRequestEntryReturnLineItem.fromJson(
           _json["returnLineItem"]);
     }
+    if (_json.containsKey("setLineItemMetadata")) {
+      setLineItemMetadata =
+          new OrdersCustomBatchRequestEntrySetLineItemMetadata.fromJson(
+              _json["setLineItemMetadata"]);
+    }
     if (_json.containsKey("shipLineItems")) {
       shipLineItems = new OrdersCustomBatchRequestEntryShipLineItems.fromJson(
           _json["shipLineItems"]);
+    }
+    if (_json.containsKey("updateLineItemShippingDetails")) {
+      updateLineItemShippingDetails =
+          new OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails
+              .fromJson(_json["updateLineItemShippingDetails"]);
     }
     if (_json.containsKey("updateShipment")) {
       updateShipment = new OrdersCustomBatchRequestEntryUpdateShipment.fromJson(
@@ -2885,8 +3070,15 @@ class OrdersCustomBatchRequestEntry {
     if (returnLineItem != null) {
       _json["returnLineItem"] = (returnLineItem).toJson();
     }
+    if (setLineItemMetadata != null) {
+      _json["setLineItemMetadata"] = (setLineItemMetadata).toJson();
+    }
     if (shipLineItems != null) {
       _json["shipLineItems"] = (shipLineItems).toJson();
+    }
+    if (updateLineItemShippingDetails != null) {
+      _json["updateLineItemShippingDetails"] =
+          (updateLineItemShippingDetails).toJson();
     }
     if (updateShipment != null) {
       _json["updateShipment"] = (updateShipment).toJson();
@@ -3136,6 +3328,50 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
   }
 }
 
+class OrdersCustomBatchRequestEntrySetLineItemMetadata {
+  core.List<OrderMerchantProvidedAnnotation> annotations;
+
+  /// The ID of the line item to set metadata. Either lineItemId or productId is
+  /// required.
+  core.String lineItemId;
+
+  /// The ID of the product to set metadata. This is the REST ID used in the
+  /// products service. Either lineItemId or productId is required.
+  core.String productId;
+
+  OrdersCustomBatchRequestEntrySetLineItemMetadata();
+
+  OrdersCustomBatchRequestEntrySetLineItemMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations = _json["annotations"]
+          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] =
+          annotations.map((value) => (value).toJson()).toList();
+    }
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
 class OrdersCustomBatchRequestEntryShipLineItems {
   /// Deprecated. Please use shipmentInfo instead. The carrier handling the
   /// shipment. See shipments[].carrier in the  Orders resource representation
@@ -3243,6 +3479,60 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
     }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
+    }
+    return _json;
+  }
+}
+
+class OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails {
+  /// Updated delivery by date, in ISO 8601 format. If not specified only ship
+  /// by date is updated.
+  core.String deliverByDate;
+
+  /// The ID of the line item to set metadata. Either lineItemId or productId is
+  /// required.
+  core.String lineItemId;
+
+  /// The ID of the product to set metadata. This is the REST ID used in the
+  /// products service. Either lineItemId or productId is required.
+  core.String productId;
+
+  /// Updated ship by date, in ISO 8601 format. If not specified only deliver by
+  /// date is updated.
+  core.String shipByDate;
+
+  OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails();
+
+  OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("deliverByDate")) {
+      deliverByDate = _json["deliverByDate"];
+    }
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("shipByDate")) {
+      shipByDate = _json["shipByDate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deliverByDate != null) {
+      _json["deliverByDate"] = deliverByDate;
+    }
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (shipByDate != null) {
+      _json["shipByDate"] = shipByDate;
     }
     return _json;
   }
@@ -3699,6 +3989,91 @@ class OrdersReturnLineItemResponse {
   }
 }
 
+class OrdersSetLineItemMetadataRequest {
+  core.List<OrderMerchantProvidedAnnotation> annotations;
+
+  /// The ID of the line item to set metadata. Either lineItemId or productId is
+  /// required.
+  core.String lineItemId;
+
+  /// The ID of the operation. Unique across all operations for a given order.
+  core.String operationId;
+
+  /// The ID of the product to set metadata. This is the REST ID used in the
+  /// products service. Either lineItemId or productId is required.
+  core.String productId;
+
+  OrdersSetLineItemMetadataRequest();
+
+  OrdersSetLineItemMetadataRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations = _json["annotations"]
+          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] =
+          annotations.map((value) => (value).toJson()).toList();
+    }
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
+class OrdersSetLineItemMetadataResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#ordersSetLineItemMetadataResponse".
+  core.String kind;
+
+  OrdersSetLineItemMetadataResponse();
+
+  OrdersSetLineItemMetadataResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 class OrdersShipLineItemsRequest {
   /// Deprecated. Please use shipmentInfo instead. The carrier handling the
   /// shipment. See shipments[].carrier in the  Orders resource representation
@@ -3789,6 +4164,100 @@ class OrdersShipLineItemsResponse {
   OrdersShipLineItemsResponse();
 
   OrdersShipLineItemsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrdersUpdateLineItemShippingDetailsRequest {
+  /// Updated delivery by date, in ISO 8601 format. If not specified only ship
+  /// by date is updated.
+  core.String deliverByDate;
+
+  /// The ID of the line item to set metadata. Either lineItemId or productId is
+  /// required.
+  core.String lineItemId;
+
+  /// The ID of the operation. Unique across all operations for a given order.
+  core.String operationId;
+
+  /// The ID of the product to set metadata. This is the REST ID used in the
+  /// products service. Either lineItemId or productId is required.
+  core.String productId;
+
+  /// Updated ship by date, in ISO 8601 format. If not specified only deliver by
+  /// date is updated.
+  core.String shipByDate;
+
+  OrdersUpdateLineItemShippingDetailsRequest();
+
+  OrdersUpdateLineItemShippingDetailsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deliverByDate")) {
+      deliverByDate = _json["deliverByDate"];
+    }
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("shipByDate")) {
+      shipByDate = _json["shipByDate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deliverByDate != null) {
+      _json["deliverByDate"] = deliverByDate;
+    }
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (shipByDate != null) {
+      _json["shipByDate"] = shipByDate;
+    }
+    return _json;
+  }
+}
+
+class OrdersUpdateLineItemShippingDetailsResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#ordersUpdateLineItemShippingDetailsResponse".
+  core.String kind;
+
+  OrdersUpdateLineItemShippingDetailsResponse();
+
+  OrdersUpdateLineItemShippingDetailsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("executionStatus")) {
       executionStatus = _json["executionStatus"];
     }
