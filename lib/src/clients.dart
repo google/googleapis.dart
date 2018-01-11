@@ -122,11 +122,11 @@ class ApiRequester {
     });
   }
 
-  Future _request(
+  Future<http.StreamedResponse> _request(
       String requestUrl,
       String method,
       String body,
-      Map queryParams,
+      Map<String, List<String>> queryParams,
       client_requests.Media uploadMedia,
       client_requests.UploadOptions uploadOptions,
       client_requests.DownloadOptions downloadOptions,
@@ -603,7 +603,8 @@ class ResumableMediaUploader {
    * Returns the returned [http.StreamedResponse] or completes with an error if
    * the upload did not succeed. The response stream will not be listened to.
    */
-  Future _uploadChunk(Uri uri, ResumableChunk chunk, {bool lastChunk: false}) {
+  Future<http.StreamedResponse> _uploadChunk(Uri uri, ResumableChunk chunk,
+      {bool lastChunk: false}) {
     // If [uploadMedia.length] is null, we do not know the length.
     var mediaTotalLength =
         _uploadMedia.length == null ? null : _uploadMedia.length.toString();

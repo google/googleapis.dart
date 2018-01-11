@@ -385,7 +385,8 @@ main() {
           requester
               .request('abc', 'GET',
                   body: '', downloadOptions: DownloadOptions.FullMedia)
-              .then(expectAsync1((Media media) {
+              .then(expectAsync1((result) {
+            var media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data256.length));
             media.stream
@@ -416,7 +417,8 @@ main() {
           var options = new PartialDownloadOptions(range);
           requester
               .request('abc', 'GET', body: '', downloadOptions: options)
-              .then(expectAsync1((Media media) {
+              .then(expectAsync1((result) {
+            var media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data64.length));
             media.stream
@@ -447,7 +449,8 @@ main() {
               .request('abc', 'GET',
                   body: JSON.encode(['a', 1]),
                   downloadOptions: DownloadOptions.FullMedia)
-              .then(expectAsync1((Media media) {
+              .then(expectAsync1((result) {
+            var media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data256.length));
             media.stream
@@ -584,12 +587,11 @@ main() {
                 'content-length': '0',
                 'content-type': 'application/json; charset=utf-8',
                 'x-upload-content-type': 'foobar',
-              }
-                ..addAll(stream
-                    ? {}
-                    : {
-                        'x-upload-content-length': '$totalLength',
-                      }),
+              }..addAll(stream
+                  ? {}
+                  : {
+                      'x-upload-content-length': '$totalLength',
+                    }),
               'response':
                   stringResponse(200, {'location': 'http://upload.com/'}, '')
             });
