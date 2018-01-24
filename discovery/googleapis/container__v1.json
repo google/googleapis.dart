@@ -2477,6 +2477,6 @@
         }
     },
     "servicePath": "",
-    "title": "Google Container Engine API",
+    "title": "Google Kubernetes Engine API",
     "version": "v1"
 }
