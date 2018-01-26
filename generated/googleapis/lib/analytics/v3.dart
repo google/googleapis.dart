@@ -5921,6 +5921,50 @@ class ProvisioningResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new AccountTicket.fromJson(data));
   }
+
+  /// Provision account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountTreeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountTreeResponse> createAccountTree(
+      AccountTreeRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'provisioning/createAccount';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountTreeResponse.fromJson(data));
+  }
 }
 
 /// Child link for an account entry. Points to the list of web properties for
@@ -6347,6 +6391,248 @@ class AccountTicket {
     }
     if (redirectUri != null) {
       _json["redirectUri"] = redirectUri;
+    }
+    if (webproperty != null) {
+      _json["webproperty"] = (webproperty).toJson();
+    }
+    return _json;
+  }
+}
+
+class AccountTreeRequestAccountSettings {
+  core.bool admobReporting;
+  core.bool sharingWithGoogleAnySales;
+  core.bool sharingWithGoogleProducts;
+  core.bool sharingWithGoogleSales;
+  core.bool sharingWithGoogleSupport;
+  core.bool sharingWithOthers;
+
+  AccountTreeRequestAccountSettings();
+
+  AccountTreeRequestAccountSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("admobReporting")) {
+      admobReporting = _json["admobReporting"];
+    }
+    if (_json.containsKey("sharingWithGoogleAnySales")) {
+      sharingWithGoogleAnySales = _json["sharingWithGoogleAnySales"];
+    }
+    if (_json.containsKey("sharingWithGoogleProducts")) {
+      sharingWithGoogleProducts = _json["sharingWithGoogleProducts"];
+    }
+    if (_json.containsKey("sharingWithGoogleSales")) {
+      sharingWithGoogleSales = _json["sharingWithGoogleSales"];
+    }
+    if (_json.containsKey("sharingWithGoogleSupport")) {
+      sharingWithGoogleSupport = _json["sharingWithGoogleSupport"];
+    }
+    if (_json.containsKey("sharingWithOthers")) {
+      sharingWithOthers = _json["sharingWithOthers"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (admobReporting != null) {
+      _json["admobReporting"] = admobReporting;
+    }
+    if (sharingWithGoogleAnySales != null) {
+      _json["sharingWithGoogleAnySales"] = sharingWithGoogleAnySales;
+    }
+    if (sharingWithGoogleProducts != null) {
+      _json["sharingWithGoogleProducts"] = sharingWithGoogleProducts;
+    }
+    if (sharingWithGoogleSales != null) {
+      _json["sharingWithGoogleSales"] = sharingWithGoogleSales;
+    }
+    if (sharingWithGoogleSupport != null) {
+      _json["sharingWithGoogleSupport"] = sharingWithGoogleSupport;
+    }
+    if (sharingWithOthers != null) {
+      _json["sharingWithOthers"] = sharingWithOthers;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for an Analytics account tree requests. The account tree
+/// request is used in the provisioning api to create an account, property, and
+/// view (profile). It contains the basic information required to make these
+/// fields.
+class AccountTreeRequest {
+  core.String accountName;
+  AccountTreeRequestAccountSettings accountSettings;
+
+  /// Resource type for account ticket.
+  core.String kind;
+  core.String profileName;
+  core.String timezone;
+  core.String webpropertyName;
+  core.String websiteUrl;
+
+  AccountTreeRequest();
+
+  AccountTreeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("accountName")) {
+      accountName = _json["accountName"];
+    }
+    if (_json.containsKey("accountSettings")) {
+      accountSettings = new AccountTreeRequestAccountSettings.fromJson(
+          _json["accountSettings"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("profileName")) {
+      profileName = _json["profileName"];
+    }
+    if (_json.containsKey("timezone")) {
+      timezone = _json["timezone"];
+    }
+    if (_json.containsKey("webpropertyName")) {
+      webpropertyName = _json["webpropertyName"];
+    }
+    if (_json.containsKey("websiteUrl")) {
+      websiteUrl = _json["websiteUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountName != null) {
+      _json["accountName"] = accountName;
+    }
+    if (accountSettings != null) {
+      _json["accountSettings"] = (accountSettings).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (profileName != null) {
+      _json["profileName"] = profileName;
+    }
+    if (timezone != null) {
+      _json["timezone"] = timezone;
+    }
+    if (webpropertyName != null) {
+      _json["webpropertyName"] = webpropertyName;
+    }
+    if (websiteUrl != null) {
+      _json["websiteUrl"] = websiteUrl;
+    }
+    return _json;
+  }
+}
+
+class AccountTreeResponseAccountSettings {
+  core.bool admobReporting;
+  core.bool sharingWithGoogleAnySales;
+  core.bool sharingWithGoogleProducts;
+  core.bool sharingWithGoogleSales;
+  core.bool sharingWithGoogleSupport;
+  core.bool sharingWithOthers;
+
+  AccountTreeResponseAccountSettings();
+
+  AccountTreeResponseAccountSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("admobReporting")) {
+      admobReporting = _json["admobReporting"];
+    }
+    if (_json.containsKey("sharingWithGoogleAnySales")) {
+      sharingWithGoogleAnySales = _json["sharingWithGoogleAnySales"];
+    }
+    if (_json.containsKey("sharingWithGoogleProducts")) {
+      sharingWithGoogleProducts = _json["sharingWithGoogleProducts"];
+    }
+    if (_json.containsKey("sharingWithGoogleSales")) {
+      sharingWithGoogleSales = _json["sharingWithGoogleSales"];
+    }
+    if (_json.containsKey("sharingWithGoogleSupport")) {
+      sharingWithGoogleSupport = _json["sharingWithGoogleSupport"];
+    }
+    if (_json.containsKey("sharingWithOthers")) {
+      sharingWithOthers = _json["sharingWithOthers"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (admobReporting != null) {
+      _json["admobReporting"] = admobReporting;
+    }
+    if (sharingWithGoogleAnySales != null) {
+      _json["sharingWithGoogleAnySales"] = sharingWithGoogleAnySales;
+    }
+    if (sharingWithGoogleProducts != null) {
+      _json["sharingWithGoogleProducts"] = sharingWithGoogleProducts;
+    }
+    if (sharingWithGoogleSales != null) {
+      _json["sharingWithGoogleSales"] = sharingWithGoogleSales;
+    }
+    if (sharingWithGoogleSupport != null) {
+      _json["sharingWithGoogleSupport"] = sharingWithGoogleSupport;
+    }
+    if (sharingWithOthers != null) {
+      _json["sharingWithOthers"] = sharingWithOthers;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for an Analytics account tree response. The account tree
+/// response is used in the provisioning api to return the result of creating an
+/// account, property, and view (profile).
+class AccountTreeResponse {
+  /// The account created.
+  Account account;
+  AccountTreeResponseAccountSettings accountSettings;
+
+  /// Resource type for account ticket.
+  core.String kind;
+
+  /// View (Profile) for the account.
+  Profile profile;
+
+  /// Web property for the account.
+  Webproperty webproperty;
+
+  AccountTreeResponse();
+
+  AccountTreeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("account")) {
+      account = new Account.fromJson(_json["account"]);
+    }
+    if (_json.containsKey("accountSettings")) {
+      accountSettings = new AccountTreeResponseAccountSettings.fromJson(
+          _json["accountSettings"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("profile")) {
+      profile = new Profile.fromJson(_json["profile"]);
+    }
+    if (_json.containsKey("webproperty")) {
+      webproperty = new Webproperty.fromJson(_json["webproperty"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (account != null) {
+      _json["account"] = (account).toJson();
+    }
+    if (accountSettings != null) {
+      _json["accountSettings"] = (accountSettings).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (profile != null) {
+      _json["profile"] = (profile).toJson();
     }
     if (webproperty != null) {
       _json["webproperty"] = (webproperty).toJson();

@@ -3010,9 +3010,9 @@ class JobConfiguration {
   /// [Pick one] Configures an extract job.
   JobConfigurationExtract extract;
 
-  /// [Experimental] The labels associated with this job. You can use these to
-  /// organize and group your jobs. Label keys and values can be no longer than
-  /// 63 characters, can only contain lowercase letters, numeric characters,
+  /// The labels associated with this job. You can use these to organize and
+  /// group your jobs. Label keys and values can be no longer than 63
+  /// characters, can only contain lowercase letters, numeric characters,
   /// underscores and dashes. International characters are allowed. Label values
   /// are optional. Label keys must start with a letter and each label in the
   /// list must have a different key.
@@ -4090,12 +4090,12 @@ class JobStatistics2 {
   /// [Output-only] Describes execution plan for the query.
   core.List<ExplainQueryStage> queryPlan;
 
-  /// [Output-only, Experimental] Referenced tables for the job. Queries that
-  /// reference more than 50 tables will not have a complete list.
+  /// [Output-only] Referenced tables for the job. Queries that reference more
+  /// than 50 tables will not have a complete list.
   core.List<TableReference> referencedTables;
 
-  /// [Output-only, Experimental] The schema of the results. Present only for
-  /// successful dry run of non-legacy SQL queries.
+  /// [Output-only] The schema of the results. Present only for successful dry
+  /// run of non-legacy SQL queries.
   TableSchema schema;
 
   /// [Output-only, Experimental] The type of query statement, if valid.
@@ -5145,12 +5145,12 @@ class Table {
   /// [Output-only] The type of the resource.
   core.String kind;
 
-  /// [Experimental] The labels associated with this table. You can use these to
-  /// organize and group your tables. Label keys and values can be no longer
-  /// than 63 characters, can only contain lowercase letters, numeric
-  /// characters, underscores and dashes. International characters are allowed.
-  /// Label values are optional. Label keys must start with a letter and each
-  /// label in the list must have a different key.
+  /// The labels associated with this table. You can use these to organize and
+  /// group your tables. Label keys and values can be no longer than 63
+  /// characters, can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter and each label in the
+  /// list must have a different key.
   core.Map<core.String, core.String> labels;
 
   /// [Output-only] The time when this table was last modified, in milliseconds
@@ -5712,8 +5712,8 @@ class TableListTables {
   /// The resource type.
   core.String kind;
 
-  /// [Experimental] The labels associated with this table. You can use these to
-  /// organize and group your tables.
+  /// The labels associated with this table. You can use these to organize and
+  /// group your tables.
   core.Map<core.String, core.String> labels;
 
   /// A reference uniquely identifying the table.

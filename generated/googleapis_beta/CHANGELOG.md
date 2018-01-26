@@ -1,3 +1,17 @@
+## 0.44.0
+
+* [api] dialogflow:v2beta1
+* [api] dataflow:v1b3
+* [api] tpu:v1alpha1
+* [api] logging:v2beta1
+* [api] appengine:v1beta
+* [api] appengine:v1beta4
+* [api] appengine:v1beta5
+* [api-breaking] cloudtasks:v2beta2
+* [api-breaking] oslogin:v1beta
+* [api-breaking] oslogin:v1alpha
+* [api-breaking] speech:v1beta1
+
 ## 0.43.0
 
 * [api] dlp:v2beta1

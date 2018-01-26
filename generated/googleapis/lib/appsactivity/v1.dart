@@ -19,21 +19,6 @@ class AppsactivityApi {
   /// View the activity history of your Google apps
   static const ActivityScope = "https://www.googleapis.com/auth/activity";
 
-  /// View and manage the files in your Google Drive
-  static const DriveScope = "https://www.googleapis.com/auth/drive";
-
-  /// View and manage metadata of files in your Google Drive
-  static const DriveMetadataScope =
-      "https://www.googleapis.com/auth/drive.metadata";
-
-  /// View metadata for files in your Google Drive
-  static const DriveMetadataReadonlyScope =
-      "https://www.googleapis.com/auth/drive.metadata.readonly";
-
-  /// View the files in your Google Drive
-  static const DriveReadonlyScope =
-      "https://www.googleapis.com/auth/drive.readonly";
-
   final commons.ApiRequester _requester;
 
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
@@ -430,6 +415,7 @@ class Permission {
   /// Possible string values are:
   /// - "commenter"
   /// - "owner"
+  /// - "publishedReader"
   /// - "reader"
   /// - "writer"
   core.String role;

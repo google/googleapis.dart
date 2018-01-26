@@ -1,4 +1,42 @@
-## 0.40.0
+## 0.49.0
+
+* [api] analytics:v3
+* [api] androidenterprise:v1
+* [api] androidmanagement:v1
+* [api] appengine:v1
+* [api] books:v1
+* [api] compute:v1
+* [api] content:v2
+* [api] content:v2sandbox
+* [api] drive:v2
+* [api] drive:v3
+* [api] firebasedynamiclinks:v1
+* [api] iam:v1
+* [api] logging:v2
+* [api] ml:v1
+* [api] pagespeedonline:v1
+* [api] pagespeedonline:v2
+* [api] pubsub:v1
+* [api] safebrowsing:v4
+* [api] script:v1
+* [api] sheets:v4
+* [api] slides:v1
+* [api] speech:v1
+* [api] vision:v1
+* [api-breaking] appsactivity:v1
+* [api-breaking] cloudiot:v1
+* [api-breaking] cloudkms:v1
+* [api-breaking] firebaserules:v1
+* [api-breaking] games:v1
+* [api-breaking] ml:v1
+* [api-breaking] oslogin:v1
+* [api-breaking] partners:v2
+* [api-breaking] serviceconsumermanagement:v1
+* [api-breaking] servicemanagement:v1
+* [api-breaking] serviceuser:v1
+* [api-breaking] speech:v1
+
+## 0.48.0
 
 * [api] classroom:v1
 * [api] content:v2

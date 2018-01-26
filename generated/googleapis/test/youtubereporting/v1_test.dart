@@ -290,14 +290,14 @@ checkGdataDownloadParameters(api.GdataDownloadParameters o) {
   buildCounterGdataDownloadParameters--;
 }
 
-buildUnnamed1135() {
+buildUnnamed1148() {
   var o = new core.List<api.GdataCompositeMedia>();
   o.add(buildGdataCompositeMedia());
   o.add(buildGdataCompositeMedia());
   return o;
 }
 
-checkUnnamed1135(core.List<api.GdataCompositeMedia> o) {
+checkUnnamed1148(core.List<api.GdataCompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGdataCompositeMedia(o[0]);
   checkGdataCompositeMedia(o[1]);
@@ -312,7 +312,7 @@ buildGdataMedia() {
     o.bigstoreObjectRef = "foo";
     o.blobRef = "foo";
     o.blobstore2Info = buildGdataBlobstore2Info();
-    o.compositeMedia = buildUnnamed1135();
+    o.compositeMedia = buildUnnamed1148();
     o.contentType = "foo";
     o.contentTypeInfo = buildGdataContentTypeInfo();
     o.cosmoBinaryReference = "foo";
@@ -350,7 +350,7 @@ checkGdataMedia(api.GdataMedia o) {
     unittest.expect(o.bigstoreObjectRef, unittest.equals('foo'));
     unittest.expect(o.blobRef, unittest.equals('foo'));
     checkGdataBlobstore2Info(o.blobstore2Info);
-    checkUnnamed1135(o.compositeMedia);
+    checkUnnamed1148(o.compositeMedia);
     unittest.expect(o.contentType, unittest.equals('foo'));
     checkGdataContentTypeInfo(o.contentTypeInfo);
     unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
@@ -432,14 +432,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed1136() {
+buildUnnamed1149() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed1136(core.List<api.Job> o) {
+checkUnnamed1149(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -450,7 +450,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed1136();
+    o.jobs = buildUnnamed1149();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -460,20 +460,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed1136(o.jobs);
+    checkUnnamed1149(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed1137() {
+buildUnnamed1150() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed1137(core.List<api.ReportType> o) {
+checkUnnamed1150(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -485,7 +485,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed1137();
+    o.reportTypes = buildUnnamed1150();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -495,19 +495,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1137(o.reportTypes);
+    checkUnnamed1150(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed1138() {
+buildUnnamed1151() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed1138(core.List<api.Report> o) {
+checkUnnamed1151(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -519,7 +519,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed1138();
+    o.reports = buildUnnamed1151();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -529,7 +529,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1138(o.reports);
+    checkUnnamed1151(o.reports);
   }
   buildCounterListReportsResponse--;
 }
@@ -1055,8 +1055,8 @@ main() {
       var arg_onBehalfOfContentOwner = "foo";
       var arg_startTimeBefore = "foo";
       var arg_createdAfter = "foo";
-      var arg_pageToken = "foo";
       var arg_startTimeAtOrAfter = "foo";
+      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1104,10 +1104,10 @@ main() {
             unittest.equals(arg_startTimeBefore));
         unittest.expect(
             queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["startTimeAtOrAfter"].first,
             unittest.equals(arg_startTimeAtOrAfter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1123,8 +1123,8 @@ main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               startTimeBefore: arg_startTimeBefore,
               createdAfter: arg_createdAfter,
-              pageToken: arg_pageToken,
               startTimeAtOrAfter: arg_startTimeAtOrAfter,
+              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListReportsResponse response) {

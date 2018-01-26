@@ -1479,7 +1479,7 @@ class TypesResourceApi {
 /// If there are AuditConfigs for both `allServices` and a specific service, the
 /// union of the two AuditConfigs is used for that service: the log_types
 /// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
+/// AuditLogConfig are exempted.
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
@@ -1603,7 +1603,7 @@ class Binding {
   /// The condition that is associated with this binding. NOTE: an unsatisfied
   /// condition will not allow user access via current binding. Different
   /// bindings, including their conditions, are examined independently. This
-  /// field is GOOGLE_INTERNAL.
+  /// field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -2699,7 +2699,9 @@ class Operation {
   core.int progress;
 
   /// [Output Only] The URL of the region where the operation resides. Only
-  /// available when performing regional operations.
+  /// available when performing regional operations. You must specify this field
+  /// as part of the HTTP request URL. It is not settable as a field in the
+  /// request body.
   core.String region;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -2735,7 +2737,9 @@ class Operation {
   core.List<OperationWarnings> warnings;
 
   /// [Output Only] The URL of the zone where the operation resides. Only
-  /// available when performing per-zone operations.
+  /// available when performing per-zone operations. You must specify this field
+  /// as part of the HTTP request URL. It is not settable as a field in the
+  /// request body.
   core.String zone;
 
   Operation();
@@ -2944,7 +2948,7 @@ class OperationsListResponse {
 /// "roles/viewer", "members": ["user:sean@example.com"] } ] }
 ///
 /// For a description of IAM and its features, see the [IAM developer's
-/// guide](https://cloud.google.com/iam).
+/// guide](https://cloud.google.com/iam/docs).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -2985,7 +2989,7 @@ class Policy {
   /// rule applies, permission is denied.
   core.List<Rule> rules;
 
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();

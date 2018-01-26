@@ -24,6 +24,8 @@ class IamApi {
 
   final commons.ApiRequester _requester;
 
+  IamPoliciesResourceApi get iamPolicies =>
+      new IamPoliciesResourceApi(_requester);
   OrganizationsResourceApi get organizations =>
       new OrganizationsResourceApi(_requester);
   PermissionsResourceApi get permissions =>
@@ -36,6 +38,58 @@ class IamApi {
       core.String servicePath: ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+class IamPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  IamPoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Returns a list of services that support service level audit logging
+  /// configuration for the given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryAuditableServicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryAuditableServicesResponse> queryAuditableServices(
+      QueryAuditableServicesRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/iamPolicies:queryAuditableServices';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new QueryAuditableServicesResponse.fromJson(data));
+  }
 }
 
 class OrganizationsResourceApi {
@@ -222,6 +276,8 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -232,8 +288,6 @@ class OrganizationsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -246,10 +300,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.bool showDeleted,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
-      core.bool showDeleted,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -261,6 +315,9 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -269,9 +326,6 @@ class OrganizationsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1799,6 +1853,30 @@ class AuditData {
   }
 }
 
+/// Contains information about an auditable service.
+class AuditableService {
+  /// Public name of the service.
+  /// For example, the service name for Cloud IAM is 'iam.googleapis.com'.
+  core.String name;
+
+  AuditableService();
+
+  AuditableService.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// Associates `members` with a `role`.
 class Binding {
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -1948,8 +2026,9 @@ class CreateServiceAccountKeyRequest {
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
   core.String keyAlgorithm;
 
-  /// The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
-  /// default output format.
+  /// The output format of the private key. The default value is
+  /// `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File
+  /// format.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
   /// `TYPE_GOOGLE_CREDENTIALS_FILE`.
@@ -2137,6 +2216,9 @@ class ListServiceAccountsResponse {
 
 /// A permission which can be included by a role.
 class Permission {
+  /// The service API associated with the permission is not enabled.
+  core.bool apiDisabled;
+
   /// The current custom role support level.
   /// Possible string values are:
   /// - "SUPPORTED" : Permission is fully supported for custom role use.
@@ -2168,6 +2250,9 @@ class Permission {
   Permission();
 
   Permission.fromJson(core.Map _json) {
+    if (_json.containsKey("apiDisabled")) {
+      apiDisabled = _json["apiDisabled"];
+    }
     if (_json.containsKey("customRolesSupportLevel")) {
       customRolesSupportLevel = _json["customRolesSupportLevel"];
     }
@@ -2191,6 +2276,9 @@ class Permission {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (apiDisabled != null) {
+      _json["apiDisabled"] = apiDisabled;
+    }
     if (customRolesSupportLevel != null) {
       _json["customRolesSupportLevel"] = customRolesSupportLevel;
     }
@@ -2245,7 +2333,7 @@ class Permission {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
@@ -2272,7 +2360,7 @@ class Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();
@@ -2328,6 +2416,59 @@ class PolicyDelta {
     if (bindingDeltas != null) {
       _json["bindingDeltas"] =
           bindingDeltas.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A request to get the list of auditable services for a resource.
+class QueryAuditableServicesRequest {
+  /// Required. The full resource name to query from the list of auditable
+  /// services.
+  ///
+  /// The name follows the Google Cloud Platform resource format.
+  /// For example, a Cloud Platform project with id `my-project` will be named
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+  core.String fullResourceName;
+
+  QueryAuditableServicesRequest();
+
+  QueryAuditableServicesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fullResourceName")) {
+      fullResourceName = _json["fullResourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fullResourceName != null) {
+      _json["fullResourceName"] = fullResourceName;
+    }
+    return _json;
+  }
+}
+
+/// A response containing a list of auditable services for a resource.
+class QueryAuditableServicesResponse {
+  /// The auditable services for a resource.
+  core.List<AuditableService> services;
+
+  QueryAuditableServicesResponse();
+
+  QueryAuditableServicesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("services")) {
+      services = _json["services"]
+          .map((value) => new AuditableService.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (services != null) {
+      _json["services"] = services.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

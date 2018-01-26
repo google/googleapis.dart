@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/3YG-LT4qrRUyFWdkclYBK5c_4z0\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/yZuI9Zc3vP87m6b_jbqnCJdkFDI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -1519,19 +1519,9 @@
                                     "type": "string"
                                 },
                                 "track": {
-                                    "enum": [
-                                        "alpha",
-                                        "beta",
-                                        "production",
-                                        "rollout"
-                                    ],
-                                    "enumDescriptions": [
-                                        "",
-                                        "",
-                                        "",
-                                        ""
-                                    ],
+                                    "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
                                     "location": "path",
+                                    "pattern": "(alpha|beta|production|rollout)",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -1566,19 +1556,9 @@
                                     "type": "string"
                                 },
                                 "track": {
-                                    "enum": [
-                                        "alpha",
-                                        "beta",
-                                        "production",
-                                        "rollout"
-                                    ],
-                                    "enumDescriptions": [
-                                        "",
-                                        "",
-                                        "",
-                                        ""
-                                    ],
+                                    "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
                                     "location": "path",
+                                    "pattern": "(alpha|beta|production|rollout)",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -1616,19 +1596,9 @@
                                     "type": "string"
                                 },
                                 "track": {
-                                    "enum": [
-                                        "alpha",
-                                        "beta",
-                                        "production",
-                                        "rollout"
-                                    ],
-                                    "enumDescriptions": [
-                                        "",
-                                        "",
-                                        "",
-                                        ""
-                                    ],
+                                    "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
                                     "location": "path",
+                                    "pattern": "(alpha|beta|production|rollout)",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -1671,20 +1641,9 @@
                                     "type": "string"
                                 },
                                 "track": {
-                                    "description": "The track type to read or modify.",
-                                    "enum": [
-                                        "alpha",
-                                        "beta",
-                                        "production",
-                                        "rollout"
-                                    ],
-                                    "enumDescriptions": [
-                                        "",
-                                        "",
-                                        "",
-                                        ""
-                                    ],
+                                    "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
                                     "location": "path",
+                                    "pattern": "(alpha|beta|production|rollout)",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -1750,20 +1709,9 @@
                                     "type": "string"
                                 },
                                 "track": {
-                                    "description": "The track type to read or modify.",
-                                    "enum": [
-                                        "alpha",
-                                        "beta",
-                                        "production",
-                                        "rollout"
-                                    ],
-                                    "enumDescriptions": [
-                                        "",
-                                        "",
-                                        "",
-                                        ""
-                                    ],
+                                    "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
                                     "location": "path",
+                                    "pattern": "(alpha|beta|production|rollout)",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -1802,20 +1750,9 @@
                                     "type": "string"
                                 },
                                 "track": {
-                                    "description": "The track type to read or modify.",
-                                    "enum": [
-                                        "alpha",
-                                        "beta",
-                                        "production",
-                                        "rollout"
-                                    ],
-                                    "enumDescriptions": [
-                                        "",
-                                        "",
-                                        "",
-                                        ""
-                                    ],
+                                    "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
                                     "location": "path",
+                                    "pattern": "(alpha|beta|production|rollout)",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -2474,7 +2411,7 @@
             }
         }
     },
-    "revision": "20171207",
+    "revision": "20180121",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -3311,7 +3248,7 @@
                     "type": "string"
                 },
                 "linkedPurchaseToken": {
-                    "description": "The purchase token of the originating purchase if this subscription is one of the following:  \n- Re-signup of a cancelled but non-lapsed subscription \n- Upgrade/downgrade from a previous subscription  For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow and you receive purchase token Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set. If user upgrade his subscription after the first resignup. You receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y.",
+                    "description": "The purchase token of the originating purchase if this subscription is one of the following:  \n- Re-signup of a canceled but non-lapsed subscription \n- Upgrade/downgrade from a previous subscription  For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set.",
                     "type": "string"
                 },
                 "orderId": {
@@ -3419,6 +3356,7 @@
             "id": "Track",
             "properties": {
                 "track": {
+                    "description": "Identifier for this track. One of \"alpha\", \"beta\", \"production\" or \"rollout\".",
                     "type": "string"
                 },
                 "userFraction": {

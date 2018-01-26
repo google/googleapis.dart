@@ -15,7 +15,7 @@
     "description": "Manages the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-HO9dhVgxPgZ9hKtuist_vTUbZU\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/kseaht2jVCZHibJLk4Q6fz-32jE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2804,7 +2804,7 @@
             }
         }
     },
-    "revision": "20171206",
+    "revision": "20180118",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Administrator": {
@@ -3588,6 +3588,10 @@
                     "description": "The Android ID of the device. This field will always be present.",
                     "type": "string"
                 },
+                "dpcPackageName": {
+                    "description": "Policy app on the device.",
+                    "type": "string"
+                },
                 "managementType": {
                     "description": "Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations.\n\nPossible values include: \n- \"managedDevice\", a device where the DPC is set as device owner, \n- \"managedProfile\", a device where the DPC is set as profile owner.",
                     "type": "string"
@@ -3793,7 +3797,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "A localized promotional description, if available.",
+                    "description": "The localized promotional description, if available.",
                     "type": "string"
                 },
                 "detailsUrl": {
@@ -3814,7 +3818,7 @@
                     "type": "string"
                 },
                 "lastUpdatedTimestampMillis": {
-                    "description": "The time (in milliseconds since epoch) when application was last published. (Timestamp is approximate within 7 days of actual publish time.)",
+                    "description": "The approximate time (within 7 days) the app was last published, expressed in milliseconds since epoch.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -3824,7 +3828,7 @@
                     "type": "integer"
                 },
                 "permissions": {
-                    "description": "The permissions required for this app.",
+                    "description": "A list of permissions required by the app.",
                     "items": {
                         "$ref": "ProductPermission"
                     },

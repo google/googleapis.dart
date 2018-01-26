@@ -632,6 +632,9 @@ class ProjectsResourceApi {
   /// Returns the IAM access control policy for the specified Project.
   /// Permission is denied if the policy or the resource does not exist.
   ///
+  /// For additional information about resource structure and identification,
+  /// see [Resource Names](/apis/design/resource_names).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -692,12 +695,6 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListProjects
-  /// that indicates from where listing should continue.
-  ///
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of Projects to return in the response.
   /// The server can return fewer Projects than requested.
   /// If unspecified, server picks an appropriate default.
@@ -737,6 +734,12 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListProjects
+  /// that indicates from where listing should continue.
+  ///
+  /// Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -748,9 +751,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -759,14 +762,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1072,7 +1075,7 @@ class Ancestor {
 /// If there are AuditConfigs for both `allServices` and a specific service,
 /// the union of the two AuditConfigs is used for that service: the log_types
 /// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
+/// AuditLogConfig are exempted.
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
@@ -1679,7 +1682,7 @@ class OrganizationOwner {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -1709,7 +1712,7 @@ class Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();

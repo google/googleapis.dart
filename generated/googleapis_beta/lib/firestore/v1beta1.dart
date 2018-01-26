@@ -238,13 +238,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// [collectionId] - The collection ID, relative to `parent`, to list. For
   /// example: `chatrooms`.
   ///
-  /// [documentId] - The client-assigned document ID to use for this document.
-  ///
-  /// Optional. If not specified, an ID will be assigned by the service.
-  ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
+  ///
+  /// [documentId] - The client-assigned document ID to use for this document.
+  ///
+  /// Optional. If not specified, an ID will be assigned by the service.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -258,8 +258,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Document> createDocument(
       Document request, core.String parent, core.String collectionId,
-      {core.String documentId,
-      core.List<core.String> mask_fieldPaths,
+      {core.List<core.String> mask_fieldPaths,
+      core.String documentId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -277,11 +277,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-    if (documentId != null) {
-      _queryParams["documentId"] = [documentId];
-    }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+    }
+    if (documentId != null) {
+      _queryParams["documentId"] = [documentId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -447,6 +447,15 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// example: `chatrooms`
   /// or `messages`.
   ///
+  /// [showMissing] - If the list should show missing documents. A missing
+  /// document is a
+  /// document that does not exist but has sub-documents. These documents will
+  /// be returned with a key but will not have fields, Document.create_time,
+  /// or Document.update_time set.
+  ///
+  /// Requests with `show_missing` may not specify `where` or
+  /// `order_by`.
+  ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
@@ -464,15 +473,6 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// [readTime] - Reads documents as they were at the given time.
   /// This may not be older than 60 seconds.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a
-  /// document that does not exist but has sub-documents. These documents will
-  /// be returned with a key but will not have fields, Document.create_time,
-  /// or Document.update_time set.
-  ///
-  /// Requests with `show_missing` may not specify `where` or
-  /// `order_by`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -485,13 +485,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDocumentsResponse> list(
       core.String parent, core.String collectionId,
-      {core.List<core.String> mask_fieldPaths,
+      {core.bool showMissing,
+      core.List<core.String> mask_fieldPaths,
       core.String pageToken,
       core.int pageSize,
       core.String transaction,
       core.String orderBy,
       core.String readTime,
-      core.bool showMissing,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -505,6 +505,9 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
+    }
+    if (showMissing != null) {
+      _queryParams["showMissing"] = ["${showMissing}"];
     }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
@@ -523,9 +526,6 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (readTime != null) {
       _queryParams["readTime"] = [readTime];
-    }
-    if (showMissing != null) {
-      _queryParams["showMissing"] = ["${showMissing}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1068,11 +1068,11 @@ class ProjectsDatabasesIndexesResourceApi {
   /// `projects/{project_id}/databases/{database_id}`
   /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
   ///
-  /// [pageToken] - The standard List page token.
-  ///
   /// [pageSize] - The standard List page size.
   ///
   /// [filter] - null
+  ///
+  /// [pageToken] - The standard List page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1085,9 +1085,9 @@ class ProjectsDatabasesIndexesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIndexesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1099,14 +1099,14 @@ class ProjectsDatabasesIndexesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

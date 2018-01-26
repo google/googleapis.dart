@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/qpJyVxrfz9PSG4k6YECdIvKEX8o\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/EnieVEhN4C1r9qFKYTtJan0xKmo\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1761,7 +1761,7 @@
             }
         }
     },
-    "revision": "20171215",
+    "revision": "20180112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -1770,6 +1770,10 @@
             "properties": {
                 "appInstalled": {
                     "description": "Whether the user has installed the requesting app.",
+                    "type": "boolean"
+                },
+                "canCreateTeamDrives": {
+                    "description": "Whether the user can create Team Drives.",
                     "type": "boolean"
                 },
                 "exportFormats": {
@@ -2419,7 +2423,7 @@
                     "type": "array"
                 },
                 "parents": {
-                    "description": "The IDs of the parent folders which contain the file.\nIf not specified as part of a create request, the file will be placed directly in the My Drive folder. Update requests must use the addParents and removeParents parameters to modify the values.",
+                    "description": "The IDs of the parent folders which contain the file.\nIf not specified as part of a create request, the file will be placed directly in the user's My Drive folder. If not specified as part of a copy request, the file will inherit any discoverable parents of the source file. Update requests must use the addParents and removeParents parameters to modify the parents list.",
                     "items": {
                         "type": "string"
                     },

@@ -47,6 +47,8 @@ class ProjectsLocationsResourceApi {
       new ProjectsLocationsNodesResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
       new ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsTensorflowVersionsResourceApi get tensorflowVersions =>
+      new ProjectsLocationsTensorflowVersionsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -101,11 +103,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,9 +120,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -132,14 +134,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -314,10 +316,10 @@ class ProjectsLocationsNodesResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of items to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -330,7 +332,7 @@ class ProjectsLocationsNodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNodesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -341,11 +343,11 @@ class ProjectsLocationsNodesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -455,6 +457,106 @@ class ProjectsLocationsNodesResourceApi {
 
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':reset';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Start a node.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> start(StartNodeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':start';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Stops a node.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(StopNodeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -695,6 +797,129 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
+class ProjectsLocationsTensorflowVersionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTensorflowVersionsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets TensorFlow Version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/tensorflowVersions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TensorFlowVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TensorFlowVersion> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TensorFlowVersion.fromJson(data));
+  }
+
+  /// List TensorFlow versions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [filter] - List filter.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [orderBy] - Sort results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTensorFlowVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTensorFlowVersionsResponse> list(core.String parent,
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String orderBy,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/tensorflowVersions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListTensorFlowVersionsResponse.fromJson(data));
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -817,6 +1042,41 @@ class ListOperationsResponse {
   }
 }
 
+/// Response for ListTensorFlowVersions.
+class ListTensorFlowVersionsResponse {
+  /// The next page token or empty if none.
+  core.String nextPageToken;
+
+  /// The listed nodes.
+  core.List<TensorFlowVersion> tensorflowVersions;
+
+  ListTensorFlowVersionsResponse();
+
+  ListTensorFlowVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("tensorflowVersions")) {
+      tensorflowVersions = _json["tensorflowVersions"]
+          .map((value) => new TensorFlowVersion.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (tensorflowVersions != null) {
+      _json["tensorflowVersions"] =
+          tensorflowVersions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A resource that represents Google Cloud Platform location.
 class Location {
   /// Cross-service attributes for the location. For example
@@ -912,14 +1172,14 @@ class Node {
   /// Required.
   core.String acceleratorType;
 
-  /// The CIDR block that the TPU node will use when selecting //an IP address.
-  /// This CIDR block must be a /29 block; the GCE networks API forbids a
-  /// smaller
-  /// block, and using a larger block would be wasteful (a node can only consume
-  /// one IP address). Errors will occur if the CIDR block has already been used
-  /// for a currently existing TPU node, the CIDR block conflicts with any
-  /// subnetworks in the user's provided network, or the provided network is
-  /// peered with another network that is using that CIDR block.
+  /// The CIDR block that the TPU node will use when selecting an IP address.
+  /// This CIDR block must be a /29 block; the Compute Engine networks API
+  /// forbids a smaller block, and using a larger block would be wasteful (a
+  /// node can only consume one IP address). Errors will occur if the CIDR block
+  /// has already been used for a currently existing TPU node, the CIDR block
+  /// conflicts with any subnetworks in the user's provided network, or the
+  /// provided network is peered with another network that is using that CIDR
+  /// block.
   /// Required.
   core.String cidrBlock;
 
@@ -946,16 +1206,20 @@ class Node {
 
   /// Output only.
   /// DEPRECATED! Use network_endpoints instead.
-  /// The network address for the TPU Node as visible to GCE instances.
+  /// The network address for the TPU Node as visible to Compute Engine
+  /// instances.
   core.String ipAddress;
+
+  /// Resource labels to represent user-provided metadata.
+  core.Map<core.String, core.String> labels;
 
   /// Output only.
   /// The immutable name of the TPU
   core.String name;
 
   /// The name of a network they wish to peer the TPU node to. It must be a
-  /// preexisting GCE network inside of the project on which this API has been
-  /// activated. If none is provided, "default" will be used.
+  /// preexisting Compute Engine network inside of the project on which this API
+  /// has been activated. If none is provided, "default" will be used.
   core.String network;
 
   /// Output only. The network endpoints where TPU workers can be accessed and
@@ -966,7 +1230,7 @@ class Node {
 
   /// Output only.
   /// DEPRECATED! Use network_endpoints instead.
-  /// The network port for the TPU Node as visible to GCE instances.
+  /// The network port for the TPU Node as visible to Compute Engine instances.
   core.String port;
 
   /// Output only.
@@ -1018,6 +1282,9 @@ class Node {
     if (_json.containsKey("ipAddress")) {
       ipAddress = _json["ipAddress"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1066,6 +1333,9 @@ class Node {
     }
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (name != null) {
       _json["name"] = name;
@@ -1291,6 +1561,19 @@ class ResetNodeRequest {
   }
 }
 
+/// Request for StartNode.
+class StartNodeRequest {
+  StartNodeRequest();
+
+  StartNodeRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different
 /// programming environments, including REST APIs and RPC APIs. It is used by
@@ -1388,6 +1671,51 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Request for StopNode.
+class StopNodeRequest {
+  StopNodeRequest();
+
+  StopNodeRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A tensorflow version that a Node can be configured with.
+class TensorFlowVersion {
+  /// The resource name.
+  core.String name;
+
+  /// the tensorflow version.
+  core.String version;
+
+  TensorFlowVersion();
+
+  TensorFlowVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }

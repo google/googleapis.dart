@@ -22,11 +22,11 @@
     },
     "basePath": "/storage/v1/",
     "baseUrl": "https://www.googleapis.com/storage/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/storage/v1",
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/aE5XnXblJMQy68d2aZIGrlTQ05U\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/jLupXEh5MvYeA2ibX_aBxLuxU28\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2755,7 +2755,7 @@
             }
         }
     },
-    "revision": "20171212",
+    "revision": "20180118",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

@@ -759,7 +759,7 @@ class ListReposResponse {
 }
 
 /// Configuration to automatically mirror a repository from another
-/// hosting service, for example GitHub or BitBucket.
+/// hosting service, for example GitHub or Bitbucket.
 class MirrorConfig {
   /// ID of the SSH deploy key at the other hosting service.
   /// Removing this key from the other service would deauthorize

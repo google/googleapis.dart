@@ -157,11 +157,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -174,9 +174,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -188,14 +188,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -404,11 +404,11 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
+  /// [pageSize] - Number of results to return in the list.
+  ///
   /// [filter] - The raw filter text to constrain the results.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
-  /// [pageSize] - Number of results to return in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,9 +421,9 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -435,14 +435,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -996,11 +996,12 @@ class Build {
   /// Default time is ten minutes.
   core.String timeout;
 
-  /// Stores timing information for phases of the build.
-  /// Valid keys are:
-  /// - BUILD: time to execute all build steps
-  /// - PUSH: time to push all specified images.
-  /// - FETCHSOURCE: time to fetch source.
+  /// Stores timing information for phases of the build. Valid keys are:
+  ///
+  /// * BUILD: time to execute all build steps
+  /// * PUSH: time to push all specified images.
+  /// * FETCHSOURCE: time to fetch source.
+  ///
   /// If the build does not specify source, or does not specify images,
   /// these keys will not be included.
   core.Map<core.String, TimeSpan> timing;
@@ -1197,7 +1198,7 @@ class BuildOptions {
   /// written when the build is completed.
   core.String logStreamingOption;
 
-  /// GCE VM size to run the build on.
+  /// Compute Engine machine type on which to run the build.
   /// Possible string values are:
   /// - "UNSPECIFIED" : Standard machine type.
   /// - "N1_HIGHCPU_8" : Highcpu machine with 8 CPUs.

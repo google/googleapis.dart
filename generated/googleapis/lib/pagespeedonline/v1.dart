@@ -734,6 +734,9 @@ class ResultVersion {
 }
 
 class Result {
+  /// The captcha verify result
+  core.String captchaResult;
+
   /// Localized PageSpeed results. Contains a ruleResults entry for each
   /// PageSpeed rule instantiated and run by the server.
   ResultFormattedResults formattedResults;
@@ -774,6 +777,9 @@ class Result {
   Result();
 
   Result.fromJson(core.Map _json) {
+    if (_json.containsKey("captchaResult")) {
+      captchaResult = _json["captchaResult"];
+    }
     if (_json.containsKey("formattedResults")) {
       formattedResults =
           new ResultFormattedResults.fromJson(_json["formattedResults"]);
@@ -810,6 +816,9 @@ class Result {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (captchaResult != null) {
+      _json["captchaResult"] = captchaResult;
+    }
     if (formattedResults != null) {
       _json["formattedResults"] = (formattedResults).toJson();
     }

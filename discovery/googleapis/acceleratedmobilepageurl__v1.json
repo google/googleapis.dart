@@ -15,29 +15,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -51,6 +35,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -70,13 +59,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -91,15 +80,26 @@
             "location": "query",
             "type": "boolean"
         },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "bearer_token": {
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -123,9 +123,70 @@
             }
         }
     },
-    "revision": "20171202",
+    "revision": "20180110",
     "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "schemas": {
+        "AmpUrlError": {
+            "description": "AMP URL Error resource for a requested URL that couldn't be found.",
+            "id": "AmpUrlError",
+            "properties": {
+                "errorMessage": {
+                    "description": "An optional descriptive error message.",
+                    "type": "string"
+                },
+                "errorCode": {
+                    "description": "The error code of an API call.",
+                    "enum": [
+                        "ERROR_CODE_UNSPECIFIED",
+                        "INPUT_URL_NOT_FOUND",
+                        "NO_AMP_URL",
+                        "APPLICATION_ERROR",
+                        "URL_IS_VALID_AMP",
+                        "URL_IS_INVALID_AMP"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified error.",
+                        "Indicates the requested URL is not found in the index, possibly because\nit's unable to be found, not able to be accessed by Googlebot, or some\nother error.",
+                        "Indicates no AMP URL has been found that corresponds to the requested\nURL.",
+                        "Indicates some kind of application error occurred at the server.\nClient advised to retry.",
+                        "DEPRECATED: Indicates the requested URL is a valid AMP URL.  This is a\nnon-error state, should not be relied upon as a sign of success or\nfailure.  It will be removed in future versions of the API.",
+                        "Indicates that an AMP URL has been found that corresponds to the request\nURL, but it is not valid AMP HTML."
+                    ],
+                    "type": "string"
+                },
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchGetAmpUrlsRequest": {
+            "description": "AMP URL request for a batch of URLs.",
+            "id": "BatchGetAmpUrlsRequest",
+            "properties": {
+                "lookupStrategy": {
+                    "description": "The lookup_strategy being requested.",
+                    "enum": [
+                        "FETCH_LIVE_DOC",
+                        "IN_INDEX_DOC"
+                    ],
+                    "enumDescriptions": [
+                        "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls.",
+                        "IN_INDEX_DOC strategy skips fetching live documents of URL(s) not found\nin index. For applications which need low latency use of IN_INDEX_DOC\nstrategy is recommended."
+                    ],
+                    "type": "string"
+                },
+                "urls": {
+                    "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "BatchGetAmpUrlsResponse": {
             "description": "Batch AMP URL response.",
             "id": "BatchGetAmpUrlsResponse",
@@ -162,67 +223,6 @@
                 "ampUrl": {
                     "description": "The AMP URL pointing to the publisher's web server.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AmpUrlError": {
-            "description": "AMP URL Error resource for a requested URL that couldn't be found.",
-            "id": "AmpUrlError",
-            "properties": {
-                "errorCode": {
-                    "description": "The error code of an API call.",
-                    "enum": [
-                        "ERROR_CODE_UNSPECIFIED",
-                        "INPUT_URL_NOT_FOUND",
-                        "NO_AMP_URL",
-                        "APPLICATION_ERROR",
-                        "URL_IS_VALID_AMP",
-                        "URL_IS_INVALID_AMP"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified error.",
-                        "Indicates the requested URL is not found in the index, possibly because\nit's unable to be found, not able to be accessed by Googlebot, or some\nother error.",
-                        "Indicates no AMP URL has been found that corresponds to the requested\nURL.",
-                        "Indicates some kind of application error occurred at the server.\nClient advised to retry.",
-                        "DEPRECATED: Indicates the requested URL is a valid AMP URL.  This is a\nnon-error state, should not be relied upon as a sign of success or\nfailure.  It will be removed in future versions of the API.",
-                        "Indicates that an AMP URL has been found that corresponds to the request\nURL, but it is not valid AMP HTML."
-                    ],
-                    "type": "string"
-                },
-                "originalUrl": {
-                    "description": "The original non-AMP URL.",
-                    "type": "string"
-                },
-                "errorMessage": {
-                    "description": "An optional descriptive error message.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "BatchGetAmpUrlsRequest": {
-            "description": "AMP URL request for a batch of URLs.",
-            "id": "BatchGetAmpUrlsRequest",
-            "properties": {
-                "lookupStrategy": {
-                    "description": "The lookup_strategy being requested.",
-                    "enum": [
-                        "FETCH_LIVE_DOC",
-                        "IN_INDEX_DOC"
-                    ],
-                    "enumDescriptions": [
-                        "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls.",
-                        "IN_INDEX_DOC strategy skips fetching live documents of URL(s) not found\nin index. For applications which need low latency use of IN_INDEX_DOC\nstrategy is recommended."
-                    ],
-                    "type": "string"
-                },
-                "urls": {
-                    "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

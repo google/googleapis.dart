@@ -15,6 +15,11 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
@@ -95,11 +100,6 @@
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -148,6 +148,26 @@
                     "id": "digitalassetlinks.assetlinks.check",
                     "parameterOrder": [],
                     "parameters": {
+                        "target.web.site": {
+                            "description": "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n    http[s]://<hostname>[:<port>]\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n  *   `https://www.google.com/`\n  *   `https://www.google.com:443/`\n  *   `https://www.google.com/foo`\n  *   `https://www.google.com/foo?bar`\n  *   `https://www.google.com/foo#bar`\n  *   `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n  *   `http://www.google.com/`       (wrong scheme)\n  *   `https://google.com/`          (hostname does not match)\n  *   `https://www.google.com:444/`  (port does not match)\nREQUIRED",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "target.androidApp.certificate.sha256Fingerprint": {
+                            "description": "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\n certificate, it can be acquired like this:\n\n    $ keytool -printcert -file $CERTFILE | grep SHA256:\n    SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n        42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n\nor like this:\n\n    $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\n    SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n        16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73:\n06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:\n44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons).",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.androidApp.packageName": {
+                            "description": "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.web.site": {
+                            "description": "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n    http[s]://<hostname>[:<port>]\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n  *   `https://www.google.com/`\n  *   `https://www.google.com:443/`\n  *   `https://www.google.com/foo`\n  *   `https://www.google.com/foo?bar`\n  *   `https://www.google.com/foo#bar`\n  *   `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n  *   `http://www.google.com/`       (wrong scheme)\n  *   `https://google.com/`          (hostname does not match)\n  *   `https://www.google.com:444/`  (port does not match)\nREQUIRED",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "target.androidApp.packageName": {
                             "description": "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED",
                             "location": "query",
@@ -162,26 +182,6 @@
                             "description": "Query string for the relation.\n\nWe identify relations with strings of the format `<kind>/<detail>`, where\n`<kind>` must be one of a set of pre-defined purpose categories, and\n`<detail>` is a free-form lowercase alphanumeric string that describes the\nspecific use case of the statement.\n\nRefer to [our API documentation](/digital-asset-links/v1/relation-strings)\nfor the current list of supported relations.\n\nFor a query to match an asset link, both the query's and the asset link's\nrelation strings must match exactly.\n\nExample: A query with relation `delegate_permission/common.handle_all_urls`\nmatches an asset link with relation\n`delegate_permission/common.handle_all_urls`.",
                             "location": "query",
                             "type": "string"
-                        },
-                        "target.web.site": {
-                            "description": "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n    http[s]://<hostname>[:<port>]\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n  *   `https://www.google.com/`\n  *   `https://www.google.com:443/`\n  *   `https://www.google.com/foo`\n  *   `https://www.google.com/foo?bar`\n  *   `https://www.google.com/foo#bar`\n  *   `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n  *   `http://www.google.com/`       (wrong scheme)\n  *   `https://google.com/`          (hostname does not match)\n  *   `https://www.google.com:444/`  (port does not match)\nREQUIRED",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "target.androidApp.certificate.sha256Fingerprint": {
-                            "description": "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\n certificate, it can be acquired like this:\n\n    $ keytool -printcert -file $CERTFILE | grep SHA256:\n    SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n        42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n\nor like this:\n\n    $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\n    SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n        16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73:\n06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:\n44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons).",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "source.web.site": {
-                            "description": "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n    http[s]://<hostname>[:<port>]\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n  *   `https://www.google.com/`\n  *   `https://www.google.com:443/`\n  *   `https://www.google.com/foo`\n  *   `https://www.google.com/foo?bar`\n  *   `https://www.google.com/foo#bar`\n  *   `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n  *   `http://www.google.com/`       (wrong scheme)\n  *   `https://google.com/`          (hostname does not match)\n  *   `https://www.google.com:444/`  (port does not match)\nREQUIRED",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "source.androidApp.packageName": {
-                            "description": "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED",
-                            "location": "query",
-                            "type": "string"
                         }
                     },
                     "path": "v1/assetlinks:check",
@@ -192,20 +192,9 @@
             }
         }
     },
-    "revision": "20171207",
+    "revision": "20180115",
     "rootUrl": "https://digitalassetlinks.googleapis.com/",
     "schemas": {
-        "WebAsset": {
-            "description": "Describes a web asset.",
-            "id": "WebAsset",
-            "properties": {
-                "site": {
-                    "description": "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n    http[s]://<hostname>[:<port>]\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n  *   `https://www.google.com/`\n  *   `https://www.google.com:443/`\n  *   `https://www.google.com/foo`\n  *   `https://www.google.com/foo?bar`\n  *   `https://www.google.com/foo#bar`\n  *   `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n  *   `http://www.google.com/`       (wrong scheme)\n  *   `https://google.com/`          (hostname does not match)\n  *   `https://www.google.com:444/`  (port does not match)\nREQUIRED",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ListResponse": {
             "description": "Response message for the List call.",
             "id": "ListResponse",
@@ -371,6 +360,17 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "WebAsset": {
+            "description": "Describes a web asset.",
+            "id": "WebAsset",
+            "properties": {
+                "site": {
+                    "description": "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n    http[s]://<hostname>[:<port>]\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n  *   `https://www.google.com/`\n  *   `https://www.google.com:443/`\n  *   `https://www.google.com/foo`\n  *   `https://www.google.com/foo?bar`\n  *   `https://www.google.com/foo#bar`\n  *   `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n  *   `http://www.google.com/`       (wrong scheme)\n  *   `https://google.com/`          (hostname does not match)\n  *   `https://www.google.com:444/`  (port does not match)\nREQUIRED",
+                    "type": "string"
                 }
             },
             "type": "object"

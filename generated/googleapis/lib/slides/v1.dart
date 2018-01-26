@@ -4704,6 +4704,10 @@ class Request {
   /// Updates the properties of a Line.
   UpdateLinePropertiesRequest updateLineProperties;
 
+  /// Updates the alt text title and/or description of a
+  /// page element.
+  UpdatePageElementAltTextRequest updatePageElementAltText;
+
   /// Updates the transform of a page element.
   UpdatePageElementTransformRequest updatePageElementTransform;
 
@@ -4840,6 +4844,10 @@ class Request {
       updateLineProperties = new UpdateLinePropertiesRequest.fromJson(
           _json["updateLineProperties"]);
     }
+    if (_json.containsKey("updatePageElementAltText")) {
+      updatePageElementAltText = new UpdatePageElementAltTextRequest.fromJson(
+          _json["updatePageElementAltText"]);
+    }
     if (_json.containsKey("updatePageElementTransform")) {
       updatePageElementTransform =
           new UpdatePageElementTransformRequest.fromJson(
@@ -4973,6 +4981,9 @@ class Request {
     }
     if (updateLineProperties != null) {
       _json["updateLineProperties"] = (updateLineProperties).toJson();
+    }
+    if (updatePageElementAltText != null) {
+      _json["updatePageElementAltText"] = (updatePageElementAltText).toJson();
     }
     if (updatePageElementTransform != null) {
       _json["updatePageElementTransform"] =
@@ -7343,6 +7354,55 @@ class UpdateLinePropertiesRequest {
     }
     if (objectId != null) {
       _json["objectId"] = objectId;
+    }
+    return _json;
+  }
+}
+
+/// Updates the alt text title and/or description of a
+/// page element.
+class UpdatePageElementAltTextRequest {
+  /// The updated alt text description of the page element. If unset the
+  /// existing
+  /// value will be maintained. The description is exposed to screen readers
+  /// and other accessibility interfaces. Only use human readable values related
+  /// to the content of the page element.
+  core.String description;
+
+  /// The object ID of the page element the updates are applied to.
+  core.String objectId;
+
+  /// The updated alt text title of the page element. If unset the
+  /// existing value will be maintained. The title is exposed to screen readers
+  /// and other accessibility interfaces. Only use human readable values related
+  /// to the content of the page element.
+  core.String title;
+
+  UpdatePageElementAltTextRequest();
+
+  UpdatePageElementAltTextRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

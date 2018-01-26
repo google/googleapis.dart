@@ -6745,6 +6745,9 @@ class NewDeviceEvent {
   /// The Android ID of the device. This field will always be present.
   core.String deviceId;
 
+  /// Policy app on the device.
+  core.String dpcPackageName;
+
   /// Identifies the extent to which the device is controlled by an Android EMM
   /// in various deployment configurations.
   ///
@@ -6762,6 +6765,9 @@ class NewDeviceEvent {
     if (_json.containsKey("deviceId")) {
       deviceId = _json["deviceId"];
     }
+    if (_json.containsKey("dpcPackageName")) {
+      dpcPackageName = _json["dpcPackageName"];
+    }
     if (_json.containsKey("managementType")) {
       managementType = _json["managementType"];
     }
@@ -6775,6 +6781,9 @@ class NewDeviceEvent {
         new core.Map<core.String, core.Object>();
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
+    }
+    if (dpcPackageName != null) {
+      _json["dpcPackageName"] = dpcPackageName;
     }
     if (managementType != null) {
       _json["managementType"] = managementType;
@@ -7160,7 +7169,7 @@ class Product {
   /// The content rating for this app.
   core.String contentRating;
 
-  /// A localized promotional description, if available.
+  /// The localized promotional description, if available.
   core.String description;
 
   /// A link to the (consumer) Google Play details page for the product.
@@ -7183,15 +7192,14 @@ class Product {
   /// "androidenterprise#product".
   core.String kind;
 
-  /// The time (in milliseconds since epoch) when application was last
-  /// published. (Timestamp is approximate within 7 days of actual publish
-  /// time.)
+  /// The approximate time (within 7 days) the app was last published, expressed
+  /// in milliseconds since epoch.
   core.String lastUpdatedTimestampMillis;
 
   /// The minimum Android SDK necessary to run the app.
   core.int minAndroidSdkVersion;
 
-  /// The permissions required for this app.
+  /// A list of permissions required by the app.
   core.List<ProductPermission> permissions;
 
   /// A string of the form app:<package name>. For example,

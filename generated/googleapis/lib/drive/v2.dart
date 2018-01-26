@@ -4896,6 +4896,9 @@ class About {
   /// specific type takes precedence.
   core.List<AboutAdditionalRoleInfo> additionalRoleInfo;
 
+  /// Whether the user can create Team Drives.
+  core.bool canCreateTeamDrives;
+
   /// The domain sharing policy for the current user. Possible values are:
   /// - allowed
   /// - allowedWithWarning
@@ -4985,6 +4988,9 @@ class About {
       additionalRoleInfo = _json["additionalRoleInfo"]
           .map((value) => new AboutAdditionalRoleInfo.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("canCreateTeamDrives")) {
+      canCreateTeamDrives = _json["canCreateTeamDrives"];
     }
     if (_json.containsKey("domainSharingPolicy")) {
       domainSharingPolicy = _json["domainSharingPolicy"];
@@ -5078,6 +5084,9 @@ class About {
     if (additionalRoleInfo != null) {
       _json["additionalRoleInfo"] =
           additionalRoleInfo.map((value) => (value).toJson()).toList();
+    }
+    if (canCreateTeamDrives != null) {
+      _json["canCreateTeamDrives"] = canCreateTeamDrives;
     }
     if (domainSharingPolicy != null) {
       _json["domainSharingPolicy"] = domainSharingPolicy;
@@ -7129,9 +7138,11 @@ class File {
   core.List<User> owners;
 
   /// Collection of parent folders which contain this file.
-  /// Setting this field will put the file in all of the provided folders. On
-  /// insert, if no folders are provided, the file will be placed in the default
-  /// root folder.
+  /// If not specified as part of an insert request, the file will be placed
+  /// directly in the user's My Drive folder. If not specified as part of a copy
+  /// request, the file will inherit any discoverable parents of the source
+  /// file. Update requests can also use the addParents and removeParents
+  /// parameters to modify the parents list.
   core.List<ParentReference> parents;
 
   /// List of permission IDs for users with access to this file.

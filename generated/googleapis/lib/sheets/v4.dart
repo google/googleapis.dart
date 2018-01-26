@@ -536,19 +536,6 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were appended. By default, responses
-  /// do not include the updated values.
-  ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [insertDataOption] - How the input data should be inserted.
   /// Possible string values are:
   /// - "OVERWRITE" : A OVERWRITE.
@@ -570,6 +557,19 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were appended. By default, responses
+  /// do not include the updated values.
+  ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -582,11 +582,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
-      core.String insertDataOption,
+      {core.String insertDataOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
+      core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -604,12 +604,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
-    }
     if (insertDataOption != null) {
       _queryParams["insertDataOption"] = [insertDataOption];
     }
@@ -620,6 +614,12 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9661,6 +9661,7 @@ class TextToColumnsRequest {
   /// - "PERIOD" : "."
   /// - "SPACE" : " "
   /// - "CUSTOM" : A custom value as defined in delimiter.
+  /// - "AUTODETECT" : Automatically detect columns.
   core.String delimiterType;
 
   /// The source data range.  This must span exactly one column.
@@ -10655,6 +10656,55 @@ class WaterfallChartColumnStyle {
   }
 }
 
+/// A custom subtotal column for a waterfall chart series.
+class WaterfallChartCustomSubtotal {
+  /// True if the data point at subtotal_index is the subtotal. If false,
+  /// the subtotal will be computed and appear after the data point.
+  core.bool dataIsSubtotal;
+
+  /// A label for the subtotal column.
+  core.String label;
+
+  /// The 0-based index of a data point within the series. If
+  /// data_is_subtotal is true, the data point at this index is the
+  /// subtotal. Otherwise, the subtotal appears after the data point with
+  /// this index. A series can have multiple subtotals at arbitrary indices,
+  /// but subtotals do not affect the indices of the data points. For
+  /// example, if a series has 3 data points, their indices will always be 0,
+  /// 1, and 2, regardless of how many subtotals exist on the series or what
+  /// data points they are associated with.
+  core.int subtotalIndex;
+
+  WaterfallChartCustomSubtotal();
+
+  WaterfallChartCustomSubtotal.fromJson(core.Map _json) {
+    if (_json.containsKey("dataIsSubtotal")) {
+      dataIsSubtotal = _json["dataIsSubtotal"];
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("subtotalIndex")) {
+      subtotalIndex = _json["subtotalIndex"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataIsSubtotal != null) {
+      _json["dataIsSubtotal"] = dataIsSubtotal;
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (subtotalIndex != null) {
+      _json["subtotalIndex"] = subtotalIndex;
+    }
+    return _json;
+  }
+}
+
 /// The domain of a waterfall chart.
 class WaterfallChartDomain {
   /// The data of the WaterfallChartDomain.
@@ -10689,6 +10739,11 @@ class WaterfallChartDomain {
 
 /// A single series of data for a waterfall chart.
 class WaterfallChartSeries {
+  /// Custom subtotal columns appearing in this series. The order in which
+  /// subtotals are defined is not significant. Only one subtotal may be
+  /// defined for each data point.
+  core.List<WaterfallChartCustomSubtotal> customSubtotals;
+
   /// The data being visualized in this series.
   ChartData data;
 
@@ -10709,6 +10764,11 @@ class WaterfallChartSeries {
   WaterfallChartSeries();
 
   WaterfallChartSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("customSubtotals")) {
+      customSubtotals = _json["customSubtotals"]
+          .map((value) => new WaterfallChartCustomSubtotal.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("data")) {
       data = new ChartData.fromJson(_json["data"]);
     }
@@ -10732,6 +10792,10 @@ class WaterfallChartSeries {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customSubtotals != null) {
+      _json["customSubtotals"] =
+          customSubtotals.map((value) => (value).toJson()).toList();
+    }
     if (data != null) {
       _json["data"] = (data).toJson();
     }

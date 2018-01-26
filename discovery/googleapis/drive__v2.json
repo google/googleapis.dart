@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/uln5A45BpQa4ojjKwLYui18ocLk\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/Cm07ZpuzjQh_9ykIBD-tYn3zAdo\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -3072,7 +3072,7 @@
             }
         }
     },
-    "revision": "20171215",
+    "revision": "20180112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3111,6 +3111,10 @@
                         "type": "object"
                     },
                     "type": "array"
+                },
+                "canCreateTeamDrives": {
+                    "description": "Whether the user can create Team Drives.",
+                    "type": "boolean"
                 },
                 "domainSharingPolicy": {
                     "description": "The domain sharing policy for the current user. Possible values are:  \n- allowed \n- allowedWithWarning \n- incomingOnly \n- disallowed",
@@ -4300,7 +4304,7 @@
                     "type": "array"
                 },
                 "parents": {
-                    "description": "Collection of parent folders which contain this file.\nSetting this field will put the file in all of the provided folders. On insert, if no folders are provided, the file will be placed in the default root folder.",
+                    "description": "Collection of parent folders which contain this file.\nIf not specified as part of an insert request, the file will be placed directly in the user's My Drive folder. If not specified as part of a copy request, the file will inherit any discoverable parents of the source file. Update requests can also use the addParents and removeParents parameters to modify the parents list.",
                     "items": {
                         "$ref": "ParentReference"
                     },

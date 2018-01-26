@@ -360,15 +360,15 @@ class JobsReportsResourceApi {
   /// [createdAfter] - If set, only reports created after the specified
   /// date/time are returned.
   ///
+  /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
+  /// than or equal the
+  /// specified date/time are returned.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically,
   /// this is the value of
   /// ListReportsResponse.next_page_token
   /// returned in response to the previous call to the `ListReports` method.
-  ///
-  /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
-  /// than or equal the
-  /// specified date/time are returned.
   ///
   /// [pageSize] - Requested page size. Server may return fewer report types
   /// than requested.
@@ -388,8 +388,8 @@ class JobsReportsResourceApi {
       {core.String onBehalfOfContentOwner,
       core.String startTimeBefore,
       core.String createdAfter,
-      core.String pageToken,
       core.String startTimeAtOrAfter,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -411,11 +411,11 @@ class JobsReportsResourceApi {
     if (createdAfter != null) {
       _queryParams["createdAfter"] = [createdAfter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (startTimeAtOrAfter != null) {
       _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -446,8 +446,7 @@ class MediaResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - Name of the media that is being downloaded.  See
-  /// ReadRequest.resource_name.
+  /// [resourceName] - Name of the media that is being downloaded.
   /// Value must have pattern "^.+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

@@ -448,15 +448,6 @@ class ProjectsGroupsMembersResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
-  ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
   /// [filter] - An optional list filter describing the members to be returned.
   /// The filter may reference the type, labels, and metadata of monitored
   /// resources that comprise the group. For example, to return only resources
@@ -467,6 +458,15 @@ class ProjectsGroupsMembersResourceApi {
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
+  /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -479,11 +479,11 @@ class ProjectsGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
       core.String interval_startTime,
       core.String interval_endTime,
-      core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -495,6 +495,12 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -503,12 +509,6 @@ class ProjectsGroupsMembersResourceApi {
     }
     if (interval_endTime != null) {
       _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -820,9 +820,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [filter] - An optional filter describing the descriptors to be returned.
   /// The filter can reference the descriptor's type and labels. For example,
   /// the following filter returns only Google Compute Engine descriptors that
@@ -833,6 +830,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -845,9 +845,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -859,14 +859,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -956,24 +956,13 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
-  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
-  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
-  /// per-time series alignment, each time series will contain data points only
-  /// on the period boundaries. If perSeriesAligner is not specified or equals
-  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
-  /// an error is returned.
-  ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return. When view field sets to FULL, it limits the number of Points
   /// server will return; if view field is HEADERS, it limits the number of
   /// TimeSeries server will return.
   ///
-  /// [orderBy] - Specifies the order in which the points of the time series
-  /// should be returned. By default, results are not ordered. Currently, this
-  /// field must be left blank.
+  /// [orderBy] - Unsupported: must be left blank. The points in each time
+  /// series are returned in reverse time order.
   ///
   /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
   /// series. Not all reducer functions may be applied to all time series,
@@ -992,6 +981,7 @@ class ProjectsTimeSeriesResourceApi {
   /// - "REDUCE_STDDEV" : A REDUCE_STDDEV.
   /// - "REDUCE_COUNT" : A REDUCE_COUNT.
   /// - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
+  /// - "REDUCE_COUNT_FALSE" : A REDUCE_COUNT_FALSE.
   /// - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
   /// - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
   /// - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
@@ -1025,11 +1015,13 @@ class ProjectsTimeSeriesResourceApi {
   /// - "ALIGN_SUM" : A ALIGN_SUM.
   /// - "ALIGN_STDDEV" : A ALIGN_STDDEV.
   /// - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
+  /// - "ALIGN_COUNT_FALSE" : A ALIGN_COUNT_FALSE.
   /// - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
   /// - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
   /// - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
   /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
   /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
+  /// - "ALIGN_PERCENT_CHANGE" : A ALIGN_PERCENT_CHANGE.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
@@ -1058,6 +1050,16 @@ class ProjectsTimeSeriesResourceApi {
   /// aggregated into a single output time series. If crossSeriesReducer is not
   /// defined, this field is ignored.
   ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
+  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
+  /// per-time series alignment, each time series will contain data points only
+  /// on the period boundaries. If perSeriesAligner is not specified or equals
+  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
+  /// an error is returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1069,9 +1071,7 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.String interval_endTime,
-      core.String aggregation_alignmentPeriod,
-      core.int pageSize,
+      {core.int pageSize,
       core.String orderBy,
       core.String aggregation_crossSeriesReducer,
       core.String filter,
@@ -1080,6 +1080,8 @@ class ProjectsTimeSeriesResourceApi {
       core.String interval_startTime,
       core.String view,
       core.List<core.String> aggregation_groupByFields,
+      core.String interval_endTime,
+      core.String aggregation_alignmentPeriod,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1090,14 +1092,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams["aggregation.alignmentPeriod"] = [
-        aggregation_alignmentPeriod
-      ];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1130,6 +1124,14 @@ class ProjectsTimeSeriesResourceApi {
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
     }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (aggregation_alignmentPeriod != null) {
+      _queryParams["aggregation.alignmentPeriod"] = [
+        aggregation_alignmentPeriod
+      ];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1159,8 +1161,8 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project in which to create the uptime check. The format
-  /// is:projects/[PROJECT_ID].
+  /// [parent] - The project in which to create the uptime check. The formatis
+  /// projects/[PROJECT_ID].
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1212,8 +1214,8 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The uptime check configuration to delete. The format
-  /// isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+  /// [name] - The uptime check configuration to delete. The formatis
+  /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1256,8 +1258,8 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The uptime check configuration to retrieve. The format
-  /// isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+  /// [name] - The uptime check configuration to retrieve. The formatis
+  /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1302,7 +1304,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The project whose uptime check configurations are listed. The
-  /// format isprojects/[PROJECT_ID].
+  /// formatis projects/[PROJECT_ID].
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - If this field is not empty then it must contain the
@@ -3535,13 +3537,13 @@ class TimeSeries {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// The data points of this time series. When listing time series, the order
-  /// of the points is specified by the list method.When creating a time series,
-  /// this field must contain exactly one point and the point's type must be the
-  /// same as the value type of the associated metric. If the associated
-  /// metric's descriptor must be auto-created, then the value type of the
-  /// descriptor is determined by the point's type, which must be BOOL, INT64,
-  /// DOUBLE, or DISTRIBUTION.
+  /// The data points of this time series. When listing time series, points are
+  /// returned in reverse time order.When creating a time series, this field
+  /// must contain exactly one point and the point's type must be the same as
+  /// the value type of the associated metric. If the associated metric's
+  /// descriptor must be auto-created, then the value type of the descriptor is
+  /// determined by the point's type, which must be BOOL, INT64, DOUBLE, or
+  /// DISTRIBUTION.
   core.List<Point> points;
 
   /// The associated monitored resource. Custom metrics can use only certain

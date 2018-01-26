@@ -683,6 +683,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
+  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
+  /// this field. This
+  /// field cannot hold more than 10,000 entries.
+  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListDevices` call, and
@@ -704,10 +708,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// For example, `['device0', 'device12']`. This field cannot hold more than
   /// 10,000 entries.
   ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -719,11 +719,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> deviceNumIds,
+      core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
       core.List<core.String> deviceIds,
-      core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -734,6 +734,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -746,9 +749,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     }
     if (deviceIds != null) {
       _queryParams["deviceIds"] = deviceIds;
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1021,165 +1021,13 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:foo@gmail.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "fooservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:bar@gmail.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
-class AuditConfig {
-  /// The configuration for logging of each type of permission.
-  /// Next ID: 4
-  core.List<AuditLogConfig> auditLogConfigs;
-  core.List<core.String> exemptedMembers;
-
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
-  core.String service;
-
-  AuditConfig();
-
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
-    }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
-    }
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (service != null) {
-      _json["service"] = service;
-    }
-    return _json;
-  }
-}
-
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:foo@gmail.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
-
-  AuditLogConfig();
-
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
-    }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json["logType"] = logType;
-    }
-    return _json;
-  }
-}
-
 /// Associates `members` with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   /// NOTE: an unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
-  /// This field is GOOGLE_INTERNAL.
+  /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -2088,11 +1936,8 @@ class MqttConfig {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
-  /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
-
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
@@ -2118,19 +1963,12 @@ class Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  core.bool iamOwned;
-
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
           .map((value) => new Binding.fromJson(value))
@@ -2138,9 +1976,6 @@ class Policy {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("iamOwned")) {
-      iamOwned = _json["iamOwned"];
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -2150,18 +1985,11 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (auditConfigs != null) {
-      _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
-    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
-    }
-    if (iamOwned != null) {
-      _json["iamOwned"] = iamOwned;
     }
     if (version != null) {
       _json["version"] = version;

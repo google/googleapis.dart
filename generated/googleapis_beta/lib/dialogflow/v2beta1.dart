@@ -1251,18 +1251,18 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
   /// Value must have pattern "^projects/[^/]+/agent/intents/[^/]+$".
   ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
+  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
+  ///
   /// [languageCode] - Optional. The language to retrieve training phrases,
   /// parameters and rich
   /// messages for. If not specified, the agent's default language is used.
   /// [More than a dozen
   /// languages](https://dialogflow.com/docs/reference/language) are supported.
   /// Note: languages must be enabled in the agent, before they can be used.
-  ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
-  /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
-  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1275,7 +1275,7 @@ class ProjectsAgentIntentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Intent> get(core.String name,
-      {core.String languageCode, core.String intentView, core.String $fields}) {
+      {core.String intentView, core.String languageCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1286,11 +1286,11 @@ class ProjectsAgentIntentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (intentView != null) {
       _queryParams["intentView"] = [intentView];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1315,6 +1315,12 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent`.
   /// Value must have pattern "^projects/[^/]+/agent$".
   ///
+  /// [intentView] - Optional. The resource view to apply to the returned
+  /// intent.
+  /// Possible string values are:
+  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
+  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
+  ///
   /// [languageCode] - Optional. The language to list training phrases,
   /// parameters and rich
   /// messages for. If not specified, the agent's default language is used.
@@ -1329,12 +1335,6 @@ class ProjectsAgentIntentsResourceApi {
   /// page. By
   /// default 100 and at most 1000.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
-  /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
-  /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1346,10 +1346,10 @@ class ProjectsAgentIntentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIntentsResponse> list(core.String parent,
-      {core.String languageCode,
+      {core.String intentView,
+      core.String languageCode,
       core.String pageToken,
       core.int pageSize,
-      core.String intentView,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1361,6 +1361,9 @@ class ProjectsAgentIntentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (intentView != null) {
+      _queryParams["intentView"] = [intentView];
+    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
@@ -1369,9 +1372,6 @@ class ProjectsAgentIntentsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (intentView != null) {
-      _queryParams["intentView"] = [intentView];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3973,12 +3973,19 @@ class IntentMessageCarouselSelectItem {
 
 /// The image response message.
 class IntentMessageImage {
+  /// Optional. A text description of the image to be used for accessibility,
+  /// e.g., screen readers.
+  core.String accessibilityText;
+
   /// Optional. The public URI to an image file.
   core.String imageUri;
 
   IntentMessageImage();
 
   IntentMessageImage.fromJson(core.Map _json) {
+    if (_json.containsKey("accessibilityText")) {
+      accessibilityText = _json["accessibilityText"];
+    }
     if (_json.containsKey("imageUri")) {
       imageUri = _json["imageUri"];
     }
@@ -3987,6 +3994,9 @@ class IntentMessageImage {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accessibilityText != null) {
+      _json["accessibilityText"] = accessibilityText;
+    }
     if (imageUri != null) {
       _json["imageUri"] = imageUri;
     }
@@ -5040,11 +5050,16 @@ class QueryResult {
   /// - If an event was provided as input, `query_text` is not set.
   core.String queryText;
 
-  /// The confidence estimate between 0.0 and 1.0. A higher number
+  /// The Speech recognition confidence between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
   /// correct. The default of 0.0 is a sentinel value indicating that confidence
-  /// was not set. This field is populated if natural speech audio was provided
-  /// as input.
+  /// was not set.
+  ///
+  /// You should not rely on this field as it isn't guaranteed to be accurate,
+  /// or
+  /// even set. In particular this field isn't set in Webhook calls and for
+  /// StreamingDetectIntent since the streaming endpoint has separate confidence
+  /// estimates per portion of the audio in StreamingRecognitionResult.
   core.double speechRecognitionConfidence;
 
   /// If the query was fulfilled by a webhook call, this field is set to the

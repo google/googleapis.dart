@@ -417,17 +417,14 @@ class ImportSshPublicKeyResponse {
 /// The user profile information used for logging in to a virtual machine on
 /// Google Compute Engine.
 class LoginProfile {
-  /// A unique user ID for identifying the user.
+  /// A unique user ID.
   core.String name;
 
-  /// The list of POSIX accounts associated with the Directory API user.
+  /// The list of POSIX accounts associated with the user.
   core.List<PosixAccount> posixAccounts;
 
   /// A map from SSH public key fingerprint to the associated key object.
   core.Map<core.String, SshPublicKey> sshPublicKeys;
-
-  /// Indicates if the user is suspended.
-  core.bool suspended;
 
   LoginProfile();
 
@@ -447,9 +444,6 @@ class LoginProfile {
               (core.Map<core.String, core.Object> item) =>
                   new SshPublicKey.fromJson(item));
     }
-    if (_json.containsKey("suspended")) {
-      suspended = _json["suspended"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -466,9 +460,6 @@ class LoginProfile {
       _json["sshPublicKeys"] =
           commons.mapMap<SshPublicKey, core.Map<core.String, core.Object>>(
               sshPublicKeys, (SshPublicKey item) => (item).toJson());
-    }
-    if (suspended != null) {
-      _json["suspended"] = suspended;
     }
     return _json;
   }
