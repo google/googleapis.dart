@@ -397,6 +397,10 @@ class DeviceInfo {
   /// Device language code setting.
   core.String languageCode;
 
+  /// Device language code setting obtained by executing JavaScript code in
+  /// WebView.
+  core.String languageCodeFromWebview;
+
   /// Device language code raw setting.
   /// iOS does returns language code in different format than iOS WebView.
   /// For example WebView returns en_US, but iOS returns en-US.
@@ -421,6 +425,9 @@ class DeviceInfo {
     if (_json.containsKey("languageCode")) {
       languageCode = _json["languageCode"];
     }
+    if (_json.containsKey("languageCodeFromWebview")) {
+      languageCodeFromWebview = _json["languageCodeFromWebview"];
+    }
     if (_json.containsKey("languageCodeRaw")) {
       languageCodeRaw = _json["languageCodeRaw"];
     }
@@ -443,6 +450,9 @@ class DeviceInfo {
     }
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
+    }
+    if (languageCodeFromWebview != null) {
+      _json["languageCodeFromWebview"] = languageCodeFromWebview;
     }
     if (languageCodeRaw != null) {
       _json["languageCodeRaw"] = languageCodeRaw;

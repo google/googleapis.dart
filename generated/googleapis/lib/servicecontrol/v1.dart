@@ -855,8 +855,9 @@ class CheckError {
   /// The error code.
   /// Possible string values are:
   /// - "ERROR_CODE_UNSPECIFIED" : This is never used in `CheckResponse`.
-  /// - "NOT_FOUND" : The consumer's project id was not found.
-  /// Same as google.rpc.Code.NOT_FOUND.
+  /// - "NOT_FOUND" : The consumer's project id, network container, or resource
+  /// container was
+  /// not found. Same as google.rpc.Code.NOT_FOUND.
   /// - "PERMISSION_DENIED" : The consumer doesn't have access to the specified
   /// resource.
   /// Same as google.rpc.Code.PERMISSION_DENIED.

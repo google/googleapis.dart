@@ -57,6 +57,8 @@ class ScriptApi {
 
   final commons.ApiRequester _requester;
 
+  ProcessesResourceApi get processes => new ProcessesResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   ScriptsResourceApi get scripts => new ScriptsResourceApi(_requester);
 
   ScriptApi(http.Client client,
@@ -64,6 +66,987 @@ class ScriptApi {
       core.String servicePath: ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+class ProcessesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProcessesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// List information about processes made by or on behalf of a user,
+  /// such as process type and current status.
+  ///
+  /// Request parameters:
+  ///
+  /// [userProcessFilter_statuses] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process statuses.
+  ///
+  /// [userProcessFilter_types] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process types.
+  ///
+  /// [userProcessFilter_deploymentId] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with a specific deployment ID.
+  ///
+  /// [userProcessFilter_endTime] - Optional field used to limit returned
+  /// processes to those that completed
+  /// on or before the given timestamp.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This
+  /// should be set to the value of `nextPageToken` from a previous response.
+  ///
+  /// [pageSize] - The maximum number of returned processes per page of results.
+  /// Defaults to
+  /// 50.
+  ///
+  /// [userProcessFilter_startTime] - Optional field used to limit returned
+  /// processes to those that were
+  /// started on or after the given timestamp.
+  ///
+  /// [userProcessFilter_projectName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with a specific project name.
+  ///
+  /// [userProcessFilter_userAccessLevels] - Optional field used to limit
+  /// returned processes to those having one of
+  /// the specified user access levels.
+  ///
+  /// [userProcessFilter_functionName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// a script function with the given function name.
+  ///
+  /// [userProcessFilter_scriptId] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with a specific script ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserProcessesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserProcessesResponse> list(
+      {core.List<core.String> userProcessFilter_statuses,
+      core.List<core.String> userProcessFilter_types,
+      core.String userProcessFilter_deploymentId,
+      core.String userProcessFilter_endTime,
+      core.String pageToken,
+      core.int pageSize,
+      core.String userProcessFilter_startTime,
+      core.String userProcessFilter_projectName,
+      core.List<core.String> userProcessFilter_userAccessLevels,
+      core.String userProcessFilter_functionName,
+      core.String userProcessFilter_scriptId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userProcessFilter_statuses != null) {
+      _queryParams["userProcessFilter.statuses"] = userProcessFilter_statuses;
+    }
+    if (userProcessFilter_types != null) {
+      _queryParams["userProcessFilter.types"] = userProcessFilter_types;
+    }
+    if (userProcessFilter_deploymentId != null) {
+      _queryParams["userProcessFilter.deploymentId"] = [
+        userProcessFilter_deploymentId
+      ];
+    }
+    if (userProcessFilter_endTime != null) {
+      _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (userProcessFilter_startTime != null) {
+      _queryParams["userProcessFilter.startTime"] = [
+        userProcessFilter_startTime
+      ];
+    }
+    if (userProcessFilter_projectName != null) {
+      _queryParams["userProcessFilter.projectName"] = [
+        userProcessFilter_projectName
+      ];
+    }
+    if (userProcessFilter_userAccessLevels != null) {
+      _queryParams["userProcessFilter.userAccessLevels"] =
+          userProcessFilter_userAccessLevels;
+    }
+    if (userProcessFilter_functionName != null) {
+      _queryParams["userProcessFilter.functionName"] = [
+        userProcessFilter_functionName
+      ];
+    }
+    if (userProcessFilter_scriptId != null) {
+      _queryParams["userProcessFilter.scriptId"] = [userProcessFilter_scriptId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/processes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListUserProcessesResponse.fromJson(data));
+  }
+
+  /// List information about a script's executed processes, such as process type
+  /// and current status.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptProcessFilter_endTime] - Optional field used to limit returned
+  /// processes to those that completed
+  /// on or before the given timestamp.
+  ///
+  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
+  /// returned processes to those having one of
+  /// the specified user access levels.
+  ///
+  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process statuses.
+  ///
+  /// [scriptProcessFilter_functionName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// a script function with the given function name.
+  ///
+  /// [scriptProcessFilter_startTime] - Optional field used to limit returned
+  /// processes to those that were
+  /// started on or after the given timestamp.
+  ///
+  /// [scriptProcessFilter_deploymentId] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with a specific deployment ID.
+  ///
+  /// [scriptId] - The script ID of the project whose processes are listed.
+  ///
+  /// [scriptProcessFilter_types] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process types.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This
+  /// should be set to the value of `nextPageToken` from a previous response.
+  ///
+  /// [pageSize] - The maximum number of returned processes per page of results.
+  /// Defaults to
+  /// 50.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListScriptProcessesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListScriptProcessesResponse> listScriptProcesses(
+      {core.String scriptProcessFilter_endTime,
+      core.List<core.String> scriptProcessFilter_userAccessLevels,
+      core.List<core.String> scriptProcessFilter_statuses,
+      core.String scriptProcessFilter_functionName,
+      core.String scriptProcessFilter_startTime,
+      core.String scriptProcessFilter_deploymentId,
+      core.String scriptId,
+      core.List<core.String> scriptProcessFilter_types,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptProcessFilter_endTime != null) {
+      _queryParams["scriptProcessFilter.endTime"] = [
+        scriptProcessFilter_endTime
+      ];
+    }
+    if (scriptProcessFilter_userAccessLevels != null) {
+      _queryParams["scriptProcessFilter.userAccessLevels"] =
+          scriptProcessFilter_userAccessLevels;
+    }
+    if (scriptProcessFilter_statuses != null) {
+      _queryParams["scriptProcessFilter.statuses"] =
+          scriptProcessFilter_statuses;
+    }
+    if (scriptProcessFilter_functionName != null) {
+      _queryParams["scriptProcessFilter.functionName"] = [
+        scriptProcessFilter_functionName
+      ];
+    }
+    if (scriptProcessFilter_startTime != null) {
+      _queryParams["scriptProcessFilter.startTime"] = [
+        scriptProcessFilter_startTime
+      ];
+    }
+    if (scriptProcessFilter_deploymentId != null) {
+      _queryParams["scriptProcessFilter.deploymentId"] = [
+        scriptProcessFilter_deploymentId
+      ];
+    }
+    if (scriptId != null) {
+      _queryParams["scriptId"] = [scriptId];
+    }
+    if (scriptProcessFilter_types != null) {
+      _queryParams["scriptProcessFilter.types"] = scriptProcessFilter_types;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/processes:listScriptProcesses';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListScriptProcessesResponse.fromJson(data));
+  }
+}
+
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsDeploymentsResourceApi get deployments =>
+      new ProjectsDeploymentsResourceApi(_requester);
+  ProjectsVersionsResourceApi get versions =>
+      new ProjectsVersionsResourceApi(_requester);
+
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new, empty script project with no script files and a base
+  /// manifest file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Project].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Project> create(CreateProjectRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Project.fromJson(data));
+  }
+
+  /// Gets a script project's metadata.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Project].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Project> get(core.String scriptId, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Project.fromJson(data));
+  }
+
+  /// Gets the content of the script project, including the code source and
+  /// metadata for each script file.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [versionNumber] - The version number of the project to retrieve. If not
+  /// provided, the
+  /// project's HEAD version is returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Content].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Content> getContent(core.String scriptId,
+      {core.int versionNumber, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (versionNumber != null) {
+      _queryParams["versionNumber"] = ["${versionNumber}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/content';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Content.fromJson(data));
+  }
+
+  /// Get metrics data for scripts, such as number of executions and
+  /// active users.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - Required field indicating the script to get metrics for.
+  ///
+  /// [metricsFilter_deploymentId] - Optional field indicating a specific
+  /// deployment to retrieve metrics from.
+  ///
+  /// [metricsGranularity] - Required field indicating what granularity of
+  /// metrics are returned.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_GRANULARITY" : A UNSPECIFIED_GRANULARITY.
+  /// - "WEEKLY" : A WEEKLY.
+  /// - "DAILY" : A DAILY.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Metrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Metrics> getMetrics(core.String scriptId,
+      {core.String metricsFilter_deploymentId,
+      core.String metricsGranularity,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (metricsFilter_deploymentId != null) {
+      _queryParams["metricsFilter.deploymentId"] = [metricsFilter_deploymentId];
+    }
+    if (metricsGranularity != null) {
+      _queryParams["metricsGranularity"] = [metricsGranularity];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/metrics';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Metrics.fromJson(data));
+  }
+
+  /// Updates the content of the specified script project.
+  /// This content is stored as the HEAD version, and is used when the script is
+  /// executed as a trigger, in the script editor, in add-on preview mode, or as
+  /// a web app or Apps Script API in development mode. This clears all the
+  /// existing files in the project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Content].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Content> updateContent(Content request, core.String scriptId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/content';
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Content.fromJson(data));
+  }
+}
+
+class ProjectsDeploymentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsDeploymentsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a deployment of an Apps Script project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Deployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Deployment> create(
+      DeploymentConfig request, core.String scriptId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/deployments';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Deployment.fromJson(data));
+  }
+
+  /// Deletes a deployment of an Apps Script project.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [deploymentId] - The deployment ID to be undeployed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String scriptId, core.String deploymentId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (deploymentId == null) {
+      throw new core.ArgumentError("Parameter deploymentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/deployments/' +
+        commons.Escaper.ecapeVariable('$deploymentId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a deployment of an Apps Script project.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [deploymentId] - The deployment ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Deployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Deployment> get(core.String scriptId, core.String deploymentId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (deploymentId == null) {
+      throw new core.ArgumentError("Parameter deploymentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/deployments/' +
+        commons.Escaper.ecapeVariable('$deploymentId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Deployment.fromJson(data));
+  }
+
+  /// Lists the deployments of an Apps Script project.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This
+  /// should be set to the value of `nextPageToken` from a previous response.
+  ///
+  /// [pageSize] - The maximum number of deployments on each returned page.
+  /// Defaults to 50.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeploymentsResponse> list(core.String scriptId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/deployments';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListDeploymentsResponse.fromJson(data));
+  }
+
+  /// Updates a deployment of an Apps Script project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [deploymentId] - The deployment ID for this deployment.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Deployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Deployment> update(UpdateDeploymentRequest request,
+      core.String scriptId, core.String deploymentId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (deploymentId == null) {
+      throw new core.ArgumentError("Parameter deploymentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/deployments/' +
+        commons.Escaper.ecapeVariable('$deploymentId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Deployment.fromJson(data));
+  }
+}
+
+class ProjectsVersionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsVersionsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new immutable version using the current code, with a unique
+  /// version number.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Version> create(Version request, core.String scriptId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/versions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Version.fromJson(data));
+  }
+
+  /// Gets a version of a script project.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [versionNumber] - The version number.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Version> get(core.String scriptId, core.int versionNumber,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (versionNumber == null) {
+      throw new core.ArgumentError("Parameter versionNumber is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/versions/' +
+        commons.Escaper.ecapeVariable('$versionNumber');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Version.fromJson(data));
+  }
+
+  /// List the versions of a script project.
+  ///
+  /// Request parameters:
+  ///
+  /// [scriptId] - The script project's Drive ID.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This
+  /// should be set to the value of `nextPageToken` from a previous response.
+  ///
+  /// [pageSize] - The maximum number of versions on each returned page.
+  /// Defaults to 50.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVersionsResponse> list(core.String scriptId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (scriptId == null) {
+      throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$scriptId') +
+        '/versions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListVersionsResponse.fromJson(data));
+  }
 }
 
 class ScriptsResourceApi {
@@ -128,6 +1111,276 @@ class ScriptsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+/// The Content resource.
+class Content {
+  /// The list of script project files.
+  /// One of the files is a script manifest; it must be named "appsscript",
+  /// must have type of JSON, and include the manifest configurations for the
+  /// project.
+  core.List<File> files;
+
+  /// The script project's Drive ID.
+  core.String scriptId;
+
+  Content();
+
+  Content.fromJson(core.Map _json) {
+    if (_json.containsKey("files")) {
+      files = _json["files"].map((value) => new File.fromJson(value)).toList();
+    }
+    if (_json.containsKey("scriptId")) {
+      scriptId = _json["scriptId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (files != null) {
+      _json["files"] = files.map((value) => (value).toJson()).toList();
+    }
+    if (scriptId != null) {
+      _json["scriptId"] = scriptId;
+    }
+    return _json;
+  }
+}
+
+/// Request to create a script project.
+class CreateProjectRequest {
+  /// The Drive ID of a parent file that the created script project is bound to.
+  /// This is usually the ID of a Google Doc, Google Sheet, Google Form, or
+  /// Google Slides file. If not set, a standalone script project is created.
+  core.String parentId;
+
+  /// The title for the project.
+  core.String title;
+
+  CreateProjectRequest();
+
+  CreateProjectRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("parentId")) {
+      parentId = _json["parentId"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parentId != null) {
+      _json["parentId"] = parentId;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// Representation of a single script deployment.
+class Deployment {
+  /// The deployment configuration.
+  DeploymentConfig deploymentConfig;
+
+  /// The deployment ID for this deployment.
+  core.String deploymentId;
+
+  /// The deployment's entry points.
+  core.List<EntryPoint> entryPoints;
+
+  /// Script's defined set of functions.
+  GoogleAppsScriptTypeFunctionSet functionSet;
+
+  /// Set of scopes required by the deployment.
+  GoogleAppsScriptTypeScopeSet scopeSet;
+
+  /// Last modified date time stamp.
+  core.String updateTime;
+
+  Deployment();
+
+  Deployment.fromJson(core.Map _json) {
+    if (_json.containsKey("deploymentConfig")) {
+      deploymentConfig =
+          new DeploymentConfig.fromJson(_json["deploymentConfig"]);
+    }
+    if (_json.containsKey("deploymentId")) {
+      deploymentId = _json["deploymentId"];
+    }
+    if (_json.containsKey("entryPoints")) {
+      entryPoints = _json["entryPoints"]
+          .map((value) => new EntryPoint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("functionSet")) {
+      functionSet =
+          new GoogleAppsScriptTypeFunctionSet.fromJson(_json["functionSet"]);
+    }
+    if (_json.containsKey("scopeSet")) {
+      scopeSet = new GoogleAppsScriptTypeScopeSet.fromJson(_json["scopeSet"]);
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deploymentConfig != null) {
+      _json["deploymentConfig"] = (deploymentConfig).toJson();
+    }
+    if (deploymentId != null) {
+      _json["deploymentId"] = deploymentId;
+    }
+    if (entryPoints != null) {
+      _json["entryPoints"] =
+          entryPoints.map((value) => (value).toJson()).toList();
+    }
+    if (functionSet != null) {
+      _json["functionSet"] = (functionSet).toJson();
+    }
+    if (scopeSet != null) {
+      _json["scopeSet"] = (scopeSet).toJson();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Metadata the defines how a deployment is configured.
+class DeploymentConfig {
+  /// The description for this deployment.
+  core.String description;
+
+  /// The manifest file name for this deployment.
+  core.String manifestFileName;
+
+  /// The script project's Drive ID.
+  core.String scriptId;
+
+  /// The version number on which this deployment is based.
+  core.int versionNumber;
+
+  DeploymentConfig();
+
+  DeploymentConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("manifestFileName")) {
+      manifestFileName = _json["manifestFileName"];
+    }
+    if (_json.containsKey("scriptId")) {
+      scriptId = _json["scriptId"];
+    }
+    if (_json.containsKey("versionNumber")) {
+      versionNumber = _json["versionNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (manifestFileName != null) {
+      _json["manifestFileName"] = manifestFileName;
+    }
+    if (scriptId != null) {
+      _json["scriptId"] = scriptId;
+    }
+    if (versionNumber != null) {
+      _json["versionNumber"] = versionNumber;
+    }
+    return _json;
+  }
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
+class Empty {
+  Empty();
+
+  Empty.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A configuration that defines how a deployment is accessed externally.
+class EntryPoint {
+  /// Add-on properties.
+  GoogleAppsScriptTypeAddOnEntryPoint addOn;
+
+  /// The type of the entry point.
+  /// Possible string values are:
+  /// - "ENTRY_POINT_TYPE_UNSPECIFIED" : An unspecified entry point.
+  /// - "WEB_APP" : A web application entry point.
+  /// - "EXECUTION_API" : An API executable entry point.
+  /// - "ADD_ON" : An Add-On entry point.
+  core.String entryPointType;
+
+  /// An entry point specification for Apps Script API execution calls.
+  GoogleAppsScriptTypeExecutionApiEntryPoint executionApi;
+
+  /// An entry point specification for web apps.
+  GoogleAppsScriptTypeWebAppEntryPoint webApp;
+
+  EntryPoint();
+
+  EntryPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("addOn")) {
+      addOn = new GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json["addOn"]);
+    }
+    if (_json.containsKey("entryPointType")) {
+      entryPointType = _json["entryPointType"];
+    }
+    if (_json.containsKey("executionApi")) {
+      executionApi = new GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
+          _json["executionApi"]);
+    }
+    if (_json.containsKey("webApp")) {
+      webApp =
+          new GoogleAppsScriptTypeWebAppEntryPoint.fromJson(_json["webApp"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addOn != null) {
+      _json["addOn"] = (addOn).toJson();
+    }
+    if (entryPointType != null) {
+      _json["entryPointType"] = entryPointType;
+    }
+    if (executionApi != null) {
+      _json["executionApi"] = (executionApi).toJson();
+    }
+    if (webApp != null) {
+      _json["webApp"] = (webApp).toJson();
+    }
+    return _json;
   }
 }
 
@@ -295,6 +1548,821 @@ class ExecutionResponse {
   }
 }
 
+/// An individual file within a script project.
+/// A file is a third-party source code created by one or more
+/// developers. It can be a server-side JS code, HTML, or a
+/// configuration file. Each script project can contain multiple files.
+class File {
+  /// Creation date timestamp.
+  /// This read-only field is only visible to users who have WRITER
+  /// permission for the script project.
+  core.String createTime;
+
+  /// The defined set of functions in the script file, if any.
+  GoogleAppsScriptTypeFunctionSet functionSet;
+
+  /// The user who modified the file most recently.
+  /// This read-only field is only visible to users who have WRITER
+  /// permission for the script project.
+  GoogleAppsScriptTypeUser lastModifyUser;
+
+  /// The name of the file. The file extension is not part of the file
+  /// name, which can be identified from the type field.
+  core.String name;
+
+  /// The file content.
+  core.String source;
+
+  /// The type of the file.
+  /// Possible string values are:
+  /// - "ENUM_TYPE_UNSPECIFIED" : Undetermined file type; never actually used.
+  /// - "SERVER_JS" : An Apps Script server-side code file.
+  /// - "HTML" : A file containing client-side HTML.
+  /// - "JSON" : A file in JSON format. This type is only used for the script
+  /// project's manifest. The manifest file content must match the
+  /// structure of a valid
+  /// [ScriptManifest](/apps-script/concepts/manifests)
+  core.String type;
+
+  /// Last modified date timestamp.
+  /// This read-only field is only visible to users who have WRITER
+  /// permission for the script project.
+  core.String updateTime;
+
+  File();
+
+  File.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("functionSet")) {
+      functionSet =
+          new GoogleAppsScriptTypeFunctionSet.fromJson(_json["functionSet"]);
+    }
+    if (_json.containsKey("lastModifyUser")) {
+      lastModifyUser =
+          new GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (functionSet != null) {
+      _json["functionSet"] = (functionSet).toJson();
+    }
+    if (lastModifyUser != null) {
+      _json["lastModifyUser"] = (lastModifyUser).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// An add-on entry point.
+class GoogleAppsScriptTypeAddOnEntryPoint {
+  /// The add-on's required list of supported container types.
+  /// Possible string values are:
+  /// - "UNKNOWN_ADDON_TYPE" : Default value, unknown add-on type.
+  /// - "GMAIL" : Add-on type for Gmail.
+  /// - "DATA_STUDIO" : Add-on type for Data Studio.
+  core.String addOnType;
+
+  /// The add-on's optional description.
+  core.String description;
+
+  /// The add-on's optional help URL.
+  core.String helpUrl;
+
+  /// The add-on's required post install tip URL.
+  core.String postInstallTipUrl;
+
+  /// The add-on's optional report issue URL.
+  core.String reportIssueUrl;
+
+  /// The add-on's required title.
+  core.String title;
+
+  GoogleAppsScriptTypeAddOnEntryPoint();
+
+  GoogleAppsScriptTypeAddOnEntryPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("addOnType")) {
+      addOnType = _json["addOnType"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("helpUrl")) {
+      helpUrl = _json["helpUrl"];
+    }
+    if (_json.containsKey("postInstallTipUrl")) {
+      postInstallTipUrl = _json["postInstallTipUrl"];
+    }
+    if (_json.containsKey("reportIssueUrl")) {
+      reportIssueUrl = _json["reportIssueUrl"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addOnType != null) {
+      _json["addOnType"] = addOnType;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (helpUrl != null) {
+      _json["helpUrl"] = helpUrl;
+    }
+    if (postInstallTipUrl != null) {
+      _json["postInstallTipUrl"] = postInstallTipUrl;
+    }
+    if (reportIssueUrl != null) {
+      _json["reportIssueUrl"] = reportIssueUrl;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// API executable entry point configuration.
+class GoogleAppsScriptTypeExecutionApiConfig {
+  /// Who has permission to run the API executable.
+  /// Possible string values are:
+  /// - "UNKNOWN_ACCESS" : Default value, should not be used.
+  /// - "MYSELF" : Only the user who deployed the web app or executable can
+  /// access it.
+  /// Note that this is not necessarily the owner of the script project.
+  /// - "DOMAIN" : Only users in the same domain as the user who deployed the
+  /// web app or
+  /// executable can access it.
+  /// - "ANYONE" : Any logged in user can access the web app or executable.
+  /// - "ANYONE_ANONYMOUS" : Any user, logged in or not, can access the web app
+  /// or executable.
+  core.String access;
+
+  GoogleAppsScriptTypeExecutionApiConfig();
+
+  GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("access")) {
+      access = _json["access"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (access != null) {
+      _json["access"] = access;
+    }
+    return _json;
+  }
+}
+
+/// An API executable entry point.
+class GoogleAppsScriptTypeExecutionApiEntryPoint {
+  /// The entry point's configuration.
+  GoogleAppsScriptTypeExecutionApiConfig entryPointConfig;
+
+  GoogleAppsScriptTypeExecutionApiEntryPoint();
+
+  GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("entryPointConfig")) {
+      entryPointConfig = new GoogleAppsScriptTypeExecutionApiConfig.fromJson(
+          _json["entryPointConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entryPointConfig != null) {
+      _json["entryPointConfig"] = (entryPointConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents a function in a script project.
+class GoogleAppsScriptTypeFunction {
+  /// The function name in the script project.
+  core.String name;
+
+  GoogleAppsScriptTypeFunction();
+
+  GoogleAppsScriptTypeFunction.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// A set of functions. No duplicates are permitted.
+class GoogleAppsScriptTypeFunctionSet {
+  /// A list of functions composing the set.
+  core.List<GoogleAppsScriptTypeFunction> values;
+
+  GoogleAppsScriptTypeFunctionSet();
+
+  GoogleAppsScriptTypeFunctionSet.fromJson(core.Map _json) {
+    if (_json.containsKey("values")) {
+      values = _json["values"]
+          .map((value) => new GoogleAppsScriptTypeFunction.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (values != null) {
+      _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Representation of a single script process execution that was started from
+/// the script editor, a trigger, an application, or using the Apps Script API.
+/// This is distinct from the `Operation`
+/// resource, which only represents exeuctions started via the Apps Script API.
+class GoogleAppsScriptTypeProcess {
+  /// Duration the execution spent executing.
+  core.String duration;
+
+  /// User-facing name for the user executing the script.
+  core.String executingUser;
+
+  /// Name of the function the started the execution.
+  core.String functionName;
+
+  /// The executions status.
+  /// Possible string values are:
+  /// - "PROCESS_STATUS_UNSPECIFIED" : Unspecified status.
+  /// - "RUNNING" : The process is currently running.
+  /// - "PAUSED" : The process has paused.
+  /// - "COMPLETED" : The process has completed.
+  /// - "CANCELED" : The process was cancelled.
+  /// - "FAILED" : The process failed.
+  /// - "TIMED_OUT" : The process timed out.
+  /// - "UNKNOWN" : Process status unknown.
+  core.String processStatus;
+
+  /// The executions type.
+  /// Possible string values are:
+  /// - "PROCESS_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "ADD_ON" : The process was started from an add-on entry point.
+  /// - "EXECUTION_API" : The process was started using the Apps Script API.
+  /// - "TIME_DRIVEN" : The process was started from a time-based trigger.
+  /// - "TRIGGER" : The process was started from an event-based trigger.
+  /// - "WEBAPP" : The process was started from a web app entry point.
+  /// - "EDITOR" : The process was started using the Apps Script IDE.
+  core.String processType;
+
+  /// Name of the script being executed.
+  core.String projectName;
+
+  /// Time the execution started.
+  core.String startTime;
+
+  /// The executing users access level to the script.
+  /// Possible string values are:
+  /// - "USER_ACCESS_LEVEL_UNSPECIFIED" : User access level unspecified
+  /// - "NONE" : The user has no access.
+  /// - "READ" : The user has read-only access.
+  /// - "WRITE" : The user has write access.
+  /// - "OWNER" : The user is an owner.
+  core.String userAccessLevel;
+
+  GoogleAppsScriptTypeProcess();
+
+  GoogleAppsScriptTypeProcess.fromJson(core.Map _json) {
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("executingUser")) {
+      executingUser = _json["executingUser"];
+    }
+    if (_json.containsKey("functionName")) {
+      functionName = _json["functionName"];
+    }
+    if (_json.containsKey("processStatus")) {
+      processStatus = _json["processStatus"];
+    }
+    if (_json.containsKey("processType")) {
+      processType = _json["processType"];
+    }
+    if (_json.containsKey("projectName")) {
+      projectName = _json["projectName"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("userAccessLevel")) {
+      userAccessLevel = _json["userAccessLevel"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (executingUser != null) {
+      _json["executingUser"] = executingUser;
+    }
+    if (functionName != null) {
+      _json["functionName"] = functionName;
+    }
+    if (processStatus != null) {
+      _json["processStatus"] = processStatus;
+    }
+    if (processType != null) {
+      _json["processType"] = processType;
+    }
+    if (projectName != null) {
+      _json["projectName"] = projectName;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (userAccessLevel != null) {
+      _json["userAccessLevel"] = userAccessLevel;
+    }
+    return _json;
+  }
+}
+
+/// Represents an authorization scope.
+class GoogleAppsScriptTypeScope {
+  /// Who authorized the scope.
+  /// Possible string values are:
+  /// - "SCOPE_AUTHORIZER_UNSPECIFIED" : Authorizer unspecified.
+  /// - "AUTHORIZED_BY_DEVELOPER" : Developer authorized scope.
+  /// - "AUTHORIZED_BY_END_USER" : End user authorized scope.
+  core.String authorizer;
+
+  /// The scope's identifying string.
+  core.String name;
+
+  GoogleAppsScriptTypeScope();
+
+  GoogleAppsScriptTypeScope.fromJson(core.Map _json) {
+    if (_json.containsKey("authorizer")) {
+      authorizer = _json["authorizer"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (authorizer != null) {
+      _json["authorizer"] = authorizer;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// A set of scopes. No duplicates are permitted.
+class GoogleAppsScriptTypeScopeSet {
+  /// List of scope values in the set.
+  core.List<GoogleAppsScriptTypeScope> values;
+
+  GoogleAppsScriptTypeScopeSet();
+
+  GoogleAppsScriptTypeScopeSet.fromJson(core.Map _json) {
+    if (_json.containsKey("values")) {
+      values = _json["values"]
+          .map((value) => new GoogleAppsScriptTypeScope.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (values != null) {
+      _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A simple user profile resource.
+class GoogleAppsScriptTypeUser {
+  /// The user's domain.
+  core.String domain;
+
+  /// The user's identifying email address.
+  core.String email;
+
+  /// The user's display name.
+  core.String name;
+
+  /// The user's photo.
+  core.String photoUrl;
+
+  GoogleAppsScriptTypeUser();
+
+  GoogleAppsScriptTypeUser.fromJson(core.Map _json) {
+    if (_json.containsKey("domain")) {
+      domain = _json["domain"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("photoUrl")) {
+      photoUrl = _json["photoUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (domain != null) {
+      _json["domain"] = domain;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (photoUrl != null) {
+      _json["photoUrl"] = photoUrl;
+    }
+    return _json;
+  }
+}
+
+/// Web app entry point configuration.
+class GoogleAppsScriptTypeWebAppConfig {
+  /// Who has permission to run the web app.
+  /// Possible string values are:
+  /// - "UNKNOWN_ACCESS" : Default value, should not be used.
+  /// - "MYSELF" : Only the user who deployed the web app or executable can
+  /// access it.
+  /// Note that this is not necessarily the owner of the script project.
+  /// - "DOMAIN" : Only users in the same domain as the user who deployed the
+  /// web app or
+  /// executable can access it.
+  /// - "ANYONE" : Any logged in user can access the web app or executable.
+  /// - "ANYONE_ANONYMOUS" : Any user, logged in or not, can access the web app
+  /// or executable.
+  core.String access;
+
+  /// Who to execute the web app as.
+  /// Possible string values are:
+  /// - "UNKNOWN_EXECUTE_AS" : Default value, should not be used.
+  /// - "USER_ACCESSING" : The script runs as the user accessing the web app.
+  /// - "USER_DEPLOYING" : The script runs as the user who deployed the web app.
+  /// Note that this is
+  /// not necessarily the owner of the script project.
+  core.String executeAs;
+
+  GoogleAppsScriptTypeWebAppConfig();
+
+  GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("access")) {
+      access = _json["access"];
+    }
+    if (_json.containsKey("executeAs")) {
+      executeAs = _json["executeAs"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (access != null) {
+      _json["access"] = access;
+    }
+    if (executeAs != null) {
+      _json["executeAs"] = executeAs;
+    }
+    return _json;
+  }
+}
+
+/// A web application entry point.
+class GoogleAppsScriptTypeWebAppEntryPoint {
+  /// The entry point's configuration.
+  GoogleAppsScriptTypeWebAppConfig entryPointConfig;
+
+  /// The URL for the web application.
+  core.String url;
+
+  GoogleAppsScriptTypeWebAppEntryPoint();
+
+  GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("entryPointConfig")) {
+      entryPointConfig = new GoogleAppsScriptTypeWebAppConfig.fromJson(
+          _json["entryPointConfig"]);
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entryPointConfig != null) {
+      _json["entryPointConfig"] = (entryPointConfig).toJson();
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/// Response with the list of deployments for the specified Apps Script project.
+class ListDeploymentsResponse {
+  /// The list of deployments.
+  core.List<Deployment> deployments;
+
+  /// The token that can be used in the next call to get the next page of
+  /// results.
+  core.String nextPageToken;
+
+  ListDeploymentsResponse();
+
+  ListDeploymentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("deployments")) {
+      deployments = _json["deployments"]
+          .map((value) => new Deployment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deployments != null) {
+      _json["deployments"] =
+          deployments.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response with the list of
+/// Process resources.
+class ListScriptProcessesResponse {
+  /// Token for the next page of results. If empty, there are no more pages
+  /// remaining.
+  core.String nextPageToken;
+
+  /// List of processes matching request parameters.
+  core.List<GoogleAppsScriptTypeProcess> processes;
+
+  ListScriptProcessesResponse();
+
+  ListScriptProcessesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("processes")) {
+      processes = _json["processes"]
+          .map((value) => new GoogleAppsScriptTypeProcess.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (processes != null) {
+      _json["processes"] = processes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response with the list of
+/// Process resources.
+class ListUserProcessesResponse {
+  /// Token for the next page of results. If empty, there are no more pages
+  /// remaining.
+  core.String nextPageToken;
+
+  /// List of processes matching request parameters.
+  core.List<GoogleAppsScriptTypeProcess> processes;
+
+  ListUserProcessesResponse();
+
+  ListUserProcessesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("processes")) {
+      processes = _json["processes"]
+          .map((value) => new GoogleAppsScriptTypeProcess.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (processes != null) {
+      _json["processes"] = processes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response with the list of the versions for the specified script project.
+class ListVersionsResponse {
+  /// The token use to fetch the next page of records. if not exist in the
+  /// response, that means no more versions to list.
+  core.String nextPageToken;
+
+  /// The list of versions.
+  core.List<Version> versions;
+
+  ListVersionsResponse();
+
+  ListVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("versions")) {
+      versions = _json["versions"]
+          .map((value) => new Version.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (versions != null) {
+      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Resource containing usage stats for a given script, based on the supplied
+/// filter and mask present in the request.
+class Metrics {
+  /// Number of active users.
+  core.List<MetricsValue> activeUsers;
+
+  /// Number of failed executions.
+  core.List<MetricsValue> failedExecutions;
+
+  /// Number of total executions.
+  core.List<MetricsValue> totalExecutions;
+
+  Metrics();
+
+  Metrics.fromJson(core.Map _json) {
+    if (_json.containsKey("activeUsers")) {
+      activeUsers = _json["activeUsers"]
+          .map((value) => new MetricsValue.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("failedExecutions")) {
+      failedExecutions = _json["failedExecutions"]
+          .map((value) => new MetricsValue.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("totalExecutions")) {
+      totalExecutions = _json["totalExecutions"]
+          .map((value) => new MetricsValue.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (activeUsers != null) {
+      _json["activeUsers"] =
+          activeUsers.map((value) => (value).toJson()).toList();
+    }
+    if (failedExecutions != null) {
+      _json["failedExecutions"] =
+          failedExecutions.map((value) => (value).toJson()).toList();
+    }
+    if (totalExecutions != null) {
+      _json["totalExecutions"] =
+          totalExecutions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Metrics value that holds number of executions counted.
+class MetricsValue {
+  /// Required field indicating the end time of the interval.
+  core.String endTime;
+
+  /// Required field indicating the start time of the interval.
+  core.String startTime;
+
+  /// Indicates the number of executions counted.
+  core.String value;
+
+  MetricsValue();
+
+  MetricsValue.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// A representation of a execution of an Apps Script function that is started
 /// using run. The execution response does not arrive until the function
 /// finishes executing. The maximum execution runtime is listed in the [Apps
@@ -364,6 +2432,86 @@ class Operation {
     }
     if (response != null) {
       _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/// The script project resource.
+class Project {
+  /// When the script was created.
+  core.String createTime;
+
+  /// User who originally created the script.
+  GoogleAppsScriptTypeUser creator;
+
+  /// User who last modified the script.
+  GoogleAppsScriptTypeUser lastModifyUser;
+
+  /// The parent's Drive ID that the script will be attached to. This is usually
+  /// the ID of a Google Document or Google Sheet. This filed is optional, and
+  /// if not set, a stand-alone script will be created.
+  core.String parentId;
+
+  /// The script project's Drive ID.
+  core.String scriptId;
+
+  /// The title for the project.
+  core.String title;
+
+  /// When the script was last updated.
+  core.String updateTime;
+
+  Project();
+
+  Project.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("creator")) {
+      creator = new GoogleAppsScriptTypeUser.fromJson(_json["creator"]);
+    }
+    if (_json.containsKey("lastModifyUser")) {
+      lastModifyUser =
+          new GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
+    }
+    if (_json.containsKey("parentId")) {
+      parentId = _json["parentId"];
+    }
+    if (_json.containsKey("scriptId")) {
+      scriptId = _json["scriptId"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (creator != null) {
+      _json["creator"] = (creator).toJson();
+    }
+    if (lastModifyUser != null) {
+      _json["lastModifyUser"] = (lastModifyUser).toJson();
+    }
+    if (parentId != null) {
+      _json["parentId"] = parentId;
+    }
+    if (scriptId != null) {
+      _json["scriptId"] = scriptId;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -448,6 +2596,83 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Request with deployment information to update an existing deployment.
+class UpdateDeploymentRequest {
+  /// The deployment configuration.
+  DeploymentConfig deploymentConfig;
+
+  UpdateDeploymentRequest();
+
+  UpdateDeploymentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deploymentConfig")) {
+      deploymentConfig =
+          new DeploymentConfig.fromJson(_json["deploymentConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deploymentConfig != null) {
+      _json["deploymentConfig"] = (deploymentConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A resource representing a script project version. A version is a "snapshot"
+/// of a script project and is similar to a read-only branched release. When
+/// creating deployments, the version to use must be specified.
+class Version {
+  /// When the version was created.
+  core.String createTime;
+
+  /// The description for this version.
+  core.String description;
+
+  /// The script project's Drive ID.
+  core.String scriptId;
+
+  /// The incremental ID that is created by Apps Script when a version is
+  /// created. This is system assigned number and is immutable once created.
+  core.int versionNumber;
+
+  Version();
+
+  Version.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("scriptId")) {
+      scriptId = _json["scriptId"];
+    }
+    if (_json.containsKey("versionNumber")) {
+      versionNumber = _json["versionNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (scriptId != null) {
+      _json["scriptId"] = scriptId;
+    }
+    if (versionNumber != null) {
+      _json["versionNumber"] = versionNumber;
     }
     return _json;
   }

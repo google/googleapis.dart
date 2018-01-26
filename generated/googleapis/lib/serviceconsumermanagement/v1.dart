@@ -208,11 +208,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -225,9 +225,9 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -239,14 +239,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -372,6 +372,7 @@ class ServicesTenancyUnitsResourceApi {
       : _requester = client;
 
   /// Add a new tenant project to the tenancy unit.
+  /// There can be at most 512 tenant projects in a tenancy units.
   /// If there are previously failed AddTenantProject calls, you might need to
   /// call RemoveTenantProject first to clean them before you can make another
   /// AddTenantProject with the same tag.
@@ -2533,13 +2534,6 @@ class HttpRule {
   /// Used for updating a resource.
   core.String put;
 
-  /// The name of the response field whose value is mapped to the HTTP body of
-  /// response. Other response fields are ignored. This field is optional. When
-  /// not set, the response message will be used as HTTP body of response.
-  /// NOTE: the referred field must be not a repeated field and must be present
-  /// at the top-level of response message type.
-  core.String responseBody;
-
   /// DO NOT USE. This is an experimental field.
   ///
   /// Optional. The REST collection name is by default derived from the URL
@@ -2625,9 +2619,6 @@ class HttpRule {
     if (_json.containsKey("put")) {
       put = _json["put"];
     }
-    if (_json.containsKey("responseBody")) {
-      responseBody = _json["responseBody"];
-    }
     if (_json.containsKey("restCollection")) {
       restCollection = _json["restCollection"];
     }
@@ -2676,9 +2667,6 @@ class HttpRule {
     }
     if (put != null) {
       _json["put"] = put;
-    }
-    if (responseBody != null) {
-      _json["responseBody"] = responseBody;
     }
     if (restCollection != null) {
       _json["restCollection"] = restCollection;
@@ -5035,6 +5023,7 @@ class TenancyUnit {
   core.String service;
 
   /// Resources constituting the tenancy unit.
+  /// There can be at most 512 tenant resources in a tenancy units.
   core.List<TenantResource> tenantResources;
 
   TenancyUnit();

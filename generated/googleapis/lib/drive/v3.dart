@@ -2839,6 +2839,9 @@ class About {
   /// Whether the user has installed the requesting app.
   core.bool appInstalled;
 
+  /// Whether the user can create Team Drives.
+  core.bool canCreateTeamDrives;
+
   /// A map of source MIME type to possible targets for all supported exports.
   core.Map<core.String, core.List<core.String>> exportFormats;
 
@@ -2873,6 +2876,9 @@ class About {
   About.fromJson(core.Map _json) {
     if (_json.containsKey("appInstalled")) {
       appInstalled = _json["appInstalled"];
+    }
+    if (_json.containsKey("canCreateTeamDrives")) {
+      canCreateTeamDrives = _json["canCreateTeamDrives"];
     }
     if (_json.containsKey("exportFormats")) {
       exportFormats = _json["exportFormats"];
@@ -2910,6 +2916,9 @@ class About {
         new core.Map<core.String, core.Object>();
     if (appInstalled != null) {
       _json["appInstalled"] = appInstalled;
+    }
+    if (canCreateTeamDrives != null) {
+      _json["canCreateTeamDrives"] = canCreateTeamDrives;
     }
     if (exportFormats != null) {
       _json["exportFormats"] = exportFormats;
@@ -4074,8 +4083,10 @@ class File {
 
   /// The IDs of the parent folders which contain the file.
   /// If not specified as part of a create request, the file will be placed
-  /// directly in the My Drive folder. Update requests must use the addParents
-  /// and removeParents parameters to modify the values.
+  /// directly in the user's My Drive folder. If not specified as part of a copy
+  /// request, the file will inherit any discoverable parents of the source
+  /// file. Update requests must use the addParents and removeParents parameters
+  /// to modify the parents list.
   core.List<core.String> parents;
 
   /// List of permission IDs for users with access to this file.

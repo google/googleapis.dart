@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/sn3kI5v3BSYBkgZLL4qfVbTsTJQ\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/yzXwu_0GJODRHs0Yi0-Rq7_Rczo\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -354,6 +354,40 @@
                         "https://www.googleapis.com/auth/content"
                     ]
                 },
+                "instorerefundlineitem": {
+                    "description": "Notifies that item return and refund was handled directly in store.",
+                    "httpMethod": "POST",
+                    "id": "content.orders.instorerefundlineitem",
+                    "parameterOrder": [
+                        "merchantId",
+                        "orderId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "orderId": {
+                            "description": "The ID of the order.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orders/{orderId}/inStoreRefundLineItem",
+                    "request": {
+                        "$ref": "OrdersInStoreRefundLineItemRequest"
+                    },
+                    "response": {
+                        "$ref": "OrdersInStoreRefundLineItemResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
                 "list": {
                     "description": "Lists the orders in your Merchant Center account.",
                     "httpMethod": "GET",
@@ -483,6 +517,40 @@
                         "https://www.googleapis.com/auth/content"
                     ]
                 },
+                "rejectreturnlineitem": {
+                    "description": "Rejects return on an line item.",
+                    "httpMethod": "POST",
+                    "id": "content.orders.rejectreturnlineitem",
+                    "parameterOrder": [
+                        "merchantId",
+                        "orderId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "orderId": {
+                            "description": "The ID of the order.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orders/{orderId}/rejectReturnLineItem",
+                    "request": {
+                        "$ref": "OrdersRejectReturnLineItemRequest"
+                    },
+                    "response": {
+                        "$ref": "OrdersRejectReturnLineItemResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
                 "returnlineitem": {
                     "description": "Returns a line item.",
                     "httpMethod": "POST",
@@ -512,6 +580,40 @@
                     },
                     "response": {
                         "$ref": "OrdersReturnLineItemResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "returnrefundlineitem": {
+                    "description": "Returns and refunds a line item. Note that this method can only be called on fully shipped orders.",
+                    "httpMethod": "POST",
+                    "id": "content.orders.returnrefundlineitem",
+                    "parameterOrder": [
+                        "merchantId",
+                        "orderId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "orderId": {
+                            "description": "The ID of the order.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orders/{orderId}/returnRefundLineItem",
+                    "request": {
+                        "$ref": "OrdersReturnRefundLineItemRequest"
+                    },
+                    "response": {
+                        "$ref": "OrdersReturnRefundLineItemResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/content"
@@ -690,7 +792,7 @@
             }
         }
     },
-    "revision": "20171207",
+    "revision": "20180122",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {
@@ -1612,6 +1714,10 @@
                     "$ref": "OrdersCustomBatchRequestEntryCancelLineItem",
                     "description": "Required for cancelLineItem method."
                 },
+                "inStoreRefundLineItem": {
+                    "$ref": "OrdersCustomBatchRequestEntryInStoreRefundLineItem",
+                    "description": "Required for inStoreReturnLineItem method."
+                },
                 "merchantId": {
                     "description": "The ID of the managing account.",
                     "format": "uint64",
@@ -1637,9 +1743,17 @@
                     "$ref": "OrdersCustomBatchRequestEntryRefund",
                     "description": "Required for refund method."
                 },
+                "rejectReturnLineItem": {
+                    "$ref": "OrdersCustomBatchRequestEntryRejectReturnLineItem",
+                    "description": "Required for rejectReturnLineItem method."
+                },
                 "returnLineItem": {
                     "$ref": "OrdersCustomBatchRequestEntryReturnLineItem",
                     "description": "Required for returnLineItem method."
+                },
+                "returnRefundLineItem": {
+                    "$ref": "OrdersCustomBatchRequestEntryReturnRefundLineItem",
+                    "description": "Required for returnRefundLineItem method."
                 },
                 "setLineItemMetadata": {
                     "$ref": "OrdersCustomBatchRequestEntrySetLineItemMetadata",
@@ -1713,6 +1827,41 @@
             },
             "type": "object"
         },
+        "OrdersCustomBatchRequestEntryInStoreRefundLineItem": {
+            "id": "OrdersCustomBatchRequestEntryInStoreRefundLineItem",
+            "properties": {
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "The amount that is refunded. Required."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to refund amount in amountPretax. Required."
+                },
+                "lineItemId": {
+                    "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity to return and refund.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "description": "The reason for the return.",
+                    "type": "string"
+                },
+                "reasonText": {
+                    "description": "The explanation of the reason.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "OrdersCustomBatchRequestEntryRefund": {
             "id": "OrdersCustomBatchRequestEntryRefund",
             "properties": {
@@ -1739,6 +1888,33 @@
             },
             "type": "object"
         },
+        "OrdersCustomBatchRequestEntryRejectReturnLineItem": {
+            "id": "OrdersCustomBatchRequestEntryRejectReturnLineItem",
+            "properties": {
+                "lineItemId": {
+                    "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity to return and refund.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "description": "The reason for the return.",
+                    "type": "string"
+                },
+                "reasonText": {
+                    "description": "The explanation of the reason.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "OrdersCustomBatchRequestEntryReturnLineItem": {
             "id": "OrdersCustomBatchRequestEntryReturnLineItem",
             "properties": {
@@ -1752,6 +1928,41 @@
                 },
                 "quantity": {
                     "description": "The quantity to return.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "description": "The reason for the return.",
+                    "type": "string"
+                },
+                "reasonText": {
+                    "description": "The explanation of the reason.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersCustomBatchRequestEntryReturnRefundLineItem": {
+            "id": "OrdersCustomBatchRequestEntryReturnRefundLineItem",
+            "properties": {
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be set."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to refund amount in amountPretax."
+                },
+                "lineItemId": {
+                    "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity to return and refund.",
                     "format": "uint32",
                     "type": "integer"
                 },
@@ -1961,6 +2172,60 @@
             },
             "type": "object"
         },
+        "OrdersInStoreRefundLineItemRequest": {
+            "id": "OrdersInStoreRefundLineItemRequest",
+            "properties": {
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "The amount that is refunded. Required."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to refund amount in amountPretax. Required."
+                },
+                "lineItemId": {
+                    "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "operationId": {
+                    "description": "The ID of the operation. Unique across all operations for a given order.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity to return and refund.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "description": "The reason for the return.",
+                    "type": "string"
+                },
+                "reasonText": {
+                    "description": "The explanation of the reason.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersInStoreRefundLineItemResponse": {
+            "id": "OrdersInStoreRefundLineItemResponse",
+            "properties": {
+                "executionStatus": {
+                    "description": "The status of the execution.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#ordersInStoreRefundLineItemResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersInStoreRefundLineItemResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "OrdersListResponse": {
             "id": "OrdersListResponse",
             "properties": {
@@ -2027,6 +2292,52 @@
             },
             "type": "object"
         },
+        "OrdersRejectReturnLineItemRequest": {
+            "id": "OrdersRejectReturnLineItemRequest",
+            "properties": {
+                "lineItemId": {
+                    "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "operationId": {
+                    "description": "The ID of the operation. Unique across all operations for a given order.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity to return and refund.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "description": "The reason for the return.",
+                    "type": "string"
+                },
+                "reasonText": {
+                    "description": "The explanation of the reason.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersRejectReturnLineItemResponse": {
+            "id": "OrdersRejectReturnLineItemResponse",
+            "properties": {
+                "executionStatus": {
+                    "description": "The status of the execution.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#ordersRejectReturnLineItemResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersRejectReturnLineItemResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "OrdersReturnLineItemRequest": {
             "id": "OrdersReturnLineItemRequest",
             "properties": {
@@ -2068,6 +2379,60 @@
                 "kind": {
                     "default": "content#ordersReturnLineItemResponse",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersReturnLineItemResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersReturnRefundLineItemRequest": {
+            "id": "OrdersReturnRefundLineItemRequest",
+            "properties": {
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be set."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to refund amount in amountPretax."
+                },
+                "lineItemId": {
+                    "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "operationId": {
+                    "description": "The ID of the operation. Unique across all operations for a given order.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity to return and refund.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "description": "The reason for the return.",
+                    "type": "string"
+                },
+                "reasonText": {
+                    "description": "The explanation of the reason.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersReturnRefundLineItemResponse": {
+            "id": "OrdersReturnRefundLineItemResponse",
+            "properties": {
+                "executionStatus": {
+                    "description": "The status of the execution.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#ordersReturnRefundLineItemResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersReturnRefundLineItemResponse\".",
                     "type": "string"
                 }
             },

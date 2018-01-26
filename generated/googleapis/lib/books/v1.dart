@@ -26,6 +26,8 @@ class BooksApi {
   CloudloadingResourceApi get cloudloading =>
       new CloudloadingResourceApi(_requester);
   DictionaryResourceApi get dictionary => new DictionaryResourceApi(_requester);
+  FamilysharingResourceApi get familysharing =>
+      new FamilysharingResourceApi(_requester);
   LayersResourceApi get layers => new LayersResourceApi(_requester);
   MyconfigResourceApi get myconfig => new MyconfigResourceApi(_requester);
   MylibraryResourceApi get mylibrary => new MylibraryResourceApi(_requester);
@@ -445,6 +447,169 @@ class DictionaryResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Metadata.fromJson(data));
+  }
+}
+
+class FamilysharingResourceApi {
+  final commons.ApiRequester _requester;
+
+  FamilysharingResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information regarding the family that the user is part of.
+  ///
+  /// Request parameters:
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FamilyInfo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FamilyInfo> getFamilyInfo(
+      {core.String source, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'familysharing/getFamilyInfo';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new FamilyInfo.fromJson(data));
+  }
+
+  /// Initiates sharing of the content with the user's family. Empty response
+  /// indicates success.
+  ///
+  /// Request parameters:
+  ///
+  /// [docId] - The docid to share.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [volumeId] - The volume to share.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future share(
+      {core.String docId,
+      core.String source,
+      core.String volumeId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (docId != null) {
+      _queryParams["docId"] = [docId];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'familysharing/share';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Initiates revoking content that has already been shared with the user's
+  /// family. Empty response indicates success.
+  ///
+  /// Request parameters:
+  ///
+  /// [docId] - The docid to unshare.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [volumeId] - The volume to unshare.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future unshare(
+      {core.String docId,
+      core.String source,
+      core.String volumeId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (docId != null) {
+      _queryParams["docId"] = [docId];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'familysharing/unshare';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 }
 
@@ -5525,6 +5690,94 @@ class DownloadAccesses {
   }
 }
 
+/// Family membership info of the user that made the request.
+class FamilyInfoMembership {
+  /// Restrictions on user buying and acquiring content.
+  core.String acquirePermission;
+
+  /// The age group of the user.
+  core.String ageGroup;
+
+  /// The maximum allowed maturity rating for the user.
+  core.String allowedMaturityRating;
+  core.bool isInFamily;
+
+  /// The role of the user in the family.
+  core.String role;
+
+  FamilyInfoMembership();
+
+  FamilyInfoMembership.fromJson(core.Map _json) {
+    if (_json.containsKey("acquirePermission")) {
+      acquirePermission = _json["acquirePermission"];
+    }
+    if (_json.containsKey("ageGroup")) {
+      ageGroup = _json["ageGroup"];
+    }
+    if (_json.containsKey("allowedMaturityRating")) {
+      allowedMaturityRating = _json["allowedMaturityRating"];
+    }
+    if (_json.containsKey("isInFamily")) {
+      isInFamily = _json["isInFamily"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (acquirePermission != null) {
+      _json["acquirePermission"] = acquirePermission;
+    }
+    if (ageGroup != null) {
+      _json["ageGroup"] = ageGroup;
+    }
+    if (allowedMaturityRating != null) {
+      _json["allowedMaturityRating"] = allowedMaturityRating;
+    }
+    if (isInFamily != null) {
+      _json["isInFamily"] = isInFamily;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+class FamilyInfo {
+  /// Resource type.
+  core.String kind;
+
+  /// Family membership info of the user that made the request.
+  FamilyInfoMembership membership;
+
+  FamilyInfo();
+
+  FamilyInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("membership")) {
+      membership = new FamilyInfoMembership.fromJson(_json["membership"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (membership != null) {
+      _json["membership"] = (membership).toJson();
+    }
+    return _json;
+  }
+}
+
 class GeolayerdataCommon {
   /// The language of the information url and description.
   core.String lang;
@@ -6774,6 +7027,27 @@ class UsersettingsNotesExport {
   }
 }
 
+class UsersettingsNotificationMatchMyInterests {
+  core.String optedState;
+
+  UsersettingsNotificationMatchMyInterests();
+
+  UsersettingsNotificationMatchMyInterests.fromJson(core.Map _json) {
+    if (_json.containsKey("opted_state")) {
+      optedState = _json["opted_state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (optedState != null) {
+      _json["opted_state"] = optedState;
+    }
+    return _json;
+  }
+}
+
 class UsersettingsNotificationMoreFromAuthors {
   core.String optedState;
 
@@ -6816,6 +7090,27 @@ class UsersettingsNotificationMoreFromSeries {
   }
 }
 
+class UsersettingsNotificationPriceDrop {
+  core.String optedState;
+
+  UsersettingsNotificationPriceDrop();
+
+  UsersettingsNotificationPriceDrop.fromJson(core.Map _json) {
+    if (_json.containsKey("opted_state")) {
+      optedState = _json["opted_state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (optedState != null) {
+      _json["opted_state"] = optedState;
+    }
+    return _json;
+  }
+}
+
 class UsersettingsNotificationRewardExpirations {
   core.String optedState;
 
@@ -6838,13 +7133,19 @@ class UsersettingsNotificationRewardExpirations {
 }
 
 class UsersettingsNotification {
+  UsersettingsNotificationMatchMyInterests matchMyInterests;
   UsersettingsNotificationMoreFromAuthors moreFromAuthors;
   UsersettingsNotificationMoreFromSeries moreFromSeries;
+  UsersettingsNotificationPriceDrop priceDrop;
   UsersettingsNotificationRewardExpirations rewardExpirations;
 
   UsersettingsNotification();
 
   UsersettingsNotification.fromJson(core.Map _json) {
+    if (_json.containsKey("matchMyInterests")) {
+      matchMyInterests = new UsersettingsNotificationMatchMyInterests.fromJson(
+          _json["matchMyInterests"]);
+    }
     if (_json.containsKey("moreFromAuthors")) {
       moreFromAuthors = new UsersettingsNotificationMoreFromAuthors.fromJson(
           _json["moreFromAuthors"]);
@@ -6852,6 +7153,10 @@ class UsersettingsNotification {
     if (_json.containsKey("moreFromSeries")) {
       moreFromSeries = new UsersettingsNotificationMoreFromSeries.fromJson(
           _json["moreFromSeries"]);
+    }
+    if (_json.containsKey("priceDrop")) {
+      priceDrop =
+          new UsersettingsNotificationPriceDrop.fromJson(_json["priceDrop"]);
     }
     if (_json.containsKey("rewardExpirations")) {
       rewardExpirations =
@@ -6863,11 +7168,17 @@ class UsersettingsNotification {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (matchMyInterests != null) {
+      _json["matchMyInterests"] = (matchMyInterests).toJson();
+    }
     if (moreFromAuthors != null) {
       _json["moreFromAuthors"] = (moreFromAuthors).toJson();
     }
     if (moreFromSeries != null) {
       _json["moreFromSeries"] = (moreFromSeries).toJson();
+    }
+    if (priceDrop != null) {
+      _json["priceDrop"] = (priceDrop).toJson();
     }
     if (rewardExpirations != null) {
       _json["rewardExpirations"] = (rewardExpirations).toJson();

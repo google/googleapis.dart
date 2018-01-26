@@ -3602,14 +3602,14 @@ class ConferenceData {
   /// Can be used by developers to keep track of conferences, should not be
   /// displayed to users.
   /// Values for solution types:
-  /// - "eventHangout": unset
+  /// - "eventHangout": unset.
   /// - "eventNamedHangout": the name of the Hangout.
   /// - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
   /// Optional.
   core.String conferenceId;
 
   /// The conference solution, such as Hangouts or Hangouts Meet.
-  /// Unset for a conference with failed create request.
+  /// Unset for a conference with a failed create request.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
   ConferenceSolution conferenceSolution;
@@ -3636,7 +3636,7 @@ class ConferenceData {
   /// The signature of the conference data.
   /// Genereated on server side. Must be preserved while copying the conference
   /// data between events, otherwise the conference data will not be copied.
-  /// Unset for a conference with failed create request.
+  /// Unset for a conference with a failed create request.
   /// Optional for a conference with a pending create request.
   core.String signature;
 
@@ -3748,14 +3748,14 @@ class ConferenceRequestStatus {
 }
 
 class ConferenceSolution {
-  /// The user-visible icon for this solution. Read-only.
+  /// The user-visible icon for this solution.
   core.String iconUri;
 
   /// The key which can uniquely identify the conference solution for this
   /// event.
   ConferenceSolutionKey key;
 
-  /// The user-visible name of this solution. Not localized. Read-only.
+  /// The user-visible name of this solution. Not localized.
   core.String name;
 
   ConferenceSolution();
@@ -3795,7 +3795,7 @@ class ConferenceSolutionKey {
   /// modifications.
   /// The possible values are:
   /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
-  /// - "eventNamedHangout" for Classic Hangouts for GSuite users
+  /// - "eventNamedHangout" for classic Hangouts for G Suite users
   /// (http://hangouts.google.com)
   /// - "hangoutsMeet" for Hangouts Meet (http://meet.google.com)
   core.String type;
@@ -3862,7 +3862,7 @@ class CreateConferenceRequest {
 }
 
 class EntryPoint {
-  /// The Access Code to access the conference. The maximum length is 128
+  /// The access code to access the conference. The maximum length is 128
   /// characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
@@ -3884,17 +3884,17 @@ class EntryPoint {
   /// conference with only a more entry point is not a valid conference.
   core.String entryPointType;
 
-  /// The label for the URI.Visible to end users. Not localized. The maximum
+  /// The label for the URI. Visible to end users. Not localized. The maximum
   /// length is 512 characters.
   /// Examples:
   /// - for video: meet.google.com/aaa-bbbb-ccc
   /// - for phone: +1 123 268 2601
-  /// - for sip: sip:12345678@myprovider.com
+  /// - for sip: 12345678@altostrat.com
   /// - for more: should not be filled
   /// Optional.
   core.String label;
 
-  /// The Meeting Code to access the conference. The maximum length is 128
+  /// The meeting code to access the conference. The maximum length is 128
   /// characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
@@ -3903,7 +3903,7 @@ class EntryPoint {
   /// Optional.
   core.String meetingCode;
 
-  /// The Passcode to access the conference. The maximum length is 128
+  /// The passcode to access the conference. The maximum length is 128
   /// characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
@@ -3911,7 +3911,7 @@ class EntryPoint {
   /// should be displayed.
   core.String passcode;
 
-  /// The Password to access the conference. The maximum length is 128
+  /// The password to access the conference. The maximum length is 128
   /// characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
@@ -3928,7 +3928,7 @@ class EntryPoint {
   /// Optional.
   core.String pin;
 
-  /// The "URI" of the entry point. The maximum length is 1300 characters.
+  /// The URI of the entry point. The maximum length is 1300 characters.
   /// Format:
   /// - for video, http: or https: schema is required.
   /// - for phone, tel: schema is required. The URI should include the entire

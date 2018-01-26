@@ -2183,6 +2183,7 @@ class TestMatrix {
   /// - "DEVICE_ADMIN_RECEIVER" : Device administrator applications are not
   /// allowed.
   /// - "TEST_ONLY_APK" : The APK is marked as "testOnly".
+  /// - "MALFORMED_IPA" : The input IPA could not be parsed.
   core.String invalidMatrixDetails;
 
   /// The cloud project that owns the test matrix.

@@ -9475,11 +9475,9 @@ class InstanceTemplatesResourceApi {
   InstanceTemplatesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes the specified instance template. If you delete an instance
-  /// template that is being referenced from another instance group, the
-  /// instance group will not be able to create or recreate virtual machine
-  /// instances. Deleting an instance template is permanent and cannot be
-  /// undone.
+  /// Deletes the specified instance template. Deleting an instance template is
+  /// permanent and cannot be undone. It's not possible to delete templates
+  /// which are in use by an instance group.
   ///
   /// Request parameters:
   ///
@@ -25396,8 +25394,9 @@ class AcceleratorConfig {
   /// The number of the guest accelerator cards exposed to this instance.
   core.int acceleratorCount;
 
-  /// Full or partial URL of the accelerator type resource to expose to this
-  /// instance.
+  /// Full or partial URL of the accelerator type resource to attach to this
+  /// instance. If you are creating an instance template, specify only the
+  /// accelerator name.
   core.String acceleratorType;
 
   AcceleratorConfig();
@@ -27018,6 +27017,11 @@ class AttachedDiskInitializeParams {
   /// the name of the disk type, not URL.
   core.String diskType;
 
+  /// Labels to apply to this disk. These can be later modified by the
+  /// disks.setLabels method. This field is only applicable for persistent
+  /// disks.
+  core.Map<core.String, core.String> labels;
+
   /// The source image to create this disk. When creating a new instance, one of
   /// initializeParams.sourceImage or disks.source is required except for local
   /// SSD.
@@ -27066,6 +27070,9 @@ class AttachedDiskInitializeParams {
     if (_json.containsKey("diskType")) {
       diskType = _json["diskType"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
     }
@@ -27086,6 +27093,9 @@ class AttachedDiskInitializeParams {
     }
     if (diskType != null) {
       _json["diskType"] = diskType;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;
@@ -33112,6 +33122,7 @@ class GuestOsFeature {
   /// features to see a list of available options.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
+  /// - "MULTI_IP_SUBNET"
   /// - "VIRTIO_SCSI_MULTIQUEUE"
   /// - "WINDOWS"
   core.String type;
@@ -42825,10 +42836,9 @@ class PathRule {
   }
 }
 
-/// A Project resource. Projects can only be created in the Google Cloud
-/// Platform Console. Unless marked otherwise, values can only be modified in
-/// the console. (== resource_for v1.projects ==) (== resource_for beta.projects
-/// ==)
+/// A Project resource. For an overview of projects, see  Cloud Platform
+/// Resource Hierarchy. (== resource_for v1.projects ==) (== resource_for
+/// beta.projects ==)
 class Project {
   /// Metadata key/value pairs available to all instances contained in this
   /// project. See Custom metadata for more information.

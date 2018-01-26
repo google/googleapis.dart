@@ -455,6 +455,9 @@ class BeaconsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - A pagination token obtained from a previous request to list
+  /// beacons.
+  ///
   /// [q] - Filter query string that supports the following field filters:
   ///
   /// * **description:`"<string>"`**
@@ -533,9 +536,6 @@ class BeaconsResourceApi {
   /// credential that made the request is used as the project.
   /// Optional.
   ///
-  /// [pageToken] - A pagination token obtained from a previous request to list
-  /// beacons.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -547,10 +547,10 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconsResponse> list(
-      {core.String q,
+      {core.String pageToken,
+      core.String q,
       core.int pageSize,
       core.String projectId,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -559,6 +559,9 @@ class BeaconsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (q != null) {
       _queryParams["q"] = [q];
     }
@@ -567,9 +570,6 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -990,11 +990,6 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
-  /// [namespacedType] - Specifies the namespace and type of attachment to
-  /// include in response in
-  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
-  ///
   /// [projectId] - The project id to list beacon attachments under. This field
   /// can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
@@ -1002,6 +997,11 @@ class BeaconsAttachmentsResourceApi {
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
   /// Optional.
+  ///
+  /// [namespacedType] - Specifies the namespace and type of attachment to
+  /// include in response in
+  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1014,8 +1014,8 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName,
-      {core.String namespacedType,
-      core.String projectId,
+      {core.String projectId,
+      core.String namespacedType,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1027,11 +1027,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

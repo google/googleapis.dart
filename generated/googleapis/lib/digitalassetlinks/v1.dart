@@ -62,53 +62,6 @@ class AssetlinksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [target_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name.
-  /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
-  ///
-  /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
-  /// fingerprint of the certificate.  From the PEM
-  ///  certificate, it can be acquired like this:
-  ///
-  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
-  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// or like this:
-  ///
-  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
-  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
-  /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`.
-  ///
-  /// If these tools are not available to you, you can convert the PEM
-  /// certificate into the DER format, compute the SHA-256 hash of that string
-  /// and represent the result as a hexstring (that is, uppercase hexadecimal
-  /// representations of each octet, separated by colons).
-  ///
-  /// [relation] - Query string for the relation.
-  ///
-  /// We identify relations with strings of the format `<kind>/<detail>`, where
-  /// `<kind>` must be one of a set of pre-defined purpose categories, and
-  /// `<detail>` is a free-form lowercase alphanumeric string that describes the
-  /// specific use case of the statement.
-  ///
-  /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings)
-  /// for the current list of supported relations.
-  ///
-  /// For a query to match an asset link, both the query's and the asset link's
-  /// relation strings must match exactly.
-  ///
-  /// Example: A query with relation
-  /// `delegate_permission/common.handle_all_urls`
-  /// matches an asset link with relation
-  /// `delegate_permission/common.handle_all_urls`.
-  ///
   /// [target_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname
   /// and port parts.  The format is
@@ -168,6 +121,12 @@ class AssetlinksResourceApi {
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
   ///
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name.
+  /// For example, the Google Maps app uses the package name
+  /// `com.google.android.apps.maps`.
+  /// REQUIRED
+  ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname
   /// and port parts.  The format is
@@ -204,11 +163,52 @@ class AssetlinksResourceApi {
   ///   *   `https://www.google.com:444/`  (port does not match)
   /// REQUIRED
   ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// [target_androidApp_packageName] - Android App assets are naturally
   /// identified by their Java package name.
   /// For example, the Google Maps app uses the package name
   /// `com.google.android.apps.maps`.
   /// REQUIRED
+  ///
+  /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
+  /// fingerprint of the certificate.  From the PEM
+  ///  certificate, it can be acquired like this:
+  ///
+  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
+  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+  ///
+  /// or like this:
+  ///
+  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
+  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+  ///
+  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+  /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
+  /// 44:E5`.
+  ///
+  /// If these tools are not available to you, you can convert the PEM
+  /// certificate into the DER format, compute the SHA-256 hash of that string
+  /// and represent the result as a hexstring (that is, uppercase hexadecimal
+  /// representations of each octet, separated by colons).
+  ///
+  /// [relation] - Query string for the relation.
+  ///
+  /// We identify relations with strings of the format `<kind>/<detail>`, where
+  /// `<kind>` must be one of a set of pre-defined purpose categories, and
+  /// `<detail>` is a free-form lowercase alphanumeric string that describes the
+  /// specific use case of the statement.
+  ///
+  /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings)
+  /// for the current list of supported relations.
+  ///
+  /// For a query to match an asset link, both the query's and the asset link's
+  /// relation strings must match exactly.
+  ///
+  /// Example: A query with relation
+  /// `delegate_permission/common.handle_all_urls`
+  /// matches an asset link with relation
+  /// `delegate_permission/common.handle_all_urls`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -221,13 +221,13 @@ class AssetlinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check(
-      {core.String target_androidApp_packageName,
+      {core.String target_web_site,
+      core.String target_androidApp_certificate_sha256Fingerprint,
+      core.String source_androidApp_packageName,
+      core.String source_web_site,
+      core.String target_androidApp_packageName,
       core.String source_androidApp_certificate_sha256Fingerprint,
       core.String relation,
-      core.String target_web_site,
-      core.String target_androidApp_certificate_sha256Fingerprint,
-      core.String source_web_site,
-      core.String source_androidApp_packageName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -236,6 +236,22 @@ class AssetlinksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (target_web_site != null) {
+      _queryParams["target.web.site"] = [target_web_site];
+    }
+    if (target_androidApp_certificate_sha256Fingerprint != null) {
+      _queryParams["target.androidApp.certificate.sha256Fingerprint"] = [
+        target_androidApp_certificate_sha256Fingerprint
+      ];
+    }
+    if (source_androidApp_packageName != null) {
+      _queryParams["source.androidApp.packageName"] = [
+        source_androidApp_packageName
+      ];
+    }
+    if (source_web_site != null) {
+      _queryParams["source.web.site"] = [source_web_site];
+    }
     if (target_androidApp_packageName != null) {
       _queryParams["target.androidApp.packageName"] = [
         target_androidApp_packageName
@@ -248,22 +264,6 @@ class AssetlinksResourceApi {
     }
     if (relation != null) {
       _queryParams["relation"] = [relation];
-    }
-    if (target_web_site != null) {
-      _queryParams["target.web.site"] = [target_web_site];
-    }
-    if (target_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["target.androidApp.certificate.sha256Fingerprint"] = [
-        target_androidApp_certificate_sha256Fingerprint
-      ];
-    }
-    if (source_web_site != null) {
-      _queryParams["source.web.site"] = [source_web_site];
-    }
-    if (source_androidApp_packageName != null) {
-      _queryParams["source.androidApp.packageName"] = [
-        source_androidApp_packageName
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

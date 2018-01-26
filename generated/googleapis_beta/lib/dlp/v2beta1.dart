@@ -449,12 +449,12 @@ class InspectOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^inspect/operations$".
   ///
-  /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The list page size. The maximum allowed value is 256 and the
   /// default is 100.
+  ///
+  /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -467,9 +467,9 @@ class InspectOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -481,14 +481,14 @@ class InspectOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -531,6 +531,15 @@ class InspectResultsFindingsResourceApi {
   /// Should be in the format of `inspect/results/{id}`.
   /// Value must have pattern "^inspect/results/[^/]+$".
   ///
+  /// [pageToken] - The value returned by the last
+  /// `ListInspectFindingsResponse`; indicates
+  /// that this is a continuation of a prior `ListInspectFindings` call, and
+  /// that
+  /// the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of results to return.
+  /// If 0, the implementation selects a reasonable value.
+  ///
   /// [filter] - Restricts findings to items that match. Supports info_type and
   /// likelihood.
   ///
@@ -541,15 +550,6 @@ class InspectResultsFindingsResourceApi {
   /// - likelihood=VERY_LIKELY
   /// - likelihood=VERY_LIKELY,LIKELY
   /// - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
-  ///
-  /// [pageToken] - The value returned by the last
-  /// `ListInspectFindingsResponse`; indicates
-  /// that this is a continuation of a prior `ListInspectFindings` call, and
-  /// that
-  /// the system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of results to return.
-  /// If 0, the implementation selects a reasonable value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,9 +563,9 @@ class InspectResultsFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(
       core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -577,14 +577,14 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2603,15 +2603,16 @@ class GooglePrivacyDlpV2beta1FileSet {
   }
 }
 
-/// Container structure describing a single finding within a string or image.
+/// Represents a piece of potentially sensitive content.
 class GooglePrivacyDlpV2beta1Finding {
   /// Timestamp when finding was detected.
   core.String createTime;
 
-  /// The specific type of info the string might be.
+  /// The type of content that might have been found.
+  /// Provided if requested by the `InspectConfig`.
   GooglePrivacyDlpV2beta1InfoType infoType;
 
-  /// Estimate of how likely it is that the info_type is correct.
+  /// Estimate of how likely it is that the `info_type` is correct.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; information with all
   /// likelihoods is included.
@@ -2622,10 +2623,12 @@ class GooglePrivacyDlpV2beta1Finding {
   /// - "VERY_LIKELY" : Many matching elements.
   core.String likelihood;
 
-  /// Location of the info found.
+  /// Where the content was found.
   GooglePrivacyDlpV2beta1Location location;
 
-  /// The specific string that may be potentially sensitive info.
+  /// The content that was found. Even if the content is not textual, it
+  /// may be converted to a textual representation here.
+  /// Provided if requested by the `InspectConfig`.
   core.String quote;
 
   GooglePrivacyDlpV2beta1Finding();
@@ -4114,25 +4117,37 @@ class GooglePrivacyDlpV2beta1ListRootCategoriesResponse {
   }
 }
 
-/// Specifies the location of a finding within its source item.
+/// Specifies the location of the finding.
 class GooglePrivacyDlpV2beta1Location {
-  /// Zero-based byte offsets within a content item.
+  /// Zero-based byte offsets delimiting the finding.
+  /// These are relative to the finding's containing element.
+  /// Note that when the content is not textual, this references
+  /// the UTF-8 encoded textual representation of the content.
+  /// Omitted if content is an image.
   GooglePrivacyDlpV2beta1Range byteRange;
 
-  /// Character offsets within a content item, included when content type
-  /// is a text. Default charset assumed to be UTF-8.
+  /// Unicode character offsets delimiting the finding.
+  /// These are relative to the finding's containing element.
+  /// Provided when the content is text.
   GooglePrivacyDlpV2beta1Range codepointRange;
 
-  /// Field id of the field containing the finding.
+  /// The pointer to the property or cell that contained the finding.
+  /// Provided when the finding's containing element is a cell in a table
+  /// or a property of storage object.
   GooglePrivacyDlpV2beta1FieldId fieldId;
 
-  /// Location within an image's pixels.
+  /// The area within the image that contained the finding.
+  /// Provided when the content is an image.
   core.List<GooglePrivacyDlpV2beta1ImageLocation> imageBoxes;
 
-  /// Key of the finding.
+  /// The pointer to the record in storage that contained the field the
+  /// finding was found in.
+  /// Provided when the finding's containing element is a property
+  /// of a storage object.
   GooglePrivacyDlpV2beta1RecordKey recordKey;
 
-  /// Location within a `ContentItem.Table`.
+  /// The pointer to the row of the table that contained the finding.
+  /// Provided when the finding's containing element is a cell of a table.
   GooglePrivacyDlpV2beta1TableLocation tableLocation;
 
   GooglePrivacyDlpV2beta1Location();
@@ -5271,7 +5286,7 @@ class GooglePrivacyDlpV2beta1Table {
   }
 }
 
-/// Location of a finding within a `ContentItem.Table`.
+/// Location of a finding within a table.
 class GooglePrivacyDlpV2beta1TableLocation {
   /// The zero-based index of the row where the finding is located.
   core.String rowIndex;

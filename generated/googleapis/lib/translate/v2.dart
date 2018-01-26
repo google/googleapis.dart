@@ -143,11 +143,11 @@ class LanguagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [model] - The model type for which supported languages should be returned.
-  ///
   /// [target] - The language to use to return localized, human readable names
   /// of supported
   /// languages.
+  ///
+  /// [model] - The model type for which supported languages should be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -160,7 +160,7 @@ class LanguagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(
-      {core.String model, core.String target, core.String $fields}) {
+      {core.String target, core.String model, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -168,11 +168,11 @@ class LanguagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
     if (target != null) {
       _queryParams["target"] = [target];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -207,6 +207,13 @@ class TranslationsResourceApi {
   /// one of the
   /// language codes listed in Language Support.
   ///
+  /// [format] - The format of the source text, in either HTML (default) or
+  /// plain-text. A
+  /// value of "html" indicates HTML and a value of "text" indicates plain-text.
+  /// Possible string values are:
+  /// - "html" : Specifies the input is in HTML
+  /// - "text" : Specifies the input is in plain textual format
+  ///
   /// [model] - The `model` type requested for this translation. Valid values
   /// are
   /// listed in public documentation.
@@ -218,13 +225,6 @@ class TranslationsResourceApi {
   /// the response.
   ///
   /// [cid] - The customization id for translate
-  ///
-  /// [format] - The format of the source text, in either HTML (default) or
-  /// plain-text. A
-  /// value of "html" indicates HTML and a value of "text" indicates plain-text.
-  /// Possible string values are:
-  /// - "html" : Specifies the input is in HTML
-  /// - "text" : Specifies the input is in plain textual format
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,10 +238,10 @@ class TranslationsResourceApi {
   /// this method will complete with the same error.
   async.Future<TranslationsListResponse> list(
       core.List<core.String> q, core.String target,
-      {core.String model,
+      {core.String format,
+      core.String model,
       core.String source,
       core.List<core.String> cid,
-      core.String format,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -258,6 +258,9 @@ class TranslationsResourceApi {
       throw new core.ArgumentError("Parameter target is required.");
     }
     _queryParams["target"] = [target];
+    if (format != null) {
+      _queryParams["format"] = [format];
+    }
     if (model != null) {
       _queryParams["model"] = [model];
     }
@@ -266,9 +269,6 @@ class TranslationsResourceApi {
     }
     if (cid != null) {
       _queryParams["cid"] = cid;
-    }
-    if (format != null) {
-      _queryParams["format"] = [format];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -111,14 +111,14 @@ checkCertificateInfo(api.CertificateInfo o) {
   buildCounterCertificateInfo--;
 }
 
-buildUnnamed1286() {
+buildUnnamed1295() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1286(core.List<core.String> o) {
+checkUnnamed1295(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -130,7 +130,7 @@ buildCheckResponse() {
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
     o.debugString = "foo";
-    o.errorCode = buildUnnamed1286();
+    o.errorCode = buildUnnamed1295();
     o.linked = true;
     o.maxAge = "foo";
   }
@@ -142,34 +142,34 @@ checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
     unittest.expect(o.debugString, unittest.equals('foo'));
-    checkUnnamed1286(o.errorCode);
+    checkUnnamed1295(o.errorCode);
     unittest.expect(o.linked, unittest.isTrue);
     unittest.expect(o.maxAge, unittest.equals('foo'));
   }
   buildCounterCheckResponse--;
 }
 
-buildUnnamed1287() {
+buildUnnamed1296() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1287(core.List<core.String> o) {
+checkUnnamed1296(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1288() {
+buildUnnamed1297() {
   var o = new core.List<api.Statement>();
   o.add(buildStatement());
   o.add(buildStatement());
   return o;
 }
 
-checkUnnamed1288(core.List<api.Statement> o) {
+checkUnnamed1297(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatement(o[0]);
   checkStatement(o[1]);
@@ -181,9 +181,9 @@ buildListResponse() {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
     o.debugString = "foo";
-    o.errorCode = buildUnnamed1287();
+    o.errorCode = buildUnnamed1296();
     o.maxAge = "foo";
-    o.statements = buildUnnamed1288();
+    o.statements = buildUnnamed1297();
   }
   buildCounterListResponse--;
   return o;
@@ -193,9 +193,9 @@ checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
     unittest.expect(o.debugString, unittest.equals('foo'));
-    checkUnnamed1287(o.errorCode);
+    checkUnnamed1296(o.errorCode);
     unittest.expect(o.maxAge, unittest.equals('foo'));
-    checkUnnamed1288(o.statements);
+    checkUnnamed1297(o.statements);
   }
   buildCounterListResponse--;
 }
@@ -304,13 +304,13 @@ main() {
       var mock = new HttpServerMock();
       api.AssetlinksResourceApi res =
           new api.DigitalassetlinksApi(mock).assetlinks;
+      var arg_target_web_site = "foo";
+      var arg_target_androidApp_certificate_sha256Fingerprint = "foo";
+      var arg_source_androidApp_packageName = "foo";
+      var arg_source_web_site = "foo";
       var arg_target_androidApp_packageName = "foo";
       var arg_source_androidApp_certificate_sha256Fingerprint = "foo";
       var arg_relation = "foo";
-      var arg_target_web_site = "foo";
-      var arg_target_androidApp_certificate_sha256Fingerprint = "foo";
-      var arg_source_web_site = "foo";
-      var arg_source_androidApp_packageName = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -342,6 +342,16 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["target.web.site"].first,
+            unittest.equals(arg_target_web_site));
+        unittest.expect(
+            queryMap["target.androidApp.certificate.sha256Fingerprint"].first,
+            unittest
+                .equals(arg_target_androidApp_certificate_sha256Fingerprint));
+        unittest.expect(queryMap["source.androidApp.packageName"].first,
+            unittest.equals(arg_source_androidApp_packageName));
+        unittest.expect(queryMap["source.web.site"].first,
+            unittest.equals(arg_source_web_site));
         unittest.expect(queryMap["target.androidApp.packageName"].first,
             unittest.equals(arg_target_androidApp_packageName));
         unittest.expect(
@@ -350,16 +360,6 @@ main() {
                 .equals(arg_source_androidApp_certificate_sha256Fingerprint));
         unittest.expect(
             queryMap["relation"].first, unittest.equals(arg_relation));
-        unittest.expect(queryMap["target.web.site"].first,
-            unittest.equals(arg_target_web_site));
-        unittest.expect(
-            queryMap["target.androidApp.certificate.sha256Fingerprint"].first,
-            unittest
-                .equals(arg_target_androidApp_certificate_sha256Fingerprint));
-        unittest.expect(queryMap["source.web.site"].first,
-            unittest.equals(arg_source_web_site));
-        unittest.expect(queryMap["source.androidApp.packageName"].first,
-            unittest.equals(arg_source_androidApp_packageName));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -370,15 +370,15 @@ main() {
       }), true);
       res
           .check(
+              target_web_site: arg_target_web_site,
+              target_androidApp_certificate_sha256Fingerprint:
+                  arg_target_androidApp_certificate_sha256Fingerprint,
+              source_androidApp_packageName: arg_source_androidApp_packageName,
+              source_web_site: arg_source_web_site,
               target_androidApp_packageName: arg_target_androidApp_packageName,
               source_androidApp_certificate_sha256Fingerprint:
                   arg_source_androidApp_certificate_sha256Fingerprint,
               relation: arg_relation,
-              target_web_site: arg_target_web_site,
-              target_androidApp_certificate_sha256Fingerprint:
-                  arg_target_androidApp_certificate_sha256Fingerprint,
-              source_web_site: arg_source_web_site,
-              source_androidApp_packageName: arg_source_androidApp_packageName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.CheckResponse response) {
         checkCheckResponse(response);

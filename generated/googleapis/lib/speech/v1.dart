@@ -37,112 +37,6 @@ class OperationsResourceApi {
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
-  /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/operations/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':cancel';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
   /// Gets the latest state of a long-running operation.  Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
@@ -186,78 +80,6 @@ class OperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
-  }
-
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-      {core.String name,
-      core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/operations';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -355,75 +177,6 @@ class SpeechResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new RecognizeResponse.fromJson(data));
-  }
-}
-
-/// The request message for Operations.CancelOperation.
-class CancelOperationRequest {
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(core.Map _json) {}
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(core.Map _json) {}
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
-
-  ListOperationsResponse();
-
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("operations")) {
-      operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
-    }
-    return _json;
   }
 }
 
@@ -595,6 +348,11 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
+  /// *Optional* If `true`, the top result includes a list of words and the
+  /// confidence for those words. If `false`, no word-level confidence
+  /// information is returned. The default is `false`.
+  core.bool enableWordConfidence;
+
   /// *Optional* If `true`, the top result includes a list of words and
   /// the start and end time offsets (timestamps) for those words. If
   /// `false`, no word-level time offset information is returned. The default is
@@ -603,8 +361,7 @@ class RecognitionConfig {
 
   /// *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
   /// Possible string values are:
-  /// - "ENCODING_UNSPECIFIED" : Not specified. Will return result
-  /// google.rpc.Code.INVALID_ARGUMENT.
+  /// - "ENCODING_UNSPECIFIED" : Not specified.
   /// - "LINEAR16" : Uncompressed 16-bit signed little-endian samples (Linear
   /// PCM).
   /// - "FLAC" : [`FLAC`](https://xiph.org/flac/documentation.html) (Free
@@ -622,7 +379,7 @@ class RecognitionConfig {
   /// be 16000.
   /// - "OGG_OPUS" : Opus encoded audio frames in Ogg container
   /// ([OggOpus](https://wiki.xiph.org/OggOpus)).
-  /// `sample_rate_hertz` must be 16000.
+  /// `sample_rate_hertz` must be one of 8000, 12000, 16000, 24000, or 48000.
   /// - "SPEEX_WITH_HEADER_BYTE" : Although the use of lossy encodings is not
   /// recommended, if a very low
   /// bitrate encoding is required, `OGG_OPUS` is highly preferred over
@@ -674,6 +431,9 @@ class RecognitionConfig {
   RecognitionConfig();
 
   RecognitionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableWordConfidence")) {
+      enableWordConfidence = _json["enableWordConfidence"];
+    }
     if (_json.containsKey("enableWordTimeOffsets")) {
       enableWordTimeOffsets = _json["enableWordTimeOffsets"];
     }
@@ -702,6 +462,9 @@ class RecognitionConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (enableWordConfidence != null) {
+      _json["enableWordConfidence"] = enableWordConfidence;
+    }
     if (enableWordTimeOffsets != null) {
       _json["enableWordTimeOffsets"] = enableWordTimeOffsets;
     }
@@ -823,10 +586,11 @@ class SpeechContext {
 class SpeechRecognitionAlternative {
   /// *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is typically provided only for the top hypothesis, and
-  /// only for `is_final=true` results. Clients should not rely on the
-  /// `confidence` field as it is not guaranteed to be accurate, or even set, in
-  /// any of the results.
+  /// correct. This field is set only for the top alternative of a non-streaming
+  /// result or, of a streaming result where `is_final=true`.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
   /// The default of 0.0 is a sentinel value indicating `confidence` was not
   /// set.
   core.double confidence;
@@ -877,12 +641,6 @@ class SpeechRecognitionResult {
   /// alternative being the most probable, as ranked by the recognizer.
   core.List<SpeechRecognitionAlternative> alternatives;
 
-  /// For multi-channel audio, this is the channel number corresponding to the
-  /// recognized result for the audio from that channel.
-  /// For audio_channel_count = N, its output values can range from '0' to
-  /// 'N-1'.
-  core.int channelTag;
-
   SpeechRecognitionResult();
 
   SpeechRecognitionResult.fromJson(core.Map _json) {
@@ -890,9 +648,6 @@ class SpeechRecognitionResult {
       alternatives = _json["alternatives"]
           .map((value) => new SpeechRecognitionAlternative.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("channelTag")) {
-      channelTag = _json["channelTag"];
     }
   }
 
@@ -902,9 +657,6 @@ class SpeechRecognitionResult {
     if (alternatives != null) {
       _json["alternatives"] =
           alternatives.map((value) => (value).toJson()).toList();
-    }
-    if (channelTag != null) {
-      _json["channelTag"] = channelTag;
     }
     return _json;
   }
@@ -1012,9 +764,7 @@ class Status {
   }
 }
 
-/// Word-specific information for recognized words. Word information is only
-/// included in the response when certain request parameters are set, such
-/// as `enable_word_time_offsets`.
+/// Word-specific information for recognized words.
 class WordInfo {
   /// *Output-only* Time offset relative to the beginning of the audio,
   /// and corresponding to the end of the spoken word.

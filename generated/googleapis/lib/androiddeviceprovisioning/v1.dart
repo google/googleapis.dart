@@ -41,14 +41,14 @@ class CustomersResourceApi {
 
   CustomersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// List the user's customer accounts.
+  /// Lists the user's customer accounts.
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
+  /// [pageSize] - The maximum number of customers to show in a page of results.
+  /// A number between 1 and 1000 (inclusive).
   ///
-  /// [pageSize] - The maximum number of items to return.
+  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -61,7 +61,7 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListCustomersResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,11 +69,11 @@ class CustomersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -473,8 +473,7 @@ class CustomersDevicesResourceApi {
   /// [pageToken] - A token specifying which result page to return.
   ///
   /// [pageSize] - The maximum number of devices to show in a page of results.
-  /// The default
-  /// value returns all the devices in a single page.
+  /// Must be between 1 and 100 inclusive.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1730,11 +1729,11 @@ class CustomerListConfigurationsResponse {
 
 /// Response message for listing my customers.
 class CustomerListCustomersResponse {
-  /// Customers the current user can act as.
+  /// The customer accounts the calling user is a member of.
   core.List<Company> customers;
 
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// A token used to access the next page of results. Omitted if no further
+  /// results are available.
   core.String nextPageToken;
 
   CustomerListCustomersResponse();

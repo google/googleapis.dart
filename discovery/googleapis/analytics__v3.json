@@ -29,7 +29,7 @@
     "description": "Views and manages your Google Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/DSG2TEF18bxTdYooKf_C2-FmmME\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/o3DGRejYlQONYxz9qTIt_cgX6AA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -3740,11 +3740,26 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/analytics.provision"
                     ]
+                },
+                "createAccountTree": {
+                    "description": "Provision account.",
+                    "httpMethod": "POST",
+                    "id": "analytics.provisioning.createAccountTree",
+                    "path": "provisioning/createAccount",
+                    "request": {
+                        "$ref": "AccountTreeRequest"
+                    },
+                    "response": {
+                        "$ref": "AccountTreeResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/analytics.provision"
+                    ]
                 }
             }
         }
     },
-    "revision": "20170807",
+    "revision": "20171211",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3939,6 +3954,128 @@
                 "redirectUri": {
                     "description": "Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL.",
                     "type": "string"
+                },
+                "webproperty": {
+                    "$ref": "Webproperty",
+                    "description": "Web property for the account."
+                }
+            },
+            "type": "object"
+        },
+        "AccountTreeRequest": {
+            "description": "JSON template for an Analytics account tree requests. The account tree request is used in the provisioning api to create an account, property, and view (profile). It contains the basic information required to make these fields.",
+            "id": "AccountTreeRequest",
+            "properties": {
+                "accountName": {
+                    "annotations": {
+                        "required": [
+                            "analytics.provisioning.createAccountTree"
+                        ]
+                    },
+                    "type": "string"
+                },
+                "accountSettings": {
+                    "properties": {
+                        "admobReporting": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleAnySales": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleProducts": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleSales": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleSupport": {
+                            "type": "boolean"
+                        },
+                        "sharingWithOthers": {
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "analytics#accountTreeRequest",
+                    "description": "Resource type for account ticket.",
+                    "type": "string"
+                },
+                "profileName": {
+                    "annotations": {
+                        "required": [
+                            "analytics.provisioning.createAccountTree"
+                        ]
+                    },
+                    "type": "string"
+                },
+                "timezone": {
+                    "annotations": {
+                        "required": [
+                            "analytics.provisioning.createAccountTree"
+                        ]
+                    },
+                    "type": "string"
+                },
+                "webpropertyName": {
+                    "annotations": {
+                        "required": [
+                            "analytics.provisioning.createAccountTree"
+                        ]
+                    },
+                    "type": "string"
+                },
+                "websiteUrl": {
+                    "annotations": {
+                        "required": [
+                            "analytics.provisioning.createAccountTree"
+                        ]
+                    },
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountTreeResponse": {
+            "description": "JSON template for an Analytics account tree response. The account tree response is used in the provisioning api to return the result of creating an account, property, and view (profile).",
+            "id": "AccountTreeResponse",
+            "properties": {
+                "account": {
+                    "$ref": "Account",
+                    "description": "The account created."
+                },
+                "accountSettings": {
+                    "properties": {
+                        "admobReporting": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleAnySales": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleProducts": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleSales": {
+                            "type": "boolean"
+                        },
+                        "sharingWithGoogleSupport": {
+                            "type": "boolean"
+                        },
+                        "sharingWithOthers": {
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "analytics#accountTreeResponse",
+                    "description": "Resource type for account ticket.",
+                    "type": "string"
+                },
+                "profile": {
+                    "$ref": "Profile",
+                    "description": "View (Profile) for the account."
                 },
                 "webproperty": {
                     "$ref": "Webproperty",

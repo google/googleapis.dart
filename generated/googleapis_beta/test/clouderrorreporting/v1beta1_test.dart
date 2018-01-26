@@ -65,14 +65,14 @@ checkDeleteEventsResponse(api.DeleteEventsResponse o) {
   buildCounterDeleteEventsResponse--;
 }
 
-buildUnnamed3830() {
+buildUnnamed3843() {
   var o = new core.List<api.SourceReference>();
   o.add(buildSourceReference());
   o.add(buildSourceReference());
   return o;
 }
 
-checkUnnamed3830(core.List<api.SourceReference> o) {
+checkUnnamed3843(core.List<api.SourceReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSourceReference(o[0]);
   checkSourceReference(o[1]);
@@ -85,7 +85,7 @@ buildErrorContext() {
   if (buildCounterErrorContext < 3) {
     o.httpRequest = buildHttpRequestContext();
     o.reportLocation = buildSourceLocation();
-    o.sourceReferences = buildUnnamed3830();
+    o.sourceReferences = buildUnnamed3843();
     o.user = "foo";
   }
   buildCounterErrorContext--;
@@ -97,7 +97,7 @@ checkErrorContext(api.ErrorContext o) {
   if (buildCounterErrorContext < 3) {
     checkHttpRequestContext(o.httpRequest);
     checkSourceLocation(o.reportLocation);
-    checkUnnamed3830(o.sourceReferences);
+    checkUnnamed3843(o.sourceReferences);
     unittest.expect(o.user, unittest.equals('foo'));
   }
   buildCounterErrorContext--;
@@ -128,14 +128,14 @@ checkErrorEvent(api.ErrorEvent o) {
   buildCounterErrorEvent--;
 }
 
-buildUnnamed3831() {
+buildUnnamed3844() {
   var o = new core.List<api.TrackingIssue>();
   o.add(buildTrackingIssue());
   o.add(buildTrackingIssue());
   return o;
 }
 
-checkUnnamed3831(core.List<api.TrackingIssue> o) {
+checkUnnamed3844(core.List<api.TrackingIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackingIssue(o[0]);
   checkTrackingIssue(o[1]);
@@ -148,7 +148,7 @@ buildErrorGroup() {
   if (buildCounterErrorGroup < 3) {
     o.groupId = "foo";
     o.name = "foo";
-    o.trackingIssues = buildUnnamed3831();
+    o.trackingIssues = buildUnnamed3844();
   }
   buildCounterErrorGroup--;
   return o;
@@ -159,32 +159,32 @@ checkErrorGroup(api.ErrorGroup o) {
   if (buildCounterErrorGroup < 3) {
     unittest.expect(o.groupId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3831(o.trackingIssues);
+    checkUnnamed3844(o.trackingIssues);
   }
   buildCounterErrorGroup--;
 }
 
-buildUnnamed3832() {
+buildUnnamed3845() {
   var o = new core.List<api.ServiceContext>();
   o.add(buildServiceContext());
   o.add(buildServiceContext());
   return o;
 }
 
-checkUnnamed3832(core.List<api.ServiceContext> o) {
+checkUnnamed3845(core.List<api.ServiceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceContext(o[0]);
   checkServiceContext(o[1]);
 }
 
-buildUnnamed3833() {
+buildUnnamed3846() {
   var o = new core.List<api.TimedCount>();
   o.add(buildTimedCount());
   o.add(buildTimedCount());
   return o;
 }
 
-checkUnnamed3833(core.List<api.TimedCount> o) {
+checkUnnamed3846(core.List<api.TimedCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimedCount(o[0]);
   checkTimedCount(o[1]);
@@ -195,7 +195,7 @@ buildErrorGroupStats() {
   var o = new api.ErrorGroupStats();
   buildCounterErrorGroupStats++;
   if (buildCounterErrorGroupStats < 3) {
-    o.affectedServices = buildUnnamed3832();
+    o.affectedServices = buildUnnamed3845();
     o.affectedUsersCount = "foo";
     o.count = "foo";
     o.firstSeenTime = "foo";
@@ -203,7 +203,7 @@ buildErrorGroupStats() {
     o.lastSeenTime = "foo";
     o.numAffectedServices = 42;
     o.representative = buildErrorEvent();
-    o.timedCounts = buildUnnamed3833();
+    o.timedCounts = buildUnnamed3846();
   }
   buildCounterErrorGroupStats--;
   return o;
@@ -212,7 +212,7 @@ buildErrorGroupStats() {
 checkErrorGroupStats(api.ErrorGroupStats o) {
   buildCounterErrorGroupStats++;
   if (buildCounterErrorGroupStats < 3) {
-    checkUnnamed3832(o.affectedServices);
+    checkUnnamed3845(o.affectedServices);
     unittest.expect(o.affectedUsersCount, unittest.equals('foo'));
     unittest.expect(o.count, unittest.equals('foo'));
     unittest.expect(o.firstSeenTime, unittest.equals('foo'));
@@ -220,7 +220,7 @@ checkErrorGroupStats(api.ErrorGroupStats o) {
     unittest.expect(o.lastSeenTime, unittest.equals('foo'));
     unittest.expect(o.numAffectedServices, unittest.equals(42));
     checkErrorEvent(o.representative);
-    checkUnnamed3833(o.timedCounts);
+    checkUnnamed3846(o.timedCounts);
   }
   buildCounterErrorGroupStats--;
 }
@@ -254,14 +254,14 @@ checkHttpRequestContext(api.HttpRequestContext o) {
   buildCounterHttpRequestContext--;
 }
 
-buildUnnamed3834() {
+buildUnnamed3847() {
   var o = new core.List<api.ErrorEvent>();
   o.add(buildErrorEvent());
   o.add(buildErrorEvent());
   return o;
 }
 
-checkUnnamed3834(core.List<api.ErrorEvent> o) {
+checkUnnamed3847(core.List<api.ErrorEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorEvent(o[0]);
   checkErrorEvent(o[1]);
@@ -272,7 +272,7 @@ buildListEventsResponse() {
   var o = new api.ListEventsResponse();
   buildCounterListEventsResponse++;
   if (buildCounterListEventsResponse < 3) {
-    o.errorEvents = buildUnnamed3834();
+    o.errorEvents = buildUnnamed3847();
     o.nextPageToken = "foo";
     o.timeRangeBegin = "foo";
   }
@@ -283,21 +283,21 @@ buildListEventsResponse() {
 checkListEventsResponse(api.ListEventsResponse o) {
   buildCounterListEventsResponse++;
   if (buildCounterListEventsResponse < 3) {
-    checkUnnamed3834(o.errorEvents);
+    checkUnnamed3847(o.errorEvents);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.timeRangeBegin, unittest.equals('foo'));
   }
   buildCounterListEventsResponse--;
 }
 
-buildUnnamed3835() {
+buildUnnamed3848() {
   var o = new core.List<api.ErrorGroupStats>();
   o.add(buildErrorGroupStats());
   o.add(buildErrorGroupStats());
   return o;
 }
 
-checkUnnamed3835(core.List<api.ErrorGroupStats> o) {
+checkUnnamed3848(core.List<api.ErrorGroupStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorGroupStats(o[0]);
   checkErrorGroupStats(o[1]);
@@ -308,7 +308,7 @@ buildListGroupStatsResponse() {
   var o = new api.ListGroupStatsResponse();
   buildCounterListGroupStatsResponse++;
   if (buildCounterListGroupStatsResponse < 3) {
-    o.errorGroupStats = buildUnnamed3835();
+    o.errorGroupStats = buildUnnamed3848();
     o.nextPageToken = "foo";
     o.timeRangeBegin = "foo";
   }
@@ -319,7 +319,7 @@ buildListGroupStatsResponse() {
 checkListGroupStatsResponse(api.ListGroupStatsResponse o) {
   buildCounterListGroupStatsResponse++;
   if (buildCounterListGroupStatsResponse < 3) {
-    checkUnnamed3835(o.errorGroupStats);
+    checkUnnamed3848(o.errorGroupStats);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.timeRangeBegin, unittest.equals('foo'));
   }
@@ -475,14 +475,14 @@ checkTrackingIssue(api.TrackingIssue o) {
   buildCounterTrackingIssue--;
 }
 
-buildUnnamed3836() {
+buildUnnamed3849() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3836(core.List<core.String> o) {
+checkUnnamed3849(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -669,8 +669,8 @@ main() {
       api.ProjectsEventsResourceApi res =
           new api.ClouderrorreportingApi(mock).projects.events;
       var arg_projectName = "foo";
-      var arg_serviceFilter_service = "foo";
       var arg_pageToken = "foo";
+      var arg_serviceFilter_service = "foo";
       var arg_pageSize = 42;
       var arg_serviceFilter_version = "foo";
       var arg_serviceFilter_resourceType = "foo";
@@ -708,10 +708,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["serviceFilter.service"].first,
-            unittest.equals(arg_serviceFilter_service));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["serviceFilter.service"].first,
+            unittest.equals(arg_serviceFilter_service));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["serviceFilter.version"].first,
@@ -732,8 +732,8 @@ main() {
       }), true);
       res
           .list(arg_projectName,
-              serviceFilter_service: arg_serviceFilter_service,
               pageToken: arg_pageToken,
+              serviceFilter_service: arg_serviceFilter_service,
               pageSize: arg_pageSize,
               serviceFilter_version: arg_serviceFilter_version,
               serviceFilter_resourceType: arg_serviceFilter_resourceType,
@@ -808,17 +808,17 @@ main() {
       api.ProjectsGroupStatsResourceApi res =
           new api.ClouderrorreportingApi(mock).projects.groupStats;
       var arg_projectName = "foo";
-      var arg_timedCountDuration = "foo";
       var arg_pageToken = "foo";
       var arg_timeRange_period = "foo";
       var arg_alignment = "foo";
-      var arg_groupId = buildUnnamed3836();
+      var arg_groupId = buildUnnamed3849();
       var arg_serviceFilter_service = "foo";
       var arg_pageSize = 42;
-      var arg_serviceFilter_version = "foo";
       var arg_order = "foo";
-      var arg_serviceFilter_resourceType = "foo";
+      var arg_serviceFilter_version = "foo";
       var arg_alignmentTime = "foo";
+      var arg_serviceFilter_resourceType = "foo";
+      var arg_timedCountDuration = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -851,8 +851,6 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["timedCountDuration"].first,
-            unittest.equals(arg_timedCountDuration));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["timeRange.period"].first,
@@ -864,13 +862,15 @@ main() {
             unittest.equals(arg_serviceFilter_service));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
         unittest.expect(queryMap["serviceFilter.version"].first,
             unittest.equals(arg_serviceFilter_version));
-        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
-        unittest.expect(queryMap["serviceFilter.resourceType"].first,
-            unittest.equals(arg_serviceFilter_resourceType));
         unittest.expect(queryMap["alignmentTime"].first,
             unittest.equals(arg_alignmentTime));
+        unittest.expect(queryMap["serviceFilter.resourceType"].first,
+            unittest.equals(arg_serviceFilter_resourceType));
+        unittest.expect(queryMap["timedCountDuration"].first,
+            unittest.equals(arg_timedCountDuration));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -881,17 +881,17 @@ main() {
       }), true);
       res
           .list(arg_projectName,
-              timedCountDuration: arg_timedCountDuration,
               pageToken: arg_pageToken,
               timeRange_period: arg_timeRange_period,
               alignment: arg_alignment,
               groupId: arg_groupId,
               serviceFilter_service: arg_serviceFilter_service,
               pageSize: arg_pageSize,
-              serviceFilter_version: arg_serviceFilter_version,
               order: arg_order,
-              serviceFilter_resourceType: arg_serviceFilter_resourceType,
+              serviceFilter_version: arg_serviceFilter_version,
               alignmentTime: arg_alignmentTime,
+              serviceFilter_resourceType: arg_serviceFilter_resourceType,
+              timedCountDuration: arg_timedCountDuration,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListGroupStatsResponse response) {
         checkListGroupStatsResponse(response);

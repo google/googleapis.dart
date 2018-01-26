@@ -315,7 +315,7 @@ Creates and runs virtual machines on Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/compute/docs/reference/latest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Kubernetes Engine API - container v1
 
 The Google Kubernetes Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
 
@@ -647,7 +647,7 @@ Official API documentation: https://developers.google.com/safe-browsing/
 
 An API for managing and executing Google Apps Script projects.
 
-Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/scripts/run
+Official API documentation: https://developers.google.com/apps-script/api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Search Console URL Testing Tools API - searchconsole v1
 

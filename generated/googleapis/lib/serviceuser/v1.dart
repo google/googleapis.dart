@@ -2006,13 +2006,6 @@ class HttpRule {
   /// Used for updating a resource.
   core.String put;
 
-  /// The name of the response field whose value is mapped to the HTTP body of
-  /// response. Other response fields are ignored. This field is optional. When
-  /// not set, the response message will be used as HTTP body of response.
-  /// NOTE: the referred field must be not a repeated field and must be present
-  /// at the top-level of response message type.
-  core.String responseBody;
-
   /// Selects methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
@@ -2053,9 +2046,6 @@ class HttpRule {
     if (_json.containsKey("put")) {
       put = _json["put"];
     }
-    if (_json.containsKey("responseBody")) {
-      responseBody = _json["responseBody"];
-    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -2094,9 +2084,6 @@ class HttpRule {
     }
     if (put != null) {
       _json["put"] = put;
-    }
-    if (responseBody != null) {
-      _json["responseBody"] = responseBody;
     }
     if (selector != null) {
       _json["selector"] = selector;

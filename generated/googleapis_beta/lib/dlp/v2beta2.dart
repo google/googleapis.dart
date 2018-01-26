@@ -175,7 +175,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and deidentify template to be
   /// deleted,
-  /// for example `organizations/433245324/deidentifyTemplates/432452342`.
+  /// for example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -221,7 +222,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and deidentify template to be
   /// read, for
-  /// example `organizations/433245324/deidentifyTemplates/432452342`.
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -270,13 +272,13 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
-  /// a page of max size 100.
-  ///
   /// [pageToken] - Optional page token to continue retrieval. Comes from
   /// previous call
   /// to `ListDeidentifyTemplates`.
+  ///
+  /// [pageSize] - Optional size of the page, can be limited by server. If zero
+  /// server returns
+  /// a page of max size 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -290,8 +292,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -303,11 +305,11 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -336,7 +338,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// [name] - Resource name of organization and deidentify template to be
   /// updated, for
-  /// example `organizations/433245324/deidentifyTemplates/432452342`.
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -451,7 +454,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and inspectTemplate to be
   /// deleted, for
-  /// example `organizations/433245324/inspectTemplates/432452342`.
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -497,7 +501,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and inspectTemplate to be read,
   /// for
-  /// example `organizations/433245324/inspectTemplates/432452342`.
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -611,7 +616,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// [name] - Resource name of organization and inspectTemplate to be updated,
   /// for
-  /// example `organizations/433245324/inspectTemplates/432452342`.
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -856,7 +862,7 @@ class ProjectsDataSourceResourceApi {
       : _requester = client;
 
   /// Schedules a job to compute risk analysis metrics over content in a Google
-  /// Cloud Platform repository. [How-to guide}(/dlp/docs/compute-risk-analysis)
+  /// Cloud Platform repository. [How-to guide](/dlp/docs/compute-risk-analysis)
   ///
   /// [request] - The metadata request object.
   ///
@@ -1034,7 +1040,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and deidentify template to be
   /// deleted,
-  /// for example `organizations/433245324/deidentifyTemplates/432452342`.
+  /// for example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1080,7 +1087,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and deidentify template to be
   /// read, for
-  /// example `organizations/433245324/deidentifyTemplates/432452342`.
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1129,13 +1137,13 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
-  /// a page of max size 100.
-  ///
   /// [pageToken] - Optional page token to continue retrieval. Comes from
   /// previous call
   /// to `ListDeidentifyTemplates`.
+  ///
+  /// [pageSize] - Optional size of the page, can be limited by server. If zero
+  /// server returns
+  /// a page of max size 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1149,8 +1157,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1162,11 +1170,11 @@ class ProjectsDeidentifyTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1195,7 +1203,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// [name] - Resource name of organization and deidentify template to be
   /// updated, for
-  /// example `organizations/433245324/deidentifyTemplates/432452342`.
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1398,14 +1407,6 @@ class ProjectsDlpJobsResourceApi {
   /// [parent] - The parent resource name, for example projects/my-project-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
-  /// Possible string values are:
-  /// - "DLP_JOB_TYPE_UNSPECIFIED" : A DLP_JOB_TYPE_UNSPECIFIED.
-  /// - "INSPECT_JOB" : A INSPECT_JOB.
-  /// - "RISK_ANALYSIS_JOB" : A RISK_ANALYSIS_JOB.
-  ///
   /// [filter] - Optional. Allows filtering.
   ///
   /// Supported syntax:
@@ -1431,6 +1432,14 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : A DLP_JOB_TYPE_UNSPECIFIED.
+  /// - "INSPECT_JOB" : A INSPECT_JOB.
+  /// - "RISK_ANALYSIS_JOB" : A RISK_ANALYSIS_JOB.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1443,10 +1452,10 @@ class ProjectsDlpJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta2ListDlpJobsResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String type,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
+      core.String type,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1458,17 +1467,17 @@ class ProjectsDlpJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (type != null) {
-      _queryParams["type"] = [type];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1618,7 +1627,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and inspectTemplate to be
   /// deleted, for
-  /// example `organizations/433245324/inspectTemplates/432452342`.
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1664,7 +1674,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// [name] - Resource name of the organization and inspectTemplate to be read,
   /// for
-  /// example `organizations/433245324/inspectTemplates/432452342`.
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1778,7 +1789,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// [name] - Resource name of organization and inspectTemplate to be updated,
   /// for
-  /// example `organizations/433245324/inspectTemplates/432452342`.
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5615,15 +5627,16 @@ class GooglePrivacyDlpV2beta2FileSet {
   }
 }
 
-/// Container structure describing a single finding within a string or image.
+/// Represents a piece of potentially sensitive content.
 class GooglePrivacyDlpV2beta2Finding {
   /// Timestamp when finding was detected.
   core.String createTime;
 
-  /// The specific type of info the string might be.
+  /// The type of content that might have been found.
+  /// Provided if requested by the `InspectConfig`.
   GooglePrivacyDlpV2beta2InfoType infoType;
 
-  /// Estimate of how likely it is that the info_type is correct.
+  /// Estimate of how likely it is that the `info_type` is correct.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; information with all
   /// likelihoods is included.
@@ -5634,10 +5647,12 @@ class GooglePrivacyDlpV2beta2Finding {
   /// - "VERY_LIKELY" : Many matching elements.
   core.String likelihood;
 
-  /// Location of the info found.
+  /// Where the content was found.
   GooglePrivacyDlpV2beta2Location location;
 
-  /// The specific string that may be potentially sensitive info.
+  /// The content that was found. Even if the content is not textual, it
+  /// may be converted to a textual representation here.
+  /// Provided if requested by the `InspectConfig`.
   core.String quote;
 
   GooglePrivacyDlpV2beta2Finding();
@@ -7288,25 +7303,37 @@ class GooglePrivacyDlpV2beta2ListInspectTemplatesResponse {
   }
 }
 
-/// Specifies the location of a finding within its source item.
+/// Specifies the location of the finding.
 class GooglePrivacyDlpV2beta2Location {
-  /// Zero-based byte offsets within a content item.
+  /// Zero-based byte offsets delimiting the finding.
+  /// These are relative to the finding's containing element.
+  /// Note that when the content is not textual, this references
+  /// the UTF-8 encoded textual representation of the content.
+  /// Omitted if content is an image.
   GooglePrivacyDlpV2beta2Range byteRange;
 
-  /// Character offsets within a content item, included when content type
-  /// is a text. Default charset assumed to be UTF-8.
+  /// Unicode character offsets delimiting the finding.
+  /// These are relative to the finding's containing element.
+  /// Provided when the content is text.
   GooglePrivacyDlpV2beta2Range codepointRange;
 
-  /// Field id of the field containing the finding.
+  /// The pointer to the property or cell that contained the finding.
+  /// Provided when the finding's containing element is a cell in a table
+  /// or a property of storage object.
   GooglePrivacyDlpV2beta2FieldId fieldId;
 
-  /// Location within an image's pixels.
+  /// The area within the image that contained the finding.
+  /// Provided when the content is an image.
   core.List<GooglePrivacyDlpV2beta2ImageLocation> imageBoxes;
 
-  /// Key of the finding.
+  /// The pointer to the record in storage that contained the field the
+  /// finding was found in.
+  /// Provided when the finding's containing element is a property
+  /// of a storage object.
   GooglePrivacyDlpV2beta2RecordKey recordKey;
 
-  /// Location within a `ContentItem.Table`.
+  /// The pointer to the row of the table that contained the finding.
+  /// Provided when the finding's containing element is a cell of a table.
   GooglePrivacyDlpV2beta2TableLocation tableLocation;
 
   GooglePrivacyDlpV2beta2Location();
@@ -7436,7 +7463,10 @@ class GooglePrivacyDlpV2beta2NumericalStatsResult {
 
 /// Cloud repository for storing output.
 class GooglePrivacyDlpV2beta2OutputStorageConfig {
-  /// Store findings in a new table in an existing dataset.
+  /// Store findings in a new table in an existing dataset. If table_id is not
+  /// set a new one will be generated for you with the following format:
+  /// dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for
+  /// generating the date details.
   GooglePrivacyDlpV2beta2BigQueryTable table;
 
   GooglePrivacyDlpV2beta2OutputStorageConfig();
@@ -8431,7 +8461,7 @@ class GooglePrivacyDlpV2beta2Table {
   }
 }
 
-/// Location of a finding within a `ContentItem.Table`.
+/// Location of a finding within a table.
 class GooglePrivacyDlpV2beta2TableLocation {
   /// The zero-based index of the row where the finding is located.
   core.String rowIndex;

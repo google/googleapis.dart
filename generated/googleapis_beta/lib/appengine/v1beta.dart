@@ -829,9 +829,9 @@ class AppsDomainMappingsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -844,7 +844,7 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainMappingsResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -855,11 +855,11 @@ class AppsDomainMappingsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1179,13 +1179,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [matchingAddress] - A valid IP Address. If set, only rules matching this
   /// address will be returned. The first returned rule will be the rule that
   /// fires on requests from this IP.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1198,9 +1198,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String matchingAddress,
+      core.String pageToken,
       core.int pageSize,
-      core.String matchingAddress,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1212,14 +1212,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (matchingAddress != null) {
+      _queryParams["matchingAddress"] = [matchingAddress];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (matchingAddress != null) {
-      _queryParams["matchingAddress"] = [matchingAddress];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1496,11 +1496,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1513,9 +1513,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1527,14 +1527,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1673,9 +1673,9 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1688,7 +1688,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1699,11 +1699,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1732,8 +1732,6 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
-  ///
   /// [migrateTraffic] - Set to true to gradually shift traffic to one or more
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
@@ -1748,6 +1746,8 @@ class AppsServicesResourceApi {
   /// Splitting Traffic
   /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
   ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1760,7 +1760,7 @@ class AppsServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Service request, core.String appsId, core.String servicesId,
-      {core.String updateMask, core.bool migrateTraffic, core.String $fields}) {
+      {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1777,11 +1777,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (migrateTraffic != null) {
       _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2008,14 +2008,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2029,9 +2029,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String view,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2046,14 +2046,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2908,6 +2908,9 @@ class AutomaticScaling {
   /// Target scaling by CPU usage.
   CpuUtilization cpuUtilization;
 
+  /// Target scaling by user-provided metrics.
+  core.List<CustomMetric> customMetrics;
+
   /// Target scaling by disk usage.
   DiskUtilization diskUtilization;
 
@@ -2956,6 +2959,11 @@ class AutomaticScaling {
     if (_json.containsKey("cpuUtilization")) {
       cpuUtilization = new CpuUtilization.fromJson(_json["cpuUtilization"]);
     }
+    if (_json.containsKey("customMetrics")) {
+      customMetrics = _json["customMetrics"]
+          .map((value) => new CustomMetric.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("diskUtilization")) {
       diskUtilization = new DiskUtilization.fromJson(_json["diskUtilization"]);
     }
@@ -3002,6 +3010,10 @@ class AutomaticScaling {
     }
     if (cpuUtilization != null) {
       _json["cpuUtilization"] = (cpuUtilization).toJson();
+    }
+    if (customMetrics != null) {
+      _json["customMetrics"] =
+          customMetrics.map((value) => (value).toJson()).toList();
     }
     if (diskUtilization != null) {
       _json["diskUtilization"] = (diskUtilization).toJson();
@@ -3191,6 +3203,44 @@ class CertificateRawData {
   }
 }
 
+/// Options for the build operations performed as a part of the version
+/// deployment. Only applicable for App Engine flexible environment when
+/// creating a version using source code directly.
+class CloudBuildOptions {
+  /// Path to the yaml file used in deployment, used to determine runtime
+  /// configuration details.Required for flexible environment builds.See
+  /// https://cloud.google.com/appengine/docs/standard/python/config/appref for
+  /// more details.
+  core.String appYamlPath;
+
+  /// The Cloud Build timeout used as part of any dependent builds performed by
+  /// version creation. Defaults to 10 minutes.
+  core.String cloudBuildTimeout;
+
+  CloudBuildOptions();
+
+  CloudBuildOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("appYamlPath")) {
+      appYamlPath = _json["appYamlPath"];
+    }
+    if (_json.containsKey("cloudBuildTimeout")) {
+      cloudBuildTimeout = _json["cloudBuildTimeout"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appYamlPath != null) {
+      _json["appYamlPath"] = appYamlPath;
+    }
+    if (cloudBuildTimeout != null) {
+      _json["cloudBuildTimeout"] = cloudBuildTimeout;
+    }
+    return _json;
+  }
+}
+
 /// Docker image that is used to create a container and start a VM instance for
 /// the version that you deploy. Only applicable for instances running in the
 /// App Engine flexible environment.
@@ -3251,6 +3301,120 @@ class CpuUtilization {
   }
 }
 
+/// Metadata for the given google.longrunning.Operation during a
+/// google.appengine.v1alpha.CreateVersionRequest.
+class CreateVersionMetadataV1Alpha {
+  /// The Cloud Build ID if one was created as part of the version create.
+  /// @OutputOnly
+  core.String cloudBuildId;
+
+  CreateVersionMetadataV1Alpha();
+
+  CreateVersionMetadataV1Alpha.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudBuildId")) {
+      cloudBuildId = _json["cloudBuildId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudBuildId != null) {
+      _json["cloudBuildId"] = cloudBuildId;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for the given google.longrunning.Operation during a
+/// google.appengine.v1beta.CreateVersionRequest.
+class CreateVersionMetadataV1Beta {
+  /// The Cloud Build ID if one was created as part of the version create.
+  /// @OutputOnly
+  core.String cloudBuildId;
+
+  CreateVersionMetadataV1Beta();
+
+  CreateVersionMetadataV1Beta.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudBuildId")) {
+      cloudBuildId = _json["cloudBuildId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudBuildId != null) {
+      _json["cloudBuildId"] = cloudBuildId;
+    }
+    return _json;
+  }
+}
+
+/// Allows autoscaling based on Stackdriver metrics.
+class CustomMetric {
+  /// Allows filtering on the metric's fields.
+  core.String filter;
+
+  /// The name of the metric.
+  core.String metricName;
+
+  /// May be used instead of target_utilization when an instance can handle a
+  /// specific amount of work/resources and the metric value is equal to the
+  /// current amount of work remaining. The autoscaler will try to keep the
+  /// number of instances equal to the metric value divided by
+  /// single_instance_assignment.
+  core.double singleInstanceAssignment;
+
+  /// The type of the metric. Must be a string representing a Stackdriver metric
+  /// type e.g. GAGUE, DELTA_PER_SECOND, etc.
+  core.String targetType;
+
+  /// The target value for the metric.
+  core.double targetUtilization;
+
+  CustomMetric();
+
+  CustomMetric.fromJson(core.Map _json) {
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("metricName")) {
+      metricName = _json["metricName"];
+    }
+    if (_json.containsKey("singleInstanceAssignment")) {
+      singleInstanceAssignment = _json["singleInstanceAssignment"];
+    }
+    if (_json.containsKey("targetType")) {
+      targetType = _json["targetType"];
+    }
+    if (_json.containsKey("targetUtilization")) {
+      targetUtilization = _json["targetUtilization"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (metricName != null) {
+      _json["metricName"] = metricName;
+    }
+    if (singleInstanceAssignment != null) {
+      _json["singleInstanceAssignment"] = singleInstanceAssignment;
+    }
+    if (targetType != null) {
+      _json["targetType"] = targetType;
+    }
+    if (targetUtilization != null) {
+      _json["targetUtilization"] = targetUtilization;
+    }
+    return _json;
+  }
+}
+
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {
   /// Public SSH key to add to the instance. Examples:
@@ -3281,8 +3445,16 @@ class DebugInstanceRequest {
 
 /// Code and application artifacts used to deploy a version to App Engine.
 class Deployment {
-  /// Google Cloud Container Builder build information.
+  /// Google Cloud Container Builder build information. Only applicable for
+  /// instances running in the App Engine flexible environment.
   BuildInfo build;
+
+  /// Options for any Google Cloud Container Builder builds created as a part of
+  /// this deployment.Note that this is orthogonal to the build parameter, where
+  /// the deployment depends on an already existing cloud build. These options
+  /// will only be used if a new build is created, such as when deploying to the
+  /// App Engine flexible environment using files or zip.
+  CloudBuildOptions cloudBuildOptions;
 
   /// The Docker image for the container that runs the version. Only applicable
   /// for instances running in the App Engine flexible environment.
@@ -3301,6 +3473,10 @@ class Deployment {
   Deployment.fromJson(core.Map _json) {
     if (_json.containsKey("build")) {
       build = new BuildInfo.fromJson(_json["build"]);
+    }
+    if (_json.containsKey("cloudBuildOptions")) {
+      cloudBuildOptions =
+          new CloudBuildOptions.fromJson(_json["cloudBuildOptions"]);
     }
     if (_json.containsKey("container")) {
       container = new ContainerInfo.fromJson(_json["container"]);
@@ -3321,6 +3497,9 @@ class Deployment {
         new core.Map<core.String, core.Object>();
     if (build != null) {
       _json["build"] = (build).toJson();
+    }
+    if (cloudBuildOptions != null) {
+      _json["cloudBuildOptions"] = (cloudBuildOptions).toJson();
     }
     if (container != null) {
       _json["container"] = (container).toJson();
@@ -4961,6 +5140,8 @@ class OperationMetadataV1 {
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1Alpha {
+  CreateVersionMetadataV1Alpha createVersionMetadata;
+
   /// Time that this operation completed.@OutputOnly
   core.String endTime;
 
@@ -4988,6 +5169,10 @@ class OperationMetadataV1Alpha {
   OperationMetadataV1Alpha();
 
   OperationMetadataV1Alpha.fromJson(core.Map _json) {
+    if (_json.containsKey("createVersionMetadata")) {
+      createVersionMetadata = new CreateVersionMetadataV1Alpha.fromJson(
+          _json["createVersionMetadata"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -5014,6 +5199,9 @@ class OperationMetadataV1Alpha {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createVersionMetadata != null) {
+      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -5041,6 +5229,8 @@ class OperationMetadataV1Alpha {
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1Beta {
+  CreateVersionMetadataV1Beta createVersionMetadata;
+
   /// Time that this operation completed.@OutputOnly
   core.String endTime;
 
@@ -5068,6 +5258,10 @@ class OperationMetadataV1Beta {
   OperationMetadataV1Beta();
 
   OperationMetadataV1Beta.fromJson(core.Map _json) {
+    if (_json.containsKey("createVersionMetadata")) {
+      createVersionMetadata = new CreateVersionMetadataV1Beta.fromJson(
+          _json["createVersionMetadata"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -5094,6 +5288,9 @@ class OperationMetadataV1Beta {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createVersionMetadata != null) {
+      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -5540,12 +5737,12 @@ class SslSettings {
 
 /// Scheduler settings for standard environment.
 class StandardSchedulerSettings {
-  /// Maximum number of instances for an app version. Set to a non-positive
-  /// value (0 by convention) to disable max_instances configuration.
+  /// Maximum number of instances for an app version. Set to zero to disable
+  /// max_instances configuration.
   core.int maxInstances;
 
-  /// Minimum number of instances for an app version. Set to a non-positive
-  /// value (0 by convention) to disable min_instances configuration.
+  /// Minimum number of instances for an app version. Set to zero to disable
+  /// min_instances configuration.
   core.int minInstances;
 
   /// Target CPU utilization ratio to maintain when scaling.
@@ -6137,6 +6334,9 @@ class Version {
   /// Whether to deploy this version in a container on a virtual machine.
   core.bool vm;
 
+  /// The choice of gce zones to use for this App Engine Flexible version.
+  core.List<core.String> zones;
+
   Version();
 
   Version.fromJson(core.Map _json) {
@@ -6243,6 +6443,9 @@ class Version {
     if (_json.containsKey("vm")) {
       vm = _json["vm"];
     }
+    if (_json.containsKey("zones")) {
+      zones = _json["zones"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6344,6 +6547,9 @@ class Version {
     }
     if (vm != null) {
       _json["vm"] = vm;
+    }
+    if (zones != null) {
+      _json["zones"] = zones;
     }
     return _json;
   }

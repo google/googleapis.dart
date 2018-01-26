@@ -483,14 +483,14 @@ class LiensResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - The maximum number of items to return. This is a suggestion
+  /// for the server.
+  ///
   /// [parent] - The name of the resource to list all attached Liens.
   /// For example, `projects/1234`.
   ///
   /// [pageToken] - The `next_page_token` value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of items to return. This is a suggestion
-  /// for the server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -503,9 +503,9 @@ class LiensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLiensResponse> list(
-      {core.String parent,
+      {core.int pageSize,
+      core.String parent,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -514,14 +514,14 @@ class LiensResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (parent != null) {
       _queryParams["parent"] = [parent];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1538,7 +1538,10 @@ class ProjectsResourceApi {
   /// Permission is denied if the policy or the resource does not exist.
   ///
   /// Authorization requires the Google IAM permission
-  /// `resourcemanager.projects.getIamPolicy` on the project
+  /// `resourcemanager.projects.getIamPolicy` on the project.
+  ///
+  /// For additional information about resource structure and identification,
+  /// see [Resource Names](/apis/design/resource_names).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1658,6 +1661,12 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - The maximum number of Projects to return in the response.
+  /// The server can return fewer Projects than requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
   /// [filter] - An expression for filtering the results of the request.  Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1697,12 +1706,6 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
-  /// [pageSize] - The maximum number of Projects to return in the response.
-  /// The server can return fewer Projects than requested.
-  /// If unspecified, server picks an appropriate default.
-  ///
-  /// Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1714,9 +1717,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1725,14 +1728,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2208,7 +2211,7 @@ class Ancestor {
 /// If there are AuditConfigs for both `allServices` and a specific service,
 /// the union of the two AuditConfigs is used for that service: the log_types
 /// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
+/// AuditLogConfig are exempted.
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
@@ -3681,7 +3684,7 @@ class OrganizationOwner {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -3711,7 +3714,7 @@ class Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();

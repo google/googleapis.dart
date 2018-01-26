@@ -1405,11 +1405,6 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
-  ///
   /// [pageSize] - Optional. The number of versions to retrieve per "page" of
   /// results. If
   /// there are more remaining results than this number, the response message
@@ -1418,6 +1413,11 @@ class ProjectsModelsVersionsResourceApi {
   /// The default value is 20, and the maximum page size is 100.
   ///
   /// [filter] - Optional. Specifies the subset of versions to retrieve.
+  ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1430,9 +1430,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1444,14 +1444,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2094,6 +2094,9 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// The hyperparameters given to this trial.
   core.Map<core.String, core.String> hyperparameters;
 
+  /// True if the trial is stopped early.
+  core.bool isTrialStoppedEarly;
+
   /// The trial id for these results.
   core.String trialId;
 
@@ -2115,6 +2118,9 @@ class GoogleCloudMlV1HyperparameterOutput {
     if (_json.containsKey("hyperparameters")) {
       hyperparameters = _json["hyperparameters"];
     }
+    if (_json.containsKey("isTrialStoppedEarly")) {
+      isTrialStoppedEarly = _json["isTrialStoppedEarly"];
+    }
     if (_json.containsKey("trialId")) {
       trialId = _json["trialId"];
     }
@@ -2132,6 +2138,9 @@ class GoogleCloudMlV1HyperparameterOutput {
     }
     if (hyperparameters != null) {
       _json["hyperparameters"] = hyperparameters;
+    }
+    if (isTrialStoppedEarly != null) {
+      _json["isTrialStoppedEarly"] = isTrialStoppedEarly;
     }
     if (trialId != null) {
       _json["trialId"] = trialId;
@@ -3582,10 +3591,17 @@ class GoogleCloudMlV1Version {
   /// Possible string values are:
   /// - "UNKNOWN" : The version state is unspecified.
   /// - "READY" : The version is ready for prediction.
-  /// - "CREATING" : The version is in the process of creation.
+  /// - "CREATING" : The version is being created. New UpdateVersion and
+  /// DeleteVersion
+  /// requests will fail if a version is in the CREATING state.
   /// - "FAILED" : The version failed to be created, possibly cancelled.
   /// `error_message` should contain the details of the failure.
-  /// - "DELETING" : The version is in the process of deletion.
+  /// - "DELETING" : The version is being deleted. New UpdateVersion and
+  /// DeleteVersion
+  /// requests will fail if a version is in the DELETING state.
+  /// - "UPDATING" : The version is being updated. New UpdateVersion and
+  /// DeleteVersion
+  /// requests will fail if a version is in the UPDATING state.
   core.String state;
 
   GoogleCloudMlV1Version();
@@ -3680,165 +3696,13 @@ class GoogleCloudMlV1Version {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:foo@gmail.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "fooservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:bar@gmail.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
-class GoogleIamV1AuditConfig {
-  /// The configuration for logging of each type of permission.
-  /// Next ID: 4
-  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
-  core.List<core.String> exemptedMembers;
-
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
-  core.String service;
-
-  GoogleIamV1AuditConfig();
-
-  GoogleIamV1AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new GoogleIamV1AuditLogConfig.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
-    }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
-    }
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (service != null) {
-      _json["service"] = service;
-    }
-    return _json;
-  }
-}
-
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:foo@gmail.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
-class GoogleIamV1AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
-
-  GoogleIamV1AuditLogConfig();
-
-  GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
-    }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json["logType"] = logType;
-    }
-    return _json;
-  }
-}
-
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
   /// The condition that is associated with this binding.
   /// NOTE: an unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
-  /// This field is GOOGLE_INTERNAL.
+  /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
   GoogleTypeExpr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -3932,11 +3796,8 @@ class GoogleIamV1Binding {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class GoogleIamV1Policy {
-  /// Specifies cloud audit logging configuration for this policy.
-  core.List<GoogleIamV1AuditConfig> auditConfigs;
-
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<GoogleIamV1Binding> bindings;
@@ -3962,19 +3823,12 @@ class GoogleIamV1Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  core.bool iamOwned;
-
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   GoogleIamV1Policy();
 
   GoogleIamV1Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"]
-          .map((value) => new GoogleIamV1AuditConfig.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
           .map((value) => new GoogleIamV1Binding.fromJson(value))
@@ -3982,9 +3836,6 @@ class GoogleIamV1Policy {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("iamOwned")) {
-      iamOwned = _json["iamOwned"];
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -3994,18 +3845,11 @@ class GoogleIamV1Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (auditConfigs != null) {
-      _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
-    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
-    }
-    if (iamOwned != null) {
-      _json["iamOwned"] = iamOwned;
     }
     if (version != null) {
       _json["version"] = version;

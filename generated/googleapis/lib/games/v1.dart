@@ -68,8 +68,6 @@ class AchievementDefinitionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -91,8 +89,7 @@ class AchievementDefinitionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementDefinitionsListResponse> list(
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -103,9 +100,6 @@ class AchievementDefinitionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -146,8 +140,6 @@ class AchievementsResourceApi {
   ///
   /// [stepsToIncrement] - The number of steps to increment.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [requestId] - A randomly generated numeric ID for each request specified
   /// by the caller. This number is used at the server to ensure that the
   /// request is handled correctly across retries.
@@ -164,9 +156,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementIncrementResponse> increment(
       core.String achievementId, core.int stepsToIncrement,
-      {core.String consistencyToken,
-      core.String requestId,
-      core.String $fields}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -181,9 +171,6 @@ class AchievementsResourceApi {
       throw new core.ArgumentError("Parameter stepsToIncrement is required.");
     }
     _queryParams["stepsToIncrement"] = ["${stepsToIncrement}"];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
@@ -212,8 +199,6 @@ class AchievementsResourceApi {
   ///
   /// [playerId] - A player ID. A value of me may be used in place of the
   /// authenticated player's ID.
-  ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -244,8 +229,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerAchievementListResponse> list(core.String playerId,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String state,
@@ -259,9 +243,6 @@ class AchievementsResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -300,8 +281,6 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -313,7 +292,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementRevealResponse> reveal(core.String achievementId,
-      {core.String consistencyToken, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -323,9 +302,6 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -356,8 +332,6 @@ class AchievementsResourceApi {
   ///
   /// [steps] - The minimum value to set the steps to.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -370,7 +344,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(
       core.String achievementId, core.int steps,
-      {core.String consistencyToken, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -385,9 +359,6 @@ class AchievementsResourceApi {
       throw new core.ArgumentError("Parameter steps is required.");
     }
     _queryParams["steps"] = ["${steps}"];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -412,8 +383,6 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -425,7 +394,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
-      {core.String consistencyToken, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -435,9 +404,6 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -463,8 +429,6 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -477,8 +441,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
       AchievementUpdateMultipleRequest request,
-      {core.String consistencyToken,
-      core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -488,9 +451,6 @@ class AchievementsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -523,8 +483,6 @@ class ApplicationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -546,10 +504,7 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Application> get(core.String applicationId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String platformType,
-      core.String $fields}) {
+      {core.String language, core.String platformType, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -559,9 +514,6 @@ class ApplicationsResourceApi {
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -589,8 +541,6 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -599,7 +549,7 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({core.String consistencyToken, core.String $fields}) {
+  async.Future played({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -607,9 +557,6 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -636,8 +583,6 @@ class ApplicationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -649,7 +594,7 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationVerifyResponse> verify(core.String applicationId,
-      {core.String consistencyToken, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -659,9 +604,6 @@ class ApplicationsResourceApi {
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -692,8 +634,6 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -715,8 +655,7 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerEventListResponse> listByPlayer(
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -727,9 +666,6 @@ class EventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -758,8 +694,6 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -781,8 +715,7 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventDefinitionListResponse> listDefinitions(
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -793,9 +726,6 @@ class EventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -828,8 +758,6 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -844,9 +772,7 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventUpdateResponse> record(EventRecordRequest request,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -856,9 +782,6 @@ class EventsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -890,8 +813,6 @@ class LeaderboardsResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -906,9 +827,7 @@ class LeaderboardsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Leaderboard> get(core.String leaderboardId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -918,9 +837,6 @@ class LeaderboardsResourceApi {
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -944,8 +860,6 @@ class LeaderboardsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -967,8 +881,7 @@ class LeaderboardsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardListResponse> list(
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -979,9 +892,6 @@ class LeaderboardsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -1016,8 +926,6 @@ class MetagameResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1028,8 +936,7 @@ class MetagameResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MetagameConfig> getMetagameConfig(
-      {core.String consistencyToken, core.String $fields}) {
+  async.Future<MetagameConfig> getMetagameConfig({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1037,9 +944,6 @@ class MetagameResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1068,8 +972,6 @@ class MetagameResourceApi {
   /// Possible string values are:
   /// - "all" : Retrieve data for all categories. This is the default.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1092,8 +994,7 @@ class MetagameResourceApi {
   /// this method will complete with the same error.
   async.Future<CategoryListResponse> listCategoriesByPlayer(
       core.String playerId, core.String collection,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -1109,9 +1010,6 @@ class MetagameResourceApi {
     }
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1154,8 +1052,6 @@ class PlayersResourceApi {
   /// [playerId] - A player ID. A value of me may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1170,9 +1066,7 @@ class PlayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Player> get(core.String playerId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1182,9 +1076,6 @@ class PlayersResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1220,8 +1111,6 @@ class PlayersResourceApi {
   /// - "visible" : Retrieve a list of players in the user's social graph that
   /// are visible to this game.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1243,8 +1132,7 @@ class PlayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerListResponse> list(core.String collection,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -1257,9 +1145,6 @@ class PlayersResourceApi {
 
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1298,8 +1183,6 @@ class PushtokensResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1308,8 +1191,7 @@ class PushtokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future remove(PushTokenId request,
-      {core.String consistencyToken, core.String $fields}) {
+  async.Future remove(PushTokenId request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1319,9 +1201,6 @@ class PushtokensResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1346,8 +1225,6 @@ class PushtokensResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1356,8 +1233,7 @@ class PushtokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future update(PushToken request,
-      {core.String consistencyToken, core.String $fields}) {
+  async.Future update(PushToken request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1367,9 +1243,6 @@ class PushtokensResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1407,8 +1280,6 @@ class QuestMilestonesResourceApi {
   /// [requestId] - A numeric ID to ensure that the request is handled correctly
   /// across retries. Your client application must generate this ID randomly.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1419,7 +1290,7 @@ class QuestMilestonesResourceApi {
   /// this method will complete with the same error.
   async.Future claim(
       core.String questId, core.String milestoneId, core.String requestId,
-      {core.String consistencyToken, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1437,9 +1308,6 @@ class QuestMilestonesResourceApi {
       throw new core.ArgumentError("Parameter requestId is required.");
     }
     _queryParams["requestId"] = [requestId];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1474,8 +1342,6 @@ class QuestsResourceApi {
   ///
   /// [questId] - The ID of the quest.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1490,9 +1356,7 @@ class QuestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Quest> accept(core.String questId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1502,9 +1366,6 @@ class QuestsResourceApi {
 
     if (questId == null) {
       throw new core.ArgumentError("Parameter questId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1532,8 +1393,6 @@ class QuestsResourceApi {
   /// [playerId] - A player ID. A value of me may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1556,8 +1415,7 @@ class QuestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QuestListResponse> list(core.String playerId,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -1570,9 +1428,6 @@ class QuestsResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1616,8 +1471,6 @@ class RevisionsResourceApi {
   /// - "IOS" - Client is running the iOS SDK.
   /// - "WEB_APP" - Client is running as a Web App.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1629,7 +1482,7 @@ class RevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevisionCheckResponse> check(core.String clientRevision,
-      {core.String consistencyToken, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1641,9 +1494,6 @@ class RevisionsResourceApi {
       throw new core.ArgumentError("Parameter clientRevision is required.");
     }
     _queryParams["clientRevision"] = [clientRevision];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1672,8 +1522,6 @@ class RoomsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1688,9 +1536,7 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> create(RoomCreateRequest request,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1700,9 +1546,6 @@ class RoomsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1729,8 +1572,6 @@ class RoomsResourceApi {
   ///
   /// [roomId] - The ID of the room.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1745,9 +1586,7 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> decline(core.String roomId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1757,9 +1596,6 @@ class RoomsResourceApi {
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1786,8 +1622,6 @@ class RoomsResourceApi {
   ///
   /// [roomId] - The ID of the room.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1796,8 +1630,7 @@ class RoomsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future dismiss(core.String roomId,
-      {core.String consistencyToken, core.String $fields}) {
+  async.Future dismiss(core.String roomId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1807,9 +1640,6 @@ class RoomsResourceApi {
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1834,8 +1664,6 @@ class RoomsResourceApi {
   ///
   /// [roomId] - The ID of the room.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1850,9 +1678,7 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> get(core.String roomId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1862,9 +1688,6 @@ class RoomsResourceApi {
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1893,8 +1716,6 @@ class RoomsResourceApi {
   ///
   /// [roomId] - The ID of the room.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1909,9 +1730,7 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> join(RoomJoinRequest request, core.String roomId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1924,9 +1743,6 @@ class RoomsResourceApi {
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1955,8 +1771,6 @@ class RoomsResourceApi {
   ///
   /// [roomId] - The ID of the room.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -1971,9 +1785,7 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> leave(RoomLeaveRequest request, core.String roomId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1986,9 +1798,6 @@ class RoomsResourceApi {
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2012,8 +1821,6 @@ class RoomsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2035,8 +1842,7 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RoomList> list(
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -2047,9 +1853,6 @@ class RoomsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2084,8 +1887,6 @@ class RoomsResourceApi {
   ///
   /// [roomId] - The ID of the room.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2101,9 +1902,7 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<RoomStatus> reportStatus(
       RoomP2PStatuses request, core.String roomId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2116,9 +1915,6 @@ class RoomsResourceApi {
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2167,8 +1963,6 @@ class ScoresResourceApi {
   /// - "DAILY" : List the top scores for the current day.
   /// - "WEEKLY" : List the top scores for the current week.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [includeRankType] - The types of ranks to return. If the parameter is
   /// omitted, no ranks will be returned.
   /// Possible string values are:
@@ -2199,8 +1993,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerLeaderboardScoreListResponse> get(
       core.String playerId, core.String leaderboardId, core.String timeSpan,
-      {core.String consistencyToken,
-      core.String includeRankType,
+      {core.String includeRankType,
       core.String language,
       core.int maxResults,
       core.String pageToken,
@@ -2220,9 +2013,6 @@ class ScoresResourceApi {
     }
     if (timeSpan == null) {
       throw new core.ArgumentError("Parameter timeSpan is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (includeRankType != null) {
       _queryParams["includeRankType"] = [includeRankType];
@@ -2275,8 +2065,6 @@ class ScoresResourceApi {
   /// - "DAILY" : List the top scores for the current day.
   /// - "WEEKLY" : List the top scores for the current week.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2299,8 +2087,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> list(
       core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -2321,9 +2108,6 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2369,8 +2153,6 @@ class ScoresResourceApi {
   /// - "DAILY" : List the top scores for the current day.
   /// - "WEEKLY" : List the top scores for the current week.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2401,8 +2183,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> listWindow(
       core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.int resultsAbove,
@@ -2425,9 +2206,6 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2474,8 +2252,6 @@ class ScoresResourceApi {
   /// value. For time, the score represents elapsed time in milliseconds. For
   /// currency, the score represents a value in micro units.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2496,10 +2272,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerScoreResponse> submit(
       core.String leaderboardId, core.String score,
-      {core.String consistencyToken,
-      core.String language,
-      core.String scoreTag,
-      core.String $fields}) {
+      {core.String language, core.String scoreTag, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2514,9 +2287,6 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter score is required.");
     }
     _queryParams["score"] = [score];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2546,8 +2316,6 @@ class ScoresResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2563,8 +2331,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerScoreListResponse> submitMultiple(
       PlayerScoreSubmissionList request,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2575,9 +2342,6 @@ class ScoresResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2609,8 +2373,6 @@ class SnapshotsResourceApi {
   ///
   /// [snapshotId] - The ID of the snapshot.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2625,9 +2387,7 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Snapshot> get(core.String snapshotId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2637,9 +2397,6 @@ class SnapshotsResourceApi {
 
     if (snapshotId == null) {
       throw new core.ArgumentError("Parameter snapshotId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2667,8 +2424,6 @@ class SnapshotsResourceApi {
   /// [playerId] - A player ID. A value of me may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2690,8 +2445,7 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SnapshotListResponse> list(core.String playerId,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -2704,9 +2458,6 @@ class SnapshotsResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2746,8 +2497,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2756,8 +2505,7 @@ class TurnBasedMatchesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future cancel(core.String matchId,
-      {core.String consistencyToken, core.String $fields}) {
+  async.Future cancel(core.String matchId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2767,9 +2515,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2796,8 +2541,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2812,9 +2555,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2824,9 +2565,6 @@ class TurnBasedMatchesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2852,8 +2590,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2868,9 +2604,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> decline(core.String matchId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2880,9 +2614,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2911,8 +2642,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2921,8 +2650,7 @@ class TurnBasedMatchesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future dismiss(core.String matchId,
-      {core.String consistencyToken, core.String $fields}) {
+  async.Future dismiss(core.String matchId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2932,9 +2660,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2965,8 +2690,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -2982,9 +2705,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> finish(
       TurnBasedMatchResults request, core.String matchId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2997,9 +2718,6 @@ class TurnBasedMatchesResourceApi {
     }
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -3027,8 +2745,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [includeMatchData] - Get match data along with metadata.
   ///
   /// [language] - The preferred language to use for strings returned by this
@@ -3045,10 +2761,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> get(core.String matchId,
-      {core.String consistencyToken,
-      core.bool includeMatchData,
-      core.String language,
-      core.String $fields}) {
+      {core.bool includeMatchData, core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3058,9 +2771,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
@@ -3089,8 +2799,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -3105,9 +2813,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> join(core.String matchId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3117,9 +2823,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -3148,8 +2851,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -3164,9 +2865,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> leave(core.String matchId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3176,9 +2875,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -3209,8 +2905,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchVersion] - The version of the match being updated.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -3231,8 +2925,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> leaveTurn(
       core.String matchId, core.int matchVersion,
-      {core.String consistencyToken,
-      core.String language,
+      {core.String language,
       core.String pendingParticipantId,
       core.String $fields}) {
     var _url = null;
@@ -3249,9 +2942,6 @@ class TurnBasedMatchesResourceApi {
       throw new core.ArgumentError("Parameter matchVersion is required.");
     }
     _queryParams["matchVersion"] = ["${matchVersion}"];
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -3278,8 +2968,6 @@ class TurnBasedMatchesResourceApi {
   /// Returns turn-based matches the player is or was involved in.
   ///
   /// Request parameters:
-  ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
   ///
   /// [includeMatchData] - True if match data should be returned in the
   /// response. Note that not all data will necessarily be returned if
@@ -3313,8 +3001,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatchList> list(
-      {core.String consistencyToken,
-      core.bool includeMatchData,
+      {core.bool includeMatchData,
       core.String language,
       core.int maxCompletedMatches,
       core.int maxResults,
@@ -3327,9 +3014,6 @@ class TurnBasedMatchesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
     }
@@ -3369,8 +3053,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -3389,10 +3071,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatchRematch> rematch(core.String matchId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String requestId,
-      core.String $fields}) {
+      {core.String language, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3402,9 +3081,6 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -3435,8 +3111,6 @@ class TurnBasedMatchesResourceApi {
   /// MATCH_DELETED.
   ///
   /// Request parameters:
-  ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
   ///
   /// [includeMatchData] - True if match data should be returned in the
   /// response. Note that not all data will necessarily be returned if
@@ -3470,8 +3144,7 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatchSync> sync(
-      {core.String consistencyToken,
-      core.bool includeMatchData,
+      {core.bool includeMatchData,
       core.String language,
       core.int maxCompletedMatches,
       core.int maxResults,
@@ -3484,9 +3157,6 @@ class TurnBasedMatchesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
-    }
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
     }
@@ -3525,8 +3195,6 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [matchId] - The ID of the match.
   ///
-  /// [consistencyToken] - The last-seen mutation timestamp.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
@@ -3542,9 +3210,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> takeTurn(
       TurnBasedMatchTurn request, core.String matchId,
-      {core.String consistencyToken,
-      core.String language,
-      core.String $fields}) {
+      {core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3557,9 +3223,6 @@ class TurnBasedMatchesResourceApi {
     }
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (consistencyToken != null) {
-      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];

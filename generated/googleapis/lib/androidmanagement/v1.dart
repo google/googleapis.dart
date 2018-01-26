@@ -3428,8 +3428,7 @@ class PersistentPreferredActivity {
 
 /// A policy, which governs behavior for a device.
 class Policy {
-  /// Account types that cannot be managed by the user. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Account types that cannot be managed by the user.
   core.List<core.String> accountTypesWithManagementDisabled;
 
   /// Whether adding new users and profiles is disabled.
@@ -3439,8 +3438,7 @@ class Policy {
   core.bool adjustVolumeDisabled;
 
   /// Configuration for an always-on VPN connection. Use with
-  /// vpn_config_disabled to prevent modification of this setting. <i>Requires
-  /// the beta version of the Android Device Policy app.</i>
+  /// vpn_config_disabled to prevent modification of this setting.
   AlwaysOnVpnPackage alwaysOnVpnPackage;
 
   /// Policy applied to apps.
@@ -3456,25 +3454,21 @@ class Policy {
   /// automatically uninstalled.
   core.bool blockApplicationsEnabled;
 
-  /// Whether configuring bluetooth is disabled. <i>Requires the beta version of
-  /// the Android Device Policy app.</i>
+  /// Whether configuring bluetooth is disabled.
   core.bool bluetoothConfigDisabled;
 
-  /// Whether bluetooth contact sharing is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether bluetooth contact sharing is disabled.
   core.bool bluetoothContactSharingDisabled;
 
   /// Whether bluetooth is disabled. Prefer this setting over
   /// bluetooth_config_disabled because bluetooth_config_disabled can be
-  /// bypassed by the user. <i>Requires the beta version of the Android Device
-  /// Policy app.</i>
+  /// bypassed by the user.
   core.bool bluetoothDisabled;
 
   /// Whether all cameras on the device are disabled.
   core.bool cameraDisabled;
 
-  /// Whether configuring cell broadcast is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether configuring cell broadcast is disabled.
   core.bool cellBroadcastsConfigDisabled;
 
   /// Rules declaring which mitigating actions to take when a device is not
@@ -3483,16 +3477,13 @@ class Policy {
   /// a maximum limit of 100 rules.
   core.List<ComplianceRule> complianceRules;
 
-  /// Whether creating windows besides app windows is disabled. <i>Requires the
-  /// beta version of the Android Device Policy app.</i>
+  /// Whether creating windows besides app windows is disabled.
   core.bool createWindowsDisabled;
 
-  /// Whether configuring user credentials is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether configuring user credentials is disabled.
   core.bool credentialsConfigDisabled;
 
-  /// Whether roaming data services are disabled. <i>Requires the beta version
-  /// of the Android Device Policy app.</i>
+  /// Whether roaming data services are disabled.
   core.bool dataRoamingDisabled;
 
   /// Whether the user is allowed to enable debugging features.
@@ -3508,8 +3499,7 @@ class Policy {
   /// - "DENY" : Automatically deny a permission.
   core.String defaultPermissionPolicy;
 
-  /// Whether application verification is forced to be enabled. <i>Requires the
-  /// beta version of the Android Device Policy app.</i>
+  /// Whether application verification is forced to be enabled.
   core.bool ensureVerifyAppsEnabled;
 
   /// Whether factory resetting from settings is disabled.
@@ -3526,8 +3516,7 @@ class Policy {
   /// game in Settings is disabled.
   core.bool funDisabled;
 
-  /// Whether user installation of apps is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether user installation of apps is disabled.
   core.bool installAppsDisabled;
 
   /// Whether the user is allowed to enable the "Unknown Sources" setting, which
@@ -3537,27 +3526,31 @@ class Policy {
   /// Whether the keyguard is disabled.
   core.bool keyguardDisabled;
 
-  /// Disabled keyguard customizations, such as widgets. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Disabled keyguard customizations, such as widgets.
   core.List<core.String> keyguardDisabledFeatures;
 
+  /// Whether the kiosk custom launcher is enabled. This replaces the home
+  /// screen with a launcher that locks down the device to the apps installed
+  /// via the applications setting. The apps appear on a single page in
+  /// alphabetical order. It is recommended to also use status_bar_disabled to
+  /// block access to device settings.
+  core.bool kioskCustomLauncherEnabled;
+
   /// A message displayed to the user in the device administators settings
-  /// screen. <i>Requires the beta version of the Android Device Policy app.</i>
+  /// screen.
   UserFacingMessage longSupportMessage;
 
   /// Maximum time in milliseconds for user activity until the device will lock.
   /// A value of 0 means there is no restriction.
   core.String maximumTimeToLock;
 
-  /// Whether configuring mobile networks is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether configuring mobile networks is disabled.
   core.bool mobileNetworksConfigDisabled;
 
   /// Whether adding or removing accounts is disabled.
   core.bool modifyAccountsDisabled;
 
-  /// Whether the user mounting physical external media is disabled. <i>Requires
-  /// the beta version of the Android Device Policy app.</i>
+  /// Whether the user mounting physical external media is disabled.
   core.bool mountPhysicalMediaDisabled;
 
   /// The name of the policy in the form
@@ -3574,8 +3567,7 @@ class Policy {
   /// settings.
   core.bool networkEscapeHatchEnabled;
 
-  /// Whether resetting network settings is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether resetting network settings is disabled.
   core.bool networkResetDisabled;
 
   /// Network configuration for the device. See configure networks for more
@@ -3585,12 +3577,10 @@ class Policy {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> openNetworkConfiguration;
 
-  /// Whether using NFC to beam out data from apps is disabled. <i>Requires the
-  /// beta version of the Android Device Policy app.</i>
+  /// Whether using NFC to beam out data from apps is disabled.
   core.bool outgoingBeamDisabled;
 
-  /// Whether outgoing calls are disabled. <i>Requires the beta version of the
-  /// Android Device Policy app.</i>
+  /// Whether outgoing calls are disabled.
   core.bool outgoingCallsDisabled;
 
   /// Password requirements.
@@ -3598,8 +3588,7 @@ class Policy {
 
   /// If present, only input methods provided by packages in this list are
   /// permitted. If this field is present, but the list is empty, then only
-  /// system input methods are permitted. <i>Requires the beta version of the
-  /// Android Device Policy app.</i>
+  /// system input methods are permitted.
   PackageNameList permittedInputMethods;
 
   /// Default intent handler activities.
@@ -3610,7 +3599,6 @@ class Policy {
   /// configurations like general internal filtering a global HTTP proxy may be
   /// useful. If the proxy is not accessible, network access may break. The
   /// global proxy is only a recommendation and some apps may ignore it.
-  /// <i>Requires the beta version of the Android Device Policy app.</i>
   ProxyInfo recommendedGlobalProxy;
 
   /// Whether removing other users is disabled.
@@ -3622,21 +3610,17 @@ class Policy {
   /// Whether screen capture is disabled.
   core.bool screenCaptureDisabled;
 
-  /// Whether changing the user icon is disabled. <i>Requires the beta version
-  /// of the Android Device Policy app.</i>
+  /// Whether changing the user icon is disabled.
   core.bool setUserIconDisabled;
 
-  /// Whether changing the wallpaper is disabled. <i>Requires the beta version
-  /// of the Android Device Policy app.</i>
+  /// Whether changing the wallpaper is disabled.
   core.bool setWallpaperDisabled;
 
   /// A message displayed to the user in the settings screen wherever
-  /// functionality has been disabled by the admin. <i>Requires the beta version
-  /// of the Android Device Policy app.</i>
+  /// functionality has been disabled by the admin.
   UserFacingMessage shortSupportMessage;
 
-  /// Whether sending or receiving SMS messages is disabled. <i>Requires the
-  /// beta version of the Android Device Policy app.</i>
+  /// Whether sending or receiving SMS messages is disabled.
   core.bool smsDisabled;
 
   /// Whether the status bar is disabled. This disables notifications, quick
@@ -3658,27 +3642,23 @@ class Policy {
   SystemUpdate systemUpdate;
 
   /// Whether configuring tethering and portable hotspots is disabled.
-  /// <i>Requires the beta version of the Android Device Policy app.</i>
   core.bool tetheringConfigDisabled;
 
-  /// Whether user uninstallation of applications is disabled. <i>Requires the
-  /// beta version of the Android Device Policy app.</i>
+  /// Whether user uninstallation of applications is disabled.
   core.bool uninstallAppsDisabled;
 
   /// Whether the microphone is muted and adjusting microphone volume is
   /// disabled.
   core.bool unmuteMicrophoneDisabled;
 
-  /// Whether transferring files over USB is disabled. <i>Requires the beta
-  /// version of the Android Device Policy app.</i>
+  /// Whether transferring files over USB is disabled.
   core.bool usbFileTransferDisabled;
 
   /// The version of the policy. This is a read-only field. The version is
   /// incremented each time the policy is updated.
   core.String version;
 
-  /// Whether configuring VPN is disabled. <i>Requires the beta version of the
-  /// Android Device Policy app.</i>
+  /// Whether configuring VPN is disabled.
   core.bool vpnConfigDisabled;
 
   /// Whether configuring WiFi access points is disabled.
@@ -3775,6 +3755,9 @@ class Policy {
     }
     if (_json.containsKey("keyguardDisabledFeatures")) {
       keyguardDisabledFeatures = _json["keyguardDisabledFeatures"];
+    }
+    if (_json.containsKey("kioskCustomLauncherEnabled")) {
+      kioskCustomLauncherEnabled = _json["kioskCustomLauncherEnabled"];
     }
     if (_json.containsKey("longSupportMessage")) {
       longSupportMessage =
@@ -3972,6 +3955,9 @@ class Policy {
     }
     if (keyguardDisabledFeatures != null) {
       _json["keyguardDisabledFeatures"] = keyguardDisabledFeatures;
+    }
+    if (kioskCustomLauncherEnabled != null) {
+      _json["kioskCustomLauncherEnabled"] = kioskCustomLauncherEnabled;
     }
     if (longSupportMessage != null) {
       _json["longSupportMessage"] = (longSupportMessage).toJson();

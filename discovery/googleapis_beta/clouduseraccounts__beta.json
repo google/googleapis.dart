@@ -24,7 +24,7 @@
     "description": "Creates and manages users and groups for accessing Google Compute Engine virtual machines.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/access/user-accounts/api/latest/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-BiORd5nMN3AbHTR5Pi2H1JslEk\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/-BiORd5nMN3AbHTR5Pi2H1JslEk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"

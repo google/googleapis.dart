@@ -337,16 +337,24 @@ class Block {
   /// is represented as around the top-left corner as defined when the text is
   /// read in the 'natural' orientation.
   /// For example:
-  ///   * when the text is horizontal it might look like:
-  ///      0----1
-  ///      |    |
-  ///      3----2
-  ///   * when it's rotated 180 degrees around the top-left corner it becomes:
-  ///      2----3
-  ///      |    |
-  ///      1----0
+  ///
+  /// * when the text is horizontal it might look like:
+  ///
+  ///         0----1
+  ///         |    |
+  ///         3----2
+  ///
+  /// * when it's rotated 180 degrees around the top-left corner it becomes:
+  ///
+  ///         2----3
+  ///         |    |
+  ///         1----0
+  ///
   ///   and the vertice order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
+
+  /// Confidence of the OCR results on the block. Range [0, 1].
+  core.double confidence;
 
   /// List of paragraphs in this block (if this blocks is of type text).
   core.List<Paragraph> paragraphs;
@@ -362,6 +370,9 @@ class Block {
     }
     if (_json.containsKey("boundingBox")) {
       boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
     }
     if (_json.containsKey("paragraphs")) {
       paragraphs = _json["paragraphs"]
@@ -381,6 +392,9 @@ class Block {
     }
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
     }
     if (paragraphs != null) {
       _json["paragraphs"] =
@@ -835,6 +849,7 @@ class EntityAnnotation {
   /// for `LABEL_DETECTION` features.
   BoundingPoly boundingPoly;
 
+  /// **Deprecated. Use `score` instead.**
   /// The accuracy of the entity detection in an image.
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
@@ -1197,13 +1212,18 @@ class FaceAnnotation {
   }
 }
 
-/// Users describe the type of Google Cloud Vision API tasks to perform over
-/// images by using *Feature*s. Each Feature indicates a type of image
-/// detection task to perform. Features encode the Cloud Vision API
-/// vertical to operate on and the number of top-scoring results to return.
+/// The type of Google Cloud Vision API detection to perform, and the maximum
+/// number of results to return for that type. Multiple `Feature` objects can
+/// be specified in the `features` list.
 class Feature {
-  /// Maximum number of results of this type.
+  /// Maximum number of results of this type. Does not apply to
+  /// `TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`.
   core.int maxResults;
+
+  /// Model to use for the feature.
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
+  core.String model;
 
   /// The feature type.
   /// Possible string values are:
@@ -1212,12 +1232,15 @@ class Feature {
   /// - "LANDMARK_DETECTION" : Run landmark detection.
   /// - "LOGO_DETECTION" : Run logo detection.
   /// - "LABEL_DETECTION" : Run label detection.
-  /// - "TEXT_DETECTION" : Run OCR.
+  /// - "TEXT_DETECTION" : Run text detection / optical character recognition
+  /// (OCR). Text detection
+  /// is optimized for areas of text within a larger image; if the image is
+  /// a document, use `DOCUMENT_TEXT_DETECTION` instead.
   /// - "DOCUMENT_TEXT_DETECTION" : Run dense text document OCR. Takes
   /// precedence when both
-  /// DOCUMENT_TEXT_DETECTION and TEXT_DETECTION are present.
-  /// - "SAFE_SEARCH_DETECTION" : Run computer vision models to compute image
-  /// safe-search properties.
+  /// `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` are present.
+  /// - "SAFE_SEARCH_DETECTION" : Run Safe Search to detect potentially unsafe
+  /// or undesirable content.
   /// - "IMAGE_PROPERTIES" : Compute a set of image properties, such as the
   /// image's dominant colors.
   /// - "CROP_HINTS" : Run crop hints.
@@ -1230,6 +1253,9 @@ class Feature {
     if (_json.containsKey("maxResults")) {
       maxResults = _json["maxResults"];
     }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -1241,6 +1267,9 @@ class Feature {
     if (maxResults != null) {
       _json["maxResults"] = maxResults;
     }
+    if (model != null) {
+      _json["model"] = model;
+    }
     if (type != null) {
       _json["type"] = type;
     }
@@ -1251,7 +1280,7 @@ class Feature {
 /// Client image to perform Google Cloud Vision API tasks over.
 class Image {
   /// Image content, represented as a stream of bytes.
-  /// Note: as with all `bytes` fields, protobuffers use a pure binary
+  /// Note: As with all `bytes` fields, protobuffers use a pure binary
   /// representation, whereas JSON representations use base64.
   core.String content;
   core.List<core.int> get contentAsBytes {
@@ -1263,9 +1292,9 @@ class Image {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Google Cloud Storage image location. If both `content` and `source`
-  /// are provided for an image, `content` takes precedence and is
-  /// used to perform the image annotation request.
+  /// Google Cloud Storage image location, or publicly-accessible image
+  /// URL. If both `content` and `source` are provided for an image, `content`
+  /// takes precedence and is used to perform the image annotation request.
   ImageSource source;
 
   Image();
@@ -1311,6 +1340,9 @@ class ImageContext {
   /// lat/long rectangle that specifies the location of the image.
   LatLongRect latLongRect;
 
+  /// Parameters for web detection.
+  WebDetectionParams webDetectionParams;
+
   ImageContext();
 
   ImageContext.fromJson(core.Map _json) {
@@ -1322,6 +1354,10 @@ class ImageContext {
     }
     if (_json.containsKey("latLongRect")) {
       latLongRect = new LatLongRect.fromJson(_json["latLongRect"]);
+    }
+    if (_json.containsKey("webDetectionParams")) {
+      webDetectionParams =
+          new WebDetectionParams.fromJson(_json["webDetectionParams"]);
     }
   }
 
@@ -1336,6 +1372,9 @@ class ImageContext {
     }
     if (latLongRect != null) {
       _json["latLongRect"] = (latLongRect).toJson();
+    }
+    if (webDetectionParams != null) {
+      _json["webDetectionParams"] = (webDetectionParams).toJson();
     }
     return _json;
   }
@@ -1365,25 +1404,32 @@ class ImageProperties {
   }
 }
 
-/// External image source (Google Cloud Storage image location).
+/// External image source (Google Cloud Storage or web URL image location).
 class ImageSource {
-  /// NOTE: For new code `image_uri` below is preferred.
-  /// Google Cloud Storage image URI, which must be in the following form:
-  /// `gs://bucket_name/object_name` (for details, see
+  /// **Use `image_uri` instead.**
+  ///
+  /// The Google Cloud Storage  URI of the form
+  /// `gs://bucket_name/object_name`. Object versioning is not supported. See
   /// [Google Cloud Storage Request
-  /// URIs](https://cloud.google.com/storage/docs/reference-uris)).
-  /// NOTE: Cloud Storage object versioning is not supported.
+  /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
   core.String gcsImageUri;
 
-  /// Image URI which supports:
-  /// 1) Google Cloud Storage image URI, which must be in the following form:
-  /// `gs://bucket_name/object_name` (for details, see
-  /// [Google Cloud Storage Request
-  /// URIs](https://cloud.google.com/storage/docs/reference-uris)).
-  /// NOTE: Cloud Storage object versioning is not supported.
-  /// 2) Publicly accessible image HTTP/HTTPS URL.
-  /// This is preferred over the legacy `gcs_image_uri` above. When both
-  /// `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
+  /// The URI of the source image. Can be either:
+  ///
+  /// 1. A Google Cloud Storage URI of the form
+  /// `gs://bucket_name/object_name`. Object versioning is not supported. See
+  ///    [Google Cloud Storage Request
+  ///    URIs](https://cloud.google.com/storage/docs/reference-uris) for more
+  ///    info.
+  ///
+  /// 2. A publicly-accessible image HTTP/HTTPS URL. When fetching images from
+  ///    HTTP/HTTPS URLs, Google cannot guarantee that the request will be
+  ///    completed. Your request may fail if the specified host denies the
+  /// request (e.g. due to request throttling or DOS prevention), or if Google
+  ///    throttles requests to the site for abuse prevention. You should not
+  ///    depend on externally-hosted images for production applications.
+  ///
+  /// When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
   /// precedence.
   core.String imageUri;
 
@@ -1577,6 +1623,9 @@ class Page {
   /// List of blocks of text, images etc on this page.
   core.List<Block> blocks;
 
+  /// Confidence of the OCR results on the page. Range [0, 1].
+  core.double confidence;
+
   /// Page height in pixels.
   core.int height;
 
@@ -1592,6 +1641,9 @@ class Page {
     if (_json.containsKey("blocks")) {
       blocks =
           _json["blocks"].map((value) => new Block.fromJson(value)).toList();
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
     }
     if (_json.containsKey("height")) {
       height = _json["height"];
@@ -1609,6 +1661,9 @@ class Page {
         new core.Map<core.String, core.Object>();
     if (blocks != null) {
       _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
     }
     if (height != null) {
       _json["height"] = height;
@@ -1642,6 +1697,9 @@ class Paragraph {
   ///   and the vertice order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
 
+  /// Confidence of the OCR results for the paragraph. Range [0, 1].
+  core.double confidence;
+
   /// Additional information detected for the paragraph.
   TextProperty property;
 
@@ -1653,6 +1711,9 @@ class Paragraph {
   Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
       boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
     }
     if (_json.containsKey("property")) {
       property = new TextProperty.fromJson(_json["property"]);
@@ -1667,6 +1728,9 @@ class Paragraph {
         new core.Map<core.String, core.Object>();
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
     }
     if (property != null) {
       _json["property"] = (property).toJson();
@@ -1798,6 +1862,24 @@ class SafeSearchAnnotation {
   /// specified vertical.
   core.String medical;
 
+  /// Likelihood that the request image contains racy content. Racy content may
+  /// include (but is not limited to) skimpy or sheer clothing, strategically
+  /// covered nudity, lewd or provocative poses, or close-ups of sensitive
+  /// body areas.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown likelihood.
+  /// - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+  /// specified vertical.
+  /// - "UNLIKELY" : It is unlikely that the image belongs to the specified
+  /// vertical.
+  /// - "POSSIBLE" : It is possible that the image belongs to the specified
+  /// vertical.
+  /// - "LIKELY" : It is likely that the image belongs to the specified
+  /// vertical.
+  /// - "VERY_LIKELY" : It is very likely that the image belongs to the
+  /// specified vertical.
+  core.String racy;
+
   /// Spoof likelihood. The likelihood that an modification
   /// was made to the image's canonical version to make it appear
   /// funny or offensive.
@@ -1839,6 +1921,9 @@ class SafeSearchAnnotation {
     if (_json.containsKey("medical")) {
       medical = _json["medical"];
     }
+    if (_json.containsKey("racy")) {
+      racy = _json["racy"];
+    }
     if (_json.containsKey("spoof")) {
       spoof = _json["spoof"];
     }
@@ -1855,6 +1940,9 @@ class SafeSearchAnnotation {
     }
     if (medical != null) {
       _json["medical"] = medical;
+    }
+    if (racy != null) {
+      _json["racy"] = racy;
     }
     if (spoof != null) {
       _json["spoof"] = spoof;
@@ -1987,6 +2075,9 @@ class Symbol {
   ///   and the vertice order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
 
+  /// Confidence of the OCR results for the symbol. Range [0, 1].
+  core.double confidence;
+
   /// Additional information detected for the symbol.
   TextProperty property;
 
@@ -1998,6 +2089,9 @@ class Symbol {
   Symbol.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
       boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
     }
     if (_json.containsKey("property")) {
       property = new TextProperty.fromJson(_json["property"]);
@@ -2012,6 +2106,9 @@ class Symbol {
         new core.Map<core.String, core.Object>();
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
     }
     if (property != null) {
       _json["property"] = (property).toJson();
@@ -2132,6 +2229,9 @@ class Vertex {
 
 /// Relevant information for the image from the Internet.
 class WebDetection {
+  /// Best guess text labels for the request image.
+  core.List<WebLabel> bestGuessLabels;
+
   /// Fully matching images from the Internet.
   /// Can include resized copies of the query image.
   core.List<WebImage> fullMatchingImages;
@@ -2153,6 +2253,11 @@ class WebDetection {
   WebDetection();
 
   WebDetection.fromJson(core.Map _json) {
+    if (_json.containsKey("bestGuessLabels")) {
+      bestGuessLabels = _json["bestGuessLabels"]
+          .map((value) => new WebLabel.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = _json["fullMatchingImages"]
           .map((value) => new WebImage.fromJson(value))
@@ -2183,6 +2288,10 @@ class WebDetection {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bestGuessLabels != null) {
+      _json["bestGuessLabels"] =
+          bestGuessLabels.map((value) => (value).toJson()).toList();
+    }
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
           fullMatchingImages.map((value) => (value).toJson()).toList();
@@ -2202,6 +2311,29 @@ class WebDetection {
     if (webEntities != null) {
       _json["webEntities"] =
           webEntities.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Parameters for web detection request.
+class WebDetectionParams {
+  /// Whether to include results derived from the geo information in the image.
+  core.bool includeGeoResults;
+
+  WebDetectionParams();
+
+  WebDetectionParams.fromJson(core.Map _json) {
+    if (_json.containsKey("includeGeoResults")) {
+      includeGeoResults = _json["includeGeoResults"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeGeoResults != null) {
+      _json["includeGeoResults"] = includeGeoResults;
     }
     return _json;
   }
@@ -2281,8 +2413,55 @@ class WebImage {
   }
 }
 
+/// Label to provide extra metadata for the web detection.
+class WebLabel {
+  /// Label for extra metadata.
+  core.String label;
+
+  /// The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String languageCode;
+
+  WebLabel();
+
+  WebLabel.fromJson(core.Map _json) {
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    return _json;
+  }
+}
+
 /// Metadata for web pages.
 class WebPage {
+  /// Fully matching images on the page.
+  /// Can include resized copies of the query image.
+  core.List<WebImage> fullMatchingImages;
+
+  /// Title for the web page, may contain HTML markups.
+  core.String pageTitle;
+
+  /// Partial matching images on the page.
+  /// Those images are similar enough to share some key-point features. For
+  /// example an original image will likely have partial matching for its
+  /// crops.
+  core.List<WebImage> partialMatchingImages;
+
   /// (Deprecated) Overall relevancy score for the web page.
   core.double score;
 
@@ -2292,6 +2471,19 @@ class WebPage {
   WebPage();
 
   WebPage.fromJson(core.Map _json) {
+    if (_json.containsKey("fullMatchingImages")) {
+      fullMatchingImages = _json["fullMatchingImages"]
+          .map((value) => new WebImage.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("pageTitle")) {
+      pageTitle = _json["pageTitle"];
+    }
+    if (_json.containsKey("partialMatchingImages")) {
+      partialMatchingImages = _json["partialMatchingImages"]
+          .map((value) => new WebImage.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("score")) {
       score = _json["score"];
     }
@@ -2303,6 +2495,17 @@ class WebPage {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (fullMatchingImages != null) {
+      _json["fullMatchingImages"] =
+          fullMatchingImages.map((value) => (value).toJson()).toList();
+    }
+    if (pageTitle != null) {
+      _json["pageTitle"] = pageTitle;
+    }
+    if (partialMatchingImages != null) {
+      _json["partialMatchingImages"] =
+          partialMatchingImages.map((value) => (value).toJson()).toList();
+    }
     if (score != null) {
       _json["score"] = score;
     }
@@ -2332,6 +2535,9 @@ class Word {
   ///   and the vertice order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
 
+  /// Confidence of the OCR results for the word. Range [0, 1].
+  core.double confidence;
+
   /// Additional information detected for the word.
   TextProperty property;
 
@@ -2344,6 +2550,9 @@ class Word {
   Word.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
       boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
     }
     if (_json.containsKey("property")) {
       property = new TextProperty.fromJson(_json["property"]);
@@ -2359,6 +2568,9 @@ class Word {
         new core.Map<core.String, core.Object>();
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
     }
     if (property != null) {
       _json["property"] = (property).toJson();

@@ -25,45 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -101,13 +62,52 @@
             "location": "query",
             "type": "boolean"
         },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "bearer_token": {
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         }
@@ -182,6 +182,10 @@
             "description": "Response message for GetSiteSummary.",
             "id": "SiteSummaryResponse",
             "properties": {
+                "desktopSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "Summary for the desktop review of the site."
+                },
                 "mobileSummary": {
                     "$ref": "PlatformSummary",
                     "description": "Summary for the mobile review of the site."
@@ -189,10 +193,6 @@
                 "reviewedSite": {
                     "description": "The name of the site reviewed.",
                     "type": "string"
-                },
-                "desktopSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "Summary for the desktop review of the site."
                 }
             },
             "type": "object"
@@ -201,28 +201,6 @@
             "description": "Summary of the ad experience rating of a site for a specific platform.",
             "id": "PlatformSummary",
             "properties": {
-                "enforcementTime": {
-                    "description": "The date on which ad filtering begins.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "region": {
-                    "description": "The assigned regions for the site and platform.",
-                    "enumDescriptions": [
-                        "Ad standard not yet defined for your region.",
-                        "Region A.",
-                        "Region B."
-                    ],
-                    "items": {
-                        "enum": [
-                            "REGION_UNKNOWN",
-                            "REGION_A",
-                            "REGION_B"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "filterStatus": {
                     "description": "The ad filtering status of the site.",
                     "enum": [
@@ -268,6 +246,28 @@
                         "Warning.",
                         "Failing."
                     ],
+                    "type": "string"
+                },
+                "region": {
+                    "description": "The assigned regions for the site and platform.",
+                    "enumDescriptions": [
+                        "Ad standard not yet defined for your region.",
+                        "Region A.",
+                        "Region B."
+                    ],
+                    "items": {
+                        "enum": [
+                            "REGION_UNKNOWN",
+                            "REGION_A",
+                            "REGION_B"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "enforcementTime": {
+                    "description": "The date on which ad filtering begins.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },

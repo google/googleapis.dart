@@ -6,7 +6,7 @@
     "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/sNrwy4GBJh0JDl02KcW1-1MdJOM\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/sNrwy4GBJh0JDl02KcW1-1MdJOM\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"

@@ -2308,12 +2308,9 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - null
-  /// Possible string values are:
-  /// - "alpha"
-  /// - "beta"
-  /// - "production"
-  /// - "rollout"
+  /// [track] - The track to read or modify. Acceptable values are: "alpha",
+  /// "beta", "production" or "rollout".
+  /// Value must have pattern "(alpha|beta|production|rollout)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2372,12 +2369,9 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - null
-  /// Possible string values are:
-  /// - "alpha"
-  /// - "beta"
-  /// - "production"
-  /// - "rollout"
+  /// [track] - The track to read or modify. Acceptable values are: "alpha",
+  /// "beta", "production" or "rollout".
+  /// Value must have pattern "(alpha|beta|production|rollout)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2439,12 +2433,9 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - null
-  /// Possible string values are:
-  /// - "alpha"
-  /// - "beta"
-  /// - "production"
-  /// - "rollout"
+  /// [track] - The track to read or modify. Acceptable values are: "alpha",
+  /// "beta", "production" or "rollout".
+  /// Value must have pattern "(alpha|beta|production|rollout)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2513,12 +2504,9 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track type to read or modify.
-  /// Possible string values are:
-  /// - "alpha"
-  /// - "beta"
-  /// - "production"
-  /// - "rollout"
+  /// [track] - The track to read or modify. Acceptable values are: "alpha",
+  /// "beta", "production" or "rollout".
+  /// Value must have pattern "(alpha|beta|production|rollout)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2634,12 +2622,9 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track type to read or modify.
-  /// Possible string values are:
-  /// - "alpha"
-  /// - "beta"
-  /// - "production"
-  /// - "rollout"
+  /// [track] - The track to read or modify. Acceptable values are: "alpha",
+  /// "beta", "production" or "rollout".
+  /// Value must have pattern "(alpha|beta|production|rollout)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2705,12 +2690,9 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track type to read or modify.
-  /// Possible string values are:
-  /// - "alpha"
-  /// - "beta"
-  /// - "production"
-  /// - "rollout"
+  /// [track] - The track to read or modify. Acceptable values are: "alpha",
+  /// "beta", "production" or "rollout".
+  /// Value must have pattern "(alpha|beta|production|rollout)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5634,15 +5616,15 @@ class SubscriptionPurchase {
 
   /// The purchase token of the originating purchase if this subscription is one
   /// of the following:
-  /// - Re-signup of a cancelled but non-lapsed subscription
+  /// - Re-signup of a canceled but non-lapsed subscription
   /// - Upgrade/downgrade from a previous subscription  For example, suppose a
   /// user originally signs up and you receive purchase token X, then the user
-  /// cancels and goes through the resignup flow and you receive purchase token
-  /// Y. If you call this API with purchase token Y, this field will be set to
-  /// X. If you call this API with purchase token X, this field will not be set.
-  /// If user upgrade his subscription after the first resignup. You receive
-  /// purchase token Z. If you call this API with purchase token Z, this field
-  /// will be set to Y.
+  /// cancels and goes through the resignup flow (before their subscription
+  /// lapses) and you receive purchase token Y, and finally the user upgrades
+  /// their subscription and you receive purchase token Z. If you call this API
+  /// with purchase token Z, this field will be set to Y. If you call this API
+  /// with purchase token Y, this field will be set to X. If you call this API
+  /// with purchase token X, this field will not be set.
   core.String linkedPurchaseToken;
 
   /// The order id of the latest recurring order associated with the purchase of
@@ -5906,6 +5888,8 @@ class TokenPagination {
 }
 
 class Track {
+  /// Identifier for this track. One of "alpha", "beta", "production" or
+  /// "rollout".
   core.String track;
   core.double userFraction;
   core.List<core.int> versionCodes;

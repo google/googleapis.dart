@@ -1422,8 +1422,6 @@ class ServicesRolloutsResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
-  /// [pageSize] - The max number of items to include in the response list.
-  ///
   /// [filter] - Use `filter` to return subset of rollouts.
   /// The following filters are supported:
   ///   -- To limit the results to only those in
@@ -1434,6 +1432,8 @@ class ServicesRolloutsResourceApi {
   ///      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
   ///
   /// [pageToken] - The token of the page to retrieve.
+  ///
+  /// [pageSize] - The max number of items to include in the response list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1446,9 +1446,9 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceRolloutsResponse> list(core.String serviceName,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1460,14 +1460,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1621,158 +1621,6 @@ class Api {
     }
     if (version != null) {
       _json["version"] = version;
-    }
-    return _json;
-  }
-}
-
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:foo@gmail.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "fooservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:bar@gmail.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
-class AuditConfig {
-  /// The configuration for logging of each type of permission.
-  /// Next ID: 4
-  core.List<AuditLogConfig> auditLogConfigs;
-  core.List<core.String> exemptedMembers;
-
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
-  core.String service;
-
-  AuditConfig();
-
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
-    }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
-    }
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (service != null) {
-      _json["service"] = service;
-    }
-    return _json;
-  }
-}
-
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:foo@gmail.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
-
-  AuditLogConfig();
-
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
-    }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json["logType"] = logType;
     }
     return _json;
   }
@@ -2260,7 +2108,7 @@ class Binding {
   /// NOTE: an unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
-  /// This field is GOOGLE_INTERNAL.
+  /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -4069,13 +3917,6 @@ class HttpRule {
   /// Used for updating a resource.
   core.String put;
 
-  /// The name of the response field whose value is mapped to the HTTP body of
-  /// response. Other response fields are ignored. This field is optional. When
-  /// not set, the response message will be used as HTTP body of response.
-  /// NOTE: the referred field must be not a repeated field and must be present
-  /// at the top-level of response message type.
-  core.String responseBody;
-
   /// Selects methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
@@ -4116,9 +3957,6 @@ class HttpRule {
     if (_json.containsKey("put")) {
       put = _json["put"];
     }
-    if (_json.containsKey("responseBody")) {
-      responseBody = _json["responseBody"];
-    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -4157,9 +3995,6 @@ class HttpRule {
     }
     if (put != null) {
       _json["put"] = put;
-    }
-    if (responseBody != null) {
-      _json["responseBody"] = responseBody;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -5661,11 +5496,8 @@ class Page {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
-  /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
-
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
@@ -5691,19 +5523,12 @@ class Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  core.bool iamOwned;
-
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
           .map((value) => new Binding.fromJson(value))
@@ -5711,9 +5536,6 @@ class Policy {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("iamOwned")) {
-      iamOwned = _json["iamOwned"];
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -5723,18 +5545,11 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (auditConfigs != null) {
-      _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
-    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
-    }
-    if (iamOwned != null) {
-      _json["iamOwned"] = iamOwned;
     }
     if (version != null) {
       _json["version"] = version;

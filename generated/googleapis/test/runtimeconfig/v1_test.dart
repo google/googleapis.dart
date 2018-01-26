@@ -80,14 +80,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed2041() {
+buildUnnamed2053() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed2041(core.List<api.Operation> o) {
+checkUnnamed2053(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -99,7 +99,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed2041();
+    o.operations = buildUnnamed2053();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -109,12 +109,12 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2041(o.operations);
+    checkUnnamed2053(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed2042() {
+buildUnnamed2054() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -129,7 +129,7 @@ buildUnnamed2042() {
   return o;
 }
 
-checkUnnamed2042(core.Map<core.String, core.Object> o) {
+checkUnnamed2054(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -143,7 +143,7 @@ checkUnnamed2042(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2043() {
+buildUnnamed2055() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -158,7 +158,7 @@ buildUnnamed2043() {
   return o;
 }
 
-checkUnnamed2043(core.Map<core.String, core.Object> o) {
+checkUnnamed2055(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -179,9 +179,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2042();
+    o.metadata = buildUnnamed2054();
     o.name = "foo";
-    o.response = buildUnnamed2043();
+    o.response = buildUnnamed2055();
   }
   buildCounterOperation--;
   return o;
@@ -192,14 +192,14 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed2042(o.metadata);
+    checkUnnamed2054(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2043(o.response);
+    checkUnnamed2055(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed2044() {
+buildUnnamed2056() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -214,7 +214,7 @@ buildUnnamed2044() {
   return o;
 }
 
-checkUnnamed2044(core.Map<core.String, core.Object> o) {
+checkUnnamed2056(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -228,17 +228,17 @@ checkUnnamed2044(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2045() {
+buildUnnamed2057() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2044());
-  o.add(buildUnnamed2044());
+  o.add(buildUnnamed2056());
+  o.add(buildUnnamed2056());
   return o;
 }
 
-checkUnnamed2045(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed2057(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2044(o[0]);
-  checkUnnamed2044(o[1]);
+  checkUnnamed2056(o[0]);
+  checkUnnamed2056(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -247,7 +247,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2045();
+    o.details = buildUnnamed2057();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -258,7 +258,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2045(o.details);
+    checkUnnamed2057(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;

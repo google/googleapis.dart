@@ -14,7 +14,7 @@
     "description": "Searches for books and manages your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/q1aPzEOdugLS9_Y8FK61EmJhEHg\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/grKqkiLaDaBaqW7ezJtDaKmrU78\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -291,6 +291,81 @@
                     "response": {
                         "$ref": "Metadata"
                     },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                }
+            }
+        },
+        "familysharing": {
+            "methods": {
+                "getFamilyInfo": {
+                    "description": "Gets information regarding the family that the user is part of.",
+                    "httpMethod": "GET",
+                    "id": "books.familysharing.getFamilyInfo",
+                    "parameters": {
+                        "source": {
+                            "description": "String to identify the originator of this request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "familysharing/getFamilyInfo",
+                    "response": {
+                        "$ref": "FamilyInfo"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                },
+                "share": {
+                    "description": "Initiates sharing of the content with the user's family. Empty response indicates success.",
+                    "httpMethod": "POST",
+                    "id": "books.familysharing.share",
+                    "parameters": {
+                        "docId": {
+                            "description": "The docid to share.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source": {
+                            "description": "String to identify the originator of this request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "volumeId": {
+                            "description": "The volume to share.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "familysharing/share",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                },
+                "unshare": {
+                    "description": "Initiates revoking content that has already been shared with the user's family. Empty response indicates success.",
+                    "httpMethod": "POST",
+                    "id": "books.familysharing.unshare",
+                    "parameters": {
+                        "docId": {
+                            "description": "The docid to unshare.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source": {
+                            "description": "String to identify the originator of this request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "volumeId": {
+                            "description": "The volume to unshare.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "familysharing/unshare",
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
@@ -2405,7 +2480,7 @@
             }
         }
     },
-    "revision": "20170313",
+    "revision": "20171127",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3222,6 +3297,42 @@
             },
             "type": "object"
         },
+        "FamilyInfo": {
+            "id": "FamilyInfo",
+            "properties": {
+                "kind": {
+                    "default": "books#familyInfo",
+                    "description": "Resource type.",
+                    "type": "string"
+                },
+                "membership": {
+                    "description": "Family membership info of the user that made the request.",
+                    "properties": {
+                        "acquirePermission": {
+                            "description": "Restrictions on user buying and acquiring content.",
+                            "type": "string"
+                        },
+                        "ageGroup": {
+                            "description": "The age group of the user.",
+                            "type": "string"
+                        },
+                        "allowedMaturityRating": {
+                            "description": "The maximum allowed maturity rating for the user.",
+                            "type": "string"
+                        },
+                        "isInFamily": {
+                            "type": "boolean"
+                        },
+                        "role": {
+                            "description": "The role of the user in the family.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Geolayerdata": {
             "id": "Geolayerdata",
             "properties": {
@@ -3774,6 +3885,14 @@
                 },
                 "notification": {
                     "properties": {
+                        "matchMyInterests": {
+                            "properties": {
+                                "opted_state": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
                         "moreFromAuthors": {
                             "properties": {
                                 "opted_state": {
@@ -3783,6 +3902,14 @@
                             "type": "object"
                         },
                         "moreFromSeries": {
+                            "properties": {
+                                "opted_state": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "priceDrop": {
                             "properties": {
                                 "opted_state": {
                                     "type": "string"
