@@ -313,7 +313,7 @@ class MultipartMediaUploader {
 /**
  * Base64 encodes a stream of bytes.
  */
-class Base64Encoder implements StreamTransformer<List<int>, String> {
+class Base64Encoder extends StreamTransformerBase<List<int>, String> {
   static int lengthOfBase64Stream(int lengthOfByteStream) {
     return ((lengthOfByteStream + 2) ~/ 3) * 4;
   }
