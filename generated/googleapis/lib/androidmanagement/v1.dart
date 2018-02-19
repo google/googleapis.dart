@@ -50,7 +50,8 @@ class EnterprisesResourceApi {
 
   EnterprisesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates an enterprise by completing the enterprise signup flow.
+  /// Creates an enterprise. This is the last step in the enterprise signup
+  /// flow.
   ///
   /// [request] - The metadata request object.
   ///
@@ -61,7 +62,7 @@ class EnterprisesResourceApi {
   ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
-  /// [projectId] - The id of the Google Cloud Platform project which will own
+  /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -117,7 +118,8 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the enterprise in the form enterprises/{enterpriseId}
+  /// [name] - The name of the enterprise in the form
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -162,7 +164,8 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the enterprise in the form enterprises/{enterpriseId}
+  /// [name] - The name of the enterprise in the form
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
@@ -223,7 +226,7 @@ class EnterprisesApplicationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the application in the form
-  /// enterprises/{enterpriseId}/applications/{package_name}
+  /// enterprises/{enterpriseId}/applications/{package_name}.
   /// Value must have pattern "^enterprises/[^/]+/applications/[^/]+$".
   ///
   /// [languageCode] - The preferred language for localized application info, as
@@ -280,12 +283,12 @@ class EnterprisesDevicesResourceApi {
   EnterprisesDevicesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes a device, which causes the device to be wiped.
+  /// Deletes a device. This operation wipes the device.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the device in the form
-  /// enterprises/{enterpriseId}/devices/{deviceId}
+  /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -329,7 +332,7 @@ class EnterprisesDevicesResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the device in the form
-  /// enterprises/{enterpriseId}/devices/{deviceId}
+  /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -377,7 +380,7 @@ class EnterprisesDevicesResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the device in the form
-  /// enterprises/{enterpriseId}/devices/{deviceId}
+  /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -427,14 +430,14 @@ class EnterprisesDevicesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The name of the enterprise in the form
-  /// enterprises/{enterpriseId}
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -487,7 +490,7 @@ class EnterprisesDevicesResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the device in the form
-  /// enterprises/{enterpriseId}/devices/{deviceId}
+  /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
@@ -772,7 +775,7 @@ class EnterprisesEnrollmentTokensResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The name of the enterprise in the form
-  /// enterprises/{enterpriseId}
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -818,12 +821,13 @@ class EnterprisesEnrollmentTokensResourceApi {
     return _response.then((data) => new EnrollmentToken.fromJson(data));
   }
 
-  /// Deletes an enrollment token, which prevents future use of the token.
+  /// Deletes an enrollment token. This operation invalidates the token,
+  /// preventing its future use.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the enrollment token in the form
-  /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}
+  /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
   /// Value must have pattern "^enterprises/[^/]+/enrollmentTokens/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -875,7 +879,7 @@ class EnterprisesPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the policy in the form
-  /// enterprises/{enterpriseId}/policies/{policyId}
+  /// enterprises/{enterpriseId}/policies/{policyId}.
   /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -919,7 +923,7 @@ class EnterprisesPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the policy in the form
-  /// enterprises/{enterpriseId}/policies/{policyId}
+  /// enterprises/{enterpriseId}/policies/{policyId}.
   /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -963,14 +967,14 @@ class EnterprisesPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The name of the enterprise in the form
-  /// enterprises/{enterpriseId}
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1023,7 +1027,7 @@ class EnterprisesPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the policy in the form
-  /// enterprises/{enterpriseId}/policies/{policyId}
+  /// enterprises/{enterpriseId}/policies/{policyId}.
   /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
@@ -1087,7 +1091,7 @@ class EnterprisesWebTokensResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The name of the enterprise in the form
-  /// enterprises/{enterpriseId}
+  /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1141,14 +1145,14 @@ class SignupUrlsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [callbackUrl] - The callback URL to which the admin will be redirected
+  /// [callbackUrl] - The callback URL that the admin will be redirected to
   /// after successfully creating an enterprise. Before redirecting there the
   /// system will add a query parameter to this URL named enterpriseToken which
   /// will contain an opaque token to be used for the create enterprise request.
   /// The URL will be parsed then reformatted in order to add the
   /// enterpriseToken parameter, so there may be some minor formatting changes.
   ///
-  /// [projectId] - The id of the Google Cloud Platform project which will own
+  /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1225,10 +1229,10 @@ class AlwaysOnVpnPackage {
 }
 
 /// A compliance rule condition which is satisfied if the Android Framework API
-/// level on the device does not meet a minimum requirement. There can only be
+/// level on the device doesn't meet a minimum requirement. There can only be
 /// one rule with this type of condition per policy.
 class ApiLevelCondition {
-  /// The minimum desired Android Framework API level. If the device does not
+  /// The minimum desired Android Framework API level. If the device doesn't
   /// meet the minimum requirement, this condition is satisfied. Must be greater
   /// than zero.
   core.int minApiLevel;
@@ -1251,20 +1255,19 @@ class ApiLevelCondition {
   }
 }
 
-/// Application information.
+/// Information about an app.
 class Application {
-  /// The set of managed properties available to be pre-configured for the
-  /// application.
+  /// The set of managed properties available to be pre-configured for the app.
   core.List<ManagedProperty> managedProperties;
 
-  /// The name of the application in the form
-  /// enterprises/{enterpriseId}/applications/{package_name}
+  /// The name of the app in the form
+  /// enterprises/{enterpriseId}/applications/{package_name}.
   core.String name;
 
   /// The permissions required by the app.
   core.List<ApplicationPermission> permissions;
 
-  /// The title of the application. Localized.
+  /// The title of the app. Localized.
   core.String title;
 
   Application();
@@ -1309,9 +1312,9 @@ class Application {
   }
 }
 
-/// Application permission.
+/// A permission required by the app.
 class ApplicationPermission {
-  /// A longer description of the permission, giving more details of what it
+  /// A longer description of the permission, providing more detail on what it
   /// affects. Localized.
   core.String description;
 
@@ -1365,17 +1368,20 @@ class ApplicationPolicy {
   /// - "DENY" : Automatically deny a permission.
   core.String defaultPermissionPolicy;
 
+  /// The scopes delegated to the app from Android Device Policy.
+  core.List<core.String> delegatedScopes;
+
   /// The type of installation to perform.
   /// Possible string values are:
   /// - "INSTALL_TYPE_UNSPECIFIED" : No automatic installation is performed. Any
   /// other app policies will be applied if the user installs the app.
-  /// - "PREINSTALLED" : The application is automatically installed and can be
+  /// - "PREINSTALLED" : The app is automatically installed and can be removed
+  /// by the user.
+  /// - "FORCE_INSTALLED" : The app is automatically installed and can't be
   /// removed by the user.
-  /// - "FORCE_INSTALLED" : The application is automatically installed and
-  /// cannot be removed by the user.
   core.String installType;
 
-  /// Whether the application is allowed to lock itself in full-screen mode.
+  /// Whether the app is allowed to lock itself in full-screen mode.
   core.bool lockTaskAllowed;
 
   /// Managed configuration applied to the app. The format for the configuration
@@ -1394,8 +1400,16 @@ class ApplicationPolicy {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> managedConfiguration;
 
-  /// The package name of the app, e.g. com.google.android.youtube for the
-  /// YouTube app.
+  /// The minimum version of the app that runs on the device. If set, the device
+  /// attempts to update the app to at least this version code. If the app is
+  /// not up-to-date, the device will contain a NonComplianceDetail with
+  /// non_compliance_reason set to APP_NOT_UPDATED. The app must already be
+  /// published to Google Play with a version code greater than or equal to this
+  /// value. At most 20 apps may specify a minimum version code per policy.
+  core.int minimumVersionCode;
+
+  /// The package name of the app. For example, com.google.android.youtube for
+  /// the YouTube app.
   core.String packageName;
 
   /// Explicit permission grants or denials for the app. These values override
@@ -1408,6 +1422,9 @@ class ApplicationPolicy {
     if (_json.containsKey("defaultPermissionPolicy")) {
       defaultPermissionPolicy = _json["defaultPermissionPolicy"];
     }
+    if (_json.containsKey("delegatedScopes")) {
+      delegatedScopes = _json["delegatedScopes"];
+    }
     if (_json.containsKey("installType")) {
       installType = _json["installType"];
     }
@@ -1416,6 +1433,9 @@ class ApplicationPolicy {
     }
     if (_json.containsKey("managedConfiguration")) {
       managedConfiguration = _json["managedConfiguration"];
+    }
+    if (_json.containsKey("minimumVersionCode")) {
+      minimumVersionCode = _json["minimumVersionCode"];
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
@@ -1433,6 +1453,9 @@ class ApplicationPolicy {
     if (defaultPermissionPolicy != null) {
       _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
     }
+    if (delegatedScopes != null) {
+      _json["delegatedScopes"] = delegatedScopes;
+    }
     if (installType != null) {
       _json["installType"] = installType;
     }
@@ -1441,6 +1464,9 @@ class ApplicationPolicy {
     }
     if (managedConfiguration != null) {
       _json["managedConfiguration"] = managedConfiguration;
+    }
+    if (minimumVersionCode != null) {
+      _json["minimumVersionCode"] = minimumVersionCode;
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
@@ -1529,14 +1555,13 @@ class Command {
 /// as well, depending on the field values in the rule.
 class ComplianceRule {
   /// A condition which is satisfied if the Android Framework API level on the
-  /// device does not meet a minimum requirement.
+  /// device doesn't meet a minimum requirement.
   ApiLevelCondition apiLevelCondition;
 
-  /// If set to true, the rule includes a mitigating action to disable
-  /// applications so that the device is effectively disabled, but application
-  /// data is preserved. If the device is running an app in locked task mode,
-  /// the app will be closed and a UI showing the reason for non-compliance will
-  /// be displayed.
+  /// If set to true, the rule includes a mitigating action to disable apps so
+  /// that the device is effectively disabled, but app data is preserved. If the
+  /// device is running an app in locked task mode, the app will be closed and a
+  /// UI showing the reason for non-compliance will be displayed.
   core.bool disableApps;
 
   /// A condition which is satisfied if there exists any matching
@@ -1577,50 +1602,50 @@ class ComplianceRule {
 }
 
 /// A device owned by an enterprise. Unless otherwise noted, all fields are
-/// read-only and cannot be modified by an update device request.
+/// read-only and can't be modified by enterprises.devices.patch.
 class Device {
   /// The API level of the Android platform version running on the device.
   core.int apiLevel;
 
-  /// The name of the policy that is currently applied by the device.
+  /// The name of the policy currently applied to the device.
   core.String appliedPolicyName;
 
-  /// The version of the policy that is currently applied by the device.
+  /// The version of the policy currently applied to the device.
   core.String appliedPolicyVersion;
 
-  /// The state that is currently applied by the device.
+  /// The state currently applied to the device.
   /// Possible string values are:
   /// - "DEVICE_STATE_UNSPECIFIED" : This value is disallowed.
   /// - "ACTIVE" : The device is active.
   /// - "DISABLED" : The device is disabled.
   /// - "DELETED" : The device was deleted. This state will never be returned by
-  /// an API call, but will be used in the final policy compliance report
-  /// published to Cloud Pub/Sub when the device acknowledges the deletion.
+  /// an API call, but is used in the final policy compliance report published
+  /// to Cloud Pub/Sub when the device acknowledges the deletion.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
-  /// will be in this state until they have applied policy.
+  /// are in this state until they have a policy applied.
   core.String appliedState;
 
-  /// Device settings information. This information is only available when
+  /// Device settings information. This information is only available if
   /// deviceSettingsEnabled is true in the device's policy.
   DeviceSettings deviceSettings;
 
   /// If the device state is DISABLED, an optional message that is displayed on
-  /// the device indicating the reason the device is disabled. This field may be
-  /// modified by an update request.
+  /// the device indicating the reason the device is disabled. This field can be
+  /// modified by a patch request.
   UserFacingMessage disabledReason;
 
-  /// Displays on the device. This information is only available when
-  /// displayInfoEnabled is true in the device's policy.
+  /// Detailed information about displays on the device. This information is
+  /// only available if displayInfoEnabled is true in the device's policy.
   core.List<Display> displays;
 
   /// The time of device enrollment.
   core.String enrollmentTime;
 
-  /// If this device was enrolled with an enrollment token with additional data
+  /// If the device was enrolled with an enrollment token with additional data
   /// provided, this field contains that data.
   core.String enrollmentTokenData;
 
-  /// If this device was enrolled with an enrollment token, this field contains
+  /// If the device was enrolled with an enrollment token, this field contains
   /// the name of the token.
   core.String enrollmentTokenName;
 
@@ -1628,7 +1653,7 @@ class Device {
   HardwareInfo hardwareInfo;
 
   /// Hardware status samples in chronological order. This information is only
-  /// available when hardwareStatusEnabled is true in the device's policy.
+  /// available if hardwareStatusEnabled is true in the device's policy.
   core.List<HardwareStatus> hardwareStatusSamples;
 
   /// The last time the device sent a policy compliance report.
@@ -1641,65 +1666,64 @@ class Device {
   core.String lastStatusReportTime;
 
   /// Events related to memory and storage measurements in chronological order.
-  /// This information is only available when memoryInfoEnabled is true in the
+  /// This information is only available if memoryInfoEnabled is true in the
   /// device's policy.
   core.List<MemoryEvent> memoryEvents;
 
-  /// Memory information. This information is only available when
+  /// Memory information. This information is only available if
   /// memoryInfoEnabled is true in the device's policy.
   MemoryInfo memoryInfo;
 
   /// The name of the device in the form
-  /// enterprises/{enterpriseId}/devices/{deviceId}
+  /// enterprises/{enterpriseId}/devices/{deviceId}.
   core.String name;
 
-  /// Device network information. This information is only available when
+  /// Device network information. This information is only available if
   /// networkInfoEnabled is true in the device's policy.
   NetworkInfo networkInfo;
 
-  /// Details about policy settings for which the device is not in compliance.
+  /// Details about policy settings that the device is not compliant with.
   core.List<NonComplianceDetail> nonComplianceDetails;
 
   /// Whether the device is compliant with its policy.
   core.bool policyCompliant;
 
-  /// The name of the policy that is intended to be applied to the device. If
-  /// empty, the policy_name for the user that owns this device is applied. This
-  /// field may be modified by an update request. The name of the policy is in
-  /// the form enterprises/{enterpriseId}/policies/{policyId}. It is also
-  /// permissible to only specify the policyId when updating this field as long
-  /// as the policyId contains no slashes since the rest of the policy name can
-  /// be inferred from context.
+  /// The name of the policy applied to the device, in the form
+  /// enterprises/{enterpriseId}/policies/{policyId}. If not specified, the
+  /// policy_name for the device's user is applied. This field can be modified
+  /// by a patch request. You can specify only the policyId when calling
+  /// enterprises.devices.patch, as long as the policyId doesn’t contain any
+  /// slashes. The rest of the policy name is inferred.
   core.String policyName;
 
   /// Power management events on the device in chronological order. This
-  /// information is only available when powerManagementEventsEnabled is true in
+  /// information is only available if powerManagementEventsEnabled is true in
   /// the device's policy.
   core.List<PowerManagementEvent> powerManagementEvents;
 
-  /// The previous device names used for the same physical device when it has
-  /// been enrolled multiple times. The serial number is used as the unique
-  /// identifier to determine if the same physical device has enrolled
+  /// If the same physical device has been enrolled multiple times, this field
+  /// contains its previous device names. The serial number is used as the
+  /// unique identifier to determine if the same physical device has enrolled
   /// previously. The names are in chronological order.
   core.List<core.String> previousDeviceNames;
 
   /// Detailed information about the device software. This information is only
-  /// available when softwareInfoEnabled is true in the device's policy.
+  /// available if softwareInfoEnabled is true in the device's policy.
   SoftwareInfo softwareInfo;
 
-  /// The state that is intended to be applied to the device. This field may be
-  /// modified by an update request. Note that UpdateDevice only handles
-  /// toggling between ACTIVE and DISABLED states. Use the delete device method
-  /// to cause the device to enter the DELETED state.
+  /// The state to be applied to the device. This field can be modified by a
+  /// patch request. Note that when calling enterprises.devices.patch, ACTIVE
+  /// and DISABLED are the only allowable values. To enter the device into a
+  /// DELETED state, call enterprises.devices.delete.
   /// Possible string values are:
   /// - "DEVICE_STATE_UNSPECIFIED" : This value is disallowed.
   /// - "ACTIVE" : The device is active.
   /// - "DISABLED" : The device is disabled.
   /// - "DELETED" : The device was deleted. This state will never be returned by
-  /// an API call, but will be used in the final policy compliance report
-  /// published to Cloud Pub/Sub when the device acknowledges the deletion.
+  /// an API call, but is used in the final policy compliance report published
+  /// to Cloud Pub/Sub when the device acknowledges the deletion.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
-  /// will be in this state until they have applied policy.
+  /// are in this state until they have a policy applied.
   core.String state;
 
   /// The resource name of the user that owns this device in the form
@@ -1896,11 +1920,11 @@ class Device {
 
 /// Information about security related device settings on device.
 class DeviceSettings {
-  /// If the ADB is enabled Settings.Global.ADB_ENABLED.
+  /// Whether ADB (https://developer.android.com/studio/command-line/adb.html)
+  /// is enabled on the device.
   core.bool adbEnabled;
 
-  /// If the developer mode is enabled
-  /// Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.
+  /// Whether developer mode is enabled on the device.
   core.bool developmentSettingsEnabled;
 
   /// Encryption status from DevicePolicyManager.
@@ -1908,28 +1932,30 @@ class DeviceSettings {
   /// - "ENCRYPTION_STATUS_UNSPECIFIED" : Unspecified. No device should have
   /// this type.
   /// - "UNSUPPORTED" : Encryption is not supported by the device.
-  /// - "INACTIVE" : Encryption is supported by the device, but not currently
+  /// - "INACTIVE" : Encryption is supported by the device, but is not currently
   /// active.
   /// - "ACTIVATING" : Encryption is not currently active, but is currently
   /// being activated.
-  /// - "ACTIVE" : Encryption is active
+  /// - "ACTIVE" : Encryption is active.
   /// - "ACTIVE_DEFAULT_KEY" : Encryption is active, but an encryption key is
-  /// not set by the user
-  /// - "ACTIVE_PER_USER" : Encrpyiton is active, and the encryption key is tied
+  /// not set by the user.
+  /// - "ACTIVE_PER_USER" : Encryption is active, and the encryption key is tied
   /// to the user profile.
   core.String encryptionStatus;
 
-  /// Device secured with PIN/password.
+  /// Whether the device is secured with PIN/password.
   core.bool isDeviceSecure;
 
-  /// Whether the storage encryption is enabled
-  /// DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE or
-  /// DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.
+  /// Whether the storage encryption is enabled.
   core.bool isEncrypted;
 
-  /// If installing apps from unknown sources is enabled.
-  /// Settings.Secure.INSTALL_NON_MARKET_APPS.
+  /// Whether installing apps from unknown sources is enabled.
   core.bool unknownSourcesEnabled;
+
+  /// Whether Verify Apps (Google Play Protect
+  /// (https://support.google.com/googleplay/answer/2812853)) is enabled on the
+  /// device.
+  core.bool verifyAppsEnabled;
 
   DeviceSettings();
 
@@ -1951,6 +1977,9 @@ class DeviceSettings {
     }
     if (_json.containsKey("unknownSourcesEnabled")) {
       unknownSourcesEnabled = _json["unknownSourcesEnabled"];
+    }
+    if (_json.containsKey("verifyAppsEnabled")) {
+      verifyAppsEnabled = _json["verifyAppsEnabled"];
     }
   }
 
@@ -1974,6 +2003,9 @@ class DeviceSettings {
     }
     if (unknownSourcesEnabled != null) {
       _json["unknownSourcesEnabled"] = unknownSourcesEnabled;
+    }
+    if (verifyAppsEnabled != null) {
+      _json["verifyAppsEnabled"] = verifyAppsEnabled;
     }
     return _json;
   }
@@ -2084,15 +2116,15 @@ class Empty {
 /// An enrollment token.
 class EnrollmentToken {
   /// Optional, arbitrary data associated with the enrollment token. This could
-  /// contain, for example, the id of an org unit to which the device is
-  /// assigned after enrollment. After a device enrolls with the token, this
-  /// data will be exposed in the enrollment_token_data field of the Device
-  /// resource. The data must be 1024 characters or less; otherwise, the
-  /// creation request will fail.
+  /// contain, for example, the ID of an org unit the device is assigned to
+  /// after enrollment. After a device enrolls with the token, this data will be
+  /// exposed in the enrollment_token_data field of the Device resource. The
+  /// data must be 1024 characters or less; otherwise, the creation request will
+  /// fail.
   core.String additionalData;
 
-  /// The duration of the token. If not specified, the duration will be 1 hour.
-  /// The allowed range is 1 minute to 30 days.
+  /// The length of time the enrollment token is valid, ranging from 1 minute to
+  /// 30 days. If not specified, the default duration is 1 hour.
   core.String duration;
 
   /// The expiration time of the token. This is a read-only field generated by
@@ -2101,17 +2133,16 @@ class EnrollmentToken {
 
   /// The name of the enrollment token, which is generated by the server during
   /// creation, in the form
-  /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}
+  /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
   core.String name;
 
-  /// The name of the policy that will be initially applied to the enrolled
-  /// device in the form enterprises/{enterpriseId}/policies/{policyId}. If not
-  /// specified, the policy_name for the user that owns the device is applied.
-  /// If user_name also isn't specified, the policy defaults to
-  /// enterprises/{enterpriseId}/policies/default. It is permissible to only
-  /// specify the policyId when updating this field as long as the policyId
-  /// contains no slashes since the rest of the policy name can be inferred from
-  /// context.
+  /// The name of the policy initially applied to the enrolled device, in the
+  /// form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the
+  /// policy_name for the device’s user is applied. If user_name is also not
+  /// specified, enterprises/{enterpriseId}/policies/default is applied by
+  /// default. When updating this field, you can specify only the policyId as
+  /// long as the policyId doesn’t contain any slashes. The rest of the policy
+  /// name will be inferred.
   core.String policyName;
 
   /// A JSON string whose UTF-8 representation can be used to generate a QR code
@@ -2120,7 +2151,7 @@ class EnrollmentToken {
   /// representation of the properties in the JSON.
   core.String qrCode;
 
-  /// The token value which is passed to the device and authorizes the device to
+  /// The token value that's passed to the device and authorizes the device to
   /// enroll. This is a read-only field generated by the server.
   core.String value;
 
@@ -2180,17 +2211,15 @@ class EnrollmentToken {
 
 /// The configuration applied to an enterprise.
 class Enterprise {
-  /// Whether app auto-approval is enabled. When enabled, apps installed via
-  /// policy for this enterprise have all permissions automatically approved.
-  /// When enabled, it is the caller's responsibility to display the permissions
-  /// required by an app to the enterprise admin before setting the app to be
-  /// installed in a policy.
+  /// Whether permissions for apps installed via policy are automatically
+  /// approved. If enabled, you must display an app's permissions to the
+  /// enterprise admin before setting the app to be installed in a policy.
   core.bool appAutoApprovalEnabled;
 
-  /// The notification types to enable via Google Cloud Pub/Sub.
+  /// The types of Google Pub/Sub notifications enabled for the enterprise.
   core.List<core.String> enabledNotificationTypes;
 
-  /// The name of the enterprise as it will appear to users.
+  /// The name of the enterprise displayed to users.
   core.String enterpriseDisplayName;
 
   /// An image displayed as a logo during device provisioning. Supported types
@@ -2199,20 +2228,18 @@ class Enterprise {
   ExternalData logo;
 
   /// The name of the enterprise which is generated by the server during
-  /// creation, in the form enterprises/{enterpriseId}
+  /// creation, in the form enterprises/{enterpriseId}.
   core.String name;
 
-  /// A color in RGB format indicating the predominant color to display in the
-  /// device management app UI. The color components are stored as follows: (red
-  /// << 16) | (green << 8) | blue, where each component may take a value
-  /// between 0 and 255 inclusive.
+  /// A color in RGB format that indicates the predominant color to display in
+  /// the device management app UI. The color components are stored as follows:
+  /// (red << 16) | (green << 8) | blue, where the value of each component is
+  /// between 0 and 255, inclusive.
   core.int primaryColor;
 
-  /// When Cloud Pub/Sub notifications are enabled, this field is required to
-  /// indicate the topic to which the notifications will be published. The
-  /// format of this field is projects/{project}/topics/{topic}. You must have
-  /// granted the publish permission on this topic to
-  /// android-cloud-policy@system.gserviceaccount.com
+  /// The topic that Cloud Pub/Sub notifications are published to, in the form
+  /// projects/{project}/topics/{topic}. This field is only required if Pub/Sub
+  /// notifications are enabled.
   core.String pubsubTopic;
 
   Enterprise();
@@ -2273,12 +2300,11 @@ class Enterprise {
 /// Device Policy and verified against the hash.
 class ExternalData {
   /// The base-64 encoded SHA-256 hash of the content hosted at url. If the
-  /// content does not match this hash, Android Device Policy will not use the
-  /// data.
+  /// content doesn't match this hash, Android Device Policy won't use the data.
   core.String sha256Hash;
 
   /// The absolute URL to the data, which must use either the http or https
-  /// scheme. Android Device Policy does not provide any credentials in the GET
+  /// scheme. Android Device Policy doesn't provide any credentials in the GET
   /// request, so the URL must be publicly accessible. Including a long, random
   /// component in the URL may be used to prevent attackers from discovering the
   /// URL.
@@ -2309,7 +2335,7 @@ class ExternalData {
 }
 
 /// Information about device hardware. The fields related to temperature
-/// thresholds are only available when hardwareStatusEnabled is true in the
+/// thresholds are only available if hardwareStatusEnabled is true in the
 /// device's policy.
 class HardwareInfo {
   /// Battery shutdown temperature thresholds in Celsius for each battery on the
@@ -2320,7 +2346,7 @@ class HardwareInfo {
   /// the device.
   core.List<core.double> batteryThrottlingTemperatures;
 
-  /// Brand of the device, e.g. Google.
+  /// Brand of the device. For example, Google.
   core.String brand;
 
   /// CPU shutdown temperature thresholds in Celsius for each CPU on the device.
@@ -2330,7 +2356,7 @@ class HardwareInfo {
   /// device.
   core.List<core.double> cpuThrottlingTemperatures;
 
-  /// Baseband version, e.g. MDM9625_104662.22.05.34p.
+  /// Baseband version. For example, MDM9625_104662.22.05.34p.
   core.String deviceBasebandVersion;
 
   /// GPU shutdown temperature thresholds in Celsius for each GPU on the device.
@@ -2340,13 +2366,13 @@ class HardwareInfo {
   /// device.
   core.List<core.double> gpuThrottlingTemperatures;
 
-  /// Name of the hardware, e.g. Angler.
+  /// Name of the hardware. For example, Angler.
   core.String hardware;
 
-  /// Manufacturer, e.g. Motorola.
+  /// Manufacturer. For example, Motorola.
   core.String manufacturer;
 
-  /// The model of the device, e.g. Asus Nexus 7.
+  /// The model of the device. For example, Asus Nexus 7.
   core.String model;
 
   /// The device serial number.
@@ -2638,21 +2664,21 @@ class ListPoliciesResponse {
 
 /// Managed property.
 class ManagedProperty {
-  /// The default value of the properties. BUNDLE_ARRAY properties never have a
+  /// The default value of the property. BUNDLE_ARRAY properties don't have a
   /// default value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object defaultValue;
 
-  /// A longer description of the property, giving more detail of what it
+  /// A longer description of the property, providing more detail of what it
   /// affects. Localized.
   core.String description;
 
   /// For CHOICE or MULTISELECT properties, the list of possible entries.
   core.List<ManagedPropertyEntry> entries;
 
-  /// The unique key that the application uses to identify the property, e.g.
+  /// The unique key that the app uses to identify the property, e.g.
   /// "com.google.android.gm.fieldname".
   core.String key;
 
@@ -2672,7 +2698,7 @@ class ManagedProperty {
   /// - "CHOICE" : A choice of one item from a set.
   /// - "MULTISELECT" : A choice of multiple items from a set.
   /// - "HIDDEN" : A hidden restriction of string type (the default value can be
-  /// used to pass along information that cannot be modified, such as a version
+  /// used to pass along information that can't be modified, such as a version
   /// code).
   /// - "BUNDLE_ARRAY" : An array of property bundles.
   core.String type;
@@ -2857,13 +2883,16 @@ class MemoryInfo {
 
 /// Device network info.
 class NetworkInfo {
-  /// IMEI number of the GSM device, e.g. A1000031212.
+  /// IMEI number of the GSM device. For example, A1000031212.
   core.String imei;
 
-  /// MEID number of the CDMA device, e.g. A00000292788E1.
+  /// MEID number of the CDMA device. For example, A00000292788E1.
   core.String meid;
 
-  /// WiFi MAC address of the device, e.g. 7c:11:11:11:11:11.
+  /// Alphabetic name of current registered operator. For example, Vodafone.
+  core.String networkOperatorName;
+
+  /// Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.
   core.String wifiMacAddress;
 
   NetworkInfo();
@@ -2874,6 +2903,9 @@ class NetworkInfo {
     }
     if (_json.containsKey("meid")) {
       meid = _json["meid"];
+    }
+    if (_json.containsKey("networkOperatorName")) {
+      networkOperatorName = _json["networkOperatorName"];
     }
     if (_json.containsKey("wifiMacAddress")) {
       wifiMacAddress = _json["wifiMacAddress"];
@@ -2888,6 +2920,9 @@ class NetworkInfo {
     }
     if (meid != null) {
       _json["meid"] = meid;
+    }
+    if (networkOperatorName != null) {
+      _json["networkOperatorName"] = networkOperatorName;
     }
     if (wifiMacAddress != null) {
       _json["wifiMacAddress"] = wifiMacAddress;
@@ -2917,13 +2952,13 @@ class NonComplianceDetail {
   core.String fieldPath;
 
   /// If package_name is set and the non-compliance reason is APP_NOT_INSTALLED
-  /// or APP_NOT_UPDATED, the detailed reason the app cannot be installed or
+  /// or APP_NOT_UPDATED, the detailed reason the app can't be installed or
   /// updated.
   /// Possible string values are:
   /// - "INSTALLATION_FAILURE_REASON_UNSPECIFIED" : This value is disallowed.
   /// - "INSTALLATION_FAILURE_REASON_UNKNOWN" : An unknown condition is
-  /// preventing the app from being installed. Some potential reaons are that
-  /// the device does not have enough storage, the device network connection is
+  /// preventing the app from being installed. Some potential reasons are that
+  /// the device doesn't have enough storage, the device network connection is
   /// unreliable, or the installation is taking longer than expected. The
   /// installation will be retried automatically.
   /// - "IN_PROGRESS" : The installation is still in progress.
@@ -2934,9 +2969,9 @@ class NonComplianceDetail {
   /// been accepted by the admin.
   /// - "NOT_AVAILABLE_IN_COUNTRY" : The app is not available in the user's
   /// country.
-  /// - "NO_LICENSES_REMAINING" : There are no more licenses to assign to the
-  /// user.
-  /// - "NOT_ENROLLED" : The enterprise is no longer enrolled with Play for Work
+  /// - "NO_LICENSES_REMAINING" : There are no licenses available to assign to
+  /// the user.
+  /// - "NOT_ENROLLED" : The enterprise is no longer enrolled with managed Play
   /// or Android Device Policy is not enabled for the enterprise.
   /// - "USER_INVALID" : The user is no longer valid. The user may have been
   /// deleted or disabled.
@@ -2945,29 +2980,28 @@ class NonComplianceDetail {
   /// The reason the device is not in compliance with the setting.
   /// Possible string values are:
   /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
-  /// - "API_LEVEL" : The setting is not supported in the API level of Android
-  /// OS version the device is running.
-  /// - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.) does
-  /// not support the setting.
+  /// - "API_LEVEL" : The setting is not supported in the API level of the
+  /// Android version running on the device.
+  /// - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.)
+  /// doesn't support the setting.
   /// - "USER_ACTION" : The user has not taken required action to comply with
   /// the setting.
   /// - "INVALID_VALUE" : The setting has an invalid value.
-  /// - "APP_NOT_INSTALLED" : The application required to implement the policy
-  /// is not installed.
+  /// - "APP_NOT_INSTALLED" : The app required to implement the policy is not
+  /// installed.
   /// - "UNSUPPORTED" : The policy is not supported by the version of Android
   /// Device Policy on the device.
-  /// - "APP_INSTALLED" : A blocked application is installed.
-  /// - "PENDING" : The setting was not applied yet at the time of the report,
+  /// - "APP_INSTALLED" : A blocked app is installed.
+  /// - "PENDING" : The setting hasn't been applied at the time of the report,
   /// but is expected to be applied shortly.
-  /// - "APP_INCOMPATIBLE" : The setting cannot be applied to the application
-  /// because the application doesn't support it, for example because its target
-  /// SDK version is not high enough.
-  /// - "APP_NOT_UPDATED" : The application is installed but not updated to the
-  /// minimum version code specified by policy
+  /// - "APP_INCOMPATIBLE" : The setting can't be applied to the app because the
+  /// app doesn't support it, for example because its target SDK version is not
+  /// high enough.
+  /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
+  /// the minimum version code specified by policy.
   core.String nonComplianceReason;
 
-  /// The package name indicating which application is out of compliance, if
-  /// applicable.
+  /// The package name indicating which app is out of compliance, if applicable.
   core.String packageName;
 
   /// The name of the policy setting. This is the JSON field name of a top-level
@@ -3032,29 +3066,29 @@ class NonComplianceDetailCondition {
   /// then this condition matches any reason.
   /// Possible string values are:
   /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
-  /// - "API_LEVEL" : The setting is not supported in the API level of Android
-  /// OS version the device is running.
-  /// - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.) does
-  /// not support the setting.
+  /// - "API_LEVEL" : The setting is not supported in the API level of the
+  /// Android version running on the device.
+  /// - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.)
+  /// doesn't support the setting.
   /// - "USER_ACTION" : The user has not taken required action to comply with
   /// the setting.
   /// - "INVALID_VALUE" : The setting has an invalid value.
-  /// - "APP_NOT_INSTALLED" : The application required to implement the policy
-  /// is not installed.
+  /// - "APP_NOT_INSTALLED" : The app required to implement the policy is not
+  /// installed.
   /// - "UNSUPPORTED" : The policy is not supported by the version of Android
   /// Device Policy on the device.
-  /// - "APP_INSTALLED" : A blocked application is installed.
-  /// - "PENDING" : The setting was not applied yet at the time of the report,
+  /// - "APP_INSTALLED" : A blocked app is installed.
+  /// - "PENDING" : The setting hasn't been applied at the time of the report,
   /// but is expected to be applied shortly.
-  /// - "APP_INCOMPATIBLE" : The setting cannot be applied to the application
-  /// because the application doesn't support it, for example because its target
-  /// SDK version is not high enough.
-  /// - "APP_NOT_UPDATED" : The application is installed but not updated to the
-  /// minimum version code specified by policy
+  /// - "APP_INCOMPATIBLE" : The setting can't be applied to the app because the
+  /// app doesn't support it, for example because its target SDK version is not
+  /// high enough.
+  /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
+  /// the minimum version code specified by policy.
   core.String nonComplianceReason;
 
-  /// The package name indicating which application is out of compliance. If not
-  /// set, then this condition matches any package name.
+  /// The package name of the app that's out of compliance. If not set, then
+  /// this condition matches any package name.
   core.String packageName;
 
   /// The name of the policy setting. This is the JSON field name of a top-level
@@ -3195,16 +3229,16 @@ class PackageNameList {
 
 /// Requirements for the password used to unlock a device.
 class PasswordRequirements {
-  /// A device will be wiped after too many incorrect device-unlock passwords
-  /// have been entered. A value of 0 means there is no restriction.
+  /// Number of incorrect device-unlock passwords that can be entered before a
+  /// device is wiped. A value of 0 means there is no restriction.
   core.int maximumFailedPasswordsForWipe;
 
   /// Password expiration timeout.
   core.String passwordExpirationTimeout;
 
-  /// The length of the password history. After setting this, the user will not
-  /// be able to enter a new password that is the same as any password in the
-  /// history. A value of 0 means there is no restriction.
+  /// The length of the password history. After setting this field, the user
+  /// won't be able to enter a new password that is the same as any password in
+  /// the history. A value of 0 means there is no restriction.
   core.int passwordHistoryLength;
 
   /// The minimum allowed password length. A value of 0 means there is no
@@ -3238,21 +3272,20 @@ class PasswordRequirements {
 
   /// The required password quality.
   /// Possible string values are:
-  /// - "PASSWORD_QUALITY_UNSPECIFIED" : There are no requirements for the
-  /// password.
-  /// - "BIOMETRIC_WEAK" : There must be at least low-security biometric
-  /// recognition technology to secure the device. This includes technologies
-  /// that can recognize the identity of an individual to about a 3 digit PIN
-  /// (false detection is less than 1 in 1,000).
-  /// - "SOMETHING" : There must be a password, but there are no restrictions on
-  /// its characters.
+  /// - "PASSWORD_QUALITY_UNSPECIFIED" : There are no password requirements.
+  /// - "BIOMETRIC_WEAK" : The device must be secured with a low-security
+  /// biometric recognition technology, at minimum. This includes technologies
+  /// that can recognize the identity of an individual that are roughly
+  /// equivalent to a 3-digit PIN (false detection is less than 1 in 1,000).
+  /// - "SOMETHING" : A password is required, but there are no restrictions on
+  /// what the password must contain.
   /// - "NUMERIC" : The password must contain numeric characters.
   /// - "NUMERIC_COMPLEX" : The password must contain numeric characters with no
   /// repeating (4444) or ordered (1234, 4321, 2468) sequences.
   /// - "ALPHABETIC" : The password must contain alphabetic (or symbol)
   /// characters.
-  /// - "ALPHANUMERIC" : The password must contain at both numeric and
-  /// alphabetic (or symbol) characters.
+  /// - "ALPHANUMERIC" : The password must contain both numeric and alphabetic
+  /// (or symbol) characters.
   /// - "COMPLEX" : The password must contain at least a letter, a numerical
   /// digit and a special symbol. Other password constraints, for example,
   /// password_minimum_letters are enforced.
@@ -3426,9 +3459,10 @@ class PersistentPreferredActivity {
   }
 }
 
-/// A policy, which governs behavior for a device.
+/// A policy resources represents a group settings that govern the behavior of a
+/// managed device and the apps installed on it.
 class Policy {
-  /// Account types that cannot be managed by the user.
+  /// Account types that can't be managed by the user.
   core.List<core.String> accountTypesWithManagementDisabled;
 
   /// Whether adding new users and profiles is disabled.
@@ -3440,6 +3474,11 @@ class Policy {
   /// Configuration for an always-on VPN connection. Use with
   /// vpn_config_disabled to prevent modification of this setting.
   AlwaysOnVpnPackage alwaysOnVpnPackage;
+
+  /// The app tracks for Android Device Policy the device can access. The device
+  /// receives the latest version among all accessible tracks. If no tracks are
+  /// specified, then the device only uses the production track.
+  core.List<core.String> androidDevicePolicyTracks;
 
   /// Policy applied to apps.
   core.List<ApplicationPolicy> applications;
@@ -3489,7 +3528,7 @@ class Policy {
   /// Whether the user is allowed to enable debugging features.
   core.bool debuggingFeaturesAllowed;
 
-  /// The default permission policy for requests for runtime permissions.
+  /// The default permission policy for runtime permission requests.
   /// Possible string values are:
   /// - "PERMISSION_POLICY_UNSPECIFIED" : Policy not specified. If no policy is
   /// specified for a permission at any level, then the PROMPT behavior is used
@@ -3499,7 +3538,7 @@ class Policy {
   /// - "DENY" : Automatically deny a permission.
   core.String defaultPermissionPolicy;
 
-  /// Whether application verification is forced to be enabled.
+  /// Whether app verification is force-enabled.
   core.bool ensureVerifyAppsEnabled;
 
   /// Whether factory resetting from settings is disabled.
@@ -3508,7 +3547,7 @@ class Policy {
   /// Email addresses of device administrators for factory reset protection.
   /// When the device is factory reset, it will require one of these admins to
   /// log in with the Google account email and password to unlock the device. If
-  /// no admins are specified, the device will not provide factory reset
+  /// no admins are specified, the device won't provide factory reset
   /// protection.
   core.List<core.String> frpAdminEmails;
 
@@ -3540,8 +3579,8 @@ class Policy {
   /// screen.
   UserFacingMessage longSupportMessage;
 
-  /// Maximum time in milliseconds for user activity until the device will lock.
-  /// A value of 0 means there is no restriction.
+  /// Maximum time in milliseconds for user activity until the device locks. A
+  /// value of 0 means there is no restriction.
   core.String maximumTimeToLock;
 
   /// Whether configuring mobile networks is disabled.
@@ -3554,7 +3593,7 @@ class Policy {
   core.bool mountPhysicalMediaDisabled;
 
   /// The name of the policy in the form
-  /// enterprises/{enterpriseId}/policies/{policyId}
+  /// enterprises/{enterpriseId}/policies/{policyId}.
   core.String name;
 
   /// Whether the network escape hatch is enabled. If a network connection can't
@@ -3577,7 +3616,7 @@ class Policy {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> openNetworkConfiguration;
 
-  /// Whether using NFC to beam out data from apps is disabled.
+  /// Whether using NFC to beam data from apps is disabled.
   core.bool outgoingBeamDisabled;
 
   /// Whether outgoing calls are disabled.
@@ -3586,7 +3625,7 @@ class Policy {
   /// Password requirements.
   PasswordRequirements passwordRequirements;
 
-  /// If present, only input methods provided by packages in this list are
+  /// If present, only the input methods provided by packages in this list are
   /// permitted. If this field is present, but the list is empty, then only
   /// system input methods are permitted.
   PackageNameList permittedInputMethods;
@@ -3620,11 +3659,11 @@ class Policy {
   /// functionality has been disabled by the admin.
   UserFacingMessage shortSupportMessage;
 
-  /// Whether sending or receiving SMS messages is disabled.
+  /// Whether sending and receiving SMS messages is disabled.
   core.bool smsDisabled;
 
   /// Whether the status bar is disabled. This disables notifications, quick
-  /// settings and other screen overlays that allow escape from full-screen
+  /// settings, and other screen overlays that allow escape from full-screen
   /// mode.
   core.bool statusBarDisabled;
 
@@ -3661,11 +3700,11 @@ class Policy {
   /// Whether configuring VPN is disabled.
   core.bool vpnConfigDisabled;
 
-  /// Whether configuring WiFi access points is disabled.
+  /// Whether configuring Wi-Fi access points is disabled.
   core.bool wifiConfigDisabled;
 
-  /// Whether WiFi networks defined in Open Network Configuration are locked so
-  /// they cannot be edited by the user.
+  /// Whether Wi-Fi networks defined in Open Network Configuration are locked so
+  /// they can't be edited by the user.
   core.bool wifiConfigsLockdownEnabled;
 
   Policy();
@@ -3684,6 +3723,9 @@ class Policy {
     if (_json.containsKey("alwaysOnVpnPackage")) {
       alwaysOnVpnPackage =
           new AlwaysOnVpnPackage.fromJson(_json["alwaysOnVpnPackage"]);
+    }
+    if (_json.containsKey("androidDevicePolicyTracks")) {
+      androidDevicePolicyTracks = _json["androidDevicePolicyTracks"];
     }
     if (_json.containsKey("applications")) {
       applications = _json["applications"]
@@ -3886,6 +3928,9 @@ class Policy {
     }
     if (alwaysOnVpnPackage != null) {
       _json["alwaysOnVpnPackage"] = (alwaysOnVpnPackage).toJson();
+    }
+    if (androidDevicePolicyTracks != null) {
+      _json["androidDevicePolicyTracks"] = androidDevicePolicyTracks;
     }
     if (applications != null) {
       _json["applications"] =
@@ -4173,12 +4218,12 @@ class ProxyInfo {
 
 /// An enterprise signup URL.
 class SignupUrl {
-  /// The name of the resource. This must be included in the create enterprise
-  /// request at the end of the signup flow.
+  /// The name of the resource. Use this value in the signupUrl field when
+  /// calling enterprises.create to complete the enterprise signup flow.
   core.String name;
 
-  /// A URL under which the Admin can sign up for an enterprise. The page
-  /// pointed to cannot be rendered in an iframe.
+  /// A URL where an enterprise admin can register their enterprise. The page
+  /// can't be rendered in an iframe.
   core.String url;
 
   SignupUrl();
@@ -4207,7 +4252,7 @@ class SignupUrl {
 
 /// Information about device software.
 class SoftwareInfo {
-  /// Android build Id string meant for displaying to the user, e.g.
+  /// Android build ID string meant for displaying to the user. For example,
   /// shamu-userdebug 6.0.1 MOB30I 2756745 dev-keys.
   core.String androidBuildNumber;
 
@@ -4220,13 +4265,19 @@ class SoftwareInfo {
   /// The Android Device Policy app version as displayed to the user.
   core.String androidDevicePolicyVersionName;
 
-  /// The user visible Android version string, e.g. 6.0.1.
+  /// The user-visible Android version string. For example, 6.0.1.
   core.String androidVersion;
 
   /// The system bootloader version number, e.g. 0.6.7.
   core.String bootloaderVersion;
 
-  /// Kernel version, e.g. 2.6.32.9-g103d848.
+  /// SHA-256 hash of android.content.pm.Signature
+  /// (https://developer.android.com/reference/android/content/pm/Signature.html)
+  /// associated with the system package, which can be used to verify that the
+  /// system build hasn't been modified.
+  core.String deviceBuildSignature;
+
+  /// Kernel version, for example, 2.6.32.9-g103d848.
   core.String deviceKernelVersion;
 
   /// Security patch level, e.g. 2016-05-01.
@@ -4252,6 +4303,9 @@ class SoftwareInfo {
     }
     if (_json.containsKey("bootloaderVersion")) {
       bootloaderVersion = _json["bootloaderVersion"];
+    }
+    if (_json.containsKey("deviceBuildSignature")) {
+      deviceBuildSignature = _json["deviceBuildSignature"];
     }
     if (_json.containsKey("deviceKernelVersion")) {
       deviceKernelVersion = _json["deviceKernelVersion"];
@@ -4281,6 +4335,9 @@ class SoftwareInfo {
     }
     if (bootloaderVersion != null) {
       _json["bootloaderVersion"] = bootloaderVersion;
+    }
+    if (deviceBuildSignature != null) {
+      _json["deviceBuildSignature"] = deviceBuildSignature;
     }
     if (deviceKernelVersion != null) {
       _json["deviceKernelVersion"] = deviceKernelVersion;
@@ -4453,16 +4510,16 @@ class StatusReportingSettings {
 /// Configuration for managing system updates
 class SystemUpdate {
   /// If the type is WINDOWED, the end of the maintenance window, measured as
-  /// the number of minutes after midnight in device local time. This value must
-  /// be between 0 and 1439, inclusive. If this value is less than
+  /// the number of minutes after midnight in device's local time. This value
+  /// must be between 0 and 1439, inclusive. If this value is less than
   /// start_minutes, then the maintenance window spans midnight. If the
   /// maintenance window specified is smaller than 30 minutes, the actual window
   /// is extended to 30 minutes beyond the start time.
   core.int endMinutes;
 
   /// If the type is WINDOWED, the start of the maintenance window, measured as
-  /// the number of minutes after midnight in device local time. This value must
-  /// be between 0 and 1439, inclusive.
+  /// the number of minutes after midnight in the device's local time. This
+  /// value must be between 0 and 1439, inclusive.
   core.int startMinutes;
 
   /// The type of system update to configure.
@@ -4508,17 +4565,17 @@ class SystemUpdate {
   }
 }
 
-/// Provides user facing message with locale info. The maximum message length is
-/// 4096 characters.
+/// Provides a user-facing message with locale info. The maximum message length
+/// is 4096 characters.
 class UserFacingMessage {
-  /// The default message that gets displayed if no localized message is
-  /// specified, or the user's locale does not match with any of the localized
-  /// messages. A default message must be provided if any localized messages are
-  /// provided.
+  /// The default message displayed if no localized message is specified or the
+  /// user's locale doesn't match with any of the localized messages. A default
+  /// message must be provided if any localized messages are provided.
   core.String defaultMessage;
 
-  /// A map which contains <locale, message> pairs. The locale is a BCP 47
-  /// language code, e.g. en-US, es-ES, fr.
+  /// A map containing <locale, message> pairs, where locale is a well-formed
+  /// BCP 47 language (https://www.w3.org/International/articles/language-tags/)
+  /// code, such as en-US, es-ES, or fr.
   core.Map<core.String, core.String> localizedMessages;
 
   UserFacingMessage();
@@ -4545,10 +4602,10 @@ class UserFacingMessage {
   }
 }
 
-/// A web token used to access an embeddable managed Google Play web UI.
+/// A web token used to access the managed Google Play iframe.
 class WebToken {
   /// The name of the web token, which is generated by the server during
-  /// creation, in the form enterprises/{enterpriseId}/webTokens/{webTokenId}.
+  /// creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}.
   core.String name;
 
   /// The URL of the parent frame hosting the iframe with the embedded UI. To
@@ -4556,7 +4613,7 @@ class WebToken {
   /// the https scheme.
   core.String parentFrameUrl;
 
-  /// Permissions the admin may exercise in the embedded UI. The admin must have
+  /// Permissions available to an admin in the embedded UI. An admin must have
   /// all of these permissions in order to view the UI.
   core.List<core.String> permissions;
 

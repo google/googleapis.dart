@@ -290,17 +290,6 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [childrenOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-  /// parentName field contains the group name. If no groups have this parent,
-  /// the results are empty.
-  ///
-  /// [descendantsOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns the
-  /// descendants of the specified group. This is a superset of the results
-  /// returned by the childrenOfGroup filter, and includes children-of-children,
-  /// and so forth.
-  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -316,6 +305,17 @@ class ProjectsGroupsResourceApi {
   /// ancestor. If the specified group has no immediate parent, the results are
   /// empty.
   ///
+  /// [childrenOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+  /// parentName field contains the group name. If no groups have this parent,
+  /// the results are empty.
+  ///
+  /// [descendantsOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns the
+  /// descendants of the specified group. This is a superset of the results
+  /// returned by the childrenOfGroup filter, and includes children-of-children,
+  /// and so forth.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -327,11 +327,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.String childrenOfGroup,
-      core.String descendantsOfGroup,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String ancestorsOfGroup,
+      core.String childrenOfGroup,
+      core.String descendantsOfGroup,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -343,12 +343,6 @@ class ProjectsGroupsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (childrenOfGroup != null) {
-      _queryParams["childrenOfGroup"] = [childrenOfGroup];
-    }
-    if (descendantsOfGroup != null) {
-      _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -357,6 +351,12 @@ class ProjectsGroupsResourceApi {
     }
     if (ancestorsOfGroup != null) {
       _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
+    }
+    if (childrenOfGroup != null) {
+      _queryParams["childrenOfGroup"] = [childrenOfGroup];
+    }
+    if (descendantsOfGroup != null) {
+      _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -448,6 +448,8 @@ class ProjectsGroupsMembersResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
   /// [filter] - An optional list filter describing the members to be returned.
   /// The filter may reference the type, labels, and metadata of monitored
   /// resources that comprise the group. For example, to return only resources
@@ -459,14 +461,12 @@ class ProjectsGroupsMembersResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [interval_startTime] - Optional. The beginning of the time interval. The
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
   ///
-  /// [interval_endTime] - Required. The end of the time interval.
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -479,11 +479,11 @@ class ProjectsGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(core.String name,
-      {core.String filter,
+      {core.String interval_endTime,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String interval_startTime,
-      core.String interval_endTime,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -495,20 +495,20 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (interval_startTime != null) {
       _queryParams["interval.startTime"] = [interval_startTime];
     }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -820,12 +820,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - An optional filter describing the descriptors to be returned.
-  /// The filter can reference the descriptor's type and labels. For example,
-  /// the following filter returns only Google Compute Engine descriptors that
-  /// have an id label:
-  /// resource.type = starts_with("gce_") AND resource.label:id
-  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -833,6 +827,12 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
+  ///
+  /// [filter] - An optional filter describing the descriptors to be returned.
+  /// The filter can reference the descriptor's type and labels. For example,
+  /// the following filter returns only Google Compute Engine descriptors that
+  /// have an id label:
+  /// resource.type = starts_with("gce_") AND resource.label:id
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -845,9 +845,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -859,14 +859,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -956,6 +956,29 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [aggregation_groupByFields] - The set of fields to preserve when
+  /// crossSeriesReducer is specified. The groupByFields determine how the time
+  /// series are partitioned into subsets prior to applying the aggregation
+  /// function. Each subset contains time series that have the same value for
+  /// each of the grouping fields. Each individual time series is a member of
+  /// exactly one subset. The crossSeriesReducer is applied to each subset of
+  /// time series. It is not possible to reduce across different resource types,
+  /// so this field implicitly contains resource.type. Fields not specified in
+  /// groupByFields are aggregated away. If groupByFields is not specified and
+  /// all the time series have the same resource type, then the time series are
+  /// aggregated into a single output time series. If crossSeriesReducer is not
+  /// defined, this field is ignored.
+  ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
+  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
+  /// per-time series alignment, each time series will contain data points only
+  /// on the period boundaries. If perSeriesAligner is not specified or equals
+  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
+  /// an error is returned.
+  ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return. When view field sets to FULL, it limits the number of Points
   /// server will return; if view field is HEADERS, it limits the number of
@@ -994,6 +1017,11 @@ class ProjectsTimeSeriesResourceApi {
   /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
   ///     metric.label.instance_name = "my-instance-name"
   ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
   /// [aggregation_perSeriesAligner] - The approach to be used to align
   /// individual time series. Not all alignment functions may be applied to all
   /// time series, depending on the metric type and value type of the original
@@ -1023,11 +1051,6 @@ class ProjectsTimeSeriesResourceApi {
   /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
   /// - "ALIGN_PERCENT_CHANGE" : A ALIGN_PERCENT_CHANGE.
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
   /// [interval_startTime] - Optional. The beginning of the time interval. The
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
@@ -1036,29 +1059,6 @@ class ProjectsTimeSeriesResourceApi {
   /// Possible string values are:
   /// - "FULL" : A FULL.
   /// - "HEADERS" : A HEADERS.
-  ///
-  /// [aggregation_groupByFields] - The set of fields to preserve when
-  /// crossSeriesReducer is specified. The groupByFields determine how the time
-  /// series are partitioned into subsets prior to applying the aggregation
-  /// function. Each subset contains time series that have the same value for
-  /// each of the grouping fields. Each individual time series is a member of
-  /// exactly one subset. The crossSeriesReducer is applied to each subset of
-  /// time series. It is not possible to reduce across different resource types,
-  /// so this field implicitly contains resource.type. Fields not specified in
-  /// groupByFields are aggregated away. If groupByFields is not specified and
-  /// all the time series have the same resource type, then the time series are
-  /// aggregated into a single output time series. If crossSeriesReducer is not
-  /// defined, this field is ignored.
-  ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
-  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
-  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
-  /// per-time series alignment, each time series will contain data points only
-  /// on the period boundaries. If perSeriesAligner is not specified or equals
-  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
-  /// an error is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1071,17 +1071,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.int pageSize,
+      {core.List<core.String> aggregation_groupByFields,
+      core.String interval_endTime,
+      core.String aggregation_alignmentPeriod,
+      core.int pageSize,
       core.String orderBy,
       core.String aggregation_crossSeriesReducer,
       core.String filter,
-      core.String aggregation_perSeriesAligner,
       core.String pageToken,
+      core.String aggregation_perSeriesAligner,
       core.String interval_startTime,
       core.String view,
-      core.List<core.String> aggregation_groupByFields,
-      core.String interval_endTime,
-      core.String aggregation_alignmentPeriod,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1092,6 +1092,17 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (aggregation_groupByFields != null) {
+      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (aggregation_alignmentPeriod != null) {
+      _queryParams["aggregation.alignmentPeriod"] = [
+        aggregation_alignmentPeriod
+      ];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1107,30 +1118,19 @@ class ProjectsTimeSeriesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (aggregation_perSeriesAligner != null) {
       _queryParams["aggregation.perSeriesAligner"] = [
         aggregation_perSeriesAligner
       ];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (interval_startTime != null) {
       _queryParams["interval.startTime"] = [interval_startTime];
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams["aggregation.alignmentPeriod"] = [
-        aggregation_alignmentPeriod
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1161,7 +1161,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project in which to create the uptime check. The formatis
+  /// [parent] - The project in which to create the uptime check. The format  is
   /// projects/[PROJECT_ID].
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -1214,7 +1214,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The uptime check configuration to delete. The formatis
+  /// [name] - The uptime check configuration to delete. The format  is
   /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
@@ -1258,7 +1258,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The uptime check configuration to retrieve. The formatis
+  /// [name] - The uptime check configuration to retrieve. The format  is
   /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
@@ -1304,7 +1304,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The project whose uptime check configurations are listed. The
-  /// formatis projects/[PROJECT_ID].
+  /// format  is projects/[PROJECT_ID].
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - If this field is not empty then it must contain the
@@ -2355,7 +2355,8 @@ class HttpCheck {
   /// desired values as described at
   /// https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two
   /// separate headers with the same key in a Create call will cause the first
-  /// to be overwritten by the second.
+  /// to be overwritten by the second. The maximum number of headers allowed is
+  /// 100.
   core.Map<core.String, core.String> headers;
 
   /// Boolean specifiying whether to encrypt the header information. Encryption
@@ -2779,6 +2780,10 @@ class ListUptimeCheckConfigsResponse {
   /// request message's page_token field).
   core.String nextPageToken;
 
+  /// The total number of uptime check configurations for the project,
+  /// irrespective of any pagination.
+  core.int totalSize;
+
   /// The returned uptime check configurations.
   core.List<UptimeCheckConfig> uptimeCheckConfigs;
 
@@ -2787,6 +2792,9 @@ class ListUptimeCheckConfigsResponse {
   ListUptimeCheckConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
     if (_json.containsKey("uptimeCheckConfigs")) {
       uptimeCheckConfigs = _json["uptimeCheckConfigs"]
@@ -2800,6 +2808,9 @@ class ListUptimeCheckConfigsResponse {
         new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     if (uptimeCheckConfigs != null) {
       _json["uptimeCheckConfigs"] =
@@ -3311,7 +3322,7 @@ class ResourceGroup {
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Default value (not valid).
   /// - "INSTANCE" : A group of instances from Google Cloud Platform (GCP) or
   /// Amazon Web Services (AWS).
-  /// - "AWS_ELB_LOAD_BALANCER" : A group of AWS load balancers.
+  /// - "AWS_ELB_LOAD_BALANCER" : A group of Amazon ELB load balancers.
   core.String resourceType;
 
   ResourceGroup();
@@ -3776,7 +3787,10 @@ class UptimeCheckConfig {
   /// Denotes whether this is a check that egresses from InternalCheckers.
   core.bool isInternal;
 
-  /// The monitored resource associated with the configuration.
+  /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
+  /// associated with the configuration. The following monitored resource types
+  /// are supported for uptime checks:  uptime_url  gce_instance  gae_app
+  /// aws_ec2_instance  aws_elb_load_balancer
   MonitoredResource monitoredResource;
 
   /// A unique resource name for this UptimeCheckConfig. The format
@@ -3785,8 +3799,9 @@ class UptimeCheckConfig {
   /// the resource name is assigned by the server and included in the response.
   core.String name;
 
-  /// How often the uptime check is performed. Currently, only 1, 5, 10, and 15
-  /// minutes are supported. Required.
+  /// How often, in seconds, the uptime check is performed. Currently, the only
+  /// supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes),
+  /// and 900s (15 minutes). Required.
   core.String period;
 
   /// The group resource associated with the configuration.

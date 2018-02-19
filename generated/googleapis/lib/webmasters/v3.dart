@@ -375,7 +375,9 @@ class SitesResourceApi {
   /// Request parameters:
   ///
   /// [siteUrl] - The URI of the property as defined in Search Console.
-  /// Examples: http://www.example.com/ or android-app://com.example/
+  /// Examples: http://www.example.com/ or android-app://com.example/ Note: for
+  /// property-sets, use the URI that starts with sc-set: which is used in
+  /// Search Console URLs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -418,7 +420,9 @@ class SitesResourceApi {
   /// Request parameters:
   ///
   /// [siteUrl] - The URI of the property as defined in Search Console.
-  /// Examples: http://www.example.com/ or android-app://com.example/
+  /// Examples: http://www.example.com/ or android-app://com.example/ Note: for
+  /// property-sets, use the URI that starts with sc-set: which is used in
+  /// Search Console URLs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

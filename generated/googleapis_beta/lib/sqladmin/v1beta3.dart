@@ -1469,6 +1469,11 @@ class BackupConfiguration {
   /// This is always sql#backupConfiguration.
   core.String kind;
 
+  /// Whether replication log archiving is enabled. Replication log archiving is
+  /// required for the point-in-time recovery (PITR) feature. PostgreSQL
+  /// instances only.
+  core.bool replicationLogArchivingEnabled;
+
   /// Start time for the daily backup configuration in UTC timezone in the 24
   /// hour format - HH:MM.
   core.String startTime;
@@ -1487,6 +1492,9 @@ class BackupConfiguration {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("replicationLogArchivingEnabled")) {
+      replicationLogArchivingEnabled = _json["replicationLogArchivingEnabled"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1507,6 +1515,9 @@ class BackupConfiguration {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (replicationLogArchivingEnabled != null) {
+      _json["replicationLogArchivingEnabled"] = replicationLogArchivingEnabled;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -1712,6 +1723,11 @@ class CloneContext {
   /// This is always sql#cloneContext.
   core.String kind;
 
+  /// The epoch timestamp, in milliseconds, of the time to which a point-in-time
+  /// recovery (PITR) is performed. PostgreSQL instances only. For MySQL
+  /// instances, use the binLogCoordinates property.
+  core.String pitrTimestampMs;
+
   /// Name of the Cloud SQL instance to be cloned.
   core.String sourceInstanceName;
 
@@ -1727,6 +1743,9 @@ class CloneContext {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("pitrTimestampMs")) {
+      pitrTimestampMs = _json["pitrTimestampMs"];
     }
     if (_json.containsKey("sourceInstanceName")) {
       sourceInstanceName = _json["sourceInstanceName"];
@@ -1744,6 +1763,9 @@ class CloneContext {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (pitrTimestampMs != null) {
+      _json["pitrTimestampMs"] = pitrTimestampMs;
     }
     if (sourceInstanceName != null) {
       _json["sourceInstanceName"] = sourceInstanceName;

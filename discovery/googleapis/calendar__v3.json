@@ -17,7 +17,7 @@
     "description": "Manipulates events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/S13L9-Rzqy4o0ychB9Xpqn5okHM\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/c15uRPUE8_QzS1-0nMkNZorVH2I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1604,7 +1604,7 @@
             }
         }
     },
-    "revision": "20180121",
+    "revision": "20180213",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -2017,9 +2017,35 @@
                     "description": "Additional notes (such as instructions from the domain administrator, legal notices) to display to the user. Can contain HTML. The maximum length is 2048 characters. Optional.",
                     "type": "string"
                 },
+                "parameters": {
+                    "$ref": "ConferenceParameters",
+                    "description": "Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming."
+                },
                 "signature": {
                     "description": "The signature of the conference data.\nGenereated on server side. Must be preserved while copying the conference data between events, otherwise the conference data will not be copied.\nUnset for a conference with a failed create request.\nOptional for a conference with a pending create request.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConferenceParameters": {
+            "id": "ConferenceParameters",
+            "properties": {
+                "addOnParameters": {
+                    "$ref": "ConferenceParametersAddOnParameters",
+                    "description": "Additional add-on specific data."
+                }
+            },
+            "type": "object"
+        },
+        "ConferenceParametersAddOnParameters": {
+            "id": "ConferenceParametersAddOnParameters",
+            "properties": {
+                "parameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"

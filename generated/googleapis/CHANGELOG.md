@@ -1,3 +1,35 @@
+## 0.50.0
+
+* [api-new] serviceusage:v1
+* [api] androidenterprise:v1
+* [api] androidmanagement:v1
+* [api] appengine:v1
+* [api] bigquery:v2
+* [api] calendar:v3
+* [api] cloudiot:v1
+* [api] compute:v1
+* [api] doubleclickbidmanager:v1
+* [api] gmail:v1
+* [api] iam:v1
+* [api] manufacturers:v1
+* [api] ml:v1
+* [api] monitoring:v3
+* [api] poly:v1
+* [api] safebrowsing:v4
+* [api] serviceconsumermanagement:v1
+* [api] servicemanagement:v1
+* [api] sheets:v4
+* [api] slides:v1
+* [api] spanner:v1
+* [api] testing:v1
+* [api] youtube:v3
+* [api-breaking] bigquery:v2
+* [api-breaking] bigquery:v2
+* [api-breaking] cloudiot:v1
+* [api-breaking] manufacturers:v1
+* [api-breaking] ml:v1
+* [api-breaking] servicemanagement:v1
+
 ## 0.49.0
 
 * [api] analytics:v3

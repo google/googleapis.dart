@@ -131,6 +131,9 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
+  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -143,7 +146,7 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String projectId, core.String region, core.String clusterName,
-      {core.String $fields}) {
+      {core.String clusterUuid, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -159,6 +162,9 @@ class ProjectsRegionsClustersResourceApi {
     }
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
+    }
+    if (clusterUuid != null) {
+      _queryParams["clusterUuid"] = [clusterUuid];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -718,6 +724,11 @@ class ProjectsRegionsJobsResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The number of results to return in each response.
+  ///
   /// [clusterName] - Optional. If set, the returned jobs list includes only
   /// jobs that were submitted to the named cluster.
   ///
@@ -738,11 +749,6 @@ class ProjectsRegionsJobsResourceApi {
   /// - "ACTIVE" : A ACTIVE.
   /// - "NON_ACTIVE" : A NON_ACTIVE.
   ///
-  /// [pageToken] - Optional. The page token, returned by a previous call, to
-  /// request the next page of results.
-  ///
-  /// [pageSize] - Optional. The number of results to return in each response.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -754,11 +760,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String clusterName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String clusterName,
       core.String filter,
       core.String jobStateMatcher,
-      core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -773,6 +779,12 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
     }
@@ -781,12 +793,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (jobStateMatcher != null) {
       _queryParams["jobStateMatcher"] = [jobStateMatcher];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1107,11 +1113,11 @@ class ProjectsRegionsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1124,9 +1130,9 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1138,14 +1144,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

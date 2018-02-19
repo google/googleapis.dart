@@ -95,14 +95,14 @@ class BillingAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. The maximum page size is 100; this is
-  /// also the
-  /// default.
-  ///
   /// [pageToken] - A token identifying a page of results to return. This should
   /// be a
   /// `next_page_token` value returned from a previous `ListBillingAccounts`
   /// call. If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - Requested page size. The maximum page size is 100; this is
+  /// also the
+  /// default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -115,7 +115,7 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,11 +123,11 @@ class BillingAccountsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -164,14 +164,14 @@ class BillingAccountsProjectsResourceApi {
   /// you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
-  /// [pageSize] - Requested page size. The maximum page size is 100; this is
-  /// also the
-  /// default.
-  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a
   /// `next_page_token` value returned from a previous `ListProjectBillingInfo`
   /// call. If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - Requested page size. The maximum page size is 100; this is
+  /// also the
+  /// default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -184,7 +184,7 @@ class BillingAccountsProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectBillingInfoResponse> list(core.String name,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -195,11 +195,11 @@ class BillingAccountsProjectsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -369,12 +369,12 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. Defaults to 5000.
-  ///
   /// [pageToken] - A token identifying a page of results to return. This should
   /// be a
   /// `next_page_token` value returned from a previous `ListServices`
   /// call. If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - Requested page size. Defaults to 5000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -387,7 +387,7 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,11 +395,11 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

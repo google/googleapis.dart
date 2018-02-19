@@ -407,11 +407,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -424,9 +424,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -438,14 +438,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2719,11 +2719,11 @@ class Location {
 
 /// Metadata for the given google.cloud.location.Location.
 class LocationMetadata {
-  /// App Engine Flexible Environment is available in the given
+  /// App Engine flexible environment is available in the given
   /// location.@OutputOnly
   core.bool flexibleEnvironmentAvailable;
 
-  /// App Engine Standard Environment is available in the given
+  /// App Engine standard environment is available in the given
   /// location.@OutputOnly
   core.bool standardEnvironmentAvailable;
 

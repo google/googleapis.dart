@@ -296,14 +296,14 @@ class MonitoredResourceDescriptorsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -316,7 +316,7 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -324,11 +324,11 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2619,14 +2619,13 @@ class MetricDescriptor {
   /// Ki kibi (2**10)
   /// Mi mebi (2**20)
   /// Gi gibi (2**30)
-  /// Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such
-  /// as 1/s.The grammar also includes these connectors:
+  /// Ti tebi (2**40)GrammarThe grammar also includes these connectors:
   /// / division (as an infix operator, e.g. 1/s).
   /// . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
   /// is as follows:
   /// Expression = Component { "." Component } { "/" Component } ;
   ///
-  /// Component = [ PREFIX ] UNIT [ Annotation ]
+  /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
   ///           | Annotation
   ///           | "1"
   ///           ;
@@ -2638,6 +2637,9 @@ class MetricDescriptor {
   /// == By/s.
   /// NAME is a sequence of non-blank printable ASCII characters not  containing
   /// '{' or '}'.
+  /// 1 represents dimensionless value 1, such as in 1/s.
+  /// % represents dimensionless value 1/100, and annotates values giving  a
+  /// percentage.
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some

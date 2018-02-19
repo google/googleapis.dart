@@ -36,13 +36,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -80,13 +80,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -161,7 +161,7 @@
             }
         }
     },
-    "revision": "20171129",
+    "revision": "20180129",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "schemas": {
         "ViolatingSitesResponse": {
@@ -182,6 +182,29 @@
             "description": "Response message for GetSiteSummary.",
             "id": "SiteSummaryResponse",
             "properties": {
+                "reviewedSite": {
+                    "description": "The name of the site reviewed.",
+                    "type": "string"
+                },
+                "lastChangeTime": {
+                    "description": "The last time that the site changed status.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "abusiveStatus": {
+                    "description": "The status of the site reviewed for the abusive experiences.",
+                    "enum": [
+                        "UNKNOWN",
+                        "PASSING",
+                        "FAILING"
+                    ],
+                    "enumDescriptions": [
+                        "Not reviewed.",
+                        "Passing.",
+                        "Failing."
+                    ],
+                    "type": "string"
+                },
                 "enforcementTime": {
                     "description": "The date on which enforcement begins.",
                     "format": "google-datetime",
@@ -211,29 +234,6 @@
                 },
                 "reportUrl": {
                     "description": "A link that leads to a full abusive experience report.",
-                    "type": "string"
-                },
-                "reviewedSite": {
-                    "description": "The name of the site reviewed.",
-                    "type": "string"
-                },
-                "lastChangeTime": {
-                    "description": "The last time that the site changed status.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "abusiveStatus": {
-                    "description": "The status of the site reviewed for the abusive experiences.",
-                    "enum": [
-                        "UNKNOWN",
-                        "PASSING",
-                        "FAILING"
-                    ],
-                    "enumDescriptions": [
-                        "Not reviewed.",
-                        "Passing.",
-                        "Failing."
-                    ],
                     "type": "string"
                 }
             },

@@ -679,6 +679,8 @@ class ProjectsResourceApi {
       new ProjectsImageResourceApi(_requester);
   ProjectsInspectTemplatesResourceApi get inspectTemplates =>
       new ProjectsInspectTemplatesResourceApi(_requester);
+  ProjectsJobTriggersResourceApi get jobTriggers =>
+      new ProjectsJobTriggersResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -1418,6 +1420,7 @@ class ProjectsDlpJobsResourceApi {
   /// * Supported fields/values for inspect jobs:
   ///     - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
   ///     - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
+  ///     - `trigger_name` - The resource name of the trigger that created job.
   /// * Supported fields for risk analysis jobs:
   ///     - `state` - RUNNING|CANCELED|FINISHED|FAILED
   /// * The operator must be `=` or `!=`.
@@ -1834,6 +1837,293 @@ class ProjectsInspectTemplatesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new GooglePrivacyDlpV2beta2InspectTemplate.fromJson(data));
+  }
+}
+
+class ProjectsJobTriggersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsJobTriggersResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a job to run DLP actions such as scanning storage for sensitive
+  /// information on a set schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2beta2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2beta2JobTrigger> create(
+      GooglePrivacyDlpV2beta2CreateJobTriggerRequest request,
+      core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/jobTriggers';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2beta2JobTrigger.fromJson(data));
+  }
+
+  /// Deletes a job trigger.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the project and the triggeredJob, for example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a job trigger.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the project and the triggeredJob, for example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2beta2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2beta2JobTrigger> get(core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2beta2JobTrigger.fromJson(data));
+  }
+
+  /// Lists job triggers.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - Optional page token to continue retrieval. Comes from
+  /// previous call
+  /// to ListJobTriggers. `order_by` and `filter` should not change for
+  /// subsequent calls, but can be omitted if token is specified.
+  ///
+  /// [orderBy] - Optional comma separated list of triggeredJob fields to order
+  /// by,
+  /// followed by 'asc/desc' postfix, i.e.
+  /// `"create_time asc,name desc,schedule_mode asc"`. This list is
+  /// case-insensitive.
+  ///
+  /// Example: `"name asc,schedule_mode desc, status desc"`
+  ///
+  /// Supported filters keys and values are:
+  ///
+  /// - `create_time`: corresponds to time the triggeredJob was created.
+  /// - `update_time`: corresponds to time the triggeredJob was last updated.
+  /// - `name`: corresponds to JobTrigger's display name.
+  /// - `status`: corresponds to the triggeredJob status.
+  ///
+  /// [pageSize] - Optional size of the page, can be limited by a server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2beta2ListJobTriggersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2beta2ListJobTriggersResponse> list(
+      core.String parent,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/jobTriggers';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2beta2ListJobTriggersResponse.fromJson(data));
+  }
+
+  /// Updates a job trigger.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the project and the triggeredJob, for example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2beta2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2beta2JobTrigger> patch(
+      GooglePrivacyDlpV2beta2UpdateJobTriggerRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2beta2JobTrigger.fromJson(data));
   }
 }
 
@@ -3892,6 +4182,40 @@ class GooglePrivacyDlpV2beta1WordList {
   }
 }
 
+/// A task to execute on the completion of a job.
+class GooglePrivacyDlpV2beta2Action {
+  /// Publish a notification to a pubsub topic.
+  GooglePrivacyDlpV2beta2PublishToPubSub pubSub;
+
+  /// Save resulting findings in a provided location.
+  GooglePrivacyDlpV2beta2SaveFindings saveFindings;
+
+  GooglePrivacyDlpV2beta2Action();
+
+  GooglePrivacyDlpV2beta2Action.fromJson(core.Map _json) {
+    if (_json.containsKey("pubSub")) {
+      pubSub =
+          new GooglePrivacyDlpV2beta2PublishToPubSub.fromJson(_json["pubSub"]);
+    }
+    if (_json.containsKey("saveFindings")) {
+      saveFindings = new GooglePrivacyDlpV2beta2SaveFindings.fromJson(
+          _json["saveFindings"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pubSub != null) {
+      _json["pubSub"] = (pubSub).toJson();
+    }
+    if (saveFindings != null) {
+      _json["saveFindings"] = (saveFindings).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskDetails {
   GooglePrivacyDlpV2beta2CategoricalStatsResult categoricalStatsResult;
@@ -3976,12 +4300,23 @@ class GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskRequest {
   /// Configuration for this risk analysis job.
   GooglePrivacyDlpV2beta2RiskAnalysisJobConfig jobConfig;
 
+  /// Optional job ID to use for the created job. If not provided, a job ID will
+  /// automatically be generated. Must be unique within the project. The job ID
+  /// can contain uppercase and lowercase letters, numbers, and hyphens; that
+  /// is,
+  /// it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length
+  /// is 100 characters. Can be empty to allow the system to generate one.
+  core.String jobId;
+
   GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskRequest();
 
   GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskRequest.fromJson(core.Map _json) {
     if (_json.containsKey("jobConfig")) {
       jobConfig = new GooglePrivacyDlpV2beta2RiskAnalysisJobConfig.fromJson(
           _json["jobConfig"]);
+    }
+    if (_json.containsKey("jobId")) {
+      jobId = _json["jobId"];
     }
   }
 
@@ -3990,6 +4325,9 @@ class GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskRequest {
         new core.Map<core.String, core.Object>();
     if (jobConfig != null) {
       _json["jobConfig"] = (jobConfig).toJson();
+    }
+    if (jobId != null) {
+      _json["jobId"] = jobId;
     }
     return _json;
   }
@@ -4479,11 +4817,18 @@ class GooglePrivacyDlpV2beta2CloudStorageKey {
 /// Options defining a file or a set of files (path ending with *) within
 /// a Google Cloud Storage bucket.
 class GooglePrivacyDlpV2beta2CloudStorageOptions {
+  /// Max number of bytes to scan from a file. If a scanned file's size is
+  /// bigger
+  /// than this value then the rest of the bytes are omitted.
+  core.String bytesLimitPerFile;
   GooglePrivacyDlpV2beta2FileSet fileSet;
 
   GooglePrivacyDlpV2beta2CloudStorageOptions();
 
   GooglePrivacyDlpV2beta2CloudStorageOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("bytesLimitPerFile")) {
+      bytesLimitPerFile = _json["bytesLimitPerFile"];
+    }
     if (_json.containsKey("fileSet")) {
       fileSet = new GooglePrivacyDlpV2beta2FileSet.fromJson(_json["fileSet"]);
     }
@@ -4492,6 +4837,9 @@ class GooglePrivacyDlpV2beta2CloudStorageOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bytesLimitPerFile != null) {
+      _json["bytesLimitPerFile"] = bytesLimitPerFile;
+    }
     if (fileSet != null) {
       _json["fileSet"] = (fileSet).toJson();
     }
@@ -4766,6 +5114,42 @@ class GooglePrivacyDlpV2beta2CreateInspectTemplateRequest {
   }
 }
 
+/// Request message for CreateJobTrigger.
+class GooglePrivacyDlpV2beta2CreateJobTriggerRequest {
+  /// The JobTrigger to create.
+  GooglePrivacyDlpV2beta2JobTrigger jobTrigger;
+
+  /// The trigger id can contain uppercase and lowercase letters,
+  /// numbers, and hyphens; that is, it must match the regular
+  /// expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+  /// characters. Can be empty to allow the system to generate one.
+  core.String triggerId;
+
+  GooglePrivacyDlpV2beta2CreateJobTriggerRequest();
+
+  GooglePrivacyDlpV2beta2CreateJobTriggerRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("jobTrigger")) {
+      jobTrigger =
+          new GooglePrivacyDlpV2beta2JobTrigger.fromJson(_json["jobTrigger"]);
+    }
+    if (_json.containsKey("triggerId")) {
+      triggerId = _json["triggerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (jobTrigger != null) {
+      _json["jobTrigger"] = (jobTrigger).toJson();
+    }
+    if (triggerId != null) {
+      _json["triggerId"] = triggerId;
+    }
+    return _json;
+  }
+}
+
 /// Pseudonymization method that generates surrogates via cryptographic hashing.
 /// Uses SHA-256.
 /// The key size must be either 32 or 64 bytes.
@@ -4976,6 +5360,11 @@ class GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig {
 /// Custom information type provided by the user. Used to find domain-specific
 /// sensitive information configurable to the data in question.
 class GooglePrivacyDlpV2beta2CustomInfoType {
+  /// Set of detection rules to apply to all findings of this custom info type.
+  /// Rules are applied in order that they are specified. Not supported for the
+  /// `surrogate_type` custom info type.
+  core.List<GooglePrivacyDlpV2beta2DetectionRule> detectionRules;
+
   /// Dictionary-based custom info type.
   GooglePrivacyDlpV2beta2Dictionary dictionary;
 
@@ -4983,12 +5372,34 @@ class GooglePrivacyDlpV2beta2CustomInfoType {
   /// that do not conflict with built-in info types or other custom info types.
   GooglePrivacyDlpV2beta2InfoType infoType;
 
+  /// Likelihood to return for this custom info type. This base value can be
+  /// altered by a detection rule if the finding meets the criteria specified by
+  /// the rule. Defaults to `VERY_LIKELY` if not specified.
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Default value; information with all
+  /// likelihoods is included.
+  /// - "VERY_UNLIKELY" : Few matching elements.
+  /// - "UNLIKELY"
+  /// - "POSSIBLE" : Some matching elements.
+  /// - "LIKELY"
+  /// - "VERY_LIKELY" : Many matching elements.
+  core.String likelihood;
+
+  /// Regex-based custom info type.
+  GooglePrivacyDlpV2beta2Regex regex;
+
   /// Surrogate info type.
   GooglePrivacyDlpV2beta2SurrogateType surrogateType;
 
   GooglePrivacyDlpV2beta2CustomInfoType();
 
   GooglePrivacyDlpV2beta2CustomInfoType.fromJson(core.Map _json) {
+    if (_json.containsKey("detectionRules")) {
+      detectionRules = _json["detectionRules"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta2DetectionRule.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("dictionary")) {
       dictionary =
           new GooglePrivacyDlpV2beta2Dictionary.fromJson(_json["dictionary"]);
@@ -4996,6 +5407,12 @@ class GooglePrivacyDlpV2beta2CustomInfoType {
     if (_json.containsKey("infoType")) {
       infoType =
           new GooglePrivacyDlpV2beta2InfoType.fromJson(_json["infoType"]);
+    }
+    if (_json.containsKey("likelihood")) {
+      likelihood = _json["likelihood"];
+    }
+    if (_json.containsKey("regex")) {
+      regex = new GooglePrivacyDlpV2beta2Regex.fromJson(_json["regex"]);
     }
     if (_json.containsKey("surrogateType")) {
       surrogateType = new GooglePrivacyDlpV2beta2SurrogateType.fromJson(
@@ -5006,11 +5423,21 @@ class GooglePrivacyDlpV2beta2CustomInfoType {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (detectionRules != null) {
+      _json["detectionRules"] =
+          detectionRules.map((value) => (value).toJson()).toList();
+    }
     if (dictionary != null) {
       _json["dictionary"] = (dictionary).toJson();
     }
     if (infoType != null) {
       _json["infoType"] = (infoType).toJson();
+    }
+    if (likelihood != null) {
+      _json["likelihood"] = likelihood;
+    }
+    if (regex != null) {
+      _json["regex"] = (regex).toJson();
     }
     if (surrogateType != null) {
       _json["surrogateType"] = (surrogateType).toJson();
@@ -5296,6 +5723,32 @@ class GooglePrivacyDlpV2beta2DeidentifyTemplate {
   }
 }
 
+/// Rule for modifying a custom info type to alter behavior under certain
+/// circumstances, depending on the specific details of the rule. Not supported
+/// for the `surrogate_type` custom info type.
+class GooglePrivacyDlpV2beta2DetectionRule {
+  /// Hotword-based detection rule.
+  GooglePrivacyDlpV2beta2HotwordRule hotwordRule;
+
+  GooglePrivacyDlpV2beta2DetectionRule();
+
+  GooglePrivacyDlpV2beta2DetectionRule.fromJson(core.Map _json) {
+    if (_json.containsKey("hotwordRule")) {
+      hotwordRule =
+          new GooglePrivacyDlpV2beta2HotwordRule.fromJson(_json["hotwordRule"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hotwordRule != null) {
+      _json["hotwordRule"] = (hotwordRule).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Custom information type based on a dictionary of words or phrases. This can
 /// be used to match sensitive information specific to the data, such as a list
 /// of employee IDs or job titles.
@@ -5352,6 +5805,10 @@ class GooglePrivacyDlpV2beta2DlpJob {
   /// Results from inspecting a data source.
   GooglePrivacyDlpV2beta2InspectDataSourceDetails inspectDetails;
 
+  /// If created by a job trigger, the resource name of the trigger that
+  /// instantiated the job.
+  core.String jobTriggerName;
+
   /// The server-assigned name.
   core.String name;
 
@@ -5397,6 +5854,9 @@ class GooglePrivacyDlpV2beta2DlpJob {
           new GooglePrivacyDlpV2beta2InspectDataSourceDetails.fromJson(
               _json["inspectDetails"]);
     }
+    if (_json.containsKey("jobTriggerName")) {
+      jobTriggerName = _json["jobTriggerName"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -5431,6 +5891,9 @@ class GooglePrivacyDlpV2beta2DlpJob {
     }
     if (inspectDetails != null) {
       _json["inspectDetails"] = (inspectDetails).toJson();
+    }
+    if (jobTriggerName != null) {
+      _json["jobTriggerName"] = jobTriggerName;
     }
     if (name != null) {
       _json["name"] = name;
@@ -5473,6 +5936,37 @@ class GooglePrivacyDlpV2beta2EntityId {
         new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = (field).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The results of an unsuccessful activation of the JobTrigger.
+class GooglePrivacyDlpV2beta2Error {
+  GoogleRpcStatus details;
+
+  /// The times the error occurred.
+  core.List<core.String> timestamps;
+
+  GooglePrivacyDlpV2beta2Error();
+
+  GooglePrivacyDlpV2beta2Error.fromJson(core.Map _json) {
+    if (_json.containsKey("details")) {
+      details = new GoogleRpcStatus.fromJson(_json["details"]);
+    }
+    if (_json.containsKey("timestamps")) {
+      timestamps = _json["timestamps"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (details != null) {
+      _json["details"] = (details).toJson();
+    }
+    if (timestamps != null) {
+      _json["timestamps"] = timestamps;
     }
     return _json;
   }
@@ -5652,7 +6146,9 @@ class GooglePrivacyDlpV2beta2Finding {
 
   /// The content that was found. Even if the content is not textual, it
   /// may be converted to a textual representation here.
-  /// Provided if requested by the `InspectConfig`.
+  /// Provided if requested by the `InspectConfig` and the finding is
+  /// less than or equal to 4096 bytes long. If the finding exceeds 4096 bytes
+  /// in length, the quote may be omitted.
   core.String quote;
 
   GooglePrivacyDlpV2beta2Finding();
@@ -5804,6 +6300,53 @@ class GooglePrivacyDlpV2beta2FixedSizeBucketingConfig {
     }
     if (upperBound != null) {
       _json["upperBound"] = (upperBound).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Detection rule that adjusts the likelihood of findings within a certain
+/// proximity of hotwords.
+class GooglePrivacyDlpV2beta2HotwordRule {
+  /// Regex pattern defining what qualifies as a hotword.
+  GooglePrivacyDlpV2beta2Regex hotwordRegex;
+
+  /// Likelihood adjustment to apply to all matching findings.
+  GooglePrivacyDlpV2beta2LikelihoodAdjustment likelihoodAdjustment;
+
+  /// Proximity of the finding within which the entire hotword must reside.
+  /// The total length of the window cannot exceed 1000 characters.
+  GooglePrivacyDlpV2beta2Proximity proximity;
+
+  GooglePrivacyDlpV2beta2HotwordRule();
+
+  GooglePrivacyDlpV2beta2HotwordRule.fromJson(core.Map _json) {
+    if (_json.containsKey("hotwordRegex")) {
+      hotwordRegex =
+          new GooglePrivacyDlpV2beta2Regex.fromJson(_json["hotwordRegex"]);
+    }
+    if (_json.containsKey("likelihoodAdjustment")) {
+      likelihoodAdjustment =
+          new GooglePrivacyDlpV2beta2LikelihoodAdjustment.fromJson(
+              _json["likelihoodAdjustment"]);
+    }
+    if (_json.containsKey("proximity")) {
+      proximity =
+          new GooglePrivacyDlpV2beta2Proximity.fromJson(_json["proximity"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hotwordRegex != null) {
+      _json["hotwordRegex"] = (hotwordRegex).toJson();
+    }
+    if (likelihoodAdjustment != null) {
+      _json["likelihoodAdjustment"] = (likelihoodAdjustment).toJson();
+    }
+    if (proximity != null) {
+      _json["proximity"] = (proximity).toJson();
     }
     return _json;
   }
@@ -6309,12 +6852,23 @@ class GooglePrivacyDlpV2beta2InspectDataSourceRequest {
   /// A configuration for the job.
   GooglePrivacyDlpV2beta2InspectJobConfig jobConfig;
 
+  /// Optional job ID to use for the created job. If not provided, a job ID will
+  /// automatically be generated. Must be unique within the project. The job ID
+  /// can contain uppercase and lowercase letters, numbers, and hyphens; that
+  /// is,
+  /// it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length
+  /// is 100 characters. Can be empty to allow the system to generate one.
+  core.String jobId;
+
   GooglePrivacyDlpV2beta2InspectDataSourceRequest();
 
   GooglePrivacyDlpV2beta2InspectDataSourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey("jobConfig")) {
       jobConfig = new GooglePrivacyDlpV2beta2InspectJobConfig.fromJson(
           _json["jobConfig"]);
+    }
+    if (_json.containsKey("jobId")) {
+      jobId = _json["jobId"];
     }
   }
 
@@ -6324,11 +6878,18 @@ class GooglePrivacyDlpV2beta2InspectDataSourceRequest {
     if (jobConfig != null) {
       _json["jobConfig"] = (jobConfig).toJson();
     }
+    if (jobId != null) {
+      _json["jobId"] = jobId;
+    }
     return _json;
   }
 }
 
 class GooglePrivacyDlpV2beta2InspectJobConfig {
+  /// Actions to execute at the completion of the job. Are executed in the order
+  /// provided.
+  core.List<GooglePrivacyDlpV2beta2Action> actions;
+
   /// How and what to scan for.
   GooglePrivacyDlpV2beta2InspectConfig inspectConfig;
 
@@ -6346,6 +6907,11 @@ class GooglePrivacyDlpV2beta2InspectJobConfig {
   GooglePrivacyDlpV2beta2InspectJobConfig();
 
   GooglePrivacyDlpV2beta2InspectJobConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("actions")) {
+      actions = _json["actions"]
+          .map((value) => new GooglePrivacyDlpV2beta2Action.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("inspectConfig")) {
       inspectConfig = new GooglePrivacyDlpV2beta2InspectConfig.fromJson(
           _json["inspectConfig"]);
@@ -6366,6 +6932,9 @@ class GooglePrivacyDlpV2beta2InspectJobConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (actions != null) {
+      _json["actions"] = actions.map((value) => (value).toJson()).toList();
+    }
     if (inspectConfig != null) {
       _json["inspectConfig"] = (inspectConfig).toJson();
     }
@@ -6488,6 +7057,126 @@ class GooglePrivacyDlpV2beta2InspectTemplate {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Contains a configuration to make dlp api calls on a repeating basis.
+class GooglePrivacyDlpV2beta2JobTrigger {
+  /// The creation timestamp of a triggeredJob, output only field.
+  core.String createTime;
+
+  /// User provided description (max 256 chars)
+  core.String description;
+
+  /// Display name (max 100 chars)
+  core.String displayName;
+
+  /// A stream of errors encountered when the trigger was activated. Repeated
+  /// errors may result in the JobTrigger automaticaly being paused.
+  /// Will return the last 100 errors. Whenever the JobTrigger is modified
+  /// this list will be cleared. Output only field.
+  core.List<GooglePrivacyDlpV2beta2Error> errors;
+  GooglePrivacyDlpV2beta2InspectJobConfig inspectJob;
+
+  /// The timestamp of the last time this trigger executed.
+  core.String lastRunTime;
+
+  /// Unique resource name for the triggeredJob, assigned by the service when
+  /// the
+  /// triggeredJob is created, for example
+  /// `projects/dlp-test-project/triggeredJobs/53234423`.
+  core.String name;
+
+  /// A status for this trigger. [required]
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED"
+  /// - "HEALTHY" : Trigger is healthy.
+  /// - "PAUSED" : Trigger is temporarily paused.
+  /// - "CANCELLED" : Trigger is cancelled and can not be resumed.
+  core.String status;
+
+  /// A list of triggers which will be OR'ed together. Only one in the list
+  /// needs to trigger for a job to be started. The list may contain only
+  /// a single Schedule trigger and must have at least one object.
+  core.List<GooglePrivacyDlpV2beta2Trigger> triggers;
+
+  /// The last update timestamp of a triggeredJob, output only field.
+  core.String updateTime;
+
+  GooglePrivacyDlpV2beta2JobTrigger();
+
+  GooglePrivacyDlpV2beta2JobTrigger.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"]
+          .map((value) => new GooglePrivacyDlpV2beta2Error.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("inspectJob")) {
+      inspectJob = new GooglePrivacyDlpV2beta2InspectJobConfig.fromJson(
+          _json["inspectJob"]);
+    }
+    if (_json.containsKey("lastRunTime")) {
+      lastRunTime = _json["lastRunTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("triggers")) {
+      triggers = _json["triggers"]
+          .map((value) => new GooglePrivacyDlpV2beta2Trigger.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+    }
+    if (inspectJob != null) {
+      _json["inspectJob"] = (inspectJob).toJson();
+    }
+    if (lastRunTime != null) {
+      _json["lastRunTime"] = lastRunTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (triggers != null) {
+      _json["triggers"] = triggers.map((value) => (value).toJson()).toList();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -7167,6 +7856,54 @@ class GooglePrivacyDlpV2beta2LDiversityResult {
   }
 }
 
+/// Message for specifying an adjustment to the likelihood of a finding as
+/// part of a detection rule.
+class GooglePrivacyDlpV2beta2LikelihoodAdjustment {
+  /// Set the likelihood of a finding to a fixed value.
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Default value; information with all
+  /// likelihoods is included.
+  /// - "VERY_UNLIKELY" : Few matching elements.
+  /// - "UNLIKELY"
+  /// - "POSSIBLE" : Some matching elements.
+  /// - "LIKELY"
+  /// - "VERY_LIKELY" : Many matching elements.
+  core.String fixedLikelihood;
+
+  /// Increase or decrease the likelihood by the specified number of
+  /// levels. For example, if a finding would be `POSSIBLE` without the
+  /// detection rule and `relative_likelihood` is 1, then it is upgraded to
+  /// `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`.
+  /// Likelihood may never drop below `VERY_UNLIKELY` or exceed
+  /// `VERY_LIKELY`, so applying an adjustment of 1 followed by an
+  /// adjustment of -1 when base likelihood is `VERY_LIKELY` will result in
+  /// a final likelihood of `LIKELY`.
+  core.int relativeLikelihood;
+
+  GooglePrivacyDlpV2beta2LikelihoodAdjustment();
+
+  GooglePrivacyDlpV2beta2LikelihoodAdjustment.fromJson(core.Map _json) {
+    if (_json.containsKey("fixedLikelihood")) {
+      fixedLikelihood = _json["fixedLikelihood"];
+    }
+    if (_json.containsKey("relativeLikelihood")) {
+      relativeLikelihood = _json["relativeLikelihood"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fixedLikelihood != null) {
+      _json["fixedLikelihood"] = fixedLikelihood;
+    }
+    if (relativeLikelihood != null) {
+      _json["relativeLikelihood"] = relativeLikelihood;
+    }
+    return _json;
+  }
+}
+
 /// Response message for ListDeidentifyTemplates.
 class GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse {
   /// List of deidentify templates, up to page_size in
@@ -7295,6 +8032,42 @@ class GooglePrivacyDlpV2beta2ListInspectTemplatesResponse {
     if (inspectTemplates != null) {
       _json["inspectTemplates"] =
           inspectTemplates.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message for ListJobTriggers.
+class GooglePrivacyDlpV2beta2ListJobTriggersResponse {
+  /// List of triggeredJobs, up to page_size in ListJobTriggersRequest.
+  core.List<GooglePrivacyDlpV2beta2JobTrigger> jobTriggers;
+
+  /// If the next page is available then the next page token to be used
+  /// in following ListJobTriggers request.
+  core.String nextPageToken;
+
+  GooglePrivacyDlpV2beta2ListJobTriggersResponse();
+
+  GooglePrivacyDlpV2beta2ListJobTriggersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("jobTriggers")) {
+      jobTriggers = _json["jobTriggers"]
+          .map((value) => new GooglePrivacyDlpV2beta2JobTrigger.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (jobTriggers != null) {
+      _json["jobTriggers"] =
+          jobTriggers.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7725,6 +8498,66 @@ class GooglePrivacyDlpV2beta2PrivacyMetric {
   }
 }
 
+/// Message for specifying a window around a finding to apply a detection
+/// rule.
+class GooglePrivacyDlpV2beta2Proximity {
+  /// Number of characters after the finding to consider.
+  core.int windowAfter;
+
+  /// Number of characters before the finding to consider.
+  core.int windowBefore;
+
+  GooglePrivacyDlpV2beta2Proximity();
+
+  GooglePrivacyDlpV2beta2Proximity.fromJson(core.Map _json) {
+    if (_json.containsKey("windowAfter")) {
+      windowAfter = _json["windowAfter"];
+    }
+    if (_json.containsKey("windowBefore")) {
+      windowBefore = _json["windowBefore"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (windowAfter != null) {
+      _json["windowAfter"] = windowAfter;
+    }
+    if (windowBefore != null) {
+      _json["windowBefore"] = windowBefore;
+    }
+    return _json;
+  }
+}
+
+/// Publish the results of a DlpJob to a pub sub channel.
+/// Compatible with: Inpect, Risk
+class GooglePrivacyDlpV2beta2PublishToPubSub {
+  /// Cloud Pub/Sub topic to send notifications to. The topic must have given
+  /// publishing access rights to the DLP API service account executing
+  /// the long running DlpJob sending the notifications.
+  /// Format is projects/{project}/topics/{topic}.
+  core.String topic;
+
+  GooglePrivacyDlpV2beta2PublishToPubSub();
+
+  GooglePrivacyDlpV2beta2PublishToPubSub.fromJson(core.Map _json) {
+    if (_json.containsKey("topic")) {
+      topic = _json["topic"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (topic != null) {
+      _json["topic"] = topic;
+    }
+    return _json;
+  }
+}
+
 /// A quasi-identifier column has a custom_tag, used to know which column
 /// in the data corresponds to which column in the statistical model.
 class GooglePrivacyDlpV2beta2QuasiIdField {
@@ -8033,6 +8866,29 @@ class GooglePrivacyDlpV2beta2RedactImageResponse {
   }
 }
 
+/// Message defining a custom regular expression.
+class GooglePrivacyDlpV2beta2Regex {
+  /// Pattern defining the regular expression.
+  core.String pattern;
+
+  GooglePrivacyDlpV2beta2Regex();
+
+  GooglePrivacyDlpV2beta2Regex.fromJson(core.Map _json) {
+    if (_json.containsKey("pattern")) {
+      pattern = _json["pattern"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pattern != null) {
+      _json["pattern"] = pattern;
+    }
+    return _json;
+  }
+}
+
 /// Request to re-identify an item.
 class GooglePrivacyDlpV2beta2ReidentifyContentRequest {
   /// Configuration for the inspector.
@@ -8263,6 +9119,10 @@ class GooglePrivacyDlpV2beta2Result {
 
 /// Configuration for a risk analysis job.
 class GooglePrivacyDlpV2beta2RiskAnalysisJobConfig {
+  /// Actions to execute at the completion of the job. Are executed in the order
+  /// provided.
+  core.List<GooglePrivacyDlpV2beta2Action> actions;
+
   /// Privacy metric to compute.
   GooglePrivacyDlpV2beta2PrivacyMetric privacyMetric;
 
@@ -8272,6 +9132,11 @@ class GooglePrivacyDlpV2beta2RiskAnalysisJobConfig {
   GooglePrivacyDlpV2beta2RiskAnalysisJobConfig();
 
   GooglePrivacyDlpV2beta2RiskAnalysisJobConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("actions")) {
+      actions = _json["actions"]
+          .map((value) => new GooglePrivacyDlpV2beta2Action.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("privacyMetric")) {
       privacyMetric = new GooglePrivacyDlpV2beta2PrivacyMetric.fromJson(
           _json["privacyMetric"]);
@@ -8285,6 +9150,9 @@ class GooglePrivacyDlpV2beta2RiskAnalysisJobConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (actions != null) {
+      _json["actions"] = actions.map((value) => (value).toJson()).toList();
+    }
     if (privacyMetric != null) {
       _json["privacyMetric"] = (privacyMetric).toJson();
     }
@@ -8318,6 +9186,60 @@ class GooglePrivacyDlpV2beta2Row {
   }
 }
 
+/// If set, the detailed findings will be persisted to the specified
+/// OutputStorageConfig. Compatible with: Inspect
+class GooglePrivacyDlpV2beta2SaveFindings {
+  GooglePrivacyDlpV2beta2OutputStorageConfig outputConfig;
+
+  GooglePrivacyDlpV2beta2SaveFindings();
+
+  GooglePrivacyDlpV2beta2SaveFindings.fromJson(core.Map _json) {
+    if (_json.containsKey("outputConfig")) {
+      outputConfig = new GooglePrivacyDlpV2beta2OutputStorageConfig.fromJson(
+          _json["outputConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (outputConfig != null) {
+      _json["outputConfig"] = (outputConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Schedule for triggeredJobs.
+class GooglePrivacyDlpV2beta2Schedule {
+  /// With this option a job is started a regular periodic basis. For
+  /// example: every 10 minutes.
+  ///
+  /// A scheduled start time will be skipped if the previous
+  /// execution has not ended when its scheduled time occurs.
+  ///
+  /// This value must be set to a time duration greater than or equal
+  /// to 60 minutes and can be no longer than 60 days.
+  core.String reccurrencePeriodDuration;
+
+  GooglePrivacyDlpV2beta2Schedule();
+
+  GooglePrivacyDlpV2beta2Schedule.fromJson(core.Map _json) {
+    if (_json.containsKey("reccurrencePeriodDuration")) {
+      reccurrencePeriodDuration = _json["reccurrencePeriodDuration"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reccurrencePeriodDuration != null) {
+      _json["reccurrencePeriodDuration"] = reccurrencePeriodDuration;
+    }
+    return _json;
+  }
+}
+
 /// Shared message indicating Cloud storage type.
 class GooglePrivacyDlpV2beta2StorageConfig {
   /// BigQuery options specification.
@@ -8328,6 +9250,7 @@ class GooglePrivacyDlpV2beta2StorageConfig {
 
   /// Google Cloud Datastore options specification.
   GooglePrivacyDlpV2beta2DatastoreOptions datastoreOptions;
+  GooglePrivacyDlpV2beta2TimespanConfig timespanConfig;
 
   GooglePrivacyDlpV2beta2StorageConfig();
 
@@ -8345,6 +9268,10 @@ class GooglePrivacyDlpV2beta2StorageConfig {
       datastoreOptions = new GooglePrivacyDlpV2beta2DatastoreOptions.fromJson(
           _json["datastoreOptions"]);
     }
+    if (_json.containsKey("timespanConfig")) {
+      timespanConfig = new GooglePrivacyDlpV2beta2TimespanConfig.fromJson(
+          _json["timespanConfig"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8358,6 +9285,9 @@ class GooglePrivacyDlpV2beta2StorageConfig {
     }
     if (datastoreOptions != null) {
       _json["datastoreOptions"] = (datastoreOptions).toJson();
+    }
+    if (timespanConfig != null) {
+      _json["timespanConfig"] = (timespanConfig).toJson();
     }
     return _json;
   }
@@ -8501,6 +9431,8 @@ class GooglePrivacyDlpV2beta2TaggedField {
   /// A column can be tagged with a InfoType to use the relevant public
   /// dataset as a statistical model of population, if available. We
   /// currently support US ZIP codes, region codes, ages and genders.
+  /// To programmatically obtain the list of supported InfoTypes, use
+  /// ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
   GooglePrivacyDlpV2beta2InfoType infoType;
 
   GooglePrivacyDlpV2beta2TaggedField();
@@ -8567,6 +9499,54 @@ class GooglePrivacyDlpV2beta2TimePartConfig {
         new core.Map<core.String, core.Object>();
     if (partToExtract != null) {
       _json["partToExtract"] = partToExtract;
+    }
+    return _json;
+  }
+}
+
+/// Configuration of the timespan of the items to include in scanning.
+/// Currently only supported when inspecting Google Cloud Storage and BigQuery.
+class GooglePrivacyDlpV2beta2TimespanConfig {
+  /// When the job is started by a JobTrigger we will automatically figure out
+  /// a valid start_time to avoid scanning files that have not been modified
+  /// since the last time the JobTrigger executed. This will be based on the
+  /// time of the execution of the last run of the JobTrigger.
+  core.bool enableAutoPopulationOfTimespanConfig;
+
+  /// Exclude files newer than this value.
+  /// If set to zero, no upper time limit is applied.
+  core.String endTime;
+
+  /// Exclude files older than this value.
+  core.String startTime;
+
+  GooglePrivacyDlpV2beta2TimespanConfig();
+
+  GooglePrivacyDlpV2beta2TimespanConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableAutoPopulationOfTimespanConfig")) {
+      enableAutoPopulationOfTimespanConfig =
+          _json["enableAutoPopulationOfTimespanConfig"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableAutoPopulationOfTimespanConfig != null) {
+      _json["enableAutoPopulationOfTimespanConfig"] =
+          enableAutoPopulationOfTimespanConfig;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }
@@ -8728,6 +9708,30 @@ class GooglePrivacyDlpV2beta2TransientCryptoKey {
   }
 }
 
+/// What event needs to occur for a new job to be started.
+class GooglePrivacyDlpV2beta2Trigger {
+  /// Create a job on a repeating basis based on the elapse of time.
+  GooglePrivacyDlpV2beta2Schedule schedule;
+
+  GooglePrivacyDlpV2beta2Trigger();
+
+  GooglePrivacyDlpV2beta2Trigger.fromJson(core.Map _json) {
+    if (_json.containsKey("schedule")) {
+      schedule =
+          new GooglePrivacyDlpV2beta2Schedule.fromJson(_json["schedule"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (schedule != null) {
+      _json["schedule"] = (schedule).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Using raw keys is prone to security risks due to accidentally
 /// leaking the key. Choose another type of key if possible.
 class GooglePrivacyDlpV2beta2UnwrappedCryptoKey {
@@ -8820,6 +9824,39 @@ class GooglePrivacyDlpV2beta2UpdateInspectTemplateRequest {
         new core.Map<core.String, core.Object>();
     if (inspectTemplate != null) {
       _json["inspectTemplate"] = (inspectTemplate).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Request message for UpdateJobTrigger.
+class GooglePrivacyDlpV2beta2UpdateJobTriggerRequest {
+  /// New JobTrigger value.
+  GooglePrivacyDlpV2beta2JobTrigger jobTrigger;
+
+  /// Mask to control which fields get updated.
+  core.String updateMask;
+
+  GooglePrivacyDlpV2beta2UpdateJobTriggerRequest();
+
+  GooglePrivacyDlpV2beta2UpdateJobTriggerRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("jobTrigger")) {
+      jobTrigger =
+          new GooglePrivacyDlpV2beta2JobTrigger.fromJson(_json["jobTrigger"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (jobTrigger != null) {
+      _json["jobTrigger"] = (jobTrigger).toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;

@@ -286,6 +286,9 @@ class PresentationsPagesResourceApi {
   /// Generates a thumbnail of the latest version of the specified page in the
   /// presentation and returns a URL to the thumbnail image.
   ///
+  /// This request counts as an [expensive read request](/slides/limits) for
+  /// quota purposes.
+  ///
   /// Request parameters:
   ///
   /// [presentationId] - The ID of the presentation to retrieve.
@@ -548,6 +551,9 @@ class BatchUpdatePresentationResponse {
   /// replies to some requests may be empty.
   core.List<Response> replies;
 
+  /// The updated write control after applying the request.
+  WriteControl writeControl;
+
   BatchUpdatePresentationResponse();
 
   BatchUpdatePresentationResponse.fromJson(core.Map _json) {
@@ -559,6 +565,9 @@ class BatchUpdatePresentationResponse {
           .map((value) => new Response.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("writeControl")) {
+      writeControl = new WriteControl.fromJson(_json["writeControl"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -569,6 +578,9 @@ class BatchUpdatePresentationResponse {
     }
     if (replies != null) {
       _json["replies"] = replies.map((value) => (value).toJson()).toList();
+    }
+    if (writeControl != null) {
+      _json["writeControl"] = (writeControl).toJson();
     }
     return _json;
   }
@@ -2292,6 +2304,10 @@ class Image {
   /// The properties of the image.
   ImageProperties imageProperties;
 
+  /// The source URL is the URL used to insert the image. The source URL can be
+  /// empty.
+  core.String sourceUrl;
+
   Image();
 
   Image.fromJson(core.Map _json) {
@@ -2300,6 +2316,9 @@ class Image {
     }
     if (_json.containsKey("imageProperties")) {
       imageProperties = new ImageProperties.fromJson(_json["imageProperties"]);
+    }
+    if (_json.containsKey("sourceUrl")) {
+      sourceUrl = _json["sourceUrl"];
     }
   }
 
@@ -2311,6 +2330,9 @@ class Image {
     }
     if (imageProperties != null) {
       _json["imageProperties"] = (imageProperties).toJson();
+    }
+    if (sourceUrl != null) {
+      _json["sourceUrl"] = sourceUrl;
     }
     return _json;
   }
@@ -4362,6 +4384,30 @@ class ReplaceAllShapesWithImageRequest {
   /// given text.
   SubstringMatchCriteria containsText;
 
+  /// The image replace method.
+  ///
+  /// If you specify both a `replace_method` and an `image_replace_method`, the
+  /// `image_replace_method` takes precedence.
+  ///
+  /// If you do not specify a value for `image_replace_method`, but specify a
+  /// value for `replace_method`, then the specified `replace_method` value is
+  /// used.
+  ///
+  /// If you do not specify either, then CENTER_INSIDE is used.
+  /// Possible string values are:
+  /// - "IMAGE_REPLACE_METHOD_UNSPECIFIED" : Unspecified image replace method.
+  /// This value must not be used.
+  /// - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
+  /// of the original
+  /// shape and maintains the image's aspect ratio. The rendered size of the
+  /// image may be smaller than the size of the shape. This is the default
+  /// method when one is not specified.
+  /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
+  /// original shape.
+  /// The image may be cropped in order to fill the shape. The rendered size of
+  /// the image will be the same as that of the original shape.
+  core.String imageReplaceMethod;
+
   /// The image URL.
   ///
   /// The image is fetched once at insertion time and a copy is stored for
@@ -4381,6 +4427,10 @@ class ReplaceAllShapesWithImageRequest {
   core.List<core.String> pageObjectIds;
 
   /// The replace method.
+  /// Deprecated: use `image_replace_method` instead.
+  ///
+  /// If you specify both a `replace_method` and an `image_replace_method`, the
+  /// `image_replace_method` takes precedence.
   /// Possible string values are:
   /// - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
   /// of the original
@@ -4399,6 +4449,9 @@ class ReplaceAllShapesWithImageRequest {
     if (_json.containsKey("containsText")) {
       containsText = new SubstringMatchCriteria.fromJson(_json["containsText"]);
     }
+    if (_json.containsKey("imageReplaceMethod")) {
+      imageReplaceMethod = _json["imageReplaceMethod"];
+    }
     if (_json.containsKey("imageUrl")) {
       imageUrl = _json["imageUrl"];
     }
@@ -4415,6 +4468,9 @@ class ReplaceAllShapesWithImageRequest {
         new core.Map<core.String, core.Object>();
     if (containsText != null) {
       _json["containsText"] = (containsText).toJson();
+    }
+    if (imageReplaceMethod != null) {
+      _json["imageReplaceMethod"] = imageReplaceMethod;
     }
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;

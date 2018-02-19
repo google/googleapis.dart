@@ -1533,12 +1533,6 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The maximum number of results to return. If unspecified,
-  /// defaults to
-  /// 256. The maximum value is 2048.
-  ///
   /// [filter] - A string for filtering Operations.
   /// The following filter fields are supported&#58;
   ///
@@ -1559,6 +1553,12 @@ class OperationsResourceApi {
   /// * `projectId = my-project AND labels.color = *`
   /// * `projectId = my-project AND labels.color = red`
   ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The maximum number of results to return. If unspecified,
+  /// defaults to
+  /// 256. The maximum value is 2048.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1570,9 +1570,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1584,14 +1584,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1986,6 +1986,15 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// [readGroupSetId] - Required. The ID of the read group set over which
   /// coverage is requested.
   ///
+  /// [referenceName] - The name of the reference to query, within the reference
+  /// set associated
+  /// with this query. Optional.
+  ///
+  /// [end] - The end position of the range on the reference, 0-based exclusive.
+  /// If
+  /// specified, `referenceName` must also be specified. If unset or 0, defaults
+  /// to the length of the reference.
+  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// result sets.
   /// To get the next page of results, set this parameter to the value of
@@ -2008,15 +2017,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// `bucketWidth` is currently 2048 base pairs; this is subject to
   /// change.
   ///
-  /// [referenceName] - The name of the reference to query, within the reference
-  /// set associated
-  /// with this query. Optional.
-  ///
-  /// [end] - The end position of the range on the reference, 0-based exclusive.
-  /// If
-  /// specified, `referenceName` must also be specified. If unset or 0, defaults
-  /// to the length of the reference.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2028,12 +2028,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId,
-      {core.String pageToken,
+      {core.String referenceName,
+      core.String end,
+      core.String pageToken,
       core.int pageSize,
       core.String start,
       core.String targetBucketWidth,
-      core.String referenceName,
-      core.String end,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2044,6 +2044,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if (referenceName != null) {
+      _queryParams["referenceName"] = [referenceName];
+    }
+    if (end != null) {
+      _queryParams["end"] = [end];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2056,12 +2062,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (targetBucketWidth != null) {
       _queryParams["targetBucketWidth"] = [targetBucketWidth];
-    }
-    if (referenceName != null) {
-      _queryParams["referenceName"] = [referenceName];
-    }
-    if (end != null) {
-      _queryParams["end"] = [end];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

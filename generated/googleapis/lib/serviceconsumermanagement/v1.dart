@@ -547,14 +547,14 @@ class ServicesTenancyUnitsResourceApi {
   /// {service} the name of a service, for example 'service.googleapis.com'.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results returned by this request.
+  ///
+  /// [filter] - Filter expression over tenancy resources field. Optional.
+  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// result sets.
   /// To get the next page of results, set this parameter to the value of
   /// `nextPageToken` from the previous response.
-  ///
-  /// [pageSize] - The maximum number of results returned by this request.
-  ///
-  /// [filter] - Filter expression over tenancy resources field. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -567,9 +567,9 @@ class ServicesTenancyUnitsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListTenancyUnitsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -581,14 +581,14 @@ class ServicesTenancyUnitsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1400,6 +1400,26 @@ class CancelOperationRequest {
 ///
 /// Available context types are defined in package
 /// `google.rpc.context`.
+///
+/// This also provides mechanism to whitelist any protobuf message extension
+/// that
+/// can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+/// “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+/// specific protobuf types that can appear in grpc metadata as follows in your
+/// yaml file:
+///
+/// Example:
+///
+///     context:
+///       rules:
+///        - selector: "google.example.library.v1.LibraryService.CreateBook"
+///          allowed_request_extensions:
+///          - google.foo.v1.NewExtension
+///          allowed_response_extensions:
+///          - google.foo.v1.NewExtension
+///
+/// You can also specify extension ID instead of fully qualified extension name
+/// here.
 class Context {
   /// A list of RPC context rules that apply to individual API methods.
   ///
@@ -1429,6 +1449,14 @@ class Context {
 /// A context rule provides information about the context for an individual API
 /// element.
 class ContextRule {
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from client to backend.
+  core.List<core.String> allowedRequestExtensions;
+
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from backend to client.
+  core.List<core.String> allowedResponseExtensions;
+
   /// A list of full type names of provided contexts.
   core.List<core.String> provided;
 
@@ -1443,6 +1471,12 @@ class ContextRule {
   ContextRule();
 
   ContextRule.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedRequestExtensions")) {
+      allowedRequestExtensions = _json["allowedRequestExtensions"];
+    }
+    if (_json.containsKey("allowedResponseExtensions")) {
+      allowedResponseExtensions = _json["allowedResponseExtensions"];
+    }
     if (_json.containsKey("provided")) {
       provided = _json["provided"];
     }
@@ -1457,6 +1491,12 @@ class ContextRule {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allowedRequestExtensions != null) {
+      _json["allowedRequestExtensions"] = allowedRequestExtensions;
+    }
+    if (allowedResponseExtensions != null) {
+      _json["allowedResponseExtensions"] = allowedResponseExtensions;
+    }
     if (provided != null) {
       _json["provided"] = provided;
     }
@@ -3309,8 +3349,6 @@ class MetricDescriptor {
   ///
   /// **Grammar**
   ///
-  /// The grammar includes the dimensionless unit `1`, such as `1/s`.
-  ///
   /// The grammar also includes these connectors:
   ///
   /// * `/`    division (as an infix operator, e.g. `1/s`).
@@ -3320,7 +3358,7 @@ class MetricDescriptor {
   ///
   ///     Expression = Component { "." Component } { "/" Component } ;
   ///
-  ///     Component = [ PREFIX ] UNIT [ Annotation ]
+  ///     Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
   ///               | Annotation
   ///               | "1"
   ///               ;
@@ -3334,6 +3372,9 @@ class MetricDescriptor {
   ///    `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.
   /// * `NAME` is a sequence of non-blank printable ASCII characters not
   ///    containing '{' or '}'.
+  /// * `1` represents dimensionless value 1, such as in `1/s`.
+  /// * `%` represents dimensionless value 1/100, and annotates values giving
+  ///    a percentage.
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
@@ -5157,10 +5198,12 @@ class TenantProjectConfig {
 /// Describes policy settings that need to be applied to a newly
 /// created Tenant Project.
 class TenantProjectPolicy {
-  /// Additional policy bindings to be applied on the tenant
-  /// project.
-  /// At least one owner must be set in the bindings. Among the list of members
-  /// as owners, at least one of them must be either `user` or `group` based.
+  /// Policy bindings to be applied to the tenant project, in addition to the
+  /// 'roles/owner' role granted to the Service Consumer Management service
+  /// account.
+  /// At least one binding must have the role `roles/owner`. Among the list of
+  /// members for `roles/owner`, at least one of them must be either `user` or
+  /// `group` type.
   core.List<PolicyBinding> policyBindings;
 
   TenantProjectPolicy();

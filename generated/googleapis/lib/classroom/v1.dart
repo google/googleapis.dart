@@ -951,10 +951,6 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
-  /// [announcementStates] - Restriction on the `state` of announcements
-  /// returned.
-  /// If this argument is left unspecified, the default value is `PUBLISHED`.
-  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with
   /// an optional sort direction keyword. Supported field is `updateTime`.
@@ -976,6 +972,10 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned.
+  /// If this argument is left unspecified, the default value is `PUBLISHED`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -987,10 +987,10 @@ class CoursesAnnouncementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(core.String courseId,
-      {core.List<core.String> announcementStates,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
       core.int pageSize,
+      core.List<core.String> announcementStates,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1002,9 +1002,6 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (announcementStates != null) {
-      _queryParams["announcementStates"] = announcementStates;
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -1013,6 +1010,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (announcementStates != null) {
+      _queryParams["announcementStates"] = announcementStates;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1776,15 +1776,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
-  /// [late] - Requested lateness value. If specified, returned student
-  /// submissions are
-  /// restricted by the requested value.
-  /// If unspecified, submissions are returned regardless of `late` value.
-  /// Possible string values are:
-  /// - "LATE_VALUES_UNSPECIFIED" : A LATE_VALUES_UNSPECIFIED.
-  /// - "LATE_ONLY" : A LATE_ONLY.
-  /// - "NOT_LATE_ONLY" : A NOT_LATE_ONLY.
-  ///
   /// [pageToken] - nextPageToken
   /// value returned from a previous
   /// list call,
@@ -1793,15 +1784,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// The list request
   /// must be otherwise identical to the one that resulted in this token.
   ///
+  /// [states] - Requested submission states. If specified, returned student
+  /// submissions
+  /// match one of the specified submission states.
+  ///
   /// [pageSize] - Maximum number of items to return. Zero or unspecified
   /// indicates that the
   /// server may assign a maximum.
   ///
   /// The server may return fewer than the specified number of results.
-  ///
-  /// [states] - Requested submission states. If specified, returned student
-  /// submissions
-  /// match one of the specified submission states.
   ///
   /// [userId] - Optional argument to restrict returned student work to those
   /// owned by the
@@ -1811,6 +1802,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// * the numeric identifier for the user
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
+  ///
+  /// [late] - Requested lateness value. If specified, returned student
+  /// submissions are
+  /// restricted by the requested value.
+  /// If unspecified, submissions are returned regardless of `late` value.
+  /// Possible string values are:
+  /// - "LATE_VALUES_UNSPECIFIED" : A LATE_VALUES_UNSPECIFIED.
+  /// - "LATE_ONLY" : A LATE_ONLY.
+  /// - "NOT_LATE_ONLY" : A NOT_LATE_ONLY.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1824,11 +1824,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String late,
-      core.String pageToken,
-      core.int pageSize,
+      {core.String pageToken,
       core.List<core.String> states,
+      core.int pageSize,
       core.String userId,
+      core.String late,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1843,20 +1843,20 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
-    if (late != null) {
-      _queryParams["late"] = [late];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (states != null) {
       _queryParams["states"] = states;
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
+    }
+    if (late != null) {
+      _queryParams["late"] = [late];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3249,14 +3249,6 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
-  /// [courseId] - Restricts returned invitations to those for a course with the
-  /// specified
-  /// identifier.
-  ///
   /// [userId] - Restricts returned invitations to those for a specific user.
   /// The identifier
   /// can be one of the following:
@@ -3273,6 +3265,14 @@ class InvitationsResourceApi {
   /// The list request must be
   /// otherwise identical to the one that resulted in this token.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// [courseId] - Restricts returned invitations to those for a course with the
+  /// specified
+  /// identifier.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3284,10 +3284,10 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list(
-      {core.int pageSize,
-      core.String courseId,
-      core.String userId,
+      {core.String userId,
       core.String pageToken,
+      core.int pageSize,
+      core.String courseId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -3296,17 +3296,17 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (courseId != null) {
-      _queryParams["courseId"] = [courseId];
-    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseId != null) {
+      _queryParams["courseId"] = [courseId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4050,6 +4050,14 @@ class UserProfilesGuardiansResourceApi {
   /// * the string literal `"-"`, indicating that results should be returned for
   ///   all students that the requesting user has access to view.
   ///
+  /// [pageToken] - nextPageToken
+  /// value returned from a previous
+  /// list call,
+  /// indicating that the subsequent page of results should be returned.
+  ///
+  /// The list request
+  /// must be otherwise identical to the one that resulted in this token.
+  ///
   /// [invitedEmailAddress] - Filter results by the email address that the
   /// original invitation was sent
   /// to, resulting in this guardian link.
@@ -4060,14 +4068,6 @@ class UserProfilesGuardiansResourceApi {
   /// server may assign a maximum.
   ///
   /// The server may return fewer than the specified number of results.
-  ///
-  /// [pageToken] - nextPageToken
-  /// value returned from a previous
-  /// list call,
-  /// indicating that the subsequent page of results should be returned.
-  ///
-  /// The list request
-  /// must be otherwise identical to the one that resulted in this token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4080,9 +4080,9 @@ class UserProfilesGuardiansResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGuardiansResponse> list(core.String studentId,
-      {core.String invitedEmailAddress,
+      {core.String pageToken,
+      core.String invitedEmailAddress,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -4094,14 +4094,14 @@ class UserProfilesGuardiansResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

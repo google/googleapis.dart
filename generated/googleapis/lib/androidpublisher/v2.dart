@@ -3606,7 +3606,7 @@ class PurchasesVoidedpurchasesResourceApi {
   PurchasesVoidedpurchasesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the purchases that were cancelled, refunded or charged-back.
+  /// Lists the purchases that were canceled, refunded or charged-back.
   ///
   /// Request parameters:
   ///
@@ -5245,7 +5245,7 @@ class ProductPurchase {
 
   /// The purchase state of the order. Possible values are:
   /// - Purchased
-  /// - Cancelled
+  /// - Canceled
   core.int purchaseState;
 
   /// The time the product was purchased, in milliseconds since the epoch (Jan
@@ -5256,6 +5256,7 @@ class ProductPurchase {
   /// purchase was not made using the standard in-app billing flow. Possible
   /// values are:
   /// - Test (i.e. purchased from a license testing account)
+  /// - Promo (i.e. purchased using a promo code)
   core.int purchaseType;
 
   ProductPurchase();
@@ -5589,13 +5590,13 @@ class SubscriptionPurchase {
   /// current expiry time.
   core.bool autoRenewing;
 
-  /// The reason why a subscription was cancelled or is not auto-renewing.
+  /// The reason why a subscription was canceled or is not auto-renewing.
   /// Possible values are:
-  /// - User cancelled the subscription
-  /// - Subscription was cancelled by the system, for example because of a
+  /// - User canceled the subscription
+  /// - Subscription was canceled by the system, for example because of a
   /// billing problem
   /// - Subscription was replaced with a new subscription
-  /// - Subscription was cancelled by the developer
+  /// - Subscription was canceled by the developer
   core.int cancelReason;
 
   /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the
@@ -6085,7 +6086,7 @@ class UserComment {
 }
 
 /// A VoidedPurchase resource indicates a purchase that was either
-/// cancelled/refunded/charged-back.
+/// canceled/refunded/charged-back.
 class VoidedPurchase {
   /// This kind represents a voided purchase object in the androidpublisher
   /// service.
@@ -6099,7 +6100,7 @@ class VoidedPurchase {
   /// identifies a purchase.
   core.String purchaseToken;
 
-  /// The time at which the purchase was cancelled/refunded/charged-back, in
+  /// The time at which the purchase was canceled/refunded/charged-back, in
   /// milliseconds since the epoch (Jan 1, 1970).
   core.String voidedTimeMillis;
 

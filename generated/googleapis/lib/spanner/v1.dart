@@ -1877,6 +1877,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
+  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1889,14 +1897,6 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   ///   * `labels.env:dev` --> The session has the label "env" and the value of
   ///                        the label contains the string "dev".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a previous
-  /// ListSessionsResponse.
-  ///
-  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1908,9 +1908,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1922,14 +1922,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1946,6 +1946,127 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListSessionsResponse.fromJson(data));
+  }
+
+  /// Creates a set of partition tokens that can be used to execute a query
+  /// operation in parallel.  Each of the returned partition tokens can be used
+  /// by ExecuteStreamingSql to specify a subset
+  /// of the query result to read.  The same session and read-only transaction
+  /// must be used by the PartitionQueryRequest used to create the
+  /// partition tokens and the ExecuteSqlRequests that use the partition tokens.
+  /// Partition tokens become invalid when the session used to create them
+  /// is deleted or begins a new transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The session used to create the partitions.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PartitionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PartitionResponse> partitionQuery(
+      PartitionQueryRequest request, core.String session,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (session == null) {
+      throw new core.ArgumentError("Parameter session is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$session') +
+        ':partitionQuery';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PartitionResponse.fromJson(data));
+  }
+
+  /// Creates a set of partition tokens that can be used to execute a read
+  /// operation in parallel.  Each of the returned partition tokens can be used
+  /// by StreamingRead to specify a subset of the read
+  /// result to read.  The same session and read-only transaction must be used
+  /// by
+  /// the PartitionReadRequest used to create the partition tokens and the
+  /// ReadRequests that use the partition tokens.
+  /// Partition tokens become invalid when the session used to create them
+  /// is deleted or begins a new transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The session used to create the partitions.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PartitionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PartitionResponse> partitionRead(
+      PartitionReadRequest request, core.String session,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (session == null) {
+      throw new core.ArgumentError("Parameter session is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$session') +
+        ':partitionRead';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PartitionResponse.fromJson(data));
   }
 
   /// Reads rows from the database using key lookups and scans, as a
@@ -2296,11 +2417,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2313,9 +2434,9 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2327,14 +2448,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2870,8 +2991,23 @@ class ExecuteSqlRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> params;
 
+  /// If present, results will be restricted to the specified partition
+  /// previously created using PartitionQuery().  There must be an exact
+  /// match for the values of fields common to this message and the
+  /// PartitionQueryRequest message used to create this partition_token.
+  core.String partitionToken;
+  core.List<core.int> get partitionTokenAsBytes {
+    return convert.BASE64.decode(partitionToken);
+  }
+
+  void set partitionTokenAsBytes(core.List<core.int> _bytes) {
+    partitionToken =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// Used to control the amount of debugging information returned in
-  /// ResultSetStats.
+  /// ResultSetStats. If partition_token is set, query_mode can only
+  /// be set to QueryMode.NORMAL.
   /// Possible string values are:
   /// - "NORMAL" : The default mode where only the query result, without any
   /// information
@@ -2918,6 +3054,9 @@ class ExecuteSqlRequest {
     if (_json.containsKey("params")) {
       params = _json["params"];
     }
+    if (_json.containsKey("partitionToken")) {
+      partitionToken = _json["partitionToken"];
+    }
     if (_json.containsKey("queryMode")) {
       queryMode = _json["queryMode"];
     }
@@ -2942,6 +3081,9 @@ class ExecuteSqlRequest {
     }
     if (params != null) {
       _json["params"] = params;
+    }
+    if (partitionToken != null) {
+      _json["partitionToken"] = partitionToken;
     }
     if (queryMode != null) {
       _json["queryMode"] = queryMode;
@@ -3873,6 +4015,288 @@ class PartialResultSet {
   }
 }
 
+/// Information returned for each partition returned in a
+/// PartitionResponse.
+class Partition {
+  /// This token can be passed to Read, StreamingRead, ExecuteSql, or
+  /// ExecuteStreamingSql requests to restrict the results to those identified
+  /// by
+  /// this partition token.
+  core.String partitionToken;
+  core.List<core.int> get partitionTokenAsBytes {
+    return convert.BASE64.decode(partitionToken);
+  }
+
+  void set partitionTokenAsBytes(core.List<core.int> _bytes) {
+    partitionToken =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  Partition();
+
+  Partition.fromJson(core.Map _json) {
+    if (_json.containsKey("partitionToken")) {
+      partitionToken = _json["partitionToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (partitionToken != null) {
+      _json["partitionToken"] = partitionToken;
+    }
+    return _json;
+  }
+}
+
+/// Options for a PartitionQueryRequest and
+/// PartitionReadRequest.
+class PartitionOptions {
+  /// The desired maximum number of partitions to return.  For example, this may
+  /// be set to the number of workers available.  The default for this option
+  /// is currently 10,000. The maximum value is currently 200,000.  This is only
+  /// a hint.  The actual number of partitions returned may be smaller than
+  /// this maximum count request.
+  core.String maxPartitions;
+
+  /// The desired data size for each partition generated.  The default for this
+  /// option is currently 1 GiB.  This is only a hint. The actual size of each
+  /// partition may be smaller or larger than this size request.
+  core.String partitionSizeBytes;
+
+  PartitionOptions();
+
+  PartitionOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("maxPartitions")) {
+      maxPartitions = _json["maxPartitions"];
+    }
+    if (_json.containsKey("partitionSizeBytes")) {
+      partitionSizeBytes = _json["partitionSizeBytes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxPartitions != null) {
+      _json["maxPartitions"] = maxPartitions;
+    }
+    if (partitionSizeBytes != null) {
+      _json["partitionSizeBytes"] = partitionSizeBytes;
+    }
+    return _json;
+  }
+}
+
+/// The request for PartitionQuery
+class PartitionQueryRequest {
+  /// It is not always possible for Cloud Spanner to infer the right SQL type
+  /// from a JSON value.  For example, values of type `BYTES` and values
+  /// of type `STRING` both appear in params as JSON strings.
+  ///
+  /// In these cases, `param_types` can be used to specify the exact
+  /// SQL type for some or all of the SQL query parameters. See the
+  /// definition of Type for more information
+  /// about SQL types.
+  core.Map<core.String, Type> paramTypes;
+
+  /// The SQL query string can contain parameter placeholders. A parameter
+  /// placeholder consists of `'@'` followed by the parameter
+  /// name. Parameter names consist of any combination of letters,
+  /// numbers, and underscores.
+  ///
+  /// Parameters can appear anywhere that a literal value is expected.  The same
+  /// parameter name can be used more than once, for example:
+  ///   `"WHERE id > @msg_id AND id < @msg_id + 100"`
+  ///
+  /// It is an error to execute an SQL query with unbound parameters.
+  ///
+  /// Parameter values are specified using `params`, which is a JSON
+  /// object whose keys are parameter names, and whose values are the
+  /// corresponding parameter values.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> params;
+
+  /// Additional options that affect how many partitions are created.
+  PartitionOptions partitionOptions;
+
+  /// The query request to generate partitions for. The request will fail if
+  /// the query is not root partitionable. The query plan of a root
+  /// partitionable query has a single distributed union operator. A distributed
+  /// union operator conceptually divides one or more tables into multiple
+  /// splits, remotely evaluates a subquery independently on each split, and
+  /// then unions all results.
+  core.String sql;
+
+  /// Read only snapshot transactions are supported, read/write and single use
+  /// transactions are not.
+  TransactionSelector transaction;
+
+  PartitionQueryRequest();
+
+  PartitionQueryRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("paramTypes")) {
+      paramTypes = commons.mapMap<core.Map<core.String, core.Object>, Type>(
+          _json["paramTypes"],
+          (core.Map<core.String, core.Object> item) => new Type.fromJson(item));
+    }
+    if (_json.containsKey("params")) {
+      params = _json["params"];
+    }
+    if (_json.containsKey("partitionOptions")) {
+      partitionOptions =
+          new PartitionOptions.fromJson(_json["partitionOptions"]);
+    }
+    if (_json.containsKey("sql")) {
+      sql = _json["sql"];
+    }
+    if (_json.containsKey("transaction")) {
+      transaction = new TransactionSelector.fromJson(_json["transaction"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (paramTypes != null) {
+      _json["paramTypes"] =
+          commons.mapMap<Type, core.Map<core.String, core.Object>>(
+              paramTypes, (Type item) => (item).toJson());
+    }
+    if (params != null) {
+      _json["params"] = params;
+    }
+    if (partitionOptions != null) {
+      _json["partitionOptions"] = (partitionOptions).toJson();
+    }
+    if (sql != null) {
+      _json["sql"] = sql;
+    }
+    if (transaction != null) {
+      _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The request for PartitionRead
+class PartitionReadRequest {
+  /// The columns of table to be returned for each row matching
+  /// this request.
+  core.List<core.String> columns;
+
+  /// If non-empty, the name of an index on table. This index is
+  /// used instead of the table primary key when interpreting key_set
+  /// and sorting result rows. See key_set for further information.
+  core.String index;
+
+  /// Required. `key_set` identifies the rows to be yielded. `key_set` names the
+  /// primary keys of the rows in table to be yielded, unless index
+  /// is present. If index is present, then key_set instead names
+  /// index keys in index.
+  ///
+  /// It is not an error for the `key_set` to name rows that do not
+  /// exist in the database. Read yields nothing for nonexistent rows.
+  KeySet keySet;
+
+  /// Additional options that affect how many partitions are created.
+  PartitionOptions partitionOptions;
+
+  /// Required. The name of the table in the database to be read.
+  core.String table;
+
+  /// Read only snapshot transactions are supported, read/write and single use
+  /// transactions are not.
+  TransactionSelector transaction;
+
+  PartitionReadRequest();
+
+  PartitionReadRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("columns")) {
+      columns = _json["columns"];
+    }
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("keySet")) {
+      keySet = new KeySet.fromJson(_json["keySet"]);
+    }
+    if (_json.containsKey("partitionOptions")) {
+      partitionOptions =
+          new PartitionOptions.fromJson(_json["partitionOptions"]);
+    }
+    if (_json.containsKey("table")) {
+      table = _json["table"];
+    }
+    if (_json.containsKey("transaction")) {
+      transaction = new TransactionSelector.fromJson(_json["transaction"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (columns != null) {
+      _json["columns"] = columns;
+    }
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (keySet != null) {
+      _json["keySet"] = (keySet).toJson();
+    }
+    if (partitionOptions != null) {
+      _json["partitionOptions"] = (partitionOptions).toJson();
+    }
+    if (table != null) {
+      _json["table"] = table;
+    }
+    if (transaction != null) {
+      _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response for PartitionQuery
+/// or PartitionRead
+class PartitionResponse {
+  /// Partitions created by this request.
+  core.List<Partition> partitions;
+
+  /// Transaction created by this request.
+  Transaction transaction;
+
+  PartitionResponse();
+
+  PartitionResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("partitions")) {
+      partitions = _json["partitions"]
+          .map((value) => new Partition.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("transaction")) {
+      transaction = new Transaction.fromJson(_json["transaction"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (partitions != null) {
+      _json["partitions"] =
+          partitions.map((value) => (value).toJson()).toList();
+    }
+    if (transaction != null) {
+      _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Node information for nodes appearing in a QueryPlan.plan_nodes.
 class PlanNode {
   /// List of child node `index`es and their relationship to this parent.
@@ -4017,7 +4441,7 @@ class PlanNode {
 ///     }
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam).
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
@@ -4044,7 +4468,7 @@ class Policy {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Version of the `Policy`. The default version is 0.
+  /// Deprecated.
   core.int version;
 
   Policy();
@@ -4235,16 +4659,33 @@ class ReadRequest {
   /// is present. If index is present, then key_set instead names
   /// index keys in index.
   ///
-  /// Rows are yielded in table primary key order (if index is empty)
-  /// or index key order (if index is non-empty).
+  /// If the partition_token field is empty, rows are yielded
+  /// in table primary key order (if index is empty) or index key order
+  /// (if index is non-empty).  If the partition_token field is not
+  /// empty, rows will be yielded in an unspecified order.
   ///
   /// It is not an error for the `key_set` to name rows that do not
   /// exist in the database. Read yields nothing for nonexistent rows.
   KeySet keySet;
 
   /// If greater than zero, only the first `limit` rows are yielded. If `limit`
-  /// is zero, the default is no limit.
+  /// is zero, the default is no limit. A limit cannot be specified if
+  /// `partition_token` is set.
   core.String limit;
+
+  /// If present, results will be restricted to the specified partition
+  /// previously created using PartitionRead().    There must be an exact
+  /// match for the values of fields common to this message and the
+  /// PartitionReadRequest message used to create this partition_token.
+  core.String partitionToken;
+  core.List<core.int> get partitionTokenAsBytes {
+    return convert.BASE64.decode(partitionToken);
+  }
+
+  void set partitionTokenAsBytes(core.List<core.int> _bytes) {
+    partitionToken =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
 
   /// If this request is resuming a previously interrupted read,
   /// `resume_token` should be copied from the last
@@ -4284,6 +4725,9 @@ class ReadRequest {
     if (_json.containsKey("limit")) {
       limit = _json["limit"];
     }
+    if (_json.containsKey("partitionToken")) {
+      partitionToken = _json["partitionToken"];
+    }
     if (_json.containsKey("resumeToken")) {
       resumeToken = _json["resumeToken"];
     }
@@ -4309,6 +4753,9 @@ class ReadRequest {
     }
     if (limit != null) {
       _json["limit"] = limit;
+    }
+    if (partitionToken != null) {
+      _json["partitionToken"] = partitionToken;
     }
     if (resumeToken != null) {
       _json["resumeToken"] = resumeToken;

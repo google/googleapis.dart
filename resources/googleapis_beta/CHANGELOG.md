@@ -1,3 +1,15 @@
+## 0.45.0
+
+* [api] dlp:v2beta2
+* [api] dialogflow:v2beta1
+* [api] adexchangebuyer2:v2beta1
+* [api] dataflow:v1b3
+* [api] appengine:v1beta
+* [api] sqladmin:v1beta3
+* [api] sqladmin:v1beta4
+* [api-breaking] dialogflow:v2beta1
+* [api-breaking] dialogflow:v2beta1
+
 ## 0.44.0
 
 * [api] dialogflow:v2beta1

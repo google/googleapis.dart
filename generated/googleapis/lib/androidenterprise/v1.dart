@@ -6539,6 +6539,10 @@ class ManagedConfigurationsSettings {
   /// "androidenterprise#managedConfigurationsSettings".
   core.String kind;
 
+  /// The last updated time of the managed configuration settings in
+  /// milliseconds since 1970-01-01T00:00:00Z.
+  core.String lastUpdatedTimestampMillis;
+
   /// The set of managed properties for this configuration.
   core.List<ManagedProperty> managedProperty;
 
@@ -6553,6 +6557,9 @@ class ManagedConfigurationsSettings {
   ManagedConfigurationsSettings.fromJson(core.Map _json) {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("lastUpdatedTimestampMillis")) {
+      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
     }
     if (_json.containsKey("managedProperty")) {
       managedProperty = _json["managedProperty"]
@@ -6572,6 +6579,9 @@ class ManagedConfigurationsSettings {
         new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (lastUpdatedTimestampMillis != null) {
+      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
     }
     if (managedProperty != null) {
       _json["managedProperty"] =

@@ -16,22 +16,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -101,6 +85,22 @@
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -128,7 +128,7 @@
             }
         }
     },
-    "revision": "20180126",
+    "revision": "20180214",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "MobileFriendlyIssue": {
@@ -164,10 +164,6 @@
             "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
             "id": "RunMobileFriendlyTestResponse",
             "properties": {
-                "screenshot": {
-                    "$ref": "Image",
-                    "description": "Screenshot of the requested URL."
-                },
                 "testStatus": {
                     "$ref": "TestStatus",
                     "description": "Final state of the test, can be either complete or an error."
@@ -199,6 +195,10 @@
                         "$ref": "MobileFriendlyIssue"
                     },
                     "type": "array"
+                },
+                "screenshot": {
+                    "$ref": "Image",
+                    "description": "Screenshot of the requested URL."
                 }
             },
             "type": "object"
@@ -252,21 +252,6 @@
             },
             "type": "object"
         },
-        "RunMobileFriendlyTestRequest": {
-            "description": "Mobile-friendly test request.",
-            "id": "RunMobileFriendlyTestRequest",
-            "properties": {
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
-                },
-                "requestScreenshot": {
-                    "description": "Whether or not screenshot is requested. Default is false.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
         "Image": {
             "description": "Describe image data.",
             "id": "Image",
@@ -279,6 +264,21 @@
                     "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
                     "format": "byte",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RunMobileFriendlyTestRequest": {
+            "description": "Mobile-friendly test request.",
+            "id": "RunMobileFriendlyTestRequest",
+            "properties": {
+                "url": {
+                    "description": "URL for inspection.",
+                    "type": "string"
+                },
+                "requestScreenshot": {
+                    "description": "Whether or not screenshot is requested. Default is false.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

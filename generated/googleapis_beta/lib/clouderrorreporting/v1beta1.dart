@@ -114,6 +114,8 @@ class ProjectsEventsResourceApi {
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [groupId] - [Required] The group for which events shall be returned.
+  ///
   /// [pageToken] - [Optional] A `next_page_token` provided by a previous
   /// response.
   ///
@@ -138,8 +140,6 @@ class ProjectsEventsResourceApi {
   /// - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
   /// - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
   ///
-  /// [groupId] - [Required] The group for which events shall be returned.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -151,13 +151,13 @@ class ProjectsEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEventsResponse> list(core.String projectName,
-      {core.String pageToken,
+      {core.String groupId,
+      core.String pageToken,
       core.String serviceFilter_service,
       core.int pageSize,
       core.String serviceFilter_version,
       core.String serviceFilter_resourceType,
       core.String timeRange_period,
-      core.String groupId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -168,6 +168,9 @@ class ProjectsEventsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if (groupId != null) {
+      _queryParams["groupId"] = [groupId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -186,9 +189,6 @@ class ProjectsEventsResourceApi {
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
-    }
-    if (groupId != null) {
-      _queryParams["groupId"] = [groupId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -294,20 +294,6 @@ class ProjectsGroupStatsResourceApi {
   /// Example: <code>projects/my-project-123</code>.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
-  /// response. To view
-  /// additional results, pass this token along with the identical query
-  /// parameters as the first request.
-  ///
-  /// [timeRange_period] - Restricts the query to the specified time range.
-  /// Possible string values are:
-  /// - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
-  /// - "PERIOD_1_HOUR" : A PERIOD_1_HOUR.
-  /// - "PERIOD_6_HOURS" : A PERIOD_6_HOURS.
-  /// - "PERIOD_1_DAY" : A PERIOD_1_DAY.
-  /// - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
-  /// - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
-  ///
   /// [alignment] - [Optional] The alignment of the timed counts to be returned.
   /// Default is `ALIGNMENT_EQUAL_AT_END`.
   /// Possible string values are:
@@ -326,6 +312,9 @@ class ProjectsGroupStatsResourceApi {
   /// response.
   /// Default is 20.
   ///
+  /// [serviceFilter_version] - [Optional] The exact value to match against
+  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  ///
   /// [order] - [Optional] The sort order in which the results are returned.
   /// Default is `COUNT_DESC`.
   /// Possible string values are:
@@ -335,19 +324,30 @@ class ProjectsGroupStatsResourceApi {
   /// - "CREATED_DESC" : A CREATED_DESC.
   /// - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
   ///
-  /// [serviceFilter_version] - [Optional] The exact value to match against
-  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  /// [serviceFilter_resourceType] - [Optional] The exact value to match against
+  /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
   /// [alignmentTime] - [Optional] Time where the timed counts shall be aligned
   /// if rounded
   /// alignment is chosen. Default is 00:00 UTC.
   ///
-  /// [serviceFilter_resourceType] - [Optional] The exact value to match against
-  /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-  ///
   /// [timedCountDuration] - [Optional] The preferred duration for a single
   /// returned `TimedCount`.
   /// If not set, no timed counts are returned.
+  ///
+  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// response. To view
+  /// additional results, pass this token along with the identical query
+  /// parameters as the first request.
+  ///
+  /// [timeRange_period] - Restricts the query to the specified time range.
+  /// Possible string values are:
+  /// - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
+  /// - "PERIOD_1_HOUR" : A PERIOD_1_HOUR.
+  /// - "PERIOD_6_HOURS" : A PERIOD_6_HOURS.
+  /// - "PERIOD_1_DAY" : A PERIOD_1_DAY.
+  /// - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
+  /// - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -360,17 +360,17 @@ class ProjectsGroupStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupStatsResponse> list(core.String projectName,
-      {core.String pageToken,
-      core.String timeRange_period,
-      core.String alignment,
+      {core.String alignment,
       core.List<core.String> groupId,
       core.String serviceFilter_service,
       core.int pageSize,
-      core.String order,
       core.String serviceFilter_version,
-      core.String alignmentTime,
+      core.String order,
       core.String serviceFilter_resourceType,
+      core.String alignmentTime,
       core.String timedCountDuration,
+      core.String pageToken,
+      core.String timeRange_period,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -381,12 +381,6 @@ class ProjectsGroupStatsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
     }
     if (alignment != null) {
       _queryParams["alignment"] = [alignment];
@@ -400,20 +394,26 @@ class ProjectsGroupStatsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
-    if (alignmentTime != null) {
-      _queryParams["alignmentTime"] = [alignmentTime];
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
+    if (alignmentTime != null) {
+      _queryParams["alignmentTime"] = [alignmentTime];
+    }
     if (timedCountDuration != null) {
       _queryParams["timedCountDuration"] = [timedCountDuration];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (timeRange_period != null) {
+      _queryParams["timeRange.period"] = [timeRange_period];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

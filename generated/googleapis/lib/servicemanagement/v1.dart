@@ -636,6 +636,10 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
+  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -645,10 +649,6 @@ class ServicesResourceApi {
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
-  ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
-  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,10 +661,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.String consumerId,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String producerProjectId,
+      core.String consumerId,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -673,17 +673,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consumerId != null) {
-      _queryParams["consumerId"] = [consumerId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (producerProjectId != null) {
       _queryParams["producerProjectId"] = [producerProjectId];
+    }
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1422,6 +1422,8 @@ class ServicesRolloutsResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
+  /// [pageSize] - The max number of items to include in the response list.
+  ///
   /// [filter] - Use `filter` to return subset of rollouts.
   /// The following filters are supported:
   ///   -- To limit the results to only those in
@@ -1432,8 +1434,6 @@ class ServicesRolloutsResourceApi {
   ///      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
   ///
   /// [pageToken] - The token of the page to retrieve.
-  ///
-  /// [pageSize] - The max number of items to include in the response list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1446,9 +1446,9 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceRolloutsResponse> list(core.String serviceName,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1460,14 +1460,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1621,6 +1621,151 @@ class Api {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the audit configuration for a service.
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging.
+/// An AuditConfig must have one or more AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service,
+/// the union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditLogConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+///     {
+///       "audit_configs": [
+///         {
+///           "service": "allServices"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///               "exempted_members": [
+///                 "user:foo@gmail.com"
+///               ]
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///             },
+///             {
+///               "log_type": "ADMIN_READ",
+///             }
+///           ]
+///         },
+///         {
+///           "service": "fooservice.googleapis.com"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///               "exempted_members": [
+///                 "user:bar@gmail.com"
+///               ]
+///             }
+///           ]
+///         }
+///       ]
+///     }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
+class AuditConfig {
+  /// The configuration for logging of each type of permission.
+  /// Next ID: 4
+  core.List<AuditLogConfig> auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String service;
+
+  AuditConfig();
+
+  AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = _json["auditLogConfigs"]
+          .map((value) => new AuditLogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Provides the configuration for logging a type of permissions.
+/// Example:
+///
+///     {
+///       "audit_log_configs": [
+///         {
+///           "log_type": "DATA_READ",
+///           "exempted_members": [
+///             "user:foo@gmail.com"
+///           ]
+///         },
+///         {
+///           "log_type": "DATA_WRITE",
+///         }
+///       ]
+///     }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  /// Follows the same format of Binding.members.
+  core.List<core.String> exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
     }
     return _json;
   }
@@ -3385,108 +3530,6 @@ class Field {
   }
 }
 
-/// The metadata associated with a long running operation resource.
-class FlowOperationMetadata {
-  /// The state of the operation with respect to cancellation.
-  /// Possible string values are:
-  /// - "RUNNING" : Default state, cancellable but not cancelled.
-  /// - "UNCANCELLABLE" : The operation has proceeded past the point of no
-  /// return and cannot
-  /// be cancelled.
-  /// - "CANCELLED" : The operation has been cancelled, work should cease
-  /// and any needed rollback steps executed.
-  core.String cancelState;
-
-  /// Deadline for the flow to complete, to prevent orphaned Operations.
-  ///
-  /// If the flow has not completed by this time, it may be terminated by
-  /// the engine, or force-failed by Operation lookup.
-  ///
-  /// Note that this is not a hard deadline after which the Flow will
-  /// definitely be failed, rather it is a deadline after which it is reasonable
-  /// to suspect a problem and other parts of the system may kill operation
-  /// to ensure we don't have orphans.
-  /// see also: go/prevent-orphaned-operations
-  core.String deadline;
-
-  /// The name of the top-level flow corresponding to this operation.
-  /// Must be equal to the "name" field for a FlowName enum.
-  core.String flowName;
-
-  /// Operation type which is a flow type and subtype info as that is missing in
-  /// our datastore otherwise. This maps to the ordinal value of the enum:
-  /// jcg/api/tenant/operations/OperationNamespace.java
-  core.int operationType;
-
-  /// The full name of the resources that this flow is directly associated with.
-  core.List<core.String> resourceNames;
-
-  /// The start time of the operation.
-  core.String startTime;
-
-  ///
-  /// Possible string values are:
-  /// - "UNSPECIFIED_OP_SERVICE"
-  /// - "SERVICE_MANAGEMENT"
-  /// - "SERVICE_USAGE"
-  /// - "SERVICE_CONSUMER_MANAGEMENT" : TenancyUnit, ServiceNetworking fall
-  /// under this
-  core.String surface;
-
-  FlowOperationMetadata();
-
-  FlowOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("cancelState")) {
-      cancelState = _json["cancelState"];
-    }
-    if (_json.containsKey("deadline")) {
-      deadline = _json["deadline"];
-    }
-    if (_json.containsKey("flowName")) {
-      flowName = _json["flowName"];
-    }
-    if (_json.containsKey("operationType")) {
-      operationType = _json["operationType"];
-    }
-    if (_json.containsKey("resourceNames")) {
-      resourceNames = _json["resourceNames"];
-    }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
-    }
-    if (_json.containsKey("surface")) {
-      surface = _json["surface"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (cancelState != null) {
-      _json["cancelState"] = cancelState;
-    }
-    if (deadline != null) {
-      _json["deadline"] = deadline;
-    }
-    if (flowName != null) {
-      _json["flowName"] = flowName;
-    }
-    if (operationType != null) {
-      _json["operationType"] = operationType;
-    }
-    if (resourceNames != null) {
-      _json["resourceNames"] = resourceNames;
-    }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
-    }
-    if (surface != null) {
-      _json["surface"] = surface;
-    }
-    return _json;
-  }
-}
-
 /// Request message for GenerateConfigReport method.
 class GenerateConfigReportRequest {
   /// Service configuration for which we want to generate the report.
@@ -4733,8 +4776,6 @@ class MetricDescriptor {
   ///
   /// **Grammar**
   ///
-  /// The grammar includes the dimensionless unit `1`, such as `1/s`.
-  ///
   /// The grammar also includes these connectors:
   ///
   /// * `/`    division (as an infix operator, e.g. `1/s`).
@@ -4744,7 +4785,7 @@ class MetricDescriptor {
   ///
   ///     Expression = Component { "." Component } { "/" Component } ;
   ///
-  ///     Component = [ PREFIX ] UNIT [ Annotation ]
+  ///     Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
   ///               | Annotation
   ///               | "1"
   ///               ;
@@ -4758,6 +4799,9 @@ class MetricDescriptor {
   ///    `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.
   /// * `NAME` is a sequence of non-blank printable ASCII characters not
   ///    containing '{' or '}'.
+  /// * `1` represents dimensionless value 1, such as in `1/s`.
+  /// * `%` represents dimensionless value 1/100, and annotates values giving
+  ///    a percentage.
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
@@ -5498,6 +5542,9 @@ class Page {
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<AuditConfig> auditConfigs;
+
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
@@ -5529,6 +5576,11 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = _json["auditConfigs"]
+          .map((value) => new AuditConfig.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
           .map((value) => new Binding.fromJson(value))
@@ -5545,6 +5597,10 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
+    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }

@@ -119,14 +119,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed2300() {
+buildUnnamed1516() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed2300(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed1516(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -139,7 +139,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed2300();
+    o.warning = buildUnnamed1516();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -150,7 +150,7 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed2300(o.warning);
+    checkUnnamed1516(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -261,14 +261,14 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo--;
 }
 
-buildUnnamed2301() {
+buildUnnamed1517() {
   var o = new core.List<api.DynamicLinkEventStat>();
   o.add(buildDynamicLinkEventStat());
   o.add(buildDynamicLinkEventStat());
   return o;
 }
 
-checkUnnamed2301(core.List<api.DynamicLinkEventStat> o) {
+checkUnnamed1517(core.List<api.DynamicLinkEventStat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkEventStat(o[0]);
   checkDynamicLinkEventStat(o[1]);
@@ -279,7 +279,7 @@ buildDynamicLinkStats() {
   var o = new api.DynamicLinkStats();
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    o.linkEventStats = buildUnnamed2301();
+    o.linkEventStats = buildUnnamed1517();
   }
   buildCounterDynamicLinkStats--;
   return o;
@@ -288,7 +288,7 @@ buildDynamicLinkStats() {
 checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    checkUnnamed2301(o.linkEventStats);
+    checkUnnamed1517(o.linkEventStats);
   }
   buildCounterDynamicLinkStats--;
 }

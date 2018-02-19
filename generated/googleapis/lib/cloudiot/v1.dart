@@ -683,10 +683,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
-  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListDevices` call, and
@@ -708,6 +704,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// For example, `['device0', 'device12']`. This field cannot hold more than
   /// 10,000 entries.
   ///
+  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
+  /// this field. This
+  /// field cannot hold more than 10,000 entries.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -719,11 +719,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.List<core.String> deviceNumIds,
-      core.String pageToken,
+      {core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
       core.List<core.String> deviceIds,
+      core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -734,9 +734,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -749,6 +746,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     }
     if (deviceIds != null) {
       _queryParams["deviceIds"] = deviceIds;
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1021,15 +1021,153 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   }
 }
 
+/// Specifies the audit configuration for a service.
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging.
+/// An AuditConfig must have one or more AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service,
+/// the union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditLogConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+///     {
+///       "audit_configs": [
+///         {
+///           "service": "allServices"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///               "exempted_members": [
+///                 "user:foo@gmail.com"
+///               ]
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///             },
+///             {
+///               "log_type": "ADMIN_READ",
+///             }
+///           ]
+///         },
+///         {
+///           "service": "fooservice.googleapis.com"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///               "exempted_members": [
+///                 "user:bar@gmail.com"
+///               ]
+///             }
+///           ]
+///         }
+///       ]
+///     }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
+class AuditConfig {
+  /// The configuration for logging of each type of permission.
+  /// Next ID: 4
+  core.List<AuditLogConfig> auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String service;
+
+  AuditConfig();
+
+  AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = _json["auditLogConfigs"]
+          .map((value) => new AuditLogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Provides the configuration for logging a type of permissions.
+/// Example:
+///
+///     {
+///       "audit_log_configs": [
+///         {
+///           "log_type": "DATA_READ",
+///           "exempted_members": [
+///             "user:foo@gmail.com"
+///           ]
+///         },
+///         {
+///           "log_type": "DATA_WRITE",
+///         }
+///       ]
+///     }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  /// Follows the same format of Binding.members.
+  core.List<core.String> exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
+    }
+    return _json;
+  }
+}
+
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
-  /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
-  Expr condition;
-
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1062,9 +1200,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
-    }
     if (_json.containsKey("members")) {
       members = _json["members"];
     }
@@ -1076,9 +1211,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (condition != null) {
-      _json["condition"] = (condition).toJson();
-    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1145,9 +1277,11 @@ class Device {
   /// minutes.
   core.String lastEventTime;
 
-  /// [Output only] The last time a heartbeat was received. Timestamps are
-  /// periodically collected and written to storage; they may be stale by a few
-  /// minutes. This field is only for devices connecting through MQTT.
+  /// [Output only] The last time an MQTT `PINGREQ` was received. This field
+  /// applies only to devices connecting through MQTT. MQTT clients usually only
+  /// send `PINGREQ` messages if the connection is idle, and no other messages
+  /// have been sent. Timestamps are periodically collected and written to
+  /// storage; they may be stale by a few minutes.
   core.String lastHeartbeatTime;
 
   /// [Output only] The last time a state event was received. Timestamps are
@@ -1580,12 +1714,16 @@ class EventNotificationConfig {
   /// A Cloud Pub/Sub topic name. For example,
   /// `projects/myProject/topics/deviceEvents`.
   core.String pubsubTopicName;
+  core.String subfolderMatches;
 
   EventNotificationConfig();
 
   EventNotificationConfig.fromJson(core.Map _json) {
     if (_json.containsKey("pubsubTopicName")) {
       pubsubTopicName = _json["pubsubTopicName"];
+    }
+    if (_json.containsKey("subfolderMatches")) {
+      subfolderMatches = _json["subfolderMatches"];
     }
   }
 
@@ -1595,67 +1733,8 @@ class EventNotificationConfig {
     if (pubsubTopicName != null) {
       _json["pubsubTopicName"] = pubsubTopicName;
     }
-    return _json;
-  }
-}
-
-/// Represents an expression text. Example:
-///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
-class Expr {
-  /// An optional description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
-  core.String description;
-
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
-  core.String expression;
-
-  /// An optional string indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
-  core.String location;
-
-  /// An optional title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
-  core.String title;
-
-  Expr();
-
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
-    }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
-    }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (expression != null) {
-      _json["expression"] = expression;
-    }
-    if (location != null) {
-      _json["location"] = location;
-    }
-    if (title != null) {
-      _json["title"] = title;
+    if (subfolderMatches != null) {
+      _json["subfolderMatches"] = subfolderMatches;
     }
     return _json;
   }
@@ -1938,6 +2017,9 @@ class MqttConfig {
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<AuditConfig> auditConfigs;
+
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
@@ -1969,6 +2051,11 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = _json["auditConfigs"]
+          .map((value) => new AuditConfig.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
           .map((value) => new Binding.fromJson(value))
@@ -1985,6 +2072,10 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
+    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }

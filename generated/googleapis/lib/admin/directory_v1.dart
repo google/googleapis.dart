@@ -11099,7 +11099,7 @@ class UserCustomProperties
 
   UserCustomProperties();
 
-  UserCustomProperties.fromJson(core.Map _json) {
+  UserCustomProperties.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = value;
     });

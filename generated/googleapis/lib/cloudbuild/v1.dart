@@ -404,11 +404,11 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
   /// [pageSize] - Number of results to return in the list.
   ///
   /// [filter] - The raw filter text to constrain the results.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,9 +421,9 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -435,14 +435,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -927,7 +927,7 @@ class Build {
   /// If any of the images fail to be pushed, the build is marked FAILURE.
   core.List<core.String> images;
 
-  /// URL to logs for this build in Google Cloud Logging.
+  /// URL to logs for this build in Google Cloud Console.
   /// @OutputOnly
   core.String logUrl;
 
@@ -1004,6 +1004,7 @@ class Build {
   ///
   /// If the build does not specify source, or does not specify images,
   /// these keys will not be included.
+  /// @OutputOnly
   core.Map<core.String, TimeSpan> timing;
 
   Build();
@@ -1281,8 +1282,17 @@ class BuildStep {
   /// and the remainder will be used as arguments.
   core.List<core.String> args;
 
-  /// Working directory (relative to project source root) to use when running
-  /// this operation's container.
+  /// Working directory to use when running this step's container.
+  ///
+  /// If this value is a relative path, it is relative to the build's working
+  /// directory. If this value is absolute, it may be outside the build's
+  /// working
+  /// directory, in which case the contents of the path may not be persisted
+  /// across build step executions, unless a volume for that path is specified.
+  ///
+  /// If the build specifies a RepoSource with dir and a step with a dir which
+  /// specifies an absolute path, the RepoSource dir is ignored for the step's
+  /// execution.
   core.String dir;
 
   /// Optional entrypoint to be used instead of the build step image's default
@@ -1325,6 +1335,7 @@ class BuildStep {
   core.List<core.String> secretEnv;
 
   /// Stores timing information for executing this build step.
+  /// @OutputOnly
   TimeSpan timing;
 
   /// List of volumes to mount into the build step.
@@ -1523,6 +1534,7 @@ class BuiltImage {
   core.String name;
 
   /// Stores timing information for pushing the specified image.
+  /// @OutputOnly
   TimeSpan pushTiming;
 
   BuiltImage();
@@ -1854,6 +1866,9 @@ class RepoSource {
   core.String commitSha;
 
   /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// This must be a relative path. If a step's dir is specified and is an
+  /// absolute path, this value is ignored for that step's execution.
   core.String dir;
 
   /// ID of the project that owns the repo. If omitted, the project ID

@@ -155,7 +155,7 @@ Official API documentation: https://developers.google.com/analytics/devguides/re
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Android Device Provisioning Partner API - androiddeviceprovisioning v1
 
-Automates reseller integration into zero-touch enrollment by assigning devices to customers and creating device reports.
+Automates Android zero-touch enrollment for device resellers, customers, and EMMs.
 
 Official API documentation: https://developers.google.com/zero-touch/
 
@@ -672,6 +672,12 @@ Official API documentation: https://cloud.google.com/service-control/
 Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.
 
 Official API documentation: https://cloud.google.com/service-management/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Usage API - serviceusage v1
+
+Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.
+
+Official API documentation: https://cloud.google.com/service-usage/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service User API - serviceuser v1
 

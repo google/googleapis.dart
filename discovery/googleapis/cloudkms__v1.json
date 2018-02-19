@@ -25,6 +25,37 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -36,13 +67,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -77,37 +108,6 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         }
@@ -367,6 +367,12 @@
                                                 "parent"
                                             ],
                                             "parameters": {
+                                                "pageSize": {
+                                                    "description": "Optional limit on the number of CryptoKeys to include in the\nresponse.  Further CryptoKeys can subsequently be obtained by\nincluding the ListCryptoKeysResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
                                                 "parent": {
                                                     "description": "Required. The resource name of the KeyRing to list, in the format\n`projects/*/locations/*/keyRings/*`.",
                                                     "location": "path",
@@ -378,12 +384,6 @@
                                                     "description": "Optional pagination token, returned earlier via\nListCryptoKeysResponse.next_page_token.",
                                                     "location": "query",
                                                     "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Optional limit on the number of CryptoKeys to include in the\nresponse.  Further CryptoKeys can subsequently be obtained by\nincluding the ListCryptoKeysResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
                                                 }
                                             },
                                             "path": "v1/{+parent}/cryptoKeys",
@@ -456,16 +456,16 @@
                                                 "parent"
                                             ],
                                             "parameters": {
-                                                "cryptoKeyId": {
-                                                    "description": "Required. It must be unique within a KeyRing and match the regular\nexpression `[a-zA-Z0-9_-]{1,63}`",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
                                                 "parent": {
                                                     "description": "Required. The name of the KeyRing associated with the\nCryptoKeys.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                                     "required": true,
+                                                    "type": "string"
+                                                },
+                                                "cryptoKeyId": {
+                                                    "description": "Required. It must be unique within a KeyRing and match the regular\nexpression `[a-zA-Z0-9_-]{1,63}`",
+                                                    "location": "query",
                                                     "type": "string"
                                                 }
                                             },
@@ -539,17 +539,17 @@
                                                 "name"
                                             ],
                                             "parameters": {
+                                                "updateMask": {
+                                                    "description": "Required list of fields to be updated in this request.",
+                                                    "format": "google-fieldmask",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "name": {
                                                     "description": "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
                                                     "required": true,
-                                                    "type": "string"
-                                                },
-                                                "updateMask": {
-                                                    "description": "Required list of fields to be updated in this request.",
-                                                    "format": "google-fieldmask",
-                                                    "location": "query",
                                                     "type": "string"
                                                 }
                                             },
@@ -646,6 +646,41 @@
                                     "resources": {
                                         "cryptoKeyVersions": {
                                             "methods": {
+                                                "list": {
+                                                    "description": "Lists CryptoKeyVersions.",
+                                                    "httpMethod": "GET",
+                                                    "id": "cloudkms.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.list",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "pageSize": {
+                                                            "description": "Optional limit on the number of CryptoKeyVersions to\ninclude in the response. Further CryptoKeyVersions can\nsubsequently be obtained by including the\nListCryptoKeyVersionsResponse.next_page_token in a subsequent request.\nIf unspecified, the server will pick an appropriate default.",
+                                                            "format": "int32",
+                                                            "location": "query",
+                                                            "type": "integer"
+                                                        },
+                                                        "parent": {
+                                                            "description": "Required. The resource name of the CryptoKey to list, in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "pageToken": {
+                                                            "description": "Optional pagination token, returned earlier via\nListCryptoKeyVersionsResponse.next_page_token.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/cryptoKeyVersions",
+                                                    "response": {
+                                                        "$ref": "ListCryptoKeyVersionsResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
                                                 "create": {
                                                     "description": "Create a new CryptoKeyVersion in a CryptoKey.\n\nThe server will assign the next sequential id. If unset,\nstate will be set to\nENABLED.",
                                                     "httpMethod": "POST",
@@ -735,17 +770,17 @@
                                                         "name"
                                                     ],
                                                     "parameters": {
+                                                        "updateMask": {
+                                                            "description": "Required list of fields to be updated in this request.",
+                                                            "format": "google-fieldmask",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
                                                         "name": {
                                                             "description": "Output only. The resource name for this CryptoKeyVersion in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.",
                                                             "location": "path",
                                                             "pattern": "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
                                                             "required": true,
-                                                            "type": "string"
-                                                        },
-                                                        "updateMask": {
-                                                            "description": "Required list of fields to be updated in this request.",
-                                                            "format": "google-fieldmask",
-                                                            "location": "query",
                                                             "type": "string"
                                                         }
                                                     },
@@ -783,41 +818,6 @@
                                                     "scopes": [
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
-                                                },
-                                                "list": {
-                                                    "description": "Lists CryptoKeyVersions.",
-                                                    "httpMethod": "GET",
-                                                    "id": "cloudkms.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.list",
-                                                    "parameterOrder": [
-                                                        "parent"
-                                                    ],
-                                                    "parameters": {
-                                                        "parent": {
-                                                            "description": "Required. The resource name of the CryptoKey to list, in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
-                                                            "location": "path",
-                                                            "pattern": "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
-                                                            "required": true,
-                                                            "type": "string"
-                                                        },
-                                                        "pageToken": {
-                                                            "description": "Optional pagination token, returned earlier via\nListCryptoKeyVersionsResponse.next_page_token.",
-                                                            "location": "query",
-                                                            "type": "string"
-                                                        },
-                                                        "pageSize": {
-                                                            "description": "Optional limit on the number of CryptoKeyVersions to\ninclude in the response. Further CryptoKeyVersions can\nsubsequently be obtained by including the\nListCryptoKeyVersionsResponse.next_page_token in a subsequent request.\nIf unspecified, the server will pick an appropriate default.",
-                                                            "format": "int32",
-                                                            "location": "query",
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "path": "v1/{+parent}/cryptoKeyVersions",
-                                                    "response": {
-                                                        "$ref": "ListCryptoKeyVersionsResponse"
-                                                    },
-                                                    "scopes": [
-                                                        "https://www.googleapis.com/auth/cloud-platform"
-                                                    ]
                                                 }
                                             }
                                         }
@@ -830,15 +830,196 @@
             }
         }
     },
-    "revision": "20180117",
+    "revision": "20180213",
     "rootUrl": "https://cloudkms.googleapis.com/",
     "schemas": {
-        "UpdateCryptoKeyPrimaryVersionRequest": {
-            "description": "Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.",
-            "id": "UpdateCryptoKeyPrimaryVersionRequest",
+        "DestroyCryptoKeyVersionRequest": {
+            "description": "Request message for KeyManagementService.DestroyCryptoKeyVersion.",
+            "id": "DestroyCryptoKeyVersionRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "AuditLogConfig": {
+            "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
+            "id": "AuditLogConfig",
             "properties": {
-                "cryptoKeyVersionId": {
-                    "description": "The id of the child CryptoKeyVersion to use as primary.",
+                "exemptedMembers": {
+                    "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "logType": {
+                    "description": "The log type that this config enables.",
+                    "enum": [
+                        "LOG_TYPE_UNSPECIFIED",
+                        "ADMIN_READ",
+                        "DATA_WRITE",
+                        "DATA_READ"
+                    ],
+                    "enumDescriptions": [
+                        "Default case. Should never be this.",
+                        "Admin reads. Example: CloudIAM getIamPolicy",
+                        "Data writes. Example: CloudSQL Users create",
+                        "Data reads. Example: CloudSQL Users list"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CryptoKey": {
+            "description": "A CryptoKey represents a logical key that can be used for cryptographic\noperations.\n\nA CryptoKey is made up of one or more versions, which\nrepresent the actual key material used in cryptographic operations.",
+            "id": "CryptoKey",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. The time at which this CryptoKey was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels with user-defined metadata. For more information, see\n[Labeling Keys](/kms/docs/labeling-keys).",
+                    "type": "object"
+                },
+                "rotationPeriod": {
+                    "description": "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least one day.\n\nIf rotation_period is set, next_rotation_time must also be set.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "primary": {
+                    "$ref": "CryptoKeyVersion",
+                    "description": "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion."
+                },
+                "name": {
+                    "description": "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
+                    "type": "string"
+                },
+                "purpose": {
+                    "description": "The immutable purpose of this CryptoKey. Currently, the only acceptable\npurpose is ENCRYPT_DECRYPT.",
+                    "enum": [
+                        "CRYPTO_KEY_PURPOSE_UNSPECIFIED",
+                        "ENCRYPT_DECRYPT"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "CryptoKeys with this purpose may be used with\nEncrypt and\nDecrypt."
+                    ],
+                    "type": "string"
+                },
+                "nextRotationTime": {
+                    "description": "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n2. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DecryptResponse": {
+            "description": "Response message for KeyManagementService.Decrypt.",
+            "id": "DecryptResponse",
+            "properties": {
+                "plaintext": {
+                    "description": "The decrypted data originally supplied in EncryptRequest.plaintext.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsRequest": {
+            "description": "Request message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsRequest",
+            "properties": {
+                "permissions": {
+                    "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Policy": {
+            "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `Binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\",\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+            "id": "Policy",
+            "properties": {
+                "etag": {
+                    "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "Deprecated.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "auditConfigs": {
+                    "description": "Specifies cloud audit logging configuration for this policy.",
+                    "items": {
+                        "$ref": "AuditConfig"
+                    },
+                    "type": "array"
+                },
+                "bindings": {
+                    "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+                    "items": {
+                        "$ref": "Binding"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListLocationsResponse": {
+            "description": "The response message for Locations.ListLocations.",
+            "id": "ListLocationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
+                "locations": {
+                    "description": "A list of locations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Location"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "KeyRing": {
+            "description": "A KeyRing is a toplevel logical grouping of CryptoKeys.",
+            "id": "KeyRing",
+            "properties": {
+                "name": {
+                    "description": "Output only. The resource name for the KeyRing in the format\n`projects/*/locations/*/keyRings/*`.",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The time at which this KeyRing was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EncryptResponse": {
+            "description": "Response message for KeyManagementService.Encrypt.",
+            "id": "EncryptResponse",
+            "properties": {
+                "name": {
+                    "description": "The resource name of the CryptoKeyVersion used in encryption.",
+                    "type": "string"
+                },
+                "ciphertext": {
+                    "description": "The encrypted data.",
+                    "format": "byte",
                     "type": "string"
                 }
             },
@@ -848,6 +1029,17 @@
             "description": "Request message for KeyManagementService.RestoreCryptoKeyVersion.",
             "id": "RestoreCryptoKeyVersionRequest",
             "properties": {},
+            "type": "object"
+        },
+        "UpdateCryptoKeyPrimaryVersionRequest": {
+            "description": "Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.",
+            "id": "UpdateCryptoKeyPrimaryVersionRequest",
+            "properties": {
+                "cryptoKeyVersionId": {
+                    "description": "The id of the child CryptoKeyVersion to use as primary.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "ListKeyRingsResponse": {
@@ -874,7 +1066,7 @@
             "type": "object"
         },
         "AuditConfig": {
-            "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
+            "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
             "id": "AuditConfig",
             "properties": {
                 "service": {
@@ -1007,6 +1199,13 @@
             "description": "Response message for KeyManagementService.ListCryptoKeyVersions.",
             "id": "ListCryptoKeyVersionsResponse",
             "properties": {
+                "cryptoKeyVersions": {
+                    "description": "The list of CryptoKeyVersions.",
+                    "items": {
+                        "$ref": "CryptoKeyVersion"
+                    },
+                    "type": "array"
+                },
                 "nextPageToken": {
                     "description": "A token to retrieve next page of results. Pass this value in\nListCryptoKeyVersionsRequest.page_token to retrieve the next page of\nresults.",
                     "type": "string"
@@ -1015,13 +1214,6 @@
                     "description": "The total number of CryptoKeyVersions that matched the\nquery.",
                     "format": "int32",
                     "type": "integer"
-                },
-                "cryptoKeyVersions": {
-                    "description": "The list of CryptoKeyVersions.",
-                    "items": {
-                        "$ref": "CryptoKeyVersion"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -1087,198 +1279,6 @@
                     "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
                     "items": {
                         "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "DestroyCryptoKeyVersionRequest": {
-            "description": "Request message for KeyManagementService.DestroyCryptoKeyVersion.",
-            "id": "DestroyCryptoKeyVersionRequest",
-            "properties": {},
-            "type": "object"
-        },
-        "AuditLogConfig": {
-            "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
-            "id": "AuditLogConfig",
-            "properties": {
-                "exemptedMembers": {
-                    "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "logType": {
-                    "description": "The log type that this config enables.",
-                    "enum": [
-                        "LOG_TYPE_UNSPECIFIED",
-                        "ADMIN_READ",
-                        "DATA_WRITE",
-                        "DATA_READ"
-                    ],
-                    "enumDescriptions": [
-                        "Default case. Should never be this.",
-                        "Admin reads. Example: CloudIAM getIamPolicy",
-                        "Data writes. Example: CloudSQL Users create",
-                        "Data reads. Example: CloudSQL Users list"
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "CryptoKey": {
-            "description": "A CryptoKey represents a logical key that can be used for cryptographic\noperations.\n\nA CryptoKey is made up of one or more versions, which\nrepresent the actual key material used in cryptographic operations.",
-            "id": "CryptoKey",
-            "properties": {
-                "primary": {
-                    "$ref": "CryptoKeyVersion",
-                    "description": "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion."
-                },
-                "name": {
-                    "description": "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
-                    "type": "string"
-                },
-                "purpose": {
-                    "description": "The immutable purpose of this CryptoKey. Currently, the only acceptable\npurpose is ENCRYPT_DECRYPT.",
-                    "enum": [
-                        "CRYPTO_KEY_PURPOSE_UNSPECIFIED",
-                        "ENCRYPT_DECRYPT"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "CryptoKeys with this purpose may be used with\nEncrypt and\nDecrypt."
-                    ],
-                    "type": "string"
-                },
-                "nextRotationTime": {
-                    "description": "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n2. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "Output only. The time at which this CryptoKey was created.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Labels with user-defined metadata. For more information, see\n[Labeling Keys](/kms/docs/labeling-keys).",
-                    "type": "object"
-                },
-                "rotationPeriod": {
-                    "description": "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least one day.\n\nIf rotation_period is set, next_rotation_time must also be set.",
-                    "format": "google-duration",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DecryptResponse": {
-            "description": "Response message for KeyManagementService.Decrypt.",
-            "id": "DecryptResponse",
-            "properties": {
-                "plaintext": {
-                    "description": "The decrypted data originally supplied in EncryptRequest.plaintext.",
-                    "format": "byte",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TestIamPermissionsRequest": {
-            "description": "Request message for `TestIamPermissions` method.",
-            "id": "TestIamPermissionsRequest",
-            "properties": {
-                "permissions": {
-                    "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "EncryptResponse": {
-            "description": "Response message for KeyManagementService.Encrypt.",
-            "id": "EncryptResponse",
-            "properties": {
-                "name": {
-                    "description": "The resource name of the CryptoKeyVersion used in encryption.",
-                    "type": "string"
-                },
-                "ciphertext": {
-                    "description": "The encrypted data.",
-                    "format": "byte",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "KeyRing": {
-            "description": "A KeyRing is a toplevel logical grouping of CryptoKeys.",
-            "id": "KeyRing",
-            "properties": {
-                "name": {
-                    "description": "Output only. The resource name for the KeyRing in the format\n`projects/*/locations/*/keyRings/*`.",
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "Output only. The time at which this KeyRing was created.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListLocationsResponse": {
-            "description": "The response message for Locations.ListLocations.",
-            "id": "ListLocationsResponse",
-            "properties": {
-                "locations": {
-                    "description": "A list of locations that matches the specified filter in the request.",
-                    "items": {
-                        "$ref": "Location"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Policy": {
-            "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `Binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\",\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
-            "id": "Policy",
-            "properties": {
-                "etag": {
-                    "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "version": {
-                    "description": "Deprecated.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "auditConfigs": {
-                    "description": "Specifies cloud audit logging configuration for this policy.",
-                    "items": {
-                        "$ref": "AuditConfig"
-                    },
-                    "type": "array"
-                },
-                "bindings": {
-                    "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-                    "items": {
-                        "$ref": "Binding"
                     },
                     "type": "array"
                 }

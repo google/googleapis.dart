@@ -472,6 +472,10 @@ class ClientInfo {
 
 /// The constraints for this update.
 class Constraints {
+  /// A client's physical location, expressed as a ISO 31166-1 alpha-2
+  /// region code.
+  core.String deviceLocation;
+
   /// Requests the lists for a specific language. Expects ISO 639 alpha-2
   /// format.
   core.String language;
@@ -497,6 +501,9 @@ class Constraints {
   Constraints();
 
   Constraints.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceLocation")) {
+      deviceLocation = _json["deviceLocation"];
+    }
     if (_json.containsKey("language")) {
       language = _json["language"];
     }
@@ -517,6 +524,9 @@ class Constraints {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (deviceLocation != null) {
+      _json["deviceLocation"] = deviceLocation;
+    }
     if (language != null) {
       _json["language"] = language;
     }
@@ -1206,7 +1216,8 @@ class RiceDeltaEncoding {
   }
 
   /// The offset of the first entry in the encoded data, or, if only a single
-  /// integer was encoded, that single integer's value.
+  /// integer was encoded, that single integer's value. If the field is empty or
+  /// missing, assume zero.
   core.String firstValue;
 
   /// The number of entries that are delta encoded in the encoded data. If only

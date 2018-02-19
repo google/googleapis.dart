@@ -2715,11 +2715,11 @@ class Location {
 
 /// Metadata for the given google.cloud.location.Location.
 class LocationMetadata {
-  /// App Engine Flexible Environment is available in the given
+  /// App Engine flexible environment is available in the given
   /// location.@OutputOnly
   core.bool flexibleEnvironmentAvailable;
 
-  /// App Engine Standard Environment is available in the given
+  /// App Engine standard environment is available in the given
   /// location.@OutputOnly
   core.bool standardEnvironmentAvailable;
 

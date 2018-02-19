@@ -167,10 +167,6 @@ class AccountsClientsResourceApi {
   /// [accountId] - Unique numerical account ID of the sponsor buyer to list the
   /// clients for.
   ///
-  /// [pageSize] - Requested page size. The server may return fewer clients than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
@@ -183,6 +179,10 @@ class AccountsClientsResourceApi {
   /// buyer partner) of the client to return.
   /// If specified, at most one client will be returned in the response.
   ///
+  /// [pageSize] - Requested page size. The server may return fewer clients than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -194,9 +194,9 @@ class AccountsClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListClientsResponse> list(core.String accountId,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
       core.String partnerClientId,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -208,14 +208,14 @@ class AccountsClientsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (partnerClientId != null) {
       _queryParams["partnerClientId"] = [partnerClientId];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1204,12 +1204,6 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// [creativeId] - The creative ID to list the associations from.
   /// Specify "-" to list all creatives under the above account.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListDealAssociationsResponse.next_page_token
-  /// returned from the previous call to 'ListDealAssociations' method.
-  ///
   /// [pageSize] - Requested page size. Server may return fewer associations
   /// than requested.
   /// If unspecified, server will pick an appropriate default.
@@ -1229,6 +1223,12 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// </ul>
   /// Example: 'dealsId=12345 AND dealsStatus:disapproved'
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListDealAssociationsResponse.next_page_token
+  /// returned from the previous call to 'ListDealAssociations' method.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1241,9 +1241,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDealAssociationsResponse> list(
       core.String accountId, core.String creativeId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String query,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1258,14 +1258,14 @@ class AccountsCreativesDealAssociationsResourceApi {
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2303,16 +2303,16 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListImpressionMetricsResponse.nextPageToken
   /// returned from the previous call to the impressionMetrics.list
   /// method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2325,7 +2325,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2336,11 +2336,11 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3628,16 +3628,16 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListNonBillableWinningBidsResponse.nextPageToken
   /// returned from the previous call to the nonBillableWinningBids.list
   /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3651,8 +3651,8 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNonBillableWinningBidsResponse> list(
       core.String filterSetName,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -3664,11 +3664,11 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5024,8 +5024,19 @@ class FilterSet {
   /// - "FORMAT_UNSPECIFIED" : A placeholder for an undefined format; indicates
   /// that no format filter
   /// will be applied.
-  /// - "DISPLAY" : The ad impression is display format (i.e. an image).
-  /// - "VIDEO" : The ad impression is video format.
+  /// - "DISPLAY" : DEPRECATED: use combination of NATIVE_DISPLAY and
+  /// NON_NATIVE_DISPLAY
+  /// The ad impression is display format (i.e. an image).
+  /// - "VIDEO" : DEPRECATED: use combination of NATIVE_VIDEO and
+  /// NON_NATIVE_VIDEO
+  /// The ad impression is video format.
+  /// - "NATIVE_DISPLAY" : The ad impression is a native ad, and display (i.e.
+  /// image) format.
+  /// - "NATIVE_VIDEO" : The ad impression is a native ad, and video format.
+  /// - "NON_NATIVE_DISPLAY" : The ad impression is not a native ad, and display
+  /// (i.e. image) format.
+  /// - "NON_NATIVE_VIDEO" : The ad impression is not a native ad, and video
+  /// format.
   core.String format;
 
   /// The list of formats on which to filter; may be empty. The filters
@@ -6745,11 +6756,18 @@ class VideoContent {
   /// The URL to fetch a video ad.
   core.String videoUrl;
 
+  /// The contents of a VAST document for a video ad.
+  /// This document should conform to the VAST 2.0 or 3.0 standard.
+  core.String videoVastXml;
+
   VideoContent();
 
   VideoContent.fromJson(core.Map _json) {
     if (_json.containsKey("videoUrl")) {
       videoUrl = _json["videoUrl"];
+    }
+    if (_json.containsKey("videoVastXml")) {
+      videoVastXml = _json["videoVastXml"];
     }
   }
 
@@ -6758,6 +6776,9 @@ class VideoContent {
         new core.Map<core.String, core.Object>();
     if (videoUrl != null) {
       _json["videoUrl"] = videoUrl;
+    }
+    if (videoVastXml != null) {
+      _json["videoVastXml"] = videoVastXml;
     }
     return _json;
   }

@@ -157,6 +157,15 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations`
+  /// that indicates from where listing should continue.
+  /// This field is optional.
+  ///
+  /// [pageSize] - The maximum number of Organizations to return in the
+  /// response.
+  /// This field is optional.
+  ///
   /// [filter] - An optional query string used to filter the Organizations to
   /// return in
   /// the response. Filter rules are case-insensitive.
@@ -174,15 +183,6 @@ class OrganizationsResourceApi {
   ///
   /// This field is optional.
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations`
-  /// that indicates from where listing should continue.
-  /// This field is optional.
-  ///
-  /// [pageSize] - The maximum number of Organizations to return in the
-  /// response.
-  /// This field is optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -194,9 +194,9 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -205,14 +205,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1543,9 +1543,10 @@ class Organization {
   /// @OutputOnly
   core.String creationTime;
 
-  /// A friendly string to be used to refer to the Organization in the UI.
-  /// Assigned by the server, set to the primary domain of the G Suite
-  /// customer that owns the organization.
+  /// A human-readable string that refers to the Organization in the
+  /// GCP Console UI. This string is set by the server and cannot be
+  /// changed. The string will be set to the primary domain (for example,
+  /// "google.com") of the G Suite customer that owns the organization.
   /// @OutputOnly
   core.String displayName;
 
@@ -1567,7 +1568,6 @@ class Organization {
   /// An immutable id for the Organization that is assigned on creation. This
   /// should be omitted when creating a new Organization.
   /// This field is read-only.
-  /// This field is deprecated and will be removed in v1. Use name instead.
   core.String organizationId;
 
   /// The owner of this Organization. The owner should be specified on

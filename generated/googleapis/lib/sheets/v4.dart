@@ -536,6 +536,14 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
   /// [insertDataOption] - How the input data should be inserted.
   /// Possible string values are:
   /// - "OVERWRITE" : A OVERWRITE.
@@ -562,14 +570,6 @@ class SpreadsheetsValuesResourceApi {
   /// of the cells that were appended. By default, responses
   /// do not include the updated values.
   ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -582,11 +582,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String insertDataOption,
+      {core.String responseValueRenderOption,
+      core.String insertDataOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
       core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -604,6 +604,9 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (insertDataOption != null) {
       _queryParams["insertDataOption"] = [insertDataOption];
     }
@@ -617,9 +620,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (includeValuesInResponse != null) {
       _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -758,20 +758,6 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
-  ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -789,6 +775,20 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
+  /// [ranges] - The A1 notation of the values to retrieve.
+  ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -800,10 +800,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.List<core.String> ranges,
-      core.String majorDimension,
-      core.String valueRenderOption,
+      {core.String valueRenderOption,
       core.String dateTimeRenderOption,
+      core.List<core.String> ranges,
+      core.String majorDimension,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -815,17 +815,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (ranges != null) {
-      _queryParams["ranges"] = ranges;
-    }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
-    }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
+    }
+    if (ranges != null) {
+      _queryParams["ranges"] = ranges;
+    }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1080,6 +1080,18 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to retrieve.
   ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -1097,18 +1109,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1120,9 +1120,9 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ValueRange> get(core.String spreadsheetId, core.String range,
-      {core.String valueRenderOption,
+      {core.String majorDimension,
+      core.String valueRenderOption,
       core.String dateTimeRenderOption,
-      core.String majorDimension,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1137,14 +1137,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
+    }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6731,6 +6731,82 @@ class HistogramChartSpec {
   }
 }
 
+/// Allows you to organize the numeric values in a source data column into
+/// buckets of a constant size. All values from HistogramRule.start to
+/// HistogramRule.end will be placed into groups of size
+/// HistogramRule.interval. In addition, all values below
+/// HistogramRule.start will be placed in one group, and all values above
+/// HistogramRule.end will be placed in another. Only
+/// HistogramRule.interval is required, though if HistogramRule.start
+/// and HistogramRule.end are both provided, HistogramRule.start must
+/// be less than HistogramRule.end. For example, a pivot table showing
+/// average purchase amount by age that has 50+ rows:
+///
+///     +-----+-------------------+
+///     | Age | AVERAGE of Amount |
+///     +-----+-------------------+
+///     | 16  |            $27.13 |
+///     | 17  |             $5.24 |
+///     | 18  |            $20.15 |
+///     ...
+///     +-----+-------------------+
+/// could be turned into a pivot table that looks like the one below by
+/// applying a histogram group rule with a HistogramRule.start of 25,
+/// an HistogramRule.interval of 20, and an HistogramRule.end
+/// of 65.
+///
+///     +-------------+-------------------+
+///     | Grouped Age | AVERAGE of Amount |
+///     +-------------+-------------------+
+///     | < 25        |            $19.34 |
+///     | 25-45       |            $31.43 |
+///     | 45-65       |            $35.87 |
+///     | > 65        |            $27.55 |
+///     +-------------+-------------------+
+///     | Grand Total |            $29.12 |
+///     +-------------+-------------------+
+class HistogramRule {
+  /// Optional. The maximum value at which items will be placed into buckets
+  /// of constant size. Values above end will be lumped into a single bucket.
+  core.double end;
+
+  /// Required. The size of the buckets that will be created. Must be positive.
+  core.double interval;
+
+  /// Optional. The minimum value at which items will be placed into buckets
+  /// of constant size. Values below start will be lumped into a single bucket.
+  core.double start;
+
+  HistogramRule();
+
+  HistogramRule.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("interval")) {
+      interval = _json["interval"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (interval != null) {
+      _json["interval"] = interval;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
 /// A histogram series containing the series color and data.
 class HistogramSeries {
   /// The color of the column representing this series in each bucket.
@@ -6985,6 +7061,96 @@ class LineStyle {
     }
     if (width != null) {
       _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/// Allows you to manually organize the values in a source data column into
+/// buckets with names of your choosing. For example, a pivot table that
+/// aggregates population by state:
+///
+///     +-------+-------------------+
+///     | State | SUM of Population |
+///     +-------+-------------------+
+///     | AK    |               0.7 |
+///     | AL    |               4.8 |
+///     | AR    |               2.9 |
+///     ...
+///     +-------+-------------------+
+/// could be turned into a pivot table that aggregates population by time zone
+/// by providing a list of groups (e.g. groupName = 'Central',
+/// items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
+/// Note that a similar effect could be achieved by adding a time zone column
+/// to the source data and adjusting the pivot table.
+///
+///     +-----------+-------------------+
+///     | Time Zone | SUM of Population |
+///     +-----------+-------------------+
+///     | Central   |             106.3 |
+///     | Eastern   |             151.9 |
+///     | Mountain  |              17.4 |
+///     ...
+///     +-----------+-------------------+
+class ManualRule {
+  /// The list of group names and the corresponding items from the source data
+  /// that map to each group name.
+  core.List<ManualRuleGroup> groups;
+
+  ManualRule();
+
+  ManualRule.fromJson(core.Map _json) {
+    if (_json.containsKey("groups")) {
+      groups = _json["groups"]
+          .map((value) => new ManualRuleGroup.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (groups != null) {
+      _json["groups"] = groups.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A group name and a list of items from the source data that should be placed
+/// in the group with this name.
+class ManualRuleGroup {
+  /// The group name, which must be a string. Each group in a given
+  /// ManualRule must have a unique group name.
+  ExtendedValue groupName;
+
+  /// The items in the source data that should be placed into this group. Each
+  /// item may be a string, number, or boolean. Items may appear in at most one
+  /// group within a given ManualRule. Items that do not appear in any
+  /// group will appear on their own.
+  core.List<ExtendedValue> items;
+
+  ManualRuleGroup();
+
+  ManualRuleGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("groupName")) {
+      groupName = new ExtendedValue.fromJson(_json["groupName"]);
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"]
+          .map((value) => new ExtendedValue.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (groupName != null) {
+      _json["groupName"] = (groupName).toJson();
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -7595,6 +7761,47 @@ class PivotFilterCriteria {
 
 /// A single grouping (either row or column) in a pivot table.
 class PivotGroup {
+  /// The group rule to apply to this row/column group.
+  PivotGroupRule groupRule;
+
+  /// The labels to use for the row/column groups which can be customized. For
+  /// example, in the following pivot table, the row label is `Region` (which
+  /// could be renamed to `State`) and the column label is `Product` (which
+  /// could be renamed `Item`). Pivot tables created before December 2017 do
+  /// not have header labels. If you'd like to add header labels to an existing
+  /// pivot table, please delete the existing pivot table and then create a new
+  /// pivot table with same parameters.
+  ///
+  ///     +--------------+---------+-------+
+  ///     | SUM of Units | Product |       |
+  ///     | Region       | Pen     | Paper |
+  ///     +--------------+---------+-------+
+  ///     | New York     |     345 |    98 |
+  ///     | Oregon       |     234 |   123 |
+  ///     | Tennessee    |     531 |   415 |
+  ///     +--------------+---------+-------+
+  ///     | Grand Total  |    1110 |   636 |
+  ///     +--------------+---------+-------+
+  core.String label;
+
+  /// True if the headings in this pivot group should be repeated.
+  /// This is only valid for row groupings and will be ignored by columns.
+  ///
+  /// By default, we minimize repitition of headings by not showing higher
+  /// level headings where they are the same. For example, even though the
+  /// third row below corresponds to "Q1 Mar", "Q1" is not shown because
+  /// it is redundant with previous rows. Setting repeat_headings to true
+  /// would cause "Q1" to be repeated for "Feb" and "Mar".
+  ///
+  ///     +--------------+
+  ///     | Q1     | Jan |
+  ///     |        | Feb |
+  ///     |        | Mar |
+  ///     +--------+-----+
+  ///     | Q1 Total     |
+  ///     +--------------+
+  core.bool repeatHeadings;
+
   /// True if the pivot table should include the totals for this grouping.
   core.bool showTotals;
 
@@ -7622,6 +7829,15 @@ class PivotGroup {
   PivotGroup();
 
   PivotGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("groupRule")) {
+      groupRule = new PivotGroupRule.fromJson(_json["groupRule"]);
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("repeatHeadings")) {
+      repeatHeadings = _json["repeatHeadings"];
+    }
     if (_json.containsKey("showTotals")) {
       showTotals = _json["showTotals"];
     }
@@ -7645,6 +7861,15 @@ class PivotGroup {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (groupRule != null) {
+      _json["groupRule"] = (groupRule).toJson();
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (repeatHeadings != null) {
+      _json["repeatHeadings"] = repeatHeadings;
+    }
     if (showTotals != null) {
       _json["showTotals"] = showTotals;
     }
@@ -7660,6 +7885,42 @@ class PivotGroup {
     if (valueMetadata != null) {
       _json["valueMetadata"] =
           valueMetadata.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// An optional setting on a PivotGroup that defines buckets for the values
+/// in the source data column rather than breaking out each individual value.
+/// Only one PivotGroup with a group rule may be added for each column in
+/// the source data, though on any given column you may add both a
+/// PivotGroup that has a rule and a PivotGroup that does not.
+class PivotGroupRule {
+  /// A HistogramRule.
+  HistogramRule histogramRule;
+
+  /// A ManualRule.
+  ManualRule manualRule;
+
+  PivotGroupRule();
+
+  PivotGroupRule.fromJson(core.Map _json) {
+    if (_json.containsKey("histogramRule")) {
+      histogramRule = new HistogramRule.fromJson(_json["histogramRule"]);
+    }
+    if (_json.containsKey("manualRule")) {
+      manualRule = new ManualRule.fromJson(_json["manualRule"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (histogramRule != null) {
+      _json["histogramRule"] = (histogramRule).toJson();
+    }
+    if (manualRule != null) {
+      _json["manualRule"] = (manualRule).toJson();
     }
     return _json;
   }
@@ -7835,6 +8096,23 @@ class PivotTable {
 
 /// The definition of how a value in a pivot table should be calculated.
 class PivotValue {
+  /// If specified, indicates that pivot values should be displayed as
+  /// the result of a calculation with another pivot value. For example, if
+  /// calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the
+  /// pivot values will be displayed as the percentage of the grand total. In
+  /// the Sheets UI, this is referred to as "Show As" in the value section of a
+  /// pivot table.
+  /// Possible string values are:
+  /// - "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED" : Default value, do
+  /// not use.
+  /// - "PERCENT_OF_ROW_TOTAL" : Shows the pivot values as percentage of the row
+  /// total values.
+  /// - "PERCENT_OF_COLUMN_TOTAL" : Shows the pivot values as percentage of the
+  /// column total values.
+  /// - "PERCENT_OF_GRAND_TOTAL" : Shows the pivot values as percentage of the
+  /// grand total values.
+  core.String calculatedDisplayType;
+
   /// A custom formula to calculate the value.  The formula must start
   /// with an `=` character.
   core.String formula;
@@ -7877,6 +8155,9 @@ class PivotValue {
   PivotValue();
 
   PivotValue.fromJson(core.Map _json) {
+    if (_json.containsKey("calculatedDisplayType")) {
+      calculatedDisplayType = _json["calculatedDisplayType"];
+    }
     if (_json.containsKey("formula")) {
       formula = _json["formula"];
     }
@@ -7894,6 +8175,9 @@ class PivotValue {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (calculatedDisplayType != null) {
+      _json["calculatedDisplayType"] = calculatedDisplayType;
+    }
     if (formula != null) {
       _json["formula"] = formula;
     }
