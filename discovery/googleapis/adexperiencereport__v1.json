@@ -25,6 +25,61 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -53,61 +108,6 @@
         },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         }
@@ -161,7 +161,7 @@
             }
         }
     },
-    "revision": "20171129",
+    "revision": "20180129",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
         "ViolatingSitesResponse": {
@@ -182,10 +182,6 @@
             "description": "Response message for GetSiteSummary.",
             "id": "SiteSummaryResponse",
             "properties": {
-                "desktopSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "Summary for the desktop review of the site."
-                },
                 "mobileSummary": {
                     "$ref": "PlatformSummary",
                     "description": "Summary for the mobile review of the site."
@@ -193,6 +189,10 @@
                 "reviewedSite": {
                     "description": "The name of the site reviewed.",
                     "type": "string"
+                },
+                "desktopSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "Summary for the desktop review of the site."
                 }
             },
             "type": "object"
@@ -201,24 +201,6 @@
             "description": "Summary of the ad experience rating of a site for a specific platform.",
             "id": "PlatformSummary",
             "properties": {
-                "filterStatus": {
-                    "description": "The ad filtering status of the site.",
-                    "enum": [
-                        "UNKNOWN",
-                        "ON",
-                        "OFF",
-                        "PAUSED",
-                        "PENDING"
-                    ],
-                    "enumDescriptions": [
-                        "N/A.",
-                        "Ad filtering is on.",
-                        "Ad filtering is off.",
-                        "Ad filtering is paused.",
-                        "Ad filtering is pending."
-                    ],
-                    "type": "string"
-                },
                 "underReview": {
                     "description": "Whether the site is currently under review.",
                     "type": "boolean"
@@ -248,6 +230,11 @@
                     ],
                     "type": "string"
                 },
+                "enforcementTime": {
+                    "description": "The date on which ad filtering begins.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "region": {
                     "description": "The assigned regions for the site and platform.",
                     "enumDescriptions": [
@@ -265,9 +252,22 @@
                     },
                     "type": "array"
                 },
-                "enforcementTime": {
-                    "description": "The date on which ad filtering begins.",
-                    "format": "google-datetime",
+                "filterStatus": {
+                    "description": "The ad filtering status of the site.",
+                    "enum": [
+                        "UNKNOWN",
+                        "ON",
+                        "OFF",
+                        "PAUSED",
+                        "PENDING"
+                    ],
+                    "enumDescriptions": [
+                        "N/A.",
+                        "Ad filtering is on.",
+                        "Ad filtering is off.",
+                        "Ad filtering is paused.",
+                        "Ad filtering is pending."
+                    ],
                     "type": "string"
                 }
             },

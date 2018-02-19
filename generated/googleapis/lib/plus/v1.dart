@@ -4,7 +4,6 @@ library googleapis.plus.v1;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
-import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;

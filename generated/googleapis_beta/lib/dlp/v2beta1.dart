@@ -449,12 +449,12 @@ class InspectOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^inspect/operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The list page size. The maximum allowed value is 256 and the
   /// default is 100.
   ///
   /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -467,9 +467,9 @@ class InspectOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -481,14 +481,14 @@ class InspectOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -531,15 +531,6 @@ class InspectResultsFindingsResourceApi {
   /// Should be in the format of `inspect/results/{id}`.
   /// Value must have pattern "^inspect/results/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListInspectFindingsResponse`; indicates
-  /// that this is a continuation of a prior `ListInspectFindings` call, and
-  /// that
-  /// the system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of results to return.
-  /// If 0, the implementation selects a reasonable value.
-  ///
   /// [filter] - Restricts findings to items that match. Supports info_type and
   /// likelihood.
   ///
@@ -550,6 +541,15 @@ class InspectResultsFindingsResourceApi {
   /// - likelihood=VERY_LIKELY
   /// - likelihood=VERY_LIKELY,LIKELY
   /// - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListInspectFindingsResponse`; indicates
+  /// that this is a continuation of a prior `ListInspectFindings` call, and
+  /// that
+  /// the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of results to return.
+  /// If 0, the implementation selects a reasonable value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,9 +563,9 @@ class InspectResultsFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(
       core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -577,14 +577,14 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2628,7 +2628,9 @@ class GooglePrivacyDlpV2beta1Finding {
 
   /// The content that was found. Even if the content is not textual, it
   /// may be converted to a textual representation here.
-  /// Provided if requested by the `InspectConfig`.
+  /// Provided if requested by the `InspectConfig` and the finding is
+  /// less than or equal to 4096 bytes long. If the finding exceeds 4096 bytes
+  /// in length, the quote may be omitted.
   core.String quote;
 
   GooglePrivacyDlpV2beta1Finding();

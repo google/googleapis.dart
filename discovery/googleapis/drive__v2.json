@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/Cm07ZpuzjQh_9ykIBD-tYn3zAdo\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/3sZY5SudRICrZaNsZzXj7Gt8kVY\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -3072,7 +3072,7 @@
             }
         }
     },
-    "revision": "20180112",
+    "revision": "20180209",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3715,6 +3715,7 @@
                     "annotations": {
                         "required": [
                             "drive.comments.insert",
+                            "drive.comments.patch",
                             "drive.comments.update"
                         ]
                     },
@@ -3826,6 +3827,7 @@
                 "content": {
                     "annotations": {
                         "required": [
+                            "drive.replies.patch",
                             "drive.replies.update"
                         ]
                     },
@@ -4604,7 +4606,7 @@
                     "type": "string"
                 },
                 "expirationDate": {
-                    "description": "The time at which this permission will expire (RFC 3339 date-time). Expiration dates have the following restrictions:  \n- They can only be set on user and group permissions \n- The date must be in the future \n- The date cannot be more than a year in the future \n- The date can only be set on drive.permissions.update requests",
+                    "description": "The time at which this permission will expire (RFC 3339 date-time). Expiration dates have the following restrictions:  \n- They can only be set on user and group permissions \n- The date must be in the future \n- The date cannot be more than a year in the future \n- The date can only be set on drive.permissions.update or drive.permissions.patch requests",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -5042,6 +5044,11 @@
                     "type": "string"
                 },
                 "name": {
+                    "annotations": {
+                        "required": [
+                            "drive.teamdrives.insert"
+                        ]
+                    },
                     "description": "The name of this Team Drive.",
                     "type": "string"
                 },

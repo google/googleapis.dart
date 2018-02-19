@@ -39,7 +39,7 @@ class LineitemsResourceApi {
 
   LineitemsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves line items in CSV format.
+  /// Retrieves line items in CSV format. TrueView line items are not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -84,7 +84,7 @@ class LineitemsResourceApi {
         .then((data) => new DownloadLineItemsResponse.fromJson(data));
   }
 
-  /// Uploads line items in CSV format.
+  /// Uploads line items in CSV format. TrueView line items are not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -543,6 +543,7 @@ class DownloadRequest {
   /// Filter type used to filter line items to fetch.
   /// Possible string values are:
   /// - "ADVERTISER_ID"
+  /// - "CAMPAIGN_ID"
   /// - "INSERTION_ORDER_ID"
   /// - "LINE_ITEM_ID"
   core.String filterType;
@@ -595,6 +596,9 @@ class DownloadResponse {
   /// Retrieved ads in SDF format.
   core.String ads;
 
+  /// Retrieved campaigns in SDF format.
+  core.String campaigns;
+
   /// Retrieved insertion orders in SDF format.
   core.String insertionOrders;
 
@@ -609,6 +613,9 @@ class DownloadResponse {
     }
     if (_json.containsKey("ads")) {
       ads = _json["ads"];
+    }
+    if (_json.containsKey("campaigns")) {
+      campaigns = _json["campaigns"];
     }
     if (_json.containsKey("insertionOrders")) {
       insertionOrders = _json["insertionOrders"];
@@ -626,6 +633,9 @@ class DownloadResponse {
     }
     if (ads != null) {
       _json["ads"] = ads;
+    }
+    if (campaigns != null) {
+      _json["campaigns"] = campaigns;
     }
     if (insertionOrders != null) {
       _json["insertionOrders"] = insertionOrders;
@@ -885,6 +895,7 @@ class Parameters {
   /// - "TYPE_GENERAL"
   /// - "TYPE_INVENTORY_AVAILABILITY"
   /// - "TYPE_KEYWORD"
+  /// - "TYPE_LINEAR_TV_SEARCH_LIFT"
   /// - "TYPE_NIELSEN_AUDIENCE_PROFILE"
   /// - "TYPE_NIELSEN_DAILY_REACH_BUILD"
   /// - "TYPE_NIELSEN_ONLINE_GLOBAL_MARKET"

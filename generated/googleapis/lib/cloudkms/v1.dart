@@ -779,13 +779,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeysResponse.next_page_token.
-  ///
   /// [pageSize] - Optional limit on the number of CryptoKeys to include in the
   /// response.  Further CryptoKeys can subsequently be obtained by
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeysResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -798,7 +798,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -809,11 +809,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1241,14 +1241,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeyVersionsResponse.next_page_token.
-  ///
   /// [pageSize] - Optional limit on the number of CryptoKeyVersions to
   /// include in the response. Further CryptoKeyVersions can
   /// subsequently be obtained by including the
   /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeyVersionsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1261,7 +1261,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1272,11 +1272,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1427,7 +1427,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 /// If there are AuditConfigs for both `allServices` and a specific service,
 /// the union of the two AuditConfigs is used for that service: the log_types
 /// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditConfig are exempted.
+/// AuditLogConfig are exempted.
 ///
 /// Example Policy with multiple AuditConfigs:
 ///

@@ -4,7 +4,6 @@ library googleapis.poly.v1;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
-import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
@@ -226,6 +225,14 @@ class UsersAssetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
+  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
+  /// based on a combination of popularity and other features.
+  ///
+  /// [format] - Return only assets with the matching format. Acceptable values
+  /// are:
+  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
+  ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
   /// results were
   /// split into multiple pages. To get the next page, submit the same request
@@ -243,14 +250,6 @@ class UsersAssetsResourceApi {
   /// - "PUBLISHED" : A PUBLISHED.
   /// - "PRIVATE" : A PRIVATE.
   ///
-  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
-  ///
-  /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -262,11 +261,11 @@ class UsersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String orderBy,
+      core.String format,
+      core.String pageToken,
       core.int pageSize,
       core.String visibility,
-      core.String orderBy,
-      core.String format,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -278,6 +277,12 @@ class UsersAssetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (format != null) {
+      _queryParams["format"] = [format];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -286,12 +291,6 @@ class UsersAssetsResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (format != null) {
-      _queryParams["format"] = [format];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -439,6 +438,12 @@ class Asset {
   /// **not** returned by List Assets.
   core.String license;
 
+  /// Application-defined opaque metadata for this asset. This field is only
+  /// returned when querying for the signed-in user's own assets, not for public
+  /// assets. This string is limited to 1K chars. It is up to the creator of
+  /// the asset to define the format for this string (for example, JSON).
+  core.String metadata;
+
   /// The unique identifier for the asset in the form:
   /// `assets/{ASSET_ID}`.
   core.String name;
@@ -497,6 +502,9 @@ class Asset {
     if (_json.containsKey("license")) {
       license = _json["license"];
     }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -538,6 +546,9 @@ class Asset {
     }
     if (license != null) {
       _json["license"] = license;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
     }
     if (name != null) {
       _json["name"] = name;

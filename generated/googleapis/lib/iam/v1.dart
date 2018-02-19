@@ -1706,6 +1706,8 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -1723,8 +1725,6 @@ class RolesResourceApi {
   /// `organizations/{ORGANIZATION_ID}`
   /// `projects/{PROJECT_ID}`
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1736,11 +1736,11 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
-      {core.String pageToken,
+      {core.bool showDeleted,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
       core.String parent,
-      core.bool showDeleted,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1749,6 +1749,9 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1760,9 +1763,6 @@ class RolesResourceApi {
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1828,6 +1828,94 @@ class RolesResourceApi {
   }
 }
 
+/// Specifies the audit configuration for a service.
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging.
+/// An AuditConfig must have one or more AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service,
+/// the union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditLogConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+///     {
+///       "audit_configs": [
+///         {
+///           "service": "allServices"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///               "exempted_members": [
+///                 "user:foo@gmail.com"
+///               ]
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///             },
+///             {
+///               "log_type": "ADMIN_READ",
+///             }
+///           ]
+///         },
+///         {
+///           "service": "fooservice.googleapis.com"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///               "exempted_members": [
+///                 "user:bar@gmail.com"
+///               ]
+///             }
+///           ]
+///         }
+///       ]
+///     }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
+class AuditConfig {
+  /// The configuration for logging of each type of permission.
+  /// Next ID: 4
+  core.List<AuditLogConfig> auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String service;
+
+  AuditConfig();
+
+  AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = _json["auditLogConfigs"]
+          .map((value) => new AuditLogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
 /// Audit log information specific to Cloud IAM. This message is serialized
 /// as an `Any` type in the `ServiceData` message of an
 /// `AuditLog` message.
@@ -1848,6 +1936,63 @@ class AuditData {
         new core.Map<core.String, core.Object>();
     if (policyDelta != null) {
       _json["policyDelta"] = (policyDelta).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Provides the configuration for logging a type of permissions.
+/// Example:
+///
+///     {
+///       "audit_log_configs": [
+///         {
+///           "log_type": "DATA_READ",
+///           "exempted_members": [
+///             "user:foo@gmail.com"
+///           ]
+///         },
+///         {
+///           "log_type": "DATA_WRITE",
+///         }
+///       ]
+///     }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  /// Follows the same format of Binding.members.
+  core.List<core.String> exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
     }
     return _json;
   }
@@ -2335,6 +2480,9 @@ class Permission {
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<AuditConfig> auditConfigs;
+
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
@@ -2366,6 +2514,11 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = _json["auditConfigs"]
+          .map((value) => new AuditConfig.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
           .map((value) => new Binding.fromJson(value))
@@ -2382,6 +2535,10 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
+    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -3003,11 +3160,22 @@ class SetIamPolicyRequest {
   /// might reject them.
   Policy policy;
 
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  /// Only
+  /// the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used:
+  /// paths: "bindings, etag"
+  /// This field is only used by Cloud IAM.
+  core.String updateMask;
+
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
       policy = new Policy.fromJson(_json["policy"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
     }
   }
 
@@ -3016,6 +3184,9 @@ class SetIamPolicyRequest {
         new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
     }
     return _json;
   }

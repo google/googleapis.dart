@@ -2,14 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/trace.append": {
+                    "description": "Write Trace data for a project or application"
+                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/trace.readonly": {
                     "description": "Read Trace data for a project or application"
-                },
-                "https://www.googleapis.com/auth/trace.append": {
-                    "description": "Write Trace data for a project or application"
                 }
             }
         }
@@ -31,21 +31,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
@@ -96,13 +81,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -116,6 +101,21 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -161,17 +161,6 @@
                                 "projectId"
                             ],
                             "parameters": {
-                                "orderBy": {
-                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "projectId": {
-                                    "description": "ID of the Cloud project where the trace data is stored.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "filter": {
                                     "description": "An optional filter against labels for the request.\n\nBy default, searches use prefix matching. To specify exact match, prepend\na plus symbol (`+`) to the search term.\nMultiple terms are ANDed. Syntax:\n\n*   `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root\n    span starts with `NAME_PREFIX`.\n*   `+root:NAME` or `+NAME`: Return traces where any root span's name is\n    exactly `NAME`.\n*   `span:NAME_PREFIX`: Return traces where any span starts with\n    `NAME_PREFIX`.\n*   `+span:NAME`: Return traces where any span's name is exactly\n    `NAME`.\n*   `latency:DURATION`: Return traces whose overall latency is\n    greater or equal to than `DURATION`. Accepted units are nanoseconds\n    (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For\n    example, `latency:24ms` returns traces whose overall latency\n    is greater than or equal to 24 milliseconds.\n*   `label:LABEL_KEY`: Return all traces containing the specified\n    label key (exact match, case-sensitive) regardless of the key:value\n    pair's value (including empty values).\n*   `LABEL_KEY:VALUE_PREFIX`: Return all traces containing the specified\n    label key (exact match, case-sensitive) whose value starts with\n    `VALUE_PREFIX`. Both a key and a value must be specified.\n*   `+LABEL_KEY:VALUE`: Return all traces containing a key:value pair\n    exactly matching the specified text. Both a key and a value must be\n    specified.\n*   `method:VALUE`: Equivalent to `/http/method:VALUE`.\n*   `url:VALUE`: Equivalent to `/http/url:VALUE`.",
                                     "location": "query",
@@ -183,14 +172,14 @@
                                     "location": "query",
                                     "type": "string"
                                 },
-                                "pageToken": {
-                                    "description": "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "startTime": {
                                     "description": "Start of the time interval (inclusive) during which the trace data was\ncollected from the application.",
                                     "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -209,6 +198,17 @@
                                         "COMPLETE"
                                     ],
                                     "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "projectId": {
+                                    "description": "ID of the Cloud project where the trace data is stored.",
+                                    "location": "path",
+                                    "required": true,
                                     "type": "string"
                                 }
                             },
@@ -257,13 +257,32 @@
             }
         }
     },
-    "revision": "20180118",
+    "revision": "20180212",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
         "TraceSpan": {
             "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace.",
             "id": "TraceSpan",
             "properties": {
+                "startTime": {
+                    "description": "Start time of the span in nanoseconds from the UNIX epoch.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "kind": {
+                    "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span.",
+                    "enum": [
+                        "SPAN_KIND_UNSPECIFIED",
+                        "RPC_SERVER",
+                        "RPC_CLIENT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
+                        "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."
+                    ],
+                    "type": "string"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -288,25 +307,6 @@
                 "endTime": {
                     "description": "End time of the span in nanoseconds from the UNIX epoch.",
                     "format": "google-datetime",
-                    "type": "string"
-                },
-                "startTime": {
-                    "description": "Start time of the span in nanoseconds from the UNIX epoch.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "kind": {
-                    "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span.",
-                    "enum": [
-                        "SPAN_KIND_UNSPECIFIED",
-                        "RPC_SERVER",
-                        "RPC_CLIENT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
-                        "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."
-                    ],
                     "type": "string"
                 }
             },

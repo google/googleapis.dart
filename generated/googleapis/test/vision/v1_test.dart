@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1374() {
+buildUnnamed3443() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed1374(core.List<api.Feature> o) {
+checkUnnamed3443(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -68,7 +68,7 @@ buildAnnotateImageRequest() {
   var o = new api.AnnotateImageRequest();
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
-    o.features = buildUnnamed1374();
+    o.features = buildUnnamed3443();
     o.image = buildImage();
     o.imageContext = buildImageContext();
   }
@@ -79,73 +79,73 @@ buildAnnotateImageRequest() {
 checkAnnotateImageRequest(api.AnnotateImageRequest o) {
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
-    checkUnnamed1374(o.features);
+    checkUnnamed3443(o.features);
     checkImage(o.image);
     checkImageContext(o.imageContext);
   }
   buildCounterAnnotateImageRequest--;
 }
 
-buildUnnamed1375() {
+buildUnnamed3444() {
   var o = new core.List<api.FaceAnnotation>();
   o.add(buildFaceAnnotation());
   o.add(buildFaceAnnotation());
   return o;
 }
 
-checkUnnamed1375(core.List<api.FaceAnnotation> o) {
+checkUnnamed3444(core.List<api.FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFaceAnnotation(o[0]);
   checkFaceAnnotation(o[1]);
 }
 
-buildUnnamed1376() {
+buildUnnamed3445() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed1376(core.List<api.EntityAnnotation> o) {
+checkUnnamed3445(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
 }
 
-buildUnnamed1377() {
+buildUnnamed3446() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed1377(core.List<api.EntityAnnotation> o) {
+checkUnnamed3446(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
 }
 
-buildUnnamed1378() {
+buildUnnamed3447() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed1378(core.List<api.EntityAnnotation> o) {
+checkUnnamed3447(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
 }
 
-buildUnnamed1379() {
+buildUnnamed3448() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed1379(core.List<api.EntityAnnotation> o) {
+checkUnnamed3448(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
@@ -158,14 +158,14 @@ buildAnnotateImageResponse() {
   if (buildCounterAnnotateImageResponse < 3) {
     o.cropHintsAnnotation = buildCropHintsAnnotation();
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed1375();
+    o.faceAnnotations = buildUnnamed3444();
     o.fullTextAnnotation = buildTextAnnotation();
     o.imagePropertiesAnnotation = buildImageProperties();
-    o.labelAnnotations = buildUnnamed1376();
-    o.landmarkAnnotations = buildUnnamed1377();
-    o.logoAnnotations = buildUnnamed1378();
+    o.labelAnnotations = buildUnnamed3445();
+    o.landmarkAnnotations = buildUnnamed3446();
+    o.logoAnnotations = buildUnnamed3447();
     o.safeSearchAnnotation = buildSafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed1379();
+    o.textAnnotations = buildUnnamed3448();
     o.webDetection = buildWebDetection();
   }
   buildCounterAnnotateImageResponse--;
@@ -177,27 +177,27 @@ checkAnnotateImageResponse(api.AnnotateImageResponse o) {
   if (buildCounterAnnotateImageResponse < 3) {
     checkCropHintsAnnotation(o.cropHintsAnnotation);
     checkStatus(o.error);
-    checkUnnamed1375(o.faceAnnotations);
+    checkUnnamed3444(o.faceAnnotations);
     checkTextAnnotation(o.fullTextAnnotation);
     checkImageProperties(o.imagePropertiesAnnotation);
-    checkUnnamed1376(o.labelAnnotations);
-    checkUnnamed1377(o.landmarkAnnotations);
-    checkUnnamed1378(o.logoAnnotations);
+    checkUnnamed3445(o.labelAnnotations);
+    checkUnnamed3446(o.landmarkAnnotations);
+    checkUnnamed3447(o.logoAnnotations);
     checkSafeSearchAnnotation(o.safeSearchAnnotation);
-    checkUnnamed1379(o.textAnnotations);
+    checkUnnamed3448(o.textAnnotations);
     checkWebDetection(o.webDetection);
   }
   buildCounterAnnotateImageResponse--;
 }
 
-buildUnnamed1380() {
+buildUnnamed3449() {
   var o = new core.List<api.AnnotateImageRequest>();
   o.add(buildAnnotateImageRequest());
   o.add(buildAnnotateImageRequest());
   return o;
 }
 
-checkUnnamed1380(core.List<api.AnnotateImageRequest> o) {
+checkUnnamed3449(core.List<api.AnnotateImageRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageRequest(o[0]);
   checkAnnotateImageRequest(o[1]);
@@ -208,7 +208,7 @@ buildBatchAnnotateImagesRequest() {
   var o = new api.BatchAnnotateImagesRequest();
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
-    o.requests = buildUnnamed1380();
+    o.requests = buildUnnamed3449();
   }
   buildCounterBatchAnnotateImagesRequest--;
   return o;
@@ -217,19 +217,19 @@ buildBatchAnnotateImagesRequest() {
 checkBatchAnnotateImagesRequest(api.BatchAnnotateImagesRequest o) {
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
-    checkUnnamed1380(o.requests);
+    checkUnnamed3449(o.requests);
   }
   buildCounterBatchAnnotateImagesRequest--;
 }
 
-buildUnnamed1381() {
+buildUnnamed3450() {
   var o = new core.List<api.AnnotateImageResponse>();
   o.add(buildAnnotateImageResponse());
   o.add(buildAnnotateImageResponse());
   return o;
 }
 
-checkUnnamed1381(core.List<api.AnnotateImageResponse> o) {
+checkUnnamed3450(core.List<api.AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageResponse(o[0]);
   checkAnnotateImageResponse(o[1]);
@@ -240,7 +240,7 @@ buildBatchAnnotateImagesResponse() {
   var o = new api.BatchAnnotateImagesResponse();
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
-    o.responses = buildUnnamed1381();
+    o.responses = buildUnnamed3450();
   }
   buildCounterBatchAnnotateImagesResponse--;
   return o;
@@ -249,19 +249,19 @@ buildBatchAnnotateImagesResponse() {
 checkBatchAnnotateImagesResponse(api.BatchAnnotateImagesResponse o) {
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
-    checkUnnamed1381(o.responses);
+    checkUnnamed3450(o.responses);
   }
   buildCounterBatchAnnotateImagesResponse--;
 }
 
-buildUnnamed1382() {
+buildUnnamed3451() {
   var o = new core.List<api.Paragraph>();
   o.add(buildParagraph());
   o.add(buildParagraph());
   return o;
 }
 
-checkUnnamed1382(core.List<api.Paragraph> o) {
+checkUnnamed3451(core.List<api.Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParagraph(o[0]);
   checkParagraph(o[1]);
@@ -275,7 +275,7 @@ buildBlock() {
     o.blockType = "foo";
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
-    o.paragraphs = buildUnnamed1382();
+    o.paragraphs = buildUnnamed3451();
     o.property = buildTextProperty();
   }
   buildCounterBlock--;
@@ -288,20 +288,20 @@ checkBlock(api.Block o) {
     unittest.expect(o.blockType, unittest.equals('foo'));
     checkBoundingPoly(o.boundingBox);
     unittest.expect(o.confidence, unittest.equals(42.0));
-    checkUnnamed1382(o.paragraphs);
+    checkUnnamed3451(o.paragraphs);
     checkTextProperty(o.property);
   }
   buildCounterBlock--;
 }
 
-buildUnnamed1383() {
+buildUnnamed3452() {
   var o = new core.List<api.Vertex>();
   o.add(buildVertex());
   o.add(buildVertex());
   return o;
 }
 
-checkUnnamed1383(core.List<api.Vertex> o) {
+checkUnnamed3452(core.List<api.Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVertex(o[0]);
   checkVertex(o[1]);
@@ -312,7 +312,7 @@ buildBoundingPoly() {
   var o = new api.BoundingPoly();
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
-    o.vertices = buildUnnamed1383();
+    o.vertices = buildUnnamed3452();
   }
   buildCounterBoundingPoly--;
   return o;
@@ -321,7 +321,7 @@ buildBoundingPoly() {
 checkBoundingPoly(api.BoundingPoly o) {
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
-    checkUnnamed1383(o.vertices);
+    checkUnnamed3452(o.vertices);
   }
   buildCounterBoundingPoly--;
 }
@@ -397,14 +397,14 @@ checkCropHint(api.CropHint o) {
   buildCounterCropHint--;
 }
 
-buildUnnamed1384() {
+buildUnnamed3453() {
   var o = new core.List<api.CropHint>();
   o.add(buildCropHint());
   o.add(buildCropHint());
   return o;
 }
 
-checkUnnamed1384(core.List<api.CropHint> o) {
+checkUnnamed3453(core.List<api.CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCropHint(o[0]);
   checkCropHint(o[1]);
@@ -415,7 +415,7 @@ buildCropHintsAnnotation() {
   var o = new api.CropHintsAnnotation();
   buildCounterCropHintsAnnotation++;
   if (buildCounterCropHintsAnnotation < 3) {
-    o.cropHints = buildUnnamed1384();
+    o.cropHints = buildUnnamed3453();
   }
   buildCounterCropHintsAnnotation--;
   return o;
@@ -424,19 +424,19 @@ buildCropHintsAnnotation() {
 checkCropHintsAnnotation(api.CropHintsAnnotation o) {
   buildCounterCropHintsAnnotation++;
   if (buildCounterCropHintsAnnotation < 3) {
-    checkUnnamed1384(o.cropHints);
+    checkUnnamed3453(o.cropHints);
   }
   buildCounterCropHintsAnnotation--;
 }
 
-buildUnnamed1385() {
+buildUnnamed3454() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed1385(core.List<core.double> o) {
+checkUnnamed3454(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -447,7 +447,7 @@ buildCropHintsParams() {
   var o = new api.CropHintsParams();
   buildCounterCropHintsParams++;
   if (buildCounterCropHintsParams < 3) {
-    o.aspectRatios = buildUnnamed1385();
+    o.aspectRatios = buildUnnamed3454();
   }
   buildCounterCropHintsParams--;
   return o;
@@ -456,7 +456,7 @@ buildCropHintsParams() {
 checkCropHintsParams(api.CropHintsParams o) {
   buildCounterCropHintsParams++;
   if (buildCounterCropHintsParams < 3) {
-    checkUnnamed1385(o.aspectRatios);
+    checkUnnamed3454(o.aspectRatios);
   }
   buildCounterCropHintsParams--;
 }
@@ -503,14 +503,14 @@ checkDetectedLanguage(api.DetectedLanguage o) {
   buildCounterDetectedLanguage--;
 }
 
-buildUnnamed1386() {
+buildUnnamed3455() {
   var o = new core.List<api.ColorInfo>();
   o.add(buildColorInfo());
   o.add(buildColorInfo());
   return o;
 }
 
-checkUnnamed1386(core.List<api.ColorInfo> o) {
+checkUnnamed3455(core.List<api.ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColorInfo(o[0]);
   checkColorInfo(o[1]);
@@ -521,7 +521,7 @@ buildDominantColorsAnnotation() {
   var o = new api.DominantColorsAnnotation();
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed1386();
+    o.colors = buildUnnamed3455();
   }
   buildCounterDominantColorsAnnotation--;
   return o;
@@ -530,32 +530,32 @@ buildDominantColorsAnnotation() {
 checkDominantColorsAnnotation(api.DominantColorsAnnotation o) {
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
-    checkUnnamed1386(o.colors);
+    checkUnnamed3455(o.colors);
   }
   buildCounterDominantColorsAnnotation--;
 }
 
-buildUnnamed1387() {
+buildUnnamed3456() {
   var o = new core.List<api.LocationInfo>();
   o.add(buildLocationInfo());
   o.add(buildLocationInfo());
   return o;
 }
 
-checkUnnamed1387(core.List<api.LocationInfo> o) {
+checkUnnamed3456(core.List<api.LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocationInfo(o[0]);
   checkLocationInfo(o[1]);
 }
 
-buildUnnamed1388() {
+buildUnnamed3457() {
   var o = new core.List<api.Property>();
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-checkUnnamed1388(core.List<api.Property> o) {
+checkUnnamed3457(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0]);
   checkProperty(o[1]);
@@ -570,9 +570,9 @@ buildEntityAnnotation() {
     o.confidence = 42.0;
     o.description = "foo";
     o.locale = "foo";
-    o.locations = buildUnnamed1387();
+    o.locations = buildUnnamed3456();
     o.mid = "foo";
-    o.properties = buildUnnamed1388();
+    o.properties = buildUnnamed3457();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -587,23 +587,23 @@ checkEntityAnnotation(api.EntityAnnotation o) {
     unittest.expect(o.confidence, unittest.equals(42.0));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.locale, unittest.equals('foo'));
-    checkUnnamed1387(o.locations);
+    checkUnnamed3456(o.locations);
     unittest.expect(o.mid, unittest.equals('foo'));
-    checkUnnamed1388(o.properties);
+    checkUnnamed3457(o.properties);
     unittest.expect(o.score, unittest.equals(42.0));
     unittest.expect(o.topicality, unittest.equals(42.0));
   }
   buildCounterEntityAnnotation--;
 }
 
-buildUnnamed1389() {
+buildUnnamed3458() {
   var o = new core.List<api.Landmark>();
   o.add(buildLandmark());
   o.add(buildLandmark());
   return o;
 }
 
-checkUnnamed1389(core.List<api.Landmark> o) {
+checkUnnamed3458(core.List<api.Landmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLandmark(o[0]);
   checkLandmark(o[1]);
@@ -622,7 +622,7 @@ buildFaceAnnotation() {
     o.headwearLikelihood = "foo";
     o.joyLikelihood = "foo";
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed1389();
+    o.landmarks = buildUnnamed3458();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
     o.sorrowLikelihood = "foo";
@@ -645,7 +645,7 @@ checkFaceAnnotation(api.FaceAnnotation o) {
     unittest.expect(o.headwearLikelihood, unittest.equals('foo'));
     unittest.expect(o.joyLikelihood, unittest.equals('foo'));
     unittest.expect(o.landmarkingConfidence, unittest.equals(42.0));
-    checkUnnamed1389(o.landmarks);
+    checkUnnamed3458(o.landmarks);
     unittest.expect(o.panAngle, unittest.equals(42.0));
     unittest.expect(o.rollAngle, unittest.equals(42.0));
     unittest.expect(o.sorrowLikelihood, unittest.equals('foo'));
@@ -700,14 +700,14 @@ checkImage(api.Image o) {
   buildCounterImage--;
 }
 
-buildUnnamed1390() {
+buildUnnamed3459() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1390(core.List<core.String> o) {
+checkUnnamed3459(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -719,7 +719,7 @@ buildImageContext() {
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
     o.cropHintsParams = buildCropHintsParams();
-    o.languageHints = buildUnnamed1390();
+    o.languageHints = buildUnnamed3459();
     o.latLongRect = buildLatLongRect();
     o.webDetectionParams = buildWebDetectionParams();
   }
@@ -731,7 +731,7 @@ checkImageContext(api.ImageContext o) {
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
     checkCropHintsParams(o.cropHintsParams);
-    checkUnnamed1390(o.languageHints);
+    checkUnnamed3459(o.languageHints);
     checkLatLongRect(o.latLongRect);
     checkWebDetectionParams(o.webDetectionParams);
   }
@@ -860,14 +860,14 @@ checkLocationInfo(api.LocationInfo o) {
   buildCounterLocationInfo--;
 }
 
-buildUnnamed1391() {
+buildUnnamed3460() {
   var o = new core.List<api.Block>();
   o.add(buildBlock());
   o.add(buildBlock());
   return o;
 }
 
-checkUnnamed1391(core.List<api.Block> o) {
+checkUnnamed3460(core.List<api.Block> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBlock(o[0]);
   checkBlock(o[1]);
@@ -878,7 +878,7 @@ buildPage() {
   var o = new api.Page();
   buildCounterPage++;
   if (buildCounterPage < 3) {
-    o.blocks = buildUnnamed1391();
+    o.blocks = buildUnnamed3460();
     o.confidence = 42.0;
     o.height = 42;
     o.property = buildTextProperty();
@@ -891,7 +891,7 @@ buildPage() {
 checkPage(api.Page o) {
   buildCounterPage++;
   if (buildCounterPage < 3) {
-    checkUnnamed1391(o.blocks);
+    checkUnnamed3460(o.blocks);
     unittest.expect(o.confidence, unittest.equals(42.0));
     unittest.expect(o.height, unittest.equals(42));
     checkTextProperty(o.property);
@@ -900,14 +900,14 @@ checkPage(api.Page o) {
   buildCounterPage--;
 }
 
-buildUnnamed1392() {
+buildUnnamed3461() {
   var o = new core.List<api.Word>();
   o.add(buildWord());
   o.add(buildWord());
   return o;
 }
 
-checkUnnamed1392(core.List<api.Word> o) {
+checkUnnamed3461(core.List<api.Word> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWord(o[0]);
   checkWord(o[1]);
@@ -921,7 +921,7 @@ buildParagraph() {
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.property = buildTextProperty();
-    o.words = buildUnnamed1392();
+    o.words = buildUnnamed3461();
   }
   buildCounterParagraph--;
   return o;
@@ -933,7 +933,7 @@ checkParagraph(api.Paragraph o) {
     checkBoundingPoly(o.boundingBox);
     unittest.expect(o.confidence, unittest.equals(42.0));
     checkTextProperty(o.property);
-    checkUnnamed1392(o.words);
+    checkUnnamed3461(o.words);
   }
   buildCounterParagraph--;
 }
@@ -1011,7 +1011,7 @@ checkSafeSearchAnnotation(api.SafeSearchAnnotation o) {
   buildCounterSafeSearchAnnotation--;
 }
 
-buildUnnamed1393() {
+buildUnnamed3462() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1026,7 +1026,7 @@ buildUnnamed1393() {
   return o;
 }
 
-checkUnnamed1393(core.Map<core.String, core.Object> o) {
+checkUnnamed3462(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1040,17 +1040,17 @@ checkUnnamed1393(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed1394() {
+buildUnnamed3463() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1393());
-  o.add(buildUnnamed1393());
+  o.add(buildUnnamed3462());
+  o.add(buildUnnamed3462());
   return o;
 }
 
-checkUnnamed1394(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3463(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1393(o[0]);
-  checkUnnamed1393(o[1]);
+  checkUnnamed3462(o[0]);
+  checkUnnamed3462(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1059,7 +1059,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1394();
+    o.details = buildUnnamed3463();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1070,7 +1070,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1394(o.details);
+    checkUnnamed3463(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -1101,14 +1101,14 @@ checkSymbol(api.Symbol o) {
   buildCounterSymbol--;
 }
 
-buildUnnamed1395() {
+buildUnnamed3464() {
   var o = new core.List<api.Page>();
   o.add(buildPage());
   o.add(buildPage());
   return o;
 }
 
-checkUnnamed1395(core.List<api.Page> o) {
+checkUnnamed3464(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPage(o[0]);
   checkPage(o[1]);
@@ -1119,7 +1119,7 @@ buildTextAnnotation() {
   var o = new api.TextAnnotation();
   buildCounterTextAnnotation++;
   if (buildCounterTextAnnotation < 3) {
-    o.pages = buildUnnamed1395();
+    o.pages = buildUnnamed3464();
     o.text = "foo";
   }
   buildCounterTextAnnotation--;
@@ -1129,20 +1129,20 @@ buildTextAnnotation() {
 checkTextAnnotation(api.TextAnnotation o) {
   buildCounterTextAnnotation++;
   if (buildCounterTextAnnotation < 3) {
-    checkUnnamed1395(o.pages);
+    checkUnnamed3464(o.pages);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterTextAnnotation--;
 }
 
-buildUnnamed1396() {
+buildUnnamed3465() {
   var o = new core.List<api.DetectedLanguage>();
   o.add(buildDetectedLanguage());
   o.add(buildDetectedLanguage());
   return o;
 }
 
-checkUnnamed1396(core.List<api.DetectedLanguage> o) {
+checkUnnamed3465(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectedLanguage(o[0]);
   checkDetectedLanguage(o[1]);
@@ -1154,7 +1154,7 @@ buildTextProperty() {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     o.detectedBreak = buildDetectedBreak();
-    o.detectedLanguages = buildUnnamed1396();
+    o.detectedLanguages = buildUnnamed3465();
   }
   buildCounterTextProperty--;
   return o;
@@ -1164,7 +1164,7 @@ checkTextProperty(api.TextProperty o) {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     checkDetectedBreak(o.detectedBreak);
-    checkUnnamed1396(o.detectedLanguages);
+    checkUnnamed3465(o.detectedLanguages);
   }
   buildCounterTextProperty--;
 }
@@ -1190,79 +1190,79 @@ checkVertex(api.Vertex o) {
   buildCounterVertex--;
 }
 
-buildUnnamed1397() {
+buildUnnamed3466() {
   var o = new core.List<api.WebLabel>();
   o.add(buildWebLabel());
   o.add(buildWebLabel());
   return o;
 }
 
-checkUnnamed1397(core.List<api.WebLabel> o) {
+checkUnnamed3466(core.List<api.WebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebLabel(o[0]);
   checkWebLabel(o[1]);
 }
 
-buildUnnamed1398() {
+buildUnnamed3467() {
   var o = new core.List<api.WebImage>();
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
 }
 
-checkUnnamed1398(core.List<api.WebImage> o) {
+checkUnnamed3467(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0]);
   checkWebImage(o[1]);
 }
 
-buildUnnamed1399() {
+buildUnnamed3468() {
   var o = new core.List<api.WebPage>();
   o.add(buildWebPage());
   o.add(buildWebPage());
   return o;
 }
 
-checkUnnamed1399(core.List<api.WebPage> o) {
+checkUnnamed3468(core.List<api.WebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebPage(o[0]);
   checkWebPage(o[1]);
 }
 
-buildUnnamed1400() {
+buildUnnamed3469() {
   var o = new core.List<api.WebImage>();
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
 }
 
-checkUnnamed1400(core.List<api.WebImage> o) {
+checkUnnamed3469(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0]);
   checkWebImage(o[1]);
 }
 
-buildUnnamed1401() {
+buildUnnamed3470() {
   var o = new core.List<api.WebImage>();
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
 }
 
-checkUnnamed1401(core.List<api.WebImage> o) {
+checkUnnamed3470(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0]);
   checkWebImage(o[1]);
 }
 
-buildUnnamed1402() {
+buildUnnamed3471() {
   var o = new core.List<api.WebEntity>();
   o.add(buildWebEntity());
   o.add(buildWebEntity());
   return o;
 }
 
-checkUnnamed1402(core.List<api.WebEntity> o) {
+checkUnnamed3471(core.List<api.WebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebEntity(o[0]);
   checkWebEntity(o[1]);
@@ -1273,12 +1273,12 @@ buildWebDetection() {
   var o = new api.WebDetection();
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed1397();
-    o.fullMatchingImages = buildUnnamed1398();
-    o.pagesWithMatchingImages = buildUnnamed1399();
-    o.partialMatchingImages = buildUnnamed1400();
-    o.visuallySimilarImages = buildUnnamed1401();
-    o.webEntities = buildUnnamed1402();
+    o.bestGuessLabels = buildUnnamed3466();
+    o.fullMatchingImages = buildUnnamed3467();
+    o.pagesWithMatchingImages = buildUnnamed3468();
+    o.partialMatchingImages = buildUnnamed3469();
+    o.visuallySimilarImages = buildUnnamed3470();
+    o.webEntities = buildUnnamed3471();
   }
   buildCounterWebDetection--;
   return o;
@@ -1287,12 +1287,12 @@ buildWebDetection() {
 checkWebDetection(api.WebDetection o) {
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
-    checkUnnamed1397(o.bestGuessLabels);
-    checkUnnamed1398(o.fullMatchingImages);
-    checkUnnamed1399(o.pagesWithMatchingImages);
-    checkUnnamed1400(o.partialMatchingImages);
-    checkUnnamed1401(o.visuallySimilarImages);
-    checkUnnamed1402(o.webEntities);
+    checkUnnamed3466(o.bestGuessLabels);
+    checkUnnamed3467(o.fullMatchingImages);
+    checkUnnamed3468(o.pagesWithMatchingImages);
+    checkUnnamed3469(o.partialMatchingImages);
+    checkUnnamed3470(o.visuallySimilarImages);
+    checkUnnamed3471(o.webEntities);
   }
   buildCounterWebDetection--;
 }
@@ -1381,27 +1381,27 @@ checkWebLabel(api.WebLabel o) {
   buildCounterWebLabel--;
 }
 
-buildUnnamed1403() {
+buildUnnamed3472() {
   var o = new core.List<api.WebImage>();
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
 }
 
-checkUnnamed1403(core.List<api.WebImage> o) {
+checkUnnamed3472(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0]);
   checkWebImage(o[1]);
 }
 
-buildUnnamed1404() {
+buildUnnamed3473() {
   var o = new core.List<api.WebImage>();
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
 }
 
-checkUnnamed1404(core.List<api.WebImage> o) {
+checkUnnamed3473(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0]);
   checkWebImage(o[1]);
@@ -1412,9 +1412,9 @@ buildWebPage() {
   var o = new api.WebPage();
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed1403();
+    o.fullMatchingImages = buildUnnamed3472();
     o.pageTitle = "foo";
-    o.partialMatchingImages = buildUnnamed1404();
+    o.partialMatchingImages = buildUnnamed3473();
     o.score = 42.0;
     o.url = "foo";
   }
@@ -1425,23 +1425,23 @@ buildWebPage() {
 checkWebPage(api.WebPage o) {
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
-    checkUnnamed1403(o.fullMatchingImages);
+    checkUnnamed3472(o.fullMatchingImages);
     unittest.expect(o.pageTitle, unittest.equals('foo'));
-    checkUnnamed1404(o.partialMatchingImages);
+    checkUnnamed3473(o.partialMatchingImages);
     unittest.expect(o.score, unittest.equals(42.0));
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterWebPage--;
 }
 
-buildUnnamed1405() {
+buildUnnamed3474() {
   var o = new core.List<api.Symbol>();
   o.add(buildSymbol());
   o.add(buildSymbol());
   return o;
 }
 
-checkUnnamed1405(core.List<api.Symbol> o) {
+checkUnnamed3474(core.List<api.Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSymbol(o[0]);
   checkSymbol(o[1]);
@@ -1455,7 +1455,7 @@ buildWord() {
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.property = buildTextProperty();
-    o.symbols = buildUnnamed1405();
+    o.symbols = buildUnnamed3474();
   }
   buildCounterWord--;
   return o;
@@ -1467,7 +1467,7 @@ checkWord(api.Word o) {
     checkBoundingPoly(o.boundingBox);
     unittest.expect(o.confidence, unittest.equals(42.0));
     checkTextProperty(o.property);
-    checkUnnamed1405(o.symbols);
+    checkUnnamed3474(o.symbols);
   }
   buildCounterWord--;
 }

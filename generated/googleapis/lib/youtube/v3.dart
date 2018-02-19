@@ -9018,7 +9018,6 @@ class ChannelSettings {
 }
 
 /// Basic details about a channel, including title, description and thumbnails.
-/// Next available id: 15.
 class ChannelSnippet {
   /// The country of the channel.
   core.String country;
@@ -14555,6 +14554,59 @@ class MonitorStreamInfo {
   }
 }
 
+/// Nonprofit information.
+class Nonprofit {
+  /// Id of the nonprofit.
+  NonprofitId nonprofitId;
+
+  /// Legal name of the nonprofit.
+  core.String nonprofitLegalName;
+
+  Nonprofit();
+
+  Nonprofit.fromJson(core.Map _json) {
+    if (_json.containsKey("nonprofitId")) {
+      nonprofitId = new NonprofitId.fromJson(_json["nonprofitId"]);
+    }
+    if (_json.containsKey("nonprofitLegalName")) {
+      nonprofitLegalName = _json["nonprofitLegalName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nonprofitId != null) {
+      _json["nonprofitId"] = (nonprofitId).toJson();
+    }
+    if (nonprofitLegalName != null) {
+      _json["nonprofitLegalName"] = nonprofitLegalName;
+    }
+    return _json;
+  }
+}
+
+class NonprofitId {
+  core.String value;
+
+  NonprofitId();
+
+  NonprofitId.fromJson(core.Map _json) {
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// Paging details for lists of resources, including total number of items
 /// available and number of resources returned in a single page.
 class PageInfo {
@@ -16527,9 +16579,16 @@ class SuperChatEventSnippet {
   /// "$1.00"). The string is rendered for the given language.
   core.String displayString;
 
+  /// True if this event is a Super Chat for Good purchase.
+  core.bool isSuperChatForGood;
+
   /// The tier for the paid message, which is based on the amount of money spent
   /// to purchase the message.
   core.int messageType;
+
+  /// If this event is a Super Chat for Good purchase, this field will contain
+  /// information about the charity the purchase is donated to.
+  Nonprofit nonprofit;
 
   /// Details about the supporter.
   ChannelProfileDetails supporterDetails;
@@ -16555,8 +16614,14 @@ class SuperChatEventSnippet {
     if (_json.containsKey("displayString")) {
       displayString = _json["displayString"];
     }
+    if (_json.containsKey("isSuperChatForGood")) {
+      isSuperChatForGood = _json["isSuperChatForGood"];
+    }
     if (_json.containsKey("messageType")) {
       messageType = _json["messageType"];
+    }
+    if (_json.containsKey("nonprofit")) {
+      nonprofit = new Nonprofit.fromJson(_json["nonprofit"]);
     }
     if (_json.containsKey("supporterDetails")) {
       supporterDetails =
@@ -16585,8 +16650,14 @@ class SuperChatEventSnippet {
     if (displayString != null) {
       _json["displayString"] = displayString;
     }
+    if (isSuperChatForGood != null) {
+      _json["isSuperChatForGood"] = isSuperChatForGood;
+    }
     if (messageType != null) {
       _json["messageType"] = messageType;
+    }
+    if (nonprofit != null) {
+      _json["nonprofit"] = (nonprofit).toJson();
     }
     if (supporterDetails != null) {
       _json["supporterDetails"] = (supporterDetails).toJson();
@@ -16811,7 +16882,7 @@ class Video {
   /// video in an embedded player.
   VideoPlayer player;
 
-  /// The processingProgress object encapsulates information about YouTube's
+  /// The processingDetails object encapsulates information about YouTube's
   /// progress in processing the uploaded video file. The properties in the
   /// object identify the current processing status and an estimate of the time
   /// remaining until YouTube finishes processing the video. This part also

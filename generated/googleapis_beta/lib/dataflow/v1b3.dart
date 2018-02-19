@@ -704,14 +704,20 @@ class ProjectsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time.
-  /// The default is the job creation time (i.e. beginning of messages).
+  /// [location] - The location which contains the job specified by job_id.
+  ///
+  /// [endTime] - Return only messages with timestamps < end_time. The default
+  /// is now
+  /// (i.e. return up to the latest messages available).
   ///
   /// [pageToken] - If supplied, this should be the value of next_page_token
   /// returned
   /// by an earlier call. This will cause the next page of results to
   /// be returned.
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time.
+  /// The default is the job creation time (i.e. beginning of messages).
   ///
   /// [pageSize] - If specified, determines the maximum number of messages to
   /// return.  If unspecified, the service may choose an appropriate
@@ -726,12 +732,6 @@ class ProjectsJobsMessagesResourceApi {
   /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
   /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
   ///
-  /// [endTime] - Return only messages with timestamps < end_time. The default
-  /// is now
-  /// (i.e. return up to the latest messages available).
-  ///
-  /// [location] - The location which contains the job specified by job_id.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -744,12 +744,12 @@ class ProjectsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String jobId,
-      {core.String startTime,
+      {core.String location,
+      core.String endTime,
       core.String pageToken,
+      core.String startTime,
       core.int pageSize,
       core.String minimumImportance,
-      core.String endTime,
-      core.String location,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -764,23 +764,23 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1025,14 +1025,14 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
-  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1046,7 +1046,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(
       Job request, core.String projectId, core.String location,
-      {core.String replaceJobId, core.String view, core.String $fields}) {
+      {core.String view, core.String replaceJobId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1063,11 +1063,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (replaceJobId != null) {
-      _queryParams["replaceJobId"] = [replaceJobId];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (replaceJobId != null) {
+      _queryParams["replaceJobId"] = [replaceJobId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1921,14 +1921,14 @@ class ProjectsLocationsTemplatesResourceApi {
   ///
   /// [location] - The location to which to direct the request.
   ///
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed.
+  /// Defaults to false.
+  ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
-  ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed.
-  /// Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1942,7 +1942,7 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request,
       core.String projectId, core.String location,
-      {core.String gcsPath, core.bool validateOnly, core.String $fields}) {
+      {core.bool validateOnly, core.String gcsPath, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1959,11 +1959,11 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
-    }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2120,16 +2120,16 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed.
+  /// Defaults to false.
+  ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [location] - The location to which to direct the request.
-  ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed.
-  /// Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2143,9 +2143,9 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.String gcsPath,
+      {core.bool validateOnly,
+      core.String gcsPath,
       core.String location,
-      core.bool validateOnly,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2160,14 +2160,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
     }
     if (location != null) {
       _queryParams["location"] = [location];
-    }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9013,6 +9013,57 @@ class WorkerHealthReportResponse {
   }
 }
 
+/// A report of an event in a worker's lifecycle.
+/// The proto contains one event, because the worker is expected to
+/// asynchronously send each message immediately after the event.
+/// Due to this asynchrony, messages may arrive out of order (or missing), and
+/// it
+/// is up to the consumer to interpret.
+/// The timestamp of the event is in the enclosing WorkerMessage proto.
+class WorkerLifecycleEvent {
+  /// The event being reported.
+  /// Possible string values are:
+  /// - "UNKNOWN_EVENT" : Invalid event.
+  /// - "CONTAINER_START" : Our container code starts running. Multiple
+  /// containers could be
+  /// distinguished with WorkerMessage.labels if desired.
+  /// - "NETWORK_UP" : The worker has a functional external network connection.
+  /// - "STAGING_FILES_DOWNLOAD_START" : Started downloading staging files.
+  /// - "STAGING_FILES_DOWNLOAD_FINISH" : Finished downloading all staging
+  /// files.
+  /// - "SDK_INSTALL_START" : For applicable SDKs, started installation of SDK
+  /// and worker packages.
+  /// - "SDK_INSTALL_FINISH" : Finished installing SDK.
+  core.String event;
+
+  /// Other stats that can accompany an event. E.g.
+  /// { "downloaded_bytes" : "123456" }
+  core.Map<core.String, core.String> metadata;
+
+  WorkerLifecycleEvent();
+
+  WorkerLifecycleEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("event")) {
+      event = _json["event"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (event != null) {
+      _json["event"] = event;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    return _json;
+  }
+}
+
 /// WorkerMessage provides information to the backend about a worker.
 class WorkerMessage {
   /// Labels are used to group WorkerMessages.
@@ -9032,6 +9083,9 @@ class WorkerMessage {
 
   /// The health of a worker.
   WorkerHealthReport workerHealthReport;
+
+  /// Record of worker lifecycle events.
+  WorkerLifecycleEvent workerLifecycleEvent;
 
   /// A worker message code.
   WorkerMessageCode workerMessageCode;
@@ -9054,6 +9108,10 @@ class WorkerMessage {
     if (_json.containsKey("workerHealthReport")) {
       workerHealthReport =
           new WorkerHealthReport.fromJson(_json["workerHealthReport"]);
+    }
+    if (_json.containsKey("workerLifecycleEvent")) {
+      workerLifecycleEvent =
+          new WorkerLifecycleEvent.fromJson(_json["workerLifecycleEvent"]);
     }
     if (_json.containsKey("workerMessageCode")) {
       workerMessageCode =
@@ -9080,6 +9138,9 @@ class WorkerMessage {
     }
     if (workerHealthReport != null) {
       _json["workerHealthReport"] = (workerHealthReport).toJson();
+    }
+    if (workerLifecycleEvent != null) {
+      _json["workerLifecycleEvent"] = (workerLifecycleEvent).toJson();
     }
     if (workerMessageCode != null) {
       _json["workerMessageCode"] = (workerMessageCode).toJson();

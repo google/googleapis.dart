@@ -18,7 +18,7 @@
     "description": "Accesses AdSense publishers' inventory and generates performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/management/",
-    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/PbITC4lBMsQjdNMbi6p5F9UuXJM\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/ZAmiUO_Ku56U-WPbB-8GpoRifU8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1624,7 +1624,7 @@
             }
         }
     },
-    "revision": "20180125",
+    "revision": "20180214",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

@@ -3633,6 +3633,10 @@ class ConferenceData {
   /// length is 2048 characters. Optional.
   core.String notes;
 
+  /// Additional properties related to a conference. An example would be a
+  /// solution-specific setting for enabling video streaming.
+  ConferenceParameters parameters;
+
   /// The signature of the conference data.
   /// Genereated on server side. Must be preserved while copying the conference
   /// data between events, otherwise the conference data will not be copied.
@@ -3662,6 +3666,9 @@ class ConferenceData {
     if (_json.containsKey("notes")) {
       notes = _json["notes"];
     }
+    if (_json.containsKey("parameters")) {
+      parameters = new ConferenceParameters.fromJson(_json["parameters"]);
+    }
     if (_json.containsKey("signature")) {
       signature = _json["signature"];
     }
@@ -3686,8 +3693,55 @@ class ConferenceData {
     if (notes != null) {
       _json["notes"] = notes;
     }
+    if (parameters != null) {
+      _json["parameters"] = (parameters).toJson();
+    }
     if (signature != null) {
       _json["signature"] = signature;
+    }
+    return _json;
+  }
+}
+
+class ConferenceParameters {
+  /// Additional add-on specific data.
+  ConferenceParametersAddOnParameters addOnParameters;
+
+  ConferenceParameters();
+
+  ConferenceParameters.fromJson(core.Map _json) {
+    if (_json.containsKey("addOnParameters")) {
+      addOnParameters = new ConferenceParametersAddOnParameters.fromJson(
+          _json["addOnParameters"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addOnParameters != null) {
+      _json["addOnParameters"] = (addOnParameters).toJson();
+    }
+    return _json;
+  }
+}
+
+class ConferenceParametersAddOnParameters {
+  core.Map<core.String, core.String> parameters;
+
+  ConferenceParametersAddOnParameters();
+
+  ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
+    if (_json.containsKey("parameters")) {
+      parameters = _json["parameters"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parameters != null) {
+      _json["parameters"] = parameters;
     }
     return _json;
   }

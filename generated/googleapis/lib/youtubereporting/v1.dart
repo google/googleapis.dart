@@ -209,6 +209,10 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If
+  /// not set, the user is acting for himself (his own channel).
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically,
   /// this is the value of
@@ -224,10 +228,6 @@ class JobsResourceApi {
   /// requested.
   /// If unspecified, server will pick an appropriate default.
   ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -239,10 +239,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.String pageToken,
+      {core.String onBehalfOfContentOwner,
+      core.String pageToken,
       core.bool includeSystemManaged,
       core.int pageSize,
-      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -251,6 +251,9 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -259,9 +262,6 @@ class JobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,14 +349,6 @@ class JobsReportsResourceApi {
   ///
   /// [jobId] - The ID of the job.
   ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
-  ///
-  /// [startTimeBefore] - If set, only reports whose start time is smaller than
-  /// the specified
-  /// date/time are returned.
-  ///
   /// [createdAfter] - If set, only reports created after the specified
   /// date/time are returned.
   ///
@@ -374,6 +366,14 @@ class JobsReportsResourceApi {
   /// than requested.
   /// If unspecified, server will pick an appropriate default.
   ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If
+  /// not set, the user is acting for himself (his own channel).
+  ///
+  /// [startTimeBefore] - If set, only reports whose start time is smaller than
+  /// the specified
+  /// date/time are returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -385,12 +385,12 @@ class JobsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> list(core.String jobId,
-      {core.String onBehalfOfContentOwner,
-      core.String startTimeBefore,
-      core.String createdAfter,
+      {core.String createdAfter,
       core.String startTimeAtOrAfter,
       core.String pageToken,
       core.int pageSize,
+      core.String onBehalfOfContentOwner,
+      core.String startTimeBefore,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -401,12 +401,6 @@ class JobsReportsResourceApi {
 
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (startTimeBefore != null) {
-      _queryParams["startTimeBefore"] = [startTimeBefore];
     }
     if (createdAfter != null) {
       _queryParams["createdAfter"] = [createdAfter];
@@ -419,6 +413,12 @@ class JobsReportsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (startTimeBefore != null) {
+      _queryParams["startTimeBefore"] = [startTimeBefore];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

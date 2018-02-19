@@ -1,5 +1,5 @@
 name: googleapis_beta
-version: 0.44.0
+version: 0.45.0
 author: Dart Team <misc@dartlang.org>
 description: "Auto-generated client libraries for accessing the following APIs:adexchangebuyer2:v2beta1, appengine:v1beta, appengine:v1beta4, appengine:v1beta5, clouderrorreporting:v1beta1, cloudresourcemanager:v1beta1, cloudtasks:v2beta2, clouduseraccounts:beta, dataflow:v1b3, dialogflow:v2beta1, dlp:v2beta1, dlp:v2beta2, dns:v2beta1, firestore:v1beta1, language:v1beta1, language:v1beta2, logging:v2beta1, oslogin:v1alpha, oslogin:v1beta, proximitybeacon:v1beta1, pubsub:v1beta2, replicapool:v1beta2, replicapoolupdater:v1beta1, resourceviews:v1beta1, resourceviews:v1beta2, runtimeconfig:v1beta1, speech:v1beta1, sqladmin:v1beta3, sqladmin:v1beta4, taskqueue:v1beta2, toolresults:v1beta3, tpu:v1alpha1, videointelligence:v1beta1"
 homepage: http://www.dartlang.org/googleapis/

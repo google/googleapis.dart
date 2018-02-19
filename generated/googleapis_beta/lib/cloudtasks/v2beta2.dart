@@ -100,11 +100,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -117,9 +117,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,14 +131,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -416,15 +416,6 @@ class ProjectsLocationsQueuesResourceApi {
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - A token identifying the page of results to return.
-  ///
-  /// To request the first page results, page_token must be empty. To
-  /// request the next page of results, page_token must be the value of
-  /// next_page_token returned
-  /// from the previous call to ListQueues
-  /// method. It is an error to switch the value of the
-  /// filter while iterating through pages.
-  ///
   /// [pageSize] - Requested page size.
   ///
   /// The maximum page size is 9800. If unspecified, the page size will
@@ -445,6 +436,15 @@ class ProjectsLocationsQueuesResourceApi {
   /// Note that using filters might cause fewer queues than the
   /// requested_page size to be returned.
   ///
+  /// [pageToken] - A token identifying the page of results to return.
+  ///
+  /// To request the first page results, page_token must be empty. To
+  /// request the next page of results, page_token must be the value of
+  /// next_page_token returned
+  /// from the previous call to ListQueues
+  /// method. It is an error to switch the value of the
+  /// filter while iterating through pages.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -456,9 +456,9 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueuesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -470,14 +470,14 @@ class ProjectsLocationsQueuesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

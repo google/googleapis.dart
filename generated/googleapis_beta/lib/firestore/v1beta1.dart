@@ -310,13 +310,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at
-  /// that time.
-  ///
   /// [currentDocument_exists] - When set to `true`, the target document must
   /// exist.
   /// When set to `false`, the target document must not exist.
+  ///
+  /// [currentDocument_updateTime] - When set, the target document must exist
+  /// and have been last updated at
+  /// that time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -329,8 +329,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.String currentDocument_updateTime,
-      core.bool currentDocument_exists,
+      {core.bool currentDocument_exists,
+      core.String currentDocument_updateTime,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -342,11 +342,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_updateTime != null) {
-      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
-    }
     if (currentDocument_exists != null) {
       _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
+    }
+    if (currentDocument_updateTime != null) {
+      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -372,14 +372,14 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [transaction] - Reads the document in a transaction.
-  ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
   ///
   /// [readTime] - Reads the version of the document at the given time.
   /// This may not be older than 60 seconds.
+  ///
+  /// [transaction] - Reads the document in a transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -392,9 +392,9 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> get(core.String name,
-      {core.String transaction,
-      core.List<core.String> mask_fieldPaths,
+      {core.List<core.String> mask_fieldPaths,
       core.String readTime,
+      core.String transaction,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -406,14 +406,14 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (transaction != null) {
-      _queryParams["transaction"] = [transaction];
-    }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
     }
     if (readTime != null) {
       _queryParams["readTime"] = [readTime];
+    }
+    if (transaction != null) {
+      _queryParams["transaction"] = [transaction];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -666,6 +666,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
+  /// [currentDocument_updateTime] - When set, the target document must exist
+  /// and have been last updated at
+  /// that time.
+  ///
   /// [currentDocument_exists] - When set to `true`, the target document must
   /// exist.
   /// When set to `false`, the target document must not exist.
@@ -678,10 +682,6 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Document.fields for a field
   /// path syntax reference.
   ///
-  /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at
-  /// that time.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -693,10 +693,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> patch(Document request, core.String name,
-      {core.bool currentDocument_exists,
+      {core.String currentDocument_updateTime,
+      core.bool currentDocument_exists,
       core.List<core.String> updateMask_fieldPaths,
       core.List<core.String> mask_fieldPaths,
-      core.String currentDocument_updateTime,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -711,6 +711,9 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (currentDocument_updateTime != null) {
+      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+    }
     if (currentDocument_exists != null) {
       _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
     }
@@ -719,9 +722,6 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
-    }
-    if (currentDocument_updateTime != null) {
-      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3566,9 +3566,11 @@ class Write {
   /// The fields to update in this write.
   ///
   /// This field can be set only when the operation is `update`.
-  /// None of the field paths in the mask may contain a reserved name.
-  /// If the document exists on the server and has fields not referenced in the
-  /// mask, they are left unchanged.
+  /// If the mask is not set for an `update` and the document exists, any
+  /// existing data will be overwritten.
+  /// If the mask is set and the document on the server has fields not covered
+  /// by
+  /// the mask, they are left unchanged.
   /// Fields referenced in the mask, but not present in the input document, are
   /// deleted from the document on the server.
   /// The field paths in this mask must not contain a reserved field name.

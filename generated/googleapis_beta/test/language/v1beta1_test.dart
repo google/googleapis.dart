@@ -71,14 +71,14 @@ checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest--;
 }
 
-buildUnnamed3771() {
+buildUnnamed4443() {
   var o = new core.List<api.Entity>();
   o.add(buildEntity());
   o.add(buildEntity());
   return o;
 }
 
-checkUnnamed3771(core.List<api.Entity> o) {
+checkUnnamed4443(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
@@ -89,7 +89,7 @@ buildAnalyzeEntitiesResponse() {
   var o = new api.AnalyzeEntitiesResponse();
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
-    o.entities = buildUnnamed3771();
+    o.entities = buildUnnamed4443();
     o.language = "foo";
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -99,7 +99,7 @@ buildAnalyzeEntitiesResponse() {
 checkAnalyzeEntitiesResponse(api.AnalyzeEntitiesResponse o) {
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
-    checkUnnamed3771(o.entities);
+    checkUnnamed4443(o.entities);
     unittest.expect(o.language, unittest.equals('foo'));
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -126,14 +126,14 @@ checkAnalyzeSentimentRequest(api.AnalyzeSentimentRequest o) {
   buildCounterAnalyzeSentimentRequest--;
 }
 
-buildUnnamed3772() {
+buildUnnamed4444() {
   var o = new core.List<api.Sentence>();
   o.add(buildSentence());
   o.add(buildSentence());
   return o;
 }
 
-checkUnnamed3772(core.List<api.Sentence> o) {
+checkUnnamed4444(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
@@ -146,7 +146,7 @@ buildAnalyzeSentimentResponse() {
   if (buildCounterAnalyzeSentimentResponse < 3) {
     o.documentSentiment = buildSentiment();
     o.language = "foo";
-    o.sentences = buildUnnamed3772();
+    o.sentences = buildUnnamed4444();
   }
   buildCounterAnalyzeSentimentResponse--;
   return o;
@@ -157,7 +157,7 @@ checkAnalyzeSentimentResponse(api.AnalyzeSentimentResponse o) {
   if (buildCounterAnalyzeSentimentResponse < 3) {
     checkSentiment(o.documentSentiment);
     unittest.expect(o.language, unittest.equals('foo'));
-    checkUnnamed3772(o.sentences);
+    checkUnnamed4444(o.sentences);
   }
   buildCounterAnalyzeSentimentResponse--;
 }
@@ -183,27 +183,27 @@ checkAnalyzeSyntaxRequest(api.AnalyzeSyntaxRequest o) {
   buildCounterAnalyzeSyntaxRequest--;
 }
 
-buildUnnamed3773() {
+buildUnnamed4445() {
   var o = new core.List<api.Sentence>();
   o.add(buildSentence());
   o.add(buildSentence());
   return o;
 }
 
-checkUnnamed3773(core.List<api.Sentence> o) {
+checkUnnamed4445(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
 }
 
-buildUnnamed3774() {
+buildUnnamed4446() {
   var o = new core.List<api.Token>();
   o.add(buildToken());
   o.add(buildToken());
   return o;
 }
 
-checkUnnamed3774(core.List<api.Token> o) {
+checkUnnamed4446(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -215,8 +215,8 @@ buildAnalyzeSyntaxResponse() {
   buildCounterAnalyzeSyntaxResponse++;
   if (buildCounterAnalyzeSyntaxResponse < 3) {
     o.language = "foo";
-    o.sentences = buildUnnamed3773();
-    o.tokens = buildUnnamed3774();
+    o.sentences = buildUnnamed4445();
+    o.tokens = buildUnnamed4446();
   }
   buildCounterAnalyzeSyntaxResponse--;
   return o;
@@ -226,8 +226,8 @@ checkAnalyzeSyntaxResponse(api.AnalyzeSyntaxResponse o) {
   buildCounterAnalyzeSyntaxResponse++;
   if (buildCounterAnalyzeSyntaxResponse < 3) {
     unittest.expect(o.language, unittest.equals('foo'));
-    checkUnnamed3773(o.sentences);
-    checkUnnamed3774(o.tokens);
+    checkUnnamed4445(o.sentences);
+    checkUnnamed4446(o.tokens);
   }
   buildCounterAnalyzeSyntaxResponse--;
 }
@@ -255,40 +255,40 @@ checkAnnotateTextRequest(api.AnnotateTextRequest o) {
   buildCounterAnnotateTextRequest--;
 }
 
-buildUnnamed3775() {
+buildUnnamed4447() {
   var o = new core.List<api.Entity>();
   o.add(buildEntity());
   o.add(buildEntity());
   return o;
 }
 
-checkUnnamed3775(core.List<api.Entity> o) {
+checkUnnamed4447(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
 }
 
-buildUnnamed3776() {
+buildUnnamed4448() {
   var o = new core.List<api.Sentence>();
   o.add(buildSentence());
   o.add(buildSentence());
   return o;
 }
 
-checkUnnamed3776(core.List<api.Sentence> o) {
+checkUnnamed4448(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
 }
 
-buildUnnamed3777() {
+buildUnnamed4449() {
   var o = new core.List<api.Token>();
   o.add(buildToken());
   o.add(buildToken());
   return o;
 }
 
-checkUnnamed3777(core.List<api.Token> o) {
+checkUnnamed4449(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -300,10 +300,10 @@ buildAnnotateTextResponse() {
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
     o.documentSentiment = buildSentiment();
-    o.entities = buildUnnamed3775();
+    o.entities = buildUnnamed4447();
     o.language = "foo";
-    o.sentences = buildUnnamed3776();
-    o.tokens = buildUnnamed3777();
+    o.sentences = buildUnnamed4448();
+    o.tokens = buildUnnamed4449();
   }
   buildCounterAnnotateTextResponse--;
   return o;
@@ -313,10 +313,10 @@ checkAnnotateTextResponse(api.AnnotateTextResponse o) {
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
     checkSentiment(o.documentSentiment);
-    checkUnnamed3775(o.entities);
+    checkUnnamed4447(o.entities);
     unittest.expect(o.language, unittest.equals('foo'));
-    checkUnnamed3776(o.sentences);
-    checkUnnamed3777(o.tokens);
+    checkUnnamed4448(o.sentences);
+    checkUnnamed4449(o.tokens);
   }
   buildCounterAnnotateTextResponse--;
 }
@@ -367,27 +367,27 @@ checkDocument(api.Document o) {
   buildCounterDocument--;
 }
 
-buildUnnamed3778() {
+buildUnnamed4450() {
   var o = new core.List<api.EntityMention>();
   o.add(buildEntityMention());
   o.add(buildEntityMention());
   return o;
 }
 
-checkUnnamed3778(core.List<api.EntityMention> o) {
+checkUnnamed4450(core.List<api.EntityMention> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityMention(o[0]);
   checkEntityMention(o[1]);
 }
 
-buildUnnamed3779() {
+buildUnnamed4451() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3779(core.Map<core.String, core.String> o) {
+checkUnnamed4451(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -398,8 +398,8 @@ buildEntity() {
   var o = new api.Entity();
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    o.mentions = buildUnnamed3778();
-    o.metadata = buildUnnamed3779();
+    o.mentions = buildUnnamed4450();
+    o.metadata = buildUnnamed4451();
     o.name = "foo";
     o.salience = 42.0;
     o.type = "foo";
@@ -411,8 +411,8 @@ buildEntity() {
 checkEntity(api.Entity o) {
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    checkUnnamed3778(o.mentions);
-    checkUnnamed3779(o.metadata);
+    checkUnnamed4450(o.mentions);
+    checkUnnamed4451(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.salience, unittest.equals(42.0));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -549,7 +549,7 @@ checkSentiment(api.Sentiment o) {
   buildCounterSentiment--;
 }
 
-buildUnnamed3780() {
+buildUnnamed4452() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -564,7 +564,7 @@ buildUnnamed3780() {
   return o;
 }
 
-checkUnnamed3780(core.Map<core.String, core.Object> o) {
+checkUnnamed4452(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -578,17 +578,17 @@ checkUnnamed3780(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3781() {
+buildUnnamed4453() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3780());
-  o.add(buildUnnamed3780());
+  o.add(buildUnnamed4452());
+  o.add(buildUnnamed4452());
   return o;
 }
 
-checkUnnamed3781(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed4453(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3780(o[0]);
-  checkUnnamed3780(o[1]);
+  checkUnnamed4452(o[0]);
+  checkUnnamed4452(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -597,7 +597,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3781();
+    o.details = buildUnnamed4453();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -608,7 +608,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3781(o.details);
+    checkUnnamed4453(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;

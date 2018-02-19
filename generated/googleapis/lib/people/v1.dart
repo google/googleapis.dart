@@ -273,15 +273,15 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [syncToken] - A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [pageSize] - The maximum number of resources to return.
+  ///
+  /// [syncToken] - A sync token, returned by a previous call to
+  /// `contactgroups.list`.
+  /// Only resources changed since the sync token was created will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,9 +294,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String syncToken,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String syncToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -305,14 +305,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -859,16 +859,30 @@ class PeopleConnectionsResourceApi {
   /// `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
   ///
+  /// [sortOrder] - The order in which the connections should be sorted.
+  /// Defaults to
+  /// `LAST_MODIFIED_ASCENDING`.
+  /// Possible string values are:
+  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+  ///
+  /// [requestSyncToken] - Whether the response should include a sync token,
+  /// which can be used to get
+  /// all changes since the last request. For subsequent sync requests use the
+  /// `sync_token` param instead. Initial sync requests that specify
+  /// `request_sync_token` have an additional rate limit.
+  ///
   /// [pageToken] - The token of the page to be returned.
+  ///
+  /// [pageSize] - The number of connections to include in the response. Valid
+  /// values are
+  /// between 1 and 2000, inclusive. Defaults to 100.
   ///
   /// [requestMask_includeField] - **Required.** Comma-separated list of person
   /// fields to be included in the
   /// response. Each path should start with `person.`: for example,
   /// `person.names` or `person.photos`.
-  ///
-  /// [pageSize] - The number of connections to include in the response. Valid
-  /// values are
-  /// between 1 and 2000, inclusive. Defaults to 100.
   ///
   /// [syncToken] - A sync token returned by a previous call to
   /// `people.connections.list`.
@@ -907,20 +921,6 @@ class PeopleConnectionsResourceApi {
   /// * taglines
   /// * urls
   ///
-  /// [sortOrder] - The order in which the connections should be sorted.
-  /// Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
-  /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
-  ///
-  /// [requestSyncToken] - Whether the response should include a sync token,
-  /// which can be used to get
-  /// all changes since the last request. For subsequent sync requests use the
-  /// `sync_token` param instead. Initial sync requests that specify
-  /// `request_sync_token` have an additional rate limit.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -932,13 +932,13 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.String pageToken,
-      core.String requestMask_includeField,
+      {core.String sortOrder,
+      core.bool requestSyncToken,
+      core.String pageToken,
       core.int pageSize,
+      core.String requestMask_includeField,
       core.String syncToken,
       core.String personFields,
-      core.String sortOrder,
-      core.bool requestSyncToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -950,26 +950,26 @@ class PeopleConnectionsResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (requestSyncToken != null) {
+      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (requestMask_includeField != null) {
-      _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (requestMask_includeField != null) {
+      _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (requestSyncToken != null) {
-      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -288,15 +288,15 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [clientVersion] - The client version making the call.
-  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
-  ///
   /// [includeInactive] - When set to `true`, the result includes all debuggees.
   /// Otherwise, the
   /// result includes only debuggees that are active.
   ///
   /// [project] - Project number of a Google Cloud project whose debuggees to
   /// list.
+  ///
+  /// [clientVersion] - The client version making the call.
+  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,9 +309,9 @@ class DebuggerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list(
-      {core.String clientVersion,
-      core.bool includeInactive,
+      {core.bool includeInactive,
       core.String project,
+      core.String clientVersion,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -320,14 +320,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (project != null) {
       _queryParams["project"] = [project];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -488,13 +488,13 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// - "CAPTURE" : A CAPTURE.
   /// - "LOG" : A LOG.
   ///
-  /// [includeInactive] - When set to `true`, the response includes active and
-  /// inactive
-  /// breakpoints. Otherwise, it includes only active breakpoints.
-  ///
   /// [includeAllUsers] - When set to `true`, the response includes the list of
   /// breakpoints set by
   /// any user. Otherwise, it includes only breakpoints set by the caller.
+  ///
+  /// [includeInactive] - When set to `true`, the response includes active and
+  /// inactive
+  /// breakpoints. Otherwise, it includes only active breakpoints.
   ///
   /// [stripResults] - This field is deprecated. The following fields are always
   /// stripped out of
@@ -514,8 +514,8 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       {core.String waitToken,
       core.String clientVersion,
       core.String action_value,
-      core.bool includeInactive,
       core.bool includeAllUsers,
+      core.bool includeInactive,
       core.bool stripResults,
       core.String $fields}) {
     var _url = null;
@@ -537,11 +537,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
-    if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
-    }
     if (includeAllUsers != null) {
       _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    }
+    if (includeInactive != null) {
+      _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (stripResults != null) {
       _queryParams["stripResults"] = ["${stripResults}"];

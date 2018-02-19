@@ -14,8 +14,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androiddeviceprovisioning/v1';
 
-/// Automates reseller integration into zero-touch enrollment by assigning
-/// devices to customers and creating device reports.
+/// Automates Android zero-touch enrollment for device resellers, customers, and
+/// EMMs.
 class AndroiddeviceprovisioningApi {
   final commons.ApiRequester _requester;
 
@@ -45,10 +45,10 @@ class CustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of customers to show in a page of results.
-  /// A number between 1 and 1000 (inclusive).
-  ///
   /// [pageToken] - A token specifying which result page to return.
+  ///
+  /// [pageSize] - The maximum number of customers to show in a page of results.
+  /// A number between 1 and 100 (inclusive).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -61,7 +61,7 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListCustomersResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,11 +69,11 @@ class CustomersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -799,17 +799,17 @@ class ProjectsConfigsVariablesResourceApi {
   }
 
   /// Lists variables within given a configuration, matching any provided
-  /// filters.
-  /// This only lists variable names, not the values, unless `return_values` is
-  /// true, in which case only variables that user has IAM permission to
-  /// GetVariable
-  /// will be returned.
+  /// filters. This only lists variable names, not the values, unless
+  /// `return_values` is true, in which case only variables that user has IAM
+  /// permission to GetVariable will be returned.
   ///
   /// Request parameters:
   ///
   /// [parent] - The path to the RuntimeConfig resource for which you want to
-  /// list variables.
-  /// The configuration must exist beforehand; the path must be in the format:
+  /// list
+  /// variables. The configuration must exist beforehand; the path must be in
+  /// the
+  /// format:
   ///
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
   /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
@@ -1008,10 +1008,8 @@ class ProjectsConfigsVariablesResourceApi {
   /// set to `DELETED` and the method returns the last known variable `value`.
   ///
   /// If you set the deadline for watching to a larger value than internal
-  /// timeout
-  /// (60 seconds), the current variable value is returned and the
-  /// `variableState`
-  /// will be `VARIABLE_STATE_UNSPECIFIED`.
+  /// timeout (60 seconds), the current variable value is returned and the
+  /// `variableState` will be `VARIABLE_STATE_UNSPECIFIED`.
   ///
   /// To learn more about creating a watcher, read the
   /// [Watching a Variable for
@@ -2073,7 +2071,7 @@ class Variable {
   /// `text: "my text value"`. The string must be valid UTF-8.
   core.String text;
 
-  /// [Output Only] The time of the last variable update.
+  /// Output only. The time of the last variable update.
   core.String updateTime;
 
   /// The binary value of the variable. The length of the value must be less
@@ -2149,21 +2147,19 @@ class Variable {
 /// Waiter](/deployment-manager/runtime-configurator/creating-a-waiter)
 /// documentation.
 class Waiter {
-  /// [Output Only] The instant at which this Waiter resource was created.
-  /// Adding
+  /// Output only. The instant at which this Waiter resource was created. Adding
   /// the value of `timeout` to this instant yields the timeout deadline for the
   /// waiter.
   core.String createTime;
 
-  /// [Output Only] If the value is `false`, it means the waiter is still
-  /// waiting
+  /// Output only. If the value is `false`, it means the waiter is still waiting
   /// for one of its conditions to be met.
   ///
   /// If true, the waiter has finished. If the waiter finished due to a timeout
   /// or failure, `error` will be set.
   core.bool done;
 
-  /// [Output Only] If the waiter ended due to a failure or timeout, this value
+  /// Output only. If the waiter ended due to a failure or timeout, this value
   /// will be set.
   Status error;
 

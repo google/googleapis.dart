@@ -828,8 +828,7 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Demotes the standalone instance to be a read replica Cloud SQL instance of
-  /// an on-premises master.
+  /// Reserved for future use.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2523,6 +2522,11 @@ class BackupConfiguration {
   /// This is always sql#backupConfiguration.
   core.String kind;
 
+  /// Whether replication log archiving is enabled. Replication log archiving is
+  /// required for the point-in-time recovery (PITR) feature. PostgreSQL
+  /// instances only.
+  core.bool replicationLogArchivingEnabled;
+
   /// Start time for the daily backup configuration in UTC timezone in the 24
   /// hour format - HH:MM.
   core.String startTime;
@@ -2538,6 +2542,9 @@ class BackupConfiguration {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("replicationLogArchivingEnabled")) {
+      replicationLogArchivingEnabled = _json["replicationLogArchivingEnabled"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -2555,6 +2562,9 @@ class BackupConfiguration {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (replicationLogArchivingEnabled != null) {
+      _json["replicationLogArchivingEnabled"] = replicationLogArchivingEnabled;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -2788,6 +2798,11 @@ class CloneContext {
   /// This is always sql#cloneContext.
   core.String kind;
 
+  /// The epoch timestamp, in milliseconds, of the time to which a point-in-time
+  /// recovery (PITR) is performed. PostgreSQL instances only. For MySQL
+  /// instances, use the binLogCoordinates property.
+  core.String pitrTimestampMs;
+
   CloneContext();
 
   CloneContext.fromJson(core.Map _json) {
@@ -2800,6 +2815,9 @@ class CloneContext {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("pitrTimestampMs")) {
+      pitrTimestampMs = _json["pitrTimestampMs"];
     }
   }
 
@@ -2814,6 +2832,9 @@ class CloneContext {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (pitrTimestampMs != null) {
+      _json["pitrTimestampMs"] = pitrTimestampMs;
     }
     return _json;
   }
@@ -3014,9 +3035,10 @@ class DatabaseInstance {
   /// only to Second Generation instances.
   DatabaseInstanceFailoverReplica failoverReplica;
 
-  /// The GCE zone that the instance is serving from. In case when the instance
-  /// is failed over to standby zone, this value may be different with what user
-  /// specified in the settings.
+  /// The Compute Engine zone that the instance is currently serving from. This
+  /// value could be different from the zone that was specified when the
+  /// instance was created if the instance has failed over to its secondary
+  /// zone.
   core.String gceZone;
 
   /// The instance type. This can be one of the following.
@@ -3529,8 +3551,9 @@ class ExportContext {
 
   /// The path to the file in Google Cloud Storage where the export will be
   /// stored. The URI is in the form gs://bucketName/fileName. If the file
-  /// already exists, the operation fails. If fileType is SQL and the filename
-  /// ends with .gz, the contents are compressed.
+  /// already exists, the requests succeeds, but the operation fails. If
+  /// fileType is SQL and the filename ends with .gz, the contents are
+  /// compressed.
   core.String uri;
 
   ExportContext();
@@ -4206,6 +4229,9 @@ class MaintenanceWindow {
 
   /// This is always sql#maintenanceWindow.
   core.String kind;
+
+  /// Maintenance timing setting: canary (Earlier) or stable (Later).
+  ///  Learn more.
   core.String updateTrack;
 
   MaintenanceWindow();
@@ -4769,23 +4795,27 @@ class RestoreBackupContext {
 /// Database instance settings.
 class Settings {
   /// The activation policy specifies when the instance is activated; it is
-  /// applicable only when the instance state is RUNNABLE. The activation policy
-  /// cannot be updated together with other settings for Second Generation
-  /// instances. Valid values:
-  /// ALWAYS: The instance is on; it is not deactivated by inactivity.
+  /// applicable only when the instance state is RUNNABLE. Valid values:
+  /// ALWAYS: The instance is on, and remains so even in the absence of
+  /// connection requests.
   /// NEVER: The instance is off; it is not activated, even if a connection
   /// request arrives.
-  /// ON_DEMAND: The instance responds to incoming requests, and turns itself
-  /// off when not in use. Instances with PER_USE pricing turn off after 15
-  /// minutes of inactivity. Instances with PER_PACKAGE pricing turn off after
-  /// 12 hours of inactivity.
+  /// ON_DEMAND: First Generation instances only. The instance responds to
+  /// incoming requests, and turns itself off when not in use. Instances with
+  /// PER_USE pricing turn off after 15 minutes of inactivity. Instances with
+  /// PER_PACKAGE pricing turn off after 12 hours of inactivity.
   core.String activationPolicy;
 
   /// The App Engine app IDs that can access this instance. This property is
   /// only applicable to First Generation instances.
   core.List<core.String> authorizedGaeApplications;
 
-  /// Reserved for future use.
+  /// Availability type (PostgreSQL instances only). Potential values:
+  /// ZONAL: The instance serves data from only one zone. Outages in that zone
+  /// affect data accessibility.
+  /// REGIONAL: The instance can serve data from more than one zone in a region
+  /// (it is highly available).
+  /// For more information, see Overview of the High Availability Configuration.
   core.String availabilityType;
 
   /// The daily backup configuration for the instance.
@@ -4821,9 +4851,9 @@ class Settings {
   core.String kind;
 
   /// The location preference settings. This allows the instance to be located
-  /// as near as possible to either an App Engine app or GCE zone for better
-  /// performance. App Engine co-location is only applicable to First Generation
-  /// instances.
+  /// as near as possible to either an App Engine app or Compute Engine zone for
+  /// better performance. App Engine co-location is only applicable to First
+  /// Generation instances.
   LocationPreference locationPreference;
 
   /// The maintenance window for this instance. This specifies when the instance
@@ -5181,8 +5211,9 @@ class SslCertsInsertRequest {
 
 /// SslCert insert response.
 class SslCertsInsertResponse {
-  /// The new client certificate and private key. The new certificate will not
-  /// work until the instance is restarted for First Generation instances.
+  /// The new client certificate and private key. For First Generation
+  /// instances, the new certificate does not take effect until the instance is
+  /// restarted.
   SslCertDetail clientCert;
 
   /// This is always sql#sslCertsInsert.

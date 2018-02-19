@@ -320,12 +320,12 @@ class ProjectsSubscriptionsResourceApi {
   /// [project] - The name of the cloud project that subscriptions belong to.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of subscriptions to return.
-  ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
   /// indicates that
   /// this is a continuation of a prior `ListSubscriptions` call, and that the
   /// system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -338,7 +338,7 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -349,11 +349,11 @@ class ProjectsSubscriptionsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

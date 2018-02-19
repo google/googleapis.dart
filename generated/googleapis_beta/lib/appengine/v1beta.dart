@@ -66,7 +66,8 @@ class AppsResourceApi {
   /// location - The region (https://cloud.google.com/appengine/docs/locations)
   /// where you want the App Engine application located.For more information
   /// about App Engine applications, see Managing Projects, Applications, and
-  /// Billing (https://cloud.google.com/appengine/docs/python/console/).
+  /// Billing
+  /// (https://cloud.google.com/appengine/docs/standard/python/console/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1179,13 +1180,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
-  /// [matchingAddress] - A valid IP Address. If set, only rules matching this
-  /// address will be returned. The first returned rule will be the rule that
-  /// fires on requests from this IP.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [matchingAddress] - A valid IP Address. If set, only rules matching this
+  /// address will be returned. The first returned rule will be the rule that
+  /// fires on requests from this IP.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1198,9 +1199,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.String matchingAddress,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String matchingAddress,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1212,14 +1213,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (matchingAddress != null) {
-      _queryParams["matchingAddress"] = [matchingAddress];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (matchingAddress != null) {
+      _queryParams["matchingAddress"] = [matchingAddress];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1496,11 +1497,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1513,9 +1514,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1527,14 +1528,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2008,14 +2009,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2029,9 +2030,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2046,14 +2047,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2095,19 +2096,19 @@ class AppsServicesVersionsResourceApi {
   /// automatic_scaling.min_total_instances
   /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
   /// For Version resources that use automatic scaling and run in the App
-  /// Engine Flexible environment.
+  /// Engine flexible environment.
   /// automatic_scaling.max_total_instances
   /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
   /// For Version resources that use automatic scaling and run in the App
-  /// Engine Flexible environment.
+  /// Engine flexible environment.
   /// automatic_scaling.cool_down_period_sec
   /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
   /// For Version resources that use automatic scaling and run in the App
-  /// Engine Flexible environment.
+  /// Engine flexible environment.
   /// automatic_scaling.cpu_utilization.target_utilization
   /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
   /// For Version resources that use automatic scaling and run in the App
-  /// Engine Flexible environment.
+  /// Engine flexible environment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2630,11 +2631,11 @@ class Application {
   /// deploy your application. Example: myapp.
   core.String id;
 
-  /// Location from which this application will be run. Application instances
-  /// will run out of data centers in the chosen location, which is also where
-  /// all of the application's end user content is stored.Defaults to
-  /// us-central.Options are:us-central - Central USeurope-west - Western
-  /// Europeus-east1 - Eastern US
+  /// Location from which this application runs. Application instances run out
+  /// of the data centers in the specified location, which is also where all of
+  /// the application's end user content is stored.Defaults to us-central1.View
+  /// the list of supported locations
+  /// (https://cloud.google.com/appengine/docs/locations).
   core.String locationId;
 
   /// Full path to the Application resource in the API. Example:
@@ -2927,7 +2928,8 @@ class AutomaticScaling {
   /// before starting a new instance to handle it.
   core.String maxPendingLatency;
 
-  /// Maximum number of instances that should be started to handle requests.
+  /// Maximum number of instances that should be started to handle requests for
+  /// this version.
   core.int maxTotalInstances;
 
   /// Minimum number of idle instances that should be maintained for this
@@ -2938,7 +2940,8 @@ class AutomaticScaling {
   /// starting a new instance to handle it.
   core.String minPendingLatency;
 
-  /// Minimum number of instances that should be maintained for this version.
+  /// Minimum number of running instances that should be maintained for this
+  /// version.
   core.int minTotalInstances;
 
   /// Target scaling by network usage.
@@ -4672,11 +4675,11 @@ class Location {
 
 /// Metadata for the given google.cloud.location.Location.
 class LocationMetadata {
-  /// App Engine Flexible Environment is available in the given
+  /// App Engine flexible environment is available in the given
   /// location.@OutputOnly
   core.bool flexibleEnvironmentAvailable;
 
-  /// App Engine Standard Environment is available in the given
+  /// App Engine standard environment is available in the given
   /// location.@OutputOnly
   core.bool standardEnvironmentAvailable;
 
@@ -4796,28 +4799,31 @@ class Network {
   /// environment.
   core.List<core.String> forwardedPorts;
 
-  /// Tag to apply to the VM instance during creation. for Only applicable in
-  /// the App Engine flexible environment.
+  /// Tag to apply to the instance during creation. Only applicable in the App
+  /// Engine flexible environment.
   core.String instanceTag;
 
   /// Google Compute Engine network where the virtual machines are created.
   /// Specify the short name, not the resource path.Defaults to default.
   core.String name;
 
+  /// Enable session affinity.
+  core.bool sessionAffinity;
+
   /// Google Cloud Platform sub-network where the virtual machines are created.
   /// Specify the short name, not the resource path.If a subnetwork name is
   /// specified, a network name will also be required unless it is for the
   /// default network.
-  /// If the network the VM instance is being created in is a Legacy network,
+  /// If the network that the instance is being created in is a Legacy network,
   /// then the IP address is allocated from the IPv4Range.
-  /// If the network the VM instance is being created in is an auto Subnet Mode
-  /// Network, then only network name should be specified (not the
+  /// If the network that the instance is being created in is an auto Subnet
+  /// Mode Network, then only network name should be specified (not the
   /// subnetwork_name) and the IP address is created from the IPCidrRange of the
   /// subnetwork that exists in that zone for that network.
-  /// If the network the VM instance is being created in is a custom Subnet Mode
-  /// Network, then the subnetwork_name must be specified and the IP address is
-  /// created from the IPCidrRange of the subnetwork.If specified, the
-  /// subnetwork must exist in the same region as the App Engine flexible
+  /// If the network that the instance is being created in is a custom Subnet
+  /// Mode Network, then the subnetwork_name must be specified and the IP
+  /// address is created from the IPCidrRange of the subnetwork.If specified,
+  /// the subnetwork must exist in the same region as the App Engine flexible
   /// environment application.
   core.String subnetworkName;
 
@@ -4832,6 +4838,9 @@ class Network {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("sessionAffinity")) {
+      sessionAffinity = _json["sessionAffinity"];
     }
     if (_json.containsKey("subnetworkName")) {
       subnetworkName = _json["subnetworkName"];
@@ -4849,6 +4858,9 @@ class Network {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (sessionAffinity != null) {
+      _json["sessionAffinity"] = sessionAffinity;
     }
     if (subnetworkName != null) {
       _json["subnetworkName"] = subnetworkName;
@@ -5737,12 +5749,12 @@ class SslSettings {
 
 /// Scheduler settings for standard environment.
 class StandardSchedulerSettings {
-  /// Maximum number of instances for an app version. Set to zero to disable
-  /// max_instances configuration.
+  /// Maximum number of instances to run for this version. Set to zero to
+  /// disable max_instances configuration.
   core.int maxInstances;
 
-  /// Minimum number of instances for an app version. Set to zero to disable
-  /// min_instances configuration.
+  /// Minimum number of instances to run for this version. Set to zero to
+  /// disable min_instances configuration.
   core.int minInstances;
 
   /// Target CPU utilization ratio to maintain when scaling.
@@ -6251,8 +6263,8 @@ class Version {
   /// view=FULL is set.
   core.List<UrlMap> handlers;
 
-  /// Configures health checking for VM instances. Unhealthy instances are
-  /// stopped and replaced with new instances. Only applicable in the App Engine
+  /// Configures health checking for instances. Unhealthy instances are stopped
+  /// and replaced with new instances. Only applicable in the App Engine
   /// flexible environment.Only returned in GET requests if view=FULL is set.
   HealthCheck healthCheck;
 
@@ -6275,9 +6287,9 @@ class Version {
   /// by the application.Only returned in GET requests if view=FULL is set.
   core.List<Library> libraries;
 
-  /// Configures liveness health checking for VM instances. Unhealthy instances
-  /// are stopped and replaced with new instancesOnly returned in GET requests
-  /// if view=FULL is set.
+  /// Configures liveness health checking for instances. Unhealthy instances are
+  /// stopped and replaced with new instancesOnly returned in GET requests if
+  /// view=FULL is set.
   LivenessCheck livenessCheck;
 
   /// A service with manual scaling runs continuously, allowing you to perform
@@ -6297,12 +6309,13 @@ class Version {
   /// set.
   core.String nobuildFilesRegex;
 
-  /// Configures readiness health checking for VM instances. Unhealthy instances
+  /// Configures readiness health checking for instances. Unhealthy instances
   /// are not put into the backend traffic rotation.Only returned in GET
   /// requests if view=FULL is set.
   ReadinessCheck readinessCheck;
 
-  /// Machine resources for this version. Only applicable for VM runtimes.
+  /// Machine resources for this version. Only applicable in the App Engine
+  /// flexible environment.
   Resources resources;
 
   /// Desired runtime. Example: python27.
@@ -6312,6 +6325,10 @@ class Version {
   /// app.yaml reference for valid values at
   /// https://cloud.google.com/appengine/docs/standard/<language>/config/appref
   core.String runtimeApiVersion;
+
+  /// The channel of the runtime to use. Only available for some runtimes.
+  /// Defaults to the default channel.
+  core.String runtimeChannel;
 
   /// Current serving status of this version. Only the versions with a SERVING
   /// status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
@@ -6334,7 +6351,8 @@ class Version {
   /// Whether to deploy this version in a container on a virtual machine.
   core.bool vm;
 
-  /// The choice of gce zones to use for this App Engine Flexible version.
+  /// The Google Compute Engine zones that are supported by this version in the
+  /// App Engine flexible environment.
   core.List<core.String> zones;
 
   Version();
@@ -6430,6 +6448,9 @@ class Version {
     }
     if (_json.containsKey("runtimeApiVersion")) {
       runtimeApiVersion = _json["runtimeApiVersion"];
+    }
+    if (_json.containsKey("runtimeChannel")) {
+      runtimeChannel = _json["runtimeChannel"];
     }
     if (_json.containsKey("servingStatus")) {
       servingStatus = _json["servingStatus"];
@@ -6535,6 +6556,9 @@ class Version {
     }
     if (runtimeApiVersion != null) {
       _json["runtimeApiVersion"] = runtimeApiVersion;
+    }
+    if (runtimeChannel != null) {
+      _json["runtimeChannel"] = runtimeChannel;
     }
     if (servingStatus != null) {
       _json["servingStatus"] = servingStatus;

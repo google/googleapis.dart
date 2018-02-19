@@ -432,82 +432,6 @@ class ProjectsJobsResourceApi {
         .then((data) => new GoogleCloudMlV1ListJobsResponse.fromJson(data));
   }
 
-  /// Updates a specific job resource.
-  ///
-  /// Currently the only supported fields to update are `labels`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The job name.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
-  ///
-  /// [updateMask] - Required. Specifies the path, relative to `Job`, of the
-  /// field to update.
-  /// To adopt etag mechanism, include `etag` field in the mask, and include the
-  /// `etag` value in your job resource.
-  ///
-  /// For example, to change the labels of a job, the `update_mask` parameter
-  /// would be specified as `labels`, `etag`, and the
-  /// `PATCH` request body would specify the new value, as follows:
-  ///     {
-  ///       "labels": {
-  ///          "owner": "Google",
-  ///          "color": "Blue"
-  ///       }
-  ///       "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4"
-  ///     }
-  /// If `etag` matches the one on the server, the labels of the job will be
-  /// replaced with the given ones, and the server end `etag` will be
-  /// recalculated.
-  ///
-  /// Currently the only supported update masks are `labels` and `etag`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudMlV1Job].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Job> patch(
-      GoogleCloudMlV1Job request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
-  }
-
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
   ///
@@ -685,17 +609,17 @@ class ProjectsLocationsResourceApi {
   /// listed (since some locations might be whitelisted for specific projects).
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
-  ///
   /// [pageSize] - Optional. The number of locations to retrieve per "page" of
   /// results. If there
   /// are more remaining results than this number, the response message will
   /// contain a valid value in the `next_page_token` field.
   ///
   /// The default value is 20, and the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -708,7 +632,7 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListLocationsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -719,11 +643,11 @@ class ProjectsLocationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -964,8 +888,6 @@ class ProjectsModelsResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - Optional. Specifies the subset of models to retrieve.
-  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -978,6 +900,8 @@ class ProjectsModelsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
+  /// [filter] - Optional. Specifies the subset of models to retrieve.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -989,9 +913,9 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1003,14 +927,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1053,13 +977,9 @@ class ProjectsModelsResourceApi {
   ///         "name":"version_1"
   ///       }
   ///     }
-  /// In this example, the model is blindly overwritten since no etag is given.
   ///
-  /// To adopt etag mechanism, include `etag` field in the mask, and include the
-  /// `etag` value in your model resource.
-  ///
-  /// Currently the supported update masks are `description`,
-  /// `default_version.name`, `labels`, and `etag`.
+  /// Currently the supported update masks are `description` and
+  /// `default_version.name`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1405,6 +1325,11 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
+  ///
   /// [pageSize] - Optional. The number of versions to retrieve per "page" of
   /// results. If
   /// there are more remaining results than this number, the response message
@@ -1413,11 +1338,6 @@ class ProjectsModelsVersionsResourceApi {
   /// The default value is 20, and the maximum page size is 100.
   ///
   /// [filter] - Optional. Specifies the subset of versions to retrieve.
-  ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1430,9 +1350,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1444,14 +1364,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1491,14 +1411,8 @@ class ProjectsModelsVersionsResourceApi {
   ///     {
   ///       "description": "foo"
   ///     }
-  /// In this example, the version is blindly overwritten since no etag is
-  /// given.
   ///
-  /// To adopt etag mechanism, include `etag` field in the mask, and include the
-  /// `etag` value in your version resource.
-  ///
-  /// Currently the only supported update masks are `description`, `labels`, and
-  /// `etag`, and `expire_time`.
+  /// Currently the only supported update mask is`description`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2151,6 +2065,10 @@ class GoogleCloudMlV1HyperparameterOutput {
 
 /// Represents a set of hyperparameters to optimize.
 class GoogleCloudMlV1HyperparameterSpec {
+  /// Optional. Indicates if the hyperparameter tuning job enables auto trial
+  /// early stopping.
+  core.bool enableTrialEarlyStopping;
+
   /// Required. The type of goal to use for tuning. Available types are
   /// `MAXIMIZE` and `MINIMIZE`.
   ///
@@ -2191,9 +2109,17 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// Required. The set of parameters to tune.
   core.List<GoogleCloudMlV1ParameterSpec> params;
 
+  /// Optional. The prior hyperparameter tuning job id that users hope to
+  /// continue with. The job id will be used to find the corresponding vizier
+  /// study guid and resume the study.
+  core.String resumePreviousJobId;
+
   GoogleCloudMlV1HyperparameterSpec();
 
   GoogleCloudMlV1HyperparameterSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("enableTrialEarlyStopping")) {
+      enableTrialEarlyStopping = _json["enableTrialEarlyStopping"];
+    }
     if (_json.containsKey("goal")) {
       goal = _json["goal"];
     }
@@ -2211,11 +2137,17 @@ class GoogleCloudMlV1HyperparameterSpec {
           .map((value) => new GoogleCloudMlV1ParameterSpec.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("resumePreviousJobId")) {
+      resumePreviousJobId = _json["resumePreviousJobId"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (enableTrialEarlyStopping != null) {
+      _json["enableTrialEarlyStopping"] = enableTrialEarlyStopping;
+    }
     if (goal != null) {
       _json["goal"] = goal;
     }
@@ -2230,6 +2162,9 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
     if (params != null) {
       _json["params"] = params.map((value) => (value).toJson()).toList();
+    }
+    if (resumePreviousJobId != null) {
+      _json["resumePreviousJobId"] = resumePreviousJobId;
     }
     return _json;
   }
@@ -2246,32 +2181,8 @@ class GoogleCloudMlV1Job {
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a job from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
-  /// read-modify-write cycle to perform job updates in order to avoid race
-  /// conditions: An `etag` is returned in the response to `GetJob`, and
-  /// systems are expected to put that etag in the request to `UpdateJob` to
-  /// ensure that their change will be applied to the same version of the job.
-  core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
-  }
-
-  void set etagAsBytes(core.List<core.int> _bytes) {
-    etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
   /// Required. The user-specified id of the job.
   core.String jobId;
-
-  /// Optional. One or more labels that you can add, to organize your jobs.
-  /// Each label is a key-value pair, where both the key and the value are
-  /// arbitrary strings that you supply.
-  /// For more information, see the documentation on
-  /// <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
-  core.Map<core.String, core.String> labels;
 
   /// Input parameters to create a prediction job.
   GoogleCloudMlV1PredictionInput predictionInput;
@@ -2316,14 +2227,8 @@ class GoogleCloudMlV1Job {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
-    }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"];
     }
     if (_json.containsKey("predictionInput")) {
       predictionInput =
@@ -2361,14 +2266,8 @@ class GoogleCloudMlV1Job {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
     if (jobId != null) {
       _json["jobId"] = jobId;
-    }
-    if (labels != null) {
-      _json["labels"] = labels;
     }
     if (predictionInput != null) {
       _json["predictionInput"] = (predictionInput).toJson();
@@ -2606,30 +2505,6 @@ class GoogleCloudMlV1Model {
   /// Optional. The description specified for the model when it was created.
   core.String description;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a model from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
-  /// read-modify-write cycle to perform model updates in order to avoid race
-  /// conditions: An `etag` is returned in the response to `GetModel`, and
-  /// systems are expected to put that etag in the request to `UpdateModel` to
-  /// ensure that their change will be applied to the model as intended.
-  core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
-  }
-
-  void set etagAsBytes(core.List<core.int> _bytes) {
-    etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// Optional. One or more labels that you can add, to organize your models.
-  /// Each label is a key-value pair, where both the key and the value are
-  /// arbitrary strings that you supply.
-  /// For more information, see the documentation on
-  /// <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
-  core.Map<core.String, core.String> labels;
-
   /// Required. The name specified for the model when it was created.
   ///
   /// The model name must be unique within the project it is created in.
@@ -2662,12 +2537,6 @@ class GoogleCloudMlV1Model {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"];
-    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2687,12 +2556,6 @@ class GoogleCloudMlV1Model {
     }
     if (description != null) {
       _json["description"] = description;
-    }
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (labels != null) {
-      _json["labels"] = labels;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2717,10 +2580,6 @@ class GoogleCloudMlV1OperationMetadata {
 
   /// Indicates whether a request to cancel this operation has been made.
   core.bool isCancellationRequested;
-
-  /// The user labels, inherited from the model or the model version being
-  /// operated on.
-  core.Map<core.String, core.String> labels;
 
   /// Contains the name of the model associated with the operation.
   core.String modelName;
@@ -2757,9 +2616,6 @@ class GoogleCloudMlV1OperationMetadata {
     if (_json.containsKey("isCancellationRequested")) {
       isCancellationRequested = _json["isCancellationRequested"];
     }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"];
-    }
     if (_json.containsKey("modelName")) {
       modelName = _json["modelName"];
     }
@@ -2788,9 +2644,6 @@ class GoogleCloudMlV1OperationMetadata {
     }
     if (isCancellationRequested != null) {
       _json["isCancellationRequested"] = isCancellationRequested;
-    }
-    if (labels != null) {
-      _json["labels"] = labels;
     }
     if (modelName != null) {
       _json["modelName"] = modelName;
@@ -3536,36 +3389,12 @@ class GoogleCloudMlV1Version {
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a model from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
-  /// read-modify-write cycle to perform model updates in order to avoid race
-  /// conditions: An `etag` is returned in the response to `GetVersion`, and
-  /// systems are expected to put that etag in the request to `UpdateVersion` to
-  /// ensure that their change will be applied to the model as intended.
-  core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
-  }
-
-  void set etagAsBytes(core.List<core.int> _bytes) {
-    etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
   /// Output only. If true, this version will be used to handle prediction
   /// requests that do not specify a version.
   ///
   /// You can change the default version by calling
   /// [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
   core.bool isDefault;
-
-  /// Optional. One or more labels that you can add, to organize your model
-  /// versions. Each label is a key-value pair, where both the key and the value
-  /// are arbitrary strings that you supply.
-  /// For more information, see the documentation on
-  /// <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
-  core.Map<core.String, core.String> labels;
 
   /// Output only. The time the version was last used for prediction.
   core.String lastUseTime;
@@ -3623,14 +3452,8 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
-    }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"];
     }
     if (_json.containsKey("lastUseTime")) {
       lastUseTime = _json["lastUseTime"];
@@ -3668,14 +3491,8 @@ class GoogleCloudMlV1Version {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
-    }
-    if (labels != null) {
-      _json["labels"] = labels;
     }
     if (lastUseTime != null) {
       _json["lastUseTime"] = lastUseTime;
@@ -3698,13 +3515,6 @@ class GoogleCloudMlV1Version {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
-  /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
-  GoogleTypeExpr condition;
-
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -3737,9 +3547,6 @@ class GoogleIamV1Binding {
   GoogleIamV1Binding();
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = new GoogleTypeExpr.fromJson(_json["condition"]);
-    }
     if (_json.containsKey("members")) {
       members = _json["members"];
     }
@@ -3751,9 +3558,6 @@ class GoogleIamV1Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (condition != null) {
-      _json["condition"] = (condition).toJson();
-    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -3866,22 +3670,11 @@ class GoogleIamV1SetIamPolicyRequest {
   /// might reject them.
   GoogleIamV1Policy policy;
 
-  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
-  core.String updateMask;
-
   GoogleIamV1SetIamPolicyRequest();
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
       policy = new GoogleIamV1Policy.fromJson(_json["policy"]);
-    }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
     }
   }
 
@@ -3890,9 +3683,6 @@ class GoogleIamV1SetIamPolicyRequest {
         new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
-    }
-    if (updateMask != null) {
-      _json["updateMask"] = updateMask;
     }
     return _json;
   }
@@ -4182,68 +3972,6 @@ class GoogleRpcStatus {
     }
     if (message != null) {
       _json["message"] = message;
-    }
-    return _json;
-  }
-}
-
-/// Represents an expression text. Example:
-///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
-class GoogleTypeExpr {
-  /// An optional description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
-  core.String description;
-
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
-  core.String expression;
-
-  /// An optional string indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
-  core.String location;
-
-  /// An optional title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
-  core.String title;
-
-  GoogleTypeExpr();
-
-  GoogleTypeExpr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
-    }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
-    }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (expression != null) {
-      _json["expression"] = expression;
-    }
-    if (location != null) {
-      _json["location"] = location;
-    }
-    if (title != null) {
-      _json["title"] = title;
     }
     return _json;
   }

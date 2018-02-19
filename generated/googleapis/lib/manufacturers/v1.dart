@@ -241,18 +241,19 @@ class AccountsProductsResourceApi {
     return _response.then((data) => new ListProductsResponse.fromJson(data));
   }
 
-  /// Inserts or updates the product in a Manufacturer Center account.
+  /// Uploads the product in a Manufacturer Center account.
   ///
   /// The checks at upload time are minimal. All required attributes need to be
   /// present for a product to be valid. Issues may show up later
-  /// after the API has accepted an update for a product and it is possible to
+  /// after the API has accepted a new upload for a product and it is possible
+  /// to
   /// overwrite an existing valid product with an invalid product. To detect
   /// this, you should retrieve the product and check it for issues once the
-  /// updated version is available.
+  /// new version is available.
   ///
-  /// Inserted or updated products first need to be processed before they can be
+  /// Uploaded products first need to be processed before they can be
   /// retrieved. Until then, new products will be unavailable, and retrieval
-  /// of updated products will return the original state of the product.
+  /// of uploaded products will return the original state of the product.
   ///
   /// [request] - The metadata request object.
   ///
@@ -279,15 +280,15 @@ class AccountsProductsResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Product].
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> update(
-      Product request, core.String parent, core.String name,
+  async.Future<Empty> uploadProduct(
+      Attributes request, core.String parent, core.String name,
       {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -320,7 +321,7 @@ class AccountsProductsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Product.fromJson(data));
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -883,7 +884,7 @@ class Issue {
   /// https://support.google.com/manufacturers/answer/6124116.
   core.String attribute;
 
-  /// Description of the issue.
+  /// Longer description of the issue focused on how to resolve it.
   core.String description;
 
   /// The severity of the issue.

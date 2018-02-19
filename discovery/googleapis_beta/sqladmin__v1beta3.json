@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/7RWofroP1ZyOrHOERSswwKZ-f84\"",
+    "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/EHk4rp8xy9W88y5wezvrHDWf9Y4\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -910,7 +910,7 @@
             }
         }
     },
-    "revision": "20171011",
+    "revision": "20180124",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {
@@ -933,6 +933,10 @@
                     "default": "sql#backupConfiguration",
                     "description": "This is always sql#backupConfiguration.",
                     "type": "string"
+                },
+                "replicationLogArchivingEnabled": {
+                    "description": "Whether replication log archiving is enabled. Replication log archiving is required for the point-in-time recovery (PITR) feature. PostgreSQL instances only.",
+                    "type": "boolean"
                 },
                 "startTime": {
                     "description": "Start time for the daily backup configuration in UTC timezone in the 24 hour format - HH:MM.",
@@ -1048,6 +1052,11 @@
                 "kind": {
                     "default": "sql#cloneContext",
                     "description": "This is always sql#cloneContext.",
+                    "type": "string"
+                },
+                "pitrTimestampMs": {
+                    "description": "The epoch timestamp, in milliseconds, of the time to which a point-in-time recovery (PITR) is performed. PostgreSQL instances only. For MySQL instances, use the binLogCoordinates property.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "sourceInstanceName": {
