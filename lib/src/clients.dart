@@ -62,6 +62,7 @@ class ApiRequester {
         !downloadOptions.isFullDownload) {
       downloadRange = downloadOptions.range;
     }
+    queryParams = queryParams?.cast<String, List<String>>();
 
     return _request(requestUrl, method, body, queryParams, uploadMedia,
             uploadOptions, downloadOptions, downloadRange)
