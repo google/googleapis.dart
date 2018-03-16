@@ -78,7 +78,7 @@ class ApiRequester {
         if (stringStream != null) {
           return stringStream.join('').then((String bodyString) {
             if (bodyString == '') return null;
-            return JSON.decode(bodyString);
+            return json.decode(bodyString);
           });
         } else {
           throw new client_requests.ApiRequestError(
@@ -195,7 +195,7 @@ class ApiRequester {
       var length = 0;
       var bodyController = new StreamController<List<int>>();
       if (body != null) {
-        var bytes = UTF8.encode(body);
+        var bytes = utf8.encode(body);
         bodyController.add(bytes);
         length = bytes.length;
       }
@@ -271,7 +271,7 @@ class MultipartMediaUploader {
 
   Future<http.StreamedResponse> upload() {
     var base64MediaStream =
-        _uploadMedia.stream.transform(_base64Encoder).transform(ASCII.encoder);
+        _uploadMedia.stream.transform(_base64Encoder).transform(ascii.encoder);
     var base64MediaStreamLength =
         Base64Encoder.lengthOfBase64Stream(_uploadMedia.length);
 
@@ -290,9 +290,9 @@ class MultipartMediaUploader {
         bodyHead.length + base64MediaStreamLength + bodyTail.length;
 
     var bodyController = new StreamController<List<int>>();
-    bodyController.add(UTF8.encode(bodyHead));
+    bodyController.add(utf8.encode(bodyHead));
     bodyController.addStream(base64MediaStream).then((_) {
-      bodyController.add(UTF8.encode(bodyTail));
+      bodyController.add(utf8.encode(bodyTail));
     }).catchError((error, stack) {
       bodyController.addError(error, stack);
     }).then((_) {
@@ -344,7 +344,7 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
 
       // Convert & Send bytes from buffer (if necessary).
       if (remainingBytes.length > 0) {
-        controller.add(BASE64.encode(remainingBytes));
+        controller.add(base64.encode(remainingBytes));
         remainingBytes.clear();
       }
 
@@ -354,9 +354,9 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
       // Convert & Send main bytes.
       if (start == 0 && end == bytes.length) {
         // Fast path if [bytes] are devisible by 3.
-        controller.add(BASE64.encode(bytes));
+        controller.add(base64.encode(bytes));
       } else {
-        controller.add(BASE64.encode(bytes.sublist(start, end)));
+        controller.add(base64.encode(bytes.sublist(start, end)));
 
         // Buffer remaining bytes if necessary.
         if (end < bytes.length) {
@@ -371,7 +371,7 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
 
     void onDone() {
       if (remainingBytes.length > 0) {
-        controller.add(BASE64.encode(remainingBytes));
+        controller.add(base64.encode(remainingBytes));
         remainingBytes.clear();
       }
       controller.close();
@@ -509,7 +509,7 @@ class ResumableMediaUploader {
     var length = 0;
     var bytes;
     if (_body != null) {
-      bytes = UTF8.encode(_body);
+      bytes = utf8.encode(_body);
       length = bytes.length;
     }
     var bodyStream = _bytes2Stream(bytes);
@@ -866,16 +866,16 @@ Future<http.StreamedResponse> _validateResponse(
     // Some error happened, try to decode the response and fetch the error.
     Stream<String> stringStream = _decodeStreamAsText(response);
     if (stringStream != null) {
-      return stringStream.transform(JSON.decoder).first.then((json) {
-        if (json is Map && json['error'] is Map) {
-          final Map error = json['error'];
+      return stringStream.transform(json.decoder).first.then((jsonResponse) {
+        if (jsonResponse is Map && jsonResponse['error'] is Map) {
+          final Map error = jsonResponse['error'];
           final code = error['code'];
           final message = error['message'];
           var errors = <client_requests.ApiRequestErrorDetail>[];
           if (error.containsKey('errors') && error['errors'] is List) {
             errors = error['errors']
-                .map((Map json) =>
-                    new client_requests.ApiRequestErrorDetail.fromJson(json))
+                .map((Map e) =>
+                    new client_requests.ApiRequestErrorDetail.fromJson(e))
                 .toList();
           }
           throw new client_requests.DetailedApiRequestError(code, message,

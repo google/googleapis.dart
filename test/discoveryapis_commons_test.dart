@@ -27,13 +27,13 @@ class HttpServerMock extends http.BaseClient {
     if (_expectJson) {
       return request
           .finalize()
-          .transform(UTF8.decoder)
+          .transform(utf8.decoder)
           .join('')
           .then((String jsonString) {
         if (jsonString.isEmpty) {
           return _callback(request, null);
         } else {
-          return _callback(request, JSON.decode(jsonString));
+          return _callback(request, json.decode(jsonString));
         }
       });
     } else {
@@ -51,7 +51,7 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(
     int status, Map<String, String> headers, String body) {
-  var stream = new Stream<List<int>>.fromIterable([UTF8.encode(body)]);
+  var stream = new Stream<List<int>>.fromIterable([utf8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
@@ -63,7 +63,7 @@ http.StreamedResponse binaryResponse(
 
 Stream<List<int>> byteStream(String s) {
   var bodyController = new StreamController<List<int>>();
-  bodyController.add(UTF8.encode(s));
+  bodyController.add(utf8.encode(s));
   bodyController.close();
   return bodyController.stream;
 }
@@ -115,7 +115,7 @@ main() {
       var base64encoder = new Base64Encoder();
 
       testString(String msg, String expectedBase64) {
-        var msgBytes = UTF8.encode(msg);
+        var msgBytes = utf8.encode(msg);
 
         Stream singleByteStream(List<int> msgBytes) {
           var controller = new StreamController();
@@ -339,7 +339,7 @@ main() {
             return stringResponse(200, responseHeaders, '{"foo2" : "bar2"}');
           }), true);
           requester
-              .request('abc', 'GET', body: JSON.encode({'foo': 'bar'}))
+              .request('abc', 'GET', body: json.encode({'foo': 'bar'}))
               .then(expectAsync1((response) {
             expect(response is Map, isTrue);
             expect(response, hasLength(1));
@@ -359,7 +359,7 @@ main() {
             return stringResponse(200, responseHeaders, '["b", 2]');
           }), true);
           requester
-              .request('abc', 'GET', body: JSON.encode(['a', 1]))
+              .request('abc', 'GET', body: json.encode(['a', 1]))
               .then(expectAsync1((response) {
             expect(response is List, isTrue);
             expect(response[0], equals('b'));
@@ -447,7 +447,7 @@ main() {
           }), true);
           requester
               .request('abc', 'GET',
-                  body: JSON.encode(['a', 1]),
+                  body: json.encode(['a', 1]),
                   downloadOptions: DownloadOptions.FullMedia)
               .then(expectAsync1((result) {
             var media = result as Media;
@@ -537,14 +537,14 @@ main() {
               '\r\n--314159265358979323846\r\n'
               'Content-Type: foobar\r\n'
               'Content-Transfer-Encoding: base64\r\n\r\n'
-              '${BASE64.encode(bytes)}'
+              '${base64.encode(bytes)}'
               '\r\n--314159265358979323846--';
 
           var expectations = [
             {
               'url': 'http://example.com/xyz?uploadType=multipart&alt=json',
               'method': 'POST',
-              'data': UTF8.encode('$contentBytes'),
+              'data': utf8.encode('$contentBytes'),
               'headers': {
                 'content-length': '${contentBytes.length}',
                 'content-type':
