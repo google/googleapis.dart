@@ -155,7 +155,7 @@ class ByteRange {
   core.int get length => end - start + 1;
 
   ByteRange(this.start, this.end) {
-    if (!(start == 0 && end == -1 || start >= 0 && end > start)) {
+    if (!(start == 0 && end == -1 || start >= 0 && end >= start)) {
       throw new core.ArgumentError('Invalid media range [$start, $end]');
     }
   }

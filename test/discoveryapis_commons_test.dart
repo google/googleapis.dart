@@ -263,7 +263,9 @@ main() {
       expect(fullRange.start, equals(0));
       expect(fullRange.end, equals(-1));
 
-      expect(() => new ByteRange(0, 0), throwsA(anything));
+      var singleByte = new ByteRange(0, 0);
+      expect(singleByte.length, equals(1));
+
       expect(() => new ByteRange(-1, 0), throwsA(anything));
       expect(() => new ByteRange(-1, 1), throwsA(anything));
 
