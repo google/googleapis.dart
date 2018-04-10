@@ -68,7 +68,7 @@ class AclResourceApi {
   async.Future delete(core.String calendarId, core.String ruleId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -123,7 +123,7 @@ class AclResourceApi {
   async.Future<AclRule> get(core.String calendarId, core.String ruleId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -179,7 +179,7 @@ class AclResourceApi {
   async.Future<AclRule> insert(AclRule request, core.String calendarId,
       {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -255,7 +255,7 @@ class AclResourceApi {
       core.String syncToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -321,7 +321,7 @@ class AclResourceApi {
       AclRule request, core.String calendarId, core.String ruleId,
       {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -387,7 +387,7 @@ class AclResourceApi {
       AclRule request, core.String calendarId, core.String ruleId,
       {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -471,7 +471,7 @@ class AclResourceApi {
       core.String syncToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -536,7 +536,7 @@ class CalendarListResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -584,7 +584,7 @@ class CalendarListResourceApi {
   async.Future<CalendarListEntry> get(core.String calendarId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -633,7 +633,7 @@ class CalendarListResourceApi {
   async.Future<CalendarListEntry> insert(CalendarListEntry request,
       {core.bool colorRgbFormat, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -718,7 +718,7 @@ class CalendarListResourceApi {
       core.String syncToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -787,7 +787,7 @@ class CalendarListResourceApi {
       CalendarListEntry request, core.String calendarId,
       {core.bool colorRgbFormat, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -847,7 +847,7 @@ class CalendarListResourceApi {
       CalendarListEntry request, core.String calendarId,
       {core.bool colorRgbFormat, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -938,7 +938,7 @@ class CalendarListResourceApi {
       core.String syncToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1005,7 +1005,7 @@ class CalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future clear(core.String calendarId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1051,7 +1051,7 @@ class CalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1097,7 +1097,7 @@ class CalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future<Calendar> get(core.String calendarId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1139,7 +1139,7 @@ class CalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future<Calendar> insert(Calendar request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1186,7 +1186,7 @@ class CalendarsResourceApi {
   async.Future<Calendar> patch(Calendar request, core.String calendarId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1236,7 +1236,7 @@ class CalendarsResourceApi {
   async.Future<Calendar> update(Calendar request, core.String calendarId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1285,7 +1285,7 @@ class ChannelsResourceApi {
   /// this method will complete with the same error.
   async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1333,7 +1333,7 @@ class ColorsResourceApi {
   /// this method will complete with the same error.
   async.Future<Colors> get({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1384,7 +1384,7 @@ class EventsResourceApi {
   async.Future delete(core.String calendarId, core.String eventId,
       {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1459,7 +1459,7 @@ class EventsResourceApi {
       core.String timeZone,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1534,7 +1534,7 @@ class EventsResourceApi {
       core.bool supportsAttachments,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1613,7 +1613,7 @@ class EventsResourceApi {
       core.bool supportsAttachments,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1721,7 +1721,7 @@ class EventsResourceApi {
       core.String timeZone,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1920,7 +1920,7 @@ class EventsResourceApi {
       core.DateTime updatedMin,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2025,7 +2025,7 @@ class EventsResourceApi {
       core.String calendarId, core.String eventId, core.String destination,
       {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2119,7 +2119,7 @@ class EventsResourceApi {
       core.bool supportsAttachments,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2193,7 +2193,7 @@ class EventsResourceApi {
   async.Future<Event> quickAdd(core.String calendarId, core.String text,
       {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2282,7 +2282,7 @@ class EventsResourceApi {
       core.bool supportsAttachments,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2473,7 +2473,7 @@ class EventsResourceApi {
       core.DateTime updatedMin,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2578,7 +2578,7 @@ class FreebusyResourceApi {
   async.Future<FreeBusyResponse> query(FreeBusyRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2626,7 +2626,7 @@ class SettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<Setting> get(core.String setting, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2685,7 +2685,7 @@ class SettingsResourceApi {
       core.String syncToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2752,7 +2752,7 @@ class SettingsResourceApi {
       core.String syncToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2812,8 +2812,9 @@ class Acl {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new AclRule.fromJson(value)).toList();
+      items = _json["items"]
+          .map<AclRule>((value) => new AclRule.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3071,7 +3072,8 @@ class CalendarList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CalendarListEntry.fromJson(value))
+          .map<CalendarListEntry>(
+              (value) => new CalendarListEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3118,7 +3120,8 @@ class CalendarListEntryNotificationSettings {
   CalendarListEntryNotificationSettings.fromJson(core.Map _json) {
     if (_json.containsKey("notifications")) {
       notifications = _json["notifications"]
-          .map((value) => new CalendarNotification.fromJson(value))
+          .map<CalendarNotification>(
+              (value) => new CalendarNotification.fromJson(value))
           .toList();
     }
   }
@@ -3237,7 +3240,7 @@ class CalendarListEntry {
     }
     if (_json.containsKey("defaultReminders")) {
       defaultReminders = _json["defaultReminders"]
-          .map((value) => new EventReminder.fromJson(value))
+          .map<EventReminder>((value) => new EventReminder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deleted")) {
@@ -3660,7 +3663,7 @@ class ConferenceData {
     }
     if (_json.containsKey("entryPoints")) {
       entryPoints = _json["entryPoints"]
-          .map((value) => new EntryPoint.fromJson(value))
+          .map<EntryPoint>((value) => new EntryPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notes")) {
@@ -4338,7 +4341,7 @@ class EventReminders {
   EventReminders.fromJson(core.Map _json) {
     if (_json.containsKey("overrides")) {
       overrides = _json["overrides"]
-          .map((value) => new EventReminder.fromJson(value))
+          .map<EventReminder>((value) => new EventReminder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("useDefault")) {
@@ -4592,12 +4595,12 @@ class Event {
     }
     if (_json.containsKey("attachments")) {
       attachments = _json["attachments"]
-          .map((value) => new EventAttachment.fromJson(value))
+          .map<EventAttachment>((value) => new EventAttachment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("attendees")) {
       attendees = _json["attendees"]
-          .map((value) => new EventAttendee.fromJson(value))
+          .map<EventAttendee>((value) => new EventAttendee.fromJson(value))
           .toList();
     }
     if (_json.containsKey("attendeesOmitted")) {
@@ -5146,7 +5149,7 @@ class Events {
     }
     if (_json.containsKey("defaultReminders")) {
       defaultReminders = _json["defaultReminders"]
-          .map((value) => new EventReminder.fromJson(value))
+          .map<EventReminder>((value) => new EventReminder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -5156,7 +5159,9 @@ class Events {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Event.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Event>((value) => new Event.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5230,12 +5235,14 @@ class FreeBusyCalendar {
 
   FreeBusyCalendar.fromJson(core.Map _json) {
     if (_json.containsKey("busy")) {
-      busy =
-          _json["busy"].map((value) => new TimePeriod.fromJson(value)).toList();
+      busy = _json["busy"]
+          .map<TimePeriod>((value) => new TimePeriod.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("errors")) {
-      errors =
-          _json["errors"].map((value) => new Error.fromJson(value)).toList();
+      errors = _json["errors"]
+          .map<Error>((value) => new Error.fromJson(value))
+          .toList();
     }
   }
 
@@ -5266,8 +5273,9 @@ class FreeBusyGroup {
       calendars = _json["calendars"];
     }
     if (_json.containsKey("errors")) {
-      errors =
-          _json["errors"].map((value) => new Error.fromJson(value)).toList();
+      errors = _json["errors"]
+          .map<Error>((value) => new Error.fromJson(value))
+          .toList();
     }
   }
 
@@ -5317,7 +5325,8 @@ class FreeBusyRequest {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new FreeBusyRequestItem.fromJson(value))
+          .map<FreeBusyRequestItem>(
+              (value) => new FreeBusyRequestItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timeMax")) {
@@ -5525,8 +5534,9 @@ class Settings {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Setting.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Setting>((value) => new Setting.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

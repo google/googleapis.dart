@@ -67,7 +67,7 @@ class ProjectsResourceApi {
   async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -122,7 +122,7 @@ class ProjectsResourceApi {
       GoogleCloudMlV1PredictRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -178,7 +178,7 @@ class ProjectsJobsResourceApi {
       GoogleCloudMlV1CancelJobRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -228,7 +228,7 @@ class ProjectsJobsResourceApi {
       GoogleCloudMlV1Job request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -275,7 +275,7 @@ class ProjectsJobsResourceApi {
   async.Future<GoogleCloudMlV1Job> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -323,7 +323,7 @@ class ProjectsJobsResourceApi {
   async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -398,7 +398,7 @@ class ProjectsJobsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -458,7 +458,7 @@ class ProjectsJobsResourceApi {
       GoogleIamV1SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -518,7 +518,7 @@ class ProjectsJobsResourceApi {
       GoogleIamV1TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -576,7 +576,7 @@ class ProjectsLocationsResourceApi {
   async.Future<GoogleCloudMlV1Location> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -634,7 +634,7 @@ class ProjectsLocationsResourceApi {
   async.Future<GoogleCloudMlV1ListLocationsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -702,7 +702,7 @@ class ProjectsModelsResourceApi {
       GoogleCloudMlV1Model request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -753,7 +753,7 @@ class ProjectsModelsResourceApi {
   async.Future<GoogleLongrunningOperation> delete(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -800,7 +800,7 @@ class ProjectsModelsResourceApi {
   async.Future<GoogleCloudMlV1Model> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -848,7 +848,7 @@ class ProjectsModelsResourceApi {
   async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -918,7 +918,7 @@ class ProjectsModelsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -995,7 +995,7 @@ class ProjectsModelsResourceApi {
       GoogleCloudMlV1Model request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1052,7 +1052,7 @@ class ProjectsModelsResourceApi {
       GoogleIamV1SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1112,7 +1112,7 @@ class ProjectsModelsResourceApi {
       GoogleIamV1TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1179,7 +1179,7 @@ class ProjectsModelsVersionsResourceApi {
       GoogleCloudMlV1Version request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1237,7 +1237,7 @@ class ProjectsModelsVersionsResourceApi {
   async.Future<GoogleLongrunningOperation> delete(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1287,7 +1287,7 @@ class ProjectsModelsVersionsResourceApi {
   async.Future<GoogleCloudMlV1Version> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1355,7 +1355,7 @@ class ProjectsModelsVersionsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1428,7 +1428,7 @@ class ProjectsModelsVersionsResourceApi {
       GoogleCloudMlV1Version request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1492,7 +1492,7 @@ class ProjectsModelsVersionsResourceApi {
       GoogleCloudMlV1SetDefaultVersionRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1556,7 +1556,7 @@ class ProjectsOperationsResourceApi {
   async.Future<GoogleProtobufEmpty> cancel(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1603,7 +1603,7 @@ class ProjectsOperationsResourceApi {
   async.Future<GoogleProtobufEmpty> delete(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1649,7 +1649,7 @@ class ProjectsOperationsResourceApi {
   async.Future<GoogleLongrunningOperation> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1713,7 +1713,7 @@ class ProjectsOperationsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2019,9 +2019,10 @@ class GoogleCloudMlV1HyperparameterOutput {
   GoogleCloudMlV1HyperparameterOutput.fromJson(core.Map _json) {
     if (_json.containsKey("allMetrics")) {
       allMetrics = _json["allMetrics"]
-          .map((value) =>
-              new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
-                  .fromJson(value))
+          .map<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>(
+              (value) =>
+                  new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("finalMetric")) {
@@ -2134,7 +2135,8 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
     if (_json.containsKey("params")) {
       params = _json["params"]
-          .map((value) => new GoogleCloudMlV1ParameterSpec.fromJson(value))
+          .map<GoogleCloudMlV1ParameterSpec>(
+              (value) => new GoogleCloudMlV1ParameterSpec.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resumePreviousJobId")) {
@@ -2305,7 +2307,8 @@ class GoogleCloudMlV1ListJobsResponse {
   GoogleCloudMlV1ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
       jobs = _json["jobs"]
-          .map((value) => new GoogleCloudMlV1Job.fromJson(value))
+          .map<GoogleCloudMlV1Job>(
+              (value) => new GoogleCloudMlV1Job.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2339,7 +2342,8 @@ class GoogleCloudMlV1ListLocationsResponse {
   GoogleCloudMlV1ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new GoogleCloudMlV1Location.fromJson(value))
+          .map<GoogleCloudMlV1Location>(
+              (value) => new GoogleCloudMlV1Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2374,7 +2378,8 @@ class GoogleCloudMlV1ListModelsResponse {
   GoogleCloudMlV1ListModelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("models")) {
       models = _json["models"]
-          .map((value) => new GoogleCloudMlV1Model.fromJson(value))
+          .map<GoogleCloudMlV1Model>(
+              (value) => new GoogleCloudMlV1Model.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2412,7 +2417,8 @@ class GoogleCloudMlV1ListVersionsResponse {
     }
     if (_json.containsKey("versions")) {
       versions = _json["versions"]
-          .map((value) => new GoogleCloudMlV1Version.fromJson(value))
+          .map<GoogleCloudMlV1Version>(
+              (value) => new GoogleCloudMlV1Version.fromJson(value))
           .toList();
     }
   }
@@ -2440,7 +2446,8 @@ class GoogleCloudMlV1Location {
   GoogleCloudMlV1Location.fromJson(core.Map _json) {
     if (_json.containsKey("capabilities")) {
       capabilities = _json["capabilities"]
-          .map((value) => new GoogleCloudMlV1Capability.fromJson(value))
+          .map<GoogleCloudMlV1Capability>(
+              (value) => new GoogleCloudMlV1Capability.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -3326,7 +3333,7 @@ class GoogleCloudMlV1TrainingOutput {
     }
     if (_json.containsKey("trials")) {
       trials = _json["trials"]
-          .map((value) =>
+          .map<GoogleCloudMlV1HyperparameterOutput>((value) =>
               new GoogleCloudMlV1HyperparameterOutput.fromJson(value))
           .toList();
     }
@@ -3635,7 +3642,8 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new GoogleIamV1Binding.fromJson(value))
+          .map<GoogleIamV1Binding>(
+              (value) => new GoogleIamV1Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -3754,7 +3762,8 @@ class GoogleLongrunningListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new GoogleLongrunningOperation.fromJson(value))
+          .map<GoogleLongrunningOperation>(
+              (value) => new GoogleLongrunningOperation.fromJson(value))
           .toList();
     }
   }

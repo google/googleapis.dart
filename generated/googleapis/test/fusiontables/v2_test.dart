@@ -100,14 +100,14 @@ checkColumnBaseColumn(api.ColumnBaseColumn o) {
   buildCounterColumnBaseColumn--;
 }
 
-buildUnnamed636() {
+buildUnnamed1342() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed636(core.List<core.String> o) {
+checkUnnamed1342(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -128,7 +128,7 @@ buildColumn() {
     o.kind = "foo";
     o.name = "foo";
     o.type = "foo";
-    o.validValues = buildUnnamed636();
+    o.validValues = buildUnnamed1342();
     o.validateData = true;
   }
   buildCounterColumn--;
@@ -148,20 +148,20 @@ checkColumn(api.Column o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
-    checkUnnamed636(o.validValues);
+    checkUnnamed1342(o.validValues);
     unittest.expect(o.validateData, unittest.isTrue);
   }
   buildCounterColumn--;
 }
 
-buildUnnamed637() {
+buildUnnamed1343() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed637(core.List<api.Column> o) {
+checkUnnamed1343(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -172,7 +172,7 @@ buildColumnList() {
   var o = new api.ColumnList();
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    o.items = buildUnnamed637();
+    o.items = buildUnnamed1343();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -184,7 +184,7 @@ buildColumnList() {
 checkColumnList(api.ColumnList o) {
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    checkUnnamed637(o.items);
+    checkUnnamed1343(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -192,7 +192,7 @@ checkColumnList(api.ColumnList o) {
   buildCounterColumnList--;
 }
 
-buildUnnamed638() {
+buildUnnamed1344() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -207,7 +207,7 @@ buildUnnamed638() {
   return o;
 }
 
-checkUnnamed638(core.List<core.Object> o) {
+checkUnnamed1344(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -226,7 +226,7 @@ buildGeometry() {
   var o = new api.Geometry();
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    o.geometries = buildUnnamed638();
+    o.geometries = buildUnnamed1344();
     o.geometry = {
       'list': [1, 2, 3],
       'bool': true,
@@ -241,7 +241,7 @@ buildGeometry() {
 checkGeometry(api.Geometry o) {
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    checkUnnamed638(o.geometries);
+    checkUnnamed1344(o.geometries);
     var casted3 = (o.geometry) as core.Map;
     unittest.expect(casted3, unittest.hasLength(3));
     unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
@@ -273,30 +273,30 @@ checkImport(api.Import o) {
   buildCounterImport--;
 }
 
-buildUnnamed639() {
+buildUnnamed1345() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed639(core.List<core.double> o) {
+checkUnnamed1345(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed640() {
+buildUnnamed1346() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed639());
-  o.add(buildUnnamed639());
+  o.add(buildUnnamed1345());
+  o.add(buildUnnamed1345());
   return o;
 }
 
-checkUnnamed640(core.List<core.List<core.double>> o) {
+checkUnnamed1346(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed639(o[0]);
-  checkUnnamed639(o[1]);
+  checkUnnamed1345(o[0]);
+  checkUnnamed1345(o[1]);
 }
 
 core.int buildCounterLine = 0;
@@ -304,7 +304,7 @@ buildLine() {
   var o = new api.Line();
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    o.coordinates = buildUnnamed640();
+    o.coordinates = buildUnnamed1346();
     o.type = "foo";
   }
   buildCounterLine--;
@@ -314,7 +314,7 @@ buildLine() {
 checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    checkUnnamed640(o.coordinates);
+    checkUnnamed1346(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterLine--;
@@ -347,14 +347,14 @@ checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle--;
 }
 
-buildUnnamed641() {
+buildUnnamed1347() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed641(core.List<core.double> o) {
+checkUnnamed1347(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -365,7 +365,7 @@ buildPoint() {
   var o = new api.Point();
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    o.coordinates = buildUnnamed641();
+    o.coordinates = buildUnnamed1347();
     o.type = "foo";
   }
   buildCounterPoint--;
@@ -375,7 +375,7 @@ buildPoint() {
 checkPoint(api.Point o) {
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    checkUnnamed641(o.coordinates);
+    checkUnnamed1347(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPoint--;
@@ -402,43 +402,43 @@ checkPointStyle(api.PointStyle o) {
   buildCounterPointStyle--;
 }
 
-buildUnnamed642() {
+buildUnnamed1348() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed642(core.List<core.double> o) {
+checkUnnamed1348(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed643() {
+buildUnnamed1349() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed642());
-  o.add(buildUnnamed642());
+  o.add(buildUnnamed1348());
+  o.add(buildUnnamed1348());
   return o;
 }
 
-checkUnnamed643(core.List<core.List<core.double>> o) {
+checkUnnamed1349(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed642(o[0]);
-  checkUnnamed642(o[1]);
+  checkUnnamed1348(o[0]);
+  checkUnnamed1348(o[1]);
 }
 
-buildUnnamed644() {
+buildUnnamed1350() {
   var o = new core.List<core.List<core.List<core.double>>>();
-  o.add(buildUnnamed643());
-  o.add(buildUnnamed643());
+  o.add(buildUnnamed1349());
+  o.add(buildUnnamed1349());
   return o;
 }
 
-checkUnnamed644(core.List<core.List<core.List<core.double>>> o) {
+checkUnnamed1350(core.List<core.List<core.List<core.double>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed643(o[0]);
-  checkUnnamed643(o[1]);
+  checkUnnamed1349(o[0]);
+  checkUnnamed1349(o[1]);
 }
 
 core.int buildCounterPolygon = 0;
@@ -446,7 +446,7 @@ buildPolygon() {
   var o = new api.Polygon();
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    o.coordinates = buildUnnamed644();
+    o.coordinates = buildUnnamed1350();
     o.type = "foo";
   }
   buildCounterPolygon--;
@@ -456,7 +456,7 @@ buildPolygon() {
 checkPolygon(api.Polygon o) {
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    checkUnnamed644(o.coordinates);
+    checkUnnamed1350(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPolygon--;
@@ -495,20 +495,20 @@ checkPolygonStyle(api.PolygonStyle o) {
   buildCounterPolygonStyle--;
 }
 
-buildUnnamed645() {
+buildUnnamed1351() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed645(core.List<core.String> o) {
+checkUnnamed1351(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed646() {
+buildUnnamed1352() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -523,7 +523,7 @@ buildUnnamed646() {
   return o;
 }
 
-checkUnnamed646(core.List<core.Object> o) {
+checkUnnamed1352(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted4 = (o[0]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
@@ -537,17 +537,17 @@ checkUnnamed646(core.List<core.Object> o) {
   unittest.expect(casted5["string"], unittest.equals('foo'));
 }
 
-buildUnnamed647() {
+buildUnnamed1353() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed646());
-  o.add(buildUnnamed646());
+  o.add(buildUnnamed1352());
+  o.add(buildUnnamed1352());
   return o;
 }
 
-checkUnnamed647(core.List<core.List<core.Object>> o) {
+checkUnnamed1353(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed646(o[0]);
-  checkUnnamed646(o[1]);
+  checkUnnamed1352(o[0]);
+  checkUnnamed1352(o[1]);
 }
 
 core.int buildCounterSqlresponse = 0;
@@ -555,9 +555,9 @@ buildSqlresponse() {
   var o = new api.Sqlresponse();
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    o.columns = buildUnnamed645();
+    o.columns = buildUnnamed1351();
     o.kind = "foo";
-    o.rows = buildUnnamed647();
+    o.rows = buildUnnamed1353();
   }
   buildCounterSqlresponse--;
   return o;
@@ -566,21 +566,21 @@ buildSqlresponse() {
 checkSqlresponse(api.Sqlresponse o) {
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    checkUnnamed645(o.columns);
+    checkUnnamed1351(o.columns);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed647(o.rows);
+    checkUnnamed1353(o.rows);
   }
   buildCounterSqlresponse--;
 }
 
-buildUnnamed648() {
+buildUnnamed1354() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed648(core.List<api.Bucket> o) {
+checkUnnamed1354(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -607,14 +607,14 @@ checkStyleFunctionGradientColors(api.StyleFunctionGradientColors o) {
   buildCounterStyleFunctionGradientColors--;
 }
 
-buildUnnamed649() {
+buildUnnamed1355() {
   var o = new core.List<api.StyleFunctionGradientColors>();
   o.add(buildStyleFunctionGradientColors());
   o.add(buildStyleFunctionGradientColors());
   return o;
 }
 
-checkUnnamed649(core.List<api.StyleFunctionGradientColors> o) {
+checkUnnamed1355(core.List<api.StyleFunctionGradientColors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleFunctionGradientColors(o[0]);
   checkStyleFunctionGradientColors(o[1]);
@@ -625,7 +625,7 @@ buildStyleFunctionGradient() {
   var o = new api.StyleFunctionGradient();
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    o.colors = buildUnnamed649();
+    o.colors = buildUnnamed1355();
     o.max = 42.0;
     o.min = 42.0;
   }
@@ -636,7 +636,7 @@ buildStyleFunctionGradient() {
 checkStyleFunctionGradient(api.StyleFunctionGradient o) {
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    checkUnnamed649(o.colors);
+    checkUnnamed1355(o.colors);
     unittest.expect(o.max, unittest.equals(42.0));
     unittest.expect(o.min, unittest.equals(42.0));
   }
@@ -648,7 +648,7 @@ buildStyleFunction() {
   var o = new api.StyleFunction();
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    o.buckets = buildUnnamed648();
+    o.buckets = buildUnnamed1354();
     o.columnName = "foo";
     o.gradient = buildStyleFunctionGradient();
     o.kind = "foo";
@@ -660,7 +660,7 @@ buildStyleFunction() {
 checkStyleFunction(api.StyleFunction o) {
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    checkUnnamed648(o.buckets);
+    checkUnnamed1354(o.buckets);
     unittest.expect(o.columnName, unittest.equals('foo'));
     checkStyleFunctionGradient(o.gradient);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -699,14 +699,14 @@ checkStyleSetting(api.StyleSetting o) {
   buildCounterStyleSetting--;
 }
 
-buildUnnamed650() {
+buildUnnamed1356() {
   var o = new core.List<api.StyleSetting>();
   o.add(buildStyleSetting());
   o.add(buildStyleSetting());
   return o;
 }
 
-checkUnnamed650(core.List<api.StyleSetting> o) {
+checkUnnamed1356(core.List<api.StyleSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleSetting(o[0]);
   checkStyleSetting(o[1]);
@@ -717,7 +717,7 @@ buildStyleSettingList() {
   var o = new api.StyleSettingList();
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    o.items = buildUnnamed650();
+    o.items = buildUnnamed1356();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -729,7 +729,7 @@ buildStyleSettingList() {
 checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    checkUnnamed650(o.items);
+    checkUnnamed1356(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -737,27 +737,27 @@ checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList--;
 }
 
-buildUnnamed651() {
+buildUnnamed1357() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed651(core.List<core.String> o) {
+checkUnnamed1357(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed652() {
+buildUnnamed1358() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed652(core.List<api.Column> o) {
+checkUnnamed1358(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -770,9 +770,9 @@ buildTable() {
   if (buildCounterTable < 3) {
     o.attribution = "foo";
     o.attributionLink = "foo";
-    o.baseTableIds = buildUnnamed651();
+    o.baseTableIds = buildUnnamed1357();
     o.columnPropertiesJsonSchema = "foo";
-    o.columns = buildUnnamed652();
+    o.columns = buildUnnamed1358();
     o.description = "foo";
     o.isExportable = true;
     o.kind = "foo";
@@ -791,9 +791,9 @@ checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
     unittest.expect(o.attributionLink, unittest.equals('foo'));
-    checkUnnamed651(o.baseTableIds);
+    checkUnnamed1357(o.baseTableIds);
     unittest.expect(o.columnPropertiesJsonSchema, unittest.equals('foo'));
-    checkUnnamed652(o.columns);
+    checkUnnamed1358(o.columns);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.isExportable, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -806,14 +806,14 @@ checkTable(api.Table o) {
   buildCounterTable--;
 }
 
-buildUnnamed653() {
+buildUnnamed1359() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed653(core.List<api.Table> o) {
+checkUnnamed1359(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -824,7 +824,7 @@ buildTableList() {
   var o = new api.TableList();
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    o.items = buildUnnamed653();
+    o.items = buildUnnamed1359();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -835,7 +835,7 @@ buildTableList() {
 checkTableList(api.TableList o) {
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    checkUnnamed653(o.items);
+    checkUnnamed1359(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -869,14 +869,14 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed654() {
+buildUnnamed1360() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed654(core.List<api.Task> o) {
+checkUnnamed1360(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -887,7 +887,7 @@ buildTaskList() {
   var o = new api.TaskList();
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    o.items = buildUnnamed654();
+    o.items = buildUnnamed1360();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -899,7 +899,7 @@ buildTaskList() {
 checkTaskList(api.TaskList o) {
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    checkUnnamed654(o.items);
+    checkUnnamed1360(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -907,14 +907,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed655() {
+buildUnnamed1361() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed655(core.List<core.String> o) {
+checkUnnamed1361(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -925,7 +925,7 @@ buildTemplate() {
   var o = new api.Template();
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    o.automaticColumnNames = buildUnnamed655();
+    o.automaticColumnNames = buildUnnamed1361();
     o.body = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -939,7 +939,7 @@ buildTemplate() {
 checkTemplate(api.Template o) {
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    checkUnnamed655(o.automaticColumnNames);
+    checkUnnamed1361(o.automaticColumnNames);
     unittest.expect(o.body, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -949,14 +949,14 @@ checkTemplate(api.Template o) {
   buildCounterTemplate--;
 }
 
-buildUnnamed656() {
+buildUnnamed1362() {
   var o = new core.List<api.Template>();
   o.add(buildTemplate());
   o.add(buildTemplate());
   return o;
 }
 
-checkUnnamed656(core.List<api.Template> o) {
+checkUnnamed1362(core.List<api.Template> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTemplate(o[0]);
   checkTemplate(o[1]);
@@ -967,7 +967,7 @@ buildTemplateList() {
   var o = new api.TemplateList();
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    o.items = buildUnnamed656();
+    o.items = buildUnnamed1362();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -979,7 +979,7 @@ buildTemplateList() {
 checkTemplateList(api.TemplateList o) {
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    checkUnnamed656(o.items);
+    checkUnnamed1362(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -1306,7 +1306,7 @@ main() {
       }), true);
       res
           .get(arg_tableId, arg_columnId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Column response) {
+          .then(unittest.expectAsync1(((response) {
         checkColumn(response);
       })));
     });
@@ -1372,7 +1372,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_tableId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Column response) {
+          .then(unittest.expectAsync1(((response) {
         checkColumn(response);
       })));
     });
@@ -1443,7 +1443,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ColumnList response) {
+          .then(unittest.expectAsync1(((response) {
         checkColumnList(response);
       })));
     });
@@ -1513,7 +1513,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_tableId, arg_columnId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Column response) {
+          .then(unittest.expectAsync1(((response) {
         checkColumn(response);
       })));
     });
@@ -1583,7 +1583,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_tableId, arg_columnId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Column response) {
+          .then(unittest.expectAsync1(((response) {
         checkColumn(response);
       })));
     });
@@ -1647,7 +1647,7 @@ main() {
       res
           .sql(arg_sql_1,
               hdrs: arg_hdrs, typed: arg_typed, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Sqlresponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSqlresponse(response);
       })));
     });
@@ -1709,7 +1709,7 @@ main() {
       res
           .sqlGet(arg_sql_1,
               hdrs: arg_hdrs, typed: arg_typed, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Sqlresponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSqlresponse(response);
       })));
     });
@@ -1841,7 +1841,7 @@ main() {
       }), true);
       res
           .get(arg_tableId, arg_styleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.StyleSetting response) {
+          .then(unittest.expectAsync1(((response) {
         checkStyleSetting(response);
       })));
     });
@@ -1907,7 +1907,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_tableId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.StyleSetting response) {
+          .then(unittest.expectAsync1(((response) {
         checkStyleSetting(response);
       })));
     });
@@ -1978,7 +1978,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.StyleSettingList response) {
+          .then(unittest.expectAsync1(((response) {
         checkStyleSettingList(response);
       })));
     });
@@ -2048,7 +2048,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_tableId, arg_styleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.StyleSetting response) {
+          .then(unittest.expectAsync1(((response) {
         checkStyleSetting(response);
       })));
     });
@@ -2118,7 +2118,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_tableId, arg_styleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.StyleSetting response) {
+          .then(unittest.expectAsync1(((response) {
         checkStyleSetting(response);
       })));
     });
@@ -2186,7 +2186,7 @@ main() {
       res
           .copy(arg_tableId,
               copyPresentation: arg_copyPresentation, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Table response) {
+          .then(unittest.expectAsync1(((response) {
         checkTable(response);
       })));
     });
@@ -2296,7 +2296,7 @@ main() {
       }), true);
       res
           .get(arg_tableId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Table response) {
+          .then(unittest.expectAsync1(((response) {
         checkTable(response);
       })));
     });
@@ -2382,7 +2382,7 @@ main() {
               isStrict: arg_isStrict,
               startLine: arg_startLine,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Import response) {
+          .then(unittest.expectAsync1(((response) {
         checkImport(response);
       })));
     });
@@ -2448,7 +2448,7 @@ main() {
               delimiter: arg_delimiter,
               encoding: arg_encoding,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Table response) {
+          .then(unittest.expectAsync1(((response) {
         checkTable(response);
       })));
     });
@@ -2504,7 +2504,7 @@ main() {
       }), true);
       res
           .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Table response) {
+          .then(unittest.expectAsync1(((response) {
         checkTable(response);
       })));
     });
@@ -2565,7 +2565,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TableList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTableList(response);
       })));
     });
@@ -2630,7 +2630,7 @@ main() {
           .patch(arg_request, arg_tableId,
               replaceViewDefinition: arg_replaceViewDefinition,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Table response) {
+          .then(unittest.expectAsync1(((response) {
         checkTable(response);
       })));
     });
@@ -2692,7 +2692,7 @@ main() {
       }), true);
       res
           .refetchSheet(arg_tableId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -2778,7 +2778,7 @@ main() {
               isStrict: arg_isStrict,
               startLine: arg_startLine,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -2843,7 +2843,7 @@ main() {
           .update(arg_request, arg_tableId,
               replaceViewDefinition: arg_replaceViewDefinition,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Table response) {
+          .then(unittest.expectAsync1(((response) {
         checkTable(response);
       })));
     });
@@ -2975,7 +2975,7 @@ main() {
       }), true);
       res
           .get(arg_tableId, arg_taskId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -3050,7 +3050,7 @@ main() {
               pageToken: arg_pageToken,
               startIndex: arg_startIndex,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TaskList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTaskList(response);
       })));
     });
@@ -3182,7 +3182,7 @@ main() {
       }), true);
       res
           .get(arg_tableId, arg_templateId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Template response) {
+          .then(unittest.expectAsync1(((response) {
         checkTemplate(response);
       })));
     });
@@ -3248,7 +3248,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_tableId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Template response) {
+          .then(unittest.expectAsync1(((response) {
         checkTemplate(response);
       })));
     });
@@ -3319,7 +3319,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TemplateList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTemplateList(response);
       })));
     });
@@ -3389,7 +3389,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_tableId, arg_templateId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Template response) {
+          .then(unittest.expectAsync1(((response) {
         checkTemplate(response);
       })));
     });
@@ -3460,7 +3460,7 @@ main() {
       res
           .update(arg_request, arg_tableId, arg_templateId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Template response) {
+          .then(unittest.expectAsync1(((response) {
         checkTemplate(response);
       })));
     });

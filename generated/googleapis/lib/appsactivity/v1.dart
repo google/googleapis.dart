@@ -86,7 +86,7 @@ class ActivitiesResourceApi {
       core.String userId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -147,7 +147,7 @@ class Activity {
     }
     if (_json.containsKey("singleEvents")) {
       singleEvents = _json["singleEvents"]
-          .map((value) => new Event.fromJson(value))
+          .map<Event>((value) => new Event.fromJson(value))
           .toList();
     }
   }
@@ -229,7 +229,8 @@ class Event {
     }
     if (_json.containsKey("permissionChanges")) {
       permissionChanges = _json["permissionChanges"]
-          .map((value) => new PermissionChange.fromJson(value))
+          .map<PermissionChange>(
+              (value) => new PermissionChange.fromJson(value))
           .toList();
     }
     if (_json.containsKey("primaryEventType")) {
@@ -295,7 +296,7 @@ class ListActivitiesResponse {
   ListActivitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("activities")) {
       activities = _json["activities"]
-          .map((value) => new Activity.fromJson(value))
+          .map<Activity>((value) => new Activity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -331,12 +332,12 @@ class Move {
   Move.fromJson(core.Map _json) {
     if (_json.containsKey("addedParents")) {
       addedParents = _json["addedParents"]
-          .map((value) => new Parent.fromJson(value))
+          .map<Parent>((value) => new Parent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("removedParents")) {
       removedParents = _json["removedParents"]
-          .map((value) => new Parent.fromJson(value))
+          .map<Parent>((value) => new Parent.fromJson(value))
           .toList();
     }
   }
@@ -495,12 +496,12 @@ class PermissionChange {
   PermissionChange.fromJson(core.Map _json) {
     if (_json.containsKey("addedPermissions")) {
       addedPermissions = _json["addedPermissions"]
-          .map((value) => new Permission.fromJson(value))
+          .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("removedPermissions")) {
       removedPermissions = _json["removedPermissions"]
-          .map((value) => new Permission.fromJson(value))
+          .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
   }

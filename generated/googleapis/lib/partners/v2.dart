@@ -110,7 +110,7 @@ class AnalyticsResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -196,7 +196,7 @@ class ClientMessagesResourceApi {
   async.Future<LogMessageResponse> log(LogMessageRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -303,7 +303,7 @@ class CompaniesResourceApi {
       core.String address,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -515,7 +515,7 @@ class CompaniesResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -654,7 +654,7 @@ class CompaniesLeadsResourceApi {
       CreateLeadRequest request, core.String companyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -753,7 +753,7 @@ class LeadsResourceApi {
       core.String orderBy,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -871,7 +871,7 @@ class OffersResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -996,7 +996,7 @@ class OffersHistoryResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1087,7 +1087,7 @@ class UserEventsResourceApi {
   async.Future<LogUserEventResponse> log(LogUserEventRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1164,7 +1164,7 @@ class UserStatesResourceApi {
       core.String requestMetadata_trafficSource_trafficSourceId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1276,7 +1276,7 @@ class UsersResourceApi {
       core.String requestMetadata_userOverrides_ipAddress,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1387,7 +1387,7 @@ class UsersResourceApi {
       core.String requestMetadata_trafficSource_trafficSourceId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1503,7 +1503,7 @@ class UsersResourceApi {
       core.List<core.String> requestMetadata_experimentIds,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1612,7 +1612,7 @@ class UsersResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1722,7 +1722,7 @@ class V2ResourceApi {
       core.String requestMetadata_userOverrides_ipAddress,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1830,7 +1830,7 @@ class V2ResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1943,7 +1943,7 @@ class V2ResourceApi {
       core.String requestMetadata_trafficSource_trafficSubId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2106,7 +2106,7 @@ class AnalyticsDataPoint {
     }
     if (_json.containsKey("eventLocations")) {
       eventLocations = _json["eventLocations"]
-          .map((value) => new LatLng.fromJson(value))
+          .map<LatLng>((value) => new LatLng.fromJson(value))
           .toList();
     }
   }
@@ -2233,7 +2233,8 @@ class AvailableOffer {
     }
     if (_json.containsKey("countryOfferInfos")) {
       countryOfferInfos = _json["countryOfferInfos"]
-          .map((value) => new CountryOfferInfo.fromJson(value))
+          .map<CountryOfferInfo>(
+              (value) => new CountryOfferInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -2256,7 +2257,7 @@ class AvailableOffer {
     }
     if (_json.containsKey("qualifiedCustomer")) {
       qualifiedCustomer = _json["qualifiedCustomer"]
-          .map((value) => new OfferCustomer.fromJson(value))
+          .map<OfferCustomer>((value) => new OfferCustomer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("qualifiedCustomersComplete")) {
@@ -2463,7 +2464,8 @@ class CertificationStatus {
   CertificationStatus.fromJson(core.Map _json) {
     if (_json.containsKey("examStatuses")) {
       examStatuses = _json["examStatuses"]
-          .map((value) => new CertificationExamStatus.fromJson(value))
+          .map<CertificationExamStatus>(
+              (value) => new CertificationExamStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("isCertified")) {
@@ -2602,7 +2604,8 @@ class Company {
     }
     if (_json.containsKey("certificationStatuses")) {
       certificationStatuses = _json["certificationStatuses"]
-          .map((value) => new CertificationStatus.fromJson(value))
+          .map<CertificationStatus>(
+              (value) => new CertificationStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("companyTypes")) {
@@ -2620,12 +2623,13 @@ class Company {
     }
     if (_json.containsKey("localizedInfos")) {
       localizedInfos = _json["localizedInfos"]
-          .map((value) => new LocalizedCompanyInfo.fromJson(value))
+          .map<LocalizedCompanyInfo>(
+              (value) => new LocalizedCompanyInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new Location.fromJson(value))
+          .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -2651,14 +2655,17 @@ class Company {
       publicProfile = new PublicProfile.fromJson(_json["publicProfile"]);
     }
     if (_json.containsKey("ranks")) {
-      ranks = _json["ranks"].map((value) => new Rank.fromJson(value)).toList();
+      ranks = _json["ranks"]
+          .map<Rank>((value) => new Rank.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("services")) {
       services = _json["services"];
     }
     if (_json.containsKey("specializationStatus")) {
       specializationStatus = _json["specializationStatus"]
-          .map((value) => new SpecializationStatus.fromJson(value))
+          .map<SpecializationStatus>(
+              (value) => new SpecializationStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("websiteUrl")) {
@@ -2869,7 +2876,8 @@ class CompanyRelation {
     }
     if (_json.containsKey("specializationStatus")) {
       specializationStatus = _json["specializationStatus"]
-          .map((value) => new SpecializationStatus.fromJson(value))
+          .map<SpecializationStatus>(
+              (value) => new SpecializationStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("state")) {
@@ -3772,7 +3780,7 @@ class ListAnalyticsResponse {
   ListAnalyticsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("analytics")) {
       analytics = _json["analytics"]
-          .map((value) => new Analytics.fromJson(value))
+          .map<Analytics>((value) => new Analytics.fromJson(value))
           .toList();
     }
     if (_json.containsKey("analyticsSummary")) {
@@ -3828,7 +3836,7 @@ class ListCompaniesResponse {
   ListCompaniesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("companies")) {
       companies = _json["companies"]
-          .map((value) => new Company.fromJson(value))
+          .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3878,7 +3886,9 @@ class ListLeadsResponse {
 
   ListLeadsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("leads")) {
-      leads = _json["leads"].map((value) => new Lead.fromJson(value)).toList();
+      leads = _json["leads"]
+          .map<Lead>((value) => new Lead.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -3942,7 +3952,7 @@ class ListOffersHistoryResponse {
     }
     if (_json.containsKey("offers")) {
       offers = _json["offers"]
-          .map((value) => new HistoricalOffer.fromJson(value))
+          .map<HistoricalOffer>((value) => new HistoricalOffer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("responseMetadata")) {
@@ -4003,7 +4013,7 @@ class ListOffersResponse {
   ListOffersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("availableOffers")) {
       availableOffers = _json["availableOffers"]
-          .map((value) => new AvailableOffer.fromJson(value))
+          .map<AvailableOffer>((value) => new AvailableOffer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("noOfferReason")) {
@@ -4671,7 +4681,7 @@ class LogUserEventRequest {
     }
     if (_json.containsKey("eventDatas")) {
       eventDatas = _json["eventDatas"]
-          .map((value) => new EventData.fromJson(value))
+          .map<EventData>((value) => new EventData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventScope")) {
@@ -5296,12 +5306,13 @@ class User {
   User.fromJson(core.Map _json) {
     if (_json.containsKey("availableAdwordsManagerAccounts")) {
       availableAdwordsManagerAccounts = _json["availableAdwordsManagerAccounts"]
-          .map((value) => new AdWordsManagerAccountInfo.fromJson(value))
+          .map<AdWordsManagerAccountInfo>(
+              (value) => new AdWordsManagerAccountInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("certificationStatus")) {
       certificationStatus = _json["certificationStatus"]
-          .map((value) => new Certification.fromJson(value))
+          .map<Certification>((value) => new Certification.fromJson(value))
           .toList();
     }
     if (_json.containsKey("company")) {
@@ -5312,7 +5323,7 @@ class User {
     }
     if (_json.containsKey("examStatus")) {
       examStatus = _json["examStatus"]
-          .map((value) => new ExamStatus.fromJson(value))
+          .map<ExamStatus>((value) => new ExamStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {

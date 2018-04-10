@@ -72,7 +72,7 @@ class ColumnResourceApi {
   async.Future delete(core.String tableId, core.String columnId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -125,7 +125,7 @@ class ColumnResourceApi {
   async.Future<Column> get(core.String tableId, core.String columnId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -176,7 +176,7 @@ class ColumnResourceApi {
   async.Future<Column> insert(Column request, core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -228,7 +228,7 @@ class ColumnResourceApi {
   async.Future<ColumnList> list(core.String tableId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -283,7 +283,7 @@ class ColumnResourceApi {
       Column request, core.String tableId, core.String columnId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -340,7 +340,7 @@ class ColumnResourceApi {
       Column request, core.String tableId, core.String columnId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -419,7 +419,7 @@ class QueryResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -495,7 +495,7 @@ class QueryResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -558,7 +558,7 @@ class StyleResourceApi {
   async.Future delete(core.String tableId, core.int styleId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -611,7 +611,7 @@ class StyleResourceApi {
   async.Future<StyleSetting> get(core.String tableId, core.int styleId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -662,7 +662,7 @@ class StyleResourceApi {
   async.Future<StyleSetting> insert(StyleSetting request, core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -713,7 +713,7 @@ class StyleResourceApi {
   async.Future<StyleSettingList> list(core.String tableId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -767,7 +767,7 @@ class StyleResourceApi {
       StyleSetting request, core.String tableId, core.int styleId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -824,7 +824,7 @@ class StyleResourceApi {
       StyleSetting request, core.String tableId, core.int styleId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -885,7 +885,7 @@ class TableResourceApi {
   async.Future<Table> copy(core.String tableId,
       {core.bool copyPresentation, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -928,7 +928,7 @@ class TableResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String tableId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -972,7 +972,7 @@ class TableResourceApi {
   /// this method will complete with the same error.
   async.Future<Table> get(core.String tableId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1050,7 +1050,7 @@ class TableResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1137,7 +1137,7 @@ class TableResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1195,7 +1195,7 @@ class TableResourceApi {
   /// this method will complete with the same error.
   async.Future<Table> insert(Table request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1241,7 +1241,7 @@ class TableResourceApi {
   async.Future<TableList> list(
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1295,7 +1295,7 @@ class TableResourceApi {
   async.Future<Table> patch(Table request, core.String tableId,
       {core.bool replaceViewDefinition, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1351,7 +1351,7 @@ class TableResourceApi {
   async.Future<Table> update(Table request, core.String tableId,
       {core.bool replaceViewDefinition, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1406,7 +1406,7 @@ class TaskResourceApi {
   async.Future delete(core.String tableId, core.String taskId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1459,7 +1459,7 @@ class TaskResourceApi {
   async.Future<Task> get(core.String tableId, core.String taskId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1518,7 +1518,7 @@ class TaskResourceApi {
       core.int startIndex,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1576,7 +1576,7 @@ class TemplateResourceApi {
   async.Future delete(core.String tableId, core.int templateId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1629,7 +1629,7 @@ class TemplateResourceApi {
   async.Future<Template> get(core.String tableId, core.int templateId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1680,7 +1680,7 @@ class TemplateResourceApi {
   async.Future<Template> insert(Template request, core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1732,7 +1732,7 @@ class TemplateResourceApi {
   async.Future<TemplateList> list(core.String tableId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1786,7 +1786,7 @@ class TemplateResourceApi {
       Template request, core.String tableId, core.int templateId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1843,7 +1843,7 @@ class TemplateResourceApi {
       Template request, core.String tableId, core.int templateId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2080,8 +2080,9 @@ class ColumnList {
 
   ColumnList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Column.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Column>((value) => new Column.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2570,7 +2571,8 @@ class StyleFunctionGradient {
   StyleFunctionGradient.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = _json["colors"]
-          .map((value) => new StyleFunctionGradientColors.fromJson(value))
+          .map<StyleFunctionGradientColors>(
+              (value) => new StyleFunctionGradientColors.fromJson(value))
           .toList();
     }
     if (_json.containsKey("max")) {
@@ -2623,8 +2625,9 @@ class StyleFunction {
 
   StyleFunction.fromJson(core.Map _json) {
     if (_json.containsKey("buckets")) {
-      buckets =
-          _json["buckets"].map((value) => new Bucket.fromJson(value)).toList();
+      buckets = _json["buckets"]
+          .map<Bucket>((value) => new Bucket.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("columnName")) {
       columnName = _json["columnName"];
@@ -2757,7 +2760,7 @@ class StyleSettingList {
   StyleSettingList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new StyleSetting.fromJson(value))
+          .map<StyleSetting>((value) => new StyleSetting.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2836,8 +2839,9 @@ class Table {
       baseTableIds = _json["baseTableIds"];
     }
     if (_json.containsKey("columns")) {
-      columns =
-          _json["columns"].map((value) => new Column.fromJson(value)).toList();
+      columns = _json["columns"]
+          .map<Column>((value) => new Column.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -2912,7 +2916,9 @@ class TableList {
 
   TableList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Table.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Table>((value) => new Table.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3021,7 +3027,9 @@ class TaskList {
 
   TaskList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Task.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Task>((value) => new Task.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3146,8 +3154,9 @@ class TemplateList {
 
   TemplateList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Template.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Template>((value) => new Template.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

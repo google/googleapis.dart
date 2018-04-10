@@ -121,14 +121,14 @@ checkCategory(api.Category o) {
   buildCounterCategory--;
 }
 
-buildUnnamed2952() {
+buildUnnamed3009() {
   var o = new core.List<api.BillingAccount>();
   o.add(buildBillingAccount());
   o.add(buildBillingAccount());
   return o;
 }
 
-checkUnnamed2952(core.List<api.BillingAccount> o) {
+checkUnnamed3009(core.List<api.BillingAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBillingAccount(o[0]);
   checkBillingAccount(o[1]);
@@ -139,7 +139,7 @@ buildListBillingAccountsResponse() {
   var o = new api.ListBillingAccountsResponse();
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    o.billingAccounts = buildUnnamed2952();
+    o.billingAccounts = buildUnnamed3009();
     o.nextPageToken = "foo";
   }
   buildCounterListBillingAccountsResponse--;
@@ -149,20 +149,20 @@ buildListBillingAccountsResponse() {
 checkListBillingAccountsResponse(api.ListBillingAccountsResponse o) {
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    checkUnnamed2952(o.billingAccounts);
+    checkUnnamed3009(o.billingAccounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBillingAccountsResponse--;
 }
 
-buildUnnamed2953() {
+buildUnnamed3010() {
   var o = new core.List<api.ProjectBillingInfo>();
   o.add(buildProjectBillingInfo());
   o.add(buildProjectBillingInfo());
   return o;
 }
 
-checkUnnamed2953(core.List<api.ProjectBillingInfo> o) {
+checkUnnamed3010(core.List<api.ProjectBillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProjectBillingInfo(o[0]);
   checkProjectBillingInfo(o[1]);
@@ -174,7 +174,7 @@ buildListProjectBillingInfoResponse() {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     o.nextPageToken = "foo";
-    o.projectBillingInfo = buildUnnamed2953();
+    o.projectBillingInfo = buildUnnamed3010();
   }
   buildCounterListProjectBillingInfoResponse--;
   return o;
@@ -184,19 +184,19 @@ checkListProjectBillingInfoResponse(api.ListProjectBillingInfoResponse o) {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2953(o.projectBillingInfo);
+    checkUnnamed3010(o.projectBillingInfo);
   }
   buildCounterListProjectBillingInfoResponse--;
 }
 
-buildUnnamed2954() {
+buildUnnamed3011() {
   var o = new core.List<api.Service>();
   o.add(buildService());
   o.add(buildService());
   return o;
 }
 
-checkUnnamed2954(core.List<api.Service> o) {
+checkUnnamed3011(core.List<api.Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkService(o[0]);
   checkService(o[1]);
@@ -208,7 +208,7 @@ buildListServicesResponse() {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     o.nextPageToken = "foo";
-    o.services = buildUnnamed2954();
+    o.services = buildUnnamed3011();
   }
   buildCounterListServicesResponse--;
   return o;
@@ -218,19 +218,19 @@ checkListServicesResponse(api.ListServicesResponse o) {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2954(o.services);
+    checkUnnamed3011(o.services);
   }
   buildCounterListServicesResponse--;
 }
 
-buildUnnamed2955() {
+buildUnnamed3012() {
   var o = new core.List<api.Sku>();
   o.add(buildSku());
   o.add(buildSku());
   return o;
 }
 
-checkUnnamed2955(core.List<api.Sku> o) {
+checkUnnamed3012(core.List<api.Sku> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSku(o[0]);
   checkSku(o[1]);
@@ -242,7 +242,7 @@ buildListSkusResponse() {
   buildCounterListSkusResponse++;
   if (buildCounterListSkusResponse < 3) {
     o.nextPageToken = "foo";
-    o.skus = buildUnnamed2955();
+    o.skus = buildUnnamed3012();
   }
   buildCounterListSkusResponse--;
   return o;
@@ -252,7 +252,7 @@ checkListSkusResponse(api.ListSkusResponse o) {
   buildCounterListSkusResponse++;
   if (buildCounterListSkusResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2955(o.skus);
+    checkUnnamed3012(o.skus);
   }
   buildCounterListSkusResponse--;
 }
@@ -280,14 +280,14 @@ checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-buildUnnamed2956() {
+buildUnnamed3013() {
   var o = new core.List<api.TierRate>();
   o.add(buildTierRate());
   o.add(buildTierRate());
   return o;
 }
 
-checkUnnamed2956(core.List<api.TierRate> o) {
+checkUnnamed3013(core.List<api.TierRate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTierRate(o[0]);
   checkTierRate(o[1]);
@@ -302,7 +302,7 @@ buildPricingExpression() {
     o.baseUnitConversionFactor = 42.0;
     o.baseUnitDescription = "foo";
     o.displayQuantity = 42.0;
-    o.tieredRates = buildUnnamed2956();
+    o.tieredRates = buildUnnamed3013();
     o.usageUnit = "foo";
     o.usageUnitDescription = "foo";
   }
@@ -317,7 +317,7 @@ checkPricingExpression(api.PricingExpression o) {
     unittest.expect(o.baseUnitConversionFactor, unittest.equals(42.0));
     unittest.expect(o.baseUnitDescription, unittest.equals('foo'));
     unittest.expect(o.displayQuantity, unittest.equals(42.0));
-    checkUnnamed2956(o.tieredRates);
+    checkUnnamed3013(o.tieredRates);
     unittest.expect(o.usageUnit, unittest.equals('foo'));
     unittest.expect(o.usageUnitDescription, unittest.equals('foo'));
   }
@@ -399,27 +399,27 @@ checkService(api.Service o) {
   buildCounterService--;
 }
 
-buildUnnamed2957() {
+buildUnnamed3014() {
   var o = new core.List<api.PricingInfo>();
   o.add(buildPricingInfo());
   o.add(buildPricingInfo());
   return o;
 }
 
-checkUnnamed2957(core.List<api.PricingInfo> o) {
+checkUnnamed3014(core.List<api.PricingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricingInfo(o[0]);
   checkPricingInfo(o[1]);
 }
 
-buildUnnamed2958() {
+buildUnnamed3015() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2958(core.List<core.String> o) {
+checkUnnamed3015(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -433,9 +433,9 @@ buildSku() {
     o.category = buildCategory();
     o.description = "foo";
     o.name = "foo";
-    o.pricingInfo = buildUnnamed2957();
+    o.pricingInfo = buildUnnamed3014();
     o.serviceProviderName = "foo";
-    o.serviceRegions = buildUnnamed2958();
+    o.serviceRegions = buildUnnamed3015();
     o.skuId = "foo";
   }
   buildCounterSku--;
@@ -448,9 +448,9 @@ checkSku(api.Sku o) {
     checkCategory(o.category);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2957(o.pricingInfo);
+    checkUnnamed3014(o.pricingInfo);
     unittest.expect(o.serviceProviderName, unittest.equals('foo'));
-    checkUnnamed2958(o.serviceRegions);
+    checkUnnamed3015(o.serviceRegions);
     unittest.expect(o.skuId, unittest.equals('foo'));
   }
   buildCounterSku--;
@@ -638,7 +638,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.BillingAccount response) {
+          .then(unittest.expectAsync1(((response) {
         checkBillingAccount(response);
       })));
     });
@@ -697,8 +697,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.ListBillingAccountsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListBillingAccountsResponse(response);
       })));
     });
@@ -761,8 +760,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.ListProjectBillingInfoResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListProjectBillingInfoResponse(response);
       })));
     });
@@ -815,7 +813,7 @@ main() {
       }), true);
       res
           .getBillingInfo(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
+          .then(unittest.expectAsync1(((response) {
         checkProjectBillingInfo(response);
       })));
     });
@@ -870,7 +868,7 @@ main() {
       }), true);
       res
           .updateBillingInfo(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
+          .then(unittest.expectAsync1(((response) {
         checkProjectBillingInfo(response);
       })));
     });
@@ -930,7 +928,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListServicesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListServicesResponse(response);
       })));
     });
@@ -1005,7 +1003,7 @@ main() {
               startTime: arg_startTime,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListSkusResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListSkusResponse(response);
       })));
     });

@@ -54,7 +54,7 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Groups> get(core.String groupUniqueId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -99,7 +99,7 @@ class GroupsResourceApi {
   async.Future<Groups> patch(Groups request, core.String groupUniqueId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -147,7 +147,7 @@ class GroupsResourceApi {
   async.Future<Groups> update(Groups request, core.String groupUniqueId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;

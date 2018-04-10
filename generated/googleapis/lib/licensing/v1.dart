@@ -60,7 +60,7 @@ class LicenseAssignmentsResourceApi {
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -120,7 +120,7 @@ class LicenseAssignmentsResourceApi {
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -178,7 +178,7 @@ class LicenseAssignmentsResourceApi {
       LicenseAssignmentInsert request, core.String productId, core.String skuId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -241,7 +241,7 @@ class LicenseAssignmentsResourceApi {
       core.String productId, core.String customerId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -307,7 +307,7 @@ class LicenseAssignmentsResourceApi {
       core.String productId, core.String skuId, core.String customerId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -373,7 +373,7 @@ class LicenseAssignmentsResourceApi {
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -436,7 +436,7 @@ class LicenseAssignmentsResourceApi {
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -606,7 +606,8 @@ class LicenseAssignmentList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LicenseAssignment.fromJson(value))
+          .map<LicenseAssignment>(
+              (value) => new LicenseAssignment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {

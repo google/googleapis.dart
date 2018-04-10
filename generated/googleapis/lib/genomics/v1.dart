@@ -98,7 +98,7 @@ class AnnotationsResourceApi {
       BatchCreateAnnotationsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -162,7 +162,7 @@ class AnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Annotation> create(Annotation request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -205,7 +205,7 @@ class AnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String annotationId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -249,7 +249,7 @@ class AnnotationsResourceApi {
   async.Future<Annotation> get(core.String annotationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -299,7 +299,7 @@ class AnnotationsResourceApi {
       SearchAnnotationsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -354,7 +354,7 @@ class AnnotationsResourceApi {
   async.Future<Annotation> update(Annotation request, core.String annotationId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -418,7 +418,7 @@ class AnnotationsetsResourceApi {
   async.Future<AnnotationSet> create(AnnotationSet request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -462,7 +462,7 @@ class AnnotationsetsResourceApi {
   async.Future<Empty> delete(core.String annotationSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -507,7 +507,7 @@ class AnnotationsetsResourceApi {
   async.Future<AnnotationSet> get(core.String annotationSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -558,7 +558,7 @@ class AnnotationsetsResourceApi {
       SearchAnnotationSetsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -615,7 +615,7 @@ class AnnotationsetsResourceApi {
       AnnotationSet request, core.String annotationSetId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -674,7 +674,7 @@ class CallsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<CallSet> create(CallSet request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -720,7 +720,7 @@ class CallsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String callSetId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -766,7 +766,7 @@ class CallsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<CallSet> get(core.String callSetId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -823,7 +823,7 @@ class CallsetsResourceApi {
   async.Future<CallSet> patch(CallSet request, core.String callSetId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -879,7 +879,7 @@ class CallsetsResourceApi {
   async.Future<SearchCallSetsResponse> search(SearchCallSetsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -931,7 +931,7 @@ class DatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Dataset> create(Dataset request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -982,7 +982,7 @@ class DatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String datasetId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1028,7 +1028,7 @@ class DatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Dataset> get(core.String datasetId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1085,7 +1085,7 @@ class DatasetsResourceApi {
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1149,7 +1149,7 @@ class DatasetsResourceApi {
       core.String projectId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1212,7 +1212,7 @@ class DatasetsResourceApi {
   async.Future<Dataset> patch(Dataset request, core.String datasetId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1275,7 +1275,7 @@ class DatasetsResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1335,7 +1335,7 @@ class DatasetsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1393,7 +1393,7 @@ class DatasetsResourceApi {
       UndeleteDatasetRequest request, core.String datasetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1454,7 +1454,7 @@ class OperationsResourceApi {
   async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1502,7 +1502,7 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1575,7 +1575,7 @@ class OperationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1642,7 +1642,7 @@ class ReadgroupsetsResourceApi {
   async.Future<Empty> delete(core.String readGroupSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1700,7 +1700,7 @@ class ReadgroupsetsResourceApi {
       ExportReadGroupSetRequest request, core.String readGroupSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1752,7 +1752,7 @@ class ReadgroupsetsResourceApi {
   async.Future<ReadGroupSet> get(core.String readGroupSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1814,7 +1814,7 @@ class ReadgroupsetsResourceApi {
   async.Future<Operation> import(ImportReadGroupSetsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1877,7 +1877,7 @@ class ReadgroupsetsResourceApi {
       ReadGroupSet request, core.String readGroupSetId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1935,7 +1935,7 @@ class ReadgroupsetsResourceApi {
       SearchReadGroupSetsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2036,7 +2036,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
       core.String targetBucketWidth,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2132,7 +2132,7 @@ class ReadsResourceApi {
   async.Future<SearchReadsResponse> search(SearchReadsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2190,7 +2190,7 @@ class ReferencesResourceApi {
   /// this method will complete with the same error.
   async.Future<Reference> get(core.String referenceId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2240,7 +2240,7 @@ class ReferencesResourceApi {
   async.Future<SearchReferencesResponse> search(SearchReferencesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2318,7 +2318,7 @@ class ReferencesBasesResourceApi {
       core.String end,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2388,7 +2388,7 @@ class ReferencesetsResourceApi {
   async.Future<ReferenceSet> get(core.String referenceSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2440,7 +2440,7 @@ class ReferencesetsResourceApi {
       SearchReferenceSetsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2493,7 +2493,7 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<Variant> create(Variant request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2539,7 +2539,7 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String variantId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2585,7 +2585,7 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<Variant> get(core.String variantId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2647,7 +2647,7 @@ class VariantsResourceApi {
   async.Future<Operation> import(ImportVariantsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2780,7 +2780,7 @@ class VariantsResourceApi {
   async.Future<Empty> merge(MergeVariantsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2838,7 +2838,7 @@ class VariantsResourceApi {
   async.Future<Variant> patch(Variant request, core.String variantId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2894,7 +2894,7 @@ class VariantsResourceApi {
   async.Future<SearchVariantsResponse> search(SearchVariantsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2950,7 +2950,7 @@ class VariantsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<VariantSet> create(VariantSet request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2997,7 +2997,7 @@ class VariantsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String variantSetId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3049,7 +3049,7 @@ class VariantsetsResourceApi {
       ExportVariantSetRequest request, core.String variantSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3101,7 +3101,7 @@ class VariantsetsResourceApi {
   async.Future<VariantSet> get(core.String variantSetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3160,7 +3160,7 @@ class VariantsetsResourceApi {
   async.Future<VariantSet> patch(VariantSet request, core.String variantSetId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3217,7 +3217,7 @@ class VariantsetsResourceApi {
       SearchVariantSetsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3520,7 +3520,7 @@ class BatchCreateAnnotationsRequest {
   BatchCreateAnnotationsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new Annotation.fromJson(value))
+          .map<Annotation>((value) => new Annotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("requestId")) {
@@ -3551,8 +3551,9 @@ class BatchCreateAnnotationsResponse {
 
   BatchCreateAnnotationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
-      entries =
-          _json["entries"].map((value) => new Entry.fromJson(value)).toList();
+      entries = _json["entries"]
+          .map<Entry>((value) => new Entry.fromJson(value))
+          .toList();
     }
   }
 
@@ -3827,7 +3828,7 @@ class ClinicalCondition {
     }
     if (_json.containsKey("externalIds")) {
       externalIds = _json["externalIds"]
-          .map((value) => new ExternalId.fromJson(value))
+          .map<ExternalId>((value) => new ExternalId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("names")) {
@@ -4583,8 +4584,9 @@ class LinearAlignment {
 
   LinearAlignment.fromJson(core.Map _json) {
     if (_json.containsKey("cigar")) {
-      cigar =
-          _json["cigar"].map((value) => new CigarUnit.fromJson(value)).toList();
+      cigar = _json["cigar"]
+          .map<CigarUnit>((value) => new CigarUnit.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("mappingQuality")) {
       mappingQuality = _json["mappingQuality"];
@@ -4680,7 +4682,7 @@ class ListCoverageBucketsResponse {
     }
     if (_json.containsKey("coverageBuckets")) {
       coverageBuckets = _json["coverageBuckets"]
-          .map((value) => new CoverageBucket.fromJson(value))
+          .map<CoverageBucket>((value) => new CoverageBucket.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4720,7 +4722,7 @@ class ListDatasetsResponse {
   ListDatasetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("datasets")) {
       datasets = _json["datasets"]
-          .map((value) => new Dataset.fromJson(value))
+          .map<Dataset>((value) => new Dataset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4757,7 +4759,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -4798,7 +4800,7 @@ class MergeVariantsRequest {
     }
     if (_json.containsKey("variants")) {
       variants = _json["variants"]
-          .map((value) => new Variant.fromJson(value))
+          .map<Variant>((value) => new Variant.fromJson(value))
           .toList();
     }
   }
@@ -4990,7 +4992,7 @@ class OperationMetadata {
     }
     if (_json.containsKey("events")) {
       events = _json["events"]
-          .map((value) => new OperationEvent.fromJson(value))
+          .map<OperationEvent>((value) => new OperationEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labels")) {
@@ -5111,7 +5113,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -5650,7 +5652,7 @@ class ReadGroup {
     }
     if (_json.containsKey("programs")) {
       programs = _json["programs"]
-          .map((value) => new Program.fromJson(value))
+          .map<Program>((value) => new Program.fromJson(value))
           .toList();
     }
     if (_json.containsKey("referenceSetId")) {
@@ -5757,7 +5759,7 @@ class ReadGroupSet {
     }
     if (_json.containsKey("readGroups")) {
       readGroups = _json["readGroups"]
-          .map((value) => new ReadGroup.fromJson(value))
+          .map<ReadGroup>((value) => new ReadGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("referenceSetId")) {
@@ -6133,7 +6135,7 @@ class SearchAnnotationSetsResponse {
   SearchAnnotationSetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("annotationSets")) {
       annotationSets = _json["annotationSets"]
-          .map((value) => new AnnotationSet.fromJson(value))
+          .map<AnnotationSet>((value) => new AnnotationSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6258,7 +6260,7 @@ class SearchAnnotationsResponse {
   SearchAnnotationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new Annotation.fromJson(value))
+          .map<Annotation>((value) => new Annotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6351,7 +6353,7 @@ class SearchCallSetsResponse {
   SearchCallSetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("callSets")) {
       callSets = _json["callSets"]
-          .map((value) => new CallSet.fromJson(value))
+          .map<CallSet>((value) => new CallSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6446,7 +6448,7 @@ class SearchReadGroupSetsResponse {
     }
     if (_json.containsKey("readGroupSets")) {
       readGroupSets = _json["readGroupSets"]
-          .map((value) => new ReadGroupSet.fromJson(value))
+          .map<ReadGroupSet>((value) => new ReadGroupSet.fromJson(value))
           .toList();
     }
   }
@@ -6573,8 +6575,9 @@ class SearchReadsResponse {
 
   SearchReadsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("alignments")) {
-      alignments =
-          _json["alignments"].map((value) => new Read.fromJson(value)).toList();
+      alignments = _json["alignments"]
+          .map<Read>((value) => new Read.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -6678,7 +6681,7 @@ class SearchReferenceSetsResponse {
     }
     if (_json.containsKey("referenceSets")) {
       referenceSets = _json["referenceSets"]
-          .map((value) => new ReferenceSet.fromJson(value))
+          .map<ReferenceSet>((value) => new ReferenceSet.fromJson(value))
           .toList();
     }
   }
@@ -6779,7 +6782,7 @@ class SearchReferencesResponse {
     }
     if (_json.containsKey("references")) {
       references = _json["references"]
-          .map((value) => new Reference.fromJson(value))
+          .map<Reference>((value) => new Reference.fromJson(value))
           .toList();
     }
   }
@@ -6861,7 +6864,7 @@ class SearchVariantSetsResponse {
     }
     if (_json.containsKey("variantSets")) {
       variantSets = _json["variantSets"]
-          .map((value) => new VariantSet.fromJson(value))
+          .map<VariantSet>((value) => new VariantSet.fromJson(value))
           .toList();
     }
   }
@@ -7006,7 +7009,7 @@ class SearchVariantsResponse {
     }
     if (_json.containsKey("variants")) {
       variants = _json["variants"]
-          .map((value) => new Variant.fromJson(value))
+          .map<Variant>((value) => new Variant.fromJson(value))
           .toList();
     }
   }
@@ -7255,7 +7258,9 @@ class Transcript {
       codingSequence = new CodingSequence.fromJson(_json["codingSequence"]);
     }
     if (_json.containsKey("exons")) {
-      exons = _json["exons"].map((value) => new Exon.fromJson(value)).toList();
+      exons = _json["exons"]
+          .map<Exon>((value) => new Exon.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("geneId")) {
       geneId = _json["geneId"];
@@ -7364,7 +7369,7 @@ class Variant {
     }
     if (_json.containsKey("calls")) {
       calls = _json["calls"]
-          .map((value) => new VariantCall.fromJson(value))
+          .map<VariantCall>((value) => new VariantCall.fromJson(value))
           .toList();
     }
     if (_json.containsKey("created")) {
@@ -7549,7 +7554,8 @@ class VariantAnnotation {
     }
     if (_json.containsKey("conditions")) {
       conditions = _json["conditions"]
-          .map((value) => new ClinicalCondition.fromJson(value))
+          .map<ClinicalCondition>(
+              (value) => new ClinicalCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("effect")) {
@@ -7742,7 +7748,8 @@ class VariantSet {
     }
     if (_json.containsKey("metadata")) {
       metadata = _json["metadata"]
-          .map((value) => new VariantSetMetadata.fromJson(value))
+          .map<VariantSetMetadata>(
+              (value) => new VariantSetMetadata.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -7750,7 +7757,7 @@ class VariantSet {
     }
     if (_json.containsKey("referenceBounds")) {
       referenceBounds = _json["referenceBounds"]
-          .map((value) => new ReferenceBound.fromJson(value))
+          .map<ReferenceBound>((value) => new ReferenceBound.fromJson(value))
           .toList();
     }
     if (_json.containsKey("referenceSetId")) {

@@ -78,7 +78,7 @@ class JobsResourceApi {
   async.Future<Job> create(Job request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -128,7 +128,7 @@ class JobsResourceApi {
   async.Future<Empty> delete(core.String jobId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -178,7 +178,7 @@ class JobsResourceApi {
   async.Future<Job> get(core.String jobId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -245,7 +245,7 @@ class JobsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -309,7 +309,7 @@ class JobsReportsResourceApi {
   async.Future<Report> get(core.String jobId, core.String reportId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -393,7 +393,7 @@ class JobsReportsResourceApi {
       core.String startTimeBefore,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -472,7 +472,7 @@ class MediaResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -549,7 +549,7 @@ class ReportTypesResourceApi {
       core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1309,7 +1309,8 @@ class GdataMedia {
     }
     if (_json.containsKey("compositeMedia")) {
       compositeMedia = _json["compositeMedia"]
-          .map((value) => new GdataCompositeMedia.fromJson(value))
+          .map<GdataCompositeMedia>(
+              (value) => new GdataCompositeMedia.fromJson(value))
           .toList();
     }
     if (_json.containsKey("contentType")) {
@@ -1622,7 +1623,8 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
-      jobs = _json["jobs"].map((value) => new Job.fromJson(value)).toList();
+      jobs =
+          _json["jobs"].map<Job>((value) => new Job.fromJson(value)).toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1663,7 +1665,7 @@ class ListReportTypesResponse {
     }
     if (_json.containsKey("reportTypes")) {
       reportTypes = _json["reportTypes"]
-          .map((value) => new ReportType.fromJson(value))
+          .map<ReportType>((value) => new ReportType.fromJson(value))
           .toList();
     }
   }
@@ -1701,8 +1703,9 @@ class ListReportsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("reports")) {
-      reports =
-          _json["reports"].map((value) => new Report.fromJson(value)).toList();
+      reports = _json["reports"]
+          .map<Report>((value) => new Report.fromJson(value))
+          .toList();
     }
   }
 

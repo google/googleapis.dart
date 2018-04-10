@@ -69,7 +69,7 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -122,7 +122,7 @@ class ProjectsLocationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -193,7 +193,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   async.Future<KeyRing> create(KeyRing request, core.String parent,
       {core.String keyRingId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -243,7 +243,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// this method will complete with the same error.
   async.Future<KeyRing> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -291,7 +291,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -346,7 +346,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   async.Future<ListKeyRingsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -403,7 +403,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -463,7 +463,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -534,7 +534,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   async.Future<CryptoKey> create(CryptoKey request, core.String parent,
       {core.String cryptoKeyId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -592,7 +592,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       DecryptRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -647,7 +647,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       EncryptRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -695,7 +695,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<CryptoKey> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -744,7 +744,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -800,7 +800,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   async.Future<ListCryptoKeysResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -858,7 +858,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   async.Future<CryptoKey> patch(CryptoKey request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -915,7 +915,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -976,7 +976,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1030,7 +1030,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       UpdateCryptoKeyPrimaryVersionRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1096,7 +1096,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       CryptoKeyVersion request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1160,7 +1160,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       DestroyCryptoKeyVersionRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1207,7 +1207,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<CryptoKeyVersion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1263,7 +1263,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1331,7 +1331,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       CryptoKeyVersion request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1391,7 +1391,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       RestoreCryptoKeyVersionRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1485,7 +1485,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -2050,7 +2050,8 @@ class ListCryptoKeyVersionsResponse {
   ListCryptoKeyVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cryptoKeyVersions")) {
       cryptoKeyVersions = _json["cryptoKeyVersions"]
-          .map((value) => new CryptoKeyVersion.fromJson(value))
+          .map<CryptoKeyVersion>(
+              (value) => new CryptoKeyVersion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2095,7 +2096,7 @@ class ListCryptoKeysResponse {
   ListCryptoKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cryptoKeys")) {
       cryptoKeys = _json["cryptoKeys"]
-          .map((value) => new CryptoKey.fromJson(value))
+          .map<CryptoKey>((value) => new CryptoKey.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2140,7 +2141,7 @@ class ListKeyRingsResponse {
   ListKeyRingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("keyRings")) {
       keyRings = _json["keyRings"]
-          .map((value) => new KeyRing.fromJson(value))
+          .map<KeyRing>((value) => new KeyRing.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2180,7 +2181,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new Location.fromJson(value))
+          .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2328,12 +2329,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {

@@ -81,7 +81,7 @@ class ProjectsSubscriptionsResourceApi {
       AcknowledgeRequest request, core.String subscription,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -144,7 +144,7 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Subscription> create(Subscription request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -195,7 +195,7 @@ class ProjectsSubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String subscription, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -239,7 +239,7 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Subscription> get(core.String subscription,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -287,7 +287,7 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -340,7 +340,7 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<ListSubscriptionsResponse> list(core.String project,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -400,7 +400,7 @@ class ProjectsSubscriptionsResourceApi {
       ModifyAckDeadlineRequest request, core.String subscription,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -457,7 +457,7 @@ class ProjectsSubscriptionsResourceApi {
       ModifyPushConfigRequest request, core.String subscription,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -511,7 +511,7 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<PullResponse> pull(PullRequest request, core.String subscription,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -566,7 +566,7 @@ class ProjectsSubscriptionsResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -626,7 +626,7 @@ class ProjectsSubscriptionsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -692,7 +692,7 @@ class ProjectsTopicsResourceApi {
   async.Future<Topic> create(Topic request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -742,7 +742,7 @@ class ProjectsTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String topic, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -785,7 +785,7 @@ class ProjectsTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<Topic> get(core.String topic, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -833,7 +833,7 @@ class ProjectsTopicsResourceApi {
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -886,7 +886,7 @@ class ProjectsTopicsResourceApi {
   async.Future<ListTopicsResponse> list(core.String project,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -943,7 +943,7 @@ class ProjectsTopicsResourceApi {
       PublishRequest request, core.String topic,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -998,7 +998,7 @@ class ProjectsTopicsResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1058,7 +1058,7 @@ class ProjectsTopicsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1122,7 +1122,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
   async.Future<ListTopicSubscriptionsResponse> list(core.String topic,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1275,7 +1275,7 @@ class ListSubscriptionsResponse {
     }
     if (_json.containsKey("subscriptions")) {
       subscriptions = _json["subscriptions"]
-          .map((value) => new Subscription.fromJson(value))
+          .map<Subscription>((value) => new Subscription.fromJson(value))
           .toList();
     }
   }
@@ -1344,8 +1344,9 @@ class ListTopicsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("topics")) {
-      topics =
-          _json["topics"].map((value) => new Topic.fromJson(value)).toList();
+      topics = _json["topics"]
+          .map<Topic>((value) => new Topic.fromJson(value))
+          .toList();
     }
   }
 
@@ -1503,7 +1504,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -1540,7 +1541,7 @@ class PublishRequest {
   PublishRequest.fromJson(core.Map _json) {
     if (_json.containsKey("messages")) {
       messages = _json["messages"]
-          .map((value) => new PubsubMessage.fromJson(value))
+          .map<PubsubMessage>((value) => new PubsubMessage.fromJson(value))
           .toList();
     }
   }
@@ -1695,7 +1696,7 @@ class PullResponse {
   PullResponse.fromJson(core.Map _json) {
     if (_json.containsKey("receivedMessages")) {
       receivedMessages = _json["receivedMessages"]
-          .map((value) => new ReceivedMessage.fromJson(value))
+          .map<ReceivedMessage>((value) => new ReceivedMessage.fromJson(value))
           .toList();
     }
   }

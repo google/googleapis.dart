@@ -50,7 +50,7 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed32() {
+buildUnnamed3559() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -65,7 +65,7 @@ buildUnnamed32() {
   return o;
 }
 
-checkUnnamed32(core.List<core.Object> o) {
+checkUnnamed3559(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -94,7 +94,7 @@ buildSearchResponse() {
       'bool': true,
       'string': 'foo'
     };
-    o.itemListElement = buildUnnamed32();
+    o.itemListElement = buildUnnamed3559();
   }
   buildCounterSearchResponse--;
   return o;
@@ -113,45 +113,45 @@ checkSearchResponse(api.SearchResponse o) {
     unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
     unittest.expect(casted4["bool"], unittest.equals(true));
     unittest.expect(casted4["string"], unittest.equals('foo'));
-    checkUnnamed32(o.itemListElement);
+    checkUnnamed3559(o.itemListElement);
   }
   buildCounterSearchResponse--;
 }
 
-buildUnnamed33() {
+buildUnnamed3560() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed33(core.List<core.String> o) {
+checkUnnamed3560(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed34() {
+buildUnnamed3561() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed34(core.List<core.String> o) {
+checkUnnamed3561(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed35() {
+buildUnnamed3562() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed35(core.List<core.String> o) {
+checkUnnamed3562(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -171,12 +171,12 @@ main() {
       var mock = new HttpServerMock();
       api.EntitiesResourceApi res = new api.KgsearchApi(mock).entities;
       var arg_indent = true;
-      var arg_languages = buildUnnamed33();
-      var arg_ids = buildUnnamed34();
+      var arg_languages = buildUnnamed3560();
+      var arg_ids = buildUnnamed3561();
       var arg_limit = 42;
       var arg_prefix = true;
       var arg_query = "foo";
-      var arg_types = buildUnnamed35();
+      var arg_types = buildUnnamed3562();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -236,7 +236,7 @@ main() {
               query: arg_query,
               types: arg_types,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SearchResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSearchResponse(response);
       })));
     });

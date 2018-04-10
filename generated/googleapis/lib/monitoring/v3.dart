@@ -99,7 +99,7 @@ class ProjectsCollectdTimeSeriesResourceApi {
       CreateCollectdTimeSeriesRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -164,7 +164,7 @@ class ProjectsGroupsResourceApi {
   async.Future<Group> create(Group request, core.String name,
       {core.bool validateOnly, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -214,7 +214,7 @@ class ProjectsGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -258,7 +258,7 @@ class ProjectsGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Group> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -334,7 +334,7 @@ class ProjectsGroupsResourceApi {
       core.String descendantsOfGroup,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -403,7 +403,7 @@ class ProjectsGroupsResourceApi {
   async.Future<Group> update(Group request, core.String name,
       {core.bool validateOnly, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -486,7 +486,7 @@ class ProjectsGroupsMembersResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -558,7 +558,7 @@ class ProjectsMetricDescriptorsResourceApi {
       MetricDescriptor request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -609,7 +609,7 @@ class ProjectsMetricDescriptorsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -656,7 +656,7 @@ class ProjectsMetricDescriptorsResourceApi {
   /// this method will complete with the same error.
   async.Future<MetricDescriptor> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -719,7 +719,7 @@ class ProjectsMetricDescriptorsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -786,7 +786,7 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   async.Future<MonitoredResourceDescriptor> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -850,7 +850,7 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -919,7 +919,7 @@ class ProjectsTimeSeriesResourceApi {
   async.Future<Empty> create(CreateTimeSeriesRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1084,7 +1084,7 @@ class ProjectsTimeSeriesResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1179,7 +1179,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
       UptimeCheckConfig request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1230,7 +1230,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1274,7 +1274,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<UptimeCheckConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1330,7 +1330,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   async.Future<ListUptimeCheckConfigsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1397,7 +1397,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
       UptimeCheckConfig request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1460,7 +1460,7 @@ class UptimeCheckIpsResourceApi {
   async.Future<ListUptimeCheckIpsResponse> list(
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1634,7 +1634,7 @@ class CollectdPayload {
     }
     if (_json.containsKey("values")) {
       values = _json["values"]
-          .map((value) => new CollectdValue.fromJson(value))
+          .map<CollectdValue>((value) => new CollectdValue.fromJson(value))
           .toList();
     }
   }
@@ -1697,7 +1697,8 @@ class CollectdPayloadError {
     }
     if (_json.containsKey("valueErrors")) {
       valueErrors = _json["valueErrors"]
-          .map((value) => new CollectdValueError.fromJson(value))
+          .map<CollectdValueError>(
+              (value) => new CollectdValueError.fromJson(value))
           .toList();
     }
   }
@@ -1849,7 +1850,7 @@ class CreateCollectdTimeSeriesRequest {
   CreateCollectdTimeSeriesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("collectdPayloads")) {
       collectdPayloads = _json["collectdPayloads"]
-          .map((value) => new CollectdPayload.fromJson(value))
+          .map<CollectdPayload>((value) => new CollectdPayload.fromJson(value))
           .toList();
     }
     if (_json.containsKey("collectdVersion")) {
@@ -1889,7 +1890,8 @@ class CreateCollectdTimeSeriesResponse {
   CreateCollectdTimeSeriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("payloadErrors")) {
       payloadErrors = _json["payloadErrors"]
-          .map((value) => new CollectdPayloadError.fromJson(value))
+          .map<CollectdPayloadError>(
+              (value) => new CollectdPayloadError.fromJson(value))
           .toList();
     }
   }
@@ -1919,7 +1921,7 @@ class CreateTimeSeriesRequest {
   CreateTimeSeriesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("timeSeries")) {
       timeSeries = _json["timeSeries"]
-          .map((value) => new TimeSeries.fromJson(value))
+          .map<TimeSeries>((value) => new TimeSeries.fromJson(value))
           .toList();
     }
   }
@@ -2208,8 +2210,9 @@ class Field {
       oneofIndex = _json["oneofIndex"];
     }
     if (_json.containsKey("options")) {
-      options =
-          _json["options"].map((value) => new Option.fromJson(value)).toList();
+      options = _json["options"]
+          .map<Option>((value) => new Option.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("packed")) {
       packed = _json["packed"];
@@ -2597,7 +2600,8 @@ class ListGroupMembersResponse {
   ListGroupMembersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
       members = _json["members"]
-          .map((value) => new MonitoredResource.fromJson(value))
+          .map<MonitoredResource>(
+              (value) => new MonitoredResource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2638,7 +2642,9 @@ class ListGroupsResponse {
 
   ListGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("group")) {
-      group = _json["group"].map((value) => new Group.fromJson(value)).toList();
+      group = _json["group"]
+          .map<Group>((value) => new Group.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2674,7 +2680,8 @@ class ListMetricDescriptorsResponse {
   ListMetricDescriptorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("metricDescriptors")) {
       metricDescriptors = _json["metricDescriptors"]
-          .map((value) => new MetricDescriptor.fromJson(value))
+          .map<MetricDescriptor>(
+              (value) => new MetricDescriptor.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2715,7 +2722,8 @@ class ListMonitoredResourceDescriptorsResponse {
     }
     if (_json.containsKey("resourceDescriptors")) {
       resourceDescriptors = _json["resourceDescriptors"]
-          .map((value) => new MonitoredResourceDescriptor.fromJson(value))
+          .map<MonitoredResourceDescriptor>(
+              (value) => new MonitoredResourceDescriptor.fromJson(value))
           .toList();
     }
   }
@@ -2752,7 +2760,7 @@ class ListTimeSeriesResponse {
     }
     if (_json.containsKey("timeSeries")) {
       timeSeries = _json["timeSeries"]
-          .map((value) => new TimeSeries.fromJson(value))
+          .map<TimeSeries>((value) => new TimeSeries.fromJson(value))
           .toList();
     }
   }
@@ -2798,7 +2806,8 @@ class ListUptimeCheckConfigsResponse {
     }
     if (_json.containsKey("uptimeCheckConfigs")) {
       uptimeCheckConfigs = _json["uptimeCheckConfigs"]
-          .map((value) => new UptimeCheckConfig.fromJson(value))
+          .map<UptimeCheckConfig>(
+              (value) => new UptimeCheckConfig.fromJson(value))
           .toList();
     }
   }
@@ -2842,7 +2851,7 @@ class ListUptimeCheckIpsResponse {
     }
     if (_json.containsKey("uptimeCheckIps")) {
       uptimeCheckIps = _json["uptimeCheckIps"]
-          .map((value) => new UptimeCheckIp.fromJson(value))
+          .map<UptimeCheckIp>((value) => new UptimeCheckIp.fromJson(value))
           .toList();
     }
   }
@@ -2971,7 +2980,7 @@ class MetricDescriptor {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new LabelDescriptor.fromJson(value))
+          .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metricKind")) {
@@ -3116,7 +3125,7 @@ class MonitoredResourceDescriptor {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new LabelDescriptor.fromJson(value))
+          .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -3591,8 +3600,9 @@ class TimeSeries {
       metricKind = _json["metricKind"];
     }
     if (_json.containsKey("points")) {
-      points =
-          _json["points"].map((value) => new Point.fromJson(value)).toList();
+      points = _json["points"]
+          .map<Point>((value) => new Point.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("resource")) {
       resource = new MonitoredResource.fromJson(_json["resource"]);
@@ -3654,8 +3664,9 @@ class Type {
 
   Type.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields =
-          _json["fields"].map((value) => new Field.fromJson(value)).toList();
+      fields = _json["fields"]
+          .map<Field>((value) => new Field.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3664,8 +3675,9 @@ class Type {
       oneofs = _json["oneofs"];
     }
     if (_json.containsKey("options")) {
-      options =
-          _json["options"].map((value) => new Option.fromJson(value)).toList();
+      options = _json["options"]
+          .map<Option>((value) => new Option.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("sourceContext")) {
       sourceContext = new SourceContext.fromJson(_json["sourceContext"]);
@@ -3825,7 +3837,7 @@ class UptimeCheckConfig {
   UptimeCheckConfig.fromJson(core.Map _json) {
     if (_json.containsKey("contentMatchers")) {
       contentMatchers = _json["contentMatchers"]
-          .map((value) => new ContentMatcher.fromJson(value))
+          .map<ContentMatcher>((value) => new ContentMatcher.fromJson(value))
           .toList();
     }
     if (_json.containsKey("displayName")) {
@@ -3836,7 +3848,7 @@ class UptimeCheckConfig {
     }
     if (_json.containsKey("internalCheckers")) {
       internalCheckers = _json["internalCheckers"]
-          .map((value) => new InternalChecker.fromJson(value))
+          .map<InternalChecker>((value) => new InternalChecker.fromJson(value))
           .toList();
     }
     if (_json.containsKey("isInternal")) {

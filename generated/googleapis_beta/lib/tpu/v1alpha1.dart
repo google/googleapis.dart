@@ -72,7 +72,7 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -125,7 +125,7 @@ class ProjectsLocationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -191,7 +191,7 @@ class ProjectsLocationsNodesResourceApi {
   async.Future<Operation> create(Node request, core.String parent,
       {core.String nodeId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -242,7 +242,7 @@ class ProjectsLocationsNodesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -285,7 +285,7 @@ class ProjectsLocationsNodesResourceApi {
   /// this method will complete with the same error.
   async.Future<Node> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -334,7 +334,7 @@ class ProjectsLocationsNodesResourceApi {
   async.Future<ListNodesResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -388,7 +388,7 @@ class ProjectsLocationsNodesResourceApi {
   async.Future<Operation> reimage(ReimageNodeRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -439,7 +439,7 @@ class ProjectsLocationsNodesResourceApi {
   async.Future<Operation> reset(ResetNodeRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -489,7 +489,7 @@ class ProjectsLocationsNodesResourceApi {
   async.Future<Operation> start(StartNodeRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -539,7 +539,7 @@ class ProjectsLocationsNodesResourceApi {
   async.Future<Operation> stop(StopNodeRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -603,7 +603,7 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -652,7 +652,7 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -698,7 +698,7 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -761,7 +761,7 @@ class ProjectsLocationsOperationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -823,7 +823,7 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<TensorFlowVersion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -880,7 +880,7 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -954,7 +954,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new Location.fromJson(value))
+          .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -990,7 +990,9 @@ class ListNodesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("nodes")) {
-      nodes = _json["nodes"].map((value) => new Node.fromJson(value)).toList();
+      nodes = _json["nodes"]
+          .map<Node>((value) => new Node.fromJson(value))
+          .toList();
     }
   }
 
@@ -1023,7 +1025,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -1058,7 +1060,8 @@ class ListTensorFlowVersionsResponse {
     }
     if (_json.containsKey("tensorflowVersions")) {
       tensorflowVersions = _json["tensorflowVersions"]
-          .map((value) => new TensorFlowVersion.fromJson(value))
+          .map<TensorFlowVersion>(
+              (value) => new TensorFlowVersion.fromJson(value))
           .toList();
     }
   }
@@ -1295,7 +1298,7 @@ class Node {
     }
     if (_json.containsKey("networkEndpoints")) {
       networkEndpoints = _json["networkEndpoints"]
-          .map((value) => new NetworkEndpoint.fromJson(value))
+          .map<NetworkEndpoint>((value) => new NetworkEndpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("port")) {

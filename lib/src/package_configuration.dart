@@ -21,7 +21,7 @@ class Package {
   final String changelog;
 
   Package(this.name, this.apis, this.pubspec, this.readme, this.license,
-          this.changelog);
+      this.changelog);
 }
 
 /**
@@ -86,8 +86,8 @@ class DiscoveryPackagesConfiguration {
    * [discoveryDocsDir] is the directory where all the downloaded discovery
    * documents are stored.
    */
-  Future download(String discoveryDocsDir,
-                  List<DirectoryListItems> items) async {
+  Future download(
+      String discoveryDocsDir, List<DirectoryListItems> items) async {
     // Delete all downloaded discovery documents.
     var dir = new Directory(discoveryDocsDir);
     if (dir.existsSync()) dir.deleteSync(recursive: true);
@@ -98,10 +98,10 @@ class DiscoveryPackagesConfiguration {
 
     // Download the discovery documents for the packages to build
     // (only the APIs we're interested in).
-    var futures = [];
+    var futures = <Future>[];
     packages.forEach((name, package) {
       futures.add(downloadDiscoveryDocuments('$discoveryDocsDir/$name',
-                                             ids: package.apis));
+          ids: package.apis));
     });
 
     return Future.wait(futures);
@@ -127,7 +127,7 @@ class DiscoveryPackagesConfiguration {
     // Load discovery documents from disc & initialize this object.
     List<RestDescription> allApis = [];
     yaml['packages'].forEach((Map package) {
-      package.forEach((String name, _) {
+      package.forEach((name, _) {
         allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
       });
     });
@@ -136,8 +136,7 @@ class DiscoveryPackagesConfiguration {
     // Generate packages.
     packages.forEach((name, package) {
       final results = generateAllLibraries('$discoveryDocsDir/$name',
-                           '$generatedApisDir/$name',
-                           package.pubspec);
+          '$generatedApisDir/$name', package.pubspec);
       for (final GenerateResult result in results) {
         if (!result.success) {
           print(result.toString());
@@ -163,8 +162,8 @@ class DiscoveryPackagesConfiguration {
    */
   void _initialize(List<RestDescription> allApis) {
     packages = _packagesFromYaml(yaml['packages'], configFile, allApis);
-    var knownApis = _calculateKnownApis(packages,
-                                        _listFromYaml(yaml['skipped_apis']));
+    var knownApis =
+        _calculateKnownApis(packages, _listFromYaml(yaml['skipped_apis']));
     missingApis = _calculateMissingApis(knownApis, allApis);
     excessApis = _calculateExcessApis(knownApis, allApis);
   }
@@ -190,23 +189,21 @@ package.
       if (item.icons != null && item.icons.x16 != null) {
         sb.write("![Logo](${item.icons.x16}) ");
       }
-      sb..writeln('${item.title} - ${item.name} ${item.version}')
-          ..writeln()
-          ..writeln('${item.description}')
-          ..writeln();
+      sb
+        ..writeln('${item.title} - ${item.name} ${item.version}')
+        ..writeln()
+        ..writeln('${item.description}')
+        ..writeln();
       if (item.documentationLink != null) {
-        sb.writeln(
-            'Official API documentation: ${item.documentationLink}');
+        sb.writeln('Official API documentation: ${item.documentationLink}');
         sb.writeln();
       }
     }
     return sb.toString();
   }
 
-  static Map<String, Package> _packagesFromYaml(
-      YamlList configPackages,
-      String configFile,
-      List<RestDescription>  allApis) {
+  static Map<String, Package> _packagesFromYaml(YamlList configPackages,
+      String configFile, List<RestDescription> allApis) {
     var packages = {};
     configPackages.forEach((package) {
       package.forEach((name, values) {
@@ -217,13 +214,10 @@ package.
     return packages;
   }
 
-  static Package _packageFromYaml(String name,
-                                  YamlMap values,
-                                  String configFile,
-                                  List<RestDescription> allApis) {
+  static Package _packageFromYaml(String name, YamlMap values,
+      String configFile, List<RestDescription> allApis) {
     var apis = _listFromYaml(values['apis']);
-    var version =
-        values['version'] != null ? values['version'] : '0.1.0-dev';
+    var version = values['version'] != null ? values['version'] : '0.1.0-dev';
     var author = values['author'];
     var homepage = values['homepage'];
 
@@ -251,8 +245,8 @@ package.
     // Generate package description.
     var apiDescriptions = [];
     var sb = new StringBuffer()
-        ..write('"Auto-generated client libraries for accessing '
-                'the following APIs:');
+      ..write('"Auto-generated client libraries for accessing '
+          'the following APIs:');
     bool first = true;
     allApis.forEach((RestDescription apiDescription) {
       if (apis.contains(apiDescription.id)) {
@@ -274,15 +268,15 @@ package.
     var changelog = new File(changelogFile).readAsStringSync();
 
     // Create package description with pubspec.yaml information.
-    var pubspec = new Pubspec(
-        name, version, sb.toString(), author: author, homepage: homepage);
+    var pubspec = new Pubspec(name, version, sb.toString(),
+        author: author, homepage: homepage);
     return new Package(name, apis, pubspec, readme, license, changelog);
   }
 
   /// The known APIs are the APis mentioned in each package together with
   /// the APIs explicitly skipped.
-  static Set<String> _calculateKnownApis(Map<String, Package> packages,
-                                         YamlList skippedApis) {
+  static Set<String> _calculateKnownApis(
+      Map<String, Package> packages, YamlList skippedApis) {
     var knownApis = new Set();
     knownApis.addAll(skippedApis);
     packages.forEach((_, package) => knownApis.addAll(package.apis));
@@ -302,9 +296,8 @@ package.
   /// returned from the Discovery Service.
   static Iterable<String> _calculateExcessApis(
       Iterable<String> knownApis, List<RestDescription> allApis) {
-    var excessApis = new Set.from(knownApis);
+    var excessApis = new Set<String>.from(knownApis);
     allApis.forEach((item) => excessApis.remove(item.id));
     return excessApis;
   }
 }
-

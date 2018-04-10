@@ -81,7 +81,7 @@ class EnterprisesResourceApi {
       core.String projectId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -134,7 +134,7 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<Enterprise> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -184,7 +184,7 @@ class EnterprisesResourceApi {
   async.Future<Enterprise> patch(Enterprise request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -246,7 +246,7 @@ class EnterprisesApplicationsResourceApi {
   async.Future<Application> get(core.String name,
       {core.String languageCode, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -303,7 +303,7 @@ class EnterprisesDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -347,7 +347,7 @@ class EnterprisesDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Device> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -396,7 +396,7 @@ class EnterprisesDevicesResourceApi {
   async.Future<Operation> issueCommand(Command request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -452,7 +452,7 @@ class EnterprisesDevicesResourceApi {
   async.Future<ListDevicesResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -509,7 +509,7 @@ class EnterprisesDevicesResourceApi {
   async.Future<Device> patch(Device request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -574,7 +574,7 @@ class EnterprisesDevicesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -621,7 +621,7 @@ class EnterprisesDevicesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -667,7 +667,7 @@ class EnterprisesDevicesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -728,7 +728,7 @@ class EnterprisesDevicesOperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -792,7 +792,7 @@ class EnterprisesEnrollmentTokensResourceApi {
       EnrollmentToken request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -842,7 +842,7 @@ class EnterprisesEnrollmentTokensResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -894,7 +894,7 @@ class EnterprisesPoliciesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -938,7 +938,7 @@ class EnterprisesPoliciesResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -989,7 +989,7 @@ class EnterprisesPoliciesResourceApi {
   async.Future<ListPoliciesResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1046,7 +1046,7 @@ class EnterprisesPoliciesResourceApi {
   async.Future<Policy> patch(Policy request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1107,7 +1107,7 @@ class EnterprisesWebTokensResourceApi {
   async.Future<WebToken> create(WebToken request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1168,7 +1168,7 @@ class SignupUrlsResourceApi {
   async.Future<SignupUrl> create(
       {core.String callbackUrl, core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1275,7 +1275,7 @@ class Application {
   Application.fromJson(core.Map _json) {
     if (_json.containsKey("managedProperties")) {
       managedProperties = _json["managedProperties"]
-          .map((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1283,7 +1283,8 @@ class Application {
     }
     if (_json.containsKey("permissions")) {
       permissions = _json["permissions"]
-          .map((value) => new ApplicationPermission.fromJson(value))
+          .map<ApplicationPermission>(
+              (value) => new ApplicationPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -1442,7 +1443,7 @@ class ApplicationPolicy {
     }
     if (_json.containsKey("permissionGrants")) {
       permissionGrants = _json["permissionGrants"]
-          .map((value) => new PermissionGrant.fromJson(value))
+          .map<PermissionGrant>((value) => new PermissionGrant.fromJson(value))
           .toList();
     }
   }
@@ -1753,7 +1754,7 @@ class Device {
     }
     if (_json.containsKey("displays")) {
       displays = _json["displays"]
-          .map((value) => new Display.fromJson(value))
+          .map<Display>((value) => new Display.fromJson(value))
           .toList();
     }
     if (_json.containsKey("enrollmentTime")) {
@@ -1770,7 +1771,7 @@ class Device {
     }
     if (_json.containsKey("hardwareStatusSamples")) {
       hardwareStatusSamples = _json["hardwareStatusSamples"]
-          .map((value) => new HardwareStatus.fromJson(value))
+          .map<HardwareStatus>((value) => new HardwareStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lastPolicyComplianceReportTime")) {
@@ -1784,7 +1785,7 @@ class Device {
     }
     if (_json.containsKey("memoryEvents")) {
       memoryEvents = _json["memoryEvents"]
-          .map((value) => new MemoryEvent.fromJson(value))
+          .map<MemoryEvent>((value) => new MemoryEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("memoryInfo")) {
@@ -1798,7 +1799,8 @@ class Device {
     }
     if (_json.containsKey("nonComplianceDetails")) {
       nonComplianceDetails = _json["nonComplianceDetails"]
-          .map((value) => new NonComplianceDetail.fromJson(value))
+          .map<NonComplianceDetail>(
+              (value) => new NonComplianceDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("policyCompliant")) {
@@ -1809,7 +1811,8 @@ class Device {
     }
     if (_json.containsKey("powerManagementEvents")) {
       powerManagementEvents = _json["powerManagementEvents"]
-          .map((value) => new PowerManagementEvent.fromJson(value))
+          .map<PowerManagementEvent>(
+              (value) => new PowerManagementEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("previousDeviceNames")) {
@@ -2573,8 +2576,9 @@ class ListDevicesResponse {
 
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices =
-          _json["devices"].map((value) => new Device.fromJson(value)).toList();
+      devices = _json["devices"]
+          .map<Device>((value) => new Device.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2610,7 +2614,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -2644,8 +2648,9 @@ class ListPoliciesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("policies")) {
-      policies =
-          _json["policies"].map((value) => new Policy.fromJson(value)).toList();
+      policies = _json["policies"]
+          .map<Policy>((value) => new Policy.fromJson(value))
+          .toList();
     }
   }
 
@@ -2714,7 +2719,8 @@ class ManagedProperty {
     }
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new ManagedPropertyEntry.fromJson(value))
+          .map<ManagedPropertyEntry>(
+              (value) => new ManagedPropertyEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("key")) {
@@ -2722,7 +2728,7 @@ class ManagedProperty {
     }
     if (_json.containsKey("nestedProperties")) {
       nestedProperties = _json["nestedProperties"]
-          .map((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -3729,7 +3735,8 @@ class Policy {
     }
     if (_json.containsKey("applications")) {
       applications = _json["applications"]
-          .map((value) => new ApplicationPolicy.fromJson(value))
+          .map<ApplicationPolicy>(
+              (value) => new ApplicationPolicy.fromJson(value))
           .toList();
     }
     if (_json.containsKey("autoTimeRequired")) {
@@ -3756,7 +3763,7 @@ class Policy {
     }
     if (_json.containsKey("complianceRules")) {
       complianceRules = _json["complianceRules"]
-          .map((value) => new ComplianceRule.fromJson(value))
+          .map<ComplianceRule>((value) => new ComplianceRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("createWindowsDisabled")) {
@@ -3845,7 +3852,8 @@ class Policy {
     }
     if (_json.containsKey("persistentPreferredActivities")) {
       persistentPreferredActivities = _json["persistentPreferredActivities"]
-          .map((value) => new PersistentPreferredActivity.fromJson(value))
+          .map<PersistentPreferredActivity>(
+              (value) => new PersistentPreferredActivity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("recommendedGlobalProxy")) {

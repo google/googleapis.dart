@@ -235,7 +235,7 @@ class CseResourceApi {
       core.int start,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -395,8 +395,9 @@ class Context {
   Context.fromJson(core.Map _json) {
     if (_json.containsKey("facets")) {
       facets = _json["facets"]
-          .map((value) =>
-              value.map((value) => new ContextFacets.fromJson(value)).toList())
+          .map<core.List<ContextFacets>>((value) => value
+              .map<ContextFacets>((value) => new ContextFacets.fromJson(value))
+              .toList())
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -509,7 +510,8 @@ class Promotion {
   Promotion.fromJson(core.Map _json) {
     if (_json.containsKey("bodyLines")) {
       bodyLines = _json["bodyLines"]
-          .map((value) => new PromotionBodyLines.fromJson(value))
+          .map<PromotionBodyLines>(
+              (value) => new PromotionBodyLines.fromJson(value))
           .toList();
     }
     if (_json.containsKey("displayLink")) {
@@ -972,7 +974,7 @@ class Result {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new ResultLabels.fromJson(value))
+          .map<ResultLabels>((value) => new ResultLabels.fromJson(value))
           .toList();
     }
     if (_json.containsKey("link")) {
@@ -1159,15 +1161,16 @@ class Search {
       context = new Context.fromJson(_json["context"]);
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Result.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Result>((value) => new Result.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("promotions")) {
       promotions = _json["promotions"]
-          .map((value) => new Promotion.fromJson(value))
+          .map<Promotion>((value) => new Promotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("queries")) {
@@ -1175,7 +1178,7 @@ class Search {
               core.List<Query>>(
           _json["queries"],
           (core.List<core.Map<core.String, core.Object>> item) =>
-              item.map((value) => new Query.fromJson(value)).toList());
+              item.map<Query>((value) => new Query.fromJson(value)).toList());
     }
     if (_json.containsKey("searchInformation")) {
       searchInformation =

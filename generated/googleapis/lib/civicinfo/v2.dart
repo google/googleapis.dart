@@ -61,7 +61,7 @@ class DivisionsResourceApi {
   async.Future<DivisionSearchResponse> search(DivisionSearchRequest request,
       {core.String query, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -114,7 +114,7 @@ class ElectionsResourceApi {
       ElectionsQueryRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -176,7 +176,7 @@ class ElectionsResourceApi {
       core.bool returnAllAvailableData,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -259,7 +259,7 @@ class RepresentativesResourceApi {
       core.List<core.String> roles,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -335,7 +335,7 @@ class RepresentativesResourceApi {
       core.List<core.String> roles,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -411,8 +411,9 @@ class AdministrationRegion {
       name = _json["name"];
     }
     if (_json.containsKey("sources")) {
-      sources =
-          _json["sources"].map((value) => new Source.fromJson(value)).toList();
+      sources = _json["sources"]
+          .map<Source>((value) => new Source.fromJson(value))
+          .toList();
     }
   }
 
@@ -509,7 +510,8 @@ class AdministrativeBody {
     }
     if (_json.containsKey("electionOfficials")) {
       electionOfficials = _json["electionOfficials"]
-          .map((value) => new ElectionOfficial.fromJson(value))
+          .map<ElectionOfficial>(
+              (value) => new ElectionOfficial.fromJson(value))
           .toList();
     }
     if (_json.containsKey("electionRegistrationConfirmationUrl")) {
@@ -627,7 +629,7 @@ class Candidate {
     }
     if (_json.containsKey("channels")) {
       channels = _json["channels"]
-          .map((value) => new Channel.fromJson(value))
+          .map<Channel>((value) => new Channel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("email")) {
@@ -825,7 +827,7 @@ class Contest {
     }
     if (_json.containsKey("candidates")) {
       candidates = _json["candidates"]
-          .map((value) => new Candidate.fromJson(value))
+          .map<Candidate>((value) => new Candidate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("district")) {
@@ -886,8 +888,9 @@ class Contest {
       roles = _json["roles"];
     }
     if (_json.containsKey("sources")) {
-      sources =
-          _json["sources"].map((value) => new Source.fromJson(value)).toList();
+      sources = _json["sources"]
+          .map<Source>((value) => new Source.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("special")) {
       special = _json["special"];
@@ -1057,7 +1060,8 @@ class DivisionSearchResponse {
     }
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new DivisionSearchResult.fromJson(value))
+          .map<DivisionSearchResult>(
+              (value) => new DivisionSearchResult.fromJson(value))
           .toList();
     }
   }
@@ -1269,7 +1273,7 @@ class ElectionsQueryResponse {
   ElectionsQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("elections")) {
       elections = _json["elections"]
-          .map((value) => new Election.fromJson(value))
+          .map<Election>((value) => new Election.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1444,8 +1448,9 @@ class Office {
       roles = _json["roles"];
     }
     if (_json.containsKey("sources")) {
-      sources =
-          _json["sources"].map((value) => new Source.fromJson(value)).toList();
+      sources = _json["sources"]
+          .map<Source>((value) => new Source.fromJson(value))
+          .toList();
     }
   }
 
@@ -1505,12 +1510,13 @@ class Official {
   Official.fromJson(core.Map _json) {
     if (_json.containsKey("address")) {
       address = _json["address"]
-          .map((value) => new SimpleAddressType.fromJson(value))
+          .map<SimpleAddressType>(
+              (value) => new SimpleAddressType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("channels")) {
       channels = _json["channels"]
-          .map((value) => new Channel.fromJson(value))
+          .map<Channel>((value) => new Channel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("emails")) {
@@ -1623,8 +1629,9 @@ class PollingLocation {
       pollingHours = _json["pollingHours"];
     }
     if (_json.containsKey("sources")) {
-      sources =
-          _json["sources"].map((value) => new Source.fromJson(value)).toList();
+      sources = _json["sources"]
+          .map<Source>((value) => new Source.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("startDate")) {
       startDate = _json["startDate"];
@@ -1934,12 +1941,13 @@ class RepresentativeInfoData {
                   new GeographicDivision.fromJson(item));
     }
     if (_json.containsKey("offices")) {
-      offices =
-          _json["offices"].map((value) => new Office.fromJson(value)).toList();
+      offices = _json["offices"]
+          .map<Office>((value) => new Office.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("officials")) {
       officials = _json["officials"]
-          .map((value) => new Official.fromJson(value))
+          .map<Official>((value) => new Official.fromJson(value))
           .toList();
     }
   }
@@ -2023,12 +2031,13 @@ class RepresentativeInfoResponse {
           new SimpleAddressType.fromJson(_json["normalizedInput"]);
     }
     if (_json.containsKey("offices")) {
-      offices =
-          _json["offices"].map((value) => new Office.fromJson(value)).toList();
+      offices = _json["offices"]
+          .map<Office>((value) => new Office.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("officials")) {
       officials = _json["officials"]
-          .map((value) => new Official.fromJson(value))
+          .map<Official>((value) => new Official.fromJson(value))
           .toList();
     }
   }
@@ -2244,17 +2253,17 @@ class VoterInfoResponse {
   VoterInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("contests")) {
       contests = _json["contests"]
-          .map((value) => new Contest.fromJson(value))
+          .map<Contest>((value) => new Contest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dropOffLocations")) {
       dropOffLocations = _json["dropOffLocations"]
-          .map((value) => new PollingLocation.fromJson(value))
+          .map<PollingLocation>((value) => new PollingLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("earlyVoteSites")) {
       earlyVoteSites = _json["earlyVoteSites"]
-          .map((value) => new PollingLocation.fromJson(value))
+          .map<PollingLocation>((value) => new PollingLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("election")) {
@@ -2272,12 +2281,12 @@ class VoterInfoResponse {
     }
     if (_json.containsKey("otherElections")) {
       otherElections = _json["otherElections"]
-          .map((value) => new Election.fromJson(value))
+          .map<Election>((value) => new Election.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pollingLocations")) {
       pollingLocations = _json["pollingLocations"]
-          .map((value) => new PollingLocation.fromJson(value))
+          .map<PollingLocation>((value) => new PollingLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("precinctId")) {
@@ -2285,7 +2294,8 @@ class VoterInfoResponse {
     }
     if (_json.containsKey("state")) {
       state = _json["state"]
-          .map((value) => new AdministrationRegion.fromJson(value))
+          .map<AdministrationRegion>(
+              (value) => new AdministrationRegion.fromJson(value))
           .toList();
     }
   }

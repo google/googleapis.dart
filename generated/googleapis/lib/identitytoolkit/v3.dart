@@ -61,7 +61,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyCreateAuthUriRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -105,7 +105,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyDeleteAccountRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -149,7 +149,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyDownloadAccountRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -193,7 +193,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyEmailLinkSigninRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -237,7 +237,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyGetAccountInfoRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -281,7 +281,7 @@ class RelyingpartyResourceApi {
       Relyingparty request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -330,7 +330,7 @@ class RelyingpartyResourceApi {
           core.String projectNumber,
           core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -375,7 +375,7 @@ class RelyingpartyResourceApi {
   async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys(
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -414,7 +414,7 @@ class RelyingpartyResourceApi {
   async.Future<GetRecaptchaParamResponse> getRecaptchaParam(
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -456,7 +456,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyResetPasswordRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -502,7 +502,7 @@ class RelyingpartyResourceApi {
           IdentitytoolkitRelyingpartySendVerificationCodeRequest request,
           {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -548,7 +548,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartySetAccountInfoRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -593,7 +593,7 @@ class RelyingpartyResourceApi {
           IdentitytoolkitRelyingpartySetProjectConfigRequest request,
           {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -638,7 +638,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartySignOutUserRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -683,7 +683,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartySignupNewUserRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -727,7 +727,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyUploadAccountRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -771,7 +771,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyVerifyAssertionRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -815,7 +815,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -860,7 +860,7 @@ class RelyingpartyResourceApi {
       IdentitytoolkitRelyingpartyVerifyPasswordRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -906,7 +906,7 @@ class RelyingpartyResourceApi {
           IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request,
           {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1074,8 +1074,9 @@ class DownloadAccountResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("users")) {
-      users =
-          _json["users"].map((value) => new UserInfo.fromJson(value)).toList();
+      users = _json["users"]
+          .map<UserInfo>((value) => new UserInfo.fromJson(value))
+          .toList();
     }
   }
 
@@ -1255,8 +1256,9 @@ class GetAccountInfoResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("users")) {
-      users =
-          _json["users"].map((value) => new UserInfo.fromJson(value)).toList();
+      users = _json["users"]
+          .map<UserInfo>((value) => new UserInfo.fromJson(value))
+          .toList();
     }
   }
 
@@ -1765,7 +1767,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
     if (_json.containsKey("idpConfig")) {
       idpConfig = _json["idpConfig"]
-          .map((value) => new IdpConfig.fromJson(value))
+          .map<IdpConfig>((value) => new IdpConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("legacyResetPasswordTemplate")) {
@@ -2277,7 +2279,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
     if (_json.containsKey("idpConfig")) {
       idpConfig = _json["idpConfig"]
-          .map((value) => new IdpConfig.fromJson(value))
+          .map<IdpConfig>((value) => new IdpConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("legacyResetPasswordTemplate")) {
@@ -2638,8 +2640,9 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
       targetProjectId = _json["targetProjectId"];
     }
     if (_json.containsKey("users")) {
-      users =
-          _json["users"].map((value) => new UserInfo.fromJson(value)).toList();
+      users = _json["users"]
+          .map<UserInfo>((value) => new UserInfo.fromJson(value))
+          .toList();
     }
   }
 
@@ -3517,7 +3520,7 @@ class SetAccountInfoResponse {
     }
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = _json["providerUserInfo"]
-          .map((value) =>
+          .map<SetAccountInfoResponseProviderUserInfo>((value) =>
               new SetAccountInfoResponseProviderUserInfo.fromJson(value))
           .toList();
     }
@@ -3693,7 +3696,8 @@ class UploadAccountResponse {
   UploadAccountResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
       error = _json["error"]
-          .map((value) => new UploadAccountResponseError.fromJson(value))
+          .map<UploadAccountResponseError>(
+              (value) => new UploadAccountResponseError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3920,7 +3924,8 @@ class UserInfo {
     }
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = _json["providerUserInfo"]
-          .map((value) => new UserInfoProviderUserInfo.fromJson(value))
+          .map<UserInfoProviderUserInfo>(
+              (value) => new UserInfoProviderUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rawPassword")) {

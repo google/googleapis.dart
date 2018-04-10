@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1159() {
+buildUnnamed0() {
   var o = new core.List<api.ApplicationTransferParam>();
   o.add(buildApplicationTransferParam());
   o.add(buildApplicationTransferParam());
   return o;
 }
 
-checkUnnamed1159(core.List<api.ApplicationTransferParam> o) {
+checkUnnamed0(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationTransferParam(o[0]);
   checkApplicationTransferParam(o[1]);
@@ -72,7 +72,7 @@ buildApplication() {
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
-    o.transferParams = buildUnnamed1159();
+    o.transferParams = buildUnnamed0();
   }
   buildCounterApplication--;
   return o;
@@ -85,19 +85,19 @@ checkApplication(api.Application o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1159(o.transferParams);
+    checkUnnamed0(o.transferParams);
   }
   buildCounterApplication--;
 }
 
-buildUnnamed1160() {
+buildUnnamed1() {
   var o = new core.List<api.ApplicationTransferParam>();
   o.add(buildApplicationTransferParam());
   o.add(buildApplicationTransferParam());
   return o;
 }
 
-checkUnnamed1160(core.List<api.ApplicationTransferParam> o) {
+checkUnnamed1(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationTransferParam(o[0]);
   checkApplicationTransferParam(o[1]);
@@ -109,7 +109,7 @@ buildApplicationDataTransfer() {
   buildCounterApplicationDataTransfer++;
   if (buildCounterApplicationDataTransfer < 3) {
     o.applicationId = "foo";
-    o.applicationTransferParams = buildUnnamed1160();
+    o.applicationTransferParams = buildUnnamed1();
     o.applicationTransferStatus = "foo";
   }
   buildCounterApplicationDataTransfer--;
@@ -120,20 +120,20 @@ checkApplicationDataTransfer(api.ApplicationDataTransfer o) {
   buildCounterApplicationDataTransfer++;
   if (buildCounterApplicationDataTransfer < 3) {
     unittest.expect(o.applicationId, unittest.equals('foo'));
-    checkUnnamed1160(o.applicationTransferParams);
+    checkUnnamed1(o.applicationTransferParams);
     unittest.expect(o.applicationTransferStatus, unittest.equals('foo'));
   }
   buildCounterApplicationDataTransfer--;
 }
 
-buildUnnamed1161() {
+buildUnnamed2() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1161(core.List<core.String> o) {
+checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -145,7 +145,7 @@ buildApplicationTransferParam() {
   buildCounterApplicationTransferParam++;
   if (buildCounterApplicationTransferParam < 3) {
     o.key = "foo";
-    o.value = buildUnnamed1161();
+    o.value = buildUnnamed2();
   }
   buildCounterApplicationTransferParam--;
   return o;
@@ -155,19 +155,19 @@ checkApplicationTransferParam(api.ApplicationTransferParam o) {
   buildCounterApplicationTransferParam++;
   if (buildCounterApplicationTransferParam < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed1161(o.value);
+    checkUnnamed2(o.value);
   }
   buildCounterApplicationTransferParam--;
 }
 
-buildUnnamed1162() {
+buildUnnamed3() {
   var o = new core.List<api.Application>();
   o.add(buildApplication());
   o.add(buildApplication());
   return o;
 }
 
-checkUnnamed1162(core.List<api.Application> o) {
+checkUnnamed3(core.List<api.Application> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplication(o[0]);
   checkApplication(o[1]);
@@ -178,7 +178,7 @@ buildApplicationsListResponse() {
   var o = new api.ApplicationsListResponse();
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    o.applications = buildUnnamed1162();
+    o.applications = buildUnnamed3();
     o.etag = "foo";
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -190,7 +190,7 @@ buildApplicationsListResponse() {
 checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    checkUnnamed1162(o.applications);
+    checkUnnamed3(o.applications);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -198,14 +198,14 @@ checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse--;
 }
 
-buildUnnamed1163() {
+buildUnnamed4() {
   var o = new core.List<api.ApplicationDataTransfer>();
   o.add(buildApplicationDataTransfer());
   o.add(buildApplicationDataTransfer());
   return o;
 }
 
-checkUnnamed1163(core.List<api.ApplicationDataTransfer> o) {
+checkUnnamed4(core.List<api.ApplicationDataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationDataTransfer(o[0]);
   checkApplicationDataTransfer(o[1]);
@@ -216,7 +216,7 @@ buildDataTransfer() {
   var o = new api.DataTransfer();
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    o.applicationDataTransfers = buildUnnamed1163();
+    o.applicationDataTransfers = buildUnnamed4();
     o.etag = "foo";
     o.id = "foo";
     o.kind = "foo";
@@ -232,7 +232,7 @@ buildDataTransfer() {
 checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    checkUnnamed1163(o.applicationDataTransfers);
+    checkUnnamed4(o.applicationDataTransfers);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -245,14 +245,14 @@ checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer--;
 }
 
-buildUnnamed1164() {
+buildUnnamed5() {
   var o = new core.List<api.DataTransfer>();
   o.add(buildDataTransfer());
   o.add(buildDataTransfer());
   return o;
 }
 
-checkUnnamed1164(core.List<api.DataTransfer> o) {
+checkUnnamed5(core.List<api.DataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataTransfer(o[0]);
   checkDataTransfer(o[1]);
@@ -263,7 +263,7 @@ buildDataTransfersListResponse() {
   var o = new api.DataTransfersListResponse();
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    o.dataTransfers = buildUnnamed1164();
+    o.dataTransfers = buildUnnamed5();
     o.etag = "foo";
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -275,7 +275,7 @@ buildDataTransfersListResponse() {
 checkDataTransfersListResponse(api.DataTransfersListResponse o) {
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    checkUnnamed1164(o.dataTransfers);
+    checkUnnamed5(o.dataTransfers);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -384,7 +384,7 @@ main() {
       }), true);
       res
           .get(arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Application response) {
+          .then(unittest.expectAsync1(((response) {
         checkApplication(response);
       })));
     });
@@ -449,7 +449,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ApplicationsListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkApplicationsListResponse(response);
       })));
     });
@@ -507,7 +507,7 @@ main() {
       }), true);
       res
           .get(arg_dataTransferId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.DataTransfer response) {
+          .then(unittest.expectAsync1(((response) {
         checkDataTransfer(response);
       })));
     });
@@ -563,7 +563,7 @@ main() {
       }), true);
       res
           .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.DataTransfer response) {
+          .then(unittest.expectAsync1(((response) {
         checkDataTransfer(response);
       })));
     });
@@ -639,8 +639,7 @@ main() {
               pageToken: arg_pageToken,
               status: arg_status,
               $fields: arg_$fields)
-          .then(
-              unittest.expectAsync1(((api.DataTransfersListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkDataTransfersListResponse(response);
       })));
     });

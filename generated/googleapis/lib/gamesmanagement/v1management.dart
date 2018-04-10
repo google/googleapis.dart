@@ -70,7 +70,7 @@ class AchievementsResourceApi {
   async.Future<AchievementResetResponse> reset(core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -115,7 +115,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementResetAllResponse> resetAll({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -152,7 +152,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -194,7 +194,7 @@ class AchievementsResourceApi {
   async.Future resetForAllPlayers(core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -242,7 +242,7 @@ class AchievementsResourceApi {
       AchievementResetMultipleForAllRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -302,7 +302,7 @@ class ApplicationsResourceApi {
   async.Future<HiddenPlayerList> listHidden(core.String applicationId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -359,7 +359,7 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future reset(core.String eventId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -401,7 +401,7 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future resetAll({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -440,7 +440,7 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -481,7 +481,7 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future resetForAllPlayers(core.String eventId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -529,7 +529,7 @@ class EventsResourceApi {
       EventsResetMultipleForAllRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -583,7 +583,7 @@ class PlayersResourceApi {
   async.Future hide(core.String applicationId, core.String playerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -637,7 +637,7 @@ class PlayersResourceApi {
   async.Future unhide(core.String applicationId, core.String playerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -693,7 +693,7 @@ class QuestsResourceApi {
   /// this method will complete with the same error.
   async.Future reset(core.String questId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -735,7 +735,7 @@ class QuestsResourceApi {
   /// this method will complete with the same error.
   async.Future resetAll({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -773,7 +773,7 @@ class QuestsResourceApi {
   /// this method will complete with the same error.
   async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -814,7 +814,7 @@ class QuestsResourceApi {
   /// this method will complete with the same error.
   async.Future resetForAllPlayers(core.String questId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -862,7 +862,7 @@ class QuestsResourceApi {
       QuestsResetMultipleForAllRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -910,7 +910,7 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future reset({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -949,7 +949,7 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future resetForAllPlayers({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -999,7 +999,7 @@ class ScoresResourceApi {
   async.Future<PlayerScoreResetResponse> reset(core.String leaderboardId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1044,7 +1044,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerScoreResetAllResponse> resetAll({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1081,7 +1081,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1123,7 +1123,7 @@ class ScoresResourceApi {
   async.Future resetForAllPlayers(core.String leaderboardId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1171,7 +1171,7 @@ class ScoresResourceApi {
       ScoresResetMultipleForAllRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1219,7 +1219,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future reset({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1258,7 +1258,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future resetForAllPlayers({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1299,7 +1299,8 @@ class AchievementResetAllResponse {
     }
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new AchievementResetResponse.fromJson(value))
+          .map<AchievementResetResponse>(
+              (value) => new AchievementResetResponse.fromJson(value))
           .toList();
     }
   }
@@ -1626,7 +1627,7 @@ class HiddenPlayerList {
   HiddenPlayerList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new HiddenPlayer.fromJson(value))
+          .map<HiddenPlayer>((value) => new HiddenPlayer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1837,7 +1838,8 @@ class PlayerScoreResetAllResponse {
     }
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new PlayerScoreResetResponse.fromJson(value))
+          .map<PlayerScoreResetResponse>(
+              (value) => new PlayerScoreResetResponse.fromJson(value))
           .toList();
     }
   }

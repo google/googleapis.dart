@@ -146,7 +146,7 @@ class ProcessesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -276,7 +276,7 @@ class ProcessesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -369,7 +369,7 @@ class ProjectsResourceApi {
   async.Future<Project> create(CreateProjectRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -411,7 +411,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Project> get(core.String scriptId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -459,7 +459,7 @@ class ProjectsResourceApi {
   async.Future<Content> getContent(core.String scriptId,
       {core.int versionNumber, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -520,7 +520,7 @@ class ProjectsResourceApi {
       core.String metricsFilter_deploymentId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -577,7 +577,7 @@ class ProjectsResourceApi {
   async.Future<Content> updateContent(Content request, core.String scriptId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -635,7 +635,7 @@ class ProjectsDeploymentsResourceApi {
       DeploymentConfig request, core.String scriptId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -685,7 +685,7 @@ class ProjectsDeploymentsResourceApi {
   async.Future<Empty> delete(core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -736,7 +736,7 @@ class ProjectsDeploymentsResourceApi {
   async.Future<Deployment> get(core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -792,7 +792,7 @@ class ProjectsDeploymentsResourceApi {
   async.Future<ListDeploymentsResponse> list(core.String scriptId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -848,7 +848,7 @@ class ProjectsDeploymentsResourceApi {
       core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -910,7 +910,7 @@ class ProjectsVersionsResourceApi {
   async.Future<Version> create(Version request, core.String scriptId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -960,7 +960,7 @@ class ProjectsVersionsResourceApi {
   async.Future<Version> get(core.String scriptId, core.int versionNumber,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1016,7 +1016,7 @@ class ProjectsVersionsResourceApi {
   async.Future<ListVersionsResponse> list(core.String scriptId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1086,7 +1086,7 @@ class ScriptsResourceApi {
   async.Future<Operation> run(ExecutionRequest request, core.String scriptId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1129,7 +1129,9 @@ class Content {
 
   Content.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
-      files = _json["files"].map((value) => new File.fromJson(value)).toList();
+      files = _json["files"]
+          .map<File>((value) => new File.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("scriptId")) {
       scriptId = _json["scriptId"];
@@ -1215,7 +1217,7 @@ class Deployment {
     }
     if (_json.containsKey("entryPoints")) {
       entryPoints = _json["entryPoints"]
-          .map((value) => new EntryPoint.fromJson(value))
+          .map<EntryPoint>((value) => new EntryPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("functionSet")) {
@@ -1417,7 +1419,8 @@ class ExecutionError {
     }
     if (_json.containsKey("scriptStackTraceElements")) {
       scriptStackTraceElements = _json["scriptStackTraceElements"]
-          .map((value) => new ScriptStackTraceElement.fromJson(value))
+          .map<ScriptStackTraceElement>(
+              (value) => new ScriptStackTraceElement.fromJson(value))
           .toList();
     }
   }
@@ -1808,7 +1811,8 @@ class GoogleAppsScriptTypeFunctionSet {
   GoogleAppsScriptTypeFunctionSet.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
       values = _json["values"]
-          .map((value) => new GoogleAppsScriptTypeFunction.fromJson(value))
+          .map<GoogleAppsScriptTypeFunction>(
+              (value) => new GoogleAppsScriptTypeFunction.fromJson(value))
           .toList();
     }
   }
@@ -1981,7 +1985,8 @@ class GoogleAppsScriptTypeScopeSet {
   GoogleAppsScriptTypeScopeSet.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
       values = _json["values"]
-          .map((value) => new GoogleAppsScriptTypeScope.fromJson(value))
+          .map<GoogleAppsScriptTypeScope>(
+              (value) => new GoogleAppsScriptTypeScope.fromJson(value))
           .toList();
     }
   }
@@ -2142,7 +2147,7 @@ class ListDeploymentsResponse {
   ListDeploymentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deployments")) {
       deployments = _json["deployments"]
-          .map((value) => new Deployment.fromJson(value))
+          .map<Deployment>((value) => new Deployment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2182,7 +2187,8 @@ class ListScriptProcessesResponse {
     }
     if (_json.containsKey("processes")) {
       processes = _json["processes"]
-          .map((value) => new GoogleAppsScriptTypeProcess.fromJson(value))
+          .map<GoogleAppsScriptTypeProcess>(
+              (value) => new GoogleAppsScriptTypeProcess.fromJson(value))
           .toList();
     }
   }
@@ -2218,7 +2224,8 @@ class ListUserProcessesResponse {
     }
     if (_json.containsKey("processes")) {
       processes = _json["processes"]
-          .map((value) => new GoogleAppsScriptTypeProcess.fromJson(value))
+          .map<GoogleAppsScriptTypeProcess>(
+              (value) => new GoogleAppsScriptTypeProcess.fromJson(value))
           .toList();
     }
   }
@@ -2253,7 +2260,7 @@ class ListVersionsResponse {
     }
     if (_json.containsKey("versions")) {
       versions = _json["versions"]
-          .map((value) => new Version.fromJson(value))
+          .map<Version>((value) => new Version.fromJson(value))
           .toList();
     }
   }
@@ -2288,17 +2295,17 @@ class Metrics {
   Metrics.fromJson(core.Map _json) {
     if (_json.containsKey("activeUsers")) {
       activeUsers = _json["activeUsers"]
-          .map((value) => new MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => new MetricsValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("failedExecutions")) {
       failedExecutions = _json["failedExecutions"]
-          .map((value) => new MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => new MetricsValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalExecutions")) {
       totalExecutions = _json["totalExecutions"]
-          .map((value) => new MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => new MetricsValue.fromJson(value))
           .toList();
     }
   }

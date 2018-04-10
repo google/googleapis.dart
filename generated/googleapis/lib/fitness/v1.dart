@@ -153,7 +153,7 @@ class UsersDataSourcesResourceApi {
   async.Future<DataSource> create(DataSource request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -203,7 +203,7 @@ class UsersDataSourcesResourceApi {
   async.Future<DataSource> delete(core.String userId, core.String dataSourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -254,7 +254,7 @@ class UsersDataSourcesResourceApi {
   async.Future<DataSource> get(core.String userId, core.String dataSourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -309,7 +309,7 @@ class UsersDataSourcesResourceApi {
   async.Future<ListDataSourcesResponse> list(core.String userId,
       {core.List<core.String> dataTypeName, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -366,7 +366,7 @@ class UsersDataSourcesResourceApi {
       DataSource request, core.String userId, core.String dataSourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -427,7 +427,7 @@ class UsersDataSourcesResourceApi {
       DataSource request, core.String userId, core.String dataSourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -497,7 +497,7 @@ class UsersDataSourcesDataPointChangesResourceApi {
       core.String userId, core.String dataSourceId,
       {core.int limit, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -581,7 +581,7 @@ class UsersDataSourcesDatasetsResourceApi {
       core.String modifiedTimeMillis,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -666,7 +666,7 @@ class UsersDataSourcesDatasetsResourceApi {
       core.String userId, core.String dataSourceId, core.String datasetId,
       {core.int limit, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -744,7 +744,7 @@ class UsersDataSourcesDatasetsResourceApi {
       core.String dataSourceId, core.String datasetId,
       {core.String currentTimeMillis, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -816,7 +816,7 @@ class UsersDatasetResourceApi {
       AggregateRequest request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -872,7 +872,7 @@ class UsersSessionsResourceApi {
   async.Future delete(core.String userId, core.String sessionId,
       {core.String currentTimeMillis, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -944,7 +944,7 @@ class UsersSessionsResourceApi {
       core.String startTime,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1008,7 +1008,7 @@ class UsersSessionsResourceApi {
       Session request, core.String userId, core.String sessionId,
       {core.String currentTimeMillis, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1079,8 +1079,9 @@ class AggregateBucket {
       activity = _json["activity"];
     }
     if (_json.containsKey("dataset")) {
-      dataset =
-          _json["dataset"].map((value) => new Dataset.fromJson(value)).toList();
+      dataset = _json["dataset"]
+          .map<Dataset>((value) => new Dataset.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("endTimeMillis")) {
       endTimeMillis = _json["endTimeMillis"];
@@ -1208,7 +1209,7 @@ class AggregateRequest {
   AggregateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("aggregateBy")) {
       aggregateBy = _json["aggregateBy"]
-          .map((value) => new AggregateBy.fromJson(value))
+          .map<AggregateBy>((value) => new AggregateBy.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bucketByActivitySegment")) {
@@ -1277,7 +1278,7 @@ class AggregateResponse {
   AggregateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bucket")) {
       bucket = _json["bucket"]
-          .map((value) => new AggregateBucket.fromJson(value))
+          .map<AggregateBucket>((value) => new AggregateBucket.fromJson(value))
           .toList();
     }
   }
@@ -1551,7 +1552,9 @@ class DataPoint {
       startTimeNanos = _json["startTimeNanos"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"].map((value) => new Value.fromJson(value)).toList();
+      value = _json["value"]
+          .map<Value>((value) => new Value.fromJson(value))
+          .toList();
     }
   }
 
@@ -1739,7 +1742,7 @@ class DataType {
   DataType.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
       field = _json["field"]
-          .map((value) => new DataTypeField.fromJson(value))
+          .map<DataTypeField>((value) => new DataTypeField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1860,8 +1863,9 @@ class Dataset {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("point")) {
-      point =
-          _json["point"].map((value) => new DataPoint.fromJson(value)).toList();
+      point = _json["point"]
+          .map<DataPoint>((value) => new DataPoint.fromJson(value))
+          .toList();
     }
   }
 
@@ -1992,12 +1996,12 @@ class ListDataPointChangesResponse {
     }
     if (_json.containsKey("deletedDataPoint")) {
       deletedDataPoint = _json["deletedDataPoint"]
-          .map((value) => new DataPoint.fromJson(value))
+          .map<DataPoint>((value) => new DataPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("insertedDataPoint")) {
       insertedDataPoint = _json["insertedDataPoint"]
-          .map((value) => new DataPoint.fromJson(value))
+          .map<DataPoint>((value) => new DataPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2035,7 +2039,7 @@ class ListDataSourcesResponse {
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataSource")) {
       dataSource = _json["dataSource"]
-          .map((value) => new DataSource.fromJson(value))
+          .map<DataSource>((value) => new DataSource.fromJson(value))
           .toList();
     }
   }
@@ -2074,7 +2078,7 @@ class ListSessionsResponse {
   ListSessionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deletedSession")) {
       deletedSession = _json["deletedSession"]
-          .map((value) => new Session.fromJson(value))
+          .map<Session>((value) => new Session.fromJson(value))
           .toList();
     }
     if (_json.containsKey("hasMoreData")) {
@@ -2084,8 +2088,9 @@ class ListSessionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("session")) {
-      session =
-          _json["session"].map((value) => new Session.fromJson(value)).toList();
+      session = _json["session"]
+          .map<Session>((value) => new Session.fromJson(value))
+          .toList();
     }
   }
 
@@ -2269,7 +2274,8 @@ class Value {
     }
     if (_json.containsKey("mapVal")) {
       mapVal = _json["mapVal"]
-          .map((value) => new ValueMapValEntry.fromJson(value))
+          .map<ValueMapValEntry>(
+              (value) => new ValueMapValEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stringVal")) {

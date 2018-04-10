@@ -89,7 +89,7 @@ class FoldersResourceApi {
   async.Future<Operation> create(Folder request,
       {core.String parent, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -144,7 +144,7 @@ class FoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<Folder> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -192,7 +192,7 @@ class FoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<Folder> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -245,7 +245,7 @@ class FoldersResourceApi {
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -320,7 +320,7 @@ class FoldersResourceApi {
       core.String parent,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -392,7 +392,7 @@ class FoldersResourceApi {
   async.Future<Operation> move(MoveFolderRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -460,7 +460,7 @@ class FoldersResourceApi {
   async.Future<Folder> patch(Folder request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -514,7 +514,7 @@ class FoldersResourceApi {
   async.Future<SearchFoldersResponse> search(SearchFoldersRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -567,7 +567,7 @@ class FoldersResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -625,7 +625,7 @@ class FoldersResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -687,7 +687,7 @@ class FoldersResourceApi {
   async.Future<Folder> undelete(UndeleteFolderRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -783,7 +783,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -1125,8 +1125,9 @@ class ListFoldersResponse {
 
   ListFoldersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("folders")) {
-      folders =
-          _json["folders"].map((value) => new Folder.fromJson(value)).toList();
+      folders = _json["folders"]
+          .map<Folder>((value) => new Folder.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1322,12 +1323,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -1479,8 +1480,9 @@ class SearchFoldersResponse {
 
   SearchFoldersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("folders")) {
-      folders =
-          _json["folders"].map((value) => new Folder.fromJson(value)).toList();
+      folders = _json["folders"]
+          .map<Folder>((value) => new Folder.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];

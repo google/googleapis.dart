@@ -87,7 +87,7 @@ class ProjectsDataSourcesResourceApi {
       CheckValidCredsRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -138,7 +138,7 @@ class ProjectsDataSourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<DataSource> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -195,7 +195,7 @@ class ProjectsDataSourcesResourceApi {
   async.Future<ListDataSourcesResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -258,7 +258,7 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -311,7 +311,7 @@ class ProjectsLocationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -382,7 +382,7 @@ class ProjectsLocationsDataSourcesResourceApi {
       CheckValidCredsRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -434,7 +434,7 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<DataSource> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -491,7 +491,7 @@ class ProjectsLocationsDataSourcesResourceApi {
   async.Future<ListDataSourcesResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -578,7 +578,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
       TransferConfig request, core.String parent,
       {core.String authorizationCode, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -633,7 +633,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -679,7 +679,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -740,7 +740,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
       core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -827,7 +827,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -888,7 +888,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
       ScheduleTransferRunsRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -952,7 +952,7 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -998,7 +998,7 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferRun> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1068,7 +1068,7 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
       core.String runAttempt,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1152,7 +1152,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
       core.List<core.String> messageTypes,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1243,7 +1243,7 @@ class ProjectsTransferConfigsResourceApi {
       TransferConfig request, core.String parent,
       {core.String authorizationCode, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1297,7 +1297,7 @@ class ProjectsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1342,7 +1342,7 @@ class ProjectsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1403,7 +1403,7 @@ class ProjectsTransferConfigsResourceApi {
       core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1489,7 +1489,7 @@ class ProjectsTransferConfigsResourceApi {
       core.String authorizationCode,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1549,7 +1549,7 @@ class ProjectsTransferConfigsResourceApi {
       ScheduleTransferRunsRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1611,7 +1611,7 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1657,7 +1657,7 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferRun> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1726,7 +1726,7 @@ class ProjectsTransferConfigsRunsResourceApi {
       core.String runAttempt,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1810,7 +1810,7 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
       core.List<core.String> messageTypes,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2031,7 +2031,8 @@ class DataSource {
     }
     if (_json.containsKey("parameters")) {
       parameters = _json["parameters"]
-          .map((value) => new DataSourceParameter.fromJson(value))
+          .map<DataSourceParameter>(
+              (value) => new DataSourceParameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("scopes")) {
@@ -2191,7 +2192,8 @@ class DataSourceParameter {
     }
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new DataSourceParameter.fromJson(value))
+          .map<DataSourceParameter>(
+              (value) => new DataSourceParameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("immutable")) {
@@ -2318,7 +2320,7 @@ class ListDataSourcesResponse {
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataSources")) {
       dataSources = _json["dataSources"]
-          .map((value) => new DataSource.fromJson(value))
+          .map<DataSource>((value) => new DataSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2353,7 +2355,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new Location.fromJson(value))
+          .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2393,7 +2395,7 @@ class ListTransferConfigsResponse {
     }
     if (_json.containsKey("transferConfigs")) {
       transferConfigs = _json["transferConfigs"]
-          .map((value) => new TransferConfig.fromJson(value))
+          .map<TransferConfig>((value) => new TransferConfig.fromJson(value))
           .toList();
     }
   }
@@ -2431,7 +2433,7 @@ class ListTransferLogsResponse {
     }
     if (_json.containsKey("transferMessages")) {
       transferMessages = _json["transferMessages"]
-          .map((value) => new TransferMessage.fromJson(value))
+          .map<TransferMessage>((value) => new TransferMessage.fromJson(value))
           .toList();
     }
   }
@@ -2469,7 +2471,7 @@ class ListTransferRunsResponse {
     }
     if (_json.containsKey("transferRuns")) {
       transferRuns = _json["transferRuns"]
-          .map((value) => new TransferRun.fromJson(value))
+          .map<TransferRun>((value) => new TransferRun.fromJson(value))
           .toList();
     }
   }
@@ -2589,7 +2591,7 @@ class ScheduleTransferRunsResponse {
   ScheduleTransferRunsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("runs")) {
       runs = _json["runs"]
-          .map((value) => new TransferRun.fromJson(value))
+          .map<TransferRun>((value) => new TransferRun.fromJson(value))
           .toList();
     }
   }

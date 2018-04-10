@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2475() {
+buildUnnamed3457() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2475(core.List<core.String> o) {
+checkUnnamed3457(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -72,7 +72,7 @@ buildPlatformSummary() {
     o.enforcementTime = "foo";
     o.filterStatus = "foo";
     o.lastChangeTime = "foo";
-    o.region = buildUnnamed2475();
+    o.region = buildUnnamed3457();
     o.reportUrl = "foo";
     o.underReview = true;
   }
@@ -87,7 +87,7 @@ checkPlatformSummary(api.PlatformSummary o) {
     unittest.expect(o.enforcementTime, unittest.equals('foo'));
     unittest.expect(o.filterStatus, unittest.equals('foo'));
     unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed2475(o.region);
+    checkUnnamed3457(o.region);
     unittest.expect(o.reportUrl, unittest.equals('foo'));
     unittest.expect(o.underReview, unittest.isTrue);
   }
@@ -117,14 +117,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed2476() {
+buildUnnamed3458() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed2476(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed3458(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -135,7 +135,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed2476();
+    o.violatingSites = buildUnnamed3458();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -144,7 +144,7 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed2476(o.violatingSites);
+    checkUnnamed3458(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }
@@ -221,7 +221,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SiteSummaryResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSiteSummaryResponse(response);
       })));
     });
@@ -271,9 +271,7 @@ main() {
         var resp = convert.JSON.encode(buildViolatingSitesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list($fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ViolatingSitesResponse response) {
+      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
         checkViolatingSitesResponse(response);
       })));
     });

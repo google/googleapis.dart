@@ -72,7 +72,7 @@ class BlogUserInfosResourceApi {
   async.Future<BlogUserInfo> get(core.String userId, core.String blogId,
       {core.int maxPosts, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -139,7 +139,7 @@ class BlogsResourceApi {
   async.Future<Blog> get(core.String blogId,
       {core.int maxPosts, core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -195,7 +195,7 @@ class BlogsResourceApi {
   async.Future<Blog> getByUrl(core.String url,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -264,7 +264,7 @@ class BlogsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -330,7 +330,7 @@ class CommentsResourceApi {
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -388,7 +388,7 @@ class CommentsResourceApi {
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -458,7 +458,7 @@ class CommentsResourceApi {
       core.String blogId, core.String postId, core.String commentId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -545,7 +545,7 @@ class CommentsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -636,7 +636,7 @@ class CommentsResourceApi {
       core.List<core.String> status,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -702,7 +702,7 @@ class CommentsResourceApi {
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -762,7 +762,7 @@ class CommentsResourceApi {
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -825,7 +825,7 @@ class PageViewsResourceApi {
   async.Future<Pageviews> get(core.String blogId,
       {core.List<core.String> range, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -877,7 +877,7 @@ class PagesResourceApi {
   async.Future delete(core.String blogId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -936,7 +936,7 @@ class PagesResourceApi {
   async.Future<Page> get(core.String blogId, core.String pageId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -992,7 +992,7 @@ class PagesResourceApi {
   async.Future<Page> insert(Page request, core.String blogId,
       {core.bool isDraft, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1061,7 +1061,7 @@ class PagesResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1129,7 +1129,7 @@ class PagesResourceApi {
   async.Future<Page> patch(Page request, core.String blogId, core.String pageId,
       {core.bool publish_1, core.bool revert_1, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1189,7 +1189,7 @@ class PagesResourceApi {
   async.Future<Page> publish(core.String blogId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1241,7 +1241,7 @@ class PagesResourceApi {
   async.Future<Page> revert(core.String blogId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1302,7 +1302,7 @@ class PagesResourceApi {
       Page request, core.String blogId, core.String pageId,
       {core.bool publish_1, core.bool revert_1, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1377,7 +1377,7 @@ class PostUserInfosResourceApi {
       core.String userId, core.String blogId, core.String postId,
       {core.int maxComments, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1478,7 +1478,7 @@ class PostUserInfosResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1561,7 +1561,7 @@ class PostsResourceApi {
   async.Future delete(core.String blogId, core.String postId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1634,7 +1634,7 @@ class PostsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1706,7 +1706,7 @@ class PostsResourceApi {
   async.Future<Post> getByPath(core.String blogId, core.String path,
       {core.int maxComments, core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1773,7 +1773,7 @@ class PostsResourceApi {
       core.bool isDraft,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1870,7 +1870,7 @@ class PostsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1967,7 +1967,7 @@ class PostsResourceApi {
       core.bool revert_1,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2042,7 +2042,7 @@ class PostsResourceApi {
   async.Future<Post> publish(core.String blogId, core.String postId,
       {core.DateTime publishDate, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2097,7 +2097,7 @@ class PostsResourceApi {
   async.Future<Post> revert(core.String blogId, core.String postId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2158,7 +2158,7 @@ class PostsResourceApi {
   async.Future<PostList> search(core.String blogId, core.String q,
       {core.bool fetchBodies, core.String orderBy, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2237,7 +2237,7 @@ class PostsResourceApi {
       core.bool revert_1,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2309,7 +2309,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<User> get(core.String userId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2422,7 +2422,9 @@ class BlogPosts {
 
   BlogPosts.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Post.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Post>((value) => new Post.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -2593,11 +2595,13 @@ class BlogList {
   BlogList.fromJson(core.Map _json) {
     if (_json.containsKey("blogUserInfos")) {
       blogUserInfos = _json["blogUserInfos"]
-          .map((value) => new BlogUserInfo.fromJson(value))
+          .map<BlogUserInfo>((value) => new BlogUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Blog.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Blog>((value) => new Blog.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3006,8 +3010,9 @@ class CommentList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Comment.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Comment>((value) => new Comment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3280,7 +3285,9 @@ class PageList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Page.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Page>((value) => new Page.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3358,7 +3365,7 @@ class Pageviews {
     }
     if (_json.containsKey("counts")) {
       counts = _json["counts"]
-          .map((value) => new PageviewsCounts.fromJson(value))
+          .map<PageviewsCounts>((value) => new PageviewsCounts.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3564,8 +3571,9 @@ class PostReplies {
 
   PostReplies.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Comment.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Comment>((value) => new Comment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -3672,7 +3680,7 @@ class Post {
     }
     if (_json.containsKey("images")) {
       images = _json["images"]
-          .map((value) => new PostImages.fromJson(value))
+          .map<PostImages>((value) => new PostImages.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3797,7 +3805,9 @@ class PostList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Post.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Post>((value) => new Post.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3939,7 +3949,7 @@ class PostUserInfosList {
   PostUserInfosList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new PostUserInfo.fromJson(value))
+          .map<PostUserInfo>((value) => new PostUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {

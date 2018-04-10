@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3277() {
+buildUnnamed3442() {
   var o = new core.List<api.PlusAclentryResource>();
   o.add(buildPlusAclentryResource());
   o.add(buildPlusAclentryResource());
   return o;
 }
 
-checkUnnamed3277(core.List<api.PlusAclentryResource> o) {
+checkUnnamed3442(core.List<api.PlusAclentryResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlusAclentryResource(o[0]);
   checkPlusAclentryResource(o[1]);
@@ -69,7 +69,7 @@ buildAcl() {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     o.description = "foo";
-    o.items = buildUnnamed3277();
+    o.items = buildUnnamed3442();
     o.kind = "foo";
   }
   buildCounterAcl--;
@@ -80,7 +80,7 @@ checkAcl(api.Acl o) {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed3277(o.items);
+    checkUnnamed3442(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAcl--;
@@ -453,14 +453,14 @@ checkActivityObjectAttachmentsThumbnails(
   buildCounterActivityObjectAttachmentsThumbnails--;
 }
 
-buildUnnamed3278() {
+buildUnnamed3443() {
   var o = new core.List<api.ActivityObjectAttachmentsThumbnails>();
   o.add(buildActivityObjectAttachmentsThumbnails());
   o.add(buildActivityObjectAttachmentsThumbnails());
   return o;
 }
 
-checkUnnamed3278(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
+checkUnnamed3443(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachmentsThumbnails(o[0]);
   checkActivityObjectAttachmentsThumbnails(o[1]);
@@ -478,7 +478,7 @@ buildActivityObjectAttachments() {
     o.id = "foo";
     o.image = buildActivityObjectAttachmentsImage();
     o.objectType = "foo";
-    o.thumbnails = buildUnnamed3278();
+    o.thumbnails = buildUnnamed3443();
     o.url = "foo";
   }
   buildCounterActivityObjectAttachments--;
@@ -495,20 +495,20 @@ checkActivityObjectAttachments(api.ActivityObjectAttachments o) {
     unittest.expect(o.id, unittest.equals('foo'));
     checkActivityObjectAttachmentsImage(o.image);
     unittest.expect(o.objectType, unittest.equals('foo'));
-    checkUnnamed3278(o.thumbnails);
+    checkUnnamed3443(o.thumbnails);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterActivityObjectAttachments--;
 }
 
-buildUnnamed3279() {
+buildUnnamed3444() {
   var o = new core.List<api.ActivityObjectAttachments>();
   o.add(buildActivityObjectAttachments());
   o.add(buildActivityObjectAttachments());
   return o;
 }
 
-checkUnnamed3279(core.List<api.ActivityObjectAttachments> o) {
+checkUnnamed3444(core.List<api.ActivityObjectAttachments> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachments(o[0]);
   checkActivityObjectAttachments(o[1]);
@@ -583,7 +583,7 @@ buildActivityObject() {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     o.actor = buildActivityObjectActor();
-    o.attachments = buildUnnamed3279();
+    o.attachments = buildUnnamed3444();
     o.content = "foo";
     o.id = "foo";
     o.objectType = "foo";
@@ -601,7 +601,7 @@ checkActivityObject(api.ActivityObject o) {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     checkActivityObjectActor(o.actor);
-    checkUnnamed3279(o.attachments);
+    checkUnnamed3444(o.attachments);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
@@ -692,14 +692,14 @@ checkActivity(api.Activity o) {
   buildCounterActivity--;
 }
 
-buildUnnamed3280() {
+buildUnnamed3445() {
   var o = new core.List<api.Activity>();
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-checkUnnamed3280(core.List<api.Activity> o) {
+checkUnnamed3445(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -712,7 +712,7 @@ buildActivityFeed() {
   if (buildCounterActivityFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed3280();
+    o.items = buildUnnamed3445();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -729,7 +729,7 @@ checkActivityFeed(api.ActivityFeed o) {
   if (buildCounterActivityFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3280(o.items);
+    checkUnnamed3445(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -871,14 +871,14 @@ checkCommentInReplyTo(api.CommentInReplyTo o) {
   buildCounterCommentInReplyTo--;
 }
 
-buildUnnamed3281() {
+buildUnnamed3446() {
   var o = new core.List<api.CommentInReplyTo>();
   o.add(buildCommentInReplyTo());
   o.add(buildCommentInReplyTo());
   return o;
 }
 
-checkUnnamed3281(core.List<api.CommentInReplyTo> o) {
+checkUnnamed3446(core.List<api.CommentInReplyTo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentInReplyTo(o[0]);
   checkCommentInReplyTo(o[1]);
@@ -934,7 +934,7 @@ buildComment() {
     o.actor = buildCommentActor();
     o.etag = "foo";
     o.id = "foo";
-    o.inReplyTo = buildUnnamed3281();
+    o.inReplyTo = buildUnnamed3446();
     o.kind = "foo";
     o.object = buildCommentObject();
     o.plusoners = buildCommentPlusoners();
@@ -953,7 +953,7 @@ checkComment(api.Comment o) {
     checkCommentActor(o.actor);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3281(o.inReplyTo);
+    checkUnnamed3446(o.inReplyTo);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkCommentObject(o.object);
     checkCommentPlusoners(o.plusoners);
@@ -967,14 +967,14 @@ checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-buildUnnamed3282() {
+buildUnnamed3447() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed3282(core.List<api.Comment> o) {
+checkUnnamed3447(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -987,7 +987,7 @@ buildCommentFeed() {
   if (buildCounterCommentFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed3282();
+    o.items = buildUnnamed3447();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -1003,7 +1003,7 @@ checkCommentFeed(api.CommentFeed o) {
   if (buildCounterCommentFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3282(o.items);
+    checkUnnamed3447(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -1014,14 +1014,14 @@ checkCommentFeed(api.CommentFeed o) {
   buildCounterCommentFeed--;
 }
 
-buildUnnamed3283() {
+buildUnnamed3448() {
   var o = new core.List<api.Person>();
   o.add(buildPerson());
   o.add(buildPerson());
   return o;
 }
 
-checkUnnamed3283(core.List<api.Person> o) {
+checkUnnamed3448(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerson(o[0]);
   checkPerson(o[1]);
@@ -1033,7 +1033,7 @@ buildPeopleFeed() {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3283();
+    o.items = buildUnnamed3448();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -1048,7 +1048,7 @@ checkPeopleFeed(api.PeopleFeed o) {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3283(o.items);
+    checkUnnamed3448(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -1167,14 +1167,14 @@ checkPersonEmails(api.PersonEmails o) {
   buildCounterPersonEmails--;
 }
 
-buildUnnamed3284() {
+buildUnnamed3449() {
   var o = new core.List<api.PersonEmails>();
   o.add(buildPersonEmails());
   o.add(buildPersonEmails());
   return o;
 }
 
-checkUnnamed3284(core.List<api.PersonEmails> o) {
+checkUnnamed3449(core.List<api.PersonEmails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonEmails(o[0]);
   checkPersonEmails(o[1]);
@@ -1265,14 +1265,14 @@ checkPersonOrganizations(api.PersonOrganizations o) {
   buildCounterPersonOrganizations--;
 }
 
-buildUnnamed3285() {
+buildUnnamed3450() {
   var o = new core.List<api.PersonOrganizations>();
   o.add(buildPersonOrganizations());
   o.add(buildPersonOrganizations());
   return o;
 }
 
-checkUnnamed3285(core.List<api.PersonOrganizations> o) {
+checkUnnamed3450(core.List<api.PersonOrganizations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonOrganizations(o[0]);
   checkPersonOrganizations(o[1]);
@@ -1299,14 +1299,14 @@ checkPersonPlacesLived(api.PersonPlacesLived o) {
   buildCounterPersonPlacesLived--;
 }
 
-buildUnnamed3286() {
+buildUnnamed3451() {
   var o = new core.List<api.PersonPlacesLived>();
   o.add(buildPersonPlacesLived());
   o.add(buildPersonPlacesLived());
   return o;
 }
 
-checkUnnamed3286(core.List<api.PersonPlacesLived> o) {
+checkUnnamed3451(core.List<api.PersonPlacesLived> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonPlacesLived(o[0]);
   checkPersonPlacesLived(o[1]);
@@ -1335,14 +1335,14 @@ checkPersonUrls(api.PersonUrls o) {
   buildCounterPersonUrls--;
 }
 
-buildUnnamed3287() {
+buildUnnamed3452() {
   var o = new core.List<api.PersonUrls>();
   o.add(buildPersonUrls());
   o.add(buildPersonUrls());
   return o;
 }
 
-checkUnnamed3287(core.List<api.PersonUrls> o) {
+checkUnnamed3452(core.List<api.PersonUrls> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonUrls(o[0]);
   checkPersonUrls(o[1]);
@@ -1362,7 +1362,7 @@ buildPerson() {
     o.currentLocation = "foo";
     o.displayName = "foo";
     o.domain = "foo";
-    o.emails = buildUnnamed3284();
+    o.emails = buildUnnamed3449();
     o.etag = "foo";
     o.gender = "foo";
     o.id = "foo";
@@ -1374,14 +1374,14 @@ buildPerson() {
     o.nickname = "foo";
     o.objectType = "foo";
     o.occupation = "foo";
-    o.organizations = buildUnnamed3285();
-    o.placesLived = buildUnnamed3286();
+    o.organizations = buildUnnamed3450();
+    o.placesLived = buildUnnamed3451();
     o.plusOneCount = 42;
     o.relationshipStatus = "foo";
     o.skills = "foo";
     o.tagline = "foo";
     o.url = "foo";
-    o.urls = buildUnnamed3287();
+    o.urls = buildUnnamed3452();
     o.verified = true;
   }
   buildCounterPerson--;
@@ -1400,7 +1400,7 @@ checkPerson(api.Person o) {
     unittest.expect(o.currentLocation, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
-    checkUnnamed3284(o.emails);
+    checkUnnamed3449(o.emails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -1412,14 +1412,14 @@ checkPerson(api.Person o) {
     unittest.expect(o.nickname, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
     unittest.expect(o.occupation, unittest.equals('foo'));
-    checkUnnamed3285(o.organizations);
-    checkUnnamed3286(o.placesLived);
+    checkUnnamed3450(o.organizations);
+    checkUnnamed3451(o.placesLived);
     unittest.expect(o.plusOneCount, unittest.equals(42));
     unittest.expect(o.relationshipStatus, unittest.equals('foo'));
     unittest.expect(o.skills, unittest.equals('foo'));
     unittest.expect(o.tagline, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
-    checkUnnamed3287(o.urls);
+    checkUnnamed3452(o.urls);
     unittest.expect(o.verified, unittest.isTrue);
   }
   buildCounterPerson--;
@@ -1989,7 +1989,7 @@ main() {
       }), true);
       res
           .get(arg_activityId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Activity response) {
+          .then(unittest.expectAsync1(((response) {
         checkActivity(response);
       })));
     });
@@ -2064,7 +2064,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ActivityFeed response) {
+          .then(unittest.expectAsync1(((response) {
         checkActivityFeed(response);
       })));
     });
@@ -2135,7 +2135,7 @@ main() {
               orderBy: arg_orderBy,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ActivityFeed response) {
+          .then(unittest.expectAsync1(((response) {
         checkActivityFeed(response);
       })));
     });
@@ -2193,7 +2193,7 @@ main() {
       }), true);
       res
           .get(arg_commentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Comment response) {
+          .then(unittest.expectAsync1(((response) {
         checkComment(response);
       })));
     });
@@ -2268,7 +2268,7 @@ main() {
               pageToken: arg_pageToken,
               sortOrder: arg_sortOrder,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CommentFeed response) {
+          .then(unittest.expectAsync1(((response) {
         checkCommentFeed(response);
       })));
     });
@@ -2326,7 +2326,7 @@ main() {
       }), true);
       res
           .get(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Person response) {
+          .then(unittest.expectAsync1(((response) {
         checkPerson(response);
       })));
     });
@@ -2405,7 +2405,7 @@ main() {
               orderBy: arg_orderBy,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.PeopleFeed response) {
+          .then(unittest.expectAsync1(((response) {
         checkPeopleFeed(response);
       })));
     });
@@ -2480,7 +2480,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.PeopleFeed response) {
+          .then(unittest.expectAsync1(((response) {
         checkPeopleFeed(response);
       })));
     });
@@ -2547,7 +2547,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.PeopleFeed response) {
+          .then(unittest.expectAsync1(((response) {
         checkPeopleFeed(response);
       })));
     });

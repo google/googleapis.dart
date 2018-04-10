@@ -168,14 +168,14 @@ checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-buildUnnamed3229() {
+buildUnnamed1911() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3229(core.List<core.String> o) {
+checkUnnamed1911(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -186,7 +186,7 @@ buildResellernotifyGetwatchdetailsResponse() {
   var o = new api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed3229();
+    o.serviceAccountEmailAddresses = buildUnnamed1911();
     o.topicName = "foo";
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -197,7 +197,7 @@ checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed3229(o.serviceAccountEmailAddresses);
+    checkUnnamed1911(o.serviceAccountEmailAddresses);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -292,14 +292,14 @@ checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-buildUnnamed3230() {
+buildUnnamed1912() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3230(core.List<core.String> o) {
+checkUnnamed1912(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -367,7 +367,7 @@ buildSubscription() {
     o.skuName = "foo";
     o.status = "foo";
     o.subscriptionId = "foo";
-    o.suspensionReasons = buildUnnamed3230();
+    o.suspensionReasons = buildUnnamed1912();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -393,21 +393,21 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed3230(o.suspensionReasons);
+    checkUnnamed1912(o.suspensionReasons);
     checkSubscriptionTransferInfo(o.transferInfo);
     checkSubscriptionTrialSettings(o.trialSettings);
   }
   buildCounterSubscription--;
 }
 
-buildUnnamed3231() {
+buildUnnamed1913() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed3231(core.List<api.Subscription> o) {
+checkUnnamed1913(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -420,7 +420,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed3231();
+    o.subscriptions = buildUnnamed1913();
   }
   buildCounterSubscriptions--;
   return o;
@@ -431,7 +431,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3231(o.subscriptions);
+    checkUnnamed1913(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }
@@ -594,7 +594,7 @@ main() {
       }), true);
       res
           .get(arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Customer response) {
+          .then(unittest.expectAsync1(((response) {
         checkCustomer(response);
       })));
     });
@@ -654,7 +654,7 @@ main() {
       res
           .insert(arg_request,
               customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Customer response) {
+          .then(unittest.expectAsync1(((response) {
         checkCustomer(response);
       })));
     });
@@ -714,7 +714,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Customer response) {
+          .then(unittest.expectAsync1(((response) {
         checkCustomer(response);
       })));
     });
@@ -774,7 +774,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Customer response) {
+          .then(unittest.expectAsync1(((response) {
         checkCustomer(response);
       })));
     });
@@ -828,8 +828,9 @@ main() {
             convert.JSON.encode(buildResellernotifyGetwatchdetailsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getwatchdetails($fields: arg_$fields).then(unittest
-          .expectAsync1(((api.ResellernotifyGetwatchdetailsResponse response) {
+      res
+          .getwatchdetails($fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkResellernotifyGetwatchdetailsResponse(response);
       })));
     });
@@ -887,7 +888,7 @@ main() {
           .register(
               serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ResellernotifyResource response) {
+          .then(unittest.expectAsync1(((response) {
         checkResellernotifyResource(response);
       })));
     });
@@ -945,7 +946,7 @@ main() {
           .unregister(
               serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ResellernotifyResource response) {
+          .then(unittest.expectAsync1(((response) {
         checkResellernotifyResource(response);
       })));
     });
@@ -1020,7 +1021,7 @@ main() {
       }), true);
       res
           .activate(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1098,7 +1099,7 @@ main() {
       res
           .changePlan(arg_request, arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1177,7 +1178,7 @@ main() {
           .changeRenewalSettings(
               arg_request, arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1255,7 +1256,7 @@ main() {
       res
           .changeSeats(arg_request, arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1391,7 +1392,7 @@ main() {
       }), true);
       res
           .get(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1462,7 +1463,7 @@ main() {
       res
           .insert(arg_request, arg_customerId,
               customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1536,7 +1537,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscriptions response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscriptions(response);
       })));
     });
@@ -1610,7 +1611,7 @@ main() {
       res
           .startPaidService(arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });
@@ -1683,7 +1684,7 @@ main() {
       }), true);
       res
           .suspend(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Subscription response) {
+          .then(unittest.expectAsync1(((response) {
         checkSubscription(response);
       })));
     });

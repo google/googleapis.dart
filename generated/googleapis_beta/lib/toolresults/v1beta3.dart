@@ -64,7 +64,7 @@ class ProjectsResourceApi {
   async.Future<ProjectSettings> getSettings(core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -134,7 +134,7 @@ class ProjectsResourceApi {
   async.Future<ProjectSettings> initializeSettings(core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -204,7 +204,7 @@ class ProjectsHistoriesResourceApi {
   async.Future<History> create(History request, core.String projectId,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -265,7 +265,7 @@ class ProjectsHistoriesResourceApi {
   async.Future<History> get(core.String projectId, core.String historyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -344,7 +344,7 @@ class ProjectsHistoriesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -430,7 +430,7 @@ class ProjectsHistoriesExecutionsResourceApi {
       Execution request, core.String projectId, core.String historyId,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -502,7 +502,7 @@ class ProjectsHistoriesExecutionsResourceApi {
       core.String projectId, core.String historyId, core.String executionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -583,7 +583,7 @@ class ProjectsHistoriesExecutionsResourceApi {
       core.String projectId, core.String historyId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -657,7 +657,7 @@ class ProjectsHistoriesExecutionsResourceApi {
       core.String historyId, core.String executionId,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -738,7 +738,7 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
       core.String historyId, core.String executionId, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -814,7 +814,7 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
       core.String projectId, core.String historyId, core.String executionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -914,7 +914,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String historyId, core.String executionId,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -995,7 +995,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String executionId, core.String stepId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1063,7 +1063,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String historyId, core.String executionId, core.String stepId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1155,7 +1155,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String projectId, core.String historyId, core.String executionId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1245,7 +1245,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String historyId, core.String executionId, core.String stepId,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1338,7 +1338,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String stepId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1425,7 +1425,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
       core.String stepId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1517,7 +1517,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       core.String stepId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1595,7 +1595,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       core.String sampleSeriesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1675,7 +1675,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       core.String historyId, core.String executionId, core.String stepId,
       {core.List<core.String> filter, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1770,7 +1770,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       core.String sampleSeriesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1869,7 +1869,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1978,7 +1978,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
       core.String historyId, core.String executionId, core.String stepId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2475,7 +2475,7 @@ class BatchCreatePerfSamplesRequest {
   BatchCreatePerfSamplesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("perfSamples")) {
       perfSamples = _json["perfSamples"]
-          .map((value) => new PerfSample.fromJson(value))
+          .map<PerfSample>((value) => new PerfSample.fromJson(value))
           .toList();
     }
   }
@@ -2499,7 +2499,7 @@ class BatchCreatePerfSamplesResponse {
   BatchCreatePerfSamplesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("perfSamples")) {
       perfSamples = _json["perfSamples"]
-          .map((value) => new PerfSample.fromJson(value))
+          .map<PerfSample>((value) => new PerfSample.fromJson(value))
           .toList();
     }
   }
@@ -2900,7 +2900,8 @@ class GraphicsStats {
   GraphicsStats.fromJson(core.Map _json) {
     if (_json.containsKey("buckets")) {
       buckets = _json["buckets"]
-          .map((value) => new GraphicsStatsBucket.fromJson(value))
+          .map<GraphicsStatsBucket>(
+              (value) => new GraphicsStatsBucket.fromJson(value))
           .toList();
     }
     if (_json.containsKey("highInputLatencyCount")) {
@@ -3179,7 +3180,7 @@ class ListExecutionsResponse {
   ListExecutionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("executions")) {
       executions = _json["executions"]
-          .map((value) => new Execution.fromJson(value))
+          .map<Execution>((value) => new Execution.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3221,7 +3222,7 @@ class ListHistoriesResponse {
   ListHistoriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("histories")) {
       histories = _json["histories"]
-          .map((value) => new History.fromJson(value))
+          .map<History>((value) => new History.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3251,7 +3252,8 @@ class ListPerfSampleSeriesResponse {
   ListPerfSampleSeriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("perfSampleSeries")) {
       perfSampleSeries = _json["perfSampleSeries"]
-          .map((value) => new PerfSampleSeries.fromJson(value))
+          .map<PerfSampleSeries>(
+              (value) => new PerfSampleSeries.fromJson(value))
           .toList();
     }
   }
@@ -3282,7 +3284,7 @@ class ListPerfSamplesResponse {
     }
     if (_json.containsKey("perfSamples")) {
       perfSamples = _json["perfSamples"]
-          .map((value) => new PerfSample.fromJson(value))
+          .map<PerfSample>((value) => new PerfSample.fromJson(value))
           .toList();
     }
   }
@@ -3310,7 +3312,8 @@ class ListScreenshotClustersResponse {
   ListScreenshotClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
       clusters = _json["clusters"]
-          .map((value) => new ScreenshotCluster.fromJson(value))
+          .map<ScreenshotCluster>(
+              (value) => new ScreenshotCluster.fromJson(value))
           .toList();
     }
   }
@@ -3351,7 +3354,7 @@ class ListStepThumbnailsResponse {
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = _json["thumbnails"]
-          .map((value) => new Image.fromJson(value))
+          .map<Image>((value) => new Image.fromJson(value))
           .toList();
     }
   }
@@ -3388,7 +3391,9 @@ class ListStepsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("steps")) {
-      steps = _json["steps"].map((value) => new Step.fromJson(value)).toList();
+      steps = _json["steps"]
+          .map<Step>((value) => new Step.fromJson(value))
+          .toList();
     }
   }
 
@@ -3797,7 +3802,7 @@ class PublishXunitXmlFilesRequest {
   PublishXunitXmlFilesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("xunitXmlFiles")) {
       xunitXmlFiles = _json["xunitXmlFiles"]
-          .map((value) => new FileReference.fromJson(value))
+          .map<FileReference>((value) => new FileReference.fromJson(value))
           .toList();
     }
   }
@@ -3891,8 +3896,9 @@ class ScreenshotCluster {
       keyScreen = new Screen.fromJson(_json["keyScreen"]);
     }
     if (_json.containsKey("screens")) {
-      screens =
-          _json["screens"].map((value) => new Screen.fromJson(value)).toList();
+      screens = _json["screens"]
+          .map<Screen>((value) => new Screen.fromJson(value))
+          .toList();
     }
   }
 
@@ -4093,8 +4099,9 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details =
-          _json["details"].map((value) => new Any.fromJson(value)).toList();
+      details = _json["details"]
+          .map<Any>((value) => new Any.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -4303,7 +4310,8 @@ class Step {
     }
     if (_json.containsKey("dimensionValue")) {
       dimensionValue = _json["dimensionValue"]
-          .map((value) => new StepDimensionValueEntry.fromJson(value))
+          .map<StepDimensionValueEntry>(
+              (value) => new StepDimensionValueEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("hasImages")) {
@@ -4311,7 +4319,7 @@ class Step {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new StepLabelsEntry.fromJson(value))
+          .map<StepLabelsEntry>((value) => new StepLabelsEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -4560,12 +4568,13 @@ class TestExecutionStep {
   TestExecutionStep.fromJson(core.Map _json) {
     if (_json.containsKey("testIssues")) {
       testIssues = _json["testIssues"]
-          .map((value) => new TestIssue.fromJson(value))
+          .map<TestIssue>((value) => new TestIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("testSuiteOverviews")) {
       testSuiteOverviews = _json["testSuiteOverviews"]
-          .map((value) => new TestSuiteOverview.fromJson(value))
+          .map<TestSuiteOverview>(
+              (value) => new TestSuiteOverview.fromJson(value))
           .toList();
     }
     if (_json.containsKey("testTiming")) {
@@ -5016,12 +5025,13 @@ class ToolExecution {
     }
     if (_json.containsKey("toolLogs")) {
       toolLogs = _json["toolLogs"]
-          .map((value) => new FileReference.fromJson(value))
+          .map<FileReference>((value) => new FileReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("toolOutputs")) {
       toolOutputs = _json["toolOutputs"]
-          .map((value) => new ToolOutputReference.fromJson(value))
+          .map<ToolOutputReference>(
+              (value) => new ToolOutputReference.fromJson(value))
           .toList();
     }
   }

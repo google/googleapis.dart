@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1330() {
+buildUnnamed1666() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed1330(core.List<api.AuditLogConfig> o) {
+checkUnnamed1666(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -68,7 +68,7 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed1330();
+    o.auditLogConfigs = buildUnnamed1666();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -78,20 +78,20 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed1330(o.auditLogConfigs);
+    checkUnnamed1666(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed1331() {
+buildUnnamed1667() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1331(core.List<core.String> o) {
+checkUnnamed1667(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -102,7 +102,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed1331();
+    o.exemptedMembers = buildUnnamed1667();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -112,20 +112,20 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed1331(o.exemptedMembers);
+    checkUnnamed1667(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-buildUnnamed1332() {
+buildUnnamed1668() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1332(core.List<core.String> o) {
+checkUnnamed1668(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -136,7 +136,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed1332();
+    o.members = buildUnnamed1668();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -146,20 +146,20 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed1332(o.members);
+    checkUnnamed1668(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-buildUnnamed1333() {
+buildUnnamed1669() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1333(core.Map<core.String, core.String> o) {
+checkUnnamed1669(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -171,7 +171,7 @@ buildCryptoKey() {
   buildCounterCryptoKey++;
   if (buildCounterCryptoKey < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed1333();
+    o.labels = buildUnnamed1669();
     o.name = "foo";
     o.nextRotationTime = "foo";
     o.primary = buildCryptoKeyVersion();
@@ -186,7 +186,7 @@ checkCryptoKey(api.CryptoKey o) {
   buildCounterCryptoKey++;
   if (buildCounterCryptoKey < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed1333(o.labels);
+    checkUnnamed1669(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nextRotationTime, unittest.equals('foo'));
     checkCryptoKeyVersion(o.primary);
@@ -341,14 +341,14 @@ checkKeyRing(api.KeyRing o) {
   buildCounterKeyRing--;
 }
 
-buildUnnamed1334() {
+buildUnnamed1670() {
   var o = new core.List<api.CryptoKeyVersion>();
   o.add(buildCryptoKeyVersion());
   o.add(buildCryptoKeyVersion());
   return o;
 }
 
-checkUnnamed1334(core.List<api.CryptoKeyVersion> o) {
+checkUnnamed1670(core.List<api.CryptoKeyVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKeyVersion(o[0]);
   checkCryptoKeyVersion(o[1]);
@@ -359,7 +359,7 @@ buildListCryptoKeyVersionsResponse() {
   var o = new api.ListCryptoKeyVersionsResponse();
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    o.cryptoKeyVersions = buildUnnamed1334();
+    o.cryptoKeyVersions = buildUnnamed1670();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -370,21 +370,21 @@ buildListCryptoKeyVersionsResponse() {
 checkListCryptoKeyVersionsResponse(api.ListCryptoKeyVersionsResponse o) {
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    checkUnnamed1334(o.cryptoKeyVersions);
+    checkUnnamed1670(o.cryptoKeyVersions);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListCryptoKeyVersionsResponse--;
 }
 
-buildUnnamed1335() {
+buildUnnamed1671() {
   var o = new core.List<api.CryptoKey>();
   o.add(buildCryptoKey());
   o.add(buildCryptoKey());
   return o;
 }
 
-checkUnnamed1335(core.List<api.CryptoKey> o) {
+checkUnnamed1671(core.List<api.CryptoKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKey(o[0]);
   checkCryptoKey(o[1]);
@@ -395,7 +395,7 @@ buildListCryptoKeysResponse() {
   var o = new api.ListCryptoKeysResponse();
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    o.cryptoKeys = buildUnnamed1335();
+    o.cryptoKeys = buildUnnamed1671();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -406,21 +406,21 @@ buildListCryptoKeysResponse() {
 checkListCryptoKeysResponse(api.ListCryptoKeysResponse o) {
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    checkUnnamed1335(o.cryptoKeys);
+    checkUnnamed1671(o.cryptoKeys);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListCryptoKeysResponse--;
 }
 
-buildUnnamed1336() {
+buildUnnamed1672() {
   var o = new core.List<api.KeyRing>();
   o.add(buildKeyRing());
   o.add(buildKeyRing());
   return o;
 }
 
-checkUnnamed1336(core.List<api.KeyRing> o) {
+checkUnnamed1672(core.List<api.KeyRing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyRing(o[0]);
   checkKeyRing(o[1]);
@@ -431,7 +431,7 @@ buildListKeyRingsResponse() {
   var o = new api.ListKeyRingsResponse();
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    o.keyRings = buildUnnamed1336();
+    o.keyRings = buildUnnamed1672();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -442,21 +442,21 @@ buildListKeyRingsResponse() {
 checkListKeyRingsResponse(api.ListKeyRingsResponse o) {
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    checkUnnamed1336(o.keyRings);
+    checkUnnamed1672(o.keyRings);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListKeyRingsResponse--;
 }
 
-buildUnnamed1337() {
+buildUnnamed1673() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed1337(core.List<api.Location> o) {
+checkUnnamed1673(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -467,7 +467,7 @@ buildListLocationsResponse() {
   var o = new api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed1337();
+    o.locations = buildUnnamed1673();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
@@ -477,26 +477,26 @@ buildListLocationsResponse() {
 checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed1337(o.locations);
+    checkUnnamed1673(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed1338() {
+buildUnnamed1674() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1338(core.Map<core.String, core.String> o) {
+checkUnnamed1674(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1339() {
+buildUnnamed1675() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -511,7 +511,7 @@ buildUnnamed1339() {
   return o;
 }
 
-checkUnnamed1339(core.Map<core.String, core.Object> o) {
+checkUnnamed1675(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -530,9 +530,9 @@ buildLocation() {
   var o = new api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.labels = buildUnnamed1338();
+    o.labels = buildUnnamed1674();
     o.locationId = "foo";
-    o.metadata = buildUnnamed1339();
+    o.metadata = buildUnnamed1675();
     o.name = "foo";
   }
   buildCounterLocation--;
@@ -542,35 +542,35 @@ buildLocation() {
 checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    checkUnnamed1338(o.labels);
+    checkUnnamed1674(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed1339(o.metadata);
+    checkUnnamed1675(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-buildUnnamed1340() {
+buildUnnamed1676() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed1340(core.List<api.AuditConfig> o) {
+checkUnnamed1676(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed1341() {
+buildUnnamed1677() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed1341(core.List<api.Binding> o) {
+checkUnnamed1677(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -581,8 +581,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed1340();
-    o.bindings = buildUnnamed1341();
+    o.auditConfigs = buildUnnamed1676();
+    o.bindings = buildUnnamed1677();
     o.etag = "foo";
     o.version = 42;
   }
@@ -593,8 +593,8 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1340(o.auditConfigs);
-    checkUnnamed1341(o.bindings);
+    checkUnnamed1676(o.auditConfigs);
+    checkUnnamed1677(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -637,14 +637,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed1342() {
+buildUnnamed1678() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1342(core.List<core.String> o) {
+checkUnnamed1678(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -655,7 +655,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1342();
+    o.permissions = buildUnnamed1678();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -664,19 +664,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1342(o.permissions);
+    checkUnnamed1678(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed1343() {
+buildUnnamed1679() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1343(core.List<core.String> o) {
+checkUnnamed1679(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -687,7 +687,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1343();
+    o.permissions = buildUnnamed1679();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -696,7 +696,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1343(o.permissions);
+    checkUnnamed1679(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -947,7 +947,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Location response) {
+          .then(unittest.expectAsync1(((response) {
         checkLocation(response);
       })));
     });
@@ -1011,7 +1011,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLocationsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLocationsResponse(response);
       })));
     });
@@ -1073,7 +1073,7 @@ main() {
       res
           .create(arg_request, arg_parent,
               keyRingId: arg_keyRingId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.KeyRing response) {
+          .then(unittest.expectAsync1(((response) {
         checkKeyRing(response);
       })));
     });
@@ -1125,7 +1125,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.KeyRing response) {
+          .then(unittest.expectAsync1(((response) {
         checkKeyRing(response);
       })));
     });
@@ -1177,7 +1177,7 @@ main() {
       }), true);
       res
           .getIamPolicy(arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Policy response) {
+          .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
     });
@@ -1238,7 +1238,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListKeyRingsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListKeyRingsResponse(response);
       })));
     });
@@ -1294,7 +1294,7 @@ main() {
       }), true);
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Policy response) {
+          .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
     });
@@ -1350,8 +1350,7 @@ main() {
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(
-              unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -1413,7 +1412,7 @@ main() {
       res
           .create(arg_request, arg_parent,
               cryptoKeyId: arg_cryptoKeyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKey response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKey(response);
       })));
     });
@@ -1469,7 +1468,7 @@ main() {
       }), true);
       res
           .decrypt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.DecryptResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkDecryptResponse(response);
       })));
     });
@@ -1525,7 +1524,7 @@ main() {
       }), true);
       res
           .encrypt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.EncryptResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkEncryptResponse(response);
       })));
     });
@@ -1577,7 +1576,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKey response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKey(response);
       })));
     });
@@ -1629,7 +1628,7 @@ main() {
       }), true);
       res
           .getIamPolicy(arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Policy response) {
+          .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
     });
@@ -1690,7 +1689,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListCryptoKeysResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListCryptoKeysResponse(response);
       })));
     });
@@ -1750,7 +1749,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKey response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKey(response);
       })));
     });
@@ -1806,7 +1805,7 @@ main() {
       }), true);
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Policy response) {
+          .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
     });
@@ -1862,8 +1861,7 @@ main() {
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(
-              unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -1919,7 +1917,7 @@ main() {
       }), true);
       res
           .updatePrimaryVersion(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKey response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKey(response);
       })));
     });
@@ -1984,7 +1982,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2045,7 +2043,7 @@ main() {
       }), true);
       res
           .destroy(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2102,7 +2100,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2168,8 +2166,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.ListCryptoKeyVersionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListCryptoKeyVersionsResponse(response);
       })));
     });
@@ -2234,7 +2231,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2295,7 +2292,7 @@ main() {
       }), true);
       res
           .restore(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
+          .then(unittest.expectAsync1(((response) {
         checkCryptoKeyVersion(response);
       })));
     });

@@ -76,7 +76,7 @@ class ProjectsZonesResourceApi {
       core.String projectId, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -146,7 +146,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -214,7 +214,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -292,7 +292,7 @@ class ProjectsZonesClustersResourceApi {
       CreateClusterRequest request, core.String projectId, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -361,7 +361,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -423,7 +423,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -487,7 +487,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -552,7 +552,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -612,7 +612,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -680,7 +680,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -748,7 +748,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -816,7 +816,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -884,7 +884,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -955,7 +955,7 @@ class ProjectsZonesClustersResourceApi {
       core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1025,7 +1025,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1093,7 +1093,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1161,7 +1161,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1229,7 +1229,7 @@ class ProjectsZonesClustersResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1309,7 +1309,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1382,7 +1382,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1450,7 +1450,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String clusterId, core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1519,7 +1519,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String clusterId, core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1586,7 +1586,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId, core.String zone, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1658,7 +1658,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1737,7 +1737,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1816,7 +1816,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1895,7 +1895,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String nodePoolId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1974,7 +1974,7 @@ class ProjectsZonesOperationsResourceApi {
       core.String projectId, core.String zone, core.String operationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2040,7 +2040,7 @@ class ProjectsZonesOperationsResourceApi {
       core.String projectId, core.String zone, core.String operationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2100,7 +2100,7 @@ class ProjectsZonesOperationsResourceApi {
       core.String projectId, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2612,7 +2612,7 @@ class Cluster {
     }
     if (_json.containsKey("nodePools")) {
       nodePools = _json["nodePools"]
-          .map((value) => new NodePool.fromJson(value))
+          .map<NodePool>((value) => new NodePool.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resourceLabels")) {
@@ -3284,7 +3284,7 @@ class ListClustersResponse {
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
       clusters = _json["clusters"]
-          .map((value) => new Cluster.fromJson(value))
+          .map<Cluster>((value) => new Cluster.fromJson(value))
           .toList();
     }
     if (_json.containsKey("missingZones")) {
@@ -3315,7 +3315,7 @@ class ListNodePoolsResponse {
   ListNodePoolsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("nodePools")) {
       nodePools = _json["nodePools"]
-          .map((value) => new NodePool.fromJson(value))
+          .map<NodePool>((value) => new NodePool.fromJson(value))
           .toList();
     }
   }
@@ -3347,7 +3347,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -3511,7 +3511,7 @@ class MasterAuthorizedNetworksConfig {
   MasterAuthorizedNetworksConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cidrBlocks")) {
       cidrBlocks = _json["cidrBlocks"]
-          .map((value) => new CidrBlock.fromJson(value))
+          .map<CidrBlock>((value) => new CidrBlock.fromJson(value))
           .toList();
     }
     if (_json.containsKey("enabled")) {
@@ -3706,7 +3706,8 @@ class NodeConfig {
   NodeConfig.fromJson(core.Map _json) {
     if (_json.containsKey("accelerators")) {
       accelerators = _json["accelerators"]
-          .map((value) => new AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>(
+              (value) => new AcceleratorConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("diskSizeGb")) {

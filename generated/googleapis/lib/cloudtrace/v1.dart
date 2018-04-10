@@ -77,7 +77,7 @@ class ProjectsResourceApi {
   async.Future<Empty> patchTraces(Traces request, core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -133,7 +133,7 @@ class ProjectsTracesResourceApi {
   async.Future<Trace> get(core.String projectId, core.String traceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -260,7 +260,7 @@ class ProjectsTracesResourceApi {
       core.String orderBy,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -346,8 +346,9 @@ class ListTracesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("traces")) {
-      traces =
-          _json["traces"].map((value) => new Trace.fromJson(value)).toList();
+      traces = _json["traces"]
+          .map<Trace>((value) => new Trace.fromJson(value))
+          .toList();
     }
   }
 
@@ -385,8 +386,9 @@ class Trace {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("spans")) {
-      spans =
-          _json["spans"].map((value) => new TraceSpan.fromJson(value)).toList();
+      spans = _json["spans"]
+          .map<TraceSpan>((value) => new TraceSpan.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("traceId")) {
       traceId = _json["traceId"];
@@ -552,8 +554,9 @@ class Traces {
 
   Traces.fromJson(core.Map _json) {
     if (_json.containsKey("traces")) {
-      traces =
-          _json["traces"].map((value) => new Trace.fromJson(value)).toList();
+      traces = _json["traces"]
+          .map<Trace>((value) => new Trace.fromJson(value))
+          .toList();
     }
   }
 

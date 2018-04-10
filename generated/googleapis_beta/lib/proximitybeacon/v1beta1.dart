@@ -63,7 +63,7 @@ class BeaconinfoResourceApi {
       GetInfoForObservedBeaconsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -140,7 +140,7 @@ class BeaconsResourceApi {
   async.Future<Empty> activate(core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -210,7 +210,7 @@ class BeaconsResourceApi {
   async.Future<Empty> deactivate(core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -280,7 +280,7 @@ class BeaconsResourceApi {
   async.Future<Empty> decommission(core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -347,7 +347,7 @@ class BeaconsResourceApi {
   async.Future<Empty> delete(core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -417,7 +417,7 @@ class BeaconsResourceApi {
   async.Future<Beacon> get(core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -553,7 +553,7 @@ class BeaconsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -617,7 +617,7 @@ class BeaconsResourceApi {
   async.Future<Beacon> register(Beacon request,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -690,7 +690,7 @@ class BeaconsResourceApi {
   async.Future<Beacon> update(Beacon request, core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -781,7 +781,7 @@ class BeaconsAttachmentsResourceApi {
       core.String projectId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -866,7 +866,7 @@ class BeaconsAttachmentsResourceApi {
       BeaconAttachment request, core.String beaconName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -937,7 +937,7 @@ class BeaconsAttachmentsResourceApi {
   async.Future<Empty> delete(core.String attachmentName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1018,7 +1018,7 @@ class BeaconsAttachmentsResourceApi {
       core.String projectId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1112,7 +1112,7 @@ class BeaconsDiagnosticsResourceApi {
       core.String projectId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1183,7 +1183,7 @@ class NamespacesResourceApi {
   async.Future<ListNamespacesResponse> list(
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1238,7 +1238,7 @@ class NamespacesResourceApi {
   async.Future<Namespace> update(Namespace request, core.String namespaceName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1297,7 +1297,7 @@ class V1beta1ResourceApi {
   async.Future<EphemeralIdRegistrationParams> getEidparams(
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1732,7 +1732,7 @@ class BeaconInfo {
     }
     if (_json.containsKey("attachments")) {
       attachments = _json["attachments"]
-          .map((value) => new AttachmentInfo.fromJson(value))
+          .map<AttachmentInfo>((value) => new AttachmentInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("beaconName")) {
@@ -2118,7 +2118,7 @@ class GetInfoForObservedBeaconsRequest {
     }
     if (_json.containsKey("observations")) {
       observations = _json["observations"]
-          .map((value) => new Observation.fromJson(value))
+          .map<Observation>((value) => new Observation.fromJson(value))
           .toList();
     }
   }
@@ -2149,7 +2149,7 @@ class GetInfoForObservedBeaconsResponse {
   GetInfoForObservedBeaconsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("beacons")) {
       beacons = _json["beacons"]
-          .map((value) => new BeaconInfo.fromJson(value))
+          .map<BeaconInfo>((value) => new BeaconInfo.fromJson(value))
           .toList();
     }
   }
@@ -2235,7 +2235,8 @@ class ListBeaconAttachmentsResponse {
   ListBeaconAttachmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("attachments")) {
       attachments = _json["attachments"]
-          .map((value) => new BeaconAttachment.fromJson(value))
+          .map<BeaconAttachment>(
+              (value) => new BeaconAttachment.fromJson(value))
           .toList();
     }
   }
@@ -2268,8 +2269,9 @@ class ListBeaconsResponse {
 
   ListBeaconsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("beacons")) {
-      beacons =
-          _json["beacons"].map((value) => new Beacon.fromJson(value)).toList();
+      beacons = _json["beacons"]
+          .map<Beacon>((value) => new Beacon.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2309,7 +2311,7 @@ class ListDiagnosticsResponse {
   ListDiagnosticsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("diagnostics")) {
       diagnostics = _json["diagnostics"]
-          .map((value) => new Diagnostics.fromJson(value))
+          .map<Diagnostics>((value) => new Diagnostics.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2342,7 +2344,7 @@ class ListNamespacesResponse {
   ListNamespacesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("namespaces")) {
       namespaces = _json["namespaces"]
-          .map((value) => new Namespace.fromJson(value))
+          .map<Namespace>((value) => new Namespace.fromJson(value))
           .toList();
     }
   }

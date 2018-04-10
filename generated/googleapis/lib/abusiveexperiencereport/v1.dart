@@ -64,7 +64,7 @@ class SitesResourceApi {
   async.Future<SiteSummaryResponse> get(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -110,7 +110,7 @@ class ViolatingSitesResourceApi {
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -229,7 +229,8 @@ class ViolatingSitesResponse {
   ViolatingSitesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("violatingSites")) {
       violatingSites = _json["violatingSites"]
-          .map((value) => new SiteSummaryResponse.fromJson(value))
+          .map<SiteSummaryResponse>(
+              (value) => new SiteSummaryResponse.fromJson(value))
           .toList();
     }
   }

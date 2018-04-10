@@ -96,7 +96,7 @@ class ProjectsConfigsResourceApi {
   async.Future<RuntimeConfig> create(RuntimeConfig request, core.String parent,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -149,7 +149,7 @@ class ProjectsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -195,7 +195,7 @@ class ProjectsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<RuntimeConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -243,7 +243,7 @@ class ProjectsConfigsResourceApi {
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -299,7 +299,7 @@ class ProjectsConfigsResourceApi {
   async.Future<ListConfigsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -357,7 +357,7 @@ class ProjectsConfigsResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -417,7 +417,7 @@ class ProjectsConfigsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -471,7 +471,7 @@ class ProjectsConfigsResourceApi {
   async.Future<RuntimeConfig> update(RuntimeConfig request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -526,7 +526,7 @@ class ProjectsConfigsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -581,7 +581,7 @@ class ProjectsConfigsOperationsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -663,7 +663,7 @@ class ProjectsConfigsVariablesResourceApi {
   async.Future<Variable> create(Variable request, core.String parent,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -726,7 +726,7 @@ class ProjectsConfigsVariablesResourceApi {
   async.Future<Empty> delete(core.String name,
       {core.bool recursive, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -774,7 +774,7 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -850,7 +850,7 @@ class ProjectsConfigsVariablesResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -919,7 +919,7 @@ class ProjectsConfigsVariablesResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -973,7 +973,7 @@ class ProjectsConfigsVariablesResourceApi {
   async.Future<Variable> update(Variable request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1038,7 +1038,7 @@ class ProjectsConfigsVariablesResourceApi {
   async.Future<Variable> watch(WatchVariableRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1114,7 +1114,7 @@ class ProjectsConfigsWaitersResourceApi {
   async.Future<Operation> create(Waiter request, core.String parent,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1167,7 +1167,7 @@ class ProjectsConfigsWaitersResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1214,7 +1214,7 @@ class ProjectsConfigsWaitersResourceApi {
   /// this method will complete with the same error.
   async.Future<Waiter> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1270,7 +1270,7 @@ class ProjectsConfigsWaitersResourceApi {
   async.Future<ListWaitersResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1333,7 +1333,7 @@ class ProjectsConfigsWaitersResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1529,7 +1529,7 @@ class ListConfigsResponse {
   ListConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("configs")) {
       configs = _json["configs"]
-          .map((value) => new RuntimeConfig.fromJson(value))
+          .map<RuntimeConfig>((value) => new RuntimeConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1572,7 +1572,7 @@ class ListVariablesResponse {
     }
     if (_json.containsKey("variables")) {
       variables = _json["variables"]
-          .map((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
   }
@@ -1611,8 +1611,9 @@ class ListWaitersResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("waiters")) {
-      waiters =
-          _json["waiters"].map((value) => new Waiter.fromJson(value)).toList();
+      waiters = _json["waiters"]
+          .map<Waiter>((value) => new Waiter.fromJson(value))
+          .toList();
     }
   }
 
@@ -1777,7 +1778,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {

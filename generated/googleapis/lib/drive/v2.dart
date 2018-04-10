@@ -120,7 +120,7 @@ class AboutResourceApi {
       core.String startChangeId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -174,7 +174,7 @@ class AppsResourceApi {
   /// this method will complete with the same error.
   async.Future<App> get(core.String appId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -234,7 +234,7 @@ class AppsResourceApi {
       core.String languageCode,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -297,7 +297,7 @@ class ChangesResourceApi {
       core.String teamDriveId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -352,7 +352,7 @@ class ChangesResourceApi {
       core.String teamDriveId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -441,7 +441,7 @@ class ChangesResourceApi {
       core.String teamDriveId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -556,7 +556,7 @@ class ChangesResourceApi {
       core.String teamDriveId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -632,7 +632,7 @@ class ChannelsResourceApi {
   /// this method will complete with the same error.
   async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -683,7 +683,7 @@ class ChildrenResourceApi {
   async.Future delete(core.String folderId, core.String childId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -736,7 +736,7 @@ class ChildrenResourceApi {
   async.Future<ChildReference> get(core.String folderId, core.String childId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -791,7 +791,7 @@ class ChildrenResourceApi {
       ChildReference request, core.String folderId,
       {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -859,7 +859,7 @@ class ChildrenResourceApi {
       core.String q,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -920,7 +920,7 @@ class CommentsResourceApi {
   async.Future delete(core.String fileId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -976,7 +976,7 @@ class CommentsResourceApi {
   async.Future<Comment> get(core.String fileId, core.String commentId,
       {core.bool includeDeleted, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1030,7 +1030,7 @@ class CommentsResourceApi {
   async.Future<Comment> insert(Comment request, core.String fileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1094,7 +1094,7 @@ class CommentsResourceApi {
       core.String updatedMin,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1154,7 +1154,7 @@ class CommentsResourceApi {
       Comment request, core.String fileId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1211,7 +1211,7 @@ class CommentsResourceApi {
       Comment request, core.String fileId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1304,7 +1304,7 @@ class FilesResourceApi {
       core.String visibility,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1377,7 +1377,7 @@ class FilesResourceApi {
   async.Future delete(core.String fileId,
       {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1420,7 +1420,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future emptyTrash({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1469,7 +1469,7 @@ class FilesResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1527,7 +1527,7 @@ class FilesResourceApi {
   async.Future<GeneratedIds> generateIds(
       {core.int maxResults, core.String space, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1606,7 +1606,7 @@ class FilesResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1716,7 +1716,7 @@ class FilesResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1851,7 +1851,7 @@ class FilesResourceApi {
       core.String teamDriveId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1996,7 +1996,7 @@ class FilesResourceApi {
       core.bool useContentAsIndexableText,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2089,7 +2089,7 @@ class FilesResourceApi {
   async.Future<File> touch(core.String fileId,
       {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2139,7 +2139,7 @@ class FilesResourceApi {
   async.Future<File> trash(core.String fileId,
       {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2188,7 +2188,7 @@ class FilesResourceApi {
   async.Future<File> untrash(core.String fileId,
       {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2313,7 +2313,7 @@ class FilesResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2449,7 +2449,7 @@ class FilesResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2523,7 +2523,7 @@ class ParentsResourceApi {
   async.Future delete(core.String fileId, core.String parentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2576,7 +2576,7 @@ class ParentsResourceApi {
   async.Future<ParentReference> get(core.String fileId, core.String parentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2631,7 +2631,7 @@ class ParentsResourceApi {
       ParentReference request, core.String fileId,
       {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2679,7 +2679,7 @@ class ParentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ParentList> list(core.String fileId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2738,7 +2738,7 @@ class PermissionsResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2807,7 +2807,7 @@ class PermissionsResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2862,7 +2862,7 @@ class PermissionsResourceApi {
   async.Future<PermissionId> getIdForEmail(core.String email,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2926,7 +2926,7 @@ class PermissionsResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3006,7 +3006,7 @@ class PermissionsResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3084,7 +3084,7 @@ class PermissionsResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3171,7 +3171,7 @@ class PermissionsResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3243,7 +3243,7 @@ class PropertiesResourceApi {
   async.Future delete(core.String fileId, core.String propertyKey,
       {core.String visibility, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3301,7 +3301,7 @@ class PropertiesResourceApi {
   async.Future<Property> get(core.String fileId, core.String propertyKey,
       {core.String visibility, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3355,7 +3355,7 @@ class PropertiesResourceApi {
   async.Future<Property> insert(Property request, core.String fileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3400,7 +3400,7 @@ class PropertiesResourceApi {
   /// this method will complete with the same error.
   async.Future<PropertyList> list(core.String fileId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3451,7 +3451,7 @@ class PropertiesResourceApi {
       Property request, core.String fileId, core.String propertyKey,
       {core.String visibility, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3513,7 +3513,7 @@ class PropertiesResourceApi {
       Property request, core.String fileId, core.String propertyKey,
       {core.String visibility, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3586,7 +3586,7 @@ class RealtimeResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3654,7 +3654,7 @@ class RealtimeResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3723,7 +3723,7 @@ class RepliesResourceApi {
       core.String fileId, core.String commentId, core.String replyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3787,7 +3787,7 @@ class RepliesResourceApi {
       core.String fileId, core.String commentId, core.String replyId,
       {core.bool includeDeleted, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3849,7 +3849,7 @@ class RepliesResourceApi {
       CommentReply request, core.String fileId, core.String commentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3918,7 +3918,7 @@ class RepliesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3984,7 +3984,7 @@ class RepliesResourceApi {
       core.String commentId, core.String replyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4048,7 +4048,7 @@ class RepliesResourceApi {
       core.String commentId, core.String replyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4111,7 +4111,7 @@ class RevisionsResourceApi {
   async.Future delete(core.String fileId, core.String revisionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4164,7 +4164,7 @@ class RevisionsResourceApi {
   async.Future<Revision> get(core.String fileId, core.String revisionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4220,7 +4220,7 @@ class RevisionsResourceApi {
   async.Future<RevisionList> list(core.String fileId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4274,7 +4274,7 @@ class RevisionsResourceApi {
       Revision request, core.String fileId, core.String revisionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4331,7 +4331,7 @@ class RevisionsResourceApi {
       Revision request, core.String fileId, core.String revisionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4387,7 +4387,7 @@ class TeamdrivesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String teamDriveId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4437,7 +4437,7 @@ class TeamdrivesResourceApi {
   async.Future<TeamDrive> get(core.String teamDriveId,
       {core.bool useDomainAdminAccess, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4489,7 +4489,7 @@ class TeamdrivesResourceApi {
   async.Future<TeamDrive> insert(TeamDrive request, core.String requestId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4549,7 +4549,7 @@ class TeamdrivesResourceApi {
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4603,7 +4603,7 @@ class TeamdrivesResourceApi {
   async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4674,7 +4674,8 @@ class AboutAdditionalRoleInfo {
   AboutAdditionalRoleInfo.fromJson(core.Map _json) {
     if (_json.containsKey("roleSets")) {
       roleSets = _json["roleSets"]
-          .map((value) => new AboutAdditionalRoleInfoRoleSets.fromJson(value))
+          .map<AboutAdditionalRoleInfoRoleSets>(
+              (value) => new AboutAdditionalRoleInfoRoleSets.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -4986,7 +4987,8 @@ class About {
   About.fromJson(core.Map _json) {
     if (_json.containsKey("additionalRoleInfo")) {
       additionalRoleInfo = _json["additionalRoleInfo"]
-          .map((value) => new AboutAdditionalRoleInfo.fromJson(value))
+          .map<AboutAdditionalRoleInfo>(
+              (value) => new AboutAdditionalRoleInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("canCreateTeamDrives")) {
@@ -5000,12 +5002,13 @@ class About {
     }
     if (_json.containsKey("exportFormats")) {
       exportFormats = _json["exportFormats"]
-          .map((value) => new AboutExportFormats.fromJson(value))
+          .map<AboutExportFormats>(
+              (value) => new AboutExportFormats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("features")) {
       features = _json["features"]
-          .map((value) => new AboutFeatures.fromJson(value))
+          .map<AboutFeatures>((value) => new AboutFeatures.fromJson(value))
           .toList();
     }
     if (_json.containsKey("folderColorPalette")) {
@@ -5013,7 +5016,8 @@ class About {
     }
     if (_json.containsKey("importFormats")) {
       importFormats = _json["importFormats"]
-          .map((value) => new AboutImportFormats.fromJson(value))
+          .map<AboutImportFormats>(
+              (value) => new AboutImportFormats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("isCurrentAppInstalled")) {
@@ -5030,7 +5034,8 @@ class About {
     }
     if (_json.containsKey("maxUploadSizes")) {
       maxUploadSizes = _json["maxUploadSizes"]
-          .map((value) => new AboutMaxUploadSizes.fromJson(value))
+          .map<AboutMaxUploadSizes>(
+              (value) => new AboutMaxUploadSizes.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -5041,7 +5046,8 @@ class About {
     }
     if (_json.containsKey("quotaBytesByService")) {
       quotaBytesByService = _json["quotaBytesByService"]
-          .map((value) => new AboutQuotaBytesByService.fromJson(value))
+          .map<AboutQuotaBytesByService>(
+              (value) => new AboutQuotaBytesByService.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quotaBytesTotal")) {
@@ -5070,7 +5076,8 @@ class About {
     }
     if (_json.containsKey("teamDriveThemes")) {
       teamDriveThemes = _json["teamDriveThemes"]
-          .map((value) => new AboutTeamDriveThemes.fromJson(value))
+          .map<AboutTeamDriveThemes>(
+              (value) => new AboutTeamDriveThemes.fromJson(value))
           .toList();
     }
     if (_json.containsKey("user")) {
@@ -5311,8 +5318,9 @@ class App {
       hasDriveWideScope = _json["hasDriveWideScope"];
     }
     if (_json.containsKey("icons")) {
-      icons =
-          _json["icons"].map((value) => new AppIcons.fromJson(value)).toList();
+      icons = _json["icons"]
+          .map<AppIcons>((value) => new AppIcons.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -5481,7 +5489,8 @@ class AppList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new App.fromJson(value)).toList();
+      items =
+          _json["items"].map<App>((value) => new App.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5659,8 +5668,9 @@ class ChangeList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Change.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Change>((value) => new Change.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5853,7 +5863,7 @@ class ChildList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ChildReference.fromJson(value))
+          .map<ChildReference>((value) => new ChildReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6076,7 +6086,7 @@ class Comment {
     }
     if (_json.containsKey("replies")) {
       replies = _json["replies"]
-          .map((value) => new CommentReply.fromJson(value))
+          .map<CommentReply>((value) => new CommentReply.fromJson(value))
           .toList();
     }
     if (_json.containsKey("selfLink")) {
@@ -6164,8 +6174,9 @@ class CommentList {
 
   CommentList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Comment.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Comment>((value) => new Comment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6333,7 +6344,7 @@ class CommentReplyList {
   CommentReplyList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CommentReply.fromJson(value))
+          .map<CommentReply>((value) => new CommentReply.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -7358,12 +7369,13 @@ class File {
       ownerNames = _json["ownerNames"];
     }
     if (_json.containsKey("owners")) {
-      owners =
-          _json["owners"].map((value) => new User.fromJson(value)).toList();
+      owners = _json["owners"]
+          .map<User>((value) => new User.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("parents")) {
       parents = _json["parents"]
-          .map((value) => new ParentReference.fromJson(value))
+          .map<ParentReference>((value) => new ParentReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("permissionIds")) {
@@ -7371,12 +7383,12 @@ class File {
     }
     if (_json.containsKey("permissions")) {
       permissions = _json["permissions"]
-          .map((value) => new Permission.fromJson(value))
+          .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("properties")) {
       properties = _json["properties"]
-          .map((value) => new Property.fromJson(value))
+          .map<Property>((value) => new Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quotaBytesUsed")) {
@@ -7691,7 +7703,9 @@ class FileList {
       incompleteSearch = _json["incompleteSearch"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new File.fromJson(value)).toList();
+      items = _json["items"]
+          .map<File>((value) => new File.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7798,7 +7812,7 @@ class ParentList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ParentReference.fromJson(value))
+          .map<ParentReference>((value) => new ParentReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -8083,7 +8097,7 @@ class Permission {
     }
     if (_json.containsKey("teamDrivePermissionDetails")) {
       teamDrivePermissionDetails = _json["teamDrivePermissionDetails"]
-          .map((value) =>
+          .map<PermissionTeamDrivePermissionDetails>((value) =>
               new PermissionTeamDrivePermissionDetails.fromJson(value))
           .toList();
     }
@@ -8217,7 +8231,7 @@ class PermissionList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Permission.fromJson(value))
+          .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -8350,8 +8364,9 @@ class PropertyList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Property.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Property>((value) => new Property.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8595,8 +8610,9 @@ class RevisionList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Revision.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Revision>((value) => new Revision.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8995,8 +9011,9 @@ class TeamDriveList {
 
   TeamDriveList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new TeamDrive.fromJson(value)).toList();
+      items = _json["items"]
+          .map<TeamDrive>((value) => new TeamDrive.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

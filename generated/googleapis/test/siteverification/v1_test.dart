@@ -116,14 +116,14 @@ checkSiteVerificationWebResourceGettokenResponse(
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed0() {
+buildUnnamed952() {
   var o = new core.List<api.SiteVerificationWebResourceResource>();
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed0(core.List<api.SiteVerificationWebResourceResource> o) {
+checkUnnamed952(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
@@ -134,7 +134,7 @@ buildSiteVerificationWebResourceListResponse() {
   var o = new api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed0();
+    o.items = buildUnnamed952();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -144,19 +144,19 @@ checkSiteVerificationWebResourceListResponse(
     api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed0(o.items);
+    checkUnnamed952(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed1() {
+buildUnnamed953() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1(core.List<core.String> o) {
+checkUnnamed953(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -190,7 +190,7 @@ buildSiteVerificationWebResourceResource() {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed1();
+    o.owners = buildUnnamed953();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -202,7 +202,7 @@ checkSiteVerificationWebResourceResource(
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1(o.owners);
+    checkUnnamed953(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -370,8 +370,9 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id, $fields: arg_$fields).then(unittest
-          .expectAsync1(((api.SiteVerificationWebResourceResource response) {
+      res
+          .get(arg_id, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -428,9 +429,9 @@ main() {
             .encode(buildSiteVerificationWebResourceGettokenResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getToken(arg_request, $fields: arg_$fields).then(unittest
-          .expectAsync1(
-              ((api.SiteVerificationWebResourceGettokenResponse response) {
+      res
+          .getToken(arg_request, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceGettokenResponse(response);
       })));
     });
@@ -491,8 +492,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_verificationMethod, $fields: arg_$fields)
-          .then(unittest.expectAsync1(
-              ((api.SiteVerificationWebResourceResource response) {
+          .then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -544,8 +544,7 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(
-          ((api.SiteVerificationWebResourceListResponse response) {
+      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceListResponse(response);
       })));
     });
@@ -605,8 +604,9 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_id, $fields: arg_$fields).then(unittest
-          .expectAsync1(((api.SiteVerificationWebResourceResource response) {
+      res
+          .patch(arg_request, arg_id, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -666,8 +666,9 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_id, $fields: arg_$fields).then(unittest
-          .expectAsync1(((api.SiteVerificationWebResourceResource response) {
+      res
+          .update(arg_request, arg_id, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });

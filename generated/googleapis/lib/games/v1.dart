@@ -94,7 +94,7 @@ class AchievementDefinitionsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -158,7 +158,7 @@ class AchievementsResourceApi {
       core.String achievementId, core.int stepsToIncrement,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -235,7 +235,7 @@ class AchievementsResourceApi {
       core.String state,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -294,7 +294,7 @@ class AchievementsResourceApi {
   async.Future<AchievementRevealResponse> reveal(core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -346,7 +346,7 @@ class AchievementsResourceApi {
       core.String achievementId, core.int steps,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -396,7 +396,7 @@ class AchievementsResourceApi {
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -443,7 +443,7 @@ class AchievementsResourceApi {
       AchievementUpdateMultipleRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -506,7 +506,7 @@ class ApplicationsResourceApi {
   async.Future<Application> get(core.String applicationId,
       {core.String language, core.String platformType, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -551,7 +551,7 @@ class ApplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future played({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -596,7 +596,7 @@ class ApplicationsResourceApi {
   async.Future<ApplicationVerifyResponse> verify(core.String applicationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -660,7 +660,7 @@ class EventsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -720,7 +720,7 @@ class EventsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -774,7 +774,7 @@ class EventsResourceApi {
   async.Future<EventUpdateResponse> record(EventRecordRequest request,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -829,7 +829,7 @@ class LeaderboardsResourceApi {
   async.Future<Leaderboard> get(core.String leaderboardId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -886,7 +886,7 @@ class LeaderboardsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -938,7 +938,7 @@ class MetagameResourceApi {
   /// this method will complete with the same error.
   async.Future<MetagameConfig> getMetagameConfig({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -999,7 +999,7 @@ class MetagameResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1068,7 +1068,7 @@ class PlayersResourceApi {
   async.Future<Player> get(core.String playerId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1137,7 +1137,7 @@ class PlayersResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1193,7 +1193,7 @@ class PushtokensResourceApi {
   /// this method will complete with the same error.
   async.Future remove(PushTokenId request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1235,7 +1235,7 @@ class PushtokensResourceApi {
   /// this method will complete with the same error.
   async.Future update(PushToken request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1292,7 +1292,7 @@ class QuestMilestonesResourceApi {
       core.String questId, core.String milestoneId, core.String requestId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1358,7 +1358,7 @@ class QuestsResourceApi {
   async.Future<Quest> accept(core.String questId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1420,7 +1420,7 @@ class QuestsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1484,7 +1484,7 @@ class RevisionsResourceApi {
   async.Future<RevisionCheckResponse> check(core.String clientRevision,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1538,7 +1538,7 @@ class RoomsResourceApi {
   async.Future<Room> create(RoomCreateRequest request,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1588,7 +1588,7 @@ class RoomsResourceApi {
   async.Future<Room> decline(core.String roomId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1632,7 +1632,7 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future dismiss(core.String roomId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1680,7 +1680,7 @@ class RoomsResourceApi {
   async.Future<Room> get(core.String roomId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1732,7 +1732,7 @@ class RoomsResourceApi {
   async.Future<Room> join(RoomJoinRequest request, core.String roomId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1787,7 +1787,7 @@ class RoomsResourceApi {
   async.Future<Room> leave(RoomLeaveRequest request, core.String roomId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1847,7 +1847,7 @@ class RoomsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1904,7 +1904,7 @@ class RoomsResourceApi {
       RoomP2PStatuses request, core.String roomId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1999,7 +1999,7 @@ class ScoresResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2092,7 +2092,7 @@ class ScoresResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2190,7 +2190,7 @@ class ScoresResourceApi {
       core.bool returnTopIfAbsent,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2274,7 +2274,7 @@ class ScoresResourceApi {
       core.String leaderboardId, core.String score,
       {core.String language, core.String scoreTag, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2334,7 +2334,7 @@ class ScoresResourceApi {
       {core.String language,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2389,7 +2389,7 @@ class SnapshotsResourceApi {
   async.Future<Snapshot> get(core.String snapshotId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2450,7 +2450,7 @@ class SnapshotsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2507,7 +2507,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future cancel(core.String matchId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2557,7 +2557,7 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2606,7 +2606,7 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> decline(core.String matchId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2652,7 +2652,7 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future dismiss(core.String matchId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2707,7 +2707,7 @@ class TurnBasedMatchesResourceApi {
       TurnBasedMatchResults request, core.String matchId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2763,7 +2763,7 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> get(core.String matchId,
       {core.bool includeMatchData, core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2815,7 +2815,7 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> join(core.String matchId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2867,7 +2867,7 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> leave(core.String matchId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2929,7 +2929,7 @@ class TurnBasedMatchesResourceApi {
       core.String pendingParticipantId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3008,7 +3008,7 @@ class TurnBasedMatchesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3073,7 +3073,7 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatchRematch> rematch(core.String matchId,
       {core.String language, core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3151,7 +3151,7 @@ class TurnBasedMatchesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3212,7 +3212,7 @@ class TurnBasedMatchesResourceApi {
       TurnBasedMatchTurn request, core.String matchId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3403,7 +3403,8 @@ class AchievementDefinitionsListResponse {
   AchievementDefinitionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new AchievementDefinition.fromJson(value))
+          .map<AchievementDefinition>(
+              (value) => new AchievementDefinition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3604,7 +3605,8 @@ class AchievementUpdateMultipleRequest {
     }
     if (_json.containsKey("updates")) {
       updates = _json["updates"]
-          .map((value) => new AchievementUpdateRequest.fromJson(value))
+          .map<AchievementUpdateRequest>(
+              (value) => new AchievementUpdateRequest.fromJson(value))
           .toList();
     }
   }
@@ -3639,7 +3641,8 @@ class AchievementUpdateMultipleResponse {
     }
     if (_json.containsKey("updatedAchievements")) {
       updatedAchievements = _json["updatedAchievements"]
-          .map((value) => new AchievementUpdateResponse.fromJson(value))
+          .map<AchievementUpdateResponse>(
+              (value) => new AchievementUpdateResponse.fromJson(value))
           .toList();
     }
   }
@@ -3957,7 +3960,7 @@ class Application {
     }
     if (_json.containsKey("assets")) {
       assets = _json["assets"]
-          .map((value) => new ImageAsset.fromJson(value))
+          .map<ImageAsset>((value) => new ImageAsset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("author")) {
@@ -3977,7 +3980,7 @@ class Application {
     }
     if (_json.containsKey("instances")) {
       instances = _json["instances"]
-          .map((value) => new Instance.fromJson(value))
+          .map<Instance>((value) => new Instance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4187,8 +4190,9 @@ class CategoryListResponse {
 
   CategoryListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Category.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Category>((value) => new Category.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4339,7 +4343,7 @@ class EventDefinition {
   EventDefinition.fromJson(core.Map _json) {
     if (_json.containsKey("childEvents")) {
       childEvents = _json["childEvents"]
-          .map((value) => new EventChild.fromJson(value))
+          .map<EventChild>((value) => new EventChild.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -4414,7 +4418,7 @@ class EventDefinitionListResponse {
   EventDefinitionListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new EventDefinition.fromJson(value))
+          .map<EventDefinition>((value) => new EventDefinition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4508,7 +4512,8 @@ class EventPeriodUpdate {
     }
     if (_json.containsKey("updates")) {
       updates = _json["updates"]
-          .map((value) => new EventUpdateRequest.fromJson(value))
+          .map<EventUpdateRequest>(
+              (value) => new EventUpdateRequest.fromJson(value))
           .toList();
     }
   }
@@ -4605,7 +4610,8 @@ class EventRecordRequest {
     }
     if (_json.containsKey("timePeriods")) {
       timePeriods = _json["timePeriods"]
-          .map((value) => new EventPeriodUpdate.fromJson(value))
+          .map<EventPeriodUpdate>(
+              (value) => new EventPeriodUpdate.fromJson(value))
           .toList();
     }
   }
@@ -4692,12 +4698,14 @@ class EventUpdateResponse {
   EventUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("batchFailures")) {
       batchFailures = _json["batchFailures"]
-          .map((value) => new EventBatchRecordFailure.fromJson(value))
+          .map<EventBatchRecordFailure>(
+              (value) => new EventBatchRecordFailure.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventFailures")) {
       eventFailures = _json["eventFailures"]
-          .map((value) => new EventRecordFailure.fromJson(value))
+          .map<EventRecordFailure>(
+              (value) => new EventRecordFailure.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4705,7 +4713,7 @@ class EventUpdateResponse {
     }
     if (_json.containsKey("playerEvents")) {
       playerEvents = _json["playerEvents"]
-          .map((value) => new PlayerEvent.fromJson(value))
+          .map<PlayerEvent>((value) => new PlayerEvent.fromJson(value))
           .toList();
     }
   }
@@ -5337,7 +5345,7 @@ class LeaderboardListResponse {
   LeaderboardListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Leaderboard.fromJson(value))
+          .map<Leaderboard>((value) => new Leaderboard.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5454,7 +5462,8 @@ class LeaderboardScores {
   LeaderboardScores.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LeaderboardEntry.fromJson(value))
+          .map<LeaderboardEntry>(
+              (value) => new LeaderboardEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5523,7 +5532,7 @@ class MetagameConfig {
     }
     if (_json.containsKey("playerLevels")) {
       playerLevels = _json["playerLevels"]
-          .map((value) => new PlayerLevel.fromJson(value))
+          .map<PlayerLevel>((value) => new PlayerLevel.fromJson(value))
           .toList();
     }
   }
@@ -6154,7 +6163,8 @@ class PlayerAchievementListResponse {
   PlayerAchievementListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new PlayerAchievement.fromJson(value))
+          .map<PlayerAchievement>(
+              (value) => new PlayerAchievement.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6260,7 +6270,7 @@ class PlayerEventListResponse {
   PlayerEventListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new PlayerEvent.fromJson(value))
+          .map<PlayerEvent>((value) => new PlayerEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6472,7 +6482,8 @@ class PlayerLeaderboardScoreListResponse {
   PlayerLeaderboardScoreListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new PlayerLeaderboardScore.fromJson(value))
+          .map<PlayerLeaderboardScore>(
+              (value) => new PlayerLeaderboardScore.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6572,8 +6583,9 @@ class PlayerListResponse {
 
   PlayerListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Player.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Player>((value) => new Player.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6681,7 +6693,8 @@ class PlayerScoreListResponse {
     }
     if (_json.containsKey("submittedScores")) {
       submittedScores = _json["submittedScores"]
-          .map((value) => new PlayerScoreResponse.fromJson(value))
+          .map<PlayerScoreResponse>(
+              (value) => new PlayerScoreResponse.fromJson(value))
           .toList();
     }
   }
@@ -6749,7 +6762,7 @@ class PlayerScoreResponse {
     }
     if (_json.containsKey("unbeatenScores")) {
       unbeatenScores = _json["unbeatenScores"]
-          .map((value) => new PlayerScore.fromJson(value))
+          .map<PlayerScore>((value) => new PlayerScore.fromJson(value))
           .toList();
     }
   }
@@ -6797,7 +6810,7 @@ class PlayerScoreSubmissionList {
     }
     if (_json.containsKey("scores")) {
       scores = _json["scores"]
-          .map((value) => new ScoreSubmission.fromJson(value))
+          .map<ScoreSubmission>((value) => new ScoreSubmission.fromJson(value))
           .toList();
     }
   }
@@ -7086,7 +7099,7 @@ class Quest {
     }
     if (_json.containsKey("milestones")) {
       milestones = _json["milestones"]
-          .map((value) => new QuestMilestone.fromJson(value))
+          .map<QuestMilestone>((value) => new QuestMilestone.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -7291,7 +7304,9 @@ class QuestListResponse {
 
   QuestListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Quest.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Quest>((value) => new Quest.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7360,7 +7375,7 @@ class QuestMilestone {
     }
     if (_json.containsKey("criteria")) {
       criteria = _json["criteria"]
-          .map((value) => new QuestCriterion.fromJson(value))
+          .map<QuestCriterion>((value) => new QuestCriterion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -7537,7 +7552,7 @@ class Room {
     }
     if (_json.containsKey("participants")) {
       participants = _json["participants"]
-          .map((value) => new RoomParticipant.fromJson(value))
+          .map<RoomParticipant>((value) => new RoomParticipant.fromJson(value))
           .toList();
     }
     if (_json.containsKey("roomId")) {
@@ -7925,7 +7940,8 @@ class RoomLeaveDiagnostics {
     }
     if (_json.containsKey("peerSession")) {
       peerSession = _json["peerSession"]
-          .map((value) => new PeerSessionDiagnostics.fromJson(value))
+          .map<PeerSessionDiagnostics>(
+              (value) => new PeerSessionDiagnostics.fromJson(value))
           .toList();
     }
     if (_json.containsKey("socketsUsed")) {
@@ -8045,7 +8061,9 @@ class RoomList {
 
   RoomList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Room.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Room>((value) => new Room.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8225,7 +8243,7 @@ class RoomP2PStatuses {
     }
     if (_json.containsKey("updates")) {
       updates = _json["updates"]
-          .map((value) => new RoomP2PStatus.fromJson(value))
+          .map<RoomP2PStatus>((value) => new RoomP2PStatus.fromJson(value))
           .toList();
     }
   }
@@ -8421,7 +8439,7 @@ class RoomStatus {
     }
     if (_json.containsKey("participants")) {
       participants = _json["participants"]
-          .map((value) => new RoomParticipant.fromJson(value))
+          .map<RoomParticipant>((value) => new RoomParticipant.fromJson(value))
           .toList();
     }
     if (_json.containsKey("roomId")) {
@@ -8721,8 +8739,9 @@ class SnapshotListResponse {
 
   SnapshotListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Snapshot.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Snapshot>((value) => new Snapshot.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8935,7 +8954,8 @@ class TurnBasedMatch {
     }
     if (_json.containsKey("participants")) {
       participants = _json["participants"]
-          .map((value) => new TurnBasedMatchParticipant.fromJson(value))
+          .map<TurnBasedMatchParticipant>(
+              (value) => new TurnBasedMatchParticipant.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pendingParticipantId")) {
@@ -8950,7 +8970,8 @@ class TurnBasedMatch {
     }
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new ParticipantResult.fromJson(value))
+          .map<ParticipantResult>(
+              (value) => new ParticipantResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
@@ -9210,7 +9231,7 @@ class TurnBasedMatchList {
   TurnBasedMatchList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new TurnBasedMatch.fromJson(value))
+          .map<TurnBasedMatch>((value) => new TurnBasedMatch.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9441,7 +9462,8 @@ class TurnBasedMatchResults {
     }
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new ParticipantResult.fromJson(value))
+          .map<ParticipantResult>(
+              (value) => new ParticipantResult.fromJson(value))
           .toList();
     }
   }
@@ -9487,7 +9509,7 @@ class TurnBasedMatchSync {
   TurnBasedMatchSync.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new TurnBasedMatch.fromJson(value))
+          .map<TurnBasedMatch>((value) => new TurnBasedMatch.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9560,7 +9582,8 @@ class TurnBasedMatchTurn {
     }
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new ParticipantResult.fromJson(value))
+          .map<ParticipantResult>(
+              (value) => new ParticipantResult.fromJson(value))
           .toList();
     }
   }

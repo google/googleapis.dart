@@ -83,7 +83,7 @@ class DeploymentsResourceApi {
       core.String project, core.String deployment,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -145,7 +145,7 @@ class DeploymentsResourceApi {
   async.Future<Operation> delete(core.String project, core.String deployment,
       {core.String deletePolicy, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -201,7 +201,7 @@ class DeploymentsResourceApi {
   async.Future<Deployment> get(core.String project, core.String deployment,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -255,7 +255,7 @@ class DeploymentsResourceApi {
   async.Future<Policy> getIamPolicy(core.String project, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -318,7 +318,7 @@ class DeploymentsResourceApi {
   async.Future<Operation> insert(Deployment request, core.String project,
       {core.bool preview, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -419,7 +419,7 @@ class DeploymentsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -507,7 +507,7 @@ class DeploymentsResourceApi {
       core.bool preview,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -576,7 +576,7 @@ class DeploymentsResourceApi {
       Policy request, core.String project, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -637,7 +637,7 @@ class DeploymentsResourceApi {
       core.String project, core.String deployment,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -697,7 +697,7 @@ class DeploymentsResourceApi {
       TestPermissionsRequest request, core.String project, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -782,7 +782,7 @@ class DeploymentsResourceApi {
       core.bool preview,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -857,7 +857,7 @@ class ManifestsResourceApi {
       core.String project, core.String deployment, core.String manifest,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -966,7 +966,7 @@ class ManifestsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1037,7 +1037,7 @@ class OperationsResourceApi {
   async.Future<Operation> get(core.String project, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1137,7 +1137,7 @@ class OperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1206,7 +1206,7 @@ class ResourcesResourceApi {
       core.String project, core.String deployment, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1315,7 +1315,7 @@ class ResourcesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1434,7 +1434,7 @@ class TypesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1508,7 +1508,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("exemptedMembers")) {
@@ -1840,7 +1840,8 @@ class Deployment {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new DeploymentLabelEntry.fromJson(value))
+          .map<DeploymentLabelEntry>(
+              (value) => new DeploymentLabelEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("manifest")) {
@@ -1956,7 +1957,8 @@ class DeploymentUpdate {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new DeploymentUpdateLabelEntry.fromJson(value))
+          .map<DeploymentUpdateLabelEntry>(
+              (value) => new DeploymentUpdateLabelEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("manifest")) {
@@ -2061,7 +2063,7 @@ class DeploymentsListResponse {
   DeploymentsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deployments")) {
       deployments = _json["deployments"]
-          .map((value) => new Deployment.fromJson(value))
+          .map<Deployment>((value) => new Deployment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2406,7 +2408,7 @@ class Manifest {
     }
     if (_json.containsKey("imports")) {
       imports = _json["imports"]
-          .map((value) => new ImportFile.fromJson(value))
+          .map<ImportFile>((value) => new ImportFile.fromJson(value))
           .toList();
     }
     if (_json.containsKey("insertTime")) {
@@ -2468,7 +2470,7 @@ class ManifestsListResponse {
   ManifestsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("manifests")) {
       manifests = _json["manifests"]
-          .map((value) => new Manifest.fromJson(value))
+          .map<Manifest>((value) => new Manifest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2542,7 +2544,8 @@ class OperationError {
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new OperationErrorErrors.fromJson(value))
+          .map<OperationErrorErrors>(
+              (value) => new OperationErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -2615,7 +2618,8 @@ class OperationWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new OperationWarningsData.fromJson(value))
+          .map<OperationWarningsData>(
+              (value) => new OperationWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -2810,7 +2814,8 @@ class Operation {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new OperationWarnings.fromJson(value))
+          .map<OperationWarnings>(
+              (value) => new OperationWarnings.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
@@ -2911,7 +2916,7 @@ class OperationsListResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -2997,12 +3002,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -3012,7 +3017,9 @@ class Policy {
       iamOwned = _json["iamOwned"];
     }
     if (_json.containsKey("rules")) {
-      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
+      rules = _json["rules"]
+          .map<Rule>((value) => new Rule.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -3103,7 +3110,8 @@ class ResourceWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new ResourceWarningsData.fromJson(value))
+          .map<ResourceWarningsData>(
+              (value) => new ResourceWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -3211,7 +3219,8 @@ class Resource {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new ResourceWarnings.fromJson(value))
+          .map<ResourceWarnings>(
+              (value) => new ResourceWarnings.fromJson(value))
           .toList();
     }
   }
@@ -3335,7 +3344,8 @@ class ResourceUpdateError {
   ResourceUpdateError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new ResourceUpdateErrorErrors.fromJson(value))
+          .map<ResourceUpdateErrorErrors>(
+              (value) => new ResourceUpdateErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -3408,7 +3418,8 @@ class ResourceUpdateWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new ResourceUpdateWarningsData.fromJson(value))
+          .map<ResourceUpdateWarningsData>(
+              (value) => new ResourceUpdateWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -3490,7 +3501,8 @@ class ResourceUpdate {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new ResourceUpdateWarnings.fromJson(value))
+          .map<ResourceUpdateWarnings>(
+              (value) => new ResourceUpdateWarnings.fromJson(value))
           .toList();
     }
   }
@@ -3543,7 +3555,7 @@ class ResourcesListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new Resource.fromJson(value))
+          .map<Resource>((value) => new Resource.fromJson(value))
           .toList();
     }
   }
@@ -3598,7 +3610,7 @@ class Rule {
     }
     if (_json.containsKey("conditions")) {
       conditions = _json["conditions"]
-          .map((value) => new Condition.fromJson(value))
+          .map<Condition>((value) => new Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -3609,7 +3621,7 @@ class Rule {
     }
     if (_json.containsKey("logConfigs")) {
       logConfigs = _json["logConfigs"]
-          .map((value) => new LogConfig.fromJson(value))
+          .map<LogConfig>((value) => new LogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notIns")) {
@@ -3667,7 +3679,7 @@ class TargetConfiguration {
     }
     if (_json.containsKey("imports")) {
       imports = _json["imports"]
-          .map((value) => new ImportFile.fromJson(value))
+          .map<ImportFile>((value) => new ImportFile.fromJson(value))
           .toList();
     }
   }
@@ -3806,7 +3818,9 @@ class TypesListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("types")) {
-      types = _json["types"].map((value) => new Type.fromJson(value)).toList();
+      types = _json["types"]
+          .map<Type>((value) => new Type.fromJson(value))
+          .toList();
     }
   }
 

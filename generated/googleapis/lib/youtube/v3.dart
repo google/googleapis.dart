@@ -138,7 +138,7 @@ class ActivitiesResourceApi {
   async.Future<Activity> insert(Activity request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -242,7 +242,7 @@ class ActivitiesResourceApi {
       core.String regionCode,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -334,7 +334,7 @@ class CaptionsResourceApi {
       core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -431,7 +431,7 @@ class CaptionsResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -532,7 +532,7 @@ class CaptionsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -628,7 +628,7 @@ class CaptionsResourceApi {
       core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -727,7 +727,7 @@ class CaptionsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -841,7 +841,7 @@ class ChannelBannersResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -918,7 +918,7 @@ class ChannelSectionsResourceApi {
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1009,7 +1009,7 @@ class ChannelSectionsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1110,7 +1110,7 @@ class ChannelSectionsResourceApi {
       core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1190,7 +1190,7 @@ class ChannelSectionsResourceApi {
   async.Future<ChannelSection> update(ChannelSection request, core.String part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1315,7 +1315,7 @@ class ChannelsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1413,7 +1413,7 @@ class ChannelsResourceApi {
   async.Future<Channel> update(Channel request, core.String part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1474,7 +1474,7 @@ class CommentThreadsResourceApi {
   async.Future<CommentThread> insert(CommentThread request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1603,7 +1603,7 @@ class CommentThreadsResourceApi {
       core.String videoId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1685,7 +1685,7 @@ class CommentThreadsResourceApi {
   async.Future<CommentThread> update(CommentThread request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1736,7 +1736,7 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1787,7 +1787,7 @@ class CommentsResourceApi {
   async.Future<Comment> insert(Comment request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1870,7 +1870,7 @@ class CommentsResourceApi {
       core.String textFormat,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1928,7 +1928,7 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future markAsSpam(core.String id, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1996,7 +1996,7 @@ class CommentsResourceApi {
   async.Future setModerationStatus(core.String id, core.String moderationStatus,
       {core.bool banAuthor, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2054,7 +2054,7 @@ class CommentsResourceApi {
   async.Future<Comment> update(Comment request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2130,7 +2130,7 @@ class FanFundingEventsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2207,7 +2207,7 @@ class GuideCategoriesResourceApi {
       core.String regionCode,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2271,7 +2271,7 @@ class I18nLanguagesResourceApi {
   async.Future<I18nLanguageListResponse> list(core.String part,
       {core.String hl, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2329,7 +2329,7 @@ class I18nRegionsResourceApi {
   async.Future<I18nRegionListResponse> list(core.String part,
       {core.String hl, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2432,7 +2432,7 @@ class LiveBroadcastsResourceApi {
       core.String streamId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2558,7 +2558,7 @@ class LiveBroadcastsResourceApi {
       core.DateTime walltime,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2657,7 +2657,7 @@ class LiveBroadcastsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2753,7 +2753,7 @@ class LiveBroadcastsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2885,7 +2885,7 @@ class LiveBroadcastsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3016,7 +3016,7 @@ class LiveBroadcastsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3129,7 +3129,7 @@ class LiveBroadcastsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3188,7 +3188,7 @@ class LiveChatBansResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3239,7 +3239,7 @@ class LiveChatBansResourceApi {
   async.Future<LiveChatBan> insert(LiveChatBan request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3291,7 +3291,7 @@ class LiveChatMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3342,7 +3342,7 @@ class LiveChatMessagesResourceApi {
       LiveChatMessage request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3421,7 +3421,7 @@ class LiveChatMessagesResourceApi {
       core.int profileImageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3487,7 +3487,7 @@ class LiveChatModeratorsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3539,7 +3539,7 @@ class LiveChatModeratorsResourceApi {
       LiveChatModerator request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3599,7 +3599,7 @@ class LiveChatModeratorsResourceApi {
       core.String liveChatId, core.String part,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3694,7 +3694,7 @@ class LiveStreamsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3791,7 +3791,7 @@ class LiveStreamsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3904,7 +3904,7 @@ class LiveStreamsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4016,7 +4016,7 @@ class LiveStreamsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4090,7 +4090,7 @@ class PlaylistItemsResourceApi {
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4156,7 +4156,7 @@ class PlaylistItemsResourceApi {
   async.Future<PlaylistItem> insert(PlaylistItem request, core.String part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4255,7 +4255,7 @@ class PlaylistItemsResourceApi {
       core.String videoId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4347,7 +4347,7 @@ class PlaylistItemsResourceApi {
   async.Future<PlaylistItem> update(PlaylistItem request, core.String part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4416,7 +4416,7 @@ class PlaylistsResourceApi {
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4504,7 +4504,7 @@ class PlaylistsResourceApi {
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4630,7 +4630,7 @@ class PlaylistsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4725,7 +4725,7 @@ class PlaylistsResourceApi {
   async.Future<Playlist> update(Playlist request, core.String part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5051,7 +5051,7 @@ class SearchResourceApi {
       core.String videoType,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5209,7 +5209,7 @@ class SponsorsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5267,7 +5267,7 @@ class SubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5317,7 +5317,7 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> insert(Subscription request, core.String part,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5452,7 +5452,7 @@ class SubscriptionsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5560,7 +5560,7 @@ class SuperChatEventsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5643,7 +5643,7 @@ class ThumbnailsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5711,7 +5711,7 @@ class VideoAbuseReportReasonsResourceApi {
   async.Future<VideoAbuseReportReasonListResponse> list(core.String part,
       {core.String hl, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5780,7 +5780,7 @@ class VideoCategoriesResourceApi {
       core.String regionCode,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5853,7 +5853,7 @@ class VideosResourceApi {
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5918,7 +5918,7 @@ class VideosResourceApi {
   async.Future<VideoGetRatingResponse> getRating(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6036,7 +6036,7 @@ class VideosResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6205,7 +6205,7 @@ class VideosResourceApi {
       core.String videoCategoryId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6290,7 +6290,7 @@ class VideosResourceApi {
   /// this method will complete with the same error.
   async.Future rate(core.String id, core.String rating, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6351,7 +6351,7 @@ class VideosResourceApi {
   async.Future reportAbuse(VideoAbuseReport request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6433,7 +6433,7 @@ class VideosResourceApi {
   async.Future<Video> update(Video request, core.String part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6512,7 +6512,7 @@ class WatermarksResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6584,7 +6584,7 @@ class WatermarksResourceApi {
   async.Future unset(core.String channelId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -7330,8 +7330,9 @@ class ActivityListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Activity.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Activity>((value) => new Activity.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7575,8 +7576,9 @@ class CaptionListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Caption.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Caption>((value) => new Caption.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8130,7 +8132,7 @@ class ChannelBrandingSettings {
     }
     if (_json.containsKey("hints")) {
       hints = _json["hints"]
-          .map((value) => new PropertyValue.fromJson(value))
+          .map<PropertyValue>((value) => new PropertyValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("image")) {
@@ -8342,7 +8344,8 @@ class ChannelConversionPings {
   ChannelConversionPings.fromJson(core.Map _json) {
     if (_json.containsKey("pings")) {
       pings = _json["pings"]
-          .map((value) => new ChannelConversionPing.fromJson(value))
+          .map<ChannelConversionPing>(
+              (value) => new ChannelConversionPing.fromJson(value))
           .toList();
     }
   }
@@ -8394,8 +8397,9 @@ class ChannelListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Channel.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Channel>((value) => new Channel.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8680,7 +8684,7 @@ class ChannelSectionListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ChannelSection.fromJson(value))
+          .map<ChannelSection>((value) => new ChannelSection.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9334,8 +9338,9 @@ class CommentListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Comment.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Comment>((value) => new Comment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -9657,7 +9662,7 @@ class CommentThreadListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CommentThread.fromJson(value))
+          .map<CommentThread>((value) => new CommentThread.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9720,7 +9725,7 @@ class CommentThreadReplies {
   CommentThreadReplies.fromJson(core.Map _json) {
     if (_json.containsKey("comments")) {
       comments = _json["comments"]
-          .map((value) => new Comment.fromJson(value))
+          .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
   }
@@ -11099,7 +11104,7 @@ class FanFundingEventListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new FanFundingEvent.fromJson(value))
+          .map<FanFundingEvent>((value) => new FanFundingEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -11367,7 +11372,7 @@ class GuideCategoryListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new GuideCategory.fromJson(value))
+          .map<GuideCategory>((value) => new GuideCategory.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -11537,7 +11542,7 @@ class I18nLanguageListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new I18nLanguage.fromJson(value))
+          .map<I18nLanguage>((value) => new I18nLanguage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -11684,7 +11689,7 @@ class I18nRegionListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new I18nRegion.fromJson(value))
+          .map<I18nRegion>((value) => new I18nRegion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -12155,7 +12160,7 @@ class InvideoPromotion {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new PromotedItem.fromJson(value))
+          .map<PromotedItem>((value) => new PromotedItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("position")) {
@@ -12586,7 +12591,7 @@ class LiveBroadcastListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LiveBroadcast.fromJson(value))
+          .map<LiveBroadcast>((value) => new LiveBroadcast.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13251,7 +13256,7 @@ class LiveChatMessageListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LiveChatMessage.fromJson(value))
+          .map<LiveChatMessage>((value) => new LiveChatMessage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13606,7 +13611,8 @@ class LiveChatModeratorListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LiveChatModerator.fromJson(value))
+          .map<LiveChatModerator>(
+              (value) => new LiveChatModerator.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13730,7 +13736,8 @@ class LiveChatPollEditedDetails {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LiveChatPollItem.fromJson(value))
+          .map<LiveChatPollItem>(
+              (value) => new LiveChatPollItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("prompt")) {
@@ -13796,7 +13803,8 @@ class LiveChatPollOpenedDetails {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LiveChatPollItem.fromJson(value))
+          .map<LiveChatPollItem>(
+              (value) => new LiveChatPollItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("prompt")) {
@@ -14215,7 +14223,8 @@ class LiveStreamHealthStatus {
   LiveStreamHealthStatus.fromJson(core.Map _json) {
     if (_json.containsKey("configurationIssues")) {
       configurationIssues = _json["configurationIssues"]
-          .map((value) => new LiveStreamConfigurationIssue.fromJson(value))
+          .map<LiveStreamConfigurationIssue>(
+              (value) => new LiveStreamConfigurationIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lastUpdateTimeSeconds")) {
@@ -14281,7 +14290,7 @@ class LiveStreamListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LiveStream.fromJson(value))
+          .map<LiveStream>((value) => new LiveStream.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14453,7 +14462,7 @@ class LocalizedProperty {
     }
     if (_json.containsKey("localized")) {
       localized = _json["localized"]
-          .map((value) => new LocalizedString.fromJson(value))
+          .map<LocalizedString>((value) => new LocalizedString.fromJson(value))
           .toList();
     }
   }
@@ -14978,7 +14987,7 @@ class PlaylistItemListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new PlaylistItem.fromJson(value))
+          .map<PlaylistItem>((value) => new PlaylistItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15202,8 +15211,9 @@ class PlaylistListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Playlist.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Playlist>((value) => new Playlist.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -15681,7 +15691,7 @@ class SearchListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new SearchResult.fromJson(value))
+          .map<SearchResult>((value) => new SearchResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15978,8 +15988,9 @@ class SponsorListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Sponsor.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Sponsor>((value) => new Sponsor.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -16230,7 +16241,7 @@ class SubscriptionListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Subscription.fromJson(value))
+          .map<Subscription>((value) => new Subscription.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16506,7 +16517,7 @@ class SuperChatEventListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new SuperChatEvent.fromJson(value))
+          .map<SuperChatEvent>((value) => new SuperChatEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16794,7 +16805,8 @@ class ThumbnailSetResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ThumbnailDetails.fromJson(value))
+          .map<ThumbnailDetails>(
+              (value) => new ThumbnailDetails.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17196,7 +17208,8 @@ class VideoAbuseReportReasonListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new VideoAbuseReportReason.fromJson(value))
+          .map<VideoAbuseReportReason>(
+              (value) => new VideoAbuseReportReason.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17246,7 +17259,8 @@ class VideoAbuseReportReasonSnippet {
     }
     if (_json.containsKey("secondaryReasons")) {
       secondaryReasons = _json["secondaryReasons"]
-          .map((value) => new VideoAbuseReportSecondaryReason.fromJson(value))
+          .map<VideoAbuseReportSecondaryReason>(
+              (value) => new VideoAbuseReportSecondaryReason.fromJson(value))
           .toList();
     }
   }
@@ -17439,7 +17453,7 @@ class VideoCategoryListResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new VideoCategory.fromJson(value))
+          .map<VideoCategory>((value) => new VideoCategory.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17761,7 +17775,8 @@ class VideoFileDetails {
   VideoFileDetails.fromJson(core.Map _json) {
     if (_json.containsKey("audioStreams")) {
       audioStreams = _json["audioStreams"]
-          .map((value) => new VideoFileDetailsAudioStream.fromJson(value))
+          .map<VideoFileDetailsAudioStream>(
+              (value) => new VideoFileDetailsAudioStream.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bitrateBps")) {
@@ -17787,7 +17802,8 @@ class VideoFileDetails {
     }
     if (_json.containsKey("videoStreams")) {
       videoStreams = _json["videoStreams"]
-          .map((value) => new VideoFileDetailsVideoStream.fromJson(value))
+          .map<VideoFileDetailsVideoStream>(
+              (value) => new VideoFileDetailsVideoStream.fromJson(value))
           .toList();
     }
   }
@@ -18003,7 +18019,7 @@ class VideoGetRatingResponse {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new VideoRating.fromJson(value))
+          .map<VideoRating>((value) => new VideoRating.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -18073,7 +18089,9 @@ class VideoListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Video.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Video>((value) => new Video.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -18946,7 +18964,8 @@ class VideoSuggestions {
     }
     if (_json.containsKey("tagSuggestions")) {
       tagSuggestions = _json["tagSuggestions"]
-          .map((value) => new VideoSuggestionsTagSuggestion.fromJson(value))
+          .map<VideoSuggestionsTagSuggestion>(
+              (value) => new VideoSuggestionsTagSuggestion.fromJson(value))
           .toList();
     }
   }

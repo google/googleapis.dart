@@ -131,7 +131,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_account, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.CustomApp response) {
+          .then(unittest.expectAsync1(((response) {
         checkCustomApp(response);
       })));
     });

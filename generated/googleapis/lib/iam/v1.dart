@@ -66,7 +66,7 @@ class IamPoliciesResourceApi {
       QueryAuditableServicesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -132,7 +132,7 @@ class OrganizationsRolesResourceApi {
   async.Future<Role> create(CreateRoleRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -192,7 +192,7 @@ class OrganizationsRolesResourceApi {
   async.Future<Role> delete(core.String name,
       {core.String etag, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -241,7 +241,7 @@ class OrganizationsRolesResourceApi {
   /// this method will complete with the same error.
   async.Future<Role> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -306,7 +306,7 @@ class OrganizationsRolesResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -369,7 +369,7 @@ class OrganizationsRolesResourceApi {
   async.Future<Role> patch(Role request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -423,7 +423,7 @@ class OrganizationsRolesResourceApi {
   async.Future<Role> undelete(UndeleteRoleRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -478,7 +478,7 @@ class PermissionsResourceApi {
       QueryTestablePermissionsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -545,7 +545,7 @@ class ProjectsRolesResourceApi {
   async.Future<Role> create(CreateRoleRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -605,7 +605,7 @@ class ProjectsRolesResourceApi {
   async.Future<Role> delete(core.String name,
       {core.String etag, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -654,7 +654,7 @@ class ProjectsRolesResourceApi {
   /// this method will complete with the same error.
   async.Future<Role> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -719,7 +719,7 @@ class ProjectsRolesResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -782,7 +782,7 @@ class ProjectsRolesResourceApi {
   async.Future<Role> patch(Role request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -836,7 +836,7 @@ class ProjectsRolesResourceApi {
   async.Future<Role> undelete(UndeleteRoleRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -899,7 +899,7 @@ class ProjectsServiceAccountsResourceApi {
       CreateServiceAccountRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -951,7 +951,7 @@ class ProjectsServiceAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -998,7 +998,7 @@ class ProjectsServiceAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<ServiceAccount> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1045,7 +1045,7 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1102,7 +1102,7 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<ListServiceAccountsResponse> list(core.String name,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1161,7 +1161,7 @@ class ProjectsServiceAccountsResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1217,7 +1217,7 @@ class ProjectsServiceAccountsResourceApi {
       SignBlobRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1275,7 +1275,7 @@ class ProjectsServiceAccountsResourceApi {
       SignJwtRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1328,7 +1328,7 @@ class ProjectsServiceAccountsResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1392,7 +1392,7 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<ServiceAccount> update(ServiceAccount request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1454,7 +1454,7 @@ class ProjectsServiceAccountsKeysResourceApi {
       CreateServiceAccountKeyRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1506,7 +1506,7 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1565,7 +1565,7 @@ class ProjectsServiceAccountsKeysResourceApi {
   async.Future<ServiceAccountKey> get(core.String name,
       {core.String publicKeyType, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1622,7 +1622,7 @@ class ProjectsServiceAccountsKeysResourceApi {
   async.Future<ListServiceAccountKeysResponse> list(core.String name,
       {core.List<core.String> keyTypes, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1678,7 +1678,7 @@ class RolesResourceApi {
   /// this method will complete with the same error.
   async.Future<Role> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1743,7 +1743,7 @@ class RolesResourceApi {
       core.String parent,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1802,7 +1802,7 @@ class RolesResourceApi {
       QueryGrantableRolesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1894,7 +1894,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -2281,7 +2281,9 @@ class ListRolesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("roles")) {
-      roles = _json["roles"].map((value) => new Role.fromJson(value)).toList();
+      roles = _json["roles"]
+          .map<Role>((value) => new Role.fromJson(value))
+          .toList();
     }
   }
 
@@ -2308,7 +2310,8 @@ class ListServiceAccountKeysResponse {
   ListServiceAccountKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey("keys")) {
       keys = _json["keys"]
-          .map((value) => new ServiceAccountKey.fromJson(value))
+          .map<ServiceAccountKey>(
+              (value) => new ServiceAccountKey.fromJson(value))
           .toList();
     }
   }
@@ -2338,7 +2341,7 @@ class ListServiceAccountsResponse {
   ListServiceAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
       accounts = _json["accounts"]
-          .map((value) => new ServiceAccount.fromJson(value))
+          .map<ServiceAccount>((value) => new ServiceAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2516,12 +2519,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -2562,7 +2565,7 @@ class PolicyDelta {
   PolicyDelta.fromJson(core.Map _json) {
     if (_json.containsKey("bindingDeltas")) {
       bindingDeltas = _json["bindingDeltas"]
-          .map((value) => new BindingDelta.fromJson(value))
+          .map<BindingDelta>((value) => new BindingDelta.fromJson(value))
           .toList();
     }
   }
@@ -2616,7 +2619,8 @@ class QueryAuditableServicesResponse {
   QueryAuditableServicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("services")) {
       services = _json["services"]
-          .map((value) => new AuditableService.fromJson(value))
+          .map<AuditableService>(
+              (value) => new AuditableService.fromJson(value))
           .toList();
     }
   }
@@ -2707,7 +2711,9 @@ class QueryGrantableRolesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("roles")) {
-      roles = _json["roles"].map((value) => new Role.fromJson(value)).toList();
+      roles = _json["roles"]
+          .map<Role>((value) => new Role.fromJson(value))
+          .toList();
     }
   }
 
@@ -2788,7 +2794,7 @@ class QueryTestablePermissionsResponse {
     }
     if (_json.containsKey("permissions")) {
       permissions = _json["permissions"]
-          .map((value) => new Permission.fromJson(value))
+          .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
   }

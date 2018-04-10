@@ -58,7 +58,7 @@ class WebfontsResourceApi {
   /// this method will complete with the same error.
   async.Future<WebfontList> list({core.String sort, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -181,8 +181,9 @@ class WebfontList {
 
   WebfontList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Webfont.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Webfont>((value) => new Webfont.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

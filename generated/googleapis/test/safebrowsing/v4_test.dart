@@ -90,14 +90,14 @@ checkClientInfo(api.ClientInfo o) {
   buildCounterClientInfo--;
 }
 
-buildUnnamed3300() {
+buildUnnamed2564() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3300(core.List<core.String> o) {
+checkUnnamed2564(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -113,7 +113,7 @@ buildConstraints() {
     o.maxDatabaseEntries = 42;
     o.maxUpdateEntries = 42;
     o.region = "foo";
-    o.supportedCompressions = buildUnnamed3300();
+    o.supportedCompressions = buildUnnamed2564();
   }
   buildCounterConstraints--;
   return o;
@@ -127,7 +127,7 @@ checkConstraints(api.Constraints o) {
     unittest.expect(o.maxDatabaseEntries, unittest.equals(42));
     unittest.expect(o.maxUpdateEntries, unittest.equals(42));
     unittest.expect(o.region, unittest.equals('foo'));
-    checkUnnamed3300(o.supportedCompressions);
+    checkUnnamed2564(o.supportedCompressions);
   }
   buildCounterConstraints--;
 }
@@ -147,14 +147,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed3301() {
+buildUnnamed2565() {
   var o = new core.List<api.ListUpdateRequest>();
   o.add(buildListUpdateRequest());
   o.add(buildListUpdateRequest());
   return o;
 }
 
-checkUnnamed3301(core.List<api.ListUpdateRequest> o) {
+checkUnnamed2565(core.List<api.ListUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListUpdateRequest(o[0]);
   checkListUpdateRequest(o[1]);
@@ -166,7 +166,7 @@ buildFetchThreatListUpdatesRequest() {
   buildCounterFetchThreatListUpdatesRequest++;
   if (buildCounterFetchThreatListUpdatesRequest < 3) {
     o.client = buildClientInfo();
-    o.listUpdateRequests = buildUnnamed3301();
+    o.listUpdateRequests = buildUnnamed2565();
   }
   buildCounterFetchThreatListUpdatesRequest--;
   return o;
@@ -176,19 +176,19 @@ checkFetchThreatListUpdatesRequest(api.FetchThreatListUpdatesRequest o) {
   buildCounterFetchThreatListUpdatesRequest++;
   if (buildCounterFetchThreatListUpdatesRequest < 3) {
     checkClientInfo(o.client);
-    checkUnnamed3301(o.listUpdateRequests);
+    checkUnnamed2565(o.listUpdateRequests);
   }
   buildCounterFetchThreatListUpdatesRequest--;
 }
 
-buildUnnamed3302() {
+buildUnnamed2566() {
   var o = new core.List<api.ListUpdateResponse>();
   o.add(buildListUpdateResponse());
   o.add(buildListUpdateResponse());
   return o;
 }
 
-checkUnnamed3302(core.List<api.ListUpdateResponse> o) {
+checkUnnamed2566(core.List<api.ListUpdateResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListUpdateResponse(o[0]);
   checkListUpdateResponse(o[1]);
@@ -199,7 +199,7 @@ buildFetchThreatListUpdatesResponse() {
   var o = new api.FetchThreatListUpdatesResponse();
   buildCounterFetchThreatListUpdatesResponse++;
   if (buildCounterFetchThreatListUpdatesResponse < 3) {
-    o.listUpdateResponses = buildUnnamed3302();
+    o.listUpdateResponses = buildUnnamed2566();
     o.minimumWaitDuration = "foo";
   }
   buildCounterFetchThreatListUpdatesResponse--;
@@ -209,20 +209,20 @@ buildFetchThreatListUpdatesResponse() {
 checkFetchThreatListUpdatesResponse(api.FetchThreatListUpdatesResponse o) {
   buildCounterFetchThreatListUpdatesResponse++;
   if (buildCounterFetchThreatListUpdatesResponse < 3) {
-    checkUnnamed3302(o.listUpdateResponses);
+    checkUnnamed2566(o.listUpdateResponses);
     unittest.expect(o.minimumWaitDuration, unittest.equals('foo'));
   }
   buildCounterFetchThreatListUpdatesResponse--;
 }
 
-buildUnnamed3303() {
+buildUnnamed2567() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3303(core.List<core.String> o) {
+checkUnnamed2567(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -235,7 +235,7 @@ buildFindFullHashesRequest() {
   if (buildCounterFindFullHashesRequest < 3) {
     o.apiClient = buildClientInfo();
     o.client = buildClientInfo();
-    o.clientStates = buildUnnamed3303();
+    o.clientStates = buildUnnamed2567();
     o.threatInfo = buildThreatInfo();
   }
   buildCounterFindFullHashesRequest--;
@@ -247,20 +247,20 @@ checkFindFullHashesRequest(api.FindFullHashesRequest o) {
   if (buildCounterFindFullHashesRequest < 3) {
     checkClientInfo(o.apiClient);
     checkClientInfo(o.client);
-    checkUnnamed3303(o.clientStates);
+    checkUnnamed2567(o.clientStates);
     checkThreatInfo(o.threatInfo);
   }
   buildCounterFindFullHashesRequest--;
 }
 
-buildUnnamed3304() {
+buildUnnamed2568() {
   var o = new core.List<api.ThreatMatch>();
   o.add(buildThreatMatch());
   o.add(buildThreatMatch());
   return o;
 }
 
-checkUnnamed3304(core.List<api.ThreatMatch> o) {
+checkUnnamed2568(core.List<api.ThreatMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatMatch(o[0]);
   checkThreatMatch(o[1]);
@@ -271,7 +271,7 @@ buildFindFullHashesResponse() {
   var o = new api.FindFullHashesResponse();
   buildCounterFindFullHashesResponse++;
   if (buildCounterFindFullHashesResponse < 3) {
-    o.matches = buildUnnamed3304();
+    o.matches = buildUnnamed2568();
     o.minimumWaitDuration = "foo";
     o.negativeCacheDuration = "foo";
   }
@@ -282,7 +282,7 @@ buildFindFullHashesResponse() {
 checkFindFullHashesResponse(api.FindFullHashesResponse o) {
   buildCounterFindFullHashesResponse++;
   if (buildCounterFindFullHashesResponse < 3) {
-    checkUnnamed3304(o.matches);
+    checkUnnamed2568(o.matches);
     unittest.expect(o.minimumWaitDuration, unittest.equals('foo'));
     unittest.expect(o.negativeCacheDuration, unittest.equals('foo'));
   }
@@ -310,14 +310,14 @@ checkFindThreatMatchesRequest(api.FindThreatMatchesRequest o) {
   buildCounterFindThreatMatchesRequest--;
 }
 
-buildUnnamed3305() {
+buildUnnamed2569() {
   var o = new core.List<api.ThreatMatch>();
   o.add(buildThreatMatch());
   o.add(buildThreatMatch());
   return o;
 }
 
-checkUnnamed3305(core.List<api.ThreatMatch> o) {
+checkUnnamed2569(core.List<api.ThreatMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatMatch(o[0]);
   checkThreatMatch(o[1]);
@@ -328,7 +328,7 @@ buildFindThreatMatchesResponse() {
   var o = new api.FindThreatMatchesResponse();
   buildCounterFindThreatMatchesResponse++;
   if (buildCounterFindThreatMatchesResponse < 3) {
-    o.matches = buildUnnamed3305();
+    o.matches = buildUnnamed2569();
   }
   buildCounterFindThreatMatchesResponse--;
   return o;
@@ -337,19 +337,19 @@ buildFindThreatMatchesResponse() {
 checkFindThreatMatchesResponse(api.FindThreatMatchesResponse o) {
   buildCounterFindThreatMatchesResponse++;
   if (buildCounterFindThreatMatchesResponse < 3) {
-    checkUnnamed3305(o.matches);
+    checkUnnamed2569(o.matches);
   }
   buildCounterFindThreatMatchesResponse--;
 }
 
-buildUnnamed3306() {
+buildUnnamed2570() {
   var o = new core.List<api.ThreatListDescriptor>();
   o.add(buildThreatListDescriptor());
   o.add(buildThreatListDescriptor());
   return o;
 }
 
-checkUnnamed3306(core.List<api.ThreatListDescriptor> o) {
+checkUnnamed2570(core.List<api.ThreatListDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatListDescriptor(o[0]);
   checkThreatListDescriptor(o[1]);
@@ -360,7 +360,7 @@ buildListThreatListsResponse() {
   var o = new api.ListThreatListsResponse();
   buildCounterListThreatListsResponse++;
   if (buildCounterListThreatListsResponse < 3) {
-    o.threatLists = buildUnnamed3306();
+    o.threatLists = buildUnnamed2570();
   }
   buildCounterListThreatListsResponse--;
   return o;
@@ -369,7 +369,7 @@ buildListThreatListsResponse() {
 checkListThreatListsResponse(api.ListThreatListsResponse o) {
   buildCounterListThreatListsResponse++;
   if (buildCounterListThreatListsResponse < 3) {
-    checkUnnamed3306(o.threatLists);
+    checkUnnamed2570(o.threatLists);
   }
   buildCounterListThreatListsResponse--;
 }
@@ -401,27 +401,27 @@ checkListUpdateRequest(api.ListUpdateRequest o) {
   buildCounterListUpdateRequest--;
 }
 
-buildUnnamed3307() {
+buildUnnamed2571() {
   var o = new core.List<api.ThreatEntrySet>();
   o.add(buildThreatEntrySet());
   o.add(buildThreatEntrySet());
   return o;
 }
 
-checkUnnamed3307(core.List<api.ThreatEntrySet> o) {
+checkUnnamed2571(core.List<api.ThreatEntrySet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatEntrySet(o[0]);
   checkThreatEntrySet(o[1]);
 }
 
-buildUnnamed3308() {
+buildUnnamed2572() {
   var o = new core.List<api.ThreatEntrySet>();
   o.add(buildThreatEntrySet());
   o.add(buildThreatEntrySet());
   return o;
 }
 
-checkUnnamed3308(core.List<api.ThreatEntrySet> o) {
+checkUnnamed2572(core.List<api.ThreatEntrySet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatEntrySet(o[0]);
   checkThreatEntrySet(o[1]);
@@ -432,11 +432,11 @@ buildListUpdateResponse() {
   var o = new api.ListUpdateResponse();
   buildCounterListUpdateResponse++;
   if (buildCounterListUpdateResponse < 3) {
-    o.additions = buildUnnamed3307();
+    o.additions = buildUnnamed2571();
     o.checksum = buildChecksum();
     o.newClientState = "foo";
     o.platformType = "foo";
-    o.removals = buildUnnamed3308();
+    o.removals = buildUnnamed2572();
     o.responseType = "foo";
     o.threatEntryType = "foo";
     o.threatType = "foo";
@@ -448,11 +448,11 @@ buildListUpdateResponse() {
 checkListUpdateResponse(api.ListUpdateResponse o) {
   buildCounterListUpdateResponse++;
   if (buildCounterListUpdateResponse < 3) {
-    checkUnnamed3307(o.additions);
+    checkUnnamed2571(o.additions);
     checkChecksum(o.checksum);
     unittest.expect(o.newClientState, unittest.equals('foo'));
     unittest.expect(o.platformType, unittest.equals('foo'));
-    checkUnnamed3308(o.removals);
+    checkUnnamed2572(o.removals);
     unittest.expect(o.responseType, unittest.equals('foo'));
     unittest.expect(o.threatEntryType, unittest.equals('foo'));
     unittest.expect(o.threatType, unittest.equals('foo'));
@@ -502,14 +502,14 @@ checkRawHashes(api.RawHashes o) {
   buildCounterRawHashes--;
 }
 
-buildUnnamed3309() {
+buildUnnamed2573() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed3309(core.List<core.int> o) {
+checkUnnamed2573(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -520,7 +520,7 @@ buildRawIndices() {
   var o = new api.RawIndices();
   buildCounterRawIndices++;
   if (buildCounterRawIndices < 3) {
-    o.indices = buildUnnamed3309();
+    o.indices = buildUnnamed2573();
   }
   buildCounterRawIndices--;
   return o;
@@ -529,7 +529,7 @@ buildRawIndices() {
 checkRawIndices(api.RawIndices o) {
   buildCounterRawIndices++;
   if (buildCounterRawIndices < 3) {
-    checkUnnamed3309(o.indices);
+    checkUnnamed2573(o.indices);
   }
   buildCounterRawIndices--;
 }
@@ -582,14 +582,14 @@ checkThreatEntry(api.ThreatEntry o) {
   buildCounterThreatEntry--;
 }
 
-buildUnnamed3310() {
+buildUnnamed2574() {
   var o = new core.List<api.MetadataEntry>();
   o.add(buildMetadataEntry());
   o.add(buildMetadataEntry());
   return o;
 }
 
-checkUnnamed3310(core.List<api.MetadataEntry> o) {
+checkUnnamed2574(core.List<api.MetadataEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataEntry(o[0]);
   checkMetadataEntry(o[1]);
@@ -600,7 +600,7 @@ buildThreatEntryMetadata() {
   var o = new api.ThreatEntryMetadata();
   buildCounterThreatEntryMetadata++;
   if (buildCounterThreatEntryMetadata < 3) {
-    o.entries = buildUnnamed3310();
+    o.entries = buildUnnamed2574();
   }
   buildCounterThreatEntryMetadata--;
   return o;
@@ -609,7 +609,7 @@ buildThreatEntryMetadata() {
 checkThreatEntryMetadata(api.ThreatEntryMetadata o) {
   buildCounterThreatEntryMetadata++;
   if (buildCounterThreatEntryMetadata < 3) {
-    checkUnnamed3310(o.entries);
+    checkUnnamed2574(o.entries);
   }
   buildCounterThreatEntryMetadata--;
 }
@@ -641,14 +641,14 @@ checkThreatEntrySet(api.ThreatEntrySet o) {
   buildCounterThreatEntrySet--;
 }
 
-buildUnnamed3311() {
+buildUnnamed2575() {
   var o = new core.List<api.ThreatSource>();
   o.add(buildThreatSource());
   o.add(buildThreatSource());
   return o;
 }
 
-checkUnnamed3311(core.List<api.ThreatSource> o) {
+checkUnnamed2575(core.List<api.ThreatSource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatSource(o[0]);
   checkThreatSource(o[1]);
@@ -662,7 +662,7 @@ buildThreatHit() {
     o.clientInfo = buildClientInfo();
     o.entry = buildThreatEntry();
     o.platformType = "foo";
-    o.resources = buildUnnamed3311();
+    o.resources = buildUnnamed2575();
     o.threatType = "foo";
     o.userInfo = buildUserInfo();
   }
@@ -676,60 +676,60 @@ checkThreatHit(api.ThreatHit o) {
     checkClientInfo(o.clientInfo);
     checkThreatEntry(o.entry);
     unittest.expect(o.platformType, unittest.equals('foo'));
-    checkUnnamed3311(o.resources);
+    checkUnnamed2575(o.resources);
     unittest.expect(o.threatType, unittest.equals('foo'));
     checkUserInfo(o.userInfo);
   }
   buildCounterThreatHit--;
 }
 
-buildUnnamed3312() {
+buildUnnamed2576() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3312(core.List<core.String> o) {
+checkUnnamed2576(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3313() {
+buildUnnamed2577() {
   var o = new core.List<api.ThreatEntry>();
   o.add(buildThreatEntry());
   o.add(buildThreatEntry());
   return o;
 }
 
-checkUnnamed3313(core.List<api.ThreatEntry> o) {
+checkUnnamed2577(core.List<api.ThreatEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatEntry(o[0]);
   checkThreatEntry(o[1]);
 }
 
-buildUnnamed3314() {
+buildUnnamed2578() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3314(core.List<core.String> o) {
+checkUnnamed2578(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3315() {
+buildUnnamed2579() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3315(core.List<core.String> o) {
+checkUnnamed2579(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -740,10 +740,10 @@ buildThreatInfo() {
   var o = new api.ThreatInfo();
   buildCounterThreatInfo++;
   if (buildCounterThreatInfo < 3) {
-    o.platformTypes = buildUnnamed3312();
-    o.threatEntries = buildUnnamed3313();
-    o.threatEntryTypes = buildUnnamed3314();
-    o.threatTypes = buildUnnamed3315();
+    o.platformTypes = buildUnnamed2576();
+    o.threatEntries = buildUnnamed2577();
+    o.threatEntryTypes = buildUnnamed2578();
+    o.threatTypes = buildUnnamed2579();
   }
   buildCounterThreatInfo--;
   return o;
@@ -752,10 +752,10 @@ buildThreatInfo() {
 checkThreatInfo(api.ThreatInfo o) {
   buildCounterThreatInfo++;
   if (buildCounterThreatInfo < 3) {
-    checkUnnamed3312(o.platformTypes);
-    checkUnnamed3313(o.threatEntries);
-    checkUnnamed3314(o.threatEntryTypes);
-    checkUnnamed3315(o.threatTypes);
+    checkUnnamed2576(o.platformTypes);
+    checkUnnamed2577(o.threatEntries);
+    checkUnnamed2578(o.threatEntryTypes);
+    checkUnnamed2579(o.threatTypes);
   }
   buildCounterThreatInfo--;
 }
@@ -1126,7 +1126,7 @@ main() {
               clientId: arg_clientId,
               clientVersion: arg_clientVersion,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.FindFullHashesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkFindFullHashesResponse(response);
       })));
     });
@@ -1191,8 +1191,7 @@ main() {
               clientId: arg_clientId,
               clientVersion: arg_clientVersion,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.FetchThreatListUpdatesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkFetchThreatListUpdatesResponse(response);
       })));
     });
@@ -1247,7 +1246,7 @@ main() {
       }), true);
       res
           .find(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.FindFullHashesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkFindFullHashesResponse(response);
       })));
     });
@@ -1302,7 +1301,7 @@ main() {
       }), true);
       res
           .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1356,8 +1355,9 @@ main() {
         var resp = convert.JSON.encode(buildFetchThreatListUpdatesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.fetch(arg_request, $fields: arg_$fields).then(
-          unittest.expectAsync1(((api.FetchThreatListUpdatesResponse response) {
+      res
+          .fetch(arg_request, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkFetchThreatListUpdatesResponse(response);
       })));
     });
@@ -1407,9 +1407,7 @@ main() {
         var resp = convert.JSON.encode(buildListThreatListsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list($fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListThreatListsResponse response) {
+      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
         checkListThreatListsResponse(response);
       })));
     });
@@ -1463,8 +1461,9 @@ main() {
         var resp = convert.JSON.encode(buildFindThreatMatchesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.find(arg_request, $fields: arg_$fields).then(
-          unittest.expectAsync1(((api.FindThreatMatchesResponse response) {
+      res
+          .find(arg_request, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkFindThreatMatchesResponse(response);
       })));
     });

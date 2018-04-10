@@ -73,7 +73,7 @@ class BackupRunsResourceApi {
       core.String project, core.String instance, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -132,7 +132,7 @@ class BackupRunsResourceApi {
       core.String project, core.String instance, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -192,7 +192,7 @@ class BackupRunsResourceApi {
       BackupRun request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -254,7 +254,7 @@ class BackupRunsResourceApi {
       core.String project, core.String instance,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -321,7 +321,7 @@ class DatabasesResourceApi {
       core.String project, core.String instance, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -381,7 +381,7 @@ class DatabasesResourceApi {
       core.String project, core.String instance, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -441,7 +441,7 @@ class DatabasesResourceApi {
       Database request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -498,7 +498,7 @@ class DatabasesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -556,7 +556,7 @@ class DatabasesResourceApi {
       core.String instance, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -621,7 +621,7 @@ class DatabasesResourceApi {
       core.String instance, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -685,7 +685,7 @@ class FlagsResourceApi {
   async.Future<FlagsListResponse> list(
       {core.String databaseVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -742,7 +742,7 @@ class InstancesResourceApi {
       InstancesCloneRequest request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -798,7 +798,7 @@ class InstancesResourceApi {
   async.Future<Operation> delete(core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -852,7 +852,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -912,7 +912,7 @@ class InstancesResourceApi {
       InstancesExportRequest request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -970,7 +970,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1025,7 +1025,7 @@ class InstancesResourceApi {
   async.Future<DatabaseInstance> get(core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1080,7 +1080,7 @@ class InstancesResourceApi {
       InstancesImportRequest request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1136,7 +1136,7 @@ class InstancesResourceApi {
   async.Future<Operation> insert(DatabaseInstance request, core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1196,7 +1196,7 @@ class InstancesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1257,7 +1257,7 @@ class InstancesResourceApi {
       DatabaseInstance request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1312,7 +1312,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1368,7 +1368,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1421,7 +1421,7 @@ class InstancesResourceApi {
   async.Future<Operation> restart(core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1476,7 +1476,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1532,7 +1532,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1584,7 +1584,7 @@ class InstancesResourceApi {
   async.Future<Operation> stopReplica(core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1639,7 +1639,7 @@ class InstancesResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1699,7 +1699,7 @@ class InstancesResourceApi {
       DatabaseInstance request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1759,7 +1759,7 @@ class OperationsResourceApi {
   async.Future<Operation> get(core.String project, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1817,7 +1817,7 @@ class OperationsResourceApi {
       core.String project, core.String instance,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1885,7 +1885,7 @@ class SslCertsResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1945,7 +1945,7 @@ class SslCertsResourceApi {
       core.String project, core.String instance, core.String sha1Fingerprint,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2006,7 +2006,7 @@ class SslCertsResourceApi {
       core.String project, core.String instance, core.String sha1Fingerprint,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2068,7 +2068,7 @@ class SslCertsResourceApi {
       SslCertsInsertRequest request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2125,7 +2125,7 @@ class SslCertsResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2182,7 +2182,7 @@ class TiersResourceApi {
   async.Future<TiersListResponse> list(core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2238,7 +2238,7 @@ class UsersResourceApi {
       core.String host, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2301,7 +2301,7 @@ class UsersResourceApi {
       User request, core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2357,7 +2357,7 @@ class UsersResourceApi {
       core.String project, core.String instance,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2416,7 +2416,7 @@ class UsersResourceApi {
       core.String instance, core.String host, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2717,8 +2717,9 @@ class BackupRunsListResponse {
 
   BackupRunsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new BackupRun.fromJson(value)).toList();
+      items = _json["items"]
+          .map<BackupRun>((value) => new BackupRun.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3146,7 +3147,7 @@ class DatabaseInstance {
     }
     if (_json.containsKey("ipAddresses")) {
       ipAddresses = _json["ipAddresses"]
-          .map((value) => new IpMapping.fromJson(value))
+          .map<IpMapping>((value) => new IpMapping.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ipv6Address")) {
@@ -3296,8 +3297,9 @@ class DatabasesListResponse {
 
   DatabasesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Database.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Database>((value) => new Database.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3742,7 +3744,9 @@ class FlagsListResponse {
 
   FlagsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Flag.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Flag>((value) => new Flag.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4005,7 +4009,8 @@ class InstancesListResponse {
   InstancesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new DatabaseInstance.fromJson(value))
+          .map<DatabaseInstance>(
+              (value) => new DatabaseInstance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4098,7 +4103,7 @@ class IpConfiguration {
   IpConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("authorizedNetworks")) {
       authorizedNetworks = _json["authorizedNetworks"]
-          .map((value) => new AclEntry.fromJson(value))
+          .map<AclEntry>((value) => new AclEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ipv4Enabled")) {
@@ -4635,7 +4640,7 @@ class OperationErrors {
   OperationErrors.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new OperationError.fromJson(value))
+          .map<OperationError>((value) => new OperationError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4672,8 +4677,9 @@ class OperationsListResponse {
 
   OperationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Operation.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4920,7 +4926,7 @@ class Settings {
     }
     if (_json.containsKey("databaseFlags")) {
       databaseFlags = _json["databaseFlags"]
-          .map((value) => new DatabaseFlags.fromJson(value))
+          .map<DatabaseFlags>((value) => new DatabaseFlags.fromJson(value))
           .toList();
     }
     if (_json.containsKey("databaseReplicationEnabled")) {
@@ -5275,8 +5281,9 @@ class SslCertsListResponse {
 
   SslCertsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new SslCert.fromJson(value)).toList();
+      items = _json["items"]
+          .map<SslCert>((value) => new SslCert.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5368,7 +5375,9 @@ class TiersListResponse {
 
   TiersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Tier.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Tier>((value) => new Tier.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5521,7 +5530,9 @@ class UsersListResponse {
 
   UsersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new User.fromJson(value)).toList();
+      items = _json["items"]
+          .map<User>((value) => new User.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

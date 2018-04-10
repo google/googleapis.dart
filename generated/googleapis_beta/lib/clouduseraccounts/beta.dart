@@ -76,7 +76,7 @@ class GlobalAccountsOperationsResourceApi {
   async.Future delete(core.String project, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -131,7 +131,7 @@ class GlobalAccountsOperationsResourceApi {
   async.Future<Operation> get(core.String project, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -234,7 +234,7 @@ class GlobalAccountsOperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -303,7 +303,7 @@ class GroupsResourceApi {
       core.String project, core.String groupName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -360,7 +360,7 @@ class GroupsResourceApi {
   async.Future<Operation> delete(core.String project, core.String groupName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -413,7 +413,7 @@ class GroupsResourceApi {
   async.Future<Group> get(core.String project, core.String groupName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -466,7 +466,7 @@ class GroupsResourceApi {
   async.Future<Operation> insert(Group request, core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -566,7 +566,7 @@ class GroupsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -629,7 +629,7 @@ class GroupsResourceApi {
       core.String project, core.String groupName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -707,7 +707,7 @@ class LinuxResourceApi {
       {core.bool login,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -830,7 +830,7 @@ class LinuxResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -911,7 +911,7 @@ class UsersResourceApi {
       PublicKey request, core.String project, core.String user,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -968,7 +968,7 @@ class UsersResourceApi {
   async.Future<Operation> delete(core.String project, core.String user,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1021,7 +1021,7 @@ class UsersResourceApi {
   async.Future<User> get(core.String project, core.String user,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1074,7 +1074,7 @@ class UsersResourceApi {
   async.Future<Operation> insert(User request, core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1174,7 +1174,7 @@ class UsersResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1240,7 +1240,7 @@ class UsersResourceApi {
       core.String project, core.String user, core.String fingerprint,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1412,7 +1412,9 @@ class GroupList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Group.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Group>((value) => new Group.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1511,7 +1513,7 @@ class LinuxAccountViews {
   LinuxAccountViews.fromJson(core.Map _json) {
     if (_json.containsKey("groupViews")) {
       groupViews = _json["groupViews"]
-          .map((value) => new LinuxGroupView.fromJson(value))
+          .map<LinuxGroupView>((value) => new LinuxGroupView.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1519,7 +1521,7 @@ class LinuxAccountViews {
     }
     if (_json.containsKey("userViews")) {
       userViews = _json["userViews"]
-          .map((value) => new LinuxUserView.fromJson(value))
+          .map<LinuxUserView>((value) => new LinuxUserView.fromJson(value))
           .toList();
     }
   }
@@ -1747,7 +1749,8 @@ class OperationError {
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new OperationErrorErrors.fromJson(value))
+          .map<OperationErrorErrors>(
+              (value) => new OperationErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -1836,7 +1839,8 @@ class OperationWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new OperationWarningsData.fromJson(value))
+          .map<OperationWarningsData>(
+              (value) => new OperationWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -2025,7 +2029,8 @@ class Operation {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new OperationWarnings.fromJson(value))
+          .map<OperationWarnings>(
+              (value) => new OperationWarnings.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
@@ -2139,8 +2144,9 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Operation.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2297,7 +2303,7 @@ class User {
     }
     if (_json.containsKey("publicKeys")) {
       publicKeys = _json["publicKeys"]
-          .map((value) => new PublicKey.fromJson(value))
+          .map<PublicKey>((value) => new PublicKey.fromJson(value))
           .toList();
     }
     if (_json.containsKey("selfLink")) {
@@ -2364,7 +2370,9 @@ class UserList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new User.fromJson(value)).toList();
+      items = _json["items"]
+          .map<User>((value) => new User.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

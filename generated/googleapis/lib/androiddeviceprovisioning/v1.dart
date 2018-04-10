@@ -63,7 +63,7 @@ class CustomersResourceApi {
   async.Future<CustomerListCustomersResponse> list(
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -123,7 +123,7 @@ class CustomersConfigurationsResourceApi {
   async.Future<Configuration> create(Configuration request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -175,7 +175,7 @@ class CustomersConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -220,7 +220,7 @@ class CustomersConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Configuration> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -266,7 +266,7 @@ class CustomersConfigurationsResourceApi {
   async.Future<CustomerListConfigurationsResponse> list(core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -323,7 +323,7 @@ class CustomersConfigurationsResourceApi {
   async.Future<Configuration> patch(Configuration request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -388,7 +388,7 @@ class CustomersDevicesResourceApi {
       CustomerApplyConfigurationRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -437,7 +437,7 @@ class CustomersDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Device> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -488,7 +488,7 @@ class CustomersDevicesResourceApi {
   async.Future<CustomerListDevicesResponse> list(core.String parent,
       {core.String pageToken, core.String pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -544,7 +544,7 @@ class CustomersDevicesResourceApi {
       CustomerRemoveConfigurationRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -603,7 +603,7 @@ class CustomersDevicesResourceApi {
       CustomerUnclaimDeviceRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -661,7 +661,7 @@ class CustomersDpcsResourceApi {
   async.Future<CustomerListDpcsResponse> list(core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -713,7 +713,7 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -784,7 +784,7 @@ class PartnersCustomersResourceApi {
       CreateCustomerRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -834,7 +834,7 @@ class PartnersCustomersResourceApi {
   async.Future<ListCustomersResponse> list(core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -889,7 +889,7 @@ class PartnersDevicesResourceApi {
       ClaimDeviceRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -941,7 +941,7 @@ class PartnersDevicesResourceApi {
       ClaimDevicesRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -993,7 +993,7 @@ class PartnersDevicesResourceApi {
       FindDevicesByDeviceIdentifierRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1046,7 +1046,7 @@ class PartnersDevicesResourceApi {
       FindDevicesByOwnerRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1095,7 +1095,7 @@ class PartnersDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Device> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1146,7 +1146,7 @@ class PartnersDevicesResourceApi {
       core.String metadataOwnerId, core.String deviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1204,7 +1204,7 @@ class PartnersDevicesResourceApi {
       UnclaimDeviceRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1256,7 +1256,7 @@ class PartnersDevicesResourceApi {
       UnclaimDevicesRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1308,7 +1308,7 @@ class PartnersDevicesResourceApi {
       UpdateDeviceMetadataInBatchRequest request, core.String partnerId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1426,7 +1426,7 @@ class ClaimDevicesRequest {
   ClaimDevicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("claims")) {
       claims = _json["claims"]
-          .map((value) => new PartnerClaim.fromJson(value))
+          .map<PartnerClaim>((value) => new PartnerClaim.fromJson(value))
           .toList();
     }
   }
@@ -1711,7 +1711,7 @@ class CustomerListConfigurationsResponse {
   CustomerListConfigurationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("configurations")) {
       configurations = _json["configurations"]
-          .map((value) => new Configuration.fromJson(value))
+          .map<Configuration>((value) => new Configuration.fromJson(value))
           .toList();
     }
   }
@@ -1741,7 +1741,7 @@ class CustomerListCustomersResponse {
   CustomerListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("customers")) {
       customers = _json["customers"]
-          .map((value) => new Company.fromJson(value))
+          .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1775,8 +1775,9 @@ class CustomerListDevicesResponse {
 
   CustomerListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices =
-          _json["devices"].map((value) => new Device.fromJson(value)).toList();
+      devices = _json["devices"]
+          .map<Device>((value) => new Device.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1806,7 +1807,8 @@ class CustomerListDpcsResponse {
 
   CustomerListDpcsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dpcs")) {
-      dpcs = _json["dpcs"].map((value) => new Dpc.fromJson(value)).toList();
+      dpcs =
+          _json["dpcs"].map<Dpc>((value) => new Dpc.fromJson(value)).toList();
     }
   }
 
@@ -1901,7 +1903,7 @@ class Device {
   Device.fromJson(core.Map _json) {
     if (_json.containsKey("claims")) {
       claims = _json["claims"]
-          .map((value) => new DeviceClaim.fromJson(value))
+          .map<DeviceClaim>((value) => new DeviceClaim.fromJson(value))
           .toList();
     }
     if (_json.containsKey("configuration")) {
@@ -2169,7 +2171,8 @@ class DevicesLongRunningOperationResponse {
   DevicesLongRunningOperationResponse.fromJson(core.Map _json) {
     if (_json.containsKey("perDeviceStatus")) {
       perDeviceStatus = _json["perDeviceStatus"]
-          .map((value) => new OperationPerDevice.fromJson(value))
+          .map<OperationPerDevice>(
+              (value) => new OperationPerDevice.fromJson(value))
           .toList();
     }
     if (_json.containsKey("successCount")) {
@@ -2317,8 +2320,9 @@ class FindDevicesByDeviceIdentifierResponse {
 
   FindDevicesByDeviceIdentifierResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices =
-          _json["devices"].map((value) => new Device.fromJson(value)).toList();
+      devices = _json["devices"]
+          .map<Device>((value) => new Device.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2403,8 +2407,9 @@ class FindDevicesByOwnerResponse {
 
   FindDevicesByOwnerResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices =
-          _json["devices"].map((value) => new Device.fromJson(value)).toList();
+      devices = _json["devices"]
+          .map<Device>((value) => new Device.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2434,7 +2439,7 @@ class ListCustomersResponse {
   ListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("customers")) {
       customers = _json["customers"]
-          .map((value) => new Company.fromJson(value))
+          .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
   }
@@ -2898,7 +2903,7 @@ class UnclaimDevicesRequest {
   UnclaimDevicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("unclaims")) {
       unclaims = _json["unclaims"]
-          .map((value) => new PartnerUnclaim.fromJson(value))
+          .map<PartnerUnclaim>((value) => new PartnerUnclaim.fromJson(value))
           .toList();
     }
   }
@@ -2923,7 +2928,8 @@ class UpdateDeviceMetadataInBatchRequest {
   UpdateDeviceMetadataInBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("updates")) {
       updates = _json["updates"]
-          .map((value) => new UpdateMetadataArguments.fromJson(value))
+          .map<UpdateMetadataArguments>(
+              (value) => new UpdateMetadataArguments.fromJson(value))
           .toList();
     }
   }

@@ -66,7 +66,7 @@ class BillingAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<BillingAccount> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -117,7 +117,7 @@ class BillingAccountsResourceApi {
   async.Future<ListBillingAccountsResponse> list(
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -186,7 +186,7 @@ class BillingAccountsProjectsResourceApi {
   async.Future<ListProjectBillingInfoResponse> list(core.String name,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -247,7 +247,7 @@ class ProjectsResourceApi {
   async.Future<ProjectBillingInfo> getBillingInfo(core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -329,7 +329,7 @@ class ProjectsResourceApi {
       ProjectBillingInfo request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -389,7 +389,7 @@ class ServicesResourceApi {
   async.Future<ListServicesResponse> list(
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -476,7 +476,7 @@ class ServicesSkusResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -685,7 +685,7 @@ class ListBillingAccountsResponse {
   ListBillingAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("billingAccounts")) {
       billingAccounts = _json["billingAccounts"]
-          .map((value) => new BillingAccount.fromJson(value))
+          .map<BillingAccount>((value) => new BillingAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -727,7 +727,8 @@ class ListProjectBillingInfoResponse {
     }
     if (_json.containsKey("projectBillingInfo")) {
       projectBillingInfo = _json["projectBillingInfo"]
-          .map((value) => new ProjectBillingInfo.fromJson(value))
+          .map<ProjectBillingInfo>(
+              (value) => new ProjectBillingInfo.fromJson(value))
           .toList();
     }
   }
@@ -764,7 +765,7 @@ class ListServicesResponse {
     }
     if (_json.containsKey("services")) {
       services = _json["services"]
-          .map((value) => new Service.fromJson(value))
+          .map<Service>((value) => new Service.fromJson(value))
           .toList();
     }
   }
@@ -799,7 +800,8 @@ class ListSkusResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("skus")) {
-      skus = _json["skus"].map((value) => new Sku.fromJson(value)).toList();
+      skus =
+          _json["skus"].map<Sku>((value) => new Sku.fromJson(value)).toList();
     }
   }
 
@@ -930,7 +932,7 @@ class PricingExpression {
     }
     if (_json.containsKey("tieredRates")) {
       tieredRates = _json["tieredRates"]
-          .map((value) => new TierRate.fromJson(value))
+          .map<TierRate>((value) => new TierRate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("usageUnit")) {
@@ -1190,7 +1192,7 @@ class Sku {
     }
     if (_json.containsKey("pricingInfo")) {
       pricingInfo = _json["pricingInfo"]
-          .map((value) => new PricingInfo.fromJson(value))
+          .map<PricingInfo>((value) => new PricingInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceProviderName")) {

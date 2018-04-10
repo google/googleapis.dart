@@ -75,7 +75,7 @@ class ProjectsResourceApi {
       SendWorkerMessagesRequest request, core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -167,7 +167,7 @@ class ProjectsJobsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -244,7 +244,7 @@ class ProjectsJobsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -313,7 +313,7 @@ class ProjectsJobsResourceApi {
   async.Future<Job> get(core.String projectId, core.String jobId,
       {core.String view, core.String location, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -375,7 +375,7 @@ class ProjectsJobsResourceApi {
   async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId,
       {core.String location, core.String startTime, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -461,7 +461,7 @@ class ProjectsJobsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -529,7 +529,7 @@ class ProjectsJobsResourceApi {
       Job request, core.String projectId, core.String jobId,
       {core.String location, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -596,7 +596,7 @@ class ProjectsJobsDebugResourceApi {
       GetDebugConfigRequest request, core.String projectId, core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -654,7 +654,7 @@ class ProjectsJobsDebugResourceApi {
       SendDebugCaptureRequest request, core.String projectId, core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -752,7 +752,7 @@ class ProjectsJobsMessagesResourceApi {
       core.String minimumImportance,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -832,7 +832,7 @@ class ProjectsJobsWorkItemsResourceApi {
       LeaseWorkItemRequest request, core.String projectId, core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -892,7 +892,7 @@ class ProjectsJobsWorkItemsResourceApi {
       core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -965,7 +965,7 @@ class ProjectsLocationsResourceApi {
       core.String location,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1048,7 +1048,7 @@ class ProjectsLocationsJobsResourceApi {
       Job request, core.String projectId, core.String location,
       {core.String view, core.String replaceJobId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1120,7 +1120,7 @@ class ProjectsLocationsJobsResourceApi {
       core.String projectId, core.String location, core.String jobId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1185,7 +1185,7 @@ class ProjectsLocationsJobsResourceApi {
       core.String projectId, core.String location, core.String jobId,
       {core.String startTime, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1273,7 +1273,7 @@ class ProjectsLocationsJobsResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1343,7 +1343,7 @@ class ProjectsLocationsJobsResourceApi {
       core.String location, core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1414,7 +1414,7 @@ class ProjectsLocationsJobsDebugResourceApi {
       core.String projectId, core.String location, core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1482,7 +1482,7 @@ class ProjectsLocationsJobsDebugResourceApi {
       core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1584,7 +1584,7 @@ class ProjectsLocationsJobsMessagesResourceApi {
       core.String minimumImportance,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1668,7 +1668,7 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
       core.String projectId, core.String location, core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1736,7 +1736,7 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
       core.String jobId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1808,7 +1808,7 @@ class ProjectsLocationsTemplatesResourceApi {
       core.String projectId, core.String location,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1873,7 +1873,7 @@ class ProjectsLocationsTemplatesResourceApi {
       core.String projectId, core.String location,
       {core.String view, core.String gcsPath, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1944,7 +1944,7 @@ class ProjectsLocationsTemplatesResourceApi {
       core.String projectId, core.String location,
       {core.bool validateOnly, core.String gcsPath, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2014,7 +2014,7 @@ class ProjectsTemplatesResourceApi {
       CreateJobFromTemplateRequest request, core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2076,7 +2076,7 @@ class ProjectsTemplatesResourceApi {
       core.String location,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2148,7 +2148,7 @@ class ProjectsTemplatesResourceApi {
       core.String location,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2622,22 +2622,24 @@ class ComputationTopology {
     }
     if (_json.containsKey("inputs")) {
       inputs = _json["inputs"]
-          .map((value) => new StreamLocation.fromJson(value))
+          .map<StreamLocation>((value) => new StreamLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("keyRanges")) {
       keyRanges = _json["keyRanges"]
-          .map((value) => new KeyRangeLocation.fromJson(value))
+          .map<KeyRangeLocation>(
+              (value) => new KeyRangeLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("outputs")) {
       outputs = _json["outputs"]
-          .map((value) => new StreamLocation.fromJson(value))
+          .map<StreamLocation>((value) => new StreamLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stateFamilies")) {
       stateFamilies = _json["stateFamilies"]
-          .map((value) => new StateFamilyConfig.fromJson(value))
+          .map<StateFamilyConfig>(
+              (value) => new StateFamilyConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("systemStageName")) {
@@ -3647,7 +3649,7 @@ class Environment {
     }
     if (_json.containsKey("workerPools")) {
       workerPools = _json["workerPools"]
-          .map((value) => new WorkerPool.fromJson(value))
+          .map<WorkerPool>((value) => new WorkerPool.fromJson(value))
           .toList();
     }
   }
@@ -3825,12 +3827,13 @@ class ExecutionStageSummary {
   ExecutionStageSummary.fromJson(core.Map _json) {
     if (_json.containsKey("componentSource")) {
       componentSource = _json["componentSource"]
-          .map((value) => new ComponentSource.fromJson(value))
+          .map<ComponentSource>((value) => new ComponentSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("componentTransform")) {
       componentTransform = _json["componentTransform"]
-          .map((value) => new ComponentTransform.fromJson(value))
+          .map<ComponentTransform>(
+              (value) => new ComponentTransform.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -3838,7 +3841,7 @@ class ExecutionStageSummary {
     }
     if (_json.containsKey("inputSource")) {
       inputSource = _json["inputSource"]
-          .map((value) => new StageSource.fromJson(value))
+          .map<StageSource>((value) => new StageSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3849,7 +3852,7 @@ class ExecutionStageSummary {
     }
     if (_json.containsKey("outputSource")) {
       outputSource = _json["outputSource"]
-          .map((value) => new StageSource.fromJson(value))
+          .map<StageSource>((value) => new StageSource.fromJson(value))
           .toList();
     }
   }
@@ -3919,7 +3922,8 @@ class FlattenInstruction {
   FlattenInstruction.fromJson(core.Map _json) {
     if (_json.containsKey("inputs")) {
       inputs = _json["inputs"]
-          .map((value) => new InstructionInput.fromJson(value))
+          .map<InstructionInput>(
+              (value) => new InstructionInput.fromJson(value))
           .toList();
     }
   }
@@ -4252,7 +4256,7 @@ class IntegerList {
   IntegerList.fromJson(core.Map _json) {
     if (_json.containsKey("elements")) {
       elements = _json["elements"]
-          .map((value) => new SplitInt64.fromJson(value))
+          .map<SplitInt64>((value) => new SplitInt64.fromJson(value))
           .toList();
     }
   }
@@ -4590,11 +4594,14 @@ class Job {
     }
     if (_json.containsKey("stageStates")) {
       stageStates = _json["stageStates"]
-          .map((value) => new ExecutionStageState.fromJson(value))
+          .map<ExecutionStageState>(
+              (value) => new ExecutionStageState.fromJson(value))
           .toList();
     }
     if (_json.containsKey("steps")) {
-      steps = _json["steps"].map((value) => new Step.fromJson(value)).toList();
+      steps = _json["steps"]
+          .map<Step>((value) => new Step.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tempFiles")) {
       tempFiles = _json["tempFiles"];
@@ -4834,7 +4841,7 @@ class JobMetrics {
     }
     if (_json.containsKey("metrics")) {
       metrics = _json["metrics"]
-          .map((value) => new MetricUpdate.fromJson(value))
+          .map<MetricUpdate>((value) => new MetricUpdate.fromJson(value))
           .toList();
     }
   }
@@ -5110,7 +5117,7 @@ class LeaseWorkItemResponse {
   LeaseWorkItemResponse.fromJson(core.Map _json) {
     if (_json.containsKey("workItems")) {
       workItems = _json["workItems"]
-          .map((value) => new WorkItem.fromJson(value))
+          .map<WorkItem>((value) => new WorkItem.fromJson(value))
           .toList();
     }
   }
@@ -5141,12 +5148,13 @@ class ListJobMessagesResponse {
   ListJobMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("autoscalingEvents")) {
       autoscalingEvents = _json["autoscalingEvents"]
-          .map((value) => new AutoscalingEvent.fromJson(value))
+          .map<AutoscalingEvent>(
+              (value) => new AutoscalingEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("jobMessages")) {
       jobMessages = _json["jobMessages"]
-          .map((value) => new JobMessage.fromJson(value))
+          .map<JobMessage>((value) => new JobMessage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5189,11 +5197,12 @@ class ListJobsResponse {
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("failedLocation")) {
       failedLocation = _json["failedLocation"]
-          .map((value) => new FailedLocation.fromJson(value))
+          .map<FailedLocation>((value) => new FailedLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("jobs")) {
-      jobs = _json["jobs"].map((value) => new Job.fromJson(value)).toList();
+      jobs =
+          _json["jobs"].map<Job>((value) => new Job.fromJson(value)).toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -5240,7 +5249,8 @@ class MapTask {
   MapTask.fromJson(core.Map _json) {
     if (_json.containsKey("instructions")) {
       instructions = _json["instructions"]
-          .map((value) => new ParallelInstruction.fromJson(value))
+          .map<ParallelInstruction>(
+              (value) => new ParallelInstruction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stageName")) {
@@ -5664,7 +5674,7 @@ class ParDoInstruction {
     }
     if (_json.containsKey("multiOutputInfos")) {
       multiOutputInfos = _json["multiOutputInfos"]
-          .map((value) => new MultiOutputInfo.fromJson(value))
+          .map<MultiOutputInfo>((value) => new MultiOutputInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("numOutputs")) {
@@ -5672,7 +5682,7 @@ class ParDoInstruction {
     }
     if (_json.containsKey("sideInputs")) {
       sideInputs = _json["sideInputs"]
-          .map((value) => new SideInputInfo.fromJson(value))
+          .map<SideInputInfo>((value) => new SideInputInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("userFn")) {
@@ -5748,7 +5758,8 @@ class ParallelInstruction {
     }
     if (_json.containsKey("outputs")) {
       outputs = _json["outputs"]
-          .map((value) => new InstructionOutput.fromJson(value))
+          .map<InstructionOutput>(
+              (value) => new InstructionOutput.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parDo")) {
@@ -5944,7 +5955,7 @@ class PartialGroupByKeyInstruction {
     }
     if (_json.containsKey("sideInputs")) {
       sideInputs = _json["sideInputs"]
-          .map((value) => new SideInputInfo.fromJson(value))
+          .map<SideInputInfo>((value) => new SideInputInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("valueCombiningFn")) {
@@ -5998,17 +6009,19 @@ class PipelineDescription {
   PipelineDescription.fromJson(core.Map _json) {
     if (_json.containsKey("displayData")) {
       displayData = _json["displayData"]
-          .map((value) => new DisplayData.fromJson(value))
+          .map<DisplayData>((value) => new DisplayData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("executionPipelineStage")) {
       executionPipelineStage = _json["executionPipelineStage"]
-          .map((value) => new ExecutionStageSummary.fromJson(value))
+          .map<ExecutionStageSummary>(
+              (value) => new ExecutionStageSummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("originalPipelineTransform")) {
       originalPipelineTransform = _json["originalPipelineTransform"]
-          .map((value) => new TransformSummary.fromJson(value))
+          .map<TransformSummary>(
+              (value) => new TransformSummary.fromJson(value))
           .toList();
     }
   }
@@ -6241,7 +6254,7 @@ class ReportWorkItemStatusRequest {
     }
     if (_json.containsKey("workItemStatuses")) {
       workItemStatuses = _json["workItemStatuses"]
-          .map((value) => new WorkItemStatus.fromJson(value))
+          .map<WorkItemStatus>((value) => new WorkItemStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("workerId")) {
@@ -6282,7 +6295,8 @@ class ReportWorkItemStatusResponse {
   ReportWorkItemStatusResponse.fromJson(core.Map _json) {
     if (_json.containsKey("workItemServiceStates")) {
       workItemServiceStates = _json["workItemServiceStates"]
-          .map((value) => new WorkItemServiceState.fromJson(value))
+          .map<WorkItemServiceState>(
+              (value) => new WorkItemServiceState.fromJson(value))
           .toList();
     }
   }
@@ -6347,8 +6361,9 @@ class ResourceUtilizationReport {
 
   ResourceUtilizationReport.fromJson(core.Map _json) {
     if (_json.containsKey("cpuTime")) {
-      cpuTime =
-          _json["cpuTime"].map((value) => new CPUTime.fromJson(value)).toList();
+      cpuTime = _json["cpuTime"]
+          .map<CPUTime>((value) => new CPUTime.fromJson(value))
+          .toList();
     }
   }
 
@@ -6538,7 +6553,7 @@ class SendWorkerMessagesRequest {
     }
     if (_json.containsKey("workerMessages")) {
       workerMessages = _json["workerMessages"]
-          .map((value) => new WorkerMessage.fromJson(value))
+          .map<WorkerMessage>((value) => new WorkerMessage.fromJson(value))
           .toList();
     }
   }
@@ -6567,7 +6582,8 @@ class SendWorkerMessagesResponse {
   SendWorkerMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("workerMessageResponses")) {
       workerMessageResponses = _json["workerMessageResponses"]
-          .map((value) => new WorkerMessageResponse.fromJson(value))
+          .map<WorkerMessageResponse>(
+              (value) => new WorkerMessageResponse.fromJson(value))
           .toList();
     }
   }
@@ -6613,7 +6629,7 @@ class SeqMapTask {
   SeqMapTask.fromJson(core.Map _json) {
     if (_json.containsKey("inputs")) {
       inputs = _json["inputs"]
-          .map((value) => new SideInputInfo.fromJson(value))
+          .map<SideInputInfo>((value) => new SideInputInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -6621,7 +6637,8 @@ class SeqMapTask {
     }
     if (_json.containsKey("outputInfos")) {
       outputInfos = _json["outputInfos"]
-          .map((value) => new SeqMapTaskOutputInfo.fromJson(value))
+          .map<SeqMapTaskOutputInfo>(
+              (value) => new SeqMapTaskOutputInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stageName")) {
@@ -6750,8 +6767,9 @@ class SideInputInfo {
       kind = _json["kind"];
     }
     if (_json.containsKey("sources")) {
-      sources =
-          _json["sources"].map((value) => new Source.fromJson(value)).toList();
+      sources = _json["sources"]
+          .map<Source>((value) => new Source.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tag")) {
       tag = _json["tag"];
@@ -7267,7 +7285,7 @@ class SourceSplitResponse {
   SourceSplitResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bundles")) {
       bundles = _json["bundles"]
-          .map((value) => new DerivedSource.fromJson(value))
+          .map<DerivedSource>((value) => new DerivedSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("outcome")) {
@@ -7275,7 +7293,8 @@ class SourceSplitResponse {
     }
     if (_json.containsKey("shards")) {
       shards = _json["shards"]
-          .map((value) => new SourceSplitShard.fromJson(value))
+          .map<SourceSplitShard>(
+              (value) => new SourceSplitShard.fromJson(value))
           .toList();
     }
   }
@@ -7703,7 +7722,8 @@ class StreamingComputationConfig {
     }
     if (_json.containsKey("instructions")) {
       instructions = _json["instructions"]
-          .map((value) => new ParallelInstruction.fromJson(value))
+          .map<ParallelInstruction>(
+              (value) => new ParallelInstruction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stageName")) {
@@ -7752,7 +7772,8 @@ class StreamingComputationRanges {
     }
     if (_json.containsKey("rangeAssignments")) {
       rangeAssignments = _json["rangeAssignments"]
-          .map((value) => new KeyRangeDataDiskAssignment.fromJson(value))
+          .map<KeyRangeDataDiskAssignment>(
+              (value) => new KeyRangeDataDiskAssignment.fromJson(value))
           .toList();
     }
   }
@@ -7795,12 +7816,13 @@ class StreamingComputationTask {
   StreamingComputationTask.fromJson(core.Map _json) {
     if (_json.containsKey("computationRanges")) {
       computationRanges = _json["computationRanges"]
-          .map((value) => new StreamingComputationRanges.fromJson(value))
+          .map<StreamingComputationRanges>(
+              (value) => new StreamingComputationRanges.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dataDisks")) {
       dataDisks = _json["dataDisks"]
-          .map((value) => new MountedDataDisk.fromJson(value))
+          .map<MountedDataDisk>((value) => new MountedDataDisk.fromJson(value))
           .toList();
     }
     if (_json.containsKey("taskType")) {
@@ -7848,7 +7870,8 @@ class StreamingConfigTask {
   StreamingConfigTask.fromJson(core.Map _json) {
     if (_json.containsKey("streamingComputationConfigs")) {
       streamingComputationConfigs = _json["streamingComputationConfigs"]
-          .map((value) => new StreamingComputationConfig.fromJson(value))
+          .map<StreamingComputationConfig>(
+              (value) => new StreamingComputationConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("userStepToStateFamilyNameMap")) {
@@ -8041,7 +8064,7 @@ class StructuredMessage {
     }
     if (_json.containsKey("parameters")) {
       parameters = _json["parameters"]
-          .map((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
   }
@@ -8297,7 +8320,8 @@ class TemplateMetadata {
     }
     if (_json.containsKey("parameters")) {
       parameters = _json["parameters"]
-          .map((value) => new ParameterMetadata.fromJson(value))
+          .map<ParameterMetadata>(
+              (value) => new ParameterMetadata.fromJson(value))
           .toList();
     }
   }
@@ -8342,12 +8366,14 @@ class TopologyConfig {
   TopologyConfig.fromJson(core.Map _json) {
     if (_json.containsKey("computations")) {
       computations = _json["computations"]
-          .map((value) => new ComputationTopology.fromJson(value))
+          .map<ComputationTopology>(
+              (value) => new ComputationTopology.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dataDiskAssignments")) {
       dataDiskAssignments = _json["dataDiskAssignments"]
-          .map((value) => new DataDiskAssignment.fromJson(value))
+          .map<DataDiskAssignment>(
+              (value) => new DataDiskAssignment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("forwardingKeyBits")) {
@@ -8422,7 +8448,7 @@ class TransformSummary {
   TransformSummary.fromJson(core.Map _json) {
     if (_json.containsKey("displayData")) {
       displayData = _json["displayData"]
-          .map((value) => new DisplayData.fromJson(value))
+          .map<DisplayData>((value) => new DisplayData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -8540,7 +8566,7 @@ class WorkItem {
     }
     if (_json.containsKey("packages")) {
       packages = _json["packages"]
-          .map((value) => new Package.fromJson(value))
+          .map<Package>((value) => new Package.fromJson(value))
           .toList();
     }
     if (_json.containsKey("projectId")) {
@@ -8675,7 +8701,7 @@ class WorkItemServiceState {
     }
     if (_json.containsKey("metricShortId")) {
       metricShortId = _json["metricShortId"]
-          .map((value) => new MetricShortId.fromJson(value))
+          .map<MetricShortId>((value) => new MetricShortId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextReportIndex")) {
@@ -8825,7 +8851,7 @@ class WorkItemStatus {
     }
     if (_json.containsKey("counterUpdates")) {
       counterUpdates = _json["counterUpdates"]
-          .map((value) => new CounterUpdate.fromJson(value))
+          .map<CounterUpdate>((value) => new CounterUpdate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dynamicSourceSplit")) {
@@ -8833,12 +8859,13 @@ class WorkItemStatus {
           new DynamicSourceSplit.fromJson(_json["dynamicSourceSplit"]);
     }
     if (_json.containsKey("errors")) {
-      errors =
-          _json["errors"].map((value) => new Status.fromJson(value)).toList();
+      errors = _json["errors"]
+          .map<Status>((value) => new Status.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("metricUpdates")) {
       metricUpdates = _json["metricUpdates"]
-          .map((value) => new MetricUpdate.fromJson(value))
+          .map<MetricUpdate>((value) => new MetricUpdate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("progress")) {
@@ -9410,8 +9437,9 @@ class WorkerPool {
           new AutoscalingSettings.fromJson(_json["autoscalingSettings"]);
     }
     if (_json.containsKey("dataDisks")) {
-      dataDisks =
-          _json["dataDisks"].map((value) => new Disk.fromJson(value)).toList();
+      dataDisks = _json["dataDisks"]
+          .map<Disk>((value) => new Disk.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("defaultPackageSet")) {
       defaultPackageSet = _json["defaultPackageSet"];
@@ -9451,7 +9479,7 @@ class WorkerPool {
     }
     if (_json.containsKey("packages")) {
       packages = _json["packages"]
-          .map((value) => new Package.fromJson(value))
+          .map<Package>((value) => new Package.fromJson(value))
           .toList();
     }
     if (_json.containsKey("poolArgs")) {

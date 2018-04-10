@@ -97,7 +97,7 @@ class DatasetsResourceApi {
   async.Future delete(core.String projectId, core.String datasetId,
       {core.bool deleteContents, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -153,7 +153,7 @@ class DatasetsResourceApi {
   async.Future<Dataset> get(core.String projectId, core.String datasetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -204,7 +204,7 @@ class DatasetsResourceApi {
   async.Future<Dataset> insert(Dataset request, core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -269,7 +269,7 @@ class DatasetsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -333,7 +333,7 @@ class DatasetsResourceApi {
       Dataset request, core.String projectId, core.String datasetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -392,7 +392,7 @@ class DatasetsResourceApi {
       Dataset request, core.String projectId, core.String datasetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -458,7 +458,7 @@ class JobsResourceApi {
       core.String projectId, core.String jobId,
       {core.String location, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -518,7 +518,7 @@ class JobsResourceApi {
   async.Future<Job> get(core.String projectId, core.String jobId,
       {core.String location, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -592,7 +592,7 @@ class JobsResourceApi {
       core.int timeoutMs,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -666,7 +666,7 @@ class JobsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -750,7 +750,7 @@ class JobsResourceApi {
       core.List<core.String> stateFilter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -811,7 +811,7 @@ class JobsResourceApi {
   async.Future<QueryResponse> query(QueryRequest request, core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -866,7 +866,7 @@ class ProjectsResourceApi {
       core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -915,7 +915,7 @@ class ProjectsResourceApi {
   async.Future<ProjectList> list(
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -978,7 +978,7 @@ class TabledataResourceApi {
       core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1057,7 +1057,7 @@ class TabledataResourceApi {
       core.String startIndex,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1134,7 +1134,7 @@ class TablesResourceApi {
       core.String projectId, core.String datasetId, core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1200,7 +1200,7 @@ class TablesResourceApi {
       core.String projectId, core.String datasetId, core.String tableId,
       {core.String selectedFields, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1262,7 +1262,7 @@ class TablesResourceApi {
       Table request, core.String projectId, core.String datasetId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1323,7 +1323,7 @@ class TablesResourceApi {
   async.Future<TableList> list(core.String projectId, core.String datasetId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1389,7 +1389,7 @@ class TablesResourceApi {
       core.String datasetId, core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1455,7 +1455,7 @@ class TablesResourceApi {
       core.String datasetId, core.String tableId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1626,7 +1626,7 @@ class BigtableColumnFamily {
   BigtableColumnFamily.fromJson(core.Map _json) {
     if (_json.containsKey("columns")) {
       columns = _json["columns"]
-          .map((value) => new BigtableColumn.fromJson(value))
+          .map<BigtableColumn>((value) => new BigtableColumn.fromJson(value))
           .toList();
     }
     if (_json.containsKey("encoding")) {
@@ -1692,7 +1692,8 @@ class BigtableOptions {
   BigtableOptions.fromJson(core.Map _json) {
     if (_json.containsKey("columnFamilies")) {
       columnFamilies = _json["columnFamilies"]
-          .map((value) => new BigtableColumnFamily.fromJson(value))
+          .map<BigtableColumnFamily>(
+              (value) => new BigtableColumnFamily.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ignoreUnspecifiedColumnFamilies")) {
@@ -1958,7 +1959,7 @@ class Dataset {
   Dataset.fromJson(core.Map _json) {
     if (_json.containsKey("access")) {
       access = _json["access"]
-          .map((value) => new DatasetAccess.fromJson(value))
+          .map<DatasetAccess>((value) => new DatasetAccess.fromJson(value))
           .toList();
     }
     if (_json.containsKey("creationTime")) {
@@ -2141,7 +2142,8 @@ class DatasetList {
   DatasetList.fromJson(core.Map _json) {
     if (_json.containsKey("datasets")) {
       datasets = _json["datasets"]
-          .map((value) => new DatasetListDatasets.fromJson(value))
+          .map<DatasetListDatasets>(
+              (value) => new DatasetListDatasets.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -2472,7 +2474,8 @@ class ExplainQueryStage {
     }
     if (_json.containsKey("steps")) {
       steps = _json["steps"]
-          .map((value) => new ExplainQueryStep.fromJson(value))
+          .map<ExplainQueryStep>(
+              (value) => new ExplainQueryStep.fromJson(value))
           .toList();
     }
     if (_json.containsKey("waitMsAvg")) {
@@ -2820,7 +2823,7 @@ class GetQueryResultsResponse {
     }
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new ErrorProto.fromJson(value))
+          .map<ErrorProto>((value) => new ErrorProto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -2842,8 +2845,9 @@ class GetQueryResultsResponse {
       pageToken = _json["pageToken"];
     }
     if (_json.containsKey("rows")) {
-      rows =
-          _json["rows"].map((value) => new TableRow.fromJson(value)).toList();
+      rows = _json["rows"]
+          .map<TableRow>((value) => new TableRow.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
@@ -3722,7 +3726,7 @@ class JobConfigurationQuery {
     }
     if (_json.containsKey("queryParameters")) {
       queryParameters = _json["queryParameters"]
-          .map((value) => new QueryParameter.fromJson(value))
+          .map<QueryParameter>((value) => new QueryParameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("schemaUpdateOptions")) {
@@ -3747,7 +3751,8 @@ class JobConfigurationQuery {
     }
     if (_json.containsKey("userDefinedFunctionResources")) {
       userDefinedFunctionResources = _json["userDefinedFunctionResources"]
-          .map((value) => new UserDefinedFunctionResource.fromJson(value))
+          .map<UserDefinedFunctionResource>(
+              (value) => new UserDefinedFunctionResource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("writeDisposition")) {
@@ -3878,7 +3883,7 @@ class JobConfigurationTableCopy {
     }
     if (_json.containsKey("sourceTables")) {
       sourceTables = _json["sourceTables"]
-          .map((value) => new TableReference.fromJson(value))
+          .map<TableReference>((value) => new TableReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("writeDisposition")) {
@@ -4030,7 +4035,7 @@ class JobList {
     }
     if (_json.containsKey("jobs")) {
       jobs = _json["jobs"]
-          .map((value) => new JobListJobs.fromJson(value))
+          .map<JobListJobs>((value) => new JobListJobs.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4286,12 +4291,13 @@ class JobStatistics2 {
     }
     if (_json.containsKey("queryPlan")) {
       queryPlan = _json["queryPlan"]
-          .map((value) => new ExplainQueryStage.fromJson(value))
+          .map<ExplainQueryStage>(
+              (value) => new ExplainQueryStage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("referencedTables")) {
       referencedTables = _json["referencedTables"]
-          .map((value) => new TableReference.fromJson(value))
+          .map<TableReference>((value) => new TableReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("schema")) {
@@ -4302,7 +4308,8 @@ class JobStatistics2 {
     }
     if (_json.containsKey("timeline")) {
       timeline = _json["timeline"]
-          .map((value) => new QueryTimelineSample.fromJson(value))
+          .map<QueryTimelineSample>(
+              (value) => new QueryTimelineSample.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalBytesBilled")) {
@@ -4316,7 +4323,7 @@ class JobStatistics2 {
     }
     if (_json.containsKey("undeclaredQueryParameters")) {
       undeclaredQueryParameters = _json["undeclaredQueryParameters"]
-          .map((value) => new QueryParameter.fromJson(value))
+          .map<QueryParameter>((value) => new QueryParameter.fromJson(value))
           .toList();
     }
   }
@@ -4484,7 +4491,7 @@ class JobStatus {
     }
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new ErrorProto.fromJson(value))
+          .map<ErrorProto>((value) => new ErrorProto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("state")) {
@@ -4633,7 +4640,8 @@ class ProjectList {
     }
     if (_json.containsKey("projects")) {
       projects = _json["projects"]
-          .map((value) => new ProjectListProjects.fromJson(value))
+          .map<ProjectListProjects>(
+              (value) => new ProjectListProjects.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalItems")) {
@@ -4787,7 +4795,8 @@ class QueryParameterType {
     }
     if (_json.containsKey("structTypes")) {
       structTypes = _json["structTypes"]
-          .map((value) => new QueryParameterTypeStructTypes.fromJson(value))
+          .map<QueryParameterTypeStructTypes>(
+              (value) => new QueryParameterTypeStructTypes.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -4828,7 +4837,8 @@ class QueryParameterValue {
   QueryParameterValue.fromJson(core.Map _json) {
     if (_json.containsKey("arrayValues")) {
       arrayValues = _json["arrayValues"]
-          .map((value) => new QueryParameterValue.fromJson(value))
+          .map<QueryParameterValue>(
+              (value) => new QueryParameterValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("structValues")) {
@@ -4954,7 +4964,7 @@ class QueryRequest {
     }
     if (_json.containsKey("queryParameters")) {
       queryParameters = _json["queryParameters"]
-          .map((value) => new QueryParameter.fromJson(value))
+          .map<QueryParameter>((value) => new QueryParameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timeoutMs")) {
@@ -5070,7 +5080,7 @@ class QueryResponse {
     }
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new ErrorProto.fromJson(value))
+          .map<ErrorProto>((value) => new ErrorProto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("jobComplete")) {
@@ -5089,8 +5099,9 @@ class QueryResponse {
       pageToken = _json["pageToken"];
     }
     if (_json.containsKey("rows")) {
-      rows =
-          _json["rows"].map((value) => new TableRow.fromJson(value)).toList();
+      rows = _json["rows"]
+          .map<TableRow>((value) => new TableRow.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
@@ -5577,7 +5588,8 @@ class TableDataInsertAllRequest {
     }
     if (_json.containsKey("rows")) {
       rows = _json["rows"]
-          .map((value) => new TableDataInsertAllRequestRows.fromJson(value))
+          .map<TableDataInsertAllRequestRows>(
+              (value) => new TableDataInsertAllRequestRows.fromJson(value))
           .toList();
     }
     if (_json.containsKey("skipInvalidRows")) {
@@ -5622,7 +5634,7 @@ class TableDataInsertAllResponseInsertErrors {
   TableDataInsertAllResponseInsertErrors.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new ErrorProto.fromJson(value))
+          .map<ErrorProto>((value) => new ErrorProto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("index")) {
@@ -5655,7 +5667,7 @@ class TableDataInsertAllResponse {
   TableDataInsertAllResponse.fromJson(core.Map _json) {
     if (_json.containsKey("insertErrors")) {
       insertErrors = _json["insertErrors"]
-          .map((value) =>
+          .map<TableDataInsertAllResponseInsertErrors>((value) =>
               new TableDataInsertAllResponseInsertErrors.fromJson(value))
           .toList();
     }
@@ -5709,8 +5721,9 @@ class TableDataList {
       pageToken = _json["pageToken"];
     }
     if (_json.containsKey("rows")) {
-      rows =
-          _json["rows"].map((value) => new TableRow.fromJson(value)).toList();
+      rows = _json["rows"]
+          .map<TableRow>((value) => new TableRow.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("totalRows")) {
       totalRows = _json["totalRows"];
@@ -5771,7 +5784,8 @@ class TableFieldSchema {
     }
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new TableFieldSchema.fromJson(value))
+          .map<TableFieldSchema>(
+              (value) => new TableFieldSchema.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mode")) {
@@ -5967,7 +5981,7 @@ class TableList {
     }
     if (_json.containsKey("tables")) {
       tables = _json["tables"]
-          .map((value) => new TableListTables.fromJson(value))
+          .map<TableListTables>((value) => new TableListTables.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalItems")) {
@@ -6048,7 +6062,9 @@ class TableRow {
 
   TableRow.fromJson(core.Map _json) {
     if (_json.containsKey("f")) {
-      f = _json["f"].map((value) => new TableCell.fromJson(value)).toList();
+      f = _json["f"]
+          .map<TableCell>((value) => new TableCell.fromJson(value))
+          .toList();
     }
   }
 
@@ -6071,7 +6087,8 @@ class TableSchema {
   TableSchema.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new TableFieldSchema.fromJson(value))
+          .map<TableFieldSchema>(
+              (value) => new TableFieldSchema.fromJson(value))
           .toList();
     }
   }
@@ -6200,7 +6217,8 @@ class ViewDefinition {
     }
     if (_json.containsKey("userDefinedFunctionResources")) {
       userDefinedFunctionResources = _json["userDefinedFunctionResources"]
-          .map((value) => new UserDefinedFunctionResource.fromJson(value))
+          .map<UserDefinedFunctionResource>(
+              (value) => new UserDefinedFunctionResource.fromJson(value))
           .toList();
     }
   }

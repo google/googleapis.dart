@@ -53,7 +53,7 @@ class AmpUrlsResourceApi {
   async.Future<BatchGetAmpUrlsResponse> batchGet(BatchGetAmpUrlsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -241,12 +241,13 @@ class BatchGetAmpUrlsResponse {
 
   BatchGetAmpUrlsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ampUrls")) {
-      ampUrls =
-          _json["ampUrls"].map((value) => new AmpUrl.fromJson(value)).toList();
+      ampUrls = _json["ampUrls"]
+          .map<AmpUrl>((value) => new AmpUrl.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("urlErrors")) {
       urlErrors = _json["urlErrors"]
-          .map((value) => new AmpUrlError.fromJson(value))
+          .map<AmpUrlError>((value) => new AmpUrlError.fromJson(value))
           .toList();
     }
   }

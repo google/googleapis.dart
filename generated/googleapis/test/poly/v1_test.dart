@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2604() {
+buildUnnamed183() {
   var o = new core.List<api.Format>();
   o.add(buildFormat());
   o.add(buildFormat());
   return o;
 }
 
-checkUnnamed2604(core.List<api.Format> o) {
+checkUnnamed183(core.List<api.Format> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFormat(o[0]);
   checkFormat(o[1]);
@@ -72,7 +72,7 @@ buildAsset() {
     o.createTime = "foo";
     o.description = "foo";
     o.displayName = "foo";
-    o.formats = buildUnnamed2604();
+    o.formats = buildUnnamed183();
     o.isCurated = true;
     o.license = "foo";
     o.metadata = "foo";
@@ -93,7 +93,7 @@ checkAsset(api.Asset o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed2604(o.formats);
+    checkUnnamed183(o.formats);
     unittest.expect(o.isCurated, unittest.isTrue);
     unittest.expect(o.license, unittest.equals('foo'));
     unittest.expect(o.metadata, unittest.equals('foo'));
@@ -129,14 +129,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed2605() {
+buildUnnamed184() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed2605(core.List<api.File> o) {
+checkUnnamed184(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -149,7 +149,7 @@ buildFormat() {
   if (buildCounterFormat < 3) {
     o.formatComplexity = buildFormatComplexity();
     o.formatType = "foo";
-    o.resources = buildUnnamed2605();
+    o.resources = buildUnnamed184();
     o.root = buildFile();
   }
   buildCounterFormat--;
@@ -161,7 +161,7 @@ checkFormat(api.Format o) {
   if (buildCounterFormat < 3) {
     checkFormatComplexity(o.formatComplexity);
     unittest.expect(o.formatType, unittest.equals('foo'));
-    checkUnnamed2605(o.resources);
+    checkUnnamed184(o.resources);
     checkFile(o.root);
   }
   buildCounterFormat--;
@@ -188,14 +188,14 @@ checkFormatComplexity(api.FormatComplexity o) {
   buildCounterFormatComplexity--;
 }
 
-buildUnnamed2606() {
+buildUnnamed185() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed2606(core.List<api.Asset> o) {
+checkUnnamed185(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -206,7 +206,7 @@ buildListAssetsResponse() {
   var o = new api.ListAssetsResponse();
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
-    o.assets = buildUnnamed2606();
+    o.assets = buildUnnamed185();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -217,21 +217,21 @@ buildListAssetsResponse() {
 checkListAssetsResponse(api.ListAssetsResponse o) {
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
-    checkUnnamed2606(o.assets);
+    checkUnnamed185(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListAssetsResponse--;
 }
 
-buildUnnamed2607() {
+buildUnnamed186() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed2607(core.List<api.Asset> o) {
+checkUnnamed186(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -242,7 +242,7 @@ buildListLikedAssetsResponse() {
   var o = new api.ListLikedAssetsResponse();
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    o.assets = buildUnnamed2607();
+    o.assets = buildUnnamed186();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -253,21 +253,21 @@ buildListLikedAssetsResponse() {
 checkListLikedAssetsResponse(api.ListLikedAssetsResponse o) {
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    checkUnnamed2607(o.assets);
+    checkUnnamed186(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListLikedAssetsResponse--;
 }
 
-buildUnnamed2608() {
+buildUnnamed187() {
   var o = new core.List<api.UserAsset>();
   o.add(buildUserAsset());
   o.add(buildUserAsset());
   return o;
 }
 
-checkUnnamed2608(core.List<api.UserAsset> o) {
+checkUnnamed187(core.List<api.UserAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAsset(o[0]);
   checkUserAsset(o[1]);
@@ -280,7 +280,7 @@ buildListUserAssetsResponse() {
   if (buildCounterListUserAssetsResponse < 3) {
     o.nextPageToken = "foo";
     o.totalSize = 42;
-    o.userAssets = buildUnnamed2608();
+    o.userAssets = buildUnnamed187();
   }
   buildCounterListUserAssetsResponse--;
   return o;
@@ -291,7 +291,7 @@ checkListUserAssetsResponse(api.ListUserAssetsResponse o) {
   if (buildCounterListUserAssetsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
-    checkUnnamed2608(o.userAssets);
+    checkUnnamed187(o.userAssets);
   }
   buildCounterListUserAssetsResponse--;
 }
@@ -489,7 +489,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Asset response) {
+          .then(unittest.expectAsync1(((response) {
         checkAsset(response);
       })));
     });
@@ -570,7 +570,7 @@ main() {
               format: arg_format,
               curated: arg_curated,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListAssetsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListAssetsResponse(response);
       })));
     });
@@ -643,7 +643,7 @@ main() {
               pageSize: arg_pageSize,
               visibility: arg_visibility,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListUserAssetsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListUserAssetsResponse(response);
       })));
     });
@@ -713,7 +713,7 @@ main() {
               pageSize: arg_pageSize,
               format: arg_format,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLikedAssetsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLikedAssetsResponse(response);
       })));
     });

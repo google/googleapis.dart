@@ -85,7 +85,7 @@ class ChangesResourceApi {
       Change request, core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -151,7 +151,7 @@ class ChangesResourceApi {
       core.String project, core.String managedZone, core.String changeId,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -227,7 +227,7 @@ class ChangesResourceApi {
       core.String sortOrder,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -310,7 +310,7 @@ class DnsKeysResourceApi {
       core.String digestType,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -386,7 +386,7 @@ class DnsKeysResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -460,7 +460,7 @@ class ManagedZoneOperationsResourceApi {
       core.String project, core.String managedZone, core.String operation,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -534,7 +534,7 @@ class ManagedZoneOperationsResourceApi {
       core.String sortBy,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -605,7 +605,7 @@ class ManagedZonesResourceApi {
   async.Future<ManagedZone> create(ManagedZone request, core.String project,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -662,7 +662,7 @@ class ManagedZonesResourceApi {
       core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -721,7 +721,7 @@ class ManagedZonesResourceApi {
   async.Future<ManagedZone> get(core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -783,7 +783,7 @@ class ManagedZonesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -846,7 +846,7 @@ class ManagedZonesResourceApi {
       ManagedZone request, core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -910,7 +910,7 @@ class ManagedZonesResourceApi {
       ManagedZone request, core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -974,7 +974,7 @@ class ProjectsResourceApi {
   async.Future<Project> get(core.String project,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1047,7 +1047,7 @@ class ResourceRecordSetsResourceApi {
       core.String type,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1124,12 +1124,14 @@ class Change {
   Change.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
       additions = _json["additions"]
-          .map((value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>(
+              (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deletions")) {
       deletions = _json["deletions"]
-          .map((value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>(
+              (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1203,8 +1205,9 @@ class ChangesListResponse {
 
   ChangesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("changes")) {
-      changes =
-          _json["changes"].map((value) => new Change.fromJson(value)).toList();
+      changes = _json["changes"]
+          .map<Change>((value) => new Change.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("header")) {
       header = new ResponseHeader.fromJson(_json["header"]);
@@ -1311,7 +1314,7 @@ class DnsKey {
     }
     if (_json.containsKey("digests")) {
       digests = _json["digests"]
-          .map((value) => new DnsKeyDigest.fromJson(value))
+          .map<DnsKeyDigest>((value) => new DnsKeyDigest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1503,8 +1506,9 @@ class DnsKeysListResponse {
 
   DnsKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeys")) {
-      dnsKeys =
-          _json["dnsKeys"].map((value) => new DnsKey.fromJson(value)).toList();
+      dnsKeys = _json["dnsKeys"]
+          .map<DnsKey>((value) => new DnsKey.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("header")) {
       header = new ResponseHeader.fromJson(_json["header"]);
@@ -1670,7 +1674,7 @@ class ManagedZoneDnsSecConfig {
   ManagedZoneDnsSecConfig.fromJson(core.Map _json) {
     if (_json.containsKey("defaultKeySpecs")) {
       defaultKeySpecs = _json["defaultKeySpecs"]
-          .map((value) => new DnsKeySpec.fromJson(value))
+          .map<DnsKeySpec>((value) => new DnsKeySpec.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1739,7 +1743,7 @@ class ManagedZoneOperationsListResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -1817,7 +1821,7 @@ class ManagedZonesListResponse {
     }
     if (_json.containsKey("managedZones")) {
       managedZones = _json["managedZones"]
-          .map((value) => new ManagedZone.fromJson(value))
+          .map<ManagedZone>((value) => new ManagedZone.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2126,7 +2130,7 @@ class Quota {
     }
     if (_json.containsKey("whitelistedKeySpecs")) {
       whitelistedKeySpecs = _json["whitelistedKeySpecs"]
-          .map((value) => new DnsKeySpec.fromJson(value))
+          .map<DnsKeySpec>((value) => new DnsKeySpec.fromJson(value))
           .toList();
     }
   }
@@ -2271,7 +2275,8 @@ class ResourceRecordSetsListResponse {
     }
     if (_json.containsKey("rrsets")) {
       rrsets = _json["rrsets"]
-          .map((value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>(
+              (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
   }

@@ -59,7 +59,7 @@ class LineitemsResourceApi {
       DownloadLineItemsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -104,7 +104,7 @@ class LineitemsResourceApi {
       UploadLineItemsRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -152,7 +152,7 @@ class QueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<Query> createquery(Query request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -192,7 +192,7 @@ class QueriesResourceApi {
   /// this method will complete with the same error.
   async.Future deletequery(core.String queryId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -236,7 +236,7 @@ class QueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<Query> getquery(core.String queryId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -276,7 +276,7 @@ class QueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListQueriesResponse> listqueries({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -316,7 +316,7 @@ class QueriesResourceApi {
   async.Future runquery(RunQueryRequest request, core.String queryId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -370,7 +370,7 @@ class ReportsResourceApi {
   async.Future<ListReportsResponse> listreports(core.String queryId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -419,7 +419,7 @@ class SdfResourceApi {
   async.Future<DownloadResponse> download(DownloadRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -814,8 +814,9 @@ class ListQueriesResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("queries")) {
-      queries =
-          _json["queries"].map((value) => new Query.fromJson(value)).toList();
+      queries = _json["queries"]
+          .map<Query>((value) => new Query.fromJson(value))
+          .toList();
     }
   }
 
@@ -848,8 +849,9 @@ class ListReportsResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("reports")) {
-      reports =
-          _json["reports"].map((value) => new Report.fromJson(value)).toList();
+      reports = _json["reports"]
+          .map<Report>((value) => new Report.fromJson(value))
+          .toList();
     }
   }
 
@@ -921,7 +923,7 @@ class Parameters {
   Parameters.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
       filters = _json["filters"]
-          .map((value) => new FilterPair.fromJson(value))
+          .map<FilterPair>((value) => new FilterPair.fromJson(value))
           .toList();
     }
     if (_json.containsKey("groupBys")) {
@@ -1710,7 +1712,7 @@ class UploadStatus {
     }
     if (_json.containsKey("rowStatus")) {
       rowStatus = _json["rowStatus"]
-          .map((value) => new RowStatus.fromJson(value))
+          .map<RowStatus>((value) => new RowStatus.fromJson(value))
           .toList();
     }
   }

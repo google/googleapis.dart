@@ -70,7 +70,7 @@ class ProjectsResourceApi {
   async.Future<DeleteEventsResponse> deleteEvents(core.String projectName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -160,7 +160,7 @@ class ProjectsEventsResourceApi {
       core.String timeRange_period,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -244,7 +244,7 @@ class ProjectsEventsResourceApi {
       ReportedErrorEvent request, core.String projectName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -373,7 +373,7 @@ class ProjectsGroupStatsResourceApi {
       core.String timeRange_period,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -465,7 +465,7 @@ class ProjectsGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ErrorGroup> get(core.String groupName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -513,7 +513,7 @@ class ProjectsGroupsResourceApi {
   async.Future<ErrorGroup> update(ErrorGroup request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -595,7 +595,7 @@ class ErrorContext {
     }
     if (_json.containsKey("sourceReferences")) {
       sourceReferences = _json["sourceReferences"]
-          .map((value) => new SourceReference.fromJson(value))
+          .map<SourceReference>((value) => new SourceReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("user")) {
@@ -699,7 +699,7 @@ class ErrorGroup {
     }
     if (_json.containsKey("trackingIssues")) {
       trackingIssues = _json["trackingIssues"]
-          .map((value) => new TrackingIssue.fromJson(value))
+          .map<TrackingIssue>((value) => new TrackingIssue.fromJson(value))
           .toList();
     }
   }
@@ -784,7 +784,7 @@ class ErrorGroupStats {
   ErrorGroupStats.fromJson(core.Map _json) {
     if (_json.containsKey("affectedServices")) {
       affectedServices = _json["affectedServices"]
-          .map((value) => new ServiceContext.fromJson(value))
+          .map<ServiceContext>((value) => new ServiceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("affectedUsersCount")) {
@@ -810,7 +810,7 @@ class ErrorGroupStats {
     }
     if (_json.containsKey("timedCounts")) {
       timedCounts = _json["timedCounts"]
-          .map((value) => new TimedCount.fromJson(value))
+          .map<TimedCount>((value) => new TimedCount.fromJson(value))
           .toList();
     }
   }
@@ -944,7 +944,7 @@ class ListEventsResponse {
   ListEventsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errorEvents")) {
       errorEvents = _json["errorEvents"]
-          .map((value) => new ErrorEvent.fromJson(value))
+          .map<ErrorEvent>((value) => new ErrorEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -995,7 +995,7 @@ class ListGroupStatsResponse {
   ListGroupStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errorGroupStats")) {
       errorGroupStats = _json["errorGroupStats"]
-          .map((value) => new ErrorGroupStats.fromJson(value))
+          .map<ErrorGroupStats>((value) => new ErrorGroupStats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {

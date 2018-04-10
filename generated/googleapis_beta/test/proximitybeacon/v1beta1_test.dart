@@ -94,14 +94,14 @@ checkAttachmentInfo(api.AttachmentInfo o) {
   buildCounterAttachmentInfo--;
 }
 
-buildUnnamed4545() {
+buildUnnamed4010() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4545(core.Map<core.String, core.String> o) {
+checkUnnamed4010(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -120,7 +120,7 @@ buildBeacon() {
     o.indoorLevel = buildIndoorLevel();
     o.latLng = buildLatLng();
     o.placeId = "foo";
-    o.properties = buildUnnamed4545();
+    o.properties = buildUnnamed4010();
     o.provisioningKey = "foo";
     o.status = "foo";
   }
@@ -139,7 +139,7 @@ checkBeacon(api.Beacon o) {
     checkIndoorLevel(o.indoorLevel);
     checkLatLng(o.latLng);
     unittest.expect(o.placeId, unittest.equals('foo'));
-    checkUnnamed4545(o.properties);
+    checkUnnamed4010(o.properties);
     unittest.expect(o.provisioningKey, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
@@ -173,14 +173,14 @@ checkBeaconAttachment(api.BeaconAttachment o) {
   buildCounterBeaconAttachment--;
 }
 
-buildUnnamed4546() {
+buildUnnamed4011() {
   var o = new core.List<api.AttachmentInfo>();
   o.add(buildAttachmentInfo());
   o.add(buildAttachmentInfo());
   return o;
 }
 
-checkUnnamed4546(core.List<api.AttachmentInfo> o) {
+checkUnnamed4011(core.List<api.AttachmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachmentInfo(o[0]);
   checkAttachmentInfo(o[1]);
@@ -192,7 +192,7 @@ buildBeaconInfo() {
   buildCounterBeaconInfo++;
   if (buildCounterBeaconInfo < 3) {
     o.advertisedId = buildAdvertisedId();
-    o.attachments = buildUnnamed4546();
+    o.attachments = buildUnnamed4011();
     o.beaconName = "foo";
   }
   buildCounterBeaconInfo--;
@@ -203,7 +203,7 @@ checkBeaconInfo(api.BeaconInfo o) {
   buildCounterBeaconInfo++;
   if (buildCounterBeaconInfo < 3) {
     checkAdvertisedId(o.advertisedId);
-    checkUnnamed4546(o.attachments);
+    checkUnnamed4011(o.attachments);
     unittest.expect(o.beaconName, unittest.equals('foo'));
   }
   buildCounterBeaconInfo--;
@@ -251,14 +251,14 @@ checkDeleteAttachmentsResponse(api.DeleteAttachmentsResponse o) {
   buildCounterDeleteAttachmentsResponse--;
 }
 
-buildUnnamed4547() {
+buildUnnamed4012() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4547(core.List<core.String> o) {
+checkUnnamed4012(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -269,7 +269,7 @@ buildDiagnostics() {
   var o = new api.Diagnostics();
   buildCounterDiagnostics++;
   if (buildCounterDiagnostics < 3) {
-    o.alerts = buildUnnamed4547();
+    o.alerts = buildUnnamed4012();
     o.beaconName = "foo";
     o.estimatedLowBatteryDate = buildDate();
   }
@@ -280,7 +280,7 @@ buildDiagnostics() {
 checkDiagnostics(api.Diagnostics o) {
   buildCounterDiagnostics++;
   if (buildCounterDiagnostics < 3) {
-    checkUnnamed4547(o.alerts);
+    checkUnnamed4012(o.alerts);
     unittest.expect(o.beaconName, unittest.equals('foo'));
     checkDate(o.estimatedLowBatteryDate);
   }
@@ -354,27 +354,27 @@ checkEphemeralIdRegistrationParams(api.EphemeralIdRegistrationParams o) {
   buildCounterEphemeralIdRegistrationParams--;
 }
 
-buildUnnamed4548() {
+buildUnnamed4013() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4548(core.List<core.String> o) {
+checkUnnamed4013(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4549() {
+buildUnnamed4014() {
   var o = new core.List<api.Observation>();
   o.add(buildObservation());
   o.add(buildObservation());
   return o;
 }
 
-checkUnnamed4549(core.List<api.Observation> o) {
+checkUnnamed4014(core.List<api.Observation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObservation(o[0]);
   checkObservation(o[1]);
@@ -385,8 +385,8 @@ buildGetInfoForObservedBeaconsRequest() {
   var o = new api.GetInfoForObservedBeaconsRequest();
   buildCounterGetInfoForObservedBeaconsRequest++;
   if (buildCounterGetInfoForObservedBeaconsRequest < 3) {
-    o.namespacedTypes = buildUnnamed4548();
-    o.observations = buildUnnamed4549();
+    o.namespacedTypes = buildUnnamed4013();
+    o.observations = buildUnnamed4014();
   }
   buildCounterGetInfoForObservedBeaconsRequest--;
   return o;
@@ -395,20 +395,20 @@ buildGetInfoForObservedBeaconsRequest() {
 checkGetInfoForObservedBeaconsRequest(api.GetInfoForObservedBeaconsRequest o) {
   buildCounterGetInfoForObservedBeaconsRequest++;
   if (buildCounterGetInfoForObservedBeaconsRequest < 3) {
-    checkUnnamed4548(o.namespacedTypes);
-    checkUnnamed4549(o.observations);
+    checkUnnamed4013(o.namespacedTypes);
+    checkUnnamed4014(o.observations);
   }
   buildCounterGetInfoForObservedBeaconsRequest--;
 }
 
-buildUnnamed4550() {
+buildUnnamed4015() {
   var o = new core.List<api.BeaconInfo>();
   o.add(buildBeaconInfo());
   o.add(buildBeaconInfo());
   return o;
 }
 
-checkUnnamed4550(core.List<api.BeaconInfo> o) {
+checkUnnamed4015(core.List<api.BeaconInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeaconInfo(o[0]);
   checkBeaconInfo(o[1]);
@@ -419,7 +419,7 @@ buildGetInfoForObservedBeaconsResponse() {
   var o = new api.GetInfoForObservedBeaconsResponse();
   buildCounterGetInfoForObservedBeaconsResponse++;
   if (buildCounterGetInfoForObservedBeaconsResponse < 3) {
-    o.beacons = buildUnnamed4550();
+    o.beacons = buildUnnamed4015();
   }
   buildCounterGetInfoForObservedBeaconsResponse--;
   return o;
@@ -429,7 +429,7 @@ checkGetInfoForObservedBeaconsResponse(
     api.GetInfoForObservedBeaconsResponse o) {
   buildCounterGetInfoForObservedBeaconsResponse++;
   if (buildCounterGetInfoForObservedBeaconsResponse < 3) {
-    checkUnnamed4550(o.beacons);
+    checkUnnamed4015(o.beacons);
   }
   buildCounterGetInfoForObservedBeaconsResponse--;
 }
@@ -474,14 +474,14 @@ checkLatLng(api.LatLng o) {
   buildCounterLatLng--;
 }
 
-buildUnnamed4551() {
+buildUnnamed4016() {
   var o = new core.List<api.BeaconAttachment>();
   o.add(buildBeaconAttachment());
   o.add(buildBeaconAttachment());
   return o;
 }
 
-checkUnnamed4551(core.List<api.BeaconAttachment> o) {
+checkUnnamed4016(core.List<api.BeaconAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeaconAttachment(o[0]);
   checkBeaconAttachment(o[1]);
@@ -492,7 +492,7 @@ buildListBeaconAttachmentsResponse() {
   var o = new api.ListBeaconAttachmentsResponse();
   buildCounterListBeaconAttachmentsResponse++;
   if (buildCounterListBeaconAttachmentsResponse < 3) {
-    o.attachments = buildUnnamed4551();
+    o.attachments = buildUnnamed4016();
   }
   buildCounterListBeaconAttachmentsResponse--;
   return o;
@@ -501,19 +501,19 @@ buildListBeaconAttachmentsResponse() {
 checkListBeaconAttachmentsResponse(api.ListBeaconAttachmentsResponse o) {
   buildCounterListBeaconAttachmentsResponse++;
   if (buildCounterListBeaconAttachmentsResponse < 3) {
-    checkUnnamed4551(o.attachments);
+    checkUnnamed4016(o.attachments);
   }
   buildCounterListBeaconAttachmentsResponse--;
 }
 
-buildUnnamed4552() {
+buildUnnamed4017() {
   var o = new core.List<api.Beacon>();
   o.add(buildBeacon());
   o.add(buildBeacon());
   return o;
 }
 
-checkUnnamed4552(core.List<api.Beacon> o) {
+checkUnnamed4017(core.List<api.Beacon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeacon(o[0]);
   checkBeacon(o[1]);
@@ -524,7 +524,7 @@ buildListBeaconsResponse() {
   var o = new api.ListBeaconsResponse();
   buildCounterListBeaconsResponse++;
   if (buildCounterListBeaconsResponse < 3) {
-    o.beacons = buildUnnamed4552();
+    o.beacons = buildUnnamed4017();
     o.nextPageToken = "foo";
     o.totalCount = "foo";
   }
@@ -535,21 +535,21 @@ buildListBeaconsResponse() {
 checkListBeaconsResponse(api.ListBeaconsResponse o) {
   buildCounterListBeaconsResponse++;
   if (buildCounterListBeaconsResponse < 3) {
-    checkUnnamed4552(o.beacons);
+    checkUnnamed4017(o.beacons);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalCount, unittest.equals('foo'));
   }
   buildCounterListBeaconsResponse--;
 }
 
-buildUnnamed4553() {
+buildUnnamed4018() {
   var o = new core.List<api.Diagnostics>();
   o.add(buildDiagnostics());
   o.add(buildDiagnostics());
   return o;
 }
 
-checkUnnamed4553(core.List<api.Diagnostics> o) {
+checkUnnamed4018(core.List<api.Diagnostics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDiagnostics(o[0]);
   checkDiagnostics(o[1]);
@@ -560,7 +560,7 @@ buildListDiagnosticsResponse() {
   var o = new api.ListDiagnosticsResponse();
   buildCounterListDiagnosticsResponse++;
   if (buildCounterListDiagnosticsResponse < 3) {
-    o.diagnostics = buildUnnamed4553();
+    o.diagnostics = buildUnnamed4018();
     o.nextPageToken = "foo";
   }
   buildCounterListDiagnosticsResponse--;
@@ -570,20 +570,20 @@ buildListDiagnosticsResponse() {
 checkListDiagnosticsResponse(api.ListDiagnosticsResponse o) {
   buildCounterListDiagnosticsResponse++;
   if (buildCounterListDiagnosticsResponse < 3) {
-    checkUnnamed4553(o.diagnostics);
+    checkUnnamed4018(o.diagnostics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDiagnosticsResponse--;
 }
 
-buildUnnamed4554() {
+buildUnnamed4019() {
   var o = new core.List<api.Namespace>();
   o.add(buildNamespace());
   o.add(buildNamespace());
   return o;
 }
 
-checkUnnamed4554(core.List<api.Namespace> o) {
+checkUnnamed4019(core.List<api.Namespace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamespace(o[0]);
   checkNamespace(o[1]);
@@ -594,7 +594,7 @@ buildListNamespacesResponse() {
   var o = new api.ListNamespacesResponse();
   buildCounterListNamespacesResponse++;
   if (buildCounterListNamespacesResponse < 3) {
-    o.namespaces = buildUnnamed4554();
+    o.namespaces = buildUnnamed4019();
   }
   buildCounterListNamespacesResponse--;
   return o;
@@ -603,7 +603,7 @@ buildListNamespacesResponse() {
 checkListNamespacesResponse(api.ListNamespacesResponse o) {
   buildCounterListNamespacesResponse++;
   if (buildCounterListNamespacesResponse < 3) {
-    checkUnnamed4554(o.namespaces);
+    checkUnnamed4019(o.namespaces);
   }
   buildCounterListNamespacesResponse--;
 }
@@ -870,8 +870,9 @@ main() {
             convert.JSON.encode(buildGetInfoForObservedBeaconsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getforobserved(arg_request, $fields: arg_$fields).then(unittest
-          .expectAsync1(((api.GetInfoForObservedBeaconsResponse response) {
+      res
+          .getforobserved(arg_request, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkGetInfoForObservedBeaconsResponse(response);
       })));
     });
@@ -928,7 +929,7 @@ main() {
       res
           .activate(arg_beaconName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -983,7 +984,7 @@ main() {
       res
           .deactivate(arg_beaconName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1038,7 +1039,7 @@ main() {
       res
           .decommission(arg_beaconName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1093,7 +1094,7 @@ main() {
       res
           .delete(arg_beaconName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1147,7 +1148,7 @@ main() {
       }), true);
       res
           .get(arg_beaconName, projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Beacon response) {
+          .then(unittest.expectAsync1(((response) {
         checkBeacon(response);
       })));
     });
@@ -1212,7 +1213,7 @@ main() {
               projectId: arg_projectId,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListBeaconsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListBeaconsResponse(response);
       })));
     });
@@ -1268,7 +1269,7 @@ main() {
       }), true);
       res
           .register(arg_request, projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Beacon response) {
+          .then(unittest.expectAsync1(((response) {
         checkBeacon(response);
       })));
     });
@@ -1327,7 +1328,7 @@ main() {
       res
           .update(arg_request, arg_beaconName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Beacon response) {
+          .then(unittest.expectAsync1(((response) {
         checkBeacon(response);
       })));
     });
@@ -1390,8 +1391,7 @@ main() {
               namespacedType: arg_namespacedType,
               projectId: arg_projectId,
               $fields: arg_$fields)
-          .then(
-              unittest.expectAsync1(((api.DeleteAttachmentsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkDeleteAttachmentsResponse(response);
       })));
     });
@@ -1451,7 +1451,7 @@ main() {
       res
           .create(arg_request, arg_beaconName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.BeaconAttachment response) {
+          .then(unittest.expectAsync1(((response) {
         checkBeaconAttachment(response);
       })));
     });
@@ -1507,7 +1507,7 @@ main() {
       res
           .delete(arg_attachmentName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1568,8 +1568,7 @@ main() {
               namespacedType: arg_namespacedType,
               projectId: arg_projectId,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.ListBeaconAttachmentsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListBeaconAttachmentsResponse(response);
       })));
     });
@@ -1640,7 +1639,7 @@ main() {
               alertFilter: arg_alertFilter,
               projectId: arg_projectId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListDiagnosticsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListDiagnosticsResponse(response);
       })));
     });
@@ -1695,7 +1694,7 @@ main() {
       }), true);
       res
           .list(projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListNamespacesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListNamespacesResponse(response);
       })));
     });
@@ -1755,7 +1754,7 @@ main() {
       res
           .update(arg_request, arg_namespaceName,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Namespace response) {
+          .then(unittest.expectAsync1(((response) {
         checkNamespace(response);
       })));
     });
@@ -1804,8 +1803,9 @@ main() {
         var resp = convert.JSON.encode(buildEphemeralIdRegistrationParams());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getEidparams($fields: arg_$fields).then(
-          unittest.expectAsync1(((api.EphemeralIdRegistrationParams response) {
+      res
+          .getEidparams($fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkEphemeralIdRegistrationParams(response);
       })));
     });

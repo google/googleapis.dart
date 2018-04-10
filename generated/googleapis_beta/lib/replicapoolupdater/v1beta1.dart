@@ -79,7 +79,7 @@ class RollingUpdatesResourceApi {
       core.String project, core.String zone, core.String rollingUpdate,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -140,7 +140,7 @@ class RollingUpdatesResourceApi {
       core.String project, core.String zone, core.String rollingUpdate,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -200,7 +200,7 @@ class RollingUpdatesResourceApi {
       RollingUpdate request, core.String project, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -269,7 +269,7 @@ class RollingUpdatesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -346,7 +346,7 @@ class RollingUpdatesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -417,7 +417,7 @@ class RollingUpdatesResourceApi {
       core.String project, core.String zone, core.String rollingUpdate,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -479,7 +479,7 @@ class RollingUpdatesResourceApi {
       core.String project, core.String zone, core.String rollingUpdate,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -541,7 +541,7 @@ class RollingUpdatesResourceApi {
       core.String project, core.String zone, core.String rollingUpdate,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -608,7 +608,7 @@ class ZoneOperationsResourceApi {
       core.String project, core.String zone, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -678,7 +678,7 @@ class ZoneOperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -770,7 +770,8 @@ class InstanceUpdateError {
   InstanceUpdateError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new InstanceUpdateErrorErrors.fromJson(value))
+          .map<InstanceUpdateErrorErrors>(
+              (value) => new InstanceUpdateErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -855,7 +856,7 @@ class InstanceUpdateList {
   InstanceUpdateList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new InstanceUpdate.fromJson(value))
+          .map<InstanceUpdate>((value) => new InstanceUpdate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -941,7 +942,8 @@ class OperationError {
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new OperationErrorErrors.fromJson(value))
+          .map<OperationErrorErrors>(
+              (value) => new OperationErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -1005,7 +1007,8 @@ class OperationWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new OperationWarningsData.fromJson(value))
+          .map<OperationWarningsData>(
+              (value) => new OperationWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -1154,7 +1157,8 @@ class Operation {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new OperationWarnings.fromJson(value))
+          .map<OperationWarnings>(
+              (value) => new OperationWarnings.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
@@ -1260,8 +1264,9 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Operation.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1348,7 +1353,8 @@ class RollingUpdateError {
   RollingUpdateError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new RollingUpdateErrorErrors.fromJson(value))
+          .map<RollingUpdateErrorErrors>(
+              (value) => new RollingUpdateErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -1636,7 +1642,7 @@ class RollingUpdateList {
   RollingUpdateList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new RollingUpdate.fromJson(value))
+          .map<RollingUpdate>((value) => new RollingUpdate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {

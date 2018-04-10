@@ -84,7 +84,7 @@ class RegionViewsResourceApi {
       core.String projectName, core.String region, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -146,7 +146,7 @@ class RegionViewsResourceApi {
       core.String projectName, core.String region, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -206,7 +206,7 @@ class RegionViewsResourceApi {
       core.String projectName, core.String region, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -264,7 +264,7 @@ class RegionViewsResourceApi {
       ResourceView request, core.String projectName, core.String region,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -328,7 +328,7 @@ class RegionViewsResourceApi {
       core.String projectName, core.String region,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -396,7 +396,7 @@ class RegionViewsResourceApi {
       core.String projectName, core.String region, core.String resourceViewName,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -462,7 +462,7 @@ class RegionViewsResourceApi {
       core.String projectName, core.String region, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -532,7 +532,7 @@ class ZoneViewsResourceApi {
       core.String projectName, core.String zone, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -594,7 +594,7 @@ class ZoneViewsResourceApi {
       core.String projectName, core.String zone, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -654,7 +654,7 @@ class ZoneViewsResourceApi {
       core.String projectName, core.String zone, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -712,7 +712,7 @@ class ZoneViewsResourceApi {
       ResourceView request, core.String projectName, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -775,7 +775,7 @@ class ZoneViewsResourceApi {
       core.String projectName, core.String zone,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -843,7 +843,7 @@ class ZoneViewsResourceApi {
       core.String projectName, core.String zone, core.String resourceViewName,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -909,7 +909,7 @@ class ZoneViewsResourceApi {
       core.String projectName, core.String zone, core.String resourceViewName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1076,7 +1076,7 @@ class RegionViewsListResponse {
     }
     if (_json.containsKey("resourceViews")) {
       resourceViews = _json["resourceViews"]
-          .map((value) => new ResourceView.fromJson(value))
+          .map<ResourceView>((value) => new ResourceView.fromJson(value))
           .toList();
     }
   }
@@ -1166,8 +1166,9 @@ class ResourceView {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels =
-          _json["labels"].map((value) => new Label.fromJson(value)).toList();
+      labels = _json["labels"]
+          .map<Label>((value) => new Label.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("lastModified")) {
       lastModified = _json["lastModified"];
@@ -1317,7 +1318,7 @@ class ZoneViewsListResponse {
     }
     if (_json.containsKey("resourceViews")) {
       resourceViews = _json["resourceViews"]
-          .map((value) => new ResourceView.fromJson(value))
+          .map<ResourceView>((value) => new ResourceView.fromJson(value))
           .toList();
     }
   }

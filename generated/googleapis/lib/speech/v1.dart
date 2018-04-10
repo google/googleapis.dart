@@ -58,7 +58,7 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -111,7 +111,7 @@ class SpeechResourceApi {
       LongRunningRecognizeRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -155,7 +155,7 @@ class SpeechResourceApi {
   async.Future<RecognizeResponse> recognize(RecognizeRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -454,7 +454,7 @@ class RecognitionConfig {
     }
     if (_json.containsKey("speechContexts")) {
       speechContexts = _json["speechContexts"]
-          .map((value) => new SpeechContext.fromJson(value))
+          .map<SpeechContext>((value) => new SpeechContext.fromJson(value))
           .toList();
     }
   }
@@ -537,7 +537,8 @@ class RecognizeResponse {
   RecognizeResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new SpeechRecognitionResult.fromJson(value))
+          .map<SpeechRecognitionResult>(
+              (value) => new SpeechRecognitionResult.fromJson(value))
           .toList();
     }
   }
@@ -612,8 +613,9 @@ class SpeechRecognitionAlternative {
       transcript = _json["transcript"];
     }
     if (_json.containsKey("words")) {
-      words =
-          _json["words"].map((value) => new WordInfo.fromJson(value)).toList();
+      words = _json["words"]
+          .map<WordInfo>((value) => new WordInfo.fromJson(value))
+          .toList();
     }
   }
 
@@ -646,7 +648,8 @@ class SpeechRecognitionResult {
   SpeechRecognitionResult.fromJson(core.Map _json) {
     if (_json.containsKey("alternatives")) {
       alternatives = _json["alternatives"]
-          .map((value) => new SpeechRecognitionAlternative.fromJson(value))
+          .map<SpeechRecognitionAlternative>(
+              (value) => new SpeechRecognitionAlternative.fromJson(value))
           .toList();
     }
   }

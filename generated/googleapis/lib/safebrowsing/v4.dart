@@ -68,7 +68,7 @@ class EncodedFullHashesResourceApi {
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
       {core.String clientId, core.String clientVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -128,7 +128,7 @@ class EncodedUpdatesResourceApi {
   async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest,
       {core.String clientId, core.String clientVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -185,7 +185,7 @@ class FullHashesResourceApi {
   async.Future<FindFullHashesResponse> find(FindFullHashesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -234,7 +234,7 @@ class ThreatHitsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> create(ThreatHit request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -286,7 +286,7 @@ class ThreatListUpdatesResourceApi {
       FetchThreatListUpdatesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -333,7 +333,7 @@ class ThreatListsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListThreatListsResponse> list({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -379,7 +379,7 @@ class ThreatMatchesResourceApi {
   async.Future<FindThreatMatchesResponse> find(FindThreatMatchesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -587,7 +587,8 @@ class FetchThreatListUpdatesRequest {
     }
     if (_json.containsKey("listUpdateRequests")) {
       listUpdateRequests = _json["listUpdateRequests"]
-          .map((value) => new ListUpdateRequest.fromJson(value))
+          .map<ListUpdateRequest>(
+              (value) => new ListUpdateRequest.fromJson(value))
           .toList();
     }
   }
@@ -619,7 +620,8 @@ class FetchThreatListUpdatesResponse {
   FetchThreatListUpdatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("listUpdateResponses")) {
       listUpdateResponses = _json["listUpdateResponses"]
-          .map((value) => new ListUpdateResponse.fromJson(value))
+          .map<ListUpdateResponse>(
+              (value) => new ListUpdateResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("minimumWaitDuration")) {
@@ -710,7 +712,7 @@ class FindFullHashesResponse {
   FindFullHashesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matches")) {
       matches = _json["matches"]
-          .map((value) => new ThreatMatch.fromJson(value))
+          .map<ThreatMatch>((value) => new ThreatMatch.fromJson(value))
           .toList();
     }
     if (_json.containsKey("minimumWaitDuration")) {
@@ -778,7 +780,7 @@ class FindThreatMatchesResponse {
   FindThreatMatchesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matches")) {
       matches = _json["matches"]
-          .map((value) => new ThreatMatch.fromJson(value))
+          .map<ThreatMatch>((value) => new ThreatMatch.fromJson(value))
           .toList();
     }
   }
@@ -802,7 +804,8 @@ class ListThreatListsResponse {
   ListThreatListsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("threatLists")) {
       threatLists = _json["threatLists"]
-          .map((value) => new ThreatListDescriptor.fromJson(value))
+          .map<ThreatListDescriptor>(
+              (value) => new ThreatListDescriptor.fromJson(value))
           .toList();
     }
   }
@@ -1020,7 +1023,7 @@ class ListUpdateResponse {
   ListUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
       additions = _json["additions"]
-          .map((value) => new ThreatEntrySet.fromJson(value))
+          .map<ThreatEntrySet>((value) => new ThreatEntrySet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("checksum")) {
@@ -1034,7 +1037,7 @@ class ListUpdateResponse {
     }
     if (_json.containsKey("removals")) {
       removals = _json["removals"]
-          .map((value) => new ThreatEntrySet.fromJson(value))
+          .map<ThreatEntrySet>((value) => new ThreatEntrySet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("responseType")) {
@@ -1338,7 +1341,7 @@ class ThreatEntryMetadata {
   ThreatEntryMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new MetadataEntry.fromJson(value))
+          .map<MetadataEntry>((value) => new MetadataEntry.fromJson(value))
           .toList();
     }
   }
@@ -1488,7 +1491,7 @@ class ThreatHit {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new ThreatSource.fromJson(value))
+          .map<ThreatSource>((value) => new ThreatSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("threatType")) {
@@ -1547,7 +1550,7 @@ class ThreatInfo {
     }
     if (_json.containsKey("threatEntries")) {
       threatEntries = _json["threatEntries"]
-          .map((value) => new ThreatEntry.fromJson(value))
+          .map<ThreatEntry>((value) => new ThreatEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("threatEntryTypes")) {

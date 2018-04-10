@@ -84,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed30() {
+buildUnnamed1435() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed30(core.List<api.PosixAccount> o) {
+checkUnnamed1435(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed31() {
+buildUnnamed1436() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed31(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed1436(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed30();
-    o.sshPublicKeys = buildUnnamed31();
+    o.posixAccounts = buildUnnamed1435();
+    o.sshPublicKeys = buildUnnamed1436();
   }
   buildCounterLoginProfile--;
   return o;
@@ -127,8 +127,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed30(o.posixAccounts);
-    checkUnnamed31(o.sshPublicKeys);
+    checkUnnamed1435(o.posixAccounts);
+    checkUnnamed1436(o.sshPublicKeys);
   }
   buildCounterLoginProfile--;
 }
@@ -279,7 +279,7 @@ main() {
       }), true);
       res
           .getLoginProfile(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LoginProfile response) {
+          .then(unittest.expectAsync1(((response) {
         checkLoginProfile(response);
       })));
     });
@@ -338,8 +338,7 @@ main() {
       res
           .importSshPublicKey(arg_request, arg_parent,
               projectId: arg_projectId, $fields: arg_$fields)
-          .then(
-              unittest.expectAsync1(((api.ImportSshPublicKeyResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkImportSshPublicKeyResponse(response);
       })));
     });
@@ -393,7 +392,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -447,7 +446,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -499,7 +498,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SshPublicKey response) {
+          .then(unittest.expectAsync1(((response) {
         checkSshPublicKey(response);
       })));
     });
@@ -559,7 +558,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SshPublicKey response) {
+          .then(unittest.expectAsync1(((response) {
         checkSshPublicKey(response);
       })));
     });

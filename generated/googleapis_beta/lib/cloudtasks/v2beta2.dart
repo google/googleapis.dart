@@ -69,7 +69,7 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -122,7 +122,7 @@ class ProjectsLocationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -209,7 +209,7 @@ class ProjectsLocationsQueuesResourceApi {
   async.Future<Queue> create(Queue request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -273,7 +273,7 @@ class ProjectsLocationsQueuesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -319,7 +319,7 @@ class ProjectsLocationsQueuesResourceApi {
   /// this method will complete with the same error.
   async.Future<Queue> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -375,7 +375,7 @@ class ProjectsLocationsQueuesResourceApi {
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -461,7 +461,7 @@ class ProjectsLocationsQueuesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -557,7 +557,7 @@ class ProjectsLocationsQueuesResourceApi {
   async.Future<Queue> patch(Queue request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -618,7 +618,7 @@ class ProjectsLocationsQueuesResourceApi {
   async.Future<Queue> pause(PauseQueueRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -677,7 +677,7 @@ class ProjectsLocationsQueuesResourceApi {
   async.Future<Queue> purge(PurgeQueueRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -742,7 +742,7 @@ class ProjectsLocationsQueuesResourceApi {
   async.Future<Queue> resume(ResumeQueueRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -804,7 +804,7 @@ class ProjectsLocationsQueuesResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -864,7 +864,7 @@ class ProjectsLocationsQueuesResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -945,7 +945,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
       AcknowledgeTaskRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1005,7 +1005,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   async.Future<Task> cancelLease(CancelLeaseRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1073,7 +1073,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   async.Future<Task> create(CreateTaskRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1129,7 +1129,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1195,7 +1195,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   async.Future<Task> get(core.String name,
       {core.String responseView, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1269,7 +1269,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
       LeaseTasksRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1373,7 +1373,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1441,7 +1441,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   async.Future<Task> renewLease(RenewLeaseRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1524,7 +1524,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   async.Future<Task> run(RunTaskRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2406,7 +2406,9 @@ class LeaseTasksResponse {
 
   LeaseTasksResponse.fromJson(core.Map _json) {
     if (_json.containsKey("tasks")) {
-      tasks = _json["tasks"].map((value) => new Task.fromJson(value)).toList();
+      tasks = _json["tasks"]
+          .map<Task>((value) => new Task.fromJson(value))
+          .toList();
     }
   }
 
@@ -2433,7 +2435,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new Location.fromJson(value))
+          .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2477,8 +2479,9 @@ class ListQueuesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("queues")) {
-      queues =
-          _json["queues"].map((value) => new Queue.fromJson(value)).toList();
+      queues = _json["queues"]
+          .map<Queue>((value) => new Queue.fromJson(value))
+          .toList();
     }
   }
 
@@ -2516,7 +2519,9 @@ class ListTasksResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("tasks")) {
-      tasks = _json["tasks"].map((value) => new Task.fromJson(value)).toList();
+      tasks = _json["tasks"]
+          .map<Task>((value) => new Task.fromJson(value))
+          .toList();
     }
   }
 
@@ -2670,7 +2675,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {

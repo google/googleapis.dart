@@ -80,7 +80,7 @@ class ProjectsTracesResourceApi {
       BatchWriteSpansRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -145,7 +145,7 @@ class ProjectsTracesSpansResourceApi {
   async.Future<Span> createSpan(Span request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -305,7 +305,9 @@ class BatchWriteSpansRequest {
 
   BatchWriteSpansRequest.fromJson(core.Map _json) {
     if (_json.containsKey("spans")) {
-      spans = _json["spans"].map((value) => new Span.fromJson(value)).toList();
+      spans = _json["spans"]
+          .map<Span>((value) => new Span.fromJson(value))
+          .toList();
     }
   }
 
@@ -415,7 +417,8 @@ class Links {
       droppedLinksCount = _json["droppedLinksCount"];
     }
     if (_json.containsKey("link")) {
-      link = _json["link"].map((value) => new Link.fromJson(value)).toList();
+      link =
+          _json["link"].map<Link>((value) => new Link.fromJson(value)).toList();
     }
   }
 
@@ -787,7 +790,7 @@ class StackFrames {
     }
     if (_json.containsKey("frame")) {
       frame = _json["frame"]
-          .map((value) => new StackFrame.fromJson(value))
+          .map<StackFrame>((value) => new StackFrame.fromJson(value))
           .toList();
     }
   }
@@ -1014,7 +1017,7 @@ class TimeEvents {
     }
     if (_json.containsKey("timeEvent")) {
       timeEvent = _json["timeEvent"]
-          .map((value) => new TimeEvent.fromJson(value))
+          .map<TimeEvent>((value) => new TimeEvent.fromJson(value))
           .toList();
     }
   }

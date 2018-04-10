@@ -63,7 +63,7 @@ class UrlTestingToolsMobileFriendlyTestResourceApi {
       RunMobileFriendlyTestRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -282,12 +282,13 @@ class RunMobileFriendlyTestResponse {
     }
     if (_json.containsKey("mobileFriendlyIssues")) {
       mobileFriendlyIssues = _json["mobileFriendlyIssues"]
-          .map((value) => new MobileFriendlyIssue.fromJson(value))
+          .map<MobileFriendlyIssue>(
+              (value) => new MobileFriendlyIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resourceIssues")) {
       resourceIssues = _json["resourceIssues"]
-          .map((value) => new ResourceIssue.fromJson(value))
+          .map<ResourceIssue>((value) => new ResourceIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("screenshot")) {

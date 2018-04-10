@@ -85,7 +85,7 @@ class GroupItemsResourceApi {
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -147,7 +147,7 @@ class GroupItemsResourceApi {
   async.Future<GroupItem> insert(GroupItem request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -207,7 +207,7 @@ class GroupItemsResourceApi {
   async.Future<GroupItemListResponse> list(core.String groupId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -272,7 +272,7 @@ class GroupsResourceApi {
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -334,7 +334,7 @@ class GroupsResourceApi {
   async.Future<Group> insert(Group request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -408,7 +408,7 @@ class GroupsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -473,7 +473,7 @@ class GroupsResourceApi {
   async.Future<Group> update(Group request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -592,7 +592,7 @@ class ReportsResourceApi {
       core.int start_index,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -850,8 +850,9 @@ class GroupItemListResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new GroupItem.fromJson(value)).toList();
+      items = _json["items"]
+          .map<GroupItem>((value) => new GroupItem.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -889,7 +890,9 @@ class GroupListResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Group.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Group>((value) => new Group.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -997,7 +1000,8 @@ class ResultTable {
   ResultTable.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
       columnHeaders = _json["columnHeaders"]
-          .map((value) => new ResultTableColumnHeaders.fromJson(value))
+          .map<ResultTableColumnHeaders>(
+              (value) => new ResultTableColumnHeaders.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {

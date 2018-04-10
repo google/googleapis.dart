@@ -65,7 +65,7 @@ class ApplicationDetailServiceResourceApi {
   async.Future<GetApkDetailsResponse> getApkDetails(FileReference request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -135,7 +135,7 @@ class ProjectsTestMatricesResourceApi {
       core.String projectId, core.String testMatrixId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -203,7 +203,7 @@ class ProjectsTestMatricesResourceApi {
   async.Future<TestMatrix> create(TestMatrix request, core.String projectId,
       {core.String requestId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -262,7 +262,7 @@ class ProjectsTestMatricesResourceApi {
   async.Future<TestMatrix> get(core.String projectId, core.String testMatrixId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -333,7 +333,7 @@ class TestEnvironmentCatalogResourceApi {
   async.Future<TestEnvironmentCatalog> get(core.String environmentType,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -462,7 +462,7 @@ class AndroidDeviceCatalog {
   AndroidDeviceCatalog.fromJson(core.Map _json) {
     if (_json.containsKey("models")) {
       models = _json["models"]
-          .map((value) => new AndroidModel.fromJson(value))
+          .map<AndroidModel>((value) => new AndroidModel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("runtimeConfiguration")) {
@@ -471,7 +471,7 @@ class AndroidDeviceCatalog {
     }
     if (_json.containsKey("versions")) {
       versions = _json["versions"]
-          .map((value) => new AndroidVersion.fromJson(value))
+          .map<AndroidVersion>((value) => new AndroidVersion.fromJson(value))
           .toList();
     }
   }
@@ -503,7 +503,7 @@ class AndroidDeviceList {
   AndroidDeviceList.fromJson(core.Map _json) {
     if (_json.containsKey("androidDevices")) {
       androidDevices = _json["androidDevices"]
-          .map((value) => new AndroidDevice.fromJson(value))
+          .map<AndroidDevice>((value) => new AndroidDevice.fromJson(value))
           .toList();
     }
   }
@@ -911,12 +911,13 @@ class AndroidRoboTest {
     }
     if (_json.containsKey("roboDirectives")) {
       roboDirectives = _json["roboDirectives"]
-          .map((value) => new RoboDirective.fromJson(value))
+          .map<RoboDirective>((value) => new RoboDirective.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startingIntents")) {
       startingIntents = _json["startingIntents"]
-          .map((value) => new RoboStartingIntent.fromJson(value))
+          .map<RoboStartingIntent>(
+              (value) => new RoboStartingIntent.fromJson(value))
           .toList();
     }
   }
@@ -965,12 +966,13 @@ class AndroidRuntimeConfiguration {
 
   AndroidRuntimeConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("locales")) {
-      locales =
-          _json["locales"].map((value) => new Locale.fromJson(value)).toList();
+      locales = _json["locales"]
+          .map<Locale>((value) => new Locale.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("orientations")) {
       orientations = _json["orientations"]
-          .map((value) => new Orientation.fromJson(value))
+          .map<Orientation>((value) => new Orientation.fromJson(value))
           .toList();
     }
   }
@@ -1188,7 +1190,7 @@ class ApkManifest {
     }
     if (_json.containsKey("intentFilters")) {
       intentFilters = _json["intentFilters"]
-          .map((value) => new IntentFilter.fromJson(value))
+          .map<IntentFilter>((value) => new IntentFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("maxSdkVersion")) {
@@ -1308,7 +1310,8 @@ class ClientInfo {
   ClientInfo.fromJson(core.Map _json) {
     if (_json.containsKey("clientInfoDetails")) {
       clientInfoDetails = _json["clientInfoDetails"]
-          .map((value) => new ClientInfoDetail.fromJson(value))
+          .map<ClientInfoDetail>(
+              (value) => new ClientInfoDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1819,7 +1822,8 @@ class NetworkConfigurationCatalog {
   NetworkConfigurationCatalog.fromJson(core.Map _json) {
     if (_json.containsKey("configurations")) {
       configurations = _json["configurations"]
-          .map((value) => new NetworkConfiguration.fromJson(value))
+          .map<NetworkConfiguration>(
+              (value) => new NetworkConfiguration.fromJson(value))
           .toList();
     }
   }
@@ -2487,7 +2491,7 @@ class TestMatrix {
     }
     if (_json.containsKey("testExecutions")) {
       testExecutions = _json["testExecutions"]
-          .map((value) => new TestExecution.fromJson(value))
+          .map<TestExecution>((value) => new TestExecution.fromJson(value))
           .toList();
     }
     if (_json.containsKey("testMatrixId")) {
@@ -2582,12 +2586,13 @@ class TestSetup {
     }
     if (_json.containsKey("environmentVariables")) {
       environmentVariables = _json["environmentVariables"]
-          .map((value) => new EnvironmentVariable.fromJson(value))
+          .map<EnvironmentVariable>(
+              (value) => new EnvironmentVariable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("filesToPush")) {
       filesToPush = _json["filesToPush"]
-          .map((value) => new DeviceFile.fromJson(value))
+          .map<DeviceFile>((value) => new DeviceFile.fromJson(value))
           .toList();
     }
     if (_json.containsKey("networkProfile")) {

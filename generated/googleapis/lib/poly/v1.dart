@@ -55,7 +55,7 @@ class AssetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Asset> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -149,7 +149,7 @@ class AssetsResourceApi {
       core.bool curated,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -268,7 +268,7 @@ class UsersAssetsResourceApi {
       core.String visibility,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -361,7 +361,7 @@ class UsersLikedassetsResourceApi {
       core.String format,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -493,8 +493,9 @@ class Asset {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("formats")) {
-      formats =
-          _json["formats"].map((value) => new Format.fromJson(value)).toList();
+      formats = _json["formats"]
+          .map<Format>((value) => new Format.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("isCurated")) {
       isCurated = _json["isCurated"];
@@ -653,8 +654,9 @@ class Format {
       formatType = _json["formatType"];
     }
     if (_json.containsKey("resources")) {
-      resources =
-          _json["resources"].map((value) => new File.fromJson(value)).toList();
+      resources = _json["resources"]
+          .map<File>((value) => new File.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("root")) {
       root = new File.fromJson(_json["root"]);
@@ -734,8 +736,9 @@ class ListAssetsResponse {
 
   ListAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assets")) {
-      assets =
-          _json["assets"].map((value) => new Asset.fromJson(value)).toList();
+      assets = _json["assets"]
+          .map<Asset>((value) => new Asset.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -779,8 +782,9 @@ class ListLikedAssetsResponse {
 
   ListLikedAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assets")) {
-      assets =
-          _json["assets"].map((value) => new Asset.fromJson(value)).toList();
+      assets = _json["assets"]
+          .map<Asset>((value) => new Asset.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -831,7 +835,7 @@ class ListUserAssetsResponse {
     }
     if (_json.containsKey("userAssets")) {
       userAssets = _json["userAssets"]
-          .map((value) => new UserAsset.fromJson(value))
+          .map<UserAsset>((value) => new UserAsset.fromJson(value))
           .toList();
     }
   }
