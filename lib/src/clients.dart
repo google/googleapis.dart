@@ -874,7 +874,7 @@ Future<http.StreamedResponse> _validateResponse(
           var errors = <client_requests.ApiRequestErrorDetail>[];
           if (error.containsKey('errors') && error['errors'] is List) {
             errors = error['errors']
-                .map((Map e) =>
+                .map<client_requests.ApiRequestErrorDetail>((e) =>
                     new client_requests.ApiRequestErrorDetail.fromJson(e))
                 .toList();
           }
