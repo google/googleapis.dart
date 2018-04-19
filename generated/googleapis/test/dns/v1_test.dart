@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed128() {
+buildUnnamed2639() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed128(core.List<api.ResourceRecordSet> o) {
+checkUnnamed2639(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
 }
 
-buildUnnamed129() {
+buildUnnamed2640() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed129(core.List<api.ResourceRecordSet> o) {
+checkUnnamed2640(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -81,8 +81,8 @@ buildChange() {
   var o = new api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.additions = buildUnnamed128();
-    o.deletions = buildUnnamed129();
+    o.additions = buildUnnamed2639();
+    o.deletions = buildUnnamed2640();
     o.id = "foo";
     o.kind = "foo";
     o.startTime = "foo";
@@ -95,8 +95,8 @@ buildChange() {
 checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    checkUnnamed128(o.additions);
-    checkUnnamed129(o.deletions);
+    checkUnnamed2639(o.additions);
+    checkUnnamed2640(o.deletions);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.startTime, unittest.equals('foo'));
@@ -105,14 +105,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed130() {
+buildUnnamed2641() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed130(core.List<api.Change> o) {
+checkUnnamed2641(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -123,7 +123,7 @@ buildChangesListResponse() {
   var o = new api.ChangesListResponse();
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    o.changes = buildUnnamed130();
+    o.changes = buildUnnamed2641();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -134,21 +134,21 @@ buildChangesListResponse() {
 checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    checkUnnamed130(o.changes);
+    checkUnnamed2641(o.changes);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterChangesListResponse--;
 }
 
-buildUnnamed131() {
+buildUnnamed2642() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed131(core.List<core.String> o) {
+checkUnnamed2642(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -166,7 +166,7 @@ buildManagedZone() {
     o.kind = "foo";
     o.name = "foo";
     o.nameServerSet = "foo";
-    o.nameServers = buildUnnamed131();
+    o.nameServers = buildUnnamed2642();
   }
   buildCounterManagedZone--;
   return o;
@@ -182,19 +182,19 @@ checkManagedZone(api.ManagedZone o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nameServerSet, unittest.equals('foo'));
-    checkUnnamed131(o.nameServers);
+    checkUnnamed2642(o.nameServers);
   }
   buildCounterManagedZone--;
 }
 
-buildUnnamed132() {
+buildUnnamed2643() {
   var o = new core.List<api.ManagedZone>();
   o.add(buildManagedZone());
   o.add(buildManagedZone());
   return o;
 }
 
-checkUnnamed132(core.List<api.ManagedZone> o) {
+checkUnnamed2643(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZone(o[0]);
   checkManagedZone(o[1]);
@@ -206,7 +206,7 @@ buildManagedZonesListResponse() {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     o.kind = "foo";
-    o.managedZones = buildUnnamed132();
+    o.managedZones = buildUnnamed2643();
     o.nextPageToken = "foo";
   }
   buildCounterManagedZonesListResponse--;
@@ -217,7 +217,7 @@ checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed132(o.managedZones);
+    checkUnnamed2643(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManagedZonesListResponse--;
@@ -279,14 +279,14 @@ checkQuota(api.Quota o) {
   buildCounterQuota--;
 }
 
-buildUnnamed133() {
+buildUnnamed2644() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed133(core.List<core.String> o) {
+checkUnnamed2644(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -299,7 +299,7 @@ buildResourceRecordSet() {
   if (buildCounterResourceRecordSet < 3) {
     o.kind = "foo";
     o.name = "foo";
-    o.rrdatas = buildUnnamed133();
+    o.rrdatas = buildUnnamed2644();
     o.ttl = 42;
     o.type = "foo";
   }
@@ -312,21 +312,21 @@ checkResourceRecordSet(api.ResourceRecordSet o) {
   if (buildCounterResourceRecordSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed133(o.rrdatas);
+    checkUnnamed2644(o.rrdatas);
     unittest.expect(o.ttl, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterResourceRecordSet--;
 }
 
-buildUnnamed134() {
+buildUnnamed2645() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed134(core.List<api.ResourceRecordSet> o) {
+checkUnnamed2645(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -339,7 +339,7 @@ buildResourceRecordSetsListResponse() {
   if (buildCounterResourceRecordSetsListResponse < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.rrsets = buildUnnamed134();
+    o.rrsets = buildUnnamed2645();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -350,7 +350,7 @@ checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
   if (buildCounterResourceRecordSetsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed134(o.rrsets);
+    checkUnnamed2645(o.rrsets);
   }
   buildCounterResourceRecordSetsListResponse--;
 }
@@ -469,7 +469,7 @@ main() {
       res
           .create(arg_request, arg_project, arg_managedZone,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Change response) {
+          .then(unittest.expectAsync1(((response) {
         checkChange(response);
       })));
     });
@@ -518,7 +518,7 @@ main() {
       }), true);
       res
           .get(arg_project, arg_managedZone, arg_changeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Change response) {
+          .then(unittest.expectAsync1(((response) {
         checkChange(response);
       })));
     });
@@ -582,7 +582,7 @@ main() {
               sortBy: arg_sortBy,
               sortOrder: arg_sortOrder,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ChangesListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkChangesListResponse(response);
       })));
     });
@@ -635,7 +635,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_project, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ManagedZone response) {
+          .then(unittest.expectAsync1(((response) {
         checkManagedZone(response);
       })));
     });
@@ -729,7 +729,7 @@ main() {
       }), true);
       res
           .get(arg_project, arg_managedZone, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ManagedZone response) {
+          .then(unittest.expectAsync1(((response) {
         checkManagedZone(response);
       })));
     });
@@ -789,7 +789,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ManagedZonesListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkManagedZonesListResponse(response);
       })));
     });
@@ -838,7 +838,7 @@ main() {
       }), true);
       res
           .get(arg_project, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Project response) {
+          .then(unittest.expectAsync1(((response) {
         checkProject(response);
       })));
     });
@@ -904,8 +904,7 @@ main() {
               pageToken: arg_pageToken,
               type: arg_type,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.ResourceRecordSetsListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkResourceRecordSetsListResponse(response);
       })));
     });

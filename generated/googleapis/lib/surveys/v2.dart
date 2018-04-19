@@ -73,7 +73,7 @@ class MobileapppanelsResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileAppPanel> get(core.String panelId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -123,7 +123,7 @@ class MobileapppanelsResourceApi {
       core.String token,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -177,7 +177,7 @@ class MobileapppanelsResourceApi {
       MobileAppPanel request, core.String panelId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -243,7 +243,7 @@ class ResultsResourceApi {
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -303,7 +303,7 @@ class SurveysResourceApi {
   async.Future<SurveysDeleteResponse> delete(core.String surveyUrlId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -345,7 +345,7 @@ class SurveysResourceApi {
   /// this method will complete with the same error.
   async.Future<Survey> get(core.String surveyUrlId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -387,7 +387,7 @@ class SurveysResourceApi {
   /// this method will complete with the same error.
   async.Future<Survey> insert(Survey request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -437,7 +437,7 @@ class SurveysResourceApi {
       core.String token,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -489,7 +489,7 @@ class SurveysResourceApi {
       SurveysStartRequest request, core.String resourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -535,7 +535,7 @@ class SurveysResourceApi {
   async.Future<SurveysStopResponse> stop(core.String resourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -581,7 +581,7 @@ class SurveysResourceApi {
   async.Future<Survey> update(Survey request, core.String surveyUrlId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -618,7 +618,7 @@ class FieldMask {
   FieldMask.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new FieldMask.fromJson(value))
+          .map<FieldMask>((value) => new FieldMask.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -738,7 +738,7 @@ class MobileAppPanelsListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new MobileAppPanel.fromJson(value))
+          .map<MobileAppPanel>((value) => new MobileAppPanel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokenPagination")) {
@@ -830,7 +830,7 @@ class ResultsMask {
   ResultsMask.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new FieldMask.fromJson(value))
+          .map<FieldMask>((value) => new FieldMask.fromJson(value))
           .toList();
     }
     if (_json.containsKey("projection")) {
@@ -918,7 +918,7 @@ class Survey {
     }
     if (_json.containsKey("questions")) {
       questions = _json["questions"]
-          .map((value) => new SurveyQuestion.fromJson(value))
+          .map<SurveyQuestion>((value) => new SurveyQuestion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rejectionReason")) {
@@ -1224,7 +1224,8 @@ class SurveyQuestion {
     }
     if (_json.containsKey("images")) {
       images = _json["images"]
-          .map((value) => new SurveyQuestionImage.fromJson(value))
+          .map<SurveyQuestionImage>(
+              (value) => new SurveyQuestionImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lastAnswerPositionPinned")) {
@@ -1489,7 +1490,7 @@ class SurveysListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new Survey.fromJson(value))
+          .map<Survey>((value) => new Survey.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokenPagination")) {

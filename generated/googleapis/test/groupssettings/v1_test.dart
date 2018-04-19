@@ -182,7 +182,7 @@ main() {
       }), true);
       res
           .get(arg_groupUniqueId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Groups response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroups(response);
       })));
     });
@@ -233,7 +233,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_groupUniqueId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Groups response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroups(response);
       })));
     });
@@ -284,7 +284,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_groupUniqueId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Groups response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroups(response);
       })));
     });

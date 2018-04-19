@@ -79,7 +79,7 @@ class HostedmodelsResourceApi {
       Input request, core.String project, core.String hostedModelName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -139,7 +139,7 @@ class TrainedmodelsResourceApi {
   async.Future<Analyze> analyze(core.String project, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -188,7 +188,7 @@ class TrainedmodelsResourceApi {
   async.Future delete(core.String project, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -240,7 +240,7 @@ class TrainedmodelsResourceApi {
   async.Future<Insert2> get(core.String project, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -290,7 +290,7 @@ class TrainedmodelsResourceApi {
   async.Future<Insert2> insert(Insert request, core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -340,7 +340,7 @@ class TrainedmodelsResourceApi {
   async.Future<List> list(core.String project,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -394,7 +394,7 @@ class TrainedmodelsResourceApi {
       Input request, core.String project, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -451,7 +451,7 @@ class TrainedmodelsResourceApi {
       Update request, core.String project, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -531,7 +531,7 @@ class AnalyzeDataDescriptionFeaturesCategorical {
     }
     if (_json.containsKey("values")) {
       values = _json["values"]
-          .map((value) =>
+          .map<AnalyzeDataDescriptionFeaturesCategoricalValues>((value) =>
               new AnalyzeDataDescriptionFeaturesCategoricalValues.fromJson(
                   value))
           .toList();
@@ -755,7 +755,7 @@ class AnalyzeDataDescriptionOutputFeature {
     }
     if (_json.containsKey("text")) {
       text = _json["text"]
-          .map((value) =>
+          .map<AnalyzeDataDescriptionOutputFeatureText>((value) =>
               new AnalyzeDataDescriptionOutputFeatureText.fromJson(value))
           .toList();
     }
@@ -787,7 +787,8 @@ class AnalyzeDataDescription {
   AnalyzeDataDescription.fromJson(core.Map _json) {
     if (_json.containsKey("features")) {
       features = _json["features"]
-          .map((value) => new AnalyzeDataDescriptionFeatures.fromJson(value))
+          .map<AnalyzeDataDescriptionFeatures>(
+              (value) => new AnalyzeDataDescriptionFeatures.fromJson(value))
           .toList();
     }
     if (_json.containsKey("outputFeature")) {
@@ -1055,7 +1056,8 @@ class Insert {
     }
     if (_json.containsKey("trainingInstances")) {
       trainingInstances = _json["trainingInstances"]
-          .map((value) => new InsertTrainingInstances.fromJson(value))
+          .map<InsertTrainingInstances>(
+              (value) => new InsertTrainingInstances.fromJson(value))
           .toList();
     }
     if (_json.containsKey("utility")) {
@@ -1300,8 +1302,9 @@ class List {
 
   List.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Insert2.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Insert2>((value) => new Insert2.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1398,7 +1401,8 @@ class Output {
     }
     if (_json.containsKey("outputMulti")) {
       outputMulti = _json["outputMulti"]
-          .map((value) => new OutputOutputMulti.fromJson(value))
+          .map<OutputOutputMulti>(
+              (value) => new OutputOutputMulti.fromJson(value))
           .toList();
     }
     if (_json.containsKey("outputValue")) {

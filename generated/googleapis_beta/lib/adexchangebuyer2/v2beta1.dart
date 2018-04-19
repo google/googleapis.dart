@@ -78,7 +78,7 @@ class AccountsClientsResourceApi {
   async.Future<Client> create(Client request, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -130,7 +130,7 @@ class AccountsClientsResourceApi {
   async.Future<Client> get(core.String accountId, core.String clientAccountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -199,7 +199,7 @@ class AccountsClientsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -261,7 +261,7 @@ class AccountsClientsResourceApi {
       Client request, core.String accountId, core.String clientAccountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -328,7 +328,7 @@ class AccountsClientsInvitationsResourceApi {
       core.String accountId, core.String clientAccountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -390,7 +390,7 @@ class AccountsClientsInvitationsResourceApi {
       core.String clientAccountId, core.String invitationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -467,7 +467,7 @@ class AccountsClientsInvitationsResourceApi {
       core.String accountId, core.String clientAccountId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -538,7 +538,7 @@ class AccountsClientsUsersResourceApi {
       core.String accountId, core.String clientAccountId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -614,7 +614,7 @@ class AccountsClientsUsersResourceApi {
       core.String accountId, core.String clientAccountId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -681,7 +681,7 @@ class AccountsClientsUsersResourceApi {
       core.String clientAccountId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -764,7 +764,7 @@ class AccountsCreativesResourceApi {
       core.String duplicateIdMode,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -820,7 +820,7 @@ class AccountsCreativesResourceApi {
   async.Future<Creative> get(core.String accountId, core.String creativeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -903,7 +903,7 @@ class AccountsCreativesResourceApi {
       core.String query,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -964,7 +964,7 @@ class AccountsCreativesResourceApi {
       core.String accountId, core.String creativeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1030,7 +1030,7 @@ class AccountsCreativesResourceApi {
       Creative request, core.String accountId, core.String creativeId,
       {core.String accountId1, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1095,7 +1095,7 @@ class AccountsCreativesResourceApi {
       core.String creativeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1160,7 +1160,7 @@ class AccountsCreativesDealAssociationsResourceApi {
       core.String accountId, core.String creativeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1246,7 +1246,7 @@ class AccountsCreativesDealAssociationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1311,7 +1311,7 @@ class AccountsCreativesDealAssociationsResourceApi {
       core.String accountId, core.String creativeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1434,7 +1434,7 @@ class BiddersAccountsFilterSetsResourceApi {
   async.Future<FilterSet> create(FilterSet request, core.String ownerName,
       {core.bool isTransient, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1497,7 +1497,7 @@ class BiddersAccountsFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1552,7 +1552,7 @@ class BiddersAccountsFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<FilterSet> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1619,7 +1619,7 @@ class BiddersAccountsFilterSetsResourceApi {
   async.Future<ListFilterSetsResponse> list(core.String ownerName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1701,7 +1701,7 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
   async.Future<ListBidMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1785,7 +1785,7 @@ class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
   async.Future<ListBidResponseErrorsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1874,7 +1874,7 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1959,7 +1959,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
   async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2048,7 +2048,7 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
   async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2140,7 +2140,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2238,7 +2238,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2327,7 +2327,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2411,7 +2411,7 @@ class BiddersAccountsFilterSetsLosingBidsResourceApi {
   async.Future<ListLosingBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2498,7 +2498,7 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2596,7 +2596,7 @@ class BiddersFilterSetsResourceApi {
   async.Future<FilterSet> create(FilterSet request, core.String ownerName,
       {core.bool isTransient, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2659,7 +2659,7 @@ class BiddersFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2714,7 +2714,7 @@ class BiddersFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<FilterSet> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2781,7 +2781,7 @@ class BiddersFilterSetsResourceApi {
   async.Future<ListFilterSetsResponse> list(core.String ownerName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2863,7 +2863,7 @@ class BiddersFilterSetsBidMetricsResourceApi {
   async.Future<ListBidMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2946,7 +2946,7 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
   async.Future<ListBidResponseErrorsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3035,7 +3035,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3119,7 +3119,7 @@ class BiddersFilterSetsFilteredBidRequestsResourceApi {
   async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3208,7 +3208,7 @@ class BiddersFilterSetsFilteredBidsResourceApi {
   async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3299,7 +3299,7 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3396,7 +3396,7 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3484,7 +3484,7 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
   async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3568,7 +3568,7 @@ class BiddersFilterSetsLosingBidsResourceApi {
   async.Future<ListLosingBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3655,7 +3655,7 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4318,7 +4318,7 @@ class Correction {
   Correction.fromJson(core.Map _json) {
     if (_json.containsKey("contexts")) {
       contexts = _json["contexts"]
-          .map((value) => new ServingContext.fromJson(value))
+          .map<ServingContext>((value) => new ServingContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("details")) {
@@ -4504,7 +4504,7 @@ class Creative {
     }
     if (_json.containsKey("corrections")) {
       corrections = _json["corrections"]
-          .map((value) => new Correction.fromJson(value))
+          .map<Correction>((value) => new Correction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("creativeId")) {
@@ -4548,7 +4548,8 @@ class Creative {
     }
     if (_json.containsKey("servingRestrictions")) {
       servingRestrictions = _json["servingRestrictions"]
-          .map((value) => new ServingRestriction.fromJson(value))
+          .map<ServingRestriction>(
+              (value) => new ServingRestriction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vendorIds")) {
@@ -5283,8 +5284,9 @@ class FilteringStats {
       date = new Date.fromJson(_json["date"]);
     }
     if (_json.containsKey("reasons")) {
-      reasons =
-          _json["reasons"].map((value) => new Reason.fromJson(value)).toList();
+      reasons = _json["reasons"]
+          .map<Reason>((value) => new Reason.fromJson(value))
+          .toList();
     }
   }
 
@@ -5478,7 +5480,7 @@ class ListBidMetricsResponse {
   ListBidMetricsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bidMetricsRows")) {
       bidMetricsRows = _json["bidMetricsRows"]
-          .map((value) => new BidMetricsRow.fromJson(value))
+          .map<BidMetricsRow>((value) => new BidMetricsRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5518,7 +5520,8 @@ class ListBidResponseErrorsResponse {
   ListBidResponseErrorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("calloutStatusRows")) {
       calloutStatusRows = _json["calloutStatusRows"]
-          .map((value) => new CalloutStatusRow.fromJson(value))
+          .map<CalloutStatusRow>(
+              (value) => new CalloutStatusRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5558,10 +5561,11 @@ class ListBidResponsesWithoutBidsResponse {
 
   ListBidResponsesWithoutBidsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bidResponseWithoutBidsStatusRows")) {
-      bidResponseWithoutBidsStatusRows = _json[
-              "bidResponseWithoutBidsStatusRows"]
-          .map((value) => new BidResponseWithoutBidsStatusRow.fromJson(value))
-          .toList();
+      bidResponseWithoutBidsStatusRows =
+          _json["bidResponseWithoutBidsStatusRows"]
+              .map<BidResponseWithoutBidsStatusRow>((value) =>
+                  new BidResponseWithoutBidsStatusRow.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -5602,7 +5606,8 @@ class ListClientUserInvitationsResponse {
   ListClientUserInvitationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("invitations")) {
       invitations = _json["invitations"]
-          .map((value) => new ClientUserInvitation.fromJson(value))
+          .map<ClientUserInvitation>(
+              (value) => new ClientUserInvitation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5645,7 +5650,7 @@ class ListClientUsersResponse {
     }
     if (_json.containsKey("users")) {
       users = _json["users"]
-          .map((value) => new ClientUser.fromJson(value))
+          .map<ClientUser>((value) => new ClientUser.fromJson(value))
           .toList();
     }
   }
@@ -5679,8 +5684,9 @@ class ListClientsResponse {
 
   ListClientsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clients")) {
-      clients =
-          _json["clients"].map((value) => new Client.fromJson(value)).toList();
+      clients = _json["clients"]
+          .map<Client>((value) => new Client.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -5719,7 +5725,8 @@ class ListCreativeStatusBreakdownByCreativeResponse {
   ListCreativeStatusBreakdownByCreativeResponse.fromJson(core.Map _json) {
     if (_json.containsKey("filteredBidCreativeRows")) {
       filteredBidCreativeRows = _json["filteredBidCreativeRows"]
-          .map((value) => new FilteredBidCreativeRow.fromJson(value))
+          .map<FilteredBidCreativeRow>(
+              (value) => new FilteredBidCreativeRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5785,7 +5792,8 @@ class ListCreativeStatusBreakdownByDetailResponse {
     }
     if (_json.containsKey("filteredBidDetailRows")) {
       filteredBidDetailRows = _json["filteredBidDetailRows"]
-          .map((value) => new FilteredBidDetailRow.fromJson(value))
+          .map<FilteredBidDetailRow>(
+              (value) => new FilteredBidDetailRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5828,7 +5836,7 @@ class ListCreativesResponse {
   ListCreativesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creatives")) {
       creatives = _json["creatives"]
-          .map((value) => new Creative.fromJson(value))
+          .map<Creative>((value) => new Creative.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5866,7 +5874,8 @@ class ListDealAssociationsResponse {
   ListDealAssociationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("associations")) {
       associations = _json["associations"]
-          .map((value) => new CreativeDealAssociation.fromJson(value))
+          .map<CreativeDealAssociation>(
+              (value) => new CreativeDealAssociation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5906,7 +5915,7 @@ class ListFilterSetsResponse {
   ListFilterSetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("filterSets")) {
       filterSets = _json["filterSets"]
-          .map((value) => new FilterSet.fromJson(value))
+          .map<FilterSet>((value) => new FilterSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5947,7 +5956,8 @@ class ListFilteredBidRequestsResponse {
   ListFilteredBidRequestsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("calloutStatusRows")) {
       calloutStatusRows = _json["calloutStatusRows"]
-          .map((value) => new CalloutStatusRow.fromJson(value))
+          .map<CalloutStatusRow>(
+              (value) => new CalloutStatusRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5988,7 +5998,8 @@ class ListFilteredBidsResponse {
   ListFilteredBidsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creativeStatusRows")) {
       creativeStatusRows = _json["creativeStatusRows"]
-          .map((value) => new CreativeStatusRow.fromJson(value))
+          .map<CreativeStatusRow>(
+              (value) => new CreativeStatusRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6028,7 +6039,8 @@ class ListImpressionMetricsResponse {
   ListImpressionMetricsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("impressionMetricsRows")) {
       impressionMetricsRows = _json["impressionMetricsRows"]
-          .map((value) => new ImpressionMetricsRow.fromJson(value))
+          .map<ImpressionMetricsRow>(
+              (value) => new ImpressionMetricsRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6068,7 +6080,8 @@ class ListLosingBidsResponse {
   ListLosingBidsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creativeStatusRows")) {
       creativeStatusRows = _json["creativeStatusRows"]
-          .map((value) => new CreativeStatusRow.fromJson(value))
+          .map<CreativeStatusRow>(
+              (value) => new CreativeStatusRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6112,7 +6125,8 @@ class ListNonBillableWinningBidsResponse {
     }
     if (_json.containsKey("nonBillableWinningBidStatusRows")) {
       nonBillableWinningBidStatusRows = _json["nonBillableWinningBidStatusRows"]
-          .map((value) => new NonBillableWinningBidStatusRow.fromJson(value))
+          .map<NonBillableWinningBidStatusRow>(
+              (value) => new NonBillableWinningBidStatusRow.fromJson(value))
           .toList();
     }
   }
@@ -6674,12 +6688,12 @@ class ServingRestriction {
   ServingRestriction.fromJson(core.Map _json) {
     if (_json.containsKey("contexts")) {
       contexts = _json["contexts"]
-          .map((value) => new ServingContext.fromJson(value))
+          .map<ServingContext>((value) => new ServingContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("disapprovalReasons")) {
       disapprovalReasons = _json["disapprovalReasons"]
-          .map((value) => new Disapproval.fromJson(value))
+          .map<Disapproval>((value) => new Disapproval.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {

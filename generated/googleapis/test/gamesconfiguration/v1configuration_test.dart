@@ -112,14 +112,14 @@ checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-buildUnnamed1165() {
+buildUnnamed3496() {
   var o = new core.List<api.AchievementConfiguration>();
   o.add(buildAchievementConfiguration());
   o.add(buildAchievementConfiguration());
   return o;
 }
 
-checkUnnamed1165(core.List<api.AchievementConfiguration> o) {
+checkUnnamed3496(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementConfiguration(o[0]);
   checkAchievementConfiguration(o[1]);
@@ -130,7 +130,7 @@ buildAchievementConfigurationListResponse() {
   var o = new api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    o.items = buildUnnamed1165();
+    o.items = buildUnnamed3496();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -142,7 +142,7 @@ checkAchievementConfigurationListResponse(
     api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    checkUnnamed1165(o.items);
+    checkUnnamed3496(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -288,14 +288,14 @@ checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-buildUnnamed1166() {
+buildUnnamed3497() {
   var o = new core.List<api.LeaderboardConfiguration>();
   o.add(buildLeaderboardConfiguration());
   o.add(buildLeaderboardConfiguration());
   return o;
 }
 
-checkUnnamed1166(core.List<api.LeaderboardConfiguration> o) {
+checkUnnamed3497(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardConfiguration(o[0]);
   checkLeaderboardConfiguration(o[1]);
@@ -306,7 +306,7 @@ buildLeaderboardConfigurationListResponse() {
   var o = new api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    o.items = buildUnnamed1166();
+    o.items = buildUnnamed3497();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -318,7 +318,7 @@ checkLeaderboardConfigurationListResponse(
     api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    checkUnnamed1166(o.items);
+    checkUnnamed3497(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -348,14 +348,14 @@ checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-buildUnnamed1167() {
+buildUnnamed3498() {
   var o = new core.List<api.LocalizedString>();
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
 }
 
-checkUnnamed1167(core.List<api.LocalizedString> o) {
+checkUnnamed3498(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0]);
   checkLocalizedString(o[1]);
@@ -367,7 +367,7 @@ buildLocalizedStringBundle() {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = "foo";
-    o.translations = buildUnnamed1167();
+    o.translations = buildUnnamed3498();
   }
   buildCounterLocalizedStringBundle--;
   return o;
@@ -377,7 +377,7 @@ checkLocalizedStringBundle(api.LocalizedStringBundle o) {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1167(o.translations);
+    checkUnnamed3498(o.translations);
   }
   buildCounterLocalizedStringBundle--;
 }
@@ -581,7 +581,7 @@ main() {
       }), true);
       res
           .get(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkAchievementConfiguration(response);
       })));
     });
@@ -648,7 +648,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkAchievementConfiguration(response);
       })));
     });
@@ -721,8 +721,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(
-              ((api.AchievementConfigurationListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkAchievementConfigurationListResponse(response);
       })));
     });
@@ -783,7 +782,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkAchievementConfiguration(response);
       })));
     });
@@ -844,7 +843,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkAchievementConfiguration(response);
       })));
     });
@@ -916,7 +915,7 @@ main() {
       }), true);
       res
           .upload(arg_resourceId, arg_imageType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ImageConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkImageConfiguration(response);
       })));
     });
@@ -1030,7 +1029,7 @@ main() {
       }), true);
       res
           .get(arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkLeaderboardConfiguration(response);
       })));
     });
@@ -1097,7 +1096,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkLeaderboardConfiguration(response);
       })));
     });
@@ -1170,8 +1169,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(
-              ((api.LeaderboardConfigurationListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkLeaderboardConfigurationListResponse(response);
       })));
     });
@@ -1232,7 +1230,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkLeaderboardConfiguration(response);
       })));
     });
@@ -1293,7 +1291,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+          .then(unittest.expectAsync1(((response) {
         checkLeaderboardConfiguration(response);
       })));
     });

@@ -63,7 +63,7 @@ class TaskqueuesResourceApi {
   async.Future<TaskQueue> get(core.String project, core.String taskqueue,
       {core.bool getStats, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -123,7 +123,7 @@ class TasksResourceApi {
       core.String project, core.String taskqueue, core.String task,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -183,7 +183,7 @@ class TasksResourceApi {
       core.String project, core.String taskqueue, core.String task,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -241,7 +241,7 @@ class TasksResourceApi {
       Task request, core.String project, core.String taskqueue,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -307,7 +307,7 @@ class TasksResourceApi {
       core.int numTasks, core.int leaseSecs,
       {core.bool groupByTag, core.String tag, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -372,7 +372,7 @@ class TasksResourceApi {
   async.Future<Tasks2> list(core.String project, core.String taskqueue,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -431,7 +431,7 @@ class TasksResourceApi {
       core.String taskqueue, core.String task, core.int newLeaseSeconds,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -500,7 +500,7 @@ class TasksResourceApi {
       core.String taskqueue, core.String task, core.int newLeaseSeconds,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -794,7 +794,9 @@ class Tasks {
 
   Tasks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Task.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Task>((value) => new Task.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -825,7 +827,9 @@ class Tasks2 {
 
   Tasks2.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Task.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Task>((value) => new Task.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

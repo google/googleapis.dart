@@ -88,7 +88,7 @@ class ProjectsLocationsRegistriesResourceApi {
       DeviceRegistry request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -138,7 +138,7 @@ class ProjectsLocationsRegistriesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -183,7 +183,7 @@ class ProjectsLocationsRegistriesResourceApi {
   /// this method will complete with the same error.
   async.Future<DeviceRegistry> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -235,7 +235,7 @@ class ProjectsLocationsRegistriesResourceApi {
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -296,7 +296,7 @@ class ProjectsLocationsRegistriesResourceApi {
   async.Future<ListDeviceRegistriesResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -360,7 +360,7 @@ class ProjectsLocationsRegistriesResourceApi {
   async.Future<DeviceRegistry> patch(DeviceRegistry request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -417,7 +417,7 @@ class ProjectsLocationsRegistriesResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -474,7 +474,7 @@ class ProjectsLocationsRegistriesResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -544,7 +544,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   async.Future<Device> create(Device request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -595,7 +595,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -647,7 +647,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   async.Future<Device> get(core.String name,
       {core.String fieldMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -726,7 +726,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -795,7 +795,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       ModifyCloudToDeviceConfigRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -856,7 +856,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   async.Future<Device> patch(Device request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -924,7 +924,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
   async.Future<ListDeviceConfigVersionsResponse> list(core.String name,
       {core.int numVersions, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -992,7 +992,7 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   async.Future<ListDeviceStatesResponse> list(core.String name,
       {core.int numStates, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1087,7 +1087,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = _json["auditLogConfigs"]
-          .map((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -1331,7 +1331,8 @@ class Device {
     }
     if (_json.containsKey("credentials")) {
       credentials = _json["credentials"]
-          .map((value) => new DeviceCredential.fromJson(value))
+          .map<DeviceCredential>(
+              (value) => new DeviceCredential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1591,12 +1592,14 @@ class DeviceRegistry {
   DeviceRegistry.fromJson(core.Map _json) {
     if (_json.containsKey("credentials")) {
       credentials = _json["credentials"]
-          .map((value) => new RegistryCredential.fromJson(value))
+          .map<RegistryCredential>(
+              (value) => new RegistryCredential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventNotificationConfigs")) {
       eventNotificationConfigs = _json["eventNotificationConfigs"]
-          .map((value) => new EventNotificationConfig.fromJson(value))
+          .map<EventNotificationConfig>(
+              (value) => new EventNotificationConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("httpConfig")) {
@@ -1795,7 +1798,7 @@ class ListDeviceConfigVersionsResponse {
   ListDeviceConfigVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceConfigs")) {
       deviceConfigs = _json["deviceConfigs"]
-          .map((value) => new DeviceConfig.fromJson(value))
+          .map<DeviceConfig>((value) => new DeviceConfig.fromJson(value))
           .toList();
     }
   }
@@ -1826,7 +1829,7 @@ class ListDeviceRegistriesResponse {
   ListDeviceRegistriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceRegistries")) {
       deviceRegistries = _json["deviceRegistries"]
-          .map((value) => new DeviceRegistry.fromJson(value))
+          .map<DeviceRegistry>((value) => new DeviceRegistry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1860,7 +1863,7 @@ class ListDeviceStatesResponse {
   ListDeviceStatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceStates")) {
       deviceStates = _json["deviceStates"]
-          .map((value) => new DeviceState.fromJson(value))
+          .map<DeviceState>((value) => new DeviceState.fromJson(value))
           .toList();
     }
   }
@@ -1889,8 +1892,9 @@ class ListDevicesResponse {
 
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices =
-          _json["devices"].map((value) => new Device.fromJson(value)).toList();
+      devices = _json["devices"]
+          .map<Device>((value) => new Device.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2053,12 +2057,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = _json["auditConfigs"]
-          .map((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {

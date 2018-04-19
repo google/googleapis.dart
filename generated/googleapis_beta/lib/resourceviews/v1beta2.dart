@@ -88,7 +88,7 @@ class ZoneOperationsResourceApi {
       core.String project, core.String zone, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -159,7 +159,7 @@ class ZoneOperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -230,7 +230,7 @@ class ZoneViewsResourceApi {
       core.String project, core.String zone, core.String resourceView,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -292,7 +292,7 @@ class ZoneViewsResourceApi {
       core.String project, core.String zone, core.String resourceView,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -350,7 +350,7 @@ class ZoneViewsResourceApi {
       core.String project, core.String zone, core.String resourceView,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -411,7 +411,7 @@ class ZoneViewsResourceApi {
       core.String project, core.String zone, core.String resourceView,
       {core.String resourceName, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -474,7 +474,7 @@ class ZoneViewsResourceApi {
       ResourceView request, core.String project, core.String zone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -536,7 +536,7 @@ class ZoneViewsResourceApi {
   async.Future<ZoneViewsList> list(core.String project, core.String zone,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -627,7 +627,7 @@ class ZoneViewsResourceApi {
       core.String serviceName,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -707,7 +707,7 @@ class ZoneViewsResourceApi {
       core.String resourceView,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -771,7 +771,7 @@ class ZoneViewsResourceApi {
       core.String project, core.String zone, core.String resourceView,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -928,7 +928,8 @@ class OperationError {
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new OperationErrorErrors.fromJson(value))
+          .map<OperationErrorErrors>(
+              (value) => new OperationErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -992,7 +993,8 @@ class OperationWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new OperationWarningsData.fromJson(value))
+          .map<OperationWarningsData>(
+              (value) => new OperationWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -1167,7 +1169,8 @@ class Operation {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new OperationWarnings.fromJson(value))
+          .map<OperationWarnings>(
+              (value) => new OperationWarnings.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
@@ -1271,8 +1274,9 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Operation.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1357,7 +1361,7 @@ class ResourceView {
     }
     if (_json.containsKey("endpoints")) {
       endpoints = _json["endpoints"]
-          .map((value) => new ServiceEndpoint.fromJson(value))
+          .map<ServiceEndpoint>((value) => new ServiceEndpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fingerprint")) {
@@ -1370,8 +1374,9 @@ class ResourceView {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels =
-          _json["labels"].map((value) => new Label.fromJson(value)).toList();
+      labels = _json["labels"]
+          .map<Label>((value) => new Label.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1500,7 +1505,7 @@ class ZoneViewsGetServiceResponse {
   ZoneViewsGetServiceResponse.fromJson(core.Map _json) {
     if (_json.containsKey("endpoints")) {
       endpoints = _json["endpoints"]
-          .map((value) => new ServiceEndpoint.fromJson(value))
+          .map<ServiceEndpoint>((value) => new ServiceEndpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fingerprint")) {
@@ -1540,7 +1545,7 @@ class ZoneViewsList {
   ZoneViewsList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ResourceView.fromJson(value))
+          .map<ResourceView>((value) => new ResourceView.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1590,7 +1595,8 @@ class ZoneViewsListResourcesResponse {
   ZoneViewsListResourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ListResourceResponseItem.fromJson(value))
+          .map<ListResourceResponseItem>(
+              (value) => new ListResourceResponseItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("network")) {
@@ -1657,7 +1663,7 @@ class ZoneViewsSetServiceRequest {
   ZoneViewsSetServiceRequest.fromJson(core.Map _json) {
     if (_json.containsKey("endpoints")) {
       endpoints = _json["endpoints"]
-          .map((value) => new ServiceEndpoint.fromJson(value))
+          .map<ServiceEndpoint>((value) => new ServiceEndpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fingerprint")) {

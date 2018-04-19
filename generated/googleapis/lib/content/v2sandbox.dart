@@ -63,7 +63,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -121,7 +121,7 @@ class OrdersResourceApi {
       core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -177,7 +177,7 @@ class OrdersResourceApi {
       OrdersCancelRequest request, core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -237,7 +237,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -294,7 +294,7 @@ class OrdersResourceApi {
       OrdersCreateTestOrderRequest request, core.String merchantId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -342,7 +342,7 @@ class OrdersResourceApi {
       OrdersCustomBatchRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -389,7 +389,7 @@ class OrdersResourceApi {
   async.Future<Order> get(core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -441,7 +441,7 @@ class OrdersResourceApi {
       core.String merchantId, core.String merchantOrderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -500,7 +500,7 @@ class OrdersResourceApi {
       core.String merchantId, core.String templateName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -557,7 +557,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -654,7 +654,7 @@ class OrdersResourceApi {
       core.List<core.String> statuses,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -724,7 +724,7 @@ class OrdersResourceApi {
       OrdersRefundRequest request, core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -784,7 +784,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -845,7 +845,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -907,7 +907,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -968,7 +968,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1029,7 +1029,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1091,7 +1091,7 @@ class OrdersResourceApi {
           core.String orderId,
           {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1152,7 +1152,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1213,7 +1213,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1307,8 +1307,9 @@ class Errors {
       code = _json["code"];
     }
     if (_json.containsKey("errors")) {
-      errors =
-          _json["errors"].map((value) => new Error.fromJson(value)).toList();
+      errors = _json["errors"]
+          .map<Error>((value) => new Error.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -1418,7 +1419,7 @@ class Order {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderLineItem.fromJson(value))
+          .map<OrderLineItem>((value) => new OrderLineItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("merchantId")) {
@@ -1441,17 +1442,17 @@ class Order {
     }
     if (_json.containsKey("promotions")) {
       promotions = _json["promotions"]
-          .map((value) => new OrderPromotion.fromJson(value))
+          .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("refunds")) {
       refunds = _json["refunds"]
-          .map((value) => new OrderRefund.fromJson(value))
+          .map<OrderRefund>((value) => new OrderRefund.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shipments")) {
       shipments = _json["shipments"]
-          .map((value) => new OrderShipment.fromJson(value))
+          .map<OrderShipment>((value) => new OrderShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingCost")) {
@@ -1816,12 +1817,14 @@ class OrderLineItem {
   OrderLineItem.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>(
+              (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("cancellations")) {
       cancellations = _json["cancellations"]
-          .map((value) => new OrderCancellation.fromJson(value))
+          .map<OrderCancellation>(
+              (value) => new OrderCancellation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1856,7 +1859,7 @@ class OrderLineItem {
     }
     if (_json.containsKey("returns")) {
       returns = _json["returns"]
-          .map((value) => new OrderReturn.fromJson(value))
+          .map<OrderReturn>((value) => new OrderReturn.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingDetails")) {
@@ -2017,7 +2020,7 @@ class OrderLineItemProduct {
     }
     if (_json.containsKey("variantAttributes")) {
       variantAttributes = _json["variantAttributes"]
-          .map((value) =>
+          .map<OrderLineItemProductVariantAttribute>((value) =>
               new OrderLineItemProductVariantAttribute.fromJson(value))
           .toList();
     }
@@ -2381,7 +2384,8 @@ class OrderPromotion {
   OrderPromotion.fromJson(core.Map _json) {
     if (_json.containsKey("benefits")) {
       benefits = _json["benefits"]
-          .map((value) => new OrderPromotionBenefit.fromJson(value))
+          .map<OrderPromotionBenefit>(
+              (value) => new OrderPromotionBenefit.fromJson(value))
           .toList();
     }
     if (_json.containsKey("effectiveDates")) {
@@ -2667,7 +2671,8 @@ class OrderShipment {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>(
+              (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
@@ -3103,7 +3108,8 @@ class OrdersCustomBatchRequest {
   OrdersCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new OrdersCustomBatchRequestEntry.fromJson(value))
+          .map<OrdersCustomBatchRequestEntry>(
+              (value) => new OrdersCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -3778,7 +3784,8 @@ class OrdersCustomBatchRequestEntrySetLineItemMetadata {
   OrdersCustomBatchRequestEntrySetLineItemMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>(
+              (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lineItemId")) {
@@ -3835,7 +3842,8 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>(
+              (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shipmentId")) {
@@ -3843,9 +3851,10 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (_json.containsKey("shipmentInfos")) {
       shipmentInfos = _json["shipmentInfos"]
-          .map((value) =>
-              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
-                  .fromJson(value))
+          .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
+              (value) =>
+                  new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("trackingId")) {
@@ -4036,7 +4045,8 @@ class OrdersCustomBatchResponse {
   OrdersCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new OrdersCustomBatchResponseEntry.fromJson(value))
+          .map<OrdersCustomBatchResponseEntry>(
+              (value) => new OrdersCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4320,8 +4330,9 @@ class OrdersListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resources")) {
-      resources =
-          _json["resources"].map((value) => new Order.fromJson(value)).toList();
+      resources = _json["resources"]
+          .map<Order>((value) => new Order.fromJson(value))
+          .toList();
     }
   }
 
@@ -4782,7 +4793,8 @@ class OrdersSetLineItemMetadataRequest {
   OrdersSetLineItemMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>(
+              (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lineItemId")) {
@@ -4880,7 +4892,8 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>(
+              (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operationId")) {
@@ -4891,9 +4904,10 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("shipmentInfos")) {
       shipmentInfos = _json["shipmentInfos"]
-          .map((value) =>
-              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
-                  .fromJson(value))
+          .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
+              (value) =>
+                  new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("trackingId")) {
@@ -5285,7 +5299,8 @@ class TestOrder {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new TestOrderLineItem.fromJson(value))
+          .map<TestOrderLineItem>(
+              (value) => new TestOrderLineItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notificationMode")) {
@@ -5300,7 +5315,7 @@ class TestOrder {
     }
     if (_json.containsKey("promotions")) {
       promotions = _json["promotions"]
-          .map((value) => new OrderPromotion.fromJson(value))
+          .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingCost")) {
@@ -5536,7 +5551,7 @@ class TestOrderLineItemProduct {
     }
     if (_json.containsKey("variantAttributes")) {
       variantAttributes = _json["variantAttributes"]
-          .map((value) =>
+          .map<OrderLineItemProductVariantAttribute>((value) =>
               new OrderLineItemProductVariantAttribute.fromJson(value))
           .toList();
     }

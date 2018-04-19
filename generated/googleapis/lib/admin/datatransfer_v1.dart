@@ -61,7 +61,7 @@ class ApplicationsResourceApi {
   async.Future<Application> get(core.String applicationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -112,7 +112,7 @@ class ApplicationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -169,7 +169,7 @@ class TransfersResourceApi {
   async.Future<DataTransfer> get(core.String dataTransferId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -212,7 +212,7 @@ class TransfersResourceApi {
   async.Future<DataTransfer> insert(DataTransfer request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -273,7 +273,7 @@ class TransfersResourceApi {
       core.String status,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -350,7 +350,8 @@ class Application {
     }
     if (_json.containsKey("transferParams")) {
       transferParams = _json["transferParams"]
-          .map((value) => new ApplicationTransferParam.fromJson(value))
+          .map<ApplicationTransferParam>(
+              (value) => new ApplicationTransferParam.fromJson(value))
           .toList();
     }
   }
@@ -398,7 +399,8 @@ class ApplicationDataTransfer {
     }
     if (_json.containsKey("applicationTransferParams")) {
       applicationTransferParams = _json["applicationTransferParams"]
-          .map((value) => new ApplicationTransferParam.fromJson(value))
+          .map<ApplicationTransferParam>(
+              (value) => new ApplicationTransferParam.fromJson(value))
           .toList();
     }
     if (_json.containsKey("applicationTransferStatus")) {
@@ -476,7 +478,7 @@ class ApplicationsListResponse {
   ApplicationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("applications")) {
       applications = _json["applications"]
-          .map((value) => new Application.fromJson(value))
+          .map<Application>((value) => new Application.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -544,7 +546,8 @@ class DataTransfer {
   DataTransfer.fromJson(core.Map _json) {
     if (_json.containsKey("applicationDataTransfers")) {
       applicationDataTransfers = _json["applicationDataTransfers"]
-          .map((value) => new ApplicationDataTransfer.fromJson(value))
+          .map<ApplicationDataTransfer>(
+              (value) => new ApplicationDataTransfer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -621,7 +624,7 @@ class DataTransfersListResponse {
   DataTransfersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataTransfers")) {
       dataTransfers = _json["dataTransfers"]
-          .map((value) => new DataTransfer.fromJson(value))
+          .map<DataTransfer>((value) => new DataTransfer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {

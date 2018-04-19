@@ -290,14 +290,14 @@ checkGdataDownloadParameters(api.GdataDownloadParameters o) {
   buildCounterGdataDownloadParameters--;
 }
 
-buildUnnamed3594() {
+buildUnnamed2318() {
   var o = new core.List<api.GdataCompositeMedia>();
   o.add(buildGdataCompositeMedia());
   o.add(buildGdataCompositeMedia());
   return o;
 }
 
-checkUnnamed3594(core.List<api.GdataCompositeMedia> o) {
+checkUnnamed2318(core.List<api.GdataCompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGdataCompositeMedia(o[0]);
   checkGdataCompositeMedia(o[1]);
@@ -312,7 +312,7 @@ buildGdataMedia() {
     o.bigstoreObjectRef = "foo";
     o.blobRef = "foo";
     o.blobstore2Info = buildGdataBlobstore2Info();
-    o.compositeMedia = buildUnnamed3594();
+    o.compositeMedia = buildUnnamed2318();
     o.contentType = "foo";
     o.contentTypeInfo = buildGdataContentTypeInfo();
     o.cosmoBinaryReference = "foo";
@@ -350,7 +350,7 @@ checkGdataMedia(api.GdataMedia o) {
     unittest.expect(o.bigstoreObjectRef, unittest.equals('foo'));
     unittest.expect(o.blobRef, unittest.equals('foo'));
     checkGdataBlobstore2Info(o.blobstore2Info);
-    checkUnnamed3594(o.compositeMedia);
+    checkUnnamed2318(o.compositeMedia);
     unittest.expect(o.contentType, unittest.equals('foo'));
     checkGdataContentTypeInfo(o.contentTypeInfo);
     unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
@@ -432,14 +432,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed3595() {
+buildUnnamed2319() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed3595(core.List<api.Job> o) {
+checkUnnamed2319(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -450,7 +450,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed3595();
+    o.jobs = buildUnnamed2319();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -460,20 +460,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed3595(o.jobs);
+    checkUnnamed2319(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed3596() {
+buildUnnamed2320() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed3596(core.List<api.ReportType> o) {
+checkUnnamed2320(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -485,7 +485,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed3596();
+    o.reportTypes = buildUnnamed2320();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -495,19 +495,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3596(o.reportTypes);
+    checkUnnamed2320(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed3597() {
+buildUnnamed2321() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed3597(core.List<api.Report> o) {
+checkUnnamed2321(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -519,7 +519,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed3597();
+    o.reports = buildUnnamed2321();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -529,7 +529,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3597(o.reports);
+    checkUnnamed2321(o.reports);
   }
   buildCounterListReportsResponse--;
 }
@@ -789,7 +789,7 @@ main() {
           .create(arg_request,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Job response) {
+          .then(unittest.expectAsync1(((response) {
         checkJob(response);
       })));
     });
@@ -847,7 +847,7 @@ main() {
           .delete(arg_jobId,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -905,7 +905,7 @@ main() {
           .get(arg_jobId,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Job response) {
+          .then(unittest.expectAsync1(((response) {
         checkJob(response);
       })));
     });
@@ -971,7 +971,7 @@ main() {
               includeSystemManaged: arg_includeSystemManaged,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListJobsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListJobsResponse(response);
       })));
     });
@@ -1042,7 +1042,7 @@ main() {
           .get(arg_jobId, arg_reportId,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Report response) {
+          .then(unittest.expectAsync1(((response) {
         checkReport(response);
       })));
     });
@@ -1127,7 +1127,7 @@ main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               startTimeBefore: arg_startTimeBefore,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListReportsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListReportsResponse(response);
       })));
     });
@@ -1183,7 +1183,7 @@ main() {
       }), true);
       res
           .download(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.GdataMedia response) {
+          .then(unittest.expectAsync1(((response) {
         checkGdataMedia(response);
       })));
     });
@@ -1252,7 +1252,7 @@ main() {
               pageSize: arg_pageSize,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListReportTypesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListReportTypesResponse(response);
       })));
     });

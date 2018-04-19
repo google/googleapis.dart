@@ -78,7 +78,7 @@ class PagespeedapiResourceApi {
       core.String strategy,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -170,9 +170,10 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeader {
       core.Map _json) {
     if (_json.containsKey("args")) {
       args = _json["args"]
-          .map((value) =>
-              new ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs
-                  .fromJson(value))
+          .map<ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs>(
+              (value) =>
+                  new ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("format")) {
@@ -242,9 +243,10 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
       core.Map _json) {
     if (_json.containsKey("args")) {
       args = _json["args"]
-          .map((value) =>
-              new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs
-                  .fromJson(value))
+          .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs>(
+              (value) =>
+                  new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("format")) {
@@ -315,9 +317,10 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult {
       core.Map _json) {
     if (_json.containsKey("args")) {
       args = _json["args"]
-          .map((value) =>
-              new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs
-                  .fromJson(value))
+          .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs>(
+              (value) =>
+                  new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("format")) {
@@ -352,9 +355,10 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   ResultFormattedResultsRuleResultsValueUrlBlocksUrls.fromJson(core.Map _json) {
     if (_json.containsKey("details")) {
       details = _json["details"]
-          .map((value) =>
-              new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails
-                  .fromJson(value))
+          .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails>(
+              (value) =>
+                  new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("result")) {
@@ -394,7 +398,7 @@ class ResultFormattedResultsRuleResultsValueUrlBlocks {
     }
     if (_json.containsKey("urls")) {
       urls = _json["urls"]
-          .map((value) =>
+          .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrls>((value) =>
               new ResultFormattedResultsRuleResultsValueUrlBlocksUrls.fromJson(
                   value))
           .toList();
@@ -444,7 +448,7 @@ class ResultFormattedResultsRuleResultsValue {
     }
     if (_json.containsKey("urlBlocks")) {
       urlBlocks = _json["urlBlocks"]
-          .map((value) =>
+          .map<ResultFormattedResultsRuleResultsValueUrlBlocks>((value) =>
               new ResultFormattedResultsRuleResultsValueUrlBlocks.fromJson(
                   value))
           .toList();

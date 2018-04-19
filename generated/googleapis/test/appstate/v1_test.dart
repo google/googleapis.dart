@@ -75,14 +75,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed2619() {
+buildUnnamed3499() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed2619(core.List<api.GetResponse> o) {
+checkUnnamed3499(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -93,7 +93,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed2619();
+    o.items = buildUnnamed3499();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -104,7 +104,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed2619(o.items);
+    checkUnnamed3499(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }
@@ -250,7 +250,7 @@ main() {
       res
           .clear(arg_stateKey,
               currentDataVersion: arg_currentDataVersion, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.WriteResult response) {
+          .then(unittest.expectAsync1(((response) {
         checkWriteResult(response);
       })));
     });
@@ -360,7 +360,7 @@ main() {
       }), true);
       res
           .get(arg_stateKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.GetResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkGetResponse(response);
       })));
     });
@@ -415,7 +415,7 @@ main() {
       }), true);
       res
           .list(includeData: arg_includeData, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListResponse(response);
       })));
     });
@@ -480,7 +480,7 @@ main() {
           .update(arg_request, arg_stateKey,
               currentStateVersion: arg_currentStateVersion,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.WriteResult response) {
+          .then(unittest.expectAsync1(((response) {
         checkWriteResult(response);
       })));
     });

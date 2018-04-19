@@ -63,7 +63,7 @@ class MattersResourceApi {
       AddMatterPermissionsRequest request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -114,7 +114,7 @@ class MattersResourceApi {
       CloseMatterRequest request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -163,7 +163,7 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<Matter> create(Matter request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -205,7 +205,7 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<Matter> delete(core.String matterId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -254,7 +254,7 @@ class MattersResourceApi {
   async.Future<Matter> get(core.String matterId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -322,7 +322,7 @@ class MattersResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -377,7 +377,7 @@ class MattersResourceApi {
       RemoveMatterPermissionsRequest request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -428,7 +428,7 @@ class MattersResourceApi {
       ReopenMatterRequest request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -478,7 +478,7 @@ class MattersResourceApi {
       UndeleteMatterRequest request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -531,7 +531,7 @@ class MattersResourceApi {
   async.Future<Matter> update(Matter request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -588,7 +588,7 @@ class MattersHoldsResourceApi {
   async.Future<Hold> create(Hold request, core.String matterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -637,7 +637,7 @@ class MattersHoldsResourceApi {
   async.Future<Empty> delete(core.String matterId, core.String holdId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -688,7 +688,7 @@ class MattersHoldsResourceApi {
   async.Future<Hold> get(core.String matterId, core.String holdId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -745,7 +745,7 @@ class MattersHoldsResourceApi {
   async.Future<ListHoldsResponse> list(core.String matterId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -802,7 +802,7 @@ class MattersHoldsResourceApi {
       Hold request, core.String matterId, core.String holdId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -868,7 +868,7 @@ class MattersHoldsAccountsResourceApi {
       HeldAccount request, core.String matterId, core.String holdId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -927,7 +927,7 @@ class MattersHoldsAccountsResourceApi {
       core.String matterId, core.String holdId, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -987,7 +987,7 @@ class MattersHoldsAccountsResourceApi {
       core.String matterId, core.String holdId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1381,7 +1381,7 @@ class Hold {
   Hold.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
       accounts = _json["accounts"]
-          .map((value) => new HeldAccount.fromJson(value))
+          .map<HeldAccount>((value) => new HeldAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("corpus")) {
@@ -1442,7 +1442,7 @@ class ListHeldAccountsResponse {
   ListHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
       accounts = _json["accounts"]
-          .map((value) => new HeldAccount.fromJson(value))
+          .map<HeldAccount>((value) => new HeldAccount.fromJson(value))
           .toList();
     }
   }
@@ -1470,7 +1470,9 @@ class ListHoldsResponse {
 
   ListHoldsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("holds")) {
-      holds = _json["holds"].map((value) => new Hold.fromJson(value)).toList();
+      holds = _json["holds"]
+          .map<Hold>((value) => new Hold.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1502,8 +1504,9 @@ class ListMattersResponse {
 
   ListMattersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matters")) {
-      matters =
-          _json["matters"].map((value) => new Matter.fromJson(value)).toList();
+      matters = _json["matters"]
+          .map<Matter>((value) => new Matter.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1558,7 +1561,8 @@ class Matter {
     }
     if (_json.containsKey("matterPermissions")) {
       matterPermissions = _json["matterPermissions"]
-          .map((value) => new MatterPermission.fromJson(value))
+          .map<MatterPermission>(
+              (value) => new MatterPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {

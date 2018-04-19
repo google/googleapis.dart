@@ -109,7 +109,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<Profile> getProfile(core.String userId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -150,7 +150,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future stop(core.String userId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -198,7 +198,7 @@ class UsersResourceApi {
   async.Future<WatchResponse> watch(WatchRequest request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -261,7 +261,7 @@ class UsersDraftsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -322,7 +322,7 @@ class UsersDraftsResourceApi {
   async.Future delete(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -382,7 +382,7 @@ class UsersDraftsResourceApi {
   async.Future<Draft> get(core.String userId, core.String id,
       {core.String format, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -449,7 +449,7 @@ class UsersDraftsResourceApi {
       core.String q,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -516,7 +516,7 @@ class UsersDraftsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -588,7 +588,7 @@ class UsersDraftsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -688,7 +688,7 @@ class UsersHistoryResourceApi {
       core.String startHistoryId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -755,7 +755,7 @@ class UsersLabelsResourceApi {
   async.Future<Label> create(Label request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -803,7 +803,7 @@ class UsersLabelsResourceApi {
   async.Future delete(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -856,7 +856,7 @@ class UsersLabelsResourceApi {
   async.Future<Label> get(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -905,7 +905,7 @@ class UsersLabelsResourceApi {
   async.Future<ListLabelsResponse> list(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -953,7 +953,7 @@ class UsersLabelsResourceApi {
   async.Future<Label> patch(Label request, core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1009,7 +1009,7 @@ class UsersLabelsResourceApi {
   async.Future<Label> update(Label request, core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1072,7 +1072,7 @@ class UsersMessagesResourceApi {
       BatchDeleteMessagesRequest request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1122,7 +1122,7 @@ class UsersMessagesResourceApi {
       BatchModifyMessagesRequest request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1172,7 +1172,7 @@ class UsersMessagesResourceApi {
   async.Future delete(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1237,7 +1237,7 @@ class UsersMessagesResourceApi {
       core.List<core.String> metadataHeaders,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1323,7 +1323,7 @@ class UsersMessagesResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1418,7 +1418,7 @@ class UsersMessagesResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1505,7 +1505,7 @@ class UsersMessagesResourceApi {
       core.String q,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1569,7 +1569,7 @@ class UsersMessagesResourceApi {
       ModifyMessageRequest request, core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1633,7 +1633,7 @@ class UsersMessagesResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1695,7 +1695,7 @@ class UsersMessagesResourceApi {
   async.Future<Message> trash(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1747,7 +1747,7 @@ class UsersMessagesResourceApi {
   async.Future<Message> untrash(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1809,7 +1809,7 @@ class UsersMessagesAttachmentsResourceApi {
       core.String userId, core.String messageId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1876,7 +1876,7 @@ class UsersSettingsResourceApi {
   async.Future<AutoForwarding> getAutoForwarding(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1921,7 +1921,7 @@ class UsersSettingsResourceApi {
   async.Future<ImapSettings> getImap(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1964,7 +1964,7 @@ class UsersSettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<PopSettings> getPop(core.String userId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2008,7 +2008,7 @@ class UsersSettingsResourceApi {
   async.Future<VacationSettings> getVacation(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2059,7 +2059,7 @@ class UsersSettingsResourceApi {
       AutoForwarding request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2110,7 +2110,7 @@ class UsersSettingsResourceApi {
       ImapSettings request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2159,7 +2159,7 @@ class UsersSettingsResourceApi {
   async.Future<PopSettings> updatePop(PopSettings request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2209,7 +2209,7 @@ class UsersSettingsResourceApi {
       VacationSettings request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2265,7 +2265,7 @@ class UsersSettingsFiltersResourceApi {
   async.Future<Filter> create(Filter request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2312,7 +2312,7 @@ class UsersSettingsFiltersResourceApi {
   async.Future delete(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2365,7 +2365,7 @@ class UsersSettingsFiltersResourceApi {
   async.Future<Filter> get(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2414,7 +2414,7 @@ class UsersSettingsFiltersResourceApi {
   async.Future<ListFiltersResponse> list(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2474,7 +2474,7 @@ class UsersSettingsForwardingAddressesResourceApi {
       ForwardingAddress request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2526,7 +2526,7 @@ class UsersSettingsForwardingAddressesResourceApi {
   async.Future delete(core.String userId, core.String forwardingEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2580,7 +2580,7 @@ class UsersSettingsForwardingAddressesResourceApi {
       core.String userId, core.String forwardingEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2629,7 +2629,7 @@ class UsersSettingsForwardingAddressesResourceApi {
   async.Future<ListForwardingAddressesResponse> list(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2696,7 +2696,7 @@ class UsersSettingsSendAsResourceApi {
   async.Future<SendAs> create(SendAs request, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2747,7 +2747,7 @@ class UsersSettingsSendAsResourceApi {
   async.Future delete(core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2801,7 +2801,7 @@ class UsersSettingsSendAsResourceApi {
   async.Future<SendAs> get(core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2852,7 +2852,7 @@ class UsersSettingsSendAsResourceApi {
   async.Future<ListSendAsResponse> list(core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2906,7 +2906,7 @@ class UsersSettingsSendAsResourceApi {
       SendAs request, core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2968,7 +2968,7 @@ class UsersSettingsSendAsResourceApi {
       SendAs request, core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3024,7 +3024,7 @@ class UsersSettingsSendAsResourceApi {
   async.Future verify(core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3087,7 +3087,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       core.String userId, core.String sendAsEmail, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3149,7 +3149,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       core.String userId, core.String sendAsEmail, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3210,7 +3210,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       SmimeInfo request, core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3267,7 +3267,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       core.String userId, core.String sendAsEmail,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3321,7 +3321,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       core.String userId, core.String sendAsEmail, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3385,7 +3385,7 @@ class UsersThreadsResourceApi {
   async.Future delete(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3449,7 +3449,7 @@ class UsersThreadsResourceApi {
       core.List<core.String> metadataHeaders,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3524,7 +3524,7 @@ class UsersThreadsResourceApi {
       core.String q,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3589,7 +3589,7 @@ class UsersThreadsResourceApi {
       ModifyThreadRequest request, core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3644,7 +3644,7 @@ class UsersThreadsResourceApi {
   async.Future<Thread> trash(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3696,7 +3696,7 @@ class UsersThreadsResourceApi {
   async.Future<Thread> untrash(core.String userId, core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4129,27 +4129,31 @@ class History {
     }
     if (_json.containsKey("labelsAdded")) {
       labelsAdded = _json["labelsAdded"]
-          .map((value) => new HistoryLabelAdded.fromJson(value))
+          .map<HistoryLabelAdded>(
+              (value) => new HistoryLabelAdded.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labelsRemoved")) {
       labelsRemoved = _json["labelsRemoved"]
-          .map((value) => new HistoryLabelRemoved.fromJson(value))
+          .map<HistoryLabelRemoved>(
+              (value) => new HistoryLabelRemoved.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messages")) {
       messages = _json["messages"]
-          .map((value) => new Message.fromJson(value))
+          .map<Message>((value) => new Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messagesAdded")) {
       messagesAdded = _json["messagesAdded"]
-          .map((value) => new HistoryMessageAdded.fromJson(value))
+          .map<HistoryMessageAdded>(
+              (value) => new HistoryMessageAdded.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messagesDeleted")) {
       messagesDeleted = _json["messagesDeleted"]
-          .map((value) => new HistoryMessageDeleted.fromJson(value))
+          .map<HistoryMessageDeleted>(
+              (value) => new HistoryMessageDeleted.fromJson(value))
           .toList();
     }
   }
@@ -4532,8 +4536,9 @@ class ListDraftsResponse {
 
   ListDraftsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("drafts")) {
-      drafts =
-          _json["drafts"].map((value) => new Draft.fromJson(value)).toList();
+      drafts = _json["drafts"]
+          .map<Draft>((value) => new Draft.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -4568,8 +4573,9 @@ class ListFiltersResponse {
 
   ListFiltersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("filter")) {
-      filter =
-          _json["filter"].map((value) => new Filter.fromJson(value)).toList();
+      filter = _json["filter"]
+          .map<Filter>((value) => new Filter.fromJson(value))
+          .toList();
     }
   }
 
@@ -4593,7 +4599,8 @@ class ListForwardingAddressesResponse {
   ListForwardingAddressesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("forwardingAddresses")) {
       forwardingAddresses = _json["forwardingAddresses"]
-          .map((value) => new ForwardingAddress.fromJson(value))
+          .map<ForwardingAddress>(
+              (value) => new ForwardingAddress.fromJson(value))
           .toList();
     }
   }
@@ -4624,8 +4631,9 @@ class ListHistoryResponse {
 
   ListHistoryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("history")) {
-      history =
-          _json["history"].map((value) => new History.fromJson(value)).toList();
+      history = _json["history"]
+          .map<History>((value) => new History.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("historyId")) {
       historyId = _json["historyId"];
@@ -4659,8 +4667,9 @@ class ListLabelsResponse {
 
   ListLabelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels =
-          _json["labels"].map((value) => new Label.fromJson(value)).toList();
+      labels = _json["labels"]
+          .map<Label>((value) => new Label.fromJson(value))
+          .toList();
     }
   }
 
@@ -4689,7 +4698,7 @@ class ListMessagesResponse {
   ListMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("messages")) {
       messages = _json["messages"]
-          .map((value) => new Message.fromJson(value))
+          .map<Message>((value) => new Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4725,8 +4734,9 @@ class ListSendAsResponse {
 
   ListSendAsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sendAs")) {
-      sendAs =
-          _json["sendAs"].map((value) => new SendAs.fromJson(value)).toList();
+      sendAs = _json["sendAs"]
+          .map<SendAs>((value) => new SendAs.fromJson(value))
+          .toList();
     }
   }
 
@@ -4749,7 +4759,7 @@ class ListSmimeInfoResponse {
   ListSmimeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("smimeInfo")) {
       smimeInfo = _json["smimeInfo"]
-          .map((value) => new SmimeInfo.fromJson(value))
+          .map<SmimeInfo>((value) => new SmimeInfo.fromJson(value))
           .toList();
     }
   }
@@ -4784,8 +4794,9 @@ class ListThreadsResponse {
       resultSizeEstimate = _json["resultSizeEstimate"];
     }
     if (_json.containsKey("threads")) {
-      threads =
-          _json["threads"].map((value) => new Thread.fromJson(value)).toList();
+      threads = _json["threads"]
+          .map<Thread>((value) => new Thread.fromJson(value))
+          .toList();
     }
   }
 
@@ -4958,7 +4969,8 @@ class MessagePart {
     }
     if (_json.containsKey("headers")) {
       headers = _json["headers"]
-          .map((value) => new MessagePartHeader.fromJson(value))
+          .map<MessagePartHeader>(
+              (value) => new MessagePartHeader.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mimeType")) {
@@ -4969,7 +4981,7 @@ class MessagePart {
     }
     if (_json.containsKey("parts")) {
       parts = _json["parts"]
-          .map((value) => new MessagePart.fromJson(value))
+          .map<MessagePart>((value) => new MessagePart.fromJson(value))
           .toList();
     }
   }
@@ -5548,7 +5560,7 @@ class Thread {
     }
     if (_json.containsKey("messages")) {
       messages = _json["messages"]
-          .map((value) => new Message.fromJson(value))
+          .map<Message>((value) => new Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("snippet")) {

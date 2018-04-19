@@ -73,14 +73,14 @@ checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-buildUnnamed2959() {
+buildUnnamed3739() {
   var o = new core.List<api.TaskLinks>();
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-checkUnnamed2959(core.List<api.TaskLinks> o) {
+checkUnnamed3739(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -98,7 +98,7 @@ buildTask() {
     o.hidden = true;
     o.id = "foo";
     o.kind = "foo";
-    o.links = buildUnnamed2959();
+    o.links = buildUnnamed3739();
     o.notes = "foo";
     o.parent = "foo";
     o.position = "foo";
@@ -123,7 +123,7 @@ checkTask(api.Task o) {
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2959(o.links);
+    checkUnnamed3739(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
@@ -166,14 +166,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed2960() {
+buildUnnamed3740() {
   var o = new core.List<api.TaskList>();
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-checkUnnamed2960(core.List<api.TaskList> o) {
+checkUnnamed3740(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -185,7 +185,7 @@ buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2960();
+    o.items = buildUnnamed3740();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -197,21 +197,21 @@ checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2960(o.items);
+    checkUnnamed3740(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-buildUnnamed2961() {
+buildUnnamed3741() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed2961(core.List<api.Task> o) {
+checkUnnamed3741(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -223,7 +223,7 @@ buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2961();
+    o.items = buildUnnamed3741();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +235,7 @@ checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2961(o.items);
+    checkUnnamed3741(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -389,7 +389,7 @@ main() {
       }), true);
       res
           .get(arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TaskList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTaskList(response);
       })));
     });
@@ -445,7 +445,7 @@ main() {
       }), true);
       res
           .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TaskList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTaskList(response);
       })));
     });
@@ -506,7 +506,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TaskLists response) {
+          .then(unittest.expectAsync1(((response) {
         checkTaskLists(response);
       })));
     });
@@ -566,7 +566,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TaskList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTaskList(response);
       })));
     });
@@ -626,7 +626,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.TaskList response) {
+          .then(unittest.expectAsync1(((response) {
         checkTaskList(response);
       })));
     });
@@ -818,7 +818,7 @@ main() {
       }), true);
       res
           .get(arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -890,7 +890,7 @@ main() {
       res
           .insert(arg_request, arg_tasklist,
               parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -991,7 +991,7 @@ main() {
               showHidden: arg_showHidden,
               updatedMin: arg_updatedMin,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Tasks response) {
+          .then(unittest.expectAsync1(((response) {
         checkTasks(response);
       })));
     });
@@ -1069,7 +1069,7 @@ main() {
       res
           .move(arg_tasklist, arg_task,
               parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -1139,7 +1139,7 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });
@@ -1209,7 +1209,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Task response) {
+          .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
     });

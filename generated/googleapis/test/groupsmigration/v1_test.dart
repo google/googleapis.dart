@@ -126,7 +126,7 @@ main() {
       }), true);
       res
           .insert(arg_groupId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Groups response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroups(response);
       })));
     });

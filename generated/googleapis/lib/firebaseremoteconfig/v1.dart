@@ -56,7 +56,7 @@ class ProjectsResourceApi {
   async.Future<RemoteConfig> getRemoteConfig(core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -132,7 +132,7 @@ class ProjectsResourceApi {
       RemoteConfig request, core.String project,
       {core.bool validateOnly, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -204,7 +204,8 @@ class RemoteConfig {
   RemoteConfig.fromJson(core.Map _json) {
     if (_json.containsKey("conditions")) {
       conditions = _json["conditions"]
-          .map((value) => new RemoteConfigCondition.fromJson(value))
+          .map<RemoteConfigCondition>(
+              (value) => new RemoteConfigCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parameters")) {

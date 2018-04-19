@@ -78,7 +78,7 @@ class BookshelvesResourceApi {
   async.Future<Bookshelf> get(core.String userId, core.String shelf,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -132,7 +132,7 @@ class BookshelvesResourceApi {
   async.Future<Bookshelves> list(core.String userId,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -200,7 +200,7 @@ class BookshelvesVolumesResourceApi {
       core.int startIndex,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -279,7 +279,7 @@ class CloudloadingResourceApi {
       core.String uploadClientToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -329,7 +329,7 @@ class CloudloadingResourceApi {
   /// this method will complete with the same error.
   async.Future deleteBook(core.String volumeId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -374,7 +374,7 @@ class CloudloadingResourceApi {
       BooksCloudloadingResource request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -424,7 +424,7 @@ class DictionaryResourceApi {
   async.Future<Metadata> listOfflineMetadata(core.String cpksver,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -474,7 +474,7 @@ class FamilysharingResourceApi {
   async.Future<FamilyInfo> getFamilyInfo(
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -523,7 +523,7 @@ class FamilysharingResourceApi {
       core.String volumeId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -580,7 +580,7 @@ class FamilysharingResourceApi {
       core.String volumeId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -648,7 +648,7 @@ class LayersResourceApi {
   async.Future<Layersummary> get(core.String volumeId, core.String summaryId,
       {core.String contentVersion, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -716,7 +716,7 @@ class LayersResourceApi {
       core.String source,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -810,7 +810,7 @@ class LayersAnnotationDataResourceApi {
       core.int w,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -928,7 +928,7 @@ class LayersAnnotationDataResourceApi {
       core.int w,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1029,7 +1029,7 @@ class LayersVolumeAnnotationsResourceApi {
       core.String volumeId, core.String layerId, core.String annotationId,
       {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1136,7 +1136,7 @@ class LayersVolumeAnnotationsResourceApi {
       core.String volumeAnnotationsVersion,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1228,7 +1228,7 @@ class MyconfigResourceApi {
   /// this method will complete with the same error.
   async.Future<Usersettings> getUserSettings({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1276,7 +1276,7 @@ class MyconfigResourceApi {
       core.List<core.String> volumeIds, core.String cpksver,
       {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1347,7 +1347,7 @@ class MyconfigResourceApi {
       core.String volumeId, core.String nonce, core.String cpksver,
       {core.String licenseTypes, core.String locale, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1433,7 +1433,7 @@ class MyconfigResourceApi {
       core.List<core.String> volumeIds,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1502,7 +1502,7 @@ class MyconfigResourceApi {
   async.Future<Usersettings> updateUserSettings(Usersettings request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1565,7 +1565,7 @@ class MylibraryAnnotationsResourceApi {
   async.Future delete(core.String annotationId,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1627,7 +1627,7 @@ class MylibraryAnnotationsResourceApi {
       core.String source,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1716,7 +1716,7 @@ class MylibraryAnnotationsResourceApi {
       core.String volumeId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1789,7 +1789,7 @@ class MylibraryAnnotationsResourceApi {
       core.List<core.String> layerIds, core.String volumeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1841,7 +1841,7 @@ class MylibraryAnnotationsResourceApi {
   async.Future<Annotation> update(Annotation request, core.String annotationId,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1909,7 +1909,7 @@ class MylibraryBookshelvesResourceApi {
   async.Future addVolume(core.String shelf, core.String volumeId,
       {core.String reason, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1966,7 +1966,7 @@ class MylibraryBookshelvesResourceApi {
   async.Future clearVolumes(core.String shelf,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2019,7 +2019,7 @@ class MylibraryBookshelvesResourceApi {
   async.Future<Bookshelf> get(core.String shelf,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2064,7 +2064,7 @@ class MylibraryBookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future<Bookshelves> list({core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2114,7 +2114,7 @@ class MylibraryBookshelvesResourceApi {
       core.String shelf, core.String volumeId, core.int volumePosition,
       {core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2178,7 +2178,7 @@ class MylibraryBookshelvesResourceApi {
   async.Future removeVolume(core.String shelf, core.String volumeId,
       {core.String reason, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2267,7 +2267,7 @@ class MylibraryBookshelvesVolumesResourceApi {
       core.int startIndex,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2345,7 +2345,7 @@ class MylibraryReadingpositionsResourceApi {
   async.Future<ReadingPosition> get(core.String volumeId,
       {core.String contentVersion, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2419,7 +2419,7 @@ class MylibraryReadingpositionsResourceApi {
       core.String source,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2497,7 +2497,7 @@ class NotificationResourceApi {
   async.Future<Notification> get(core.String notificationId,
       {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2554,7 +2554,7 @@ class OnboardingResourceApi {
   async.Future<Category> listCategories(
       {core.String locale, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2616,7 +2616,7 @@ class OnboardingResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2691,7 +2691,7 @@ class PersonalizedstreamResourceApi {
       core.String source,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2764,7 +2764,7 @@ class PromoofferResourceApi {
       core.String volumeId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2845,7 +2845,7 @@ class PromoofferResourceApi {
       core.String serial,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2924,7 +2924,7 @@ class PromoofferResourceApi {
       core.String serial,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2991,7 +2991,7 @@ class SeriesResourceApi {
   async.Future<Series> get(core.List<core.String> seriesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3047,7 +3047,7 @@ class SeriesMembershipResourceApi {
   async.Future<Seriesmembership> get(core.String seriesId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3134,7 +3134,7 @@ class VolumesResourceApi {
       core.bool userLibraryConsistentRead,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3264,7 +3264,7 @@ class VolumesResourceApi {
       core.int startIndex,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3376,7 +3376,7 @@ class VolumesAssociatedResourceApi {
       core.String source,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3461,7 +3461,7 @@ class VolumesMybooksResourceApi {
       core.int startIndex,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3542,7 +3542,7 @@ class VolumesRecommendedResourceApi {
       core.String source,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3602,7 +3602,7 @@ class VolumesRecommendedResourceApi {
       core.String rating, core.String volumeId,
       {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3684,7 +3684,7 @@ class VolumesUseruploadedResourceApi {
       core.List<core.String> volumeId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4180,7 +4180,7 @@ class Annotations {
   Annotations.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Annotation.fromJson(value))
+          .map<Annotation>((value) => new Annotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4274,7 +4274,8 @@ class AnnotationsSummary {
     }
     if (_json.containsKey("layers")) {
       layers = _json["layers"]
-          .map((value) => new AnnotationsSummaryLayers.fromJson(value))
+          .map<AnnotationsSummaryLayers>(
+              (value) => new AnnotationsSummaryLayers.fromJson(value))
           .toList();
     }
   }
@@ -4311,7 +4312,7 @@ class Annotationsdata {
   Annotationsdata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Annotationdata.fromJson(value))
+          .map<Annotationdata>((value) => new Annotationdata.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4573,8 +4574,9 @@ class Bookshelves {
 
   Bookshelves.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Bookshelf.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Bookshelf>((value) => new Bookshelf.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4641,7 +4643,7 @@ class Category {
   Category.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CategoryItems.fromJson(value))
+          .map<CategoryItems>((value) => new CategoryItems.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5040,7 +5042,7 @@ class DictlayerdataDictWordsSensesDefinitions {
     }
     if (_json.containsKey("examples")) {
       examples = _json["examples"]
-          .map((value) =>
+          .map<DictlayerdataDictWordsSensesDefinitionsExamples>((value) =>
               new DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
                   value))
           .toList();
@@ -5160,13 +5162,13 @@ class DictlayerdataDictWordsSenses {
   DictlayerdataDictWordsSenses.fromJson(core.Map _json) {
     if (_json.containsKey("conjugations")) {
       conjugations = _json["conjugations"]
-          .map((value) =>
+          .map<DictlayerdataDictWordsSensesConjugations>((value) =>
               new DictlayerdataDictWordsSensesConjugations.fromJson(value))
           .toList();
     }
     if (_json.containsKey("definitions")) {
       definitions = _json["definitions"]
-          .map((value) =>
+          .map<DictlayerdataDictWordsSensesDefinitions>((value) =>
               new DictlayerdataDictWordsSensesDefinitions.fromJson(value))
           .toList();
     }
@@ -5187,7 +5189,7 @@ class DictlayerdataDictWordsSenses {
     }
     if (_json.containsKey("synonyms")) {
       synonyms = _json["synonyms"]
-          .map((value) =>
+          .map<DictlayerdataDictWordsSensesSynonyms>((value) =>
               new DictlayerdataDictWordsSensesSynonyms.fromJson(value))
           .toList();
     }
@@ -5270,17 +5272,20 @@ class DictlayerdataDictWords {
   DictlayerdataDictWords.fromJson(core.Map _json) {
     if (_json.containsKey("derivatives")) {
       derivatives = _json["derivatives"]
-          .map((value) => new DictlayerdataDictWordsDerivatives.fromJson(value))
+          .map<DictlayerdataDictWordsDerivatives>(
+              (value) => new DictlayerdataDictWordsDerivatives.fromJson(value))
           .toList();
     }
     if (_json.containsKey("examples")) {
       examples = _json["examples"]
-          .map((value) => new DictlayerdataDictWordsExamples.fromJson(value))
+          .map<DictlayerdataDictWordsExamples>(
+              (value) => new DictlayerdataDictWordsExamples.fromJson(value))
           .toList();
     }
     if (_json.containsKey("senses")) {
       senses = _json["senses"]
-          .map((value) => new DictlayerdataDictWordsSenses.fromJson(value))
+          .map<DictlayerdataDictWordsSenses>(
+              (value) => new DictlayerdataDictWordsSenses.fromJson(value))
           .toList();
     }
     if (_json.containsKey("source")) {
@@ -5321,7 +5326,8 @@ class DictlayerdataDict {
     }
     if (_json.containsKey("words")) {
       words = _json["words"]
-          .map((value) => new DictlayerdataDictWords.fromJson(value))
+          .map<DictlayerdataDictWords>(
+              (value) => new DictlayerdataDictWords.fromJson(value))
           .toList();
     }
   }
@@ -5460,8 +5466,9 @@ class DiscoveryclustersClusters {
       uid = _json["uid"];
     }
     if (_json.containsKey("volumes")) {
-      volumes =
-          _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
+      volumes = _json["volumes"]
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
     }
   }
 
@@ -5503,7 +5510,8 @@ class Discoveryclusters {
   Discoveryclusters.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
       clusters = _json["clusters"]
-          .map((value) => new DiscoveryclustersClusters.fromJson(value))
+          .map<DiscoveryclustersClusters>(
+              (value) => new DiscoveryclustersClusters.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5668,7 +5676,8 @@ class DownloadAccesses {
   DownloadAccesses.fromJson(core.Map _json) {
     if (_json.containsKey("downloadAccessList")) {
       downloadAccessList = _json["downloadAccessList"]
-          .map((value) => new DownloadAccessRestriction.fromJson(value))
+          .map<DownloadAccessRestriction>(
+              (value) => new DownloadAccessRestriction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5987,8 +5996,9 @@ class GeolayerdataGeo {
   GeolayerdataGeo.fromJson(core.Map _json) {
     if (_json.containsKey("boundary")) {
       boundary = _json["boundary"]
-          .map((value) => value
-              .map((value) => new GeolayerdataGeoBoundary.fromJson(value))
+          .map<core.List<GeolayerdataGeoBoundary>>((value) => value
+              .map<GeolayerdataGeoBoundary>(
+                  (value) => new GeolayerdataGeoBoundary.fromJson(value))
               .toList())
           .toList();
     }
@@ -6098,7 +6108,7 @@ class Layersummaries {
   Layersummaries.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Layersummary.fromJson(value))
+          .map<Layersummary>((value) => new Layersummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6319,7 +6329,7 @@ class Metadata {
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new MetadataItems.fromJson(value))
+          .map<MetadataItems>((value) => new MetadataItems.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6534,7 +6544,8 @@ class OffersItems {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new OffersItemsItems.fromJson(value))
+          .map<OffersItemsItems>(
+              (value) => new OffersItemsItems.fromJson(value))
           .toList();
     }
   }
@@ -6570,7 +6581,7 @@ class Offers {
   Offers.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new OffersItems.fromJson(value))
+          .map<OffersItems>((value) => new OffersItems.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6943,7 +6954,7 @@ class Series {
     }
     if (_json.containsKey("series")) {
       series = _json["series"]
-          .map((value) => new SeriesSeries.fromJson(value))
+          .map<SeriesSeries>((value) => new SeriesSeries.fromJson(value))
           .toList();
     }
   }
@@ -6974,8 +6985,9 @@ class Seriesmembership {
       kind = _json["kind"];
     }
     if (_json.containsKey("member")) {
-      member =
-          _json["member"].map((value) => new Volume.fromJson(value)).toList();
+      member = _json["member"]
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -7513,7 +7525,8 @@ class VolumeLayerInfo {
   VolumeLayerInfo.fromJson(core.Map _json) {
     if (_json.containsKey("layers")) {
       layers = _json["layers"]
-          .map((value) => new VolumeLayerInfoLayers.fromJson(value))
+          .map<VolumeLayerInfoLayers>(
+              (value) => new VolumeLayerInfoLayers.fromJson(value))
           .toList();
     }
   }
@@ -7818,7 +7831,8 @@ class VolumeSaleInfo {
     }
     if (_json.containsKey("offers")) {
       offers = _json["offers"]
-          .map((value) => new VolumeSaleInfoOffers.fromJson(value))
+          .map<VolumeSaleInfoOffers>(
+              (value) => new VolumeSaleInfoOffers.fromJson(value))
           .toList();
     }
     if (_json.containsKey("onSaleDate")) {
@@ -8527,7 +8541,7 @@ class VolumeVolumeInfo {
     }
     if (_json.containsKey("industryIdentifiers")) {
       industryIdentifiers = _json["industryIdentifiers"]
-          .map((value) =>
+          .map<VolumeVolumeInfoIndustryIdentifiers>((value) =>
               new VolumeVolumeInfoIndustryIdentifiers.fromJson(value))
           .toList();
     }
@@ -8806,8 +8820,9 @@ class Volume2 {
 
   Volume2.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Volume.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -9049,7 +9064,8 @@ class Volumeannotations {
   Volumeannotations.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Volumeannotation.fromJson(value))
+          .map<Volumeannotation>(
+              (value) => new Volumeannotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9103,8 +9119,9 @@ class Volumes {
 
   Volumes.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Volume.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -9177,7 +9194,8 @@ class VolumeseriesinfoVolumeSeries {
   VolumeseriesinfoVolumeSeries.fromJson(core.Map _json) {
     if (_json.containsKey("issue")) {
       issue = _json["issue"]
-          .map((value) => new VolumeseriesinfoVolumeSeriesIssue.fromJson(value))
+          .map<VolumeseriesinfoVolumeSeriesIssue>(
+              (value) => new VolumeseriesinfoVolumeSeriesIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("orderNumber")) {
@@ -9236,7 +9254,8 @@ class Volumeseriesinfo {
     }
     if (_json.containsKey("volumeSeries")) {
       volumeSeries = _json["volumeSeries"]
-          .map((value) => new VolumeseriesinfoVolumeSeries.fromJson(value))
+          .map<VolumeseriesinfoVolumeSeries>(
+              (value) => new VolumeseriesinfoVolumeSeries.fromJson(value))
           .toList();
     }
   }

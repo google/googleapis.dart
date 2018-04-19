@@ -60,7 +60,7 @@ class StatesResourceApi {
   async.Future<WriteResult> clear(core.int stateKey,
       {core.String currentDataVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -108,7 +108,7 @@ class StatesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.int stateKey, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -154,7 +154,7 @@ class StatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetResponse> get(core.int stateKey, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -198,7 +198,7 @@ class StatesResourceApi {
   async.Future<ListResponse> list(
       {core.bool includeData, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -252,7 +252,7 @@ class StatesResourceApi {
   async.Future<WriteResult> update(UpdateRequest request, core.int stateKey,
       {core.String currentStateVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -351,7 +351,7 @@ class ListResponse {
   ListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new GetResponse.fromJson(value))
+          .map<GetResponse>((value) => new GetResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {

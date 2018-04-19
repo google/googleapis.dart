@@ -168,14 +168,14 @@ checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem--;
 }
 
-buildUnnamed3391() {
+buildUnnamed1914() {
   var o = new core.List<api.GroupItem>();
   o.add(buildGroupItem());
   o.add(buildGroupItem());
   return o;
 }
 
-checkUnnamed3391(core.List<api.GroupItem> o) {
+checkUnnamed1914(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -187,7 +187,7 @@ buildGroupItemListResponse() {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3391();
+    o.items = buildUnnamed1914();
     o.kind = "foo";
   }
   buildCounterGroupItemListResponse--;
@@ -198,20 +198,20 @@ checkGroupItemListResponse(api.GroupItemListResponse o) {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3391(o.items);
+    checkUnnamed1914(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupItemListResponse--;
 }
 
-buildUnnamed3392() {
+buildUnnamed1915() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed3392(core.List<api.Group> o) {
+checkUnnamed1915(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -223,7 +223,7 @@ buildGroupListResponse() {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3392();
+    o.items = buildUnnamed1915();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +235,7 @@ checkGroupListResponse(api.GroupListResponse o) {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3392(o.items);
+    checkUnnamed1915(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -265,20 +265,20 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed3393() {
+buildUnnamed1916() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed3393(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed1916(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed3394() {
+buildUnnamed1917() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -293,7 +293,7 @@ buildUnnamed3394() {
   return o;
 }
 
-checkUnnamed3394(core.List<core.Object> o) {
+checkUnnamed1917(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -307,17 +307,17 @@ checkUnnamed3394(core.List<core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3395() {
+buildUnnamed1918() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed3394());
-  o.add(buildUnnamed3394());
+  o.add(buildUnnamed1917());
+  o.add(buildUnnamed1917());
   return o;
 }
 
-checkUnnamed3395(core.List<core.List<core.Object>> o) {
+checkUnnamed1918(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3394(o[0]);
-  checkUnnamed3394(o[1]);
+  checkUnnamed1917(o[0]);
+  checkUnnamed1917(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -325,9 +325,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed3393();
+    o.columnHeaders = buildUnnamed1916();
     o.kind = "foo";
-    o.rows = buildUnnamed3395();
+    o.rows = buildUnnamed1918();
   }
   buildCounterResultTable--;
   return o;
@@ -336,9 +336,9 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed3393(o.columnHeaders);
+    checkUnnamed1916(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3395(o.rows);
+    checkUnnamed1918(o.rows);
   }
   buildCounterResultTable--;
 }
@@ -532,7 +532,7 @@ main() {
           .insert(arg_request,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.GroupItem response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroupItem(response);
       })));
     });
@@ -593,7 +593,7 @@ main() {
           .list(arg_groupId,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.GroupItemListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroupItemListResponse(response);
       })));
     });
@@ -713,7 +713,7 @@ main() {
           .insert(arg_request,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Group response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroup(response);
       })));
     });
@@ -780,7 +780,7 @@ main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.GroupListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroupListResponse(response);
       })));
     });
@@ -841,7 +841,7 @@ main() {
           .update(arg_request,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Group response) {
+          .then(unittest.expectAsync1(((response) {
         checkGroup(response);
       })));
     });
@@ -935,7 +935,7 @@ main() {
               sort: arg_sort,
               start_index: arg_start_index,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ResultTable response) {
+          .then(unittest.expectAsync1(((response) {
         checkResultTable(response);
       })));
     });

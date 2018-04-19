@@ -78,7 +78,7 @@ class ChangesResourceApi {
       Change request, core.String project, core.String managedZone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -137,7 +137,7 @@ class ChangesResourceApi {
       core.String project, core.String managedZone, core.String changeId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -210,7 +210,7 @@ class ChangesResourceApi {
       core.String sortOrder,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -279,7 +279,7 @@ class ManagedZonesResourceApi {
   async.Future<ManagedZone> create(ManagedZone request, core.String project,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -326,7 +326,7 @@ class ManagedZonesResourceApi {
   async.Future delete(core.String project, core.String managedZone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -379,7 +379,7 @@ class ManagedZonesResourceApi {
   async.Future<ManagedZone> get(core.String project, core.String managedZone,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -438,7 +438,7 @@ class ManagedZonesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -496,7 +496,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Project> get(core.String project, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -566,7 +566,7 @@ class ResourceRecordSetsResourceApi {
       core.String type,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -640,12 +640,14 @@ class Change {
   Change.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
       additions = _json["additions"]
-          .map((value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>(
+              (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deletions")) {
       deletions = _json["deletions"]
-          .map((value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>(
+              (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -712,8 +714,9 @@ class ChangesListResponse {
 
   ChangesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("changes")) {
-      changes =
-          _json["changes"].map((value) => new Change.fromJson(value)).toList();
+      changes = _json["changes"]
+          .map<Change>((value) => new Change.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -862,7 +865,7 @@ class ManagedZonesListResponse {
     }
     if (_json.containsKey("managedZones")) {
       managedZones = _json["managedZones"]
-          .map((value) => new ManagedZone.fromJson(value))
+          .map<ManagedZone>((value) => new ManagedZone.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1113,7 +1116,8 @@ class ResourceRecordSetsListResponse {
     }
     if (_json.containsKey("rrsets")) {
       rrsets = _json["rrsets"]
-          .map((value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>(
+              (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
   }

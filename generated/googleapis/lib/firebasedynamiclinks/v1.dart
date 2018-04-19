@@ -64,7 +64,7 @@ class ShortLinksResourceApi {
       CreateShortDynamicLinkRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -118,7 +118,7 @@ class V1ResourceApi {
   async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink,
       {core.String durationDays, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -165,7 +165,7 @@ class V1ResourceApi {
       GetIosPostInstallAttributionRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -345,7 +345,8 @@ class CreateShortDynamicLinkResponse {
     }
     if (_json.containsKey("warning")) {
       warning = _json["warning"]
-          .map((value) => new DynamicLinkWarning.fromJson(value))
+          .map<DynamicLinkWarning>(
+              (value) => new DynamicLinkWarning.fromJson(value))
           .toList();
     }
   }
@@ -645,7 +646,8 @@ class DynamicLinkStats {
   DynamicLinkStats.fromJson(core.Map _json) {
     if (_json.containsKey("linkEventStats")) {
       linkEventStats = _json["linkEventStats"]
-          .map((value) => new DynamicLinkEventStat.fromJson(value))
+          .map<DynamicLinkEventStat>(
+              (value) => new DynamicLinkEventStat.fromJson(value))
           .toList();
     }
   }

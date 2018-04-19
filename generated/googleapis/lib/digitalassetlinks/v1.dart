@@ -229,7 +229,7 @@ class AssetlinksResourceApi {
       core.String target_web_site,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -405,7 +405,7 @@ class StatementsResourceApi {
       core.String source_androidApp_certificate_sha256Fingerprint,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -676,7 +676,7 @@ class ListResponse {
     }
     if (_json.containsKey("statements")) {
       statements = _json["statements"]
-          .map((value) => new Statement.fromJson(value))
+          .map<Statement>((value) => new Statement.fromJson(value))
           .toList();
     }
   }

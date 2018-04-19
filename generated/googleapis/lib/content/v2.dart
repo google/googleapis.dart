@@ -65,7 +65,7 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountsAuthInfoResponse> authinfo({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -115,7 +115,7 @@ class AccountsResourceApi {
       core.String merchantId, core.String accountId,
       {core.bool overwrite, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -173,7 +173,7 @@ class AccountsResourceApi {
       {core.bool dryRun,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -226,7 +226,7 @@ class AccountsResourceApi {
   async.Future delete(core.String merchantId, core.String accountId,
       {core.bool dryRun, core.bool force, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -286,7 +286,7 @@ class AccountsResourceApi {
   async.Future<Account> get(core.String merchantId, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -339,7 +339,7 @@ class AccountsResourceApi {
   async.Future<Account> insert(Account request, core.String merchantId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -394,7 +394,7 @@ class AccountsResourceApi {
   async.Future<AccountsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -452,7 +452,7 @@ class AccountsResourceApi {
       Account request, core.String merchantId, core.String accountId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -515,7 +515,7 @@ class AccountsResourceApi {
       Account request, core.String merchantId, core.String accountId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -574,7 +574,7 @@ class AccountstatusesResourceApi {
       AccountstatusesCustomBatchRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -622,7 +622,7 @@ class AccountstatusesResourceApi {
   async.Future<AccountStatus> get(core.String merchantId, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -676,7 +676,7 @@ class AccountstatusesResourceApi {
   async.Future<AccountstatusesListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -737,7 +737,7 @@ class AccounttaxResourceApi {
       {core.bool dryRun,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -789,7 +789,7 @@ class AccounttaxResourceApi {
   async.Future<AccountTax> get(core.String merchantId, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -844,7 +844,7 @@ class AccounttaxResourceApi {
   async.Future<AccounttaxListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -904,7 +904,7 @@ class AccounttaxResourceApi {
       AccountTax request, core.String merchantId, core.String accountId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -968,7 +968,7 @@ class AccounttaxResourceApi {
       AccountTax request, core.String merchantId, core.String accountId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1030,7 +1030,7 @@ class DatafeedsResourceApi {
       {core.bool dryRun,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1080,7 +1080,7 @@ class DatafeedsResourceApi {
   async.Future delete(core.String merchantId, core.String datafeedId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1136,7 +1136,7 @@ class DatafeedsResourceApi {
   async.Future<Datafeed> get(core.String merchantId, core.String datafeedId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1189,7 +1189,7 @@ class DatafeedsResourceApi {
   async.Future<Datafeed> insert(Datafeed request, core.String merchantId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1244,7 +1244,7 @@ class DatafeedsResourceApi {
   async.Future<DatafeedsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1302,7 +1302,7 @@ class DatafeedsResourceApi {
       Datafeed request, core.String merchantId, core.String datafeedId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1364,7 +1364,7 @@ class DatafeedsResourceApi {
       Datafeed request, core.String merchantId, core.String datafeedId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1424,7 +1424,7 @@ class DatafeedstatusesResourceApi {
       DatafeedstatusesCustomBatchRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1482,7 +1482,7 @@ class DatafeedstatusesResourceApi {
       core.String merchantId, core.String datafeedId,
       {core.String country, core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1542,7 +1542,7 @@ class DatafeedstatusesResourceApi {
   async.Future<DatafeedstatusesListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1604,7 +1604,7 @@ class InventoryResourceApi {
       {core.bool dryRun,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1665,7 +1665,7 @@ class InventoryResourceApi {
       core.String merchantId, core.String storeCode, core.String productId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1738,7 +1738,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1796,7 +1796,7 @@ class OrdersResourceApi {
       core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1852,7 +1852,7 @@ class OrdersResourceApi {
       OrdersCancelRequest request, core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1912,7 +1912,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1969,7 +1969,7 @@ class OrdersResourceApi {
       OrdersCreateTestOrderRequest request, core.String merchantId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2017,7 +2017,7 @@ class OrdersResourceApi {
       OrdersCustomBatchRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2064,7 +2064,7 @@ class OrdersResourceApi {
   async.Future<Order> get(core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2116,7 +2116,7 @@ class OrdersResourceApi {
       core.String merchantId, core.String merchantOrderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2175,7 +2175,7 @@ class OrdersResourceApi {
       core.String merchantId, core.String templateName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2232,7 +2232,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2329,7 +2329,7 @@ class OrdersResourceApi {
       core.List<core.String> statuses,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2399,7 +2399,7 @@ class OrdersResourceApi {
       OrdersRefundRequest request, core.String merchantId, core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2459,7 +2459,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2520,7 +2520,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2582,7 +2582,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2643,7 +2643,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2704,7 +2704,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2766,7 +2766,7 @@ class OrdersResourceApi {
           core.String orderId,
           {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2827,7 +2827,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2888,7 +2888,7 @@ class OrdersResourceApi {
       core.String orderId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2951,7 +2951,7 @@ class ProductsResourceApi {
       {core.bool dryRun,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3001,7 +3001,7 @@ class ProductsResourceApi {
   async.Future delete(core.String merchantId, core.String productId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3057,7 +3057,7 @@ class ProductsResourceApi {
   async.Future<Product> get(core.String merchantId, core.String productId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3112,7 +3112,7 @@ class ProductsResourceApi {
   async.Future<Product> insert(Product request, core.String merchantId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3174,7 +3174,7 @@ class ProductsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3239,7 +3239,7 @@ class ProductstatusesResourceApi {
       {core.bool includeAttributes,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3292,7 +3292,7 @@ class ProductstatusesResourceApi {
   async.Future<ProductStatus> get(core.String merchantId, core.String productId,
       {core.bool includeAttributes, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3360,7 +3360,7 @@ class ProductstatusesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3430,7 +3430,7 @@ class ShippingsettingsResourceApi {
       {core.bool dryRun,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3483,7 +3483,7 @@ class ShippingsettingsResourceApi {
       core.String merchantId, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3532,7 +3532,7 @@ class ShippingsettingsResourceApi {
   async.Future<ShippingsettingsGetSupportedCarriersResponse>
       getsupportedcarriers(core.String merchantId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3577,7 +3577,7 @@ class ShippingsettingsResourceApi {
   async.Future<ShippingsettingsGetSupportedHolidaysResponse>
       getsupportedholidays(core.String merchantId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3628,7 +3628,7 @@ class ShippingsettingsResourceApi {
   async.Future<ShippingsettingsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3689,7 +3689,7 @@ class ShippingsettingsResourceApi {
       ShippingSettings request, core.String merchantId, core.String accountId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3753,7 +3753,7 @@ class ShippingsettingsResourceApi {
       ShippingSettings request, core.String merchantId, core.String accountId,
       {core.bool dryRun, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3843,7 +3843,8 @@ class Account {
     }
     if (_json.containsKey("adwordsLinks")) {
       adwordsLinks = _json["adwordsLinks"]
-          .map((value) => new AccountAdwordsLink.fromJson(value))
+          .map<AccountAdwordsLink>(
+              (value) => new AccountAdwordsLink.fromJson(value))
           .toList();
     }
     if (_json.containsKey("googleMyBusinessLink")) {
@@ -3867,7 +3868,7 @@ class Account {
     }
     if (_json.containsKey("users")) {
       users = _json["users"]
-          .map((value) => new AccountUser.fromJson(value))
+          .map<AccountUser>((value) => new AccountUser.fromJson(value))
           .toList();
     }
     if (_json.containsKey("websiteUrl")) {
@@ -3875,7 +3876,8 @@ class Account {
     }
     if (_json.containsKey("youtubeChannelLinks")) {
       youtubeChannelLinks = _json["youtubeChannelLinks"]
-          .map((value) => new AccountYouTubeChannelLink.fromJson(value))
+          .map<AccountYouTubeChannelLink>(
+              (value) => new AccountYouTubeChannelLink.fromJson(value))
           .toList();
     }
   }
@@ -4053,12 +4055,14 @@ class AccountStatus {
     }
     if (_json.containsKey("accountLevelIssues")) {
       accountLevelIssues = _json["accountLevelIssues"]
-          .map((value) => new AccountStatusAccountLevelIssue.fromJson(value))
+          .map<AccountStatusAccountLevelIssue>(
+              (value) => new AccountStatusAccountLevelIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dataQualityIssues")) {
       dataQualityIssues = _json["dataQualityIssues"]
-          .map((value) => new AccountStatusDataQualityIssue.fromJson(value))
+          .map<AccountStatusDataQualityIssue>(
+              (value) => new AccountStatusDataQualityIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4196,7 +4200,8 @@ class AccountStatusDataQualityIssue {
     }
     if (_json.containsKey("exampleItems")) {
       exampleItems = _json["exampleItems"]
-          .map((value) => new AccountStatusExampleItem.fromJson(value))
+          .map<AccountStatusExampleItem>(
+              (value) => new AccountStatusExampleItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -4341,7 +4346,8 @@ class AccountTax {
     }
     if (_json.containsKey("rules")) {
       rules = _json["rules"]
-          .map((value) => new AccountTaxTaxRule.fromJson(value))
+          .map<AccountTaxTaxRule>(
+              (value) => new AccountTaxTaxRule.fromJson(value))
           .toList();
     }
   }
@@ -4512,7 +4518,8 @@ class AccountsAuthInfoResponse {
   AccountsAuthInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accountIdentifiers")) {
       accountIdentifiers = _json["accountIdentifiers"]
-          .map((value) => new AccountIdentifier.fromJson(value))
+          .map<AccountIdentifier>(
+              (value) => new AccountIdentifier.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4566,7 +4573,8 @@ class AccountsCustomBatchRequest {
   AccountsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new AccountsCustomBatchRequestEntry.fromJson(value))
+          .map<AccountsCustomBatchRequestEntry>(
+              (value) => new AccountsCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -4673,7 +4681,8 @@ class AccountsCustomBatchResponse {
   AccountsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new AccountsCustomBatchResponseEntry.fromJson(value))
+          .map<AccountsCustomBatchResponseEntry>(
+              (value) => new AccountsCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4766,7 +4775,7 @@ class AccountsListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new Account.fromJson(value))
+          .map<Account>((value) => new Account.fromJson(value))
           .toList();
     }
   }
@@ -4796,7 +4805,7 @@ class AccountstatusesCustomBatchRequest {
   AccountstatusesCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<AccountstatusesCustomBatchRequestEntry>((value) =>
               new AccountstatusesCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
@@ -4875,7 +4884,7 @@ class AccountstatusesCustomBatchResponse {
   AccountstatusesCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<AccountstatusesCustomBatchResponseEntry>((value) =>
               new AccountstatusesCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
@@ -4959,7 +4968,7 @@ class AccountstatusesListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new AccountStatus.fromJson(value))
+          .map<AccountStatus>((value) => new AccountStatus.fromJson(value))
           .toList();
     }
   }
@@ -4989,7 +4998,8 @@ class AccounttaxCustomBatchRequest {
   AccounttaxCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new AccounttaxCustomBatchRequestEntry.fromJson(value))
+          .map<AccounttaxCustomBatchRequestEntry>(
+              (value) => new AccounttaxCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -5074,7 +5084,7 @@ class AccounttaxCustomBatchResponse {
   AccounttaxCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map(
+          .map<AccounttaxCustomBatchResponseEntry>(
               (value) => new AccounttaxCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
@@ -5167,7 +5177,7 @@ class AccounttaxListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new AccountTax.fromJson(value))
+          .map<AccountTax>((value) => new AccountTax.fromJson(value))
           .toList();
     }
   }
@@ -5389,7 +5399,7 @@ class Datafeed {
     }
     if (_json.containsKey("targets")) {
       targets = _json["targets"]
-          .map((value) => new DatafeedTarget.fromJson(value))
+          .map<DatafeedTarget>((value) => new DatafeedTarget.fromJson(value))
           .toList();
     }
   }
@@ -5628,7 +5638,8 @@ class DatafeedStatus {
     }
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new DatafeedStatusError.fromJson(value))
+          .map<DatafeedStatusError>(
+              (value) => new DatafeedStatusError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsTotal")) {
@@ -5651,7 +5662,8 @@ class DatafeedStatus {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new DatafeedStatusError.fromJson(value))
+          .map<DatafeedStatusError>(
+              (value) => new DatafeedStatusError.fromJson(value))
           .toList();
     }
   }
@@ -5718,7 +5730,8 @@ class DatafeedStatusError {
     }
     if (_json.containsKey("examples")) {
       examples = _json["examples"]
-          .map((value) => new DatafeedStatusExample.fromJson(value))
+          .map<DatafeedStatusExample>(
+              (value) => new DatafeedStatusExample.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -5849,7 +5862,8 @@ class DatafeedsCustomBatchRequest {
   DatafeedsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new DatafeedsCustomBatchRequestEntry.fromJson(value))
+          .map<DatafeedsCustomBatchRequestEntry>(
+              (value) => new DatafeedsCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -5934,7 +5948,8 @@ class DatafeedsCustomBatchResponse {
   DatafeedsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new DatafeedsCustomBatchResponseEntry.fromJson(value))
+          .map<DatafeedsCustomBatchResponseEntry>(
+              (value) => new DatafeedsCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6017,7 +6032,7 @@ class DatafeedsListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new Datafeed.fromJson(value))
+          .map<Datafeed>((value) => new Datafeed.fromJson(value))
           .toList();
     }
   }
@@ -6047,7 +6062,7 @@ class DatafeedstatusesCustomBatchRequest {
   DatafeedstatusesCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<DatafeedstatusesCustomBatchRequestEntry>((value) =>
               new DatafeedstatusesCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
@@ -6146,7 +6161,7 @@ class DatafeedstatusesCustomBatchResponse {
   DatafeedstatusesCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<DatafeedstatusesCustomBatchResponseEntry>((value) =>
               new DatafeedstatusesCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
@@ -6230,7 +6245,7 @@ class DatafeedstatusesListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new DatafeedStatus.fromJson(value))
+          .map<DatafeedStatus>((value) => new DatafeedStatus.fromJson(value))
           .toList();
     }
   }
@@ -6270,7 +6285,7 @@ class DeliveryTime {
   DeliveryTime.fromJson(core.Map _json) {
     if (_json.containsKey("holidayCutoffs")) {
       holidayCutoffs = _json["holidayCutoffs"]
-          .map((value) => new HolidayCutoff.fromJson(value))
+          .map<HolidayCutoff>((value) => new HolidayCutoff.fromJson(value))
           .toList();
     }
     if (_json.containsKey("maxTransitTimeInDays")) {
@@ -6357,8 +6372,9 @@ class Errors {
       code = _json["code"];
     }
     if (_json.containsKey("errors")) {
-      errors =
-          _json["errors"].map((value) => new Error.fromJson(value)).toList();
+      errors = _json["errors"]
+          .map<Error>((value) => new Error.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -6420,7 +6436,7 @@ class Headers {
   Headers.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new LocationIdSet.fromJson(value))
+          .map<LocationIdSet>((value) => new LocationIdSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("numberOfItems")) {
@@ -6430,12 +6446,14 @@ class Headers {
       postalCodeGroupNames = _json["postalCodeGroupNames"];
     }
     if (_json.containsKey("prices")) {
-      prices =
-          _json["prices"].map((value) => new Price.fromJson(value)).toList();
+      prices = _json["prices"]
+          .map<Price>((value) => new Price.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("weights")) {
-      weights =
-          _json["weights"].map((value) => new Weight.fromJson(value)).toList();
+      weights = _json["weights"]
+          .map<Weight>((value) => new Weight.fromJson(value))
+          .toList();
     }
   }
 
@@ -6749,7 +6767,8 @@ class InventoryCustomBatchRequest {
   InventoryCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new InventoryCustomBatchRequestEntry.fromJson(value))
+          .map<InventoryCustomBatchRequestEntry>(
+              (value) => new InventoryCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -6837,7 +6856,8 @@ class InventoryCustomBatchResponse {
   InventoryCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new InventoryCustomBatchResponseEntry.fromJson(value))
+          .map<InventoryCustomBatchResponseEntry>(
+              (value) => new InventoryCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -7213,7 +7233,7 @@ class Order {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderLineItem.fromJson(value))
+          .map<OrderLineItem>((value) => new OrderLineItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("merchantId")) {
@@ -7236,17 +7256,17 @@ class Order {
     }
     if (_json.containsKey("promotions")) {
       promotions = _json["promotions"]
-          .map((value) => new OrderPromotion.fromJson(value))
+          .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("refunds")) {
       refunds = _json["refunds"]
-          .map((value) => new OrderRefund.fromJson(value))
+          .map<OrderRefund>((value) => new OrderRefund.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shipments")) {
       shipments = _json["shipments"]
-          .map((value) => new OrderShipment.fromJson(value))
+          .map<OrderShipment>((value) => new OrderShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingCost")) {
@@ -7611,12 +7631,14 @@ class OrderLineItem {
   OrderLineItem.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>(
+              (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("cancellations")) {
       cancellations = _json["cancellations"]
-          .map((value) => new OrderCancellation.fromJson(value))
+          .map<OrderCancellation>(
+              (value) => new OrderCancellation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -7651,7 +7673,7 @@ class OrderLineItem {
     }
     if (_json.containsKey("returns")) {
       returns = _json["returns"]
-          .map((value) => new OrderReturn.fromJson(value))
+          .map<OrderReturn>((value) => new OrderReturn.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingDetails")) {
@@ -7812,7 +7834,7 @@ class OrderLineItemProduct {
     }
     if (_json.containsKey("variantAttributes")) {
       variantAttributes = _json["variantAttributes"]
-          .map((value) =>
+          .map<OrderLineItemProductVariantAttribute>((value) =>
               new OrderLineItemProductVariantAttribute.fromJson(value))
           .toList();
     }
@@ -8176,7 +8198,8 @@ class OrderPromotion {
   OrderPromotion.fromJson(core.Map _json) {
     if (_json.containsKey("benefits")) {
       benefits = _json["benefits"]
-          .map((value) => new OrderPromotionBenefit.fromJson(value))
+          .map<OrderPromotionBenefit>(
+              (value) => new OrderPromotionBenefit.fromJson(value))
           .toList();
     }
     if (_json.containsKey("effectiveDates")) {
@@ -8462,7 +8485,8 @@ class OrderShipment {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>(
+              (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
@@ -8898,7 +8922,8 @@ class OrdersCustomBatchRequest {
   OrdersCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new OrdersCustomBatchRequestEntry.fromJson(value))
+          .map<OrdersCustomBatchRequestEntry>(
+              (value) => new OrdersCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -9573,7 +9598,8 @@ class OrdersCustomBatchRequestEntrySetLineItemMetadata {
   OrdersCustomBatchRequestEntrySetLineItemMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>(
+              (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lineItemId")) {
@@ -9630,7 +9656,8 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>(
+              (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shipmentId")) {
@@ -9638,9 +9665,10 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (_json.containsKey("shipmentInfos")) {
       shipmentInfos = _json["shipmentInfos"]
-          .map((value) =>
-              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
-                  .fromJson(value))
+          .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
+              (value) =>
+                  new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("trackingId")) {
@@ -9831,7 +9859,8 @@ class OrdersCustomBatchResponse {
   OrdersCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new OrdersCustomBatchResponseEntry.fromJson(value))
+          .map<OrdersCustomBatchResponseEntry>(
+              (value) => new OrdersCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -10115,8 +10144,9 @@ class OrdersListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resources")) {
-      resources =
-          _json["resources"].map((value) => new Order.fromJson(value)).toList();
+      resources = _json["resources"]
+          .map<Order>((value) => new Order.fromJson(value))
+          .toList();
     }
   }
 
@@ -10577,7 +10607,8 @@ class OrdersSetLineItemMetadataRequest {
   OrdersSetLineItemMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"]
-          .map((value) => new OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>(
+              (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lineItemId")) {
@@ -10675,7 +10706,8 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>(
+              (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operationId")) {
@@ -10686,9 +10718,10 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("shipmentInfos")) {
       shipmentInfos = _json["shipmentInfos"]
-          .map((value) =>
-              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
-                  .fromJson(value))
+          .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
+              (value) =>
+                  new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                      .fromJson(value))
           .toList();
     }
     if (_json.containsKey("trackingId")) {
@@ -11026,7 +11059,7 @@ class PostalCodeGroup {
     }
     if (_json.containsKey("postalCodeRanges")) {
       postalCodeRanges = _json["postalCodeRanges"]
-          .map((value) => new PostalCodeRange.fromJson(value))
+          .map<PostalCodeRange>((value) => new PostalCodeRange.fromJson(value))
           .toList();
     }
   }
@@ -11394,7 +11427,7 @@ class Product {
     }
     if (_json.containsKey("aspects")) {
       aspects = _json["aspects"]
-          .map((value) => new ProductAspect.fromJson(value))
+          .map<ProductAspect>((value) => new ProductAspect.fromJson(value))
           .toList();
     }
     if (_json.containsKey("availability")) {
@@ -11420,12 +11453,14 @@ class Product {
     }
     if (_json.containsKey("customAttributes")) {
       customAttributes = _json["customAttributes"]
-          .map((value) => new ProductCustomAttribute.fromJson(value))
+          .map<ProductCustomAttribute>(
+              (value) => new ProductCustomAttribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customGroups")) {
       customGroups = _json["customGroups"]
-          .map((value) => new ProductCustomGroup.fromJson(value))
+          .map<ProductCustomGroup>(
+              (value) => new ProductCustomGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customLabel0")) {
@@ -11448,7 +11483,8 @@ class Product {
     }
     if (_json.containsKey("destinations")) {
       destinations = _json["destinations"]
-          .map((value) => new ProductDestination.fromJson(value))
+          .map<ProductDestination>(
+              (value) => new ProductDestination.fromJson(value))
           .toList();
     }
     if (_json.containsKey("displayAdsId")) {
@@ -11555,7 +11591,7 @@ class Product {
     }
     if (_json.containsKey("shipping")) {
       shipping = _json["shipping"]
-          .map((value) => new ProductShipping.fromJson(value))
+          .map<ProductShipping>((value) => new ProductShipping.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingHeight")) {
@@ -11591,7 +11627,7 @@ class Product {
     }
     if (_json.containsKey("taxes")) {
       taxes = _json["taxes"]
-          .map((value) => new ProductTax.fromJson(value))
+          .map<ProductTax>((value) => new ProductTax.fromJson(value))
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -11609,8 +11645,9 @@ class Product {
       validatedDestinations = _json["validatedDestinations"];
     }
     if (_json.containsKey("warnings")) {
-      warnings =
-          _json["warnings"].map((value) => new Error.fromJson(value)).toList();
+      warnings = _json["warnings"]
+          .map<Error>((value) => new Error.fromJson(value))
+          .toList();
     }
   }
 
@@ -11950,7 +11987,8 @@ class ProductCustomGroup {
   ProductCustomGroup.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
       attributes = _json["attributes"]
-          .map((value) => new ProductCustomAttribute.fromJson(value))
+          .map<ProductCustomAttribute>(
+              (value) => new ProductCustomAttribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -12195,12 +12233,14 @@ class ProductStatus {
     }
     if (_json.containsKey("dataQualityIssues")) {
       dataQualityIssues = _json["dataQualityIssues"]
-          .map((value) => new ProductStatusDataQualityIssue.fromJson(value))
+          .map<ProductStatusDataQualityIssue>(
+              (value) => new ProductStatusDataQualityIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("destinationStatuses")) {
       destinationStatuses = _json["destinationStatuses"]
-          .map((value) => new ProductStatusDestinationStatus.fromJson(value))
+          .map<ProductStatusDestinationStatus>(
+              (value) => new ProductStatusDestinationStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("googleExpirationDate")) {
@@ -12208,7 +12248,8 @@ class ProductStatus {
     }
     if (_json.containsKey("itemLevelIssues")) {
       itemLevelIssues = _json["itemLevelIssues"]
-          .map((value) => new ProductStatusItemLevelIssue.fromJson(value))
+          .map<ProductStatusItemLevelIssue>(
+              (value) => new ProductStatusItemLevelIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -12609,7 +12650,8 @@ class ProductsCustomBatchRequest {
   ProductsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new ProductsCustomBatchRequestEntry.fromJson(value))
+          .map<ProductsCustomBatchRequestEntry>(
+              (value) => new ProductsCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
   }
@@ -12695,7 +12737,8 @@ class ProductsCustomBatchResponse {
   ProductsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new ProductsCustomBatchResponseEntry.fromJson(value))
+          .map<ProductsCustomBatchResponseEntry>(
+              (value) => new ProductsCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -12788,7 +12831,7 @@ class ProductsListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new Product.fromJson(value))
+          .map<Product>((value) => new Product.fromJson(value))
           .toList();
     }
   }
@@ -12818,7 +12861,7 @@ class ProductstatusesCustomBatchRequest {
   ProductstatusesCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<ProductstatusesCustomBatchRequestEntry>((value) =>
               new ProductstatusesCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
@@ -12902,7 +12945,7 @@ class ProductstatusesCustomBatchResponse {
   ProductstatusesCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<ProductstatusesCustomBatchResponseEntry>((value) =>
               new ProductstatusesCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
@@ -12995,7 +13038,7 @@ class ProductstatusesListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new ProductStatus.fromJson(value))
+          .map<ProductStatus>((value) => new ProductStatus.fromJson(value))
           .toList();
     }
   }
@@ -13047,7 +13090,7 @@ class RateGroup {
     }
     if (_json.containsKey("carrierRates")) {
       carrierRates = _json["carrierRates"]
-          .map((value) => new CarrierRate.fromJson(value))
+          .map<CarrierRate>((value) => new CarrierRate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mainTable")) {
@@ -13057,8 +13100,9 @@ class RateGroup {
       singleValue = new Value.fromJson(_json["singleValue"]);
     }
     if (_json.containsKey("subtables")) {
-      subtables =
-          _json["subtables"].map((value) => new Table.fromJson(value)).toList();
+      subtables = _json["subtables"]
+          .map<Table>((value) => new Table.fromJson(value))
+          .toList();
     }
   }
 
@@ -13095,7 +13139,9 @@ class Row {
 
   Row.fromJson(core.Map _json) {
     if (_json.containsKey("cells")) {
-      cells = _json["cells"].map((value) => new Value.fromJson(value)).toList();
+      cells = _json["cells"]
+          .map<Value>((value) => new Value.fromJson(value))
+          .toList();
     }
   }
 
@@ -13162,7 +13208,7 @@ class Service {
     }
     if (_json.containsKey("rateGroups")) {
       rateGroups = _json["rateGroups"]
-          .map((value) => new RateGroup.fromJson(value))
+          .map<RateGroup>((value) => new RateGroup.fromJson(value))
           .toList();
     }
   }
@@ -13217,12 +13263,12 @@ class ShippingSettings {
     }
     if (_json.containsKey("postalCodeGroups")) {
       postalCodeGroups = _json["postalCodeGroups"]
-          .map((value) => new PostalCodeGroup.fromJson(value))
+          .map<PostalCodeGroup>((value) => new PostalCodeGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("services")) {
       services = _json["services"]
-          .map((value) => new Service.fromJson(value))
+          .map<Service>((value) => new Service.fromJson(value))
           .toList();
     }
   }
@@ -13253,7 +13299,7 @@ class ShippingsettingsCustomBatchRequest {
   ShippingsettingsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<ShippingsettingsCustomBatchRequestEntry>((value) =>
               new ShippingsettingsCustomBatchRequestEntry.fromJson(value))
           .toList();
     }
@@ -13341,7 +13387,7 @@ class ShippingsettingsCustomBatchResponse {
   ShippingsettingsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) =>
+          .map<ShippingsettingsCustomBatchResponseEntry>((value) =>
               new ShippingsettingsCustomBatchResponseEntry.fromJson(value))
           .toList();
     }
@@ -13428,7 +13474,7 @@ class ShippingsettingsGetSupportedCarriersResponse {
   ShippingsettingsGetSupportedCarriersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("carriers")) {
       carriers = _json["carriers"]
-          .map((value) => new CarriersCarrier.fromJson(value))
+          .map<CarriersCarrier>((value) => new CarriersCarrier.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13462,7 +13508,7 @@ class ShippingsettingsGetSupportedHolidaysResponse {
   ShippingsettingsGetSupportedHolidaysResponse.fromJson(core.Map _json) {
     if (_json.containsKey("holidays")) {
       holidays = _json["holidays"]
-          .map((value) => new HolidaysHoliday.fromJson(value))
+          .map<HolidaysHoliday>((value) => new HolidaysHoliday.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13503,7 +13549,8 @@ class ShippingsettingsListResponse {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new ShippingSettings.fromJson(value))
+          .map<ShippingSettings>(
+              (value) => new ShippingSettings.fromJson(value))
           .toList();
     }
   }
@@ -13552,7 +13599,8 @@ class Table {
       rowHeaders = new Headers.fromJson(_json["rowHeaders"]);
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"].map((value) => new Row.fromJson(value)).toList();
+      rows =
+          _json["rows"].map<Row>((value) => new Row.fromJson(value)).toList();
     }
   }
 
@@ -13620,7 +13668,8 @@ class TestOrder {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"]
-          .map((value) => new TestOrderLineItem.fromJson(value))
+          .map<TestOrderLineItem>(
+              (value) => new TestOrderLineItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notificationMode")) {
@@ -13635,7 +13684,7 @@ class TestOrder {
     }
     if (_json.containsKey("promotions")) {
       promotions = _json["promotions"]
-          .map((value) => new OrderPromotion.fromJson(value))
+          .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shippingCost")) {
@@ -13871,7 +13920,7 @@ class TestOrderLineItemProduct {
     }
     if (_json.containsKey("variantAttributes")) {
       variantAttributes = _json["variantAttributes"]
-          .map((value) =>
+          .map<OrderLineItemProductVariantAttribute>((value) =>
               new OrderLineItemProductVariantAttribute.fromJson(value))
           .toList();
     }

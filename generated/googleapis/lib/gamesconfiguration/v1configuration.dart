@@ -67,7 +67,7 @@ class AchievementConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String achievementId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -112,7 +112,7 @@ class AchievementConfigurationsResourceApi {
   async.Future<AchievementConfiguration> get(core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -160,7 +160,7 @@ class AchievementConfigurationsResourceApi {
       AchievementConfiguration request, core.String applicationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -220,7 +220,7 @@ class AchievementConfigurationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -276,7 +276,7 @@ class AchievementConfigurationsResourceApi {
       AchievementConfiguration request, core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -326,7 +326,7 @@ class AchievementConfigurationsResourceApi {
       AchievementConfiguration request, core.String achievementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -394,7 +394,7 @@ class ImageConfigurationsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -462,7 +462,7 @@ class LeaderboardConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String leaderboardId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -507,7 +507,7 @@ class LeaderboardConfigurationsResourceApi {
   async.Future<LeaderboardConfiguration> get(core.String leaderboardId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -555,7 +555,7 @@ class LeaderboardConfigurationsResourceApi {
       LeaderboardConfiguration request, core.String applicationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -615,7 +615,7 @@ class LeaderboardConfigurationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -671,7 +671,7 @@ class LeaderboardConfigurationsResourceApi {
       LeaderboardConfiguration request, core.String leaderboardId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -721,7 +721,7 @@ class LeaderboardConfigurationsResourceApi {
       LeaderboardConfiguration request, core.String leaderboardId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -931,7 +931,8 @@ class AchievementConfigurationListResponse {
   AchievementConfigurationListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new AchievementConfiguration.fromJson(value))
+          .map<AchievementConfiguration>(
+              (value) => new AchievementConfiguration.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1312,7 +1313,8 @@ class LeaderboardConfigurationListResponse {
   LeaderboardConfigurationListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new LeaderboardConfiguration.fromJson(value))
+          .map<LeaderboardConfiguration>(
+              (value) => new LeaderboardConfiguration.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1398,7 +1400,7 @@ class LocalizedStringBundle {
     }
     if (_json.containsKey("translations")) {
       translations = _json["translations"]
-          .map((value) => new LocalizedString.fromJson(value))
+          .map<LocalizedString>((value) => new LocalizedString.fromJson(value))
           .toList();
     }
   }

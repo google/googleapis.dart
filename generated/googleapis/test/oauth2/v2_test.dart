@@ -79,14 +79,14 @@ checkJwkKeys(api.JwkKeys o) {
   buildCounterJwkKeys--;
 }
 
-buildUnnamed1924() {
+buildUnnamed3563() {
   var o = new core.List<api.JwkKeys>();
   o.add(buildJwkKeys());
   o.add(buildJwkKeys());
   return o;
 }
 
-checkUnnamed1924(core.List<api.JwkKeys> o) {
+checkUnnamed3563(core.List<api.JwkKeys> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJwkKeys(o[0]);
   checkJwkKeys(o[1]);
@@ -97,7 +97,7 @@ buildJwk() {
   var o = new api.Jwk();
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    o.keys = buildUnnamed1924();
+    o.keys = buildUnnamed3563();
   }
   buildCounterJwk--;
   return o;
@@ -106,7 +106,7 @@ buildJwk() {
 checkJwk(api.Jwk o) {
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    checkUnnamed1924(o.keys);
+    checkUnnamed3563(o.keys);
   }
   buildCounterJwk--;
 }
@@ -263,7 +263,7 @@ main() {
       }), true);
       res
           .getCertForOpenIdConnect($fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Jwk response) {
+          .then(unittest.expectAsync1(((response) {
         checkJwk(response);
       })));
     });
@@ -325,7 +325,7 @@ main() {
               idToken: arg_idToken,
               tokenHandle: arg_tokenHandle,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Tokeninfo response) {
+          .then(unittest.expectAsync1(((response) {
         checkTokeninfo(response);
       })));
     });
@@ -374,9 +374,7 @@ main() {
         var resp = convert.JSON.encode(buildUserinfoplus());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get($fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Userinfoplus response) {
+      res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
         checkUserinfoplus(response);
       })));
     });
@@ -425,9 +423,7 @@ main() {
         var resp = convert.JSON.encode(buildUserinfoplus());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get($fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Userinfoplus response) {
+      res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
         checkUserinfoplus(response);
       })));
     });

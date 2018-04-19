@@ -106,7 +106,7 @@ class BillingAccountsExclusionsResourceApi {
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -159,7 +159,7 @@ class BillingAccountsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -207,7 +207,7 @@ class BillingAccountsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -266,7 +266,7 @@ class BillingAccountsExclusionsResourceApi {
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -332,7 +332,7 @@ class BillingAccountsExclusionsResourceApi {
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -398,7 +398,7 @@ class BillingAccountsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -457,7 +457,7 @@ class BillingAccountsLogsResourceApi {
   async.Future<ListLogsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -535,7 +535,7 @@ class BillingAccountsSinksResourceApi {
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -591,7 +591,7 @@ class BillingAccountsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -639,7 +639,7 @@ class BillingAccountsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -697,7 +697,7 @@ class BillingAccountsSinksResourceApi {
   async.Future<ListSinksResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -781,7 +781,7 @@ class BillingAccountsSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -868,7 +868,7 @@ class BillingAccountsSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -927,7 +927,7 @@ class EntriesResourceApi {
   async.Future<ListLogEntriesResponse> list(ListLogEntriesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -973,7 +973,7 @@ class EntriesResourceApi {
   async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1032,7 +1032,7 @@ class ExclusionsResourceApi {
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1085,7 +1085,7 @@ class ExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1133,7 +1133,7 @@ class ExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1192,7 +1192,7 @@ class ExclusionsResourceApi {
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1258,7 +1258,7 @@ class ExclusionsResourceApi {
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1335,7 +1335,7 @@ class FoldersExclusionsResourceApi {
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1388,7 +1388,7 @@ class FoldersExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1436,7 +1436,7 @@ class FoldersExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1495,7 +1495,7 @@ class FoldersExclusionsResourceApi {
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1561,7 +1561,7 @@ class FoldersExclusionsResourceApi {
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1626,7 +1626,7 @@ class FoldersLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1685,7 +1685,7 @@ class FoldersLogsResourceApi {
   async.Future<ListLogsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1762,7 +1762,7 @@ class FoldersSinksResourceApi {
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1818,7 +1818,7 @@ class FoldersSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1866,7 +1866,7 @@ class FoldersSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1924,7 +1924,7 @@ class FoldersSinksResourceApi {
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2008,7 +2008,7 @@ class FoldersSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2095,7 +2095,7 @@ class FoldersSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2163,7 +2163,7 @@ class LogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2222,7 +2222,7 @@ class LogsResourceApi {
   async.Future<ListLogsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2286,7 +2286,7 @@ class MonitoredResourceDescriptorsResourceApi {
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2363,7 +2363,7 @@ class OrganizationsExclusionsResourceApi {
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2416,7 +2416,7 @@ class OrganizationsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2464,7 +2464,7 @@ class OrganizationsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2523,7 +2523,7 @@ class OrganizationsExclusionsResourceApi {
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2589,7 +2589,7 @@ class OrganizationsExclusionsResourceApi {
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2655,7 +2655,7 @@ class OrganizationsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2714,7 +2714,7 @@ class OrganizationsLogsResourceApi {
   async.Future<ListLogsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2792,7 +2792,7 @@ class OrganizationsSinksResourceApi {
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2848,7 +2848,7 @@ class OrganizationsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2896,7 +2896,7 @@ class OrganizationsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2954,7 +2954,7 @@ class OrganizationsSinksResourceApi {
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3038,7 +3038,7 @@ class OrganizationsSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3125,7 +3125,7 @@ class OrganizationsSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3208,7 +3208,7 @@ class ProjectsExclusionsResourceApi {
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3261,7 +3261,7 @@ class ProjectsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3309,7 +3309,7 @@ class ProjectsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3368,7 +3368,7 @@ class ProjectsExclusionsResourceApi {
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3434,7 +3434,7 @@ class ProjectsExclusionsResourceApi {
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3499,7 +3499,7 @@ class ProjectsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3558,7 +3558,7 @@ class ProjectsLogsResourceApi {
   async.Future<ListLogsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3618,7 +3618,7 @@ class ProjectsMetricsResourceApi {
   async.Future<LogMetric> create(LogMetric request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3667,7 +3667,7 @@ class ProjectsMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String metricName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3712,7 +3712,7 @@ class ProjectsMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogMetric> get(core.String metricName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3767,7 +3767,7 @@ class ProjectsMetricsResourceApi {
   async.Future<ListLogMetricsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3824,7 +3824,7 @@ class ProjectsMetricsResourceApi {
   async.Future<LogMetric> update(LogMetric request, core.String metricName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3898,7 +3898,7 @@ class ProjectsSinksResourceApi {
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3954,7 +3954,7 @@ class ProjectsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4002,7 +4002,7 @@ class ProjectsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4060,7 +4060,7 @@ class ProjectsSinksResourceApi {
   async.Future<ListSinksResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4144,7 +4144,7 @@ class ProjectsSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4231,7 +4231,7 @@ class ProjectsSinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4311,7 +4311,7 @@ class SinksResourceApi {
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4367,7 +4367,7 @@ class SinksResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4415,7 +4415,7 @@ class SinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4473,7 +4473,7 @@ class SinksResourceApi {
   async.Future<ListSinksResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4557,7 +4557,7 @@ class SinksResourceApi {
       core.String updateMask,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5008,7 +5008,7 @@ class ListExclusionsResponse {
   ListExclusionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("exclusions")) {
       exclusions = _json["exclusions"]
-          .map((value) => new LogExclusion.fromJson(value))
+          .map<LogExclusion>((value) => new LogExclusion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5145,7 +5145,7 @@ class ListLogEntriesResponse {
   ListLogEntriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new LogEntry.fromJson(value))
+          .map<LogEntry>((value) => new LogEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5181,7 +5181,7 @@ class ListLogMetricsResponse {
   ListLogMetricsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("metrics")) {
       metrics = _json["metrics"]
-          .map((value) => new LogMetric.fromJson(value))
+          .map<LogMetric>((value) => new LogMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5255,7 +5255,8 @@ class ListMonitoredResourceDescriptorsResponse {
     }
     if (_json.containsKey("resourceDescriptors")) {
       resourceDescriptors = _json["resourceDescriptors"]
-          .map((value) => new MonitoredResourceDescriptor.fromJson(value))
+          .map<MonitoredResourceDescriptor>(
+              (value) => new MonitoredResourceDescriptor.fromJson(value))
           .toList();
     }
   }
@@ -5291,8 +5292,9 @@ class ListSinksResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("sinks")) {
-      sinks =
-          _json["sinks"].map((value) => new LogSink.fromJson(value)).toList();
+      sinks = _json["sinks"]
+          .map<LogSink>((value) => new LogSink.fromJson(value))
+          .toList();
     }
   }
 
@@ -6144,7 +6146,7 @@ class MetricDescriptor {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new LabelDescriptor.fromJson(value))
+          .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metricKind")) {
@@ -6289,7 +6291,7 @@ class MonitoredResourceDescriptor {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"]
-          .map((value) => new LabelDescriptor.fromJson(value))
+          .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -6477,7 +6479,9 @@ class RequestLog {
       latency = _json["latency"];
     }
     if (_json.containsKey("line")) {
-      line = _json["line"].map((value) => new LogLine.fromJson(value)).toList();
+      line = _json["line"]
+          .map<LogLine>((value) => new LogLine.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("megaCycles")) {
       megaCycles = _json["megaCycles"];
@@ -6508,7 +6512,7 @@ class RequestLog {
     }
     if (_json.containsKey("sourceReference")) {
       sourceReference = _json["sourceReference"]
-          .map((value) => new SourceReference.fromJson(value))
+          .map<SourceReference>((value) => new SourceReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startTime")) {
@@ -6791,7 +6795,7 @@ class WriteLogEntriesRequest {
     }
     if (_json.containsKey("entries")) {
       entries = _json["entries"]
-          .map((value) => new LogEntry.fromJson(value))
+          .map<LogEntry>((value) => new LogEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labels")) {

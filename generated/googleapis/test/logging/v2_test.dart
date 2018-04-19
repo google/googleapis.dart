@@ -88,14 +88,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed2339() {
+buildUnnamed328() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2339(core.List<core.double> o) {
+checkUnnamed328(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -106,7 +106,7 @@ buildExplicit() {
   var o = new api.Explicit();
   buildCounterExplicit++;
   if (buildCounterExplicit < 3) {
-    o.bounds = buildUnnamed2339();
+    o.bounds = buildUnnamed328();
   }
   buildCounterExplicit--;
   return o;
@@ -115,7 +115,7 @@ buildExplicit() {
 checkExplicit(api.Explicit o) {
   buildCounterExplicit++;
   if (buildCounterExplicit < 3) {
-    checkUnnamed2339(o.bounds);
+    checkUnnamed328(o.bounds);
   }
   buildCounterExplicit--;
 }
@@ -236,14 +236,14 @@ checkLinear(api.Linear o) {
   buildCounterLinear--;
 }
 
-buildUnnamed2340() {
+buildUnnamed329() {
   var o = new core.List<api.LogExclusion>();
   o.add(buildLogExclusion());
   o.add(buildLogExclusion());
   return o;
 }
 
-checkUnnamed2340(core.List<api.LogExclusion> o) {
+checkUnnamed329(core.List<api.LogExclusion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogExclusion(o[0]);
   checkLogExclusion(o[1]);
@@ -254,7 +254,7 @@ buildListExclusionsResponse() {
   var o = new api.ListExclusionsResponse();
   buildCounterListExclusionsResponse++;
   if (buildCounterListExclusionsResponse < 3) {
-    o.exclusions = buildUnnamed2340();
+    o.exclusions = buildUnnamed329();
     o.nextPageToken = "foo";
   }
   buildCounterListExclusionsResponse--;
@@ -264,33 +264,33 @@ buildListExclusionsResponse() {
 checkListExclusionsResponse(api.ListExclusionsResponse o) {
   buildCounterListExclusionsResponse++;
   if (buildCounterListExclusionsResponse < 3) {
-    checkUnnamed2340(o.exclusions);
+    checkUnnamed329(o.exclusions);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListExclusionsResponse--;
 }
 
-buildUnnamed2341() {
+buildUnnamed330() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2341(core.List<core.String> o) {
+checkUnnamed330(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2342() {
+buildUnnamed331() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2342(core.List<core.String> o) {
+checkUnnamed331(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -305,8 +305,8 @@ buildListLogEntriesRequest() {
     o.orderBy = "foo";
     o.pageSize = 42;
     o.pageToken = "foo";
-    o.projectIds = buildUnnamed2341();
-    o.resourceNames = buildUnnamed2342();
+    o.projectIds = buildUnnamed330();
+    o.resourceNames = buildUnnamed331();
   }
   buildCounterListLogEntriesRequest--;
   return o;
@@ -319,20 +319,20 @@ checkListLogEntriesRequest(api.ListLogEntriesRequest o) {
     unittest.expect(o.orderBy, unittest.equals('foo'));
     unittest.expect(o.pageSize, unittest.equals(42));
     unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkUnnamed2341(o.projectIds);
-    checkUnnamed2342(o.resourceNames);
+    checkUnnamed330(o.projectIds);
+    checkUnnamed331(o.resourceNames);
   }
   buildCounterListLogEntriesRequest--;
 }
 
-buildUnnamed2343() {
+buildUnnamed332() {
   var o = new core.List<api.LogEntry>();
   o.add(buildLogEntry());
   o.add(buildLogEntry());
   return o;
 }
 
-checkUnnamed2343(core.List<api.LogEntry> o) {
+checkUnnamed332(core.List<api.LogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogEntry(o[0]);
   checkLogEntry(o[1]);
@@ -343,7 +343,7 @@ buildListLogEntriesResponse() {
   var o = new api.ListLogEntriesResponse();
   buildCounterListLogEntriesResponse++;
   if (buildCounterListLogEntriesResponse < 3) {
-    o.entries = buildUnnamed2343();
+    o.entries = buildUnnamed332();
     o.nextPageToken = "foo";
   }
   buildCounterListLogEntriesResponse--;
@@ -353,20 +353,20 @@ buildListLogEntriesResponse() {
 checkListLogEntriesResponse(api.ListLogEntriesResponse o) {
   buildCounterListLogEntriesResponse++;
   if (buildCounterListLogEntriesResponse < 3) {
-    checkUnnamed2343(o.entries);
+    checkUnnamed332(o.entries);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLogEntriesResponse--;
 }
 
-buildUnnamed2344() {
+buildUnnamed333() {
   var o = new core.List<api.LogMetric>();
   o.add(buildLogMetric());
   o.add(buildLogMetric());
   return o;
 }
 
-checkUnnamed2344(core.List<api.LogMetric> o) {
+checkUnnamed333(core.List<api.LogMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogMetric(o[0]);
   checkLogMetric(o[1]);
@@ -377,7 +377,7 @@ buildListLogMetricsResponse() {
   var o = new api.ListLogMetricsResponse();
   buildCounterListLogMetricsResponse++;
   if (buildCounterListLogMetricsResponse < 3) {
-    o.metrics = buildUnnamed2344();
+    o.metrics = buildUnnamed333();
     o.nextPageToken = "foo";
   }
   buildCounterListLogMetricsResponse--;
@@ -387,20 +387,20 @@ buildListLogMetricsResponse() {
 checkListLogMetricsResponse(api.ListLogMetricsResponse o) {
   buildCounterListLogMetricsResponse++;
   if (buildCounterListLogMetricsResponse < 3) {
-    checkUnnamed2344(o.metrics);
+    checkUnnamed333(o.metrics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLogMetricsResponse--;
 }
 
-buildUnnamed2345() {
+buildUnnamed334() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2345(core.List<core.String> o) {
+checkUnnamed334(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -411,7 +411,7 @@ buildListLogsResponse() {
   var o = new api.ListLogsResponse();
   buildCounterListLogsResponse++;
   if (buildCounterListLogsResponse < 3) {
-    o.logNames = buildUnnamed2345();
+    o.logNames = buildUnnamed334();
     o.nextPageToken = "foo";
   }
   buildCounterListLogsResponse--;
@@ -421,20 +421,20 @@ buildListLogsResponse() {
 checkListLogsResponse(api.ListLogsResponse o) {
   buildCounterListLogsResponse++;
   if (buildCounterListLogsResponse < 3) {
-    checkUnnamed2345(o.logNames);
+    checkUnnamed334(o.logNames);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLogsResponse--;
 }
 
-buildUnnamed2346() {
+buildUnnamed335() {
   var o = new core.List<api.MonitoredResourceDescriptor>();
   o.add(buildMonitoredResourceDescriptor());
   o.add(buildMonitoredResourceDescriptor());
   return o;
 }
 
-checkUnnamed2346(core.List<api.MonitoredResourceDescriptor> o) {
+checkUnnamed335(core.List<api.MonitoredResourceDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMonitoredResourceDescriptor(o[0]);
   checkMonitoredResourceDescriptor(o[1]);
@@ -446,7 +446,7 @@ buildListMonitoredResourceDescriptorsResponse() {
   buildCounterListMonitoredResourceDescriptorsResponse++;
   if (buildCounterListMonitoredResourceDescriptorsResponse < 3) {
     o.nextPageToken = "foo";
-    o.resourceDescriptors = buildUnnamed2346();
+    o.resourceDescriptors = buildUnnamed335();
   }
   buildCounterListMonitoredResourceDescriptorsResponse--;
   return o;
@@ -457,19 +457,19 @@ checkListMonitoredResourceDescriptorsResponse(
   buildCounterListMonitoredResourceDescriptorsResponse++;
   if (buildCounterListMonitoredResourceDescriptorsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2346(o.resourceDescriptors);
+    checkUnnamed335(o.resourceDescriptors);
   }
   buildCounterListMonitoredResourceDescriptorsResponse--;
 }
 
-buildUnnamed2347() {
+buildUnnamed336() {
   var o = new core.List<api.LogSink>();
   o.add(buildLogSink());
   o.add(buildLogSink());
   return o;
 }
 
-checkUnnamed2347(core.List<api.LogSink> o) {
+checkUnnamed336(core.List<api.LogSink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogSink(o[0]);
   checkLogSink(o[1]);
@@ -481,7 +481,7 @@ buildListSinksResponse() {
   buildCounterListSinksResponse++;
   if (buildCounterListSinksResponse < 3) {
     o.nextPageToken = "foo";
-    o.sinks = buildUnnamed2347();
+    o.sinks = buildUnnamed336();
   }
   buildCounterListSinksResponse--;
   return o;
@@ -491,12 +491,12 @@ checkListSinksResponse(api.ListSinksResponse o) {
   buildCounterListSinksResponse++;
   if (buildCounterListSinksResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2347(o.sinks);
+    checkUnnamed336(o.sinks);
   }
   buildCounterListSinksResponse--;
 }
 
-buildUnnamed2348() {
+buildUnnamed337() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -511,7 +511,7 @@ buildUnnamed2348() {
   return o;
 }
 
-checkUnnamed2348(core.Map<core.String, core.Object> o) {
+checkUnnamed337(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -525,20 +525,20 @@ checkUnnamed2348(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2349() {
+buildUnnamed338() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2349(core.Map<core.String, core.String> o) {
+checkUnnamed338(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed2350() {
+buildUnnamed339() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -553,7 +553,7 @@ buildUnnamed2350() {
   return o;
 }
 
-checkUnnamed2350(core.Map<core.String, core.Object> o) {
+checkUnnamed339(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -574,11 +574,11 @@ buildLogEntry() {
   if (buildCounterLogEntry < 3) {
     o.httpRequest = buildHttpRequest();
     o.insertId = "foo";
-    o.jsonPayload = buildUnnamed2348();
-    o.labels = buildUnnamed2349();
+    o.jsonPayload = buildUnnamed337();
+    o.labels = buildUnnamed338();
     o.logName = "foo";
     o.operation = buildLogEntryOperation();
-    o.protoPayload = buildUnnamed2350();
+    o.protoPayload = buildUnnamed339();
     o.receiveTimestamp = "foo";
     o.resource = buildMonitoredResource();
     o.severity = "foo";
@@ -597,11 +597,11 @@ checkLogEntry(api.LogEntry o) {
   if (buildCounterLogEntry < 3) {
     checkHttpRequest(o.httpRequest);
     unittest.expect(o.insertId, unittest.equals('foo'));
-    checkUnnamed2348(o.jsonPayload);
-    checkUnnamed2349(o.labels);
+    checkUnnamed337(o.jsonPayload);
+    checkUnnamed338(o.labels);
     unittest.expect(o.logName, unittest.equals('foo'));
     checkLogEntryOperation(o.operation);
-    checkUnnamed2350(o.protoPayload);
+    checkUnnamed339(o.protoPayload);
     unittest.expect(o.receiveTimestamp, unittest.equals('foo'));
     checkMonitoredResource(o.resource);
     unittest.expect(o.severity, unittest.equals('foo'));
@@ -712,14 +712,14 @@ checkLogLine(api.LogLine o) {
   buildCounterLogLine--;
 }
 
-buildUnnamed2351() {
+buildUnnamed340() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2351(core.Map<core.String, core.String> o) {
+checkUnnamed340(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -733,7 +733,7 @@ buildLogMetric() {
     o.bucketOptions = buildBucketOptions();
     o.description = "foo";
     o.filter = "foo";
-    o.labelExtractors = buildUnnamed2351();
+    o.labelExtractors = buildUnnamed340();
     o.metricDescriptor = buildMetricDescriptor();
     o.name = "foo";
     o.valueExtractor = "foo";
@@ -749,7 +749,7 @@ checkLogMetric(api.LogMetric o) {
     checkBucketOptions(o.bucketOptions);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.filter, unittest.equals('foo'));
-    checkUnnamed2351(o.labelExtractors);
+    checkUnnamed340(o.labelExtractors);
     checkMetricDescriptor(o.metricDescriptor);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.valueExtractor, unittest.equals('foo'));
@@ -791,14 +791,14 @@ checkLogSink(api.LogSink o) {
   buildCounterLogSink--;
 }
 
-buildUnnamed2352() {
+buildUnnamed341() {
   var o = new core.List<api.LabelDescriptor>();
   o.add(buildLabelDescriptor());
   o.add(buildLabelDescriptor());
   return o;
 }
 
-checkUnnamed2352(core.List<api.LabelDescriptor> o) {
+checkUnnamed341(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelDescriptor(o[0]);
   checkLabelDescriptor(o[1]);
@@ -811,7 +811,7 @@ buildMetricDescriptor() {
   if (buildCounterMetricDescriptor < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.labels = buildUnnamed2352();
+    o.labels = buildUnnamed341();
     o.metricKind = "foo";
     o.name = "foo";
     o.type = "foo";
@@ -827,7 +827,7 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   if (buildCounterMetricDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed2352(o.labels);
+    checkUnnamed341(o.labels);
     unittest.expect(o.metricKind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -837,14 +837,14 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   buildCounterMetricDescriptor--;
 }
 
-buildUnnamed2353() {
+buildUnnamed342() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2353(core.Map<core.String, core.String> o) {
+checkUnnamed342(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -855,7 +855,7 @@ buildMonitoredResource() {
   var o = new api.MonitoredResource();
   buildCounterMonitoredResource++;
   if (buildCounterMonitoredResource < 3) {
-    o.labels = buildUnnamed2353();
+    o.labels = buildUnnamed342();
     o.type = "foo";
   }
   buildCounterMonitoredResource--;
@@ -865,20 +865,20 @@ buildMonitoredResource() {
 checkMonitoredResource(api.MonitoredResource o) {
   buildCounterMonitoredResource++;
   if (buildCounterMonitoredResource < 3) {
-    checkUnnamed2353(o.labels);
+    checkUnnamed342(o.labels);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterMonitoredResource--;
 }
 
-buildUnnamed2354() {
+buildUnnamed343() {
   var o = new core.List<api.LabelDescriptor>();
   o.add(buildLabelDescriptor());
   o.add(buildLabelDescriptor());
   return o;
 }
 
-checkUnnamed2354(core.List<api.LabelDescriptor> o) {
+checkUnnamed343(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelDescriptor(o[0]);
   checkLabelDescriptor(o[1]);
@@ -891,7 +891,7 @@ buildMonitoredResourceDescriptor() {
   if (buildCounterMonitoredResourceDescriptor < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.labels = buildUnnamed2354();
+    o.labels = buildUnnamed343();
     o.name = "foo";
     o.type = "foo";
   }
@@ -904,34 +904,34 @@ checkMonitoredResourceDescriptor(api.MonitoredResourceDescriptor o) {
   if (buildCounterMonitoredResourceDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed2354(o.labels);
+    checkUnnamed343(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterMonitoredResourceDescriptor--;
 }
 
-buildUnnamed2355() {
+buildUnnamed344() {
   var o = new core.List<api.LogLine>();
   o.add(buildLogLine());
   o.add(buildLogLine());
   return o;
 }
 
-checkUnnamed2355(core.List<api.LogLine> o) {
+checkUnnamed344(core.List<api.LogLine> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogLine(o[0]);
   checkLogLine(o[1]);
 }
 
-buildUnnamed2356() {
+buildUnnamed345() {
   var o = new core.List<api.SourceReference>();
   o.add(buildSourceReference());
   o.add(buildSourceReference());
   return o;
 }
 
-checkUnnamed2356(core.List<api.SourceReference> o) {
+checkUnnamed345(core.List<api.SourceReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSourceReference(o[0]);
   checkSourceReference(o[1]);
@@ -954,7 +954,7 @@ buildRequestLog() {
     o.instanceIndex = 42;
     o.ip = "foo";
     o.latency = "foo";
-    o.line = buildUnnamed2355();
+    o.line = buildUnnamed344();
     o.megaCycles = "foo";
     o.method = "foo";
     o.moduleId = "foo";
@@ -964,7 +964,7 @@ buildRequestLog() {
     o.requestId = "foo";
     o.resource = "foo";
     o.responseSize = "foo";
-    o.sourceReference = buildUnnamed2356();
+    o.sourceReference = buildUnnamed345();
     o.startTime = "foo";
     o.status = 42;
     o.taskName = "foo";
@@ -994,7 +994,7 @@ checkRequestLog(api.RequestLog o) {
     unittest.expect(o.instanceIndex, unittest.equals(42));
     unittest.expect(o.ip, unittest.equals('foo'));
     unittest.expect(o.latency, unittest.equals('foo'));
-    checkUnnamed2355(o.line);
+    checkUnnamed344(o.line);
     unittest.expect(o.megaCycles, unittest.equals('foo'));
     unittest.expect(o.method, unittest.equals('foo'));
     unittest.expect(o.moduleId, unittest.equals('foo'));
@@ -1004,7 +1004,7 @@ checkRequestLog(api.RequestLog o) {
     unittest.expect(o.requestId, unittest.equals('foo'));
     unittest.expect(o.resource, unittest.equals('foo'));
     unittest.expect(o.responseSize, unittest.equals('foo'));
-    checkUnnamed2356(o.sourceReference);
+    checkUnnamed345(o.sourceReference);
     unittest.expect(o.startTime, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals(42));
     unittest.expect(o.taskName, unittest.equals('foo'));
@@ -1062,27 +1062,27 @@ checkSourceReference(api.SourceReference o) {
   buildCounterSourceReference--;
 }
 
-buildUnnamed2357() {
+buildUnnamed346() {
   var o = new core.List<api.LogEntry>();
   o.add(buildLogEntry());
   o.add(buildLogEntry());
   return o;
 }
 
-checkUnnamed2357(core.List<api.LogEntry> o) {
+checkUnnamed346(core.List<api.LogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogEntry(o[0]);
   checkLogEntry(o[1]);
 }
 
-buildUnnamed2358() {
+buildUnnamed347() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2358(core.Map<core.String, core.String> o) {
+checkUnnamed347(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1094,8 +1094,8 @@ buildWriteLogEntriesRequest() {
   buildCounterWriteLogEntriesRequest++;
   if (buildCounterWriteLogEntriesRequest < 3) {
     o.dryRun = true;
-    o.entries = buildUnnamed2357();
-    o.labels = buildUnnamed2358();
+    o.entries = buildUnnamed346();
+    o.labels = buildUnnamed347();
     o.logName = "foo";
     o.partialSuccess = true;
     o.resource = buildMonitoredResource();
@@ -1108,8 +1108,8 @@ checkWriteLogEntriesRequest(api.WriteLogEntriesRequest o) {
   buildCounterWriteLogEntriesRequest++;
   if (buildCounterWriteLogEntriesRequest < 3) {
     unittest.expect(o.dryRun, unittest.isTrue);
-    checkUnnamed2357(o.entries);
-    checkUnnamed2358(o.labels);
+    checkUnnamed346(o.entries);
+    checkUnnamed347(o.labels);
     unittest.expect(o.logName, unittest.equals('foo'));
     unittest.expect(o.partialSuccess, unittest.isTrue);
     checkMonitoredResource(o.resource);
@@ -1418,7 +1418,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -1470,7 +1470,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1522,7 +1522,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -1583,7 +1583,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListExclusionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
       })));
     });
@@ -1643,7 +1643,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -1697,7 +1697,7 @@ main() {
       }), true);
       res
           .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1758,7 +1758,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
       })));
     });
@@ -1821,7 +1821,7 @@ main() {
           .create(arg_request, arg_parent,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -1873,7 +1873,7 @@ main() {
       }), true);
       res
           .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -1925,7 +1925,7 @@ main() {
       }), true);
       res
           .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -1986,7 +1986,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListSinksResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListSinksResponse(response);
       })));
     });
@@ -2051,7 +2051,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -2116,7 +2116,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -2171,7 +2171,7 @@ main() {
       }), true);
       res
           .list(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogEntriesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogEntriesResponse(response);
       })));
     });
@@ -2224,7 +2224,7 @@ main() {
       }), true);
       res
           .write(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.WriteLogEntriesResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkWriteLogEntriesResponse(response);
       })));
     });
@@ -2281,7 +2281,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -2332,7 +2332,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -2383,7 +2383,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -2443,7 +2443,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListExclusionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
       })));
     });
@@ -2502,7 +2502,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -2560,7 +2560,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -2612,7 +2612,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -2664,7 +2664,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -2725,7 +2725,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListExclusionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
       })));
     });
@@ -2785,7 +2785,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -2838,7 +2838,7 @@ main() {
       }), true);
       res
           .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -2898,7 +2898,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
       })));
     });
@@ -2960,7 +2960,7 @@ main() {
           .create(arg_request, arg_parent,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -3011,7 +3011,7 @@ main() {
       }), true);
       res
           .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -3062,7 +3062,7 @@ main() {
       }), true);
       res
           .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -3122,7 +3122,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListSinksResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListSinksResponse(response);
       })));
     });
@@ -3186,7 +3186,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -3250,7 +3250,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -3303,7 +3303,7 @@ main() {
       }), true);
       res
           .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -3363,7 +3363,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
       })));
     });
@@ -3425,8 +3425,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(
-              ((api.ListMonitoredResourceDescriptorsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListMonitoredResourceDescriptorsResponse(response);
       })));
     });
@@ -3484,7 +3483,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -3536,7 +3535,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -3588,7 +3587,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -3649,7 +3648,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListExclusionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
       })));
     });
@@ -3709,7 +3708,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -3763,7 +3762,7 @@ main() {
       }), true);
       res
           .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -3824,7 +3823,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
       })));
     });
@@ -3887,7 +3886,7 @@ main() {
           .create(arg_request, arg_parent,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -3939,7 +3938,7 @@ main() {
       }), true);
       res
           .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -3991,7 +3990,7 @@ main() {
       }), true);
       res
           .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -4052,7 +4051,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListSinksResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListSinksResponse(response);
       })));
     });
@@ -4117,7 +4116,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -4182,7 +4181,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -4240,7 +4239,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -4292,7 +4291,7 @@ main() {
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -4344,7 +4343,7 @@ main() {
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -4405,7 +4404,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListExclusionsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
       })));
     });
@@ -4465,7 +4464,7 @@ main() {
       res
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogExclusion response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogExclusion(response);
       })));
     });
@@ -4518,7 +4517,7 @@ main() {
       }), true);
       res
           .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -4578,7 +4577,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
       })));
     });
@@ -4636,7 +4635,7 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogMetric response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogMetric(response);
       })));
     });
@@ -4688,7 +4687,7 @@ main() {
       }), true);
       res
           .delete(arg_metricName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -4740,7 +4739,7 @@ main() {
       }), true);
       res
           .get(arg_metricName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogMetric response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogMetric(response);
       })));
     });
@@ -4801,7 +4800,7 @@ main() {
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListLogMetricsResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListLogMetricsResponse(response);
       })));
     });
@@ -4857,7 +4856,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_metricName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogMetric response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogMetric(response);
       })));
     });
@@ -4920,7 +4919,7 @@ main() {
           .create(arg_request, arg_parent,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -4972,7 +4971,7 @@ main() {
       }), true);
       res
           .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -5024,7 +5023,7 @@ main() {
       }), true);
       res
           .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -5085,7 +5084,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListSinksResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListSinksResponse(response);
       })));
     });
@@ -5150,7 +5149,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -5215,7 +5214,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -5277,7 +5276,7 @@ main() {
           .create(arg_request, arg_parent,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -5328,7 +5327,7 @@ main() {
       }), true);
       res
           .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Empty response) {
+          .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
     });
@@ -5379,7 +5378,7 @@ main() {
       }), true);
       res
           .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });
@@ -5439,7 +5438,7 @@ main() {
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.ListSinksResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkListSinksResponse(response);
       })));
     });
@@ -5503,7 +5502,7 @@ main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LogSink response) {
+          .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
       })));
     });

@@ -85,7 +85,7 @@ class ControllerDebuggeesResourceApi {
       RegisterDebuggeeRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -165,7 +165,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
       core.String waitToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -231,7 +231,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
       core.String id,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -314,7 +314,7 @@ class DebuggerDebuggeesResourceApi {
       core.String clientVersion,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -375,7 +375,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId,
       {core.String clientVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -433,7 +433,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       core.String debuggeeId, core.String breakpointId,
       {core.String clientVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -519,7 +519,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       core.bool stripResults,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -588,7 +588,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       Breakpoint request, core.String debuggeeId,
       {core.String clientVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -782,7 +782,7 @@ class Breakpoint {
     }
     if (_json.containsKey("evaluatedExpressions")) {
       evaluatedExpressions = _json["evaluatedExpressions"]
-          .map((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("expressions")) {
@@ -811,7 +811,7 @@ class Breakpoint {
     }
     if (_json.containsKey("stackFrames")) {
       stackFrames = _json["stackFrames"]
-          .map((value) => new StackFrame.fromJson(value))
+          .map<StackFrame>((value) => new StackFrame.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
@@ -822,7 +822,7 @@ class Breakpoint {
     }
     if (_json.containsKey("variableTable")) {
       variableTable = _json["variableTable"]
-          .map((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
   }
@@ -1071,7 +1071,8 @@ class Debuggee {
     }
     if (_json.containsKey("extSourceContexts")) {
       extSourceContexts = _json["extSourceContexts"]
-          .map((value) => new ExtendedSourceContext.fromJson(value))
+          .map<ExtendedSourceContext>(
+              (value) => new ExtendedSourceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1091,7 +1092,7 @@ class Debuggee {
     }
     if (_json.containsKey("sourceContexts")) {
       sourceContexts = _json["sourceContexts"]
-          .map((value) => new SourceContext.fromJson(value))
+          .map<SourceContext>((value) => new SourceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
@@ -1378,7 +1379,7 @@ class ListActiveBreakpointsResponse {
   ListActiveBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoints")) {
       breakpoints = _json["breakpoints"]
-          .map((value) => new Breakpoint.fromJson(value))
+          .map<Breakpoint>((value) => new Breakpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextWaitToken")) {
@@ -1425,7 +1426,7 @@ class ListBreakpointsResponse {
   ListBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoints")) {
       breakpoints = _json["breakpoints"]
-          .map((value) => new Breakpoint.fromJson(value))
+          .map<Breakpoint>((value) => new Breakpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextWaitToken")) {
@@ -1460,7 +1461,7 @@ class ListDebuggeesResponse {
   ListDebuggeesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("debuggees")) {
       debuggees = _json["debuggees"]
-          .map((value) => new Debuggee.fromJson(value))
+          .map<Debuggee>((value) => new Debuggee.fromJson(value))
           .toList();
     }
   }
@@ -1721,15 +1722,16 @@ class StackFrame {
   StackFrame.fromJson(core.Map _json) {
     if (_json.containsKey("arguments")) {
       arguments = _json["arguments"]
-          .map((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("function")) {
       function = _json["function"];
     }
     if (_json.containsKey("locals")) {
-      locals =
-          _json["locals"].map((value) => new Variable.fromJson(value)).toList();
+      locals = _json["locals"]
+          .map<Variable>((value) => new Variable.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("location")) {
       location = new SourceLocation.fromJson(_json["location"]);
@@ -2009,7 +2011,7 @@ class Variable {
   Variable.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
       members = _json["members"]
-          .map((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {

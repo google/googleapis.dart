@@ -56,7 +56,7 @@ class TasklistsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String tasklist, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -100,7 +100,7 @@ class TasklistsResourceApi {
   /// this method will complete with the same error.
   async.Future<TaskList> get(core.String tasklist, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -143,7 +143,7 @@ class TasklistsResourceApi {
   /// this method will complete with the same error.
   async.Future<TaskList> insert(TaskList request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -189,7 +189,7 @@ class TasklistsResourceApi {
   async.Future<TaskLists> list(
       {core.String maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -238,7 +238,7 @@ class TasklistsResourceApi {
   async.Future<TaskList> patch(TaskList request, core.String tasklist,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -286,7 +286,7 @@ class TasklistsResourceApi {
   async.Future<TaskList> update(TaskList request, core.String tasklist,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -337,7 +337,7 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future clear(core.String tasklist, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -382,7 +382,7 @@ class TasksResourceApi {
   async.Future delete(core.String tasklist, core.String task,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -435,7 +435,7 @@ class TasksResourceApi {
   async.Future<Task> get(core.String tasklist, core.String task,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -493,7 +493,7 @@ class TasksResourceApi {
   async.Future<Task> insert(Task request, core.String tasklist,
       {core.String parent, core.String previous, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -587,7 +587,7 @@ class TasksResourceApi {
       core.String updatedMin,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -671,7 +671,7 @@ class TasksResourceApi {
   async.Future<Task> move(core.String tasklist, core.String task,
       {core.String parent, core.String previous, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -731,7 +731,7 @@ class TasksResourceApi {
   async.Future<Task> patch(Task request, core.String tasklist, core.String task,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -788,7 +788,7 @@ class TasksResourceApi {
       Task request, core.String tasklist, core.String task,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -943,8 +943,9 @@ class Task {
       kind = _json["kind"];
     }
     if (_json.containsKey("links")) {
-      links =
-          _json["links"].map((value) => new TaskLinks.fromJson(value)).toList();
+      links = _json["links"]
+          .map<TaskLinks>((value) => new TaskLinks.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("notes")) {
       notes = _json["notes"];
@@ -1109,8 +1110,9 @@ class TaskLists {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new TaskList.fromJson(value)).toList();
+      items = _json["items"]
+          .map<TaskList>((value) => new TaskList.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1159,7 +1161,9 @@ class Tasks {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Task.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Task>((value) => new Task.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

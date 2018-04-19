@@ -102,14 +102,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed2618() {
+buildUnnamed1910() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed2618(core.List<api.LicenseAssignment> o) {
+checkUnnamed1910(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -121,7 +121,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2618();
+    o.items = buildUnnamed1910();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -133,7 +133,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2618(o.items);
+    checkUnnamed1910(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -259,7 +259,7 @@ main() {
       }), true);
       res
           .get(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
+          .then(unittest.expectAsync1(((response) {
         checkLicenseAssignment(response);
       })));
     });
@@ -312,7 +312,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_productId, arg_skuId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
+          .then(unittest.expectAsync1(((response) {
         checkLicenseAssignment(response);
       })));
     });
@@ -372,7 +372,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
+          .then(unittest.expectAsync1(((response) {
         checkLicenseAssignmentList(response);
       })));
     });
@@ -433,7 +433,7 @@ main() {
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
+          .then(unittest.expectAsync1(((response) {
         checkLicenseAssignmentList(response);
       })));
     });
@@ -488,7 +488,7 @@ main() {
       res
           .patch(arg_request, arg_productId, arg_skuId, arg_userId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
+          .then(unittest.expectAsync1(((response) {
         checkLicenseAssignment(response);
       })));
     });
@@ -543,7 +543,7 @@ main() {
       res
           .update(arg_request, arg_productId, arg_skuId, arg_userId,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
+          .then(unittest.expectAsync1(((response) {
         checkLicenseAssignment(response);
       })));
     });

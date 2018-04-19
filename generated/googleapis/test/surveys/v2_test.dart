@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3598() {
+buildUnnamed1653() {
   var o = new core.List<api.FieldMask>();
   o.add(buildFieldMask());
   o.add(buildFieldMask());
   return o;
 }
 
-checkUnnamed3598(core.List<api.FieldMask> o) {
+checkUnnamed1653(core.List<api.FieldMask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldMask(o[0]);
   checkFieldMask(o[1]);
@@ -68,7 +68,7 @@ buildFieldMask() {
   var o = new api.FieldMask();
   buildCounterFieldMask++;
   if (buildCounterFieldMask < 3) {
-    o.fields = buildUnnamed3598();
+    o.fields = buildUnnamed1653();
     o.id = 42;
   }
   buildCounterFieldMask--;
@@ -78,20 +78,20 @@ buildFieldMask() {
 checkFieldMask(api.FieldMask o) {
   buildCounterFieldMask++;
   if (buildCounterFieldMask < 3) {
-    checkUnnamed3598(o.fields);
+    checkUnnamed1653(o.fields);
     unittest.expect(o.id, unittest.equals(42));
   }
   buildCounterFieldMask--;
 }
 
-buildUnnamed3599() {
+buildUnnamed1654() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3599(core.List<core.String> o) {
+checkUnnamed1654(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -107,7 +107,7 @@ buildMobileAppPanel() {
     o.language = "foo";
     o.mobileAppPanelId = "foo";
     o.name = "foo";
-    o.owners = buildUnnamed3599();
+    o.owners = buildUnnamed1654();
   }
   buildCounterMobileAppPanel--;
   return o;
@@ -121,19 +121,19 @@ checkMobileAppPanel(api.MobileAppPanel o) {
     unittest.expect(o.language, unittest.equals('foo'));
     unittest.expect(o.mobileAppPanelId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3599(o.owners);
+    checkUnnamed1654(o.owners);
   }
   buildCounterMobileAppPanel--;
 }
 
-buildUnnamed3600() {
+buildUnnamed1655() {
   var o = new core.List<api.MobileAppPanel>();
   o.add(buildMobileAppPanel());
   o.add(buildMobileAppPanel());
   return o;
 }
 
-checkUnnamed3600(core.List<api.MobileAppPanel> o) {
+checkUnnamed1655(core.List<api.MobileAppPanel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileAppPanel(o[0]);
   checkMobileAppPanel(o[1]);
@@ -146,7 +146,7 @@ buildMobileAppPanelsListResponse() {
   if (buildCounterMobileAppPanelsListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.requestId = "foo";
-    o.resources = buildUnnamed3600();
+    o.resources = buildUnnamed1655();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterMobileAppPanelsListResponse--;
@@ -158,7 +158,7 @@ checkMobileAppPanelsListResponse(api.MobileAppPanelsListResponse o) {
   if (buildCounterMobileAppPanelsListResponse < 3) {
     checkPageInfo(o.pageInfo);
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed3600(o.resources);
+    checkUnnamed1655(o.resources);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterMobileAppPanelsListResponse--;
@@ -206,14 +206,14 @@ checkResultsGetRequest(api.ResultsGetRequest o) {
   buildCounterResultsGetRequest--;
 }
 
-buildUnnamed3601() {
+buildUnnamed1656() {
   var o = new core.List<api.FieldMask>();
   o.add(buildFieldMask());
   o.add(buildFieldMask());
   return o;
 }
 
-checkUnnamed3601(core.List<api.FieldMask> o) {
+checkUnnamed1656(core.List<api.FieldMask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldMask(o[0]);
   checkFieldMask(o[1]);
@@ -224,7 +224,7 @@ buildResultsMask() {
   var o = new api.ResultsMask();
   buildCounterResultsMask++;
   if (buildCounterResultsMask < 3) {
-    o.fields = buildUnnamed3601();
+    o.fields = buildUnnamed1656();
     o.projection = "foo";
   }
   buildCounterResultsMask--;
@@ -234,33 +234,33 @@ buildResultsMask() {
 checkResultsMask(api.ResultsMask o) {
   buildCounterResultsMask++;
   if (buildCounterResultsMask < 3) {
-    checkUnnamed3601(o.fields);
+    checkUnnamed1656(o.fields);
     unittest.expect(o.projection, unittest.equals('foo'));
   }
   buildCounterResultsMask--;
 }
 
-buildUnnamed3602() {
+buildUnnamed1657() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3602(core.List<core.String> o) {
+checkUnnamed1657(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3603() {
+buildUnnamed1658() {
   var o = new core.List<api.SurveyQuestion>();
   o.add(buildSurveyQuestion());
   o.add(buildSurveyQuestion());
   return o;
 }
 
-checkUnnamed3603(core.List<api.SurveyQuestion> o) {
+checkUnnamed1658(core.List<api.SurveyQuestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurveyQuestion(o[0]);
   checkSurveyQuestion(o[1]);
@@ -275,8 +275,8 @@ buildSurvey() {
     o.cost = buildSurveyCost();
     o.customerData = "foo";
     o.description = "foo";
-    o.owners = buildUnnamed3602();
-    o.questions = buildUnnamed3603();
+    o.owners = buildUnnamed1657();
+    o.questions = buildUnnamed1658();
     o.rejectionReason = buildSurveyRejection();
     o.state = "foo";
     o.surveyUrlId = "foo";
@@ -294,8 +294,8 @@ checkSurvey(api.Survey o) {
     checkSurveyCost(o.cost);
     unittest.expect(o.customerData, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed3602(o.owners);
-    checkUnnamed3603(o.questions);
+    checkUnnamed1657(o.owners);
+    checkUnnamed1658(o.questions);
     checkSurveyRejection(o.rejectionReason);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.surveyUrlId, unittest.equals('foo'));
@@ -305,27 +305,27 @@ checkSurvey(api.Survey o) {
   buildCounterSurvey--;
 }
 
-buildUnnamed3604() {
+buildUnnamed1659() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3604(core.List<core.String> o) {
+checkUnnamed1659(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3605() {
+buildUnnamed1660() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3605(core.List<core.String> o) {
+checkUnnamed1660(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -336,11 +336,11 @@ buildSurveyAudience() {
   var o = new api.SurveyAudience();
   buildCounterSurveyAudience++;
   if (buildCounterSurveyAudience < 3) {
-    o.ages = buildUnnamed3604();
+    o.ages = buildUnnamed1659();
     o.country = "foo";
     o.countrySubdivision = "foo";
     o.gender = "foo";
-    o.languages = buildUnnamed3605();
+    o.languages = buildUnnamed1660();
     o.mobileAppPanelId = "foo";
     o.populationSource = "foo";
   }
@@ -351,11 +351,11 @@ buildSurveyAudience() {
 checkSurveyAudience(api.SurveyAudience o) {
   buildCounterSurveyAudience++;
   if (buildCounterSurveyAudience < 3) {
-    checkUnnamed3604(o.ages);
+    checkUnnamed1659(o.ages);
     unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.countrySubdivision, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
-    checkUnnamed3605(o.languages);
+    checkUnnamed1660(o.languages);
     unittest.expect(o.mobileAppPanelId, unittest.equals('foo'));
     unittest.expect(o.populationSource, unittest.equals('foo'));
   }
@@ -387,53 +387,53 @@ checkSurveyCost(api.SurveyCost o) {
   buildCounterSurveyCost--;
 }
 
-buildUnnamed3606() {
+buildUnnamed1661() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3606(core.List<core.String> o) {
+checkUnnamed1661(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3607() {
+buildUnnamed1662() {
   var o = new core.List<api.SurveyQuestionImage>();
   o.add(buildSurveyQuestionImage());
   o.add(buildSurveyQuestionImage());
   return o;
 }
 
-checkUnnamed3607(core.List<api.SurveyQuestionImage> o) {
+checkUnnamed1662(core.List<api.SurveyQuestionImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurveyQuestionImage(o[0]);
   checkSurveyQuestionImage(o[1]);
 }
 
-buildUnnamed3608() {
+buildUnnamed1663() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3608(core.List<core.String> o) {
+checkUnnamed1663(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3609() {
+buildUnnamed1664() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3609(core.List<core.String> o) {
+checkUnnamed1664(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -445,20 +445,20 @@ buildSurveyQuestion() {
   buildCounterSurveyQuestion++;
   if (buildCounterSurveyQuestion < 3) {
     o.answerOrder = "foo";
-    o.answers = buildUnnamed3606();
+    o.answers = buildUnnamed1661();
     o.hasOther = true;
     o.highValueLabel = "foo";
-    o.images = buildUnnamed3607();
+    o.images = buildUnnamed1662();
     o.lastAnswerPositionPinned = true;
     o.lowValueLabel = "foo";
     o.mustPickSuggestion = true;
     o.numStars = "foo";
     o.openTextPlaceholder = "foo";
-    o.openTextSuggestions = buildUnnamed3608();
+    o.openTextSuggestions = buildUnnamed1663();
     o.question = "foo";
     o.sentimentText = "foo";
     o.singleLineResponse = true;
-    o.thresholdAnswers = buildUnnamed3609();
+    o.thresholdAnswers = buildUnnamed1664();
     o.type = "foo";
     o.unitOfMeasurementLabel = "foo";
     o.videoId = "foo";
@@ -471,20 +471,20 @@ checkSurveyQuestion(api.SurveyQuestion o) {
   buildCounterSurveyQuestion++;
   if (buildCounterSurveyQuestion < 3) {
     unittest.expect(o.answerOrder, unittest.equals('foo'));
-    checkUnnamed3606(o.answers);
+    checkUnnamed1661(o.answers);
     unittest.expect(o.hasOther, unittest.isTrue);
     unittest.expect(o.highValueLabel, unittest.equals('foo'));
-    checkUnnamed3607(o.images);
+    checkUnnamed1662(o.images);
     unittest.expect(o.lastAnswerPositionPinned, unittest.isTrue);
     unittest.expect(o.lowValueLabel, unittest.equals('foo'));
     unittest.expect(o.mustPickSuggestion, unittest.isTrue);
     unittest.expect(o.numStars, unittest.equals('foo'));
     unittest.expect(o.openTextPlaceholder, unittest.equals('foo'));
-    checkUnnamed3608(o.openTextSuggestions);
+    checkUnnamed1663(o.openTextSuggestions);
     unittest.expect(o.question, unittest.equals('foo'));
     unittest.expect(o.sentimentText, unittest.equals('foo'));
     unittest.expect(o.singleLineResponse, unittest.isTrue);
-    checkUnnamed3609(o.thresholdAnswers);
+    checkUnnamed1664(o.thresholdAnswers);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.unitOfMeasurementLabel, unittest.equals('foo'));
     unittest.expect(o.videoId, unittest.equals('foo'));
@@ -576,14 +576,14 @@ checkSurveysDeleteResponse(api.SurveysDeleteResponse o) {
   buildCounterSurveysDeleteResponse--;
 }
 
-buildUnnamed3610() {
+buildUnnamed1665() {
   var o = new core.List<api.Survey>();
   o.add(buildSurvey());
   o.add(buildSurvey());
   return o;
 }
 
-checkUnnamed3610(core.List<api.Survey> o) {
+checkUnnamed1665(core.List<api.Survey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurvey(o[0]);
   checkSurvey(o[1]);
@@ -596,7 +596,7 @@ buildSurveysListResponse() {
   if (buildCounterSurveysListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.requestId = "foo";
-    o.resources = buildUnnamed3610();
+    o.resources = buildUnnamed1665();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterSurveysListResponse--;
@@ -608,7 +608,7 @@ checkSurveysListResponse(api.SurveysListResponse o) {
   if (buildCounterSurveysListResponse < 3) {
     checkPageInfo(o.pageInfo);
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed3610(o.resources);
+    checkUnnamed1665(o.resources);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterSurveysListResponse--;
@@ -898,7 +898,7 @@ main() {
       }), true);
       res
           .get(arg_panelId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.MobileAppPanel response) {
+          .then(unittest.expectAsync1(((response) {
         checkMobileAppPanel(response);
       })));
     });
@@ -963,8 +963,7 @@ main() {
               startIndex: arg_startIndex,
               token: arg_token,
               $fields: arg_$fields)
-          .then(unittest
-              .expectAsync1(((api.MobileAppPanelsListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkMobileAppPanelsListResponse(response);
       })));
     });
@@ -1025,7 +1024,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_panelId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.MobileAppPanel response) {
+          .then(unittest.expectAsync1(((response) {
         checkMobileAppPanel(response);
       })));
     });
@@ -1096,7 +1095,7 @@ main() {
       }), true);
       res
           .get(arg_request, arg_surveyUrlId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SurveyResults response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurveyResults(response);
       })));
     });
@@ -1154,7 +1153,7 @@ main() {
       }), true);
       res
           .delete(arg_surveyUrlId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SurveysDeleteResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurveysDeleteResponse(response);
       })));
     });
@@ -1210,7 +1209,7 @@ main() {
       }), true);
       res
           .get(arg_surveyUrlId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Survey response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurvey(response);
       })));
     });
@@ -1266,7 +1265,7 @@ main() {
       }), true);
       res
           .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Survey response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurvey(response);
       })));
     });
@@ -1330,7 +1329,7 @@ main() {
               startIndex: arg_startIndex,
               token: arg_token,
               $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SurveysListResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurveysListResponse(response);
       })));
     });
@@ -1396,7 +1395,7 @@ main() {
       }), true);
       res
           .start(arg_request, arg_resourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SurveysStartResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurveysStartResponse(response);
       })));
     });
@@ -1458,7 +1457,7 @@ main() {
       }), true);
       res
           .stop(arg_resourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.SurveysStopResponse response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurveysStopResponse(response);
       })));
     });
@@ -1518,7 +1517,7 @@ main() {
       }), true);
       res
           .update(arg_request, arg_surveyUrlId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((api.Survey response) {
+          .then(unittest.expectAsync1(((response) {
         checkSurvey(response);
       })));
     });

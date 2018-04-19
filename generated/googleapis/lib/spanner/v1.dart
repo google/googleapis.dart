@@ -78,7 +78,7 @@ class ProjectsInstanceConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<InstanceConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -133,7 +133,7 @@ class ProjectsInstanceConfigsResourceApi {
   async.Future<ListInstanceConfigsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -236,7 +236,7 @@ class ProjectsInstancesResourceApi {
       CreateInstanceRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -295,7 +295,7 @@ class ProjectsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -340,7 +340,7 @@ class ProjectsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Instance> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -394,7 +394,7 @@ class ProjectsInstancesResourceApi {
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -477,7 +477,7 @@ class ProjectsInstancesResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -576,7 +576,7 @@ class ProjectsInstancesResourceApi {
   async.Future<Operation> patch(UpdateInstanceRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -633,7 +633,7 @@ class ProjectsInstancesResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -694,7 +694,7 @@ class ProjectsInstancesResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -768,7 +768,7 @@ class ProjectsInstancesDatabasesResourceApi {
       CreateDatabaseRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -817,7 +817,7 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<Empty> dropDatabase(core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -863,7 +863,7 @@ class ProjectsInstancesDatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Database> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -911,7 +911,7 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<GetDatabaseDdlResponse> getDdl(core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -966,7 +966,7 @@ class ProjectsInstancesDatabasesResourceApi {
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1024,7 +1024,7 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<ListDatabasesResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1086,7 +1086,7 @@ class ProjectsInstancesDatabasesResourceApi {
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1149,7 +1149,7 @@ class ProjectsInstancesDatabasesResourceApi {
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1209,7 +1209,7 @@ class ProjectsInstancesDatabasesResourceApi {
       UpdateDatabaseDdlRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1272,7 +1272,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1319,7 +1319,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1365,7 +1365,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1429,7 +1429,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1496,7 +1496,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       BeginTransactionRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1557,7 +1557,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       CommitRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1628,7 +1628,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       CreateSessionRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1677,7 +1677,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1736,7 +1736,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       ExecuteSqlRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1794,7 +1794,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       ExecuteSqlRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1845,7 +1845,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Session> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1913,7 +1913,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1979,7 +1979,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       PartitionQueryRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2040,7 +2040,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       PartitionReadRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2104,7 +2104,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<ResultSet> read(ReadRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2162,7 +2162,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<Empty> rollback(RollbackRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2218,7 +2218,7 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       ReadRequest request, core.String session,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2283,7 +2283,7 @@ class ProjectsInstancesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2330,7 +2330,7 @@ class ProjectsInstancesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2376,7 +2376,7 @@ class ProjectsInstancesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2439,7 +2439,7 @@ class ProjectsInstancesOperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2637,7 +2637,7 @@ class CommitRequest {
   CommitRequest.fromJson(core.Map _json) {
     if (_json.containsKey("mutations")) {
       mutations = _json["mutations"]
-          .map((value) => new Mutation.fromJson(value))
+          .map<Mutation>((value) => new Mutation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("singleUseTransaction")) {
@@ -3510,8 +3510,9 @@ class KeySet {
       keys = _json["keys"];
     }
     if (_json.containsKey("ranges")) {
-      ranges =
-          _json["ranges"].map((value) => new KeyRange.fromJson(value)).toList();
+      ranges = _json["ranges"]
+          .map<KeyRange>((value) => new KeyRange.fromJson(value))
+          .toList();
     }
   }
 
@@ -3546,7 +3547,7 @@ class ListDatabasesResponse {
   ListDatabasesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("databases")) {
       databases = _json["databases"]
-          .map((value) => new Database.fromJson(value))
+          .map<Database>((value) => new Database.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3582,7 +3583,7 @@ class ListInstanceConfigsResponse {
   ListInstanceConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("instanceConfigs")) {
       instanceConfigs = _json["instanceConfigs"]
-          .map((value) => new InstanceConfig.fromJson(value))
+          .map<InstanceConfig>((value) => new InstanceConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3619,7 +3620,7 @@ class ListInstancesResponse {
   ListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
       instances = _json["instances"]
-          .map((value) => new Instance.fromJson(value))
+          .map<Instance>((value) => new Instance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3656,7 +3657,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -3693,7 +3694,7 @@ class ListSessionsResponse {
     }
     if (_json.containsKey("sessions")) {
       sessions = _json["sessions"]
-          .map((value) => new Session.fromJson(value))
+          .map<Session>((value) => new Session.fromJson(value))
           .toList();
     }
   }
@@ -4275,7 +4276,7 @@ class PartitionResponse {
   PartitionResponse.fromJson(core.Map _json) {
     if (_json.containsKey("partitions")) {
       partitions = _json["partitions"]
-          .map((value) => new Partition.fromJson(value))
+          .map<Partition>((value) => new Partition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("transaction")) {
@@ -4356,7 +4357,7 @@ class PlanNode {
   PlanNode.fromJson(core.Map _json) {
     if (_json.containsKey("childLinks")) {
       childLinks = _json["childLinks"]
-          .map((value) => new ChildLink.fromJson(value))
+          .map<ChildLink>((value) => new ChildLink.fromJson(value))
           .toList();
     }
     if (_json.containsKey("displayName")) {
@@ -4476,7 +4477,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = _json["bindings"]
-          .map((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -4515,7 +4516,7 @@ class QueryPlan {
   QueryPlan.fromJson(core.Map _json) {
     if (_json.containsKey("planNodes")) {
       planNodes = _json["planNodes"]
-          .map((value) => new PlanNode.fromJson(value))
+          .map<PlanNode>((value) => new PlanNode.fromJson(value))
           .toList();
     }
   }
@@ -5190,8 +5191,9 @@ class StructType {
 
   StructType.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields =
-          _json["fields"].map((value) => new Field.fromJson(value)).toList();
+      fields = _json["fields"]
+          .map<Field>((value) => new Field.fromJson(value))
+          .toList();
     }
   }
 

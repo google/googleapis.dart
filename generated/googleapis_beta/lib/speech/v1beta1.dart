@@ -58,7 +58,7 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -113,7 +113,7 @@ class SpeechResourceApi {
   async.Future<Operation> asyncrecognize(AsyncRecognizeRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -158,7 +158,7 @@ class SpeechResourceApi {
       SyncRecognizeRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -533,7 +533,8 @@ class SpeechRecognitionResult {
   SpeechRecognitionResult.fromJson(core.Map _json) {
     if (_json.containsKey("alternatives")) {
       alternatives = _json["alternatives"]
-          .map((value) => new SpeechRecognitionAlternative.fromJson(value))
+          .map<SpeechRecognitionAlternative>(
+              (value) => new SpeechRecognitionAlternative.fromJson(value))
           .toList();
     }
   }
@@ -697,7 +698,8 @@ class SyncRecognizeResponse {
   SyncRecognizeResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new SpeechRecognitionResult.fromJson(value))
+          .map<SpeechRecognitionResult>(
+              (value) => new SpeechRecognitionResult.fromJson(value))
           .toList();
     }
   }

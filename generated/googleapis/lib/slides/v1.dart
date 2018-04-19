@@ -105,7 +105,7 @@ class PresentationsResourceApi {
       BatchUpdatePresentationRequest request, core.String presentationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -156,7 +156,7 @@ class PresentationsResourceApi {
   async.Future<Presentation> create(Presentation request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -200,7 +200,7 @@ class PresentationsResourceApi {
   async.Future<Presentation> get(core.String presentationId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -253,7 +253,7 @@ class PresentationsPagesResourceApi {
   async.Future<Page> get(core.String presentationId, core.String pageObjectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -326,7 +326,7 @@ class PresentationsPagesResourceApi {
       core.String thumbnailProperties_thumbnailSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -521,7 +521,7 @@ class BatchUpdatePresentationRequest {
   BatchUpdatePresentationRequest.fromJson(core.Map _json) {
     if (_json.containsKey("requests")) {
       requests = _json["requests"]
-          .map((value) => new Request.fromJson(value))
+          .map<Request>((value) => new Request.fromJson(value))
           .toList();
     }
     if (_json.containsKey("writeControl")) {
@@ -562,7 +562,7 @@ class BatchUpdatePresentationResponse {
     }
     if (_json.containsKey("replies")) {
       replies = _json["replies"]
-          .map((value) => new Response.fromJson(value))
+          .map<Response>((value) => new Response.fromJson(value))
           .toList();
     }
     if (_json.containsKey("writeControl")) {
@@ -646,7 +646,7 @@ class ColorScheme {
   ColorScheme.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = _json["colors"]
-          .map((value) => new ThemeColorPair.fromJson(value))
+          .map<ThemeColorPair>((value) => new ThemeColorPair.fromJson(value))
           .toList();
     }
   }
@@ -1543,7 +1543,8 @@ class CreateSlideRequest {
     }
     if (_json.containsKey("placeholderIdMappings")) {
       placeholderIdMappings = _json["placeholderIdMappings"]
-          .map((value) => new LayoutPlaceholderIdMapping.fromJson(value))
+          .map<LayoutPlaceholderIdMapping>(
+              (value) => new LayoutPlaceholderIdMapping.fromJson(value))
           .toList();
     }
     if (_json.containsKey("slideLayoutReference")) {
@@ -2207,7 +2208,7 @@ class Group {
   Group.fromJson(core.Map _json) {
     if (_json.containsKey("children")) {
       children = _json["children"]
-          .map((value) => new PageElement.fromJson(value))
+          .map<PageElement>((value) => new PageElement.fromJson(value))
           .toList();
     }
   }
@@ -3459,7 +3460,7 @@ class Page {
     }
     if (_json.containsKey("pageElements")) {
       pageElements = _json["pageElements"]
-          .map((value) => new PageElement.fromJson(value))
+          .map<PageElement>((value) => new PageElement.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pageProperties")) {
@@ -4116,15 +4117,17 @@ class Presentation {
 
   Presentation.fromJson(core.Map _json) {
     if (_json.containsKey("layouts")) {
-      layouts =
-          _json["layouts"].map((value) => new Page.fromJson(value)).toList();
+      layouts = _json["layouts"]
+          .map<Page>((value) => new Page.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("locale")) {
       locale = _json["locale"];
     }
     if (_json.containsKey("masters")) {
-      masters =
-          _json["masters"].map((value) => new Page.fromJson(value)).toList();
+      masters = _json["masters"]
+          .map<Page>((value) => new Page.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("notesMaster")) {
       notesMaster = new Page.fromJson(_json["notesMaster"]);
@@ -4139,8 +4142,9 @@ class Presentation {
       revisionId = _json["revisionId"];
     }
     if (_json.containsKey("slides")) {
-      slides =
-          _json["slides"].map((value) => new Page.fromJson(value)).toList();
+      slides = _json["slides"]
+          .map<Page>((value) => new Page.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -4332,7 +4336,7 @@ class Recolor {
     }
     if (_json.containsKey("recolorStops")) {
       recolorStops = _json["recolorStops"]
-          .map((value) => new ColorStop.fromJson(value))
+          .map<ColorStop>((value) => new ColorStop.fromJson(value))
           .toList();
     }
   }
@@ -6243,7 +6247,7 @@ class Table {
     }
     if (_json.containsKey("horizontalBorderRows")) {
       horizontalBorderRows = _json["horizontalBorderRows"]
-          .map((value) => new TableBorderRow.fromJson(value))
+          .map<TableBorderRow>((value) => new TableBorderRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rows")) {
@@ -6251,17 +6255,18 @@ class Table {
     }
     if (_json.containsKey("tableColumns")) {
       tableColumns = _json["tableColumns"]
-          .map((value) => new TableColumnProperties.fromJson(value))
+          .map<TableColumnProperties>(
+              (value) => new TableColumnProperties.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tableRows")) {
       tableRows = _json["tableRows"]
-          .map((value) => new TableRow.fromJson(value))
+          .map<TableRow>((value) => new TableRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("verticalBorderRows")) {
       verticalBorderRows = _json["verticalBorderRows"]
-          .map((value) => new TableBorderRow.fromJson(value))
+          .map<TableBorderRow>((value) => new TableBorderRow.fromJson(value))
           .toList();
     }
   }
@@ -6421,7 +6426,7 @@ class TableBorderRow {
   TableBorderRow.fromJson(core.Map _json) {
     if (_json.containsKey("tableBorderCells")) {
       tableBorderCells = _json["tableBorderCells"]
-          .map((value) => new TableBorderCell.fromJson(value))
+          .map<TableBorderCell>((value) => new TableBorderCell.fromJson(value))
           .toList();
     }
   }
@@ -6735,7 +6740,7 @@ class TableRow {
     }
     if (_json.containsKey("tableCells")) {
       tableCells = _json["tableCells"]
-          .map((value) => new TableCell.fromJson(value))
+          .map<TableCell>((value) => new TableCell.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tableRowProperties")) {
@@ -6807,7 +6812,7 @@ class TextContent {
     }
     if (_json.containsKey("textElements")) {
       textElements = _json["textElements"]
-          .map((value) => new TextElement.fromJson(value))
+          .map<TextElement>((value) => new TextElement.fromJson(value))
           .toList();
     }
   }

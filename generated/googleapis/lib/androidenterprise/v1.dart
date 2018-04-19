@@ -86,7 +86,7 @@ class DevicesResourceApi {
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -149,7 +149,7 @@ class DevicesResourceApi {
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -207,7 +207,7 @@ class DevicesResourceApi {
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -270,7 +270,7 @@ class DevicesResourceApi {
       core.String userId, core.String deviceId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -341,7 +341,7 @@ class DevicesResourceApi {
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -412,7 +412,7 @@ class DevicesResourceApi {
       core.String userId, core.String deviceId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -479,7 +479,7 @@ class EnterprisesResourceApi {
   async.Future acknowledgeNotificationSet(
       {core.String notificationSetId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -531,7 +531,7 @@ class EnterprisesResourceApi {
       core.String enterpriseToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -583,7 +583,7 @@ class EnterprisesResourceApi {
       AdministratorWebTokenSpec request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -631,7 +631,7 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String enterpriseId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -678,7 +678,7 @@ class EnterprisesResourceApi {
   async.Future<Enterprise> enroll(Enterprise request, core.String token,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -733,7 +733,7 @@ class EnterprisesResourceApi {
   async.Future<SignupInfo> generateSignupUrl(
       {core.String callbackUrl, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -776,7 +776,7 @@ class EnterprisesResourceApi {
   async.Future<Enterprise> get(core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -820,7 +820,7 @@ class EnterprisesResourceApi {
       core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -886,7 +886,7 @@ class EnterprisesResourceApi {
   async.Future<ServiceAccount> getServiceAccount(core.String enterpriseId,
       {core.String keyType, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -935,7 +935,7 @@ class EnterprisesResourceApi {
   async.Future<StoreLayout> getStoreLayout(core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -983,7 +983,7 @@ class EnterprisesResourceApi {
   async.Future<Enterprise> insert(Enterprise request, core.String token,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1034,7 +1034,7 @@ class EnterprisesResourceApi {
   async.Future<EnterprisesListResponse> list(core.String domain,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1104,7 +1104,7 @@ class EnterprisesResourceApi {
   async.Future<NotificationSet> pullNotificationSet(
       {core.String requestMode, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1149,7 +1149,7 @@ class EnterprisesResourceApi {
       sendTestPushNotification(core.String enterpriseId,
           {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1199,7 +1199,7 @@ class EnterprisesResourceApi {
       EnterpriseAccount request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1253,7 +1253,7 @@ class EnterprisesResourceApi {
       AndroidDevicePolicyConfig request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1311,7 +1311,7 @@ class EnterprisesResourceApi {
       StoreLayout request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1356,7 +1356,7 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future unenroll(core.String enterpriseId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1413,7 +1413,7 @@ class EntitlementsResourceApi {
       core.String enterpriseId, core.String userId, core.String entitlementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1475,7 +1475,7 @@ class EntitlementsResourceApi {
       core.String enterpriseId, core.String userId, core.String entitlementId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1532,7 +1532,7 @@ class EntitlementsResourceApi {
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1597,7 +1597,7 @@ class EntitlementsResourceApi {
       core.String userId, core.String entitlementId,
       {core.bool install, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1670,7 +1670,7 @@ class EntitlementsResourceApi {
       core.String enterpriseId, core.String userId, core.String entitlementId,
       {core.bool install, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1740,7 +1740,7 @@ class GrouplicensesResourceApi {
       core.String enterpriseId, core.String groupLicenseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1790,7 +1790,7 @@ class GrouplicensesResourceApi {
   async.Future<GroupLicensesListResponse> list(core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1848,7 +1848,7 @@ class GrouplicenseusersResourceApi {
       core.String enterpriseId, core.String groupLicenseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1912,7 +1912,7 @@ class InstallsResourceApi {
       core.String deviceId, core.String installId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1981,7 +1981,7 @@ class InstallsResourceApi {
       core.String deviceId, core.String installId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2045,7 +2045,7 @@ class InstallsResourceApi {
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2112,7 +2112,7 @@ class InstallsResourceApi {
       core.String userId, core.String deviceId, core.String installId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2186,7 +2186,7 @@ class InstallsResourceApi {
       core.String userId, core.String deviceId, core.String installId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2262,7 +2262,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String deviceId, core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2335,7 +2335,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2401,7 +2401,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2472,7 +2472,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2550,7 +2550,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2625,7 +2625,7 @@ class ManagedconfigurationsforuserResourceApi {
       core.String managedConfigurationForUserId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2689,7 +2689,7 @@ class ManagedconfigurationsforuserResourceApi {
       core.String userId, core.String managedConfigurationForUserId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2748,7 +2748,7 @@ class ManagedconfigurationsforuserResourceApi {
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2815,7 +2815,7 @@ class ManagedconfigurationsforuserResourceApi {
       core.String managedConfigurationForUserId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2889,7 +2889,7 @@ class ManagedconfigurationsforuserResourceApi {
       core.String managedConfigurationForUserId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2959,7 +2959,7 @@ class ManagedconfigurationssettingsResourceApi {
       core.String enterpriseId, core.String productId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3020,7 +3020,7 @@ class PermissionsResourceApi {
   async.Future<Permission> get(core.String permissionId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3081,7 +3081,7 @@ class ProductsResourceApi {
       core.String productId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3151,7 +3151,7 @@ class ProductsResourceApi {
       core.String enterpriseId, core.String productId,
       {core.String languageCode, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3210,7 +3210,7 @@ class ProductsResourceApi {
   async.Future<Product> get(core.String enterpriseId, core.String productId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3273,7 +3273,7 @@ class ProductsResourceApi {
       core.String enterpriseId, core.String productId,
       {core.String language, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3329,7 +3329,7 @@ class ProductsResourceApi {
       core.String enterpriseId, core.String productId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3407,7 +3407,7 @@ class ProductsResourceApi {
       core.String token,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3468,7 +3468,7 @@ class ProductsResourceApi {
   async.Future unapprove(core.String enterpriseId, core.String productId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3530,7 +3530,7 @@ class ServiceaccountkeysResourceApi {
   async.Future delete(core.String enterpriseId, core.String keyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3590,7 +3590,7 @@ class ServiceaccountkeysResourceApi {
       ServiceAccountKey request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3642,7 +3642,7 @@ class ServiceaccountkeysResourceApi {
   async.Future<ServiceAccountKeysListResponse> list(core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3698,7 +3698,7 @@ class StorelayoutclustersResourceApi {
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3759,7 +3759,7 @@ class StorelayoutclustersResourceApi {
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3818,7 +3818,7 @@ class StorelayoutclustersResourceApi {
       StoreCluster request, core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3874,7 +3874,7 @@ class StorelayoutclustersResourceApi {
       core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3932,7 +3932,7 @@ class StorelayoutclustersResourceApi {
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3996,7 +3996,7 @@ class StorelayoutclustersResourceApi {
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4060,7 +4060,7 @@ class StorelayoutpagesResourceApi {
   async.Future delete(core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4113,7 +4113,7 @@ class StorelayoutpagesResourceApi {
   async.Future<StorePage> get(core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4164,7 +4164,7 @@ class StorelayoutpagesResourceApi {
   async.Future<StorePage> insert(StorePage request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4212,7 +4212,7 @@ class StorelayoutpagesResourceApi {
   async.Future<StoreLayoutPagesListResponse> list(core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4263,7 +4263,7 @@ class StorelayoutpagesResourceApi {
       StorePage request, core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4320,7 +4320,7 @@ class StorelayoutpagesResourceApi {
       StorePage request, core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4378,7 +4378,7 @@ class UsersResourceApi {
   async.Future delete(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4436,7 +4436,7 @@ class UsersResourceApi {
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4493,7 +4493,7 @@ class UsersResourceApi {
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4545,7 +4545,7 @@ class UsersResourceApi {
   async.Future<User> get(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4597,7 +4597,7 @@ class UsersResourceApi {
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4655,7 +4655,7 @@ class UsersResourceApi {
   async.Future<User> insert(User request, core.String enterpriseId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4708,7 +4708,7 @@ class UsersResourceApi {
       core.String enterpriseId, core.String email,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4767,7 +4767,7 @@ class UsersResourceApi {
       User request, core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4823,7 +4823,7 @@ class UsersResourceApi {
   async.Future revokeDeviceAccess(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4875,7 +4875,7 @@ class UsersResourceApi {
   async.Future revokeToken(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4935,7 +4935,7 @@ class UsersResourceApi {
       ProductSet request, core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4998,7 +4998,7 @@ class UsersResourceApi {
       User request, core.String enterpriseId, core.String userId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5191,7 +5191,8 @@ class AppRestrictionsSchema {
     }
     if (_json.containsKey("restrictions")) {
       restrictions = _json["restrictions"]
-          .map((value) => new AppRestrictionsSchemaRestriction.fromJson(value))
+          .map<AppRestrictionsSchemaRestriction>(
+              (value) => new AppRestrictionsSchemaRestriction.fromJson(value))
           .toList();
     }
   }
@@ -5294,7 +5295,8 @@ class AppRestrictionsSchemaRestriction {
     }
     if (_json.containsKey("nestedRestriction")) {
       nestedRestriction = _json["nestedRestriction"]
-          .map((value) => new AppRestrictionsSchemaRestriction.fromJson(value))
+          .map<AppRestrictionsSchemaRestriction>(
+              (value) => new AppRestrictionsSchemaRestriction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("restrictionType")) {
@@ -5565,7 +5567,7 @@ class ConfigurationVariables {
     }
     if (_json.containsKey("variableSet")) {
       variableSet = _json["variableSet"]
-          .map((value) => new VariableSet.fromJson(value))
+          .map<VariableSet>((value) => new VariableSet.fromJson(value))
           .toList();
     }
   }
@@ -5702,8 +5704,9 @@ class DevicesListResponse {
 
   DevicesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("device")) {
-      device =
-          _json["device"].map((value) => new Device.fromJson(value)).toList();
+      device = _json["device"]
+          .map<Device>((value) => new Device.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5759,7 +5762,7 @@ class Enterprise {
   Enterprise.fromJson(core.Map _json) {
     if (_json.containsKey("administrator")) {
       administrator = _json["administrator"]
-          .map((value) => new Administrator.fromJson(value))
+          .map<Administrator>((value) => new Administrator.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -5847,7 +5850,7 @@ class EnterprisesListResponse {
   EnterprisesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("enterprise")) {
       enterprise = _json["enterprise"]
-          .map((value) => new Enterprise.fromJson(value))
+          .map<Enterprise>((value) => new Enterprise.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5985,7 +5988,7 @@ class EntitlementsListResponse {
   EntitlementsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entitlement")) {
       entitlement = _json["entitlement"]
-          .map((value) => new Entitlement.fromJson(value))
+          .map<Entitlement>((value) => new Entitlement.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6137,7 +6140,8 @@ class GroupLicenseUsersListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("user")) {
-      user = _json["user"].map((value) => new User.fromJson(value)).toList();
+      user =
+          _json["user"].map<User>((value) => new User.fromJson(value)).toList();
     }
   }
 
@@ -6168,7 +6172,7 @@ class GroupLicensesListResponse {
   GroupLicensesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("groupLicense")) {
       groupLicense = _json["groupLicense"]
-          .map((value) => new GroupLicense.fromJson(value))
+          .map<GroupLicense>((value) => new GroupLicense.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6345,8 +6349,9 @@ class InstallsListResponse {
 
   InstallsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("install")) {
-      install =
-          _json["install"].map((value) => new Install.fromJson(value)).toList();
+      install = _json["install"]
+          .map<Install>((value) => new Install.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6429,7 +6434,7 @@ class ManagedConfiguration {
     }
     if (_json.containsKey("managedProperty")) {
       managedProperty = _json["managedProperty"]
-          .map((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productId")) {
@@ -6474,7 +6479,8 @@ class ManagedConfigurationsForDeviceListResponse {
     }
     if (_json.containsKey("managedConfigurationForDevice")) {
       managedConfigurationForDevice = _json["managedConfigurationForDevice"]
-          .map((value) => new ManagedConfiguration.fromJson(value))
+          .map<ManagedConfiguration>(
+              (value) => new ManagedConfiguration.fromJson(value))
           .toList();
     }
   }
@@ -6511,7 +6517,8 @@ class ManagedConfigurationsForUserListResponse {
     }
     if (_json.containsKey("managedConfigurationForUser")) {
       managedConfigurationForUser = _json["managedConfigurationForUser"]
-          .map((value) => new ManagedConfiguration.fromJson(value))
+          .map<ManagedConfiguration>(
+              (value) => new ManagedConfiguration.fromJson(value))
           .toList();
     }
   }
@@ -6563,7 +6570,7 @@ class ManagedConfigurationsSettings {
     }
     if (_json.containsKey("managedProperty")) {
       managedProperty = _json["managedProperty"]
-          .map((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mcmId")) {
@@ -6615,7 +6622,8 @@ class ManagedConfigurationsSettingsListResponse {
     }
     if (_json.containsKey("managedConfigurationsSettings")) {
       managedConfigurationsSettings = _json["managedConfigurationsSettings"]
-          .map((value) => new ManagedConfigurationsSettings.fromJson(value))
+          .map<ManagedConfigurationsSettings>(
+              (value) => new ManagedConfigurationsSettings.fromJson(value))
           .toList();
     }
   }
@@ -6681,7 +6689,8 @@ class ManagedProperty {
     }
     if (_json.containsKey("valueBundleArray")) {
       valueBundleArray = _json["valueBundleArray"]
-          .map((value) => new ManagedPropertyBundle.fromJson(value))
+          .map<ManagedPropertyBundle>(
+              (value) => new ManagedPropertyBundle.fromJson(value))
           .toList();
     }
     if (_json.containsKey("valueInteger")) {
@@ -6734,7 +6743,7 @@ class ManagedPropertyBundle {
   ManagedPropertyBundle.fromJson(core.Map _json) {
     if (_json.containsKey("managedProperty")) {
       managedProperty = _json["managedProperty"]
-          .map((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
   }
@@ -6990,7 +6999,7 @@ class NotificationSet {
     }
     if (_json.containsKey("notification")) {
       notification = _json["notification"]
-          .map((value) => new Notification.fromJson(value))
+          .map<Notification>((value) => new Notification.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notificationSetId")) {
@@ -7133,7 +7142,7 @@ class Policy {
     }
     if (_json.containsKey("productPolicy")) {
       productPolicy = _json["productPolicy"]
-          .map((value) => new ProductPolicy.fromJson(value))
+          .map<ProductPolicy>((value) => new ProductPolicy.fromJson(value))
           .toList();
     }
   }
@@ -7249,7 +7258,7 @@ class Product {
   Product.fromJson(core.Map _json) {
     if (_json.containsKey("appVersion")) {
       appVersion = _json["appVersion"]
-          .map((value) => new AppVersion.fromJson(value))
+          .map<AppVersion>((value) => new AppVersion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("authorName")) {
@@ -7290,7 +7299,8 @@ class Product {
     }
     if (_json.containsKey("permissions")) {
       permissions = _json["permissions"]
-          .map((value) => new ProductPermission.fromJson(value))
+          .map<ProductPermission>(
+              (value) => new ProductPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productId")) {
@@ -7527,7 +7537,8 @@ class ProductPermissions {
     }
     if (_json.containsKey("permission")) {
       permission = _json["permission"]
-          .map((value) => new ProductPermission.fromJson(value))
+          .map<ProductPermission>(
+              (value) => new ProductPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productId")) {
@@ -7643,7 +7654,8 @@ class ProductSet {
     }
     if (_json.containsKey("productVisibility")) {
       productVisibility = _json["productVisibility"]
-          .map((value) => new ProductVisibility.fromJson(value))
+          .map<ProductVisibility>(
+              (value) => new ProductVisibility.fromJson(value))
           .toList();
     }
   }
@@ -7844,8 +7856,9 @@ class ProductsListResponse {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("product")) {
-      product =
-          _json["product"].map((value) => new Product.fromJson(value)).toList();
+      product = _json["product"]
+          .map<Product>((value) => new Product.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tokenPagination")) {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
@@ -7990,7 +8003,8 @@ class ServiceAccountKeysListResponse {
   ServiceAccountKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("serviceAccountKey")) {
       serviceAccountKey = _json["serviceAccountKey"]
-          .map((value) => new ServiceAccountKey.fromJson(value))
+          .map<ServiceAccountKey>(
+              (value) => new ServiceAccountKey.fromJson(value))
           .toList();
     }
   }
@@ -8091,7 +8105,7 @@ class StoreCluster {
     }
     if (_json.containsKey("name")) {
       name = _json["name"]
-          .map((value) => new LocalizedText.fromJson(value))
+          .map<LocalizedText>((value) => new LocalizedText.fromJson(value))
           .toList();
     }
     if (_json.containsKey("orderInPage")) {
@@ -8188,7 +8202,7 @@ class StoreLayoutClustersListResponse {
   StoreLayoutClustersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cluster")) {
       cluster = _json["cluster"]
-          .map((value) => new StoreCluster.fromJson(value))
+          .map<StoreCluster>((value) => new StoreCluster.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -8225,8 +8239,9 @@ class StoreLayoutPagesListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("page")) {
-      page =
-          _json["page"].map((value) => new StorePage.fromJson(value)).toList();
+      page = _json["page"]
+          .map<StorePage>((value) => new StorePage.fromJson(value))
+          .toList();
     }
   }
 
@@ -8283,7 +8298,7 @@ class StorePage {
     }
     if (_json.containsKey("name")) {
       name = _json["name"]
-          .map((value) => new LocalizedText.fromJson(value))
+          .map<LocalizedText>((value) => new LocalizedText.fromJson(value))
           .toList();
     }
   }
@@ -8497,7 +8512,8 @@ class UsersListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("user")) {
-      user = _json["user"].map((value) => new User.fromJson(value)).toList();
+      user =
+          _json["user"].map<User>((value) => new User.fromJson(value)).toList();
     }
   }
 

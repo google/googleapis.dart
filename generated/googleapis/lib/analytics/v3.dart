@@ -162,7 +162,7 @@ class DataGaResourceApi {
       core.int start_index,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -302,7 +302,7 @@ class DataMcfResourceApi {
       core.int start_index,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -406,7 +406,7 @@ class DataRealtimeResourceApi {
       core.String sort,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -523,7 +523,7 @@ class ManagementAccountSummariesResourceApi {
   async.Future<AccountSummaries> list(
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -576,7 +576,7 @@ class ManagementAccountUserLinksResourceApi {
   async.Future delete(core.String accountId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -630,7 +630,7 @@ class ManagementAccountUserLinksResourceApi {
       EntityUserLink request, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -685,7 +685,7 @@ class ManagementAccountUserLinksResourceApi {
   async.Future<EntityUserLinks> list(core.String accountId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -741,7 +741,7 @@ class ManagementAccountUserLinksResourceApi {
       EntityUserLink request, core.String accountId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -804,7 +804,7 @@ class ManagementAccountsResourceApi {
   async.Future<Accounts> list(
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -869,7 +869,7 @@ class ManagementCustomDataSourcesResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -937,7 +937,7 @@ class ManagementCustomDimensionsResourceApi {
       core.String webPropertyId, core.String customDimensionId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -996,7 +996,7 @@ class ManagementCustomDimensionsResourceApi {
       CustomDimension request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1058,7 +1058,7 @@ class ManagementCustomDimensionsResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1131,7 +1131,7 @@ class ManagementCustomDimensionsResourceApi {
       {core.bool ignoreCustomDataSourceLinks,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1209,7 +1209,7 @@ class ManagementCustomDimensionsResourceApi {
       {core.bool ignoreCustomDataSourceLinks,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1283,7 +1283,7 @@ class ManagementCustomMetricsResourceApi {
       core.String webPropertyId, core.String customMetricId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1342,7 +1342,7 @@ class ManagementCustomMetricsResourceApi {
       CustomMetric request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1404,7 +1404,7 @@ class ManagementCustomMetricsResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1471,7 +1471,7 @@ class ManagementCustomMetricsResourceApi {
       core.String webPropertyId, core.String customMetricId,
       {core.bool ignoreCustomDataSourceLinks, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1544,7 +1544,7 @@ class ManagementCustomMetricsResourceApi {
       core.String webPropertyId, core.String customMetricId,
       {core.bool ignoreCustomDataSourceLinks, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1618,7 +1618,7 @@ class ManagementExperimentsResourceApi {
       core.String profileId, core.String experimentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1686,7 +1686,7 @@ class ManagementExperimentsResourceApi {
       core.String profileId, core.String experimentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1752,7 +1752,7 @@ class ManagementExperimentsResourceApi {
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1824,7 +1824,7 @@ class ManagementExperimentsResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1898,7 +1898,7 @@ class ManagementExperimentsResourceApi {
       core.String experimentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1973,7 +1973,7 @@ class ManagementExperimentsResourceApi {
       core.String experimentId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2044,7 +2044,7 @@ class ManagementFiltersResourceApi {
   async.Future<Filter> delete(core.String accountId, core.String filterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2095,7 +2095,7 @@ class ManagementFiltersResourceApi {
   async.Future<Filter> get(core.String accountId, core.String filterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2146,7 +2146,7 @@ class ManagementFiltersResourceApi {
   async.Future<Filter> insert(Filter request, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2200,7 +2200,7 @@ class ManagementFiltersResourceApi {
   async.Future<Filters> list(core.String accountId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2256,7 +2256,7 @@ class ManagementFiltersResourceApi {
       Filter request, core.String accountId, core.String filterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2313,7 +2313,7 @@ class ManagementFiltersResourceApi {
       Filter request, core.String accountId, core.String filterId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2378,7 +2378,7 @@ class ManagementGoalsResourceApi {
       core.String profileId, core.String goalId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2444,7 +2444,7 @@ class ManagementGoalsResourceApi {
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2518,7 +2518,7 @@ class ManagementGoalsResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2588,7 +2588,7 @@ class ManagementGoalsResourceApi {
       core.String webPropertyId, core.String profileId, core.String goalId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2659,7 +2659,7 @@ class ManagementGoalsResourceApi {
       core.String webPropertyId, core.String profileId, core.String goalId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2738,7 +2738,7 @@ class ManagementProfileFilterLinksResourceApi {
       core.String profileId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2810,7 +2810,7 @@ class ManagementProfileFilterLinksResourceApi {
       core.String webPropertyId, core.String profileId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2879,7 +2879,7 @@ class ManagementProfileFilterLinksResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2953,7 +2953,7 @@ class ManagementProfileFilterLinksResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3032,7 +3032,7 @@ class ManagementProfileFilterLinksResourceApi {
       core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3111,7 +3111,7 @@ class ManagementProfileFilterLinksResourceApi {
       core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3185,7 +3185,7 @@ class ManagementProfileUserLinksResourceApi {
       core.String profileId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3253,7 +3253,7 @@ class ManagementProfileUserLinksResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3327,7 +3327,7 @@ class ManagementProfileUserLinksResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3401,7 +3401,7 @@ class ManagementProfileUserLinksResourceApi {
       core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3473,7 +3473,7 @@ class ManagementProfilesResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3537,7 +3537,7 @@ class ManagementProfilesResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3596,7 +3596,7 @@ class ManagementProfilesResourceApi {
       Profile request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3661,7 +3661,7 @@ class ManagementProfilesResourceApi {
   async.Future<Profiles> list(core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3724,7 +3724,7 @@ class ManagementProfilesResourceApi {
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3788,7 +3788,7 @@ class ManagementProfilesResourceApi {
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3856,7 +3856,7 @@ class ManagementRemarketingAudienceResourceApi {
       core.String remarketingAudienceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3919,7 +3919,7 @@ class ManagementRemarketingAudienceResourceApi {
       core.String webPropertyId, core.String remarketingAudienceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -3980,7 +3980,7 @@ class ManagementRemarketingAudienceResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4048,7 +4048,7 @@ class ManagementRemarketingAudienceResourceApi {
       core.String type,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4119,7 +4119,7 @@ class ManagementRemarketingAudienceResourceApi {
       core.String remarketingAudienceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4188,7 +4188,7 @@ class ManagementRemarketingAudienceResourceApi {
       core.String remarketingAudienceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4257,7 +4257,7 @@ class ManagementSegmentsResourceApi {
   async.Future<Segments> list(
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4315,7 +4315,7 @@ class ManagementUnsampledReportsResourceApi {
       core.String profileId, core.String unsampledReportId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4386,7 +4386,7 @@ class ManagementUnsampledReportsResourceApi {
       core.String unsampledReportId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4452,7 +4452,7 @@ class ManagementUnsampledReportsResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4525,7 +4525,7 @@ class ManagementUnsampledReportsResourceApi {
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4605,7 +4605,7 @@ class ManagementUploadsResourceApi {
       core.String customDataSourceId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4676,7 +4676,7 @@ class ManagementUploadsResourceApi {
       core.String customDataSourceId, core.String uploadId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4748,7 +4748,7 @@ class ManagementUploadsResourceApi {
       core.String customDataSourceId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4825,7 +4825,7 @@ class ManagementUploadsResourceApi {
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4911,7 +4911,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -4973,7 +4973,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String webPropertyId, core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5033,7 +5033,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5097,7 +5097,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5164,7 +5164,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5232,7 +5232,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5302,7 +5302,7 @@ class ManagementWebpropertiesResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5355,7 +5355,7 @@ class ManagementWebpropertiesResourceApi {
   async.Future<Webproperty> insert(Webproperty request, core.String accountId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5411,7 +5411,7 @@ class ManagementWebpropertiesResourceApi {
   async.Future<Webproperties> list(core.String accountId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5467,7 +5467,7 @@ class ManagementWebpropertiesResourceApi {
       Webproperty request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5524,7 +5524,7 @@ class ManagementWebpropertiesResourceApi {
       Webproperty request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5586,7 +5586,7 @@ class ManagementWebpropertyUserLinksResourceApi {
       core.String accountId, core.String webPropertyId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5647,7 +5647,7 @@ class ManagementWebpropertyUserLinksResourceApi {
       EntityUserLink request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5712,7 +5712,7 @@ class ManagementWebpropertyUserLinksResourceApi {
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5775,7 +5775,7 @@ class ManagementWebpropertyUserLinksResourceApi {
       core.String accountId, core.String webPropertyId, core.String linkId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5848,7 +5848,7 @@ class MetadataColumnsResourceApi {
   /// this method will complete with the same error.
   async.Future<Columns> list(core.String reportType, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5898,7 +5898,7 @@ class ProvisioningResourceApi {
   async.Future<AccountTicket> createAccountTicket(AccountTicket request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -5942,7 +5942,7 @@ class ProvisioningResourceApi {
       AccountTreeRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -6208,7 +6208,7 @@ class AccountSummaries {
   AccountSummaries.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new AccountSummary.fromJson(value))
+          .map<AccountSummary>((value) => new AccountSummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -6300,7 +6300,8 @@ class AccountSummary {
     }
     if (_json.containsKey("webProperties")) {
       webProperties = _json["webProperties"]
-          .map((value) => new WebPropertySummary.fromJson(value))
+          .map<WebPropertySummary>(
+              (value) => new WebPropertySummary.fromJson(value))
           .toList();
     }
   }
@@ -6679,8 +6680,9 @@ class Accounts {
 
   Accounts.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Account.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Account>((value) => new Account.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];
@@ -6870,8 +6872,9 @@ class Columns {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Column.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Column>((value) => new Column.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7162,7 +7165,8 @@ class CustomDataSources {
   CustomDataSources.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CustomDataSource.fromJson(value))
+          .map<CustomDataSource>(
+              (value) => new CustomDataSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -7414,7 +7418,7 @@ class CustomDimensions {
   CustomDimensions.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CustomDimension.fromJson(value))
+          .map<CustomDimension>((value) => new CustomDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -7693,7 +7697,7 @@ class CustomMetrics {
   CustomMetrics.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new CustomMetric.fromJson(value))
+          .map<CustomMetric>((value) => new CustomMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -7801,7 +7805,7 @@ class EntityAdWordsLink {
   EntityAdWordsLink.fromJson(core.Map _json) {
     if (_json.containsKey("adWordsAccounts")) {
       adWordsAccounts = _json["adWordsAccounts"]
-          .map((value) => new AdWordsAccount.fromJson(value))
+          .map<AdWordsAccount>((value) => new AdWordsAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("entity")) {
@@ -7887,7 +7891,8 @@ class EntityAdWordsLinks {
   EntityAdWordsLinks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new EntityAdWordsLink.fromJson(value))
+          .map<EntityAdWordsLink>(
+              (value) => new EntityAdWordsLink.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -8122,7 +8127,7 @@ class EntityUserLinks {
   EntityUserLinks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new EntityUserLink.fromJson(value))
+          .map<EntityUserLink>((value) => new EntityUserLink.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -8487,7 +8492,8 @@ class Experiment {
     }
     if (_json.containsKey("variations")) {
       variations = _json["variations"]
-          .map((value) => new ExperimentVariations.fromJson(value))
+          .map<ExperimentVariations>(
+              (value) => new ExperimentVariations.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webPropertyId")) {
@@ -8631,7 +8637,7 @@ class Experiments {
   Experiments.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Experiment.fromJson(value))
+          .map<Experiment>((value) => new Experiment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -9390,8 +9396,9 @@ class Filters {
 
   Filters.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Filter.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Filter>((value) => new Filter.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];
@@ -9553,7 +9560,8 @@ class GaDataDataTableRows {
   GaDataDataTableRows.fromJson(core.Map _json) {
     if (_json.containsKey("c")) {
       c = _json["c"]
-          .map((value) => new GaDataDataTableRowsC.fromJson(value))
+          .map<GaDataDataTableRowsC>(
+              (value) => new GaDataDataTableRowsC.fromJson(value))
           .toList();
     }
   }
@@ -9577,12 +9585,14 @@ class GaDataDataTable {
   GaDataDataTable.fromJson(core.Map _json) {
     if (_json.containsKey("cols")) {
       cols = _json["cols"]
-          .map((value) => new GaDataDataTableCols.fromJson(value))
+          .map<GaDataDataTableCols>(
+              (value) => new GaDataDataTableCols.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rows")) {
       rows = _json["rows"]
-          .map((value) => new GaDataDataTableRows.fromJson(value))
+          .map<GaDataDataTableRows>(
+              (value) => new GaDataDataTableRows.fromJson(value))
           .toList();
     }
   }
@@ -9848,7 +9858,8 @@ class GaData {
   GaData.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
       columnHeaders = _json["columnHeaders"]
-          .map((value) => new GaDataColumnHeaders.fromJson(value))
+          .map<GaDataColumnHeaders>(
+              (value) => new GaDataColumnHeaders.fromJson(value))
           .toList();
     }
     if (_json.containsKey("containsSampledData")) {
@@ -10033,7 +10044,8 @@ class GoalEventDetails {
   GoalEventDetails.fromJson(core.Map _json) {
     if (_json.containsKey("eventConditions")) {
       eventConditions = _json["eventConditions"]
-          .map((value) => new GoalEventDetailsEventConditions.fromJson(value))
+          .map<GoalEventDetailsEventConditions>(
+              (value) => new GoalEventDetailsEventConditions.fromJson(value))
           .toList();
     }
     if (_json.containsKey("useEventValue")) {
@@ -10160,7 +10172,8 @@ class GoalUrlDestinationDetails {
     }
     if (_json.containsKey("steps")) {
       steps = _json["steps"]
-          .map((value) => new GoalUrlDestinationDetailsSteps.fromJson(value))
+          .map<GoalUrlDestinationDetailsSteps>(
+              (value) => new GoalUrlDestinationDetailsSteps.fromJson(value))
           .toList();
     }
     if (_json.containsKey("url")) {
@@ -10473,7 +10486,9 @@ class Goals {
 
   Goals.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Goal.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Goal>((value) => new Goal.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];
@@ -10972,7 +10987,8 @@ class McfDataRows {
   McfDataRows.fromJson(core.Map _json) {
     if (_json.containsKey("conversionPathValue")) {
       conversionPathValue = _json["conversionPathValue"]
-          .map((value) => new McfDataRowsConversionPathValue.fromJson(value))
+          .map<McfDataRowsConversionPathValue>(
+              (value) => new McfDataRowsConversionPathValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("primitiveValue")) {
@@ -11056,7 +11072,8 @@ class McfData {
   McfData.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
       columnHeaders = _json["columnHeaders"]
-          .map((value) => new McfDataColumnHeaders.fromJson(value))
+          .map<McfDataColumnHeaders>(
+              (value) => new McfDataColumnHeaders.fromJson(value))
           .toList();
     }
     if (_json.containsKey("containsSampledData")) {
@@ -11085,8 +11102,9 @@ class McfData {
     }
     if (_json.containsKey("rows")) {
       rows = _json["rows"]
-          .map((value) =>
-              value.map((value) => new McfDataRows.fromJson(value)).toList())
+          .map<core.List<McfDataRows>>((value) => value
+              .map<McfDataRows>((value) => new McfDataRows.fromJson(value))
+              .toList())
           .toList();
     }
     if (_json.containsKey("sampleSize")) {
@@ -11631,7 +11649,8 @@ class ProfileFilterLinks {
   ProfileFilterLinks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new ProfileFilterLink.fromJson(value))
+          .map<ProfileFilterLink>(
+              (value) => new ProfileFilterLink.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -11863,8 +11882,9 @@ class Profiles {
 
   Profiles.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Profile.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Profile>((value) => new Profile.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];
@@ -12140,7 +12160,8 @@ class RealtimeData {
   RealtimeData.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
       columnHeaders = _json["columnHeaders"]
-          .map((value) => new RealtimeDataColumnHeaders.fromJson(value))
+          .map<RealtimeDataColumnHeaders>(
+              (value) => new RealtimeDataColumnHeaders.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -12379,7 +12400,8 @@ class RemarketingAudience {
     }
     if (_json.containsKey("linkedAdAccounts")) {
       linkedAdAccounts = _json["linkedAdAccounts"]
-          .map((value) => new LinkedForeignAccount.fromJson(value))
+          .map<LinkedForeignAccount>(
+              (value) => new LinkedForeignAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("linkedViews")) {
@@ -12490,7 +12512,8 @@ class RemarketingAudiences {
   RemarketingAudiences.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new RemarketingAudience.fromJson(value))
+          .map<RemarketingAudience>(
+              (value) => new RemarketingAudience.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -12679,8 +12702,9 @@ class Segments {
 
   Segments.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Segment.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Segment>((value) => new Segment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];
@@ -13024,7 +13048,7 @@ class UnsampledReports {
   UnsampledReports.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new UnsampledReport.fromJson(value))
+          .map<UnsampledReport>((value) => new UnsampledReport.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
@@ -13193,8 +13217,9 @@ class Uploads {
 
   Uploads.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Upload.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Upload>((value) => new Upload.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];
@@ -13398,7 +13423,7 @@ class WebPropertySummary {
     }
     if (_json.containsKey("profiles")) {
       profiles = _json["profiles"]
-          .map((value) => new ProfileSummary.fromJson(value))
+          .map<ProfileSummary>((value) => new ProfileSummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("starred")) {
@@ -13478,7 +13503,7 @@ class Webproperties {
   Webproperties.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new Webproperty.fromJson(value))
+          .map<Webproperty>((value) => new Webproperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("itemsPerPage")) {

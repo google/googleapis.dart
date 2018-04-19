@@ -53,7 +53,7 @@ class Oauth2Api {
   /// this method will complete with the same error.
   async.Future<Jwk> getCertForOpenIdConnect({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -98,7 +98,7 @@ class Oauth2Api {
       core.String tokenHandle,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -150,7 +150,7 @@ class UserinfoResourceApi {
   /// this method will complete with the same error.
   async.Future<Userinfoplus> get({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -199,7 +199,7 @@ class UserinfoV2MeResourceApi {
   /// this method will complete with the same error.
   async.Future<Userinfoplus> get({core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -284,7 +284,9 @@ class Jwk {
 
   Jwk.fromJson(core.Map _json) {
     if (_json.containsKey("keys")) {
-      keys = _json["keys"].map((value) => new JwkKeys.fromJson(value)).toList();
+      keys = _json["keys"]
+          .map<JwkKeys>((value) => new JwkKeys.fromJson(value))
+          .toList();
     }
   }
 

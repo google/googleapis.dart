@@ -61,7 +61,7 @@ class UrlResourceApi {
   async.Future<Url> get(core.String shortUrl,
       {core.String projection, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -107,7 +107,7 @@ class UrlResourceApi {
   /// this method will complete with the same error.
   async.Future<Url> insert(Url request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -155,7 +155,7 @@ class UrlResourceApi {
   async.Future<UrlHistory> list(
       {core.String projection, core.String start_token, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -211,12 +211,12 @@ class AnalyticsSnapshot {
   AnalyticsSnapshot.fromJson(core.Map _json) {
     if (_json.containsKey("browsers")) {
       browsers = _json["browsers"]
-          .map((value) => new StringCount.fromJson(value))
+          .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("countries")) {
       countries = _json["countries"]
-          .map((value) => new StringCount.fromJson(value))
+          .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("longUrlClicks")) {
@@ -224,12 +224,12 @@ class AnalyticsSnapshot {
     }
     if (_json.containsKey("platforms")) {
       platforms = _json["platforms"]
-          .map((value) => new StringCount.fromJson(value))
+          .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("referrers")) {
       referrers = _json["referrers"]
-          .map((value) => new StringCount.fromJson(value))
+          .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shortUrlClicks")) {
@@ -445,7 +445,8 @@ class UrlHistory {
 
   UrlHistory.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Url.fromJson(value)).toList();
+      items =
+          _json["items"].map<Url>((value) => new Url.fromJson(value)).toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];

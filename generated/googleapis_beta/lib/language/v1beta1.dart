@@ -64,7 +64,7 @@ class DocumentsResourceApi {
       AnalyzeEntitiesRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -108,7 +108,7 @@ class DocumentsResourceApi {
       AnalyzeSentimentRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -155,7 +155,7 @@ class DocumentsResourceApi {
       AnalyzeSyntaxRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -199,7 +199,7 @@ class DocumentsResourceApi {
   async.Future<AnnotateTextResponse> annotateText(AnnotateTextRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -286,8 +286,9 @@ class AnalyzeEntitiesResponse {
 
   AnalyzeEntitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entities")) {
-      entities =
-          _json["entities"].map((value) => new Entity.fromJson(value)).toList();
+      entities = _json["entities"]
+          .map<Entity>((value) => new Entity.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("language")) {
       language = _json["language"];
@@ -380,7 +381,7 @@ class AnalyzeSentimentResponse {
     }
     if (_json.containsKey("sentences")) {
       sentences = _json["sentences"]
-          .map((value) => new Sentence.fromJson(value))
+          .map<Sentence>((value) => new Sentence.fromJson(value))
           .toList();
     }
   }
@@ -470,12 +471,13 @@ class AnalyzeSyntaxResponse {
     }
     if (_json.containsKey("sentences")) {
       sentences = _json["sentences"]
-          .map((value) => new Sentence.fromJson(value))
+          .map<Sentence>((value) => new Sentence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokens")) {
-      tokens =
-          _json["tokens"].map((value) => new Token.fromJson(value)).toList();
+      tokens = _json["tokens"]
+          .map<Token>((value) => new Token.fromJson(value))
+          .toList();
     }
   }
 
@@ -585,20 +587,22 @@ class AnnotateTextResponse {
       documentSentiment = new Sentiment.fromJson(_json["documentSentiment"]);
     }
     if (_json.containsKey("entities")) {
-      entities =
-          _json["entities"].map((value) => new Entity.fromJson(value)).toList();
+      entities = _json["entities"]
+          .map<Entity>((value) => new Entity.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("language")) {
       language = _json["language"];
     }
     if (_json.containsKey("sentences")) {
       sentences = _json["sentences"]
-          .map((value) => new Sentence.fromJson(value))
+          .map<Sentence>((value) => new Sentence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokens")) {
-      tokens =
-          _json["tokens"].map((value) => new Token.fromJson(value)).toList();
+      tokens = _json["tokens"]
+          .map<Token>((value) => new Token.fromJson(value))
+          .toList();
     }
   }
 
@@ -855,7 +859,7 @@ class Entity {
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey("mentions")) {
       mentions = _json["mentions"]
-          .map((value) => new EntityMention.fromJson(value))
+          .map<EntityMention>((value) => new EntityMention.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metadata")) {

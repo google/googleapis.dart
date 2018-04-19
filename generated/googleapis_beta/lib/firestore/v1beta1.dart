@@ -87,7 +87,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       BatchGetDocumentsRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -141,7 +141,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       BeginTransactionRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -195,7 +195,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       CommitRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -262,7 +262,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       core.String documentId,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -333,7 +333,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       core.String currentDocument_updateTime,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -397,7 +397,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       core.String transaction,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -494,7 +494,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       core.String readTime,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -572,7 +572,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       ListCollectionIdsRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -626,7 +626,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       ListenRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -699,7 +699,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       core.List<core.String> mask_fieldPaths,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -761,7 +761,7 @@ class ProjectsDatabasesDocumentsResourceApi {
   async.Future<Empty> rollback(RollbackRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -819,7 +819,7 @@ class ProjectsDatabasesDocumentsResourceApi {
       RunQueryRequest request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -872,7 +872,7 @@ class ProjectsDatabasesDocumentsResourceApi {
   async.Future<WriteResponse> write(WriteRequest request, core.String database,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -943,7 +943,7 @@ class ProjectsDatabasesIndexesResourceApi {
   async.Future<Operation> create(Index request, core.String parent,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -992,7 +992,7 @@ class ProjectsDatabasesIndexesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1036,7 +1036,7 @@ class ProjectsDatabasesIndexesResourceApi {
   /// this method will complete with the same error.
   async.Future<Index> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1090,7 +1090,7 @@ class ProjectsDatabasesIndexesResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1135,8 +1135,9 @@ class ArrayValue {
 
   ArrayValue.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
-      values =
-          _json["values"].map((value) => new Value.fromJson(value)).toList();
+      values = _json["values"]
+          .map<Value>((value) => new Value.fromJson(value))
+          .toList();
     }
   }
 
@@ -1408,8 +1409,9 @@ class CommitRequest {
       transaction = _json["transaction"];
     }
     if (_json.containsKey("writes")) {
-      writes =
-          _json["writes"].map((value) => new Write.fromJson(value)).toList();
+      writes = _json["writes"]
+          .map<Write>((value) => new Write.fromJson(value))
+          .toList();
     }
   }
 
@@ -1445,7 +1447,7 @@ class CommitResponse {
     }
     if (_json.containsKey("writeResults")) {
       writeResults = _json["writeResults"]
-          .map((value) => new WriteResult.fromJson(value))
+          .map<WriteResult>((value) => new WriteResult.fromJson(value))
           .toList();
     }
   }
@@ -1481,8 +1483,9 @@ class CompositeFilter {
 
   CompositeFilter.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters =
-          _json["filters"].map((value) => new Filter.fromJson(value)).toList();
+      filters = _json["filters"]
+          .map<Filter>((value) => new Filter.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("op")) {
       op = _json["op"];
@@ -1521,8 +1524,9 @@ class Cursor {
       before = _json["before"];
     }
     if (_json.containsKey("values")) {
-      values =
-          _json["values"].map((value) => new Value.fromJson(value)).toList();
+      values = _json["values"]
+          .map<Value>((value) => new Value.fromJson(value))
+          .toList();
     }
   }
 
@@ -1823,7 +1827,7 @@ class DocumentTransform {
     }
     if (_json.containsKey("fieldTransforms")) {
       fieldTransforms = _json["fieldTransforms"]
-          .map((value) => new FieldTransform.fromJson(value))
+          .map<FieldTransform>((value) => new FieldTransform.fromJson(value))
           .toList();
     }
   }
@@ -2116,7 +2120,7 @@ class Index {
     }
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new IndexField.fromJson(value))
+          .map<IndexField>((value) => new IndexField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -2304,7 +2308,7 @@ class ListDocumentsResponse {
   ListDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("documents")) {
       documents = _json["documents"]
-          .map((value) => new Document.fromJson(value))
+          .map<Document>((value) => new Document.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2337,8 +2341,9 @@ class ListIndexesResponse {
 
   ListIndexesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("indexes")) {
-      indexes =
-          _json["indexes"].map((value) => new Index.fromJson(value)).toList();
+      indexes = _json["indexes"]
+          .map<Index>((value) => new Index.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2661,7 +2666,7 @@ class Projection {
   Projection.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
       fields = _json["fields"]
-          .map((value) => new FieldReference.fromJson(value))
+          .map<FieldReference>((value) => new FieldReference.fromJson(value))
           .toList();
     }
   }
@@ -3089,7 +3094,8 @@ class StructuredQuery {
     }
     if (_json.containsKey("from")) {
       from = _json["from"]
-          .map((value) => new CollectionSelector.fromJson(value))
+          .map<CollectionSelector>(
+              (value) => new CollectionSelector.fromJson(value))
           .toList();
     }
     if (_json.containsKey("limit")) {
@@ -3099,8 +3105,9 @@ class StructuredQuery {
       offset = _json["offset"];
     }
     if (_json.containsKey("orderBy")) {
-      orderBy =
-          _json["orderBy"].map((value) => new Order.fromJson(value)).toList();
+      orderBy = _json["orderBy"]
+          .map<Order>((value) => new Order.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("select")) {
       select = new Projection.fromJson(_json["select"]);
@@ -3683,8 +3690,9 @@ class WriteRequest {
       streamToken = _json["streamToken"];
     }
     if (_json.containsKey("writes")) {
-      writes =
-          _json["writes"].map((value) => new Write.fromJson(value)).toList();
+      writes = _json["writes"]
+          .map<Write>((value) => new Write.fromJson(value))
+          .toList();
     }
   }
 
@@ -3750,7 +3758,7 @@ class WriteResponse {
     }
     if (_json.containsKey("writeResults")) {
       writeResults = _json["writeResults"]
-          .map((value) => new WriteResult.fromJson(value))
+          .map<WriteResult>((value) => new WriteResult.fromJson(value))
           .toList();
     }
   }
@@ -3793,7 +3801,7 @@ class WriteResult {
   WriteResult.fromJson(core.Map _json) {
     if (_json.containsKey("transformResults")) {
       transformResults = _json["transformResults"]
-          .map((value) => new Value.fromJson(value))
+          .map<Value>((value) => new Value.fromJson(value))
           .toList();
     }
     if (_json.containsKey("updateTime")) {

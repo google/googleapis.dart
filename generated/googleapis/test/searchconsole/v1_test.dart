@@ -149,27 +149,27 @@ checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-buildUnnamed2337() {
+buildUnnamed2646() {
   var o = new core.List<api.MobileFriendlyIssue>();
   o.add(buildMobileFriendlyIssue());
   o.add(buildMobileFriendlyIssue());
   return o;
 }
 
-checkUnnamed2337(core.List<api.MobileFriendlyIssue> o) {
+checkUnnamed2646(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileFriendlyIssue(o[0]);
   checkMobileFriendlyIssue(o[1]);
 }
 
-buildUnnamed2338() {
+buildUnnamed2647() {
   var o = new core.List<api.ResourceIssue>();
   o.add(buildResourceIssue());
   o.add(buildResourceIssue());
   return o;
 }
 
-checkUnnamed2338(core.List<api.ResourceIssue> o) {
+checkUnnamed2647(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceIssue(o[0]);
   checkResourceIssue(o[1]);
@@ -181,8 +181,8 @@ buildRunMobileFriendlyTestResponse() {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     o.mobileFriendliness = "foo";
-    o.mobileFriendlyIssues = buildUnnamed2337();
-    o.resourceIssues = buildUnnamed2338();
+    o.mobileFriendlyIssues = buildUnnamed2646();
+    o.resourceIssues = buildUnnamed2647();
     o.screenshot = buildImage();
     o.testStatus = buildTestStatus();
   }
@@ -194,8 +194,8 @@ checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     unittest.expect(o.mobileFriendliness, unittest.equals('foo'));
-    checkUnnamed2337(o.mobileFriendlyIssues);
-    checkUnnamed2338(o.resourceIssues);
+    checkUnnamed2646(o.mobileFriendlyIssues);
+    checkUnnamed2647(o.resourceIssues);
     checkImage(o.screenshot);
     checkTestStatus(o.testStatus);
   }
@@ -328,8 +328,9 @@ main() {
         var resp = convert.JSON.encode(buildRunMobileFriendlyTestResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.run(arg_request, $fields: arg_$fields).then(
-          unittest.expectAsync1(((api.RunMobileFriendlyTestResponse response) {
+      res
+          .run(arg_request, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
         checkRunMobileFriendlyTestResponse(response);
       })));
     });

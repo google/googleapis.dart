@@ -100,7 +100,7 @@ class ProjectsResourceApi {
       TestRulesetRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -179,7 +179,7 @@ class ProjectsReleasesResourceApi {
   async.Future<Release> create(Release request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -227,7 +227,7 @@ class ProjectsReleasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -272,7 +272,7 @@ class ProjectsReleasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Release> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -326,7 +326,7 @@ class ProjectsReleasesResourceApi {
   async.Future<GetReleaseExecutableResponse> getExecutable(core.String name,
       {core.String executableVersion, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -418,7 +418,7 @@ class ProjectsReleasesResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -479,7 +479,7 @@ class ProjectsReleasesResourceApi {
   async.Future<Release> patch(UpdateReleaseRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -543,7 +543,7 @@ class ProjectsRulesetsResourceApi {
   async.Future<Ruleset> create(Ruleset request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -593,7 +593,7 @@ class ProjectsRulesetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -638,7 +638,7 @@ class ProjectsRulesetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Ruleset> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -709,7 +709,7 @@ class ProjectsRulesetsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -912,7 +912,8 @@ class FunctionMock {
 
   FunctionMock.fromJson(core.Map _json) {
     if (_json.containsKey("args")) {
-      args = _json["args"].map((value) => new Arg.fromJson(value)).toList();
+      args =
+          _json["args"].map<Arg>((value) => new Arg.fromJson(value)).toList();
     }
     if (_json.containsKey("function")) {
       function = _json["function"];
@@ -1085,7 +1086,7 @@ class ListReleasesResponse {
     }
     if (_json.containsKey("releases")) {
       releases = _json["releases"]
-          .map((value) => new Release.fromJson(value))
+          .map<Release>((value) => new Release.fromJson(value))
           .toList();
     }
   }
@@ -1120,7 +1121,7 @@ class ListRulesetsResponse {
     }
     if (_json.containsKey("rulesets")) {
       rulesets = _json["rulesets"]
-          .map((value) => new Ruleset.fromJson(value))
+          .map<Ruleset>((value) => new Ruleset.fromJson(value))
           .toList();
     }
   }
@@ -1306,7 +1307,9 @@ class Source {
 
   Source.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
-      files = _json["files"].map((value) => new File.fromJson(value)).toList();
+      files = _json["files"]
+          .map<File>((value) => new File.fromJson(value))
+          .toList();
     }
   }
 
@@ -1425,7 +1428,7 @@ class TestCase {
     }
     if (_json.containsKey("functionMocks")) {
       functionMocks = _json["functionMocks"]
-          .map((value) => new FunctionMock.fromJson(value))
+          .map<FunctionMock>((value) => new FunctionMock.fromJson(value))
           .toList();
     }
     if (_json.containsKey("request")) {
@@ -1503,7 +1506,7 @@ class TestResult {
     }
     if (_json.containsKey("functionCalls")) {
       functionCalls = _json["functionCalls"]
-          .map((value) => new FunctionCall.fromJson(value))
+          .map<FunctionCall>((value) => new FunctionCall.fromJson(value))
           .toList();
     }
     if (_json.containsKey("state")) {
@@ -1580,12 +1583,13 @@ class TestRulesetResponse {
 
   TestRulesetResponse.fromJson(core.Map _json) {
     if (_json.containsKey("issues")) {
-      issues =
-          _json["issues"].map((value) => new Issue.fromJson(value)).toList();
+      issues = _json["issues"]
+          .map<Issue>((value) => new Issue.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("testResults")) {
       testResults = _json["testResults"]
-          .map((value) => new TestResult.fromJson(value))
+          .map<TestResult>((value) => new TestResult.fromJson(value))
           .toList();
     }
   }
@@ -1618,7 +1622,7 @@ class TestSuite {
   TestSuite.fromJson(core.Map _json) {
     if (_json.containsKey("testCases")) {
       testCases = _json["testCases"]
-          .map((value) => new TestCase.fromJson(value))
+          .map<TestCase>((value) => new TestCase.fromJson(value))
           .toList();
     }
   }

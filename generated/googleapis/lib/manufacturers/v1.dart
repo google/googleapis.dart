@@ -81,7 +81,7 @@ class AccountsProductsResourceApi {
   async.Future<Empty> delete(core.String parent, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -152,7 +152,7 @@ class AccountsProductsResourceApi {
   async.Future<Product> get(core.String parent, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -210,7 +210,7 @@ class AccountsProductsResourceApi {
   async.Future<ListProductsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -291,7 +291,7 @@ class AccountsProductsResourceApi {
       Attributes request, core.String parent, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -466,7 +466,7 @@ class Attributes {
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey("additionalImageLink")) {
       additionalImageLink = _json["additionalImageLink"]
-          .map((value) => new Image.fromJson(value))
+          .map<Image>((value) => new Image.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ageGroup")) {
@@ -492,7 +492,8 @@ class Attributes {
     }
     if (_json.containsKey("featureDescription")) {
       featureDescription = _json["featureDescription"]
-          .map((value) => new FeatureDescription.fromJson(value))
+          .map<FeatureDescription>(
+              (value) => new FeatureDescription.fromJson(value))
           .toList();
     }
     if (_json.containsKey("flavor")) {
@@ -524,7 +525,7 @@ class Attributes {
     }
     if (_json.containsKey("productDetail")) {
       productDetail = _json["productDetail"]
-          .map((value) => new ProductDetail.fromJson(value))
+          .map<ProductDetail>((value) => new ProductDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productLine")) {
@@ -966,7 +967,7 @@ class ListProductsResponse {
     }
     if (_json.containsKey("products")) {
       products = _json["products"]
-          .map((value) => new Product.fromJson(value))
+          .map<Product>((value) => new Product.fromJson(value))
           .toList();
     }
   }
@@ -1089,8 +1090,9 @@ class Product {
       finalAttributes = new Attributes.fromJson(_json["finalAttributes"]);
     }
     if (_json.containsKey("issues")) {
-      issues =
-          _json["issues"].map((value) => new Issue.fromJson(value)).toList();
+      issues = _json["issues"]
+          .map<Issue>((value) => new Issue.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("manuallyDeletedAttributes")) {
       manuallyDeletedAttributes = _json["manuallyDeletedAttributes"];

@@ -53,7 +53,7 @@ class ApisResourceApi {
   async.Future<RestDescription> getRest(core.String api, core.String version,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -105,7 +105,7 @@ class ApisResourceApi {
   async.Future<DirectoryList> list(
       {core.String name, core.bool preferred, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -304,7 +304,8 @@ class DirectoryList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new DirectoryListItems.fromJson(value))
+          .map<DirectoryListItems>(
+              (value) => new DirectoryListItems.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -397,7 +398,8 @@ class JsonSchemaVariant {
     }
     if (_json.containsKey("map")) {
       map = _json["map"]
-          .map((value) => new JsonSchemaVariantMap.fromJson(value))
+          .map<JsonSchemaVariantMap>(
+              (value) => new JsonSchemaVariantMap.fromJson(value))
           .toList();
     }
   }

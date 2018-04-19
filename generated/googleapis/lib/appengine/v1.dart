@@ -85,7 +85,7 @@ class AppsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> create(Application request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -128,7 +128,7 @@ class AppsResourceApi {
   /// this method will complete with the same error.
   async.Future<Application> get(core.String appsId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -180,7 +180,7 @@ class AppsResourceApi {
   async.Future<Operation> patch(Application request, core.String appsId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -236,7 +236,7 @@ class AppsResourceApi {
       RepairApplicationRequest request, core.String appsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -293,7 +293,7 @@ class AppsAuthorizedCertificatesResourceApi {
       AuthorizedCertificate request, core.String appsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -346,7 +346,7 @@ class AppsAuthorizedCertificatesResourceApi {
       core.String appsId, core.String authorizedCertificatesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -406,7 +406,7 @@ class AppsAuthorizedCertificatesResourceApi {
       core.String appsId, core.String authorizedCertificatesId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -472,7 +472,7 @@ class AppsAuthorizedCertificatesResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -542,7 +542,7 @@ class AppsAuthorizedCertificatesResourceApi {
       core.String appsId, core.String authorizedCertificatesId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -610,7 +610,7 @@ class AppsAuthorizedDomainsResourceApi {
   async.Future<ListAuthorizedDomainsResponse> list(core.String appsId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -682,7 +682,7 @@ class AppsDomainMappingsResourceApi {
   async.Future<Operation> create(DomainMapping request, core.String appsId,
       {core.String overrideStrategy, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -739,7 +739,7 @@ class AppsDomainMappingsResourceApi {
       core.String appsId, core.String domainMappingsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -792,7 +792,7 @@ class AppsDomainMappingsResourceApi {
       core.String appsId, core.String domainMappingsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -846,7 +846,7 @@ class AppsDomainMappingsResourceApi {
   async.Future<ListDomainMappingsResponse> list(core.String appsId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -909,7 +909,7 @@ class AppsDomainMappingsResourceApi {
       DomainMapping request, core.String appsId, core.String domainMappingsId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -987,7 +987,7 @@ class AppsFirewallIngressRulesResourceApi {
       BatchUpdateIngressRulesRequest request, core.String appsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1039,7 +1039,7 @@ class AppsFirewallIngressRulesResourceApi {
   async.Future<FirewallRule> create(FirewallRule request, core.String appsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1090,7 +1090,7 @@ class AppsFirewallIngressRulesResourceApi {
   async.Future<Empty> delete(core.String appsId, core.String ingressRulesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1142,7 +1142,7 @@ class AppsFirewallIngressRulesResourceApi {
   async.Future<FirewallRule> get(core.String appsId, core.String ingressRulesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1203,7 +1203,7 @@ class AppsFirewallIngressRulesResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1266,7 +1266,7 @@ class AppsFirewallIngressRulesResourceApi {
       FirewallRule request, core.String appsId, core.String ingressRulesId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1329,7 +1329,7 @@ class AppsLocationsResourceApi {
   async.Future<Location> get(core.String appsId, core.String locationsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1388,7 +1388,7 @@ class AppsLocationsResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1450,7 +1450,7 @@ class AppsOperationsResourceApi {
   async.Future<Operation> get(core.String appsId, core.String operationsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1516,7 +1516,7 @@ class AppsOperationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1581,7 +1581,7 @@ class AppsServicesResourceApi {
   async.Future<Operation> delete(core.String appsId, core.String servicesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1633,7 +1633,7 @@ class AppsServicesResourceApi {
   async.Future<Service> get(core.String appsId, core.String servicesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1687,7 +1687,7 @@ class AppsServicesResourceApi {
   async.Future<ListServicesResponse> list(core.String appsId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1758,7 +1758,7 @@ class AppsServicesResourceApi {
       Service request, core.String appsId, core.String servicesId,
       {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1832,7 +1832,7 @@ class AppsServicesVersionsResourceApi {
       Version request, core.String appsId, core.String servicesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1891,7 +1891,7 @@ class AppsServicesVersionsResourceApi {
       core.String appsId, core.String servicesId, core.String versionsId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -1957,7 +1957,7 @@ class AppsServicesVersionsResourceApi {
       core.String appsId, core.String servicesId, core.String versionsId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2030,7 +2030,7 @@ class AppsServicesVersionsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2132,7 +2132,7 @@ class AppsServicesVersionsResourceApi {
       core.String servicesId, core.String versionsId,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2218,7 +2218,7 @@ class AppsServicesVersionsInstancesResourceApi {
       core.String instancesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2289,7 +2289,7 @@ class AppsServicesVersionsInstancesResourceApi {
       core.String versionsId, core.String instancesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2356,7 +2356,7 @@ class AppsServicesVersionsInstancesResourceApi {
       core.String versionsId, core.String instancesId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2427,7 +2427,7 @@ class AppsServicesVersionsInstancesResourceApi {
       core.String appsId, core.String servicesId, core.String versionsId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -2665,7 +2665,7 @@ class Application {
     }
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = _json["dispatchRules"]
-          .map((value) => new UrlDispatchRule.fromJson(value))
+          .map<UrlDispatchRule>((value) => new UrlDispatchRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("featureSettings")) {
@@ -3071,7 +3071,7 @@ class BatchUpdateIngressRulesRequest {
   BatchUpdateIngressRulesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("ingressRules")) {
       ingressRules = _json["ingressRules"]
-          .map((value) => new FirewallRule.fromJson(value))
+          .map<FirewallRule>((value) => new FirewallRule.fromJson(value))
           .toList();
     }
   }
@@ -3097,7 +3097,7 @@ class BatchUpdateIngressRulesResponse {
   BatchUpdateIngressRulesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ingressRules")) {
       ingressRules = _json["ingressRules"]
-          .map((value) => new FirewallRule.fromJson(value))
+          .map<FirewallRule>((value) => new FirewallRule.fromJson(value))
           .toList();
     }
   }
@@ -3419,7 +3419,7 @@ class DomainMapping {
     }
     if (_json.containsKey("resourceRecords")) {
       resourceRecords = _json["resourceRecords"]
-          .map((value) => new ResourceRecord.fromJson(value))
+          .map<ResourceRecord>((value) => new ResourceRecord.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sslSettings")) {
@@ -4045,7 +4045,8 @@ class ListAuthorizedCertificatesResponse {
   ListAuthorizedCertificatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("certificates")) {
       certificates = _json["certificates"]
-          .map((value) => new AuthorizedCertificate.fromJson(value))
+          .map<AuthorizedCertificate>(
+              (value) => new AuthorizedCertificate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4080,7 +4081,8 @@ class ListAuthorizedDomainsResponse {
   ListAuthorizedDomainsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("domains")) {
       domains = _json["domains"]
-          .map((value) => new AuthorizedDomain.fromJson(value))
+          .map<AuthorizedDomain>(
+              (value) => new AuthorizedDomain.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4114,7 +4116,7 @@ class ListDomainMappingsResponse {
   ListDomainMappingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("domainMappings")) {
       domainMappings = _json["domainMappings"]
-          .map((value) => new DomainMapping.fromJson(value))
+          .map<DomainMapping>((value) => new DomainMapping.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4149,7 +4151,7 @@ class ListIngressRulesResponse {
   ListIngressRulesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ingressRules")) {
       ingressRules = _json["ingressRules"]
-          .map((value) => new FirewallRule.fromJson(value))
+          .map<FirewallRule>((value) => new FirewallRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4184,7 +4186,7 @@ class ListInstancesResponse {
   ListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
       instances = _json["instances"]
-          .map((value) => new Instance.fromJson(value))
+          .map<Instance>((value) => new Instance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4218,7 +4220,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = _json["locations"]
-          .map((value) => new Location.fromJson(value))
+          .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4255,7 +4257,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -4290,7 +4292,7 @@ class ListServicesResponse {
     }
     if (_json.containsKey("services")) {
       services = _json["services"]
-          .map((value) => new Service.fromJson(value))
+          .map<Service>((value) => new Service.fromJson(value))
           .toList();
     }
   }
@@ -4324,7 +4326,7 @@ class ListVersionsResponse {
     }
     if (_json.containsKey("versions")) {
       versions = _json["versions"]
-          .map((value) => new Version.fromJson(value))
+          .map<Version>((value) => new Version.fromJson(value))
           .toList();
     }
   }
@@ -5331,8 +5333,9 @@ class Resources {
       memoryGb = _json["memoryGb"];
     }
     if (_json.containsKey("volumes")) {
-      volumes =
-          _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
+      volumes = _json["volumes"]
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
     }
   }
 
@@ -6102,12 +6105,13 @@ class Version {
     }
     if (_json.containsKey("errorHandlers")) {
       errorHandlers = _json["errorHandlers"]
-          .map((value) => new ErrorHandler.fromJson(value))
+          .map<ErrorHandler>((value) => new ErrorHandler.fromJson(value))
           .toList();
     }
     if (_json.containsKey("handlers")) {
-      handlers =
-          _json["handlers"].map((value) => new UrlMap.fromJson(value)).toList();
+      handlers = _json["handlers"]
+          .map<UrlMap>((value) => new UrlMap.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("healthCheck")) {
       healthCheck = new HealthCheck.fromJson(_json["healthCheck"]);
@@ -6123,7 +6127,7 @@ class Version {
     }
     if (_json.containsKey("libraries")) {
       libraries = _json["libraries"]
-          .map((value) => new Library.fromJson(value))
+          .map<Library>((value) => new Library.fromJson(value))
           .toList();
     }
     if (_json.containsKey("livenessCheck")) {

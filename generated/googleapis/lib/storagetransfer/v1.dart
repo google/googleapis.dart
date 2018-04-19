@@ -72,7 +72,7 @@ class GoogleServiceAccountsResourceApi {
   async.Future<GoogleServiceAccount> get(core.String projectId,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -121,7 +121,7 @@ class TransferJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferJob> create(TransferJob request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -170,7 +170,7 @@ class TransferJobsResourceApi {
   async.Future<TransferJob> get(core.String jobName,
       {core.String projectId, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -232,7 +232,7 @@ class TransferJobsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -289,7 +289,7 @@ class TransferJobsResourceApi {
       UpdateTransferJobRequest request, core.String jobName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -343,7 +343,7 @@ class TransferOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -386,7 +386,7 @@ class TransferOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -431,7 +431,7 @@ class TransferOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -500,7 +500,7 @@ class TransferOperationsResourceApi {
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -557,7 +557,7 @@ class TransferOperationsResourceApi {
       PauseTransferOperationRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -608,7 +608,7 @@ class TransferOperationsResourceApi {
       ResumeTransferOperationRequest request, core.String name,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -973,7 +973,7 @@ class ErrorSummary {
     }
     if (_json.containsKey("errorLogEntries")) {
       errorLogEntries = _json["errorLogEntries"]
-          .map((value) => new ErrorLogEntry.fromJson(value))
+          .map<ErrorLogEntry>((value) => new ErrorLogEntry.fromJson(value))
           .toList();
     }
   }
@@ -1132,7 +1132,7 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
   }
@@ -1167,7 +1167,7 @@ class ListTransferJobsResponse {
     }
     if (_json.containsKey("transferJobs")) {
       transferJobs = _json["transferJobs"]
-          .map((value) => new TransferJob.fromJson(value))
+          .map<TransferJob>((value) => new TransferJob.fromJson(value))
           .toList();
     }
   }
@@ -1926,7 +1926,7 @@ class TransferOperation {
     }
     if (_json.containsKey("errorBreakdowns")) {
       errorBreakdowns = _json["errorBreakdowns"]
-          .map((value) => new ErrorSummary.fromJson(value))
+          .map<ErrorSummary>((value) => new ErrorSummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {

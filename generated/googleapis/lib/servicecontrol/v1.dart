@@ -77,7 +77,7 @@ class ServicesResourceApi {
       AllocateQuotaRequest request, core.String serviceName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -146,7 +146,7 @@ class ServicesResourceApi {
       CheckRequest request, core.String serviceName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -206,7 +206,7 @@ class ServicesResourceApi {
       EndReconciliationRequest request, core.String serviceName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -272,7 +272,7 @@ class ServicesResourceApi {
       ReleaseQuotaRequest request, core.String serviceName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -342,7 +342,7 @@ class ServicesResourceApi {
       ReportRequest request, core.String serviceName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -422,7 +422,7 @@ class ServicesResourceApi {
       StartReconciliationRequest request, core.String serviceName,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -546,7 +546,7 @@ class AllocateQuotaResponse {
   AllocateQuotaResponse.fromJson(core.Map _json) {
     if (_json.containsKey("allocateErrors")) {
       allocateErrors = _json["allocateErrors"]
-          .map((value) => new QuotaError.fromJson(value))
+          .map<QuotaError>((value) => new QuotaError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("allocateInfo")) {
@@ -557,7 +557,7 @@ class AllocateQuotaResponse {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = _json["quotaMetrics"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -675,7 +675,8 @@ class AuditLog {
     }
     if (_json.containsKey("authorizationInfo")) {
       authorizationInfo = _json["authorizationInfo"]
-          .map((value) => new AuthorizationInfo.fromJson(value))
+          .map<AuthorizationInfo>(
+              (value) => new AuthorizationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metadata")) {
@@ -1075,7 +1076,7 @@ class CheckResponse {
   CheckResponse.fromJson(core.Map _json) {
     if (_json.containsKey("checkErrors")) {
       checkErrors = _json["checkErrors"]
-          .map((value) => new CheckError.fromJson(value))
+          .map<CheckError>((value) => new CheckError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("checkInfo")) {
@@ -1336,12 +1337,12 @@ class EndReconciliationResponse {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = _json["quotaMetrics"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("reconciliationErrors")) {
       reconciliationErrors = _json["reconciliationErrors"]
-          .map((value) => new QuotaError.fromJson(value))
+          .map<QuotaError>((value) => new QuotaError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -1737,7 +1738,7 @@ class MetricValueSet {
     }
     if (_json.containsKey("metricValues")) {
       metricValues = _json["metricValues"]
-          .map((value) => new MetricValue.fromJson(value))
+          .map<MetricValue>((value) => new MetricValue.fromJson(value))
           .toList();
     }
   }
@@ -1924,12 +1925,12 @@ class Operation {
     }
     if (_json.containsKey("logEntries")) {
       logEntries = _json["logEntries"]
-          .map((value) => new LogEntry.fromJson(value))
+          .map<LogEntry>((value) => new LogEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metricValueSets")) {
       metricValueSets = _json["metricValueSets"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operationId")) {
@@ -1946,7 +1947,7 @@ class Operation {
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"]
-          .map((value) => new ResourceInfo.fromJson(value))
+          .map<ResourceInfo>((value) => new ResourceInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startTime")) {
@@ -2126,7 +2127,7 @@ class QuotaInfo {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = _json["quotaMetrics"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
   }
@@ -2233,7 +2234,7 @@ class QuotaOperation {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = _json["quotaMetrics"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quotaMode")) {
@@ -2377,12 +2378,12 @@ class ReleaseQuotaResponse {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = _json["quotaMetrics"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("releaseErrors")) {
       releaseErrors = _json["releaseErrors"]
-          .map((value) => new QuotaError.fromJson(value))
+          .map<QuotaError>((value) => new QuotaError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -2501,7 +2502,7 @@ class ReportRequest {
   ReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("operations")) {
       operations = _json["operations"]
-          .map((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -2559,12 +2560,12 @@ class ReportResponse {
   ReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey("reportErrors")) {
       reportErrors = _json["reportErrors"]
-          .map((value) => new ReportError.fromJson(value))
+          .map<ReportError>((value) => new ReportError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("reportInfos")) {
       reportInfos = _json["reportInfos"]
-          .map((value) => new ReportInfo.fromJson(value))
+          .map<ReportInfo>((value) => new ReportInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -2762,12 +2763,12 @@ class StartReconciliationResponse {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = _json["quotaMetrics"]
-          .map((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("reconciliationErrors")) {
       reconciliationErrors = _json["reconciliationErrors"]
-          .map((value) => new QuotaError.fromJson(value))
+          .map<QuotaError>((value) => new QuotaError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {

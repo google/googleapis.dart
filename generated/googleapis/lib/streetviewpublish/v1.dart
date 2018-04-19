@@ -76,7 +76,7 @@ class PhotoResourceApi {
   /// this method will complete with the same error.
   async.Future<Photo> create(Photo request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -124,7 +124,7 @@ class PhotoResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String photoId, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -184,7 +184,7 @@ class PhotoResourceApi {
   async.Future<Photo> get(core.String photoId,
       {core.String view, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -249,7 +249,7 @@ class PhotoResourceApi {
   /// this method will complete with the same error.
   async.Future<UploadRef> startUpload(Empty request, {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -344,7 +344,7 @@ class PhotoResourceApi {
   async.Future<Photo> update(Photo request, core.String id,
       {core.String updateMask, core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -415,7 +415,7 @@ class PhotosResourceApi {
       BatchDeletePhotosRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -485,7 +485,7 @@ class PhotosResourceApi {
       core.String view,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -559,7 +559,7 @@ class PhotosResourceApi {
       BatchUpdatePhotosRequest request,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -633,7 +633,7 @@ class PhotosResourceApi {
       core.String filter,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -703,8 +703,9 @@ class BatchDeletePhotosResponse {
 
   BatchDeletePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("status")) {
-      status =
-          _json["status"].map((value) => new Status.fromJson(value)).toList();
+      status = _json["status"]
+          .map<Status>((value) => new Status.fromJson(value))
+          .toList();
     }
   }
 
@@ -731,7 +732,7 @@ class BatchGetPhotosResponse {
   BatchGetPhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new PhotoResponse.fromJson(value))
+          .map<PhotoResponse>((value) => new PhotoResponse.fromJson(value))
           .toList();
     }
   }
@@ -758,7 +759,8 @@ class BatchUpdatePhotosRequest {
   BatchUpdatePhotosRequest.fromJson(core.Map _json) {
     if (_json.containsKey("updatePhotoRequests")) {
       updatePhotoRequests = _json["updatePhotoRequests"]
-          .map((value) => new UpdatePhotoRequest.fromJson(value))
+          .map<UpdatePhotoRequest>(
+              (value) => new UpdatePhotoRequest.fromJson(value))
           .toList();
     }
   }
@@ -787,7 +789,7 @@ class BatchUpdatePhotosResponse {
   BatchUpdatePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
       results = _json["results"]
-          .map((value) => new PhotoResponse.fromJson(value))
+          .map<PhotoResponse>((value) => new PhotoResponse.fromJson(value))
           .toList();
     }
   }
@@ -938,8 +940,9 @@ class ListPhotosResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("photos")) {
-      photos =
-          _json["photos"].map((value) => new Photo.fromJson(value)).toList();
+      photos = _json["photos"]
+          .map<Photo>((value) => new Photo.fromJson(value))
+          .toList();
     }
   }
 
@@ -1087,7 +1090,7 @@ class Photo {
     }
     if (_json.containsKey("connections")) {
       connections = _json["connections"]
-          .map((value) => new Connection.fromJson(value))
+          .map<Connection>((value) => new Connection.fromJson(value))
           .toList();
     }
     if (_json.containsKey("downloadUrl")) {
@@ -1097,8 +1100,9 @@ class Photo {
       photoId = new PhotoId.fromJson(_json["photoId"]);
     }
     if (_json.containsKey("places")) {
-      places =
-          _json["places"].map((value) => new Place.fromJson(value)).toList();
+      places = _json["places"]
+          .map<Place>((value) => new Place.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("pose")) {
       pose = new Pose.fromJson(_json["pose"]);

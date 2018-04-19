@@ -20,8 +20,8 @@ Future<List<DirectoryListItems>> _listAllApis() {
   }).whenComplete(() => client.close());
 }
 
-Future<List<RestDescription>> downloadDiscoveryDocuments(
-    String outputDir, {List<String> ids}) {
+Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
+    {List<String> ids}) {
   return fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
     var directory = new Directory(outputDir);
     if (directory.existsSync()) {
@@ -54,7 +54,7 @@ Future<List<RestDescription>> fetchDiscoveryDocuments({List<String> ids}) {
           apiDescriptions.add(doc);
         } catch (e) {
           print('Failed to retrieve document for "${item.name}:${item.version}"'
-                ' -> Ignoring!');
+              ' -> Ignoring!');
         }
       }
     }
@@ -64,10 +64,12 @@ Future<List<RestDescription>> fetchDiscoveryDocuments({List<String> ids}) {
 }
 
 List<RestDescription> loadDiscoveryDocuments(String directory) {
-  var apiDescriptions = new Directory(directory).listSync()
+  var apiDescriptions = new Directory(directory)
+      .listSync()
       .where((fse) => fse is File && fse.path.endsWith('.json'))
-      .map((File file) {
-    return new RestDescription.fromJson(JSON.decode(file.readAsStringSync()));
+      .map((FileSystemEntity file) {
+    return new RestDescription.fromJson(
+        JSON.decode((file as File).readAsStringSync()));
   }).toList();
   return apiDescriptions;
 }
@@ -78,8 +80,9 @@ Future downloadFromConfiguration(String configFile) {
 
     // Generate the packages.
     var configFileUri = new Uri.file(configFile);
-    return configuration.download(
-        configFileUri.resolve('discovery').path, items).then((_) {
+    return configuration
+        .download(configFileUri.resolve('discovery').path, items)
+        .then((_) {
       // Print warnings for APIs not mentioned.
       if (configuration.missingApis.isNotEmpty) {
         print('WARNING: No configuration for the following APIs:');
@@ -94,13 +97,12 @@ Future downloadFromConfiguration(String configFile) {
 }
 
 void generateFromConfiguration(String configFile) {
-  var configuration =
-      new DiscoveryPackagesConfiguration(configFile);
+  var configuration = new DiscoveryPackagesConfiguration(configFile);
 
   // Generate the packages.
   var configFileUri = new Uri.file(configFile);
   return configuration.generate(configFileUri.resolve('discovery').path,
-                                configFileUri.resolve('generated').path);
+      configFileUri.resolve('generated').path);
 }
 
 DiscoveryApi _discoveryClient(http.Client client) => new DiscoveryApi(client);

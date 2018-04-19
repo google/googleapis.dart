@@ -87,7 +87,7 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -157,7 +157,7 @@ class InstanceGroupManagersResourceApi {
       core.String project, core.String zone, core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -228,7 +228,7 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -295,7 +295,7 @@ class InstanceGroupManagersResourceApi {
       core.String project, core.String zone, core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -360,7 +360,7 @@ class InstanceGroupManagersResourceApi {
       core.String project, core.String zone, core.int size,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -435,7 +435,7 @@ class InstanceGroupManagersResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -509,7 +509,7 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -582,7 +582,7 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager, core.int size,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -656,7 +656,7 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -729,7 +729,7 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -802,7 +802,7 @@ class ZoneOperationsResourceApi {
       core.String project, core.String zone, core.String operation,
       {core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -873,7 +873,7 @@ class ZoneOperationsResourceApi {
       core.String pageToken,
       core.String $fields}) {
     var _url = null;
-    var _queryParams = new core.Map();
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
@@ -988,7 +988,8 @@ class InstanceGroupManager {
   InstanceGroupManager.fromJson(core.Map _json) {
     if (_json.containsKey("autoHealingPolicies")) {
       autoHealingPolicies = _json["autoHealingPolicies"]
-          .map((value) => new ReplicaPoolAutoHealingPolicy.fromJson(value))
+          .map<ReplicaPoolAutoHealingPolicy>(
+              (value) => new ReplicaPoolAutoHealingPolicy.fromJson(value))
           .toList();
     }
     if (_json.containsKey("baseInstanceName")) {
@@ -1106,7 +1107,8 @@ class InstanceGroupManagerList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"]
-          .map((value) => new InstanceGroupManager.fromJson(value))
+          .map<InstanceGroupManager>(
+              (value) => new InstanceGroupManager.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1331,7 +1333,8 @@ class OperationError {
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = _json["errors"]
-          .map((value) => new OperationErrorErrors.fromJson(value))
+          .map<OperationErrorErrors>(
+              (value) => new OperationErrorErrors.fromJson(value))
           .toList();
     }
   }
@@ -1409,7 +1412,8 @@ class OperationWarnings {
     }
     if (_json.containsKey("data")) {
       data = _json["data"]
-          .map((value) => new OperationWarningsData.fromJson(value))
+          .map<OperationWarningsData>(
+              (value) => new OperationWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -1588,7 +1592,8 @@ class Operation {
     }
     if (_json.containsKey("warnings")) {
       warnings = _json["warnings"]
-          .map((value) => new OperationWarnings.fromJson(value))
+          .map<OperationWarnings>(
+              (value) => new OperationWarnings.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
@@ -1692,8 +1697,9 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map((value) => new Operation.fromJson(value)).toList();
+      items = _json["items"]
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
