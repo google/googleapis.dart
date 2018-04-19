@@ -4521,7 +4521,7 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
 
   JsonObject();
 
-  JsonObject.fromJson(core.Map<core.String, core.dynamic> _json) {
+  JsonObject.fromJson(core.Map<core.String, core.Object> _json) {
     _json.forEach((core.String key, value) {
       this[key] = value;
     });
