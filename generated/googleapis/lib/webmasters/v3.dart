@@ -83,7 +83,7 @@ class SearchanalyticsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -857,7 +857,7 @@ class ApiDataRow {
       impressions = _json["impressions"];
     }
     if (_json.containsKey("keys")) {
-      keys = _json["keys"];
+      keys = (_json["keys"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("position")) {
       position = _json["position"];
@@ -929,7 +929,7 @@ class ApiDimensionFilterGroup {
 
   ApiDimensionFilterGroup.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters = _json["filters"]
+      filters = (_json["filters"] as core.List)
           .map<ApiDimensionFilter>(
               (value) => new ApiDimensionFilter.fromJson(value))
           .toList();
@@ -1009,13 +1009,13 @@ class SearchAnalyticsQueryRequest {
       aggregationType = _json["aggregationType"];
     }
     if (_json.containsKey("dimensionFilterGroups")) {
-      dimensionFilterGroups = _json["dimensionFilterGroups"]
+      dimensionFilterGroups = (_json["dimensionFilterGroups"] as core.List)
           .map<ApiDimensionFilterGroup>(
               (value) => new ApiDimensionFilterGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
-      dimensions = _json["dimensions"];
+      dimensions = (_json["dimensions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("endDate")) {
       endDate = _json["endDate"];
@@ -1083,7 +1083,7 @@ class SearchAnalyticsQueryResponse {
       responseAggregationType = _json["responseAggregationType"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"]
+      rows = (_json["rows"] as core.List)
           .map<ApiDataRow>((value) => new ApiDataRow.fromJson(value))
           .toList();
     }
@@ -1111,7 +1111,7 @@ class SitemapsListResponse {
 
   SitemapsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sitemap")) {
-      sitemap = _json["sitemap"]
+      sitemap = (_json["sitemap"] as core.List)
           .map<WmxSitemap>((value) => new WmxSitemap.fromJson(value))
           .toList();
     }
@@ -1137,7 +1137,7 @@ class SitesListResponse {
 
   SitesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("siteEntry")) {
-      siteEntry = _json["siteEntry"]
+      siteEntry = (_json["siteEntry"] as core.List)
           .map<WmxSite>((value) => new WmxSite.fromJson(value))
           .toList();
     }
@@ -1205,7 +1205,7 @@ class UrlCrawlErrorCountsPerType {
       category = _json["category"];
     }
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<UrlCrawlErrorCount>(
               (value) => new UrlCrawlErrorCount.fromJson(value))
           .toList();
@@ -1242,7 +1242,7 @@ class UrlCrawlErrorsCountsQueryResponse {
 
   UrlCrawlErrorsCountsQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("countPerTypes")) {
-      countPerTypes = _json["countPerTypes"]
+      countPerTypes = (_json["countPerTypes"] as core.List)
           .map<UrlCrawlErrorCountsPerType>(
               (value) => new UrlCrawlErrorCountsPerType.fromJson(value))
           .toList();
@@ -1328,7 +1328,7 @@ class UrlCrawlErrorsSamplesListResponse {
 
   UrlCrawlErrorsSamplesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("urlCrawlErrorSample")) {
-      urlCrawlErrorSample = _json["urlCrawlErrorSample"]
+      urlCrawlErrorSample = (_json["urlCrawlErrorSample"] as core.List)
           .map<UrlCrawlErrorsSample>(
               (value) => new UrlCrawlErrorsSample.fromJson(value))
           .toList();
@@ -1358,10 +1358,12 @@ class UrlSampleDetails {
 
   UrlSampleDetails.fromJson(core.Map _json) {
     if (_json.containsKey("containingSitemaps")) {
-      containingSitemaps = _json["containingSitemaps"];
+      containingSitemaps =
+          (_json["containingSitemaps"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("linkedFromUrls")) {
-      linkedFromUrls = _json["linkedFromUrls"];
+      linkedFromUrls =
+          (_json["linkedFromUrls"] as core.List).cast<core.String>();
     }
   }
 
@@ -1448,7 +1450,7 @@ class WmxSitemap {
 
   WmxSitemap.fromJson(core.Map _json) {
     if (_json.containsKey("contents")) {
-      contents = _json["contents"]
+      contents = (_json["contents"] as core.List)
           .map<WmxSitemapContent>(
               (value) => new WmxSitemapContent.fromJson(value))
           .toList();

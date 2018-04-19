@@ -211,7 +211,7 @@ class ProjectsHistoriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -437,7 +437,7 @@ class ProjectsHistoriesExecutionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -664,7 +664,7 @@ class ProjectsHistoriesExecutionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -921,7 +921,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1252,7 +1252,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1345,7 +1345,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1432,7 +1432,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1524,7 +1524,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1777,7 +1777,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -2108,7 +2108,7 @@ class AndroidInstrumentationTest {
       testRunnerClass = _json["testRunnerClass"];
     }
     if (_json.containsKey("testTargets")) {
-      testTargets = _json["testTargets"];
+      testTargets = (_json["testTargets"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("useOrchestrator")) {
       useOrchestrator = _json["useOrchestrator"];
@@ -2327,12 +2327,12 @@ class Any {
   /// Must be a valid serialized protocol buffer of the above specified type.
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return convert.BASE64.decode(value);
+    return convert.base64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
     value =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Any();
@@ -2474,7 +2474,7 @@ class BatchCreatePerfSamplesRequest {
 
   BatchCreatePerfSamplesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("perfSamples")) {
-      perfSamples = _json["perfSamples"]
+      perfSamples = (_json["perfSamples"] as core.List)
           .map<PerfSample>((value) => new PerfSample.fromJson(value))
           .toList();
     }
@@ -2498,7 +2498,7 @@ class BatchCreatePerfSamplesResponse {
 
   BatchCreatePerfSamplesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("perfSamples")) {
-      perfSamples = _json["perfSamples"]
+      perfSamples = (_json["perfSamples"] as core.List)
           .map<PerfSample>((value) => new PerfSample.fromJson(value))
           .toList();
     }
@@ -2899,7 +2899,7 @@ class GraphicsStats {
 
   GraphicsStats.fromJson(core.Map _json) {
     if (_json.containsKey("buckets")) {
-      buckets = _json["buckets"]
+      buckets = (_json["buckets"] as core.List)
           .map<GraphicsStatsBucket>(
               (value) => new GraphicsStatsBucket.fromJson(value))
           .toList();
@@ -3179,7 +3179,7 @@ class ListExecutionsResponse {
 
   ListExecutionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("executions")) {
-      executions = _json["executions"]
+      executions = (_json["executions"] as core.List)
           .map<Execution>((value) => new Execution.fromJson(value))
           .toList();
     }
@@ -3221,7 +3221,7 @@ class ListHistoriesResponse {
 
   ListHistoriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("histories")) {
-      histories = _json["histories"]
+      histories = (_json["histories"] as core.List)
           .map<History>((value) => new History.fromJson(value))
           .toList();
     }
@@ -3251,7 +3251,7 @@ class ListPerfSampleSeriesResponse {
 
   ListPerfSampleSeriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("perfSampleSeries")) {
-      perfSampleSeries = _json["perfSampleSeries"]
+      perfSampleSeries = (_json["perfSampleSeries"] as core.List)
           .map<PerfSampleSeries>(
               (value) => new PerfSampleSeries.fromJson(value))
           .toList();
@@ -3283,7 +3283,7 @@ class ListPerfSamplesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("perfSamples")) {
-      perfSamples = _json["perfSamples"]
+      perfSamples = (_json["perfSamples"] as core.List)
           .map<PerfSample>((value) => new PerfSample.fromJson(value))
           .toList();
     }
@@ -3311,7 +3311,7 @@ class ListScreenshotClustersResponse {
 
   ListScreenshotClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
-      clusters = _json["clusters"]
+      clusters = (_json["clusters"] as core.List)
           .map<ScreenshotCluster>(
               (value) => new ScreenshotCluster.fromJson(value))
           .toList();
@@ -3353,7 +3353,7 @@ class ListStepThumbnailsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = _json["thumbnails"]
+      thumbnails = (_json["thumbnails"] as core.List)
           .map<Image>((value) => new Image.fromJson(value))
           .toList();
     }
@@ -3391,7 +3391,7 @@ class ListStepsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("steps")) {
-      steps = _json["steps"]
+      steps = (_json["steps"] as core.List)
           .map<Step>((value) => new Step.fromJson(value))
           .toList();
     }
@@ -3606,7 +3606,7 @@ class PerfMetricsSummary {
       perfEnvironment = new PerfEnvironment.fromJson(_json["perfEnvironment"]);
     }
     if (_json.containsKey("perfMetrics")) {
-      perfMetrics = _json["perfMetrics"];
+      perfMetrics = (_json["perfMetrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -3801,7 +3801,7 @@ class PublishXunitXmlFilesRequest {
 
   PublishXunitXmlFilesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("xunitXmlFiles")) {
-      xunitXmlFiles = _json["xunitXmlFiles"]
+      xunitXmlFiles = (_json["xunitXmlFiles"] as core.List)
           .map<FileReference>((value) => new FileReference.fromJson(value))
           .toList();
     }
@@ -3896,7 +3896,7 @@ class ScreenshotCluster {
       keyScreen = new Screen.fromJson(_json["keyScreen"]);
     }
     if (_json.containsKey("screens")) {
-      screens = _json["screens"]
+      screens = (_json["screens"] as core.List)
           .map<Screen>((value) => new Screen.fromJson(value))
           .toList();
     }
@@ -4099,7 +4099,7 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"]
+      details = (_json["details"] as core.List)
           .map<Any>((value) => new Any.fromJson(value))
           .toList();
     }
@@ -4309,7 +4309,7 @@ class Step {
       deviceUsageDuration = new Duration.fromJson(_json["deviceUsageDuration"]);
     }
     if (_json.containsKey("dimensionValue")) {
-      dimensionValue = _json["dimensionValue"]
+      dimensionValue = (_json["dimensionValue"] as core.List)
           .map<StepDimensionValueEntry>(
               (value) => new StepDimensionValueEntry.fromJson(value))
           .toList();
@@ -4318,7 +4318,7 @@ class Step {
       hasImages = _json["hasImages"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<StepLabelsEntry>((value) => new StepLabelsEntry.fromJson(value))
           .toList();
     }
@@ -4567,12 +4567,12 @@ class TestExecutionStep {
 
   TestExecutionStep.fromJson(core.Map _json) {
     if (_json.containsKey("testIssues")) {
-      testIssues = _json["testIssues"]
+      testIssues = (_json["testIssues"] as core.List)
           .map<TestIssue>((value) => new TestIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("testSuiteOverviews")) {
-      testSuiteOverviews = _json["testSuiteOverviews"]
+      testSuiteOverviews = (_json["testSuiteOverviews"] as core.List)
           .map<TestSuiteOverview>(
               (value) => new TestSuiteOverview.fromJson(value))
           .toList();
@@ -4816,12 +4816,12 @@ class Thumbnail {
   /// Always set.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The height of the thumbnail, in pixels.
@@ -5018,18 +5018,19 @@ class ToolExecution {
 
   ToolExecution.fromJson(core.Map _json) {
     if (_json.containsKey("commandLineArguments")) {
-      commandLineArguments = _json["commandLineArguments"];
+      commandLineArguments =
+          (_json["commandLineArguments"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("exitCode")) {
       exitCode = new ToolExitCode.fromJson(_json["exitCode"]);
     }
     if (_json.containsKey("toolLogs")) {
-      toolLogs = _json["toolLogs"]
+      toolLogs = (_json["toolLogs"] as core.List)
           .map<FileReference>((value) => new FileReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("toolOutputs")) {
-      toolOutputs = _json["toolOutputs"]
+      toolOutputs = (_json["toolOutputs"] as core.List)
           .map<ToolOutputReference>(
               (value) => new ToolOutputReference.fromJson(value))
           .toList();

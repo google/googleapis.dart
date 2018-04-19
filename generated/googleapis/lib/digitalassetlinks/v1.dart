@@ -607,7 +607,7 @@ class CheckResponse {
       debugString = _json["debugString"];
     }
     if (_json.containsKey("errorCode")) {
-      errorCode = _json["errorCode"];
+      errorCode = (_json["errorCode"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("linked")) {
       linked = _json["linked"];
@@ -669,13 +669,13 @@ class ListResponse {
       debugString = _json["debugString"];
     }
     if (_json.containsKey("errorCode")) {
-      errorCode = _json["errorCode"];
+      errorCode = (_json["errorCode"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("maxAge")) {
       maxAge = _json["maxAge"];
     }
     if (_json.containsKey("statements")) {
-      statements = _json["statements"]
+      statements = (_json["statements"] as core.List)
           .map<Statement>((value) => new Statement.fromJson(value))
           .toList();
     }

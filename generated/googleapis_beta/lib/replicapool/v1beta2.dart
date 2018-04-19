@@ -94,7 +94,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -235,7 +235,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -367,7 +367,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -516,7 +516,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -663,7 +663,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -736,7 +736,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -943,12 +943,12 @@ class InstanceGroupManager {
   /// order to modify the Instance Group Manager resource.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// [Output only] The full URL of the instance group created by the manager.
@@ -987,7 +987,7 @@ class InstanceGroupManager {
 
   InstanceGroupManager.fromJson(core.Map _json) {
     if (_json.containsKey("autoHealingPolicies")) {
-      autoHealingPolicies = _json["autoHealingPolicies"]
+      autoHealingPolicies = (_json["autoHealingPolicies"] as core.List)
           .map<ReplicaPoolAutoHealingPolicy>(
               (value) => new ReplicaPoolAutoHealingPolicy.fromJson(value))
           .toList();
@@ -1026,7 +1026,7 @@ class InstanceGroupManager {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("targetPools")) {
-      targetPools = _json["targetPools"];
+      targetPools = (_json["targetPools"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("targetSize")) {
       targetSize = _json["targetSize"];
@@ -1106,7 +1106,7 @@ class InstanceGroupManagerList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceGroupManager>(
               (value) => new InstanceGroupManager.fromJson(value))
           .toList();
@@ -1153,7 +1153,7 @@ class InstanceGroupManagersAbandonInstancesRequest {
 
   InstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -1177,7 +1177,7 @@ class InstanceGroupManagersDeleteInstancesRequest {
 
   InstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -1200,7 +1200,7 @@ class InstanceGroupManagersRecreateInstancesRequest {
 
   InstanceGroupManagersRecreateInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -1243,12 +1243,12 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   /// request will be rejected.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// A list of fully-qualified URLs to existing Target Pool resources. New
@@ -1263,7 +1263,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("targetPools")) {
-      targetPools = _json["targetPools"];
+      targetPools = (_json["targetPools"] as core.List).cast<core.String>();
     }
   }
 
@@ -1332,7 +1332,7 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<OperationErrorErrors>(
               (value) => new OperationErrorErrors.fromJson(value))
           .toList();
@@ -1411,7 +1411,7 @@ class OperationWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationWarningsData>(
               (value) => new OperationWarningsData.fromJson(value))
           .toList();
@@ -1591,7 +1591,7 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<OperationWarnings>(
               (value) => new OperationWarnings.fromJson(value))
           .toList();
@@ -1697,7 +1697,7 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }

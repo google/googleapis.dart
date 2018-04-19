@@ -223,7 +223,7 @@ class BucketAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -332,7 +332,7 @@ class BucketAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -397,7 +397,7 @@ class BucketAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -689,7 +689,7 @@ class BucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -941,7 +941,7 @@ class BucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -1010,7 +1010,7 @@ class BucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -1172,7 +1172,7 @@ class BucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -1239,7 +1239,7 @@ class ChannelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1417,7 +1417,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -1543,7 +1543,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -1608,7 +1608,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -1788,7 +1788,7 @@ class NotificationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -2058,7 +2058,7 @@ class ObjectAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -2200,7 +2200,7 @@ class ObjectAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -2279,7 +2279,7 @@ class ObjectAccessControlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -2390,7 +2390,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (destinationBucket == null) {
       throw new core.ArgumentError("Parameter destinationBucket is required.");
@@ -2547,7 +2547,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sourceBucket == null) {
       throw new core.ArgumentError("Parameter sourceBucket is required.");
@@ -3012,7 +3012,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -3254,7 +3254,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -3439,7 +3439,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sourceBucket == null) {
       throw new core.ArgumentError("Parameter sourceBucket is required.");
@@ -3562,7 +3562,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -3754,7 +3754,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -3866,7 +3866,7 @@ class ObjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
@@ -4023,13 +4023,14 @@ class BucketCors {
       maxAgeSeconds = _json["maxAgeSeconds"];
     }
     if (_json.containsKey("method")) {
-      method = _json["method"];
+      method = (_json["method"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("origin")) {
-      origin = _json["origin"];
+      origin = (_json["origin"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("responseHeader")) {
-      responseHeader = _json["responseHeader"];
+      responseHeader =
+          (_json["responseHeader"] as core.List).cast<core.String>();
     }
   }
 
@@ -4150,7 +4151,8 @@ class BucketLifecycleRuleCondition {
       isLive = _json["isLive"];
     }
     if (_json.containsKey("matchesStorageClass")) {
-      matchesStorageClass = _json["matchesStorageClass"];
+      matchesStorageClass =
+          (_json["matchesStorageClass"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("numNewerVersions")) {
       numNewerVersions = _json["numNewerVersions"];
@@ -4222,7 +4224,7 @@ class BucketLifecycle {
 
   BucketLifecycle.fromJson(core.Map _json) {
     if (_json.containsKey("rule")) {
-      rule = _json["rule"]
+      rule = (_json["rule"] as core.List)
           .map<BucketLifecycleRule>(
               (value) => new BucketLifecycleRule.fromJson(value))
           .toList();
@@ -4528,7 +4530,7 @@ class Bucket {
 
   Bucket.fromJson(core.Map _json) {
     if (_json.containsKey("acl")) {
-      acl = _json["acl"]
+      acl = (_json["acl"] as core.List)
           .map<BucketAccessControl>(
               (value) => new BucketAccessControl.fromJson(value))
           .toList();
@@ -4537,7 +4539,7 @@ class Bucket {
       billing = new BucketBilling.fromJson(_json["billing"]);
     }
     if (_json.containsKey("cors")) {
-      cors = _json["cors"]
+      cors = (_json["cors"] as core.List)
           .map<BucketCors>((value) => new BucketCors.fromJson(value))
           .toList();
     }
@@ -4545,7 +4547,7 @@ class Bucket {
       defaultEventBasedHold = _json["defaultEventBasedHold"];
     }
     if (_json.containsKey("defaultObjectAcl")) {
-      defaultObjectAcl = _json["defaultObjectAcl"]
+      defaultObjectAcl = (_json["defaultObjectAcl"] as core.List)
           .map<ObjectAccessControl>(
               (value) => new ObjectAccessControl.fromJson(value))
           .toList();
@@ -4563,7 +4565,7 @@ class Bucket {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("lifecycle")) {
       lifecycle = new BucketLifecycle.fromJson(_json["lifecycle"]);
@@ -4863,7 +4865,7 @@ class BucketAccessControls {
 
   BucketAccessControls.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<BucketAccessControl>(
               (value) => new BucketAccessControl.fromJson(value))
           .toList();
@@ -4903,7 +4905,7 @@ class Buckets {
 
   Buckets.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Bucket>((value) => new Bucket.fromJson(value))
           .toList();
     }
@@ -4983,7 +4985,7 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("payload")) {
       payload = _json["payload"];
@@ -5128,7 +5130,7 @@ class ComposeRequest {
       kind = _json["kind"];
     }
     if (_json.containsKey("sourceObjects")) {
-      sourceObjects = _json["sourceObjects"]
+      sourceObjects = (_json["sourceObjects"] as core.List)
           .map<ComposeRequestSourceObjects>(
               (value) => new ComposeRequestSourceObjects.fromJson(value))
           .toList();
@@ -5190,13 +5192,14 @@ class Notification {
 
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey("custom_attributes")) {
-      customAttributes = _json["custom_attributes"];
+      customAttributes = (_json["custom_attributes"] as core.Map)
+          .cast<core.String, core.String>();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("event_types")) {
-      eventTypes = _json["event_types"];
+      eventTypes = (_json["event_types"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -5265,7 +5268,7 @@ class Notifications {
 
   Notifications.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Notification>((value) => new Notification.fromJson(value))
           .toList();
     }
@@ -5483,7 +5486,7 @@ class Object {
 
   Object.fromJson(core.Map _json) {
     if (_json.containsKey("acl")) {
-      acl = _json["acl"]
+      acl = (_json["acl"] as core.List)
           .map<ObjectAccessControl>(
               (value) => new ObjectAccessControl.fromJson(value))
           .toList();
@@ -5541,7 +5544,8 @@ class Object {
       mediaLink = _json["mediaLink"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("metageneration")) {
       metageneration = _json["metageneration"];
@@ -5876,7 +5880,7 @@ class ObjectAccessControls {
 
   ObjectAccessControls.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ObjectAccessControl>(
               (value) => new ObjectAccessControl.fromJson(value))
           .toList();
@@ -5920,7 +5924,7 @@ class Objects {
 
   Objects.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Object>((value) => new Object.fromJson(value))
           .toList();
     }
@@ -5931,7 +5935,7 @@ class Objects {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("prefixes")) {
-      prefixes = _json["prefixes"];
+      prefixes = (_json["prefixes"] as core.List).cast<core.String>();
     }
   }
 
@@ -6018,7 +6022,7 @@ class PolicyBindings {
       condition = _json["condition"];
     }
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -6050,12 +6054,12 @@ class Policy {
   /// HTTP 1.1  Entity tag for the policy.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The kind of item this is. For policies, this is always storage#policy.
@@ -6075,7 +6079,7 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<PolicyBindings>((value) => new PolicyBindings.fromJson(value))
           .toList();
     }
@@ -6247,7 +6251,7 @@ class TestIamPermissionsResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 

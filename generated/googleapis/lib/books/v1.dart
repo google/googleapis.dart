@@ -381,7 +381,7 @@ class CloudloadingResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1509,7 +1509,7 @@ class MyconfigResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1634,7 +1634,7 @@ class MylibraryAnnotationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (annotationId != null) {
       _queryParams["annotationId"] = [annotationId];
@@ -1848,7 +1848,7 @@ class MylibraryAnnotationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
@@ -3980,7 +3980,7 @@ class Annotation {
       layerSummary = new AnnotationLayerSummary.fromJson(_json["layerSummary"]);
     }
     if (_json.containsKey("pageIds")) {
-      pageIds = _json["pageIds"];
+      pageIds = (_json["pageIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selectedText")) {
       selectedText = _json["selectedText"];
@@ -4067,12 +4067,12 @@ class Annotationdata {
   /// Base64 encoded data for this annotation data.
   core.String encodedData;
   core.List<core.int> get encodedDataAsBytes {
-    return convert.BASE64.decode(encodedData);
+    return convert.base64.decode(encodedData);
   }
 
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Unique id for this annotation data.
@@ -4179,7 +4179,7 @@ class Annotations {
 
   Annotations.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Annotation>((value) => new Annotation.fromJson(value))
           .toList();
     }
@@ -4273,7 +4273,7 @@ class AnnotationsSummary {
       kind = _json["kind"];
     }
     if (_json.containsKey("layers")) {
-      layers = _json["layers"]
+      layers = (_json["layers"] as core.List)
           .map<AnnotationsSummaryLayers>(
               (value) => new AnnotationsSummaryLayers.fromJson(value))
           .toList();
@@ -4311,7 +4311,7 @@ class Annotationsdata {
 
   Annotationsdata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Annotationdata>((value) => new Annotationdata.fromJson(value))
           .toList();
     }
@@ -4574,7 +4574,7 @@ class Bookshelves {
 
   Bookshelves.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Bookshelf>((value) => new Bookshelf.fromJson(value))
           .toList();
     }
@@ -4642,7 +4642,7 @@ class Category {
 
   Category.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CategoryItems>((value) => new CategoryItems.fromJson(value))
           .toList();
     }
@@ -5041,7 +5041,7 @@ class DictlayerdataDictWordsSensesDefinitions {
       definition = _json["definition"];
     }
     if (_json.containsKey("examples")) {
-      examples = _json["examples"]
+      examples = (_json["examples"] as core.List)
           .map<DictlayerdataDictWordsSensesDefinitionsExamples>((value) =>
               new DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
                   value))
@@ -5161,13 +5161,13 @@ class DictlayerdataDictWordsSenses {
 
   DictlayerdataDictWordsSenses.fromJson(core.Map _json) {
     if (_json.containsKey("conjugations")) {
-      conjugations = _json["conjugations"]
+      conjugations = (_json["conjugations"] as core.List)
           .map<DictlayerdataDictWordsSensesConjugations>((value) =>
               new DictlayerdataDictWordsSensesConjugations.fromJson(value))
           .toList();
     }
     if (_json.containsKey("definitions")) {
-      definitions = _json["definitions"]
+      definitions = (_json["definitions"] as core.List)
           .map<DictlayerdataDictWordsSensesDefinitions>((value) =>
               new DictlayerdataDictWordsSensesDefinitions.fromJson(value))
           .toList();
@@ -5188,7 +5188,7 @@ class DictlayerdataDictWordsSenses {
       syllabification = _json["syllabification"];
     }
     if (_json.containsKey("synonyms")) {
-      synonyms = _json["synonyms"]
+      synonyms = (_json["synonyms"] as core.List)
           .map<DictlayerdataDictWordsSensesSynonyms>((value) =>
               new DictlayerdataDictWordsSensesSynonyms.fromJson(value))
           .toList();
@@ -5271,19 +5271,19 @@ class DictlayerdataDictWords {
 
   DictlayerdataDictWords.fromJson(core.Map _json) {
     if (_json.containsKey("derivatives")) {
-      derivatives = _json["derivatives"]
+      derivatives = (_json["derivatives"] as core.List)
           .map<DictlayerdataDictWordsDerivatives>(
               (value) => new DictlayerdataDictWordsDerivatives.fromJson(value))
           .toList();
     }
     if (_json.containsKey("examples")) {
-      examples = _json["examples"]
+      examples = (_json["examples"] as core.List)
           .map<DictlayerdataDictWordsExamples>(
               (value) => new DictlayerdataDictWordsExamples.fromJson(value))
           .toList();
     }
     if (_json.containsKey("senses")) {
-      senses = _json["senses"]
+      senses = (_json["senses"] as core.List)
           .map<DictlayerdataDictWordsSenses>(
               (value) => new DictlayerdataDictWordsSenses.fromJson(value))
           .toList();
@@ -5325,7 +5325,7 @@ class DictlayerdataDict {
       source = new DictlayerdataDictSource.fromJson(_json["source"]);
     }
     if (_json.containsKey("words")) {
-      words = _json["words"]
+      words = (_json["words"] as core.List)
           .map<DictlayerdataDictWords>(
               (value) => new DictlayerdataDictWords.fromJson(value))
           .toList();
@@ -5466,7 +5466,7 @@ class DiscoveryclustersClusters {
       uid = _json["uid"];
     }
     if (_json.containsKey("volumes")) {
-      volumes = _json["volumes"]
+      volumes = (_json["volumes"] as core.List)
           .map<Volume>((value) => new Volume.fromJson(value))
           .toList();
     }
@@ -5509,7 +5509,7 @@ class Discoveryclusters {
 
   Discoveryclusters.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
-      clusters = _json["clusters"]
+      clusters = (_json["clusters"] as core.List)
           .map<DiscoveryclustersClusters>(
               (value) => new DiscoveryclustersClusters.fromJson(value))
           .toList();
@@ -5675,7 +5675,7 @@ class DownloadAccesses {
 
   DownloadAccesses.fromJson(core.Map _json) {
     if (_json.containsKey("downloadAccessList")) {
-      downloadAccessList = _json["downloadAccessList"]
+      downloadAccessList = (_json["downloadAccessList"] as core.List)
           .map<DownloadAccessRestriction>(
               (value) => new DownloadAccessRestriction.fromJson(value))
           .toList();
@@ -5995,11 +5995,12 @@ class GeolayerdataGeo {
 
   GeolayerdataGeo.fromJson(core.Map _json) {
     if (_json.containsKey("boundary")) {
-      boundary = _json["boundary"]
-          .map<core.List<GeolayerdataGeoBoundary>>((value) => value
-              .map<GeolayerdataGeoBoundary>(
-                  (value) => new GeolayerdataGeoBoundary.fromJson(value))
-              .toList())
+      boundary = (_json["boundary"] as core.List)
+          .map<core.List<GeolayerdataGeoBoundary>>((value) =>
+              (value as core.List)
+                  .map<GeolayerdataGeoBoundary>(
+                      (value) => new GeolayerdataGeoBoundary.fromJson(value))
+                  .toList())
           .toList();
     }
     if (_json.containsKey("cachePolicy")) {
@@ -6107,7 +6108,7 @@ class Layersummaries {
 
   Layersummaries.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Layersummary>((value) => new Layersummary.fromJson(value))
           .toList();
     }
@@ -6185,7 +6186,8 @@ class Layersummary {
       annotationCount = _json["annotationCount"];
     }
     if (_json.containsKey("annotationTypes")) {
-      annotationTypes = _json["annotationTypes"];
+      annotationTypes =
+          (_json["annotationTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("annotationsDataLink")) {
       annotationsDataLink = _json["annotationsDataLink"];
@@ -6328,7 +6330,7 @@ class Metadata {
 
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<MetadataItems>((value) => new MetadataItems.fromJson(value))
           .toList();
     }
@@ -6377,7 +6379,8 @@ class Notification {
       body = _json["body"];
     }
     if (_json.containsKey("crmExperimentIds")) {
-      crmExperimentIds = _json["crmExperimentIds"];
+      crmExperimentIds =
+          (_json["crmExperimentIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("doc_id")) {
       docId = _json["doc_id"];
@@ -6543,7 +6546,7 @@ class OffersItems {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<OffersItemsItems>(
               (value) => new OffersItemsItems.fromJson(value))
           .toList();
@@ -6580,7 +6583,7 @@ class Offers {
 
   Offers.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<OffersItems>((value) => new OffersItems.fromJson(value))
           .toList();
     }
@@ -6953,7 +6956,7 @@ class Series {
       kind = _json["kind"];
     }
     if (_json.containsKey("series")) {
-      series = _json["series"]
+      series = (_json["series"] as core.List)
           .map<SeriesSeries>((value) => new SeriesSeries.fromJson(value))
           .toList();
     }
@@ -6985,7 +6988,7 @@ class Seriesmembership {
       kind = _json["kind"];
     }
     if (_json.containsKey("member")) {
-      member = _json["member"]
+      member = (_json["member"] as core.List)
           .map<Volume>((value) => new Volume.fromJson(value))
           .toList();
     }
@@ -7524,7 +7527,7 @@ class VolumeLayerInfo {
 
   VolumeLayerInfo.fromJson(core.Map _json) {
     if (_json.containsKey("layers")) {
-      layers = _json["layers"]
+      layers = (_json["layers"] as core.List)
           .map<VolumeLayerInfoLayers>(
               (value) => new VolumeLayerInfoLayers.fromJson(value))
           .toList();
@@ -7830,7 +7833,7 @@ class VolumeSaleInfo {
       listPrice = new VolumeSaleInfoListPrice.fromJson(_json["listPrice"]);
     }
     if (_json.containsKey("offers")) {
-      offers = _json["offers"]
+      offers = (_json["offers"] as core.List)
           .map<VolumeSaleInfoOffers>(
               (value) => new VolumeSaleInfoOffers.fromJson(value))
           .toList();
@@ -8516,7 +8519,7 @@ class VolumeVolumeInfo {
       allowAnonLogging = _json["allowAnonLogging"];
     }
     if (_json.containsKey("authors")) {
-      authors = _json["authors"];
+      authors = (_json["authors"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("averageRating")) {
       averageRating = _json["averageRating"];
@@ -8525,7 +8528,7 @@ class VolumeVolumeInfo {
       canonicalVolumeLink = _json["canonicalVolumeLink"];
     }
     if (_json.containsKey("categories")) {
-      categories = _json["categories"];
+      categories = (_json["categories"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("contentVersion")) {
       contentVersion = _json["contentVersion"];
@@ -8540,7 +8543,7 @@ class VolumeVolumeInfo {
       imageLinks = new VolumeVolumeInfoImageLinks.fromJson(_json["imageLinks"]);
     }
     if (_json.containsKey("industryIdentifiers")) {
-      industryIdentifiers = _json["industryIdentifiers"]
+      industryIdentifiers = (_json["industryIdentifiers"] as core.List)
           .map<VolumeVolumeInfoIndustryIdentifiers>((value) =>
               new VolumeVolumeInfoIndustryIdentifiers.fromJson(value))
           .toList();
@@ -8820,7 +8823,7 @@ class Volume2 {
 
   Volume2.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Volume>((value) => new Volume.fromJson(value))
           .toList();
     }
@@ -8974,7 +8977,7 @@ class Volumeannotation {
       layerId = _json["layerId"];
     }
     if (_json.containsKey("pageIds")) {
-      pageIds = _json["pageIds"];
+      pageIds = (_json["pageIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selectedText")) {
       selectedText = _json["selectedText"];
@@ -9063,7 +9066,7 @@ class Volumeannotations {
 
   Volumeannotations.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Volumeannotation>(
               (value) => new Volumeannotation.fromJson(value))
           .toList();
@@ -9119,7 +9122,7 @@ class Volumes {
 
   Volumes.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Volume>((value) => new Volume.fromJson(value))
           .toList();
     }
@@ -9193,7 +9196,7 @@ class VolumeseriesinfoVolumeSeries {
 
   VolumeseriesinfoVolumeSeries.fromJson(core.Map _json) {
     if (_json.containsKey("issue")) {
-      issue = _json["issue"]
+      issue = (_json["issue"] as core.List)
           .map<VolumeseriesinfoVolumeSeriesIssue>(
               (value) => new VolumeseriesinfoVolumeSeriesIssue.fromJson(value))
           .toList();
@@ -9253,7 +9256,7 @@ class Volumeseriesinfo {
       shortSeriesBookTitle = _json["shortSeriesBookTitle"];
     }
     if (_json.containsKey("volumeSeries")) {
-      volumeSeries = _json["volumeSeries"]
+      volumeSeries = (_json["volumeSeries"] as core.List)
           .map<VolumeseriesinfoVolumeSeries>(
               (value) => new VolumeseriesinfoVolumeSeries.fromJson(value))
           .toList();

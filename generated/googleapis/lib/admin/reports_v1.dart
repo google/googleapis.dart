@@ -237,7 +237,7 @@ class ActivitiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -317,7 +317,7 @@ class ChannelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -643,7 +643,7 @@ class Activities {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Activity>((value) => new Activity.fromJson(value))
           .toList();
     }
@@ -753,10 +753,10 @@ class ActivityEventsParameters {
       intValue = _json["intValue"];
     }
     if (_json.containsKey("multiIntValue")) {
-      multiIntValue = _json["multiIntValue"];
+      multiIntValue = (_json["multiIntValue"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("multiValue")) {
-      multiValue = _json["multiValue"];
+      multiValue = (_json["multiValue"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -808,7 +808,7 @@ class ActivityEvents {
       name = _json["name"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = _json["parameters"]
+      parameters = (_json["parameters"] as core.List)
           .map<ActivityEventsParameters>(
               (value) => new ActivityEventsParameters.fromJson(value))
           .toList();
@@ -918,7 +918,7 @@ class Activity {
       etag = _json["etag"];
     }
     if (_json.containsKey("events")) {
-      events = _json["events"]
+      events = (_json["events"] as core.List)
           .map<ActivityEvents>((value) => new ActivityEvents.fromJson(value))
           .toList();
     }
@@ -1016,7 +1016,7 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("payload")) {
       payload = _json["payload"];
@@ -1167,7 +1167,10 @@ class UsageReportParameters {
       intValue = _json["intValue"];
     }
     if (_json.containsKey("msgValue")) {
-      msgValue = _json["msgValue"];
+      msgValue = (_json["msgValue"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1235,7 +1238,7 @@ class UsageReport {
       kind = _json["kind"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = _json["parameters"]
+      parameters = (_json["parameters"] as core.List)
           .map<UsageReportParameters>(
               (value) => new UsageReportParameters.fromJson(value))
           .toList();
@@ -1315,7 +1318,7 @@ class UsageReportsWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<UsageReportsWarningsData>(
               (value) => new UsageReportsWarningsData.fromJson(value))
           .toList();
@@ -1371,12 +1374,12 @@ class UsageReports {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("usageReports")) {
-      usageReports = _json["usageReports"]
+      usageReports = (_json["usageReports"] as core.List)
           .map<UsageReport>((value) => new UsageReport.fromJson(value))
           .toList();
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<UsageReportsWarnings>(
               (value) => new UsageReportsWarnings.fromJson(value))
           .toList();

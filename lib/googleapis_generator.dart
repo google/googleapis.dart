@@ -69,7 +69,7 @@ List<RestDescription> loadDiscoveryDocuments(String directory) {
       .where((fse) => fse is File && fse.path.endsWith('.json'))
       .map((FileSystemEntity file) {
     return new RestDescription.fromJson(
-        JSON.decode((file as File).readAsStringSync()));
+        json.decode((file as File).readAsStringSync()));
   }).toList();
   return apiDescriptions;
 }

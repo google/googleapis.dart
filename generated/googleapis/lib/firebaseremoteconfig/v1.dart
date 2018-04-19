@@ -139,7 +139,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -203,17 +203,15 @@ class RemoteConfig {
 
   RemoteConfig.fromJson(core.Map _json) {
     if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"]
+      conditions = (_json["conditions"] as core.List)
           .map<RemoteConfigCondition>(
               (value) => new RemoteConfigCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parameters")) {
-      parameters = commons
-          .mapMap<core.Map<core.String, core.Object>, RemoteConfigParameter>(
-              _json["parameters"],
-              (core.Map<core.String, core.Object> item) =>
-                  new RemoteConfigParameter.fromJson(item));
+      parameters = commons.mapMap<core.Map, RemoteConfigParameter>(
+          _json["parameters"].cast<core.String, core.Map>(),
+          (core.Map item) => new RemoteConfigParameter.fromJson(item));
     }
   }
 
@@ -341,11 +339,9 @@ class RemoteConfigParameter {
 
   RemoteConfigParameter.fromJson(core.Map _json) {
     if (_json.containsKey("conditionalValues")) {
-      conditionalValues = commons.mapMap<core.Map<core.String, core.Object>,
-              RemoteConfigParameterValue>(
-          _json["conditionalValues"],
-          (core.Map<core.String, core.Object> item) =>
-              new RemoteConfigParameterValue.fromJson(item));
+      conditionalValues = commons.mapMap<core.Map, RemoteConfigParameterValue>(
+          _json["conditionalValues"].cast<core.String, core.Map>(),
+          (core.Map item) => new RemoteConfigParameterValue.fromJson(item));
     }
     if (_json.containsKey("defaultValue")) {
       defaultValue =

@@ -160,7 +160,7 @@ class ActivitiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -454,7 +454,7 @@ class CirclesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -561,7 +561,7 @@ class CirclesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
@@ -708,7 +708,7 @@ class CirclesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
@@ -804,7 +804,7 @@ class CommentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
@@ -947,7 +947,7 @@ class MediaResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1273,7 +1273,7 @@ class Acl {
       domainRestricted = _json["domainRestricted"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PlusDomainsAclentryResource>(
               (value) => new PlusDomainsAclentryResource.fromJson(value))
           .toList();
@@ -1989,13 +1989,13 @@ class ActivityObjectAttachments {
       objectType = _json["objectType"];
     }
     if (_json.containsKey("previewThumbnails")) {
-      previewThumbnails = _json["previewThumbnails"]
+      previewThumbnails = (_json["previewThumbnails"] as core.List)
           .map<ActivityObjectAttachmentsPreviewThumbnails>((value) =>
               new ActivityObjectAttachmentsPreviewThumbnails.fromJson(value))
           .toList();
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = _json["thumbnails"]
+      thumbnails = (_json["thumbnails"] as core.List)
           .map<ActivityObjectAttachmentsThumbnails>((value) =>
               new ActivityObjectAttachmentsThumbnails.fromJson(value))
           .toList();
@@ -2249,7 +2249,7 @@ class ActivityObject {
       actor = new ActivityObjectActor.fromJson(_json["actor"]);
     }
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"]
+      attachments = (_json["attachments"] as core.List)
           .map<ActivityObjectAttachments>(
               (value) => new ActivityObjectAttachments.fromJson(value))
           .toList();
@@ -2593,7 +2593,7 @@ class ActivityFeed {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Activity>((value) => new Activity.fromJson(value))
           .toList();
     }
@@ -2742,7 +2742,7 @@ class AudiencesFeed {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Audience>((value) => new Audience.fromJson(value))
           .toList();
     }
@@ -2914,7 +2914,7 @@ class CircleFeed {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Circle>((value) => new Circle.fromJson(value))
           .toList();
     }
@@ -3285,7 +3285,7 @@ class Comment {
       id = _json["id"];
     }
     if (_json.containsKey("inReplyTo")) {
-      inReplyTo = _json["inReplyTo"]
+      inReplyTo = (_json["inReplyTo"] as core.List)
           .map<CommentInReplyTo>(
               (value) => new CommentInReplyTo.fromJson(value))
           .toList();
@@ -3392,7 +3392,7 @@ class CommentFeed {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -3644,7 +3644,7 @@ class Media {
       sizeBytes = _json["sizeBytes"];
     }
     if (_json.containsKey("streams")) {
-      streams = _json["streams"]
+      streams = (_json["streams"] as core.List)
           .map<Videostream>((value) => new Videostream.fromJson(value))
           .toList();
     }
@@ -3765,7 +3765,7 @@ class PeopleFeed {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Person>((value) => new Person.fromJson(value))
           .toList();
     }
@@ -4383,7 +4383,7 @@ class Person {
       domain = _json["domain"];
     }
     if (_json.containsKey("emails")) {
-      emails = _json["emails"]
+      emails = (_json["emails"] as core.List)
           .map<PersonEmails>((value) => new PersonEmails.fromJson(value))
           .toList();
     }
@@ -4418,13 +4418,13 @@ class Person {
       occupation = _json["occupation"];
     }
     if (_json.containsKey("organizations")) {
-      organizations = _json["organizations"]
+      organizations = (_json["organizations"] as core.List)
           .map<PersonOrganizations>(
               (value) => new PersonOrganizations.fromJson(value))
           .toList();
     }
     if (_json.containsKey("placesLived")) {
-      placesLived = _json["placesLived"]
+      placesLived = (_json["placesLived"] as core.List)
           .map<PersonPlacesLived>(
               (value) => new PersonPlacesLived.fromJson(value))
           .toList();
@@ -4445,7 +4445,7 @@ class Person {
       url = _json["url"];
     }
     if (_json.containsKey("urls")) {
-      urls = _json["urls"]
+      urls = (_json["urls"] as core.List)
           .map<PersonUrls>((value) => new PersonUrls.fromJson(value))
           .toList();
     }

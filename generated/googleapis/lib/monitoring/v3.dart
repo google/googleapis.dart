@@ -106,7 +106,7 @@ class ProjectsCollectdTimeSeriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -171,7 +171,7 @@ class ProjectsGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -410,7 +410,7 @@ class ProjectsGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -565,7 +565,7 @@ class ProjectsMetricDescriptorsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -926,7 +926,7 @@ class ProjectsTimeSeriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1186,7 +1186,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1404,7 +1404,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1612,10 +1612,9 @@ class CollectdPayload {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = commons.mapMap<core.Map<core.String, core.Object>, TypedValue>(
-          _json["metadata"],
-          (core.Map<core.String, core.Object> item) =>
-              new TypedValue.fromJson(item));
+      metadata = commons.mapMap<core.Map, TypedValue>(
+          _json["metadata"].cast<core.String, core.Map>(),
+          (core.Map item) => new TypedValue.fromJson(item));
     }
     if (_json.containsKey("plugin")) {
       plugin = _json["plugin"];
@@ -1633,7 +1632,7 @@ class CollectdPayload {
       typeInstance = _json["typeInstance"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"]
+      values = (_json["values"] as core.List)
           .map<CollectdValue>((value) => new CollectdValue.fromJson(value))
           .toList();
     }
@@ -1696,7 +1695,7 @@ class CollectdPayloadError {
       index = _json["index"];
     }
     if (_json.containsKey("valueErrors")) {
-      valueErrors = _json["valueErrors"]
+      valueErrors = (_json["valueErrors"] as core.List)
           .map<CollectdValueError>(
               (value) => new CollectdValueError.fromJson(value))
           .toList();
@@ -1849,7 +1848,7 @@ class CreateCollectdTimeSeriesRequest {
 
   CreateCollectdTimeSeriesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("collectdPayloads")) {
-      collectdPayloads = _json["collectdPayloads"]
+      collectdPayloads = (_json["collectdPayloads"] as core.List)
           .map<CollectdPayload>((value) => new CollectdPayload.fromJson(value))
           .toList();
     }
@@ -1889,7 +1888,7 @@ class CreateCollectdTimeSeriesResponse {
 
   CreateCollectdTimeSeriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("payloadErrors")) {
-      payloadErrors = _json["payloadErrors"]
+      payloadErrors = (_json["payloadErrors"] as core.List)
           .map<CollectdPayloadError>(
               (value) => new CollectdPayloadError.fromJson(value))
           .toList();
@@ -1920,7 +1919,7 @@ class CreateTimeSeriesRequest {
 
   CreateTimeSeriesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("timeSeries")) {
-      timeSeries = _json["timeSeries"]
+      timeSeries = (_json["timeSeries"] as core.List)
           .map<TimeSeries>((value) => new TimeSeries.fromJson(value))
           .toList();
     }
@@ -1989,7 +1988,7 @@ class Distribution {
 
   Distribution.fromJson(core.Map _json) {
     if (_json.containsKey("bucketCounts")) {
-      bucketCounts = _json["bucketCounts"];
+      bucketCounts = (_json["bucketCounts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("bucketOptions")) {
       bucketOptions = new BucketOptions.fromJson(_json["bucketOptions"]);
@@ -2066,7 +2065,7 @@ class Explicit {
 
   Explicit.fromJson(core.Map _json) {
     if (_json.containsKey("bounds")) {
-      bounds = _json["bounds"];
+      bounds = (_json["bounds"] as core.List).cast<core.double>();
     }
   }
 
@@ -2210,7 +2209,7 @@ class Field {
       oneofIndex = _json["oneofIndex"];
     }
     if (_json.containsKey("options")) {
-      options = _json["options"]
+      options = (_json["options"] as core.List)
           .map<Option>((value) => new Option.fromJson(value))
           .toList();
     }
@@ -2389,7 +2388,7 @@ class HttpCheck {
       authInfo = new BasicAuthentication.fromJson(_json["authInfo"]);
     }
     if (_json.containsKey("headers")) {
-      headers = _json["headers"];
+      headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("maskHeaders")) {
       maskHeaders = _json["maskHeaders"];
@@ -2599,7 +2598,7 @@ class ListGroupMembersResponse {
 
   ListGroupMembersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"]
+      members = (_json["members"] as core.List)
           .map<MonitoredResource>(
               (value) => new MonitoredResource.fromJson(value))
           .toList();
@@ -2642,7 +2641,7 @@ class ListGroupsResponse {
 
   ListGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("group")) {
-      group = _json["group"]
+      group = (_json["group"] as core.List)
           .map<Group>((value) => new Group.fromJson(value))
           .toList();
     }
@@ -2679,7 +2678,7 @@ class ListMetricDescriptorsResponse {
 
   ListMetricDescriptorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("metricDescriptors")) {
-      metricDescriptors = _json["metricDescriptors"]
+      metricDescriptors = (_json["metricDescriptors"] as core.List)
           .map<MetricDescriptor>(
               (value) => new MetricDescriptor.fromJson(value))
           .toList();
@@ -2721,7 +2720,7 @@ class ListMonitoredResourceDescriptorsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resourceDescriptors")) {
-      resourceDescriptors = _json["resourceDescriptors"]
+      resourceDescriptors = (_json["resourceDescriptors"] as core.List)
           .map<MonitoredResourceDescriptor>(
               (value) => new MonitoredResourceDescriptor.fromJson(value))
           .toList();
@@ -2759,7 +2758,7 @@ class ListTimeSeriesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("timeSeries")) {
-      timeSeries = _json["timeSeries"]
+      timeSeries = (_json["timeSeries"] as core.List)
           .map<TimeSeries>((value) => new TimeSeries.fromJson(value))
           .toList();
     }
@@ -2805,7 +2804,7 @@ class ListUptimeCheckConfigsResponse {
       totalSize = _json["totalSize"];
     }
     if (_json.containsKey("uptimeCheckConfigs")) {
-      uptimeCheckConfigs = _json["uptimeCheckConfigs"]
+      uptimeCheckConfigs = (_json["uptimeCheckConfigs"] as core.List)
           .map<UptimeCheckConfig>(
               (value) => new UptimeCheckConfig.fromJson(value))
           .toList();
@@ -2850,7 +2849,7 @@ class ListUptimeCheckIpsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("uptimeCheckIps")) {
-      uptimeCheckIps = _json["uptimeCheckIps"]
+      uptimeCheckIps = (_json["uptimeCheckIps"] as core.List)
           .map<UptimeCheckIp>((value) => new UptimeCheckIp.fromJson(value))
           .toList();
     }
@@ -2885,7 +2884,7 @@ class Metric {
 
   Metric.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2979,7 +2978,7 @@ class MetricDescriptor {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
@@ -3058,7 +3057,7 @@ class MonitoredResource {
 
   MonitoredResource.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -3124,7 +3123,7 @@ class MonitoredResourceDescriptor {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
@@ -3186,10 +3185,12 @@ class MonitoredResourceMetadata {
 
   MonitoredResourceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("systemLabels")) {
-      systemLabels = _json["systemLabels"];
+      systemLabels =
+          (_json["systemLabels"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("userLabels")) {
-      userLabels = _json["userLabels"];
+      userLabels =
+          (_json["userLabels"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -3231,7 +3232,7 @@ class Option {
       name = _json["name"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = (_json["value"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -3441,7 +3442,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -3600,7 +3604,7 @@ class TimeSeries {
       metricKind = _json["metricKind"];
     }
     if (_json.containsKey("points")) {
-      points = _json["points"]
+      points = (_json["points"] as core.List)
           .map<Point>((value) => new Point.fromJson(value))
           .toList();
     }
@@ -3664,7 +3668,7 @@ class Type {
 
   Type.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<Field>((value) => new Field.fromJson(value))
           .toList();
     }
@@ -3672,10 +3676,10 @@ class Type {
       name = _json["name"];
     }
     if (_json.containsKey("oneofs")) {
-      oneofs = _json["oneofs"];
+      oneofs = (_json["oneofs"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("options")) {
-      options = _json["options"]
+      options = (_json["options"] as core.List)
           .map<Option>((value) => new Option.fromJson(value))
           .toList();
     }
@@ -3836,7 +3840,7 @@ class UptimeCheckConfig {
 
   UptimeCheckConfig.fromJson(core.Map _json) {
     if (_json.containsKey("contentMatchers")) {
-      contentMatchers = _json["contentMatchers"]
+      contentMatchers = (_json["contentMatchers"] as core.List)
           .map<ContentMatcher>((value) => new ContentMatcher.fromJson(value))
           .toList();
     }
@@ -3847,7 +3851,7 @@ class UptimeCheckConfig {
       httpCheck = new HttpCheck.fromJson(_json["httpCheck"]);
     }
     if (_json.containsKey("internalCheckers")) {
-      internalCheckers = _json["internalCheckers"]
+      internalCheckers = (_json["internalCheckers"] as core.List)
           .map<InternalChecker>((value) => new InternalChecker.fromJson(value))
           .toList();
     }
@@ -3868,7 +3872,8 @@ class UptimeCheckConfig {
       resourceGroup = new ResourceGroup.fromJson(_json["resourceGroup"]);
     }
     if (_json.containsKey("selectedRegions")) {
-      selectedRegions = _json["selectedRegions"];
+      selectedRegions =
+          (_json["selectedRegions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tcpCheck")) {
       tcpCheck = new TcpCheck.fromJson(_json["tcpCheck"]);

@@ -146,7 +146,7 @@ class Activity {
       combinedEvent = new Event.fromJson(_json["combinedEvent"]);
     }
     if (_json.containsKey("singleEvents")) {
-      singleEvents = _json["singleEvents"]
+      singleEvents = (_json["singleEvents"] as core.List)
           .map<Event>((value) => new Event.fromJson(value))
           .toList();
     }
@@ -216,7 +216,8 @@ class Event {
 
   Event.fromJson(core.Map _json) {
     if (_json.containsKey("additionalEventTypes")) {
-      additionalEventTypes = _json["additionalEventTypes"];
+      additionalEventTypes =
+          (_json["additionalEventTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("eventTimeMillis")) {
       eventTimeMillis = _json["eventTimeMillis"];
@@ -228,7 +229,7 @@ class Event {
       move = new Move.fromJson(_json["move"]);
     }
     if (_json.containsKey("permissionChanges")) {
-      permissionChanges = _json["permissionChanges"]
+      permissionChanges = (_json["permissionChanges"] as core.List)
           .map<PermissionChange>(
               (value) => new PermissionChange.fromJson(value))
           .toList();
@@ -295,7 +296,7 @@ class ListActivitiesResponse {
 
   ListActivitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("activities")) {
-      activities = _json["activities"]
+      activities = (_json["activities"] as core.List)
           .map<Activity>((value) => new Activity.fromJson(value))
           .toList();
     }
@@ -331,12 +332,12 @@ class Move {
 
   Move.fromJson(core.Map _json) {
     if (_json.containsKey("addedParents")) {
-      addedParents = _json["addedParents"]
+      addedParents = (_json["addedParents"] as core.List)
           .map<Parent>((value) => new Parent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("removedParents")) {
-      removedParents = _json["removedParents"]
+      removedParents = (_json["removedParents"] as core.List)
           .map<Parent>((value) => new Parent.fromJson(value))
           .toList();
     }
@@ -495,12 +496,12 @@ class PermissionChange {
 
   PermissionChange.fromJson(core.Map _json) {
     if (_json.containsKey("addedPermissions")) {
-      addedPermissions = _json["addedPermissions"]
+      addedPermissions = (_json["addedPermissions"] as core.List)
           .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("removedPermissions")) {
-      removedPermissions = _json["removedPermissions"]
+      removedPermissions = (_json["removedPermissions"] as core.List)
           .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }

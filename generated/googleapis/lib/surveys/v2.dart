@@ -184,7 +184,7 @@ class MobileapppanelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (panelId == null) {
       throw new core.ArgumentError("Parameter panelId is required.");
@@ -250,7 +250,7 @@ class ResultsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
@@ -394,7 +394,7 @@ class SurveysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -496,7 +496,7 @@ class SurveysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
@@ -588,7 +588,7 @@ class SurveysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
@@ -617,7 +617,7 @@ class FieldMask {
 
   FieldMask.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<FieldMask>((value) => new FieldMask.fromJson(value))
           .toList();
     }
@@ -687,7 +687,7 @@ class MobileAppPanel {
       name = _json["name"];
     }
     if (_json.containsKey("owners")) {
-      owners = _json["owners"];
+      owners = (_json["owners"] as core.List).cast<core.String>();
     }
   }
 
@@ -737,7 +737,7 @@ class MobileAppPanelsListResponse {
       requestId = _json["requestId"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<MobileAppPanel>((value) => new MobileAppPanel.fromJson(value))
           .toList();
     }
@@ -829,7 +829,7 @@ class ResultsMask {
 
   ResultsMask.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<FieldMask>((value) => new FieldMask.fromJson(value))
           .toList();
     }
@@ -864,12 +864,12 @@ class Survey {
   /// field is limited to 64K bytes.
   core.String customerData;
   core.List<core.int> get customerDataAsBytes {
-    return convert.BASE64.decode(customerData);
+    return convert.base64.decode(customerData);
   }
 
   void set customerDataAsBytes(core.List<core.int> _bytes) {
     customerData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Text description of the survey.
@@ -914,10 +914,10 @@ class Survey {
       description = _json["description"];
     }
     if (_json.containsKey("owners")) {
-      owners = _json["owners"];
+      owners = (_json["owners"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("questions")) {
-      questions = _json["questions"]
+      questions = (_json["questions"] as core.List)
           .map<SurveyQuestion>((value) => new SurveyQuestion.fromJson(value))
           .toList();
     }
@@ -1019,7 +1019,7 @@ class SurveyAudience {
 
   SurveyAudience.fromJson(core.Map _json) {
     if (_json.containsKey("ages")) {
-      ages = _json["ages"];
+      ages = (_json["ages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("country")) {
       country = _json["country"];
@@ -1031,7 +1031,7 @@ class SurveyAudience {
       gender = _json["gender"];
     }
     if (_json.containsKey("languages")) {
-      languages = _json["languages"];
+      languages = (_json["languages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("mobileAppPanelId")) {
       mobileAppPanelId = _json["mobileAppPanelId"];
@@ -1214,7 +1214,7 @@ class SurveyQuestion {
       answerOrder = _json["answerOrder"];
     }
     if (_json.containsKey("answers")) {
-      answers = _json["answers"];
+      answers = (_json["answers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("hasOther")) {
       hasOther = _json["hasOther"];
@@ -1223,7 +1223,7 @@ class SurveyQuestion {
       highValueLabel = _json["highValueLabel"];
     }
     if (_json.containsKey("images")) {
-      images = _json["images"]
+      images = (_json["images"] as core.List)
           .map<SurveyQuestionImage>(
               (value) => new SurveyQuestionImage.fromJson(value))
           .toList();
@@ -1244,7 +1244,8 @@ class SurveyQuestion {
       openTextPlaceholder = _json["openTextPlaceholder"];
     }
     if (_json.containsKey("openTextSuggestions")) {
-      openTextSuggestions = _json["openTextSuggestions"];
+      openTextSuggestions =
+          (_json["openTextSuggestions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("question")) {
       question = _json["question"];
@@ -1256,7 +1257,8 @@ class SurveyQuestion {
       singleLineResponse = _json["singleLineResponse"];
     }
     if (_json.containsKey("thresholdAnswers")) {
-      thresholdAnswers = _json["thresholdAnswers"];
+      thresholdAnswers =
+          (_json["thresholdAnswers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1339,12 +1341,12 @@ class SurveyQuestionImage {
   /// types.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The read-only URL for the hosted images.
@@ -1489,7 +1491,7 @@ class SurveysListResponse {
       requestId = _json["requestId"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<Survey>((value) => new Survey.fromJson(value))
           .toList();
     }

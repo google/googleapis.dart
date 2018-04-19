@@ -154,7 +154,7 @@ class GroupItemsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -341,7 +341,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -480,7 +480,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -850,7 +850,7 @@ class GroupItemListResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<GroupItem>((value) => new GroupItem.fromJson(value))
           .toList();
     }
@@ -890,7 +890,7 @@ class GroupListResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Group>((value) => new Group.fromJson(value))
           .toList();
     }
@@ -999,7 +999,7 @@ class ResultTable {
 
   ResultTable.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
-      columnHeaders = _json["columnHeaders"]
+      columnHeaders = (_json["columnHeaders"] as core.List)
           .map<ResultTableColumnHeaders>(
               (value) => new ResultTableColumnHeaders.fromJson(value))
           .toList();
@@ -1008,7 +1008,10 @@ class ResultTable {
       kind = _json["kind"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+      rows = (_json["rows"] as core.List)
+          .map<core.List<core.Object>>(
+              (value) => (value as core.List).cast<core.Object>())
+          .toList();
     }
   }
 

@@ -310,7 +310,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -473,7 +473,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -636,7 +636,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -918,7 +918,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1081,7 +1081,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1288,7 +1288,7 @@ class AuthorizedKeysView {
 
   AuthorizedKeysView.fromJson(core.Map _json) {
     if (_json.containsKey("keys")) {
-      keys = _json["keys"];
+      keys = (_json["keys"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("sudoer")) {
       sudoer = _json["sudoer"];
@@ -1350,7 +1350,7 @@ class Group {
       kind = _json["kind"];
     }
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1412,7 +1412,7 @@ class GroupList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Group>((value) => new Group.fromJson(value))
           .toList();
     }
@@ -1457,7 +1457,7 @@ class GroupsAddMemberRequest {
 
   GroupsAddMemberRequest.fromJson(core.Map _json) {
     if (_json.containsKey("users")) {
-      users = _json["users"];
+      users = (_json["users"] as core.List).cast<core.String>();
     }
   }
 
@@ -1479,7 +1479,7 @@ class GroupsRemoveMemberRequest {
 
   GroupsRemoveMemberRequest.fromJson(core.Map _json) {
     if (_json.containsKey("users")) {
-      users = _json["users"];
+      users = (_json["users"] as core.List).cast<core.String>();
     }
   }
 
@@ -1512,7 +1512,7 @@ class LinuxAccountViews {
 
   LinuxAccountViews.fromJson(core.Map _json) {
     if (_json.containsKey("groupViews")) {
-      groupViews = _json["groupViews"]
+      groupViews = (_json["groupViews"] as core.List)
           .map<LinuxGroupView>((value) => new LinuxGroupView.fromJson(value))
           .toList();
     }
@@ -1520,7 +1520,7 @@ class LinuxAccountViews {
       kind = _json["kind"];
     }
     if (_json.containsKey("userViews")) {
-      userViews = _json["userViews"]
+      userViews = (_json["userViews"] as core.List)
           .map<LinuxUserView>((value) => new LinuxUserView.fromJson(value))
           .toList();
     }
@@ -1608,7 +1608,7 @@ class LinuxGroupView {
       groupName = _json["groupName"];
     }
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
   }
 
@@ -1748,7 +1748,7 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<OperationErrorErrors>(
               (value) => new OperationErrorErrors.fromJson(value))
           .toList();
@@ -1838,7 +1838,7 @@ class OperationWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationWarningsData>(
               (value) => new OperationWarningsData.fromJson(value))
           .toList();
@@ -2028,7 +2028,7 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<OperationWarnings>(
               (value) => new OperationWarnings.fromJson(value))
           .toList();
@@ -2144,7 +2144,7 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -2287,7 +2287,7 @@ class User {
       description = _json["description"];
     }
     if (_json.containsKey("groups")) {
-      groups = _json["groups"];
+      groups = (_json["groups"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2302,7 +2302,7 @@ class User {
       owner = _json["owner"];
     }
     if (_json.containsKey("publicKeys")) {
-      publicKeys = _json["publicKeys"]
+      publicKeys = (_json["publicKeys"] as core.List)
           .map<PublicKey>((value) => new PublicKey.fromJson(value))
           .toList();
     }
@@ -2370,7 +2370,7 @@ class UserList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<User>((value) => new User.fromJson(value))
           .toList();
     }

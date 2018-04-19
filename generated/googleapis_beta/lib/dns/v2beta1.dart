@@ -92,7 +92,7 @@ class ChangesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -612,7 +612,7 @@ class ManagedZonesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -853,7 +853,7 @@ class ManagedZonesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -917,7 +917,7 @@ class ManagedZonesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1123,13 +1123,13 @@ class Change {
 
   Change.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
-      additions = _json["additions"]
+      additions = (_json["additions"] as core.List)
           .map<ResourceRecordSet>(
               (value) => new ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deletions")) {
-      deletions = _json["deletions"]
+      deletions = (_json["deletions"] as core.List)
           .map<ResourceRecordSet>(
               (value) => new ResourceRecordSet.fromJson(value))
           .toList();
@@ -1205,7 +1205,7 @@ class ChangesListResponse {
 
   ChangesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("changes")) {
-      changes = _json["changes"]
+      changes = (_json["changes"] as core.List)
           .map<Change>((value) => new Change.fromJson(value))
           .toList();
     }
@@ -1313,7 +1313,7 @@ class DnsKey {
       description = _json["description"];
     }
     if (_json.containsKey("digests")) {
-      digests = _json["digests"]
+      digests = (_json["digests"] as core.List)
           .map<DnsKeyDigest>((value) => new DnsKeyDigest.fromJson(value))
           .toList();
     }
@@ -1506,7 +1506,7 @@ class DnsKeysListResponse {
 
   DnsKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeys")) {
-      dnsKeys = _json["dnsKeys"]
+      dnsKeys = (_json["dnsKeys"] as core.List)
           .map<DnsKey>((value) => new DnsKey.fromJson(value))
           .toList();
     }
@@ -1608,7 +1608,7 @@ class ManagedZone {
       nameServerSet = _json["nameServerSet"];
     }
     if (_json.containsKey("nameServers")) {
-      nameServers = _json["nameServers"];
+      nameServers = (_json["nameServers"] as core.List).cast<core.String>();
     }
   }
 
@@ -1673,7 +1673,7 @@ class ManagedZoneDnsSecConfig {
 
   ManagedZoneDnsSecConfig.fromJson(core.Map _json) {
     if (_json.containsKey("defaultKeySpecs")) {
-      defaultKeySpecs = _json["defaultKeySpecs"]
+      defaultKeySpecs = (_json["defaultKeySpecs"] as core.List)
           .map<DnsKeySpec>((value) => new DnsKeySpec.fromJson(value))
           .toList();
     }
@@ -1742,7 +1742,7 @@ class ManagedZoneOperationsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -1820,7 +1820,7 @@ class ManagedZonesListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("managedZones")) {
-      managedZones = _json["managedZones"]
+      managedZones = (_json["managedZones"] as core.List)
           .map<ManagedZone>((value) => new ManagedZone.fromJson(value))
           .toList();
     }
@@ -2129,7 +2129,7 @@ class Quota {
       totalRrdataSizePerChange = _json["totalRrdataSizePerChange"];
     }
     if (_json.containsKey("whitelistedKeySpecs")) {
-      whitelistedKeySpecs = _json["whitelistedKeySpecs"]
+      whitelistedKeySpecs = (_json["whitelistedKeySpecs"] as core.List)
           .map<DnsKeySpec>((value) => new DnsKeySpec.fromJson(value))
           .toList();
     }
@@ -2202,10 +2202,11 @@ class ResourceRecordSet {
       name = _json["name"];
     }
     if (_json.containsKey("rrdatas")) {
-      rrdatas = _json["rrdatas"];
+      rrdatas = (_json["rrdatas"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("signatureRrdatas")) {
-      signatureRrdatas = _json["signatureRrdatas"];
+      signatureRrdatas =
+          (_json["signatureRrdatas"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("ttl")) {
       ttl = _json["ttl"];
@@ -2274,7 +2275,7 @@ class ResourceRecordSetsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("rrsets")) {
-      rrsets = _json["rrsets"]
+      rrsets = (_json["rrsets"] as core.List)
           .map<ResourceRecordSet>(
               (value) => new ResourceRecordSet.fromJson(value))
           .toList();

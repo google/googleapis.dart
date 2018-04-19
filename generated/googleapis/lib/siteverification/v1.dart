@@ -154,7 +154,7 @@ class WebResourceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -202,7 +202,7 @@ class WebResourceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (verificationMethod == null) {
       throw new core.ArgumentError("Parameter verificationMethod is required.");
@@ -293,7 +293,7 @@ class WebResourceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -343,7 +343,7 @@ class WebResourceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -476,7 +476,7 @@ class SiteVerificationWebResourceListResponse {
 
   SiteVerificationWebResourceListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SiteVerificationWebResourceResource>((value) =>
               new SiteVerificationWebResourceResource.fromJson(value))
           .toList();
@@ -544,7 +544,7 @@ class SiteVerificationWebResourceResource {
       id = _json["id"];
     }
     if (_json.containsKey("owners")) {
-      owners = _json["owners"];
+      owners = (_json["owners"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("site")) {
       site =

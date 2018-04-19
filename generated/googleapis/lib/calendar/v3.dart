@@ -186,7 +186,7 @@ class AclResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -328,7 +328,7 @@ class AclResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -394,7 +394,7 @@ class AclResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -478,7 +478,7 @@ class AclResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -640,7 +640,7 @@ class CalendarListResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
@@ -794,7 +794,7 @@ class CalendarListResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -854,7 +854,7 @@ class CalendarListResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -945,7 +945,7 @@ class CalendarListResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1146,7 +1146,7 @@ class CalendarsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1193,7 +1193,7 @@ class CalendarsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1243,7 +1243,7 @@ class CalendarsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1292,7 +1292,7 @@ class ChannelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1541,7 +1541,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1620,7 +1620,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2126,7 +2126,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2289,7 +2289,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2480,7 +2480,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2585,7 +2585,7 @@ class FreebusyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2759,7 +2759,7 @@ class SettingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2812,7 +2812,7 @@ class Acl {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AclRule>((value) => new AclRule.fromJson(value))
           .toList();
     }
@@ -3071,7 +3071,7 @@ class CalendarList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CalendarListEntry>(
               (value) => new CalendarListEntry.fromJson(value))
           .toList();
@@ -3119,7 +3119,7 @@ class CalendarListEntryNotificationSettings {
 
   CalendarListEntryNotificationSettings.fromJson(core.Map _json) {
     if (_json.containsKey("notifications")) {
-      notifications = _json["notifications"]
+      notifications = (_json["notifications"] as core.List)
           .map<CalendarNotification>(
               (value) => new CalendarNotification.fromJson(value))
           .toList();
@@ -3239,7 +3239,7 @@ class CalendarListEntry {
           new ConferenceProperties.fromJson(_json["conferenceProperties"]);
     }
     if (_json.containsKey("defaultReminders")) {
-      defaultReminders = _json["defaultReminders"]
+      defaultReminders = (_json["defaultReminders"] as core.List)
           .map<EventReminder>((value) => new EventReminder.fromJson(value))
           .toList();
     }
@@ -3446,7 +3446,7 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("payload")) {
       payload = _json["payload"];
@@ -3556,18 +3556,14 @@ class Colors {
 
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey("calendar")) {
-      calendar =
-          commons.mapMap<core.Map<core.String, core.Object>, ColorDefinition>(
-              _json["calendar"],
-              (core.Map<core.String, core.Object> item) =>
-                  new ColorDefinition.fromJson(item));
+      calendar = commons.mapMap<core.Map, ColorDefinition>(
+          _json["calendar"].cast<core.String, core.Map>(),
+          (core.Map item) => new ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("event")) {
-      event =
-          commons.mapMap<core.Map<core.String, core.Object>, ColorDefinition>(
-              _json["event"],
-              (core.Map<core.String, core.Object> item) =>
-                  new ColorDefinition.fromJson(item));
+      event = commons.mapMap<core.Map, ColorDefinition>(
+          _json["event"].cast<core.String, core.Map>(),
+          (core.Map item) => new ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3662,7 +3658,7 @@ class ConferenceData {
           new CreateConferenceRequest.fromJson(_json["createRequest"]);
     }
     if (_json.containsKey("entryPoints")) {
-      entryPoints = _json["entryPoints"]
+      entryPoints = (_json["entryPoints"] as core.List)
           .map<EntryPoint>((value) => new EntryPoint.fromJson(value))
           .toList();
     }
@@ -3736,7 +3732,8 @@ class ConferenceParametersAddOnParameters {
 
   ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
     if (_json.containsKey("parameters")) {
-      parameters = _json["parameters"];
+      parameters =
+          (_json["parameters"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -3762,7 +3759,9 @@ class ConferenceProperties {
 
   ConferenceProperties.fromJson(core.Map _json) {
     if (_json.containsKey("allowedConferenceSolutionTypes")) {
-      allowedConferenceSolutionTypes = _json["allowedConferenceSolutionTypes"];
+      allowedConferenceSolutionTypes =
+          (_json["allowedConferenceSolutionTypes"] as core.List)
+              .cast<core.String>();
     }
   }
 
@@ -4159,10 +4158,10 @@ class EventExtendedProperties {
 
   EventExtendedProperties.fromJson(core.Map _json) {
     if (_json.containsKey("private")) {
-      private = _json["private"];
+      private = (_json["private"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("shared")) {
-      shared = _json["shared"];
+      shared = (_json["shared"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -4226,7 +4225,8 @@ class EventGadget {
       link = _json["link"];
     }
     if (_json.containsKey("preferences")) {
-      preferences = _json["preferences"];
+      preferences =
+          (_json["preferences"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -4340,7 +4340,7 @@ class EventReminders {
 
   EventReminders.fromJson(core.Map _json) {
     if (_json.containsKey("overrides")) {
-      overrides = _json["overrides"]
+      overrides = (_json["overrides"] as core.List)
           .map<EventReminder>((value) => new EventReminder.fromJson(value))
           .toList();
     }
@@ -4594,12 +4594,12 @@ class Event {
       anyoneCanAddSelf = _json["anyoneCanAddSelf"];
     }
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"]
+      attachments = (_json["attachments"] as core.List)
           .map<EventAttachment>((value) => new EventAttachment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("attendees")) {
-      attendees = _json["attendees"]
+      attendees = (_json["attendees"] as core.List)
           .map<EventAttendee>((value) => new EventAttendee.fromJson(value))
           .toList();
     }
@@ -4678,7 +4678,7 @@ class Event {
       privateCopy = _json["privateCopy"];
     }
     if (_json.containsKey("recurrence")) {
-      recurrence = _json["recurrence"];
+      recurrence = (_json["recurrence"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("recurringEventId")) {
       recurringEventId = _json["recurringEventId"];
@@ -5148,7 +5148,7 @@ class Events {
       accessRole = _json["accessRole"];
     }
     if (_json.containsKey("defaultReminders")) {
-      defaultReminders = _json["defaultReminders"]
+      defaultReminders = (_json["defaultReminders"] as core.List)
           .map<EventReminder>((value) => new EventReminder.fromJson(value))
           .toList();
     }
@@ -5159,7 +5159,7 @@ class Events {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Event>((value) => new Event.fromJson(value))
           .toList();
     }
@@ -5235,12 +5235,12 @@ class FreeBusyCalendar {
 
   FreeBusyCalendar.fromJson(core.Map _json) {
     if (_json.containsKey("busy")) {
-      busy = _json["busy"]
+      busy = (_json["busy"] as core.List)
           .map<TimePeriod>((value) => new TimePeriod.fromJson(value))
           .toList();
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<Error>((value) => new Error.fromJson(value))
           .toList();
     }
@@ -5270,10 +5270,10 @@ class FreeBusyGroup {
 
   FreeBusyGroup.fromJson(core.Map _json) {
     if (_json.containsKey("calendars")) {
-      calendars = _json["calendars"];
+      calendars = (_json["calendars"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<Error>((value) => new Error.fromJson(value))
           .toList();
     }
@@ -5324,7 +5324,7 @@ class FreeBusyRequest {
       groupExpansionMax = _json["groupExpansionMax"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<FreeBusyRequestItem>(
               (value) => new FreeBusyRequestItem.fromJson(value))
           .toList();
@@ -5407,18 +5407,14 @@ class FreeBusyResponse {
 
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey("calendars")) {
-      calendars =
-          commons.mapMap<core.Map<core.String, core.Object>, FreeBusyCalendar>(
-              _json["calendars"],
-              (core.Map<core.String, core.Object> item) =>
-                  new FreeBusyCalendar.fromJson(item));
+      calendars = commons.mapMap<core.Map, FreeBusyCalendar>(
+          _json["calendars"].cast<core.String, core.Map>(),
+          (core.Map item) => new FreeBusyCalendar.fromJson(item));
     }
     if (_json.containsKey("groups")) {
-      groups =
-          commons.mapMap<core.Map<core.String, core.Object>, FreeBusyGroup>(
-              _json["groups"],
-              (core.Map<core.String, core.Object> item) =>
-                  new FreeBusyGroup.fromJson(item));
+      groups = commons.mapMap<core.Map, FreeBusyGroup>(
+          _json["groups"].cast<core.String, core.Map>(),
+          (core.Map item) => new FreeBusyGroup.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5534,7 +5530,7 @@ class Settings {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Setting>((value) => new Setting.fromJson(value))
           .toList();
     }

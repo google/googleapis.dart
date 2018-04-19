@@ -112,7 +112,7 @@ class PresentationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (presentationId == null) {
       throw new core.ArgumentError("Parameter presentationId is required.");
@@ -163,7 +163,7 @@ class PresentationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -520,7 +520,7 @@ class BatchUpdatePresentationRequest {
 
   BatchUpdatePresentationRequest.fromJson(core.Map _json) {
     if (_json.containsKey("requests")) {
-      requests = _json["requests"]
+      requests = (_json["requests"] as core.List)
           .map<Request>((value) => new Request.fromJson(value))
           .toList();
     }
@@ -561,7 +561,7 @@ class BatchUpdatePresentationResponse {
       presentationId = _json["presentationId"];
     }
     if (_json.containsKey("replies")) {
-      replies = _json["replies"]
+      replies = (_json["replies"] as core.List)
           .map<Response>((value) => new Response.fromJson(value))
           .toList();
     }
@@ -645,7 +645,7 @@ class ColorScheme {
 
   ColorScheme.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
-      colors = _json["colors"]
+      colors = (_json["colors"] as core.List)
           .map<ThemeColorPair>((value) => new ThemeColorPair.fromJson(value))
           .toList();
     }
@@ -1542,7 +1542,7 @@ class CreateSlideRequest {
       objectId = _json["objectId"];
     }
     if (_json.containsKey("placeholderIdMappings")) {
-      placeholderIdMappings = _json["placeholderIdMappings"]
+      placeholderIdMappings = (_json["placeholderIdMappings"] as core.List)
           .map<LayoutPlaceholderIdMapping>(
               (value) => new LayoutPlaceholderIdMapping.fromJson(value))
           .toList();
@@ -2157,7 +2157,8 @@ class DuplicateObjectRequest {
       objectId = _json["objectId"];
     }
     if (_json.containsKey("objectIds")) {
-      objectIds = _json["objectIds"];
+      objectIds =
+          (_json["objectIds"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -2207,7 +2208,7 @@ class Group {
 
   Group.fromJson(core.Map _json) {
     if (_json.containsKey("children")) {
-      children = _json["children"]
+      children = (_json["children"] as core.List)
           .map<PageElement>((value) => new PageElement.fromJson(value))
           .toList();
     }
@@ -2250,7 +2251,8 @@ class GroupObjectsRequest {
 
   GroupObjectsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("childrenObjectIds")) {
-      childrenObjectIds = _json["childrenObjectIds"];
+      childrenObjectIds =
+          (_json["childrenObjectIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("groupObjectId")) {
       groupObjectId = _json["groupObjectId"];
@@ -3058,11 +3060,9 @@ class List {
       listId = _json["listId"];
     }
     if (_json.containsKey("nestingLevel")) {
-      nestingLevel =
-          commons.mapMap<core.Map<core.String, core.Object>, NestingLevel>(
-              _json["nestingLevel"],
-              (core.Map<core.String, core.Object> item) =>
-                  new NestingLevel.fromJson(item));
+      nestingLevel = commons.mapMap<core.Map, NestingLevel>(
+          _json["nestingLevel"].cast<core.String, core.Map>(),
+          (core.Map item) => new NestingLevel.fromJson(item));
     }
   }
 
@@ -3459,7 +3459,7 @@ class Page {
       objectId = _json["objectId"];
     }
     if (_json.containsKey("pageElements")) {
-      pageElements = _json["pageElements"]
+      pageElements = (_json["pageElements"] as core.List)
           .map<PageElement>((value) => new PageElement.fromJson(value))
           .toList();
     }
@@ -4117,7 +4117,7 @@ class Presentation {
 
   Presentation.fromJson(core.Map _json) {
     if (_json.containsKey("layouts")) {
-      layouts = _json["layouts"]
+      layouts = (_json["layouts"] as core.List)
           .map<Page>((value) => new Page.fromJson(value))
           .toList();
     }
@@ -4125,7 +4125,7 @@ class Presentation {
       locale = _json["locale"];
     }
     if (_json.containsKey("masters")) {
-      masters = _json["masters"]
+      masters = (_json["masters"] as core.List)
           .map<Page>((value) => new Page.fromJson(value))
           .toList();
     }
@@ -4142,7 +4142,7 @@ class Presentation {
       revisionId = _json["revisionId"];
     }
     if (_json.containsKey("slides")) {
-      slides = _json["slides"]
+      slides = (_json["slides"] as core.List)
           .map<Page>((value) => new Page.fromJson(value))
           .toList();
     }
@@ -4335,7 +4335,7 @@ class Recolor {
       name = _json["name"];
     }
     if (_json.containsKey("recolorStops")) {
-      recolorStops = _json["recolorStops"]
+      recolorStops = (_json["recolorStops"] as core.List)
           .map<ColorStop>((value) => new ColorStop.fromJson(value))
           .toList();
     }
@@ -4460,7 +4460,7 @@ class ReplaceAllShapesWithImageRequest {
       imageUrl = _json["imageUrl"];
     }
     if (_json.containsKey("pageObjectIds")) {
-      pageObjectIds = _json["pageObjectIds"];
+      pageObjectIds = (_json["pageObjectIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("replaceMethod")) {
       replaceMethod = _json["replaceMethod"];
@@ -4561,7 +4561,7 @@ class ReplaceAllShapesWithSheetsChartRequest {
       linkingMode = _json["linkingMode"];
     }
     if (_json.containsKey("pageObjectIds")) {
-      pageObjectIds = _json["pageObjectIds"];
+      pageObjectIds = (_json["pageObjectIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("spreadsheetId")) {
       spreadsheetId = _json["spreadsheetId"];
@@ -4635,7 +4635,7 @@ class ReplaceAllTextRequest {
       containsText = new SubstringMatchCriteria.fromJson(_json["containsText"]);
     }
     if (_json.containsKey("pageObjectIds")) {
-      pageObjectIds = _json["pageObjectIds"];
+      pageObjectIds = (_json["pageObjectIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("replaceText")) {
       replaceText = _json["replaceText"];
@@ -6246,7 +6246,7 @@ class Table {
       columns = _json["columns"];
     }
     if (_json.containsKey("horizontalBorderRows")) {
-      horizontalBorderRows = _json["horizontalBorderRows"]
+      horizontalBorderRows = (_json["horizontalBorderRows"] as core.List)
           .map<TableBorderRow>((value) => new TableBorderRow.fromJson(value))
           .toList();
     }
@@ -6254,18 +6254,18 @@ class Table {
       rows = _json["rows"];
     }
     if (_json.containsKey("tableColumns")) {
-      tableColumns = _json["tableColumns"]
+      tableColumns = (_json["tableColumns"] as core.List)
           .map<TableColumnProperties>(
               (value) => new TableColumnProperties.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tableRows")) {
-      tableRows = _json["tableRows"]
+      tableRows = (_json["tableRows"] as core.List)
           .map<TableRow>((value) => new TableRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("verticalBorderRows")) {
-      verticalBorderRows = _json["verticalBorderRows"]
+      verticalBorderRows = (_json["verticalBorderRows"] as core.List)
           .map<TableBorderRow>((value) => new TableBorderRow.fromJson(value))
           .toList();
     }
@@ -6425,7 +6425,7 @@ class TableBorderRow {
 
   TableBorderRow.fromJson(core.Map _json) {
     if (_json.containsKey("tableBorderCells")) {
-      tableBorderCells = _json["tableBorderCells"]
+      tableBorderCells = (_json["tableBorderCells"] as core.List)
           .map<TableBorderCell>((value) => new TableBorderCell.fromJson(value))
           .toList();
     }
@@ -6739,7 +6739,7 @@ class TableRow {
       rowHeight = new Dimension.fromJson(_json["rowHeight"]);
     }
     if (_json.containsKey("tableCells")) {
-      tableCells = _json["tableCells"]
+      tableCells = (_json["tableCells"] as core.List)
           .map<TableCell>((value) => new TableCell.fromJson(value))
           .toList();
     }
@@ -6806,12 +6806,12 @@ class TextContent {
 
   TextContent.fromJson(core.Map _json) {
     if (_json.containsKey("lists")) {
-      lists = commons.mapMap<core.Map<core.String, core.Object>, List>(
-          _json["lists"],
-          (core.Map<core.String, core.Object> item) => new List.fromJson(item));
+      lists = commons.mapMap<core.Map, List>(
+          _json["lists"].cast<core.String, core.Map>(),
+          (core.Map item) => new List.fromJson(item));
     }
     if (_json.containsKey("textElements")) {
-      textElements = _json["textElements"]
+      textElements = (_json["textElements"] as core.List)
           .map<TextElement>((value) => new TextElement.fromJson(value))
           .toList();
     }
@@ -7265,7 +7265,7 @@ class UngroupObjectsRequest {
 
   UngroupObjectsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("objectIds")) {
-      objectIds = _json["objectIds"];
+      objectIds = (_json["objectIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -7715,7 +7715,8 @@ class UpdateSlidesPositionRequest {
       insertionIndex = _json["insertionIndex"];
     }
     if (_json.containsKey("slideObjectIds")) {
-      slideObjectIds = _json["slideObjectIds"];
+      slideObjectIds =
+          (_json["slideObjectIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -7910,7 +7911,7 @@ class UpdateTableColumnPropertiesRequest {
 
   UpdateTableColumnPropertiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("columnIndices")) {
-      columnIndices = _json["columnIndices"];
+      columnIndices = (_json["columnIndices"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("fields")) {
       fields = _json["fields"];
@@ -7978,7 +7979,7 @@ class UpdateTableRowPropertiesRequest {
       objectId = _json["objectId"];
     }
     if (_json.containsKey("rowIndices")) {
-      rowIndices = _json["rowIndices"];
+      rowIndices = (_json["rowIndices"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("tableRowProperties")) {
       tableRowProperties =

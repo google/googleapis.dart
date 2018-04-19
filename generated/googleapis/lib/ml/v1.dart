@@ -129,7 +129,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -185,7 +185,7 @@ class ProjectsJobsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -235,7 +235,7 @@ class ProjectsJobsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -465,7 +465,7 @@ class ProjectsJobsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -525,7 +525,7 @@ class ProjectsJobsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -709,7 +709,7 @@ class ProjectsModelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1002,7 +1002,7 @@ class ProjectsModelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1059,7 +1059,7 @@ class ProjectsModelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1119,7 +1119,7 @@ class ProjectsModelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1186,7 +1186,7 @@ class ProjectsModelsVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1435,7 +1435,7 @@ class ProjectsModelsVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1499,7 +1499,7 @@ class ProjectsModelsVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1794,12 +1794,12 @@ class GoogleApiHttpBody {
   /// HTTP body binary data.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Application specific response metadata. Must be set in the first response
@@ -1819,7 +1819,10 @@ class GoogleApiHttpBody {
       data = _json["data"];
     }
     if (_json.containsKey("extensions")) {
-      extensions = _json["extensions"];
+      extensions = (_json["extensions"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
   }
 
@@ -1941,7 +1944,8 @@ class GoogleCloudMlV1Capability {
 
   GoogleCloudMlV1Capability.fromJson(core.Map _json) {
     if (_json.containsKey("availableAccelerators")) {
-      availableAccelerators = _json["availableAccelerators"];
+      availableAccelerators =
+          (_json["availableAccelerators"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2018,7 +2022,7 @@ class GoogleCloudMlV1HyperparameterOutput {
 
   GoogleCloudMlV1HyperparameterOutput.fromJson(core.Map _json) {
     if (_json.containsKey("allMetrics")) {
-      allMetrics = _json["allMetrics"]
+      allMetrics = (_json["allMetrics"] as core.List)
           .map<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>(
               (value) =>
                   new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
@@ -2031,7 +2035,8 @@ class GoogleCloudMlV1HyperparameterOutput {
               _json["finalMetric"]);
     }
     if (_json.containsKey("hyperparameters")) {
-      hyperparameters = _json["hyperparameters"];
+      hyperparameters = (_json["hyperparameters"] as core.Map)
+          .cast<core.String, core.String>();
     }
     if (_json.containsKey("isTrialStoppedEarly")) {
       isTrialStoppedEarly = _json["isTrialStoppedEarly"];
@@ -2134,7 +2139,7 @@ class GoogleCloudMlV1HyperparameterSpec {
       maxTrials = _json["maxTrials"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"]
+      params = (_json["params"] as core.List)
           .map<GoogleCloudMlV1ParameterSpec>(
               (value) => new GoogleCloudMlV1ParameterSpec.fromJson(value))
           .toList();
@@ -2306,7 +2311,7 @@ class GoogleCloudMlV1ListJobsResponse {
 
   GoogleCloudMlV1ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
-      jobs = _json["jobs"]
+      jobs = (_json["jobs"] as core.List)
           .map<GoogleCloudMlV1Job>(
               (value) => new GoogleCloudMlV1Job.fromJson(value))
           .toList();
@@ -2341,7 +2346,7 @@ class GoogleCloudMlV1ListLocationsResponse {
 
   GoogleCloudMlV1ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<GoogleCloudMlV1Location>(
               (value) => new GoogleCloudMlV1Location.fromJson(value))
           .toList();
@@ -2377,7 +2382,7 @@ class GoogleCloudMlV1ListModelsResponse {
 
   GoogleCloudMlV1ListModelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("models")) {
-      models = _json["models"]
+      models = (_json["models"] as core.List)
           .map<GoogleCloudMlV1Model>(
               (value) => new GoogleCloudMlV1Model.fromJson(value))
           .toList();
@@ -2416,7 +2421,7 @@ class GoogleCloudMlV1ListVersionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("versions")) {
-      versions = _json["versions"]
+      versions = (_json["versions"] as core.List)
           .map<GoogleCloudMlV1Version>(
               (value) => new GoogleCloudMlV1Version.fromJson(value))
           .toList();
@@ -2445,7 +2450,7 @@ class GoogleCloudMlV1Location {
 
   GoogleCloudMlV1Location.fromJson(core.Map _json) {
     if (_json.containsKey("capabilities")) {
-      capabilities = _json["capabilities"]
+      capabilities = (_json["capabilities"] as core.List)
           .map<GoogleCloudMlV1Capability>(
               (value) => new GoogleCloudMlV1Capability.fromJson(value))
           .toList();
@@ -2551,7 +2556,7 @@ class GoogleCloudMlV1Model {
       onlinePredictionLogging = _json["onlinePredictionLogging"];
     }
     if (_json.containsKey("regions")) {
-      regions = _json["regions"];
+      regions = (_json["regions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2735,10 +2740,12 @@ class GoogleCloudMlV1ParameterSpec {
 
   GoogleCloudMlV1ParameterSpec.fromJson(core.Map _json) {
     if (_json.containsKey("categoricalValues")) {
-      categoricalValues = _json["categoricalValues"];
+      categoricalValues =
+          (_json["categoricalValues"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("discreteValues")) {
-      discreteValues = _json["discreteValues"];
+      discreteValues =
+          (_json["discreteValues"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("maxValue")) {
       maxValue = _json["maxValue"];
@@ -2889,7 +2896,7 @@ class GoogleCloudMlV1PredictionInput {
       dataFormat = _json["dataFormat"];
     }
     if (_json.containsKey("inputPaths")) {
-      inputPaths = _json["inputPaths"];
+      inputPaths = (_json["inputPaths"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("maxWorkerCount")) {
       maxWorkerCount = _json["maxWorkerCount"];
@@ -3210,7 +3217,7 @@ class GoogleCloudMlV1TrainingInput {
 
   GoogleCloudMlV1TrainingInput.fromJson(core.Map _json) {
     if (_json.containsKey("args")) {
-      args = _json["args"];
+      args = (_json["args"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("hyperparameters")) {
       hyperparameters = new GoogleCloudMlV1HyperparameterSpec.fromJson(
@@ -3223,7 +3230,7 @@ class GoogleCloudMlV1TrainingInput {
       masterType = _json["masterType"];
     }
     if (_json.containsKey("packageUris")) {
-      packageUris = _json["packageUris"];
+      packageUris = (_json["packageUris"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("parameterServerCount")) {
       parameterServerCount = _json["parameterServerCount"];
@@ -3332,7 +3339,7 @@ class GoogleCloudMlV1TrainingOutput {
       isHyperparameterTuningJob = _json["isHyperparameterTuningJob"];
     }
     if (_json.containsKey("trials")) {
-      trials = _json["trials"]
+      trials = (_json["trials"] as core.List)
           .map<GoogleCloudMlV1HyperparameterOutput>((value) =>
               new GoogleCloudMlV1HyperparameterOutput.fromJson(value))
           .toList();
@@ -3555,7 +3562,7 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -3626,12 +3633,12 @@ class GoogleIamV1Policy {
   /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Deprecated.
@@ -3641,7 +3648,7 @@ class GoogleIamV1Policy {
 
   GoogleIamV1Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<GoogleIamV1Binding>(
               (value) => new GoogleIamV1Binding.fromJson(value))
           .toList();
@@ -3708,7 +3715,7 @@ class GoogleIamV1TestIamPermissionsRequest {
 
   GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -3732,7 +3739,7 @@ class GoogleIamV1TestIamPermissionsResponse {
 
   GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -3761,7 +3768,7 @@ class GoogleLongrunningListOperationsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<GoogleLongrunningOperation>(
               (value) => new GoogleLongrunningOperation.fromJson(value))
           .toList();
@@ -3831,13 +3838,15 @@ class GoogleLongrunningOperation {
       error = new GoogleRpcStatus.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -3963,7 +3972,10 @@ class GoogleRpcStatus {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

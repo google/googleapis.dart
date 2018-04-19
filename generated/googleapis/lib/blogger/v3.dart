@@ -999,7 +999,7 @@ class PagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1136,7 +1136,7 @@ class PagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1309,7 +1309,7 @@ class PagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1780,7 +1780,7 @@ class PostsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1974,7 +1974,7 @@ class PostsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -2244,7 +2244,7 @@ class PostsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -2422,7 +2422,7 @@ class BlogPosts {
 
   BlogPosts.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Post>((value) => new Post.fromJson(value))
           .toList();
     }
@@ -2594,12 +2594,12 @@ class BlogList {
 
   BlogList.fromJson(core.Map _json) {
     if (_json.containsKey("blogUserInfos")) {
-      blogUserInfos = _json["blogUserInfos"]
+      blogUserInfos = (_json["blogUserInfos"] as core.List)
           .map<BlogUserInfo>((value) => new BlogUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Blog>((value) => new Blog.fromJson(value))
           .toList();
     }
@@ -3010,7 +3010,7 @@ class CommentList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -3285,7 +3285,7 @@ class PageList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Page>((value) => new Page.fromJson(value))
           .toList();
     }
@@ -3364,7 +3364,7 @@ class Pageviews {
       blogId = _json["blogId"];
     }
     if (_json.containsKey("counts")) {
-      counts = _json["counts"]
+      counts = (_json["counts"] as core.List)
           .map<PageviewsCounts>((value) => new PageviewsCounts.fromJson(value))
           .toList();
     }
@@ -3571,7 +3571,7 @@ class PostReplies {
 
   PostReplies.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -3679,7 +3679,7 @@ class Post {
       id = _json["id"];
     }
     if (_json.containsKey("images")) {
-      images = _json["images"]
+      images = (_json["images"] as core.List)
           .map<PostImages>((value) => new PostImages.fromJson(value))
           .toList();
     }
@@ -3687,7 +3687,7 @@ class Post {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("location")) {
       location = new PostLocation.fromJson(_json["location"]);
@@ -3805,7 +3805,7 @@ class PostList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Post>((value) => new Post.fromJson(value))
           .toList();
     }
@@ -3948,7 +3948,7 @@ class PostUserInfosList {
 
   PostUserInfosList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PostUserInfo>((value) => new PostUserInfo.fromJson(value))
           .toList();
     }

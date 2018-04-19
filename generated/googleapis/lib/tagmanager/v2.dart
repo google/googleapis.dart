@@ -182,7 +182,7 @@ class AccountsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -250,7 +250,7 @@ class AccountsContainersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -437,7 +437,7 @@ class AccountsContainersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -496,7 +496,7 @@ class AccountsContainersEnvironmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -684,7 +684,7 @@ class AccountsContainersEnvironmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -736,7 +736,7 @@ class AccountsContainersEnvironmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -788,7 +788,7 @@ class AccountsContainersEnvironmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1236,7 +1236,7 @@ class AccountsContainersVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1310,7 +1310,7 @@ class AccountsContainersWorkspacesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1362,7 +1362,7 @@ class AccountsContainersWorkspacesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1683,7 +1683,7 @@ class AccountsContainersWorkspacesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1786,7 +1786,7 @@ class AccountsContainersWorkspacesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1839,7 +1839,7 @@ class AccountsContainersWorkspacesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2209,7 +2209,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2449,7 +2449,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2563,7 +2563,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2623,7 +2623,7 @@ class AccountsContainersWorkspacesProposalResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2722,7 +2722,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2959,7 +2959,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3018,7 +3018,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3255,7 +3255,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3314,7 +3314,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3551,7 +3551,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3610,7 +3610,7 @@ class AccountsUserPermissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3799,7 +3799,7 @@ class AccountsUserPermissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -4132,7 +4132,7 @@ class Condition {
 
   Condition.fromJson(core.Map _json) {
     if (_json.containsKey("parameter")) {
-      parameter = _json["parameter"]
+      parameter = (_json["parameter"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
@@ -4199,7 +4199,7 @@ class Container {
       containerId = _json["containerId"];
     }
     if (_json.containsKey("domainName")) {
-      domainName = _json["domainName"];
+      domainName = (_json["domainName"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
@@ -4220,7 +4220,7 @@ class Container {
       tagManagerUrl = _json["tagManagerUrl"];
     }
     if (_json.containsKey("usageContext")) {
-      usageContext = _json["usageContext"];
+      usageContext = (_json["usageContext"] as core.List).cast<core.String>();
     }
   }
 
@@ -4358,7 +4358,7 @@ class ContainerVersion {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("builtInVariable")) {
-      builtInVariable = _json["builtInVariable"]
+      builtInVariable = (_json["builtInVariable"] as core.List)
           .map<BuiltInVariable>((value) => new BuiltInVariable.fromJson(value))
           .toList();
     }
@@ -4381,7 +4381,7 @@ class ContainerVersion {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("folder")) {
-      folder = _json["folder"]
+      folder = (_json["folder"] as core.List)
           .map<Folder>((value) => new Folder.fromJson(value))
           .toList();
     }
@@ -4392,24 +4392,27 @@ class ContainerVersion {
       path = _json["path"];
     }
     if (_json.containsKey("tag")) {
-      tag = _json["tag"].map<Tag>((value) => new Tag.fromJson(value)).toList();
+      tag = (_json["tag"] as core.List)
+          .map<Tag>((value) => new Tag.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tagManagerUrl")) {
       tagManagerUrl = _json["tagManagerUrl"];
     }
     if (_json.containsKey("trigger")) {
-      trigger = _json["trigger"]
+      trigger = (_json["trigger"] as core.List)
           .map<Trigger>((value) => new Trigger.fromJson(value))
           .toList();
     }
     if (_json.containsKey("variable")) {
-      variable = _json["variable"]
+      variable = (_json["variable"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
-      zone =
-          _json["zone"].map<Zone>((value) => new Zone.fromJson(value)).toList();
+      zone = (_json["zone"] as core.List)
+          .map<Zone>((value) => new Zone.fromJson(value))
+          .toList();
     }
   }
 
@@ -4599,7 +4602,7 @@ class CreateBuiltInVariableResponse {
 
   CreateBuiltInVariableResponse.fromJson(core.Map _json) {
     if (_json.containsKey("builtInVariable")) {
-      builtInVariable = _json["builtInVariable"]
+      builtInVariable = (_json["builtInVariable"] as core.List)
           .map<BuiltInVariable>((value) => new BuiltInVariable.fromJson(value))
           .toList();
     }
@@ -4718,7 +4721,7 @@ class CreateWorkspaceProposalRequest {
           new WorkspaceProposalHistoryComment.fromJson(_json["initialComment"]);
     }
     if (_json.containsKey("reviewers")) {
-      reviewers = _json["reviewers"]
+      reviewers = (_json["reviewers"] as core.List)
           .map<WorkspaceProposalUser>(
               (value) => new WorkspaceProposalUser.fromJson(value))
           .toList();
@@ -5081,15 +5084,17 @@ class FolderEntities {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("tag")) {
-      tag = _json["tag"].map<Tag>((value) => new Tag.fromJson(value)).toList();
+      tag = (_json["tag"] as core.List)
+          .map<Tag>((value) => new Tag.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("trigger")) {
-      trigger = _json["trigger"]
+      trigger = (_json["trigger"] as core.List)
           .map<Trigger>((value) => new Trigger.fromJson(value))
           .toList();
     }
     if (_json.containsKey("variable")) {
-      variable = _json["variable"]
+      variable = (_json["variable"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
@@ -5127,12 +5132,12 @@ class GetWorkspaceStatusResponse {
 
   GetWorkspaceStatusResponse.fromJson(core.Map _json) {
     if (_json.containsKey("mergeConflict")) {
-      mergeConflict = _json["mergeConflict"]
+      mergeConflict = (_json["mergeConflict"] as core.List)
           .map<MergeConflict>((value) => new MergeConflict.fromJson(value))
           .toList();
     }
     if (_json.containsKey("workspaceChange")) {
-      workspaceChange = _json["workspaceChange"]
+      workspaceChange = (_json["workspaceChange"] as core.List)
           .map<Entity>((value) => new Entity.fromJson(value))
           .toList();
     }
@@ -5165,7 +5170,7 @@ class ListAccountsResponse {
 
   ListAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
-      account = _json["account"]
+      account = (_json["account"] as core.List)
           .map<Account>((value) => new Account.fromJson(value))
           .toList();
     }
@@ -5199,7 +5204,7 @@ class ListContainerVersionsResponse {
 
   ListContainerVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("containerVersionHeader")) {
-      containerVersionHeader = _json["containerVersionHeader"]
+      containerVersionHeader = (_json["containerVersionHeader"] as core.List)
           .map<ContainerVersionHeader>(
               (value) => new ContainerVersionHeader.fromJson(value))
           .toList();
@@ -5235,7 +5240,7 @@ class ListContainersResponse {
 
   ListContainersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("container")) {
-      container = _json["container"]
+      container = (_json["container"] as core.List)
           .map<Container>((value) => new Container.fromJson(value))
           .toList();
     }
@@ -5269,7 +5274,7 @@ class ListEnabledBuiltInVariablesResponse {
 
   ListEnabledBuiltInVariablesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("builtInVariable")) {
-      builtInVariable = _json["builtInVariable"]
+      builtInVariable = (_json["builtInVariable"] as core.List)
           .map<BuiltInVariable>((value) => new BuiltInVariable.fromJson(value))
           .toList();
     }
@@ -5304,7 +5309,7 @@ class ListEnvironmentsResponse {
 
   ListEnvironmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("environment")) {
-      environment = _json["environment"]
+      environment = (_json["environment"] as core.List)
           .map<Environment>((value) => new Environment.fromJson(value))
           .toList();
     }
@@ -5339,7 +5344,7 @@ class ListFoldersResponse {
 
   ListFoldersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("folder")) {
-      folder = _json["folder"]
+      folder = (_json["folder"] as core.List)
           .map<Folder>((value) => new Folder.fromJson(value))
           .toList();
     }
@@ -5376,7 +5381,9 @@ class ListTagsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("tag")) {
-      tag = _json["tag"].map<Tag>((value) => new Tag.fromJson(value)).toList();
+      tag = (_json["tag"] as core.List)
+          .map<Tag>((value) => new Tag.fromJson(value))
+          .toList();
     }
   }
 
@@ -5408,7 +5415,7 @@ class ListTriggersResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("trigger")) {
-      trigger = _json["trigger"]
+      trigger = (_json["trigger"] as core.List)
           .map<Trigger>((value) => new Trigger.fromJson(value))
           .toList();
     }
@@ -5442,7 +5449,7 @@ class ListUserPermissionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("userPermission")) {
-      userPermission = _json["userPermission"]
+      userPermission = (_json["userPermission"] as core.List)
           .map<UserPermission>((value) => new UserPermission.fromJson(value))
           .toList();
     }
@@ -5477,7 +5484,7 @@ class ListVariablesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("variable")) {
-      variable = _json["variable"]
+      variable = (_json["variable"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
@@ -5511,7 +5518,7 @@ class ListWorkspacesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("workspace")) {
-      workspace = _json["workspace"]
+      workspace = (_json["workspace"] as core.List)
           .map<Workspace>((value) => new Workspace.fromJson(value))
           .toList();
     }
@@ -5606,12 +5613,12 @@ class Parameter {
       key = _json["key"];
     }
     if (_json.containsKey("list")) {
-      list = _json["list"]
+      list = (_json["list"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("map")) {
-      map = _json["map"]
+      map = (_json["map"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
@@ -5926,7 +5933,7 @@ class SyncWorkspaceResponse {
 
   SyncWorkspaceResponse.fromJson(core.Map _json) {
     if (_json.containsKey("mergeConflict")) {
-      mergeConflict = _json["mergeConflict"]
+      mergeConflict = (_json["mergeConflict"] as core.List)
           .map<MergeConflict>((value) => new MergeConflict.fromJson(value))
           .toList();
     }
@@ -6043,10 +6050,12 @@ class Tag {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("blockingRuleId")) {
-      blockingRuleId = _json["blockingRuleId"];
+      blockingRuleId =
+          (_json["blockingRuleId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("blockingTriggerId")) {
-      blockingTriggerId = _json["blockingTriggerId"];
+      blockingTriggerId =
+          (_json["blockingTriggerId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("containerId")) {
       containerId = _json["containerId"];
@@ -6055,10 +6064,11 @@ class Tag {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("firingRuleId")) {
-      firingRuleId = _json["firingRuleId"];
+      firingRuleId = (_json["firingRuleId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("firingTriggerId")) {
-      firingTriggerId = _json["firingTriggerId"];
+      firingTriggerId =
+          (_json["firingTriggerId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("liveOnly")) {
       liveOnly = _json["liveOnly"];
@@ -6070,7 +6080,7 @@ class Tag {
       notes = _json["notes"];
     }
     if (_json.containsKey("parameter")) {
-      parameter = _json["parameter"]
+      parameter = (_json["parameter"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
@@ -6093,7 +6103,7 @@ class Tag {
       scheduleStartMs = _json["scheduleStartMs"];
     }
     if (_json.containsKey("setupTag")) {
-      setupTag = _json["setupTag"]
+      setupTag = (_json["setupTag"] as core.List)
           .map<SetupTag>((value) => new SetupTag.fromJson(value))
           .toList();
     }
@@ -6107,7 +6117,7 @@ class Tag {
       tagManagerUrl = _json["tagManagerUrl"];
     }
     if (_json.containsKey("teardownTag")) {
-      teardownTag = _json["teardownTag"]
+      teardownTag = (_json["teardownTag"] as core.List)
           .map<TeardownTag>((value) => new TeardownTag.fromJson(value))
           .toList();
     }
@@ -6506,7 +6516,7 @@ class Trigger {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("autoEventFilter")) {
-      autoEventFilter = _json["autoEventFilter"]
+      autoEventFilter = (_json["autoEventFilter"] as core.List)
           .map<Condition>((value) => new Condition.fromJson(value))
           .toList();
     }
@@ -6521,7 +6531,7 @@ class Trigger {
           new Parameter.fromJson(_json["continuousTimeMinMilliseconds"]);
     }
     if (_json.containsKey("customEventFilter")) {
-      customEventFilter = _json["customEventFilter"]
+      customEventFilter = (_json["customEventFilter"] as core.List)
           .map<Condition>((value) => new Condition.fromJson(value))
           .toList();
     }
@@ -6529,7 +6539,7 @@ class Trigger {
       eventName = new Parameter.fromJson(_json["eventName"]);
     }
     if (_json.containsKey("filter")) {
-      filter = _json["filter"]
+      filter = (_json["filter"] as core.List)
           .map<Condition>((value) => new Condition.fromJson(value))
           .toList();
     }
@@ -6560,7 +6570,7 @@ class Trigger {
       notes = _json["notes"];
     }
     if (_json.containsKey("parameter")) {
-      parameter = _json["parameter"]
+      parameter = (_json["parameter"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
@@ -6756,7 +6766,7 @@ class UpdateWorkspaceProposalRequest {
           new WorkspaceProposalHistoryComment.fromJson(_json["newComment"]);
     }
     if (_json.containsKey("reviewers")) {
-      reviewers = _json["reviewers"]
+      reviewers = (_json["reviewers"] as core.List)
           .map<WorkspaceProposalUser>(
               (value) => new WorkspaceProposalUser.fromJson(value))
           .toList();
@@ -6812,7 +6822,7 @@ class UserPermission {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("containerAccess")) {
-      containerAccess = _json["containerAccess"]
+      containerAccess = (_json["containerAccess"] as core.List)
           .map<ContainerAccess>((value) => new ContainerAccess.fromJson(value))
           .toList();
     }
@@ -6913,10 +6923,12 @@ class Variable {
       containerId = _json["containerId"];
     }
     if (_json.containsKey("disablingTriggerId")) {
-      disablingTriggerId = _json["disablingTriggerId"];
+      disablingTriggerId =
+          (_json["disablingTriggerId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("enablingTriggerId")) {
-      enablingTriggerId = _json["enablingTriggerId"];
+      enablingTriggerId =
+          (_json["enablingTriggerId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
@@ -6928,7 +6940,7 @@ class Variable {
       notes = _json["notes"];
     }
     if (_json.containsKey("parameter")) {
-      parameter = _json["parameter"]
+      parameter = (_json["parameter"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
     }
@@ -7133,7 +7145,7 @@ class WorkspaceProposal {
 
   WorkspaceProposal.fromJson(core.Map _json) {
     if (_json.containsKey("authors")) {
-      authors = _json["authors"]
+      authors = (_json["authors"] as core.List)
           .map<WorkspaceProposalUser>(
               (value) => new WorkspaceProposalUser.fromJson(value))
           .toList();
@@ -7142,7 +7154,7 @@ class WorkspaceProposal {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("history")) {
-      history = _json["history"]
+      history = (_json["history"] as core.List)
           .map<WorkspaceProposalHistory>(
               (value) => new WorkspaceProposalHistory.fromJson(value))
           .toList();
@@ -7151,7 +7163,7 @@ class WorkspaceProposal {
       path = _json["path"];
     }
     if (_json.containsKey("reviewers")) {
-      reviewers = _json["reviewers"]
+      reviewers = (_json["reviewers"] as core.List)
           .map<WorkspaceProposalUser>(
               (value) => new WorkspaceProposalUser.fromJson(value))
           .toList();
@@ -7403,7 +7415,7 @@ class Zone {
       boundary = new ZoneBoundary.fromJson(_json["boundary"]);
     }
     if (_json.containsKey("childContainer")) {
-      childContainer = _json["childContainer"]
+      childContainer = (_json["childContainer"] as core.List)
           .map<ZoneChildContainer>(
               (value) => new ZoneChildContainer.fromJson(value))
           .toList();
@@ -7495,12 +7507,13 @@ class ZoneBoundary {
 
   ZoneBoundary.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
-      condition = _json["condition"]
+      condition = (_json["condition"] as core.List)
           .map<Condition>((value) => new Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customEvaluationTriggerId")) {
-      customEvaluationTriggerId = _json["customEvaluationTriggerId"];
+      customEvaluationTriggerId =
+          (_json["customEvaluationTriggerId"] as core.List).cast<core.String>();
     }
   }
 
@@ -7564,7 +7577,8 @@ class ZoneTypeRestriction {
       enable = _json["enable"];
     }
     if (_json.containsKey("whitelistedTypeId")) {
-      whitelistedTypeId = _json["whitelistedTypeId"];
+      whitelistedTypeId =
+          (_json["whitelistedTypeId"] as core.List).cast<core.String>();
     }
   }
 

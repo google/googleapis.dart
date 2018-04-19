@@ -70,7 +70,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -184,7 +184,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -244,7 +244,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -301,7 +301,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -349,7 +349,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -564,7 +564,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -731,7 +731,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -791,7 +791,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -852,7 +852,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -914,7 +914,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -975,7 +975,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1036,7 +1036,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1098,7 +1098,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1159,7 +1159,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1220,7 +1220,7 @@ class OrdersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1307,7 +1307,7 @@ class Errors {
       code = _json["code"];
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<Error>((value) => new Error.fromJson(value))
           .toList();
     }
@@ -1418,7 +1418,7 @@ class Order {
       kind = _json["kind"];
     }
     if (_json.containsKey("lineItems")) {
-      lineItems = _json["lineItems"]
+      lineItems = (_json["lineItems"] as core.List)
           .map<OrderLineItem>((value) => new OrderLineItem.fromJson(value))
           .toList();
     }
@@ -1441,17 +1441,17 @@ class Order {
       placedDate = _json["placedDate"];
     }
     if (_json.containsKey("promotions")) {
-      promotions = _json["promotions"]
+      promotions = (_json["promotions"] as core.List)
           .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("refunds")) {
-      refunds = _json["refunds"]
+      refunds = (_json["refunds"] as core.List)
           .map<OrderRefund>((value) => new OrderRefund.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shipments")) {
-      shipments = _json["shipments"]
+      shipments = (_json["shipments"] as core.List)
           .map<OrderShipment>((value) => new OrderShipment.fromJson(value))
           .toList();
     }
@@ -1575,7 +1575,7 @@ class OrderAddress {
       country = _json["country"];
     }
     if (_json.containsKey("fullAddress")) {
-      fullAddress = _json["fullAddress"];
+      fullAddress = (_json["fullAddress"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("isPostOfficeBox")) {
       isPostOfficeBox = _json["isPostOfficeBox"];
@@ -1593,7 +1593,7 @@ class OrderAddress {
       region = _json["region"];
     }
     if (_json.containsKey("streetAddress")) {
-      streetAddress = _json["streetAddress"];
+      streetAddress = (_json["streetAddress"] as core.List).cast<core.String>();
     }
   }
 
@@ -1816,13 +1816,13 @@ class OrderLineItem {
 
   OrderLineItem.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
-      annotations = _json["annotations"]
+      annotations = (_json["annotations"] as core.List)
           .map<OrderMerchantProvidedAnnotation>(
               (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("cancellations")) {
-      cancellations = _json["cancellations"]
+      cancellations = (_json["cancellations"] as core.List)
           .map<OrderCancellation>(
               (value) => new OrderCancellation.fromJson(value))
           .toList();
@@ -1858,7 +1858,7 @@ class OrderLineItem {
       returnInfo = new OrderLineItemReturnInfo.fromJson(_json["returnInfo"]);
     }
     if (_json.containsKey("returns")) {
-      returns = _json["returns"]
+      returns = (_json["returns"] as core.List)
           .map<OrderReturn>((value) => new OrderReturn.fromJson(value))
           .toList();
     }
@@ -2019,7 +2019,7 @@ class OrderLineItemProduct {
       title = _json["title"];
     }
     if (_json.containsKey("variantAttributes")) {
-      variantAttributes = _json["variantAttributes"]
+      variantAttributes = (_json["variantAttributes"] as core.List)
           .map<OrderLineItemProductVariantAttribute>((value) =>
               new OrderLineItemProductVariantAttribute.fromJson(value))
           .toList();
@@ -2383,7 +2383,7 @@ class OrderPromotion {
 
   OrderPromotion.fromJson(core.Map _json) {
     if (_json.containsKey("benefits")) {
-      benefits = _json["benefits"]
+      benefits = (_json["benefits"] as core.List)
           .map<OrderPromotionBenefit>(
               (value) => new OrderPromotionBenefit.fromJson(value))
           .toList();
@@ -2462,7 +2462,7 @@ class OrderPromotionBenefit {
       discount = new Price.fromJson(_json["discount"]);
     }
     if (_json.containsKey("offerIds")) {
-      offerIds = _json["offerIds"];
+      offerIds = (_json["offerIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("subType")) {
       subType = _json["subType"];
@@ -2670,7 +2670,7 @@ class OrderShipment {
       id = _json["id"];
     }
     if (_json.containsKey("lineItems")) {
-      lineItems = _json["lineItems"]
+      lineItems = (_json["lineItems"] as core.List)
           .map<OrderShipmentLineItemShipment>(
               (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
@@ -3107,7 +3107,7 @@ class OrdersCustomBatchRequest {
 
   OrdersCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<OrdersCustomBatchRequestEntry>(
               (value) => new OrdersCustomBatchRequestEntry.fromJson(value))
           .toList();
@@ -3783,7 +3783,7 @@ class OrdersCustomBatchRequestEntrySetLineItemMetadata {
 
   OrdersCustomBatchRequestEntrySetLineItemMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
-      annotations = _json["annotations"]
+      annotations = (_json["annotations"] as core.List)
           .map<OrderMerchantProvidedAnnotation>(
               (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
@@ -3841,7 +3841,7 @@ class OrdersCustomBatchRequestEntryShipLineItems {
       carrier = _json["carrier"];
     }
     if (_json.containsKey("lineItems")) {
-      lineItems = _json["lineItems"]
+      lineItems = (_json["lineItems"] as core.List)
           .map<OrderShipmentLineItemShipment>(
               (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
@@ -3850,7 +3850,7 @@ class OrdersCustomBatchRequestEntryShipLineItems {
       shipmentId = _json["shipmentId"];
     }
     if (_json.containsKey("shipmentInfos")) {
-      shipmentInfos = _json["shipmentInfos"]
+      shipmentInfos = (_json["shipmentInfos"] as core.List)
           .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
               (value) =>
                   new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
@@ -4044,7 +4044,7 @@ class OrdersCustomBatchResponse {
 
   OrdersCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<OrdersCustomBatchResponseEntry>(
               (value) => new OrdersCustomBatchResponseEntry.fromJson(value))
           .toList();
@@ -4330,7 +4330,7 @@ class OrdersListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<Order>((value) => new Order.fromJson(value))
           .toList();
     }
@@ -4792,7 +4792,7 @@ class OrdersSetLineItemMetadataRequest {
 
   OrdersSetLineItemMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey("annotations")) {
-      annotations = _json["annotations"]
+      annotations = (_json["annotations"] as core.List)
           .map<OrderMerchantProvidedAnnotation>(
               (value) => new OrderMerchantProvidedAnnotation.fromJson(value))
           .toList();
@@ -4891,7 +4891,7 @@ class OrdersShipLineItemsRequest {
       carrier = _json["carrier"];
     }
     if (_json.containsKey("lineItems")) {
-      lineItems = _json["lineItems"]
+      lineItems = (_json["lineItems"] as core.List)
           .map<OrderShipmentLineItemShipment>(
               (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
@@ -4903,7 +4903,7 @@ class OrdersShipLineItemsRequest {
       shipmentId = _json["shipmentId"];
     }
     if (_json.containsKey("shipmentInfos")) {
-      shipmentInfos = _json["shipmentInfos"]
+      shipmentInfos = (_json["shipmentInfos"] as core.List)
           .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
               (value) =>
                   new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
@@ -5298,7 +5298,7 @@ class TestOrder {
       kind = _json["kind"];
     }
     if (_json.containsKey("lineItems")) {
-      lineItems = _json["lineItems"]
+      lineItems = (_json["lineItems"] as core.List)
           .map<TestOrderLineItem>(
               (value) => new TestOrderLineItem.fromJson(value))
           .toList();
@@ -5314,7 +5314,7 @@ class TestOrder {
       predefinedDeliveryAddress = _json["predefinedDeliveryAddress"];
     }
     if (_json.containsKey("promotions")) {
-      promotions = _json["promotions"]
+      promotions = (_json["promotions"] as core.List)
           .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
           .toList();
     }
@@ -5550,7 +5550,7 @@ class TestOrderLineItemProduct {
       title = _json["title"];
     }
     if (_json.containsKey("variantAttributes")) {
-      variantAttributes = _json["variantAttributes"]
+      variantAttributes = (_json["variantAttributes"] as core.List)
           .map<OrderLineItemProductVariantAttribute>((value) =>
               new OrderLineItemProductVariantAttribute.fromJson(value))
           .toList();

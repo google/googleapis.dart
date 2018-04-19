@@ -71,7 +71,7 @@ class DetectionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -312,7 +312,7 @@ class TranslationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -341,7 +341,7 @@ class DetectLanguageRequest {
 
   DetectLanguageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("q")) {
-      q = _json["q"];
+      q = (_json["q"] as core.List).cast<core.String>();
     }
   }
 
@@ -363,7 +363,7 @@ class DetectionsListResponse {
 
   DetectionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("detections")) {
-      detections = _json["detections"]
+      detections = (_json["detections"] as core.List)
           .map<DetectionsResource>(
               (value) => new DetectionsResource.fromJson(value))
           .toList();
@@ -487,7 +487,7 @@ class LanguagesListResponse {
 
   LanguagesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("languages")) {
-      languages = _json["languages"]
+      languages = (_json["languages"] as core.List)
           .map<LanguagesResource>(
               (value) => new LanguagesResource.fromJson(value))
           .toList();
@@ -572,7 +572,7 @@ class TranslateTextRequest {
       model = _json["model"];
     }
     if (_json.containsKey("q")) {
-      q = _json["q"];
+      q = (_json["q"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("source")) {
       source = _json["source"];
@@ -613,7 +613,7 @@ class TranslationsListResponse {
 
   TranslationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("translations")) {
-      translations = _json["translations"]
+      translations = (_json["translations"] as core.List)
           .map<TranslationsResource>(
               (value) => new TranslationsResource.fromJson(value))
           .toList();

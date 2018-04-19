@@ -68,7 +68,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -112,7 +112,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -156,7 +156,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -200,7 +200,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -244,7 +244,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -288,7 +288,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -463,7 +463,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -509,7 +509,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -555,7 +555,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -600,7 +600,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -645,7 +645,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -690,7 +690,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -734,7 +734,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -778,7 +778,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -822,7 +822,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -867,7 +867,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -913,7 +913,7 @@ class RelyingpartyResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -967,7 +967,7 @@ class CreateAuthUriResponse {
 
   CreateAuthUriResponse.fromJson(core.Map _json) {
     if (_json.containsKey("allProviders")) {
-      allProviders = _json["allProviders"];
+      allProviders = (_json["allProviders"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("authUri")) {
       authUri = _json["authUri"];
@@ -991,7 +991,7 @@ class CreateAuthUriResponse {
       sessionId = _json["sessionId"];
     }
     if (_json.containsKey("signinMethods")) {
-      signinMethods = _json["signinMethods"];
+      signinMethods = (_json["signinMethods"] as core.List).cast<core.String>();
     }
   }
 
@@ -1074,7 +1074,7 @@ class DownloadAccountResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("users")) {
-      users = _json["users"]
+      users = (_json["users"] as core.List)
           .map<UserInfo>((value) => new UserInfo.fromJson(value))
           .toList();
     }
@@ -1256,7 +1256,7 @@ class GetAccountInfoResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("users")) {
-      users = _json["users"]
+      users = (_json["users"] as core.List)
           .map<UserInfo>((value) => new UserInfo.fromJson(value))
           .toList();
     }
@@ -1434,7 +1434,8 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
       continueUri = _json["continueUri"];
     }
     if (_json.containsKey("customParameter")) {
-      customParameter = _json["customParameter"];
+      customParameter = (_json["customParameter"] as core.Map)
+          .cast<core.String, core.String>();
     }
     if (_json.containsKey("hostedDomain")) {
       hostedDomain = _json["hostedDomain"];
@@ -1672,16 +1673,16 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
     }
     if (_json.containsKey("email")) {
-      email = _json["email"];
+      email = (_json["email"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
     }
     if (_json.containsKey("localId")) {
-      localId = _json["localId"];
+      localId = (_json["localId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("phoneNumber")) {
-      phoneNumber = _json["phoneNumber"];
+      phoneNumber = (_json["phoneNumber"] as core.List).cast<core.String>();
     }
   }
 
@@ -1753,7 +1754,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
       apiKey = _json["apiKey"];
     }
     if (_json.containsKey("authorizedDomains")) {
-      authorizedDomains = _json["authorizedDomains"];
+      authorizedDomains =
+          (_json["authorizedDomains"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate =
@@ -1766,7 +1768,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
       enableAnonymousUser = _json["enableAnonymousUser"];
     }
     if (_json.containsKey("idpConfig")) {
-      idpConfig = _json["idpConfig"]
+      idpConfig = (_json["idpConfig"] as core.List)
           .map<IdpConfig>((value) => new IdpConfig.fromJson(value))
           .toList();
     }
@@ -1837,7 +1839,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
 /// Respone of getting public keys.
 class IdentitytoolkitRelyingpartyGetPublicKeysResponse
     extends collection.MapBase<core.String, core.String> {
-  final core.Map _innerMap = {};
+  final _innerMap = <core.String, core.String>{};
 
   IdentitytoolkitRelyingpartyGetPublicKeysResponse();
 
@@ -2088,10 +2090,12 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
     }
     if (_json.containsKey("deleteAttribute")) {
-      deleteAttribute = _json["deleteAttribute"];
+      deleteAttribute =
+          (_json["deleteAttribute"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("deleteProvider")) {
-      deleteProvider = _json["deleteProvider"];
+      deleteProvider =
+          (_json["deleteProvider"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("disableUser")) {
       disableUser = _json["disableUser"];
@@ -2130,7 +2134,7 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
       photoUrl = _json["photoUrl"];
     }
     if (_json.containsKey("provider")) {
-      provider = _json["provider"];
+      provider = (_json["provider"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("returnSecureToken")) {
       returnSecureToken = _json["returnSecureToken"];
@@ -2265,7 +2269,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
       apiKey = _json["apiKey"];
     }
     if (_json.containsKey("authorizedDomains")) {
-      authorizedDomains = _json["authorizedDomains"];
+      authorizedDomains =
+          (_json["authorizedDomains"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate =
@@ -2278,7 +2283,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
       enableAnonymousUser = _json["enableAnonymousUser"];
     }
     if (_json.containsKey("idpConfig")) {
-      idpConfig = _json["idpConfig"]
+      idpConfig = (_json["idpConfig"] as core.List)
           .map<IdpConfig>((value) => new IdpConfig.fromJson(value))
           .toList();
     }
@@ -2567,12 +2572,12 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /// The salt separator.
   core.String saltSeparator;
   core.List<core.int> get saltSeparatorAsBytes {
-    return convert.BASE64.decode(saltSeparator);
+    return convert.base64.decode(saltSeparator);
   }
 
   void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
     saltSeparator =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// If true, backend will do sanity check(including duplicate email and
@@ -2582,12 +2587,12 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /// The key for to hash the password.
   core.String signerKey;
   core.List<core.int> get signerKeyAsBytes {
-    return convert.BASE64.decode(signerKey);
+    return convert.base64.decode(signerKey);
   }
 
   void set signerKeyAsBytes(core.List<core.int> _bytes) {
     signerKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Specify which project (field value is actually project id) to operate.
@@ -2640,7 +2645,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
       targetProjectId = _json["targetProjectId"];
     }
     if (_json.containsKey("users")) {
-      users = _json["users"]
+      users = (_json["users"] as core.List)
           .map<UserInfo>((value) => new UserInfo.fromJson(value))
           .toList();
     }
@@ -3155,7 +3160,8 @@ class IdpConfig {
       secret = _json["secret"];
     }
     if (_json.containsKey("whitelistedAudiences")) {
-      whitelistedAudiences = _json["whitelistedAudiences"];
+      whitelistedAudiences =
+          (_json["whitelistedAudiences"] as core.List).cast<core.String>();
     }
   }
 
@@ -3468,12 +3474,12 @@ class SetAccountInfoResponse {
   /// The user's hashed password.
   core.String passwordHash;
   core.List<core.int> get passwordHashAsBytes {
-    return convert.BASE64.decode(passwordHash);
+    return convert.base64.decode(passwordHash);
   }
 
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The photo url of the user.
@@ -3519,7 +3525,7 @@ class SetAccountInfoResponse {
       photoUrl = _json["photoUrl"];
     }
     if (_json.containsKey("providerUserInfo")) {
-      providerUserInfo = _json["providerUserInfo"]
+      providerUserInfo = (_json["providerUserInfo"] as core.List)
           .map<SetAccountInfoResponseProviderUserInfo>((value) =>
               new SetAccountInfoResponseProviderUserInfo.fromJson(value))
           .toList();
@@ -3695,7 +3701,7 @@ class UploadAccountResponse {
 
   UploadAccountResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
-      error = _json["error"]
+      error = (_json["error"] as core.List)
           .map<UploadAccountResponseError>(
               (value) => new UploadAccountResponseError.fromJson(value))
           .toList();
@@ -3837,12 +3843,12 @@ class UserInfo {
   /// The user's hashed password.
   core.String passwordHash;
   core.List<core.int> get passwordHashAsBytes {
-    return convert.BASE64.decode(passwordHash);
+    return convert.base64.decode(passwordHash);
   }
 
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The timestamp when the password was last updated.
@@ -3863,12 +3869,12 @@ class UserInfo {
   /// The user's password salt.
   core.String salt;
   core.List<core.int> get saltAsBytes {
-    return convert.BASE64.decode(salt);
+    return convert.base64.decode(salt);
   }
 
   void set saltAsBytes(core.List<core.int> _bytes) {
     salt =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// User's screen name at Twitter or login name at Github.
@@ -3923,7 +3929,7 @@ class UserInfo {
       photoUrl = _json["photoUrl"];
     }
     if (_json.containsKey("providerUserInfo")) {
-      providerUserInfo = _json["providerUserInfo"]
+      providerUserInfo = (_json["providerUserInfo"] as core.List)
           .map<UserInfoProviderUserInfo>(
               (value) => new UserInfoProviderUserInfo.fromJson(value))
           .toList();
@@ -4261,7 +4267,8 @@ class VerifyAssertionResponse {
       timeZone = _json["timeZone"];
     }
     if (_json.containsKey("verifiedProvider")) {
-      verifiedProvider = _json["verifiedProvider"];
+      verifiedProvider =
+          (_json["verifiedProvider"] as core.List).cast<core.String>();
     }
   }
 

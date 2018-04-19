@@ -205,7 +205,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -268,7 +268,7 @@ class UsersDraftsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -523,7 +523,7 @@ class UsersDraftsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -595,7 +595,7 @@ class UsersDraftsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -762,7 +762,7 @@ class UsersLabelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -960,7 +960,7 @@ class UsersLabelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1016,7 +1016,7 @@ class UsersLabelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1079,7 +1079,7 @@ class UsersMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1129,7 +1129,7 @@ class UsersMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1330,7 +1330,7 @@ class UsersMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1425,7 +1425,7 @@ class UsersMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1576,7 +1576,7 @@ class UsersMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1640,7 +1640,7 @@ class UsersMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2066,7 +2066,7 @@ class UsersSettingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2117,7 +2117,7 @@ class UsersSettingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2166,7 +2166,7 @@ class UsersSettingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2216,7 +2216,7 @@ class UsersSettingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2272,7 +2272,7 @@ class UsersSettingsFiltersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2481,7 +2481,7 @@ class UsersSettingsForwardingAddressesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2703,7 +2703,7 @@ class UsersSettingsSendAsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2913,7 +2913,7 @@ class UsersSettingsSendAsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -2975,7 +2975,7 @@ class UsersSettingsSendAsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -3217,7 +3217,7 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -3596,7 +3596,7 @@ class UsersThreadsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -3783,7 +3783,7 @@ class BatchDeleteMessagesRequest {
 
   BatchDeleteMessagesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("ids")) {
-      ids = _json["ids"];
+      ids = (_json["ids"] as core.List).cast<core.String>();
     }
   }
 
@@ -3812,13 +3812,14 @@ class BatchModifyMessagesRequest {
 
   BatchModifyMessagesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addLabelIds")) {
-      addLabelIds = _json["addLabelIds"];
+      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("ids")) {
-      ids = _json["ids"];
+      ids = (_json["ids"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("removeLabelIds")) {
-      removeLabelIds = _json["removeLabelIds"];
+      removeLabelIds =
+          (_json["removeLabelIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -3927,13 +3928,14 @@ class FilterAction {
 
   FilterAction.fromJson(core.Map _json) {
     if (_json.containsKey("addLabelIds")) {
-      addLabelIds = _json["addLabelIds"];
+      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("forward")) {
       forward = _json["forward"];
     }
     if (_json.containsKey("removeLabelIds")) {
-      removeLabelIds = _json["removeLabelIds"];
+      removeLabelIds =
+          (_json["removeLabelIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -4128,30 +4130,30 @@ class History {
       id = _json["id"];
     }
     if (_json.containsKey("labelsAdded")) {
-      labelsAdded = _json["labelsAdded"]
+      labelsAdded = (_json["labelsAdded"] as core.List)
           .map<HistoryLabelAdded>(
               (value) => new HistoryLabelAdded.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labelsRemoved")) {
-      labelsRemoved = _json["labelsRemoved"]
+      labelsRemoved = (_json["labelsRemoved"] as core.List)
           .map<HistoryLabelRemoved>(
               (value) => new HistoryLabelRemoved.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messages")) {
-      messages = _json["messages"]
+      messages = (_json["messages"] as core.List)
           .map<Message>((value) => new Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messagesAdded")) {
-      messagesAdded = _json["messagesAdded"]
+      messagesAdded = (_json["messagesAdded"] as core.List)
           .map<HistoryMessageAdded>(
               (value) => new HistoryMessageAdded.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messagesDeleted")) {
-      messagesDeleted = _json["messagesDeleted"]
+      messagesDeleted = (_json["messagesDeleted"] as core.List)
           .map<HistoryMessageDeleted>(
               (value) => new HistoryMessageDeleted.fromJson(value))
           .toList();
@@ -4196,7 +4198,7 @@ class HistoryLabelAdded {
 
   HistoryLabelAdded.fromJson(core.Map _json) {
     if (_json.containsKey("labelIds")) {
-      labelIds = _json["labelIds"];
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("message")) {
       message = new Message.fromJson(_json["message"]);
@@ -4225,7 +4227,7 @@ class HistoryLabelRemoved {
 
   HistoryLabelRemoved.fromJson(core.Map _json) {
     if (_json.containsKey("labelIds")) {
-      labelIds = _json["labelIds"];
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("message")) {
       message = new Message.fromJson(_json["message"]);
@@ -4536,7 +4538,7 @@ class ListDraftsResponse {
 
   ListDraftsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("drafts")) {
-      drafts = _json["drafts"]
+      drafts = (_json["drafts"] as core.List)
           .map<Draft>((value) => new Draft.fromJson(value))
           .toList();
     }
@@ -4573,7 +4575,7 @@ class ListFiltersResponse {
 
   ListFiltersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("filter")) {
-      filter = _json["filter"]
+      filter = (_json["filter"] as core.List)
           .map<Filter>((value) => new Filter.fromJson(value))
           .toList();
     }
@@ -4598,7 +4600,7 @@ class ListForwardingAddressesResponse {
 
   ListForwardingAddressesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("forwardingAddresses")) {
-      forwardingAddresses = _json["forwardingAddresses"]
+      forwardingAddresses = (_json["forwardingAddresses"] as core.List)
           .map<ForwardingAddress>(
               (value) => new ForwardingAddress.fromJson(value))
           .toList();
@@ -4631,7 +4633,7 @@ class ListHistoryResponse {
 
   ListHistoryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("history")) {
-      history = _json["history"]
+      history = (_json["history"] as core.List)
           .map<History>((value) => new History.fromJson(value))
           .toList();
     }
@@ -4667,7 +4669,7 @@ class ListLabelsResponse {
 
   ListLabelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<Label>((value) => new Label.fromJson(value))
           .toList();
     }
@@ -4697,7 +4699,7 @@ class ListMessagesResponse {
 
   ListMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("messages")) {
-      messages = _json["messages"]
+      messages = (_json["messages"] as core.List)
           .map<Message>((value) => new Message.fromJson(value))
           .toList();
     }
@@ -4734,7 +4736,7 @@ class ListSendAsResponse {
 
   ListSendAsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sendAs")) {
-      sendAs = _json["sendAs"]
+      sendAs = (_json["sendAs"] as core.List)
           .map<SendAs>((value) => new SendAs.fromJson(value))
           .toList();
     }
@@ -4758,7 +4760,7 @@ class ListSmimeInfoResponse {
 
   ListSmimeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("smimeInfo")) {
-      smimeInfo = _json["smimeInfo"]
+      smimeInfo = (_json["smimeInfo"] as core.List)
           .map<SmimeInfo>((value) => new SmimeInfo.fromJson(value))
           .toList();
     }
@@ -4794,7 +4796,7 @@ class ListThreadsResponse {
       resultSizeEstimate = _json["resultSizeEstimate"];
     }
     if (_json.containsKey("threads")) {
-      threads = _json["threads"]
+      threads = (_json["threads"] as core.List)
           .map<Thread>((value) => new Thread.fromJson(value))
           .toList();
     }
@@ -4842,12 +4844,12 @@ class Message {
   /// format=RAW parameter is supplied.
   core.String raw;
   core.List<core.int> get rawAsBytes {
-    return convert.BASE64.decode(raw);
+    return convert.base64.decode(raw);
   }
 
   void set rawAsBytes(core.List<core.int> _bytes) {
     raw =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Estimated size in bytes of the message.
@@ -4878,7 +4880,7 @@ class Message {
       internalDate = _json["internalDate"];
     }
     if (_json.containsKey("labelIds")) {
-      labelIds = _json["labelIds"];
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("payload")) {
       payload = new MessagePart.fromJson(_json["payload"]);
@@ -4968,7 +4970,7 @@ class MessagePart {
       filename = _json["filename"];
     }
     if (_json.containsKey("headers")) {
-      headers = _json["headers"]
+      headers = (_json["headers"] as core.List)
           .map<MessagePartHeader>(
               (value) => new MessagePartHeader.fromJson(value))
           .toList();
@@ -4980,7 +4982,7 @@ class MessagePart {
       partId = _json["partId"];
     }
     if (_json.containsKey("parts")) {
-      parts = _json["parts"]
+      parts = (_json["parts"] as core.List)
           .map<MessagePart>((value) => new MessagePart.fromJson(value))
           .toList();
     }
@@ -5025,12 +5027,12 @@ class MessagePartBody {
   /// body data is contained in a separate attachment.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Number of bytes for the message part data (encoding notwithstanding).
@@ -5109,10 +5111,11 @@ class ModifyMessageRequest {
 
   ModifyMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addLabelIds")) {
-      addLabelIds = _json["addLabelIds"];
+      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("removeLabelIds")) {
-      removeLabelIds = _json["removeLabelIds"];
+      removeLabelIds =
+          (_json["removeLabelIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -5140,10 +5143,11 @@ class ModifyThreadRequest {
 
   ModifyThreadRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addLabelIds")) {
-      addLabelIds = _json["addLabelIds"];
+      addLabelIds = (_json["addLabelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("removeLabelIds")) {
-      removeLabelIds = _json["removeLabelIds"];
+      removeLabelIds =
+          (_json["removeLabelIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -5404,12 +5408,12 @@ class SmimeInfo {
   /// encryptedKeyPassword should be set appropriately.
   core.String pkcs12;
   core.List<core.int> get pkcs12AsBytes {
-    return convert.BASE64.decode(pkcs12);
+    return convert.base64.decode(pkcs12);
   }
 
   void set pkcs12AsBytes(core.List<core.int> _bytes) {
     pkcs12 =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   SmimeInfo();
@@ -5559,7 +5563,7 @@ class Thread {
       id = _json["id"];
     }
     if (_json.containsKey("messages")) {
-      messages = _json["messages"]
+      messages = (_json["messages"] as core.List)
           .map<Message>((value) => new Message.fromJson(value))
           .toList();
     }
@@ -5716,7 +5720,7 @@ class WatchRequest {
       labelFilterAction = _json["labelFilterAction"];
     }
     if (_json.containsKey("labelIds")) {
-      labelIds = _json["labelIds"];
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("topicName")) {
       topicName = _json["topicName"];

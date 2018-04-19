@@ -85,7 +85,7 @@ class JobsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -615,12 +615,12 @@ class GdataBlobstore2Info {
   /// gdata
   core.String downloadReadHandle;
   core.List<core.int> get downloadReadHandleAsBytes {
-    return convert.BASE64.decode(downloadReadHandle);
+    return convert.base64.decode(downloadReadHandle);
   }
 
   void set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
     downloadReadHandle =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -629,12 +629,12 @@ class GdataBlobstore2Info {
   /// gdata
   core.String uploadMetadataContainer;
   core.List<core.int> get uploadMetadataContainerAsBytes {
-    return convert.BASE64.decode(uploadMetadataContainer);
+    return convert.base64.decode(uploadMetadataContainer);
   }
 
   void set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
     uploadMetadataContainer =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   GdataBlobstore2Info();
@@ -684,12 +684,12 @@ class GdataCompositeMedia {
   /// gdata
   core.String blobRef;
   core.List<core.int> get blobRefAsBytes {
-    return convert.BASE64.decode(blobRef);
+    return convert.base64.decode(blobRef);
   }
 
   void set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -698,12 +698,12 @@ class GdataCompositeMedia {
   /// gdata
   core.String cosmoBinaryReference;
   core.List<core.int> get cosmoBinaryReferenceAsBytes {
-    return convert.BASE64.decode(cosmoBinaryReference);
+    return convert.base64.decode(cosmoBinaryReference);
   }
 
   void set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -712,12 +712,12 @@ class GdataCompositeMedia {
   /// gdata
   core.String inline;
   core.List<core.int> get inlineAsBytes {
-    return convert.BASE64.decode(inline);
+    return convert.base64.decode(inline);
   }
 
   void set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -726,12 +726,12 @@ class GdataCompositeMedia {
   /// gdata
   core.String md5Hash;
   core.List<core.int> get md5HashAsBytes {
-    return convert.BASE64.decode(md5Hash);
+    return convert.base64.decode(md5Hash);
   }
 
   void set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -752,12 +752,12 @@ class GdataCompositeMedia {
   /// gdata
   core.String sha1Hash;
   core.List<core.int> get sha1HashAsBytes {
-    return convert.BASE64.decode(sha1Hash);
+    return convert.base64.decode(sha1Hash);
   }
 
   void set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   GdataCompositeMedia();
@@ -1129,23 +1129,23 @@ class GdataMedia {
   /// gdata
   core.String bigstoreObjectRef;
   core.List<core.int> get bigstoreObjectRefAsBytes {
-    return convert.BASE64.decode(bigstoreObjectRef);
+    return convert.base64.decode(bigstoreObjectRef);
   }
 
   void set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
     bigstoreObjectRef =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
   core.String blobRef;
   core.List<core.int> get blobRefAsBytes {
-    return convert.BASE64.decode(blobRef);
+    return convert.base64.decode(blobRef);
   }
 
   void set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -1163,12 +1163,12 @@ class GdataMedia {
   /// gdata
   core.String cosmoBinaryReference;
   core.List<core.int> get cosmoBinaryReferenceAsBytes {
-    return convert.BASE64.decode(cosmoBinaryReference);
+    return convert.base64.decode(cosmoBinaryReference);
   }
 
   void set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -1204,12 +1204,12 @@ class GdataMedia {
   /// gdata
   core.String inline;
   core.List<core.int> get inlineAsBytes {
-    return convert.BASE64.decode(inline);
+    return convert.base64.decode(inline);
   }
 
   void set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -1221,23 +1221,23 @@ class GdataMedia {
   /// gdata
   core.String md5Hash;
   core.List<core.int> get md5HashAsBytes {
-    return convert.BASE64.decode(md5Hash);
+    return convert.base64.decode(md5Hash);
   }
 
   void set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
   core.String mediaId;
   core.List<core.int> get mediaIdAsBytes {
-    return convert.BASE64.decode(mediaId);
+    return convert.base64.decode(mediaId);
   }
 
   void set mediaIdAsBytes(core.List<core.int> _bytes) {
     mediaId =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -1266,23 +1266,23 @@ class GdataMedia {
   /// gdata
   core.String sha1Hash;
   core.List<core.int> get sha1HashAsBytes {
-    return convert.BASE64.decode(sha1Hash);
+    return convert.base64.decode(sha1Hash);
   }
 
   void set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
   core.String sha256Hash;
   core.List<core.int> get sha256HashAsBytes {
-    return convert.BASE64.decode(sha256Hash);
+    return convert.base64.decode(sha256Hash);
   }
 
   void set sha256HashAsBytes(core.List<core.int> _bytes) {
     sha256Hash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// gdata
@@ -1308,7 +1308,7 @@ class GdataMedia {
           new GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
     }
     if (_json.containsKey("compositeMedia")) {
-      compositeMedia = _json["compositeMedia"]
+      compositeMedia = (_json["compositeMedia"] as core.List)
           .map<GdataCompositeMedia>(
               (value) => new GdataCompositeMedia.fromJson(value))
           .toList();
@@ -1623,8 +1623,9 @@ class ListJobsResponse {
 
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
-      jobs =
-          _json["jobs"].map<Job>((value) => new Job.fromJson(value)).toList();
+      jobs = (_json["jobs"] as core.List)
+          .map<Job>((value) => new Job.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1664,7 +1665,7 @@ class ListReportTypesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("reportTypes")) {
-      reportTypes = _json["reportTypes"]
+      reportTypes = (_json["reportTypes"] as core.List)
           .map<ReportType>((value) => new ReportType.fromJson(value))
           .toList();
     }
@@ -1703,7 +1704,7 @@ class ListReportsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("reports")) {
-      reports = _json["reports"]
+      reports = (_json["reports"] as core.List)
           .map<Report>((value) => new Report.fromJson(value))
           .toList();
     }

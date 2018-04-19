@@ -2645,7 +2645,7 @@ class Account {
       premium = _json["premium"];
     }
     if (_json.containsKey("subAccounts")) {
-      subAccounts = _json["subAccounts"]
+      subAccounts = (_json["subAccounts"] as core.List)
           .map<Account>((value) => new Account.fromJson(value))
           .toList();
     }
@@ -2704,7 +2704,7 @@ class Accounts {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Account>((value) => new Account.fromJson(value))
           .toList();
     }
@@ -2815,7 +2815,7 @@ class AdClients {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AdClient>((value) => new AdClient.fromJson(value))
           .toList();
     }
@@ -3343,7 +3343,7 @@ class AdUnits {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AdUnit>((value) => new AdUnit.fromJson(value))
           .toList();
     }
@@ -3456,13 +3456,13 @@ class AdsenseReportsGenerateResponse {
 
   AdsenseReportsGenerateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("averages")) {
-      averages = _json["averages"];
+      averages = (_json["averages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("endDate")) {
       endDate = _json["endDate"];
     }
     if (_json.containsKey("headers")) {
-      headers = _json["headers"]
+      headers = (_json["headers"] as core.List)
           .map<AdsenseReportsGenerateResponseHeaders>((value) =>
               new AdsenseReportsGenerateResponseHeaders.fromJson(value))
           .toList();
@@ -3471,7 +3471,10 @@ class AdsenseReportsGenerateResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+      rows = (_json["rows"] as core.List)
+          .map<core.List<core.String>>(
+              (value) => (value as core.List).cast<core.String>())
+          .toList();
     }
     if (_json.containsKey("startDate")) {
       startDate = _json["startDate"];
@@ -3480,10 +3483,10 @@ class AdsenseReportsGenerateResponse {
       totalMatchedRows = _json["totalMatchedRows"];
     }
     if (_json.containsKey("totals")) {
-      totals = _json["totals"];
+      totals = (_json["totals"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"];
+      warnings = (_json["warnings"] as core.List).cast<core.String>();
     }
   }
 
@@ -3602,7 +3605,7 @@ class Alerts {
 
   Alerts.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Alert>((value) => new Alert.fromJson(value))
           .toList();
     }
@@ -3761,7 +3764,7 @@ class CustomChannels {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CustomChannel>((value) => new CustomChannel.fromJson(value))
           .toList();
     }
@@ -3802,7 +3805,7 @@ class Metadata {
 
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ReportingMetadataEntry>(
               (value) => new ReportingMetadataEntry.fromJson(value))
           .toList();
@@ -3896,7 +3899,7 @@ class Payments {
 
   Payments.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Payment>((value) => new Payment.fromJson(value))
           .toList();
     }
@@ -3955,10 +3958,12 @@ class ReportingMetadataEntry {
 
   ReportingMetadataEntry.fromJson(core.Map _json) {
     if (_json.containsKey("compatibleDimensions")) {
-      compatibleDimensions = _json["compatibleDimensions"];
+      compatibleDimensions =
+          (_json["compatibleDimensions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("compatibleMetrics")) {
-      compatibleMetrics = _json["compatibleMetrics"];
+      compatibleMetrics =
+          (_json["compatibleMetrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -3967,13 +3972,16 @@ class ReportingMetadataEntry {
       kind = _json["kind"];
     }
     if (_json.containsKey("requiredDimensions")) {
-      requiredDimensions = _json["requiredDimensions"];
+      requiredDimensions =
+          (_json["requiredDimensions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("requiredMetrics")) {
-      requiredMetrics = _json["requiredMetrics"];
+      requiredMetrics =
+          (_json["requiredMetrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("supportedProducts")) {
-      supportedProducts = _json["supportedProducts"];
+      supportedProducts =
+          (_json["supportedProducts"] as core.List).cast<core.String>();
     }
   }
 
@@ -4077,7 +4085,7 @@ class SavedAdStyles {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SavedAdStyle>((value) => new SavedAdStyle.fromJson(value))
           .toList();
     }
@@ -4169,7 +4177,7 @@ class SavedReports {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SavedReport>((value) => new SavedReport.fromJson(value))
           .toList();
     }
@@ -4263,7 +4271,7 @@ class UrlChannels {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<UrlChannel>((value) => new UrlChannel.fromJson(value))
           .toList();
     }

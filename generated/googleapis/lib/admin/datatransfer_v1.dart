@@ -219,7 +219,7 @@ class TransfersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,7 +349,7 @@ class Application {
       name = _json["name"];
     }
     if (_json.containsKey("transferParams")) {
-      transferParams = _json["transferParams"]
+      transferParams = (_json["transferParams"] as core.List)
           .map<ApplicationTransferParam>(
               (value) => new ApplicationTransferParam.fromJson(value))
           .toList();
@@ -398,10 +398,11 @@ class ApplicationDataTransfer {
       applicationId = _json["applicationId"];
     }
     if (_json.containsKey("applicationTransferParams")) {
-      applicationTransferParams = _json["applicationTransferParams"]
-          .map<ApplicationTransferParam>(
-              (value) => new ApplicationTransferParam.fromJson(value))
-          .toList();
+      applicationTransferParams =
+          (_json["applicationTransferParams"] as core.List)
+              .map<ApplicationTransferParam>(
+                  (value) => new ApplicationTransferParam.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("applicationTransferStatus")) {
       applicationTransferStatus = _json["applicationTransferStatus"];
@@ -441,7 +442,7 @@ class ApplicationTransferParam {
       key = _json["key"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = (_json["value"] as core.List).cast<core.String>();
     }
   }
 
@@ -477,7 +478,7 @@ class ApplicationsListResponse {
 
   ApplicationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("applications")) {
-      applications = _json["applications"]
+      applications = (_json["applications"] as core.List)
           .map<Application>((value) => new Application.fromJson(value))
           .toList();
     }
@@ -545,10 +546,11 @@ class DataTransfer {
 
   DataTransfer.fromJson(core.Map _json) {
     if (_json.containsKey("applicationDataTransfers")) {
-      applicationDataTransfers = _json["applicationDataTransfers"]
-          .map<ApplicationDataTransfer>(
-              (value) => new ApplicationDataTransfer.fromJson(value))
-          .toList();
+      applicationDataTransfers =
+          (_json["applicationDataTransfers"] as core.List)
+              .map<ApplicationDataTransfer>(
+                  (value) => new ApplicationDataTransfer.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -623,7 +625,7 @@ class DataTransfersListResponse {
 
   DataTransfersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataTransfers")) {
-      dataTransfers = _json["dataTransfers"]
+      dataTransfers = (_json["dataTransfers"] as core.List)
           .map<DataTransfer>((value) => new DataTransfer.fromJson(value))
           .toList();
     }

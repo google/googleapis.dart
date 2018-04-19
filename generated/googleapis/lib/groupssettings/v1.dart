@@ -106,7 +106,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
@@ -154,7 +154,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");

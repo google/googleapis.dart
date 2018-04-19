@@ -125,7 +125,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -338,7 +338,7 @@ class UsersSshPublicKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -425,16 +425,14 @@ class LoginProfile {
       name = _json["name"];
     }
     if (_json.containsKey("posixAccounts")) {
-      posixAccounts = _json["posixAccounts"]
+      posixAccounts = (_json["posixAccounts"] as core.List)
           .map<PosixAccount>((value) => new PosixAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sshPublicKeys")) {
-      sshPublicKeys =
-          commons.mapMap<core.Map<core.String, core.Object>, SshPublicKey>(
-              _json["sshPublicKeys"],
-              (core.Map<core.String, core.Object> item) =>
-                  new SshPublicKey.fromJson(item));
+      sshPublicKeys = commons.mapMap<core.Map, SshPublicKey>(
+          _json["sshPublicKeys"].cast<core.String, core.Map>(),
+          (core.Map item) => new SshPublicKey.fromJson(item));
     }
   }
 

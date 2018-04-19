@@ -237,7 +237,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -481,7 +481,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -714,7 +714,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -778,7 +778,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -855,7 +855,9 @@ class ListResourceResponseItem {
 
   ListResourceResponseItem.fromJson(core.Map _json) {
     if (_json.containsKey("endpoints")) {
-      endpoints = _json["endpoints"];
+      endpoints = commons.mapMap<core.List, core.List<core.int>>(
+          _json["endpoints"].cast<core.String, core.List>(),
+          (core.List item) => (item as core.List).cast<core.int>());
     }
     if (_json.containsKey("resource")) {
       resource = _json["resource"];
@@ -927,7 +929,7 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<OperationErrorErrors>(
               (value) => new OperationErrorErrors.fromJson(value))
           .toList();
@@ -992,7 +994,7 @@ class OperationWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationWarningsData>(
               (value) => new OperationWarningsData.fromJson(value))
           .toList();
@@ -1168,7 +1170,7 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<OperationWarnings>(
               (value) => new OperationWarnings.fromJson(value))
           .toList();
@@ -1274,7 +1276,7 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -1360,7 +1362,7 @@ class ResourceView {
       description = _json["description"];
     }
     if (_json.containsKey("endpoints")) {
-      endpoints = _json["endpoints"]
+      endpoints = (_json["endpoints"] as core.List)
           .map<ServiceEndpoint>((value) => new ServiceEndpoint.fromJson(value))
           .toList();
     }
@@ -1374,7 +1376,7 @@ class ResourceView {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<Label>((value) => new Label.fromJson(value))
           .toList();
     }
@@ -1385,7 +1387,7 @@ class ResourceView {
       network = _json["network"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -1479,7 +1481,7 @@ class ZoneViewsAddResourcesRequest {
 
   ZoneViewsAddResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
   }
 
@@ -1504,7 +1506,7 @@ class ZoneViewsGetServiceResponse {
 
   ZoneViewsGetServiceResponse.fromJson(core.Map _json) {
     if (_json.containsKey("endpoints")) {
-      endpoints = _json["endpoints"]
+      endpoints = (_json["endpoints"] as core.List)
           .map<ServiceEndpoint>((value) => new ServiceEndpoint.fromJson(value))
           .toList();
     }
@@ -1544,7 +1546,7 @@ class ZoneViewsList {
 
   ZoneViewsList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ResourceView>((value) => new ResourceView.fromJson(value))
           .toList();
     }
@@ -1594,7 +1596,7 @@ class ZoneViewsListResourcesResponse {
 
   ZoneViewsListResourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ListResourceResponseItem>(
               (value) => new ListResourceResponseItem.fromJson(value))
           .toList();
@@ -1632,7 +1634,7 @@ class ZoneViewsRemoveResourcesRequest {
 
   ZoneViewsRemoveResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
   }
 
@@ -1662,7 +1664,7 @@ class ZoneViewsSetServiceRequest {
 
   ZoneViewsSetServiceRequest.fromJson(core.Map _json) {
     if (_json.containsKey("endpoints")) {
-      endpoints = _json["endpoints"]
+      endpoints = (_json["endpoints"] as core.List)
           .map<ServiceEndpoint>((value) => new ServiceEndpoint.fromJson(value))
           .toList();
     }

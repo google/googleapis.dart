@@ -91,7 +91,7 @@ class RegionViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -271,7 +271,7 @@ class RegionViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -469,7 +469,7 @@ class RegionViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -539,7 +539,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -719,7 +719,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -916,7 +916,7 @@ class ZoneViewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -991,7 +991,7 @@ class RegionViewsAddResourcesRequest {
 
   RegionViewsAddResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
   }
 
@@ -1040,7 +1040,7 @@ class RegionViewsListResourcesResponse {
 
   RegionViewsListResourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1075,7 +1075,7 @@ class RegionViewsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resourceViews")) {
-      resourceViews = _json["resourceViews"]
+      resourceViews = (_json["resourceViews"] as core.List)
           .map<ResourceView>((value) => new ResourceView.fromJson(value))
           .toList();
     }
@@ -1104,7 +1104,7 @@ class RegionViewsRemoveResourcesRequest {
 
   RegionViewsRemoveResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
   }
 
@@ -1166,7 +1166,7 @@ class ResourceView {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<Label>((value) => new Label.fromJson(value))
           .toList();
     }
@@ -1174,7 +1174,7 @@ class ResourceView {
       lastModified = _json["lastModified"];
     }
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1233,7 +1233,7 @@ class ZoneViewsAddResourcesRequest {
 
   ZoneViewsAddResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
   }
 
@@ -1282,7 +1282,7 @@ class ZoneViewsListResourcesResponse {
 
   ZoneViewsListResourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1317,7 +1317,7 @@ class ZoneViewsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resourceViews")) {
-      resourceViews = _json["resourceViews"]
+      resourceViews = (_json["resourceViews"] as core.List)
           .map<ResourceView>((value) => new ResourceView.fromJson(value))
           .toList();
     }
@@ -1346,7 +1346,7 @@ class ZoneViewsRemoveResourcesRequest {
 
   ZoneViewsRemoveResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = _json["resources"];
+      resources = (_json["resources"] as core.List).cast<core.String>();
     }
   }
 

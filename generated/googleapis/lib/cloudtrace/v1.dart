@@ -84,7 +84,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -346,7 +346,7 @@ class ListTracesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("traces")) {
-      traces = _json["traces"]
+      traces = (_json["traces"] as core.List)
           .map<Trace>((value) => new Trace.fromJson(value))
           .toList();
     }
@@ -386,7 +386,7 @@ class Trace {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("spans")) {
-      spans = _json["spans"]
+      spans = (_json["spans"] as core.List)
           .map<TraceSpan>((value) => new TraceSpan.fromJson(value))
           .toList();
     }
@@ -501,7 +501,7 @@ class TraceSpan {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -554,7 +554,7 @@ class Traces {
 
   Traces.fromJson(core.Map _json) {
     if (_json.containsKey("traces")) {
-      traces = _json["traces"]
+      traces = (_json["traces"] as core.List)
           .map<Trace>((value) => new Trace.fromJson(value))
           .toList();
     }

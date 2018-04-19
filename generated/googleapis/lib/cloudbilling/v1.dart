@@ -336,7 +336,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -684,7 +684,7 @@ class ListBillingAccountsResponse {
 
   ListBillingAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("billingAccounts")) {
-      billingAccounts = _json["billingAccounts"]
+      billingAccounts = (_json["billingAccounts"] as core.List)
           .map<BillingAccount>((value) => new BillingAccount.fromJson(value))
           .toList();
     }
@@ -726,7 +726,7 @@ class ListProjectBillingInfoResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("projectBillingInfo")) {
-      projectBillingInfo = _json["projectBillingInfo"]
+      projectBillingInfo = (_json["projectBillingInfo"] as core.List)
           .map<ProjectBillingInfo>(
               (value) => new ProjectBillingInfo.fromJson(value))
           .toList();
@@ -764,7 +764,7 @@ class ListServicesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("services")) {
-      services = _json["services"]
+      services = (_json["services"] as core.List)
           .map<Service>((value) => new Service.fromJson(value))
           .toList();
     }
@@ -800,8 +800,9 @@ class ListSkusResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("skus")) {
-      skus =
-          _json["skus"].map<Sku>((value) => new Sku.fromJson(value)).toList();
+      skus = (_json["skus"] as core.List)
+          .map<Sku>((value) => new Sku.fromJson(value))
+          .toList();
     }
   }
 
@@ -931,7 +932,7 @@ class PricingExpression {
       displayQuantity = _json["displayQuantity"];
     }
     if (_json.containsKey("tieredRates")) {
-      tieredRates = _json["tieredRates"]
+      tieredRates = (_json["tieredRates"] as core.List)
           .map<TierRate>((value) => new TierRate.fromJson(value))
           .toList();
     }
@@ -1191,7 +1192,7 @@ class Sku {
       name = _json["name"];
     }
     if (_json.containsKey("pricingInfo")) {
-      pricingInfo = _json["pricingInfo"]
+      pricingInfo = (_json["pricingInfo"] as core.List)
           .map<PricingInfo>((value) => new PricingInfo.fromJson(value))
           .toList();
     }
@@ -1199,7 +1200,8 @@ class Sku {
       serviceProviderName = _json["serviceProviderName"];
     }
     if (_json.containsKey("serviceRegions")) {
-      serviceRegions = _json["serviceRegions"];
+      serviceRegions =
+          (_json["serviceRegions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("skuId")) {
       skuId = _json["skuId"];

@@ -105,7 +105,7 @@ class ProjectsSnapshotsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -357,7 +357,7 @@ class ProjectsSnapshotsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -410,7 +410,7 @@ class ProjectsSnapshotsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -470,7 +470,7 @@ class ProjectsSnapshotsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -537,7 +537,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -604,7 +604,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -865,7 +865,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -923,7 +923,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -981,7 +981,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1034,7 +1034,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -1086,7 +1086,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -1141,7 +1141,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1201,7 +1201,7 @@ class ProjectsSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1269,7 +1269,7 @@ class ProjectsTopicsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1523,7 +1523,7 @@ class ProjectsTopicsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
@@ -1576,7 +1576,7 @@ class ProjectsTopicsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1636,7 +1636,7 @@ class ProjectsTopicsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1806,7 +1806,7 @@ class AcknowledgeRequest {
 
   AcknowledgeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("ackIds")) {
-      ackIds = _json["ackIds"];
+      ackIds = (_json["ackIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -1855,7 +1855,7 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -1943,7 +1943,7 @@ class ListSnapshotsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("snapshots")) {
-      snapshots = _json["snapshots"]
+      snapshots = (_json["snapshots"] as core.List)
           .map<Snapshot>((value) => new Snapshot.fromJson(value))
           .toList();
     }
@@ -1979,7 +1979,7 @@ class ListSubscriptionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("subscriptions")) {
-      subscriptions = _json["subscriptions"]
+      subscriptions = (_json["subscriptions"] as core.List)
           .map<Subscription>((value) => new Subscription.fromJson(value))
           .toList();
     }
@@ -2016,7 +2016,7 @@ class ListTopicSnapshotsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("snapshots")) {
-      snapshots = _json["snapshots"];
+      snapshots = (_json["snapshots"] as core.List).cast<core.String>();
     }
   }
 
@@ -2050,7 +2050,7 @@ class ListTopicSubscriptionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("subscriptions")) {
-      subscriptions = _json["subscriptions"];
+      subscriptions = (_json["subscriptions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2083,7 +2083,7 @@ class ListTopicsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("topics")) {
-      topics = _json["topics"]
+      topics = (_json["topics"] as core.List)
           .map<Topic>((value) => new Topic.fromJson(value))
           .toList();
     }
@@ -2123,7 +2123,7 @@ class ModifyAckDeadlineRequest {
       ackDeadlineSeconds = _json["ackDeadlineSeconds"];
     }
     if (_json.containsKey("ackIds")) {
-      ackIds = _json["ackIds"];
+      ackIds = (_json["ackIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -2219,12 +2219,12 @@ class Policy {
   /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Deprecated.
@@ -2234,7 +2234,7 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
@@ -2271,7 +2271,7 @@ class PublishRequest {
 
   PublishRequest.fromJson(core.Map _json) {
     if (_json.containsKey("messages")) {
-      messages = _json["messages"]
+      messages = (_json["messages"] as core.List)
           .map<PubsubMessage>((value) => new PubsubMessage.fromJson(value))
           .toList();
     }
@@ -2298,7 +2298,7 @@ class PublishResponse {
 
   PublishResponse.fromJson(core.Map _json) {
     if (_json.containsKey("messageIds")) {
-      messageIds = _json["messageIds"];
+      messageIds = (_json["messageIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -2321,12 +2321,12 @@ class PubsubMessage {
   /// The message payload.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// ID of this message, assigned by the server when the message is published.
@@ -2344,7 +2344,8 @@ class PubsubMessage {
 
   PubsubMessage.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = _json["attributes"];
+      attributes =
+          (_json["attributes"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("data")) {
       data = _json["data"];
@@ -2426,7 +2427,7 @@ class PullResponse {
 
   PullResponse.fromJson(core.Map _json) {
     if (_json.containsKey("receivedMessages")) {
-      receivedMessages = _json["receivedMessages"]
+      receivedMessages = (_json["receivedMessages"] as core.List)
           .map<ReceivedMessage>((value) => new ReceivedMessage.fromJson(value))
           .toList();
     }
@@ -2476,7 +2477,8 @@ class PushConfig {
 
   PushConfig.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = _json["attributes"];
+      attributes =
+          (_json["attributes"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("pushEndpoint")) {
       pushEndpoint = _json["pushEndpoint"];
@@ -2785,7 +2787,7 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2809,7 +2811,7 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 

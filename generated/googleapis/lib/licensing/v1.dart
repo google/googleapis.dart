@@ -185,7 +185,7 @@ class LicenseAssignmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -380,7 +380,7 @@ class LicenseAssignmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -443,7 +443,7 @@ class LicenseAssignmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -605,7 +605,7 @@ class LicenseAssignmentList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LicenseAssignment>(
               (value) => new LicenseAssignment.fromJson(value))
           .toList();

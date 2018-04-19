@@ -637,7 +637,7 @@ class ManagementAccountUserLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -748,7 +748,7 @@ class ManagementAccountUserLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1003,7 +1003,7 @@ class ManagementCustomDimensionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1138,7 +1138,7 @@ class ManagementCustomDimensionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1216,7 +1216,7 @@ class ManagementCustomDimensionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1349,7 +1349,7 @@ class ManagementCustomMetricsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1478,7 +1478,7 @@ class ManagementCustomMetricsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1551,7 +1551,7 @@ class ManagementCustomMetricsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1759,7 +1759,7 @@ class ManagementExperimentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1905,7 +1905,7 @@ class ManagementExperimentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1980,7 +1980,7 @@ class ManagementExperimentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2153,7 +2153,7 @@ class ManagementFiltersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2263,7 +2263,7 @@ class ManagementFiltersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2320,7 +2320,7 @@ class ManagementFiltersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2451,7 +2451,7 @@ class ManagementGoalsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2595,7 +2595,7 @@ class ManagementGoalsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2666,7 +2666,7 @@ class ManagementGoalsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2886,7 +2886,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3039,7 +3039,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3118,7 +3118,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3260,7 +3260,7 @@ class ManagementProfileUserLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3408,7 +3408,7 @@ class ManagementProfileUserLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3603,7 +3603,7 @@ class ManagementProfilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3731,7 +3731,7 @@ class ManagementProfilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3795,7 +3795,7 @@ class ManagementProfilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3987,7 +3987,7 @@ class ManagementRemarketingAudienceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4126,7 +4126,7 @@ class ManagementRemarketingAudienceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4195,7 +4195,7 @@ class ManagementRemarketingAudienceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4459,7 +4459,7 @@ class ManagementUnsampledReportsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4612,7 +4612,7 @@ class ManagementUploadsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5040,7 +5040,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5171,7 +5171,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5239,7 +5239,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5362,7 +5362,7 @@ class ManagementWebpropertiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5474,7 +5474,7 @@ class ManagementWebpropertiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5531,7 +5531,7 @@ class ManagementWebpropertiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5654,7 +5654,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5782,7 +5782,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5905,7 +5905,7 @@ class ProvisioningResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5949,7 +5949,7 @@ class ProvisioningResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6010,7 +6010,7 @@ class AccountPermissions {
 
   AccountPermissions.fromJson(core.Map _json) {
     if (_json.containsKey("effective")) {
-      effective = _json["effective"];
+      effective = (_json["effective"] as core.List).cast<core.String>();
     }
   }
 
@@ -6207,7 +6207,7 @@ class AccountSummaries {
 
   AccountSummaries.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AccountSummary>((value) => new AccountSummary.fromJson(value))
           .toList();
     }
@@ -6299,7 +6299,7 @@ class AccountSummary {
       starred = _json["starred"];
     }
     if (_json.containsKey("webProperties")) {
-      webProperties = _json["webProperties"]
+      webProperties = (_json["webProperties"] as core.List)
           .map<WebPropertySummary>(
               (value) => new WebPropertySummary.fromJson(value))
           .toList();
@@ -6680,7 +6680,7 @@ class Accounts {
 
   Accounts.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Account>((value) => new Account.fromJson(value))
           .toList();
     }
@@ -6789,7 +6789,8 @@ class AnalyticsDataimportDeleteUploadDataRequest {
 
   AnalyticsDataimportDeleteUploadDataRequest.fromJson(core.Map _json) {
     if (_json.containsKey("customDataImportUids")) {
-      customDataImportUids = _json["customDataImportUids"];
+      customDataImportUids =
+          (_json["customDataImportUids"] as core.List).cast<core.String>();
     }
   }
 
@@ -6818,7 +6819,8 @@ class Column {
 
   Column.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = _json["attributes"];
+      attributes =
+          (_json["attributes"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -6866,13 +6868,14 @@ class Columns {
 
   Columns.fromJson(core.Map _json) {
     if (_json.containsKey("attributeNames")) {
-      attributeNames = _json["attributeNames"];
+      attributeNames =
+          (_json["attributeNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Column>((value) => new Column.fromJson(value))
           .toList();
     }
@@ -7050,10 +7053,11 @@ class CustomDataSource {
       parentLink = new CustomDataSourceParentLink.fromJson(_json["parentLink"]);
     }
     if (_json.containsKey("profilesLinked")) {
-      profilesLinked = _json["profilesLinked"];
+      profilesLinked =
+          (_json["profilesLinked"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("schema")) {
-      schema = _json["schema"];
+      schema = (_json["schema"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -7164,7 +7168,7 @@ class CustomDataSources {
 
   CustomDataSources.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CustomDataSource>(
               (value) => new CustomDataSource.fromJson(value))
           .toList();
@@ -7417,7 +7421,7 @@ class CustomDimensions {
 
   CustomDimensions.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CustomDimension>((value) => new CustomDimension.fromJson(value))
           .toList();
     }
@@ -7696,7 +7700,7 @@ class CustomMetrics {
 
   CustomMetrics.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CustomMetric>((value) => new CustomMetric.fromJson(value))
           .toList();
     }
@@ -7804,7 +7808,7 @@ class EntityAdWordsLink {
 
   EntityAdWordsLink.fromJson(core.Map _json) {
     if (_json.containsKey("adWordsAccounts")) {
-      adWordsAccounts = _json["adWordsAccounts"]
+      adWordsAccounts = (_json["adWordsAccounts"] as core.List)
           .map<AdWordsAccount>((value) => new AdWordsAccount.fromJson(value))
           .toList();
     }
@@ -7821,7 +7825,7 @@ class EntityAdWordsLink {
       name = _json["name"];
     }
     if (_json.containsKey("profileIds")) {
-      profileIds = _json["profileIds"];
+      profileIds = (_json["profileIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -7890,7 +7894,7 @@ class EntityAdWordsLinks {
 
   EntityAdWordsLinks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<EntityAdWordsLink>(
               (value) => new EntityAdWordsLink.fromJson(value))
           .toList();
@@ -8002,10 +8006,10 @@ class EntityUserLinkPermissions {
 
   EntityUserLinkPermissions.fromJson(core.Map _json) {
     if (_json.containsKey("effective")) {
-      effective = _json["effective"];
+      effective = (_json["effective"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("local")) {
-      local = _json["local"];
+      local = (_json["local"] as core.List).cast<core.String>();
     }
   }
 
@@ -8126,7 +8130,7 @@ class EntityUserLinks {
 
   EntityUserLinks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<EntityUserLink>((value) => new EntityUserLink.fromJson(value))
           .toList();
     }
@@ -8491,7 +8495,7 @@ class Experiment {
       updated = core.DateTime.parse(_json["updated"]);
     }
     if (_json.containsKey("variations")) {
-      variations = _json["variations"]
+      variations = (_json["variations"] as core.List)
           .map<ExperimentVariations>(
               (value) => new ExperimentVariations.fromJson(value))
           .toList();
@@ -8636,7 +8640,7 @@ class Experiments {
 
   Experiments.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Experiment>((value) => new Experiment.fromJson(value))
           .toList();
     }
@@ -9396,7 +9400,7 @@ class Filters {
 
   Filters.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Filter>((value) => new Filter.fromJson(value))
           .toList();
     }
@@ -9559,7 +9563,7 @@ class GaDataDataTableRows {
 
   GaDataDataTableRows.fromJson(core.Map _json) {
     if (_json.containsKey("c")) {
-      c = _json["c"]
+      c = (_json["c"] as core.List)
           .map<GaDataDataTableRowsC>(
               (value) => new GaDataDataTableRowsC.fromJson(value))
           .toList();
@@ -9584,13 +9588,13 @@ class GaDataDataTable {
 
   GaDataDataTable.fromJson(core.Map _json) {
     if (_json.containsKey("cols")) {
-      cols = _json["cols"]
+      cols = (_json["cols"] as core.List)
           .map<GaDataDataTableCols>(
               (value) => new GaDataDataTableCols.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"]
+      rows = (_json["rows"] as core.List)
           .map<GaDataDataTableRows>(
               (value) => new GaDataDataTableRows.fromJson(value))
           .toList();
@@ -9733,7 +9737,7 @@ class GaDataQuery {
       max_results = _json["max-results"];
     }
     if (_json.containsKey("metrics")) {
-      metrics = _json["metrics"];
+      metrics = (_json["metrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("samplingLevel")) {
       samplingLevel = _json["samplingLevel"];
@@ -9742,7 +9746,7 @@ class GaDataQuery {
       segment = _json["segment"];
     }
     if (_json.containsKey("sort")) {
-      sort = _json["sort"];
+      sort = (_json["sort"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("start-date")) {
       start_date = _json["start-date"];
@@ -9857,7 +9861,7 @@ class GaData {
 
   GaData.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
-      columnHeaders = _json["columnHeaders"]
+      columnHeaders = (_json["columnHeaders"] as core.List)
           .map<GaDataColumnHeaders>(
               (value) => new GaDataColumnHeaders.fromJson(value))
           .toList();
@@ -9893,7 +9897,10 @@ class GaData {
       query = new GaDataQuery.fromJson(_json["query"]);
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+      rows = (_json["rows"] as core.List)
+          .map<core.List<core.String>>(
+              (value) => (value as core.List).cast<core.String>())
+          .toList();
     }
     if (_json.containsKey("sampleSize")) {
       sampleSize = _json["sampleSize"];
@@ -9908,7 +9915,8 @@ class GaData {
       totalResults = _json["totalResults"];
     }
     if (_json.containsKey("totalsForAllResults")) {
-      totalsForAllResults = _json["totalsForAllResults"];
+      totalsForAllResults = (_json["totalsForAllResults"] as core.Map)
+          .cast<core.String, core.String>();
     }
   }
 
@@ -10043,7 +10051,7 @@ class GoalEventDetails {
 
   GoalEventDetails.fromJson(core.Map _json) {
     if (_json.containsKey("eventConditions")) {
-      eventConditions = _json["eventConditions"]
+      eventConditions = (_json["eventConditions"] as core.List)
           .map<GoalEventDetailsEventConditions>(
               (value) => new GoalEventDetailsEventConditions.fromJson(value))
           .toList();
@@ -10171,7 +10179,7 @@ class GoalUrlDestinationDetails {
       matchType = _json["matchType"];
     }
     if (_json.containsKey("steps")) {
-      steps = _json["steps"]
+      steps = (_json["steps"] as core.List)
           .map<GoalUrlDestinationDetailsSteps>(
               (value) => new GoalUrlDestinationDetailsSteps.fromJson(value))
           .toList();
@@ -10486,7 +10494,7 @@ class Goals {
 
   Goals.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Goal>((value) => new Goal.fromJson(value))
           .toList();
     }
@@ -10881,7 +10889,7 @@ class McfDataQuery {
       max_results = _json["max-results"];
     }
     if (_json.containsKey("metrics")) {
-      metrics = _json["metrics"];
+      metrics = (_json["metrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("samplingLevel")) {
       samplingLevel = _json["samplingLevel"];
@@ -10890,7 +10898,7 @@ class McfDataQuery {
       segment = _json["segment"];
     }
     if (_json.containsKey("sort")) {
-      sort = _json["sort"];
+      sort = (_json["sort"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("start-date")) {
       start_date = _json["start-date"];
@@ -10986,7 +10994,7 @@ class McfDataRows {
 
   McfDataRows.fromJson(core.Map _json) {
     if (_json.containsKey("conversionPathValue")) {
-      conversionPathValue = _json["conversionPathValue"]
+      conversionPathValue = (_json["conversionPathValue"] as core.List)
           .map<McfDataRowsConversionPathValue>(
               (value) => new McfDataRowsConversionPathValue.fromJson(value))
           .toList();
@@ -11071,7 +11079,7 @@ class McfData {
 
   McfData.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
-      columnHeaders = _json["columnHeaders"]
+      columnHeaders = (_json["columnHeaders"] as core.List)
           .map<McfDataColumnHeaders>(
               (value) => new McfDataColumnHeaders.fromJson(value))
           .toList();
@@ -11101,8 +11109,8 @@ class McfData {
       query = new McfDataQuery.fromJson(_json["query"]);
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"]
-          .map<core.List<McfDataRows>>((value) => value
+      rows = (_json["rows"] as core.List)
+          .map<core.List<McfDataRows>>((value) => (value as core.List)
               .map<McfDataRows>((value) => new McfDataRows.fromJson(value))
               .toList())
           .toList();
@@ -11120,7 +11128,8 @@ class McfData {
       totalResults = _json["totalResults"];
     }
     if (_json.containsKey("totalsForAllResults")) {
-      totalsForAllResults = _json["totalsForAllResults"];
+      totalsForAllResults = (_json["totalsForAllResults"] as core.Map)
+          .cast<core.String, core.String>();
     }
   }
 
@@ -11256,7 +11265,7 @@ class ProfilePermissions {
 
   ProfilePermissions.fromJson(core.Map _json) {
     if (_json.containsKey("effective")) {
-      effective = _json["effective"];
+      effective = (_json["effective"] as core.List).cast<core.String>();
     }
   }
 
@@ -11648,7 +11657,7 @@ class ProfileFilterLinks {
 
   ProfileFilterLinks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ProfileFilterLink>(
               (value) => new ProfileFilterLink.fromJson(value))
           .toList();
@@ -11882,7 +11891,7 @@ class Profiles {
 
   Profiles.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Profile>((value) => new Profile.fromJson(value))
           .toList();
     }
@@ -12087,10 +12096,10 @@ class RealtimeDataQuery {
       max_results = _json["max-results"];
     }
     if (_json.containsKey("metrics")) {
-      metrics = _json["metrics"];
+      metrics = (_json["metrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("sort")) {
-      sort = _json["sort"];
+      sort = (_json["sort"] as core.List).cast<core.String>();
     }
   }
 
@@ -12159,7 +12168,7 @@ class RealtimeData {
 
   RealtimeData.fromJson(core.Map _json) {
     if (_json.containsKey("columnHeaders")) {
-      columnHeaders = _json["columnHeaders"]
+      columnHeaders = (_json["columnHeaders"] as core.List)
           .map<RealtimeDataColumnHeaders>(
               (value) => new RealtimeDataColumnHeaders.fromJson(value))
           .toList();
@@ -12177,7 +12186,10 @@ class RealtimeData {
       query = new RealtimeDataQuery.fromJson(_json["query"]);
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+      rows = (_json["rows"] as core.List)
+          .map<core.List<core.String>>(
+              (value) => (value as core.List).cast<core.String>())
+          .toList();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -12186,7 +12198,8 @@ class RealtimeData {
       totalResults = _json["totalResults"];
     }
     if (_json.containsKey("totalsForAllResults")) {
-      totalsForAllResults = _json["totalsForAllResults"];
+      totalsForAllResults = (_json["totalsForAllResults"] as core.Map)
+          .cast<core.String, core.String>();
     }
   }
 
@@ -12399,13 +12412,13 @@ class RemarketingAudience {
       kind = _json["kind"];
     }
     if (_json.containsKey("linkedAdAccounts")) {
-      linkedAdAccounts = _json["linkedAdAccounts"]
+      linkedAdAccounts = (_json["linkedAdAccounts"] as core.List)
           .map<LinkedForeignAccount>(
               (value) => new LinkedForeignAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("linkedViews")) {
-      linkedViews = _json["linkedViews"];
+      linkedViews = (_json["linkedViews"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -12511,7 +12524,7 @@ class RemarketingAudiences {
 
   RemarketingAudiences.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<RemarketingAudience>(
               (value) => new RemarketingAudience.fromJson(value))
           .toList();
@@ -12702,7 +12715,7 @@ class Segments {
 
   Segments.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Segment>((value) => new Segment.fromJson(value))
           .toList();
     }
@@ -13047,7 +13060,7 @@ class UnsampledReports {
 
   UnsampledReports.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<UnsampledReport>((value) => new UnsampledReport.fromJson(value))
           .toList();
     }
@@ -13139,7 +13152,7 @@ class Upload {
       customDataSourceId = _json["customDataSourceId"];
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"];
+      errors = (_json["errors"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -13217,7 +13230,7 @@ class Uploads {
 
   Uploads.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Upload>((value) => new Upload.fromJson(value))
           .toList();
     }
@@ -13422,7 +13435,7 @@ class WebPropertySummary {
       name = _json["name"];
     }
     if (_json.containsKey("profiles")) {
-      profiles = _json["profiles"]
+      profiles = (_json["profiles"] as core.List)
           .map<ProfileSummary>((value) => new ProfileSummary.fromJson(value))
           .toList();
     }
@@ -13502,7 +13515,7 @@ class Webproperties {
 
   Webproperties.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Webproperty>((value) => new Webproperty.fromJson(value))
           .toList();
     }
@@ -13637,7 +13650,7 @@ class WebpropertyPermissions {
 
   WebpropertyPermissions.fromJson(core.Map _json) {
     if (_json.containsKey("effective")) {
-      effective = _json["effective"];
+      effective = (_json["effective"] as core.List).cast<core.String>();
     }
   }
 

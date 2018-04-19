@@ -113,7 +113,7 @@ class BillingAccountsExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -339,7 +339,7 @@ class BillingAccountsExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -542,7 +542,7 @@ class BillingAccountsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -788,7 +788,7 @@ class BillingAccountsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -875,7 +875,7 @@ class BillingAccountsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -934,7 +934,7 @@ class EntriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -980,7 +980,7 @@ class EntriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1039,7 +1039,7 @@ class ExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1265,7 +1265,7 @@ class ExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1342,7 +1342,7 @@ class FoldersExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1568,7 +1568,7 @@ class FoldersExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1769,7 +1769,7 @@ class FoldersSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2015,7 +2015,7 @@ class FoldersSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -2102,7 +2102,7 @@ class FoldersSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -2370,7 +2370,7 @@ class OrganizationsExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2596,7 +2596,7 @@ class OrganizationsExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2799,7 +2799,7 @@ class OrganizationsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3045,7 +3045,7 @@ class OrganizationsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -3132,7 +3132,7 @@ class OrganizationsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -3215,7 +3215,7 @@ class ProjectsExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3441,7 +3441,7 @@ class ProjectsExclusionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -3625,7 +3625,7 @@ class ProjectsMetricsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3831,7 +3831,7 @@ class ProjectsMetricsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
@@ -3905,7 +3905,7 @@ class ProjectsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -4151,7 +4151,7 @@ class ProjectsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4238,7 +4238,7 @@ class ProjectsSinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4318,7 +4318,7 @@ class SinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -4564,7 +4564,7 @@ class SinksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4678,7 +4678,7 @@ class Explicit {
 
   Explicit.fromJson(core.Map _json) {
     if (_json.containsKey("bounds")) {
-      bounds = _json["bounds"];
+      bounds = (_json["bounds"] as core.List).cast<core.double>();
     }
   }
 
@@ -5007,7 +5007,7 @@ class ListExclusionsResponse {
 
   ListExclusionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("exclusions")) {
-      exclusions = _json["exclusions"]
+      exclusions = (_json["exclusions"] as core.List)
           .map<LogExclusion>((value) => new LogExclusion.fromJson(value))
           .toList();
     }
@@ -5090,10 +5090,10 @@ class ListLogEntriesRequest {
       pageToken = _json["pageToken"];
     }
     if (_json.containsKey("projectIds")) {
-      projectIds = _json["projectIds"];
+      projectIds = (_json["projectIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("resourceNames")) {
-      resourceNames = _json["resourceNames"];
+      resourceNames = (_json["resourceNames"] as core.List).cast<core.String>();
     }
   }
 
@@ -5144,7 +5144,7 @@ class ListLogEntriesResponse {
 
   ListLogEntriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<LogEntry>((value) => new LogEntry.fromJson(value))
           .toList();
     }
@@ -5180,7 +5180,7 @@ class ListLogMetricsResponse {
 
   ListLogMetricsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("metrics")) {
-      metrics = _json["metrics"]
+      metrics = (_json["metrics"] as core.List)
           .map<LogMetric>((value) => new LogMetric.fromJson(value))
           .toList();
     }
@@ -5217,7 +5217,7 @@ class ListLogsResponse {
 
   ListLogsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("logNames")) {
-      logNames = _json["logNames"];
+      logNames = (_json["logNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -5254,7 +5254,7 @@ class ListMonitoredResourceDescriptorsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resourceDescriptors")) {
-      resourceDescriptors = _json["resourceDescriptors"]
+      resourceDescriptors = (_json["resourceDescriptors"] as core.List)
           .map<MonitoredResourceDescriptor>(
               (value) => new MonitoredResourceDescriptor.fromJson(value))
           .toList();
@@ -5292,7 +5292,7 @@ class ListSinksResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("sinks")) {
-      sinks = _json["sinks"]
+      sinks = (_json["sinks"] as core.List)
           .map<LogSink>((value) => new LogSink.fromJson(value))
           .toList();
     }
@@ -5431,10 +5431,11 @@ class LogEntry {
       insertId = _json["insertId"];
     }
     if (_json.containsKey("jsonPayload")) {
-      jsonPayload = _json["jsonPayload"];
+      jsonPayload =
+          (_json["jsonPayload"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
@@ -5443,7 +5444,8 @@ class LogEntry {
       operation = new LogEntryOperation.fromJson(_json["operation"]);
     }
     if (_json.containsKey("protoPayload")) {
-      protoPayload = _json["protoPayload"];
+      protoPayload =
+          (_json["protoPayload"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("receiveTimestamp")) {
       receiveTimestamp = _json["receiveTimestamp"];
@@ -5852,7 +5854,8 @@ class LogMetric {
       filter = _json["filter"];
     }
     if (_json.containsKey("labelExtractors")) {
-      labelExtractors = _json["labelExtractors"];
+      labelExtractors = (_json["labelExtractors"] as core.Map)
+          .cast<core.String, core.String>();
     }
     if (_json.containsKey("metricDescriptor")) {
       metricDescriptor =
@@ -6145,7 +6148,7 @@ class MetricDescriptor {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
@@ -6224,7 +6227,7 @@ class MonitoredResource {
 
   MonitoredResource.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -6290,7 +6293,7 @@ class MonitoredResourceDescriptor {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
@@ -6479,7 +6482,7 @@ class RequestLog {
       latency = _json["latency"];
     }
     if (_json.containsKey("line")) {
-      line = _json["line"]
+      line = (_json["line"] as core.List)
           .map<LogLine>((value) => new LogLine.fromJson(value))
           .toList();
     }
@@ -6511,7 +6514,7 @@ class RequestLog {
       responseSize = _json["responseSize"];
     }
     if (_json.containsKey("sourceReference")) {
-      sourceReference = _json["sourceReference"]
+      sourceReference = (_json["sourceReference"] as core.List)
           .map<SourceReference>((value) => new SourceReference.fromJson(value))
           .toList();
     }
@@ -6794,12 +6797,12 @@ class WriteLogEntriesRequest {
       dryRun = _json["dryRun"];
     }
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<LogEntry>((value) => new LogEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];

@@ -70,7 +70,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -121,7 +121,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -170,7 +170,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -384,7 +384,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -435,7 +435,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -485,7 +485,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -538,7 +538,7 @@ class MattersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -595,7 +595,7 @@ class MattersHoldsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -809,7 +809,7 @@ class MattersHoldsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -875,7 +875,7 @@ class MattersHoldsAccountsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1380,7 +1380,7 @@ class Hold {
 
   Hold.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
-      accounts = _json["accounts"]
+      accounts = (_json["accounts"] as core.List)
           .map<HeldAccount>((value) => new HeldAccount.fromJson(value))
           .toList();
     }
@@ -1441,7 +1441,7 @@ class ListHeldAccountsResponse {
 
   ListHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
-      accounts = _json["accounts"]
+      accounts = (_json["accounts"] as core.List)
           .map<HeldAccount>((value) => new HeldAccount.fromJson(value))
           .toList();
     }
@@ -1470,7 +1470,7 @@ class ListHoldsResponse {
 
   ListHoldsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("holds")) {
-      holds = _json["holds"]
+      holds = (_json["holds"] as core.List)
           .map<Hold>((value) => new Hold.fromJson(value))
           .toList();
     }
@@ -1504,7 +1504,7 @@ class ListMattersResponse {
 
   ListMattersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matters")) {
-      matters = _json["matters"]
+      matters = (_json["matters"] as core.List)
           .map<Matter>((value) => new Matter.fromJson(value))
           .toList();
     }
@@ -1560,7 +1560,7 @@ class Matter {
       matterId = _json["matterId"];
     }
     if (_json.containsKey("matterPermissions")) {
-      matterPermissions = _json["matterPermissions"]
+      matterPermissions = (_json["matterPermissions"] as core.List)
           .map<MatterPermission>(
               (value) => new MatterPermission.fromJson(value))
           .toList();

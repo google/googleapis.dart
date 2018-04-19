@@ -252,7 +252,7 @@ class EditsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -634,7 +634,7 @@ class EditsApklistingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -709,7 +709,7 @@ class EditsApklistingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -787,7 +787,7 @@ class EditsApksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1144,7 +1144,7 @@ class EditsDetailsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1202,7 +1202,7 @@ class EditsDetailsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1351,7 +1351,7 @@ class EditsExpansionfilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1431,7 +1431,7 @@ class EditsExpansionfilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2199,7 +2199,7 @@ class EditsListingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2265,7 +2265,7 @@ class EditsListingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2394,7 +2394,7 @@ class EditsTestersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2458,7 +2458,7 @@ class EditsTestersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2647,7 +2647,7 @@ class EditsTracksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2715,7 +2715,7 @@ class EditsTracksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2963,7 +2963,7 @@ class InappproductsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3090,7 +3090,7 @@ class InappproductsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3157,7 +3157,7 @@ class InappproductsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3378,7 +3378,7 @@ class PurchasesSubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3855,7 +3855,7 @@ class ReviewsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3991,7 +3991,7 @@ class ApkListingsListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("listings")) {
-      listings = _json["listings"]
+      listings = (_json["listings"] as core.List)
           .map<ApkListing>((value) => new ApkListing.fromJson(value))
           .toList();
     }
@@ -4067,8 +4067,9 @@ class ApksListResponse {
 
   ApksListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("apks")) {
-      apks =
-          _json["apks"].map<Apk>((value) => new Apk.fromJson(value)).toList();
+      apks = (_json["apks"] as core.List)
+          .map<Apk>((value) => new Apk.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4457,7 +4458,7 @@ class EntitlementsListResponse {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<Entitlement>((value) => new Entitlement.fromJson(value))
           .toList();
     }
@@ -4596,7 +4597,8 @@ class ExternallyHostedApk {
       applicationLabel = _json["applicationLabel"];
     }
     if (_json.containsKey("certificateBase64s")) {
-      certificateBase64s = _json["certificateBase64s"];
+      certificateBase64s =
+          (_json["certificateBase64s"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("externallyHostedUrl")) {
       externallyHostedUrl = _json["externallyHostedUrl"];
@@ -4620,16 +4622,16 @@ class ExternallyHostedApk {
       minimumSdk = _json["minimumSdk"];
     }
     if (_json.containsKey("nativeCodes")) {
-      nativeCodes = _json["nativeCodes"];
+      nativeCodes = (_json["nativeCodes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("usesFeatures")) {
-      usesFeatures = _json["usesFeatures"];
+      usesFeatures = (_json["usesFeatures"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("usesPermissions")) {
-      usesPermissions = _json["usesPermissions"]
+      usesPermissions = (_json["usesPermissions"] as core.List)
           .map<ExternallyHostedApkUsesPermission>(
               (value) => new ExternallyHostedApkUsesPermission.fromJson(value))
           .toList();
@@ -4774,7 +4776,7 @@ class ImagesDeleteAllResponse {
 
   ImagesDeleteAllResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"]
+      deleted = (_json["deleted"] as core.List)
           .map<Image>((value) => new Image.fromJson(value))
           .toList();
     }
@@ -4797,7 +4799,7 @@ class ImagesListResponse {
 
   ImagesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("images")) {
-      images = _json["images"]
+      images = (_json["images"] as core.List)
           .map<Image>((value) => new Image.fromJson(value))
           .toList();
     }
@@ -4884,20 +4886,17 @@ class InAppProduct {
       defaultPrice = new Price.fromJson(_json["defaultPrice"]);
     }
     if (_json.containsKey("listings")) {
-      listings = commons
-          .mapMap<core.Map<core.String, core.Object>, InAppProductListing>(
-              _json["listings"],
-              (core.Map<core.String, core.Object> item) =>
-                  new InAppProductListing.fromJson(item));
+      listings = commons.mapMap<core.Map, InAppProductListing>(
+          _json["listings"].cast<core.String, core.Map>(),
+          (core.Map item) => new InAppProductListing.fromJson(item));
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("prices")) {
-      prices = commons.mapMap<core.Map<core.String, core.Object>, Price>(
-          _json["prices"],
-          (core.Map<core.String, core.Object> item) =>
-              new Price.fromJson(item));
+      prices = commons.mapMap<core.Map, Price>(
+          _json["prices"].cast<core.String, core.Map>(),
+          (core.Map item) => new Price.fromJson(item));
     }
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
@@ -5004,7 +5003,7 @@ class InappproductsListResponse {
 
   InappproductsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("inappproduct")) {
-      inappproduct = _json["inappproduct"]
+      inappproduct = (_json["inappproduct"] as core.List)
           .map<InAppProduct>((value) => new InAppProduct.fromJson(value))
           .toList();
     }
@@ -5111,7 +5110,7 @@ class ListingsListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("listings")) {
-      listings = _json["listings"]
+      listings = (_json["listings"] as core.List)
           .map<Listing>((value) => new Listing.fromJson(value))
           .toList();
     }
@@ -5368,7 +5367,7 @@ class Review {
       authorName = _json["authorName"];
     }
     if (_json.containsKey("comments")) {
-      comments = _json["comments"]
+      comments = (_json["comments"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -5436,7 +5435,7 @@ class ReviewsListResponse {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("reviews")) {
-      reviews = _json["reviews"]
+      reviews = (_json["reviews"] as core.List)
           .map<Review>((value) => new Review.fromJson(value))
           .toList();
     }
@@ -5525,7 +5524,7 @@ class Season {
       end = new MonthDay.fromJson(_json["end"]);
     }
     if (_json.containsKey("prorations")) {
-      prorations = _json["prorations"]
+      prorations = (_json["prorations"] as core.List)
           .map<Prorate>((value) => new Prorate.fromJson(value))
           .toList();
     }
@@ -5817,10 +5816,11 @@ class Testers {
 
   Testers.fromJson(core.Map _json) {
     if (_json.containsKey("googleGroups")) {
-      googleGroups = _json["googleGroups"];
+      googleGroups = (_json["googleGroups"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("googlePlusCommunities")) {
-      googlePlusCommunities = _json["googlePlusCommunities"];
+      googlePlusCommunities =
+          (_json["googlePlusCommunities"] as core.List).cast<core.String>();
     }
   }
 
@@ -5910,7 +5910,7 @@ class Track {
       userFraction = _json["userFraction"];
     }
     if (_json.containsKey("versionCodes")) {
-      versionCodes = _json["versionCodes"];
+      versionCodes = (_json["versionCodes"] as core.List).cast<core.int>();
     }
   }
 
@@ -5943,7 +5943,7 @@ class TracksListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("tracks")) {
-      tracks = _json["tracks"]
+      tracks = (_json["tracks"] as core.List)
           .map<Track>((value) => new Track.fromJson(value))
           .toList();
     }
@@ -6161,7 +6161,7 @@ class VoidedPurchasesListResponse {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("voidedPurchases")) {
-      voidedPurchases = _json["voidedPurchases"]
+      voidedPurchases = (_json["voidedPurchases"] as core.List)
           .map<VoidedPurchase>((value) => new VoidedPurchase.fromJson(value))
           .toList();
     }

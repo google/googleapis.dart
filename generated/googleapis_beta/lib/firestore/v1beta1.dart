@@ -94,7 +94,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -148,7 +148,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -202,7 +202,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -269,7 +269,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -579,7 +579,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -633,7 +633,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -706,7 +706,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -768,7 +768,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -826,7 +826,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -879,7 +879,7 @@ class ProjectsDatabasesDocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -950,7 +950,7 @@ class ProjectsDatabasesIndexesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1135,7 +1135,7 @@ class ArrayValue {
 
   ArrayValue.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
-      values = _json["values"]
+      values = (_json["values"] as core.List)
           .map<Value>((value) => new Value.fromJson(value))
           .toList();
     }
@@ -1180,19 +1180,19 @@ class BatchGetDocumentsRequest {
   /// Reads documents in a transaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   BatchGetDocumentsRequest();
 
   BatchGetDocumentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("documents")) {
-      documents = _json["documents"];
+      documents = (_json["documents"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("mask")) {
       mask = new DocumentMask.fromJson(_json["mask"]);
@@ -1250,12 +1250,12 @@ class BatchGetDocumentsResponse {
   /// BatchGetDocumentsRequest.new_transaction was set in the request.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   BatchGetDocumentsResponse();
@@ -1323,12 +1323,12 @@ class BeginTransactionResponse {
   /// The transaction that was started.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   BeginTransactionResponse();
@@ -1389,12 +1389,12 @@ class CommitRequest {
   /// If set, applies all writes in this transaction, and commits it.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The writes to apply.
@@ -1409,7 +1409,7 @@ class CommitRequest {
       transaction = _json["transaction"];
     }
     if (_json.containsKey("writes")) {
-      writes = _json["writes"]
+      writes = (_json["writes"] as core.List)
           .map<Write>((value) => new Write.fromJson(value))
           .toList();
     }
@@ -1446,7 +1446,7 @@ class CommitResponse {
       commitTime = _json["commitTime"];
     }
     if (_json.containsKey("writeResults")) {
-      writeResults = _json["writeResults"]
+      writeResults = (_json["writeResults"] as core.List)
           .map<WriteResult>((value) => new WriteResult.fromJson(value))
           .toList();
     }
@@ -1483,7 +1483,7 @@ class CompositeFilter {
 
   CompositeFilter.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters = _json["filters"]
+      filters = (_json["filters"] as core.List)
           .map<Filter>((value) => new Filter.fromJson(value))
           .toList();
     }
@@ -1524,7 +1524,7 @@ class Cursor {
       before = _json["before"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"]
+      values = (_json["values"] as core.List)
           .map<Value>((value) => new Value.fromJson(value))
           .toList();
     }
@@ -1599,10 +1599,9 @@ class Document {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("fields")) {
-      fields = commons.mapMap<core.Map<core.String, core.Object>, Value>(
-          _json["fields"],
-          (core.Map<core.String, core.Object> item) =>
-              new Value.fromJson(item));
+      fields = commons.mapMap<core.Map, Value>(
+          _json["fields"].cast<core.String, core.Map>(),
+          (core.Map item) => new Value.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1659,10 +1658,11 @@ class DocumentChange {
       document = new Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("removedTargetIds")) {
-      removedTargetIds = _json["removedTargetIds"];
+      removedTargetIds =
+          (_json["removedTargetIds"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("targetIds")) {
-      targetIds = _json["targetIds"];
+      targetIds = (_json["targetIds"] as core.List).cast<core.int>();
     }
   }
 
@@ -1711,7 +1711,8 @@ class DocumentDelete {
       readTime = _json["readTime"];
     }
     if (_json.containsKey("removedTargetIds")) {
-      removedTargetIds = _json["removedTargetIds"];
+      removedTargetIds =
+          (_json["removedTargetIds"] as core.List).cast<core.int>();
     }
   }
 
@@ -1745,7 +1746,7 @@ class DocumentMask {
 
   DocumentMask.fromJson(core.Map _json) {
     if (_json.containsKey("fieldPaths")) {
-      fieldPaths = _json["fieldPaths"];
+      fieldPaths = (_json["fieldPaths"] as core.List).cast<core.String>();
     }
   }
 
@@ -1789,7 +1790,8 @@ class DocumentRemove {
       readTime = _json["readTime"];
     }
     if (_json.containsKey("removedTargetIds")) {
-      removedTargetIds = _json["removedTargetIds"];
+      removedTargetIds =
+          (_json["removedTargetIds"] as core.List).cast<core.int>();
     }
   }
 
@@ -1826,7 +1828,7 @@ class DocumentTransform {
       document = _json["document"];
     }
     if (_json.containsKey("fieldTransforms")) {
-      fieldTransforms = _json["fieldTransforms"]
+      fieldTransforms = (_json["fieldTransforms"] as core.List)
           .map<FieldTransform>((value) => new FieldTransform.fromJson(value))
           .toList();
     }
@@ -1858,7 +1860,7 @@ class DocumentsTarget {
 
   DocumentsTarget.fromJson(core.Map _json) {
     if (_json.containsKey("documents")) {
-      documents = _json["documents"];
+      documents = (_json["documents"] as core.List).cast<core.String>();
     }
   }
 
@@ -2119,7 +2121,7 @@ class Index {
       collectionId = _json["collectionId"];
     }
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<IndexField>((value) => new IndexField.fromJson(value))
           .toList();
     }
@@ -2275,7 +2277,7 @@ class ListCollectionIdsResponse {
 
   ListCollectionIdsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("collectionIds")) {
-      collectionIds = _json["collectionIds"];
+      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2307,7 +2309,7 @@ class ListDocumentsResponse {
 
   ListDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("documents")) {
-      documents = _json["documents"]
+      documents = (_json["documents"] as core.List)
           .map<Document>((value) => new Document.fromJson(value))
           .toList();
     }
@@ -2341,7 +2343,7 @@ class ListIndexesResponse {
 
   ListIndexesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("indexes")) {
-      indexes = _json["indexes"]
+      indexes = (_json["indexes"] as core.List)
           .map<Index>((value) => new Index.fromJson(value))
           .toList();
     }
@@ -2381,7 +2383,7 @@ class ListenRequest {
       addTarget = new Target.fromJson(_json["addTarget"]);
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("removeTarget")) {
       removeTarget = _json["removeTarget"];
@@ -2483,10 +2485,9 @@ class MapValue {
 
   MapValue.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = commons.mapMap<core.Map<core.String, core.Object>, Value>(
-          _json["fields"],
-          (core.Map<core.String, core.Object> item) =>
-              new Value.fromJson(item));
+      fields = commons.mapMap<core.Map, Value>(
+          _json["fields"].cast<core.String, core.Map>(),
+          (core.Map item) => new Value.fromJson(item));
     }
   }
 
@@ -2551,13 +2552,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -2665,7 +2668,7 @@ class Projection {
 
   Projection.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<FieldReference>((value) => new FieldReference.fromJson(value))
           .toList();
     }
@@ -2747,12 +2750,12 @@ class ReadWrite {
   /// An optional transaction to retry.
   core.String retryTransaction;
   core.List<core.int> get retryTransactionAsBytes {
-    return convert.BASE64.decode(retryTransaction);
+    return convert.base64.decode(retryTransaction);
   }
 
   void set retryTransactionAsBytes(core.List<core.int> _bytes) {
     retryTransaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   ReadWrite();
@@ -2778,12 +2781,12 @@ class RollbackRequest {
   /// The transaction to roll back.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RollbackRequest();
@@ -2822,12 +2825,12 @@ class RunQueryRequest {
   /// Reads documents in a transaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RunQueryRequest();
@@ -2891,12 +2894,12 @@ class RunQueryResponse {
   /// If set, no other fields will be set in this response.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return convert.BASE64.decode(transaction);
+    return convert.base64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RunQueryResponse();
@@ -3014,7 +3017,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -3093,7 +3099,7 @@ class StructuredQuery {
       endAt = new Cursor.fromJson(_json["endAt"]);
     }
     if (_json.containsKey("from")) {
-      from = _json["from"]
+      from = (_json["from"] as core.List)
           .map<CollectionSelector>(
               (value) => new CollectionSelector.fromJson(value))
           .toList();
@@ -3105,7 +3111,7 @@ class StructuredQuery {
       offset = _json["offset"];
     }
     if (_json.containsKey("orderBy")) {
-      orderBy = _json["orderBy"]
+      orderBy = (_json["orderBy"] as core.List)
           .map<Order>((value) => new Order.fromJson(value))
           .toList();
     }
@@ -3172,12 +3178,12 @@ class Target {
   /// Using a resume token with a different target is unsupported and may fail.
   core.String resumeToken;
   core.List<core.int> get resumeTokenAsBytes {
-    return convert.BASE64.decode(resumeToken);
+    return convert.base64.decode(resumeToken);
   }
 
   void set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// A client provided target ID.
@@ -3261,12 +3267,12 @@ class TargetChange {
   /// Not set on every target change.
   core.String resumeToken;
   core.List<core.int> get resumeTokenAsBytes {
-    return convert.BASE64.decode(resumeToken);
+    return convert.base64.decode(resumeToken);
   }
 
   void set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The type of change that occurred.
@@ -3320,7 +3326,7 @@ class TargetChange {
       targetChangeType = _json["targetChangeType"];
     }
     if (_json.containsKey("targetIds")) {
-      targetIds = _json["targetIds"];
+      targetIds = (_json["targetIds"] as core.List).cast<core.int>();
     }
   }
 
@@ -3430,12 +3436,12 @@ class Value {
   /// Only the first 1,500 bytes are considered by queries.
   core.String bytesValue;
   core.List<core.int> get bytesValueAsBytes {
-    return convert.BASE64.decode(bytesValue);
+    return convert.base64.decode(bytesValue);
   }
 
   void set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// A double value.
@@ -3661,12 +3667,12 @@ class WriteRequest {
   /// Leave this field unset when creating a new stream.
   core.String streamToken;
   core.List<core.int> get streamTokenAsBytes {
-    return convert.BASE64.decode(streamToken);
+    return convert.base64.decode(streamToken);
   }
 
   void set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The writes to apply.
@@ -3681,7 +3687,7 @@ class WriteRequest {
 
   WriteRequest.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("streamId")) {
       streamId = _json["streamId"];
@@ -3690,7 +3696,7 @@ class WriteRequest {
       streamToken = _json["streamToken"];
     }
     if (_json.containsKey("writes")) {
-      writes = _json["writes"]
+      writes = (_json["writes"] as core.List)
           .map<Write>((value) => new Write.fromJson(value))
           .toList();
     }
@@ -3730,12 +3736,12 @@ class WriteResponse {
   /// This field is always set.
   core.String streamToken;
   core.List<core.int> get streamTokenAsBytes {
-    return convert.BASE64.decode(streamToken);
+    return convert.base64.decode(streamToken);
   }
 
   void set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The result of applying the writes.
@@ -3757,7 +3763,7 @@ class WriteResponse {
       streamToken = _json["streamToken"];
     }
     if (_json.containsKey("writeResults")) {
-      writeResults = _json["writeResults"]
+      writeResults = (_json["writeResults"] as core.List)
           .map<WriteResult>((value) => new WriteResult.fromJson(value))
           .toList();
     }
@@ -3800,7 +3806,7 @@ class WriteResult {
 
   WriteResult.fromJson(core.Map _json) {
     if (_json.containsKey("transformResults")) {
-      transformResults = _json["transformResults"]
+      transformResults = (_json["transformResults"] as core.List)
           .map<Value>((value) => new Value.fromJson(value))
           .toList();
     }

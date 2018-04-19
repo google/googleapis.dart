@@ -729,7 +729,7 @@ class AddressesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1178,7 +1178,7 @@ class AutoscalersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1375,7 +1375,7 @@ class AutoscalersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1458,7 +1458,7 @@ class AutoscalersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1664,7 +1664,7 @@ class BackendBucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1844,7 +1844,7 @@ class BackendBucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1920,7 +1920,7 @@ class BackendBucketsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2226,7 +2226,7 @@ class BackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2299,7 +2299,7 @@ class BackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2483,7 +2483,7 @@ class BackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2561,7 +2561,7 @@ class BackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3046,7 +3046,7 @@ class DisksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3279,7 +3279,7 @@ class DisksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3478,7 +3478,7 @@ class DisksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3563,7 +3563,7 @@ class DisksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3769,7 +3769,7 @@ class FirewallsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3948,7 +3948,7 @@ class FirewallsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4025,7 +4025,7 @@ class FirewallsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4356,7 +4356,7 @@ class ForwardingRulesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4554,7 +4554,7 @@ class ForwardingRulesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4761,7 +4761,7 @@ class GlobalAddressesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5067,7 +5067,7 @@ class GlobalForwardingRulesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5249,7 +5249,7 @@ class GlobalForwardingRulesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5780,7 +5780,7 @@ class HealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5960,7 +5960,7 @@ class HealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6036,7 +6036,7 @@ class HealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6240,7 +6240,7 @@ class HttpHealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6422,7 +6422,7 @@ class HttpHealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6498,7 +6498,7 @@ class HttpHealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6702,7 +6702,7 @@ class HttpsHealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6884,7 +6884,7 @@ class HttpsHealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6960,7 +6960,7 @@ class HttpsHealthChecksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7112,7 +7112,7 @@ class ImagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7295,7 +7295,7 @@ class ImagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7468,7 +7468,7 @@ class ImagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7567,7 +7567,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7855,7 +7855,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8008,7 +8008,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8310,7 +8310,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8494,7 +8494,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8586,7 +8586,7 @@ class InstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8682,7 +8682,7 @@ class InstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9011,7 +9011,7 @@ class InstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9245,7 +9245,7 @@ class InstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9347,7 +9347,7 @@ class InstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9434,7 +9434,7 @@ class InstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9648,7 +9648,7 @@ class InstanceTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9845,7 +9845,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10043,7 +10043,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10526,7 +10526,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11114,7 +11114,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11203,7 +11203,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11288,7 +11288,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11373,7 +11373,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11463,7 +11463,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11547,7 +11547,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11636,7 +11636,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11720,7 +11720,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11889,7 +11889,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12067,7 +12067,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12412,7 +12412,7 @@ class InterconnectAttachmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12906,7 +12906,7 @@ class InterconnectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13085,7 +13085,7 @@ class InterconnectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13519,7 +13519,7 @@ class NetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13715,7 +13715,7 @@ class NetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13893,7 +13893,7 @@ class NetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13968,7 +13968,7 @@ class NetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14180,7 +14180,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14310,7 +14310,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14535,7 +14535,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14610,7 +14610,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14678,7 +14678,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14746,7 +14746,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14816,7 +14816,7 @@ class ProjectsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15034,7 +15034,7 @@ class RegionAutoscalersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15232,7 +15232,7 @@ class RegionAutoscalersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15315,7 +15315,7 @@ class RegionAutoscalersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15536,7 +15536,7 @@ class RegionBackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15618,7 +15618,7 @@ class RegionBackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15818,7 +15818,7 @@ class RegionBackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15904,7 +15904,7 @@ class RegionBackendServicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16164,7 +16164,7 @@ class RegionCommitmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16382,7 +16382,7 @@ class RegionInstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16559,7 +16559,7 @@ class RegionInstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16709,7 +16709,7 @@ class RegionInstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17009,7 +17009,7 @@ class RegionInstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17192,7 +17192,7 @@ class RegionInstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17280,7 +17280,7 @@ class RegionInstanceGroupManagersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17590,7 +17590,7 @@ class RegionInstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17687,7 +17687,7 @@ class RegionInstanceGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18501,7 +18501,7 @@ class RoutersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18698,7 +18698,7 @@ class RoutersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18769,7 +18769,7 @@ class RoutersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18851,7 +18851,7 @@ class RoutersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19057,7 +19057,7 @@ class RoutesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19465,7 +19465,7 @@ class SnapshotsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19666,7 +19666,7 @@ class SslCertificatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20046,7 +20046,7 @@ class SubnetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20191,7 +20191,7 @@ class SubnetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20391,7 +20391,7 @@ class SubnetworksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20601,7 +20601,7 @@ class TargetHttpProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20781,7 +20781,7 @@ class TargetHttpProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20986,7 +20986,7 @@ class TargetHttpsProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21170,7 +21170,7 @@ class TargetHttpsProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21247,7 +21247,7 @@ class TargetHttpsProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21580,7 +21580,7 @@ class TargetInstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21786,7 +21786,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21870,7 +21870,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22193,7 +22193,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22273,7 +22273,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22473,7 +22473,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22561,7 +22561,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22647,7 +22647,7 @@ class TargetPoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22860,7 +22860,7 @@ class TargetSslProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23044,7 +23044,7 @@ class TargetSslProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23124,7 +23124,7 @@ class TargetSslProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23204,7 +23204,7 @@ class TargetSslProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23409,7 +23409,7 @@ class TargetTcpProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23593,7 +23593,7 @@ class TargetTcpProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23673,7 +23673,7 @@ class TargetTcpProxiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24008,7 +24008,7 @@ class TargetVpnGatewaysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24328,7 +24328,7 @@ class UrlMapsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24399,7 +24399,7 @@ class UrlMapsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24584,7 +24584,7 @@ class UrlMapsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24660,7 +24660,7 @@ class UrlMapsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24724,7 +24724,7 @@ class UrlMapsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25052,7 +25052,7 @@ class VpnTunnelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25831,7 +25831,7 @@ class AcceleratorTypeAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AcceleratorTypeAggregatedListWarningData>((value) =>
               new AcceleratorTypeAggregatedListWarningData.fromJson(value))
           .toList();
@@ -25889,11 +25889,9 @@ class AcceleratorTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              AcceleratorTypesScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
-              new AcceleratorTypesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, AcceleratorTypesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new AcceleratorTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -26019,7 +26017,7 @@ class AcceleratorTypeListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AcceleratorTypeListWarningData>(
               (value) => new AcceleratorTypeListWarningData.fromJson(value))
           .toList();
@@ -26077,7 +26075,7 @@ class AcceleratorTypeList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AcceleratorType>((value) => new AcceleratorType.fromJson(value))
           .toList();
     }
@@ -26203,7 +26201,7 @@ class AcceleratorTypesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AcceleratorTypesScopedListWarningData>((value) =>
               new AcceleratorTypesScopedListWarningData.fromJson(value))
           .toList();
@@ -26241,7 +26239,7 @@ class AcceleratorTypesScopedList {
 
   AcceleratorTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("acceleratorTypes")) {
-      acceleratorTypes = _json["acceleratorTypes"]
+      acceleratorTypes = (_json["acceleratorTypes"] as core.List)
           .map<AcceleratorType>((value) => new AcceleratorType.fromJson(value))
           .toList();
     }
@@ -26459,7 +26457,7 @@ class Address {
       subnetwork = _json["subnetwork"];
     }
     if (_json.containsKey("users")) {
-      users = _json["users"];
+      users = (_json["users"] as core.List).cast<core.String>();
     }
   }
 
@@ -26591,7 +26589,7 @@ class AddressAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AddressAggregatedListWarningData>(
               (value) => new AddressAggregatedListWarningData.fromJson(value))
           .toList();
@@ -26648,11 +26646,9 @@ class AddressAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, AddressesScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new AddressesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, AddressesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new AddressesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -26777,7 +26773,7 @@ class AddressListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AddressListWarningData>(
               (value) => new AddressListWarningData.fromJson(value))
           .toList();
@@ -26835,7 +26831,7 @@ class AddressList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Address>((value) => new Address.fromJson(value))
           .toList();
     }
@@ -26961,7 +26957,7 @@ class AddressesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AddressesScopedListWarningData>(
               (value) => new AddressesScopedListWarningData.fromJson(value))
           .toList();
@@ -26999,7 +26995,7 @@ class AddressesScopedList {
 
   AddressesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("addresses")) {
-      addresses = _json["addresses"]
+      addresses = (_json["addresses"] as core.List)
           .map<Address>((value) => new Address.fromJson(value))
           .toList();
     }
@@ -27185,7 +27181,7 @@ class AttachedDisk {
       kind = _json["kind"];
     }
     if (_json.containsKey("licenses")) {
-      licenses = _json["licenses"];
+      licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("mode")) {
       mode = _json["mode"];
@@ -27324,7 +27320,7 @@ class AttachedDiskInitializeParams {
       diskType = _json["diskType"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
@@ -27458,7 +27454,7 @@ class Autoscaler {
       status = _json["status"];
     }
     if (_json.containsKey("statusDetails")) {
-      statusDetails = _json["statusDetails"]
+      statusDetails = (_json["statusDetails"] as core.List)
           .map<AutoscalerStatusDetails>(
               (value) => new AutoscalerStatusDetails.fromJson(value))
           .toList();
@@ -27597,7 +27593,7 @@ class AutoscalerAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AutoscalerAggregatedListWarningData>((value) =>
               new AutoscalerAggregatedListWarningData.fromJson(value))
           .toList();
@@ -27654,11 +27650,9 @@ class AutoscalerAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, AutoscalersScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new AutoscalersScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, AutoscalersScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new AutoscalersScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -27783,7 +27777,7 @@ class AutoscalerListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AutoscalerListWarningData>(
               (value) => new AutoscalerListWarningData.fromJson(value))
           .toList();
@@ -27841,7 +27835,7 @@ class AutoscalerList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Autoscaler>((value) => new Autoscaler.fromJson(value))
           .toList();
     }
@@ -28014,7 +28008,7 @@ class AutoscalersScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<AutoscalersScopedListWarningData>(
               (value) => new AutoscalersScopedListWarningData.fromJson(value))
           .toList();
@@ -28052,7 +28046,7 @@ class AutoscalersScopedList {
 
   AutoscalersScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("autoscalers")) {
-      autoscalers = _json["autoscalers"]
+      autoscalers = (_json["autoscalers"] as core.List)
           .map<Autoscaler>((value) => new Autoscaler.fromJson(value))
           .toList();
     }
@@ -28119,10 +28113,11 @@ class AutoscalingPolicy {
           new AutoscalingPolicyCpuUtilization.fromJson(_json["cpuUtilization"]);
     }
     if (_json.containsKey("customMetricUtilizations")) {
-      customMetricUtilizations = _json["customMetricUtilizations"]
-          .map<AutoscalingPolicyCustomMetricUtilization>((value) =>
-              new AutoscalingPolicyCustomMetricUtilization.fromJson(value))
-          .toList();
+      customMetricUtilizations =
+          (_json["customMetricUtilizations"] as core.List)
+              .map<AutoscalingPolicyCustomMetricUtilization>((value) =>
+                  new AutoscalingPolicyCustomMetricUtilization.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("loadBalancingUtilization")) {
       loadBalancingUtilization =
@@ -28597,7 +28592,7 @@ class BackendBucketListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<BackendBucketListWarningData>(
               (value) => new BackendBucketListWarningData.fromJson(value))
           .toList();
@@ -28654,7 +28649,7 @@ class BackendBucketList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<BackendBucket>((value) => new BackendBucket.fromJson(value))
           .toList();
     }
@@ -28734,12 +28729,12 @@ class BackendService {
   /// provided in order to update the BackendService.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
@@ -28844,7 +28839,7 @@ class BackendService {
       affinityCookieTtlSec = _json["affinityCookieTtlSec"];
     }
     if (_json.containsKey("backends")) {
-      backends = _json["backends"]
+      backends = (_json["backends"] as core.List)
           .map<Backend>((value) => new Backend.fromJson(value))
           .toList();
     }
@@ -28868,7 +28863,7 @@ class BackendService {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("healthChecks")) {
-      healthChecks = _json["healthChecks"];
+      healthChecks = (_json["healthChecks"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("iap")) {
       iap = new BackendServiceIAP.fromJson(_json["iap"]);
@@ -29060,7 +29055,7 @@ class BackendServiceAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<BackendServiceAggregatedListWarningData>((value) =>
               new BackendServiceAggregatedListWarningData.fromJson(value))
           .toList();
@@ -29117,11 +29112,9 @@ class BackendServiceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              BackendServicesScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
-              new BackendServicesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, BackendServicesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new BackendServicesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -29199,7 +29192,7 @@ class BackendServiceGroupHealth {
 
   BackendServiceGroupHealth.fromJson(core.Map _json) {
     if (_json.containsKey("healthStatus")) {
-      healthStatus = _json["healthStatus"]
+      healthStatus = (_json["healthStatus"] as core.List)
           .map<HealthStatus>((value) => new HealthStatus.fromJson(value))
           .toList();
     }
@@ -29349,7 +29342,7 @@ class BackendServiceListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<BackendServiceListWarningData>(
               (value) => new BackendServiceListWarningData.fromJson(value))
           .toList();
@@ -29407,7 +29400,7 @@ class BackendServiceList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<BackendService>((value) => new BackendService.fromJson(value))
           .toList();
     }
@@ -29533,7 +29526,7 @@ class BackendServicesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<BackendServicesScopedListWarningData>((value) =>
               new BackendServicesScopedListWarningData.fromJson(value))
           .toList();
@@ -29571,7 +29564,7 @@ class BackendServicesScopedList {
 
   BackendServicesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("backendServices")) {
-      backendServices = _json["backendServices"]
+      backendServices = (_json["backendServices"] as core.List)
           .map<BackendService>((value) => new BackendService.fromJson(value))
           .toList();
     }
@@ -29664,10 +29657,12 @@ class CacheKeyPolicy {
       includeQueryString = _json["includeQueryString"];
     }
     if (_json.containsKey("queryStringBlacklist")) {
-      queryStringBlacklist = _json["queryStringBlacklist"];
+      queryStringBlacklist =
+          (_json["queryStringBlacklist"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("queryStringWhitelist")) {
-      queryStringWhitelist = _json["queryStringWhitelist"];
+      queryStringWhitelist =
+          (_json["queryStringWhitelist"] as core.List).cast<core.String>();
     }
   }
 
@@ -29795,7 +29790,7 @@ class Commitment {
       region = _json["region"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<ResourceCommitment>(
               (value) => new ResourceCommitment.fromJson(value))
           .toList();
@@ -29942,7 +29937,7 @@ class CommitmentAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<CommitmentAggregatedListWarningData>((value) =>
               new CommitmentAggregatedListWarningData.fromJson(value))
           .toList();
@@ -29999,11 +29994,9 @@ class CommitmentAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, CommitmentsScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new CommitmentsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, CommitmentsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new CommitmentsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -30128,7 +30121,7 @@ class CommitmentListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<CommitmentListWarningData>(
               (value) => new CommitmentListWarningData.fromJson(value))
           .toList();
@@ -30186,7 +30179,7 @@ class CommitmentList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Commitment>((value) => new Commitment.fromJson(value))
           .toList();
     }
@@ -30312,7 +30305,7 @@ class CommitmentsScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<CommitmentsScopedListWarningData>(
               (value) => new CommitmentsScopedListWarningData.fromJson(value))
           .toList();
@@ -30350,7 +30343,7 @@ class CommitmentsScopedList {
 
   CommitmentsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("commitments")) {
-      commitments = _json["commitments"]
+      commitments = (_json["commitments"] as core.List)
           .map<Commitment>((value) => new Commitment.fromJson(value))
           .toList();
     }
@@ -30580,12 +30573,12 @@ class Disk {
   /// To see the latest fingerprint, make a get() request to retrieve a disk.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Labels to apply to this disk. These can be later modified by the setLabels
@@ -30726,7 +30719,7 @@ class Disk {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("lastAttachTimestamp")) {
       lastAttachTimestamp = _json["lastAttachTimestamp"];
@@ -30735,7 +30728,7 @@ class Disk {
       lastDetachTimestamp = _json["lastDetachTimestamp"];
     }
     if (_json.containsKey("licenses")) {
-      licenses = _json["licenses"];
+      licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -30776,7 +30769,7 @@ class Disk {
       type = _json["type"];
     }
     if (_json.containsKey("users")) {
-      users = _json["users"];
+      users = (_json["users"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -30945,7 +30938,7 @@ class DiskAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<DiskAggregatedListWarningData>(
               (value) => new DiskAggregatedListWarningData.fromJson(value))
           .toList();
@@ -31002,11 +30995,9 @@ class DiskAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items =
-          commons.mapMap<core.Map<core.String, core.Object>, DisksScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new DisksScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, DisksScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new DisksScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -31131,7 +31122,7 @@ class DiskListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<DiskListWarningData>(
               (value) => new DiskListWarningData.fromJson(value))
           .toList();
@@ -31189,7 +31180,7 @@ class DiskList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Disk>((value) => new Disk.fromJson(value))
           .toList();
     }
@@ -31464,7 +31455,7 @@ class DiskTypeAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<DiskTypeAggregatedListWarningData>(
               (value) => new DiskTypeAggregatedListWarningData.fromJson(value))
           .toList();
@@ -31520,11 +31511,9 @@ class DiskTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, DiskTypesScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new DiskTypesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, DiskTypesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new DiskTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -31649,7 +31638,7 @@ class DiskTypeListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<DiskTypeListWarningData>(
               (value) => new DiskTypeListWarningData.fromJson(value))
           .toList();
@@ -31707,7 +31696,7 @@ class DiskTypeList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<DiskType>((value) => new DiskType.fromJson(value))
           .toList();
     }
@@ -31833,7 +31822,7 @@ class DiskTypesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<DiskTypesScopedListWarningData>(
               (value) => new DiskTypesScopedListWarningData.fromJson(value))
           .toList();
@@ -31871,7 +31860,7 @@ class DiskTypesScopedList {
 
   DiskTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("diskTypes")) {
-      diskTypes = _json["diskTypes"]
+      diskTypes = (_json["diskTypes"] as core.List)
           .map<DiskType>((value) => new DiskType.fromJson(value))
           .toList();
     }
@@ -31998,7 +31987,7 @@ class DisksScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<DisksScopedListWarningData>(
               (value) => new DisksScopedListWarningData.fromJson(value))
           .toList();
@@ -32036,7 +32025,7 @@ class DisksScopedList {
 
   DisksScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("disks")) {
-      disks = _json["disks"]
+      disks = (_json["disks"] as core.List)
           .map<Disk>((value) => new Disk.fromJson(value))
           .toList();
     }
@@ -32080,7 +32069,7 @@ class FirewallAllowed {
       IPProtocol = _json["IPProtocol"];
     }
     if (_json.containsKey("ports")) {
-      ports = _json["ports"];
+      ports = (_json["ports"] as core.List).cast<core.String>();
     }
   }
 
@@ -32119,7 +32108,7 @@ class FirewallDenied {
       IPProtocol = _json["IPProtocol"];
     }
     if (_json.containsKey("ports")) {
-      ports = _json["ports"];
+      ports = (_json["ports"] as core.List).cast<core.String>();
     }
   }
 
@@ -32259,7 +32248,7 @@ class Firewall {
 
   Firewall.fromJson(core.Map _json) {
     if (_json.containsKey("allowed")) {
-      allowed = _json["allowed"]
+      allowed = (_json["allowed"] as core.List)
           .map<FirewallAllowed>((value) => new FirewallAllowed.fromJson(value))
           .toList();
     }
@@ -32267,7 +32256,7 @@ class Firewall {
       creationTimestamp = _json["creationTimestamp"];
     }
     if (_json.containsKey("denied")) {
-      denied = _json["denied"]
+      denied = (_json["denied"] as core.List)
           .map<FirewallDenied>((value) => new FirewallDenied.fromJson(value))
           .toList();
     }
@@ -32275,7 +32264,8 @@ class Firewall {
       description = _json["description"];
     }
     if (_json.containsKey("destinationRanges")) {
-      destinationRanges = _json["destinationRanges"];
+      destinationRanges =
+          (_json["destinationRanges"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("direction")) {
       direction = _json["direction"];
@@ -32299,19 +32289,21 @@ class Firewall {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("sourceRanges")) {
-      sourceRanges = _json["sourceRanges"];
+      sourceRanges = (_json["sourceRanges"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("sourceServiceAccounts")) {
-      sourceServiceAccounts = _json["sourceServiceAccounts"];
+      sourceServiceAccounts =
+          (_json["sourceServiceAccounts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("sourceTags")) {
-      sourceTags = _json["sourceTags"];
+      sourceTags = (_json["sourceTags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("targetServiceAccounts")) {
-      targetServiceAccounts = _json["targetServiceAccounts"];
+      targetServiceAccounts =
+          (_json["targetServiceAccounts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("targetTags")) {
-      targetTags = _json["targetTags"];
+      targetTags = (_json["targetTags"] as core.List).cast<core.String>();
     }
   }
 
@@ -32455,7 +32447,7 @@ class FirewallListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<FirewallListWarningData>(
               (value) => new FirewallListWarningData.fromJson(value))
           .toList();
@@ -32513,7 +32505,7 @@ class FirewallList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Firewall>((value) => new Firewall.fromJson(value))
           .toList();
     }
@@ -32759,7 +32751,7 @@ class ForwardingRule {
       portRange = _json["portRange"];
     }
     if (_json.containsKey("ports")) {
-      ports = _json["ports"];
+      ports = (_json["ports"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -32915,7 +32907,7 @@ class ForwardingRuleAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ForwardingRuleAggregatedListWarningData>((value) =>
               new ForwardingRuleAggregatedListWarningData.fromJson(value))
           .toList();
@@ -32972,11 +32964,9 @@ class ForwardingRuleAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              ForwardingRulesScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
-              new ForwardingRulesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, ForwardingRulesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new ForwardingRulesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -33102,7 +33092,7 @@ class ForwardingRuleListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ForwardingRuleListWarningData>(
               (value) => new ForwardingRuleListWarningData.fromJson(value))
           .toList();
@@ -33159,7 +33149,7 @@ class ForwardingRuleList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ForwardingRule>((value) => new ForwardingRule.fromJson(value))
           .toList();
     }
@@ -33285,7 +33275,7 @@ class ForwardingRulesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ForwardingRulesScopedListWarningData>((value) =>
               new ForwardingRulesScopedListWarningData.fromJson(value))
           .toList();
@@ -33323,7 +33313,7 @@ class ForwardingRulesScopedList {
 
   ForwardingRulesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("forwardingRules")) {
-      forwardingRules = _json["forwardingRules"]
+      forwardingRules = (_json["forwardingRules"] as core.List)
           .map<ForwardingRule>((value) => new ForwardingRule.fromJson(value))
           .toList();
     }
@@ -33355,12 +33345,12 @@ class GlobalSetLabelsRequest {
   /// fingerprint.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// A list of labels to apply for this resource. Each label key & value must
@@ -33379,7 +33369,7 @@ class GlobalSetLabelsRequest {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -33805,7 +33795,7 @@ class HealthCheckListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<HealthCheckListWarningData>(
               (value) => new HealthCheckListWarningData.fromJson(value))
           .toList();
@@ -33862,7 +33852,7 @@ class HealthCheckList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<HealthCheck>((value) => new HealthCheck.fromJson(value))
           .toList();
     }
@@ -34007,7 +33997,7 @@ class HostRule {
       description = _json["description"];
     }
     if (_json.containsKey("hosts")) {
-      hosts = _json["hosts"];
+      hosts = (_json["hosts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("pathMatcher")) {
       pathMatcher = _json["pathMatcher"];
@@ -34261,7 +34251,7 @@ class HttpHealthCheckListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<HttpHealthCheckListWarningData>(
               (value) => new HttpHealthCheckListWarningData.fromJson(value))
           .toList();
@@ -34318,7 +34308,7 @@ class HttpHealthCheckList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<HttpHealthCheck>((value) => new HttpHealthCheck.fromJson(value))
           .toList();
     }
@@ -34592,7 +34582,7 @@ class HttpsHealthCheckListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<HttpsHealthCheckListWarningData>(
               (value) => new HttpsHealthCheckListWarningData.fromJson(value))
           .toList();
@@ -34649,7 +34639,7 @@ class HttpsHealthCheckList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<HttpsHealthCheck>(
               (value) => new HttpsHealthCheck.fromJson(value))
           .toList();
@@ -34801,12 +34791,12 @@ class Image {
   /// To see the latest fingerprint, make a get() request to retrieve an image.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Labels to apply to this image. These can be later modified by the
@@ -34904,7 +34894,7 @@ class Image {
       family = _json["family"];
     }
     if (_json.containsKey("guestOsFeatures")) {
-      guestOsFeatures = _json["guestOsFeatures"]
+      guestOsFeatures = (_json["guestOsFeatures"] as core.List)
           .map<GuestOsFeature>((value) => new GuestOsFeature.fromJson(value))
           .toList();
     }
@@ -34922,10 +34912,10 @@ class Image {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("licenses")) {
-      licenses = _json["licenses"];
+      licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -35126,7 +35116,7 @@ class ImageListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ImageListWarningData>(
               (value) => new ImageListWarningData.fromJson(value))
           .toList();
@@ -35183,7 +35173,7 @@ class ImageList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Image>((value) => new Image.fromJson(value))
           .toList();
     }
@@ -35271,12 +35261,12 @@ class Instance {
   /// To see the latest fingerprint, make get() request to the instance.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Labels to apply to this instance. These can be later modified by the
@@ -35393,12 +35383,12 @@ class Instance {
       description = _json["description"];
     }
     if (_json.containsKey("disks")) {
-      disks = _json["disks"]
+      disks = (_json["disks"] as core.List)
           .map<AttachedDisk>((value) => new AttachedDisk.fromJson(value))
           .toList();
     }
     if (_json.containsKey("guestAccelerators")) {
-      guestAccelerators = _json["guestAccelerators"]
+      guestAccelerators = (_json["guestAccelerators"] as core.List)
           .map<AcceleratorConfig>(
               (value) => new AcceleratorConfig.fromJson(value))
           .toList();
@@ -35413,7 +35403,7 @@ class Instance {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
@@ -35428,7 +35418,7 @@ class Instance {
       name = _json["name"];
     }
     if (_json.containsKey("networkInterfaces")) {
-      networkInterfaces = _json["networkInterfaces"]
+      networkInterfaces = (_json["networkInterfaces"] as core.List)
           .map<NetworkInterface>(
               (value) => new NetworkInterface.fromJson(value))
           .toList();
@@ -35440,7 +35430,7 @@ class Instance {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("serviceAccounts")) {
-      serviceAccounts = _json["serviceAccounts"]
+      serviceAccounts = (_json["serviceAccounts"] as core.List)
           .map<ServiceAccount>((value) => new ServiceAccount.fromJson(value))
           .toList();
     }
@@ -35625,7 +35615,7 @@ class InstanceAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceAggregatedListWarningData>(
               (value) => new InstanceAggregatedListWarningData.fromJson(value))
           .toList();
@@ -35682,11 +35672,9 @@ class InstanceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, InstancesScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new InstancesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, InstancesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new InstancesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -35746,12 +35734,12 @@ class InstanceGroup {
   /// concurrently.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// [Output Only] A unique identifier for this instance group, generated by
@@ -35820,7 +35808,7 @@ class InstanceGroup {
       name = _json["name"];
     }
     if (_json.containsKey("namedPorts")) {
-      namedPorts = _json["namedPorts"]
+      namedPorts = (_json["namedPorts"] as core.List)
           .map<NamedPort>((value) => new NamedPort.fromJson(value))
           .toList();
     }
@@ -35973,7 +35961,7 @@ class InstanceGroupAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupAggregatedListWarningData>((value) =>
               new InstanceGroupAggregatedListWarningData.fromJson(value))
           .toList();
@@ -36031,11 +36019,9 @@ class InstanceGroupAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, InstanceGroupsScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new InstanceGroupsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, InstanceGroupsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new InstanceGroupsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -36161,7 +36147,7 @@ class InstanceGroupListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupListWarningData>(
               (value) => new InstanceGroupListWarningData.fromJson(value))
           .toList();
@@ -36219,7 +36205,7 @@ class InstanceGroupList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceGroup>((value) => new InstanceGroup.fromJson(value))
           .toList();
     }
@@ -36289,12 +36275,12 @@ class InstanceGroupManager {
   /// optional field for optimistic locking when you update the resource.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// [Output Only] A unique identifier for this resource type. The server
@@ -36378,7 +36364,7 @@ class InstanceGroupManager {
       name = _json["name"];
     }
     if (_json.containsKey("namedPorts")) {
-      namedPorts = _json["namedPorts"]
+      namedPorts = (_json["namedPorts"] as core.List)
           .map<NamedPort>((value) => new NamedPort.fromJson(value))
           .toList();
     }
@@ -36389,7 +36375,7 @@ class InstanceGroupManager {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("targetPools")) {
-      targetPools = _json["targetPools"];
+      targetPools = (_json["targetPools"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("targetSize")) {
       targetSize = _json["targetSize"];
@@ -36643,7 +36629,7 @@ class InstanceGroupManagerAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupManagerAggregatedListWarningData>((value) =>
               new InstanceGroupManagerAggregatedListWarningData.fromJson(value))
           .toList();
@@ -36701,10 +36687,9 @@ class InstanceGroupManagerAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              InstanceGroupManagersScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
+      items = commons.mapMap<core.Map, InstanceGroupManagersScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) =>
               new InstanceGroupManagersScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
@@ -36831,7 +36816,7 @@ class InstanceGroupManagerListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupManagerListWarningData>((value) =>
               new InstanceGroupManagerListWarningData.fromJson(value))
           .toList();
@@ -36889,7 +36874,7 @@ class InstanceGroupManagerList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceGroupManager>(
               (value) => new InstanceGroupManager.fromJson(value))
           .toList();
@@ -36942,7 +36927,7 @@ class InstanceGroupManagersAbandonInstancesRequest {
 
   InstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -36965,7 +36950,7 @@ class InstanceGroupManagersDeleteInstancesRequest {
 
   InstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -36987,7 +36972,7 @@ class InstanceGroupManagersListManagedInstancesResponse {
 
   InstanceGroupManagersListManagedInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("managedInstances")) {
-      managedInstances = _json["managedInstances"]
+      managedInstances = (_json["managedInstances"] as core.List)
           .map<ManagedInstance>((value) => new ManagedInstance.fromJson(value))
           .toList();
     }
@@ -37013,7 +36998,7 @@ class InstanceGroupManagersRecreateInstancesRequest {
 
   InstanceGroupManagersRecreateInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -37110,7 +37095,7 @@ class InstanceGroupManagersScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupManagersScopedListWarningData>((value) =>
               new InstanceGroupManagersScopedListWarningData.fromJson(value))
           .toList();
@@ -37149,7 +37134,7 @@ class InstanceGroupManagersScopedList {
 
   InstanceGroupManagersScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("instanceGroupManagers")) {
-      instanceGroupManagers = _json["instanceGroupManagers"]
+      instanceGroupManagers = (_json["instanceGroupManagers"] as core.List)
           .map<InstanceGroupManager>(
               (value) => new InstanceGroupManager.fromJson(value))
           .toList();
@@ -37207,12 +37192,12 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   /// another concurrent request.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The list of target pool URLs that instances in this managed instance group
@@ -37228,7 +37213,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("targetPools")) {
-      targetPools = _json["targetPools"];
+      targetPools = (_json["targetPools"] as core.List).cast<core.String>();
     }
   }
 
@@ -37253,7 +37238,7 @@ class InstanceGroupsAddInstancesRequest {
 
   InstanceGroupsAddInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"]
+      instances = (_json["instances"] as core.List)
           .map<InstanceReference>(
               (value) => new InstanceReference.fromJson(value))
           .toList();
@@ -37352,7 +37337,7 @@ class InstanceGroupsListInstancesWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupsListInstancesWarningData>((value) =>
               new InstanceGroupsListInstancesWarningData.fromJson(value))
           .toList();
@@ -37410,7 +37395,7 @@ class InstanceGroupsListInstances {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceWithNamedPorts>(
               (value) => new InstanceWithNamedPorts.fromJson(value))
           .toList();
@@ -37490,7 +37475,7 @@ class InstanceGroupsRemoveInstancesRequest {
 
   InstanceGroupsRemoveInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"]
+      instances = (_json["instances"] as core.List)
           .map<InstanceReference>(
               (value) => new InstanceReference.fromJson(value))
           .toList();
@@ -37590,7 +37575,7 @@ class InstanceGroupsScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceGroupsScopedListWarningData>((value) =>
               new InstanceGroupsScopedListWarningData.fromJson(value))
           .toList();
@@ -37629,7 +37614,7 @@ class InstanceGroupsScopedList {
 
   InstanceGroupsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("instanceGroups")) {
-      instanceGroups = _json["instanceGroups"]
+      instanceGroups = (_json["instanceGroups"] as core.List)
           .map<InstanceGroup>((value) => new InstanceGroup.fromJson(value))
           .toList();
     }
@@ -37661,12 +37646,12 @@ class InstanceGroupsSetNamedPortsRequest {
   /// concurrent request.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The list of named ports to set for this instance group.
@@ -37679,7 +37664,7 @@ class InstanceGroupsSetNamedPortsRequest {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("namedPorts")) {
-      namedPorts = _json["namedPorts"]
+      namedPorts = (_json["namedPorts"] as core.List)
           .map<NamedPort>((value) => new NamedPort.fromJson(value))
           .toList();
     }
@@ -37781,7 +37766,7 @@ class InstanceListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceListWarningData>(
               (value) => new InstanceListWarningData.fromJson(value))
           .toList();
@@ -37839,7 +37824,7 @@ class InstanceList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Instance>((value) => new Instance.fromJson(value))
           .toList();
     }
@@ -37964,7 +37949,7 @@ class InstanceListReferrersWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceListReferrersWarningData>(
               (value) => new InstanceListReferrersWarningData.fromJson(value))
           .toList();
@@ -38022,7 +38007,7 @@ class InstanceListReferrers {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Reference>((value) => new Reference.fromJson(value))
           .toList();
     }
@@ -38173,18 +38158,18 @@ class InstanceProperties {
       description = _json["description"];
     }
     if (_json.containsKey("disks")) {
-      disks = _json["disks"]
+      disks = (_json["disks"] as core.List)
           .map<AttachedDisk>((value) => new AttachedDisk.fromJson(value))
           .toList();
     }
     if (_json.containsKey("guestAccelerators")) {
-      guestAccelerators = _json["guestAccelerators"]
+      guestAccelerators = (_json["guestAccelerators"] as core.List)
           .map<AcceleratorConfig>(
               (value) => new AcceleratorConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
@@ -38196,7 +38181,7 @@ class InstanceProperties {
       minCpuPlatform = _json["minCpuPlatform"];
     }
     if (_json.containsKey("networkInterfaces")) {
-      networkInterfaces = _json["networkInterfaces"]
+      networkInterfaces = (_json["networkInterfaces"] as core.List)
           .map<NetworkInterface>(
               (value) => new NetworkInterface.fromJson(value))
           .toList();
@@ -38205,7 +38190,7 @@ class InstanceProperties {
       scheduling = new Scheduling.fromJson(_json["scheduling"]);
     }
     if (_json.containsKey("serviceAccounts")) {
-      serviceAccounts = _json["serviceAccounts"]
+      serviceAccounts = (_json["serviceAccounts"] as core.List)
           .map<ServiceAccount>((value) => new ServiceAccount.fromJson(value))
           .toList();
     }
@@ -38453,7 +38438,7 @@ class InstanceTemplateListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstanceTemplateListWarningData>(
               (value) => new InstanceTemplateListWarningData.fromJson(value))
           .toList();
@@ -38511,7 +38496,7 @@ class InstanceTemplateList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceTemplate>(
               (value) => new InstanceTemplate.fromJson(value))
           .toList();
@@ -38581,7 +38566,7 @@ class InstanceWithNamedPorts {
       instance = _json["instance"];
     }
     if (_json.containsKey("namedPorts")) {
-      namedPorts = _json["namedPorts"]
+      namedPorts = (_json["namedPorts"] as core.List)
           .map<NamedPort>((value) => new NamedPort.fromJson(value))
           .toList();
     }
@@ -38690,7 +38675,7 @@ class InstancesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InstancesScopedListWarningData>(
               (value) => new InstancesScopedListWarningData.fromJson(value))
           .toList();
@@ -38728,7 +38713,7 @@ class InstancesScopedList {
 
   InstancesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"]
+      instances = (_json["instances"] as core.List)
           .map<Instance>((value) => new Instance.fromJson(value))
           .toList();
     }
@@ -38756,12 +38741,12 @@ class InstancesSetLabelsRequest {
   /// request to add or change labels.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   core.Map<core.String, core.String> labels;
@@ -38773,7 +38758,7 @@ class InstancesSetLabelsRequest {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -38798,7 +38783,7 @@ class InstancesSetMachineResourcesRequest {
 
   InstancesSetMachineResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("guestAccelerators")) {
-      guestAccelerators = _json["guestAccelerators"]
+      guestAccelerators = (_json["guestAccelerators"] as core.List)
           .map<AcceleratorConfig>(
               (value) => new AcceleratorConfig.fromJson(value))
           .toList();
@@ -38876,7 +38861,7 @@ class InstancesSetServiceAccountRequest {
       email = _json["email"];
     }
     if (_json.containsKey("scopes")) {
-      scopes = _json["scopes"];
+      scopes = (_json["scopes"] as core.List).cast<core.String>();
     }
   }
 
@@ -38908,7 +38893,7 @@ class InstancesStartWithEncryptionKeyRequest {
 
   InstancesStartWithEncryptionKeyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("disks")) {
-      disks = _json["disks"]
+      disks = (_json["disks"] as core.List)
           .map<CustomerEncryptionKeyProtectedDisk>(
               (value) => new CustomerEncryptionKeyProtectedDisk.fromJson(value))
           .toList();
@@ -39036,7 +39021,7 @@ class Interconnect {
       adminEnabled = _json["adminEnabled"];
     }
     if (_json.containsKey("circuitInfos")) {
-      circuitInfos = _json["circuitInfos"]
+      circuitInfos = (_json["circuitInfos"] as core.List)
           .map<InterconnectCircuitInfo>(
               (value) => new InterconnectCircuitInfo.fromJson(value))
           .toList();
@@ -39051,7 +39036,7 @@ class Interconnect {
       description = _json["description"];
     }
     if (_json.containsKey("expectedOutages")) {
-      expectedOutages = _json["expectedOutages"]
+      expectedOutages = (_json["expectedOutages"] as core.List)
           .map<InterconnectOutageNotification>(
               (value) => new InterconnectOutageNotification.fromJson(value))
           .toList();
@@ -39066,7 +39051,8 @@ class Interconnect {
       id = _json["id"];
     }
     if (_json.containsKey("interconnectAttachments")) {
-      interconnectAttachments = _json["interconnectAttachments"];
+      interconnectAttachments =
+          (_json["interconnectAttachments"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("interconnectType")) {
       interconnectType = _json["interconnectType"];
@@ -39424,7 +39410,7 @@ class InterconnectAttachmentAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InterconnectAttachmentAggregatedListWarningData>((value) =>
               new InterconnectAttachmentAggregatedListWarningData.fromJson(
                   value))
@@ -39483,10 +39469,9 @@ class InterconnectAttachmentAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              InterconnectAttachmentsScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
+      items = commons.mapMap<core.Map, InterconnectAttachmentsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) =>
               new InterconnectAttachmentsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
@@ -39613,7 +39598,7 @@ class InterconnectAttachmentListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InterconnectAttachmentListWarningData>((value) =>
               new InterconnectAttachmentListWarningData.fromJson(value))
           .toList();
@@ -39672,7 +39657,7 @@ class InterconnectAttachmentList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InterconnectAttachment>(
               (value) => new InterconnectAttachment.fromJson(value))
           .toList();
@@ -39825,7 +39810,7 @@ class InterconnectAttachmentsScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InterconnectAttachmentsScopedListWarningData>((value) =>
               new InterconnectAttachmentsScopedListWarningData.fromJson(value))
           .toList();
@@ -39863,7 +39848,7 @@ class InterconnectAttachmentsScopedList {
 
   InterconnectAttachmentsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("interconnectAttachments")) {
-      interconnectAttachments = _json["interconnectAttachments"]
+      interconnectAttachments = (_json["interconnectAttachments"] as core.List)
           .map<InterconnectAttachment>(
               (value) => new InterconnectAttachment.fromJson(value))
           .toList();
@@ -40014,7 +39999,7 @@ class InterconnectListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InterconnectListWarningData>(
               (value) => new InterconnectListWarningData.fromJson(value))
           .toList();
@@ -40072,7 +40057,7 @@ class InterconnectList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Interconnect>((value) => new Interconnect.fromJson(value))
           .toList();
     }
@@ -40223,7 +40208,7 @@ class InterconnectLocation {
       peeringdbFacilityId = _json["peeringdbFacilityId"];
     }
     if (_json.containsKey("regionInfos")) {
-      regionInfos = _json["regionInfos"]
+      regionInfos = (_json["regionInfos"] as core.List)
           .map<InterconnectLocationRegionInfo>(
               (value) => new InterconnectLocationRegionInfo.fromJson(value))
           .toList();
@@ -40365,7 +40350,7 @@ class InterconnectLocationListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<InterconnectLocationListWarningData>((value) =>
               new InterconnectLocationListWarningData.fromJson(value))
           .toList();
@@ -40423,7 +40408,7 @@ class InterconnectLocationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InterconnectLocation>(
               (value) => new InterconnectLocation.fromJson(value))
           .toList();
@@ -40563,7 +40548,8 @@ class InterconnectOutageNotification {
 
   InterconnectOutageNotification.fromJson(core.Map _json) {
     if (_json.containsKey("affectedCircuits")) {
-      affectedCircuits = _json["affectedCircuits"];
+      affectedCircuits =
+          (_json["affectedCircuits"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -40788,7 +40774,7 @@ class MachineType {
       name = _json["name"];
     }
     if (_json.containsKey("scratchDisks")) {
-      scratchDisks = _json["scratchDisks"]
+      scratchDisks = (_json["scratchDisks"] as core.List)
           .map<MachineTypeScratchDisks>(
               (value) => new MachineTypeScratchDisks.fromJson(value))
           .toList();
@@ -40936,7 +40922,7 @@ class MachineTypeAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<MachineTypeAggregatedListWarningData>((value) =>
               new MachineTypeAggregatedListWarningData.fromJson(value))
           .toList();
@@ -40993,11 +40979,9 @@ class MachineTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, MachineTypesScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new MachineTypesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, MachineTypesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new MachineTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -41122,7 +41106,7 @@ class MachineTypeListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<MachineTypeListWarningData>(
               (value) => new MachineTypeListWarningData.fromJson(value))
           .toList();
@@ -41180,7 +41164,7 @@ class MachineTypeList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<MachineType>((value) => new MachineType.fromJson(value))
           .toList();
     }
@@ -41306,7 +41290,7 @@ class MachineTypesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<MachineTypesScopedListWarningData>(
               (value) => new MachineTypesScopedListWarningData.fromJson(value))
           .toList();
@@ -41344,7 +41328,7 @@ class MachineTypesScopedList {
 
   MachineTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("machineTypes")) {
-      machineTypes = _json["machineTypes"]
+      machineTypes = (_json["machineTypes"] as core.List)
           .map<MachineType>((value) => new MachineType.fromJson(value))
           .toList();
     }
@@ -41522,7 +41506,7 @@ class ManagedInstanceLastAttemptErrors {
 
   ManagedInstanceLastAttemptErrors.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<ManagedInstanceLastAttemptErrorsErrors>((value) =>
               new ManagedInstanceLastAttemptErrorsErrors.fromJson(value))
           .toList();
@@ -41608,12 +41592,12 @@ class Metadata {
   /// fingerprint hash in order to update or change metadata.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Array of key/value pairs. The total size of all keys and values must be
@@ -41630,7 +41614,7 @@ class Metadata {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<MetadataItems>((value) => new MetadataItems.fromJson(value))
           .toList();
     }
@@ -41775,7 +41759,7 @@ class Network {
       name = _json["name"];
     }
     if (_json.containsKey("peerings")) {
-      peerings = _json["peerings"]
+      peerings = (_json["peerings"] as core.List)
           .map<NetworkPeering>((value) => new NetworkPeering.fromJson(value))
           .toList();
     }
@@ -41786,7 +41770,7 @@ class Network {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("subnetworks")) {
-      subnetworks = _json["subnetworks"];
+      subnetworks = (_json["subnetworks"] as core.List).cast<core.String>();
     }
   }
 
@@ -41889,12 +41873,12 @@ class NetworkInterface {
 
   NetworkInterface.fromJson(core.Map _json) {
     if (_json.containsKey("accessConfigs")) {
-      accessConfigs = _json["accessConfigs"]
+      accessConfigs = (_json["accessConfigs"] as core.List)
           .map<AccessConfig>((value) => new AccessConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("aliasIpRanges")) {
-      aliasIpRanges = _json["aliasIpRanges"]
+      aliasIpRanges = (_json["aliasIpRanges"] as core.List)
           .map<AliasIpRange>((value) => new AliasIpRange.fromJson(value))
           .toList();
     }
@@ -42027,7 +42011,7 @@ class NetworkListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<NetworkListWarningData>(
               (value) => new NetworkListWarningData.fromJson(value))
           .toList();
@@ -42085,7 +42069,7 @@ class NetworkList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Network>((value) => new Network.fromJson(value))
           .toList();
     }
@@ -42353,7 +42337,7 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<OperationErrorErrors>(
               (value) => new OperationErrorErrors.fromJson(value))
           .toList();
@@ -42451,7 +42435,7 @@ class OperationWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationWarningsData>(
               (value) => new OperationWarningsData.fromJson(value))
           .toList();
@@ -42651,7 +42635,7 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<OperationWarnings>(
               (value) => new OperationWarnings.fromJson(value))
           .toList();
@@ -42819,7 +42803,7 @@ class OperationAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationAggregatedListWarningData>(
               (value) => new OperationAggregatedListWarningData.fromJson(value))
           .toList();
@@ -42877,11 +42861,9 @@ class OperationAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, OperationsScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new OperationsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, OperationsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new OperationsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -43006,7 +42988,7 @@ class OperationListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationListWarningData>(
               (value) => new OperationListWarningData.fromJson(value))
           .toList();
@@ -43065,7 +43047,7 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -43191,7 +43173,7 @@ class OperationsScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationsScopedListWarningData>(
               (value) => new OperationsScopedListWarningData.fromJson(value))
           .toList();
@@ -43229,7 +43211,7 @@ class OperationsScopedList {
 
   OperationsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -43289,7 +43271,7 @@ class PathMatcher {
       name = _json["name"];
     }
     if (_json.containsKey("pathRules")) {
-      pathRules = _json["pathRules"]
+      pathRules = (_json["pathRules"] as core.List)
           .map<PathRule>((value) => new PathRule.fromJson(value))
           .toList();
     }
@@ -43330,7 +43312,7 @@ class PathRule {
 
   PathRule.fromJson(core.Map _json) {
     if (_json.containsKey("paths")) {
-      paths = _json["paths"];
+      paths = (_json["paths"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("service")) {
       service = _json["service"];
@@ -43416,7 +43398,8 @@ class Project {
       description = _json["description"];
     }
     if (_json.containsKey("enabledFeatures")) {
-      enabledFeatures = _json["enabledFeatures"];
+      enabledFeatures =
+          (_json["enabledFeatures"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -43428,7 +43411,7 @@ class Project {
       name = _json["name"];
     }
     if (_json.containsKey("quotas")) {
-      quotas = _json["quotas"]
+      quotas = (_json["quotas"] as core.List)
           .map<Quota>((value) => new Quota.fromJson(value))
           .toList();
     }
@@ -43557,7 +43540,7 @@ class ProjectsGetXpnResources {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<XpnResourceId>((value) => new XpnResourceId.fromJson(value))
           .toList();
     }
@@ -43804,7 +43787,7 @@ class Region {
       name = _json["name"];
     }
     if (_json.containsKey("quotas")) {
-      quotas = _json["quotas"]
+      quotas = (_json["quotas"] as core.List)
           .map<Quota>((value) => new Quota.fromJson(value))
           .toList();
     }
@@ -43815,7 +43798,7 @@ class Region {
       status = _json["status"];
     }
     if (_json.containsKey("zones")) {
-      zones = _json["zones"];
+      zones = (_json["zones"] as core.List).cast<core.String>();
     }
   }
 
@@ -43938,7 +43921,7 @@ class RegionAutoscalerListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RegionAutoscalerListWarningData>(
               (value) => new RegionAutoscalerListWarningData.fromJson(value))
           .toList();
@@ -43995,7 +43978,7 @@ class RegionAutoscalerList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Autoscaler>((value) => new Autoscaler.fromJson(value))
           .toList();
     }
@@ -44120,7 +44103,7 @@ class RegionInstanceGroupListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RegionInstanceGroupListWarningData>(
               (value) => new RegionInstanceGroupListWarningData.fromJson(value))
           .toList();
@@ -44177,7 +44160,7 @@ class RegionInstanceGroupList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceGroup>((value) => new InstanceGroup.fromJson(value))
           .toList();
     }
@@ -44302,7 +44285,7 @@ class RegionInstanceGroupManagerListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RegionInstanceGroupManagerListWarningData>((value) =>
               new RegionInstanceGroupManagerListWarningData.fromJson(value))
           .toList();
@@ -44361,7 +44344,7 @@ class RegionInstanceGroupManagerList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceGroupManager>(
               (value) => new InstanceGroupManager.fromJson(value))
           .toList();
@@ -44415,7 +44398,7 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
 
   RegionInstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -44438,7 +44421,7 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
 
   RegionInstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -44460,7 +44443,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
 
   RegionInstanceGroupManagersListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("managedInstances")) {
-      managedInstances = _json["managedInstances"]
+      managedInstances = (_json["managedInstances"] as core.List)
           .map<ManagedInstance>((value) => new ManagedInstance.fromJson(value))
           .toList();
     }
@@ -44486,7 +44469,7 @@ class RegionInstanceGroupManagersRecreateRequest {
 
   RegionInstanceGroupManagersRecreateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
   }
 
@@ -44506,12 +44489,12 @@ class RegionInstanceGroupManagersSetTargetPoolsRequest {
   /// target pool entries. This field is optional.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The URL of all TargetPool resources to which instances in the
@@ -44526,7 +44509,7 @@ class RegionInstanceGroupManagersSetTargetPoolsRequest {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("targetPools")) {
-      targetPools = _json["targetPools"];
+      targetPools = (_json["targetPools"] as core.List).cast<core.String>();
     }
   }
 
@@ -44648,7 +44631,7 @@ class RegionInstanceGroupsListInstancesWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RegionInstanceGroupsListInstancesWarningData>((value) =>
               new RegionInstanceGroupsListInstancesWarningData.fromJson(value))
           .toList();
@@ -44704,7 +44687,7 @@ class RegionInstanceGroupsListInstances {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceWithNamedPorts>(
               (value) => new InstanceWithNamedPorts.fromJson(value))
           .toList();
@@ -44795,12 +44778,12 @@ class RegionInstanceGroupsSetNamedPortsRequest {
   /// concurrent request.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The list of named ports to set for this instance group.
@@ -44813,7 +44796,7 @@ class RegionInstanceGroupsSetNamedPortsRequest {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("namedPorts")) {
-      namedPorts = _json["namedPorts"]
+      namedPorts = (_json["namedPorts"] as core.List)
           .map<NamedPort>((value) => new NamedPort.fromJson(value))
           .toList();
     }
@@ -44915,7 +44898,7 @@ class RegionListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RegionListWarningData>(
               (value) => new RegionListWarningData.fromJson(value))
           .toList();
@@ -44973,7 +44956,7 @@ class RegionList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Region>((value) => new Region.fromJson(value))
           .toList();
     }
@@ -45161,7 +45144,7 @@ class RouteWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RouteWarningsData>(
               (value) => new RouteWarningsData.fromJson(value))
           .toList();
@@ -45325,10 +45308,10 @@ class Route {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("tags")) {
-      tags = _json["tags"];
+      tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<RouteWarnings>((value) => new RouteWarnings.fromJson(value))
           .toList();
     }
@@ -45474,7 +45457,7 @@ class RouteListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RouteListWarningData>(
               (value) => new RouteListWarningData.fromJson(value))
           .toList();
@@ -45531,7 +45514,7 @@ class RouteList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Route>((value) => new Route.fromJson(value))
           .toList();
     }
@@ -45630,7 +45613,7 @@ class Router {
       bgp = new RouterBgp.fromJson(_json["bgp"]);
     }
     if (_json.containsKey("bgpPeers")) {
-      bgpPeers = _json["bgpPeers"]
+      bgpPeers = (_json["bgpPeers"] as core.List)
           .map<RouterBgpPeer>((value) => new RouterBgpPeer.fromJson(value))
           .toList();
     }
@@ -45644,7 +45627,7 @@ class Router {
       id = _json["id"];
     }
     if (_json.containsKey("interfaces")) {
-      interfaces = _json["interfaces"]
+      interfaces = (_json["interfaces"] as core.List)
           .map<RouterInterface>((value) => new RouterInterface.fromJson(value))
           .toList();
     }
@@ -45788,7 +45771,7 @@ class RouterAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RouterAggregatedListWarningData>(
               (value) => new RouterAggregatedListWarningData.fromJson(value))
           .toList();
@@ -45845,11 +45828,9 @@ class RouterAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items =
-          commons.mapMap<core.Map<core.String, core.Object>, RoutersScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new RoutersScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, RoutersScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new RoutersScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -46128,7 +46109,7 @@ class RouterListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RouterListWarningData>(
               (value) => new RouterListWarningData.fromJson(value))
           .toList();
@@ -46185,7 +46166,7 @@ class RouterList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Router>((value) => new Router.fromJson(value))
           .toList();
     }
@@ -46243,17 +46224,17 @@ class RouterStatus {
 
   RouterStatus.fromJson(core.Map _json) {
     if (_json.containsKey("bestRoutes")) {
-      bestRoutes = _json["bestRoutes"]
+      bestRoutes = (_json["bestRoutes"] as core.List)
           .map<Route>((value) => new Route.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bestRoutesForRouter")) {
-      bestRoutesForRouter = _json["bestRoutesForRouter"]
+      bestRoutesForRouter = (_json["bestRoutesForRouter"] as core.List)
           .map<Route>((value) => new Route.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bgpPeerStatus")) {
-      bgpPeerStatus = _json["bgpPeerStatus"]
+      bgpPeerStatus = (_json["bgpPeerStatus"] as core.List)
           .map<RouterStatusBgpPeerStatus>(
               (value) => new RouterStatusBgpPeerStatus.fromJson(value))
           .toList();
@@ -46325,7 +46306,7 @@ class RouterStatusBgpPeerStatus {
 
   RouterStatusBgpPeerStatus.fromJson(core.Map _json) {
     if (_json.containsKey("advertisedRoutes")) {
-      advertisedRoutes = _json["advertisedRoutes"]
+      advertisedRoutes = (_json["advertisedRoutes"] as core.List)
           .map<Route>((value) => new Route.fromJson(value))
           .toList();
     }
@@ -46530,7 +46511,7 @@ class RoutersScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<RoutersScopedListWarningData>(
               (value) => new RoutersScopedListWarningData.fromJson(value))
           .toList();
@@ -46568,7 +46549,7 @@ class RoutersScopedList {
 
   RoutersScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("routers")) {
-      routers = _json["routers"]
+      routers = (_json["routers"] as core.List)
           .map<Router>((value) => new Router.fromJson(value))
           .toList();
     }
@@ -46793,7 +46774,7 @@ class ServiceAccount {
       email = _json["email"];
     }
     if (_json.containsKey("scopes")) {
-      scopes = _json["scopes"];
+      scopes = (_json["scopes"] as core.List).cast<core.String>();
     }
   }
 
@@ -46841,12 +46822,12 @@ class Snapshot {
   /// snapshot.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Labels to apply to this snapshot. These can be later modified by the
@@ -46943,10 +46924,10 @@ class Snapshot {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("licenses")) {
-      licenses = _json["licenses"];
+      licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -47119,7 +47100,7 @@ class SnapshotListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<SnapshotListWarningData>(
               (value) => new SnapshotListWarningData.fromJson(value))
           .toList();
@@ -47176,7 +47157,7 @@ class SnapshotList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Snapshot>((value) => new Snapshot.fromJson(value))
           .toList();
     }
@@ -47402,7 +47383,7 @@ class SslCertificateListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<SslCertificateListWarningData>(
               (value) => new SslCertificateListWarningData.fromJson(value))
           .toList();
@@ -47459,7 +47440,7 @@ class SslCertificateList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SslCertificate>((value) => new SslCertificate.fromJson(value))
           .toList();
     }
@@ -47598,7 +47579,7 @@ class Subnetwork {
       region = _json["region"];
     }
     if (_json.containsKey("secondaryIpRanges")) {
-      secondaryIpRanges = _json["secondaryIpRanges"]
+      secondaryIpRanges = (_json["secondaryIpRanges"] as core.List)
           .map<SubnetworkSecondaryRange>(
               (value) => new SubnetworkSecondaryRange.fromJson(value))
           .toList();
@@ -47734,7 +47715,7 @@ class SubnetworkAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<SubnetworkAggregatedListWarningData>((value) =>
               new SubnetworkAggregatedListWarningData.fromJson(value))
           .toList();
@@ -47791,11 +47772,9 @@ class SubnetworkAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, SubnetworksScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new SubnetworksScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, SubnetworksScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new SubnetworksScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -47920,7 +47899,7 @@ class SubnetworkListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<SubnetworkListWarningData>(
               (value) => new SubnetworkListWarningData.fromJson(value))
           .toList();
@@ -47978,7 +47957,7 @@ class SubnetworkList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Subnetwork>((value) => new Subnetwork.fromJson(value))
           .toList();
     }
@@ -48165,7 +48144,7 @@ class SubnetworksScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<SubnetworksScopedListWarningData>(
               (value) => new SubnetworksScopedListWarningData.fromJson(value))
           .toList();
@@ -48202,7 +48181,7 @@ class SubnetworksScopedList {
 
   SubnetworksScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("subnetworks")) {
-      subnetworks = _json["subnetworks"]
+      subnetworks = (_json["subnetworks"] as core.List)
           .map<Subnetwork>((value) => new Subnetwork.fromJson(value))
           .toList();
     }
@@ -48326,12 +48305,12 @@ class Tags {
   /// To see the latest fingerprint, make get() request to the instance.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// An array of tags. Each tag must be 1-63 characters long, and comply with
@@ -48345,7 +48324,7 @@ class Tags {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"];
+      items = (_json["items"] as core.List).cast<core.String>();
     }
   }
 
@@ -48533,7 +48512,7 @@ class TargetHttpProxyListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetHttpProxyListWarningData>(
               (value) => new TargetHttpProxyListWarningData.fromJson(value))
           .toList();
@@ -48591,7 +48570,7 @@ class TargetHttpProxyList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetHttpProxy>((value) => new TargetHttpProxy.fromJson(value))
           .toList();
     }
@@ -48644,7 +48623,8 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
 
   TargetHttpsProxiesSetSslCertificatesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("sslCertificates")) {
-      sslCertificates = _json["sslCertificates"];
+      sslCertificates =
+          (_json["sslCertificates"] as core.List).cast<core.String>();
     }
   }
 
@@ -48725,7 +48705,8 @@ class TargetHttpsProxy {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("sslCertificates")) {
-      sslCertificates = _json["sslCertificates"];
+      sslCertificates =
+          (_json["sslCertificates"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("urlMap")) {
       urlMap = _json["urlMap"];
@@ -48845,7 +48826,7 @@ class TargetHttpsProxyListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetHttpsProxyListWarningData>(
               (value) => new TargetHttpsProxyListWarningData.fromJson(value))
           .toList();
@@ -48903,7 +48884,7 @@ class TargetHttpsProxyList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetHttpsProxy>(
               (value) => new TargetHttpsProxy.fromJson(value))
           .toList();
@@ -49147,7 +49128,7 @@ class TargetInstanceAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetInstanceAggregatedListWarningData>((value) =>
               new TargetInstanceAggregatedListWarningData.fromJson(value))
           .toList();
@@ -49203,11 +49184,9 @@ class TargetInstanceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              TargetInstancesScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
-              new TargetInstancesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, TargetInstancesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new TargetInstancesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -49333,7 +49312,7 @@ class TargetInstanceListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetInstanceListWarningData>(
               (value) => new TargetInstanceListWarningData.fromJson(value))
           .toList();
@@ -49390,7 +49369,7 @@ class TargetInstanceList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetInstance>((value) => new TargetInstance.fromJson(value))
           .toList();
     }
@@ -49516,7 +49495,7 @@ class TargetInstancesScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetInstancesScopedListWarningData>((value) =>
               new TargetInstancesScopedListWarningData.fromJson(value))
           .toList();
@@ -49554,7 +49533,7 @@ class TargetInstancesScopedList {
 
   TargetInstancesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("targetInstances")) {
-      targetInstances = _json["targetInstances"]
+      targetInstances = (_json["targetInstances"] as core.List)
           .map<TargetInstance>((value) => new TargetInstance.fromJson(value))
           .toList();
     }
@@ -49684,13 +49663,13 @@ class TargetPool {
       failoverRatio = _json["failoverRatio"];
     }
     if (_json.containsKey("healthChecks")) {
-      healthChecks = _json["healthChecks"];
+      healthChecks = (_json["healthChecks"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("instances")) {
-      instances = _json["instances"];
+      instances = (_json["instances"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -49834,7 +49813,7 @@ class TargetPoolAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetPoolAggregatedListWarningData>((value) =>
               new TargetPoolAggregatedListWarningData.fromJson(value))
           .toList();
@@ -49891,11 +49870,9 @@ class TargetPoolAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, TargetPoolsScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new TargetPoolsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, TargetPoolsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new TargetPoolsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -49949,7 +49926,7 @@ class TargetPoolInstanceHealth {
 
   TargetPoolInstanceHealth.fromJson(core.Map _json) {
     if (_json.containsKey("healthStatus")) {
-      healthStatus = _json["healthStatus"]
+      healthStatus = (_json["healthStatus"] as core.List)
           .map<HealthStatus>((value) => new HealthStatus.fromJson(value))
           .toList();
     }
@@ -50054,7 +50031,7 @@ class TargetPoolListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetPoolListWarningData>(
               (value) => new TargetPoolListWarningData.fromJson(value))
           .toList();
@@ -50112,7 +50089,7 @@ class TargetPoolList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetPool>((value) => new TargetPool.fromJson(value))
           .toList();
     }
@@ -50163,7 +50140,7 @@ class TargetPoolsAddHealthCheckRequest {
 
   TargetPoolsAddHealthCheckRequest.fromJson(core.Map _json) {
     if (_json.containsKey("healthChecks")) {
-      healthChecks = _json["healthChecks"]
+      healthChecks = (_json["healthChecks"] as core.List)
           .map<HealthCheckReference>(
               (value) => new HealthCheckReference.fromJson(value))
           .toList();
@@ -50194,7 +50171,7 @@ class TargetPoolsAddInstanceRequest {
 
   TargetPoolsAddInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"]
+      instances = (_json["instances"] as core.List)
           .map<InstanceReference>(
               (value) => new InstanceReference.fromJson(value))
           .toList();
@@ -50224,7 +50201,7 @@ class TargetPoolsRemoveHealthCheckRequest {
 
   TargetPoolsRemoveHealthCheckRequest.fromJson(core.Map _json) {
     if (_json.containsKey("healthChecks")) {
-      healthChecks = _json["healthChecks"]
+      healthChecks = (_json["healthChecks"] as core.List)
           .map<HealthCheckReference>(
               (value) => new HealthCheckReference.fromJson(value))
           .toList();
@@ -50250,7 +50227,7 @@ class TargetPoolsRemoveInstanceRequest {
 
   TargetPoolsRemoveInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
-      instances = _json["instances"]
+      instances = (_json["instances"] as core.List)
           .map<InstanceReference>(
               (value) => new InstanceReference.fromJson(value))
           .toList();
@@ -50350,7 +50327,7 @@ class TargetPoolsScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetPoolsScopedListWarningData>(
               (value) => new TargetPoolsScopedListWarningData.fromJson(value))
           .toList();
@@ -50388,7 +50365,7 @@ class TargetPoolsScopedList {
 
   TargetPoolsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("targetPools")) {
-      targetPools = _json["targetPools"]
+      targetPools = (_json["targetPools"] as core.List)
           .map<TargetPool>((value) => new TargetPool.fromJson(value))
           .toList();
     }
@@ -50489,7 +50466,8 @@ class TargetSslProxiesSetSslCertificatesRequest {
 
   TargetSslProxiesSetSslCertificatesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("sslCertificates")) {
-      sslCertificates = _json["sslCertificates"];
+      sslCertificates =
+          (_json["sslCertificates"] as core.List).cast<core.String>();
     }
   }
 
@@ -50576,7 +50554,8 @@ class TargetSslProxy {
       service = _json["service"];
     }
     if (_json.containsKey("sslCertificates")) {
-      sslCertificates = _json["sslCertificates"];
+      sslCertificates =
+          (_json["sslCertificates"] as core.List).cast<core.String>();
     }
   }
 
@@ -50696,7 +50675,7 @@ class TargetSslProxyListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetSslProxyListWarningData>(
               (value) => new TargetSslProxyListWarningData.fromJson(value))
           .toList();
@@ -50753,7 +50732,7 @@ class TargetSslProxyList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetSslProxy>((value) => new TargetSslProxy.fromJson(value))
           .toList();
     }
@@ -51027,7 +51006,7 @@ class TargetTcpProxyListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetTcpProxyListWarningData>(
               (value) => new TargetTcpProxyListWarningData.fromJson(value))
           .toList();
@@ -51084,7 +51063,7 @@ class TargetTcpProxyList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetTcpProxy>((value) => new TargetTcpProxy.fromJson(value))
           .toList();
     }
@@ -51194,7 +51173,8 @@ class TargetVpnGateway {
       description = _json["description"];
     }
     if (_json.containsKey("forwardingRules")) {
-      forwardingRules = _json["forwardingRules"];
+      forwardingRules =
+          (_json["forwardingRules"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -51218,7 +51198,7 @@ class TargetVpnGateway {
       status = _json["status"];
     }
     if (_json.containsKey("tunnels")) {
-      tunnels = _json["tunnels"];
+      tunnels = (_json["tunnels"] as core.List).cast<core.String>();
     }
   }
 
@@ -51344,7 +51324,7 @@ class TargetVpnGatewayAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetVpnGatewayAggregatedListWarningData>((value) =>
               new TargetVpnGatewayAggregatedListWarningData.fromJson(value))
           .toList();
@@ -51401,11 +51381,9 @@ class TargetVpnGatewayAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap<core.Map<core.String, core.Object>,
-              TargetVpnGatewaysScopedList>(
-          _json["items"],
-          (core.Map<core.String, core.Object> item) =>
-              new TargetVpnGatewaysScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, TargetVpnGatewaysScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new TargetVpnGatewaysScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -51531,7 +51509,7 @@ class TargetVpnGatewayListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetVpnGatewayListWarningData>(
               (value) => new TargetVpnGatewayListWarningData.fromJson(value))
           .toList();
@@ -51589,7 +51567,7 @@ class TargetVpnGatewayList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TargetVpnGateway>(
               (value) => new TargetVpnGateway.fromJson(value))
           .toList();
@@ -51716,7 +51694,7 @@ class TargetVpnGatewaysScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<TargetVpnGatewaysScopedListWarningData>((value) =>
               new TargetVpnGatewaysScopedListWarningData.fromJson(value))
           .toList();
@@ -51754,7 +51732,7 @@ class TargetVpnGatewaysScopedList {
 
   TargetVpnGatewaysScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("targetVpnGateways")) {
-      targetVpnGateways = _json["targetVpnGateways"]
+      targetVpnGateways = (_json["targetVpnGateways"] as core.List)
           .map<TargetVpnGateway>(
               (value) => new TargetVpnGateway.fromJson(value))
           .toList();
@@ -51841,12 +51819,12 @@ class UrlMap {
   /// provided in order to update the UrlMap.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The list of HostRules to use against the URL.
@@ -51895,7 +51873,7 @@ class UrlMap {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("hostRules")) {
-      hostRules = _json["hostRules"]
+      hostRules = (_json["hostRules"] as core.List)
           .map<HostRule>((value) => new HostRule.fromJson(value))
           .toList();
     }
@@ -51909,7 +51887,7 @@ class UrlMap {
       name = _json["name"];
     }
     if (_json.containsKey("pathMatchers")) {
-      pathMatchers = _json["pathMatchers"]
+      pathMatchers = (_json["pathMatchers"] as core.List)
           .map<PathMatcher>((value) => new PathMatcher.fromJson(value))
           .toList();
     }
@@ -51917,7 +51895,7 @@ class UrlMap {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("tests")) {
-      tests = _json["tests"]
+      tests = (_json["tests"] as core.List)
           .map<UrlMapTest>((value) => new UrlMapTest.fromJson(value))
           .toList();
     }
@@ -52046,7 +52024,7 @@ class UrlMapListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<UrlMapListWarningData>(
               (value) => new UrlMapListWarningData.fromJson(value))
           .toList();
@@ -52103,7 +52081,7 @@ class UrlMapList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<UrlMap>((value) => new UrlMap.fromJson(value))
           .toList();
     }
@@ -52234,13 +52212,13 @@ class UrlMapValidationResult {
 
   UrlMapValidationResult.fromJson(core.Map _json) {
     if (_json.containsKey("loadErrors")) {
-      loadErrors = _json["loadErrors"];
+      loadErrors = (_json["loadErrors"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("loadSucceeded")) {
       loadSucceeded = _json["loadSucceeded"];
     }
     if (_json.containsKey("testFailures")) {
-      testFailures = _json["testFailures"]
+      testFailures = (_json["testFailures"] as core.List)
           .map<TestFailure>((value) => new TestFailure.fromJson(value))
           .toList();
     }
@@ -52460,7 +52438,8 @@ class VpnTunnel {
       kind = _json["kind"];
     }
     if (_json.containsKey("localTrafficSelector")) {
-      localTrafficSelector = _json["localTrafficSelector"];
+      localTrafficSelector =
+          (_json["localTrafficSelector"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -52472,7 +52451,8 @@ class VpnTunnel {
       region = _json["region"];
     }
     if (_json.containsKey("remoteTrafficSelector")) {
-      remoteTrafficSelector = _json["remoteTrafficSelector"];
+      remoteTrafficSelector =
+          (_json["remoteTrafficSelector"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("router")) {
       router = _json["router"];
@@ -52634,7 +52614,7 @@ class VpnTunnelAggregatedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<VpnTunnelAggregatedListWarningData>(
               (value) => new VpnTunnelAggregatedListWarningData.fromJson(value))
           .toList();
@@ -52690,11 +52670,9 @@ class VpnTunnelAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons
-          .mapMap<core.Map<core.String, core.Object>, VpnTunnelsScopedList>(
-              _json["items"],
-              (core.Map<core.String, core.Object> item) =>
-                  new VpnTunnelsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map, VpnTunnelsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new VpnTunnelsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -52819,7 +52797,7 @@ class VpnTunnelListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<VpnTunnelListWarningData>(
               (value) => new VpnTunnelListWarningData.fromJson(value))
           .toList();
@@ -52876,7 +52854,7 @@ class VpnTunnelList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<VpnTunnel>((value) => new VpnTunnel.fromJson(value))
           .toList();
     }
@@ -53002,7 +52980,7 @@ class VpnTunnelsScopedListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<VpnTunnelsScopedListWarningData>(
               (value) => new VpnTunnelsScopedListWarningData.fromJson(value))
           .toList();
@@ -53040,7 +53018,7 @@ class VpnTunnelsScopedList {
 
   VpnTunnelsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey("vpnTunnels")) {
-      vpnTunnels = _json["vpnTunnels"]
+      vpnTunnels = (_json["vpnTunnels"] as core.List)
           .map<VpnTunnel>((value) => new VpnTunnel.fromJson(value))
           .toList();
     }
@@ -53145,7 +53123,7 @@ class XpnHostListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<XpnHostListWarningData>(
               (value) => new XpnHostListWarningData.fromJson(value))
           .toList();
@@ -53202,7 +53180,7 @@ class XpnHostList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Project>((value) => new Project.fromJson(value))
           .toList();
     }
@@ -53323,7 +53301,8 @@ class Zone {
 
   Zone.fromJson(core.Map _json) {
     if (_json.containsKey("availableCpuPlatforms")) {
-      availableCpuPlatforms = _json["availableCpuPlatforms"];
+      availableCpuPlatforms =
+          (_json["availableCpuPlatforms"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
@@ -53473,7 +53452,7 @@ class ZoneListWarning {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ZoneListWarningData>(
               (value) => new ZoneListWarningData.fromJson(value))
           .toList();
@@ -53530,7 +53509,7 @@ class ZoneList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Zone>((value) => new Zone.fromJson(value))
           .toList();
     }
@@ -53582,12 +53561,12 @@ class ZoneSetLabelsRequest {
   /// fingerprint.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
-    return convert.BASE64.decode(labelFingerprint);
+    return convert.base64.decode(labelFingerprint);
   }
 
   void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The labels to set for this resource.
@@ -53600,7 +53579,7 @@ class ZoneSetLabelsRequest {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
   }
 

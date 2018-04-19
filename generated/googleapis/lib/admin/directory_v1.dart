@@ -345,7 +345,7 @@ class ChannelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -399,7 +399,7 @@ class ChromeosdevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -622,7 +622,7 @@ class ChromeosdevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -687,7 +687,7 @@ class ChromeosdevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -753,7 +753,7 @@ class ChromeosdevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -858,7 +858,7 @@ class CustomersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerKey == null) {
       throw new core.ArgumentError("Parameter customerKey is required.");
@@ -906,7 +906,7 @@ class CustomersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerKey == null) {
       throw new core.ArgumentError("Parameter customerKey is required.");
@@ -1063,7 +1063,7 @@ class DomainAliasesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1272,7 +1272,7 @@ class DomainsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1454,7 +1454,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1573,7 +1573,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1622,7 +1622,7 @@ class GroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1727,7 +1727,7 @@ class GroupsAliasesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1977,7 +1977,7 @@ class MembersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -2092,7 +2092,7 @@ class MembersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -2151,7 +2151,7 @@ class MembersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -2212,7 +2212,7 @@ class MobiledevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2658,7 +2658,7 @@ class NotificationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -2715,7 +2715,7 @@ class NotificationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -2885,7 +2885,7 @@ class OrgunitsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2997,7 +2997,7 @@ class OrgunitsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -3057,7 +3057,7 @@ class OrgunitsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -3373,7 +3373,7 @@ class ResourcesBuildingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3474,7 +3474,7 @@ class ResourcesBuildingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3533,7 +3533,7 @@ class ResourcesBuildingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3704,7 +3704,7 @@ class ResourcesCalendarsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3845,7 +3845,7 @@ class ResourcesCalendarsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3908,7 +3908,7 @@ class ResourcesCalendarsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4077,7 +4077,7 @@ class ResourcesFeaturesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4184,7 +4184,7 @@ class ResourcesFeaturesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4241,7 +4241,7 @@ class ResourcesFeaturesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4303,7 +4303,7 @@ class ResourcesFeaturesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4467,7 +4467,7 @@ class RoleAssignmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4698,7 +4698,7 @@ class RolesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4803,7 +4803,7 @@ class RolesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4860,7 +4860,7 @@ class RolesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -5022,7 +5022,7 @@ class SchemasResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -5117,7 +5117,7 @@ class SchemasResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -5174,7 +5174,7 @@ class SchemasResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -5502,7 +5502,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5685,7 +5685,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5736,7 +5736,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5782,7 +5782,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5833,7 +5833,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5945,7 +5945,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customFieldMask != null) {
       _queryParams["customFieldMask"] = [customFieldMask];
@@ -6083,7 +6083,7 @@ class UsersAliasesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6187,7 +6187,7 @@ class UsersAliasesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6333,7 +6333,7 @@ class UsersPhotosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6383,7 +6383,7 @@ class UsersPhotosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6625,7 +6625,7 @@ class Aliases {
 
   Aliases.fromJson(core.Map _json) {
     if (_json.containsKey("aliases")) {
-      aliases = _json["aliases"];
+      aliases = (_json["aliases"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -6685,7 +6685,8 @@ class AppAccessCollections {
 
   AppAccessCollections.fromJson(core.Map _json) {
     if (_json.containsKey("blockedApiAccessBuckets")) {
-      blockedApiAccessBuckets = _json["blockedApiAccessBuckets"];
+      blockedApiAccessBuckets =
+          (_json["blockedApiAccessBuckets"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("enforceSettingsForAndroidDrive")) {
       enforceSettingsForAndroidDrive = _json["enforceSettingsForAndroidDrive"];
@@ -6836,8 +6837,9 @@ class Asps {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map<Asp>((value) => new Asp.fromJson(value)).toList();
+      items = (_json["items"] as core.List)
+          .map<Asp>((value) => new Asp.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6907,7 +6909,7 @@ class Building {
       etags = _json["etags"];
     }
     if (_json.containsKey("floorNames")) {
-      floorNames = _json["floorNames"];
+      floorNames = (_json["floorNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6993,7 +6995,7 @@ class Buildings {
 
   Buildings.fromJson(core.Map _json) {
     if (_json.containsKey("buildings")) {
-      buildings = _json["buildings"]
+      buildings = (_json["buildings"] as core.List)
           .map<Building>((value) => new Building.fromJson(value))
           .toList();
     }
@@ -7207,7 +7209,7 @@ class CalendarResources {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CalendarResource>(
               (value) => new CalendarResource.fromJson(value))
           .toList();
@@ -7291,7 +7293,7 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("payload")) {
       payload = _json["payload"];
@@ -7603,7 +7605,7 @@ class ChromeOsDevice {
 
   ChromeOsDevice.fromJson(core.Map _json) {
     if (_json.containsKey("activeTimeRanges")) {
-      activeTimeRanges = _json["activeTimeRanges"]
+      activeTimeRanges = (_json["activeTimeRanges"] as core.List)
           .map<ChromeOsDeviceActiveTimeRanges>(
               (value) => new ChromeOsDeviceActiveTimeRanges.fromJson(value))
           .toList();
@@ -7621,7 +7623,7 @@ class ChromeOsDevice {
       bootMode = _json["bootMode"];
     }
     if (_json.containsKey("deviceFiles")) {
-      deviceFiles = _json["deviceFiles"]
+      deviceFiles = (_json["deviceFiles"] as core.List)
           .map<ChromeOsDeviceDeviceFiles>(
               (value) => new ChromeOsDeviceDeviceFiles.fromJson(value))
           .toList();
@@ -7672,7 +7674,7 @@ class ChromeOsDevice {
       platformVersion = _json["platformVersion"];
     }
     if (_json.containsKey("recentUsers")) {
-      recentUsers = _json["recentUsers"]
+      recentUsers = (_json["recentUsers"] as core.List)
           .map<ChromeOsDeviceRecentUsers>(
               (value) => new ChromeOsDeviceRecentUsers.fromJson(value))
           .toList();
@@ -7836,7 +7838,7 @@ class ChromeOsDevices {
 
   ChromeOsDevices.fromJson(core.Map _json) {
     if (_json.containsKey("chromeosdevices")) {
-      chromeosdevices = _json["chromeosdevices"]
+      chromeosdevices = (_json["chromeosdevices"] as core.List)
           .map<ChromeOsDevice>((value) => new ChromeOsDevice.fromJson(value))
           .toList();
     }
@@ -7881,7 +7883,7 @@ class ChromeOsMoveDevicesToOu {
 
   ChromeOsMoveDevicesToOu.fromJson(core.Map _json) {
     if (_json.containsKey("deviceIds")) {
-      deviceIds = _json["deviceIds"];
+      deviceIds = (_json["deviceIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -8178,7 +8180,7 @@ class DomainAliases {
 
   DomainAliases.fromJson(core.Map _json) {
     if (_json.containsKey("domainAliases")) {
-      domainAliases = _json["domainAliases"]
+      domainAliases = (_json["domainAliases"] as core.List)
           .map<DomainAlias>((value) => new DomainAlias.fromJson(value))
           .toList();
     }
@@ -8237,7 +8239,7 @@ class Domains {
       creationTime = _json["creationTime"];
     }
     if (_json.containsKey("domainAliases")) {
-      domainAliases = _json["domainAliases"]
+      domainAliases = (_json["domainAliases"] as core.List)
           .map<DomainAlias>((value) => new DomainAlias.fromJson(value))
           .toList();
     }
@@ -8302,7 +8304,7 @@ class Domains2 {
 
   Domains2.fromJson(core.Map _json) {
     if (_json.containsKey("domains")) {
-      domains = _json["domains"]
+      domains = (_json["domains"] as core.List)
           .map<Domains>((value) => new Domains.fromJson(value))
           .toList();
     }
@@ -8438,7 +8440,7 @@ class Features {
       etag = _json["etag"];
     }
     if (_json.containsKey("features")) {
-      features = _json["features"]
+      features = (_json["features"] as core.List)
           .map<Feature>((value) => new Feature.fromJson(value))
           .toList();
     }
@@ -8508,7 +8510,7 @@ class Group {
       adminCreated = _json["adminCreated"];
     }
     if (_json.containsKey("aliases")) {
-      aliases = _json["aliases"];
+      aliases = (_json["aliases"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -8532,7 +8534,8 @@ class Group {
       name = _json["name"];
     }
     if (_json.containsKey("nonEditableAliases")) {
-      nonEditableAliases = _json["nonEditableAliases"];
+      nonEditableAliases =
+          (_json["nonEditableAliases"] as core.List).cast<core.String>();
     }
   }
 
@@ -8594,7 +8597,7 @@ class Groups {
       etag = _json["etag"];
     }
     if (_json.containsKey("groups")) {
-      groups = _json["groups"]
+      groups = (_json["groups"] as core.List)
           .map<Group>((value) => new Group.fromJson(value))
           .toList();
     }
@@ -8727,7 +8730,7 @@ class Members {
       kind = _json["kind"];
     }
     if (_json.containsKey("members")) {
-      members = _json["members"]
+      members = (_json["members"] as core.List)
           .map<Member>((value) => new Member.fromJson(value))
           .toList();
     }
@@ -8804,7 +8807,7 @@ class MobileDeviceApplications {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("permission")) {
-      permission = _json["permission"];
+      permission = (_json["permission"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("versionCode")) {
       versionCode = _json["versionCode"];
@@ -8968,7 +8971,7 @@ class MobileDevice {
       adbStatus = _json["adbStatus"];
     }
     if (_json.containsKey("applications")) {
-      applications = _json["applications"]
+      applications = (_json["applications"] as core.List)
           .map<MobileDeviceApplications>(
               (value) => new MobileDeviceApplications.fromJson(value))
           .toList();
@@ -9001,7 +9004,7 @@ class MobileDevice {
       devicePasswordStatus = _json["devicePasswordStatus"];
     }
     if (_json.containsKey("email")) {
-      email = _json["email"];
+      email = (_json["email"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("encryptionStatus")) {
       encryptionStatus = _json["encryptionStatus"];
@@ -9043,7 +9046,7 @@ class MobileDevice {
       model = _json["model"];
     }
     if (_json.containsKey("name")) {
-      name = _json["name"];
+      name = (_json["name"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("networkOperator")) {
       networkOperator = _json["networkOperator"];
@@ -9052,7 +9055,8 @@ class MobileDevice {
       os = _json["os"];
     }
     if (_json.containsKey("otherAccountsInfo")) {
-      otherAccountsInfo = _json["otherAccountsInfo"];
+      otherAccountsInfo =
+          (_json["otherAccountsInfo"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("privilege")) {
       privilege = _json["privilege"];
@@ -9265,7 +9269,7 @@ class MobileDevices {
       kind = _json["kind"];
     }
     if (_json.containsKey("mobiledevices")) {
-      mobiledevices = _json["mobiledevices"]
+      mobiledevices = (_json["mobiledevices"] as core.List)
           .map<MobileDevice>((value) => new MobileDevice.fromJson(value))
           .toList();
     }
@@ -9402,7 +9406,7 @@ class Notifications {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Notification>((value) => new Notification.fromJson(value))
           .toList();
     }
@@ -9556,7 +9560,7 @@ class OrgUnits {
       kind = _json["kind"];
     }
     if (_json.containsKey("organizationUnits")) {
-      organizationUnits = _json["organizationUnits"]
+      organizationUnits = (_json["organizationUnits"] as core.List)
           .map<OrgUnit>((value) => new OrgUnit.fromJson(value))
           .toList();
     }
@@ -9608,7 +9612,7 @@ class Privilege {
 
   Privilege.fromJson(core.Map _json) {
     if (_json.containsKey("childPrivileges")) {
-      childPrivileges = _json["childPrivileges"]
+      childPrivileges = (_json["childPrivileges"] as core.List)
           .map<Privilege>((value) => new Privilege.fromJson(value))
           .toList();
     }
@@ -9679,7 +9683,7 @@ class Privileges {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Privilege>((value) => new Privilege.fromJson(value))
           .toList();
     }
@@ -9786,7 +9790,7 @@ class Role {
       roleName = _json["roleName"];
     }
     if (_json.containsKey("rolePrivileges")) {
-      rolePrivileges = _json["rolePrivileges"]
+      rolePrivileges = (_json["rolePrivileges"] as core.List)
           .map<RoleRolePrivileges>(
               (value) => new RoleRolePrivileges.fromJson(value))
           .toList();
@@ -9926,7 +9930,7 @@ class RoleAssignments {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<RoleAssignment>((value) => new RoleAssignment.fromJson(value))
           .toList();
     }
@@ -9976,7 +9980,7 @@ class Roles {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Role>((value) => new Role.fromJson(value))
           .toList();
     }
@@ -10031,7 +10035,7 @@ class Schema {
       etag = _json["etag"];
     }
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<SchemaFieldSpec>((value) => new SchemaFieldSpec.fromJson(value))
           .toList();
     }
@@ -10226,7 +10230,7 @@ class Schemas {
       kind = _json["kind"];
     }
     if (_json.containsKey("schemas")) {
-      schemas = _json["schemas"]
+      schemas = (_json["schemas"] as core.List)
           .map<Schema>((value) => new Schema.fromJson(value))
           .toList();
     }
@@ -10298,7 +10302,7 @@ class Token {
       nativeApp = _json["nativeApp"];
     }
     if (_json.containsKey("scopes")) {
-      scopes = _json["scopes"];
+      scopes = (_json["scopes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("userKey")) {
       userKey = _json["userKey"];
@@ -10354,7 +10358,7 @@ class Tokens {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Token>((value) => new Token.fromJson(value))
           .toList();
     }
@@ -10461,7 +10465,7 @@ class TrustedApps {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("trustedApps")) {
-      trustedApps = _json["trustedApps"]
+      trustedApps = (_json["trustedApps"] as core.List)
           .map<TrustedAppId>((value) => new TrustedAppId.fromJson(value))
           .toList();
     }
@@ -10671,7 +10675,7 @@ class User {
       agreedToTerms = _json["agreedToTerms"];
     }
     if (_json.containsKey("aliases")) {
-      aliases = _json["aliases"];
+      aliases = (_json["aliases"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("changePasswordAtNextLogin")) {
       changePasswordAtNextLogin = _json["changePasswordAtNextLogin"];
@@ -10680,11 +10684,9 @@ class User {
       creationTime = core.DateTime.parse(_json["creationTime"]);
     }
     if (_json.containsKey("customSchemas")) {
-      customSchemas = commons
-          .mapMap<core.Map<core.String, core.Object>, UserCustomProperties>(
-              _json["customSchemas"],
-              (core.Map<core.String, core.Object> item) =>
-                  new UserCustomProperties.fromJson(item));
+      customSchemas = commons.mapMap<core.Map, UserCustomProperties>(
+          _json["customSchemas"].cast<core.String, core.Map>(),
+          (core.Map item) => new UserCustomProperties.fromJson(item));
     }
     if (_json.containsKey("customerId")) {
       customerId = _json["customerId"];
@@ -10753,7 +10755,8 @@ class User {
       name = new UserName.fromJson(_json["name"]);
     }
     if (_json.containsKey("nonEditableAliases")) {
-      nonEditableAliases = _json["nonEditableAliases"];
+      nonEditableAliases =
+          (_json["nonEditableAliases"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("notes")) {
       notes = _json["notes"];
@@ -11111,7 +11114,7 @@ class UserAddress {
 /// particular schema)
 class UserCustomProperties
     extends collection.MapBase<core.String, core.Object> {
-  final core.Map _innerMap = {};
+  final _innerMap = <core.String, core.Object>{};
 
   UserCustomProperties();
 
@@ -11785,12 +11788,12 @@ class UserPhoto {
   /// Base64 encoded photo data
   core.String photoData;
   core.List<core.int> get photoDataAsBytes {
-    return convert.BASE64.decode(photoData);
+    return convert.base64.decode(photoData);
   }
 
   void set photoDataAsBytes(core.List<core.int> _bytes) {
     photoData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Primary email of User (Read-only)
@@ -12148,7 +12151,7 @@ class Users {
       triggerEvent = _json["trigger_event"];
     }
     if (_json.containsKey("users")) {
-      users = _json["users"]
+      users = (_json["users"] as core.List)
           .map<User>((value) => new User.fromJson(value))
           .toList();
     }
@@ -12247,7 +12250,7 @@ class VerificationCodes {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<VerificationCode>(
               (value) => new VerificationCode.fromJson(value))
           .toList();

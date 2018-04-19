@@ -66,7 +66,7 @@ class VideosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -97,7 +97,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
 
   GoogleCloudVideointelligenceV1AnnotateVideoProgress.fromJson(core.Map _json) {
     if (_json.containsKey("annotationProgress")) {
-      annotationProgress = _json["annotationProgress"]
+      annotationProgress = (_json["annotationProgress"] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoAnnotationProgress>((value) =>
               new GoogleCloudVideointelligenceV1VideoAnnotationProgress
                   .fromJson(value))
@@ -128,7 +128,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
 
   GoogleCloudVideointelligenceV1AnnotateVideoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("annotationResults")) {
-      annotationResults = _json["annotationResults"]
+      annotationResults = (_json["annotationResults"] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoAnnotationResults>((value) =>
               new GoogleCloudVideointelligenceV1VideoAnnotationResults.fromJson(
                   value))
@@ -202,7 +202,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
   GoogleCloudVideointelligenceV1ExplicitContentAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey("frames")) {
-      frames = _json["frames"]
+      frames = (_json["frames"] as core.List)
           .map<GoogleCloudVideointelligenceV1ExplicitContentFrame>((value) =>
               new GoogleCloudVideointelligenceV1ExplicitContentFrame.fromJson(
                   value))
@@ -281,7 +281,7 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
 
   GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("categoryEntities")) {
-      categoryEntities = _json["categoryEntities"]
+      categoryEntities = (_json["categoryEntities"] as core.List)
           .map<GoogleCloudVideointelligenceV1Entity>((value) =>
               new GoogleCloudVideointelligenceV1Entity.fromJson(value))
           .toList();
@@ -291,13 +291,13 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
           new GoogleCloudVideointelligenceV1Entity.fromJson(_json["entity"]);
     }
     if (_json.containsKey("frames")) {
-      frames = _json["frames"]
+      frames = (_json["frames"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelFrame>((value) =>
               new GoogleCloudVideointelligenceV1LabelFrame.fromJson(value))
           .toList();
     }
     if (_json.containsKey("segments")) {
-      segments = _json["segments"]
+      segments = (_json["segments"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelSegment>((value) =>
               new GoogleCloudVideointelligenceV1LabelSegment.fromJson(value))
           .toList();
@@ -486,7 +486,7 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
               _json["explicitAnnotation"]);
     }
     if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = _json["frameLabelAnnotations"]
+      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
@@ -495,19 +495,19 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = _json["segmentLabelAnnotations"]
+      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = _json["shotAnnotations"]
+      shotAnnotations = (_json["shotAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1VideoSegment>((value) =>
               new GoogleCloudVideointelligenceV1VideoSegment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = _json["shotLabelAnnotations"]
+      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
@@ -593,7 +593,7 @@ class GoogleCloudVideointelligenceV1beta1AnnotateVideoProgress {
   GoogleCloudVideointelligenceV1beta1AnnotateVideoProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey("annotationProgress")) {
-      annotationProgress = _json["annotationProgress"]
+      annotationProgress = (_json["annotationProgress"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1VideoAnnotationProgress>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta1VideoAnnotationProgress
@@ -657,7 +657,7 @@ class GoogleCloudVideointelligenceV1beta1AnnotateVideoRequest {
   GoogleCloudVideointelligenceV1beta1AnnotateVideoRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey("features")) {
-      features = _json["features"];
+      features = (_json["features"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("inputContent")) {
       inputContent = _json["inputContent"];
@@ -716,7 +716,7 @@ class GoogleCloudVideointelligenceV1beta1AnnotateVideoResponse {
   GoogleCloudVideointelligenceV1beta1AnnotateVideoResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("annotationResults")) {
-      annotationResults = _json["annotationResults"]
+      annotationResults = (_json["annotationResults"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1VideoAnnotationResults>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta1VideoAnnotationResults
@@ -757,7 +757,7 @@ class GoogleCloudVideointelligenceV1beta1LabelAnnotation {
       languageCode = _json["languageCode"];
     }
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1LabelLocation>((value) =>
               new GoogleCloudVideointelligenceV1beta1LabelLocation.fromJson(
                   value))
@@ -1029,14 +1029,14 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationResults {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("labelAnnotations")) {
-      labelAnnotations = _json["labelAnnotations"]
+      labelAnnotations = (_json["labelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1beta1LabelAnnotation.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("safeSearchAnnotations")) {
-      safeSearchAnnotations = _json["safeSearchAnnotations"]
+      safeSearchAnnotations = (_json["safeSearchAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation
@@ -1044,7 +1044,7 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationResults {
           .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = _json["shotAnnotations"]
+      shotAnnotations = (_json["shotAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1VideoSegment>((value) =>
               new GoogleCloudVideointelligenceV1beta1VideoSegment.fromJson(
                   value))
@@ -1124,7 +1124,7 @@ class GoogleCloudVideointelligenceV1beta1VideoContext {
       safeSearchDetectionModel = _json["safeSearchDetectionModel"];
     }
     if (_json.containsKey("segments")) {
-      segments = _json["segments"]
+      segments = (_json["segments"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta1VideoSegment>((value) =>
               new GoogleCloudVideointelligenceV1beta1VideoSegment.fromJson(
                   value))
@@ -1208,7 +1208,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
   GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey("annotationProgress")) {
-      annotationProgress = _json["annotationProgress"]
+      annotationProgress = (_json["annotationProgress"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
@@ -1241,7 +1241,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
   GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("annotationResults")) {
-      annotationResults = _json["annotationResults"]
+      annotationResults = (_json["annotationResults"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
@@ -1316,7 +1316,7 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
   GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey("frames")) {
-      frames = _json["frames"]
+      frames = (_json["frames"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2ExplicitContentFrame>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta2ExplicitContentFrame
@@ -1397,7 +1397,7 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
 
   GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("categoryEntities")) {
-      categoryEntities = _json["categoryEntities"]
+      categoryEntities = (_json["categoryEntities"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2Entity>((value) =>
               new GoogleCloudVideointelligenceV1beta2Entity.fromJson(value))
           .toList();
@@ -1407,13 +1407,13 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
           _json["entity"]);
     }
     if (_json.containsKey("frames")) {
-      frames = _json["frames"]
+      frames = (_json["frames"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelFrame>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelFrame.fromJson(value))
           .toList();
     }
     if (_json.containsKey("segments")) {
-      segments = _json["segments"]
+      segments = (_json["segments"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelSegment>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelSegment.fromJson(
                   value))
@@ -1605,7 +1605,7 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
               .fromJson(_json["explicitAnnotation"]);
     }
     if (_json.containsKey("frameLabelAnnotations")) {
-      frameLabelAnnotations = _json["frameLabelAnnotations"]
+      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
@@ -1615,21 +1615,21 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("segmentLabelAnnotations")) {
-      segmentLabelAnnotations = _json["segmentLabelAnnotations"]
+      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
-      shotAnnotations = _json["shotAnnotations"]
+      shotAnnotations = (_json["shotAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2VideoSegment>((value) =>
               new GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("shotLabelAnnotations")) {
-      shotLabelAnnotations = _json["shotLabelAnnotations"]
+      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
@@ -1752,13 +1752,15 @@ class GoogleLongrunningOperation {
       error = new GoogleRpcStatus.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1863,7 +1865,10 @@ class GoogleRpcStatus {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

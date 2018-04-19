@@ -130,7 +130,7 @@ class CustomersConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -330,7 +330,7 @@ class CustomersConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -395,7 +395,7 @@ class CustomersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -551,7 +551,7 @@ class CustomersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -610,7 +610,7 @@ class CustomersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -791,7 +791,7 @@ class PartnersCustomersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -896,7 +896,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -948,7 +948,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -1000,7 +1000,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -1053,7 +1053,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -1153,7 +1153,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (metadataOwnerId == null) {
       throw new core.ArgumentError("Parameter metadataOwnerId is required.");
@@ -1211,7 +1211,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -1263,7 +1263,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -1315,7 +1315,7 @@ class PartnersDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
@@ -1425,7 +1425,7 @@ class ClaimDevicesRequest {
 
   ClaimDevicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("claims")) {
-      claims = _json["claims"]
+      claims = (_json["claims"] as core.List)
           .map<PartnerClaim>((value) => new PartnerClaim.fromJson(value))
           .toList();
     }
@@ -1471,7 +1471,7 @@ class Company {
 
   Company.fromJson(core.Map _json) {
     if (_json.containsKey("adminEmails")) {
-      adminEmails = _json["adminEmails"];
+      adminEmails = (_json["adminEmails"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("companyId")) {
       companyId = _json["companyId"];
@@ -1483,7 +1483,7 @@ class Company {
       name = _json["name"];
     }
     if (_json.containsKey("ownerEmails")) {
-      ownerEmails = _json["ownerEmails"];
+      ownerEmails = (_json["ownerEmails"] as core.List).cast<core.String>();
     }
   }
 
@@ -1710,7 +1710,7 @@ class CustomerListConfigurationsResponse {
 
   CustomerListConfigurationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("configurations")) {
-      configurations = _json["configurations"]
+      configurations = (_json["configurations"] as core.List)
           .map<Configuration>((value) => new Configuration.fromJson(value))
           .toList();
     }
@@ -1740,7 +1740,7 @@ class CustomerListCustomersResponse {
 
   CustomerListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("customers")) {
-      customers = _json["customers"]
+      customers = (_json["customers"] as core.List)
           .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
@@ -1775,7 +1775,7 @@ class CustomerListDevicesResponse {
 
   CustomerListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices = _json["devices"]
+      devices = (_json["devices"] as core.List)
           .map<Device>((value) => new Device.fromJson(value))
           .toList();
     }
@@ -1807,8 +1807,9 @@ class CustomerListDpcsResponse {
 
   CustomerListDpcsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dpcs")) {
-      dpcs =
-          _json["dpcs"].map<Dpc>((value) => new Dpc.fromJson(value)).toList();
+      dpcs = (_json["dpcs"] as core.List)
+          .map<Dpc>((value) => new Dpc.fromJson(value))
+          .toList();
     }
   }
 
@@ -1902,7 +1903,7 @@ class Device {
 
   Device.fromJson(core.Map _json) {
     if (_json.containsKey("claims")) {
-      claims = _json["claims"]
+      claims = (_json["claims"] as core.List)
           .map<DeviceClaim>((value) => new DeviceClaim.fromJson(value))
           .toList();
     }
@@ -2051,7 +2052,7 @@ class DeviceMetadata {
 
   DeviceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
-      entries = _json["entries"];
+      entries = (_json["entries"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -2170,7 +2171,7 @@ class DevicesLongRunningOperationResponse {
 
   DevicesLongRunningOperationResponse.fromJson(core.Map _json) {
     if (_json.containsKey("perDeviceStatus")) {
-      perDeviceStatus = _json["perDeviceStatus"]
+      perDeviceStatus = (_json["perDeviceStatus"] as core.List)
           .map<OperationPerDevice>(
               (value) => new OperationPerDevice.fromJson(value))
           .toList();
@@ -2320,7 +2321,7 @@ class FindDevicesByDeviceIdentifierResponse {
 
   FindDevicesByDeviceIdentifierResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices = _json["devices"]
+      devices = (_json["devices"] as core.List)
           .map<Device>((value) => new Device.fromJson(value))
           .toList();
     }
@@ -2363,7 +2364,7 @@ class FindDevicesByOwnerRequest {
 
   FindDevicesByOwnerRequest.fromJson(core.Map _json) {
     if (_json.containsKey("customerId")) {
-      customerId = _json["customerId"];
+      customerId = (_json["customerId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("limit")) {
       limit = _json["limit"];
@@ -2407,7 +2408,7 @@ class FindDevicesByOwnerResponse {
 
   FindDevicesByOwnerResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices = _json["devices"]
+      devices = (_json["devices"] as core.List)
           .map<Device>((value) => new Device.fromJson(value))
           .toList();
     }
@@ -2438,7 +2439,7 @@ class ListCustomersResponse {
 
   ListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("customers")) {
-      customers = _json["customers"]
+      customers = (_json["customers"] as core.List)
           .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
@@ -2500,13 +2501,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -2825,7 +2828,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -2902,7 +2908,7 @@ class UnclaimDevicesRequest {
 
   UnclaimDevicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("unclaims")) {
-      unclaims = _json["unclaims"]
+      unclaims = (_json["unclaims"] as core.List)
           .map<PartnerUnclaim>((value) => new PartnerUnclaim.fromJson(value))
           .toList();
     }
@@ -2927,7 +2933,7 @@ class UpdateDeviceMetadataInBatchRequest {
 
   UpdateDeviceMetadataInBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("updates")) {
-      updates = _json["updates"]
+      updates = (_json["updates"] as core.List)
           .map<UpdateMetadataArguments>(
               (value) => new UpdateMetadataArguments.fromJson(value))
           .toList();

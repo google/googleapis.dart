@@ -165,7 +165,7 @@ class CoursesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -447,7 +447,7 @@ class CoursesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -509,7 +509,7 @@ class CoursesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -576,7 +576,7 @@ class CoursesAliasesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -783,7 +783,7 @@ class CoursesAnnouncementsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1078,7 +1078,7 @@ class CoursesAnnouncementsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1163,7 +1163,7 @@ class CoursesAnnouncementsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1250,7 +1250,7 @@ class CoursesCourseWorkResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1545,7 +1545,7 @@ class CoursesCourseWorkResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1645,7 +1645,7 @@ class CoursesCourseWorkResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1934,7 +1934,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2028,7 +2028,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2119,7 +2119,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2209,7 +2209,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2296,7 +2296,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2382,7 +2382,7 @@ class CoursesStudentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2660,7 +2660,7 @@ class CoursesTeachersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -3123,7 +3123,7 @@ class InvitationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3385,7 +3385,7 @@ class RegistrationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3579,7 +3579,7 @@ class UserProfilesGuardianInvitationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
@@ -3838,7 +3838,7 @@ class UserProfilesGuardianInvitationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
@@ -4226,7 +4226,7 @@ class Announcement {
           _json["individualStudentsOptions"]);
     }
     if (_json.containsKey("materials")) {
-      materials = _json["materials"]
+      materials = (_json["materials"] as core.List)
           .map<Material>((value) => new Material.fromJson(value))
           .toList();
     }
@@ -4327,7 +4327,7 @@ class AssignmentSubmission {
 
   AssignmentSubmission.fromJson(core.Map _json) {
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"]
+      attachments = (_json["attachments"] as core.List)
           .map<Attachment>((value) => new Attachment.fromJson(value))
           .toList();
     }
@@ -4588,7 +4588,7 @@ class Course {
       courseGroupEmail = _json["courseGroupEmail"];
     }
     if (_json.containsKey("courseMaterialSets")) {
-      courseMaterialSets = _json["courseMaterialSets"]
+      courseMaterialSets = (_json["courseMaterialSets"] as core.List)
           .map<CourseMaterialSet>(
               (value) => new CourseMaterialSet.fromJson(value))
           .toList();
@@ -4809,7 +4809,7 @@ class CourseMaterialSet {
 
   CourseMaterialSet.fromJson(core.Map _json) {
     if (_json.containsKey("materials")) {
-      materials = _json["materials"]
+      materials = (_json["materials"] as core.List)
           .map<CourseMaterial>((value) => new CourseMaterial.fromJson(value))
           .toList();
     }
@@ -5035,7 +5035,7 @@ class CourseWork {
           _json["individualStudentsOptions"]);
     }
     if (_json.containsKey("materials")) {
-      materials = _json["materials"]
+      materials = (_json["materials"] as core.List)
           .map<Material>((value) => new Material.fromJson(value))
           .toList();
     }
@@ -5648,7 +5648,7 @@ class IndividualStudentsOptions {
 
   IndividualStudentsOptions.fromJson(core.Map _json) {
     if (_json.containsKey("studentIds")) {
-      studentIds = _json["studentIds"];
+      studentIds = (_json["studentIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -5787,7 +5787,7 @@ class ListAnnouncementsResponse {
 
   ListAnnouncementsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("announcements")) {
-      announcements = _json["announcements"]
+      announcements = (_json["announcements"] as core.List)
           .map<Announcement>((value) => new Announcement.fromJson(value))
           .toList();
     }
@@ -5823,7 +5823,7 @@ class ListCourseAliasesResponse {
 
   ListCourseAliasesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("aliases")) {
-      aliases = _json["aliases"]
+      aliases = (_json["aliases"] as core.List)
           .map<CourseAlias>((value) => new CourseAlias.fromJson(value))
           .toList();
     }
@@ -5858,7 +5858,7 @@ class ListCourseWorkResponse {
 
   ListCourseWorkResponse.fromJson(core.Map _json) {
     if (_json.containsKey("courseWork")) {
-      courseWork = _json["courseWork"]
+      courseWork = (_json["courseWork"] as core.List)
           .map<CourseWork>((value) => new CourseWork.fromJson(value))
           .toList();
     }
@@ -5894,7 +5894,7 @@ class ListCoursesResponse {
 
   ListCoursesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("courses")) {
-      courses = _json["courses"]
+      courses = (_json["courses"] as core.List)
           .map<Course>((value) => new Course.fromJson(value))
           .toList();
     }
@@ -5929,7 +5929,7 @@ class ListGuardianInvitationsResponse {
 
   ListGuardianInvitationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("guardianInvitations")) {
-      guardianInvitations = _json["guardianInvitations"]
+      guardianInvitations = (_json["guardianInvitations"] as core.List)
           .map<GuardianInvitation>(
               (value) => new GuardianInvitation.fromJson(value))
           .toList();
@@ -5967,7 +5967,7 @@ class ListGuardiansResponse {
 
   ListGuardiansResponse.fromJson(core.Map _json) {
     if (_json.containsKey("guardians")) {
-      guardians = _json["guardians"]
+      guardians = (_json["guardians"] as core.List)
           .map<Guardian>((value) => new Guardian.fromJson(value))
           .toList();
     }
@@ -6002,7 +6002,7 @@ class ListInvitationsResponse {
 
   ListInvitationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("invitations")) {
-      invitations = _json["invitations"]
+      invitations = (_json["invitations"] as core.List)
           .map<Invitation>((value) => new Invitation.fromJson(value))
           .toList();
     }
@@ -6041,7 +6041,7 @@ class ListStudentSubmissionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("studentSubmissions")) {
-      studentSubmissions = _json["studentSubmissions"]
+      studentSubmissions = (_json["studentSubmissions"] as core.List)
           .map<StudentSubmission>(
               (value) => new StudentSubmission.fromJson(value))
           .toList();
@@ -6078,7 +6078,7 @@ class ListStudentsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("students")) {
-      students = _json["students"]
+      students = (_json["students"] as core.List)
           .map<Student>((value) => new Student.fromJson(value))
           .toList();
     }
@@ -6113,7 +6113,7 @@ class ListTeachersResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("teachers")) {
-      teachers = _json["teachers"]
+      teachers = (_json["teachers"] as core.List)
           .map<Teacher>((value) => new Teacher.fromJson(value))
           .toList();
     }
@@ -6148,7 +6148,7 @@ class ListTopicResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("topic")) {
-      topic = _json["topic"]
+      topic = (_json["topic"] as core.List)
           .map<Topic>((value) => new Topic.fromJson(value))
           .toList();
     }
@@ -6274,7 +6274,7 @@ class ModifyAttachmentsRequest {
 
   ModifyAttachmentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addAttachments")) {
-      addAttachments = _json["addAttachments"]
+      addAttachments = (_json["addAttachments"] as core.List)
           .map<Attachment>((value) => new Attachment.fromJson(value))
           .toList();
     }
@@ -6348,10 +6348,11 @@ class ModifyIndividualStudentsOptions {
 
   ModifyIndividualStudentsOptions.fromJson(core.Map _json) {
     if (_json.containsKey("addStudentIds")) {
-      addStudentIds = _json["addStudentIds"];
+      addStudentIds = (_json["addStudentIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("removeStudentIds")) {
-      removeStudentIds = _json["removeStudentIds"];
+      removeStudentIds =
+          (_json["removeStudentIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -6377,7 +6378,7 @@ class MultipleChoiceQuestion {
 
   MultipleChoiceQuestion.fromJson(core.Map _json) {
     if (_json.containsKey("choices")) {
-      choices = _json["choices"];
+      choices = (_json["choices"] as core.List).cast<core.String>();
     }
   }
 
@@ -6891,7 +6892,7 @@ class StudentSubmission {
       state = _json["state"];
     }
     if (_json.containsKey("submissionHistory")) {
-      submissionHistory = _json["submissionHistory"]
+      submissionHistory = (_json["submissionHistory"] as core.List)
           .map<SubmissionHistory>(
               (value) => new SubmissionHistory.fromJson(value))
           .toList();
@@ -7222,7 +7223,7 @@ class UserProfile {
       name = new Name.fromJson(_json["name"]);
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"]
+      permissions = (_json["permissions"] as core.List)
           .map<GlobalPermission>(
               (value) => new GlobalPermission.fromJson(value))
           .toList();

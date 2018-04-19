@@ -95,7 +95,7 @@ class ProjectsLocationsRegistriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -242,7 +242,7 @@ class ProjectsLocationsRegistriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -367,7 +367,7 @@ class ProjectsLocationsRegistriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -424,7 +424,7 @@ class ProjectsLocationsRegistriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -481,7 +481,7 @@ class ProjectsLocationsRegistriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -551,7 +551,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -802,7 +802,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -863,7 +863,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1086,7 +1086,7 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"]
+      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
           .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
@@ -1146,7 +1146,8 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("logType")) {
       logType = _json["logType"];
@@ -1201,7 +1202,7 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -1330,7 +1331,7 @@ class Device {
       config = new DeviceConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("credentials")) {
-      credentials = _json["credentials"]
+      credentials = (_json["credentials"] as core.List)
           .map<DeviceCredential>(
               (value) => new DeviceCredential.fromJson(value))
           .toList();
@@ -1360,7 +1361,8 @@ class Device {
       lastStateTime = _json["lastStateTime"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1431,12 +1433,12 @@ class DeviceConfig {
   /// The device configuration data.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes {
-    return convert.BASE64.decode(binaryData);
+    return convert.base64.decode(binaryData);
   }
 
   void set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// [Output only] The time at which this configuration version was updated in
@@ -1591,16 +1593,17 @@ class DeviceRegistry {
 
   DeviceRegistry.fromJson(core.Map _json) {
     if (_json.containsKey("credentials")) {
-      credentials = _json["credentials"]
+      credentials = (_json["credentials"] as core.List)
           .map<RegistryCredential>(
               (value) => new RegistryCredential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventNotificationConfigs")) {
-      eventNotificationConfigs = _json["eventNotificationConfigs"]
-          .map<EventNotificationConfig>(
-              (value) => new EventNotificationConfig.fromJson(value))
-          .toList();
+      eventNotificationConfigs =
+          (_json["eventNotificationConfigs"] as core.List)
+              .map<EventNotificationConfig>(
+                  (value) => new EventNotificationConfig.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("httpConfig")) {
       httpConfig = new HttpConfig.fromJson(_json["httpConfig"]);
@@ -1655,12 +1658,12 @@ class DeviceState {
   /// The device state data.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes {
-    return convert.BASE64.decode(binaryData);
+    return convert.base64.decode(binaryData);
   }
 
   void set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// [Output only] The time at which this state version was updated in Cloud
@@ -1797,7 +1800,7 @@ class ListDeviceConfigVersionsResponse {
 
   ListDeviceConfigVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceConfigs")) {
-      deviceConfigs = _json["deviceConfigs"]
+      deviceConfigs = (_json["deviceConfigs"] as core.List)
           .map<DeviceConfig>((value) => new DeviceConfig.fromJson(value))
           .toList();
     }
@@ -1828,7 +1831,7 @@ class ListDeviceRegistriesResponse {
 
   ListDeviceRegistriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceRegistries")) {
-      deviceRegistries = _json["deviceRegistries"]
+      deviceRegistries = (_json["deviceRegistries"] as core.List)
           .map<DeviceRegistry>((value) => new DeviceRegistry.fromJson(value))
           .toList();
     }
@@ -1862,7 +1865,7 @@ class ListDeviceStatesResponse {
 
   ListDeviceStatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceStates")) {
-      deviceStates = _json["deviceStates"]
+      deviceStates = (_json["deviceStates"] as core.List)
           .map<DeviceState>((value) => new DeviceState.fromJson(value))
           .toList();
     }
@@ -1892,7 +1895,7 @@ class ListDevicesResponse {
 
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices = _json["devices"]
+      devices = (_json["devices"] as core.List)
           .map<Device>((value) => new Device.fromJson(value))
           .toList();
     }
@@ -1919,12 +1922,12 @@ class ModifyCloudToDeviceConfigRequest {
   /// The configuration data for the device.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes {
-    return convert.BASE64.decode(binaryData);
+    return convert.base64.decode(binaryData);
   }
 
   void set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The version number to update. If this value is zero, it will not check the
@@ -2041,12 +2044,12 @@ class Policy {
   /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Deprecated.
@@ -2056,12 +2059,12 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"]
+      auditConfigs = (_json["auditConfigs"] as core.List)
           .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
@@ -2363,7 +2366,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -2398,7 +2404,7 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2422,7 +2428,7 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 

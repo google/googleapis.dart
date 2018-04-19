@@ -169,7 +169,7 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeader {
   ResultFormattedResultsRuleResultsValueUrlBlocksHeader.fromJson(
       core.Map _json) {
     if (_json.containsKey("args")) {
-      args = _json["args"]
+      args = (_json["args"] as core.List)
           .map<ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs>(
               (value) =>
                   new ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs
@@ -242,7 +242,7 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails.fromJson(
       core.Map _json) {
     if (_json.containsKey("args")) {
-      args = _json["args"]
+      args = (_json["args"] as core.List)
           .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs>(
               (value) =>
                   new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs
@@ -316,7 +316,7 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult {
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult.fromJson(
       core.Map _json) {
     if (_json.containsKey("args")) {
-      args = _json["args"]
+      args = (_json["args"] as core.List)
           .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs>(
               (value) =>
                   new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs
@@ -354,7 +354,7 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrls.fromJson(core.Map _json) {
     if (_json.containsKey("details")) {
-      details = _json["details"]
+      details = (_json["details"] as core.List)
           .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails>(
               (value) =>
                   new ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails
@@ -397,7 +397,7 @@ class ResultFormattedResultsRuleResultsValueUrlBlocks {
               _json["header"]);
     }
     if (_json.containsKey("urls")) {
-      urls = _json["urls"]
+      urls = (_json["urls"] as core.List)
           .map<ResultFormattedResultsRuleResultsValueUrlBlocksUrls>((value) =>
               new ResultFormattedResultsRuleResultsValueUrlBlocksUrls.fromJson(
                   value))
@@ -447,7 +447,7 @@ class ResultFormattedResultsRuleResultsValue {
       ruleImpact = _json["ruleImpact"];
     }
     if (_json.containsKey("urlBlocks")) {
-      urlBlocks = _json["urlBlocks"]
+      urlBlocks = (_json["urlBlocks"] as core.List)
           .map<ResultFormattedResultsRuleResultsValueUrlBlocks>((value) =>
               new ResultFormattedResultsRuleResultsValueUrlBlocks.fromJson(
                   value))
@@ -488,11 +488,11 @@ class ResultFormattedResults {
       locale = _json["locale"];
     }
     if (_json.containsKey("ruleResults")) {
-      ruleResults = commons.mapMap<core.Map<core.String, core.Object>,
-              ResultFormattedResultsRuleResultsValue>(
-          _json["ruleResults"],
-          (core.Map<core.String, core.Object> item) =>
-              new ResultFormattedResultsRuleResultsValue.fromJson(item));
+      ruleResults =
+          commons.mapMap<core.Map, ResultFormattedResultsRuleResultsValue>(
+              _json["ruleResults"].cast<core.String, core.Map>(),
+              (core.Map item) =>
+                  new ResultFormattedResultsRuleResultsValue.fromJson(item));
     }
   }
 
@@ -652,12 +652,12 @@ class ResultScreenshot {
   /// Image data base64 encoded.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Height of screenshot in pixels.
@@ -792,7 +792,7 @@ class Result {
       id = _json["id"];
     }
     if (_json.containsKey("invalidRules")) {
-      invalidRules = _json["invalidRules"];
+      invalidRules = (_json["invalidRules"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

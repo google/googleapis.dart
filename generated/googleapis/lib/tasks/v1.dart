@@ -150,7 +150,7 @@ class TasklistsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -245,7 +245,7 @@ class TasklistsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -293,7 +293,7 @@ class TasklistsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -500,7 +500,7 @@ class TasksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -738,7 +738,7 @@ class TasksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -795,7 +795,7 @@ class TasksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -943,7 +943,7 @@ class Task {
       kind = _json["kind"];
     }
     if (_json.containsKey("links")) {
-      links = _json["links"]
+      links = (_json["links"] as core.List)
           .map<TaskLinks>((value) => new TaskLinks.fromJson(value))
           .toList();
     }
@@ -1110,7 +1110,7 @@ class TaskLists {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TaskList>((value) => new TaskList.fromJson(value))
           .toList();
     }
@@ -1161,7 +1161,7 @@ class Tasks {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Task>((value) => new Task.fromJson(value))
           .toList();
     }
