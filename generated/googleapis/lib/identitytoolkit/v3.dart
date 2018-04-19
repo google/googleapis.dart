@@ -1842,7 +1842,7 @@ class IdentitytoolkitRelyingpartyGetPublicKeysResponse
   IdentitytoolkitRelyingpartyGetPublicKeysResponse();
 
   IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-      core.Map<core.String, core.dynamic> _json) {
+      core.Map<core.String, core.Object> _json) {
     _json.forEach((core.String key, value) {
       this[key] = value;
     });

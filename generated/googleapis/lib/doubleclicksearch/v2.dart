@@ -1830,7 +1830,7 @@ class ReportRow extends collection.MapBase<core.String, core.Object> {
 
   ReportRow();
 
-  ReportRow.fromJson(core.Map<core.String, core.dynamic> _json) {
+  ReportRow.fromJson(core.Map<core.String, core.Object> _json) {
     _json.forEach((core.String key, value) {
       this[key] = value;
     });
