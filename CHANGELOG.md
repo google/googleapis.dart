@@ -1,3 +1,7 @@
+## 0.1.6
+
+- Fix Dart 2 runtime issue.
+
 ## 0.1.5
 
 - Updates to support Dart 2.0 core library changes (wave
