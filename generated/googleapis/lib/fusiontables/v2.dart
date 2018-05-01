@@ -183,7 +183,7 @@ class ColumnResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -288,7 +288,7 @@ class ColumnResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -345,7 +345,7 @@ class ColumnResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -685,7 +685,7 @@ class StyleResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -790,7 +790,7 @@ class StyleResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -847,7 +847,7 @@ class StyleResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -1214,7 +1214,7 @@ class TableResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1313,7 +1313,7 @@ class TableResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -1517,7 +1517,7 @@ class TableResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -1846,7 +1846,7 @@ class TemplateResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -1952,7 +1952,7 @@ class TemplateResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -2009,7 +2009,7 @@ class TemplateResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
@@ -2241,7 +2241,7 @@ class Column {
       type = _json["type"];
     }
     if (_json.containsKey("validValues")) {
-      validValues = _json["validValues"];
+      validValues = (_json["validValues"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("validateData")) {
       validateData = _json["validateData"];
@@ -2311,7 +2311,7 @@ class ColumnList {
 
   ColumnList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Column>((value) => new Column.fromJson(value))
           .toList();
     }
@@ -2366,7 +2366,7 @@ class Geometry {
 
   Geometry.fromJson(core.Map _json) {
     if (_json.containsKey("geometries")) {
-      geometries = _json["geometries"];
+      geometries = (_json["geometries"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("geometry")) {
       geometry = _json["geometry"];
@@ -2437,7 +2437,10 @@ class Line {
 
   Line.fromJson(core.Map _json) {
     if (_json.containsKey("coordinates")) {
-      coordinates = _json["coordinates"];
+      coordinates = (_json["coordinates"] as core.List)
+          .map<core.List<core.double>>(
+              (value) => (value as core.List).cast<core.double>())
+          .toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2532,7 +2535,7 @@ class Point {
 
   Point.fromJson(core.Map _json) {
     if (_json.containsKey("coordinates")) {
-      coordinates = _json["coordinates"];
+      coordinates = (_json["coordinates"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2597,7 +2600,13 @@ class Polygon {
 
   Polygon.fromJson(core.Map _json) {
     if (_json.containsKey("coordinates")) {
-      coordinates = _json["coordinates"];
+      coordinates = (_json["coordinates"] as core.List)
+          .map<core.List<core.List<core.double>>>((value) =>
+              (value as core.List)
+                  .map<core.List<core.double>>(
+                      (value) => (value as core.List).cast<core.double>())
+                  .toList())
+          .toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2729,13 +2738,16 @@ class Sqlresponse {
 
   Sqlresponse.fromJson(core.Map _json) {
     if (_json.containsKey("columns")) {
-      columns = _json["columns"];
+      columns = (_json["columns"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"];
+      rows = (_json["rows"] as core.List)
+          .map<core.List<core.Object>>(
+              (value) => (value as core.List).cast<core.Object>())
+          .toList();
     }
   }
 
@@ -2803,7 +2815,7 @@ class StyleFunctionGradient {
 
   StyleFunctionGradient.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
-      colors = _json["colors"]
+      colors = (_json["colors"] as core.List)
           .map<StyleFunctionGradientColors>(
               (value) => new StyleFunctionGradientColors.fromJson(value))
           .toList();
@@ -2857,7 +2869,7 @@ class StyleFunction {
 
   StyleFunction.fromJson(core.Map _json) {
     if (_json.containsKey("buckets")) {
-      buckets = _json["buckets"]
+      buckets = (_json["buckets"] as core.List)
           .map<Bucket>((value) => new Bucket.fromJson(value))
           .toList();
     }
@@ -2992,7 +3004,7 @@ class StyleSettingList {
 
   StyleSettingList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<StyleSetting>((value) => new StyleSetting.fromJson(value))
           .toList();
     }
@@ -3077,13 +3089,13 @@ class Table {
       attributionLink = _json["attributionLink"];
     }
     if (_json.containsKey("baseTableIds")) {
-      baseTableIds = _json["baseTableIds"];
+      baseTableIds = (_json["baseTableIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("columnPropertiesJsonSchema")) {
       columnPropertiesJsonSchema = _json["columnPropertiesJsonSchema"];
     }
     if (_json.containsKey("columns")) {
-      columns = _json["columns"]
+      columns = (_json["columns"] as core.List)
           .map<Column>((value) => new Column.fromJson(value))
           .toList();
     }
@@ -3176,7 +3188,7 @@ class TableList {
 
   TableList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Table>((value) => new Table.fromJson(value))
           .toList();
     }
@@ -3284,7 +3296,7 @@ class TaskList {
 
   TaskList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Task>((value) => new Task.fromJson(value))
           .toList();
     }
@@ -3347,7 +3359,8 @@ class Template {
 
   Template.fromJson(core.Map _json) {
     if (_json.containsKey("automaticColumnNames")) {
-      automaticColumnNames = _json["automaticColumnNames"];
+      automaticColumnNames =
+          (_json["automaticColumnNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("body")) {
       body = _json["body"];
@@ -3411,7 +3424,7 @@ class TemplateList {
 
   TemplateList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Template>((value) => new Template.fromJson(value))
           .toList();
     }

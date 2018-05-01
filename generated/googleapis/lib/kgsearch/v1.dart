@@ -153,7 +153,8 @@ class SearchResponse {
       P_type = _json["@type"];
     }
     if (_json.containsKey("itemListElement")) {
-      itemListElement = _json["itemListElement"];
+      itemListElement =
+          (_json["itemListElement"] as core.List).cast<core.Object>();
     }
   }
 

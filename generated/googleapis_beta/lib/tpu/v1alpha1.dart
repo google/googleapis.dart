@@ -198,7 +198,7 @@ class ProjectsLocationsNodesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -395,7 +395,7 @@ class ProjectsLocationsNodesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -446,7 +446,7 @@ class ProjectsLocationsNodesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -496,7 +496,7 @@ class ProjectsLocationsNodesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -546,7 +546,7 @@ class ProjectsLocationsNodesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -953,7 +953,7 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
@@ -990,7 +990,7 @@ class ListNodesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("nodes")) {
-      nodes = _json["nodes"]
+      nodes = (_json["nodes"] as core.List)
           .map<Node>((value) => new Node.fromJson(value))
           .toList();
     }
@@ -1024,7 +1024,7 @@ class ListOperationsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -1059,7 +1059,7 @@ class ListTensorFlowVersionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("tensorflowVersions")) {
-      tensorflowVersions = _json["tensorflowVersions"]
+      tensorflowVersions = (_json["tensorflowVersions"] as core.List)
           .map<TensorFlowVersion>(
               (value) => new TensorFlowVersion.fromJson(value))
           .toList();
@@ -1105,13 +1105,14 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1288,7 +1289,7 @@ class Node {
       ipAddress = _json["ipAddress"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1297,7 +1298,7 @@ class Node {
       network = _json["network"];
     }
     if (_json.containsKey("networkEndpoints")) {
-      networkEndpoints = _json["networkEndpoints"]
+      networkEndpoints = (_json["networkEndpoints"] as core.List)
           .map<NetworkEndpoint>((value) => new NetworkEndpoint.fromJson(value))
           .toList();
     }
@@ -1417,13 +1418,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1658,7 +1661,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

@@ -251,7 +251,7 @@ class ProjectsEventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -520,7 +520,7 @@ class ProjectsGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -594,7 +594,7 @@ class ErrorContext {
       reportLocation = new SourceLocation.fromJson(_json["reportLocation"]);
     }
     if (_json.containsKey("sourceReferences")) {
-      sourceReferences = _json["sourceReferences"]
+      sourceReferences = (_json["sourceReferences"] as core.List)
           .map<SourceReference>((value) => new SourceReference.fromJson(value))
           .toList();
     }
@@ -698,7 +698,7 @@ class ErrorGroup {
       name = _json["name"];
     }
     if (_json.containsKey("trackingIssues")) {
-      trackingIssues = _json["trackingIssues"]
+      trackingIssues = (_json["trackingIssues"] as core.List)
           .map<TrackingIssue>((value) => new TrackingIssue.fromJson(value))
           .toList();
     }
@@ -783,7 +783,7 @@ class ErrorGroupStats {
 
   ErrorGroupStats.fromJson(core.Map _json) {
     if (_json.containsKey("affectedServices")) {
-      affectedServices = _json["affectedServices"]
+      affectedServices = (_json["affectedServices"] as core.List)
           .map<ServiceContext>((value) => new ServiceContext.fromJson(value))
           .toList();
     }
@@ -809,7 +809,7 @@ class ErrorGroupStats {
       representative = new ErrorEvent.fromJson(_json["representative"]);
     }
     if (_json.containsKey("timedCounts")) {
-      timedCounts = _json["timedCounts"]
+      timedCounts = (_json["timedCounts"] as core.List)
           .map<TimedCount>((value) => new TimedCount.fromJson(value))
           .toList();
     }
@@ -943,7 +943,7 @@ class ListEventsResponse {
 
   ListEventsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errorEvents")) {
-      errorEvents = _json["errorEvents"]
+      errorEvents = (_json["errorEvents"] as core.List)
           .map<ErrorEvent>((value) => new ErrorEvent.fromJson(value))
           .toList();
     }
@@ -994,7 +994,7 @@ class ListGroupStatsResponse {
 
   ListGroupStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errorGroupStats")) {
-      errorGroupStats = _json["errorGroupStats"]
+      errorGroupStats = (_json["errorGroupStats"] as core.List)
           .map<ErrorGroupStats>((value) => new ErrorGroupStats.fromJson(value))
           .toList();
     }

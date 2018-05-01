@@ -92,7 +92,7 @@ class ControllerDebuggeesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -238,7 +238,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -595,7 +595,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -781,12 +781,12 @@ class Breakpoint {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("evaluatedExpressions")) {
-      evaluatedExpressions = _json["evaluatedExpressions"]
+      evaluatedExpressions = (_json["evaluatedExpressions"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("expressions")) {
-      expressions = _json["expressions"];
+      expressions = (_json["expressions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("finalTime")) {
       finalTime = _json["finalTime"];
@@ -798,7 +798,7 @@ class Breakpoint {
       isFinalState = _json["isFinalState"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("location")) {
       location = new SourceLocation.fromJson(_json["location"]);
@@ -810,7 +810,7 @@ class Breakpoint {
       logMessageFormat = _json["logMessageFormat"];
     }
     if (_json.containsKey("stackFrames")) {
-      stackFrames = _json["stackFrames"]
+      stackFrames = (_json["stackFrames"] as core.List)
           .map<StackFrame>((value) => new StackFrame.fromJson(value))
           .toList();
     }
@@ -821,7 +821,7 @@ class Breakpoint {
       userEmail = _json["userEmail"];
     }
     if (_json.containsKey("variableTable")) {
-      variableTable = _json["variableTable"]
+      variableTable = (_json["variableTable"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
@@ -1070,7 +1070,7 @@ class Debuggee {
       description = _json["description"];
     }
     if (_json.containsKey("extSourceContexts")) {
-      extSourceContexts = _json["extSourceContexts"]
+      extSourceContexts = (_json["extSourceContexts"] as core.List)
           .map<ExtendedSourceContext>(
               (value) => new ExtendedSourceContext.fromJson(value))
           .toList();
@@ -1085,13 +1085,13 @@ class Debuggee {
       isInactive = _json["isInactive"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("project")) {
       project = _json["project"];
     }
     if (_json.containsKey("sourceContexts")) {
-      sourceContexts = _json["sourceContexts"]
+      sourceContexts = (_json["sourceContexts"] as core.List)
           .map<SourceContext>((value) => new SourceContext.fromJson(value))
           .toList();
     }
@@ -1182,7 +1182,7 @@ class ExtendedSourceContext {
       context = new SourceContext.fromJson(_json["context"]);
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -1222,7 +1222,7 @@ class FormatMessage {
       format = _json["format"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = _json["parameters"];
+      parameters = (_json["parameters"] as core.List).cast<core.String>();
     }
   }
 
@@ -1378,7 +1378,7 @@ class ListActiveBreakpointsResponse {
 
   ListActiveBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoints")) {
-      breakpoints = _json["breakpoints"]
+      breakpoints = (_json["breakpoints"] as core.List)
           .map<Breakpoint>((value) => new Breakpoint.fromJson(value))
           .toList();
     }
@@ -1425,7 +1425,7 @@ class ListBreakpointsResponse {
 
   ListBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoints")) {
-      breakpoints = _json["breakpoints"]
+      breakpoints = (_json["breakpoints"] as core.List)
           .map<Breakpoint>((value) => new Breakpoint.fromJson(value))
           .toList();
     }
@@ -1460,7 +1460,7 @@ class ListDebuggeesResponse {
 
   ListDebuggeesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("debuggees")) {
-      debuggees = _json["debuggees"]
+      debuggees = (_json["debuggees"] as core.List)
           .map<Debuggee>((value) => new Debuggee.fromJson(value))
           .toList();
     }
@@ -1721,7 +1721,7 @@ class StackFrame {
 
   StackFrame.fromJson(core.Map _json) {
     if (_json.containsKey("arguments")) {
-      arguments = _json["arguments"]
+      arguments = (_json["arguments"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
@@ -1729,7 +1729,7 @@ class StackFrame {
       function = _json["function"];
     }
     if (_json.containsKey("locals")) {
-      locals = _json["locals"]
+      locals = (_json["locals"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
@@ -2010,7 +2010,7 @@ class Variable {
 
   Variable.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"]
+      members = (_json["members"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }

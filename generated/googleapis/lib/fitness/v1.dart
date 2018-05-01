@@ -160,7 +160,7 @@ class UsersDataSourcesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -373,7 +373,7 @@ class UsersDataSourcesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -434,7 +434,7 @@ class UsersDataSourcesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -751,7 +751,7 @@ class UsersDataSourcesDatasetsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -823,7 +823,7 @@ class UsersDatasetResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1015,7 +1015,7 @@ class UsersSessionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1079,7 +1079,7 @@ class AggregateBucket {
       activity = _json["activity"];
     }
     if (_json.containsKey("dataset")) {
-      dataset = _json["dataset"]
+      dataset = (_json["dataset"] as core.List)
           .map<Dataset>((value) => new Dataset.fromJson(value))
           .toList();
     }
@@ -1208,7 +1208,7 @@ class AggregateRequest {
 
   AggregateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("aggregateBy")) {
-      aggregateBy = _json["aggregateBy"]
+      aggregateBy = (_json["aggregateBy"] as core.List)
           .map<AggregateBy>((value) => new AggregateBy.fromJson(value))
           .toList();
     }
@@ -1230,7 +1230,9 @@ class AggregateRequest {
       endTimeMillis = _json["endTimeMillis"];
     }
     if (_json.containsKey("filteredDataQualityStandard")) {
-      filteredDataQualityStandard = _json["filteredDataQualityStandard"];
+      filteredDataQualityStandard =
+          (_json["filteredDataQualityStandard"] as core.List)
+              .cast<core.String>();
     }
     if (_json.containsKey("startTimeMillis")) {
       startTimeMillis = _json["startTimeMillis"];
@@ -1277,7 +1279,7 @@ class AggregateResponse {
 
   AggregateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bucket")) {
-      bucket = _json["bucket"]
+      bucket = (_json["bucket"] as core.List)
           .map<AggregateBucket>((value) => new AggregateBucket.fromJson(value))
           .toList();
     }
@@ -1552,7 +1554,7 @@ class DataPoint {
       startTimeNanos = _json["startTimeNanos"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"]
+      value = (_json["value"] as core.List)
           .map<Value>((value) => new Value.fromJson(value))
           .toList();
     }
@@ -1676,7 +1678,8 @@ class DataSource {
       application = new Application.fromJson(_json["application"]);
     }
     if (_json.containsKey("dataQualityStandard")) {
-      dataQualityStandard = _json["dataQualityStandard"];
+      dataQualityStandard =
+          (_json["dataQualityStandard"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("dataStreamId")) {
       dataStreamId = _json["dataStreamId"];
@@ -1741,7 +1744,7 @@ class DataType {
 
   DataType.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = _json["field"]
+      field = (_json["field"] as core.List)
           .map<DataTypeField>((value) => new DataTypeField.fromJson(value))
           .toList();
     }
@@ -1863,7 +1866,7 @@ class Dataset {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("point")) {
-      point = _json["point"]
+      point = (_json["point"] as core.List)
           .map<DataPoint>((value) => new DataPoint.fromJson(value))
           .toList();
     }
@@ -1995,12 +1998,12 @@ class ListDataPointChangesResponse {
       dataSourceId = _json["dataSourceId"];
     }
     if (_json.containsKey("deletedDataPoint")) {
-      deletedDataPoint = _json["deletedDataPoint"]
+      deletedDataPoint = (_json["deletedDataPoint"] as core.List)
           .map<DataPoint>((value) => new DataPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("insertedDataPoint")) {
-      insertedDataPoint = _json["insertedDataPoint"]
+      insertedDataPoint = (_json["insertedDataPoint"] as core.List)
           .map<DataPoint>((value) => new DataPoint.fromJson(value))
           .toList();
     }
@@ -2038,7 +2041,7 @@ class ListDataSourcesResponse {
 
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataSource")) {
-      dataSource = _json["dataSource"]
+      dataSource = (_json["dataSource"] as core.List)
           .map<DataSource>((value) => new DataSource.fromJson(value))
           .toList();
     }
@@ -2077,7 +2080,7 @@ class ListSessionsResponse {
 
   ListSessionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deletedSession")) {
-      deletedSession = _json["deletedSession"]
+      deletedSession = (_json["deletedSession"] as core.List)
           .map<Session>((value) => new Session.fromJson(value))
           .toList();
     }
@@ -2088,7 +2091,7 @@ class ListSessionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("session")) {
-      session = _json["session"]
+      session = (_json["session"] as core.List)
           .map<Session>((value) => new Session.fromJson(value))
           .toList();
     }
@@ -2273,7 +2276,7 @@ class Value {
       intVal = _json["intVal"];
     }
     if (_json.containsKey("mapVal")) {
-      mapVal = _json["mapVal"]
+      mapVal = (_json["mapVal"] as core.List)
           .map<ValueMapValEntry>(
               (value) => new ValueMapValEntry.fromJson(value))
           .toList();

@@ -203,7 +203,7 @@ class ClientMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -661,7 +661,7 @@ class CompaniesLeadsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (companyId == null) {
       throw new core.ArgumentError("Parameter companyId is required.");
@@ -1094,7 +1094,7 @@ class UserEventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1283,7 +1283,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1619,7 +1619,7 @@ class UsersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (requestMetadata_partnersSessionId != null) {
       _queryParams["requestMetadata.partnersSessionId"] = [
@@ -1837,7 +1837,7 @@ class V2ResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (requestMetadata_userOverrides_userId != null) {
       _queryParams["requestMetadata.userOverrides.userId"] = [
@@ -1950,7 +1950,7 @@ class V2ResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (requestMetadata_userOverrides_userId != null) {
       _queryParams["requestMetadata.userOverrides.userId"] = [
@@ -2105,7 +2105,7 @@ class AnalyticsDataPoint {
       eventCount = _json["eventCount"];
     }
     if (_json.containsKey("eventLocations")) {
-      eventLocations = _json["eventLocations"]
+      eventLocations = (_json["eventLocations"] as core.List)
           .map<LatLng>((value) => new LatLng.fromJson(value))
           .toList();
     }
@@ -2232,7 +2232,7 @@ class AvailableOffer {
       available = _json["available"];
     }
     if (_json.containsKey("countryOfferInfos")) {
-      countryOfferInfos = _json["countryOfferInfos"]
+      countryOfferInfos = (_json["countryOfferInfos"] as core.List)
           .map<CountryOfferInfo>(
               (value) => new CountryOfferInfo.fromJson(value))
           .toList();
@@ -2256,7 +2256,7 @@ class AvailableOffer {
       offerType = _json["offerType"];
     }
     if (_json.containsKey("qualifiedCustomer")) {
-      qualifiedCustomer = _json["qualifiedCustomer"]
+      qualifiedCustomer = (_json["qualifiedCustomer"] as core.List)
           .map<OfferCustomer>((value) => new OfferCustomer.fromJson(value))
           .toList();
     }
@@ -2463,7 +2463,7 @@ class CertificationStatus {
 
   CertificationStatus.fromJson(core.Map _json) {
     if (_json.containsKey("examStatuses")) {
-      examStatuses = _json["examStatuses"]
+      examStatuses = (_json["examStatuses"] as core.List)
           .map<CertificationExamStatus>(
               (value) => new CertificationExamStatus.fromJson(value))
           .toList();
@@ -2594,22 +2594,24 @@ class Company {
 
   Company.fromJson(core.Map _json) {
     if (_json.containsKey("additionalWebsites")) {
-      additionalWebsites = _json["additionalWebsites"];
+      additionalWebsites =
+          (_json["additionalWebsites"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("autoApprovalEmailDomains")) {
-      autoApprovalEmailDomains = _json["autoApprovalEmailDomains"];
+      autoApprovalEmailDomains =
+          (_json["autoApprovalEmailDomains"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("badgeTier")) {
       badgeTier = _json["badgeTier"];
     }
     if (_json.containsKey("certificationStatuses")) {
-      certificationStatuses = _json["certificationStatuses"]
+      certificationStatuses = (_json["certificationStatuses"] as core.List)
           .map<CertificationStatus>(
               (value) => new CertificationStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("companyTypes")) {
-      companyTypes = _json["companyTypes"];
+      companyTypes = (_json["companyTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("convertedMinMonthlyBudget")) {
       convertedMinMonthlyBudget =
@@ -2619,16 +2621,16 @@ class Company {
       id = _json["id"];
     }
     if (_json.containsKey("industries")) {
-      industries = _json["industries"];
+      industries = (_json["industries"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("localizedInfos")) {
-      localizedInfos = _json["localizedInfos"]
+      localizedInfos = (_json["localizedInfos"] as core.List)
           .map<LocalizedCompanyInfo>(
               (value) => new LocalizedCompanyInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
@@ -2655,15 +2657,15 @@ class Company {
       publicProfile = new PublicProfile.fromJson(_json["publicProfile"]);
     }
     if (_json.containsKey("ranks")) {
-      ranks = _json["ranks"]
+      ranks = (_json["ranks"] as core.List)
           .map<Rank>((value) => new Rank.fromJson(value))
           .toList();
     }
     if (_json.containsKey("services")) {
-      services = _json["services"];
+      services = (_json["services"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("specializationStatus")) {
-      specializationStatus = _json["specializationStatus"]
+      specializationStatus = (_json["specializationStatus"] as core.List)
           .map<SpecializationStatus>(
               (value) => new SpecializationStatus.fromJson(value))
           .toList();
@@ -2872,10 +2874,10 @@ class CompanyRelation {
       resolvedTimestamp = _json["resolvedTimestamp"];
     }
     if (_json.containsKey("segment")) {
-      segment = _json["segment"];
+      segment = (_json["segment"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("specializationStatus")) {
-      specializationStatus = _json["specializationStatus"]
+      specializationStatus = (_json["specializationStatus"] as core.List)
           .map<SpecializationStatus>(
               (value) => new SpecializationStatus.fromJson(value))
           .toList();
@@ -3266,7 +3268,7 @@ class EventData {
       key = _json["key"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"];
+      values = (_json["values"] as core.List).cast<core.String>();
     }
   }
 
@@ -3673,7 +3675,8 @@ class Lead {
       givenName = _json["givenName"];
     }
     if (_json.containsKey("gpsMotivations")) {
-      gpsMotivations = _json["gpsMotivations"];
+      gpsMotivations =
+          (_json["gpsMotivations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -3779,7 +3782,7 @@ class ListAnalyticsResponse {
 
   ListAnalyticsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("analytics")) {
-      analytics = _json["analytics"]
+      analytics = (_json["analytics"] as core.List)
           .map<Analytics>((value) => new Analytics.fromJson(value))
           .toList();
     }
@@ -3835,7 +3838,7 @@ class ListCompaniesResponse {
 
   ListCompaniesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("companies")) {
-      companies = _json["companies"]
+      companies = (_json["companies"] as core.List)
           .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
@@ -3886,7 +3889,7 @@ class ListLeadsResponse {
 
   ListLeadsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("leads")) {
-      leads = _json["leads"]
+      leads = (_json["leads"] as core.List)
           .map<Lead>((value) => new Lead.fromJson(value))
           .toList();
     }
@@ -3951,7 +3954,7 @@ class ListOffersHistoryResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("offers")) {
-      offers = _json["offers"]
+      offers = (_json["offers"] as core.List)
           .map<HistoricalOffer>((value) => new HistoricalOffer.fromJson(value))
           .toList();
     }
@@ -4012,7 +4015,7 @@ class ListOffersResponse {
 
   ListOffersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("availableOffers")) {
-      availableOffers = _json["availableOffers"]
+      availableOffers = (_json["availableOffers"] as core.List)
           .map<AvailableOffer>((value) => new AvailableOffer.fromJson(value))
           .toList();
     }
@@ -4059,7 +4062,7 @@ class ListUserStatesResponse {
           new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
     if (_json.containsKey("userStates")) {
-      userStates = _json["userStates"];
+      userStates = (_json["userStates"] as core.List).cast<core.String>();
     }
   }
 
@@ -4096,7 +4099,7 @@ class LocalizedCompanyInfo {
 
   LocalizedCompanyInfo.fromJson(core.Map _json) {
     if (_json.containsKey("countryCodes")) {
-      countryCodes = _json["countryCodes"];
+      countryCodes = (_json["countryCodes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -4171,7 +4174,7 @@ class Location {
       address = _json["address"];
     }
     if (_json.containsKey("addressLine")) {
-      addressLine = _json["addressLine"];
+      addressLine = (_json["addressLine"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("administrativeArea")) {
       administrativeArea = _json["administrativeArea"];
@@ -4261,7 +4264,8 @@ class LogMessageRequest {
 
   LogMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("clientInfo")) {
-      clientInfo = _json["clientInfo"];
+      clientInfo =
+          (_json["clientInfo"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("details")) {
       details = _json["details"];
@@ -4680,7 +4684,7 @@ class LogUserEventRequest {
       eventCategory = _json["eventCategory"];
     }
     if (_json.containsKey("eventDatas")) {
-      eventDatas = _json["eventDatas"]
+      eventDatas = (_json["eventDatas"] as core.List)
           .map<EventData>((value) => new EventData.fromJson(value))
           .toList();
     }
@@ -5110,7 +5114,7 @@ class RequestMetadata {
 
   RequestMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("experimentIds")) {
-      experimentIds = _json["experimentIds"];
+      experimentIds = (_json["experimentIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("locale")) {
       locale = _json["locale"];
@@ -5305,13 +5309,14 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey("availableAdwordsManagerAccounts")) {
-      availableAdwordsManagerAccounts = _json["availableAdwordsManagerAccounts"]
-          .map<AdWordsManagerAccountInfo>(
-              (value) => new AdWordsManagerAccountInfo.fromJson(value))
-          .toList();
+      availableAdwordsManagerAccounts =
+          (_json["availableAdwordsManagerAccounts"] as core.List)
+              .map<AdWordsManagerAccountInfo>(
+                  (value) => new AdWordsManagerAccountInfo.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("certificationStatus")) {
-      certificationStatus = _json["certificationStatus"]
+      certificationStatus = (_json["certificationStatus"] as core.List)
           .map<Certification>((value) => new Certification.fromJson(value))
           .toList();
     }
@@ -5322,7 +5327,7 @@ class User {
       companyVerificationEmail = _json["companyVerificationEmail"];
     }
     if (_json.containsKey("examStatus")) {
-      examStatus = _json["examStatus"]
+      examStatus = (_json["examStatus"] as core.List)
           .map<ExamStatus>((value) => new ExamStatus.fromJson(value))
           .toList();
     }
@@ -5336,7 +5341,7 @@ class User {
       lastAccessTime = _json["lastAccessTime"];
     }
     if (_json.containsKey("primaryEmails")) {
-      primaryEmails = _json["primaryEmails"];
+      primaryEmails = (_json["primaryEmails"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("profile")) {
       profile = new UserProfile.fromJson(_json["profile"]);
@@ -5482,7 +5487,7 @@ class UserProfile {
       adwordsManagerAccount = _json["adwordsManagerAccount"];
     }
     if (_json.containsKey("channels")) {
-      channels = _json["channels"];
+      channels = (_json["channels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("emailAddress")) {
       emailAddress = _json["emailAddress"];
@@ -5497,16 +5502,16 @@ class UserProfile {
       givenName = _json["givenName"];
     }
     if (_json.containsKey("industries")) {
-      industries = _json["industries"];
+      industries = (_json["industries"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("jobFunctions")) {
-      jobFunctions = _json["jobFunctions"];
+      jobFunctions = (_json["jobFunctions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("languages")) {
-      languages = _json["languages"];
+      languages = (_json["languages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("markets")) {
-      markets = _json["markets"];
+      markets = (_json["markets"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("migrateToAfa")) {
       migrateToAfa = _json["migrateToAfa"];

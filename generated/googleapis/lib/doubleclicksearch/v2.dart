@@ -195,7 +195,7 @@ class ConversionResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -267,7 +267,7 @@ class ConversionResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (advertiserId == null) {
       throw new core.ArgumentError("Parameter advertiserId is required.");
@@ -338,7 +338,7 @@ class ConversionResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -383,7 +383,7 @@ class ConversionResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -433,7 +433,7 @@ class ReportsResourceApi {
     var _body = null;
 
     if (request_1 != null) {
-      _body = convert.JSON.encode((request_1).toJson());
+      _body = convert.json.encode((request_1).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -579,7 +579,7 @@ class ReportsResourceApi {
     var _body = null;
 
     if (request_1 != null) {
-      _body = convert.JSON.encode((request_1).toJson());
+      _body = convert.json.encode((request_1).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -898,12 +898,12 @@ class Conversion {
       currencyCode = _json["currencyCode"];
     }
     if (_json.containsKey("customDimension")) {
-      customDimension = _json["customDimension"]
+      customDimension = (_json["customDimension"] as core.List)
           .map<CustomDimension>((value) => new CustomDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customMetric")) {
-      customMetric = _json["customMetric"]
+      customMetric = (_json["customMetric"] as core.List)
           .map<CustomMetric>((value) => new CustomMetric.fromJson(value))
           .toList();
     }
@@ -1081,7 +1081,7 @@ class ConversionList {
 
   ConversionList.fromJson(core.Map _json) {
     if (_json.containsKey("conversion")) {
-      conversion = _json["conversion"]
+      conversion = (_json["conversion"] as core.List)
           .map<Conversion>((value) => new Conversion.fromJson(value))
           .toList();
     }
@@ -1242,7 +1242,7 @@ class Report {
 
   Report.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
-      files = _json["files"]
+      files = (_json["files"] as core.List)
           .map<ReportFiles>((value) => new ReportFiles.fromJson(value))
           .toList();
     }
@@ -1262,7 +1262,7 @@ class Report {
       rowCount = _json["rowCount"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"]
+      rows = (_json["rows"] as core.List)
           .map<ReportRow>((value) => new ReportRow.fromJson(value))
           .toList();
     }
@@ -1461,7 +1461,7 @@ class ReportRequestFilters {
       operator = _json["operator"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"];
+      values = (_json["values"] as core.List).cast<core.Object>();
     }
   }
 
@@ -1720,7 +1720,7 @@ class ReportRequest {
 
   ReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("columns")) {
-      columns = _json["columns"]
+      columns = (_json["columns"] as core.List)
           .map<ReportApiColumnSpec>(
               (value) => new ReportApiColumnSpec.fromJson(value))
           .toList();
@@ -1729,7 +1729,7 @@ class ReportRequest {
       downloadFormat = _json["downloadFormat"];
     }
     if (_json.containsKey("filters")) {
-      filters = _json["filters"]
+      filters = (_json["filters"] as core.List)
           .map<ReportRequestFilters>(
               (value) => new ReportRequestFilters.fromJson(value))
           .toList();
@@ -1744,7 +1744,7 @@ class ReportRequest {
       maxRowsPerFile = _json["maxRowsPerFile"];
     }
     if (_json.containsKey("orderBy")) {
-      orderBy = _json["orderBy"]
+      orderBy = (_json["orderBy"] as core.List)
           .map<ReportRequestOrderBy>(
               (value) => new ReportRequestOrderBy.fromJson(value))
           .toList();
@@ -1826,7 +1826,7 @@ class ReportRequest {
 /// Indicates the columns that are represented in this row. That is, each key
 /// corresponds to a column with a non-empty cell in this row.
 class ReportRow extends collection.MapBase<core.String, core.Object> {
-  final core.Map _innerMap = {};
+  final _innerMap = <core.String, core.Object>{};
 
   ReportRow();
 
@@ -1918,7 +1918,7 @@ class SavedColumnList {
 
   SavedColumnList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SavedColumn>((value) => new SavedColumn.fromJson(value))
           .toList();
     }
@@ -1949,7 +1949,7 @@ class UpdateAvailabilityRequest {
 
   UpdateAvailabilityRequest.fromJson(core.Map _json) {
     if (_json.containsKey("availabilities")) {
-      availabilities = _json["availabilities"]
+      availabilities = (_json["availabilities"] as core.List)
           .map<Availability>((value) => new Availability.fromJson(value))
           .toList();
     }
@@ -1975,7 +1975,7 @@ class UpdateAvailabilityResponse {
 
   UpdateAvailabilityResponse.fromJson(core.Map _json) {
     if (_json.containsKey("availabilities")) {
-      availabilities = _json["availabilities"]
+      availabilities = (_json["availabilities"] as core.List)
           .map<Availability>((value) => new Availability.fromJson(value))
           .toList();
     }

@@ -88,7 +88,7 @@ class AccountsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (userToken == null) {
       throw new core.ArgumentError("Parameter userToken is required.");
@@ -234,7 +234,7 @@ class ContactsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -316,7 +316,7 @@ class ContactsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -364,7 +364,7 @@ class ContactsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -595,7 +595,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -678,7 +678,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -825,7 +825,7 @@ class TimelineResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -968,7 +968,7 @@ class TimelineResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -1024,7 +1024,7 @@ class TimelineResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -1303,18 +1303,18 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey("authTokens")) {
-      authTokens = _json["authTokens"]
+      authTokens = (_json["authTokens"] as core.List)
           .map<AuthToken>((value) => new AuthToken.fromJson(value))
           .toList();
     }
     if (_json.containsKey("features")) {
-      features = _json["features"];
+      features = (_json["features"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
     }
     if (_json.containsKey("userData")) {
-      userData = _json["userData"]
+      userData = (_json["userData"] as core.List)
           .map<UserData>((value) => new UserData.fromJson(value))
           .toList();
     }
@@ -1406,7 +1406,7 @@ class AttachmentsListResponse {
 
   AttachmentsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Attachment>((value) => new Attachment.fromJson(value))
           .toList();
     }
@@ -1546,12 +1546,12 @@ class Contact {
 
   Contact.fromJson(core.Map _json) {
     if (_json.containsKey("acceptCommands")) {
-      acceptCommands = _json["acceptCommands"]
+      acceptCommands = (_json["acceptCommands"] as core.List)
           .map<Command>((value) => new Command.fromJson(value))
           .toList();
     }
     if (_json.containsKey("acceptTypes")) {
-      acceptTypes = _json["acceptTypes"];
+      acceptTypes = (_json["acceptTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -1560,7 +1560,7 @@ class Contact {
       id = _json["id"];
     }
     if (_json.containsKey("imageUrls")) {
-      imageUrls = _json["imageUrls"];
+      imageUrls = (_json["imageUrls"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1572,7 +1572,8 @@ class Contact {
       priority = _json["priority"];
     }
     if (_json.containsKey("sharingFeatures")) {
-      sharingFeatures = _json["sharingFeatures"];
+      sharingFeatures =
+          (_json["sharingFeatures"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("source")) {
       source = _json["source"];
@@ -1642,7 +1643,7 @@ class ContactsListResponse {
 
   ContactsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Contact>((value) => new Contact.fromJson(value))
           .toList();
     }
@@ -1765,7 +1766,7 @@ class LocationsListResponse {
 
   LocationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
@@ -1876,7 +1877,7 @@ class MenuItem {
       removeWhenSelected = _json["removeWhenSelected"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"]
+      values = (_json["values"] as core.List)
           .map<MenuValue>((value) => new MenuValue.fromJson(value))
           .toList();
     }
@@ -1990,7 +1991,7 @@ class Notification {
       operation = _json["operation"];
     }
     if (_json.containsKey("userActions")) {
-      userActions = _json["userActions"]
+      userActions = (_json["userActions"] as core.List)
           .map<UserAction>((value) => new UserAction.fromJson(value))
           .toList();
     }
@@ -2170,7 +2171,7 @@ class Subscription {
       notification = new Notification.fromJson(_json["notification"]);
     }
     if (_json.containsKey("operation")) {
-      operation = _json["operation"];
+      operation = (_json["operation"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("updated")) {
       updated = core.DateTime.parse(_json["updated"]);
@@ -2230,7 +2231,7 @@ class SubscriptionsListResponse {
 
   SubscriptionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Subscription>((value) => new Subscription.fromJson(value))
           .toList();
     }
@@ -2411,7 +2412,7 @@ class TimelineItem {
 
   TimelineItem.fromJson(core.Map _json) {
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"]
+      attachments = (_json["attachments"] as core.List)
           .map<Attachment>((value) => new Attachment.fromJson(value))
           .toList();
     }
@@ -2458,7 +2459,7 @@ class TimelineItem {
       location = new Location.fromJson(_json["location"]);
     }
     if (_json.containsKey("menuItems")) {
-      menuItems = _json["menuItems"]
+      menuItems = (_json["menuItems"] as core.List)
           .map<MenuItem>((value) => new MenuItem.fromJson(value))
           .toList();
     }
@@ -2469,7 +2470,7 @@ class TimelineItem {
       pinScore = _json["pinScore"];
     }
     if (_json.containsKey("recipients")) {
-      recipients = _json["recipients"]
+      recipients = (_json["recipients"] as core.List)
           .map<Contact>((value) => new Contact.fromJson(value))
           .toList();
     }
@@ -2600,7 +2601,7 @@ class TimelineListResponse {
 
   TimelineListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TimelineItem>((value) => new TimelineItem.fromJson(value))
           .toList();
     }

@@ -146,7 +146,7 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -364,7 +364,7 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -425,7 +425,7 @@ class OrganizationsInspectTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -642,7 +642,7 @@ class OrganizationsInspectTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -723,7 +723,7 @@ class ProjectsContentResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -779,7 +779,7 @@ class ProjectsContentResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -833,7 +833,7 @@ class ProjectsContentResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -895,7 +895,7 @@ class ProjectsDataSourceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -950,7 +950,7 @@ class ProjectsDataSourceResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1013,7 +1013,7 @@ class ProjectsDeidentifyTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1231,7 +1231,7 @@ class ProjectsDeidentifyTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1290,7 +1290,7 @@ class ProjectsDlpJobsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1538,7 +1538,7 @@ class ProjectsImageResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1601,7 +1601,7 @@ class ProjectsInspectTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1818,7 +1818,7 @@ class ProjectsInspectTemplatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1878,7 +1878,7 @@ class ProjectsJobTriggersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2105,7 +2105,7 @@ class ProjectsJobTriggersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2150,7 +2150,7 @@ class GooglePrivacyDlpV2beta1AuxiliaryTable {
 
   GooglePrivacyDlpV2beta1AuxiliaryTable.fromJson(core.Map _json) {
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta1QuasiIdField>((value) =>
               new GooglePrivacyDlpV2beta1QuasiIdField.fromJson(value))
           .toList();
@@ -2193,7 +2193,7 @@ class GooglePrivacyDlpV2beta1BigQueryOptions {
 
   GooglePrivacyDlpV2beta1BigQueryOptions.fromJson(core.Map _json) {
     if (_json.containsKey("identifyingFields")) {
-      identifyingFields = _json["identifyingFields"]
+      identifyingFields = (_json["identifyingFields"] as core.List)
           .map<GooglePrivacyDlpV2beta1FieldId>(
               (value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value))
           .toList();
@@ -2314,7 +2314,7 @@ class GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1ValueFrequency>((value) =>
               new GooglePrivacyDlpV2beta1ValueFrequency.fromJson(value))
           .toList();
@@ -2357,12 +2357,13 @@ class GooglePrivacyDlpV2beta1CategoricalStatsResult {
 
   GooglePrivacyDlpV2beta1CategoricalStatsResult.fromJson(core.Map _json) {
     if (_json.containsKey("valueFrequencyHistogramBuckets")) {
-      valueFrequencyHistogramBuckets = _json["valueFrequencyHistogramBuckets"]
-          .map<GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket>(
-              (value) =>
-                  new GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket
-                      .fromJson(value))
-          .toList();
+      valueFrequencyHistogramBuckets =
+          (_json["valueFrequencyHistogramBuckets"] as core.List)
+              .map<GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket>(
+                  (value) =>
+                      new GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket
+                          .fromJson(value))
+              .toList();
     }
   }
 
@@ -2494,7 +2495,7 @@ class GooglePrivacyDlpV2beta1DatastoreOptions {
           new GooglePrivacyDlpV2beta1PartitionId.fromJson(_json["partitionId"]);
     }
     if (_json.containsKey("projection")) {
-      projection = _json["projection"]
+      projection = (_json["projection"] as core.List)
           .map<GooglePrivacyDlpV2beta1Projection>(
               (value) => new GooglePrivacyDlpV2beta1Projection.fromJson(value))
           .toList();
@@ -2768,7 +2769,7 @@ class GooglePrivacyDlpV2beta1InspectConfig {
 
   GooglePrivacyDlpV2beta1InspectConfig.fromJson(core.Map _json) {
     if (_json.containsKey("customInfoTypes")) {
-      customInfoTypes = _json["customInfoTypes"]
+      customInfoTypes = (_json["customInfoTypes"] as core.List)
           .map<GooglePrivacyDlpV2beta1CustomInfoType>((value) =>
               new GooglePrivacyDlpV2beta1CustomInfoType.fromJson(value))
           .toList();
@@ -2780,13 +2781,13 @@ class GooglePrivacyDlpV2beta1InspectConfig {
       includeQuote = _json["includeQuote"];
     }
     if (_json.containsKey("infoTypeLimits")) {
-      infoTypeLimits = _json["infoTypeLimits"]
+      infoTypeLimits = (_json["infoTypeLimits"] as core.List)
           .map<GooglePrivacyDlpV2beta1InfoTypeLimit>((value) =>
               new GooglePrivacyDlpV2beta1InfoTypeLimit.fromJson(value))
           .toList();
     }
     if (_json.containsKey("infoTypes")) {
-      infoTypes = _json["infoTypes"]
+      infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2beta1InfoType>(
               (value) => new GooglePrivacyDlpV2beta1InfoType.fromJson(value))
           .toList();
@@ -2857,7 +2858,7 @@ class GooglePrivacyDlpV2beta1InspectOperationMetadata {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("infoTypeStats")) {
-      infoTypeStats = _json["infoTypeStats"]
+      infoTypeStats = (_json["infoTypeStats"] as core.List)
           .map<GooglePrivacyDlpV2beta1InfoTypeStatistics>((value) =>
               new GooglePrivacyDlpV2beta1InfoTypeStatistics.fromJson(value))
           .toList();
@@ -2968,7 +2969,7 @@ class GooglePrivacyDlpV2beta1KAnonymityConfig {
           new GooglePrivacyDlpV2beta1EntityId.fromJson(_json["entityId"]);
     }
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta1FieldId>(
               (value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value))
           .toList();
@@ -3006,7 +3007,7 @@ class GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass {
       equivalenceClassSize = _json["equivalenceClassSize"];
     }
     if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = _json["quasiIdsValues"]
+      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1Value>(
               (value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
           .toList();
@@ -3049,7 +3050,7 @@ class GooglePrivacyDlpV2beta1KAnonymityHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass>((value) =>
               new GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass.fromJson(
                   value))
@@ -3094,7 +3095,7 @@ class GooglePrivacyDlpV2beta1KAnonymityResult {
   GooglePrivacyDlpV2beta1KAnonymityResult.fromJson(core.Map _json) {
     if (_json.containsKey("equivalenceClassHistogramBuckets")) {
       equivalenceClassHistogramBuckets =
-          _json["equivalenceClassHistogramBuckets"]
+          (_json["equivalenceClassHistogramBuckets"] as core.List)
               .map<GooglePrivacyDlpV2beta1KAnonymityHistogramBucket>((value) =>
                   new GooglePrivacyDlpV2beta1KAnonymityHistogramBucket.fromJson(
                       value))
@@ -3140,13 +3141,13 @@ class GooglePrivacyDlpV2beta1KMapEstimationConfig {
 
   GooglePrivacyDlpV2beta1KMapEstimationConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auxiliaryTables")) {
-      auxiliaryTables = _json["auxiliaryTables"]
+      auxiliaryTables = (_json["auxiliaryTables"] as core.List)
           .map<GooglePrivacyDlpV2beta1AuxiliaryTable>((value) =>
               new GooglePrivacyDlpV2beta1AuxiliaryTable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta1TaggedField>(
               (value) => new GooglePrivacyDlpV2beta1TaggedField.fromJson(value))
           .toList();
@@ -3203,7 +3204,7 @@ class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues>((value) =>
               new GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues.fromJson(
                   value))
@@ -3252,7 +3253,7 @@ class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues {
       estimatedAnonymity = _json["estimatedAnonymity"];
     }
     if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = _json["quasiIdsValues"]
+      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1Value>(
               (value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
           .toList();
@@ -3291,7 +3292,7 @@ class GooglePrivacyDlpV2beta1KMapEstimationResult {
 
   GooglePrivacyDlpV2beta1KMapEstimationResult.fromJson(core.Map _json) {
     if (_json.containsKey("kMapEstimationHistogram")) {
-      kMapEstimationHistogram = _json["kMapEstimationHistogram"]
+      kMapEstimationHistogram = (_json["kMapEstimationHistogram"] as core.List)
           .map<GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket>((value) =>
               new GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket.fromJson(
                   value))
@@ -3347,7 +3348,7 @@ class GooglePrivacyDlpV2beta1LDiversityConfig {
 
   GooglePrivacyDlpV2beta1LDiversityConfig.fromJson(core.Map _json) {
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta1FieldId>(
               (value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value))
           .toList();
@@ -3396,13 +3397,13 @@ class GooglePrivacyDlpV2beta1LDiversityEquivalenceClass {
       numDistinctSensitiveValues = _json["numDistinctSensitiveValues"];
     }
     if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = _json["quasiIdsValues"]
+      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1Value>(
               (value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
           .toList();
     }
     if (_json.containsKey("topSensitiveValues")) {
-      topSensitiveValues = _json["topSensitiveValues"]
+      topSensitiveValues = (_json["topSensitiveValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1ValueFrequency>((value) =>
               new GooglePrivacyDlpV2beta1ValueFrequency.fromJson(value))
           .toList();
@@ -3454,7 +3455,7 @@ class GooglePrivacyDlpV2beta1LDiversityHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1LDiversityEquivalenceClass>((value) =>
               new GooglePrivacyDlpV2beta1LDiversityEquivalenceClass.fromJson(
                   value))
@@ -3503,7 +3504,7 @@ class GooglePrivacyDlpV2beta1LDiversityResult {
   GooglePrivacyDlpV2beta1LDiversityResult.fromJson(core.Map _json) {
     if (_json.containsKey("sensitiveValueFrequencyHistogramBuckets")) {
       sensitiveValueFrequencyHistogramBuckets =
-          _json["sensitiveValueFrequencyHistogramBuckets"]
+          (_json["sensitiveValueFrequencyHistogramBuckets"] as core.List)
               .map<GooglePrivacyDlpV2beta1LDiversityHistogramBucket>((value) =>
                   new GooglePrivacyDlpV2beta1LDiversityHistogramBucket.fromJson(
                       value))
@@ -3571,7 +3572,7 @@ class GooglePrivacyDlpV2beta1NumericalStatsResult {
       minValue = new GooglePrivacyDlpV2beta1Value.fromJson(_json["minValue"]);
     }
     if (_json.containsKey("quantileValues")) {
-      quantileValues = _json["quantileValues"]
+      quantileValues = (_json["quantileValues"] as core.List)
           .map<GooglePrivacyDlpV2beta1Value>(
               (value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
           .toList();
@@ -4178,7 +4179,7 @@ class GooglePrivacyDlpV2beta1WordList {
 
   GooglePrivacyDlpV2beta1WordList.fromJson(core.Map _json) {
     if (_json.containsKey("words")) {
-      words = _json["words"];
+      words = (_json["words"] as core.List).cast<core.String>();
     }
   }
 
@@ -4366,7 +4367,7 @@ class GooglePrivacyDlpV2beta2AuxiliaryTable {
 
   GooglePrivacyDlpV2beta2AuxiliaryTable.fromJson(core.Map _json) {
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta2QuasiIdField>((value) =>
               new GooglePrivacyDlpV2beta2QuasiIdField.fromJson(value))
           .toList();
@@ -4409,7 +4410,7 @@ class GooglePrivacyDlpV2beta2BigQueryOptions {
 
   GooglePrivacyDlpV2beta2BigQueryOptions.fromJson(core.Map _json) {
     if (_json.containsKey("identifyingFields")) {
-      identifyingFields = _json["identifyingFields"]
+      identifyingFields = (_json["identifyingFields"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldId>(
               (value) => new GooglePrivacyDlpV2beta2FieldId.fromJson(value))
           .toList();
@@ -4542,7 +4543,7 @@ class GooglePrivacyDlpV2beta2BucketingConfig {
 
   GooglePrivacyDlpV2beta2BucketingConfig.fromJson(core.Map _json) {
     if (_json.containsKey("buckets")) {
-      buckets = _json["buckets"]
+      buckets = (_json["buckets"] as core.List)
           .map<GooglePrivacyDlpV2beta2Bucket>(
               (value) => new GooglePrivacyDlpV2beta2Bucket.fromJson(value))
           .toList();
@@ -4621,7 +4622,7 @@ class GooglePrivacyDlpV2beta2CategoricalStatsHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2ValueFrequency>((value) =>
               new GooglePrivacyDlpV2beta2ValueFrequency.fromJson(value))
           .toList();
@@ -4664,12 +4665,13 @@ class GooglePrivacyDlpV2beta2CategoricalStatsResult {
 
   GooglePrivacyDlpV2beta2CategoricalStatsResult.fromJson(core.Map _json) {
     if (_json.containsKey("valueFrequencyHistogramBuckets")) {
-      valueFrequencyHistogramBuckets = _json["valueFrequencyHistogramBuckets"]
-          .map<GooglePrivacyDlpV2beta2CategoricalStatsHistogramBucket>(
-              (value) =>
-                  new GooglePrivacyDlpV2beta2CategoricalStatsHistogramBucket
-                      .fromJson(value))
-          .toList();
+      valueFrequencyHistogramBuckets =
+          (_json["valueFrequencyHistogramBuckets"] as core.List)
+              .map<GooglePrivacyDlpV2beta2CategoricalStatsHistogramBucket>(
+                  (value) =>
+                      new GooglePrivacyDlpV2beta2CategoricalStatsHistogramBucket
+                          .fromJson(value))
+              .toList();
     }
   }
 
@@ -4719,7 +4721,7 @@ class GooglePrivacyDlpV2beta2CharacterMaskConfig {
 
   GooglePrivacyDlpV2beta2CharacterMaskConfig.fromJson(core.Map _json) {
     if (_json.containsKey("charactersToIgnore")) {
-      charactersToIgnore = _json["charactersToIgnore"]
+      charactersToIgnore = (_json["charactersToIgnore"] as core.List)
           .map<GooglePrivacyDlpV2beta2CharsToIgnore>((value) =>
               new GooglePrivacyDlpV2beta2CharsToIgnore.fromJson(value))
           .toList();
@@ -4976,7 +4978,7 @@ class GooglePrivacyDlpV2beta2Conditions {
 
   GooglePrivacyDlpV2beta2Conditions.fromJson(core.Map _json) {
     if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"]
+      conditions = (_json["conditions"] as core.List)
           .map<GooglePrivacyDlpV2beta2Condition>(
               (value) => new GooglePrivacyDlpV2beta2Condition.fromJson(value))
           .toList();
@@ -4999,12 +5001,12 @@ class GooglePrivacyDlpV2beta2ContentItem {
   /// Content data to inspect or redact.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Structured content for inspection.
@@ -5409,7 +5411,7 @@ class GooglePrivacyDlpV2beta2CustomInfoType {
 
   GooglePrivacyDlpV2beta2CustomInfoType.fromJson(core.Map _json) {
     if (_json.containsKey("detectionRules")) {
-      detectionRules = _json["detectionRules"]
+      detectionRules = (_json["detectionRules"] as core.List)
           .map<GooglePrivacyDlpV2beta2DetectionRule>((value) =>
               new GooglePrivacyDlpV2beta2DetectionRule.fromJson(value))
           .toList();
@@ -5859,7 +5861,7 @@ class GooglePrivacyDlpV2beta2DlpJob {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("errorResults")) {
-      errorResults = _json["errorResults"]
+      errorResults = (_json["errorResults"] as core.List)
           .map<GoogleRpcStatus>((value) => new GoogleRpcStatus.fromJson(value))
           .toList();
     }
@@ -5969,7 +5971,7 @@ class GooglePrivacyDlpV2beta2Error {
       details = new GoogleRpcStatus.fromJson(_json["details"]);
     }
     if (_json.containsKey("timestamps")) {
-      timestamps = _json["timestamps"];
+      timestamps = (_json["timestamps"] as core.List).cast<core.String>();
     }
   }
 
@@ -6076,7 +6078,7 @@ class GooglePrivacyDlpV2beta2FieldTransformation {
           _json["condition"]);
     }
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldId>(
               (value) => new GooglePrivacyDlpV2beta2FieldId.fromJson(value))
           .toList();
@@ -6224,7 +6226,7 @@ class GooglePrivacyDlpV2beta2FindingLimits {
 
   GooglePrivacyDlpV2beta2FindingLimits.fromJson(core.Map _json) {
     if (_json.containsKey("maxFindingsPerInfoType")) {
-      maxFindingsPerInfoType = _json["maxFindingsPerInfoType"]
+      maxFindingsPerInfoType = (_json["maxFindingsPerInfoType"] as core.List)
           .map<GooglePrivacyDlpV2beta2InfoTypeLimit>((value) =>
               new GooglePrivacyDlpV2beta2InfoTypeLimit.fromJson(value))
           .toList();
@@ -6509,7 +6511,7 @@ class GooglePrivacyDlpV2beta2InfoTypeDescription {
       name = _json["name"];
     }
     if (_json.containsKey("supportedBy")) {
-      supportedBy = _json["supportedBy"];
+      supportedBy = (_json["supportedBy"] as core.List).cast<core.String>();
     }
   }
 
@@ -6613,7 +6615,7 @@ class GooglePrivacyDlpV2beta2InfoTypeTransformation {
 
   GooglePrivacyDlpV2beta2InfoTypeTransformation.fromJson(core.Map _json) {
     if (_json.containsKey("infoTypes")) {
-      infoTypes = _json["infoTypes"]
+      infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2beta2InfoType>(
               (value) => new GooglePrivacyDlpV2beta2InfoType.fromJson(value))
           .toList();
@@ -6651,7 +6653,7 @@ class GooglePrivacyDlpV2beta2InfoTypeTransformations {
 
   GooglePrivacyDlpV2beta2InfoTypeTransformations.fromJson(core.Map _json) {
     if (_json.containsKey("transformations")) {
-      transformations = _json["transformations"]
+      transformations = (_json["transformations"] as core.List)
           .map<GooglePrivacyDlpV2beta2InfoTypeTransformation>((value) =>
               new GooglePrivacyDlpV2beta2InfoTypeTransformation.fromJson(value))
           .toList();
@@ -6706,7 +6708,7 @@ class GooglePrivacyDlpV2beta2InspectConfig {
 
   GooglePrivacyDlpV2beta2InspectConfig.fromJson(core.Map _json) {
     if (_json.containsKey("customInfoTypes")) {
-      customInfoTypes = _json["customInfoTypes"]
+      customInfoTypes = (_json["customInfoTypes"] as core.List)
           .map<GooglePrivacyDlpV2beta2CustomInfoType>((value) =>
               new GooglePrivacyDlpV2beta2CustomInfoType.fromJson(value))
           .toList();
@@ -6718,7 +6720,7 @@ class GooglePrivacyDlpV2beta2InspectConfig {
       includeQuote = _json["includeQuote"];
     }
     if (_json.containsKey("infoTypes")) {
-      infoTypes = _json["infoTypes"]
+      infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2beta2InfoType>(
               (value) => new GooglePrivacyDlpV2beta2InfoType.fromJson(value))
           .toList();
@@ -6925,7 +6927,7 @@ class GooglePrivacyDlpV2beta2InspectJobConfig {
 
   GooglePrivacyDlpV2beta2InspectJobConfig.fromJson(core.Map _json) {
     if (_json.containsKey("actions")) {
-      actions = _json["actions"]
+      actions = (_json["actions"] as core.List)
           .map<GooglePrivacyDlpV2beta2Action>(
               (value) => new GooglePrivacyDlpV2beta2Action.fromJson(value))
           .toList();
@@ -6986,7 +6988,7 @@ class GooglePrivacyDlpV2beta2InspectResult {
 
   GooglePrivacyDlpV2beta2InspectResult.fromJson(core.Map _json) {
     if (_json.containsKey("findings")) {
-      findings = _json["findings"]
+      findings = (_json["findings"] as core.List)
           .map<GooglePrivacyDlpV2beta2Finding>(
               (value) => new GooglePrivacyDlpV2beta2Finding.fromJson(value))
           .toList();
@@ -7140,7 +7142,7 @@ class GooglePrivacyDlpV2beta2JobTrigger {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<GooglePrivacyDlpV2beta2Error>(
               (value) => new GooglePrivacyDlpV2beta2Error.fromJson(value))
           .toList();
@@ -7159,7 +7161,7 @@ class GooglePrivacyDlpV2beta2JobTrigger {
       status = _json["status"];
     }
     if (_json.containsKey("triggers")) {
-      triggers = _json["triggers"]
+      triggers = (_json["triggers"] as core.List)
           .map<GooglePrivacyDlpV2beta2Trigger>(
               (value) => new GooglePrivacyDlpV2beta2Trigger.fromJson(value))
           .toList();
@@ -7236,7 +7238,7 @@ class GooglePrivacyDlpV2beta2KAnonymityConfig {
           new GooglePrivacyDlpV2beta2EntityId.fromJson(_json["entityId"]);
     }
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldId>(
               (value) => new GooglePrivacyDlpV2beta2FieldId.fromJson(value))
           .toList();
@@ -7274,7 +7276,7 @@ class GooglePrivacyDlpV2beta2KAnonymityEquivalenceClass {
       equivalenceClassSize = _json["equivalenceClassSize"];
     }
     if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = _json["quasiIdsValues"]
+      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2Value>(
               (value) => new GooglePrivacyDlpV2beta2Value.fromJson(value))
           .toList();
@@ -7316,7 +7318,7 @@ class GooglePrivacyDlpV2beta2KAnonymityHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2KAnonymityEquivalenceClass>((value) =>
               new GooglePrivacyDlpV2beta2KAnonymityEquivalenceClass.fromJson(
                   value))
@@ -7361,7 +7363,7 @@ class GooglePrivacyDlpV2beta2KAnonymityResult {
   GooglePrivacyDlpV2beta2KAnonymityResult.fromJson(core.Map _json) {
     if (_json.containsKey("equivalenceClassHistogramBuckets")) {
       equivalenceClassHistogramBuckets =
-          _json["equivalenceClassHistogramBuckets"]
+          (_json["equivalenceClassHistogramBuckets"] as core.List)
               .map<GooglePrivacyDlpV2beta2KAnonymityHistogramBucket>((value) =>
                   new GooglePrivacyDlpV2beta2KAnonymityHistogramBucket.fromJson(
                       value))
@@ -7407,13 +7409,13 @@ class GooglePrivacyDlpV2beta2KMapEstimationConfig {
 
   GooglePrivacyDlpV2beta2KMapEstimationConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auxiliaryTables")) {
-      auxiliaryTables = _json["auxiliaryTables"]
+      auxiliaryTables = (_json["auxiliaryTables"] as core.List)
           .map<GooglePrivacyDlpV2beta2AuxiliaryTable>((value) =>
               new GooglePrivacyDlpV2beta2AuxiliaryTable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta2TaggedField>(
               (value) => new GooglePrivacyDlpV2beta2TaggedField.fromJson(value))
           .toList();
@@ -7470,7 +7472,7 @@ class GooglePrivacyDlpV2beta2KMapEstimationHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2KMapEstimationQuasiIdValues>((value) =>
               new GooglePrivacyDlpV2beta2KMapEstimationQuasiIdValues.fromJson(
                   value))
@@ -7519,7 +7521,7 @@ class GooglePrivacyDlpV2beta2KMapEstimationQuasiIdValues {
       estimatedAnonymity = _json["estimatedAnonymity"];
     }
     if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = _json["quasiIdsValues"]
+      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2Value>(
               (value) => new GooglePrivacyDlpV2beta2Value.fromJson(value))
           .toList();
@@ -7558,7 +7560,7 @@ class GooglePrivacyDlpV2beta2KMapEstimationResult {
 
   GooglePrivacyDlpV2beta2KMapEstimationResult.fromJson(core.Map _json) {
     if (_json.containsKey("kMapEstimationHistogram")) {
-      kMapEstimationHistogram = _json["kMapEstimationHistogram"]
+      kMapEstimationHistogram = (_json["kMapEstimationHistogram"] as core.List)
           .map<GooglePrivacyDlpV2beta2KMapEstimationHistogramBucket>((value) =>
               new GooglePrivacyDlpV2beta2KMapEstimationHistogramBucket.fromJson(
                   value))
@@ -7606,7 +7608,7 @@ class GooglePrivacyDlpV2beta2Key {
           new GooglePrivacyDlpV2beta2PartitionId.fromJson(_json["partitionId"]);
     }
     if (_json.containsKey("path")) {
-      path = _json["path"]
+      path = (_json["path"] as core.List)
           .map<GooglePrivacyDlpV2beta2PathElement>(
               (value) => new GooglePrivacyDlpV2beta2PathElement.fromJson(value))
           .toList();
@@ -7660,12 +7662,12 @@ class GooglePrivacyDlpV2beta2KmsWrappedCryptoKey {
   /// The wrapped data crypto key. [required]
   core.String wrappedKey;
   core.List<core.int> get wrappedKeyAsBytes {
-    return convert.BASE64.decode(wrappedKey);
+    return convert.base64.decode(wrappedKey);
   }
 
   void set wrappedKeyAsBytes(core.List<core.int> _bytes) {
     wrappedKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   GooglePrivacyDlpV2beta2KmsWrappedCryptoKey();
@@ -7706,7 +7708,7 @@ class GooglePrivacyDlpV2beta2LDiversityConfig {
 
   GooglePrivacyDlpV2beta2LDiversityConfig.fromJson(core.Map _json) {
     if (_json.containsKey("quasiIds")) {
-      quasiIds = _json["quasiIds"]
+      quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldId>(
               (value) => new GooglePrivacyDlpV2beta2FieldId.fromJson(value))
           .toList();
@@ -7755,13 +7757,13 @@ class GooglePrivacyDlpV2beta2LDiversityEquivalenceClass {
       numDistinctSensitiveValues = _json["numDistinctSensitiveValues"];
     }
     if (_json.containsKey("quasiIdsValues")) {
-      quasiIdsValues = _json["quasiIdsValues"]
+      quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2Value>(
               (value) => new GooglePrivacyDlpV2beta2Value.fromJson(value))
           .toList();
     }
     if (_json.containsKey("topSensitiveValues")) {
-      topSensitiveValues = _json["topSensitiveValues"]
+      topSensitiveValues = (_json["topSensitiveValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2ValueFrequency>((value) =>
               new GooglePrivacyDlpV2beta2ValueFrequency.fromJson(value))
           .toList();
@@ -7812,7 +7814,7 @@ class GooglePrivacyDlpV2beta2LDiversityHistogramBucket {
       bucketSize = _json["bucketSize"];
     }
     if (_json.containsKey("bucketValues")) {
-      bucketValues = _json["bucketValues"]
+      bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2LDiversityEquivalenceClass>((value) =>
               new GooglePrivacyDlpV2beta2LDiversityEquivalenceClass.fromJson(
                   value))
@@ -7861,7 +7863,7 @@ class GooglePrivacyDlpV2beta2LDiversityResult {
   GooglePrivacyDlpV2beta2LDiversityResult.fromJson(core.Map _json) {
     if (_json.containsKey("sensitiveValueFrequencyHistogramBuckets")) {
       sensitiveValueFrequencyHistogramBuckets =
-          _json["sensitiveValueFrequencyHistogramBuckets"]
+          (_json["sensitiveValueFrequencyHistogramBuckets"] as core.List)
               .map<GooglePrivacyDlpV2beta2LDiversityHistogramBucket>((value) =>
                   new GooglePrivacyDlpV2beta2LDiversityHistogramBucket.fromJson(
                       value))
@@ -7945,7 +7947,7 @@ class GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse {
   GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("deidentifyTemplates")) {
-      deidentifyTemplates = _json["deidentifyTemplates"]
+      deidentifyTemplates = (_json["deidentifyTemplates"] as core.List)
           .map<GooglePrivacyDlpV2beta2DeidentifyTemplate>((value) =>
               new GooglePrivacyDlpV2beta2DeidentifyTemplate.fromJson(value))
           .toList();
@@ -7981,7 +7983,7 @@ class GooglePrivacyDlpV2beta2ListDlpJobsResponse {
 
   GooglePrivacyDlpV2beta2ListDlpJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
-      jobs = _json["jobs"]
+      jobs = (_json["jobs"] as core.List)
           .map<GooglePrivacyDlpV2beta2DlpJob>(
               (value) => new GooglePrivacyDlpV2beta2DlpJob.fromJson(value))
           .toList();
@@ -8013,7 +8015,7 @@ class GooglePrivacyDlpV2beta2ListInfoTypesResponse {
 
   GooglePrivacyDlpV2beta2ListInfoTypesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("infoTypes")) {
-      infoTypes = _json["infoTypes"]
+      infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2beta2InfoTypeDescription>((value) =>
               new GooglePrivacyDlpV2beta2InfoTypeDescription.fromJson(value))
           .toList();
@@ -8043,7 +8045,7 @@ class GooglePrivacyDlpV2beta2ListInspectTemplatesResponse {
 
   GooglePrivacyDlpV2beta2ListInspectTemplatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("inspectTemplates")) {
-      inspectTemplates = _json["inspectTemplates"]
+      inspectTemplates = (_json["inspectTemplates"] as core.List)
           .map<GooglePrivacyDlpV2beta2InspectTemplate>((value) =>
               new GooglePrivacyDlpV2beta2InspectTemplate.fromJson(value))
           .toList();
@@ -8080,7 +8082,7 @@ class GooglePrivacyDlpV2beta2ListJobTriggersResponse {
 
   GooglePrivacyDlpV2beta2ListJobTriggersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobTriggers")) {
-      jobTriggers = _json["jobTriggers"]
+      jobTriggers = (_json["jobTriggers"] as core.List)
           .map<GooglePrivacyDlpV2beta2JobTrigger>(
               (value) => new GooglePrivacyDlpV2beta2JobTrigger.fromJson(value))
           .toList();
@@ -8151,7 +8153,7 @@ class GooglePrivacyDlpV2beta2Location {
       fieldId = new GooglePrivacyDlpV2beta2FieldId.fromJson(_json["fieldId"]);
     }
     if (_json.containsKey("imageBoxes")) {
-      imageBoxes = _json["imageBoxes"]
+      imageBoxes = (_json["imageBoxes"] as core.List)
           .map<GooglePrivacyDlpV2beta2ImageLocation>((value) =>
               new GooglePrivacyDlpV2beta2ImageLocation.fromJson(value))
           .toList();
@@ -8239,7 +8241,7 @@ class GooglePrivacyDlpV2beta2NumericalStatsResult {
       minValue = new GooglePrivacyDlpV2beta2Value.fromJson(_json["minValue"]);
     }
     if (_json.containsKey("quantileValues")) {
-      quantileValues = _json["quantileValues"]
+      quantileValues = (_json["quantileValues"] as core.List)
           .map<GooglePrivacyDlpV2beta2Value>(
               (value) => new GooglePrivacyDlpV2beta2Value.fromJson(value))
           .toList();
@@ -8745,13 +8747,13 @@ class GooglePrivacyDlpV2beta2RecordTransformations {
 
   GooglePrivacyDlpV2beta2RecordTransformations.fromJson(core.Map _json) {
     if (_json.containsKey("fieldTransformations")) {
-      fieldTransformations = _json["fieldTransformations"]
+      fieldTransformations = (_json["fieldTransformations"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldTransformation>((value) =>
               new GooglePrivacyDlpV2beta2FieldTransformation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("recordSuppressions")) {
-      recordSuppressions = _json["recordSuppressions"]
+      recordSuppressions = (_json["recordSuppressions"] as core.List)
           .map<GooglePrivacyDlpV2beta2RecordSuppression>((value) =>
               new GooglePrivacyDlpV2beta2RecordSuppression.fromJson(value))
           .toList();
@@ -8794,12 +8796,12 @@ class GooglePrivacyDlpV2beta2RedactImageRequest {
   /// The bytes of the image to redact.
   core.String imageData;
   core.List<core.int> get imageDataAsBytes {
-    return convert.BASE64.decode(imageData);
+    return convert.base64.decode(imageData);
   }
 
   void set imageDataAsBytes(core.List<core.int> _bytes) {
     imageData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The configuration for specifying what content to redact from images.
@@ -8819,7 +8821,7 @@ class GooglePrivacyDlpV2beta2RedactImageRequest {
       imageData = _json["imageData"];
     }
     if (_json.containsKey("imageRedactionConfigs")) {
-      imageRedactionConfigs = _json["imageRedactionConfigs"]
+      imageRedactionConfigs = (_json["imageRedactionConfigs"] as core.List)
           .map<GooglePrivacyDlpV2beta2ImageRedactionConfig>((value) =>
               new GooglePrivacyDlpV2beta2ImageRedactionConfig.fromJson(value))
           .toList();
@@ -8863,12 +8865,12 @@ class GooglePrivacyDlpV2beta2RedactImageResponse {
   /// The redacted image. The type will be the same as the original image.
   core.String redactedImage;
   core.List<core.int> get redactedImageAsBytes {
-    return convert.BASE64.decode(redactedImage);
+    return convert.base64.decode(redactedImage);
   }
 
   void set redactedImageAsBytes(core.List<core.int> _bytes) {
     redactedImage =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   GooglePrivacyDlpV2beta2RedactImageResponse();
@@ -9116,7 +9118,7 @@ class GooglePrivacyDlpV2beta2Result {
 
   GooglePrivacyDlpV2beta2Result.fromJson(core.Map _json) {
     if (_json.containsKey("infoTypeStats")) {
-      infoTypeStats = _json["infoTypeStats"]
+      infoTypeStats = (_json["infoTypeStats"] as core.List)
           .map<GooglePrivacyDlpV2beta2InfoTypeStatistics>((value) =>
               new GooglePrivacyDlpV2beta2InfoTypeStatistics.fromJson(value))
           .toList();
@@ -9162,7 +9164,7 @@ class GooglePrivacyDlpV2beta2RiskAnalysisJobConfig {
 
   GooglePrivacyDlpV2beta2RiskAnalysisJobConfig.fromJson(core.Map _json) {
     if (_json.containsKey("actions")) {
-      actions = _json["actions"]
+      actions = (_json["actions"] as core.List)
           .map<GooglePrivacyDlpV2beta2Action>(
               (value) => new GooglePrivacyDlpV2beta2Action.fromJson(value))
           .toList();
@@ -9200,7 +9202,7 @@ class GooglePrivacyDlpV2beta2Row {
 
   GooglePrivacyDlpV2beta2Row.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
-      values = _json["values"]
+      values = (_json["values"] as core.List)
           .map<GooglePrivacyDlpV2beta2Value>(
               (value) => new GooglePrivacyDlpV2beta2Value.fromJson(value))
           .toList();
@@ -9398,13 +9400,13 @@ class GooglePrivacyDlpV2beta2Table {
 
   GooglePrivacyDlpV2beta2Table.fromJson(core.Map _json) {
     if (_json.containsKey("headers")) {
-      headers = _json["headers"]
+      headers = (_json["headers"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldId>(
               (value) => new GooglePrivacyDlpV2beta2FieldId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"]
+      rows = (_json["rows"] as core.List)
           .map<GooglePrivacyDlpV2beta2Row>(
               (value) => new GooglePrivacyDlpV2beta2Row.fromJson(value))
           .toList();
@@ -9598,7 +9600,7 @@ class GooglePrivacyDlpV2beta2TransformationOverview {
 
   GooglePrivacyDlpV2beta2TransformationOverview.fromJson(core.Map _json) {
     if (_json.containsKey("transformationSummaries")) {
-      transformationSummaries = _json["transformationSummaries"]
+      transformationSummaries = (_json["transformationSummaries"] as core.List)
           .map<GooglePrivacyDlpV2beta2TransformationSummary>((value) =>
               new GooglePrivacyDlpV2beta2TransformationSummary.fromJson(value))
           .toList();
@@ -9654,7 +9656,7 @@ class GooglePrivacyDlpV2beta2TransformationSummary {
       field = new GooglePrivacyDlpV2beta2FieldId.fromJson(_json["field"]);
     }
     if (_json.containsKey("fieldTransformations")) {
-      fieldTransformations = _json["fieldTransformations"]
+      fieldTransformations = (_json["fieldTransformations"] as core.List)
           .map<GooglePrivacyDlpV2beta2FieldTransformation>((value) =>
               new GooglePrivacyDlpV2beta2FieldTransformation.fromJson(value))
           .toList();
@@ -9668,7 +9670,7 @@ class GooglePrivacyDlpV2beta2TransformationSummary {
           _json["recordSuppress"]);
     }
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<GooglePrivacyDlpV2beta2SummaryResult>((value) =>
               new GooglePrivacyDlpV2beta2SummaryResult.fromJson(value))
           .toList();
@@ -9771,12 +9773,12 @@ class GooglePrivacyDlpV2beta2UnwrappedCryptoKey {
   /// The AES 128/192/256 bit key. [required]
   core.String key;
   core.List<core.int> get keyAsBytes {
-    return convert.BASE64.decode(key);
+    return convert.base64.decode(key);
   }
 
   void set keyAsBytes(core.List<core.int> _bytes) {
     key =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   GooglePrivacyDlpV2beta2UnwrappedCryptoKey();
@@ -10010,7 +10012,7 @@ class GooglePrivacyDlpV2beta2WordList {
 
   GooglePrivacyDlpV2beta2WordList.fromJson(core.Map _json) {
     if (_json.containsKey("words")) {
-      words = _json["words"];
+      words = (_json["words"] as core.List).cast<core.String>();
     }
   }
 
@@ -10124,7 +10126,10 @@ class GoogleRpcStatus {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

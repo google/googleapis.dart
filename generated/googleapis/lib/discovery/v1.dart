@@ -227,7 +227,7 @@ class DirectoryListItems {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -303,7 +303,7 @@ class DirectoryList {
       discoveryVersion = _json["discoveryVersion"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<DirectoryListItems>(
               (value) => new DirectoryListItems.fromJson(value))
           .toList();
@@ -338,7 +338,7 @@ class JsonSchemaAnnotations {
 
   JsonSchemaAnnotations.fromJson(core.Map _json) {
     if (_json.containsKey("required")) {
-      required = _json["required"];
+      required = (_json["required"] as core.List).cast<core.String>();
     }
   }
 
@@ -397,7 +397,7 @@ class JsonSchemaVariant {
       discriminant = _json["discriminant"];
     }
     if (_json.containsKey("map")) {
-      map = _json["map"]
+      map = (_json["map"] as core.List)
           .map<JsonSchemaVariantMap>(
               (value) => new JsonSchemaVariantMap.fromJson(value))
           .toList();
@@ -512,10 +512,11 @@ class JsonSchema {
       description = _json["description"];
     }
     if (_json.containsKey("enum")) {
-      enum_ = _json["enum"];
+      enum_ = (_json["enum"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("enumDescriptions")) {
-      enumDescriptions = _json["enumDescriptions"];
+      enumDescriptions =
+          (_json["enumDescriptions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("format")) {
       format = _json["format"];
@@ -539,11 +540,9 @@ class JsonSchema {
       pattern = _json["pattern"];
     }
     if (_json.containsKey("properties")) {
-      properties =
-          commons.mapMap<core.Map<core.String, core.Object>, JsonSchema>(
-              _json["properties"],
-              (core.Map<core.String, core.Object> item) =>
-                  new JsonSchema.fromJson(item));
+      properties = commons.mapMap<core.Map, JsonSchema>(
+          _json["properties"].cast<core.String, core.Map>(),
+          (core.Map item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("readOnly")) {
       readOnly = _json["readOnly"];
@@ -663,10 +662,9 @@ class RestDescriptionAuthOauth2 {
 
   RestDescriptionAuthOauth2.fromJson(core.Map _json) {
     if (_json.containsKey("scopes")) {
-      scopes = commons.mapMap<core.Map<core.String, core.Object>,
-              RestDescriptionAuthOauth2ScopesValue>(
-          _json["scopes"],
-          (core.Map<core.String, core.Object> item) =>
+      scopes = commons.mapMap<core.Map, RestDescriptionAuthOauth2ScopesValue>(
+          _json["scopes"].cast<core.String, core.Map>(),
+          (core.Map item) =>
               new RestDescriptionAuthOauth2ScopesValue.fromJson(item));
     }
   }
@@ -864,7 +862,7 @@ class RestDescription {
       exponentialBackoffDefault = _json["exponentialBackoffDefault"];
     }
     if (_json.containsKey("features")) {
-      features = _json["features"];
+      features = (_json["features"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("icons")) {
       icons = new RestDescriptionIcons.fromJson(_json["icons"]);
@@ -876,13 +874,12 @@ class RestDescription {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("methods")) {
-      methods = commons.mapMap<core.Map<core.String, core.Object>, RestMethod>(
-          _json["methods"],
-          (core.Map<core.String, core.Object> item) =>
-              new RestMethod.fromJson(item));
+      methods = commons.mapMap<core.Map, RestMethod>(
+          _json["methods"].cast<core.String, core.Map>(),
+          (core.Map item) => new RestMethod.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -897,21 +894,17 @@ class RestDescription {
       packagePath = _json["packagePath"];
     }
     if (_json.containsKey("parameters")) {
-      parameters =
-          commons.mapMap<core.Map<core.String, core.Object>, JsonSchema>(
-              _json["parameters"],
-              (core.Map<core.String, core.Object> item) =>
-                  new JsonSchema.fromJson(item));
+      parameters = commons.mapMap<core.Map, JsonSchema>(
+          _json["parameters"].cast<core.String, core.Map>(),
+          (core.Map item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("protocol")) {
       protocol = _json["protocol"];
     }
     if (_json.containsKey("resources")) {
-      resources =
-          commons.mapMap<core.Map<core.String, core.Object>, RestResource>(
-              _json["resources"],
-              (core.Map<core.String, core.Object> item) =>
-                  new RestResource.fromJson(item));
+      resources = commons.mapMap<core.Map, RestResource>(
+          _json["resources"].cast<core.String, core.Map>(),
+          (core.Map item) => new RestResource.fromJson(item));
     }
     if (_json.containsKey("revision")) {
       revision = _json["revision"];
@@ -920,10 +913,9 @@ class RestDescription {
       rootUrl = _json["rootUrl"];
     }
     if (_json.containsKey("schemas")) {
-      schemas = commons.mapMap<core.Map<core.String, core.Object>, JsonSchema>(
-          _json["schemas"],
-          (core.Map<core.String, core.Object> item) =>
-              new JsonSchema.fromJson(item));
+      schemas = commons.mapMap<core.Map, JsonSchema>(
+          _json["schemas"].cast<core.String, core.Map>(),
+          (core.Map item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("servicePath")) {
       servicePath = _json["servicePath"];
@@ -1159,7 +1151,7 @@ class RestMethodMediaUpload {
 
   RestMethodMediaUpload.fromJson(core.Map _json) {
     if (_json.containsKey("accept")) {
-      accept = _json["accept"];
+      accept = (_json["accept"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("maxSize")) {
       maxSize = _json["maxSize"];
@@ -1313,14 +1305,13 @@ class RestMethod {
       mediaUpload = new RestMethodMediaUpload.fromJson(_json["mediaUpload"]);
     }
     if (_json.containsKey("parameterOrder")) {
-      parameterOrder = _json["parameterOrder"];
+      parameterOrder =
+          (_json["parameterOrder"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("parameters")) {
-      parameters =
-          commons.mapMap<core.Map<core.String, core.Object>, JsonSchema>(
-              _json["parameters"],
-              (core.Map<core.String, core.Object> item) =>
-                  new JsonSchema.fromJson(item));
+      parameters = commons.mapMap<core.Map, JsonSchema>(
+          _json["parameters"].cast<core.String, core.Map>(),
+          (core.Map item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -1332,7 +1323,7 @@ class RestMethod {
       response = new RestMethodResponse.fromJson(_json["response"]);
     }
     if (_json.containsKey("scopes")) {
-      scopes = _json["scopes"];
+      scopes = (_json["scopes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("supportsMediaDownload")) {
       supportsMediaDownload = _json["supportsMediaDownload"];
@@ -1413,17 +1404,14 @@ class RestResource {
 
   RestResource.fromJson(core.Map _json) {
     if (_json.containsKey("methods")) {
-      methods = commons.mapMap<core.Map<core.String, core.Object>, RestMethod>(
-          _json["methods"],
-          (core.Map<core.String, core.Object> item) =>
-              new RestMethod.fromJson(item));
+      methods = commons.mapMap<core.Map, RestMethod>(
+          _json["methods"].cast<core.String, core.Map>(),
+          (core.Map item) => new RestMethod.fromJson(item));
     }
     if (_json.containsKey("resources")) {
-      resources =
-          commons.mapMap<core.Map<core.String, core.Object>, RestResource>(
-              _json["resources"],
-              (core.Map<core.String, core.Object> item) =>
-                  new RestResource.fromJson(item));
+      resources = commons.mapMap<core.Map, RestResource>(
+          _json["resources"].cast<core.String, core.Map>(),
+          (core.Map item) => new RestResource.fromJson(item));
     }
   }
 

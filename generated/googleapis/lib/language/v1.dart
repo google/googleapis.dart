@@ -71,7 +71,7 @@ class DocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -116,7 +116,7 @@ class DocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -161,7 +161,7 @@ class DocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -208,7 +208,7 @@ class DocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,7 +252,7 @@ class DocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -295,7 +295,7 @@ class DocumentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -375,7 +375,7 @@ class AnalyzeEntitiesResponse {
 
   AnalyzeEntitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entities")) {
-      entities = _json["entities"]
+      entities = (_json["entities"] as core.List)
           .map<Entity>((value) => new Entity.fromJson(value))
           .toList();
     }
@@ -459,7 +459,7 @@ class AnalyzeEntitySentimentResponse {
 
   AnalyzeEntitySentimentResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entities")) {
-      entities = _json["entities"]
+      entities = (_json["entities"] as core.List)
           .map<Entity>((value) => new Entity.fromJson(value))
           .toList();
     }
@@ -552,7 +552,7 @@ class AnalyzeSentimentResponse {
       language = _json["language"];
     }
     if (_json.containsKey("sentences")) {
-      sentences = _json["sentences"]
+      sentences = (_json["sentences"] as core.List)
           .map<Sentence>((value) => new Sentence.fromJson(value))
           .toList();
     }
@@ -642,12 +642,12 @@ class AnalyzeSyntaxResponse {
       language = _json["language"];
     }
     if (_json.containsKey("sentences")) {
-      sentences = _json["sentences"]
+      sentences = (_json["sentences"] as core.List)
           .map<Sentence>((value) => new Sentence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokens")) {
-      tokens = _json["tokens"]
+      tokens = (_json["tokens"] as core.List)
           .map<Token>((value) => new Token.fromJson(value))
           .toList();
     }
@@ -759,7 +759,7 @@ class AnnotateTextResponse {
 
   AnnotateTextResponse.fromJson(core.Map _json) {
     if (_json.containsKey("categories")) {
-      categories = _json["categories"]
+      categories = (_json["categories"] as core.List)
           .map<ClassificationCategory>(
               (value) => new ClassificationCategory.fromJson(value))
           .toList();
@@ -768,7 +768,7 @@ class AnnotateTextResponse {
       documentSentiment = new Sentiment.fromJson(_json["documentSentiment"]);
     }
     if (_json.containsKey("entities")) {
-      entities = _json["entities"]
+      entities = (_json["entities"] as core.List)
           .map<Entity>((value) => new Entity.fromJson(value))
           .toList();
     }
@@ -776,12 +776,12 @@ class AnnotateTextResponse {
       language = _json["language"];
     }
     if (_json.containsKey("sentences")) {
-      sentences = _json["sentences"]
+      sentences = (_json["sentences"] as core.List)
           .map<Sentence>((value) => new Sentence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokens")) {
-      tokens = _json["tokens"]
+      tokens = (_json["tokens"] as core.List)
           .map<Token>((value) => new Token.fromJson(value))
           .toList();
     }
@@ -878,7 +878,7 @@ class ClassifyTextResponse {
 
   ClassifyTextResponse.fromJson(core.Map _json) {
     if (_json.containsKey("categories")) {
-      categories = _json["categories"]
+      categories = (_json["categories"] as core.List)
           .map<ClassificationCategory>(
               (value) => new ClassificationCategory.fromJson(value))
           .toList();
@@ -1134,12 +1134,13 @@ class Entity {
 
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey("mentions")) {
-      mentions = _json["mentions"]
+      mentions = (_json["mentions"] as core.List)
           .map<EntityMention>((value) => new EntityMention.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1668,7 +1669,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

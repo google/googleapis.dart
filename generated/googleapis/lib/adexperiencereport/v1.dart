@@ -182,7 +182,7 @@ class PlatformSummary {
       lastChangeTime = _json["lastChangeTime"];
     }
     if (_json.containsKey("region")) {
-      region = _json["region"];
+      region = (_json["region"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("reportUrl")) {
       reportUrl = _json["reportUrl"];
@@ -270,7 +270,7 @@ class ViolatingSitesResponse {
 
   ViolatingSitesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("violatingSites")) {
-      violatingSites = _json["violatingSites"]
+      violatingSites = (_json["violatingSites"] as core.List)
           .map<SiteSummaryResponse>(
               (value) => new SiteSummaryResponse.fromJson(value))
           .toList();

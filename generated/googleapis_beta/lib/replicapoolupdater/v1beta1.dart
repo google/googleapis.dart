@@ -207,7 +207,7 @@ class RollingUpdatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -769,7 +769,7 @@ class InstanceUpdateError {
 
   InstanceUpdateError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<InstanceUpdateErrorErrors>(
               (value) => new InstanceUpdateErrorErrors.fromJson(value))
           .toList();
@@ -855,7 +855,7 @@ class InstanceUpdateList {
 
   InstanceUpdateList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceUpdate>((value) => new InstanceUpdate.fromJson(value))
           .toList();
     }
@@ -941,7 +941,7 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<OperationErrorErrors>(
               (value) => new OperationErrorErrors.fromJson(value))
           .toList();
@@ -1006,7 +1006,7 @@ class OperationWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationWarningsData>(
               (value) => new OperationWarningsData.fromJson(value))
           .toList();
@@ -1156,7 +1156,7 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<OperationWarnings>(
               (value) => new OperationWarnings.fromJson(value))
           .toList();
@@ -1264,7 +1264,7 @@ class OperationList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -1352,7 +1352,7 @@ class RollingUpdateError {
 
   RollingUpdateError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<RollingUpdateErrorErrors>(
               (value) => new RollingUpdateErrorErrors.fromJson(value))
           .toList();
@@ -1641,7 +1641,7 @@ class RollingUpdateList {
 
   RollingUpdateList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<RollingUpdate>((value) => new RollingUpdate.fromJson(value))
           .toList();
     }

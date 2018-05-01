@@ -150,7 +150,7 @@ class ContactGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -363,7 +363,7 @@ class ContactGroupsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -420,7 +420,7 @@ class ContactGroupsMembersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -480,7 +480,7 @@ class PeopleResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -816,7 +816,7 @@ class PeopleResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -1166,7 +1166,7 @@ class BatchGetContactGroupsResponse {
 
   BatchGetContactGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responses")) {
-      responses = _json["responses"]
+      responses = (_json["responses"] as core.List)
           .map<ContactGroupResponse>(
               (value) => new ContactGroupResponse.fromJson(value))
           .toList();
@@ -1359,7 +1359,8 @@ class ContactGroup {
       memberCount = _json["memberCount"];
     }
     if (_json.containsKey("memberResourceNames")) {
-      memberResourceNames = _json["memberResourceNames"];
+      memberResourceNames =
+          (_json["memberResourceNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("metadata")) {
       metadata = new ContactGroupMetadata.fromJson(_json["metadata"]);
@@ -1888,7 +1889,7 @@ class GetPeopleResponse {
 
   GetPeopleResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responses")) {
-      responses = _json["responses"]
+      responses = (_json["responses"] as core.List)
           .map<PersonResponse>((value) => new PersonResponse.fromJson(value))
           .toList();
     }
@@ -2043,7 +2044,7 @@ class ListConnectionsResponse {
 
   ListConnectionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("connections")) {
-      connections = _json["connections"]
+      connections = (_json["connections"] as core.List)
           .map<Person>((value) => new Person.fromJson(value))
           .toList();
     }
@@ -2103,7 +2104,7 @@ class ListContactGroupsResponse {
 
   ListContactGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroups")) {
-      contactGroups = _json["contactGroups"]
+      contactGroups = (_json["contactGroups"] as core.List)
           .map<ContactGroup>((value) => new ContactGroup.fromJson(value))
           .toList();
     }
@@ -2228,10 +2229,12 @@ class ModifyContactGroupMembersRequest {
 
   ModifyContactGroupMembersRequest.fromJson(core.Map _json) {
     if (_json.containsKey("resourceNamesToAdd")) {
-      resourceNamesToAdd = _json["resourceNamesToAdd"];
+      resourceNamesToAdd =
+          (_json["resourceNamesToAdd"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("resourceNamesToRemove")) {
-      resourceNamesToRemove = _json["resourceNamesToRemove"];
+      resourceNamesToRemove =
+          (_json["resourceNamesToRemove"] as core.List).cast<core.String>();
     }
   }
 
@@ -2257,7 +2260,8 @@ class ModifyContactGroupMembersResponse {
 
   ModifyContactGroupMembersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("notFoundResourceNames")) {
-      notFoundResourceNames = _json["notFoundResourceNames"];
+      notFoundResourceNames =
+          (_json["notFoundResourceNames"] as core.List).cast<core.String>();
     }
   }
 
@@ -2759,7 +2763,7 @@ class Person {
 
   Person.fromJson(core.Map _json) {
     if (_json.containsKey("addresses")) {
-      addresses = _json["addresses"]
+      addresses = (_json["addresses"] as core.List)
           .map<Address>((value) => new Address.fromJson(value))
           .toList();
     }
@@ -2767,32 +2771,32 @@ class Person {
       ageRange = _json["ageRange"];
     }
     if (_json.containsKey("ageRanges")) {
-      ageRanges = _json["ageRanges"]
+      ageRanges = (_json["ageRanges"] as core.List)
           .map<AgeRangeType>((value) => new AgeRangeType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("biographies")) {
-      biographies = _json["biographies"]
+      biographies = (_json["biographies"] as core.List)
           .map<Biography>((value) => new Biography.fromJson(value))
           .toList();
     }
     if (_json.containsKey("birthdays")) {
-      birthdays = _json["birthdays"]
+      birthdays = (_json["birthdays"] as core.List)
           .map<Birthday>((value) => new Birthday.fromJson(value))
           .toList();
     }
     if (_json.containsKey("braggingRights")) {
-      braggingRights = _json["braggingRights"]
+      braggingRights = (_json["braggingRights"] as core.List)
           .map<BraggingRights>((value) => new BraggingRights.fromJson(value))
           .toList();
     }
     if (_json.containsKey("coverPhotos")) {
-      coverPhotos = _json["coverPhotos"]
+      coverPhotos = (_json["coverPhotos"] as core.List)
           .map<CoverPhoto>((value) => new CoverPhoto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("emailAddresses")) {
-      emailAddresses = _json["emailAddresses"]
+      emailAddresses = (_json["emailAddresses"] as core.List)
           .map<EmailAddress>((value) => new EmailAddress.fromJson(value))
           .toList();
     }
@@ -2800,32 +2804,32 @@ class Person {
       etag = _json["etag"];
     }
     if (_json.containsKey("events")) {
-      events = _json["events"]
+      events = (_json["events"] as core.List)
           .map<Event>((value) => new Event.fromJson(value))
           .toList();
     }
     if (_json.containsKey("genders")) {
-      genders = _json["genders"]
+      genders = (_json["genders"] as core.List)
           .map<Gender>((value) => new Gender.fromJson(value))
           .toList();
     }
     if (_json.containsKey("imClients")) {
-      imClients = _json["imClients"]
+      imClients = (_json["imClients"] as core.List)
           .map<ImClient>((value) => new ImClient.fromJson(value))
           .toList();
     }
     if (_json.containsKey("interests")) {
-      interests = _json["interests"]
+      interests = (_json["interests"] as core.List)
           .map<Interest>((value) => new Interest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("locales")) {
-      locales = _json["locales"]
+      locales = (_json["locales"] as core.List)
           .map<Locale>((value) => new Locale.fromJson(value))
           .toList();
     }
     if (_json.containsKey("memberships")) {
-      memberships = _json["memberships"]
+      memberships = (_json["memberships"] as core.List)
           .map<Membership>((value) => new Membership.fromJson(value))
           .toList();
     }
@@ -2833,54 +2837,54 @@ class Person {
       metadata = new PersonMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("names")) {
-      names = _json["names"]
+      names = (_json["names"] as core.List)
           .map<Name>((value) => new Name.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nicknames")) {
-      nicknames = _json["nicknames"]
+      nicknames = (_json["nicknames"] as core.List)
           .map<Nickname>((value) => new Nickname.fromJson(value))
           .toList();
     }
     if (_json.containsKey("occupations")) {
-      occupations = _json["occupations"]
+      occupations = (_json["occupations"] as core.List)
           .map<Occupation>((value) => new Occupation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("organizations")) {
-      organizations = _json["organizations"]
+      organizations = (_json["organizations"] as core.List)
           .map<Organization>((value) => new Organization.fromJson(value))
           .toList();
     }
     if (_json.containsKey("phoneNumbers")) {
-      phoneNumbers = _json["phoneNumbers"]
+      phoneNumbers = (_json["phoneNumbers"] as core.List)
           .map<PhoneNumber>((value) => new PhoneNumber.fromJson(value))
           .toList();
     }
     if (_json.containsKey("photos")) {
-      photos = _json["photos"]
+      photos = (_json["photos"] as core.List)
           .map<Photo>((value) => new Photo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relations")) {
-      relations = _json["relations"]
+      relations = (_json["relations"] as core.List)
           .map<Relation>((value) => new Relation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relationshipInterests")) {
-      relationshipInterests = _json["relationshipInterests"]
+      relationshipInterests = (_json["relationshipInterests"] as core.List)
           .map<RelationshipInterest>(
               (value) => new RelationshipInterest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relationshipStatuses")) {
-      relationshipStatuses = _json["relationshipStatuses"]
+      relationshipStatuses = (_json["relationshipStatuses"] as core.List)
           .map<RelationshipStatus>(
               (value) => new RelationshipStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("residences")) {
-      residences = _json["residences"]
+      residences = (_json["residences"] as core.List)
           .map<Residence>((value) => new Residence.fromJson(value))
           .toList();
     }
@@ -2888,21 +2892,22 @@ class Person {
       resourceName = _json["resourceName"];
     }
     if (_json.containsKey("skills")) {
-      skills = _json["skills"]
+      skills = (_json["skills"] as core.List)
           .map<Skill>((value) => new Skill.fromJson(value))
           .toList();
     }
     if (_json.containsKey("taglines")) {
-      taglines = _json["taglines"]
+      taglines = (_json["taglines"] as core.List)
           .map<Tagline>((value) => new Tagline.fromJson(value))
           .toList();
     }
     if (_json.containsKey("urls")) {
-      urls =
-          _json["urls"].map<Url>((value) => new Url.fromJson(value)).toList();
+      urls = (_json["urls"] as core.List)
+          .map<Url>((value) => new Url.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("userDefined")) {
-      userDefined = _json["userDefined"]
+      userDefined = (_json["userDefined"] as core.List)
           .map<UserDefined>((value) => new UserDefined.fromJson(value))
           .toList();
     }
@@ -3059,16 +3064,18 @@ class PersonMetadata {
       deleted = _json["deleted"];
     }
     if (_json.containsKey("linkedPeopleResourceNames")) {
-      linkedPeopleResourceNames = _json["linkedPeopleResourceNames"];
+      linkedPeopleResourceNames =
+          (_json["linkedPeopleResourceNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("objectType")) {
       objectType = _json["objectType"];
     }
     if (_json.containsKey("previousResourceNames")) {
-      previousResourceNames = _json["previousResourceNames"];
+      previousResourceNames =
+          (_json["previousResourceNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("sources")) {
-      sources = _json["sources"]
+      sources = (_json["sources"] as core.List)
           .map<Source>((value) => new Source.fromJson(value))
           .toList();
     }
@@ -3294,7 +3301,7 @@ class ProfileMetadata {
       objectType = _json["objectType"];
     }
     if (_json.containsKey("userTypes")) {
-      userTypes = _json["userTypes"];
+      userTypes = (_json["userTypes"] as core.List).cast<core.String>();
     }
   }
 
@@ -3715,7 +3722,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

@@ -88,7 +88,7 @@ class EnterprisesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (signupUrlName != null) {
       _queryParams["signupUrlName"] = [signupUrlName];
@@ -191,7 +191,7 @@ class EnterprisesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -403,7 +403,7 @@ class EnterprisesDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -516,7 +516,7 @@ class EnterprisesDevicesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -799,7 +799,7 @@ class EnterprisesEnrollmentTokensResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1053,7 +1053,7 @@ class EnterprisesPoliciesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1114,7 +1114,7 @@ class EnterprisesWebTokensResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1274,7 +1274,7 @@ class Application {
 
   Application.fromJson(core.Map _json) {
     if (_json.containsKey("managedProperties")) {
-      managedProperties = _json["managedProperties"]
+      managedProperties = (_json["managedProperties"] as core.List)
           .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
@@ -1282,7 +1282,7 @@ class Application {
       name = _json["name"];
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"]
+      permissions = (_json["permissions"] as core.List)
           .map<ApplicationPermission>(
               (value) => new ApplicationPermission.fromJson(value))
           .toList();
@@ -1424,7 +1424,8 @@ class ApplicationPolicy {
       defaultPermissionPolicy = _json["defaultPermissionPolicy"];
     }
     if (_json.containsKey("delegatedScopes")) {
-      delegatedScopes = _json["delegatedScopes"];
+      delegatedScopes =
+          (_json["delegatedScopes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("installType")) {
       installType = _json["installType"];
@@ -1433,7 +1434,8 @@ class ApplicationPolicy {
       lockTaskAllowed = _json["lockTaskAllowed"];
     }
     if (_json.containsKey("managedConfiguration")) {
-      managedConfiguration = _json["managedConfiguration"];
+      managedConfiguration = (_json["managedConfiguration"] as core.Map)
+          .cast<core.String, core.Object>();
     }
     if (_json.containsKey("minimumVersionCode")) {
       minimumVersionCode = _json["minimumVersionCode"];
@@ -1442,7 +1444,7 @@ class ApplicationPolicy {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("permissionGrants")) {
-      permissionGrants = _json["permissionGrants"]
+      permissionGrants = (_json["permissionGrants"] as core.List)
           .map<PermissionGrant>((value) => new PermissionGrant.fromJson(value))
           .toList();
     }
@@ -1519,7 +1521,8 @@ class Command {
       newPassword = _json["newPassword"];
     }
     if (_json.containsKey("resetPasswordFlags")) {
-      resetPasswordFlags = _json["resetPasswordFlags"];
+      resetPasswordFlags =
+          (_json["resetPasswordFlags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1753,7 +1756,7 @@ class Device {
       disabledReason = new UserFacingMessage.fromJson(_json["disabledReason"]);
     }
     if (_json.containsKey("displays")) {
-      displays = _json["displays"]
+      displays = (_json["displays"] as core.List)
           .map<Display>((value) => new Display.fromJson(value))
           .toList();
     }
@@ -1770,7 +1773,7 @@ class Device {
       hardwareInfo = new HardwareInfo.fromJson(_json["hardwareInfo"]);
     }
     if (_json.containsKey("hardwareStatusSamples")) {
-      hardwareStatusSamples = _json["hardwareStatusSamples"]
+      hardwareStatusSamples = (_json["hardwareStatusSamples"] as core.List)
           .map<HardwareStatus>((value) => new HardwareStatus.fromJson(value))
           .toList();
     }
@@ -1784,7 +1787,7 @@ class Device {
       lastStatusReportTime = _json["lastStatusReportTime"];
     }
     if (_json.containsKey("memoryEvents")) {
-      memoryEvents = _json["memoryEvents"]
+      memoryEvents = (_json["memoryEvents"] as core.List)
           .map<MemoryEvent>((value) => new MemoryEvent.fromJson(value))
           .toList();
     }
@@ -1798,7 +1801,7 @@ class Device {
       networkInfo = new NetworkInfo.fromJson(_json["networkInfo"]);
     }
     if (_json.containsKey("nonComplianceDetails")) {
-      nonComplianceDetails = _json["nonComplianceDetails"]
+      nonComplianceDetails = (_json["nonComplianceDetails"] as core.List)
           .map<NonComplianceDetail>(
               (value) => new NonComplianceDetail.fromJson(value))
           .toList();
@@ -1810,13 +1813,14 @@ class Device {
       policyName = _json["policyName"];
     }
     if (_json.containsKey("powerManagementEvents")) {
-      powerManagementEvents = _json["powerManagementEvents"]
+      powerManagementEvents = (_json["powerManagementEvents"] as core.List)
           .map<PowerManagementEvent>(
               (value) => new PowerManagementEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("previousDeviceNames")) {
-      previousDeviceNames = _json["previousDeviceNames"];
+      previousDeviceNames =
+          (_json["previousDeviceNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("softwareInfo")) {
       softwareInfo = new SoftwareInfo.fromJson(_json["softwareInfo"]);
@@ -2252,7 +2256,8 @@ class Enterprise {
       appAutoApprovalEnabled = _json["appAutoApprovalEnabled"];
     }
     if (_json.containsKey("enabledNotificationTypes")) {
-      enabledNotificationTypes = _json["enabledNotificationTypes"];
+      enabledNotificationTypes =
+          (_json["enabledNotificationTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("enterpriseDisplayName")) {
       enterpriseDisplayName = _json["enterpriseDisplayName"];
@@ -2391,28 +2396,36 @@ class HardwareInfo {
 
   HardwareInfo.fromJson(core.Map _json) {
     if (_json.containsKey("batteryShutdownTemperatures")) {
-      batteryShutdownTemperatures = _json["batteryShutdownTemperatures"];
+      batteryShutdownTemperatures =
+          (_json["batteryShutdownTemperatures"] as core.List)
+              .cast<core.double>();
     }
     if (_json.containsKey("batteryThrottlingTemperatures")) {
-      batteryThrottlingTemperatures = _json["batteryThrottlingTemperatures"];
+      batteryThrottlingTemperatures =
+          (_json["batteryThrottlingTemperatures"] as core.List)
+              .cast<core.double>();
     }
     if (_json.containsKey("brand")) {
       brand = _json["brand"];
     }
     if (_json.containsKey("cpuShutdownTemperatures")) {
-      cpuShutdownTemperatures = _json["cpuShutdownTemperatures"];
+      cpuShutdownTemperatures =
+          (_json["cpuShutdownTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("cpuThrottlingTemperatures")) {
-      cpuThrottlingTemperatures = _json["cpuThrottlingTemperatures"];
+      cpuThrottlingTemperatures =
+          (_json["cpuThrottlingTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("deviceBasebandVersion")) {
       deviceBasebandVersion = _json["deviceBasebandVersion"];
     }
     if (_json.containsKey("gpuShutdownTemperatures")) {
-      gpuShutdownTemperatures = _json["gpuShutdownTemperatures"];
+      gpuShutdownTemperatures =
+          (_json["gpuShutdownTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("gpuThrottlingTemperatures")) {
-      gpuThrottlingTemperatures = _json["gpuThrottlingTemperatures"];
+      gpuThrottlingTemperatures =
+          (_json["gpuThrottlingTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("hardware")) {
       hardware = _json["hardware"];
@@ -2427,10 +2440,13 @@ class HardwareInfo {
       serialNumber = _json["serialNumber"];
     }
     if (_json.containsKey("skinShutdownTemperatures")) {
-      skinShutdownTemperatures = _json["skinShutdownTemperatures"];
+      skinShutdownTemperatures =
+          (_json["skinShutdownTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("skinThrottlingTemperatures")) {
-      skinThrottlingTemperatures = _json["skinThrottlingTemperatures"];
+      skinThrottlingTemperatures =
+          (_json["skinThrottlingTemperatures"] as core.List)
+              .cast<core.double>();
     }
   }
 
@@ -2514,25 +2530,29 @@ class HardwareStatus {
 
   HardwareStatus.fromJson(core.Map _json) {
     if (_json.containsKey("batteryTemperatures")) {
-      batteryTemperatures = _json["batteryTemperatures"];
+      batteryTemperatures =
+          (_json["batteryTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("cpuTemperatures")) {
-      cpuTemperatures = _json["cpuTemperatures"];
+      cpuTemperatures =
+          (_json["cpuTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("cpuUsages")) {
-      cpuUsages = _json["cpuUsages"];
+      cpuUsages = (_json["cpuUsages"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("fanSpeeds")) {
-      fanSpeeds = _json["fanSpeeds"];
+      fanSpeeds = (_json["fanSpeeds"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("gpuTemperatures")) {
-      gpuTemperatures = _json["gpuTemperatures"];
+      gpuTemperatures =
+          (_json["gpuTemperatures"] as core.List).cast<core.double>();
     }
     if (_json.containsKey("skinTemperatures")) {
-      skinTemperatures = _json["skinTemperatures"];
+      skinTemperatures =
+          (_json["skinTemperatures"] as core.List).cast<core.double>();
     }
   }
 
@@ -2576,7 +2596,7 @@ class ListDevicesResponse {
 
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices = _json["devices"]
+      devices = (_json["devices"] as core.List)
           .map<Device>((value) => new Device.fromJson(value))
           .toList();
     }
@@ -2613,7 +2633,7 @@ class ListOperationsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -2648,7 +2668,7 @@ class ListPoliciesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("policies")) {
-      policies = _json["policies"]
+      policies = (_json["policies"] as core.List)
           .map<Policy>((value) => new Policy.fromJson(value))
           .toList();
     }
@@ -2718,7 +2738,7 @@ class ManagedProperty {
       description = _json["description"];
     }
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<ManagedPropertyEntry>(
               (value) => new ManagedPropertyEntry.fromJson(value))
           .toList();
@@ -2727,7 +2747,7 @@ class ManagedProperty {
       key = _json["key"];
     }
     if (_json.containsKey("nestedProperties")) {
-      nestedProperties = _json["nestedProperties"]
+      nestedProperties = (_json["nestedProperties"] as core.List)
           .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
           .toList();
     }
@@ -3178,13 +3198,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -3219,7 +3241,7 @@ class PackageNameList {
 
   PackageNameList.fromJson(core.Map _json) {
     if (_json.containsKey("packageNames")) {
-      packageNames = _json["packageNames"];
+      packageNames = (_json["packageNames"] as core.List).cast<core.String>();
     }
   }
 
@@ -3439,10 +3461,10 @@ class PersistentPreferredActivity {
 
   PersistentPreferredActivity.fromJson(core.Map _json) {
     if (_json.containsKey("actions")) {
-      actions = _json["actions"];
+      actions = (_json["actions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("categories")) {
-      categories = _json["categories"];
+      categories = (_json["categories"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("receiverActivity")) {
       receiverActivity = _json["receiverActivity"];
@@ -3718,7 +3740,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("accountTypesWithManagementDisabled")) {
       accountTypesWithManagementDisabled =
-          _json["accountTypesWithManagementDisabled"];
+          (_json["accountTypesWithManagementDisabled"] as core.List)
+              .cast<core.String>();
     }
     if (_json.containsKey("addUserDisabled")) {
       addUserDisabled = _json["addUserDisabled"];
@@ -3731,10 +3754,11 @@ class Policy {
           new AlwaysOnVpnPackage.fromJson(_json["alwaysOnVpnPackage"]);
     }
     if (_json.containsKey("androidDevicePolicyTracks")) {
-      androidDevicePolicyTracks = _json["androidDevicePolicyTracks"];
+      androidDevicePolicyTracks =
+          (_json["androidDevicePolicyTracks"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("applications")) {
-      applications = _json["applications"]
+      applications = (_json["applications"] as core.List)
           .map<ApplicationPolicy>(
               (value) => new ApplicationPolicy.fromJson(value))
           .toList();
@@ -3762,7 +3786,7 @@ class Policy {
       cellBroadcastsConfigDisabled = _json["cellBroadcastsConfigDisabled"];
     }
     if (_json.containsKey("complianceRules")) {
-      complianceRules = _json["complianceRules"]
+      complianceRules = (_json["complianceRules"] as core.List)
           .map<ComplianceRule>((value) => new ComplianceRule.fromJson(value))
           .toList();
     }
@@ -3788,7 +3812,8 @@ class Policy {
       factoryResetDisabled = _json["factoryResetDisabled"];
     }
     if (_json.containsKey("frpAdminEmails")) {
-      frpAdminEmails = _json["frpAdminEmails"];
+      frpAdminEmails =
+          (_json["frpAdminEmails"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("funDisabled")) {
       funDisabled = _json["funDisabled"];
@@ -3803,7 +3828,8 @@ class Policy {
       keyguardDisabled = _json["keyguardDisabled"];
     }
     if (_json.containsKey("keyguardDisabledFeatures")) {
-      keyguardDisabledFeatures = _json["keyguardDisabledFeatures"];
+      keyguardDisabledFeatures =
+          (_json["keyguardDisabledFeatures"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kioskCustomLauncherEnabled")) {
       kioskCustomLauncherEnabled = _json["kioskCustomLauncherEnabled"];
@@ -3834,7 +3860,8 @@ class Policy {
       networkResetDisabled = _json["networkResetDisabled"];
     }
     if (_json.containsKey("openNetworkConfiguration")) {
-      openNetworkConfiguration = _json["openNetworkConfiguration"];
+      openNetworkConfiguration = (_json["openNetworkConfiguration"] as core.Map)
+          .cast<core.String, core.Object>();
     }
     if (_json.containsKey("outgoingBeamDisabled")) {
       outgoingBeamDisabled = _json["outgoingBeamDisabled"];
@@ -3851,10 +3878,11 @@ class Policy {
           new PackageNameList.fromJson(_json["permittedInputMethods"]);
     }
     if (_json.containsKey("persistentPreferredActivities")) {
-      persistentPreferredActivities = _json["persistentPreferredActivities"]
-          .map<PersistentPreferredActivity>(
-              (value) => new PersistentPreferredActivity.fromJson(value))
-          .toList();
+      persistentPreferredActivities =
+          (_json["persistentPreferredActivities"] as core.List)
+              .map<PersistentPreferredActivity>(
+                  (value) => new PersistentPreferredActivity.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("recommendedGlobalProxy")) {
       recommendedGlobalProxy =
@@ -3890,7 +3918,8 @@ class Policy {
           _json["statusReportingSettings"]);
     }
     if (_json.containsKey("stayOnPluggedModes")) {
-      stayOnPluggedModes = _json["stayOnPluggedModes"];
+      stayOnPluggedModes =
+          (_json["stayOnPluggedModes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("systemUpdate")) {
       systemUpdate = new SystemUpdate.fromJson(_json["systemUpdate"]);
@@ -4192,7 +4221,7 @@ class ProxyInfo {
 
   ProxyInfo.fromJson(core.Map _json) {
     if (_json.containsKey("excludedHosts")) {
-      excludedHosts = _json["excludedHosts"];
+      excludedHosts = (_json["excludedHosts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("host")) {
       host = _json["host"];
@@ -4415,7 +4444,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -4593,7 +4625,8 @@ class UserFacingMessage {
       defaultMessage = _json["defaultMessage"];
     }
     if (_json.containsKey("localizedMessages")) {
-      localizedMessages = _json["localizedMessages"];
+      localizedMessages = (_json["localizedMessages"] as core.Map)
+          .cast<core.String, core.String>();
     }
   }
 
@@ -4639,7 +4672,7 @@ class WebToken {
       parentFrameUrl = _json["parentFrameUrl"];
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("value")) {
       value = _json["value"];

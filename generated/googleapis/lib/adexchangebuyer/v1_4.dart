@@ -165,7 +165,7 @@ class AccountsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -221,7 +221,7 @@ class AccountsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -423,7 +423,7 @@ class BudgetResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -481,7 +481,7 @@ class BudgetResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -649,7 +649,7 @@ class CreativesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -912,7 +912,7 @@ class MarketplacedealsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -964,7 +964,7 @@ class MarketplacedealsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -1065,7 +1065,7 @@ class MarketplacedealsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -1124,7 +1124,7 @@ class MarketplacenotesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -1232,7 +1232,7 @@ class MarketplaceprivateauctionResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (privateAuctionId == null) {
       throw new core.ArgumentError("Parameter privateAuctionId is required.");
@@ -1475,7 +1475,7 @@ class PretargetingConfigResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1570,7 +1570,7 @@ class PretargetingConfigResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1627,7 +1627,7 @@ class PretargetingConfigResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1818,7 +1818,7 @@ class ProposalsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1879,7 +1879,7 @@ class ProposalsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -2041,7 +2041,7 @@ class ProposalsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -2225,7 +2225,7 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey("bidderLocation")) {
-      bidderLocation = _json["bidderLocation"]
+      bidderLocation = (_json["bidderLocation"] as core.List)
           .map<AccountBidderLocation>(
               (value) => new AccountBidderLocation.fromJson(value))
           .toList();
@@ -2298,7 +2298,7 @@ class AccountsList {
 
   AccountsList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Account>((value) => new Account.fromJson(value))
           .toList();
     }
@@ -2334,7 +2334,7 @@ class AddOrderDealsRequest {
 
   AddOrderDealsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deals")) {
-      deals = _json["deals"]
+      deals = (_json["deals"] as core.List)
           .map<MarketplaceDeal>((value) => new MarketplaceDeal.fromJson(value))
           .toList();
     }
@@ -2373,7 +2373,7 @@ class AddOrderDealsResponse {
 
   AddOrderDealsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deals")) {
-      deals = _json["deals"]
+      deals = (_json["deals"] as core.List)
           .map<MarketplaceDeal>((value) => new MarketplaceDeal.fromJson(value))
           .toList();
     }
@@ -2403,7 +2403,7 @@ class AddOrderNotesRequest {
 
   AddOrderNotesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("notes")) {
-      notes = _json["notes"]
+      notes = (_json["notes"] as core.List)
           .map<MarketplaceNote>((value) => new MarketplaceNote.fromJson(value))
           .toList();
     }
@@ -2426,7 +2426,7 @@ class AddOrderNotesResponse {
 
   AddOrderNotesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("notes")) {
-      notes = _json["notes"]
+      notes = (_json["notes"] as core.List)
           .map<MarketplaceNote>((value) => new MarketplaceNote.fromJson(value))
           .toList();
     }
@@ -2468,7 +2468,7 @@ class BillingInfo {
       accountName = _json["accountName"];
     }
     if (_json.containsKey("billingId")) {
-      billingId = _json["billingId"];
+      billingId = (_json["billingId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2507,7 +2507,7 @@ class BillingInfoList {
 
   BillingInfoList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<BillingInfo>((value) => new BillingInfo.fromJson(value))
           .toList();
     }
@@ -2663,7 +2663,7 @@ class CreateOrdersRequest {
 
   CreateOrdersRequest.fromJson(core.Map _json) {
     if (_json.containsKey("proposals")) {
-      proposals = _json["proposals"]
+      proposals = (_json["proposals"] as core.List)
           .map<Proposal>((value) => new Proposal.fromJson(value))
           .toList();
     }
@@ -2693,7 +2693,7 @@ class CreateOrdersResponse {
 
   CreateOrdersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("proposals")) {
-      proposals = _json["proposals"]
+      proposals = (_json["proposals"] as core.List)
           .map<Proposal>((value) => new Proposal.fromJson(value))
           .toList();
     }
@@ -2729,16 +2729,16 @@ class CreativeCorrectionsContexts {
 
   CreativeCorrectionsContexts.fromJson(core.Map _json) {
     if (_json.containsKey("auctionType")) {
-      auctionType = _json["auctionType"];
+      auctionType = (_json["auctionType"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("contextType")) {
       contextType = _json["contextType"];
     }
     if (_json.containsKey("geoCriteriaId")) {
-      geoCriteriaId = _json["geoCriteriaId"];
+      geoCriteriaId = (_json["geoCriteriaId"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("platform")) {
-      platform = _json["platform"];
+      platform = (_json["platform"] as core.List).cast<core.String>();
     }
   }
 
@@ -2775,13 +2775,13 @@ class CreativeCorrections {
 
   CreativeCorrections.fromJson(core.Map _json) {
     if (_json.containsKey("contexts")) {
-      contexts = _json["contexts"]
+      contexts = (_json["contexts"] as core.List)
           .map<CreativeCorrectionsContexts>(
               (value) => new CreativeCorrectionsContexts.fromJson(value))
           .toList();
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("reason")) {
       reason = _json["reason"];
@@ -2853,7 +2853,7 @@ class CreativeFilteringReasons {
       date = _json["date"];
     }
     if (_json.containsKey("reasons")) {
-      reasons = _json["reasons"]
+      reasons = (_json["reasons"] as core.List)
           .map<CreativeFilteringReasonsReasons>(
               (value) => new CreativeFilteringReasonsReasons.fromJson(value))
           .toList();
@@ -3054,7 +3054,8 @@ class CreativeNativeAd {
       image = new CreativeNativeAdImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("impressionTrackingUrl")) {
-      impressionTrackingUrl = _json["impressionTrackingUrl"];
+      impressionTrackingUrl =
+          (_json["impressionTrackingUrl"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("logo")) {
       logo = new CreativeNativeAdLogo.fromJson(_json["logo"]);
@@ -3144,16 +3145,16 @@ class CreativeServingRestrictionsContexts {
 
   CreativeServingRestrictionsContexts.fromJson(core.Map _json) {
     if (_json.containsKey("auctionType")) {
-      auctionType = _json["auctionType"];
+      auctionType = (_json["auctionType"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("contextType")) {
       contextType = _json["contextType"];
     }
     if (_json.containsKey("geoCriteriaId")) {
-      geoCriteriaId = _json["geoCriteriaId"];
+      geoCriteriaId = (_json["geoCriteriaId"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("platform")) {
-      platform = _json["platform"];
+      platform = (_json["platform"] as core.List).cast<core.String>();
     }
   }
 
@@ -3187,7 +3188,7 @@ class CreativeServingRestrictionsDisapprovalReasons {
 
   CreativeServingRestrictionsDisapprovalReasons.fromJson(core.Map _json) {
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("reason")) {
       reason = _json["reason"];
@@ -3226,13 +3227,13 @@ class CreativeServingRestrictions {
 
   CreativeServingRestrictions.fromJson(core.Map _json) {
     if (_json.containsKey("contexts")) {
-      contexts = _json["contexts"]
+      contexts = (_json["contexts"] as core.List)
           .map<CreativeServingRestrictionsContexts>((value) =>
               new CreativeServingRestrictionsContexts.fromJson(value))
           .toList();
     }
     if (_json.containsKey("disapprovalReasons")) {
-      disapprovalReasons = _json["disapprovalReasons"]
+      disapprovalReasons = (_json["disapprovalReasons"] as core.List)
           .map<CreativeServingRestrictionsDisapprovalReasons>((value) =>
               new CreativeServingRestrictionsDisapprovalReasons.fromJson(value))
           .toList();
@@ -3393,7 +3394,7 @@ class Creative {
       adChoicesDestinationUrl = _json["adChoicesDestinationUrl"];
     }
     if (_json.containsKey("advertiserId")) {
-      advertiserId = _json["advertiserId"];
+      advertiserId = (_json["advertiserId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("advertiserName")) {
       advertiserName = _json["advertiserName"];
@@ -3405,16 +3406,17 @@ class Creative {
       apiUploadTimestamp = core.DateTime.parse(_json["apiUploadTimestamp"]);
     }
     if (_json.containsKey("attribute")) {
-      attribute = _json["attribute"];
+      attribute = (_json["attribute"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("buyerCreativeId")) {
       buyerCreativeId = _json["buyerCreativeId"];
     }
     if (_json.containsKey("clickThroughUrl")) {
-      clickThroughUrl = _json["clickThroughUrl"];
+      clickThroughUrl =
+          (_json["clickThroughUrl"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("corrections")) {
-      corrections = _json["corrections"]
+      corrections = (_json["corrections"] as core.List)
           .map<CreativeCorrections>(
               (value) => new CreativeCorrections.fromJson(value))
           .toList();
@@ -3423,7 +3425,8 @@ class Creative {
       dealsStatus = _json["dealsStatus"];
     }
     if (_json.containsKey("detectedDomains")) {
-      detectedDomains = _json["detectedDomains"];
+      detectedDomains =
+          (_json["detectedDomains"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("filteringReasons")) {
       filteringReasons =
@@ -3433,13 +3436,14 @@ class Creative {
       height = _json["height"];
     }
     if (_json.containsKey("impressionTrackingUrl")) {
-      impressionTrackingUrl = _json["impressionTrackingUrl"];
+      impressionTrackingUrl =
+          (_json["impressionTrackingUrl"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("languages")) {
-      languages = _json["languages"];
+      languages = (_json["languages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("nativeAd")) {
       nativeAd = new CreativeNativeAd.fromJson(_json["nativeAd"]);
@@ -3448,22 +3452,25 @@ class Creative {
       openAuctionStatus = _json["openAuctionStatus"];
     }
     if (_json.containsKey("productCategories")) {
-      productCategories = _json["productCategories"];
+      productCategories =
+          (_json["productCategories"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("restrictedCategories")) {
-      restrictedCategories = _json["restrictedCategories"];
+      restrictedCategories =
+          (_json["restrictedCategories"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("sensitiveCategories")) {
-      sensitiveCategories = _json["sensitiveCategories"];
+      sensitiveCategories =
+          (_json["sensitiveCategories"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("servingRestrictions")) {
-      servingRestrictions = _json["servingRestrictions"]
+      servingRestrictions = (_json["servingRestrictions"] as core.List)
           .map<CreativeServingRestrictions>(
               (value) => new CreativeServingRestrictions.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vendorType")) {
-      vendorType = _json["vendorType"];
+      vendorType = (_json["vendorType"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -3621,7 +3628,7 @@ class CreativeDealIds {
 
   CreativeDealIds.fromJson(core.Map _json) {
     if (_json.containsKey("dealStatuses")) {
-      dealStatuses = _json["dealStatuses"]
+      dealStatuses = (_json["dealStatuses"] as core.List)
           .map<CreativeDealIdsDealStatuses>(
               (value) => new CreativeDealIdsDealStatuses.fromJson(value))
           .toList();
@@ -3663,7 +3670,7 @@ class CreativesList {
 
   CreativesList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Creative>((value) => new Creative.fromJson(value))
           .toList();
     }
@@ -3925,7 +3932,7 @@ class DealTermsGuaranteedFixedPriceTerms {
           _json["billingInfo"]);
     }
     if (_json.containsKey("fixedPrices")) {
-      fixedPrices = _json["fixedPrices"]
+      fixedPrices = (_json["fixedPrices"] as core.List)
           .map<PricePerBuyer>((value) => new PricePerBuyer.fromJson(value))
           .toList();
     }
@@ -4035,7 +4042,7 @@ class DealTermsNonGuaranteedAuctionTerms {
       autoOptimizePrivateAuction = _json["autoOptimizePrivateAuction"];
     }
     if (_json.containsKey("reservePricePerBuyers")) {
-      reservePricePerBuyers = _json["reservePricePerBuyers"]
+      reservePricePerBuyers = (_json["reservePricePerBuyers"] as core.List)
           .map<PricePerBuyer>((value) => new PricePerBuyer.fromJson(value))
           .toList();
     }
@@ -4063,7 +4070,7 @@ class DealTermsNonGuaranteedFixedPriceTerms {
 
   DealTermsNonGuaranteedFixedPriceTerms.fromJson(core.Map _json) {
     if (_json.containsKey("fixedPrices")) {
-      fixedPrices = _json["fixedPrices"]
+      fixedPrices = (_json["fixedPrices"] as core.List)
           .map<PricePerBuyer>((value) => new PricePerBuyer.fromJson(value))
           .toList();
     }
@@ -4125,7 +4132,7 @@ class DeleteOrderDealsRequest {
 
   DeleteOrderDealsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("dealIds")) {
-      dealIds = _json["dealIds"];
+      dealIds = (_json["dealIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("proposalRevisionNumber")) {
       proposalRevisionNumber = _json["proposalRevisionNumber"];
@@ -4162,7 +4169,7 @@ class DeleteOrderDealsResponse {
 
   DeleteOrderDealsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deals")) {
-      deals = _json["deals"]
+      deals = (_json["deals"] as core.List)
           .map<MarketplaceDeal>((value) => new MarketplaceDeal.fromJson(value))
           .toList();
     }
@@ -4199,7 +4206,7 @@ class DeliveryControl {
       deliveryRateType = _json["deliveryRateType"];
     }
     if (_json.containsKey("frequencyCaps")) {
-      frequencyCaps = _json["frequencyCaps"]
+      frequencyCaps = (_json["frequencyCaps"] as core.List)
           .map<DeliveryControlFrequencyCap>(
               (value) => new DeliveryControlFrequencyCap.fromJson(value))
           .toList();
@@ -4272,7 +4279,7 @@ class Dimension {
       dimensionType = _json["dimensionType"];
     }
     if (_json.containsKey("dimensionValues")) {
-      dimensionValues = _json["dimensionValues"]
+      dimensionValues = (_json["dimensionValues"] as core.List)
           .map<DimensionDimensionValue>(
               (value) => new DimensionDimensionValue.fromJson(value))
           .toList();
@@ -4366,7 +4373,7 @@ class EditAllOrderDealsRequest {
 
   EditAllOrderDealsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deals")) {
-      deals = _json["deals"]
+      deals = (_json["deals"] as core.List)
           .map<MarketplaceDeal>((value) => new MarketplaceDeal.fromJson(value))
           .toList();
     }
@@ -4411,7 +4418,7 @@ class EditAllOrderDealsResponse {
 
   EditAllOrderDealsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deals")) {
-      deals = _json["deals"]
+      deals = (_json["deals"] as core.List)
           .map<MarketplaceDeal>((value) => new MarketplaceDeal.fromJson(value))
           .toList();
     }
@@ -4441,7 +4448,7 @@ class GetOffersResponse {
 
   GetOffersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("products")) {
-      products = _json["products"]
+      products = (_json["products"] as core.List)
           .map<Product>((value) => new Product.fromJson(value))
           .toList();
     }
@@ -4465,7 +4472,7 @@ class GetOrderDealsResponse {
 
   GetOrderDealsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deals")) {
-      deals = _json["deals"]
+      deals = (_json["deals"] as core.List)
           .map<MarketplaceDeal>((value) => new MarketplaceDeal.fromJson(value))
           .toList();
     }
@@ -4492,7 +4499,7 @@ class GetOrderNotesResponse {
 
   GetOrderNotesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("notes")) {
-      notes = _json["notes"]
+      notes = (_json["notes"] as core.List)
           .map<MarketplaceNote>((value) => new MarketplaceNote.fromJson(value))
           .toList();
     }
@@ -4516,7 +4523,7 @@ class GetOrdersResponse {
 
   GetOrdersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("proposals")) {
-      proposals = _json["proposals"]
+      proposals = (_json["proposals"] as core.List)
           .map<Proposal>((value) => new Proposal.fromJson(value))
           .toList();
     }
@@ -4540,7 +4547,7 @@ class GetPublisherProfilesByAccountIdResponse {
 
   GetPublisherProfilesByAccountIdResponse.fromJson(core.Map _json) {
     if (_json.containsKey("profiles")) {
-      profiles = _json["profiles"]
+      profiles = (_json["profiles"] as core.List)
           .map<PublisherProfileApiProto>(
               (value) => new PublisherProfileApiProto.fromJson(value))
           .toList();
@@ -4712,13 +4719,13 @@ class MarketplaceDeal {
       proposalId = _json["proposalId"];
     }
     if (_json.containsKey("sellerContacts")) {
-      sellerContacts = _json["sellerContacts"]
+      sellerContacts = (_json["sellerContacts"] as core.List)
           .map<ContactInformation>(
               (value) => new ContactInformation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sharedTargetings")) {
-      sharedTargetings = _json["sharedTargetings"]
+      sharedTargetings = (_json["sharedTargetings"] as core.List)
           .map<SharedTargeting>((value) => new SharedTargeting.fromJson(value))
           .toList();
     }
@@ -5089,19 +5096,23 @@ class PerformanceReport {
       bidRequestRate = _json["bidRequestRate"];
     }
     if (_json.containsKey("calloutStatusRate")) {
-      calloutStatusRate = _json["calloutStatusRate"];
+      calloutStatusRate =
+          (_json["calloutStatusRate"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("cookieMatcherStatusRate")) {
-      cookieMatcherStatusRate = _json["cookieMatcherStatusRate"];
+      cookieMatcherStatusRate =
+          (_json["cookieMatcherStatusRate"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("creativeStatusRate")) {
-      creativeStatusRate = _json["creativeStatusRate"];
+      creativeStatusRate =
+          (_json["creativeStatusRate"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("filteredBidRate")) {
       filteredBidRate = _json["filteredBidRate"];
     }
     if (_json.containsKey("hostedMatchStatusRate")) {
-      hostedMatchStatusRate = _json["hostedMatchStatusRate"];
+      hostedMatchStatusRate =
+          (_json["hostedMatchStatusRate"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("inventoryMatchRate")) {
       inventoryMatchRate = _json["inventoryMatchRate"];
@@ -5238,7 +5249,7 @@ class PerformanceReportList {
       kind = _json["kind"];
     }
     if (_json.containsKey("performanceReport")) {
-      performanceReport = _json["performanceReport"]
+      performanceReport = (_json["performanceReport"] as core.List)
           .map<PerformanceReport>(
               (value) => new PerformanceReport.fromJson(value))
           .toList();
@@ -5512,34 +5523,39 @@ class PretargetingConfig {
       configName = _json["configName"];
     }
     if (_json.containsKey("creativeType")) {
-      creativeType = _json["creativeType"];
+      creativeType = (_json["creativeType"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("dimensions")) {
-      dimensions = _json["dimensions"]
+      dimensions = (_json["dimensions"] as core.List)
           .map<PretargetingConfigDimensions>(
               (value) => new PretargetingConfigDimensions.fromJson(value))
           .toList();
     }
     if (_json.containsKey("excludedContentLabels")) {
-      excludedContentLabels = _json["excludedContentLabels"];
+      excludedContentLabels =
+          (_json["excludedContentLabels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("excludedGeoCriteriaIds")) {
-      excludedGeoCriteriaIds = _json["excludedGeoCriteriaIds"];
+      excludedGeoCriteriaIds =
+          (_json["excludedGeoCriteriaIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("excludedPlacements")) {
-      excludedPlacements = _json["excludedPlacements"]
+      excludedPlacements = (_json["excludedPlacements"] as core.List)
           .map<PretargetingConfigExcludedPlacements>((value) =>
               new PretargetingConfigExcludedPlacements.fromJson(value))
           .toList();
     }
     if (_json.containsKey("excludedUserLists")) {
-      excludedUserLists = _json["excludedUserLists"];
+      excludedUserLists =
+          (_json["excludedUserLists"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("excludedVerticals")) {
-      excludedVerticals = _json["excludedVerticals"];
+      excludedVerticals =
+          (_json["excludedVerticals"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("geoCriteriaIds")) {
-      geoCriteriaIds = _json["geoCriteriaIds"];
+      geoCriteriaIds =
+          (_json["geoCriteriaIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("isActive")) {
       isActive = _json["isActive"];
@@ -5548,46 +5564,53 @@ class PretargetingConfig {
       kind = _json["kind"];
     }
     if (_json.containsKey("languages")) {
-      languages = _json["languages"];
+      languages = (_json["languages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("minimumViewabilityDecile")) {
       minimumViewabilityDecile = _json["minimumViewabilityDecile"];
     }
     if (_json.containsKey("mobileCarriers")) {
-      mobileCarriers = _json["mobileCarriers"];
+      mobileCarriers =
+          (_json["mobileCarriers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("mobileDevices")) {
-      mobileDevices = _json["mobileDevices"];
+      mobileDevices = (_json["mobileDevices"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("mobileOperatingSystemVersions")) {
-      mobileOperatingSystemVersions = _json["mobileOperatingSystemVersions"];
+      mobileOperatingSystemVersions =
+          (_json["mobileOperatingSystemVersions"] as core.List)
+              .cast<core.String>();
     }
     if (_json.containsKey("placements")) {
-      placements = _json["placements"]
+      placements = (_json["placements"] as core.List)
           .map<PretargetingConfigPlacements>(
               (value) => new PretargetingConfigPlacements.fromJson(value))
           .toList();
     }
     if (_json.containsKey("platforms")) {
-      platforms = _json["platforms"];
+      platforms = (_json["platforms"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("supportedCreativeAttributes")) {
-      supportedCreativeAttributes = _json["supportedCreativeAttributes"];
+      supportedCreativeAttributes =
+          (_json["supportedCreativeAttributes"] as core.List)
+              .cast<core.String>();
     }
     if (_json.containsKey("userIdentifierDataRequired")) {
-      userIdentifierDataRequired = _json["userIdentifierDataRequired"];
+      userIdentifierDataRequired =
+          (_json["userIdentifierDataRequired"] as core.List)
+              .cast<core.String>();
     }
     if (_json.containsKey("userLists")) {
-      userLists = _json["userLists"];
+      userLists = (_json["userLists"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("vendorTypes")) {
-      vendorTypes = _json["vendorTypes"];
+      vendorTypes = (_json["vendorTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("verticals")) {
-      verticals = _json["verticals"];
+      verticals = (_json["verticals"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("videoPlayerSizes")) {
-      videoPlayerSizes = _json["videoPlayerSizes"]
+      videoPlayerSizes = (_json["videoPlayerSizes"] as core.List)
           .map<PretargetingConfigVideoPlayerSizes>(
               (value) => new PretargetingConfigVideoPlayerSizes.fromJson(value))
           .toList();
@@ -5694,7 +5717,7 @@ class PretargetingConfigList {
 
   PretargetingConfigList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PretargetingConfig>(
               (value) => new PretargetingConfig.fromJson(value))
           .toList();
@@ -5826,12 +5849,12 @@ class PrivateData {
   core.String referenceId;
   core.String referencePayload;
   core.List<core.int> get referencePayloadAsBytes {
-    return convert.BASE64.decode(referencePayload);
+    return convert.base64.decode(referencePayload);
   }
 
   void set referencePayloadAsBytes(core.List<core.int> _bytes) {
     referencePayload =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   PrivateData();
@@ -5984,7 +6007,7 @@ class Product {
       creationTimeMs = _json["creationTimeMs"];
     }
     if (_json.containsKey("creatorContacts")) {
-      creatorContacts = _json["creatorContacts"]
+      creatorContacts = (_json["creatorContacts"] as core.List)
           .map<ContactInformation>(
               (value) => new ContactInformation.fromJson(value))
           .toList();
@@ -6011,7 +6034,7 @@ class Product {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<MarketplaceLabel>(
               (value) => new MarketplaceLabel.fromJson(value))
           .toList();
@@ -6048,7 +6071,7 @@ class Product {
       seller = new Seller.fromJson(_json["seller"]);
     }
     if (_json.containsKey("sharedTargetings")) {
-      sharedTargetings = _json["sharedTargetings"]
+      sharedTargetings = (_json["sharedTargetings"] as core.List)
           .map<SharedTargeting>((value) => new SharedTargeting.fromJson(value))
           .toList();
     }
@@ -6253,7 +6276,7 @@ class Proposal {
       buyer = new Buyer.fromJson(_json["buyer"]);
     }
     if (_json.containsKey("buyerContacts")) {
-      buyerContacts = _json["buyerContacts"]
+      buyerContacts = (_json["buyerContacts"] as core.List)
           .map<ContactInformation>(
               (value) => new ContactInformation.fromJson(value))
           .toList();
@@ -6262,7 +6285,8 @@ class Proposal {
       buyerPrivateData = new PrivateData.fromJson(_json["buyerPrivateData"]);
     }
     if (_json.containsKey("dbmAdvertiserIds")) {
-      dbmAdvertiserIds = _json["dbmAdvertiserIds"];
+      dbmAdvertiserIds =
+          (_json["dbmAdvertiserIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("hasBuyerSignedOff")) {
       hasBuyerSignedOff = _json["hasBuyerSignedOff"];
@@ -6283,7 +6307,7 @@ class Proposal {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<MarketplaceLabel>(
               (value) => new MarketplaceLabel.fromJson(value))
           .toList();
@@ -6319,7 +6343,7 @@ class Proposal {
       seller = new Seller.fromJson(_json["seller"]);
     }
     if (_json.containsKey("sellerContacts")) {
-      sellerContacts = _json["sellerContacts"]
+      sellerContacts = (_json["sellerContacts"] as core.List)
           .map<ContactInformation>(
               (value) => new ContactInformation.fromJson(value))
           .toList();
@@ -6525,7 +6549,8 @@ class PublisherProfileApiProto {
       programmaticContact = _json["programmaticContact"];
     }
     if (_json.containsKey("publisherDomains")) {
-      publisherDomains = _json["publisherDomains"];
+      publisherDomains =
+          (_json["publisherDomains"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("publisherProfileId")) {
       publisherProfileId = _json["publisherProfileId"];
@@ -6547,7 +6572,7 @@ class PublisherProfileApiProto {
       state = _json["state"];
     }
     if (_json.containsKey("topHeadlines")) {
-      topHeadlines = _json["topHeadlines"];
+      topHeadlines = (_json["topHeadlines"] as core.List).cast<core.String>();
     }
   }
 
@@ -6642,7 +6667,7 @@ class PublisherProvidedForecast {
 
   PublisherProvidedForecast.fromJson(core.Map _json) {
     if (_json.containsKey("dimensions")) {
-      dimensions = _json["dimensions"]
+      dimensions = (_json["dimensions"] as core.List)
           .map<Dimension>((value) => new Dimension.fromJson(value))
           .toList();
     }
@@ -6719,12 +6744,12 @@ class SharedTargeting {
 
   SharedTargeting.fromJson(core.Map _json) {
     if (_json.containsKey("exclusions")) {
-      exclusions = _json["exclusions"]
+      exclusions = (_json["exclusions"] as core.List)
           .map<TargetingValue>((value) => new TargetingValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("inclusions")) {
-      inclusions = _json["inclusions"]
+      inclusions = (_json["inclusions"] as core.List)
           .map<TargetingValue>((value) => new TargetingValue.fromJson(value))
           .toList();
     }
@@ -6824,7 +6849,7 @@ class TargetingValueCreativeSize {
 
   TargetingValueCreativeSize.fromJson(core.Map _json) {
     if (_json.containsKey("companionSizes")) {
-      companionSizes = _json["companionSizes"]
+      companionSizes = (_json["companionSizes"] as core.List)
           .map<TargetingValueSize>(
               (value) => new TargetingValueSize.fromJson(value))
           .toList();
@@ -6874,7 +6899,7 @@ class TargetingValueDayPartTargeting {
 
   TargetingValueDayPartTargeting.fromJson(core.Map _json) {
     if (_json.containsKey("dayParts")) {
-      dayParts = _json["dayParts"]
+      dayParts = (_json["dayParts"] as core.List)
           .map<TargetingValueDayPartTargetingDayPart>((value) =>
               new TargetingValueDayPartTargetingDayPart.fromJson(value))
           .toList();

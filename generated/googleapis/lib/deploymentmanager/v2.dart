@@ -90,7 +90,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -325,7 +325,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -514,7 +514,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -583,7 +583,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -644,7 +644,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -704,7 +704,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -789,7 +789,7 @@ class DeploymentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1507,12 +1507,13 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"]
+      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
           .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("service")) {
       service = _json["service"];
@@ -1555,7 +1556,8 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("logType")) {
       logType = _json["logType"];
@@ -1643,7 +1645,7 @@ class Binding {
       condition = new Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -1706,7 +1708,7 @@ class Condition {
       value = _json["value"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"];
+      values = (_json["values"] as core.List).cast<core.String>();
     }
   }
 
@@ -1772,12 +1774,12 @@ class Deployment {
   /// perform a get() request to a deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Output only. Unique identifier for the resource; defined by the server.
@@ -1839,7 +1841,7 @@ class Deployment {
       insertTime = _json["insertTime"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<DeploymentLabelEntry>(
               (value) => new DeploymentLabelEntry.fromJson(value))
           .toList();
@@ -1956,7 +1958,7 @@ class DeploymentUpdate {
       description = _json["description"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<DeploymentUpdateLabelEntry>(
               (value) => new DeploymentUpdateLabelEntry.fromJson(value))
           .toList();
@@ -2023,12 +2025,12 @@ class DeploymentsCancelPreviewRequest {
   /// value, perform a get() request on the deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   DeploymentsCancelPreviewRequest();
@@ -2062,7 +2064,7 @@ class DeploymentsListResponse {
 
   DeploymentsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deployments")) {
-      deployments = _json["deployments"]
+      deployments = (_json["deployments"] as core.List)
           .map<Deployment>((value) => new Deployment.fromJson(value))
           .toList();
     }
@@ -2098,12 +2100,12 @@ class DeploymentsStopRequest {
   /// value, perform a get() request on the deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return convert.BASE64.decode(fingerprint);
+    return convert.base64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   DeploymentsStopRequest();
@@ -2407,7 +2409,7 @@ class Manifest {
       id = _json["id"];
     }
     if (_json.containsKey("imports")) {
-      imports = _json["imports"]
+      imports = (_json["imports"] as core.List)
           .map<ImportFile>((value) => new ImportFile.fromJson(value))
           .toList();
     }
@@ -2469,7 +2471,7 @@ class ManifestsListResponse {
 
   ManifestsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("manifests")) {
-      manifests = _json["manifests"]
+      manifests = (_json["manifests"] as core.List)
           .map<Manifest>((value) => new Manifest.fromJson(value))
           .toList();
     }
@@ -2543,7 +2545,7 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<OperationErrorErrors>(
               (value) => new OperationErrorErrors.fromJson(value))
           .toList();
@@ -2617,7 +2619,7 @@ class OperationWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<OperationWarningsData>(
               (value) => new OperationWarningsData.fromJson(value))
           .toList();
@@ -2813,7 +2815,7 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<OperationWarnings>(
               (value) => new OperationWarnings.fromJson(value))
           .toList();
@@ -2915,7 +2917,7 @@ class OperationsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -2975,12 +2977,12 @@ class Policy {
   /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   core.bool iamOwned;
@@ -3001,12 +3003,12 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"]
+      auditConfigs = (_json["auditConfigs"] as core.List)
           .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
@@ -3017,7 +3019,7 @@ class Policy {
       iamOwned = _json["iamOwned"];
     }
     if (_json.containsKey("rules")) {
-      rules = _json["rules"]
+      rules = (_json["rules"] as core.List)
           .map<Rule>((value) => new Rule.fromJson(value))
           .toList();
     }
@@ -3109,7 +3111,7 @@ class ResourceWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ResourceWarningsData>(
               (value) => new ResourceWarningsData.fromJson(value))
           .toList();
@@ -3218,7 +3220,7 @@ class Resource {
       url = _json["url"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<ResourceWarnings>(
               (value) => new ResourceWarnings.fromJson(value))
           .toList();
@@ -3343,7 +3345,7 @@ class ResourceUpdateError {
 
   ResourceUpdateError.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"]
+      errors = (_json["errors"] as core.List)
           .map<ResourceUpdateErrorErrors>(
               (value) => new ResourceUpdateErrorErrors.fromJson(value))
           .toList();
@@ -3417,7 +3419,7 @@ class ResourceUpdateWarnings {
       code = _json["code"];
     }
     if (_json.containsKey("data")) {
-      data = _json["data"]
+      data = (_json["data"] as core.List)
           .map<ResourceUpdateWarningsData>(
               (value) => new ResourceUpdateWarningsData.fromJson(value))
           .toList();
@@ -3500,7 +3502,7 @@ class ResourceUpdate {
       state = _json["state"];
     }
     if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"]
+      warnings = (_json["warnings"] as core.List)
           .map<ResourceUpdateWarnings>(
               (value) => new ResourceUpdateWarnings.fromJson(value))
           .toList();
@@ -3554,7 +3556,7 @@ class ResourcesListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<Resource>((value) => new Resource.fromJson(value))
           .toList();
     }
@@ -3609,7 +3611,7 @@ class Rule {
       action = _json["action"];
     }
     if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"]
+      conditions = (_json["conditions"] as core.List)
           .map<Condition>((value) => new Condition.fromJson(value))
           .toList();
     }
@@ -3617,18 +3619,18 @@ class Rule {
       description = _json["description"];
     }
     if (_json.containsKey("ins")) {
-      ins = _json["ins"];
+      ins = (_json["ins"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("logConfigs")) {
-      logConfigs = _json["logConfigs"]
+      logConfigs = (_json["logConfigs"] as core.List)
           .map<LogConfig>((value) => new LogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notIns")) {
-      notIns = _json["notIns"];
+      notIns = (_json["notIns"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -3678,7 +3680,7 @@ class TargetConfiguration {
       config = new ConfigFile.fromJson(_json["config"]);
     }
     if (_json.containsKey("imports")) {
-      imports = _json["imports"]
+      imports = (_json["imports"] as core.List)
           .map<ImportFile>((value) => new ImportFile.fromJson(value))
           .toList();
     }
@@ -3706,7 +3708,7 @@ class TestPermissionsRequest {
 
   TestPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -3729,7 +3731,7 @@ class TestPermissionsResponse {
 
   TestPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -3818,7 +3820,7 @@ class TypesListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("types")) {
-      types = _json["types"]
+      types = (_json["types"] as core.List)
           .map<Type>((value) => new Type.fromJson(value))
           .toList();
     }

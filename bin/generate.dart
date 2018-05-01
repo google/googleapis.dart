@@ -37,6 +37,7 @@ ArgResults parseArguments(ArgParser parser, List<String> arguments) {
     return parser.parse(arguments);
   } on FormatException catch (e) {
     dieWithUsage("Error parsing arguments:\n${e.message}\n");
+    return null;
   }
 }
 

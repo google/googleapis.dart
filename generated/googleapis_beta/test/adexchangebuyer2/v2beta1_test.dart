@@ -22,13 +22,13 @@ class HttpServerMock extends http.BaseClient {
     if (_expectJson) {
       return request
           .finalize()
-          .transform(convert.UTF8.decoder)
+          .transform(convert.utf8.decoder)
           .join('')
           .then((core.String jsonString) {
         if (jsonString.isEmpty) {
           return _callback(request, null);
         } else {
-          return _callback(request, convert.JSON.decode(jsonString));
+          return _callback(request, convert.json.decode(jsonString));
         }
       });
     } else {
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
@@ -2420,7 +2420,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2441,7 +2441,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClient());
+        var resp = convert.json.encode(buildClient());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2484,7 +2484,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2505,7 +2505,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClient());
+        var resp = convert.json.encode(buildClient());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2547,7 +2547,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2574,7 +2574,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListClientsResponse());
+        var resp = convert.json.encode(buildListClientsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2625,7 +2625,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2646,7 +2646,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClient());
+        var resp = convert.json.encode(buildClient());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2702,7 +2702,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2723,7 +2723,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClientUserInvitation());
+        var resp = convert.json.encode(buildClientUserInvitation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2777,7 +2777,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2798,7 +2798,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClientUserInvitation());
+        var resp = convert.json.encode(buildClientUserInvitation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2850,7 +2850,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2876,7 +2876,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp =
-            convert.JSON.encode(buildListClientUserInvitationsResponse());
+            convert.json.encode(buildListClientUserInvitationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -2934,7 +2934,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -2955,7 +2955,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClientUser());
+        var resp = convert.json.encode(buildClientUser());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3007,7 +3007,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3032,7 +3032,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListClientUsersResponse());
+        var resp = convert.json.encode(buildListClientUsersResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3092,7 +3092,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3113,7 +3113,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildClientUser());
+        var resp = convert.json.encode(buildClientUser());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3161,7 +3161,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3186,7 +3186,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildCreative());
+        var resp = convert.json.encode(buildCreative());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3232,7 +3232,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3253,7 +3253,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildCreative());
+        var resp = convert.json.encode(buildCreative());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3295,7 +3295,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3321,7 +3321,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListCreativesResponse());
+        var resp = convert.json.encode(buildListCreativesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3378,7 +3378,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3399,7 +3399,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3448,7 +3448,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3471,7 +3471,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildCreative());
+        var resp = convert.json.encode(buildCreative());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3525,7 +3525,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3546,7 +3546,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3602,7 +3602,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3623,7 +3623,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3675,7 +3675,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3701,7 +3701,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListDealAssociationsResponse());
+        var resp = convert.json.encode(buildListDealAssociationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3758,7 +3758,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3779,7 +3779,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3818,7 +3818,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3841,7 +3841,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildFilterSet());
+        var resp = convert.json.encode(buildFilterSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3873,7 +3873,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3894,7 +3894,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3925,7 +3925,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -3946,7 +3946,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildFilterSet());
+        var resp = convert.json.encode(buildFilterSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -3979,7 +3979,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4004,7 +4004,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListFilterSetsResponse());
+        var resp = convert.json.encode(buildListFilterSetsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4046,7 +4046,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4071,7 +4071,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListBidMetricsResponse());
+        var resp = convert.json.encode(buildListBidMetricsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4114,7 +4114,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4139,7 +4139,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListBidResponseErrorsResponse());
+        var resp = convert.json.encode(buildListBidResponseErrorsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4183,7 +4183,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4209,7 +4209,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp =
-            convert.JSON.encode(buildListBidResponsesWithoutBidsResponse());
+            convert.json.encode(buildListBidResponsesWithoutBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4252,7 +4252,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4277,7 +4277,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListFilteredBidRequestsResponse());
+        var resp = convert.json.encode(buildListFilteredBidRequestsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4320,7 +4320,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4345,7 +4345,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListFilteredBidsResponse());
+        var resp = convert.json.encode(buildListFilteredBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4390,7 +4390,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4415,7 +4415,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON
+        var resp = convert.json
             .encode(buildListCreativeStatusBreakdownByCreativeResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4461,7 +4461,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4486,7 +4486,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON
+        var resp = convert.json
             .encode(buildListCreativeStatusBreakdownByDetailResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4530,7 +4530,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4555,7 +4555,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListImpressionMetricsResponse());
+        var resp = convert.json.encode(buildListImpressionMetricsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4597,7 +4597,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4622,7 +4622,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListLosingBidsResponse());
+        var resp = convert.json.encode(buildListLosingBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4666,7 +4666,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4692,7 +4692,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp =
-            convert.JSON.encode(buildListNonBillableWinningBidsResponse());
+            convert.json.encode(buildListNonBillableWinningBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4733,7 +4733,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4756,7 +4756,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildFilterSet());
+        var resp = convert.json.encode(buildFilterSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4788,7 +4788,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4809,7 +4809,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4840,7 +4840,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4861,7 +4861,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildFilterSet());
+        var resp = convert.json.encode(buildFilterSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4894,7 +4894,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4919,7 +4919,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListFilterSetsResponse());
+        var resp = convert.json.encode(buildListFilterSetsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -4957,7 +4957,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -4982,7 +4982,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListBidMetricsResponse());
+        var resp = convert.json.encode(buildListBidMetricsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5023,7 +5023,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5048,7 +5048,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListBidResponseErrorsResponse());
+        var resp = convert.json.encode(buildListBidResponseErrorsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5090,7 +5090,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5116,7 +5116,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp =
-            convert.JSON.encode(buildListBidResponsesWithoutBidsResponse());
+            convert.json.encode(buildListBidResponsesWithoutBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5158,7 +5158,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5183,7 +5183,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListFilteredBidRequestsResponse());
+        var resp = convert.json.encode(buildListFilteredBidRequestsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5221,7 +5221,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5246,7 +5246,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListFilteredBidsResponse());
+        var resp = convert.json.encode(buildListFilteredBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5290,7 +5290,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5315,7 +5315,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON
+        var resp = convert.json
             .encode(buildListCreativeStatusBreakdownByCreativeResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5360,7 +5360,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5385,7 +5385,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON
+        var resp = convert.json
             .encode(buildListCreativeStatusBreakdownByDetailResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5427,7 +5427,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5452,7 +5452,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListImpressionMetricsResponse());
+        var resp = convert.json.encode(buildListImpressionMetricsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5490,7 +5490,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5515,7 +5515,7 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListLosingBidsResponse());
+        var resp = convert.json.encode(buildListLosingBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
@@ -5557,7 +5557,7 @@ main() {
 
         var query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = {};
+        var queryMap = <core.String, core.List<core.String>>{};
         addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
         parseBool(n) {
           if (n == "true") return true;
@@ -5583,7 +5583,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp =
-            convert.JSON.encode(buildListNonBillableWinningBidsResponse());
+            convert.json.encode(buildListNonBillableWinningBidsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res

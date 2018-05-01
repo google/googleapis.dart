@@ -248,7 +248,7 @@ class TasksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -438,7 +438,7 @@ class TasksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -507,7 +507,7 @@ class TasksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -648,13 +648,15 @@ class TaskQueueAcl {
 
   TaskQueueAcl.fromJson(core.Map _json) {
     if (_json.containsKey("adminEmails")) {
-      adminEmails = _json["adminEmails"];
+      adminEmails = (_json["adminEmails"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("consumerEmails")) {
-      consumerEmails = _json["consumerEmails"];
+      consumerEmails =
+          (_json["consumerEmails"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("producerEmails")) {
-      producerEmails = _json["producerEmails"];
+      producerEmails =
+          (_json["producerEmails"] as core.List).cast<core.String>();
     }
   }
 
@@ -794,7 +796,7 @@ class Tasks {
 
   Tasks.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Task>((value) => new Task.fromJson(value))
           .toList();
     }
@@ -827,7 +829,7 @@ class Tasks2 {
 
   Tasks2.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Task>((value) => new Task.fromJson(value))
           .toList();
     }

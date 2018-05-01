@@ -103,7 +103,7 @@ class ProjectsConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -364,7 +364,7 @@ class ProjectsConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -424,7 +424,7 @@ class ProjectsConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -478,7 +478,7 @@ class ProjectsConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -588,7 +588,7 @@ class ProjectsConfigsOperationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -670,7 +670,7 @@ class ProjectsConfigsVariablesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -926,7 +926,7 @@ class ProjectsConfigsVariablesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -980,7 +980,7 @@ class ProjectsConfigsVariablesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1045,7 +1045,7 @@ class ProjectsConfigsVariablesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1121,7 +1121,7 @@ class ProjectsConfigsWaitersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1340,7 +1340,7 @@ class ProjectsConfigsWaitersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1399,7 +1399,7 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -1528,7 +1528,7 @@ class ListConfigsResponse {
 
   ListConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("configs")) {
-      configs = _json["configs"]
+      configs = (_json["configs"] as core.List)
           .map<RuntimeConfig>((value) => new RuntimeConfig.fromJson(value))
           .toList();
     }
@@ -1571,7 +1571,7 @@ class ListVariablesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("variables")) {
-      variables = _json["variables"]
+      variables = (_json["variables"] as core.List)
           .map<Variable>((value) => new Variable.fromJson(value))
           .toList();
     }
@@ -1611,7 +1611,7 @@ class ListWaitersResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("waiters")) {
-      waiters = _json["waiters"]
+      waiters = (_json["waiters"] as core.List)
           .map<Waiter>((value) => new Waiter.fromJson(value))
           .toList();
     }
@@ -1679,13 +1679,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1762,12 +1764,12 @@ class Policy {
   /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Deprecated.
@@ -1777,7 +1779,7 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
@@ -1956,7 +1958,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -1991,7 +1996,7 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2015,7 +2020,7 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2080,12 +2085,12 @@ class Variable {
   /// base64 encoded. Only one of `value` or `text` can be set.
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return convert.BASE64.decode(value);
+    return convert.base64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
     value =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Variable();

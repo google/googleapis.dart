@@ -259,7 +259,7 @@ class StatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
@@ -350,7 +350,7 @@ class ListResponse {
 
   ListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<GetResponse>((value) => new GetResponse.fromJson(value))
           .toList();
     }

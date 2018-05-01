@@ -145,7 +145,7 @@ class ActivitiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -539,7 +539,7 @@ class CaptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -734,7 +734,7 @@ class CaptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -848,7 +848,7 @@ class ChannelBannersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (channelId != null) {
       _queryParams["channelId"] = [channelId];
@@ -1016,7 +1016,7 @@ class ChannelSectionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -1197,7 +1197,7 @@ class ChannelSectionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -1420,7 +1420,7 @@ class ChannelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -1481,7 +1481,7 @@ class CommentThreadsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -1692,7 +1692,7 @@ class CommentThreadsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -1794,7 +1794,7 @@ class CommentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -2061,7 +2061,7 @@ class CommentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -2760,7 +2760,7 @@ class LiveBroadcastsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -3136,7 +3136,7 @@ class LiveBroadcastsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -3246,7 +3246,7 @@ class LiveChatBansResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -3349,7 +3349,7 @@ class LiveChatMessagesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -3546,7 +3546,7 @@ class LiveChatModeratorsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -3798,7 +3798,7 @@ class LiveStreamsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -4023,7 +4023,7 @@ class LiveStreamsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -4163,7 +4163,7 @@ class PlaylistItemsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -4354,7 +4354,7 @@ class PlaylistItemsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -4511,7 +4511,7 @@ class PlaylistsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -4732,7 +4732,7 @@ class PlaylistsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -5324,7 +5324,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -6043,7 +6043,7 @@ class VideosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -6358,7 +6358,7 @@ class VideosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -6440,7 +6440,7 @@ class VideosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (part == null) {
       throw new core.ArgumentError("Parameter part is required.");
@@ -6519,7 +6519,7 @@ class WatermarksResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (channelId == null) {
       throw new core.ArgumentError("Parameter channelId is required.");
@@ -6632,7 +6632,7 @@ class AccessPolicy {
       allowed = _json["allowed"];
     }
     if (_json.containsKey("exception")) {
-      exception = _json["exception"];
+      exception = (_json["exception"] as core.List).cast<core.String>();
     }
   }
 
@@ -7086,10 +7086,11 @@ class ActivityContentDetailsPromotedItem {
       destinationUrl = _json["destinationUrl"];
     }
     if (_json.containsKey("forecastingUrl")) {
-      forecastingUrl = _json["forecastingUrl"];
+      forecastingUrl =
+          (_json["forecastingUrl"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("impressionUrl")) {
-      impressionUrl = _json["impressionUrl"];
+      impressionUrl = (_json["impressionUrl"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("videoId")) {
       videoId = _json["videoId"];
@@ -7330,7 +7331,7 @@ class ActivityListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Activity>((value) => new Activity.fromJson(value))
           .toList();
     }
@@ -7576,7 +7577,7 @@ class CaptionListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Caption>((value) => new Caption.fromJson(value))
           .toList();
     }
@@ -7940,11 +7941,9 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("localizations")) {
-      localizations = commons
-          .mapMap<core.Map<core.String, core.Object>, ChannelLocalization>(
-              _json["localizations"],
-              (core.Map<core.String, core.Object> item) =>
-                  new ChannelLocalization.fromJson(item));
+      localizations = commons.mapMap<core.Map, ChannelLocalization>(
+          _json["localizations"].cast<core.String, core.Map>(),
+          (core.Map item) => new ChannelLocalization.fromJson(item));
     }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSnippet.fromJson(_json["snippet"]);
@@ -8131,7 +8130,7 @@ class ChannelBrandingSettings {
       channel = new ChannelSettings.fromJson(_json["channel"]);
     }
     if (_json.containsKey("hints")) {
-      hints = _json["hints"]
+      hints = (_json["hints"] as core.List)
           .map<PropertyValue>((value) => new PropertyValue.fromJson(value))
           .toList();
     }
@@ -8343,7 +8342,7 @@ class ChannelConversionPings {
 
   ChannelConversionPings.fromJson(core.Map _json) {
     if (_json.containsKey("pings")) {
-      pings = _json["pings"]
+      pings = (_json["pings"] as core.List)
           .map<ChannelConversionPing>(
               (value) => new ChannelConversionPing.fromJson(value))
           .toList();
@@ -8397,7 +8396,7 @@ class ChannelListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Channel>((value) => new Channel.fromJson(value))
           .toList();
     }
@@ -8579,11 +8578,9 @@ class ChannelSection {
       kind = _json["kind"];
     }
     if (_json.containsKey("localizations")) {
-      localizations = commons.mapMap<core.Map<core.String, core.Object>,
-              ChannelSectionLocalization>(
-          _json["localizations"],
-          (core.Map<core.String, core.Object> item) =>
-              new ChannelSectionLocalization.fromJson(item));
+      localizations = commons.mapMap<core.Map, ChannelSectionLocalization>(
+          _json["localizations"].cast<core.String, core.Map>(),
+          (core.Map item) => new ChannelSectionLocalization.fromJson(item));
     }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSectionSnippet.fromJson(_json["snippet"]);
@@ -8636,10 +8633,10 @@ class ChannelSectionContentDetails {
 
   ChannelSectionContentDetails.fromJson(core.Map _json) {
     if (_json.containsKey("channels")) {
-      channels = _json["channels"];
+      channels = (_json["channels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("playlists")) {
-      playlists = _json["playlists"];
+      playlists = (_json["playlists"] as core.List).cast<core.String>();
     }
   }
 
@@ -8683,7 +8680,7 @@ class ChannelSectionListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ChannelSection>((value) => new ChannelSection.fromJson(value))
           .toList();
     }
@@ -8855,13 +8852,13 @@ class ChannelSectionTargeting {
 
   ChannelSectionTargeting.fromJson(core.Map _json) {
     if (_json.containsKey("countries")) {
-      countries = _json["countries"];
+      countries = (_json["countries"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("languages")) {
-      languages = _json["languages"];
+      languages = (_json["languages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("regions")) {
-      regions = _json["regions"];
+      regions = (_json["regions"] as core.List).cast<core.String>();
     }
   }
 
@@ -8944,7 +8941,8 @@ class ChannelSettings {
       featuredChannelsTitle = _json["featuredChannelsTitle"];
     }
     if (_json.containsKey("featuredChannelsUrls")) {
-      featuredChannelsUrls = _json["featuredChannelsUrls"];
+      featuredChannelsUrls =
+          (_json["featuredChannelsUrls"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("keywords")) {
       keywords = _json["keywords"];
@@ -9234,10 +9232,11 @@ class ChannelTopicDetails {
 
   ChannelTopicDetails.fromJson(core.Map _json) {
     if (_json.containsKey("topicCategories")) {
-      topicCategories = _json["topicCategories"];
+      topicCategories =
+          (_json["topicCategories"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("topicIds")) {
-      topicIds = _json["topicIds"];
+      topicIds = (_json["topicIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -9338,7 +9337,7 @@ class CommentListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -9661,7 +9660,7 @@ class CommentThreadListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CommentThread>((value) => new CommentThread.fromJson(value))
           .toList();
     }
@@ -9724,7 +9723,7 @@ class CommentThreadReplies {
 
   CommentThreadReplies.fromJson(core.Map _json) {
     if (_json.containsKey("comments")) {
-      comments = _json["comments"]
+      comments = (_json["comments"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -10649,7 +10648,8 @@ class ContentRating {
       djctqRating = _json["djctqRating"];
     }
     if (_json.containsKey("djctqRatingReasons")) {
-      djctqRatingReasons = _json["djctqRatingReasons"];
+      djctqRatingReasons =
+          (_json["djctqRatingReasons"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("ecbmctRating")) {
       ecbmctRating = _json["ecbmctRating"];
@@ -10676,7 +10676,8 @@ class ContentRating {
       fpbRating = _json["fpbRating"];
     }
     if (_json.containsKey("fpbRatingReasons")) {
-      fpbRatingReasons = _json["fpbRatingReasons"];
+      fpbRatingReasons =
+          (_json["fpbRatingReasons"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("fskRating")) {
       fskRating = _json["fskRating"];
@@ -11103,7 +11104,7 @@ class FanFundingEventListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<FanFundingEvent>((value) => new FanFundingEvent.fromJson(value))
           .toList();
     }
@@ -11371,7 +11372,7 @@ class GuideCategoryListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<GuideCategory>((value) => new GuideCategory.fromJson(value))
           .toList();
     }
@@ -11541,7 +11542,7 @@ class I18nLanguageListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<I18nLanguage>((value) => new I18nLanguage.fromJson(value))
           .toList();
     }
@@ -11688,7 +11689,7 @@ class I18nRegionListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<I18nRegion>((value) => new I18nRegion.fromJson(value))
           .toList();
     }
@@ -12036,12 +12037,12 @@ class IngestionInfo {
 class InvideoBranding {
   core.String imageBytes;
   core.List<core.int> get imageBytesAsBytes {
-    return convert.BASE64.decode(imageBytes);
+    return convert.base64.decode(imageBytes);
   }
 
   void set imageBytesAsBytes(core.List<core.int> _bytes) {
     imageBytes =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   core.String imageUrl;
@@ -12159,7 +12160,7 @@ class InvideoPromotion {
       defaultTiming = new InvideoTiming.fromJson(_json["defaultTiming"]);
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PromotedItem>((value) => new PromotedItem.fromJson(value))
           .toList();
     }
@@ -12410,12 +12411,12 @@ class LiveBroadcastContentDetails {
   core.String latencyPreference;
   core.String mesh;
   core.List<core.int> get meshAsBytes {
-    return convert.BASE64.decode(mesh);
+    return convert.base64.decode(mesh);
   }
 
   void set meshAsBytes(core.List<core.int> _bytes) {
     mesh =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The monitorStream object contains information about the monitor stream,
@@ -12590,7 +12591,7 @@ class LiveBroadcastListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LiveBroadcast>((value) => new LiveBroadcast.fromJson(value))
           .toList();
     }
@@ -13255,7 +13256,7 @@ class LiveChatMessageListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LiveChatMessage>((value) => new LiveChatMessage.fromJson(value))
           .toList();
     }
@@ -13610,7 +13611,7 @@ class LiveChatModeratorListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LiveChatModerator>(
               (value) => new LiveChatModerator.fromJson(value))
           .toList();
@@ -13735,7 +13736,7 @@ class LiveChatPollEditedDetails {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LiveChatPollItem>(
               (value) => new LiveChatPollItem.fromJson(value))
           .toList();
@@ -13802,7 +13803,7 @@ class LiveChatPollOpenedDetails {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LiveChatPollItem>(
               (value) => new LiveChatPollItem.fromJson(value))
           .toList();
@@ -14222,7 +14223,7 @@ class LiveStreamHealthStatus {
 
   LiveStreamHealthStatus.fromJson(core.Map _json) {
     if (_json.containsKey("configurationIssues")) {
-      configurationIssues = _json["configurationIssues"]
+      configurationIssues = (_json["configurationIssues"] as core.List)
           .map<LiveStreamConfigurationIssue>(
               (value) => new LiveStreamConfigurationIssue.fromJson(value))
           .toList();
@@ -14289,7 +14290,7 @@ class LiveStreamListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LiveStream>((value) => new LiveStream.fromJson(value))
           .toList();
     }
@@ -14461,7 +14462,7 @@ class LocalizedProperty {
       defaultLanguage = new LanguageTag.fromJson(_json["defaultLanguage"]);
     }
     if (_json.containsKey("localized")) {
-      localized = _json["localized"]
+      localized = (_json["localized"] as core.List)
           .map<LocalizedString>((value) => new LocalizedString.fromJson(value))
           .toList();
     }
@@ -14714,11 +14715,9 @@ class Playlist {
       kind = _json["kind"];
     }
     if (_json.containsKey("localizations")) {
-      localizations = commons
-          .mapMap<core.Map<core.String, core.Object>, PlaylistLocalization>(
-              _json["localizations"],
-              (core.Map<core.String, core.Object> item) =>
-                  new PlaylistLocalization.fromJson(item));
+      localizations = commons.mapMap<core.Map, PlaylistLocalization>(
+          _json["localizations"].cast<core.String, core.Map>(),
+          (core.Map item) => new PlaylistLocalization.fromJson(item));
     }
     if (_json.containsKey("player")) {
       player = new PlaylistPlayer.fromJson(_json["player"]);
@@ -14986,7 +14985,7 @@ class PlaylistItemListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PlaylistItem>((value) => new PlaylistItem.fromJson(value))
           .toList();
     }
@@ -15211,7 +15210,7 @@ class PlaylistListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Playlist>((value) => new Playlist.fromJson(value))
           .toList();
     }
@@ -15378,7 +15377,7 @@ class PlaylistSnippet {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
     }
     if (_json.containsKey("tags")) {
-      tags = _json["tags"];
+      tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
@@ -15690,7 +15689,7 @@ class SearchListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SearchResult>((value) => new SearchResult.fromJson(value))
           .toList();
     }
@@ -15988,7 +15987,7 @@ class SponsorListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Sponsor>((value) => new Sponsor.fromJson(value))
           .toList();
     }
@@ -16240,7 +16239,7 @@ class SubscriptionListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Subscription>((value) => new Subscription.fromJson(value))
           .toList();
     }
@@ -16516,7 +16515,7 @@ class SuperChatEventListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SuperChatEvent>((value) => new SuperChatEvent.fromJson(value))
           .toList();
     }
@@ -16804,7 +16803,7 @@ class ThumbnailSetResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ThumbnailDetails>(
               (value) => new ThumbnailDetails.fromJson(value))
           .toList();
@@ -16961,11 +16960,9 @@ class Video {
           new VideoLiveStreamingDetails.fromJson(_json["liveStreamingDetails"]);
     }
     if (_json.containsKey("localizations")) {
-      localizations =
-          commons.mapMap<core.Map<core.String, core.Object>, VideoLocalization>(
-              _json["localizations"],
-              (core.Map<core.String, core.Object> item) =>
-                  new VideoLocalization.fromJson(item));
+      localizations = commons.mapMap<core.Map, VideoLocalization>(
+          _json["localizations"].cast<core.String, core.Map>(),
+          (core.Map item) => new VideoLocalization.fromJson(item));
     }
     if (_json.containsKey("monetizationDetails")) {
       monetizationDetails =
@@ -17207,7 +17204,7 @@ class VideoAbuseReportReasonListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<VideoAbuseReportReason>(
               (value) => new VideoAbuseReportReason.fromJson(value))
           .toList();
@@ -17258,7 +17255,7 @@ class VideoAbuseReportReasonSnippet {
       label = _json["label"];
     }
     if (_json.containsKey("secondaryReasons")) {
-      secondaryReasons = _json["secondaryReasons"]
+      secondaryReasons = (_json["secondaryReasons"] as core.List)
           .map<VideoAbuseReportSecondaryReason>(
               (value) => new VideoAbuseReportSecondaryReason.fromJson(value))
           .toList();
@@ -17452,7 +17449,7 @@ class VideoCategoryListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<VideoCategory>((value) => new VideoCategory.fromJson(value))
           .toList();
     }
@@ -17699,10 +17696,10 @@ class VideoContentDetailsRegionRestriction {
 
   VideoContentDetailsRegionRestriction.fromJson(core.Map _json) {
     if (_json.containsKey("allowed")) {
-      allowed = _json["allowed"];
+      allowed = (_json["allowed"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("blocked")) {
-      blocked = _json["blocked"];
+      blocked = (_json["blocked"] as core.List).cast<core.String>();
     }
   }
 
@@ -17774,7 +17771,7 @@ class VideoFileDetails {
 
   VideoFileDetails.fromJson(core.Map _json) {
     if (_json.containsKey("audioStreams")) {
-      audioStreams = _json["audioStreams"]
+      audioStreams = (_json["audioStreams"] as core.List)
           .map<VideoFileDetailsAudioStream>(
               (value) => new VideoFileDetailsAudioStream.fromJson(value))
           .toList();
@@ -17801,7 +17798,7 @@ class VideoFileDetails {
       fileType = _json["fileType"];
     }
     if (_json.containsKey("videoStreams")) {
-      videoStreams = _json["videoStreams"]
+      videoStreams = (_json["videoStreams"] as core.List)
           .map<VideoFileDetailsVideoStream>(
               (value) => new VideoFileDetailsVideoStream.fromJson(value))
           .toList();
@@ -18018,7 +18015,7 @@ class VideoGetRatingResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<VideoRating>((value) => new VideoRating.fromJson(value))
           .toList();
     }
@@ -18089,7 +18086,7 @@ class VideoListResponse {
       eventId = _json["eventId"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Video>((value) => new Video.fromJson(value))
           .toList();
     }
@@ -18506,7 +18503,7 @@ class VideoProjectDetails {
 
   VideoProjectDetails.fromJson(core.Map _json) {
     if (_json.containsKey("tags")) {
-      tags = _json["tags"];
+      tags = (_json["tags"] as core.List).cast<core.String>();
     }
   }
 
@@ -18677,7 +18674,7 @@ class VideoSnippet {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
     }
     if (_json.containsKey("tags")) {
-      tags = _json["tags"];
+      tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
@@ -18951,19 +18948,23 @@ class VideoSuggestions {
 
   VideoSuggestions.fromJson(core.Map _json) {
     if (_json.containsKey("editorSuggestions")) {
-      editorSuggestions = _json["editorSuggestions"];
+      editorSuggestions =
+          (_json["editorSuggestions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("processingErrors")) {
-      processingErrors = _json["processingErrors"];
+      processingErrors =
+          (_json["processingErrors"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("processingHints")) {
-      processingHints = _json["processingHints"];
+      processingHints =
+          (_json["processingHints"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("processingWarnings")) {
-      processingWarnings = _json["processingWarnings"];
+      processingWarnings =
+          (_json["processingWarnings"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tagSuggestions")) {
-      tagSuggestions = _json["tagSuggestions"]
+      tagSuggestions = (_json["tagSuggestions"] as core.List)
           .map<VideoSuggestionsTagSuggestion>(
               (value) => new VideoSuggestionsTagSuggestion.fromJson(value))
           .toList();
@@ -19009,7 +19010,8 @@ class VideoSuggestionsTagSuggestion {
 
   VideoSuggestionsTagSuggestion.fromJson(core.Map _json) {
     if (_json.containsKey("categoryRestricts")) {
-      categoryRestricts = _json["categoryRestricts"];
+      categoryRestricts =
+          (_json["categoryRestricts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tag")) {
       tag = _json["tag"];
@@ -19050,13 +19052,15 @@ class VideoTopicDetails {
 
   VideoTopicDetails.fromJson(core.Map _json) {
     if (_json.containsKey("relevantTopicIds")) {
-      relevantTopicIds = _json["relevantTopicIds"];
+      relevantTopicIds =
+          (_json["relevantTopicIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("topicCategories")) {
-      topicCategories = _json["topicCategories"];
+      topicCategories =
+          (_json["topicCategories"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("topicIds")) {
-      topicIds = _json["topicIds"];
+      topicIds = (_json["topicIds"] as core.List).cast<core.String>();
     }
   }
 

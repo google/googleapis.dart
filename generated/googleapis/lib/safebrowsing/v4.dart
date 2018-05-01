@@ -192,7 +192,7 @@ class FullHashesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -241,7 +241,7 @@ class ThreatHitsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -293,7 +293,7 @@ class ThreatListUpdatesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -386,7 +386,7 @@ class ThreatMatchesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -411,12 +411,12 @@ class Checksum {
   /// hashes present in the database.
   core.String sha256;
   core.List<core.int> get sha256AsBytes {
-    return convert.BASE64.decode(sha256);
+    return convert.base64.decode(sha256);
   }
 
   void set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Checksum();
@@ -517,7 +517,8 @@ class Constraints {
       region = _json["region"];
     }
     if (_json.containsKey("supportedCompressions")) {
-      supportedCompressions = _json["supportedCompressions"];
+      supportedCompressions =
+          (_json["supportedCompressions"] as core.List).cast<core.String>();
     }
   }
 
@@ -586,7 +587,7 @@ class FetchThreatListUpdatesRequest {
       client = new ClientInfo.fromJson(_json["client"]);
     }
     if (_json.containsKey("listUpdateRequests")) {
-      listUpdateRequests = _json["listUpdateRequests"]
+      listUpdateRequests = (_json["listUpdateRequests"] as core.List)
           .map<ListUpdateRequest>(
               (value) => new ListUpdateRequest.fromJson(value))
           .toList();
@@ -619,7 +620,7 @@ class FetchThreatListUpdatesResponse {
 
   FetchThreatListUpdatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("listUpdateResponses")) {
-      listUpdateResponses = _json["listUpdateResponses"]
+      listUpdateResponses = (_json["listUpdateResponses"] as core.List)
           .map<ListUpdateResponse>(
               (value) => new ListUpdateResponse.fromJson(value))
           .toList();
@@ -668,7 +669,7 @@ class FindFullHashesRequest {
       client = new ClientInfo.fromJson(_json["client"]);
     }
     if (_json.containsKey("clientStates")) {
-      clientStates = _json["clientStates"];
+      clientStates = (_json["clientStates"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("threatInfo")) {
       threatInfo = new ThreatInfo.fromJson(_json["threatInfo"]);
@@ -711,7 +712,7 @@ class FindFullHashesResponse {
 
   FindFullHashesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matches")) {
-      matches = _json["matches"]
+      matches = (_json["matches"] as core.List)
           .map<ThreatMatch>((value) => new ThreatMatch.fromJson(value))
           .toList();
     }
@@ -779,7 +780,7 @@ class FindThreatMatchesResponse {
 
   FindThreatMatchesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matches")) {
-      matches = _json["matches"]
+      matches = (_json["matches"] as core.List)
           .map<ThreatMatch>((value) => new ThreatMatch.fromJson(value))
           .toList();
     }
@@ -803,7 +804,7 @@ class ListThreatListsResponse {
 
   ListThreatListsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("threatLists")) {
-      threatLists = _json["threatLists"]
+      threatLists = (_json["threatLists"] as core.List)
           .map<ThreatListDescriptor>(
               (value) => new ThreatListDescriptor.fromJson(value))
           .toList();
@@ -843,12 +844,12 @@ class ListUpdateRequest {
   /// client state that was received from the last successful list update).
   core.String state;
   core.List<core.int> get stateAsBytes {
-    return convert.BASE64.decode(state);
+    return convert.base64.decode(state);
   }
 
   void set stateAsBytes(core.List<core.int> _bytes) {
     state =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The types of entries present in the list.
@@ -945,12 +946,12 @@ class ListUpdateResponse {
   /// The new client state, in encrypted format. Opaque to clients.
   core.String newClientState;
   core.List<core.int> get newClientStateAsBytes {
-    return convert.BASE64.decode(newClientState);
+    return convert.base64.decode(newClientState);
   }
 
   void set newClientStateAsBytes(core.List<core.int> _bytes) {
     newClientState =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The platform type for which data is returned.
@@ -1022,7 +1023,7 @@ class ListUpdateResponse {
 
   ListUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
-      additions = _json["additions"]
+      additions = (_json["additions"] as core.List)
           .map<ThreatEntrySet>((value) => new ThreatEntrySet.fromJson(value))
           .toList();
     }
@@ -1036,7 +1037,7 @@ class ListUpdateResponse {
       platformType = _json["platformType"];
     }
     if (_json.containsKey("removals")) {
-      removals = _json["removals"]
+      removals = (_json["removals"] as core.List)
           .map<ThreatEntrySet>((value) => new ThreatEntrySet.fromJson(value))
           .toList();
     }
@@ -1087,23 +1088,23 @@ class MetadataEntry {
   /// The metadata entry key. For JSON requests, the key is base64-encoded.
   core.String key;
   core.List<core.int> get keyAsBytes {
-    return convert.BASE64.decode(key);
+    return convert.base64.decode(key);
   }
 
   void set keyAsBytes(core.List<core.int> _bytes) {
     key =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The metadata entry value. For JSON requests, the value is base64-encoded.
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return convert.BASE64.decode(value);
+    return convert.base64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
     value =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   MetadataEntry();
@@ -1149,12 +1150,12 @@ class RawHashes {
   /// base64-encoded.
   core.String rawHashes;
   core.List<core.int> get rawHashesAsBytes {
-    return convert.BASE64.decode(rawHashes);
+    return convert.base64.decode(rawHashes);
   }
 
   void set rawHashesAsBytes(core.List<core.int> _bytes) {
     rawHashes =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RawHashes();
@@ -1190,7 +1191,7 @@ class RawIndices {
 
   RawIndices.fromJson(core.Map _json) {
     if (_json.containsKey("indices")) {
-      indices = _json["indices"];
+      indices = (_json["indices"] as core.List).cast<core.int>();
     }
   }
 
@@ -1210,12 +1211,12 @@ class RiceDeltaEncoding {
   /// The encoded deltas that are encoded using the Golomb-Rice coder.
   core.String encodedData;
   core.List<core.int> get encodedDataAsBytes {
-    return convert.BASE64.decode(encodedData);
+    return convert.base64.decode(encodedData);
   }
 
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The offset of the first entry in the encoded data, or, if only a single
@@ -1276,12 +1277,12 @@ class ThreatEntry {
   /// binary and hex digests. For JSON requests, digests are base64-encoded.
   core.String digest;
   core.List<core.int> get digestAsBytes {
-    return convert.BASE64.decode(digest);
+    return convert.base64.decode(digest);
   }
 
   void set digestAsBytes(core.List<core.int> _bytes) {
     digest =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// A hash prefix, consisting of the most significant 4-32 bytes of a SHA256
@@ -1289,12 +1290,12 @@ class ThreatEntry {
   /// base64-encoded.
   core.String hash;
   core.List<core.int> get hashAsBytes {
-    return convert.BASE64.decode(hash);
+    return convert.base64.decode(hash);
   }
 
   void set hashAsBytes(core.List<core.int> _bytes) {
     hash =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// A URL.
@@ -1340,7 +1341,7 @@ class ThreatEntryMetadata {
 
   ThreatEntryMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
-      entries = _json["entries"]
+      entries = (_json["entries"] as core.List)
           .map<MetadataEntry>((value) => new MetadataEntry.fromJson(value))
           .toList();
     }
@@ -1490,7 +1491,7 @@ class ThreatHit {
       platformType = _json["platformType"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<ThreatSource>((value) => new ThreatSource.fromJson(value))
           .toList();
     }
@@ -1546,18 +1547,19 @@ class ThreatInfo {
 
   ThreatInfo.fromJson(core.Map _json) {
     if (_json.containsKey("platformTypes")) {
-      platformTypes = _json["platformTypes"];
+      platformTypes = (_json["platformTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("threatEntries")) {
-      threatEntries = _json["threatEntries"]
+      threatEntries = (_json["threatEntries"] as core.List)
           .map<ThreatEntry>((value) => new ThreatEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("threatEntryTypes")) {
-      threatEntryTypes = _json["threatEntryTypes"];
+      threatEntryTypes =
+          (_json["threatEntryTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("threatTypes")) {
-      threatTypes = _json["threatTypes"];
+      threatTypes = (_json["threatTypes"] as core.List).cast<core.String>();
     }
   }
 
@@ -1843,12 +1845,12 @@ class UserInfo {
   /// Unique user identifier defined by the client.
   core.String userId;
   core.List<core.int> get userIdAsBytes {
-    return convert.BASE64.decode(userId);
+    return convert.base64.decode(userId);
   }
 
   void set userIdAsBytes(core.List<core.int> _bytes) {
     userId =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   UserInfo();

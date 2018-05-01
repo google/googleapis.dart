@@ -83,7 +83,7 @@ class PhotoResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -256,7 +256,7 @@ class PhotoResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -351,7 +351,7 @@ class PhotoResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -422,7 +422,7 @@ class PhotosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -566,7 +566,7 @@ class PhotosResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -678,7 +678,7 @@ class BatchDeletePhotosRequest {
 
   BatchDeletePhotosRequest.fromJson(core.Map _json) {
     if (_json.containsKey("photoIds")) {
-      photoIds = _json["photoIds"];
+      photoIds = (_json["photoIds"] as core.List).cast<core.String>();
     }
   }
 
@@ -703,7 +703,7 @@ class BatchDeletePhotosResponse {
 
   BatchDeletePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("status")) {
-      status = _json["status"]
+      status = (_json["status"] as core.List)
           .map<Status>((value) => new Status.fromJson(value))
           .toList();
     }
@@ -731,7 +731,7 @@ class BatchGetPhotosResponse {
 
   BatchGetPhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<PhotoResponse>((value) => new PhotoResponse.fromJson(value))
           .toList();
     }
@@ -758,7 +758,7 @@ class BatchUpdatePhotosRequest {
 
   BatchUpdatePhotosRequest.fromJson(core.Map _json) {
     if (_json.containsKey("updatePhotoRequests")) {
-      updatePhotoRequests = _json["updatePhotoRequests"]
+      updatePhotoRequests = (_json["updatePhotoRequests"] as core.List)
           .map<UpdatePhotoRequest>(
               (value) => new UpdatePhotoRequest.fromJson(value))
           .toList();
@@ -788,7 +788,7 @@ class BatchUpdatePhotosResponse {
 
   BatchUpdatePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<PhotoResponse>((value) => new PhotoResponse.fromJson(value))
           .toList();
     }
@@ -940,7 +940,7 @@ class ListPhotosResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("photos")) {
-      photos = _json["photos"]
+      photos = (_json["photos"] as core.List)
           .map<Photo>((value) => new Photo.fromJson(value))
           .toList();
     }
@@ -1008,13 +1008,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1089,7 +1091,7 @@ class Photo {
       captureTime = _json["captureTime"];
     }
     if (_json.containsKey("connections")) {
-      connections = _json["connections"]
+      connections = (_json["connections"] as core.List)
           .map<Connection>((value) => new Connection.fromJson(value))
           .toList();
     }
@@ -1100,7 +1102,7 @@ class Photo {
       photoId = new PhotoId.fromJson(_json["photoId"]);
     }
     if (_json.containsKey("places")) {
-      places = _json["places"]
+      places = (_json["places"] as core.List)
           .map<Place>((value) => new Place.fromJson(value))
           .toList();
     }
@@ -1407,7 +1409,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

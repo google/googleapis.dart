@@ -394,8 +394,8 @@ class Context {
 
   Context.fromJson(core.Map _json) {
     if (_json.containsKey("facets")) {
-      facets = _json["facets"]
-          .map<core.List<ContextFacets>>((value) => value
+      facets = (_json["facets"] as core.List)
+          .map<core.List<ContextFacets>>((value) => (value as core.List)
               .map<ContextFacets>((value) => new ContextFacets.fromJson(value))
               .toList())
           .toList();
@@ -509,7 +509,7 @@ class Promotion {
 
   Promotion.fromJson(core.Map _json) {
     if (_json.containsKey("bodyLines")) {
-      bodyLines = _json["bodyLines"]
+      bodyLines = (_json["bodyLines"] as core.List)
           .map<PromotionBodyLines>(
               (value) => new PromotionBodyLines.fromJson(value))
           .toList();
@@ -973,7 +973,7 @@ class Result {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"]
+      labels = (_json["labels"] as core.List)
           .map<ResultLabels>((value) => new ResultLabels.fromJson(value))
           .toList();
     }
@@ -984,7 +984,13 @@ class Result {
       mime = _json["mime"];
     }
     if (_json.containsKey("pagemap")) {
-      pagemap = _json["pagemap"];
+      pagemap = commons
+          .mapMap<core.List, core.List<core.Map<core.String, core.Object>>>(
+              _json["pagemap"].cast<core.String, core.List>(),
+              (core.List item) => (item as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map).cast<core.String, core.Object>())
+                  .toList());
     }
     if (_json.containsKey("snippet")) {
       snippet = _json["snippet"];
@@ -1161,7 +1167,7 @@ class Search {
       context = new Context.fromJson(_json["context"]);
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Result>((value) => new Result.fromJson(value))
           .toList();
     }
@@ -1169,16 +1175,16 @@ class Search {
       kind = _json["kind"];
     }
     if (_json.containsKey("promotions")) {
-      promotions = _json["promotions"]
+      promotions = (_json["promotions"] as core.List)
           .map<Promotion>((value) => new Promotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("queries")) {
-      queries = commons.mapMap<core.List<core.Map<core.String, core.Object>>,
-              core.List<Query>>(
-          _json["queries"],
-          (core.List<core.Map<core.String, core.Object>> item) =>
-              item.map<Query>((value) => new Query.fromJson(value)).toList());
+      queries = commons.mapMap<core.List, core.List<Query>>(
+          _json["queries"].cast<core.String, core.List>(),
+          (core.List item) => (item as core.List)
+              .map<Query>((value) => new Query.fromJson(value))
+              .toList());
     }
     if (_json.containsKey("searchInformation")) {
       searchInformation =

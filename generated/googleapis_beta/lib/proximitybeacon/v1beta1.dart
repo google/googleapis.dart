@@ -70,7 +70,7 @@ class BeaconinfoResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -624,7 +624,7 @@ class BeaconsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -697,7 +697,7 @@ class BeaconsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -873,7 +873,7 @@ class BeaconsAttachmentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -1245,7 +1245,7 @@ class NamespacesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (namespaceName == null) {
       throw new core.ArgumentError("Parameter namespaceName is required.");
@@ -1330,12 +1330,12 @@ class AdvertisedId {
   /// Required.
   core.String id;
   core.List<core.int> get idAsBytes {
-    return convert.BASE64.decode(id);
+    return convert.base64.decode(id);
   }
 
   void set idAsBytes(core.List<core.int> _bytes) {
     id =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Specifies the identifier type.
@@ -1382,12 +1382,12 @@ class AttachmentInfo {
   /// An opaque data container for client-provided data.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The distance away from the beacon at which this attachment should be
@@ -1520,12 +1520,12 @@ class Beacon {
   /// that this key grants nothing on the service, only on the beacon itself.
   core.String provisioningKey;
   core.List<core.int> get provisioningKeyAsBytes {
-    return convert.BASE64.decode(provisioningKey);
+    return convert.base64.decode(provisioningKey);
   }
 
   void set provisioningKeyAsBytes(core.List<core.int> _bytes) {
     provisioningKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Current status of the beacon.
@@ -1568,7 +1568,8 @@ class Beacon {
       placeId = _json["placeId"];
     }
     if (_json.containsKey("properties")) {
-      properties = _json["properties"];
+      properties =
+          (_json["properties"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("provisioningKey")) {
       provisioningKey = _json["provisioningKey"];
@@ -1635,12 +1636,12 @@ class BeaconAttachment {
   /// Required.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The distance away from the beacon at which this attachment should be
@@ -1731,7 +1732,7 @@ class BeaconInfo {
       advertisedId = new AdvertisedId.fromJson(_json["advertisedId"]);
     }
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"]
+      attachments = (_json["attachments"] as core.List)
           .map<AttachmentInfo>((value) => new AttachmentInfo.fromJson(value))
           .toList();
     }
@@ -1848,7 +1849,7 @@ class Diagnostics {
 
   Diagnostics.fromJson(core.Map _json) {
     if (_json.containsKey("alerts")) {
-      alerts = _json["alerts"];
+      alerts = (_json["alerts"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("beaconName")) {
       beaconName = _json["beaconName"];
@@ -1925,12 +1926,12 @@ class EphemeralIdRegistration {
   /// must also be populated, and `beacon_identity_key` must not be.
   core.String beaconEcdhPublicKey;
   core.List<core.int> get beaconEcdhPublicKeyAsBytes {
-    return convert.BASE64.decode(beaconEcdhPublicKey);
+    return convert.base64.decode(beaconEcdhPublicKey);
   }
 
   void set beaconEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
     beaconEcdhPublicKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The private key of the beacon. If this field is populated,
@@ -1938,12 +1939,12 @@ class EphemeralIdRegistration {
   /// populated.
   core.String beaconIdentityKey;
   core.List<core.int> get beaconIdentityKeyAsBytes {
-    return convert.BASE64.decode(beaconIdentityKey);
+    return convert.base64.decode(beaconIdentityKey);
   }
 
   void set beaconIdentityKeyAsBytes(core.List<core.int> _bytes) {
     beaconIdentityKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The initial clock value of the beacon. The beacon's clock must have
@@ -1960,12 +1961,12 @@ class EphemeralIdRegistration {
   /// service to confirm that the key exchange process was successful.
   core.String initialEid;
   core.List<core.int> get initialEidAsBytes {
-    return convert.BASE64.decode(initialEid);
+    return convert.base64.decode(initialEid);
   }
 
   void set initialEidAsBytes(core.List<core.int> _bytes) {
     initialEid =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Indicates the nominal period between each rotation of the beacon's
@@ -1982,12 +1983,12 @@ class EphemeralIdRegistration {
   /// must also be populated, and `beacon_identity_key` must not be.
   core.String serviceEcdhPublicKey;
   core.List<core.int> get serviceEcdhPublicKeyAsBytes {
-    return convert.BASE64.decode(serviceEcdhPublicKey);
+    return convert.base64.decode(serviceEcdhPublicKey);
   }
 
   void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
     serviceEcdhPublicKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   EphemeralIdRegistration();
@@ -2057,12 +2058,12 @@ class EphemeralIdRegistrationParams {
   /// Identity Key using Elliptic Curve Diffie-Hellman key exchange.
   core.String serviceEcdhPublicKey;
   core.List<core.int> get serviceEcdhPublicKeyAsBytes {
-    return convert.BASE64.decode(serviceEcdhPublicKey);
+    return convert.base64.decode(serviceEcdhPublicKey);
   }
 
   void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
     serviceEcdhPublicKey =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   EphemeralIdRegistrationParams();
@@ -2114,10 +2115,11 @@ class GetInfoForObservedBeaconsRequest {
 
   GetInfoForObservedBeaconsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("namespacedTypes")) {
-      namespacedTypes = _json["namespacedTypes"];
+      namespacedTypes =
+          (_json["namespacedTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("observations")) {
-      observations = _json["observations"]
+      observations = (_json["observations"] as core.List)
           .map<Observation>((value) => new Observation.fromJson(value))
           .toList();
     }
@@ -2148,7 +2150,7 @@ class GetInfoForObservedBeaconsResponse {
 
   GetInfoForObservedBeaconsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("beacons")) {
-      beacons = _json["beacons"]
+      beacons = (_json["beacons"] as core.List)
           .map<BeaconInfo>((value) => new BeaconInfo.fromJson(value))
           .toList();
     }
@@ -2234,7 +2236,7 @@ class ListBeaconAttachmentsResponse {
 
   ListBeaconAttachmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"]
+      attachments = (_json["attachments"] as core.List)
           .map<BeaconAttachment>(
               (value) => new BeaconAttachment.fromJson(value))
           .toList();
@@ -2269,7 +2271,7 @@ class ListBeaconsResponse {
 
   ListBeaconsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("beacons")) {
-      beacons = _json["beacons"]
+      beacons = (_json["beacons"] as core.List)
           .map<Beacon>((value) => new Beacon.fromJson(value))
           .toList();
     }
@@ -2310,7 +2312,7 @@ class ListDiagnosticsResponse {
 
   ListDiagnosticsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("diagnostics")) {
-      diagnostics = _json["diagnostics"]
+      diagnostics = (_json["diagnostics"] as core.List)
           .map<Diagnostics>((value) => new Diagnostics.fromJson(value))
           .toList();
     }
@@ -2343,7 +2345,7 @@ class ListNamespacesResponse {
 
   ListNamespacesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("namespaces")) {
-      namespaces = _json["namespaces"]
+      namespaces = (_json["namespaces"] as core.List)
           .map<Namespace>((value) => new Namespace.fromJson(value))
           .toList();
     }
@@ -2416,12 +2418,12 @@ class Observation {
   /// with a beacon that transmits telemetry only occasionally.
   core.String telemetry;
   core.List<core.int> get telemetryAsBytes {
-    return convert.BASE64.decode(telemetry);
+    return convert.base64.decode(telemetry);
   }
 
   void set telemetryAsBytes(core.List<core.int> _bytes) {
     telemetry =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Time when the beacon was observed.

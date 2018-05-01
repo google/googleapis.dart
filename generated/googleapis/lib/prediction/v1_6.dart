@@ -86,7 +86,7 @@ class HostedmodelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -297,7 +297,7 @@ class TrainedmodelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -401,7 +401,7 @@ class TrainedmodelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -458,7 +458,7 @@ class TrainedmodelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -530,7 +530,7 @@ class AnalyzeDataDescriptionFeaturesCategorical {
       count = _json["count"];
     }
     if (_json.containsKey("values")) {
-      values = _json["values"]
+      values = (_json["values"] as core.List)
           .map<AnalyzeDataDescriptionFeaturesCategoricalValues>((value) =>
               new AnalyzeDataDescriptionFeaturesCategoricalValues.fromJson(
                   value))
@@ -754,7 +754,7 @@ class AnalyzeDataDescriptionOutputFeature {
           _json["numeric"]);
     }
     if (_json.containsKey("text")) {
-      text = _json["text"]
+      text = (_json["text"] as core.List)
           .map<AnalyzeDataDescriptionOutputFeatureText>((value) =>
               new AnalyzeDataDescriptionOutputFeatureText.fromJson(value))
           .toList();
@@ -786,7 +786,7 @@ class AnalyzeDataDescription {
 
   AnalyzeDataDescription.fromJson(core.Map _json) {
     if (_json.containsKey("features")) {
-      features = _json["features"]
+      features = (_json["features"] as core.List)
           .map<AnalyzeDataDescriptionFeatures>(
               (value) => new AnalyzeDataDescriptionFeatures.fromJson(value))
           .toList();
@@ -830,10 +830,15 @@ class AnalyzeModelDescription {
 
   AnalyzeModelDescription.fromJson(core.Map _json) {
     if (_json.containsKey("confusionMatrix")) {
-      confusionMatrix = _json["confusionMatrix"];
+      confusionMatrix =
+          commons.mapMap<core.Map, core.Map<core.String, core.String>>(
+              _json["confusionMatrix"].cast<core.String, core.Map>(),
+              (core.Map item) =>
+                  (item as core.Map).cast<core.String, core.String>());
     }
     if (_json.containsKey("confusionMatrixRowTotals")) {
-      confusionMatrixRowTotals = _json["confusionMatrixRowTotals"];
+      confusionMatrixRowTotals = (_json["confusionMatrixRowTotals"] as core.Map)
+          .cast<core.String, core.String>();
     }
     if (_json.containsKey("modelinfo")) {
       modelinfo = new Insert2.fromJson(_json["modelinfo"]);
@@ -883,7 +888,10 @@ class Analyze {
           new AnalyzeDataDescription.fromJson(_json["dataDescription"]);
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"];
+      errors = (_json["errors"] as core.List)
+          .map<core.Map<core.String, core.String>>(
+              (value) => (value as core.Map).cast<core.String, core.String>())
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -937,7 +945,7 @@ class InputInput {
 
   InputInput.fromJson(core.Map _json) {
     if (_json.containsKey("csvInstance")) {
-      csvInstance = _json["csvInstance"];
+      csvInstance = (_json["csvInstance"] as core.List).cast<core.Object>();
     }
   }
 
@@ -987,7 +995,7 @@ class InsertTrainingInstances {
 
   InsertTrainingInstances.fromJson(core.Map _json) {
     if (_json.containsKey("csvInstance")) {
-      csvInstance = _json["csvInstance"];
+      csvInstance = (_json["csvInstance"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("output")) {
       output = _json["output"];
@@ -1055,13 +1063,16 @@ class Insert {
       storagePMMLModelLocation = _json["storagePMMLModelLocation"];
     }
     if (_json.containsKey("trainingInstances")) {
-      trainingInstances = _json["trainingInstances"]
+      trainingInstances = (_json["trainingInstances"] as core.List)
           .map<InsertTrainingInstances>(
               (value) => new InsertTrainingInstances.fromJson(value))
           .toList();
     }
     if (_json.containsKey("utility")) {
-      utility = _json["utility"];
+      utility = (_json["utility"] as core.List)
+          .map<core.Map<core.String, core.double>>(
+              (value) => (value as core.Map).cast<core.String, core.double>())
+          .toList();
     }
   }
 
@@ -1302,7 +1313,7 @@ class List {
 
   List.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Insert2>((value) => new Insert2.fromJson(value))
           .toList();
     }
@@ -1400,7 +1411,7 @@ class Output {
       outputLabel = _json["outputLabel"];
     }
     if (_json.containsKey("outputMulti")) {
-      outputMulti = _json["outputMulti"]
+      outputMulti = (_json["outputMulti"] as core.List)
           .map<OutputOutputMulti>(
               (value) => new OutputOutputMulti.fromJson(value))
           .toList();
@@ -1453,7 +1464,7 @@ class Update {
 
   Update.fromJson(core.Map _json) {
     if (_json.containsKey("csvInstance")) {
-      csvInstance = _json["csvInstance"];
+      csvInstance = (_json["csvInstance"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("output")) {
       output = _json["output"];

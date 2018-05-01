@@ -114,7 +114,7 @@ class UrlResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -210,12 +210,12 @@ class AnalyticsSnapshot {
 
   AnalyticsSnapshot.fromJson(core.Map _json) {
     if (_json.containsKey("browsers")) {
-      browsers = _json["browsers"]
+      browsers = (_json["browsers"] as core.List)
           .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("countries")) {
-      countries = _json["countries"]
+      countries = (_json["countries"] as core.List)
           .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
@@ -223,12 +223,12 @@ class AnalyticsSnapshot {
       longUrlClicks = _json["longUrlClicks"];
     }
     if (_json.containsKey("platforms")) {
-      platforms = _json["platforms"]
+      platforms = (_json["platforms"] as core.List)
           .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("referrers")) {
-      referrers = _json["referrers"]
+      referrers = (_json["referrers"] as core.List)
           .map<StringCount>((value) => new StringCount.fromJson(value))
           .toList();
     }
@@ -445,8 +445,9 @@ class UrlHistory {
 
   UrlHistory.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map<Url>((value) => new Url.fromJson(value)).toList();
+      items = (_json["items"] as core.List)
+          .map<Url>((value) => new Url.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];

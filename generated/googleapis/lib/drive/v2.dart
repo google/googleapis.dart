@@ -563,7 +563,7 @@ class ChangesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (includeCorpusRemovals != null) {
       _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
@@ -639,7 +639,7 @@ class ChannelsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -798,7 +798,7 @@ class ChildrenResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
@@ -1037,7 +1037,7 @@ class CommentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1161,7 +1161,7 @@ class CommentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1218,7 +1218,7 @@ class CommentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1311,7 +1311,7 @@ class FilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1723,7 +1723,7 @@ class FilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
@@ -2003,7 +2003,7 @@ class FilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2320,7 +2320,7 @@ class FilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2456,7 +2456,7 @@ class FilesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2638,7 +2638,7 @@ class ParentsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2933,7 +2933,7 @@ class PermissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3091,7 +3091,7 @@ class PermissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3178,7 +3178,7 @@ class PermissionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3362,7 +3362,7 @@ class PropertiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3458,7 +3458,7 @@ class PropertiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3520,7 +3520,7 @@ class PropertiesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3856,7 +3856,7 @@ class RepliesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -3991,7 +3991,7 @@ class RepliesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -4055,7 +4055,7 @@ class RepliesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -4281,7 +4281,7 @@ class RevisionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -4338,7 +4338,7 @@ class RevisionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -4496,7 +4496,7 @@ class TeamdrivesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (requestId == null) {
       throw new core.ArgumentError("Parameter requestId is required.");
@@ -4610,7 +4610,7 @@ class TeamdrivesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert_1.JSON.encode((request).toJson());
+      _body = convert_1.json.encode((request).toJson());
     }
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
@@ -4642,7 +4642,8 @@ class AboutAdditionalRoleInfoRoleSets {
 
   AboutAdditionalRoleInfoRoleSets.fromJson(core.Map _json) {
     if (_json.containsKey("additionalRoles")) {
-      additionalRoles = _json["additionalRoles"];
+      additionalRoles =
+          (_json["additionalRoles"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("primaryRole")) {
       primaryRole = _json["primaryRole"];
@@ -4673,7 +4674,7 @@ class AboutAdditionalRoleInfo {
 
   AboutAdditionalRoleInfo.fromJson(core.Map _json) {
     if (_json.containsKey("roleSets")) {
-      roleSets = _json["roleSets"]
+      roleSets = (_json["roleSets"] as core.List)
           .map<AboutAdditionalRoleInfoRoleSets>(
               (value) => new AboutAdditionalRoleInfoRoleSets.fromJson(value))
           .toList();
@@ -4710,7 +4711,7 @@ class AboutExportFormats {
       source = _json["source"];
     }
     if (_json.containsKey("targets")) {
-      targets = _json["targets"];
+      targets = (_json["targets"] as core.List).cast<core.String>();
     }
   }
 
@@ -4772,7 +4773,7 @@ class AboutImportFormats {
       source = _json["source"];
     }
     if (_json.containsKey("targets")) {
-      targets = _json["targets"];
+      targets = (_json["targets"] as core.List).cast<core.String>();
     }
   }
 
@@ -4986,7 +4987,7 @@ class About {
 
   About.fromJson(core.Map _json) {
     if (_json.containsKey("additionalRoleInfo")) {
-      additionalRoleInfo = _json["additionalRoleInfo"]
+      additionalRoleInfo = (_json["additionalRoleInfo"] as core.List)
           .map<AboutAdditionalRoleInfo>(
               (value) => new AboutAdditionalRoleInfo.fromJson(value))
           .toList();
@@ -5001,21 +5002,22 @@ class About {
       etag = _json["etag"];
     }
     if (_json.containsKey("exportFormats")) {
-      exportFormats = _json["exportFormats"]
+      exportFormats = (_json["exportFormats"] as core.List)
           .map<AboutExportFormats>(
               (value) => new AboutExportFormats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("features")) {
-      features = _json["features"]
+      features = (_json["features"] as core.List)
           .map<AboutFeatures>((value) => new AboutFeatures.fromJson(value))
           .toList();
     }
     if (_json.containsKey("folderColorPalette")) {
-      folderColorPalette = _json["folderColorPalette"];
+      folderColorPalette =
+          (_json["folderColorPalette"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("importFormats")) {
-      importFormats = _json["importFormats"]
+      importFormats = (_json["importFormats"] as core.List)
           .map<AboutImportFormats>(
               (value) => new AboutImportFormats.fromJson(value))
           .toList();
@@ -5033,7 +5035,7 @@ class About {
       largestChangeId = _json["largestChangeId"];
     }
     if (_json.containsKey("maxUploadSizes")) {
-      maxUploadSizes = _json["maxUploadSizes"]
+      maxUploadSizes = (_json["maxUploadSizes"] as core.List)
           .map<AboutMaxUploadSizes>(
               (value) => new AboutMaxUploadSizes.fromJson(value))
           .toList();
@@ -5045,7 +5047,7 @@ class About {
       permissionId = _json["permissionId"];
     }
     if (_json.containsKey("quotaBytesByService")) {
-      quotaBytesByService = _json["quotaBytesByService"]
+      quotaBytesByService = (_json["quotaBytesByService"] as core.List)
           .map<AboutQuotaBytesByService>(
               (value) => new AboutQuotaBytesByService.fromJson(value))
           .toList();
@@ -5075,7 +5077,7 @@ class About {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("teamDriveThemes")) {
-      teamDriveThemes = _json["teamDriveThemes"]
+      teamDriveThemes = (_json["teamDriveThemes"] as core.List)
           .map<AboutTeamDriveThemes>(
               (value) => new AboutTeamDriveThemes.fromJson(value))
           .toList();
@@ -5318,7 +5320,7 @@ class App {
       hasDriveWideScope = _json["hasDriveWideScope"];
     }
     if (_json.containsKey("icons")) {
-      icons = _json["icons"]
+      icons = (_json["icons"] as core.List)
           .map<AppIcons>((value) => new AppIcons.fromJson(value))
           .toList();
     }
@@ -5344,10 +5346,12 @@ class App {
       openUrlTemplate = _json["openUrlTemplate"];
     }
     if (_json.containsKey("primaryFileExtensions")) {
-      primaryFileExtensions = _json["primaryFileExtensions"];
+      primaryFileExtensions =
+          (_json["primaryFileExtensions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("primaryMimeTypes")) {
-      primaryMimeTypes = _json["primaryMimeTypes"];
+      primaryMimeTypes =
+          (_json["primaryMimeTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
@@ -5356,10 +5360,12 @@ class App {
       productUrl = _json["productUrl"];
     }
     if (_json.containsKey("secondaryFileExtensions")) {
-      secondaryFileExtensions = _json["secondaryFileExtensions"];
+      secondaryFileExtensions =
+          (_json["secondaryFileExtensions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("secondaryMimeTypes")) {
-      secondaryMimeTypes = _json["secondaryMimeTypes"];
+      secondaryMimeTypes =
+          (_json["secondaryMimeTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("shortDescription")) {
       shortDescription = _json["shortDescription"];
@@ -5483,14 +5489,15 @@ class AppList {
 
   AppList.fromJson(core.Map _json) {
     if (_json.containsKey("defaultAppIds")) {
-      defaultAppIds = _json["defaultAppIds"];
+      defaultAppIds = (_json["defaultAppIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items =
-          _json["items"].map<App>((value) => new App.fromJson(value)).toList();
+      items = (_json["items"] as core.List)
+          .map<App>((value) => new App.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5668,7 +5675,7 @@ class ChangeList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Change>((value) => new Change.fromJson(value))
           .toList();
     }
@@ -5775,7 +5782,7 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("payload")) {
       payload = _json["payload"];
@@ -5862,7 +5869,7 @@ class ChildList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ChildReference>((value) => new ChildReference.fromJson(value))
           .toList();
     }
@@ -6085,7 +6092,7 @@ class Comment {
       modifiedDate = core.DateTime.parse(_json["modifiedDate"]);
     }
     if (_json.containsKey("replies")) {
-      replies = _json["replies"]
+      replies = (_json["replies"] as core.List)
           .map<CommentReply>((value) => new CommentReply.fromJson(value))
           .toList();
     }
@@ -6174,7 +6181,7 @@ class CommentList {
 
   CommentList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Comment>((value) => new Comment.fromJson(value))
           .toList();
     }
@@ -6343,7 +6350,7 @@ class CommentReplyList {
 
   CommentReplyList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<CommentReply>((value) => new CommentReply.fromJson(value))
           .toList();
     }
@@ -6911,11 +6918,11 @@ class FileThumbnail {
   /// conform to RFC 4648 section 5.
   core.String image;
   core.List<core.int> get imageAsBytes {
-    return convert_1.BASE64.decode(image);
+    return convert_1.base64.decode(image);
   }
 
   void set imageAsBytes(core.List<core.int> _bytes) {
-    image = convert_1.BASE64
+    image = convert_1.base64
         .encode(_bytes)
         .replaceAll("/", "_")
         .replaceAll("+", "-");
@@ -7287,7 +7294,8 @@ class File {
       explicitlyTrashed = _json["explicitlyTrashed"];
     }
     if (_json.containsKey("exportLinks")) {
-      exportLinks = _json["exportLinks"];
+      exportLinks =
+          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("fileExtension")) {
       fileExtension = _json["fileExtension"];
@@ -7357,7 +7365,8 @@ class File {
       modifiedDate = core.DateTime.parse(_json["modifiedDate"]);
     }
     if (_json.containsKey("openWithLinks")) {
-      openWithLinks = _json["openWithLinks"];
+      openWithLinks =
+          (_json["openWithLinks"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("originalFilename")) {
       originalFilename = _json["originalFilename"];
@@ -7366,28 +7375,28 @@ class File {
       ownedByMe = _json["ownedByMe"];
     }
     if (_json.containsKey("ownerNames")) {
-      ownerNames = _json["ownerNames"];
+      ownerNames = (_json["ownerNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("owners")) {
-      owners = _json["owners"]
+      owners = (_json["owners"] as core.List)
           .map<User>((value) => new User.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parents")) {
-      parents = _json["parents"]
+      parents = (_json["parents"] as core.List)
           .map<ParentReference>((value) => new ParentReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("permissionIds")) {
-      permissionIds = _json["permissionIds"];
+      permissionIds = (_json["permissionIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"]
+      permissions = (_json["permissions"] as core.List)
           .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("properties")) {
-      properties = _json["properties"]
+      properties = (_json["properties"] as core.List)
           .map<Property>((value) => new Property.fromJson(value))
           .toList();
     }
@@ -7410,7 +7419,7 @@ class File {
       sharingUser = new User.fromJson(_json["sharingUser"]);
     }
     if (_json.containsKey("spaces")) {
-      spaces = _json["spaces"];
+      spaces = (_json["spaces"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("teamDriveId")) {
       teamDriveId = _json["teamDriveId"];
@@ -7703,7 +7712,7 @@ class FileList {
       incompleteSearch = _json["incompleteSearch"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<File>((value) => new File.fromJson(value))
           .toList();
     }
@@ -7764,7 +7773,7 @@ class GeneratedIds {
 
   GeneratedIds.fromJson(core.Map _json) {
     if (_json.containsKey("ids")) {
-      ids = _json["ids"];
+      ids = (_json["ids"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7811,7 +7820,7 @@ class ParentList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<ParentReference>((value) => new ParentReference.fromJson(value))
           .toList();
     }
@@ -7931,7 +7940,8 @@ class PermissionTeamDrivePermissionDetails {
 
   PermissionTeamDrivePermissionDetails.fromJson(core.Map _json) {
     if (_json.containsKey("additionalRoles")) {
-      additionalRoles = _json["additionalRoles"];
+      additionalRoles =
+          (_json["additionalRoles"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("inherited")) {
       inherited = _json["inherited"];
@@ -8057,7 +8067,8 @@ class Permission {
 
   Permission.fromJson(core.Map _json) {
     if (_json.containsKey("additionalRoles")) {
-      additionalRoles = _json["additionalRoles"];
+      additionalRoles =
+          (_json["additionalRoles"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("authKey")) {
       authKey = _json["authKey"];
@@ -8096,10 +8107,11 @@ class Permission {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("teamDrivePermissionDetails")) {
-      teamDrivePermissionDetails = _json["teamDrivePermissionDetails"]
-          .map<PermissionTeamDrivePermissionDetails>((value) =>
-              new PermissionTeamDrivePermissionDetails.fromJson(value))
-          .toList();
+      teamDrivePermissionDetails =
+          (_json["teamDrivePermissionDetails"] as core.List)
+              .map<PermissionTeamDrivePermissionDetails>((value) =>
+                  new PermissionTeamDrivePermissionDetails.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -8230,7 +8242,7 @@ class PermissionList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Permission>((value) => new Permission.fromJson(value))
           .toList();
     }
@@ -8364,7 +8376,7 @@ class PropertyList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Property>((value) => new Property.fromJson(value))
           .toList();
     }
@@ -8472,7 +8484,8 @@ class Revision {
       etag = _json["etag"];
     }
     if (_json.containsKey("exportLinks")) {
-      exportLinks = _json["exportLinks"];
+      exportLinks =
+          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("fileSize")) {
       fileSize = _json["fileSize"];
@@ -8610,7 +8623,7 @@ class RevisionList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Revision>((value) => new Revision.fromJson(value))
           .toList();
     }
@@ -9011,7 +9024,7 @@ class TeamDriveList {
 
   TeamDriveList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TeamDrive>((value) => new TeamDrive.fromJson(value))
           .toList();
     }

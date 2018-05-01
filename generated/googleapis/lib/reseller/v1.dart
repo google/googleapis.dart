@@ -121,7 +121,7 @@ class CustomersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
@@ -173,7 +173,7 @@ class CustomersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -224,7 +224,7 @@ class CustomersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -483,7 +483,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -549,7 +549,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -614,7 +614,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -835,7 +835,7 @@ class SubscriptionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -1402,7 +1402,9 @@ class ResellernotifyGetwatchdetailsResponse {
 
   ResellernotifyGetwatchdetailsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("serviceAccountEmailAddresses")) {
-      serviceAccountEmailAddresses = _json["serviceAccountEmailAddresses"];
+      serviceAccountEmailAddresses =
+          (_json["serviceAccountEmailAddresses"] as core.List)
+              .cast<core.String>();
     }
     if (_json.containsKey("topicName")) {
       topicName = _json["topicName"];
@@ -1841,7 +1843,8 @@ class Subscription {
       subscriptionId = _json["subscriptionId"];
     }
     if (_json.containsKey("suspensionReasons")) {
-      suspensionReasons = _json["suspensionReasons"];
+      suspensionReasons =
+          (_json["suspensionReasons"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("transferInfo")) {
       transferInfo =
@@ -1937,7 +1940,7 @@ class Subscriptions {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("subscriptions")) {
-      subscriptions = _json["subscriptions"]
+      subscriptions = (_json["subscriptions"] as core.List)
           .map<Subscription>((value) => new Subscription.fromJson(value))
           .toList();
     }

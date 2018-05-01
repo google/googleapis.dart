@@ -66,7 +66,7 @@ class LineitemsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -111,7 +111,7 @@ class LineitemsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -159,7 +159,7 @@ class QueriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -323,7 +323,7 @@ class QueriesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
@@ -426,7 +426,7 @@ class SdfResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -475,7 +475,7 @@ class DownloadLineItemsRequest {
       fileSpec = _json["fileSpec"];
     }
     if (_json.containsKey("filterIds")) {
-      filterIds = _json["filterIds"];
+      filterIds = (_json["filterIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("filterType")) {
       filterType = _json["filterType"];
@@ -556,10 +556,10 @@ class DownloadRequest {
 
   DownloadRequest.fromJson(core.Map _json) {
     if (_json.containsKey("fileTypes")) {
-      fileTypes = _json["fileTypes"];
+      fileTypes = (_json["fileTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("filterIds")) {
-      filterIds = _json["filterIds"];
+      filterIds = (_json["filterIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("filterType")) {
       filterType = _json["filterType"];
@@ -814,7 +814,7 @@ class ListQueriesResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("queries")) {
-      queries = _json["queries"]
+      queries = (_json["queries"] as core.List)
           .map<Query>((value) => new Query.fromJson(value))
           .toList();
     }
@@ -849,7 +849,7 @@ class ListReportsResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("reports")) {
-      reports = _json["reports"]
+      reports = (_json["reports"] as core.List)
           .map<Report>((value) => new Report.fromJson(value))
           .toList();
     }
@@ -922,18 +922,18 @@ class Parameters {
 
   Parameters.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters = _json["filters"]
+      filters = (_json["filters"] as core.List)
           .map<FilterPair>((value) => new FilterPair.fromJson(value))
           .toList();
     }
     if (_json.containsKey("groupBys")) {
-      groupBys = _json["groupBys"];
+      groupBys = (_json["groupBys"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("includeInviteData")) {
       includeInviteData = _json["includeInviteData"];
     }
     if (_json.containsKey("metrics")) {
-      metrics = _json["metrics"];
+      metrics = (_json["metrics"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1153,7 +1153,8 @@ class QueryMetadata {
       sendNotification = _json["sendNotification"];
     }
     if (_json.containsKey("shareEmailAddress")) {
-      shareEmailAddress = _json["shareEmailAddress"];
+      shareEmailAddress =
+          (_json["shareEmailAddress"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -1518,7 +1519,7 @@ class RowStatus {
       entityName = _json["entityName"];
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"];
+      errors = (_json["errors"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("persisted")) {
       persisted = _json["persisted"];
@@ -1708,10 +1709,10 @@ class UploadStatus {
 
   UploadStatus.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = _json["errors"];
+      errors = (_json["errors"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("rowStatus")) {
-      rowStatus = _json["rowStatus"]
+      rowStatus = (_json["rowStatus"] as core.List)
           .map<RowStatus>((value) => new RowStatus.fromJson(value))
           .toList();
     }

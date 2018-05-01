@@ -167,7 +167,7 @@ class AchievementConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -283,7 +283,7 @@ class AchievementConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -333,7 +333,7 @@ class AchievementConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -562,7 +562,7 @@ class LeaderboardConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -678,7 +678,7 @@ class LeaderboardConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -728,7 +728,7 @@ class LeaderboardConfigurationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -930,7 +930,7 @@ class AchievementConfigurationListResponse {
 
   AchievementConfigurationListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AchievementConfiguration>(
               (value) => new AchievementConfiguration.fromJson(value))
           .toList();
@@ -1312,7 +1312,7 @@ class LeaderboardConfigurationListResponse {
 
   LeaderboardConfigurationListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LeaderboardConfiguration>(
               (value) => new LeaderboardConfiguration.fromJson(value))
           .toList();
@@ -1399,7 +1399,7 @@ class LocalizedStringBundle {
       kind = _json["kind"];
     }
     if (_json.containsKey("translations")) {
-      translations = _json["translations"]
+      translations = (_json["translations"] as core.List)
           .map<LocalizedString>((value) => new LocalizedString.fromJson(value))
           .toList();
     }

@@ -276,7 +276,7 @@ class ProjectsLocationsFunctionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -330,7 +330,7 @@ class ProjectsLocationsFunctionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
@@ -435,7 +435,7 @@ class ProjectsLocationsFunctionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -507,7 +507,7 @@ class ProjectsLocationsFunctionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -670,7 +670,7 @@ class ProjectsLocationsFunctionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -851,7 +851,7 @@ class CloudFunction {
       httpsTrigger = new HttpsTrigger.fromJson(_json["httpsTrigger"]);
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1169,7 +1169,7 @@ class ListFunctionsResponse {
 
   ListFunctionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("functions")) {
-      functions = _json["functions"]
+      functions = (_json["functions"] as core.List)
           .map<CloudFunction>((value) => new CloudFunction.fromJson(value))
           .toList();
     }
@@ -1203,7 +1203,7 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
@@ -1240,7 +1240,7 @@ class ListOperationsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -1285,13 +1285,14 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1366,13 +1367,15 @@ class Operation {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("response")) {
-      response = _json["response"];
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
     }
   }
 
@@ -1429,7 +1432,7 @@ class OperationMetadataV1 {
 
   OperationMetadataV1.fromJson(core.Map _json) {
     if (_json.containsKey("request")) {
-      request = _json["request"];
+      request = (_json["request"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("target")) {
       target = _json["target"];
@@ -1498,7 +1501,7 @@ class OperationMetadataV1Beta2 {
 
   OperationMetadataV1Beta2.fromJson(core.Map _json) {
     if (_json.containsKey("request")) {
-      request = _json["request"];
+      request = (_json["request"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("target")) {
       target = _json["target"];
@@ -1682,7 +1685,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];

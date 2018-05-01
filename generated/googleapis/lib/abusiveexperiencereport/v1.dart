@@ -228,7 +228,7 @@ class ViolatingSitesResponse {
 
   ViolatingSitesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("violatingSites")) {
-      violatingSites = _json["violatingSites"]
+      violatingSites = (_json["violatingSites"] as core.List)
           .map<SiteSummaryResponse>(
               (value) => new SiteSummaryResponse.fromJson(value))
           .toList();

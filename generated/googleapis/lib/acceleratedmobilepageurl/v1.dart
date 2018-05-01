@@ -60,7 +60,7 @@ class AmpUrlsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -209,7 +209,7 @@ class BatchGetAmpUrlsRequest {
       lookupStrategy = _json["lookupStrategy"];
     }
     if (_json.containsKey("urls")) {
-      urls = _json["urls"];
+      urls = (_json["urls"] as core.List).cast<core.String>();
     }
   }
 
@@ -241,12 +241,12 @@ class BatchGetAmpUrlsResponse {
 
   BatchGetAmpUrlsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ampUrls")) {
-      ampUrls = _json["ampUrls"]
+      ampUrls = (_json["ampUrls"] as core.List)
           .map<AmpUrl>((value) => new AmpUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("urlErrors")) {
-      urlErrors = _json["urlErrors"]
+      urlErrors = (_json["urlErrors"] as core.List)
           .map<AmpUrlError>((value) => new AmpUrlError.fromJson(value))
           .toList();
     }

@@ -267,7 +267,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -375,7 +375,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -485,7 +485,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -542,7 +542,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -652,7 +652,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -948,7 +948,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1007,7 +1007,7 @@ class InstancesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1321,7 +1321,7 @@ class SslCertsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1642,7 +1642,7 @@ class BackupRunsListResponse {
 
   BackupRunsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<BackupRun>((value) => new BackupRun.fromJson(value))
           .toList();
     }
@@ -1905,7 +1905,7 @@ class DatabaseInstance {
       instanceType = _json["instanceType"];
     }
     if (_json.containsKey("ipAddresses")) {
-      ipAddresses = _json["ipAddresses"]
+      ipAddresses = (_json["ipAddresses"] as core.List)
           .map<IpMapping>((value) => new IpMapping.fromJson(value))
           .toList();
     }
@@ -1928,7 +1928,7 @@ class DatabaseInstance {
       region = _json["region"];
     }
     if (_json.containsKey("replicaNames")) {
-      replicaNames = _json["replicaNames"];
+      replicaNames = (_json["replicaNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("serverCaCert")) {
       serverCaCert = new SslCert.fromJson(_json["serverCaCert"]);
@@ -2029,13 +2029,13 @@ class ExportContext {
 
   ExportContext.fromJson(core.Map _json) {
     if (_json.containsKey("database")) {
-      database = _json["database"];
+      database = (_json["database"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("table")) {
-      table = _json["table"];
+      table = (_json["table"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("uri")) {
       uri = _json["uri"];
@@ -2092,10 +2092,11 @@ class Flag {
 
   Flag.fromJson(core.Map _json) {
     if (_json.containsKey("allowedStringValues")) {
-      allowedStringValues = _json["allowedStringValues"];
+      allowedStringValues =
+          (_json["allowedStringValues"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("appliesTo")) {
-      appliesTo = _json["appliesTo"];
+      appliesTo = (_json["appliesTo"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2154,7 +2155,7 @@ class FlagsListResponse {
 
   FlagsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Flag>((value) => new Flag.fromJson(value))
           .toList();
     }
@@ -2201,7 +2202,7 @@ class ImportContext {
       kind = _json["kind"];
     }
     if (_json.containsKey("uri")) {
-      uri = _json["uri"];
+      uri = (_json["uri"] as core.List).cast<core.String>();
     }
   }
 
@@ -2280,7 +2281,7 @@ class InstanceOperation {
       enqueuedTime = core.DateTime.parse(_json["enqueuedTime"]);
     }
     if (_json.containsKey("error")) {
-      error = _json["error"]
+      error = (_json["error"] as core.List)
           .map<OperationError>((value) => new OperationError.fromJson(value))
           .toList();
     }
@@ -2635,7 +2636,7 @@ class InstancesListResponse {
 
   InstancesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<DatabaseInstance>(
               (value) => new DatabaseInstance.fromJson(value))
           .toList();
@@ -2889,7 +2890,8 @@ class IpConfiguration {
 
   IpConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("authorizedNetworks")) {
-      authorizedNetworks = _json["authorizedNetworks"];
+      authorizedNetworks =
+          (_json["authorizedNetworks"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
@@ -3050,7 +3052,7 @@ class OperationsListResponse {
 
   OperationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<InstanceOperation>(
               (value) => new InstanceOperation.fromJson(value))
           .toList();
@@ -3171,16 +3173,17 @@ class Settings {
       activationPolicy = _json["activationPolicy"];
     }
     if (_json.containsKey("authorizedGaeApplications")) {
-      authorizedGaeApplications = _json["authorizedGaeApplications"];
+      authorizedGaeApplications =
+          (_json["authorizedGaeApplications"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("backupConfiguration")) {
-      backupConfiguration = _json["backupConfiguration"]
+      backupConfiguration = (_json["backupConfiguration"] as core.List)
           .map<BackupConfiguration>(
               (value) => new BackupConfiguration.fromJson(value))
           .toList();
     }
     if (_json.containsKey("databaseFlags")) {
-      databaseFlags = _json["databaseFlags"]
+      databaseFlags = (_json["databaseFlags"] as core.List)
           .map<DatabaseFlags>((value) => new DatabaseFlags.fromJson(value))
           .toList();
     }
@@ -3490,7 +3493,7 @@ class SslCertsListResponse {
 
   SslCertsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<SslCert>((value) => new SslCert.fromJson(value))
           .toList();
     }
@@ -3543,7 +3546,7 @@ class Tier {
       kind = _json["kind"];
     }
     if (_json.containsKey("region")) {
-      region = _json["region"];
+      region = (_json["region"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tier")) {
       tier = _json["tier"];
@@ -3584,7 +3587,7 @@ class TiersListResponse {
 
   TiersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Tier>((value) => new Tier.fromJson(value))
           .toList();
     }

@@ -94,7 +94,7 @@ class ProjectsDataSourcesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -389,7 +389,7 @@ class ProjectsLocationsDataSourcesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -585,7 +585,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -834,7 +834,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -895,7 +895,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1250,7 +1250,7 @@ class ProjectsTransferConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1496,7 +1496,7 @@ class ProjectsTransferConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1556,7 +1556,7 @@ class ProjectsTransferConfigsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2030,13 +2030,13 @@ class DataSource {
       name = _json["name"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = _json["parameters"]
+      parameters = (_json["parameters"] as core.List)
           .map<DataSourceParameter>(
               (value) => new DataSourceParameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("scopes")) {
-      scopes = _json["scopes"];
+      scopes = (_json["scopes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("supportsCustomSchedule")) {
       supportsCustomSchedule = _json["supportsCustomSchedule"];
@@ -2182,7 +2182,7 @@ class DataSourceParameter {
 
   DataSourceParameter.fromJson(core.Map _json) {
     if (_json.containsKey("allowedValues")) {
-      allowedValues = _json["allowedValues"];
+      allowedValues = (_json["allowedValues"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -2191,7 +2191,7 @@ class DataSourceParameter {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("fields")) {
-      fields = _json["fields"]
+      fields = (_json["fields"] as core.List)
           .map<DataSourceParameter>(
               (value) => new DataSourceParameter.fromJson(value))
           .toList();
@@ -2319,7 +2319,7 @@ class ListDataSourcesResponse {
 
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataSources")) {
-      dataSources = _json["dataSources"]
+      dataSources = (_json["dataSources"] as core.List)
           .map<DataSource>((value) => new DataSource.fromJson(value))
           .toList();
     }
@@ -2354,7 +2354,7 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
@@ -2394,7 +2394,7 @@ class ListTransferConfigsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("transferConfigs")) {
-      transferConfigs = _json["transferConfigs"]
+      transferConfigs = (_json["transferConfigs"] as core.List)
           .map<TransferConfig>((value) => new TransferConfig.fromJson(value))
           .toList();
     }
@@ -2432,7 +2432,7 @@ class ListTransferLogsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("transferMessages")) {
-      transferMessages = _json["transferMessages"]
+      transferMessages = (_json["transferMessages"] as core.List)
           .map<TransferMessage>((value) => new TransferMessage.fromJson(value))
           .toList();
     }
@@ -2470,7 +2470,7 @@ class ListTransferRunsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("transferRuns")) {
-      transferRuns = _json["transferRuns"]
+      transferRuns = (_json["transferRuns"] as core.List)
           .map<TransferRun>((value) => new TransferRun.fromJson(value))
           .toList();
     }
@@ -2515,13 +2515,14 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2590,7 +2591,7 @@ class ScheduleTransferRunsResponse {
 
   ScheduleTransferRunsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("runs")) {
-      runs = _json["runs"]
+      runs = (_json["runs"] as core.List)
           .map<TransferRun>((value) => new TransferRun.fromJson(value))
           .toList();
     }
@@ -2685,7 +2686,10 @@ class Status {
       code = _json["code"];
     }
     if (_json.containsKey("details")) {
-      details = _json["details"];
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
     }
     if (_json.containsKey("message")) {
       message = _json["message"];
@@ -2821,7 +2825,7 @@ class TransferConfig {
       nextRunTime = _json["nextRunTime"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("schedule")) {
       schedule = _json["schedule"];
@@ -3015,7 +3019,7 @@ class TransferRun {
       name = _json["name"];
     }
     if (_json.containsKey("params")) {
-      params = _json["params"];
+      params = (_json["params"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("runTime")) {
       runTime = _json["runTime"];

@@ -153,7 +153,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -221,7 +221,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -299,7 +299,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -494,7 +494,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -619,7 +619,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -687,7 +687,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -755,7 +755,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -823,7 +823,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -891,7 +891,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -962,7 +962,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1032,7 +1032,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1100,7 +1100,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1168,7 +1168,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1236,7 +1236,7 @@ class ProjectsZonesClustersResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1316,7 +1316,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1389,7 +1389,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1665,7 +1665,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1744,7 +1744,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1823,7 +1823,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1902,7 +1902,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -1981,7 +1981,7 @@ class ProjectsZonesOperationsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -2562,7 +2562,8 @@ class Cluster {
       initialNodeCount = _json["initialNodeCount"];
     }
     if (_json.containsKey("instanceGroupUrls")) {
-      instanceGroupUrls = _json["instanceGroupUrls"];
+      instanceGroupUrls =
+          (_json["instanceGroupUrls"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("ipAllocationPolicy")) {
       ipAllocationPolicy =
@@ -2575,7 +2576,7 @@ class Cluster {
       legacyAbac = new LegacyAbac.fromJson(_json["legacyAbac"]);
     }
     if (_json.containsKey("locations")) {
-      locations = _json["locations"];
+      locations = (_json["locations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("loggingService")) {
       loggingService = _json["loggingService"];
@@ -2611,12 +2612,13 @@ class Cluster {
       nodeIpv4CidrSize = _json["nodeIpv4CidrSize"];
     }
     if (_json.containsKey("nodePools")) {
-      nodePools = _json["nodePools"]
+      nodePools = (_json["nodePools"] as core.List)
           .map<NodePool>((value) => new NodePool.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resourceLabels")) {
-      resourceLabels = _json["resourceLabels"];
+      resourceLabels = (_json["resourceLabels"] as core.Map)
+          .cast<core.String, core.String>();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -2816,7 +2818,8 @@ class ClusterUpdate {
       desiredImageType = _json["desiredImageType"];
     }
     if (_json.containsKey("desiredLocations")) {
-      desiredLocations = _json["desiredLocations"];
+      desiredLocations =
+          (_json["desiredLocations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("desiredMasterAuthorizedNetworksConfig")) {
       desiredMasterAuthorizedNetworksConfig =
@@ -3283,12 +3286,12 @@ class ListClustersResponse {
 
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
-      clusters = _json["clusters"]
+      clusters = (_json["clusters"] as core.List)
           .map<Cluster>((value) => new Cluster.fromJson(value))
           .toList();
     }
     if (_json.containsKey("missingZones")) {
-      missingZones = _json["missingZones"];
+      missingZones = (_json["missingZones"] as core.List).cast<core.String>();
     }
   }
 
@@ -3314,7 +3317,7 @@ class ListNodePoolsResponse {
 
   ListNodePoolsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("nodePools")) {
-      nodePools = _json["nodePools"]
+      nodePools = (_json["nodePools"] as core.List)
           .map<NodePool>((value) => new NodePool.fromJson(value))
           .toList();
     }
@@ -3343,10 +3346,10 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("missingZones")) {
-      missingZones = _json["missingZones"];
+      missingZones = (_json["missingZones"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"]
+      operations = (_json["operations"] as core.List)
           .map<Operation>((value) => new Operation.fromJson(value))
           .toList();
     }
@@ -3510,7 +3513,7 @@ class MasterAuthorizedNetworksConfig {
 
   MasterAuthorizedNetworksConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cidrBlocks")) {
-      cidrBlocks = _json["cidrBlocks"]
+      cidrBlocks = (_json["cidrBlocks"] as core.List)
           .map<CidrBlock>((value) => new CidrBlock.fromJson(value))
           .toList();
     }
@@ -3705,7 +3708,7 @@ class NodeConfig {
 
   NodeConfig.fromJson(core.Map _json) {
     if (_json.containsKey("accelerators")) {
-      accelerators = _json["accelerators"]
+      accelerators = (_json["accelerators"] as core.List)
           .map<AcceleratorConfig>(
               (value) => new AcceleratorConfig.fromJson(value))
           .toList();
@@ -3717,7 +3720,7 @@ class NodeConfig {
       imageType = _json["imageType"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("localSsdCount")) {
       localSsdCount = _json["localSsdCount"];
@@ -3726,13 +3729,14 @@ class NodeConfig {
       machineType = _json["machineType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("minCpuPlatform")) {
       minCpuPlatform = _json["minCpuPlatform"];
     }
     if (_json.containsKey("oauthScopes")) {
-      oauthScopes = _json["oauthScopes"];
+      oauthScopes = (_json["oauthScopes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("preemptible")) {
       preemptible = _json["preemptible"];
@@ -3741,7 +3745,7 @@ class NodeConfig {
       serviceAccount = _json["serviceAccount"];
     }
     if (_json.containsKey("tags")) {
-      tags = _json["tags"];
+      tags = (_json["tags"] as core.List).cast<core.String>();
     }
   }
 
@@ -3913,7 +3917,8 @@ class NodePool {
       initialNodeCount = _json["initialNodeCount"];
     }
     if (_json.containsKey("instanceGroupUrls")) {
-      instanceGroupUrls = _json["instanceGroupUrls"];
+      instanceGroupUrls =
+          (_json["instanceGroupUrls"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("management")) {
       management = new NodeManagement.fromJson(_json["management"]);
@@ -4191,13 +4196,16 @@ class ServerConfig {
       defaultImageType = _json["defaultImageType"];
     }
     if (_json.containsKey("validImageTypes")) {
-      validImageTypes = _json["validImageTypes"];
+      validImageTypes =
+          (_json["validImageTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("validMasterVersions")) {
-      validMasterVersions = _json["validMasterVersions"];
+      validMasterVersions =
+          (_json["validMasterVersions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("validNodeVersions")) {
-      validNodeVersions = _json["validNodeVersions"];
+      validNodeVersions =
+          (_json["validNodeVersions"] as core.List).cast<core.String>();
     }
   }
 
@@ -4269,7 +4277,8 @@ class SetLabelsRequest {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("resourceLabels")) {
-      resourceLabels = _json["resourceLabels"];
+      resourceLabels = (_json["resourceLabels"] as core.Map)
+          .cast<core.String, core.String>();
     }
   }
 
@@ -4326,7 +4335,7 @@ class SetLocationsRequest {
 
   SetLocationsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
-      locations = _json["locations"];
+      locations = (_json["locations"] as core.List).cast<core.String>();
     }
   }
 

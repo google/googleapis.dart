@@ -493,7 +493,7 @@ class Asset {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("formats")) {
-      formats = _json["formats"]
+      formats = (_json["formats"] as core.List)
           .map<Format>((value) => new Format.fromJson(value))
           .toList();
     }
@@ -654,7 +654,7 @@ class Format {
       formatType = _json["formatType"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"]
+      resources = (_json["resources"] as core.List)
           .map<File>((value) => new File.fromJson(value))
           .toList();
     }
@@ -736,7 +736,7 @@ class ListAssetsResponse {
 
   ListAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assets")) {
-      assets = _json["assets"]
+      assets = (_json["assets"] as core.List)
           .map<Asset>((value) => new Asset.fromJson(value))
           .toList();
     }
@@ -782,7 +782,7 @@ class ListLikedAssetsResponse {
 
   ListLikedAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assets")) {
-      assets = _json["assets"]
+      assets = (_json["assets"] as core.List)
           .map<Asset>((value) => new Asset.fromJson(value))
           .toList();
     }
@@ -834,7 +834,7 @@ class ListUserAssetsResponse {
       totalSize = _json["totalSize"];
     }
     if (_json.containsKey("userAssets")) {
-      userAssets = _json["userAssets"]
+      userAssets = (_json["userAssets"] as core.List)
           .map<UserAsset>((value) => new UserAsset.fromJson(value))
           .toList();
     }

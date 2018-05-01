@@ -200,7 +200,7 @@ class ProjectsLocationsKeyRingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -410,7 +410,7 @@ class ProjectsLocationsKeyRingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -470,7 +470,7 @@ class ProjectsLocationsKeyRingsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -541,7 +541,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -599,7 +599,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -654,7 +654,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -865,7 +865,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -922,7 +922,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -983,7 +983,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1037,7 +1037,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1103,7 +1103,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1167,7 +1167,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1338,7 +1338,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1398,7 +1398,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1484,7 +1484,7 @@ class AuditConfig {
 
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"]
+      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
           .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
@@ -1544,7 +1544,8 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers = _json["exemptedMembers"];
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("logType")) {
       logType = _json["logType"];
@@ -1599,7 +1600,7 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
-      members = _json["members"];
+      members = (_json["members"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -1677,7 +1678,7 @@ class CryptoKey {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1820,24 +1821,24 @@ class DecryptRequest {
   /// EncryptRequest.additional_authenticated_data.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes {
-    return convert.BASE64.decode(additionalAuthenticatedData);
+    return convert.base64.decode(additionalAuthenticatedData);
   }
 
   void set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
     additionalAuthenticatedData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Required. The encrypted data originally returned in
   /// EncryptResponse.ciphertext.
   core.String ciphertext;
   core.List<core.int> get ciphertextAsBytes {
-    return convert.BASE64.decode(ciphertext);
+    return convert.base64.decode(ciphertext);
   }
 
   void set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   DecryptRequest();
@@ -1869,12 +1870,12 @@ class DecryptResponse {
   /// The decrypted data originally supplied in EncryptRequest.plaintext.
   core.String plaintext;
   core.List<core.int> get plaintextAsBytes {
-    return convert.BASE64.decode(plaintext);
+    return convert.base64.decode(plaintext);
   }
 
   void set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   DecryptResponse();
@@ -1915,23 +1916,23 @@ class EncryptRequest {
   /// larger than 64KiB.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes {
-    return convert.BASE64.decode(additionalAuthenticatedData);
+    return convert.base64.decode(additionalAuthenticatedData);
   }
 
   void set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
     additionalAuthenticatedData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Required. The data to encrypt. Must be no larger than 64KiB.
   core.String plaintext;
   core.List<core.int> get plaintextAsBytes {
-    return convert.BASE64.decode(plaintext);
+    return convert.base64.decode(plaintext);
   }
 
   void set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   EncryptRequest();
@@ -1963,12 +1964,12 @@ class EncryptResponse {
   /// The encrypted data.
   core.String ciphertext;
   core.List<core.int> get ciphertextAsBytes {
-    return convert.BASE64.decode(ciphertext);
+    return convert.base64.decode(ciphertext);
   }
 
   void set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The resource name of the CryptoKeyVersion used in encryption.
@@ -2049,7 +2050,7 @@ class ListCryptoKeyVersionsResponse {
 
   ListCryptoKeyVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cryptoKeyVersions")) {
-      cryptoKeyVersions = _json["cryptoKeyVersions"]
+      cryptoKeyVersions = (_json["cryptoKeyVersions"] as core.List)
           .map<CryptoKeyVersion>(
               (value) => new CryptoKeyVersion.fromJson(value))
           .toList();
@@ -2095,7 +2096,7 @@ class ListCryptoKeysResponse {
 
   ListCryptoKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cryptoKeys")) {
-      cryptoKeys = _json["cryptoKeys"]
+      cryptoKeys = (_json["cryptoKeys"] as core.List)
           .map<CryptoKey>((value) => new CryptoKey.fromJson(value))
           .toList();
     }
@@ -2140,7 +2141,7 @@ class ListKeyRingsResponse {
 
   ListKeyRingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("keyRings")) {
-      keyRings = _json["keyRings"]
+      keyRings = (_json["keyRings"] as core.List)
           .map<KeyRing>((value) => new KeyRing.fromJson(value))
           .toList();
     }
@@ -2180,7 +2181,7 @@ class ListLocationsResponse {
 
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
-      locations = _json["locations"]
+      locations = (_json["locations"] as core.List)
           .map<Location>((value) => new Location.fromJson(value))
           .toList();
     }
@@ -2227,13 +2228,14 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
-      labels = _json["labels"];
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2313,12 +2315,12 @@ class Policy {
   /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return convert.BASE64.decode(etag);
+    return convert.base64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Deprecated.
@@ -2328,12 +2330,12 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"]
+      auditConfigs = (_json["auditConfigs"] as core.List)
           .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"]
+      bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
           .toList();
     }
@@ -2430,7 +2432,7 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 
@@ -2454,7 +2456,7 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
     }
   }
 

@@ -450,7 +450,7 @@ class AchievementsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -781,7 +781,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1200,7 +1200,7 @@ class PushtokensResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1242,7 +1242,7 @@ class PushtokensResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1545,7 +1545,7 @@ class RoomsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1739,7 +1739,7 @@ class RoomsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
@@ -1794,7 +1794,7 @@ class RoomsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
@@ -1911,7 +1911,7 @@ class RoomsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
@@ -2341,7 +2341,7 @@ class ScoresResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2564,7 +2564,7 @@ class TurnBasedMatchesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2714,7 +2714,7 @@ class TurnBasedMatchesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -3219,7 +3219,7 @@ class TurnBasedMatchesResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -3402,7 +3402,7 @@ class AchievementDefinitionsListResponse {
 
   AchievementDefinitionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<AchievementDefinition>(
               (value) => new AchievementDefinition.fromJson(value))
           .toList();
@@ -3604,7 +3604,7 @@ class AchievementUpdateMultipleRequest {
       kind = _json["kind"];
     }
     if (_json.containsKey("updates")) {
-      updates = _json["updates"]
+      updates = (_json["updates"] as core.List)
           .map<AchievementUpdateRequest>(
               (value) => new AchievementUpdateRequest.fromJson(value))
           .toList();
@@ -3640,7 +3640,7 @@ class AchievementUpdateMultipleResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("updatedAchievements")) {
-      updatedAchievements = _json["updatedAchievements"]
+      updatedAchievements = (_json["updatedAchievements"] as core.List)
           .map<AchievementUpdateResponse>(
               (value) => new AchievementUpdateResponse.fromJson(value))
           .toList();
@@ -3959,7 +3959,7 @@ class Application {
       achievementCount = _json["achievement_count"];
     }
     if (_json.containsKey("assets")) {
-      assets = _json["assets"]
+      assets = (_json["assets"] as core.List)
           .map<ImageAsset>((value) => new ImageAsset.fromJson(value))
           .toList();
     }
@@ -3973,13 +3973,14 @@ class Application {
       description = _json["description"];
     }
     if (_json.containsKey("enabledFeatures")) {
-      enabledFeatures = _json["enabledFeatures"];
+      enabledFeatures =
+          (_json["enabledFeatures"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("instances")) {
-      instances = _json["instances"]
+      instances = (_json["instances"] as core.List)
           .map<Instance>((value) => new Instance.fromJson(value))
           .toList();
     }
@@ -4190,7 +4191,7 @@ class CategoryListResponse {
 
   CategoryListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Category>((value) => new Category.fromJson(value))
           .toList();
     }
@@ -4342,7 +4343,7 @@ class EventDefinition {
 
   EventDefinition.fromJson(core.Map _json) {
     if (_json.containsKey("childEvents")) {
-      childEvents = _json["childEvents"]
+      childEvents = (_json["childEvents"] as core.List)
           .map<EventChild>((value) => new EventChild.fromJson(value))
           .toList();
     }
@@ -4417,7 +4418,7 @@ class EventDefinitionListResponse {
 
   EventDefinitionListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<EventDefinition>((value) => new EventDefinition.fromJson(value))
           .toList();
     }
@@ -4511,7 +4512,7 @@ class EventPeriodUpdate {
       timePeriod = new EventPeriodRange.fromJson(_json["timePeriod"]);
     }
     if (_json.containsKey("updates")) {
-      updates = _json["updates"]
+      updates = (_json["updates"] as core.List)
           .map<EventUpdateRequest>(
               (value) => new EventUpdateRequest.fromJson(value))
           .toList();
@@ -4609,7 +4610,7 @@ class EventRecordRequest {
       requestId = _json["requestId"];
     }
     if (_json.containsKey("timePeriods")) {
-      timePeriods = _json["timePeriods"]
+      timePeriods = (_json["timePeriods"] as core.List)
           .map<EventPeriodUpdate>(
               (value) => new EventPeriodUpdate.fromJson(value))
           .toList();
@@ -4697,13 +4698,13 @@ class EventUpdateResponse {
 
   EventUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("batchFailures")) {
-      batchFailures = _json["batchFailures"]
+      batchFailures = (_json["batchFailures"] as core.List)
           .map<EventBatchRecordFailure>(
               (value) => new EventBatchRecordFailure.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventFailures")) {
-      eventFailures = _json["eventFailures"]
+      eventFailures = (_json["eventFailures"] as core.List)
           .map<EventRecordFailure>(
               (value) => new EventRecordFailure.fromJson(value))
           .toList();
@@ -4712,7 +4713,7 @@ class EventUpdateResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("playerEvents")) {
-      playerEvents = _json["playerEvents"]
+      playerEvents = (_json["playerEvents"] as core.List)
           .map<PlayerEvent>((value) => new PlayerEvent.fromJson(value))
           .toList();
     }
@@ -5344,7 +5345,7 @@ class LeaderboardListResponse {
 
   LeaderboardListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Leaderboard>((value) => new Leaderboard.fromJson(value))
           .toList();
     }
@@ -5461,7 +5462,7 @@ class LeaderboardScores {
 
   LeaderboardScores.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<LeaderboardEntry>(
               (value) => new LeaderboardEntry.fromJson(value))
           .toList();
@@ -5531,7 +5532,7 @@ class MetagameConfig {
       kind = _json["kind"];
     }
     if (_json.containsKey("playerLevels")) {
-      playerLevels = _json["playerLevels"]
+      playerLevels = (_json["playerLevels"] as core.List)
           .map<PlayerLevel>((value) => new PlayerLevel.fromJson(value))
           .toList();
     }
@@ -6162,7 +6163,7 @@ class PlayerAchievementListResponse {
 
   PlayerAchievementListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PlayerAchievement>(
               (value) => new PlayerAchievement.fromJson(value))
           .toList();
@@ -6269,7 +6270,7 @@ class PlayerEventListResponse {
 
   PlayerEventListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PlayerEvent>((value) => new PlayerEvent.fromJson(value))
           .toList();
     }
@@ -6481,7 +6482,7 @@ class PlayerLeaderboardScoreListResponse {
 
   PlayerLeaderboardScoreListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<PlayerLeaderboardScore>(
               (value) => new PlayerLeaderboardScore.fromJson(value))
           .toList();
@@ -6583,7 +6584,7 @@ class PlayerListResponse {
 
   PlayerListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Player>((value) => new Player.fromJson(value))
           .toList();
     }
@@ -6692,7 +6693,7 @@ class PlayerScoreListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("submittedScores")) {
-      submittedScores = _json["submittedScores"]
+      submittedScores = (_json["submittedScores"] as core.List)
           .map<PlayerScoreResponse>(
               (value) => new PlayerScoreResponse.fromJson(value))
           .toList();
@@ -6746,7 +6747,8 @@ class PlayerScoreResponse {
 
   PlayerScoreResponse.fromJson(core.Map _json) {
     if (_json.containsKey("beatenScoreTimeSpans")) {
-      beatenScoreTimeSpans = _json["beatenScoreTimeSpans"];
+      beatenScoreTimeSpans =
+          (_json["beatenScoreTimeSpans"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("formattedScore")) {
       formattedScore = _json["formattedScore"];
@@ -6761,7 +6763,7 @@ class PlayerScoreResponse {
       scoreTag = _json["scoreTag"];
     }
     if (_json.containsKey("unbeatenScores")) {
-      unbeatenScores = _json["unbeatenScores"]
+      unbeatenScores = (_json["unbeatenScores"] as core.List)
           .map<PlayerScore>((value) => new PlayerScore.fromJson(value))
           .toList();
     }
@@ -6809,7 +6811,7 @@ class PlayerScoreSubmissionList {
       kind = _json["kind"];
     }
     if (_json.containsKey("scores")) {
-      scores = _json["scores"]
+      scores = (_json["scores"] as core.List)
           .map<ScoreSubmission>((value) => new ScoreSubmission.fromJson(value))
           .toList();
     }
@@ -6923,12 +6925,12 @@ class PushTokenIdIos {
   /// notifications. Encode this field as web-safe base64.
   core.String apnsDeviceToken;
   core.List<core.int> get apnsDeviceTokenAsBytes {
-    return convert.BASE64.decode(apnsDeviceToken);
+    return convert.base64.decode(apnsDeviceToken);
   }
 
   void set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
     apnsDeviceToken =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Indicates whether this token should be used for the production or sandbox
@@ -7098,7 +7100,7 @@ class Quest {
       lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
     }
     if (_json.containsKey("milestones")) {
-      milestones = _json["milestones"]
+      milestones = (_json["milestones"] as core.List)
           .map<QuestMilestone>((value) => new QuestMilestone.fromJson(value))
           .toList();
     }
@@ -7304,7 +7306,7 @@ class QuestListResponse {
 
   QuestListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Quest>((value) => new Quest.fromJson(value))
           .toList();
     }
@@ -7339,12 +7341,12 @@ class QuestMilestone {
   /// between 0 and 2 KB before encoding.
   core.String completionRewardData;
   core.List<core.int> get completionRewardDataAsBytes {
-    return convert.BASE64.decode(completionRewardData);
+    return convert.base64.decode(completionRewardData);
   }
 
   void set completionRewardDataAsBytes(core.List<core.int> _bytes) {
     completionRewardData =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// The criteria of the milestone.
@@ -7374,7 +7376,7 @@ class QuestMilestone {
       completionRewardData = _json["completionRewardData"];
     }
     if (_json.containsKey("criteria")) {
-      criteria = _json["criteria"]
+      criteria = (_json["criteria"] as core.List)
           .map<QuestCriterion>((value) => new QuestCriterion.fromJson(value))
           .toList();
     }
@@ -7551,7 +7553,7 @@ class Room {
           new RoomModification.fromJson(_json["lastUpdateDetails"]);
     }
     if (_json.containsKey("participants")) {
-      participants = _json["participants"]
+      participants = (_json["participants"] as core.List)
           .map<RoomParticipant>((value) => new RoomParticipant.fromJson(value))
           .toList();
     }
@@ -7776,13 +7778,14 @@ class RoomCreateRequest {
           new RoomAutoMatchingCriteria.fromJson(_json["autoMatchingCriteria"]);
     }
     if (_json.containsKey("capabilities")) {
-      capabilities = _json["capabilities"];
+      capabilities = (_json["capabilities"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("clientAddress")) {
       clientAddress = new RoomClientAddress.fromJson(_json["clientAddress"]);
     }
     if (_json.containsKey("invitedPlayerIds")) {
-      invitedPlayerIds = _json["invitedPlayerIds"];
+      invitedPlayerIds =
+          (_json["invitedPlayerIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7849,7 +7852,7 @@ class RoomJoinRequest {
 
   RoomJoinRequest.fromJson(core.Map _json) {
     if (_json.containsKey("capabilities")) {
-      capabilities = _json["capabilities"];
+      capabilities = (_json["capabilities"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("clientAddress")) {
       clientAddress = new RoomClientAddress.fromJson(_json["clientAddress"]);
@@ -7939,7 +7942,7 @@ class RoomLeaveDiagnostics {
       networkOperatorName = _json["networkOperatorName"];
     }
     if (_json.containsKey("peerSession")) {
-      peerSession = _json["peerSession"]
+      peerSession = (_json["peerSession"] as core.List)
           .map<PeerSessionDiagnostics>(
               (value) => new PeerSessionDiagnostics.fromJson(value))
           .toList();
@@ -8061,7 +8064,7 @@ class RoomList {
 
   RoomList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Room>((value) => new Room.fromJson(value))
           .toList();
     }
@@ -8242,7 +8245,7 @@ class RoomP2PStatuses {
       kind = _json["kind"];
     }
     if (_json.containsKey("updates")) {
-      updates = _json["updates"]
+      updates = (_json["updates"] as core.List)
           .map<RoomP2PStatus>((value) => new RoomP2PStatus.fromJson(value))
           .toList();
     }
@@ -8332,7 +8335,7 @@ class RoomParticipant {
           new AnonymousPlayer.fromJson(_json["autoMatchedPlayer"]);
     }
     if (_json.containsKey("capabilities")) {
-      capabilities = _json["capabilities"];
+      capabilities = (_json["capabilities"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("clientAddress")) {
       clientAddress = new RoomClientAddress.fromJson(_json["clientAddress"]);
@@ -8438,7 +8441,7 @@ class RoomStatus {
       kind = _json["kind"];
     }
     if (_json.containsKey("participants")) {
-      participants = _json["participants"]
+      participants = (_json["participants"] as core.List)
           .map<RoomParticipant>((value) => new RoomParticipant.fromJson(value))
           .toList();
     }
@@ -8739,7 +8742,7 @@ class SnapshotListResponse {
 
   SnapshotListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<Snapshot>((value) => new Snapshot.fromJson(value))
           .toList();
     }
@@ -8953,7 +8956,7 @@ class TurnBasedMatch {
       matchVersion = _json["matchVersion"];
     }
     if (_json.containsKey("participants")) {
-      participants = _json["participants"]
+      participants = (_json["participants"] as core.List)
           .map<TurnBasedMatchParticipant>(
               (value) => new TurnBasedMatchParticipant.fromJson(value))
           .toList();
@@ -8969,7 +8972,7 @@ class TurnBasedMatch {
       rematchId = _json["rematchId"];
     }
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<ParticipantResult>(
               (value) => new ParticipantResult.fromJson(value))
           .toList();
@@ -9085,7 +9088,8 @@ class TurnBasedMatchCreateRequest {
           _json["autoMatchingCriteria"]);
     }
     if (_json.containsKey("invitedPlayerIds")) {
-      invitedPlayerIds = _json["invitedPlayerIds"];
+      invitedPlayerIds =
+          (_json["invitedPlayerIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -9126,12 +9130,12 @@ class TurnBasedMatchData {
   /// Base64-encoded string with the URL_SAFE encoding option.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// True if this match has data available but it wasn't returned in a list
@@ -9178,12 +9182,12 @@ class TurnBasedMatchDataRequest {
   /// Base64-encoded string with the URL_SAFE encoding option.
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return convert.BASE64.decode(data);
+    return convert.base64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
     data =
-        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
@@ -9230,7 +9234,7 @@ class TurnBasedMatchList {
 
   TurnBasedMatchList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TurnBasedMatch>((value) => new TurnBasedMatch.fromJson(value))
           .toList();
     }
@@ -9461,7 +9465,7 @@ class TurnBasedMatchResults {
       matchVersion = _json["matchVersion"];
     }
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<ParticipantResult>(
               (value) => new ParticipantResult.fromJson(value))
           .toList();
@@ -9508,7 +9512,7 @@ class TurnBasedMatchSync {
 
   TurnBasedMatchSync.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<TurnBasedMatch>((value) => new TurnBasedMatch.fromJson(value))
           .toList();
     }
@@ -9581,7 +9585,7 @@ class TurnBasedMatchTurn {
       pendingParticipantId = _json["pendingParticipantId"];
     }
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<ParticipantResult>(
               (value) => new ParticipantResult.fromJson(value))
           .toList();

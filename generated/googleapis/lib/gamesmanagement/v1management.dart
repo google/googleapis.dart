@@ -249,7 +249,7 @@ class AchievementsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -536,7 +536,7 @@ class EventsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -869,7 +869,7 @@ class QuestsResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1178,7 +1178,7 @@ class ScoresResourceApi {
     var _body = null;
 
     if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
+      _body = convert.json.encode((request).toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1298,7 +1298,7 @@ class AchievementResetAllResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<AchievementResetResponse>(
               (value) => new AchievementResetResponse.fromJson(value))
           .toList();
@@ -1331,7 +1331,8 @@ class AchievementResetMultipleForAllRequest {
 
   AchievementResetMultipleForAllRequest.fromJson(core.Map _json) {
     if (_json.containsKey("achievement_ids")) {
-      achievementIds = _json["achievement_ids"];
+      achievementIds =
+          (_json["achievement_ids"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1420,7 +1421,7 @@ class EventsResetMultipleForAllRequest {
 
   EventsResetMultipleForAllRequest.fromJson(core.Map _json) {
     if (_json.containsKey("event_ids")) {
-      eventIds = _json["event_ids"];
+      eventIds = (_json["event_ids"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1626,7 +1627,7 @@ class HiddenPlayerList {
 
   HiddenPlayerList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"]
+      items = (_json["items"] as core.List)
           .map<HiddenPlayer>((value) => new HiddenPlayer.fromJson(value))
           .toList();
     }
@@ -1837,7 +1838,7 @@ class PlayerScoreResetAllResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("results")) {
-      results = _json["results"]
+      results = (_json["results"] as core.List)
           .map<PlayerScoreResetResponse>(
               (value) => new PlayerScoreResetResponse.fromJson(value))
           .toList();
@@ -1883,7 +1884,8 @@ class PlayerScoreResetResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("resetScoreTimeSpans")) {
-      resetScoreTimeSpans = _json["resetScoreTimeSpans"];
+      resetScoreTimeSpans =
+          (_json["resetScoreTimeSpans"] as core.List).cast<core.String>();
     }
   }
 
@@ -1953,7 +1955,7 @@ class QuestsResetMultipleForAllRequest {
       kind = _json["kind"];
     }
     if (_json.containsKey("quest_ids")) {
-      questIds = _json["quest_ids"];
+      questIds = (_json["quest_ids"] as core.List).cast<core.String>();
     }
   }
 
@@ -1986,7 +1988,8 @@ class ScoresResetMultipleForAllRequest {
       kind = _json["kind"];
     }
     if (_json.containsKey("leaderboard_ids")) {
-      leaderboardIds = _json["leaderboard_ids"];
+      leaderboardIds =
+          (_json["leaderboard_ids"] as core.List).cast<core.String>();
     }
   }
 
