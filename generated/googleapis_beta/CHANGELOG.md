@@ -1,3 +1,7 @@
+## 0.45.2
+
+* Re-generated with updated code generator to support Dart 2.
+
 ## 0.45.1
 
 * Re-generated with updated code generator to support Dart 2.
