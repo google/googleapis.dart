@@ -3504,7 +3504,7 @@ class BubbleChartSpec {
       bubbleMinRadiusSize = _json["bubbleMinRadiusSize"];
     }
     if (_json.containsKey("bubbleOpacity")) {
-      bubbleOpacity = _json["bubbleOpacity"];
+      bubbleOpacity = _json["bubbleOpacity"].toDouble();
     }
     if (_json.containsKey("bubbleSizes")) {
       bubbleSizes = new ChartData.fromJson(_json["bubbleSizes"]);
@@ -4503,16 +4503,16 @@ class Color {
 
   Color.fromJson(core.Map _json) {
     if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"];
+      alpha = _json["alpha"].toDouble();
     }
     if (_json.containsKey("blue")) {
-      blue = _json["blue"];
+      blue = _json["blue"].toDouble();
     }
     if (_json.containsKey("green")) {
-      green = _json["green"];
+      green = _json["green"].toDouble();
     }
     if (_json.containsKey("red")) {
-      red = _json["red"];
+      red = _json["red"].toDouble();
     }
   }
 
@@ -6003,7 +6003,7 @@ class ExtendedValue {
       formulaValue = _json["formulaValue"];
     }
     if (_json.containsKey("numberValue")) {
-      numberValue = _json["numberValue"];
+      numberValue = _json["numberValue"].toDouble();
     }
     if (_json.containsKey("stringValue")) {
       stringValue = _json["stringValue"];
@@ -6706,13 +6706,13 @@ class HistogramChartSpec {
 
   HistogramChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+      bucketSize = _json["bucketSize"].toDouble();
     }
     if (_json.containsKey("legendPosition")) {
       legendPosition = _json["legendPosition"];
     }
     if (_json.containsKey("outlierPercentile")) {
-      outlierPercentile = _json["outlierPercentile"];
+      outlierPercentile = _json["outlierPercentile"].toDouble();
     }
     if (_json.containsKey("series")) {
       series = (_json["series"] as core.List)
@@ -6796,13 +6796,13 @@ class HistogramRule {
 
   HistogramRule.fromJson(core.Map _json) {
     if (_json.containsKey("end")) {
-      end = _json["end"];
+      end = _json["end"].toDouble();
     }
     if (_json.containsKey("interval")) {
-      interval = _json["interval"];
+      interval = _json["interval"].toDouble();
     }
     if (_json.containsKey("start")) {
-      start = _json["start"];
+      start = _json["start"].toDouble();
     }
   }
 
@@ -7015,7 +7015,7 @@ class IterativeCalculationSettings {
 
   IterativeCalculationSettings.fromJson(core.Map _json) {
     if (_json.containsKey("convergenceThreshold")) {
-      convergenceThreshold = _json["convergenceThreshold"];
+      convergenceThreshold = _json["convergenceThreshold"].toDouble();
     }
     if (_json.containsKey("maxIterations")) {
       maxIterations = _json["maxIterations"];
@@ -7719,7 +7719,7 @@ class PieChartSpec {
       legendPosition = _json["legendPosition"];
     }
     if (_json.containsKey("pieHole")) {
-      pieHole = _json["pieHole"];
+      pieHole = _json["pieHole"].toDouble();
     }
     if (_json.containsKey("series")) {
       series = new ChartData.fromJson(_json["series"]);

@@ -395,7 +395,7 @@ class DetectionsResourceElement {
 
   DetectionsResourceElement.fromJson(core.Map _json) {
     if (_json.containsKey("confidence")) {
-      confidence = _json["confidence"];
+      confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("isReliable")) {
       isReliable = _json["isReliable"];

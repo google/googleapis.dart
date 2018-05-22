@@ -563,7 +563,7 @@ class ResultFormattedResultsRuleResultsValue {
       localizedRuleName = _json["localizedRuleName"];
     }
     if (_json.containsKey("ruleImpact")) {
-      ruleImpact = _json["ruleImpact"];
+      ruleImpact = _json["ruleImpact"].toDouble();
     }
     if (_json.containsKey("summary")) {
       summary = new PagespeedApiFormatStringV2.fromJson(_json["summary"]);

@@ -28177,7 +28177,7 @@ class AutoscalingPolicyCpuUtilization {
 
   AutoscalingPolicyCpuUtilization.fromJson(core.Map _json) {
     if (_json.containsKey("utilizationTarget")) {
-      utilizationTarget = _json["utilizationTarget"];
+      utilizationTarget = _json["utilizationTarget"].toDouble();
     }
   }
 
@@ -28226,7 +28226,7 @@ class AutoscalingPolicyCustomMetricUtilization {
       metric = _json["metric"];
     }
     if (_json.containsKey("utilizationTarget")) {
-      utilizationTarget = _json["utilizationTarget"];
+      utilizationTarget = _json["utilizationTarget"].toDouble();
     }
     if (_json.containsKey("utilizationTargetType")) {
       utilizationTargetType = _json["utilizationTargetType"];
@@ -28260,7 +28260,7 @@ class AutoscalingPolicyLoadBalancingUtilization {
 
   AutoscalingPolicyLoadBalancingUtilization.fromJson(core.Map _json) {
     if (_json.containsKey("utilizationTarget")) {
-      utilizationTarget = _json["utilizationTarget"];
+      utilizationTarget = _json["utilizationTarget"].toDouble();
     }
   }
 
@@ -28358,7 +28358,7 @@ class Backend {
       balancingMode = _json["balancingMode"];
     }
     if (_json.containsKey("capacityScaler")) {
-      capacityScaler = _json["capacityScaler"];
+      capacityScaler = _json["capacityScaler"].toDouble();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -28376,10 +28376,10 @@ class Backend {
       maxRate = _json["maxRate"];
     }
     if (_json.containsKey("maxRatePerInstance")) {
-      maxRatePerInstance = _json["maxRatePerInstance"];
+      maxRatePerInstance = _json["maxRatePerInstance"].toDouble();
     }
     if (_json.containsKey("maxUtilization")) {
-      maxUtilization = _json["maxUtilization"];
+      maxUtilization = _json["maxUtilization"].toDouble();
     }
   }
 
@@ -43648,13 +43648,13 @@ class Quota {
 
   Quota.fromJson(core.Map _json) {
     if (_json.containsKey("limit")) {
-      limit = _json["limit"];
+      limit = _json["limit"].toDouble();
     }
     if (_json.containsKey("metric")) {
       metric = _json["metric"];
     }
     if (_json.containsKey("usage")) {
-      usage = _json["usage"];
+      usage = _json["usage"].toDouble();
     }
   }
 
@@ -49660,7 +49660,7 @@ class TargetPool {
       description = _json["description"];
     }
     if (_json.containsKey("failoverRatio")) {
-      failoverRatio = _json["failoverRatio"];
+      failoverRatio = _json["failoverRatio"].toDouble();
     }
     if (_json.containsKey("healthChecks")) {
       healthChecks = (_json["healthChecks"] as core.List).cast<core.String>();

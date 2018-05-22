@@ -6956,10 +6956,10 @@ class BuildingCoordinates {
 
   BuildingCoordinates.fromJson(core.Map _json) {
     if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"];
+      latitude = _json["latitude"].toDouble();
     }
     if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"];
+      longitude = _json["longitude"].toDouble();
     }
   }
 
@@ -10090,10 +10090,10 @@ class SchemaFieldSpecNumericIndexingSpec {
 
   SchemaFieldSpecNumericIndexingSpec.fromJson(core.Map _json) {
     if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"];
+      maxValue = _json["maxValue"].toDouble();
     }
     if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"];
+      minValue = _json["minValue"].toDouble();
     }
   }
 

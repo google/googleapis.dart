@@ -1818,7 +1818,7 @@ class CpuUtilization {
       aggregationWindowLength = _json["aggregationWindowLength"];
     }
     if (_json.containsKey("targetUtilization")) {
-      targetUtilization = _json["targetUtilization"];
+      targetUtilization = _json["targetUtilization"].toDouble();
     }
   }
 
@@ -2374,7 +2374,7 @@ class Instance {
       name = _json["name"];
     }
     if (_json.containsKey("qps")) {
-      qps = _json["qps"];
+      qps = _json["qps"].toDouble();
     }
     if (_json.containsKey("requests")) {
       requests = _json["requests"];
@@ -3415,13 +3415,13 @@ class Resources {
 
   Resources.fromJson(core.Map _json) {
     if (_json.containsKey("cpu")) {
-      cpu = _json["cpu"];
+      cpu = _json["cpu"].toDouble();
     }
     if (_json.containsKey("diskGb")) {
-      diskGb = _json["diskGb"];
+      diskGb = _json["diskGb"].toDouble();
     }
     if (_json.containsKey("memoryGb")) {
-      memoryGb = _json["memoryGb"];
+      memoryGb = _json["memoryGb"].toDouble();
     }
     if (_json.containsKey("volumes")) {
       volumes = (_json["volumes"] as core.List)
@@ -3761,8 +3761,9 @@ class TrafficSplit {
 
   TrafficSplit.fromJson(core.Map _json) {
     if (_json.containsKey("allocations")) {
-      allocations =
-          (_json["allocations"] as core.Map).cast<core.String, core.double>();
+      allocations = commons.mapMap<core.num, core.double>(
+          _json["allocations"].cast<core.String, core.num>(),
+          (core.num item) => item.toDouble());
     }
     if (_json.containsKey("shardBy")) {
       shardBy = _json["shardBy"];
@@ -4306,7 +4307,7 @@ class Volume {
       name = _json["name"];
     }
     if (_json.containsKey("sizeGb")) {
-      sizeGb = _json["sizeGb"];
+      sizeGb = _json["sizeGb"].toDouble();
     }
     if (_json.containsKey("volumeType")) {
       volumeType = _json["volumeType"];

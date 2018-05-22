@@ -2200,10 +2200,10 @@ class DataSourceParameter {
       immutable = _json["immutable"];
     }
     if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"];
+      maxValue = _json["maxValue"].toDouble();
     }
     if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"];
+      minValue = _json["minValue"].toDouble();
     }
     if (_json.containsKey("paramId")) {
       paramId = _json["paramId"];

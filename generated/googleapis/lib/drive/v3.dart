@@ -3703,13 +3703,13 @@ class FileImageMediaMetadataLocation {
 
   FileImageMediaMetadataLocation.fromJson(core.Map _json) {
     if (_json.containsKey("altitude")) {
-      altitude = _json["altitude"];
+      altitude = _json["altitude"].toDouble();
     }
     if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"];
+      latitude = _json["latitude"].toDouble();
     }
     if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"];
+      longitude = _json["longitude"].toDouble();
     }
   }
 
@@ -3799,7 +3799,7 @@ class FileImageMediaMetadata {
 
   FileImageMediaMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("aperture")) {
-      aperture = _json["aperture"];
+      aperture = _json["aperture"].toDouble();
     }
     if (_json.containsKey("cameraMake")) {
       cameraMake = _json["cameraMake"];
@@ -3811,19 +3811,19 @@ class FileImageMediaMetadata {
       colorSpace = _json["colorSpace"];
     }
     if (_json.containsKey("exposureBias")) {
-      exposureBias = _json["exposureBias"];
+      exposureBias = _json["exposureBias"].toDouble();
     }
     if (_json.containsKey("exposureMode")) {
       exposureMode = _json["exposureMode"];
     }
     if (_json.containsKey("exposureTime")) {
-      exposureTime = _json["exposureTime"];
+      exposureTime = _json["exposureTime"].toDouble();
     }
     if (_json.containsKey("flashUsed")) {
       flashUsed = _json["flashUsed"];
     }
     if (_json.containsKey("focalLength")) {
-      focalLength = _json["focalLength"];
+      focalLength = _json["focalLength"].toDouble();
     }
     if (_json.containsKey("height")) {
       height = _json["height"];
@@ -3838,7 +3838,7 @@ class FileImageMediaMetadata {
       location = new FileImageMediaMetadataLocation.fromJson(_json["location"]);
     }
     if (_json.containsKey("maxApertureValue")) {
-      maxApertureValue = _json["maxApertureValue"];
+      maxApertureValue = _json["maxApertureValue"].toDouble();
     }
     if (_json.containsKey("meteringMode")) {
       meteringMode = _json["meteringMode"];
@@ -5279,13 +5279,13 @@ class TeamDriveBackgroundImageFile {
       id = _json["id"];
     }
     if (_json.containsKey("width")) {
-      width = _json["width"];
+      width = _json["width"].toDouble();
     }
     if (_json.containsKey("xCoordinate")) {
-      xCoordinate = _json["xCoordinate"];
+      xCoordinate = _json["xCoordinate"].toDouble();
     }
     if (_json.containsKey("yCoordinate")) {
-      yCoordinate = _json["yCoordinate"];
+      yCoordinate = _json["yCoordinate"].toDouble();
     }
   }
 

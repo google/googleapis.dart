@@ -2069,13 +2069,13 @@ class Bucket {
       icon = _json["icon"];
     }
     if (_json.containsKey("max")) {
-      max = _json["max"];
+      max = _json["max"].toDouble();
     }
     if (_json.containsKey("min")) {
-      min = _json["min"];
+      min = _json["min"].toDouble();
     }
     if (_json.containsKey("opacity")) {
-      opacity = _json["opacity"];
+      opacity = _json["opacity"].toDouble();
     }
     if (_json.containsKey("weight")) {
       weight = _json["weight"];
@@ -2438,8 +2438,9 @@ class Line {
   Line.fromJson(core.Map _json) {
     if (_json.containsKey("coordinates")) {
       coordinates = (_json["coordinates"] as core.List)
-          .map<core.List<core.double>>(
-              (value) => (value as core.List).cast<core.double>())
+          .map<core.List<core.double>>((value) => (value as core.List)
+              .map<core.double>((value) => value.toDouble())
+              .toList())
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -2490,7 +2491,7 @@ class LineStyle {
           new StyleFunction.fromJson(_json["strokeColorStyler"]);
     }
     if (_json.containsKey("strokeOpacity")) {
-      strokeOpacity = _json["strokeOpacity"];
+      strokeOpacity = _json["strokeOpacity"].toDouble();
     }
     if (_json.containsKey("strokeWeight")) {
       strokeWeight = _json["strokeWeight"];
@@ -2535,7 +2536,9 @@ class Point {
 
   Point.fromJson(core.Map _json) {
     if (_json.containsKey("coordinates")) {
-      coordinates = (_json["coordinates"] as core.List).cast<core.double>();
+      coordinates = (_json["coordinates"] as core.List)
+          .map<core.double>((value) => value.toDouble())
+          .toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2603,8 +2606,9 @@ class Polygon {
       coordinates = (_json["coordinates"] as core.List)
           .map<core.List<core.List<core.double>>>((value) =>
               (value as core.List)
-                  .map<core.List<core.double>>(
-                      (value) => (value as core.List).cast<core.double>())
+                  .map<core.List<core.double>>((value) => (value as core.List)
+                      .map<core.double>((value) => value.toDouble())
+                      .toList())
                   .toList())
           .toList();
     }
@@ -2665,7 +2669,7 @@ class PolygonStyle {
       fillColorStyler = new StyleFunction.fromJson(_json["fillColorStyler"]);
     }
     if (_json.containsKey("fillOpacity")) {
-      fillOpacity = _json["fillOpacity"];
+      fillOpacity = _json["fillOpacity"].toDouble();
     }
     if (_json.containsKey("strokeColor")) {
       strokeColor = _json["strokeColor"];
@@ -2675,7 +2679,7 @@ class PolygonStyle {
           new StyleFunction.fromJson(_json["strokeColorStyler"]);
     }
     if (_json.containsKey("strokeOpacity")) {
-      strokeOpacity = _json["strokeOpacity"];
+      strokeOpacity = _json["strokeOpacity"].toDouble();
     }
     if (_json.containsKey("strokeWeight")) {
       strokeWeight = _json["strokeWeight"];
@@ -2781,7 +2785,7 @@ class StyleFunctionGradientColors {
       color = _json["color"];
     }
     if (_json.containsKey("opacity")) {
-      opacity = _json["opacity"];
+      opacity = _json["opacity"].toDouble();
     }
   }
 
@@ -2821,10 +2825,10 @@ class StyleFunctionGradient {
           .toList();
     }
     if (_json.containsKey("max")) {
-      max = _json["max"];
+      max = _json["max"].toDouble();
     }
     if (_json.containsKey("min")) {
-      min = _json["min"];
+      min = _json["min"].toDouble();
     }
   }
 

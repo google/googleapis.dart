@@ -1301,7 +1301,9 @@ class Explicit {
 
   Explicit.fromJson(core.Map _json) {
     if (_json.containsKey("bounds")) {
-      bounds = (_json["bounds"] as core.List).cast<core.double>();
+      bounds = (_json["bounds"] as core.List)
+          .map<core.double>((value) => value.toDouble())
+          .toList();
     }
   }
 
@@ -1335,13 +1337,13 @@ class Exponential {
 
   Exponential.fromJson(core.Map _json) {
     if (_json.containsKey("growthFactor")) {
-      growthFactor = _json["growthFactor"];
+      growthFactor = _json["growthFactor"].toDouble();
     }
     if (_json.containsKey("numFiniteBuckets")) {
       numFiniteBuckets = _json["numFiniteBuckets"];
     }
     if (_json.containsKey("scale")) {
-      scale = _json["scale"];
+      scale = _json["scale"].toDouble();
     }
   }
 
@@ -1593,10 +1595,10 @@ class Linear {
       numFiniteBuckets = _json["numFiniteBuckets"];
     }
     if (_json.containsKey("offset")) {
-      offset = _json["offset"];
+      offset = _json["offset"].toDouble();
     }
     if (_json.containsKey("width")) {
-      width = _json["width"];
+      width = _json["width"].toDouble();
     }
   }
 
@@ -2975,7 +2977,7 @@ class RequestLog {
       appId = _json["appId"];
     }
     if (_json.containsKey("cost")) {
-      cost = _json["cost"];
+      cost = _json["cost"].toDouble();
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];

@@ -4582,10 +4582,10 @@ class PlacePosition {
 
   PlacePosition.fromJson(core.Map _json) {
     if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"];
+      latitude = _json["latitude"].toDouble();
     }
     if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"];
+      longitude = _json["longitude"].toDouble();
     }
   }
 

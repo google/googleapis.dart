@@ -870,7 +870,7 @@ class Entity {
       name = _json["name"];
     }
     if (_json.containsKey("salience")) {
-      salience = _json["salience"];
+      salience = _json["salience"].toDouble();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1261,13 +1261,13 @@ class Sentiment {
 
   Sentiment.fromJson(core.Map _json) {
     if (_json.containsKey("magnitude")) {
-      magnitude = _json["magnitude"];
+      magnitude = _json["magnitude"].toDouble();
     }
     if (_json.containsKey("polarity")) {
-      polarity = _json["polarity"];
+      polarity = _json["polarity"].toDouble();
     }
     if (_json.containsKey("score")) {
-      score = _json["score"];
+      score = _json["score"].toDouble();
     }
   }
 

@@ -3050,7 +3050,8 @@ class RateLimits {
       maxConcurrentTasks = _json["maxConcurrentTasks"];
     }
     if (_json.containsKey("maxTasksDispatchedPerSecond")) {
-      maxTasksDispatchedPerSecond = _json["maxTasksDispatchedPerSecond"];
+      maxTasksDispatchedPerSecond =
+          _json["maxTasksDispatchedPerSecond"].toDouble();
     }
   }
 

@@ -5040,7 +5040,7 @@ class CourseWork {
           .toList();
     }
     if (_json.containsKey("maxPoints")) {
-      maxPoints = _json["maxPoints"];
+      maxPoints = _json["maxPoints"].toDouble();
     }
     if (_json.containsKey("multipleChoiceQuestion")) {
       multipleChoiceQuestion =
@@ -5484,10 +5484,10 @@ class GradeHistory {
       gradeTimestamp = _json["gradeTimestamp"];
     }
     if (_json.containsKey("maxPoints")) {
-      maxPoints = _json["maxPoints"];
+      maxPoints = _json["maxPoints"].toDouble();
     }
     if (_json.containsKey("pointsEarned")) {
-      pointsEarned = _json["pointsEarned"];
+      pointsEarned = _json["pointsEarned"].toDouble();
     }
   }
 
@@ -6850,7 +6850,7 @@ class StudentSubmission {
       alternateLink = _json["alternateLink"];
     }
     if (_json.containsKey("assignedGrade")) {
-      assignedGrade = _json["assignedGrade"];
+      assignedGrade = _json["assignedGrade"].toDouble();
     }
     if (_json.containsKey("assignmentSubmission")) {
       assignmentSubmission =
@@ -6872,7 +6872,7 @@ class StudentSubmission {
       creationTime = _json["creationTime"];
     }
     if (_json.containsKey("draftGrade")) {
-      draftGrade = _json["draftGrade"];
+      draftGrade = _json["draftGrade"].toDouble();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];

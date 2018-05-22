@@ -3399,7 +3399,7 @@ class YarnApplication {
       name = _json["name"];
     }
     if (_json.containsKey("progress")) {
-      progress = _json["progress"];
+      progress = _json["progress"].toDouble();
     }
     if (_json.containsKey("state")) {
       state = _json["state"];

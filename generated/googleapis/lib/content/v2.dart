@@ -7130,7 +7130,7 @@ class LoyaltyPoints {
       pointsValue = _json["pointsValue"];
     }
     if (_json.containsKey("ratio")) {
-      ratio = _json["ratio"];
+      ratio = _json["ratio"].toDouble();
     }
   }
 
@@ -11507,7 +11507,7 @@ class Product {
       displayAdsTitle = _json["displayAdsTitle"];
     }
     if (_json.containsKey("displayAdsValue")) {
-      displayAdsValue = _json["displayAdsValue"];
+      displayAdsValue = _json["displayAdsValue"].toDouble();
     }
     if (_json.containsKey("energyEfficiencyClass")) {
       energyEfficiencyClass = _json["energyEfficiencyClass"];
@@ -12148,7 +12148,7 @@ class ProductShippingDimension {
       unit = _json["unit"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 
@@ -12179,7 +12179,7 @@ class ProductShippingWeight {
       unit = _json["unit"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 
@@ -12552,7 +12552,7 @@ class ProductTax {
       postalCode = _json["postalCode"];
     }
     if (_json.containsKey("rate")) {
-      rate = _json["rate"];
+      rate = _json["rate"].toDouble();
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -12632,7 +12632,7 @@ class ProductUnitPricingMeasure {
       unit = _json["unit"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 
