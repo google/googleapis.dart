@@ -1151,7 +1151,7 @@ class CustomMetric {
       name = _json["name"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 

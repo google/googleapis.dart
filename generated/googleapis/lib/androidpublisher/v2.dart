@@ -5907,7 +5907,7 @@ class Track {
       track = _json["track"];
     }
     if (_json.containsKey("userFraction")) {
-      userFraction = _json["userFraction"];
+      userFraction = _json["userFraction"].toDouble();
     }
     if (_json.containsKey("versionCodes")) {
       versionCodes = (_json["versionCodes"] as core.List).cast<core.int>();

@@ -8253,7 +8253,7 @@ class ExperimentVariations {
       url = _json["url"];
     }
     if (_json.containsKey("weight")) {
-      weight = _json["weight"];
+      weight = _json["weight"].toDouble();
     }
     if (_json.containsKey("won")) {
       won = _json["won"];
@@ -8489,7 +8489,7 @@ class Experiment {
       status = _json["status"];
     }
     if (_json.containsKey("trafficCoverage")) {
-      trafficCoverage = _json["trafficCoverage"];
+      trafficCoverage = _json["trafficCoverage"].toDouble();
     }
     if (_json.containsKey("updated")) {
       updated = core.DateTime.parse(_json["updated"]);
@@ -8504,7 +8504,7 @@ class Experiment {
       webPropertyId = _json["webPropertyId"];
     }
     if (_json.containsKey("winnerConfidenceLevel")) {
-      winnerConfidenceLevel = _json["winnerConfidenceLevel"];
+      winnerConfidenceLevel = _json["winnerConfidenceLevel"].toDouble();
     }
     if (_json.containsKey("winnerFound")) {
       winnerFound = _json["winnerFound"];
@@ -10381,7 +10381,7 @@ class Goal {
           _json["urlDestinationDetails"]);
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
     if (_json.containsKey("visitNumPagesDetails")) {
       visitNumPagesDetails =

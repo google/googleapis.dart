@@ -3965,7 +3965,7 @@ class CoverageBucket {
 
   CoverageBucket.fromJson(core.Map _json) {
     if (_json.containsKey("meanCoverage")) {
-      meanCoverage = _json["meanCoverage"];
+      meanCoverage = _json["meanCoverage"].toDouble();
     }
     if (_json.containsKey("range")) {
       range = new Range.fromJson(_json["range"]);
@@ -7420,7 +7420,7 @@ class Variant {
       names = (_json["names"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("quality")) {
-      quality = _json["quality"];
+      quality = _json["quality"].toDouble();
     }
     if (_json.containsKey("referenceBases")) {
       referenceBases = _json["referenceBases"];
@@ -7690,8 +7690,9 @@ class VariantCall {
       genotype = (_json["genotype"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("genotypeLikelihood")) {
-      genotypeLikelihood =
-          (_json["genotypeLikelihood"] as core.List).cast<core.double>();
+      genotypeLikelihood = (_json["genotypeLikelihood"] as core.List)
+          .map<core.double>((value) => value.toDouble())
+          .toList();
     }
     if (_json.containsKey("info")) {
       info = commons.mapMap<core.List, core.List<core.Object>>(

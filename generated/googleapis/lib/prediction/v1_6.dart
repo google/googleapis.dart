@@ -1070,8 +1070,10 @@ class Insert {
     }
     if (_json.containsKey("utility")) {
       utility = (_json["utility"] as core.List)
-          .map<core.Map<core.String, core.double>>(
-              (value) => (value as core.Map).cast<core.String, core.double>())
+          .map<core.Map<core.String, core.double>>((value) =>
+              commons.mapMap<core.num, core.double>(
+                  value.cast<core.String, core.num>(),
+                  (core.num item) => item.toDouble()))
           .toList();
     }
   }

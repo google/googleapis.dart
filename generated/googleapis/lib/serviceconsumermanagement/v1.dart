@@ -1236,10 +1236,10 @@ class BackendRule {
       address = _json["address"];
     }
     if (_json.containsKey("deadline")) {
-      deadline = _json["deadline"];
+      deadline = _json["deadline"].toDouble();
     }
     if (_json.containsKey("minDeadline")) {
-      minDeadline = _json["minDeadline"];
+      minDeadline = _json["minDeadline"].toDouble();
     }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];

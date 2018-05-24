@@ -1216,16 +1216,16 @@ class Distribution {
       linearBuckets = new LinearBuckets.fromJson(_json["linearBuckets"]);
     }
     if (_json.containsKey("maximum")) {
-      maximum = _json["maximum"];
+      maximum = _json["maximum"].toDouble();
     }
     if (_json.containsKey("mean")) {
-      mean = _json["mean"];
+      mean = _json["mean"].toDouble();
     }
     if (_json.containsKey("minimum")) {
-      minimum = _json["minimum"];
+      minimum = _json["minimum"].toDouble();
     }
     if (_json.containsKey("sumOfSquaredDeviation")) {
-      sumOfSquaredDeviation = _json["sumOfSquaredDeviation"];
+      sumOfSquaredDeviation = _json["sumOfSquaredDeviation"].toDouble();
     }
   }
 
@@ -1400,7 +1400,9 @@ class ExplicitBuckets {
 
   ExplicitBuckets.fromJson(core.Map _json) {
     if (_json.containsKey("bounds")) {
-      bounds = (_json["bounds"] as core.List).cast<core.double>();
+      bounds = (_json["bounds"] as core.List)
+          .map<core.double>((value) => value.toDouble())
+          .toList();
     }
   }
 
@@ -1437,13 +1439,13 @@ class ExponentialBuckets {
 
   ExponentialBuckets.fromJson(core.Map _json) {
     if (_json.containsKey("growthFactor")) {
-      growthFactor = _json["growthFactor"];
+      growthFactor = _json["growthFactor"].toDouble();
     }
     if (_json.containsKey("numFiniteBuckets")) {
       numFiniteBuckets = _json["numFiniteBuckets"];
     }
     if (_json.containsKey("scale")) {
-      scale = _json["scale"];
+      scale = _json["scale"].toDouble();
     }
   }
 
@@ -1488,10 +1490,10 @@ class LinearBuckets {
       numFiniteBuckets = _json["numFiniteBuckets"];
     }
     if (_json.containsKey("offset")) {
-      offset = _json["offset"];
+      offset = _json["offset"].toDouble();
     }
     if (_json.containsKey("width")) {
-      width = _json["width"];
+      width = _json["width"].toDouble();
     }
   }
 
@@ -1672,7 +1674,7 @@ class MetricValue {
       distributionValue = new Distribution.fromJson(_json["distributionValue"]);
     }
     if (_json.containsKey("doubleValue")) {
-      doubleValue = _json["doubleValue"];
+      doubleValue = _json["doubleValue"].toDouble();
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];

@@ -4041,7 +4041,7 @@ class GoogleCloudDialogflowV2QueryResult {
       intent = new GoogleCloudDialogflowV2Intent.fromJson(_json["intent"]);
     }
     if (_json.containsKey("intentDetectionConfidence")) {
-      intentDetectionConfidence = _json["intentDetectionConfidence"];
+      intentDetectionConfidence = _json["intentDetectionConfidence"].toDouble();
     }
     if (_json.containsKey("languageCode")) {
       languageCode = _json["languageCode"];
@@ -4060,7 +4060,8 @@ class GoogleCloudDialogflowV2QueryResult {
       queryText = _json["queryText"];
     }
     if (_json.containsKey("speechRecognitionConfidence")) {
-      speechRecognitionConfidence = _json["speechRecognitionConfidence"];
+      speechRecognitionConfidence =
+          _json["speechRecognitionConfidence"].toDouble();
     }
     if (_json.containsKey("webhookPayload")) {
       webhookPayload = (_json["webhookPayload"] as core.Map)
@@ -4334,7 +4335,7 @@ class GoogleCloudDialogflowV2beta1Agent {
       avatarUri = _json["avatarUri"];
     }
     if (_json.containsKey("classificationThreshold")) {
-      classificationThreshold = _json["classificationThreshold"];
+      classificationThreshold = _json["classificationThreshold"].toDouble();
     }
     if (_json.containsKey("defaultLanguageCode")) {
       defaultLanguageCode = _json["defaultLanguageCode"];
@@ -7138,7 +7139,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
       intent = new GoogleCloudDialogflowV2beta1Intent.fromJson(_json["intent"]);
     }
     if (_json.containsKey("intentDetectionConfidence")) {
-      intentDetectionConfidence = _json["intentDetectionConfidence"];
+      intentDetectionConfidence = _json["intentDetectionConfidence"].toDouble();
     }
     if (_json.containsKey("languageCode")) {
       languageCode = _json["languageCode"];
@@ -7157,7 +7158,8 @@ class GoogleCloudDialogflowV2beta1QueryResult {
       queryText = _json["queryText"];
     }
     if (_json.containsKey("speechRecognitionConfidence")) {
-      speechRecognitionConfidence = _json["speechRecognitionConfidence"];
+      speechRecognitionConfidence =
+          _json["speechRecognitionConfidence"].toDouble();
     }
     if (_json.containsKey("webhookPayload")) {
       webhookPayload = (_json["webhookPayload"] as core.Map)
@@ -7799,10 +7801,10 @@ class GoogleTypeLatLng {
 
   GoogleTypeLatLng.fromJson(core.Map _json) {
     if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"];
+      latitude = _json["latitude"].toDouble();
     }
     if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"];
+      longitude = _json["longitude"].toDouble();
     }
   }
 

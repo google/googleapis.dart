@@ -3064,7 +3064,7 @@ class CreativeNativeAd {
       price = _json["price"];
     }
     if (_json.containsKey("starRating")) {
-      starRating = _json["starRating"];
+      starRating = _json["starRating"].toDouble();
     }
     if (_json.containsKey("store")) {
       store = _json["store"];
@@ -5090,10 +5090,10 @@ class PerformanceReport {
 
   PerformanceReport.fromJson(core.Map _json) {
     if (_json.containsKey("bidRate")) {
-      bidRate = _json["bidRate"];
+      bidRate = _json["bidRate"].toDouble();
     }
     if (_json.containsKey("bidRequestRate")) {
-      bidRequestRate = _json["bidRequestRate"];
+      bidRequestRate = _json["bidRequestRate"].toDouble();
     }
     if (_json.containsKey("calloutStatusRate")) {
       calloutStatusRate =
@@ -5108,56 +5108,56 @@ class PerformanceReport {
           (_json["creativeStatusRate"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("filteredBidRate")) {
-      filteredBidRate = _json["filteredBidRate"];
+      filteredBidRate = _json["filteredBidRate"].toDouble();
     }
     if (_json.containsKey("hostedMatchStatusRate")) {
       hostedMatchStatusRate =
           (_json["hostedMatchStatusRate"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("inventoryMatchRate")) {
-      inventoryMatchRate = _json["inventoryMatchRate"];
+      inventoryMatchRate = _json["inventoryMatchRate"].toDouble();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("latency50thPercentile")) {
-      latency50thPercentile = _json["latency50thPercentile"];
+      latency50thPercentile = _json["latency50thPercentile"].toDouble();
     }
     if (_json.containsKey("latency85thPercentile")) {
-      latency85thPercentile = _json["latency85thPercentile"];
+      latency85thPercentile = _json["latency85thPercentile"].toDouble();
     }
     if (_json.containsKey("latency95thPercentile")) {
-      latency95thPercentile = _json["latency95thPercentile"];
+      latency95thPercentile = _json["latency95thPercentile"].toDouble();
     }
     if (_json.containsKey("noQuotaInRegion")) {
-      noQuotaInRegion = _json["noQuotaInRegion"];
+      noQuotaInRegion = _json["noQuotaInRegion"].toDouble();
     }
     if (_json.containsKey("outOfQuota")) {
-      outOfQuota = _json["outOfQuota"];
+      outOfQuota = _json["outOfQuota"].toDouble();
     }
     if (_json.containsKey("pixelMatchRequests")) {
-      pixelMatchRequests = _json["pixelMatchRequests"];
+      pixelMatchRequests = _json["pixelMatchRequests"].toDouble();
     }
     if (_json.containsKey("pixelMatchResponses")) {
-      pixelMatchResponses = _json["pixelMatchResponses"];
+      pixelMatchResponses = _json["pixelMatchResponses"].toDouble();
     }
     if (_json.containsKey("quotaConfiguredLimit")) {
-      quotaConfiguredLimit = _json["quotaConfiguredLimit"];
+      quotaConfiguredLimit = _json["quotaConfiguredLimit"].toDouble();
     }
     if (_json.containsKey("quotaThrottledLimit")) {
-      quotaThrottledLimit = _json["quotaThrottledLimit"];
+      quotaThrottledLimit = _json["quotaThrottledLimit"].toDouble();
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
     if (_json.containsKey("successfulRequestRate")) {
-      successfulRequestRate = _json["successfulRequestRate"];
+      successfulRequestRate = _json["successfulRequestRate"].toDouble();
     }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
     }
     if (_json.containsKey("unsuccessfulRequestRate")) {
-      unsuccessfulRequestRate = _json["unsuccessfulRequestRate"];
+      unsuccessfulRequestRate = _json["unsuccessfulRequestRate"].toDouble();
     }
   }
 
@@ -5757,13 +5757,13 @@ class Price {
 
   Price.fromJson(core.Map _json) {
     if (_json.containsKey("amountMicros")) {
-      amountMicros = _json["amountMicros"];
+      amountMicros = _json["amountMicros"].toDouble();
     }
     if (_json.containsKey("currencyCode")) {
       currencyCode = _json["currencyCode"];
     }
     if (_json.containsKey("expectedCpmMicros")) {
-      expectedCpmMicros = _json["expectedCpmMicros"];
+      expectedCpmMicros = _json["expectedCpmMicros"].toDouble();
     }
     if (_json.containsKey("pricingType")) {
       pricingType = _json["pricingType"];

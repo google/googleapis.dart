@@ -413,22 +413,22 @@ class AffineTransform {
 
   AffineTransform.fromJson(core.Map _json) {
     if (_json.containsKey("scaleX")) {
-      scaleX = _json["scaleX"];
+      scaleX = _json["scaleX"].toDouble();
     }
     if (_json.containsKey("scaleY")) {
-      scaleY = _json["scaleY"];
+      scaleY = _json["scaleY"].toDouble();
     }
     if (_json.containsKey("shearX")) {
-      shearX = _json["shearX"];
+      shearX = _json["shearX"].toDouble();
     }
     if (_json.containsKey("shearY")) {
-      shearY = _json["shearY"];
+      shearY = _json["shearY"].toDouble();
     }
     if (_json.containsKey("translateX")) {
-      translateX = _json["translateX"];
+      translateX = _json["translateX"].toDouble();
     }
     if (_json.containsKey("translateY")) {
-      translateY = _json["translateY"];
+      translateY = _json["translateY"].toDouble();
     }
     if (_json.containsKey("unit")) {
       unit = _json["unit"];
@@ -678,13 +678,13 @@ class ColorStop {
 
   ColorStop.fromJson(core.Map _json) {
     if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"];
+      alpha = _json["alpha"].toDouble();
     }
     if (_json.containsKey("color")) {
       color = new OpaqueColor.fromJson(_json["color"]);
     }
     if (_json.containsKey("position")) {
-      position = _json["position"];
+      position = _json["position"].toDouble();
     }
   }
 
@@ -1837,19 +1837,19 @@ class CropProperties {
 
   CropProperties.fromJson(core.Map _json) {
     if (_json.containsKey("angle")) {
-      angle = _json["angle"];
+      angle = _json["angle"].toDouble();
     }
     if (_json.containsKey("bottomOffset")) {
-      bottomOffset = _json["bottomOffset"];
+      bottomOffset = _json["bottomOffset"].toDouble();
     }
     if (_json.containsKey("leftOffset")) {
-      leftOffset = _json["leftOffset"];
+      leftOffset = _json["leftOffset"].toDouble();
     }
     if (_json.containsKey("rightOffset")) {
-      rightOffset = _json["rightOffset"];
+      rightOffset = _json["rightOffset"].toDouble();
     }
     if (_json.containsKey("topOffset")) {
-      topOffset = _json["topOffset"];
+      topOffset = _json["topOffset"].toDouble();
     }
   }
 
@@ -2099,7 +2099,7 @@ class Dimension {
 
   Dimension.fromJson(core.Map _json) {
     if (_json.containsKey("magnitude")) {
-      magnitude = _json["magnitude"];
+      magnitude = _json["magnitude"].toDouble();
     }
     if (_json.containsKey("unit")) {
       unit = _json["unit"];
@@ -2379,10 +2379,10 @@ class ImageProperties {
 
   ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey("brightness")) {
-      brightness = _json["brightness"];
+      brightness = _json["brightness"].toDouble();
     }
     if (_json.containsKey("contrast")) {
-      contrast = _json["contrast"];
+      contrast = _json["contrast"].toDouble();
     }
     if (_json.containsKey("cropProperties")) {
       cropProperties = new CropProperties.fromJson(_json["cropProperties"]);
@@ -2400,7 +2400,7 @@ class ImageProperties {
       shadow = new Shadow.fromJson(_json["shadow"]);
     }
     if (_json.containsKey("transparency")) {
-      transparency = _json["transparency"];
+      transparency = _json["transparency"].toDouble();
     }
   }
 
@@ -3939,7 +3939,7 @@ class ParagraphStyle {
       indentStart = new Dimension.fromJson(_json["indentStart"]);
     }
     if (_json.containsKey("lineSpacing")) {
-      lineSpacing = _json["lineSpacing"];
+      lineSpacing = _json["lineSpacing"].toDouble();
     }
     if (_json.containsKey("spaceAbove")) {
       spaceAbove = new Dimension.fromJson(_json["spaceAbove"]);
@@ -5232,13 +5232,13 @@ class RgbColor {
 
   RgbColor.fromJson(core.Map _json) {
     if (_json.containsKey("blue")) {
-      blue = _json["blue"];
+      blue = _json["blue"].toDouble();
     }
     if (_json.containsKey("green")) {
-      green = _json["green"];
+      green = _json["green"].toDouble();
     }
     if (_json.containsKey("red")) {
-      red = _json["red"];
+      red = _json["red"].toDouble();
     }
   }
 
@@ -5336,7 +5336,7 @@ class Shadow {
       alignment = _json["alignment"];
     }
     if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"];
+      alpha = _json["alpha"].toDouble();
     }
     if (_json.containsKey("blurRadius")) {
       blurRadius = new Dimension.fromJson(_json["blurRadius"]);
@@ -6101,7 +6101,7 @@ class SolidFill {
 
   SolidFill.fromJson(core.Map _json) {
     if (_json.containsKey("alpha")) {
-      alpha = _json["alpha"];
+      alpha = _json["alpha"].toDouble();
     }
     if (_json.containsKey("color")) {
       color = new OpaqueColor.fromJson(_json["color"]);

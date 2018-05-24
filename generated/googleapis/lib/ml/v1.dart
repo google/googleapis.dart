@@ -1855,7 +1855,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
       core.Map _json) {
     if (_json.containsKey("objectiveValue")) {
-      objectiveValue = _json["objectiveValue"];
+      objectiveValue = _json["objectiveValue"].toDouble();
     }
     if (_json.containsKey("trainingStep")) {
       trainingStep = _json["trainingStep"];
@@ -2744,14 +2744,15 @@ class GoogleCloudMlV1ParameterSpec {
           (_json["categoricalValues"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("discreteValues")) {
-      discreteValues =
-          (_json["discreteValues"] as core.List).cast<core.double>();
+      discreteValues = (_json["discreteValues"] as core.List)
+          .map<core.double>((value) => value.toDouble())
+          .toList();
     }
     if (_json.containsKey("maxValue")) {
-      maxValue = _json["maxValue"];
+      maxValue = _json["maxValue"].toDouble();
     }
     if (_json.containsKey("minValue")) {
-      minValue = _json["minValue"];
+      minValue = _json["minValue"].toDouble();
     }
     if (_json.containsKey("parameterName")) {
       parameterName = _json["parameterName"];
@@ -2986,7 +2987,7 @@ class GoogleCloudMlV1PredictionOutput {
       errorCount = _json["errorCount"];
     }
     if (_json.containsKey("nodeHours")) {
-      nodeHours = _json["nodeHours"];
+      nodeHours = _json["nodeHours"].toDouble();
     }
     if (_json.containsKey("outputPath")) {
       outputPath = _json["outputPath"];
@@ -3333,7 +3334,7 @@ class GoogleCloudMlV1TrainingOutput {
       completedTrialCount = _json["completedTrialCount"];
     }
     if (_json.containsKey("consumedMLUnits")) {
-      consumedMLUnits = _json["consumedMLUnits"];
+      consumedMLUnits = _json["consumedMLUnits"].toDouble();
     }
     if (_json.containsKey("isHyperparameterTuningJob")) {
       isHyperparameterTuningJob = _json["isHyperparameterTuningJob"];

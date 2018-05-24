@@ -444,7 +444,7 @@ class ResultFormattedResultsRuleResultsValue {
       localizedRuleName = _json["localizedRuleName"];
     }
     if (_json.containsKey("ruleImpact")) {
-      ruleImpact = _json["ruleImpact"];
+      ruleImpact = _json["ruleImpact"].toDouble();
     }
     if (_json.containsKey("urlBlocks")) {
       urlBlocks = (_json["urlBlocks"] as core.List)

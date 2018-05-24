@@ -1419,7 +1419,7 @@ class AttachmentInfo {
       data = _json["data"];
     }
     if (_json.containsKey("maxDistanceMeters")) {
-      maxDistanceMeters = _json["maxDistanceMeters"];
+      maxDistanceMeters = _json["maxDistanceMeters"].toDouble();
     }
     if (_json.containsKey("namespacedType")) {
       namespacedType = _json["namespacedType"];
@@ -1683,7 +1683,7 @@ class BeaconAttachment {
       data = _json["data"];
     }
     if (_json.containsKey("maxDistanceMeters")) {
-      maxDistanceMeters = _json["maxDistanceMeters"];
+      maxDistanceMeters = _json["maxDistanceMeters"].toDouble();
     }
     if (_json.containsKey("namespacedType")) {
       namespacedType = _json["namespacedType"];
@@ -2207,10 +2207,10 @@ class LatLng {
 
   LatLng.fromJson(core.Map _json) {
     if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"];
+      latitude = _json["latitude"].toDouble();
     }
     if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"];
+      longitude = _json["longitude"].toDouble();
     }
   }
 

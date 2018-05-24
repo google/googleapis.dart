@@ -848,19 +848,19 @@ class ApiDataRow {
 
   ApiDataRow.fromJson(core.Map _json) {
     if (_json.containsKey("clicks")) {
-      clicks = _json["clicks"];
+      clicks = _json["clicks"].toDouble();
     }
     if (_json.containsKey("ctr")) {
-      ctr = _json["ctr"];
+      ctr = _json["ctr"].toDouble();
     }
     if (_json.containsKey("impressions")) {
-      impressions = _json["impressions"];
+      impressions = _json["impressions"].toDouble();
     }
     if (_json.containsKey("keys")) {
       keys = (_json["keys"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("position")) {
-      position = _json["position"];
+      position = _json["position"].toDouble();
     }
   }
 

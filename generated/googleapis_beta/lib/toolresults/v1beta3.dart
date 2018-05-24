@@ -2532,7 +2532,7 @@ class CPUInfo {
       cpuProcessor = _json["cpuProcessor"];
     }
     if (_json.containsKey("cpuSpeedInGhz")) {
-      cpuSpeedInGhz = _json["cpuSpeedInGhz"];
+      cpuSpeedInGhz = _json["cpuSpeedInGhz"].toDouble();
     }
     if (_json.containsKey("numberOfCores")) {
       numberOfCores = _json["numberOfCores"];
@@ -3662,7 +3662,7 @@ class PerfSample {
       sampleTime = new Timestamp.fromJson(_json["sampleTime"]);
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 

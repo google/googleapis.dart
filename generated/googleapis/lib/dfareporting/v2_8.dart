@@ -17271,7 +17271,7 @@ class Conversion {
       timestampMicros = _json["timestampMicros"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 
@@ -18302,7 +18302,7 @@ class Creative {
       videoDescription = _json["videoDescription"];
     }
     if (_json.containsKey("videoDuration")) {
-      videoDuration = _json["videoDuration"];
+      videoDuration = _json["videoDuration"].toDouble();
     }
   }
 
@@ -18898,7 +18898,7 @@ class CreativeAsset {
       pushdown = _json["pushdown"];
     }
     if (_json.containsKey("pushdownDuration")) {
-      pushdownDuration = _json["pushdownDuration"];
+      pushdownDuration = _json["pushdownDuration"].toDouble();
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -18922,7 +18922,7 @@ class CreativeAsset {
       verticallyLocked = _json["verticallyLocked"];
     }
     if (_json.containsKey("videoDuration")) {
-      videoDuration = _json["videoDuration"];
+      videoDuration = _json["videoDuration"].toDouble();
     }
     if (_json.containsKey("windowMode")) {
       windowMode = _json["windowMode"];

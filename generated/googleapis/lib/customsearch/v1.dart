@@ -1068,7 +1068,7 @@ class SearchSearchInformation {
       formattedTotalResults = _json["formattedTotalResults"];
     }
     if (_json.containsKey("searchTime")) {
-      searchTime = _json["searchTime"];
+      searchTime = _json["searchTime"].toDouble();
     }
     if (_json.containsKey("totalResults")) {
       totalResults = _json["totalResults"];

@@ -2138,10 +2138,10 @@ class BackendRule {
       address = _json["address"];
     }
     if (_json.containsKey("deadline")) {
-      deadline = _json["deadline"];
+      deadline = _json["deadline"].toDouble();
     }
     if (_json.containsKey("minDeadline")) {
-      minDeadline = _json["minDeadline"];
+      minDeadline = _json["minDeadline"].toDouble();
     }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
@@ -6879,8 +6879,9 @@ class TrafficPercentStrategy {
 
   TrafficPercentStrategy.fromJson(core.Map _json) {
     if (_json.containsKey("percentages")) {
-      percentages =
-          (_json["percentages"] as core.Map).cast<core.String, core.double>();
+      percentages = commons.mapMap<core.num, core.double>(
+          _json["percentages"].cast<core.String, core.num>(),
+          (core.num item) => item.toDouble());
     }
   }
 

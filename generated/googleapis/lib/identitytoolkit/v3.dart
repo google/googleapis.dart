@@ -3920,7 +3920,7 @@ class UserInfo {
       passwordHash = _json["passwordHash"];
     }
     if (_json.containsKey("passwordUpdatedAt")) {
-      passwordUpdatedAt = _json["passwordUpdatedAt"];
+      passwordUpdatedAt = _json["passwordUpdatedAt"].toDouble();
     }
     if (_json.containsKey("phoneNumber")) {
       phoneNumber = _json["phoneNumber"];

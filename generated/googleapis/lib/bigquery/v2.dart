@@ -2422,10 +2422,10 @@ class ExplainQueryStage {
       computeMsMax = _json["computeMsMax"];
     }
     if (_json.containsKey("computeRatioAvg")) {
-      computeRatioAvg = _json["computeRatioAvg"];
+      computeRatioAvg = _json["computeRatioAvg"].toDouble();
     }
     if (_json.containsKey("computeRatioMax")) {
-      computeRatioMax = _json["computeRatioMax"];
+      computeRatioMax = _json["computeRatioMax"].toDouble();
     }
     if (_json.containsKey("endMs")) {
       endMs = _json["endMs"];
@@ -2449,10 +2449,10 @@ class ExplainQueryStage {
       readMsMax = _json["readMsMax"];
     }
     if (_json.containsKey("readRatioAvg")) {
-      readRatioAvg = _json["readRatioAvg"];
+      readRatioAvg = _json["readRatioAvg"].toDouble();
     }
     if (_json.containsKey("readRatioMax")) {
-      readRatioMax = _json["readRatioMax"];
+      readRatioMax = _json["readRatioMax"].toDouble();
     }
     if (_json.containsKey("recordsRead")) {
       recordsRead = _json["recordsRead"];
@@ -2485,10 +2485,10 @@ class ExplainQueryStage {
       waitMsMax = _json["waitMsMax"];
     }
     if (_json.containsKey("waitRatioAvg")) {
-      waitRatioAvg = _json["waitRatioAvg"];
+      waitRatioAvg = _json["waitRatioAvg"].toDouble();
     }
     if (_json.containsKey("waitRatioMax")) {
-      waitRatioMax = _json["waitRatioMax"];
+      waitRatioMax = _json["waitRatioMax"].toDouble();
     }
     if (_json.containsKey("writeMsAvg")) {
       writeMsAvg = _json["writeMsAvg"];
@@ -2497,10 +2497,10 @@ class ExplainQueryStage {
       writeMsMax = _json["writeMsMax"];
     }
     if (_json.containsKey("writeRatioAvg")) {
-      writeRatioAvg = _json["writeRatioAvg"];
+      writeRatioAvg = _json["writeRatioAvg"].toDouble();
     }
     if (_json.containsKey("writeRatioMax")) {
-      writeRatioMax = _json["writeRatioMax"];
+      writeRatioMax = _json["writeRatioMax"].toDouble();
     }
   }
 
@@ -4146,7 +4146,7 @@ class JobStatistics {
 
   JobStatistics.fromJson(core.Map _json) {
     if (_json.containsKey("completionRatio")) {
-      completionRatio = _json["completionRatio"];
+      completionRatio = _json["completionRatio"].toDouble();
     }
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];

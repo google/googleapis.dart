@@ -2203,7 +2203,7 @@ class ApproximateProgress {
 
   ApproximateProgress.fromJson(core.Map _json) {
     if (_json.containsKey("percentComplete")) {
-      percentComplete = _json["percentComplete"];
+      percentComplete = _json["percentComplete"].toDouble();
     }
     if (_json.containsKey("position")) {
       position = new Position.fromJson(_json["position"]);
@@ -2281,7 +2281,7 @@ class ApproximateReportedProgress {
           new ReportedParallelism.fromJson(_json["consumedParallelism"]);
     }
     if (_json.containsKey("fractionConsumed")) {
-      fractionConsumed = _json["fractionConsumed"];
+      fractionConsumed = _json["fractionConsumed"].toDouble();
     }
     if (_json.containsKey("position")) {
       position = new Position.fromJson(_json["position"]);
@@ -2324,7 +2324,7 @@ class ApproximateSplitRequest {
 
   ApproximateSplitRequest.fromJson(core.Map _json) {
     if (_json.containsKey("fractionConsumed")) {
-      fractionConsumed = _json["fractionConsumed"];
+      fractionConsumed = _json["fractionConsumed"].toDouble();
     }
     if (_json.containsKey("position")) {
       position = new Position.fromJson(_json["position"]);
@@ -2483,7 +2483,7 @@ class CPUTime {
 
   CPUTime.fromJson(core.Map _json) {
     if (_json.containsKey("rate")) {
-      rate = _json["rate"];
+      rate = _json["rate"].toDouble();
     }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
@@ -2999,7 +2999,7 @@ class CounterUpdate {
       distribution = new DistributionUpdate.fromJson(_json["distribution"]);
     }
     if (_json.containsKey("floatingPoint")) {
-      floatingPoint = _json["floatingPoint"];
+      floatingPoint = _json["floatingPoint"].toDouble();
     }
     if (_json.containsKey("floatingPointList")) {
       floatingPointList =
@@ -3367,7 +3367,7 @@ class DisplayData {
       durationValue = _json["durationValue"];
     }
     if (_json.containsKey("floatValue")) {
-      floatValue = _json["floatValue"];
+      floatValue = _json["floatValue"].toDouble();
     }
     if (_json.containsKey("int64Value")) {
       int64Value = _json["int64Value"];
@@ -3482,7 +3482,7 @@ class DistributionUpdate {
       sum = new SplitInt64.fromJson(_json["sum"]);
     }
     if (_json.containsKey("sumOfSquares")) {
-      sumOfSquares = _json["sumOfSquares"];
+      sumOfSquares = _json["sumOfSquares"].toDouble();
     }
   }
 
@@ -3951,7 +3951,9 @@ class FloatingPointList {
 
   FloatingPointList.fromJson(core.Map _json) {
     if (_json.containsKey("elements")) {
-      elements = (_json["elements"] as core.List).cast<core.double>();
+      elements = (_json["elements"] as core.List)
+          .map<core.double>((value) => value.toDouble())
+          .toList();
     }
   }
 
@@ -3980,7 +3982,7 @@ class FloatingPointMean {
       count = new SplitInt64.fromJson(_json["count"]);
     }
     if (_json.containsKey("sum")) {
-      sum = _json["sum"];
+      sum = _json["sum"].toDouble();
     }
   }
 
@@ -6342,7 +6344,7 @@ class ReportedParallelism {
       isInfinite = _json["isInfinite"];
     }
     if (_json.containsKey("value")) {
-      value = _json["value"];
+      value = _json["value"].toDouble();
     }
   }
 
@@ -8917,7 +8919,8 @@ class WorkItemStatus {
       stopPosition = new Position.fromJson(_json["stopPosition"]);
     }
     if (_json.containsKey("totalThrottlerWaitTimeSeconds")) {
-      totalThrottlerWaitTimeSeconds = _json["totalThrottlerWaitTimeSeconds"];
+      totalThrottlerWaitTimeSeconds =
+          _json["totalThrottlerWaitTimeSeconds"].toDouble();
     }
     if (_json.containsKey("workItemId")) {
       workItemId = _json["workItemId"];

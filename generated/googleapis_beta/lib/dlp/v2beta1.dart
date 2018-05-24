@@ -1673,13 +1673,13 @@ class GooglePrivacyDlpV2beta1Color {
 
   GooglePrivacyDlpV2beta1Color.fromJson(core.Map _json) {
     if (_json.containsKey("blue")) {
-      blue = _json["blue"];
+      blue = _json["blue"].toDouble();
     }
     if (_json.containsKey("green")) {
-      green = _json["green"];
+      green = _json["green"].toDouble();
     }
     if (_json.containsKey("red")) {
-      red = _json["red"];
+      red = _json["red"].toDouble();
     }
   }
 
@@ -2721,7 +2721,7 @@ class GooglePrivacyDlpV2beta1FixedSizeBucketingConfig {
 
   GooglePrivacyDlpV2beta1FixedSizeBucketingConfig.fromJson(core.Map _json) {
     if (_json.containsKey("bucketSize")) {
-      bucketSize = _json["bucketSize"];
+      bucketSize = _json["bucketSize"].toDouble();
     }
     if (_json.containsKey("lowerBound")) {
       lowerBound =
@@ -5597,7 +5597,7 @@ class GooglePrivacyDlpV2beta1Value {
       dateValue = new GoogleTypeDate.fromJson(_json["dateValue"]);
     }
     if (_json.containsKey("floatValue")) {
-      floatValue = _json["floatValue"];
+      floatValue = _json["floatValue"].toDouble();
     }
     if (_json.containsKey("integerValue")) {
       integerValue = _json["integerValue"];
