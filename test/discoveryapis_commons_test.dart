@@ -12,13 +12,16 @@ import 'package:_discoveryapis_commons/src/requests.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
+typedef FutureOr<http.StreamedResponse> ServerMockCallback(
+    http.BaseRequest request, json);
+
 const String USER_AGENT = 'google-api-dart-client test.client/0.1.0-dev';
 
 class HttpServerMock extends http.BaseClient {
-  Function _callback;
+  ServerMockCallback _callback;
   bool _expectJson;
 
-  void register(Function callback, bool expectJson) {
+  void register(ServerMockCallback callback, bool expectJson) {
     _callback = callback;
     _expectJson = expectJson;
   }
@@ -117,8 +120,8 @@ main() {
       testString(String msg, String expectedBase64) {
         var msgBytes = utf8.encode(msg);
 
-        Stream singleByteStream(List<int> msgBytes) {
-          var controller = new StreamController();
+        Stream<List<int>> singleByteStream(List<int> msgBytes) {
+          var controller = new StreamController<List<int>>();
           for (var byte in msgBytes) {
             controller.add([byte]);
           }
@@ -126,8 +129,8 @@ main() {
           return controller.stream;
         }
 
-        Stream allByteStream(List<int> msgBytes) {
-          var controller = new StreamController();
+        Stream<List<int>> allByteStream(List<int> msgBytes) {
+          var controller = new StreamController<List<int>>();
           controller.add(msgBytes);
           controller.close();
           return controller.stream;
@@ -485,7 +488,8 @@ main() {
               contentType: 'foobar');
         }
 
-        validateServerRequest(e, http.BaseRequest request, List<int> data) {
+        Future<http.StreamedResponse> validateServerRequest(
+            e, http.BaseRequest request, List<int> data) {
           return new Future.sync(() {
             var h = e['headers'];
             var r = e['response'];
@@ -834,7 +838,7 @@ main() {
           // All errors from the [http.Client] propagate through.
           // We use [TestError] to simulate it.
           httpMock.register(expectAsync2((http.BaseRequest request, string) {
-            return new Future.error(new TestError());
+            return new Future<http.StreamedResponse>.error(new TestError());
           }), false);
         }
 
