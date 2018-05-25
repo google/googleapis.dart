@@ -1,5 +1,7 @@
 // This is a generated file (see the discoveryapis_generator project).
 
+// ignore_for_file: unnecessary_cast
+
 library googleapis_beta.oslogin.v1beta;
 
 import 'dart:core' as core;
