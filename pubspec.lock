@@ -70,7 +70,7 @@ packages:
       name: discoveryapis_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.6"
+    version: "0.9.7"
   front_end:
     dependency: transitive
     description:
@@ -182,13 +182,13 @@ packages:
       name: watcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.7+7"
+    version: "0.9.7+8"
   yaml:
     dependency: transitive
     description:
       name: yaml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.13"
+    version: "2.1.14"
 sdks:
   dart: "2.0.0-dev.54.0"
