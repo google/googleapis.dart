@@ -87,7 +87,8 @@ class DetectionsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new DetectionsListResponse.fromJson(data));
+    return _response
+        .then((data) => new DetectionsListResponse.fromJson(data['data']));
   }
 
   /// Detects the language of text within a request.
@@ -132,7 +133,8 @@ class DetectionsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new DetectionsListResponse.fromJson(data));
+    return _response
+        .then((data) => new DetectionsListResponse.fromJson(data['data']));
   }
 }
 
@@ -188,7 +190,8 @@ class LanguagesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new LanguagesListResponse.fromJson(data));
+    return _response
+        .then((data) => new LanguagesListResponse.fromJson(data['data']));
   }
 }
 
@@ -285,7 +288,7 @@ class TranslationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response
-        .then((data) => new TranslationsListResponse.fromJson(data));
+        .then((data) => new TranslationsListResponse.fromJson(data['data']));
   }
 
   /// Translates input text, returning translated text.
@@ -329,7 +332,7 @@ class TranslationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response
-        .then((data) => new TranslationsListResponse.fromJson(data));
+        .then((data) => new TranslationsListResponse.fromJson(data['data']));
   }
 }
 

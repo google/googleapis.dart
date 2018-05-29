@@ -1,3 +1,8 @@
+## 0.50.4
+
+* Re-generated with updated code generator to support the dataWrapper feature
+  (used by the Translate v2 API).
+
 ## 0.50.3
 
 * Re-generated with updated code generator to support Dart 2.
