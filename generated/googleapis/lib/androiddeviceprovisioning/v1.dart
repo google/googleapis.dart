@@ -820,7 +820,7 @@ class PartnersCustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - The ID of the partner.
+  /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -868,13 +868,15 @@ class PartnersDevicesResourceApi {
 
   PartnersDevicesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Claim the device identified by device identifier.
+  /// Claims a device for a customer and adds it to zero-touch enrollment. If
+  /// the
+  /// device is already claimed by another customer, the call returns an error.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - ID of the partner.
+  /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -920,13 +922,15 @@ class PartnersDevicesResourceApi {
     return _response.then((data) => new ClaimDeviceResponse.fromJson(data));
   }
 
-  /// Claim devices asynchronously.
+  /// Claims a batch of devices for a customer asynchronously. Adds the devices
+  /// to zero-touch enrollment. To learn more, read [Long‑running batch
+  /// operations](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - Partner ID.
+  /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -972,13 +976,13 @@ class PartnersDevicesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Find devices by device identifier.
+  /// Finds devices by hardware identifiers, such as IMEI.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - ID of the partner.
+  /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1025,13 +1029,16 @@ class PartnersDevicesResourceApi {
         (data) => new FindDevicesByDeviceIdentifierResponse.fromJson(data));
   }
 
-  /// Find devices by ownership.
+  /// Finds devices claimed for customers. The results only contain devices
+  /// registered to the reseller that's identified by the `partnerId` argument.
+  /// The customer's devices purchased from other resellers don't appear in the
+  /// results.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - ID of the partner.
+  /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1078,11 +1085,12 @@ class PartnersDevicesResourceApi {
         .then((data) => new FindDevicesByOwnerResponse.fromJson(data));
   }
 
-  /// Get a device.
+  /// Gets a device.
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
+  /// [name] - Required. The device API resource name in the format
+  /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
   /// Value must have pattern "^partners/[^/]+/devices/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1121,17 +1129,17 @@ class PartnersDevicesResourceApi {
     return _response.then((data) => new Device.fromJson(data));
   }
 
-  /// Update the metadata.
+  /// Updates reseller metadata associated with the device.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [metadataOwnerId] - The owner of the newly set metadata. Set this to the
-  /// partner ID.
+  /// [metadataOwnerId] - Required. The owner of the newly set metadata. Set
+  /// this to the partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [deviceId] - ID of the partner.
+  /// [deviceId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1182,14 +1190,14 @@ class PartnersDevicesResourceApi {
     return _response.then((data) => new DeviceMetadata.fromJson(data));
   }
 
-  /// Unclaim the device identified by the `device_id` or the
-  /// `deviceIdentifier`.
+  /// Unclaims a device from a customer and removes it from zero-touch
+  /// enrollment.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - ID of the partner.
+  /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1235,13 +1243,16 @@ class PartnersDevicesResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Unclaim devices asynchronously.
+  /// Unclaims a batch of devices for a customer asynchronously. Removes the
+  /// devices from zero-touch enrollment. To learn more, read [Long‑running
+  /// batch
+  /// operations](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - Partner ID.
+  /// [partnerId] - Required. The reseller partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1287,13 +1298,16 @@ class PartnersDevicesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Set metadata in batch asynchronously.
+  /// Updates the reseller metadata attached to a batch of devices. This method
+  /// updates devices asynchronously and returns an `Operation` that can be used
+  /// to track progress. Read [Long‑running batch
+  /// operations](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - Partner ID.
+  /// [partnerId] - Required. The reseller partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1342,13 +1356,13 @@ class PartnersDevicesResourceApi {
 
 /// Request message to claim a device on behalf of a customer.
 class ClaimDeviceRequest {
-  /// The customer to claim for.
+  /// Required. The ID of the customer for whom the device is being claimed.
   core.String customerId;
 
-  /// The device identifier of the device to claim.
+  /// Required. The device identifier of the device to claim.
   DeviceIdentifier deviceIdentifier;
 
-  /// The section to claim.
+  /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
@@ -1418,9 +1432,11 @@ class ClaimDeviceResponse {
   }
 }
 
-/// Request to claim devices asynchronously in batch.
+/// Request to claim devices asynchronously in batch. Claiming a device adds the
+/// device to zero-touch enrollment and shows the device in the customer's view
+/// of the portal.
 class ClaimDevicesRequest {
-  /// List of claims.
+  /// Required. A list of device claims.
   core.List<PartnerClaim> claims;
 
   ClaimDevicesRequest();
@@ -1469,6 +1485,21 @@ class Company {
   /// delete, and edit your organization's portal users.
   core.List<core.String> ownerEmails;
 
+  /// Output only. Whether any user from the company has accepted the latest
+  /// Terms of Service (ToS). See
+  /// TermsStatus.
+  /// Possible string values are:
+  /// - "TERMS_STATUS_UNSPECIFIED" : Default value. This value should never be
+  /// set if the enum is present.
+  /// - "TERMS_STATUS_NOT_ACCEPTED" : None of the company's users have accepted
+  /// the ToS.
+  /// - "TERMS_STATUS_ACCEPTED" : One (or more) of the company's users has
+  /// accepted the ToS.
+  /// - "TERMS_STATUS_STALE" : None of the company's users has accepted the
+  /// current ToS but at least one
+  /// user accepted a previous ToS.
+  core.String termsStatus;
+
   Company();
 
   Company.fromJson(core.Map _json) {
@@ -1486,6 +1517,9 @@ class Company {
     }
     if (_json.containsKey("ownerEmails")) {
       ownerEmails = (_json["ownerEmails"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("termsStatus")) {
+      termsStatus = _json["termsStatus"];
     }
   }
 
@@ -1506,6 +1540,9 @@ class Company {
     }
     if (ownerEmails != null) {
       _json["ownerEmails"] = ownerEmails;
+    }
+    if (termsStatus != null) {
+      _json["termsStatus"] = termsStatus;
     }
     return _json;
   }
@@ -2111,12 +2148,16 @@ class DeviceReference {
   }
 }
 
-/// Long running operation metadata.
+/// Tracks the status of a long-running operation to asynchronously update a
+/// batch of reseller metadata attached to devices. To learn more, read
+/// [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationMetadata {
-  /// Number of devices parsed in your requests.
+  /// The number of metadata updates in the operation. This might be different
+  /// from the number of updates in the request if the API can't parse some of
+  /// the updates.
   core.int devicesCount;
 
-  /// The overall processing status.
+  /// The processing status of the operation.
   /// Possible string values are:
   /// - "BATCH_PROCESS_STATUS_UNSPECIFIED" : Invalid code. Shouldn't be used.
   /// - "BATCH_PROCESS_PENDING" : Pending.
@@ -2126,7 +2167,9 @@ class DevicesLongRunningOperationMetadata {
   /// check the `response` field for the result of every item.
   core.String processingStatus;
 
-  /// Processing progress from 0 to 100.
+  /// The processing progress of the operation. Measured as a number from 0 to
+  /// 100. A value of 10O doesnt always mean the operation completed—check for
+  /// the inclusion of a `done` field.
   core.int progress;
 
   DevicesLongRunningOperationMetadata();
@@ -2159,14 +2202,17 @@ class DevicesLongRunningOperationMetadata {
   }
 }
 
-/// Long running operation response.
+/// Tracks the status of a long-running operation to claim, unclaim, or attach
+/// metadata to devices. To learn more, read
+/// [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationResponse {
-  /// Processing status for each device.
-  /// One `PerDeviceStatus` per device. The order is the same as in your
-  /// requests.
+  /// The processing status for each device in the operation.
+  /// One `PerDeviceStatus` per device. The list order matches the items in the
+  /// original request.
   core.List<OperationPerDevice> perDeviceStatus;
 
-  /// Number of succeesfully processed ones.
+  /// A summary of how many items in the operation the server processed
+  /// successfully. Updated as the operation progresses.
   core.int successCount;
 
   DevicesLongRunningOperationResponse();
@@ -2197,7 +2243,8 @@ class DevicesLongRunningOperationResponse {
   }
 }
 
-/// An EMM's DPC ([device policy controller](/android/work/dpc/build-dpc)).
+/// An EMM's DPC ([device policy
+/// controller](http://developer.android.com/work/dpc/build-dpc.html)).
 /// Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a
 /// device to maintain the customer's mobile policies. All the DPCs listed by
 /// the
@@ -2271,13 +2318,14 @@ class Empty {
 
 /// Request to find devices.
 class FindDevicesByDeviceIdentifierRequest {
-  /// The device identifier to search.
+  /// Required. The device identifier to search for.
   DeviceIdentifier deviceIdentifier;
 
-  /// Number of devices to show.
+  /// Required. The maximum number of devices to show in a page of results. Must
+  /// be between 1 and 100 inclusive.
   core.String limit;
 
-  /// Page token.
+  /// A token specifying which result page to return.
   core.String pageToken;
 
   FindDevicesByDeviceIdentifierRequest();
@@ -2316,7 +2364,8 @@ class FindDevicesByDeviceIdentifierResponse {
   /// Found devices.
   core.List<Device> devices;
 
-  /// Page token of the next page.
+  /// A token used to access the next page of results. Omitted if no further
+  /// results are available.
   core.String nextPageToken;
 
   FindDevicesByDeviceIdentifierResponse();
@@ -2347,16 +2396,17 @@ class FindDevicesByDeviceIdentifierResponse {
 
 /// Request to find devices by customers.
 class FindDevicesByOwnerRequest {
-  /// List of customer IDs to search for.
+  /// Required. The list of customer IDs to search for.
   core.List<core.String> customerId;
 
-  /// The number of devices to show in the result.
+  /// Required. The maximum number of devices to show in a page of results. Must
+  /// be between 1 and 100 inclusive.
   core.String limit;
 
-  /// Page token.
+  /// A token specifying which result page to return.
   core.String pageToken;
 
-  /// The section type.
+  /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
@@ -2400,10 +2450,11 @@ class FindDevicesByOwnerRequest {
 
 /// Response containing found devices.
 class FindDevicesByOwnerResponse {
-  /// Devices found.
+  /// The customer's devices.
   core.List<Device> devices;
 
-  /// Page token of the next page.
+  /// A token used to access the next page of results.
+  /// Omitted if no further results are available.
   core.String nextPageToken;
 
   FindDevicesByOwnerResponse();
@@ -2434,7 +2485,7 @@ class FindDevicesByOwnerResponse {
 
 /// Response message of all customers related to this partner.
 class ListCustomersResponse {
-  /// List of customers related to this partner.
+  /// List of customers related to this reseller partner.
   core.List<Company> customers;
 
   ListCustomersResponse();
@@ -2537,18 +2588,19 @@ class Operation {
   }
 }
 
-/// Operation the server received for every device.
+/// A task for each device in the operation. Corresponds to each device
+/// change in the request.
 class OperationPerDevice {
-  /// Request to claim a device.
+  /// A copy of the original device-claim request received by the server.
   PartnerClaim claim;
 
-  /// Processing result for every device.
+  /// The processing result for each device.
   PerDeviceStatusInBatch result;
 
-  /// Request to unclaim a device.
+  /// A copy of the original device-unclaim request received by the server.
   PartnerUnclaim unclaim;
 
-  /// Request to set metadata for a device.
+  /// A copy of the original metadata-update request received by the server.
   UpdateMetadataArguments updateMetadata;
 
   OperationPerDevice();
@@ -2590,16 +2642,16 @@ class OperationPerDevice {
 
 /// Identifies one claim request.
 class PartnerClaim {
-  /// Customer ID to claim for.
+  /// Required. The ID of the customer for whom the device is being claimed.
   core.String customerId;
 
-  /// Device identifier of the device.
+  /// Required. Device identifier of the device.
   DeviceIdentifier deviceIdentifier;
 
-  /// Metadata to set at claim.
+  /// Required. The metadata to attach to the device at claim.
   DeviceMetadata deviceMetadata;
 
-  /// Section type to claim.
+  /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
@@ -2650,7 +2702,7 @@ class PartnerUnclaim {
   /// Device identifier of the device.
   DeviceIdentifier deviceIdentifier;
 
-  /// Section type to unclaim.
+  /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
@@ -2687,18 +2739,18 @@ class PartnerUnclaim {
   }
 }
 
-/// Stores the processing result for each device.
+/// Captures the processing status for each device in the operation.
 class PerDeviceStatusInBatch {
-  /// Device ID of the device if process succeeds.
+  /// If processing succeeds, the device ID of the device.
   core.String deviceId;
 
-  /// Error identifier.
+  /// If processing fails, the error type.
   core.String errorIdentifier;
 
-  /// Error message.
+  /// If processing fails, a developer message explaining what went wrong.
   core.String errorMessage;
 
-  /// Process result.
+  /// The result status of the device after processing.
   /// Possible string values are:
   /// - "SINGLE_DEVICE_STATUS_UNSPECIFIED" : Invalid code. Shouldn't be used.
   /// - "SINGLE_DEVICE_STATUS_UNKNOWN_ERROR" : Unknown error.
@@ -2864,7 +2916,7 @@ class UnclaimDeviceRequest {
   /// The device identifier you used when you claimed this device.
   DeviceIdentifier deviceIdentifier;
 
-  /// The section type to unclaim for.
+  /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
@@ -2903,7 +2955,7 @@ class UnclaimDeviceRequest {
 
 /// Request to unclaim devices asynchronously in batch.
 class UnclaimDevicesRequest {
-  /// List of devices to unclaim.
+  /// Required. The list of devices to unclaim.
   core.List<PartnerUnclaim> unclaims;
 
   UnclaimDevicesRequest();
@@ -2928,7 +2980,7 @@ class UnclaimDevicesRequest {
 
 /// Request to update device metadata in batch.
 class UpdateDeviceMetadataInBatchRequest {
-  /// List of metadata updates.
+  /// Required. The list of metadata updates.
   core.List<UpdateMetadataArguments> updates;
 
   UpdateDeviceMetadataInBatchRequest();
@@ -2954,7 +3006,7 @@ class UpdateDeviceMetadataInBatchRequest {
 
 /// Request to set metadata for a device.
 class UpdateDeviceMetadataRequest {
-  /// The metdata to set.
+  /// Required. The metdata to attach to the device.
   DeviceMetadata deviceMetadata;
 
   UpdateDeviceMetadataRequest();
@@ -2983,7 +3035,7 @@ class UpdateMetadataArguments {
   /// Device identifier.
   DeviceIdentifier deviceIdentifier;
 
-  /// The metadata to update.
+  /// Required. The metadata to update.
   DeviceMetadata deviceMetadata;
 
   UpdateMetadataArguments();

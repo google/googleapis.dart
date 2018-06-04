@@ -79,14 +79,14 @@ checkJwkKeys(api.JwkKeys o) {
   buildCounterJwkKeys--;
 }
 
-buildUnnamed3563() {
+buildUnnamed2124() {
   var o = new core.List<api.JwkKeys>();
   o.add(buildJwkKeys());
   o.add(buildJwkKeys());
   return o;
 }
 
-checkUnnamed3563(core.List<api.JwkKeys> o) {
+checkUnnamed2124(core.List<api.JwkKeys> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJwkKeys(o[0]);
   checkJwkKeys(o[1]);
@@ -97,7 +97,7 @@ buildJwk() {
   var o = new api.Jwk();
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    o.keys = buildUnnamed3563();
+    o.keys = buildUnnamed2124();
   }
   buildCounterJwk--;
   return o;
@@ -106,7 +106,7 @@ buildJwk() {
 checkJwk(api.Jwk o) {
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    checkUnnamed3563(o.keys);
+    checkUnnamed2124(o.keys);
   }
   buildCounterJwk--;
 }

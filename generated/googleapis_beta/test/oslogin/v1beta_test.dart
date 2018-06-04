@@ -84,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed3881() {
+buildUnnamed5039() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed3881(core.List<api.PosixAccount> o) {
+checkUnnamed5039(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed3882() {
+buildUnnamed5040() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed3882(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed5040(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed3881();
-    o.sshPublicKeys = buildUnnamed3882();
+    o.posixAccounts = buildUnnamed5039();
+    o.sshPublicKeys = buildUnnamed5040();
   }
   buildCounterLoginProfile--;
   return o;
@@ -127,8 +127,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3881(o.posixAccounts);
-    checkUnnamed3882(o.sshPublicKeys);
+    checkUnnamed5039(o.posixAccounts);
+    checkUnnamed5040(o.sshPublicKeys);
   }
   buildCounterLoginProfile--;
 }
@@ -142,6 +142,7 @@ buildPosixAccount() {
     o.gecos = "foo";
     o.gid = "foo";
     o.homeDirectory = "foo";
+    o.operatingSystemType = "foo";
     o.primary = true;
     o.shell = "foo";
     o.systemId = "foo";
@@ -159,6 +160,7 @@ checkPosixAccount(api.PosixAccount o) {
     unittest.expect(o.gecos, unittest.equals('foo'));
     unittest.expect(o.gid, unittest.equals('foo'));
     unittest.expect(o.homeDirectory, unittest.equals('foo'));
+    unittest.expect(o.operatingSystemType, unittest.equals('foo'));
     unittest.expect(o.primary, unittest.isTrue);
     unittest.expect(o.shell, unittest.equals('foo'));
     unittest.expect(o.systemId, unittest.equals('foo'));

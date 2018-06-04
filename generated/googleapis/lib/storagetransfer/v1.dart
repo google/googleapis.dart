@@ -203,6 +203,8 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The list page token.
+  ///
   /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [filter] - A list of query parameters specified as JSON text in the form
@@ -216,8 +218,6 @@ class TransferJobsResourceApi {
   /// and `job_statuses` are optional.  The valid values for `job_statuses` are
   /// case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
   ///
-  /// [pageToken] - The list page token.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -229,9 +229,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -240,14 +240,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -474,6 +474,10 @@ class TransferOperationsResourceApi {
   /// [name] - The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
   ///
+  /// [pageToken] - The list page token.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// [filter] - A list of query parameters specified as JSON text in the form
   /// of {\"project_id\" : \"my_project_id\", \"job_names\" : [\"jobid1\",
   /// \"jobid2\",...], \"operation_names\" : [\"opid1\", \"opid2\",...],
@@ -481,10 +485,6 @@ class TransferOperationsResourceApi {
   /// `operation_names`, and `transfer_statuses` support multiple values, they
   /// must be specified with array notation. `job_names`, `operation_names`, and
   /// `transfer_statuses` are optional.
-  ///
-  /// [pageToken] - The list page token.
-  ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -497,9 +497,9 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -511,14 +511,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -674,8 +674,8 @@ class AwsAccessKey {
   }
 }
 
-/// An AwsS3Data can be a data source, but not a data sink.
-/// In an AwsS3Data, an object's name is the S3 object's key name.
+/// An AwsS3Data resource can be a data source, but not a data sink.
+/// In an AwsS3Data resource, an object's name is the S3 object's key name.
 class AwsS3Data {
   /// AWS access key used to sign the API requests to the AWS S3 bucket.
   /// Permissions on the bucket must be granted to the access ID of the
@@ -726,7 +726,8 @@ class Date {
   /// if specifying a year/month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+  /// month.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -997,14 +998,13 @@ class ErrorSummary {
   }
 }
 
-/// In a GcsData, an object's name is the Google Cloud Storage object's name and
-/// its `lastModificationTime` refers to the object's updated time, which
-/// changes
-/// when the content or the metadata of the object is updated.
+/// In a GcsData resource, an object's name is the Google Cloud Storage object's
+/// name and its `lastModificationTime` refers to the object's updated time,
+/// which changes when the content or the metadata of the object is updated.
 class GcsData {
   /// Google Cloud Storage bucket name (see
   /// [Bucket Name
-  /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
   /// Required.
   core.String bucketName;
 
@@ -1049,9 +1049,10 @@ class GoogleServiceAccount {
   }
 }
 
-/// An HttpData specifies a list of objects on the web to be transferred over
-/// HTTP.  The information of the objects to be transferred is contained in a
-/// file referenced by a URL. The first line in the file must be
+/// An HttpData resource specifies a list of objects on the web to be
+/// transferred
+/// over HTTP.  The information of the objects to be transferred is contained in
+/// a file referenced by a URL. The first line in the file must be
 /// "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
 /// specify the information of the list of objects, one object per list entry.
 /// Each entry has the following tab-delimited fields:
@@ -1069,8 +1070,7 @@ class GoogleServiceAccount {
 /// When transferring data based on a URL list, keep the following in mind:
 ///
 /// * When an object located at `http(s)://hostname:port/<URL-path>` is
-/// transferred
-/// to a data sink, the name of the object at the data sink is
+/// transferred to a data sink, the name of the object at the data sink is
 /// `<hostname>/<URL-path>`.
 ///
 /// * If the specified size of an object does not match the actual size of the
@@ -1813,7 +1813,8 @@ class TransferJob {
   /// - "DELETED" : This is a soft delete state. After a transfer job is set to
   /// this
   /// state, the job and all the transfer executions are subject to
-  /// garbage collection.
+  /// garbage collection. Transfer jobs become eligible for garbage collection
+  /// 30 days after their status is set to `DELETED`.
   core.String status;
 
   /// Transfer specification.

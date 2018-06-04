@@ -240,10 +240,12 @@ class EntriesResourceApi {
     return _response.then((data) => new ListLogEntriesResponse.fromJson(data));
   }
 
-  /// Log entry resourcesWrites log entries to Stackdriver Logging. This API
-  /// method is the only way to send log entries to Stackdriver Logging. This
-  /// method is used, directly or indirectly, by the Stackdriver Logging agent
-  /// (fluentd) and all logging libraries configured to use Stackdriver Logging.
+  /// Writes log entries to Stackdriver Logging. This API method is the only way
+  /// to send log entries to Stackdriver Logging. This method is used, directly
+  /// or indirectly, by the Stackdriver Logging agent (fluentd) and all logging
+  /// libraries configured to use Stackdriver Logging. A single request may
+  /// contain log entries for a maximum of 1000 different resources (projects,
+  /// organizations, billing accounts or folders)
   ///
   /// [request] - The metadata request object.
   ///
@@ -1945,6 +1947,11 @@ class LogEntry {
   /// with a leading slash will never return any results.
   core.String logName;
 
+  /// Output only. Additional metadata about the monitored resource. Only
+  /// k8s_container, k8s_pod, and k8s_node MonitoredResources have this field
+  /// populated.
+  MonitoredResourceMetadata metadata;
+
   /// Optional. Information about an operation associated with the log entry, if
   /// applicable.
   LogEntryOperation operation;
@@ -1959,10 +1966,10 @@ class LogEntry {
   /// Output only. The time the log entry was received by Stackdriver Logging.
   core.String receiveTimestamp;
 
-  /// Required. The monitored resource associated with this log entry. Example:
-  /// a log entry that reports a database error would be associated with the
-  /// monitored resource designating the particular database that reported the
-  /// error.
+  /// Required. The primary monitored resource associated with this log entry.
+  /// Example: a log entry that reports a database error would be associated
+  /// with the monitored resource designating the particular database that
+  /// reported the error.
   MonitoredResource resource;
 
   /// Optional. The severity of the log entry. The default value is
@@ -1998,11 +2005,13 @@ class LogEntry {
   /// Optional. The time the event described by the log entry occurred. This
   /// time is used to compute the log entry's age and to enforce the logs
   /// retention period. If this field is omitted in a new log entry, then
-  /// Stackdriver Logging assigns it the current time.Incoming log entries
-  /// should have timestamps that are no more than the logs retention period in
-  /// the past, and no more than 24 hours in the future. Log entries outside
-  /// those time boundaries will not be available when calling entries.list, but
-  /// those log entries can still be exported with LogSinks.
+  /// Stackdriver Logging assigns it the current time. Timestamps have
+  /// nanosecond accuracy, but trailing zeros in the fractional seconds might be
+  /// omitted when the timestamp is displayed.Incoming log entries should have
+  /// timestamps that are no more than the logs retention period in the past,
+  /// and no more than 24 hours in the future. Log entries outside those time
+  /// boundaries will not be available when calling entries.list, but those log
+  /// entries can still be exported with LogSinks.
   core.String timestamp;
 
   /// Optional. Resource name of the trace associated with the log entry, if
@@ -2029,6 +2038,9 @@ class LogEntry {
     }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new MonitoredResourceMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("operation")) {
       operation = new LogEntryOperation.fromJson(_json["operation"]);
@@ -2081,6 +2093,9 @@ class LogEntry {
     }
     if (logName != null) {
       _json["logName"] = logName;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
     }
     if (operation != null) {
       _json["operation"] = (operation).toJson();
@@ -2849,6 +2864,56 @@ class MonitoredResourceDescriptor {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+/// contain the minimum set of information to uniquely identify a monitored
+/// resource instance. There is some other useful auxiliary metadata. Google
+/// Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
+/// metadata for cloud resources of all types , and stores the metadata in this
+/// message.
+class MonitoredResourceMetadata {
+  /// Output only. Values for predefined system metadata labels. System labels
+  /// are a kind of metadata extracted by Google Stackdriver. Stackdriver
+  /// determines what system labels are useful and how to obtain their values.
+  /// Some examples: "machine_image", "vpc", "subnet_id", "security_group",
+  /// "name", etc. System label values can be only strings, Boolean values, or a
+  /// list of strings. For example:
+  /// { "name": "my-test-instance",
+  ///   "security_group": ["a", "b", "c"],
+  ///   "spot_instance": false }
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> systemLabels;
+
+  /// Output only. A map of user-defined metadata labels.
+  core.Map<core.String, core.String> userLabels;
+
+  MonitoredResourceMetadata();
+
+  MonitoredResourceMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("systemLabels")) {
+      systemLabels =
+          (_json["systemLabels"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("userLabels")) {
+      userLabels =
+          (_json["userLabels"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (systemLabels != null) {
+      _json["systemLabels"] = systemLabels;
+    }
+    if (userLabels != null) {
+      _json["userLabels"] = userLabels;
     }
     return _json;
   }

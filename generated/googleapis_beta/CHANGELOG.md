@@ -1,3 +1,31 @@
+## 0.46.0
+
+* [api-new] websecurityscanner:v1alpha
+* [api-new] redis:v1beta1
+* [api-new] texttospeech:v1beta1
+* [api-new] composer:v1beta1
+* [api] logging:v2beta1
+* [api] tpu:v1alpha1
+* [api] dns:v2beta1
+* [api] oslogin:v1beta
+* [api] oslogin:v1alpha
+* [api] dialogflow:v2beta1
+* [api] adexchangebuyer2:v2beta1
+* [api] cloudtasks:v2beta2
+* [api] dataflow:v1b3
+* [api] appengine:v1beta5
+* [api] appengine:v1beta
+* [api] appengine:v1beta4
+* [api] sqladmin:v1beta4
+* [api-breaking] dns:v2beta1
+* [api-breaking] adexchangebuyer2:v2beta1
+* [api-breaking] adexchangebuyer2:v2beta1
+* [api-removed] dlp:v2beta2
+* [api-removed] dlp:v2beta1
+* [api-removed] resourceviews:v1beta1
+* [api-removed] videointelligence:v1beta1
+* [api-removed] clouduseraccounts:beta
+
 ## 0.45.3
 
 * Re-generated with updated code generator to support Dart 2.

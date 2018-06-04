@@ -177,6 +177,14 @@ class UsersProjectsResourceApi {
   /// account is in format `users/{user}/projects/{project}`.
   /// Value must have pattern "^users/[^/]+/projects/[^/]+$".
   ///
+  /// [operatingSystemType] - The type of operating system associated with the
+  /// account.
+  /// Possible string values are:
+  /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : A
+  /// OPERATING_SYSTEM_TYPE_UNSPECIFIED.
+  /// - "LINUX" : A LINUX.
+  /// - "WINDOWS" : A WINDOWS.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -187,7 +195,8 @@ class UsersProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+  async.Future<Empty> delete(core.String name,
+      {core.String operatingSystemType, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -197,6 +206,9 @@ class UsersProjectsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (operatingSystemType != null) {
+      _queryParams["operatingSystemType"] = [operatingSystemType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -393,7 +405,7 @@ class Empty {
   }
 }
 
-/// A response message for importing an SSH public key.
+/// A response message from importing an SSH public key.
 class ImportSshPublicKeyResponse {
   /// The login profile information for the user.
   LoginProfile loginProfile;
@@ -479,6 +491,15 @@ class PosixAccount {
   /// The path to the home directory for this account.
   core.String homeDirectory;
 
+  /// The operating system type where this account applies.
+  /// Possible string values are:
+  /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : The operating system type
+  /// associated with the user account information is
+  /// unspecified.
+  /// - "LINUX" : Linux user account information.
+  /// - "WINDOWS" : Windows user account information.
+  core.String operatingSystemType;
+
   /// Only one POSIX account can be marked as primary.
   core.bool primary;
 
@@ -509,6 +530,9 @@ class PosixAccount {
     }
     if (_json.containsKey("homeDirectory")) {
       homeDirectory = _json["homeDirectory"];
+    }
+    if (_json.containsKey("operatingSystemType")) {
+      operatingSystemType = _json["operatingSystemType"];
     }
     if (_json.containsKey("primary")) {
       primary = _json["primary"];
@@ -541,6 +565,9 @@ class PosixAccount {
     }
     if (homeDirectory != null) {
       _json["homeDirectory"] = homeDirectory;
+    }
+    if (operatingSystemType != null) {
+      _json["operatingSystemType"] = operatingSystemType;
     }
     if (primary != null) {
       _json["primary"] = primary;

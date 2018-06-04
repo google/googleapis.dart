@@ -52,7 +52,7 @@ class ProjectsLocationsResourceApi {
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -102,11 +102,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -119,9 +119,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -133,14 +133,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -418,14 +418,6 @@ class ProjectsLocationsQueuesResourceApi {
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Requested page size.
-  ///
-  /// The maximum page size is 9800. If unspecified, the page size will
-  /// be the maximum. Fewer queues than requested might be returned,
-  /// even if more queues exist; use the
-  /// next_page_token in the
-  /// response to determine if more queues exist.
-  ///
   /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
   /// field can be used as a filter and several operators as supported.
   /// For example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
@@ -447,6 +439,14 @@ class ProjectsLocationsQueuesResourceApi {
   /// method. It is an error to switch the value of the
   /// filter while iterating through pages.
   ///
+  /// [pageSize] - Requested page size.
+  ///
+  /// The maximum page size is 9800. If unspecified, the page size will
+  /// be the maximum. Fewer queues than requested might be returned,
+  /// even if more queues exist; use the
+  /// next_page_token in the
+  /// response to determine if more queues exist.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -458,9 +458,9 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueuesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -472,14 +472,14 @@ class ProjectsLocationsQueuesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -917,11 +917,6 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// GetTask, or
   /// ListTasks.
   ///
-  /// To acknowledge multiple tasks at the same time, use
-  /// [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
-  /// or the batching documentation for your client library, for example
-  /// https://developers.google.com/api-client-library/python/guide/batch.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1037,11 +1032,6 @@ class ProjectsLocationsQueuesTasksResourceApi {
   }
 
   /// Creates a task and adds it to a queue.
-  ///
-  /// To add multiple tasks at the same time, use
-  /// [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
-  /// or the batching documentation for your client library, for example
-  /// https://developers.google.com/api-client-library/python/guide/batch.
   ///
   /// Tasks cannot be updated after creation; there is no UpdateTask command.
   ///
@@ -1474,33 +1464,31 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
   /// Forces a task to run now.
   ///
+  /// When this method is called, Cloud Tasks will dispatch the task, even if
+  /// the task is already running, the queue has reached its RateLimits or
+  /// is PAUSED.
+  ///
   /// This command is meant to be used for manual debugging. For
   /// example, RunTask can be used to retry a failed
   /// task after a fix has been made or to manually force a task to be
   /// dispatched now.
-  ///
-  /// When this method is called, Cloud Tasks will dispatch the task to its
-  /// target, even if the queue is PAUSED.
   ///
   /// The dispatched task is returned. That is, the task that is returned
   /// contains the status after the task is dispatched but
   /// before the task is received by its target.
   ///
   /// If Cloud Tasks receives a successful response from the task's
-  /// handler, then the task will be deleted; otherwise the task's
+  /// target, then the task will be deleted; otherwise the task's
   /// schedule_time will be reset to the time that
   /// RunTask was called plus the retry delay specified
-  /// in the queue and task's RetryConfig.
+  /// in the queue's RetryConfig.
   ///
   /// RunTask returns
   /// NOT_FOUND when it is called on a
-  /// task that has already succeeded or permanently
-  /// failed. FAILED_PRECONDITION
-  /// is returned when RunTask is called on task
-  /// that is dispatched or already running.
+  /// task that has already succeeded or permanently failed.
   ///
-  /// RunTask cannot be called on
-  /// pull tasks.
+  /// RunTask cannot be called on a
+  /// pull task.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2049,7 +2037,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2295,7 +2283,8 @@ class LeaseTasksRequest {
   /// less than 500 characters.
   ///
   /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
-  /// the same tag as the task with the oldest schedule_time will be returned.
+  /// the same tag as the task with the oldest
+  /// schedule_time will be returned.
   ///
   /// Grammar Syntax:
   ///
@@ -2542,6 +2531,10 @@ class ListTasksResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  /// For example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   ///
   ///     {"cloud.googleapis.com/region": "us-east1"}
@@ -2564,6 +2557,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -2582,6 +2578,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2615,14 +2614,14 @@ class PauseQueueRequest {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -2632,7 +2631,7 @@ class PauseQueueRequest {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -2641,6 +2640,20 @@ class PauseQueueRequest {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -2969,6 +2982,9 @@ class Queue {
 /// This message determines the maximum rate that tasks can be dispatched by a
 /// queue, regardless of whether the dispatch is a first task attempt or a
 /// retry.
+///
+/// Note: The debugging command, RunTask, will run a task
+/// even if the queue has reached its RateLimits.
 class RateLimits {
   /// Output only. The max burst size.
   ///
@@ -3013,10 +3029,12 @@ class RateLimits {
   /// default.
   ///
   ///
-  /// The maximum allowed value is 5,000. -1 indicates no limit.
+  /// The maximum allowed value is 5,000.
   ///
   /// This field is output only for
-  /// [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+  /// [pull queues](google.cloud.tasks.v2beta2.PullTarget) and always -1, which
+  /// indicates no limit. No other queue types can have `max_concurrent_tasks`
+  /// set to -1.
   ///
   ///
   /// This field has the same meaning as

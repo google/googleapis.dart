@@ -50,6 +50,10 @@ class AnalyticsApi {
   static const AnalyticsReadonlyScope =
       "https://www.googleapis.com/auth/analytics.readonly";
 
+  /// Manage Google Analytics user deletion requests
+  static const AnalyticsUserDeletionScope =
+      "https://www.googleapis.com/auth/analytics.user.deletion";
+
   final commons.ApiRequester _requester;
 
   DataResourceApi get data => new DataResourceApi(_requester);
@@ -57,6 +61,8 @@ class AnalyticsApi {
   MetadataResourceApi get metadata => new MetadataResourceApi(_requester);
   ProvisioningResourceApi get provisioning =>
       new ProvisioningResourceApi(_requester);
+  UserDeletionResourceApi get userDeletion =>
+      new UserDeletionResourceApi(_requester);
 
   AnalyticsApi(http.Client client,
       {core.String rootUrl: "https://www.googleapis.com/",
@@ -5957,7 +5963,7 @@ class ProvisioningResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'provisioning/createAccount';
+    _url = 'provisioning/createAccountTree';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5966,6 +5972,65 @@ class ProvisioningResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new AccountTreeResponse.fromJson(data));
+  }
+}
+
+class UserDeletionResourceApi {
+  final commons.ApiRequester _requester;
+
+  UserDeletionUserDeletionRequestResourceApi get userDeletionRequest =>
+      new UserDeletionUserDeletionRequestResourceApi(_requester);
+
+  UserDeletionResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class UserDeletionUserDeletionRequestResourceApi {
+  final commons.ApiRequester _requester;
+
+  UserDeletionUserDeletionRequestResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Insert or update a user deletion requests.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserDeletionRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserDeletionRequest> upsert(UserDeletionRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'userDeletion/userDeletionRequests:upsert';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserDeletionRequest.fromJson(data));
   }
 }
 
@@ -6403,56 +6468,42 @@ class AccountTicket {
 }
 
 class AccountTreeRequestAccountSettings {
-  core.bool admobReporting;
-  core.bool sharingWithGoogleAnySales;
-  core.bool sharingWithGoogleProducts;
-  core.bool sharingWithGoogleSales;
-  core.bool sharingWithGoogleSupport;
-  core.bool sharingWithOthers;
+  core.bool shareAnonymouslyWithOthers;
+  core.bool shareWithGoogleProducts;
+  core.bool shareWithSpecialists;
+  core.bool shareWithSupport;
 
   AccountTreeRequestAccountSettings();
 
   AccountTreeRequestAccountSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("admobReporting")) {
-      admobReporting = _json["admobReporting"];
+    if (_json.containsKey("shareAnonymouslyWithOthers")) {
+      shareAnonymouslyWithOthers = _json["shareAnonymouslyWithOthers"];
     }
-    if (_json.containsKey("sharingWithGoogleAnySales")) {
-      sharingWithGoogleAnySales = _json["sharingWithGoogleAnySales"];
+    if (_json.containsKey("shareWithGoogleProducts")) {
+      shareWithGoogleProducts = _json["shareWithGoogleProducts"];
     }
-    if (_json.containsKey("sharingWithGoogleProducts")) {
-      sharingWithGoogleProducts = _json["sharingWithGoogleProducts"];
+    if (_json.containsKey("shareWithSpecialists")) {
+      shareWithSpecialists = _json["shareWithSpecialists"];
     }
-    if (_json.containsKey("sharingWithGoogleSales")) {
-      sharingWithGoogleSales = _json["sharingWithGoogleSales"];
-    }
-    if (_json.containsKey("sharingWithGoogleSupport")) {
-      sharingWithGoogleSupport = _json["sharingWithGoogleSupport"];
-    }
-    if (_json.containsKey("sharingWithOthers")) {
-      sharingWithOthers = _json["sharingWithOthers"];
+    if (_json.containsKey("shareWithSupport")) {
+      shareWithSupport = _json["shareWithSupport"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (admobReporting != null) {
-      _json["admobReporting"] = admobReporting;
+    if (shareAnonymouslyWithOthers != null) {
+      _json["shareAnonymouslyWithOthers"] = shareAnonymouslyWithOthers;
     }
-    if (sharingWithGoogleAnySales != null) {
-      _json["sharingWithGoogleAnySales"] = sharingWithGoogleAnySales;
+    if (shareWithGoogleProducts != null) {
+      _json["shareWithGoogleProducts"] = shareWithGoogleProducts;
     }
-    if (sharingWithGoogleProducts != null) {
-      _json["sharingWithGoogleProducts"] = sharingWithGoogleProducts;
+    if (shareWithSpecialists != null) {
+      _json["shareWithSpecialists"] = shareWithSpecialists;
     }
-    if (sharingWithGoogleSales != null) {
-      _json["sharingWithGoogleSales"] = sharingWithGoogleSales;
-    }
-    if (sharingWithGoogleSupport != null) {
-      _json["sharingWithGoogleSupport"] = sharingWithGoogleSupport;
-    }
-    if (sharingWithOthers != null) {
-      _json["sharingWithOthers"] = sharingWithOthers;
+    if (shareWithSupport != null) {
+      _json["shareWithSupport"] = shareWithSupport;
     }
     return _json;
   }
@@ -6529,56 +6580,42 @@ class AccountTreeRequest {
 }
 
 class AccountTreeResponseAccountSettings {
-  core.bool admobReporting;
-  core.bool sharingWithGoogleAnySales;
-  core.bool sharingWithGoogleProducts;
-  core.bool sharingWithGoogleSales;
-  core.bool sharingWithGoogleSupport;
-  core.bool sharingWithOthers;
+  core.bool shareAnonymouslyWithOthers;
+  core.bool shareWithGoogleProducts;
+  core.bool shareWithSpecialists;
+  core.bool shareWithSupport;
 
   AccountTreeResponseAccountSettings();
 
   AccountTreeResponseAccountSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("admobReporting")) {
-      admobReporting = _json["admobReporting"];
+    if (_json.containsKey("shareAnonymouslyWithOthers")) {
+      shareAnonymouslyWithOthers = _json["shareAnonymouslyWithOthers"];
     }
-    if (_json.containsKey("sharingWithGoogleAnySales")) {
-      sharingWithGoogleAnySales = _json["sharingWithGoogleAnySales"];
+    if (_json.containsKey("shareWithGoogleProducts")) {
+      shareWithGoogleProducts = _json["shareWithGoogleProducts"];
     }
-    if (_json.containsKey("sharingWithGoogleProducts")) {
-      sharingWithGoogleProducts = _json["sharingWithGoogleProducts"];
+    if (_json.containsKey("shareWithSpecialists")) {
+      shareWithSpecialists = _json["shareWithSpecialists"];
     }
-    if (_json.containsKey("sharingWithGoogleSales")) {
-      sharingWithGoogleSales = _json["sharingWithGoogleSales"];
-    }
-    if (_json.containsKey("sharingWithGoogleSupport")) {
-      sharingWithGoogleSupport = _json["sharingWithGoogleSupport"];
-    }
-    if (_json.containsKey("sharingWithOthers")) {
-      sharingWithOthers = _json["sharingWithOthers"];
+    if (_json.containsKey("shareWithSupport")) {
+      shareWithSupport = _json["shareWithSupport"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (admobReporting != null) {
-      _json["admobReporting"] = admobReporting;
+    if (shareAnonymouslyWithOthers != null) {
+      _json["shareAnonymouslyWithOthers"] = shareAnonymouslyWithOthers;
     }
-    if (sharingWithGoogleAnySales != null) {
-      _json["sharingWithGoogleAnySales"] = sharingWithGoogleAnySales;
+    if (shareWithGoogleProducts != null) {
+      _json["shareWithGoogleProducts"] = shareWithGoogleProducts;
     }
-    if (sharingWithGoogleProducts != null) {
-      _json["sharingWithGoogleProducts"] = sharingWithGoogleProducts;
+    if (shareWithSpecialists != null) {
+      _json["shareWithSpecialists"] = shareWithSpecialists;
     }
-    if (sharingWithGoogleSales != null) {
-      _json["sharingWithGoogleSales"] = sharingWithGoogleSales;
-    }
-    if (sharingWithGoogleSupport != null) {
-      _json["sharingWithGoogleSupport"] = sharingWithGoogleSupport;
-    }
-    if (sharingWithOthers != null) {
-      _json["sharingWithOthers"] = sharingWithOthers;
+    if (shareWithSupport != null) {
+      _json["shareWithSupport"] = shareWithSupport;
     }
     return _json;
   }
@@ -13284,6 +13321,98 @@ class Uploads {
   }
 }
 
+/// User ID.
+class UserDeletionRequestId {
+  /// Type of user
+  core.String type;
+
+  /// The User's id
+  core.String userId;
+
+  UserDeletionRequestId();
+
+  UserDeletionRequestId.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for a user deletion request resource.
+class UserDeletionRequest {
+  /// This marks the point in time for which all user data before should be
+  /// deleted
+  core.DateTime deletionRequestTime;
+
+  /// Firebase Project Id
+  core.String firebaseProjectId;
+
+  /// User ID.
+  UserDeletionRequestId id;
+
+  /// Value is "analytics#userDeletionRequest".
+  core.String kind;
+
+  /// Web property ID of the form UA-XXXXX-YY.
+  core.String webPropertyId;
+
+  UserDeletionRequest();
+
+  UserDeletionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deletionRequestTime")) {
+      deletionRequestTime = core.DateTime.parse(_json["deletionRequestTime"]);
+    }
+    if (_json.containsKey("firebaseProjectId")) {
+      firebaseProjectId = _json["firebaseProjectId"];
+    }
+    if (_json.containsKey("id")) {
+      id = new UserDeletionRequestId.fromJson(_json["id"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deletionRequestTime != null) {
+      _json["deletionRequestTime"] = (deletionRequestTime).toIso8601String();
+    }
+    if (firebaseProjectId != null) {
+      _json["firebaseProjectId"] = firebaseProjectId;
+    }
+    if (id != null) {
+      _json["id"] = (id).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
 /// JSON template for a user reference.
 class UserRef {
   /// Email ID of this user.
@@ -13678,6 +13807,18 @@ class Webproperty {
   /// Time this web property was created.
   core.DateTime created;
 
+  /// Set to true to reset the retention period of the user identifier with each
+  /// new event from that user (thus setting the expiration date to current time
+  /// plus retention period).
+  /// Set to false to delete data associated with the user identifer
+  /// automatically after the rentention period.
+  /// This property cannot be set on insert.
+  core.bool dataRetentionResetOnNewActivity;
+
+  /// The length of time for which user and event data is retained.
+  /// This property cannot be set on insert.
+  core.String dataRetentionTtl;
+
   /// Default view (profile) ID.
   core.String defaultProfileId;
 
@@ -13732,6 +13873,13 @@ class Webproperty {
     }
     if (_json.containsKey("created")) {
       created = core.DateTime.parse(_json["created"]);
+    }
+    if (_json.containsKey("dataRetentionResetOnNewActivity")) {
+      dataRetentionResetOnNewActivity =
+          _json["dataRetentionResetOnNewActivity"];
+    }
+    if (_json.containsKey("dataRetentionTtl")) {
+      dataRetentionTtl = _json["dataRetentionTtl"];
     }
     if (_json.containsKey("defaultProfileId")) {
       defaultProfileId = _json["defaultProfileId"];
@@ -13788,6 +13936,13 @@ class Webproperty {
     }
     if (created != null) {
       _json["created"] = (created).toIso8601String();
+    }
+    if (dataRetentionResetOnNewActivity != null) {
+      _json["dataRetentionResetOnNewActivity"] =
+          dataRetentionResetOnNewActivity;
+    }
+    if (dataRetentionTtl != null) {
+      _json["dataRetentionTtl"] = dataRetentionTtl;
     }
     if (defaultProfileId != null) {
       _json["defaultProfileId"] = defaultProfileId;

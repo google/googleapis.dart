@@ -52,7 +52,7 @@ class ProjectsLocationsResourceApi {
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -781,13 +781,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeysResponse.next_page_token.
+  ///
   /// [pageSize] - Optional limit on the number of CryptoKeys to include in the
   /// response.  Further CryptoKeys can subsequently be obtained by
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeysResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -800,7 +800,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -811,11 +811,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1243,14 +1243,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeyVersionsResponse.next_page_token.
+  ///
   /// [pageSize] - Optional limit on the number of CryptoKeyVersions to
   /// include in the response. Further CryptoKeyVersions can
   /// subsequently be obtained by including the
   /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
   /// If unspecified, the server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeyVersionsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1263,7 +1263,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1274,11 +1274,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1364,7 +1364,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   }
 
   /// Restore a CryptoKeyVersion in the
-  /// DESTROY_SCHEDULED,
+  /// DESTROY_SCHEDULED
   /// state.
   ///
   /// Upon restoration of the CryptoKeyVersion, state
@@ -1474,7 +1474,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 /// bar@gmail.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  /// Next ID: 4
   core.List<AuditLogConfig> auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
@@ -1579,7 +1578,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2207,6 +2206,10 @@ class ListLocationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  /// For example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   ///
   ///     {"cloud.googleapis.com/region": "us-east1"}
@@ -2229,6 +2232,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -2247,6 +2253,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2267,14 +2276,14 @@ class Location {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -2284,7 +2293,7 @@ class Location {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -2293,6 +2302,20 @@ class Location {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).

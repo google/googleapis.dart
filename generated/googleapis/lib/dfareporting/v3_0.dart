@@ -1147,6 +1147,7 @@ class AdsResourceApi {
   /// - "APP_INTERSTITIAL"
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
+  /// - "IN_STREAM_AUDIO"
   /// - "IN_STREAM_VIDEO"
   ///
   /// [creativeIds] - Select only ads with these creative IDs assigned.
@@ -12157,7 +12158,10 @@ class SizesResourceApi {
     return _response.then((data) => new Size.fromJson(data));
   }
 
-  /// Retrieves a list of sizes, possibly filtered.
+  /// Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally
+  /// unique and may include values not currently in use by your account. Due to
+  /// this, the list of sizes returned by this method may differ from the list
+  /// seen in the Trafficking UI.
   ///
   /// Request parameters:
   ///
@@ -14402,7 +14406,7 @@ class AccountUserProfile {
   /// left blank.
   core.String subaccountId;
 
-  /// Trafficker type of this user profile.
+  /// Trafficker type of this user profile. This is a read-only field.
   /// Possible string values are:
   /// - "EXTERNAL_TRAFFICKER"
   /// - "INTERNAL_NON_TRAFFICKER"
@@ -14719,6 +14723,7 @@ class Ad {
   /// - "APP_INTERSTITIAL"
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
+  /// - "IN_STREAM_AUDIO"
   /// - "IN_STREAM_VIDEO"
   core.String compatibility;
 
@@ -15195,6 +15200,7 @@ class AdSlot {
   /// - "APP_INTERSTITIAL"
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
+  /// - "IN_STREAM_AUDIO"
   /// - "IN_STREAM_VIDEO"
   core.String compatibility;
 
@@ -17821,7 +17827,7 @@ class Creative {
   /// Applicable to INSTREAM_VIDEO_REDIRECT creatives.
   core.String commercialId;
 
-  /// List of companion creatives assigned to an in-Stream videocreative.
+  /// List of companion creatives assigned to an in-Stream video creative.
   /// Acceptable values include IDs of existing flash and image creatives.
   /// Applicable to the following creative types: all VPAID and all
   /// INSTREAM_VIDEO with dynamicAssetSelection set to false.
@@ -18059,6 +18065,7 @@ class Creative {
   /// - "FLASH_INPAGE"
   /// - "HTML5_BANNER"
   /// - "IMAGE"
+  /// - "INSTREAM_AUDIO"
   /// - "INSTREAM_VIDEO"
   /// - "INSTREAM_VIDEO_REDIRECT"
   /// - "INTERNAL_REDIRECT"
@@ -21768,6 +21775,7 @@ class EncryptionInfo {
   /// - "DBM_PARTNER"
   /// - "DCM_ACCOUNT"
   /// - "DCM_ADVERTISER"
+  /// - "DFP_NETWORK_CODE"
   /// - "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
   core.String encryptionEntityType;
 
@@ -25583,6 +25591,7 @@ class Placement {
   /// - "APP_INTERSTITIAL"
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
+  /// - "IN_STREAM_AUDIO"
   /// - "IN_STREAM_VIDEO"
   core.String compatibility;
 

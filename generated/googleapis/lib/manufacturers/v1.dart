@@ -141,6 +141,15 @@ class AccountsProductsResourceApi {
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [include] - The information to be included in the response. Only sections
+  /// listed here
+  /// will be returned.
+  ///
+  /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
+  /// This behavior is temporary and will be removed once all clients are ready
+  /// or at the latest end of July 2018. After that no sections will be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -152,7 +161,7 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Product> get(core.String parent, core.String name,
-      {core.String $fields}) {
+      {core.List<core.String> include, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -165,6 +174,9 @@ class AccountsProductsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (include != null) {
+      _queryParams["include"] = include;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -199,6 +211,15 @@ class AccountsProductsResourceApi {
   /// used for
   /// paging.
   ///
+  /// [include] - The information to be included in the response. Only sections
+  /// listed here
+  /// will be returned.
+  ///
+  /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
+  /// This behavior is temporary and will be removed once all clients are ready
+  /// or at the latest end of July 2018. After that no sections will be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -210,7 +231,10 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.List<core.String> include,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -226,6 +250,9 @@ class AccountsProductsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (include != null) {
+      _queryParams["include"] = include;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -243,19 +270,21 @@ class AccountsProductsResourceApi {
     return _response.then((data) => new ListProductsResponse.fromJson(data));
   }
 
-  /// Uploads the product in a Manufacturer Center account.
+  /// Inserts or updates the attributes of the product in a Manufacturer Center
+  /// account.
   ///
-  /// The checks at upload time are minimal. All required attributes need to be
-  /// present for a product to be valid. Issues may show up later
-  /// after the API has accepted a new upload for a product and it is possible
-  /// to
-  /// overwrite an existing valid product with an invalid product. To detect
-  /// this, you should retrieve the product and check it for issues once the
-  /// new version is available.
+  /// Creates a product with the provided attributes. If the product already
+  /// exists, then all attributes are replaced with the new ones. The checks at
+  /// upload time are minimal. All required attributes need to be present for a
+  /// product to be valid. Issues may show up later after the API has accepted a
+  /// new upload for a product and it is possible to overwrite an existing valid
+  /// product with an invalid product. To detect this, you should retrieve the
+  /// product and check it for issues once the new version is available.
   ///
-  /// Uploaded products first need to be processed before they can be
+  /// Uploaded attributes first need to be processed before they can be
   /// retrieved. Until then, new products will be unavailable, and retrieval
-  /// of uploaded products will return the original state of the product.
+  /// of previously uploaded products will return the original state of the
+  /// product.
   ///
   /// [request] - The metadata request object.
   ///
@@ -289,7 +318,7 @@ class AccountsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> uploadProduct(
+  async.Future<Empty> update(
       Attributes request, core.String parent, core.String name,
       {core.String $fields}) {
     var _url = null;
@@ -362,6 +391,9 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#disclosure.
   core.String disclosureDate;
 
+  /// A list of excluded destinations.
+  core.List<core.String> excludedDestination;
+
   /// The rich format description of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#featuredesc.
   core.List<FeatureDescription> featureDescription;
@@ -385,6 +417,9 @@ class Attributes {
   /// The image of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#image.
   Image imageLink;
+
+  /// A list of included destinations.
+  core.List<core.String> includedDestination;
 
   /// The item group id of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.
@@ -492,6 +527,10 @@ class Attributes {
     if (_json.containsKey("disclosureDate")) {
       disclosureDate = _json["disclosureDate"];
     }
+    if (_json.containsKey("excludedDestination")) {
+      excludedDestination =
+          (_json["excludedDestination"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("featureDescription")) {
       featureDescription = (_json["featureDescription"] as core.List)
           .map<FeatureDescription>(
@@ -512,6 +551,10 @@ class Attributes {
     }
     if (_json.containsKey("imageLink")) {
       imageLink = new Image.fromJson(_json["imageLink"]);
+    }
+    if (_json.containsKey("includedDestination")) {
+      includedDestination =
+          (_json["includedDestination"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("itemGroupId")) {
       itemGroupId = _json["itemGroupId"];
@@ -602,6 +645,9 @@ class Attributes {
     if (disclosureDate != null) {
       _json["disclosureDate"] = disclosureDate;
     }
+    if (excludedDestination != null) {
+      _json["excludedDestination"] = excludedDestination;
+    }
     if (featureDescription != null) {
       _json["featureDescription"] =
           featureDescription.map((value) => (value).toJson()).toList();
@@ -620,6 +666,9 @@ class Attributes {
     }
     if (imageLink != null) {
       _json["imageLink"] = (imageLink).toJson();
+    }
+    if (includedDestination != null) {
+      _json["includedDestination"] = includedDestination;
     }
     if (itemGroupId != null) {
       _json["itemGroupId"] = itemGroupId;
@@ -744,6 +793,43 @@ class Count {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// The destination status.
+class DestinationStatus {
+  /// The name of the destination.
+  core.String destination;
+
+  /// The status of the destination.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unspecified status, never used.
+  /// - "ACTIVE" : The product is used for this destination.
+  /// - "PENDING" : The decision is still pending.
+  /// - "DISAPPROVED" : The product is disapproved. Please look at the issues.
+  core.String status;
+
+  DestinationStatus();
+
+  DestinationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("destination")) {
+      destination = _json["destination"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (destination != null) {
+      _json["destination"] = destination;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -890,6 +976,21 @@ class Issue {
   /// Longer description of the issue focused on how to resolve it.
   core.String description;
 
+  /// The destination this issue applies to.
+  core.String destination;
+
+  /// What needs to happen to resolve the issue.
+  /// Possible string values are:
+  /// - "RESOLUTION_UNSPECIFIED" : Unspecified resolution, never used.
+  /// - "USER_ACTION" : The user who provided the data must act in order to
+  /// resolve the issue
+  /// (for example by correcting some data).
+  /// - "PENDING_PROCESSING" : The issue will be resolved automatically (for
+  /// example image crawl or
+  /// Google review). No action is required now. Resolution might lead to
+  /// another issue (for example if crawl fails).
+  core.String resolution;
+
   /// The severity of the issue.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Unspecified severity, never used.
@@ -908,6 +1009,9 @@ class Issue {
   /// The timestamp when this issue appeared.
   core.String timestamp;
 
+  /// Short title describing the nature of the issue.
+  core.String title;
+
   /// The server-generated type of the issue, for example,
   /// “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
   core.String type;
@@ -921,11 +1025,20 @@ class Issue {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("destination")) {
+      destination = _json["destination"];
+    }
+    if (_json.containsKey("resolution")) {
+      resolution = _json["resolution"];
+    }
     if (_json.containsKey("severity")) {
       severity = _json["severity"];
     }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -941,11 +1054,20 @@ class Issue {
     if (description != null) {
       _json["description"] = description;
     }
+    if (destination != null) {
+      _json["destination"] = destination;
+    }
+    if (resolution != null) {
+      _json["resolution"] = resolution;
+    }
     if (severity != null) {
       _json["severity"] = severity;
     }
     if (timestamp != null) {
       _json["timestamp"] = timestamp;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     if (type != null) {
       _json["type"] = type;
@@ -1021,32 +1143,42 @@ class Price {
 
 /// Product data.
 class Product {
+  /// Attributes of the product uploaded to the Manufacturer Center.
+  Attributes attributes;
+
   /// The content language of the product as a two-letter ISO 639-1 language
   /// code
   /// (for example, en).
-  /// @OutputOnly
   core.String contentLanguage;
+
+  /// The status of the destinations.
+  core.List<DestinationStatus> destinationStatuses;
 
   /// Final attributes of the product. The final attributes are obtained by
   /// overriding the uploaded attributes with the manually provided and deleted
   /// attributes. Google systems only process, evaluate, review, and/or use
   /// final
   /// attributes.
-  /// @OutputOnly
+  ///
+  /// This field is deprecated and will be removed end of July 2018. Please use
+  /// attributes.
   Attributes finalAttributes;
 
   /// A server-generated list of issues associated with the product.
-  /// @OutputOnly
   core.List<Issue> issues;
 
   /// Names of the attributes of the product deleted manually via the
   /// Manufacturer Center UI.
-  /// @OutputOnly
+  ///
+  /// This field is deprecated and will be removed end of July 2018. Please use
+  /// attributes.
   core.List<core.String> manuallyDeletedAttributes;
 
   /// Attributes of the product provided manually via the Manufacturer Center
   /// UI.
-  /// @OutputOnly
+  ///
+  /// This field is deprecated and will be removed end of July 2018. Please use
+  /// attributes.
   Attributes manuallyProvidedAttributes;
 
   /// Name in the format `{target_country}:{content_language}:{product_id}`.
@@ -1059,34 +1191,42 @@ class Product {
   ///
   /// `product_id`     -   The ID of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  /// @OutputOnly
   core.String name;
 
   /// Parent ID in the format `accounts/{account_id}`.
   ///
   /// `account_id` - The ID of the Manufacturer Center account.
-  /// @OutputOnly
   core.String parent;
 
   /// The ID of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  /// @OutputOnly
   core.String productId;
 
   /// The target country of the product as a CLDR territory code (for example,
   /// US).
-  /// @OutputOnly
   core.String targetCountry;
 
   /// Attributes of the product uploaded via the Manufacturer Center API or via
   /// feeds.
+  ///
+  /// This field is deprecated and will be removed end of July 2018. Please use
+  /// attributes.
   Attributes uploadedAttributes;
 
   Product();
 
   Product.fromJson(core.Map _json) {
+    if (_json.containsKey("attributes")) {
+      attributes = new Attributes.fromJson(_json["attributes"]);
+    }
     if (_json.containsKey("contentLanguage")) {
       contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("destinationStatuses")) {
+      destinationStatuses = (_json["destinationStatuses"] as core.List)
+          .map<DestinationStatus>(
+              (value) => new DestinationStatus.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("finalAttributes")) {
       finalAttributes = new Attributes.fromJson(_json["finalAttributes"]);
@@ -1124,8 +1264,15 @@ class Product {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (attributes != null) {
+      _json["attributes"] = (attributes).toJson();
+    }
     if (contentLanguage != null) {
       _json["contentLanguage"] = contentLanguage;
+    }
+    if (destinationStatuses != null) {
+      _json["destinationStatuses"] =
+          destinationStatuses.map((value) => (value).toJson()).toList();
     }
     if (finalAttributes != null) {
       _json["finalAttributes"] = (finalAttributes).toJson();

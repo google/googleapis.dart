@@ -25,13 +25,55 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -68,48 +110,6 @@
             ],
             "location": "query",
             "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -118,41 +118,6 @@
             "resources": {
                 "products": {
                     "methods": {
-                        "uploadProduct": {
-                            "description": "Uploads the product in a Manufacturer Center account.\n\nThe checks at upload time are minimal. All required attributes need to be\npresent for a product to be valid. Issues may show up later\nafter the API has accepted a new upload for a product and it is possible to\noverwrite an existing valid product with an invalid product. To detect\nthis, you should retrieve the product and check it for issues once the\nnew version is available.\n\nUploaded products first need to be processed before they can be\nretrieved. Until then, new products will be unavailable, and retrieval\nof uploaded products will return the original state of the product.",
-                            "httpMethod": "PUT",
-                            "id": "manufacturers.accounts.products.uploadProduct",
-                            "parameterOrder": [
-                                "parent",
-                                "name"
-                            ],
-                            "parameters": {
-                                "parent": {
-                                    "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.",
-                                    "location": "path",
-                                    "pattern": "^accounts/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "description": "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\n                     code (for example, US).\n\n`content_language` - The content language of the product as a two-letter\n                     ISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\n                     https://support.google.com/manufacturers/answer/6124116#id.",
-                                    "location": "path",
-                                    "pattern": "^[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/{+parent}/products/{+name}",
-                            "request": {
-                                "$ref": "Attributes"
-                            },
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/manufacturercenter"
-                            ]
-                        },
                         "delete": {
                             "description": "Deletes the product from a Manufacturer Center account.",
                             "httpMethod": "DELETE",
@@ -193,13 +158,6 @@
                                 "parent"
                             ],
                             "parameters": {
-                                "parent": {
-                                    "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.",
-                                    "location": "path",
-                                    "pattern": "^accounts/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "pageToken": {
                                     "description": "The token returned by the previous request.",
                                     "location": "query",
@@ -210,6 +168,25 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
+                                },
+                                "parent": {
+                                    "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.",
+                                    "location": "path",
+                                    "pattern": "^accounts/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "include": {
+                                    "description": "The information to be included in the response. Only sections listed here\nwill be returned.\n\nIf this parameter is not specified, ATTRIBUTES and ISSUES are returned.\nThis behavior is temporary and will be removed once all clients are ready\nor at the latest end of July 2018. After that no sections will be returned.",
+                                    "enum": [
+                                        "UNKNOWN",
+                                        "ATTRIBUTES",
+                                        "ISSUES",
+                                        "DESTINATION_STATUSES"
+                                    ],
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/{+parent}/products",
@@ -229,17 +206,29 @@
                                 "name"
                             ],
                             "parameters": {
-                                "name": {
-                                    "description": "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\n                     code (for example, US).\n\n`content_language` - The content language of the product as a two-letter\n                     ISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\n                     https://support.google.com/manufacturers/answer/6124116#id.",
-                                    "location": "path",
-                                    "pattern": "^[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "parent": {
                                     "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "include": {
+                                    "description": "The information to be included in the response. Only sections listed here\nwill be returned.\n\nIf this parameter is not specified, ATTRIBUTES and ISSUES are returned.\nThis behavior is temporary and will be removed once all clients are ready\nor at the latest end of July 2018. After that no sections will be returned.",
+                                    "enum": [
+                                        "UNKNOWN",
+                                        "ATTRIBUTES",
+                                        "ISSUES",
+                                        "DESTINATION_STATUSES"
+                                    ],
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\n                     code (for example, US).\n\n`content_language` - The content language of the product as a two-letter\n                     ISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\n                     https://support.google.com/manufacturers/answer/6124116#id.",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -251,100 +240,50 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/manufacturercenter"
                             ]
+                        },
+                        "update": {
+                            "description": "Inserts or updates the attributes of the product in a Manufacturer Center\naccount.\n\nCreates a product with the provided attributes. If the product already\nexists, then all attributes are replaced with the new ones. The checks at\nupload time are minimal. All required attributes need to be present for a\nproduct to be valid. Issues may show up later after the API has accepted a\nnew upload for a product and it is possible to overwrite an existing valid\nproduct with an invalid product. To detect this, you should retrieve the\nproduct and check it for issues once the new version is available.\n\nUploaded attributes first need to be processed before they can be\nretrieved. Until then, new products will be unavailable, and retrieval\nof previously uploaded products will return the original state of the\nproduct.",
+                            "httpMethod": "PUT",
+                            "id": "manufacturers.accounts.products.update",
+                            "parameterOrder": [
+                                "parent",
+                                "name"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.",
+                                    "location": "path",
+                                    "pattern": "^accounts/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\n                     code (for example, US).\n\n`content_language` - The content language of the product as a two-letter\n                     ISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\n                     https://support.google.com/manufacturers/answer/6124116#id.",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/products/{+name}",
+                            "request": {
+                                "$ref": "Attributes"
+                            },
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/manufacturercenter"
+                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20180215",
+    "revision": "20180518",
     "rootUrl": "https://manufacturers.googleapis.com/",
     "schemas": {
-        "Count": {
-            "description": "The number of products in a single package. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#count.",
-            "id": "Count",
-            "properties": {
-                "value": {
-                    "description": "The numeric value of the number of products in a package.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "unit": {
-                    "description": "The unit in which these products are counted.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Product": {
-            "description": "Product data.",
-            "id": "Product",
-            "properties": {
-                "productId": {
-                    "description": "The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id.\n@OutputOnly",
-                    "type": "string"
-                },
-                "uploadedAttributes": {
-                    "$ref": "Attributes",
-                    "description": "Attributes of the product uploaded via the Manufacturer Center API or via\nfeeds."
-                },
-                "parent": {
-                    "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.\n@OutputOnly",
-                    "type": "string"
-                },
-                "manuallyProvidedAttributes": {
-                    "$ref": "Attributes",
-                    "description": "Attributes of the product provided manually via the Manufacturer Center UI.\n@OutputOnly"
-                },
-                "contentLanguage": {
-                    "description": "The content language of the product as a two-letter ISO 639-1 language code\n(for example, en).\n@OutputOnly",
-                    "type": "string"
-                },
-                "targetCountry": {
-                    "description": "The target country of the product as a CLDR territory code (for example,\nUS).\n@OutputOnly",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\n                     code (for example, US).\n\n`content_language` - The content language of the product as a two-letter\n                     ISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\n                     https://support.google.com/manufacturers/answer/6124116#id.\n@OutputOnly",
-                    "type": "string"
-                },
-                "issues": {
-                    "description": "A server-generated list of issues associated with the product.\n@OutputOnly",
-                    "items": {
-                        "$ref": "Issue"
-                    },
-                    "type": "array"
-                },
-                "manuallyDeletedAttributes": {
-                    "description": "Names of the attributes of the product deleted manually via the\nManufacturer Center UI.\n@OutputOnly",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "finalAttributes": {
-                    "$ref": "Attributes",
-                    "description": "Final attributes of the product. The final attributes are obtained by\noverriding the uploaded attributes with the manually provided and deleted\nattributes. Google systems only process, evaluate, review, and/or use final\nattributes.\n@OutputOnly"
-                }
-            },
-            "type": "object"
-        },
-        "Capacity": {
-            "description": "The capacity of a product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#capacity.",
-            "id": "Capacity",
-            "properties": {
-                "value": {
-                    "description": "The numeric value of the capacity.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "unit": {
-                    "description": "The unit of the capacity, i.e., MB, GB, or TB.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ListProductsResponse": {
             "id": "ListProductsResponse",
             "properties": {
@@ -381,36 +320,22 @@
             },
             "type": "object"
         },
-        "FeatureDescription": {
-            "description": "A feature description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#featuredesc.",
-            "id": "FeatureDescription",
-            "properties": {
-                "image": {
-                    "$ref": "Image",
-                    "description": "An optional image describing the feature."
-                },
-                "headline": {
-                    "description": "A short description of the feature.",
-                    "type": "string"
-                },
-                "text": {
-                    "description": "A detailed description of the feature.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Issue": {
             "description": "Product issue.",
             "id": "Issue",
             "properties": {
-                "attribute": {
-                    "description": "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116.",
-                    "type": "string"
-                },
-                "timestamp": {
-                    "description": "The timestamp when this issue appeared.",
-                    "format": "google-datetime",
+                "resolution": {
+                    "description": "What needs to happen to resolve the issue.",
+                    "enum": [
+                        "RESOLUTION_UNSPECIFIED",
+                        "USER_ACTION",
+                        "PENDING_PROCESSING"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified resolution, never used.",
+                        "The user who provided the data must act in order to resolve the issue\n(for example by correcting some data).",
+                        "The issue will be resolved automatically (for example image crawl or\nGoogle review). No action is required now. Resolution might lead to\nanother issue (for example if crawl fails)."
+                    ],
                     "type": "string"
                 },
                 "severity": {
@@ -429,36 +354,32 @@
                     ],
                     "type": "string"
                 },
-                "description": {
-                    "description": "Longer description of the issue focused on how to resolve it.",
-                    "type": "string"
-                },
                 "type": {
                     "description": "The server-generated type of the issue, for example,\n“INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Price": {
-            "description": "A price.",
-            "id": "Price",
-            "properties": {
-                "currency": {
-                    "description": "The currency in which the price is denoted.",
+                },
+                "attribute": {
+                    "description": "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116.",
                     "type": "string"
                 },
-                "amount": {
-                    "description": "The numeric value of the price.",
+                "destination": {
+                    "description": "The destination this issue applies to.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Short title describing the nature of the issue.",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "The timestamp when this issue appeared.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Longer description of the issue focused on how to resolve it.",
                     "type": "string"
                 }
             },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
             "type": "object"
         },
         "Image": {
@@ -520,10 +441,101 @@
             },
             "type": "object"
         },
+        "Count": {
+            "description": "The number of products in a single package. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#count.",
+            "id": "Count",
+            "properties": {
+                "value": {
+                    "description": "The numeric value of the number of products in a package.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "unit": {
+                    "description": "The unit in which these products are counted.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Capacity": {
+            "description": "The capacity of a product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#capacity.",
+            "id": "Capacity",
+            "properties": {
+                "value": {
+                    "description": "The numeric value of the capacity.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "unit": {
+                    "description": "The unit of the capacity, i.e., MB, GB, or TB.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FeatureDescription": {
+            "description": "A feature description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#featuredesc.",
+            "id": "FeatureDescription",
+            "properties": {
+                "image": {
+                    "$ref": "Image",
+                    "description": "An optional image describing the feature."
+                },
+                "headline": {
+                    "description": "A short description of the feature.",
+                    "type": "string"
+                },
+                "text": {
+                    "description": "A detailed description of the feature.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Price": {
+            "description": "A price.",
+            "id": "Price",
+            "properties": {
+                "amount": {
+                    "description": "The numeric value of the price.",
+                    "type": "string"
+                },
+                "currency": {
+                    "description": "The currency in which the price is denoted.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
         "Attributes": {
             "description": "Attributes of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116.",
             "id": "Attributes",
             "properties": {
+                "color": {
+                    "description": "The color of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#color.",
+                    "type": "string"
+                },
+                "excludedDestination": {
+                    "description": "A list of excluded destinations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "productName": {
+                    "description": "The canonical name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productname.",
+                    "type": "string"
+                },
+                "sizeType": {
+                    "description": "The size type of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizetype.",
+                    "type": "string"
+                },
                 "suggestedRetailPrice": {
                     "$ref": "Price",
                     "description": "The suggested retail price (MSRP) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#price."
@@ -551,20 +563,20 @@
                     "description": "The brand name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#brand.",
                     "type": "string"
                 },
-                "material": {
-                    "description": "The material of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#material.",
-                    "type": "string"
-                },
                 "disclosureDate": {
                     "description": "The disclosure date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#disclosure.",
+                    "type": "string"
+                },
+                "material": {
+                    "description": "The material of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#material.",
                     "type": "string"
                 },
                 "scent": {
                     "description": "The scent of the product. For more information, see\n https://support.google.com/manufacturers/answer/6124116#scent.",
                     "type": "string"
                 },
-                "ageGroup": {
-                    "description": "The target age group of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#agegroup.",
+                "flavor": {
+                    "description": "The flavor of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#flavor.",
                     "type": "string"
                 },
                 "productDetail": {
@@ -574,8 +586,8 @@
                     },
                     "type": "array"
                 },
-                "flavor": {
-                    "description": "The flavor of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#flavor.",
+                "ageGroup": {
+                    "description": "The target age group of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#agegroup.",
                     "type": "string"
                 },
                 "mpn": {
@@ -590,16 +602,16 @@
                     "description": "The release date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#release.",
                     "type": "string"
                 },
-                "itemGroupId": {
-                    "description": "The item group id of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#itemgroupid.",
-                    "type": "string"
-                },
                 "gtin": {
                     "description": "The Global Trade Item Number (GTIN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#gtin.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "itemGroupId": {
+                    "description": "The item group id of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#itemgroupid.",
+                    "type": "string"
                 },
                 "productLine": {
                     "description": "The name of the group of products related to the product. For more\ninformation, see\nhttps://support.google.com/manufacturers/answer/6124116#productline.",
@@ -608,6 +620,13 @@
                 "capacity": {
                     "$ref": "Capacity",
                     "description": "The capacity of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#capacity."
+                },
+                "includedDestination": {
+                    "description": "A list of included destinations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "description": {
                     "description": "The description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#description.",
@@ -661,18 +680,97 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "color": {
-                    "description": "The color of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#color.",
+                }
+            },
+            "type": "object"
+        },
+        "DestinationStatus": {
+            "description": "The destination status.",
+            "id": "DestinationStatus",
+            "properties": {
+                "destination": {
+                    "description": "The name of the destination.",
                     "type": "string"
                 },
-                "productName": {
-                    "description": "The canonical name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productname.",
+                "status": {
+                    "description": "The status of the destination.",
+                    "enum": [
+                        "UNKNOWN",
+                        "ACTIVE",
+                        "PENDING",
+                        "DISAPPROVED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified status, never used.",
+                        "The product is used for this destination.",
+                        "The decision is still pending.",
+                        "The product is disapproved. Please look at the issues."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Product": {
+            "description": "Product data.",
+            "id": "Product",
+            "properties": {
+                "name": {
+                    "description": "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\n                     code (for example, US).\n\n`content_language` - The content language of the product as a two-letter\n                     ISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\n                     https://support.google.com/manufacturers/answer/6124116#id.",
                     "type": "string"
                 },
-                "sizeType": {
-                    "description": "The size type of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizetype.",
+                "issues": {
+                    "description": "A server-generated list of issues associated with the product.",
+                    "items": {
+                        "$ref": "Issue"
+                    },
+                    "type": "array"
+                },
+                "finalAttributes": {
+                    "$ref": "Attributes",
+                    "description": "Final attributes of the product. The final attributes are obtained by\noverriding the uploaded attributes with the manually provided and deleted\nattributes. Google systems only process, evaluate, review, and/or use final\nattributes.\n\nThis field is deprecated and will be removed end of July 2018. Please use\nattributes."
+                },
+                "productId": {
+                    "description": "The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id.",
                     "type": "string"
+                },
+                "uploadedAttributes": {
+                    "$ref": "Attributes",
+                    "description": "Attributes of the product uploaded via the Manufacturer Center API or via\nfeeds.\n\nThis field is deprecated and will be removed end of July 2018. Please use\nattributes."
+                },
+                "destinationStatuses": {
+                    "description": "The status of the destinations.",
+                    "items": {
+                        "$ref": "DestinationStatus"
+                    },
+                    "type": "array"
+                },
+                "targetCountry": {
+                    "description": "The target country of the product as a CLDR territory code (for example,\nUS).",
+                    "type": "string"
+                },
+                "contentLanguage": {
+                    "description": "The content language of the product as a two-letter ISO 639-1 language code\n(for example, en).",
+                    "type": "string"
+                },
+                "attributes": {
+                    "$ref": "Attributes",
+                    "description": "Attributes of the product uploaded to the Manufacturer Center."
+                },
+                "manuallyDeletedAttributes": {
+                    "description": "Names of the attributes of the product deleted manually via the\nManufacturer Center UI.\n\nThis field is deprecated and will be removed end of July 2018. Please use\nattributes.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "parent": {
+                    "description": "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account.",
+                    "type": "string"
+                },
+                "manuallyProvidedAttributes": {
+                    "$ref": "Attributes",
+                    "description": "Attributes of the product provided manually via the Manufacturer Center UI.\n\nThis field is deprecated and will be removed end of July 2018. Please use\nattributes."
                 }
             },
             "type": "object"

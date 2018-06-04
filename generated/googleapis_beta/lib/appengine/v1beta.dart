@@ -1182,13 +1182,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [matchingAddress] - A valid IP Address. If set, only rules matching this
   /// address will be returned. The first returned rule will be the rule that
   /// fires on requests from this IP.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1201,9 +1201,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String matchingAddress,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1215,14 +1215,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (matchingAddress != null) {
       _queryParams["matchingAddress"] = [matchingAddress];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1311,7 +1311,7 @@ class AppsLocationsResourceApi {
 
   AppsLocationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -1369,11 +1369,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1386,9 +1386,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1400,14 +1400,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,11 +1499,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1516,9 +1516,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1530,14 +1530,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2011,14 +2011,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2032,9 +2032,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String view,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2049,14 +2049,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2079,38 +2079,37 @@ class AppsServicesVersionsResourceApi {
 
   /// Updates the specified Version resource. You can specify the following
   /// fields depending on the App Engine environment and type of scaling that
-  /// the version resource uses:
-  /// serving_status
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status):
-  /// For Version resources that use basic scaling, manual scaling, or run in
-  /// the App Engine flexible environment.
+  /// the version resource uses:Standard environment
   /// instance_class
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class):
-  /// For Version resources that run in the App Engine standard environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic
+  /// scaling in the standard environment:
   /// automatic_scaling.min_idle_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine standard environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.max_idle_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine standard environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automaticScaling.standard_scheduler_settings.max_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.min_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic
+  /// scaling or manual scaling in the standard environment:
+  /// serving_status
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)Flexible
+  /// environment
+  /// serving_status
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic
+  /// scaling in the flexible environment:
   /// automatic_scaling.min_total_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.max_total_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.cool_down_period_sec
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.cpu_utilization.target_utilization
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)
   ///
   /// [request] - The metadata request object.
   ///
@@ -2635,7 +2634,7 @@ class Application {
 
   /// Location from which this application runs. Application instances run out
   /// of the data centers in the specified location, which is also where all of
-  /// the application's end user content is stored.Defaults to us-central1.View
+  /// the application's end user content is stored.Defaults to us-central.View
   /// the list of supported locations
   /// (https://cloud.google.com/appengine/docs/locations).
   core.String locationId;
@@ -3308,6 +3307,31 @@ class CpuUtilization {
 }
 
 /// Metadata for the given google.longrunning.Operation during a
+/// google.appengine.v1.CreateVersionRequest.
+class CreateVersionMetadataV1 {
+  /// The Cloud Build ID if one was created as part of the version create.
+  /// @OutputOnly
+  core.String cloudBuildId;
+
+  CreateVersionMetadataV1();
+
+  CreateVersionMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudBuildId")) {
+      cloudBuildId = _json["cloudBuildId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudBuildId != null) {
+      _json["cloudBuildId"] = cloudBuildId;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1alpha.CreateVersionRequest.
 class CreateVersionMetadataV1Alpha {
   /// The Cloud Build ID if one was created as part of the version create.
@@ -3650,20 +3674,36 @@ class Empty {
 
 /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
 /// Endpoints API Service provides tooling for serving Open API and gRPC
-/// endpoints via an NGINX proxy.The fields here refer to the name and
-/// configuration id of a "service" resource in the Service Management API
+/// endpoints via an NGINX proxy. Only valid for App Engine Flexible environment
+/// deployments.The fields here refer to the name and configuration ID of a
+/// "service" resource in the Service Management API
 /// (https://cloud.google.com/service-management/overview).
 class EndpointsApiService {
-  /// Endpoints service configuration id as specified by the Service Management
-  /// API. For example "2016-09-19r1"By default, the Endpoints service
-  /// configuration id is fixed and config_id must be specified. To keep the
-  /// Endpoints service configuration id updated with each rollout, specify
-  /// RolloutStrategy.MANAGED and omit config_id.
+  /// Endpoints service configuration ID as specified by the Service Management
+  /// API. For example "2016-09-19r1".By default, the rollout strategy for
+  /// Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up
+  /// with a particular configuration ID. When a new configuration is rolled
+  /// out, Endpoints must be given the new configuration ID. The config_id field
+  /// is used to give the configuration ID and is required in this
+  /// case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED.
+  /// When using this, Endpoints fetches the latest configuration and does not
+  /// need to be told the configuration ID. In this case, config_id must be
+  /// omitted.
   core.String configId;
 
   /// Endpoints service name which is the name of the "service" resource in the
   /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
   core.String name;
+
+  /// Endpoints rollout strategy. If FIXED, config_id must be specified. If
+  /// MANAGED, config_id must be omitted.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_ROLLOUT_STRATEGY" : Not specified. Defaults to FIXED.
+  /// - "FIXED" : Endpoints service configuration ID will be fixed to the
+  /// configuration ID specified by config_id.
+  /// - "MANAGED" : Endpoints service configuration ID will be updated with each
+  /// rollout.
+  core.String rolloutStrategy;
 
   EndpointsApiService();
 
@@ -3673,6 +3713,9 @@ class EndpointsApiService {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("rolloutStrategy")) {
+      rolloutStrategy = _json["rolloutStrategy"];
     }
   }
 
@@ -3684,6 +3727,9 @@ class EndpointsApiService {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (rolloutStrategy != null) {
+      _json["rolloutStrategy"] = rolloutStrategy;
     }
     return _json;
   }
@@ -4623,6 +4669,10 @@ class LivenessCheck {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
@@ -4644,6 +4694,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -4662,6 +4715,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -5080,6 +5136,8 @@ class OperationMetadata {
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1 {
+  CreateVersionMetadataV1 createVersionMetadata;
+
   /// Time that this operation completed.@OutputOnly
   core.String endTime;
 
@@ -5107,6 +5165,10 @@ class OperationMetadataV1 {
   OperationMetadataV1();
 
   OperationMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("createVersionMetadata")) {
+      createVersionMetadata =
+          new CreateVersionMetadataV1.fromJson(_json["createVersionMetadata"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -5133,6 +5195,9 @@ class OperationMetadataV1 {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createVersionMetadata != null) {
+      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }

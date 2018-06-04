@@ -45,9 +45,62 @@ class BillingAccountsResourceApi {
 
   BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Creates a billing account.
+  /// This method can only be used to create
+  /// [billing subaccounts](https://cloud.google.com/billing/docs/concepts)
+  /// for GCP resellers.
+  /// When creating a subaccount, the current authenticated user must have the
+  /// `billing.accounts.update` IAM permission on the master account, which is
+  /// typically given to billing account
+  /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+  ///
+  /// > This method is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BillingAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BillingAccount> create(BillingAccount request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/billingAccounts';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new BillingAccount.fromJson(data));
+  }
+
   /// Gets information about a billing account. The current authenticated user
-  /// must be an [owner of the billing
-  /// account](https://support.google.com/cloud/answer/4430947).
+  /// must be a [viewer of the billing
+  /// account](https://cloud.google.com/billing/docs/how-to/billing-access).
   ///
   /// Request parameters:
   ///
@@ -92,10 +145,75 @@ class BillingAccountsResourceApi {
     return _response.then((data) => new BillingAccount.fromJson(data));
   }
 
-  /// Lists the billing accounts that the current authenticated user
-  /// [owns](https://support.google.com/cloud/answer/4430947).
+  /// Gets the access control policy for a billing account.
+  /// The caller must have the `billing.accounts.getIamPolicy` permission on the
+  /// account, which is often given to billing account
+  /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+  ///
+  /// > This method is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
   ///
   /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^billingAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Lists the billing accounts that the current authenticated user has
+  /// permission to
+  /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - Options for how to filter the returned billing accounts.
+  /// Currently this only supports filtering for
+  /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
+  /// single provided reseller billing account.
+  /// (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF").
+  /// Boolean algebra and other fields are not currently supported.
+  ///
+  /// > This field is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
   ///
   /// [pageToken] - A token identifying a page of results to return. This should
   /// be a
@@ -117,7 +235,10 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -125,6 +246,9 @@ class BillingAccountsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -146,6 +270,191 @@ class BillingAccountsResourceApi {
     return _response
         .then((data) => new ListBillingAccountsResponse.fromJson(data));
   }
+
+  /// Updates a billing account's fields.
+  /// Currently the only field that can be edited is `display_name`.
+  /// The current authenticated user must have the `billing.accounts.update`
+  /// IAM permission, which is typically given to the
+  /// [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
+  /// of the billing account.
+  ///
+  /// > This method is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the billing account resource to be updated.
+  /// Value must have pattern "^billingAccounts/[^/]+$".
+  ///
+  /// [updateMask] - The update mask applied to the resource.
+  /// Only "display_name" is currently supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BillingAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BillingAccount> patch(BillingAccount request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new BillingAccount.fromJson(data));
+  }
+
+  /// Sets the access control policy for a billing account. Replaces any
+  /// existing
+  /// policy.
+  /// The caller must have the `billing.accounts.setIamPolicy` permission on the
+  /// account, which is often given to billing account
+  /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+  ///
+  /// > This method is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^billingAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Tests the access control policy for a billing account. This method takes
+  /// the resource and a set of permissions as input and returns the subset of
+  /// the input permissions that the caller is allowed for that resource.
+  ///
+  /// > This method is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^billingAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
 }
 
 class BillingAccountsProjectsResourceApi {
@@ -155,9 +464,9 @@ class BillingAccountsProjectsResourceApi {
       : _requester = client;
 
   /// Lists the projects associated with a billing account. The current
-  /// authenticated user must have the "billing.resourceAssociations.list" IAM
+  /// authenticated user must have the `billing.resourceAssociations.list` IAM
   /// permission, which is often given to billing account
-  /// [viewers](https://support.google.com/cloud/answer/4430947).
+  /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
   ///
   /// Request parameters:
   ///
@@ -285,14 +594,14 @@ class ProjectsResourceApi {
   ///
   /// *Note:* Incurred charges that have not yet been reported in the
   /// transaction
-  /// history of the Google Cloud Console may be billed to the new billing
+  /// history of the GCP Console might be billed to the new billing
   /// account, even if the charge occurred before the new billing account was
   /// assigned to the project.
   ///
   /// The current authenticated user must have ownership privileges for both the
   /// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
   /// ) and the [billing
-  /// account](https://support.google.com/cloud/answer/4430947).
+  /// account](https://cloud.google.com/billing/docs/how-to/billing-access).
   ///
   /// You can disable billing on the project by setting the
   /// `billing_account_name` field to empty. This action disassociates the
@@ -371,12 +680,12 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Requested page size. Defaults to 5000.
+  ///
   /// [pageToken] - A token identifying a page of results to return. This should
   /// be a
   /// `next_page_token` value returned from a previous `ListServices`
   /// call. If unspecified, the first page of results is returned.
-  ///
-  /// [pageSize] - Requested page size. Defaults to 5000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -389,7 +698,7 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -397,11 +706,11 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -432,11 +741,6 @@ class ServicesSkusResourceApi {
   /// Example: "services/DA34-426B-A397"
   /// Value must have pattern "^services/[^/]+$".
   ///
-  /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
-  /// response proto.
-  /// Will use the conversion rate as of start_time.
-  /// Optional. If not specified USD will be used.
-  ///
   /// [endTime] - Optional exclusive end time of the time range for which the
   /// pricing
   /// versions will be returned. Timestamps in the future are not allowed.
@@ -460,6 +764,11 @@ class ServicesSkusResourceApi {
   ///
   /// [pageSize] - Requested page size. Defaults to 5000.
   ///
+  /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
+  /// response proto.
+  /// Will use the conversion rate as of start_time.
+  /// Optional. If not specified USD will be used.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -471,11 +780,11 @@ class ServicesSkusResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSkusResponse> list(core.String parent,
-      {core.String currencyCode,
-      core.String endTime,
+      {core.String endTime,
       core.String pageToken,
       core.String startTime,
       core.int pageSize,
+      core.String currencyCode,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -486,9 +795,6 @@ class ServicesSkusResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (currencyCode != null) {
-      _queryParams["currencyCode"] = [currencyCode];
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
@@ -501,6 +807,9 @@ class ServicesSkusResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (currencyCode != null) {
+      _queryParams["currencyCode"] = [currencyCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -569,14 +878,167 @@ class AggregationInfo {
   }
 }
 
-/// A billing account in [Google Cloud
-/// Console](https://console.cloud.google.com/). You can assign a billing
-/// account
-/// to one or more projects.
+/// Specifies the audit configuration for a service.
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging.
+/// An AuditConfig must have one or more AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service,
+/// the union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditLogConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+///     {
+///       "audit_configs": [
+///         {
+///           "service": "allServices"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///               "exempted_members": [
+///                 "user:foo@gmail.com"
+///               ]
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///             },
+///             {
+///               "log_type": "ADMIN_READ",
+///             }
+///           ]
+///         },
+///         {
+///           "service": "fooservice.googleapis.com"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///               "exempted_members": [
+///                 "user:bar@gmail.com"
+///               ]
+///             }
+///           ]
+///         }
+///       ]
+///     }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
+class AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<AuditLogConfig> auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String service;
+
+  AuditConfig();
+
+  AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Provides the configuration for logging a type of permissions.
+/// Example:
+///
+///     {
+///       "audit_log_configs": [
+///         {
+///           "log_type": "DATA_READ",
+///           "exempted_members": [
+///             "user:foo@gmail.com"
+///           ]
+///         },
+///         {
+///           "log_type": "DATA_WRITE",
+///         }
+///       ]
+///     }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  /// Follows the same format of Binding.members.
+  core.List<core.String> exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
+    }
+    return _json;
+  }
+}
+
+/// A billing account in [GCP Console](https://console.cloud.google.com/).
+/// You can assign a billing account to one or more projects.
 class BillingAccount {
   /// The display name given to the billing account, such as `My Billing
-  /// Account`. This name is displayed in the Google Cloud Console.
+  /// Account`. This name is displayed in the GCP Console.
   core.String displayName;
+
+  /// If this account is a
+  /// [subaccount](https://cloud.google.com/billing/docs/concepts), then this
+  /// will be the resource name of the master billing account that it is being
+  /// resold through.
+  /// Otherwise this will be empty.
+  ///
+  /// > This field is currently in
+  /// > [Beta](https://cloud.google.com/terms/launch-stages).
+  core.String masterBillingAccount;
 
   /// The resource name of the billing account. The resource name has the form
   /// `billingAccounts/{billing_account_id}`. For example,
@@ -595,6 +1057,9 @@ class BillingAccount {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("masterBillingAccount")) {
+      masterBillingAccount = _json["masterBillingAccount"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -609,11 +1074,69 @@ class BillingAccount {
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
+    if (masterBillingAccount != null) {
+      _json["masterBillingAccount"] = masterBillingAccount;
+    }
     if (name != null) {
       _json["name"] = name;
     }
     if (open != null) {
       _json["open"] = open;
+    }
+    return _json;
+  }
+}
+
+/// Associates `members` with a `role`.
+class Binding {
+  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// `members` can have the following values:
+  ///
+  /// * `allUsers`: A special identifier that represents anyone who is
+  ///    on the internet; with or without a Google account.
+  ///
+  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
+  ///    who is authenticated with a Google account or a service account.
+  ///
+  /// * `user:{emailid}`: An email address that represents a specific Google
+  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///
+  ///
+  /// * `serviceAccount:{emailid}`: An email address that represents a service
+  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  ///
+  /// * `group:{emailid}`: An email address that represents a Google group.
+  ///    For example, `admins@example.com`.
+  ///
+  ///
+  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  ///    users of that domain. For example, `google.com` or `example.com`.
+  core.List<core.String> members;
+
+  /// Role that is assigned to `members`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Required
+  core.String role;
+
+  Binding();
+
+  Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("members")) {
+      members = (_json["members"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
     }
     return _json;
   }
@@ -868,6 +1391,112 @@ class Money {
   }
 }
 
+/// Defines an Identity and Access Management (IAM) policy. It is used to
+/// specify access control policies for Cloud Platform resources.
+///
+///
+/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// `members` to a `role`, where the members can be user accounts, Google
+/// groups,
+/// Google domains, and service accounts. A `role` is a named list of
+/// permissions
+/// defined by IAM.
+///
+/// **Example**
+///
+///     {
+///       "bindings": [
+///         {
+///           "role": "roles/owner",
+///           "members": [
+///             "user:mike@example.com",
+///             "group:admins@example.com",
+///             "domain:google.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///           ]
+///         },
+///         {
+///           "role": "roles/viewer",
+///           "members": ["user:sean@example.com"]
+///         }
+///       ]
+///     }
+///
+/// For a description of IAM and its features, see the
+/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+class Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<AuditConfig> auditConfigs;
+
+  /// Associates a list of `members` to a `role`.
+  /// `bindings` with no members will result in an error.
+  core.List<Binding> bindings;
+
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a policy from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy.
+  ///
+  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
+  /// policy is overwritten blindly.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Deprecated.
+  core.int version;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = (_json["auditConfigs"] as core.List)
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 /// Expresses a mathematical pricing formula. For Example:-
 ///
 /// `usage_unit: GBy`
@@ -1047,7 +1676,7 @@ class PricingInfo {
   }
 }
 
-/// Encapsulation of billing information for a Cloud Console project. A project
+/// Encapsulation of billing information for a GCP Console project. A project
 /// has at most one associated billing account at a time (but a billing account
 /// can be assigned to multiple projects).
 class ProjectBillingInfo {
@@ -1152,6 +1781,46 @@ class Service {
   }
 }
 
+/// Request message for `SetIamPolicy` method.
+class SetIamPolicyRequest {
+  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects)
+  /// might reject them.
+  Policy policy;
+
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  /// Only
+  /// the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used:
+  /// paths: "bindings, etag"
+  /// This field is only used by Cloud IAM.
+  core.String updateMask;
+
+  SetIamPolicyRequest();
+
+  SetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
 /// Encapsulates a single SKU in Google Cloud Platform
 class Sku {
   /// The category hierarchy of this SKU, purely for organizational purpose.
@@ -1234,6 +1903,56 @@ class Sku {
     }
     if (skuId != null) {
       _json["skuId"] = skuId;
+    }
+    return _json;
+  }
+}
+
+/// Request message for `TestIamPermissions` method.
+class TestIamPermissionsRequest {
+  /// The set of permissions to check for the `resource`. Permissions with
+  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
+  /// information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String> permissions;
+
+  TestIamPermissionsRequest();
+
+  TestIamPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/// Response message for `TestIamPermissions` method.
+class TestIamPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String> permissions;
+
+  TestIamPermissionsResponse();
+
+  TestIamPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
     }
     return _json;
   }

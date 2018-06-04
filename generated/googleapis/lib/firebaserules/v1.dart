@@ -678,14 +678,6 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-  /// Note: `page_size` is just a hint and the service may choose to load less
-  /// than `page_size` due to the size of the output. To traverse all of the
-  /// releases, caller should iterate until the `page_token` is empty.
-  ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
   /// restrictions on
   /// `Ruleset.name`.
@@ -694,6 +686,14 @@ class ProjectsRulesetsResourceApi {
   /// parses strings that conform to the RFC 3339 date/time specifications.
   ///
   /// Example: `create_time > date("2017-01-01") AND name=UUID-*`
+  ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
+  ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load less
+  /// than `page_size` due to the size of the output. To traverse all of the
+  /// releases, caller should iterate until the `page_token` is empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -706,9 +706,9 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -720,14 +720,14 @@ class ProjectsRulesetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

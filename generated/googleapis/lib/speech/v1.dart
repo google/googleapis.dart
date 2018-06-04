@@ -352,24 +352,20 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
-  /// *Optional* If `true`, the top result includes a list of words and the
-  /// confidence for those words. If `false`, no word-level confidence
-  /// information is returned. The default is `false`.
-  core.bool enableWordConfidence;
-
   /// *Optional* If `true`, the top result includes a list of words and
   /// the start and end time offsets (timestamps) for those words. If
   /// `false`, no word-level time offset information is returned. The default is
   /// `false`.
   core.bool enableWordTimeOffsets;
 
-  /// *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
+  /// Encoding of audio data sent in all `RecognitionAudio` messages.
+  /// This field is optional for `FLAC` and `WAV` audio files and required
+  /// for all other audio formats. For details, see AudioEncoding.
   /// Possible string values are:
   /// - "ENCODING_UNSPECIFIED" : Not specified.
   /// - "LINEAR16" : Uncompressed 16-bit signed little-endian samples (Linear
   /// PCM).
-  /// - "FLAC" : [`FLAC`](https://xiph.org/flac/documentation.html) (Free
-  /// Lossless Audio
+  /// - "FLAC" : `FLAC` (Free Lossless Audio
   /// Codec) is the recommended encoding because it is
   /// lossless--therefore recognition is not compromised--and
   /// requires only about half the bandwidth of `LINEAR16`. `FLAC` stream
@@ -422,11 +418,13 @@ class RecognitionConfig {
   /// won't be filtered out.
   core.bool profanityFilter;
 
-  /// *Required* Sample rate in Hertz of the audio data sent in all
+  /// Sample rate in Hertz of the audio data sent in all
   /// `RecognitionAudio` messages. Valid values are: 8000-48000.
   /// 16000 is optimal. For best results, set the sampling rate of the audio
   /// source to 16000 Hz. If that's not possible, use the native sample rate of
   /// the audio source (instead of re-sampling).
+  /// This field is optional for `FLAC` and `WAV` audio files and required
+  /// for all other audio formats. For details, see AudioEncoding.
   core.int sampleRateHertz;
 
   /// *Optional* A means to provide context to assist the speech recognition.
@@ -435,9 +433,6 @@ class RecognitionConfig {
   RecognitionConfig();
 
   RecognitionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("enableWordConfidence")) {
-      enableWordConfidence = _json["enableWordConfidence"];
-    }
     if (_json.containsKey("enableWordTimeOffsets")) {
       enableWordTimeOffsets = _json["enableWordTimeOffsets"];
     }
@@ -466,9 +461,6 @@ class RecognitionConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (enableWordConfidence != null) {
-      _json["enableWordConfidence"] = enableWordConfidence;
-    }
     if (enableWordTimeOffsets != null) {
       _json["enableWordTimeOffsets"] = enableWordTimeOffsets;
     }
@@ -532,7 +524,7 @@ class RecognizeRequest {
 /// contains the result as zero or more sequential `SpeechRecognitionResult`
 /// messages.
 class RecognizeResponse {
-  /// *Output-only* Sequential list of transcription results corresponding to
+  /// Output only. Sequential list of transcription results corresponding to
   /// sequential portions of audio.
   core.List<SpeechRecognitionResult> results;
 
@@ -589,7 +581,7 @@ class SpeechContext {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class SpeechRecognitionAlternative {
-  /// *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
   /// correct. This field is set only for the top alternative of a non-streaming
   /// result or, of a streaming result where `is_final=true`.
@@ -600,11 +592,12 @@ class SpeechRecognitionAlternative {
   /// set.
   core.double confidence;
 
-  /// *Output-only* Transcript text representing the words that the user spoke.
+  /// Output only. Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// *Output-only* A list of word-specific information for each recognized
-  /// word.
+  /// Output only. A list of word-specific information for each recognized word.
+  /// Note: When enable_speaker_diarization is true, you will see all the words
+  /// from the beginning of the audio.
   core.List<WordInfo> words;
 
   SpeechRecognitionAlternative();
@@ -641,7 +634,7 @@ class SpeechRecognitionAlternative {
 
 /// A speech recognition result corresponding to a portion of the audio.
 class SpeechRecognitionResult {
-  /// *Output-only* May contain one or more recognition hypotheses (up to the
+  /// Output only. May contain one or more recognition hypotheses (up to the
   /// maximum specified in `max_alternatives`).
   /// These alternatives are ordered in terms of accuracy, with the top (first)
   /// alternative being the most probable, as ranked by the recognizer.
@@ -776,7 +769,7 @@ class Status {
 
 /// Word-specific information for recognized words.
 class WordInfo {
-  /// *Output-only* Time offset relative to the beginning of the audio,
+  /// Output only. Time offset relative to the beginning of the audio,
   /// and corresponding to the end of the spoken word.
   /// This field is only set if `enable_word_time_offsets=true` and only
   /// in the top hypothesis.
@@ -784,7 +777,15 @@ class WordInfo {
   /// vary.
   core.String endTime;
 
-  /// *Output-only* Time offset relative to the beginning of the audio,
+  /// Output only. A distinct integer value is assigned for every speaker within
+  /// the audio. This field specifies which one of those speakers was detected
+  /// to
+  /// have spoken this word. Value ranges from '1' to diarization_speaker_count.
+  /// speaker_tag is set if enable_speaker_diarization = 'true' and only in the
+  /// top alternative.
+  core.int speakerTag;
+
+  /// Output only. Time offset relative to the beginning of the audio,
   /// and corresponding to the start of the spoken word.
   /// This field is only set if `enable_word_time_offsets=true` and only
   /// in the top hypothesis.
@@ -792,7 +793,7 @@ class WordInfo {
   /// vary.
   core.String startTime;
 
-  /// *Output-only* The word corresponding to this set of information.
+  /// Output only. The word corresponding to this set of information.
   core.String word;
 
   WordInfo();
@@ -800,6 +801,9 @@ class WordInfo {
   WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("speakerTag")) {
+      speakerTag = _json["speakerTag"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -814,6 +818,9 @@ class WordInfo {
         new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (speakerTag != null) {
+      _json["speakerTag"] = speakerTag;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;

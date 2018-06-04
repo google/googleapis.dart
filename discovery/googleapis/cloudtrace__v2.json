@@ -28,17 +28,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
@@ -46,11 +35,6 @@
         },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -64,6 +48,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -83,13 +72,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -104,15 +93,26 @@
             "location": "query",
             "type": "boolean"
         },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "bearer_token": {
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -188,105 +188,13 @@
             }
         }
     },
-    "revision": "20180212",
+    "revision": "20180528",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
-        "TimeEvents": {
-            "description": "A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation\non the span, consisting of either user-supplied key:value pairs, or\ndetails of a message sent/received between Spans.",
-            "id": "TimeEvents",
-            "properties": {
-                "droppedAnnotationsCount": {
-                    "description": "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "droppedMessageEventsCount": {
-                    "description": "The number of dropped message events in all the included time events.\nIf the value is 0, then no message events were dropped.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "timeEvent": {
-                    "description": "A collection of `TimeEvent`s.",
-                    "items": {
-                        "$ref": "TimeEvent"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Module": {
-            "description": "Binary module.",
-            "id": "Module",
-            "properties": {
-                "module": {
-                    "$ref": "TruncatableString",
-                    "description": "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."
-                },
-                "buildId": {
-                    "$ref": "TruncatableString",
-                    "description": "A unique identifier for the module, usually a hash of its\ncontents (up to 128 bytes)."
-                }
-            },
-            "type": "object"
-        },
-        "Status": {
-            "description": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
-            "id": "Status",
-            "properties": {
-                "details": {
-                    "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
-                "code": {
-                    "description": "The status code, which should be an enum value of google.rpc.Code.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "BatchWriteSpansRequest": {
-            "description": "The request message for the `BatchWriteSpans` method.",
-            "id": "BatchWriteSpansRequest",
-            "properties": {
-                "spans": {
-                    "description": "A list of new spans. The span names must not match existing\nspans, or the results are undefined.",
-                    "items": {
-                        "$ref": "Span"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "Span": {
             "description": "A span represents a single operation within a trace. Spans can be\nnested to form a trace tree. Often, a trace contains a root span\nthat describes the end-to-end latency, and one or more subspans for\nits sub-operations. A trace can also contain multiple root spans,\nor none at all. Spans do not need to be contiguous&mdash;there may be\ngaps or overlaps between spans in a trace.",
             "id": "Span",
             "properties": {
-                "links": {
-                    "$ref": "Links",
-                    "description": "Links associated with the span. You can have up to 128 links per Span."
-                },
-                "attributes": {
-                    "$ref": "Attributes",
-                    "description": "A set of attributes on the span. You can have up to 32 attributes per\nspan."
-                },
-                "spanId": {
-                    "description": "The [SPAN_ID] portion of the span's resource name.",
-                    "type": "string"
-                },
                 "childSpanCount": {
                     "description": "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans.",
                     "format": "int32",
@@ -329,6 +237,18 @@
                 "timeEvents": {
                     "$ref": "TimeEvents",
                     "description": "A set of time events. You can have up to 32 annotations and 128 message\nevents per span."
+                },
+                "links": {
+                    "$ref": "Links",
+                    "description": "Links associated with the span. You can have up to 128 links per Span."
+                },
+                "attributes": {
+                    "$ref": "Attributes",
+                    "description": "A set of attributes on the span. You can have up to 32 attributes per\nspan."
+                },
+                "spanId": {
+                    "description": "The [SPAN_ID] portion of the span's resource name.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -433,6 +353,10 @@
             "description": "A time-stamped annotation or message event in the Span.",
             "id": "TimeEvent",
             "properties": {
+                "annotation": {
+                    "$ref": "Annotation",
+                    "description": "Text annotation with a set of attributes."
+                },
                 "messageEvent": {
                     "$ref": "MessageEvent",
                     "description": "An event describing a message sent/received between Spans."
@@ -441,10 +365,6 @@
                     "description": "The timestamp indicating the time the event occurred.",
                     "format": "google-datetime",
                     "type": "string"
-                },
-                "annotation": {
-                    "$ref": "Annotation",
-                    "description": "Text annotation with a set of attributes."
                 }
             },
             "type": "object"
@@ -489,20 +409,6 @@
             "description": "Represents a single stack frame in a stack trace.",
             "id": "StackFrame",
             "properties": {
-                "lineNumber": {
-                    "description": "The line number in `file_name` where the function call appears.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "loadModule": {
-                    "$ref": "Module",
-                    "description": "The binary module from where the code was loaded."
-                },
-                "columnNumber": {
-                    "description": "The column number where the function call appears, if available.\nThis is important in JavaScript because of its anonymous functions.",
-                    "format": "int64",
-                    "type": "string"
-                },
                 "fileName": {
                     "$ref": "TruncatableString",
                     "description": "The name of the source file where the function call appears (up to 256\nbytes)."
@@ -518,6 +424,20 @@
                 "functionName": {
                     "$ref": "TruncatableString",
                     "description": "The fully-qualified name that uniquely identifies the function or\nmethod that is active in this frame (up to 1024 bytes)."
+                },
+                "lineNumber": {
+                    "description": "The line number in `file_name` where the function call appears.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "loadModule": {
+                    "$ref": "Module",
+                    "description": "The binary module from where the code was loaded."
+                },
+                "columnNumber": {
+                    "description": "The column number where the function call appears, if available.\nThis is important in JavaScript because of its anonymous functions.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -574,15 +494,95 @@
             "description": "A collection of stack frames, which can be truncated.",
             "id": "StackFrames",
             "properties": {
-                "droppedFramesCount": {
-                    "description": "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "frame": {
                     "description": "Stack frames in this call stack.",
                     "items": {
                         "$ref": "StackFrame"
+                    },
+                    "type": "array"
+                },
+                "droppedFramesCount": {
+                    "description": "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "TimeEvents": {
+            "description": "A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation\non the span, consisting of either user-supplied key:value pairs, or\ndetails of a message sent/received between Spans.",
+            "id": "TimeEvents",
+            "properties": {
+                "droppedAnnotationsCount": {
+                    "description": "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "droppedMessageEventsCount": {
+                    "description": "The number of dropped message events in all the included time events.\nIf the value is 0, then no message events were dropped.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "timeEvent": {
+                    "description": "A collection of `TimeEvent`s.",
+                    "items": {
+                        "$ref": "TimeEvent"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Module": {
+            "description": "Binary module.",
+            "id": "Module",
+            "properties": {
+                "module": {
+                    "$ref": "TruncatableString",
+                    "description": "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."
+                },
+                "buildId": {
+                    "$ref": "TruncatableString",
+                    "description": "A unique identifier for the module, usually a hash of its\ncontents (up to 128 bytes)."
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "description": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
+                },
+                "details": {
+                    "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchWriteSpansRequest": {
+            "description": "The request message for the `BatchWriteSpans` method.",
+            "id": "BatchWriteSpansRequest",
+            "properties": {
+                "spans": {
+                    "description": "A list of new spans. The span names must not match existing\nspans, or the results are undefined.",
+                    "items": {
+                        "$ref": "Span"
                     },
                     "type": "array"
                 }

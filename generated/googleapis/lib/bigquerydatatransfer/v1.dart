@@ -174,15 +174,15 @@ class ProjectsDataSourcesResourceApi {
   /// Must be in the form: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListDataSourcesRequest` list results. For multiple-page
   /// results, `ListDataSourcesResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
-  ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -195,7 +195,7 @@ class ProjectsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -206,11 +206,11 @@ class ProjectsDataSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -241,7 +241,7 @@ class ProjectsLocationsResourceApi {
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -543,7 +543,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// [parent] - The BigQuery project id where the transfer configuration should
   /// be created.
-  /// Must be in the format /projects/{project_id}/locations/{location_id}
+  /// Must be in the format projects/{project_id}/locations/{location_id}
   /// If specified location and location of the destination bigquery dataset
   /// do not match - the request will fail.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
@@ -713,6 +713,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
@@ -722,9 +725,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
-  ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -737,9 +737,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> dataSourceIds,
+      core.String pageToken,
       core.int pageSize,
-      core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -751,14 +751,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -794,6 +794,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [updateMask] - Required list of fields to be updated in this request.
+  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -812,8 +814,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -825,8 +825,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String authorizationCode,
-      core.String updateMask,
+      {core.String updateMask,
+      core.String authorizationCode,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -841,11 +841,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1208,7 +1208,7 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// [parent] - The BigQuery project id where the transfer configuration should
   /// be created.
-  /// Must be in the format /projects/{project_id}/locations/{location_id}
+  /// Must be in the format projects/{project_id}/locations/{location_id}
   /// If specified location and location of the destination bigquery dataset
   /// do not match - the request will fail.
   /// Value must have pattern "^projects/[^/]+$".
@@ -1376,18 +1376,18 @@ class ProjectsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
   /// results, `ListTransfersResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
-  ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1400,9 +1400,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.List<core.String> dataSourceIds,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1414,14 +1414,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1456,8 +1456,6 @@ class ProjectsTransferConfigsResourceApi {
   /// config.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -1476,6 +1474,8 @@ class ProjectsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [updateMask] - Required list of fields to be updated in this request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1487,8 +1487,8 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String updateMask,
-      core.String authorizationCode,
+      {core.String authorizationCode,
+      core.String updateMask,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1503,11 +1503,11 @@ class ProjectsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1955,7 +1955,7 @@ class DataSource {
   /// The minimum interval for scheduler to schedule runs.
   core.String minimumScheduleInterval;
 
-  /// Data source resource name.
+  /// Output only. Data source resource name.
   core.String name;
 
   /// Data source parameters.
@@ -1972,13 +1972,10 @@ class DataSource {
   /// When set to `true`, user can override default schedule.
   core.bool supportsCustomSchedule;
 
-  /// Indicates whether the data source supports multiple transfers
-  /// to different BigQuery targets.
+  /// Deprecated. This field has no effect.
   core.bool supportsMultipleTransfers;
 
-  /// Transfer type. Currently supports only batch transfers,
-  /// which are transfers that use the BigQuery batch APIs (load or
-  /// query) to ingest the data.
+  /// Deprecated. This field has no effect.
   /// Possible string values are:
   /// - "TRANSFER_TYPE_UNSPECIFIED" : Invalid or Unknown transfer type
   /// placeholder.
@@ -1989,7 +1986,7 @@ class DataSource {
   core.String transferType;
 
   /// The number of seconds to wait for an update from the data source
-  /// before BigQuery marks the transfer as failed.
+  /// before the Data Transfer Service marks the transfer as FAILED.
   core.int updateDeadlineSeconds;
 
   DataSource();
@@ -2132,7 +2129,7 @@ class DataSourceParameter {
   /// Parameter display name in the user interface.
   core.String displayName;
 
-  /// When parameter is a record, describes child fields.
+  /// Deprecated. This field has no effect.
   core.List<DataSourceParameter> fields;
 
   /// Cannot be changed after initial creation.
@@ -2147,11 +2144,10 @@ class DataSourceParameter {
   /// Parameter identifier.
   core.String paramId;
 
-  /// If set to true, schema should be taken from the parent with the same
-  /// parameter_id. Only applicable when parameter type is RECORD.
+  /// Deprecated. This field has no effect.
   core.bool recurse;
 
-  /// Can parameter have multiple values.
+  /// Deprecated. This field has no effect.
   core.bool repeated;
 
   /// Is parameter required.
@@ -2165,7 +2161,7 @@ class DataSourceParameter {
   /// Will be serialized to json as string.
   /// - "DOUBLE" : Double precision floating point parameter.
   /// - "BOOLEAN" : Boolean parameter.
-  /// - "RECORD" : Record parameter.
+  /// - "RECORD" : Deprecated. This field has no effect.
   /// - "PLUS_PAGE" : Page ID for a Google+ Page.
   core.String type;
 
@@ -2494,6 +2490,10 @@ class ListTransferRunsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  /// For example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   ///
   ///     {"cloud.googleapis.com/region": "us-east1"}
@@ -2516,6 +2516,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -2534,6 +2537,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2720,7 +2726,6 @@ class Status {
 /// When a new transfer configuration is created, the specified
 /// `destination_dataset_id` is created when needed and shared with the
 /// appropriate data source service account.
-/// Next id: 21
 class TransferConfig {
   /// The number of days to look back to automatically refresh the data.
   /// For example, if `data_refresh_window_days = 10`, then every day
@@ -2936,7 +2941,6 @@ class TransferMessage {
 }
 
 /// Represents a data transfer run.
-/// Next id: 27
 class TransferRun {
   /// Output only. Data source id.
   core.String dataSourceId;

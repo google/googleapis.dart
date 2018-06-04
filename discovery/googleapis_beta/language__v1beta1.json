@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
-                },
                 "https://www.googleapis.com/auth/cloud-language": {
                     "description": "Apply machine learning models to reveal the structure and meaning of text"
+                },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
                 }
             }
         }
@@ -28,6 +28,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -39,13 +49,18 @@
             "location": "query",
             "type": "boolean"
         },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -59,11 +74,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -83,13 +93,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -103,58 +113,12 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
         "documents": {
             "methods": {
-                "annotateText": {
-                    "description": "A convenience method that provides all the features that analyzeSentiment,\nanalyzeEntities, and analyzeSyntax provide in one call.",
-                    "httpMethod": "POST",
-                    "id": "language.documents.annotateText",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/documents:annotateText",
-                    "request": {
-                        "$ref": "AnnotateTextRequest"
-                    },
-                    "response": {
-                        "$ref": "AnnotateTextResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-language",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
-                "analyzeEntities": {
-                    "description": "Finds named entities (currently proper names and common nouns) in the text\nalong with entity types, salience, mentions for each entity, and\nother properties.",
-                    "httpMethod": "POST",
-                    "id": "language.documents.analyzeEntities",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/documents:analyzeEntities",
-                    "request": {
-                        "$ref": "AnalyzeEntitiesRequest"
-                    },
-                    "response": {
-                        "$ref": "AnalyzeEntitiesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-language",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
                 "analyzeSyntax": {
                     "description": "Analyzes the syntax of the text and provides sentence boundaries and\ntokenization along with part of speech tags, dependency trees, and other\nproperties.",
                     "httpMethod": "POST",
@@ -190,119 +154,53 @@
                         "https://www.googleapis.com/auth/cloud-language",
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "annotateText": {
+                    "description": "A convenience method that provides all the features that analyzeSentiment,\nanalyzeEntities, and analyzeSyntax provide in one call.",
+                    "httpMethod": "POST",
+                    "id": "language.documents.annotateText",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/documents:annotateText",
+                    "request": {
+                        "$ref": "AnnotateTextRequest"
+                    },
+                    "response": {
+                        "$ref": "AnnotateTextResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-language",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "analyzeEntities": {
+                    "description": "Finds named entities (currently proper names and common nouns) in the text\nalong with entity types, salience, mentions for each entity, and\nother properties.",
+                    "httpMethod": "POST",
+                    "id": "language.documents.analyzeEntities",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/documents:analyzeEntities",
+                    "request": {
+                        "$ref": "AnalyzeEntitiesRequest"
+                    },
+                    "response": {
+                        "$ref": "AnalyzeEntitiesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-language",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20180212",
+    "revision": "20180528",
     "rootUrl": "https://language.googleapis.com/",
     "schemas": {
         "PartOfSpeech": {
             "description": "Represents part of speech information for a token.",
             "id": "PartOfSpeech",
             "properties": {
-                "form": {
-                    "description": "The grammatical form.",
-                    "enum": [
-                        "FORM_UNKNOWN",
-                        "ADNOMIAL",
-                        "AUXILIARY",
-                        "COMPLEMENTIZER",
-                        "FINAL_ENDING",
-                        "GERUND",
-                        "REALIS",
-                        "IRREALIS",
-                        "SHORT",
-                        "LONG",
-                        "ORDER",
-                        "SPECIFIC"
-                    ],
-                    "enumDescriptions": [
-                        "Form is not applicable in the analyzed language or is not predicted.",
-                        "Adnomial",
-                        "Auxiliary",
-                        "Complementizer",
-                        "Final ending",
-                        "Gerund",
-                        "Realis",
-                        "Irrealis",
-                        "Short form",
-                        "Long form",
-                        "Order form",
-                        "Specific form"
-                    ],
-                    "type": "string"
-                },
-                "number": {
-                    "description": "The grammatical number.",
-                    "enum": [
-                        "NUMBER_UNKNOWN",
-                        "SINGULAR",
-                        "PLURAL",
-                        "DUAL"
-                    ],
-                    "enumDescriptions": [
-                        "Number is not applicable in the analyzed language or is not predicted.",
-                        "Singular",
-                        "Plural",
-                        "Dual"
-                    ],
-                    "type": "string"
-                },
-                "voice": {
-                    "description": "The grammatical voice.",
-                    "enum": [
-                        "VOICE_UNKNOWN",
-                        "ACTIVE",
-                        "CAUSATIVE",
-                        "PASSIVE"
-                    ],
-                    "enumDescriptions": [
-                        "Voice is not applicable in the analyzed language or is not predicted.",
-                        "Active",
-                        "Causative",
-                        "Passive"
-                    ],
-                    "type": "string"
-                },
-                "aspect": {
-                    "description": "The grammatical aspect.",
-                    "enum": [
-                        "ASPECT_UNKNOWN",
-                        "PERFECTIVE",
-                        "IMPERFECTIVE",
-                        "PROGRESSIVE"
-                    ],
-                    "enumDescriptions": [
-                        "Aspect is not applicable in the analyzed language or is not predicted.",
-                        "Perfective",
-                        "Imperfective",
-                        "Progressive"
-                    ],
-                    "type": "string"
-                },
-                "mood": {
-                    "description": "The grammatical mood.",
-                    "enum": [
-                        "MOOD_UNKNOWN",
-                        "CONDITIONAL_MOOD",
-                        "IMPERATIVE",
-                        "INDICATIVE",
-                        "INTERROGATIVE",
-                        "JUSSIVE",
-                        "SUBJUNCTIVE"
-                    ],
-                    "enumDescriptions": [
-                        "Mood is not applicable in the analyzed language or is not predicted.",
-                        "Conditional",
-                        "Imperative",
-                        "Indicative",
-                        "Interrogative",
-                        "Jussive",
-                        "Subjunctive"
-                    ],
-                    "type": "string"
-                },
                 "tag": {
                     "description": "The part of speech tag.",
                     "enum": [
@@ -460,6 +358,108 @@
                         "Non-reciprocal"
                     ],
                     "type": "string"
+                },
+                "form": {
+                    "description": "The grammatical form.",
+                    "enum": [
+                        "FORM_UNKNOWN",
+                        "ADNOMIAL",
+                        "AUXILIARY",
+                        "COMPLEMENTIZER",
+                        "FINAL_ENDING",
+                        "GERUND",
+                        "REALIS",
+                        "IRREALIS",
+                        "SHORT",
+                        "LONG",
+                        "ORDER",
+                        "SPECIFIC"
+                    ],
+                    "enumDescriptions": [
+                        "Form is not applicable in the analyzed language or is not predicted.",
+                        "Adnomial",
+                        "Auxiliary",
+                        "Complementizer",
+                        "Final ending",
+                        "Gerund",
+                        "Realis",
+                        "Irrealis",
+                        "Short form",
+                        "Long form",
+                        "Order form",
+                        "Specific form"
+                    ],
+                    "type": "string"
+                },
+                "number": {
+                    "description": "The grammatical number.",
+                    "enum": [
+                        "NUMBER_UNKNOWN",
+                        "SINGULAR",
+                        "PLURAL",
+                        "DUAL"
+                    ],
+                    "enumDescriptions": [
+                        "Number is not applicable in the analyzed language or is not predicted.",
+                        "Singular",
+                        "Plural",
+                        "Dual"
+                    ],
+                    "type": "string"
+                },
+                "voice": {
+                    "description": "The grammatical voice.",
+                    "enum": [
+                        "VOICE_UNKNOWN",
+                        "ACTIVE",
+                        "CAUSATIVE",
+                        "PASSIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Voice is not applicable in the analyzed language or is not predicted.",
+                        "Active",
+                        "Causative",
+                        "Passive"
+                    ],
+                    "type": "string"
+                },
+                "aspect": {
+                    "description": "The grammatical aspect.",
+                    "enum": [
+                        "ASPECT_UNKNOWN",
+                        "PERFECTIVE",
+                        "IMPERFECTIVE",
+                        "PROGRESSIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Aspect is not applicable in the analyzed language or is not predicted.",
+                        "Perfective",
+                        "Imperfective",
+                        "Progressive"
+                    ],
+                    "type": "string"
+                },
+                "mood": {
+                    "description": "The grammatical mood.",
+                    "enum": [
+                        "MOOD_UNKNOWN",
+                        "CONDITIONAL_MOOD",
+                        "IMPERATIVE",
+                        "INDICATIVE",
+                        "INTERROGATIVE",
+                        "JUSSIVE",
+                        "SUBJUNCTIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Mood is not applicable in the analyzed language or is not predicted.",
+                        "Conditional",
+                        "Imperative",
+                        "Indicative",
+                        "Interrogative",
+                        "Jussive",
+                        "Subjunctive"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -495,10 +495,6 @@
             "description": "The sentiment analysis response message.",
             "id": "AnalyzeSentimentResponse",
             "properties": {
-                "language": {
-                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
-                    "type": "string"
-                },
                 "sentences": {
                     "description": "The sentiment for all the sentences in the document.",
                     "items": {
@@ -509,20 +505,6 @@
                 "documentSentiment": {
                     "$ref": "Sentiment",
                     "description": "The overall sentiment of the input document."
-                }
-            },
-            "type": "object"
-        },
-        "AnalyzeEntitiesResponse": {
-            "description": "The entity analysis response message.",
-            "id": "AnalyzeEntitiesResponse",
-            "properties": {
-                "entities": {
-                    "description": "The recognized entities in the input document.",
-                    "items": {
-                        "$ref": "Entity"
-                    },
-                    "type": "array"
                 },
                 "language": {
                     "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
@@ -531,21 +513,28 @@
             },
             "type": "object"
         },
+        "AnalyzeEntitiesResponse": {
+            "description": "The entity analysis response message.",
+            "id": "AnalyzeEntitiesResponse",
+            "properties": {
+                "language": {
+                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
+                    "type": "string"
+                },
+                "entities": {
+                    "description": "The recognized entities in the input document.",
+                    "items": {
+                        "$ref": "Entity"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Entity": {
             "description": "Represents a phrase in the text that is a known entity, such as\na person, an organization, or location. The API associates information, such\nas salience and mentions, with entities.",
             "id": "Entity",
             "properties": {
-                "mentions": {
-                    "description": "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions.",
-                    "items": {
-                        "$ref": "EntityMention"
-                    },
-                    "type": "array"
-                },
-                "name": {
-                    "description": "The representative name for the entity.",
-                    "type": "string"
-                },
                 "type": {
                     "description": "The entity type.",
                     "enum": [
@@ -581,6 +570,17 @@
                     "description": "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient.",
                     "format": "float",
                     "type": "number"
+                },
+                "mentions": {
+                    "description": "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions.",
+                    "items": {
+                        "$ref": "EntityMention"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The representative name for the entity.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -614,6 +614,10 @@
             "description": "The request message for the text annotation API, which can perform multiple\nanalysis types (sentiment, entities, and syntax) in one call.",
             "id": "AnnotateTextRequest",
             "properties": {
+                "document": {
+                    "$ref": "Document",
+                    "description": "Input document."
+                },
                 "features": {
                     "$ref": "Features",
                     "description": "The enabled features."
@@ -633,10 +637,42 @@
                         "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-32 encoding of the input. Python is an example of a language\nthat uses this encoding natively."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AnnotateTextResponse": {
+            "description": "The text annotations response message.",
+            "id": "AnnotateTextResponse",
+            "properties": {
+                "sentences": {
+                    "description": "Sentences in the input document. Populated if the user enables\nAnnotateTextRequest.Features.extract_syntax.",
+                    "items": {
+                        "$ref": "Sentence"
+                    },
+                    "type": "array"
                 },
-                "document": {
-                    "$ref": "Document",
-                    "description": "Input document."
+                "tokens": {
+                    "description": "Tokens, along with their syntactic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_syntax.",
+                    "items": {
+                        "$ref": "Token"
+                    },
+                    "type": "array"
+                },
+                "entities": {
+                    "description": "Entities, along with their semantic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_entities.",
+                    "items": {
+                        "$ref": "Entity"
+                    },
+                    "type": "array"
+                },
+                "documentSentiment": {
+                    "$ref": "Sentiment",
+                    "description": "The overall sentiment for the document. Populated if the user enables\nAnnotateTextRequest.Features.extract_document_sentiment."
+                },
+                "language": {
+                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -664,42 +700,6 @@
                 "document": {
                     "$ref": "Document",
                     "description": "Input document."
-                }
-            },
-            "type": "object"
-        },
-        "AnnotateTextResponse": {
-            "description": "The text annotations response message.",
-            "id": "AnnotateTextResponse",
-            "properties": {
-                "language": {
-                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
-                    "type": "string"
-                },
-                "sentences": {
-                    "description": "Sentences in the input document. Populated if the user enables\nAnnotateTextRequest.Features.extract_syntax.",
-                    "items": {
-                        "$ref": "Sentence"
-                    },
-                    "type": "array"
-                },
-                "tokens": {
-                    "description": "Tokens, along with their syntactic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_syntax.",
-                    "items": {
-                        "$ref": "Token"
-                    },
-                    "type": "array"
-                },
-                "entities": {
-                    "description": "Entities, along with their semantic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_entities.",
-                    "items": {
-                        "$ref": "Entity"
-                    },
-                    "type": "array"
-                },
-                "documentSentiment": {
-                    "$ref": "Sentiment",
-                    "description": "The overall sentiment for the document. Populated if the user enables\nAnnotateTextRequest.Features.extract_document_sentiment."
                 }
             },
             "type": "object"
@@ -894,6 +894,10 @@
             "description": "Represents the smallest syntactic building block of the text.",
             "id": "Token",
             "properties": {
+                "partOfSpeech": {
+                    "$ref": "PartOfSpeech",
+                    "description": "Parts of speech tag for this token."
+                },
                 "text": {
                     "$ref": "TextSpan",
                     "description": "The token text."
@@ -905,10 +909,6 @@
                 "lemma": {
                     "description": "[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.",
                     "type": "string"
-                },
-                "partOfSpeech": {
-                    "$ref": "PartOfSpeech",
-                    "description": "Parts of speech tag for this token."
                 }
             },
             "type": "object"
@@ -917,14 +917,14 @@
             "description": "Represents an output piece of text.",
             "id": "TextSpan",
             "properties": {
-                "content": {
-                    "description": "The content of the output text.",
-                    "type": "string"
-                },
                 "beginOffset": {
                     "description": "The API calculates the beginning offset of the content in the original\ndocument according to the EncodingType specified in the API request.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "content": {
+                    "description": "The content of the output text.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -956,25 +956,6 @@
             },
             "type": "object"
         },
-        "Features": {
-            "description": "All available features for sentiment, syntax, and semantic analysis.\nSetting each one to true will enable that specific analysis for the input.",
-            "id": "Features",
-            "properties": {
-                "extractSyntax": {
-                    "description": "Extract syntax information.",
-                    "type": "boolean"
-                },
-                "extractDocumentSentiment": {
-                    "description": "Extract document-level sentiment.",
-                    "type": "boolean"
-                },
-                "extractEntities": {
-                    "description": "Extract entities.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
         "EntityMention": {
             "description": "Represents a mention for an entity in the text. Currently, proper noun\nmentions are supported.",
             "id": "EntityMention",
@@ -1000,10 +981,33 @@
             },
             "type": "object"
         },
+        "Features": {
+            "description": "All available features for sentiment, syntax, and semantic analysis.\nSetting each one to true will enable that specific analysis for the input.",
+            "id": "Features",
+            "properties": {
+                "extractEntities": {
+                    "description": "Extract entities.",
+                    "type": "boolean"
+                },
+                "extractSyntax": {
+                    "description": "Extract syntax information.",
+                    "type": "boolean"
+                },
+                "extractDocumentSentiment": {
+                    "description": "Extract document-level sentiment.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Document": {
             "description": "################################################################ #\n\nRepresents the input to API methods.",
             "id": "Document",
             "properties": {
+                "language": {
+                    "description": "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned.",
+                    "type": "string"
+                },
                 "type": {
                     "description": "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error.",
                     "enum": [
@@ -1019,15 +1023,11 @@
                     "type": "string"
                 },
                 "content": {
-                    "description": "The content of the input in string format.",
+                    "description": "The content of the input in string format.\nCloud audit logging exempt since it is based on user data.",
                     "type": "string"
                 },
                 "gcsContentUri": {
                     "description": "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported.",
-                    "type": "string"
-                },
-                "language": {
-                    "description": "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned.",
                     "type": "string"
                 }
             },
@@ -1052,6 +1052,10 @@
             "description": "The entity analysis request message.",
             "id": "AnalyzeEntitiesRequest",
             "properties": {
+                "document": {
+                    "$ref": "Document",
+                    "description": "Input document."
+                },
                 "encodingType": {
                     "description": "The encoding type used by the API to calculate offsets.",
                     "enum": [
@@ -1067,10 +1071,6 @@
                         "Encoding-dependent information (such as `begin_offset`) is calculated based\non the UTF-32 encoding of the input. Python is an example of a language\nthat uses this encoding natively."
                     ],
                     "type": "string"
-                },
-                "document": {
-                    "$ref": "Document",
-                    "description": "Input document."
                 }
             },
             "type": "object"
@@ -1099,6 +1099,6 @@
         }
     },
     "servicePath": "",
-    "title": "Google Cloud Natural Language API",
+    "title": "Cloud Natural Language API",
     "version": "v1beta1"
 }

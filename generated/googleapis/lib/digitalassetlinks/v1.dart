@@ -309,22 +309,6 @@ class StatementsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [relation] - Use only associations that match the specified relation.
-  ///
-  /// See the [`Statement`](#Statement) message for a detailed definition of
-  /// relation strings.
-  ///
-  /// For a query to match a statement, one of the following must be true:
-  ///
-  /// *    both the query's and the statement's relation strings match exactly,
-  ///      or
-  /// *    the query's relation string is empty or missing.
-  ///
-  /// Example: A query with relation
-  /// `delegate_permission/common.handle_all_urls`
-  /// matches an asset link with relation
-  /// `delegate_permission/common.handle_all_urls`.
-  ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname
   /// and port parts.  The format is
@@ -390,6 +374,22 @@ class StatementsResourceApi {
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
   ///
+  /// [relation] - Use only associations that match the specified relation.
+  ///
+  /// See the [`Statement`](#Statement) message for a detailed definition of
+  /// relation strings.
+  ///
+  /// For a query to match a statement, one of the following must be true:
+  ///
+  /// *    both the query's and the statement's relation strings match exactly,
+  ///      or
+  /// *    the query's relation string is empty or missing.
+  ///
+  /// Example: A query with relation
+  /// `delegate_permission/common.handle_all_urls`
+  /// matches an asset link with relation
+  /// `delegate_permission/common.handle_all_urls`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -401,10 +401,10 @@ class StatementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListResponse> list(
-      {core.String relation,
-      core.String source_web_site,
+      {core.String source_web_site,
       core.String source_androidApp_packageName,
       core.String source_androidApp_certificate_sha256Fingerprint,
+      core.String relation,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -413,9 +413,6 @@ class StatementsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (relation != null) {
-      _queryParams["relation"] = [relation];
-    }
     if (source_web_site != null) {
       _queryParams["source.web.site"] = [source_web_site];
     }
@@ -428,6 +425,9 @@ class StatementsResourceApi {
       _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
         source_androidApp_certificate_sha256Fingerprint
       ];
+    }
+    if (relation != null) {
+      _queryParams["relation"] = [relation];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

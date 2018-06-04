@@ -1310,7 +1310,7 @@ class AppsLocationsResourceApi {
 
   AppsLocationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -2006,14 +2006,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2027,9 +2027,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.String view,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2044,14 +2044,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2074,38 +2074,37 @@ class AppsServicesVersionsResourceApi {
 
   /// Updates the specified Version resource. You can specify the following
   /// fields depending on the App Engine environment and type of scaling that
-  /// the version resource uses:
-  /// serving_status
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status):
-  /// For Version resources that use basic scaling, manual scaling, or run in
-  /// the App Engine flexible environment.
+  /// the version resource uses:Standard environment
   /// instance_class
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class):
-  /// For Version resources that run in the App Engine standard environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic
+  /// scaling in the standard environment:
   /// automatic_scaling.min_idle_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine standard environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.max_idle_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine standard environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automaticScaling.standard_scheduler_settings.max_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.min_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic
+  /// scaling or manual scaling in the standard environment:
+  /// serving_status
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)Flexible
+  /// environment
+  /// serving_status
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic
+  /// scaling in the flexible environment:
   /// automatic_scaling.min_total_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.max_total_instances
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.cool_down_period_sec
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
   /// automatic_scaling.cpu_utilization.target_utilization
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-  /// For Version resources that use automatic scaling and run in the App
-  /// Engine flexible environment.
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
   ///
   /// [request] - The metadata request object.
   ///
@@ -2630,7 +2629,7 @@ class Application {
 
   /// Location from which this application runs. Application instances run out
   /// of the data centers in the specified location, which is also where all of
-  /// the application's end user content is stored.Defaults to us-central1.View
+  /// the application's end user content is stored.Defaults to us-central.View
   /// the list of supported locations
   /// (https://cloud.google.com/appengine/docs/locations).
   core.String locationId;
@@ -2771,6 +2770,12 @@ class AuthorizedCertificate {
   /// AuthorizedCertificate resource creation. Example: 12345.@OutputOnly
   core.String id;
 
+  /// Only applicable if this certificate is managed by App Engine. Managed
+  /// certificates are tied to the lifecycle of a DomainMapping and cannot be
+  /// updated or deleted via the AuthorizedCertificates API. If this certificate
+  /// is manually administered by the user, this field will be empty.@OutputOnly
+  ManagedCertificate managedCertificate;
+
   /// Full path to the AuthorizedCertificate resource in the API. Example:
   /// apps/myapp/authorizedCertificates/12345.@OutputOnly
   core.String name;
@@ -2806,6 +2811,10 @@ class AuthorizedCertificate {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("managedCertificate")) {
+      managedCertificate =
+          new ManagedCertificate.fromJson(_json["managedCertificate"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2835,6 +2844,9 @@ class AuthorizedCertificate {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (managedCertificate != null) {
+      _json["managedCertificate"] = (managedCertificate).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3155,6 +3167,44 @@ class CertificateRawData {
   }
 }
 
+/// Options for the build operations performed as a part of the version
+/// deployment. Only applicable for App Engine flexible environment when
+/// creating a version using source code directly.
+class CloudBuildOptions {
+  /// Path to the yaml file used in deployment, used to determine runtime
+  /// configuration details.Required for flexible environment builds.See
+  /// https://cloud.google.com/appengine/docs/standard/python/config/appref for
+  /// more details.
+  core.String appYamlPath;
+
+  /// The Cloud Build timeout used as part of any dependent builds performed by
+  /// version creation. Defaults to 10 minutes.
+  core.String cloudBuildTimeout;
+
+  CloudBuildOptions();
+
+  CloudBuildOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("appYamlPath")) {
+      appYamlPath = _json["appYamlPath"];
+    }
+    if (_json.containsKey("cloudBuildTimeout")) {
+      cloudBuildTimeout = _json["cloudBuildTimeout"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appYamlPath != null) {
+      _json["appYamlPath"] = appYamlPath;
+    }
+    if (cloudBuildTimeout != null) {
+      _json["cloudBuildTimeout"] = cloudBuildTimeout;
+    }
+    return _json;
+  }
+}
+
 /// Docker image that is used to create a container and start a VM instance for
 /// the version that you deploy. Only applicable for instances running in the
 /// App Engine flexible environment.
@@ -3210,6 +3260,31 @@ class CpuUtilization {
     }
     if (targetUtilization != null) {
       _json["targetUtilization"] = targetUtilization;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for the given google.longrunning.Operation during a
+/// google.appengine.v1.CreateVersionRequest.
+class CreateVersionMetadataV1 {
+  /// The Cloud Build ID if one was created as part of the version create.
+  /// @OutputOnly
+  core.String cloudBuildId;
+
+  CreateVersionMetadataV1();
+
+  CreateVersionMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudBuildId")) {
+      cloudBuildId = _json["cloudBuildId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudBuildId != null) {
+      _json["cloudBuildId"] = cloudBuildId;
     }
     return _json;
   }
@@ -3295,6 +3370,13 @@ class DebugInstanceRequest {
 
 /// Code and application artifacts used to deploy a version to App Engine.
 class Deployment {
+  /// Options for any Google Cloud Container Builder builds created as a part of
+  /// this deployment.Note that this is orthogonal to the build parameter, where
+  /// the deployment depends on an already existing cloud build. These options
+  /// will only be used if a new build is created, such as when deploying to the
+  /// App Engine flexible environment using files or zip.
+  CloudBuildOptions cloudBuildOptions;
+
   /// The Docker image for the container that runs the version. Only applicable
   /// for instances running in the App Engine flexible environment.
   ContainerInfo container;
@@ -3310,6 +3392,10 @@ class Deployment {
   Deployment();
 
   Deployment.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudBuildOptions")) {
+      cloudBuildOptions =
+          new CloudBuildOptions.fromJson(_json["cloudBuildOptions"]);
+    }
     if (_json.containsKey("container")) {
       container = new ContainerInfo.fromJson(_json["container"]);
     }
@@ -3326,6 +3412,9 @@ class Deployment {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cloudBuildOptions != null) {
+      _json["cloudBuildOptions"] = (cloudBuildOptions).toJson();
+    }
     if (container != null) {
       _json["container"] = (container).toJson();
     }
@@ -3470,12 +3559,20 @@ class Empty {
 
 /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
 /// Endpoints API Service provides tooling for serving Open API and gRPC
-/// endpoints via an NGINX proxy.The fields here refer to the name and
-/// configuration id of a "service" resource in the Service Management API
+/// endpoints via an NGINX proxy. Only valid for App Engine Flexible environment
+/// deployments.The fields here refer to the name and configuration ID of a
+/// "service" resource in the Service Management API
 /// (https://cloud.google.com/service-management/overview).
 class EndpointsApiService {
-  /// Endpoints service configuration id as specified by the Service Management
-  /// API. For example "2016-09-19r1"
+  /// Endpoints service configuration ID as specified by the Service Management
+  /// API. For example "2016-09-19r1".By default, the rollout strategy for
+  /// Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up
+  /// with a particular configuration ID. When a new configuration is rolled
+  /// out, Endpoints must be given the new configuration ID. The config_id field
+  /// is used to give the configuration ID and is required in this
+  /// case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED.
+  /// When using this, Endpoints fetches the latest configuration and does not
+  /// need the configuration ID. In this case, config_id must be omitted.
   core.String configId;
 
   /// Endpoints service name which is the name of the "service" resource in the
@@ -4429,6 +4526,10 @@ class LivenessCheck {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
@@ -4450,6 +4551,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -4468,6 +4572,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -4513,6 +4620,63 @@ class LocationMetadata {
     }
     if (standardEnvironmentAvailable != null) {
       _json["standardEnvironmentAvailable"] = standardEnvironmentAvailable;
+    }
+    return _json;
+  }
+}
+
+/// A certificate managed by App Engine.
+class ManagedCertificate {
+  /// Time at which the certificate was last renewed. The renewal process is
+  /// fully managed. Certificate renewal will automatically occur before the
+  /// certificate expires. Renewal errors can be tracked via
+  /// ManagementStatus.@OutputOnly
+  core.String lastRenewalTime;
+
+  /// Status of certificate management. Refers to the most recent certificate
+  /// acquisition or renewal attempt.@OutputOnly
+  /// Possible string values are:
+  /// - "MANAGEMENT_STATUS_UNSPECIFIED"
+  /// - "OK" : Certificate was successfully obtained and inserted into the
+  /// serving system.
+  /// - "PENDING" : Certificate is under active attempts to acquire or renew.
+  /// - "FAILED_RETRYING_NOT_VISIBLE" : Most recent renewal failed due to an
+  /// invalid DNS setup and will be retried. Renewal attempts will continue to
+  /// fail until the certificate domain's DNS configuration is fixed. The last
+  /// successfully provisioned certificate may still be serving.
+  /// - "FAILED_PERMANENT" : All renewal attempts have been exhausted, likely
+  /// due to an invalid DNS setup.
+  /// - "FAILED_RETRYING_CAA_FORBIDDEN" : Most recent renewal failed due to an
+  /// explicit CAA record that does not include the in-use CA, Let's Encrypt.
+  /// Renewals will continue to fail until the CAA is reconfigured. The last
+  /// successfully provisioned certificate may still be serving.
+  /// - "FAILED_RETRYING_CAA_CHECKING" : Most recent renewal failed due to a CAA
+  /// retrieval failure. This means that the domain's DNS provider does not
+  /// properly handle CAA records, failing requests for CAA records when no CAA
+  /// records are defined. Renewals will continue to fail until the DNS provider
+  /// is changed or a CAA record is added for the given domain. The last
+  /// successfully provisioned certificate may still be serving.
+  core.String status;
+
+  ManagedCertificate();
+
+  ManagedCertificate.fromJson(core.Map _json) {
+    if (_json.containsKey("lastRenewalTime")) {
+      lastRenewalTime = _json["lastRenewalTime"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lastRenewalTime != null) {
+      _json["lastRenewalTime"] = lastRenewalTime;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -4820,6 +4984,8 @@ class OperationMetadata {
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1 {
+  CreateVersionMetadataV1 createVersionMetadata;
+
   /// Time that this operation completed.@OutputOnly
   core.String endTime;
 
@@ -4847,6 +5013,10 @@ class OperationMetadataV1 {
   OperationMetadataV1();
 
   OperationMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("createVersionMetadata")) {
+      createVersionMetadata =
+          new CreateVersionMetadataV1.fromJson(_json["createVersionMetadata"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -4873,6 +5043,9 @@ class OperationMetadataV1 {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createVersionMetadata != null) {
+      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -5439,14 +5612,46 @@ class Service {
 /// SSL configuration for a DomainMapping resource.
 class SslSettings {
   /// ID of the AuthorizedCertificate resource configuring SSL for the
-  /// application. Clearing this field will remove SSL support. Example: 12345.
+  /// application. Clearing this field will remove SSL support.By default, a
+  /// managed certificate is automatically created for every domain mapping. To
+  /// omit SSL support or to configure SSL manually, specify
+  /// SslManagementType.MANUAL on a CREATE or UPDATE request. You must be
+  /// authorized to administer the AuthorizedCertificate resource to manually
+  /// map it to a DomainMapping resource. Example: 12345.
   core.String certificateId;
+
+  /// ID of the managed AuthorizedCertificate resource currently being
+  /// provisioned, if applicable. Until the new managed certificate has been
+  /// successfully provisioned, the previous SSL state will be preserved. Once
+  /// the provisioning process completes, the certificate_id field will reflect
+  /// the new managed certificate and this field will be left empty. To remove
+  /// SSL support while there is still a pending managed certificate, clear the
+  /// certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+  core.String pendingManagedCertificateId;
+
+  /// SSL management type for this domain. If AUTOMATIC, a managed certificate
+  /// is automatically provisioned. If MANUAL, certificate_id must be manually
+  /// specified in order to configure SSL for this domain.
+  /// Possible string values are:
+  /// - "SSL_MANAGEMENT_TYPE_UNSPECIFIED" : Defaults to AUTOMATIC.
+  /// - "AUTOMATIC" : SSL support for this domain is configured automatically.
+  /// The mapped SSL certificate will be automatically renewed.
+  /// - "MANUAL" : SSL support for this domain is configured manually by the
+  /// user. Either the domain has no SSL support or a user-obtained SSL
+  /// certificate has been explictly mapped to this domain.
+  core.String sslManagementType;
 
   SslSettings();
 
   SslSettings.fromJson(core.Map _json) {
     if (_json.containsKey("certificateId")) {
       certificateId = _json["certificateId"];
+    }
+    if (_json.containsKey("pendingManagedCertificateId")) {
+      pendingManagedCertificateId = _json["pendingManagedCertificateId"];
+    }
+    if (_json.containsKey("sslManagementType")) {
+      sslManagementType = _json["sslManagementType"];
     }
   }
 
@@ -5455,6 +5660,12 @@ class SslSettings {
         new core.Map<core.String, core.Object>();
     if (certificateId != null) {
       _json["certificateId"] = certificateId;
+    }
+    if (pendingManagedCertificateId != null) {
+      _json["pendingManagedCertificateId"] = pendingManagedCertificateId;
+    }
+    if (sslManagementType != null) {
+      _json["sslManagementType"] = sslManagementType;
     }
     return _json;
   }

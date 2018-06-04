@@ -126,15 +126,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
-  /// [location] - The location that contains this job.
-  ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
   /// to request additional results in a long list.
@@ -151,6 +142,15 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
+  /// [location] - The location that contains this job.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -162,11 +162,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String filter,
-      core.String location,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
+      core.String location,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -178,12 +178,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -192,6 +186,12 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -359,10 +359,10 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job to get messages for.
   ///
-  /// [location] - The location which contains the job specified by job_id.
-  ///
   /// [startTime] - Return only metric data that has changed since this time.
   /// Default is to return all information about all metrics for the job.
+  ///
+  /// [location] - The location which contains the job specified by job_id.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -375,7 +375,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId,
-      {core.String location, core.String startTime, core.String $fields}) {
+      {core.String startTime, core.String location, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -389,11 +389,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1027,14 +1027,14 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1048,7 +1048,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(
       Job request, core.String projectId, core.String location,
-      {core.String view, core.String replaceJobId, core.String $fields}) {
+      {core.String replaceJobId, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1065,11 +1065,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2122,16 +2122,16 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed.
-  /// Defaults to false.
-  ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [location] - The location to which to direct the request.
+  ///
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed.
+  /// Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2145,9 +2145,9 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.bool validateOnly,
-      core.String gcsPath,
+      {core.String gcsPath,
       core.String location,
+      core.bool validateOnly,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2162,14 +2162,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
     }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2388,6 +2388,10 @@ class AutoscalingEvent {
   /// num_workers value.
   core.String time;
 
+  /// A short and friendly name for the worker pool this event refers to,
+  /// populated from the value of PoolStageRelation::user_pool_name.
+  core.String workerPool;
+
   AutoscalingEvent();
 
   AutoscalingEvent.fromJson(core.Map _json) {
@@ -2405,6 +2409,9 @@ class AutoscalingEvent {
     }
     if (_json.containsKey("time")) {
       time = _json["time"];
+    }
+    if (_json.containsKey("workerPool")) {
+      workerPool = _json["workerPool"];
     }
   }
 
@@ -2425,6 +2432,9 @@ class AutoscalingEvent {
     }
     if (time != null) {
       _json["time"] = time;
+    }
+    if (workerPool != null) {
+      _json["workerPool"] = workerPool;
     }
     return _json;
   }
@@ -2728,6 +2738,7 @@ class CounterMetadata {
   /// - "SET" : Aggregated value is a set of unique contributed values.
   /// - "DISTRIBUTION" : Aggregated value captures statistics about a
   /// distribution.
+  /// - "LATEST_VALUE" : Aggregated value tracks the latest value of a variable.
   core.String kind;
 
   /// A string referring to the unit type.
@@ -2962,6 +2973,9 @@ class CounterUpdate {
   /// Integer value for Sum, Max, Min.
   SplitInt64 integer;
 
+  /// Gauge data
+  IntegerGauge integerGauge;
+
   /// List of integers, for Set.
   IntegerList integerList;
 
@@ -3014,6 +3028,9 @@ class CounterUpdate {
     if (_json.containsKey("integer")) {
       integer = new SplitInt64.fromJson(_json["integer"]);
     }
+    if (_json.containsKey("integerGauge")) {
+      integerGauge = new IntegerGauge.fromJson(_json["integerGauge"]);
+    }
     if (_json.containsKey("integerList")) {
       integerList = new IntegerList.fromJson(_json["integerList"]);
     }
@@ -3061,6 +3078,9 @@ class CounterUpdate {
     }
     if (integer != null) {
       _json["integer"] = (integer).toJson();
+    }
+    if (integerGauge != null) {
+      _json["integerGauge"] = (integerGauge).toJson();
     }
     if (integerList != null) {
       _json["integerList"] = (integerList).toJson();
@@ -4254,6 +4274,38 @@ class InstructionOutput {
   }
 }
 
+/// A metric value representing temporal values of a variable.
+class IntegerGauge {
+  /// The time at which this value was measured. Measured as msecs from epoch.
+  core.String timestamp;
+
+  /// The value of the variable represented by this gauge.
+  SplitInt64 value;
+
+  IntegerGauge();
+
+  IntegerGauge.fromJson(core.Map _json) {
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("value")) {
+      value = new SplitInt64.fromJson(_json["value"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    if (value != null) {
+      _json["value"] = (value).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A metric value representing a list of integers.
 class IntegerList {
   /// Elements of the list.
@@ -5384,6 +5436,14 @@ class MetricUpdate {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object distribution;
 
+  /// A struct value describing properties of a Gauge.
+  /// Metrics of gauge type show the value of a metric across time, and is
+  /// aggregated based on the newest value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object gauge;
+
   /// Worker-computed aggregate value for internal use by the Dataflow
   /// service.
   ///
@@ -5450,6 +5510,9 @@ class MetricUpdate {
     if (_json.containsKey("distribution")) {
       distribution = _json["distribution"];
     }
+    if (_json.containsKey("gauge")) {
+      gauge = _json["gauge"];
+    }
     if (_json.containsKey("internal")) {
       internal = _json["internal"];
     }
@@ -5484,6 +5547,9 @@ class MetricUpdate {
     }
     if (distribution != null) {
       _json["distribution"] = distribution;
+    }
+    if (gauge != null) {
+      _json["gauge"] = gauge;
     }
     if (internal != null) {
       _json["internal"] = internal;
@@ -5579,6 +5645,7 @@ class NameAndKind {
   /// - "SET" : Aggregated value is a set of unique contributed values.
   /// - "DISTRIBUTION" : Aggregated value captures statistics about a
   /// distribution.
+  /// - "LATEST_VALUE" : Aggregated value tracks the latest value of a variable.
   core.String kind;
 
   /// Name of the counter.
@@ -6420,8 +6487,16 @@ class RuntimeEnvironment {
   /// available to your pipeline during execution, from 1 to 1000.
   core.int maxWorkers;
 
+  /// Network to which VMs will be assigned.  If empty or unspecified,
+  /// the service will use the network "default".
+  core.String network;
+
   /// The email address of the service account to run the job as.
   core.String serviceAccountEmail;
+
+  /// Subnetwork to which VMs will be assigned, if desired.  Expected to be of
+  /// the form "regions/REGION/subnetworks/SUBNETWORK".
+  core.String subnetwork;
 
   /// The Cloud Storage path to use for temporary files.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -6448,8 +6523,14 @@ class RuntimeEnvironment {
     if (_json.containsKey("maxWorkers")) {
       maxWorkers = _json["maxWorkers"];
     }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
     if (_json.containsKey("serviceAccountEmail")) {
       serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
     }
     if (_json.containsKey("tempLocation")) {
       tempLocation = _json["tempLocation"];
@@ -6474,8 +6555,14 @@ class RuntimeEnvironment {
     if (maxWorkers != null) {
       _json["maxWorkers"] = maxWorkers;
     }
+    if (network != null) {
+      _json["network"] = network;
+    }
     if (serviceAccountEmail != null) {
       _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
     }
     if (tempLocation != null) {
       _json["tempLocation"] = tempLocation;
@@ -9081,9 +9168,14 @@ class WorkerHealthReportResponse {
 /// is up to the consumer to interpret.
 /// The timestamp of the event is in the enclosing WorkerMessage proto.
 class WorkerLifecycleEvent {
+  /// The start time of this container. All events will report this so that
+  /// events can be grouped together across container/VM restarts.
+  core.String containerStartTime;
+
   /// The event being reported.
   /// Possible string values are:
   /// - "UNKNOWN_EVENT" : Invalid event.
+  /// - "OS_START" : The time the VM started.
   /// - "CONTAINER_START" : Our container code starts running. Multiple
   /// containers could be
   /// distinguished with WorkerMessage.labels if desired.
@@ -9103,6 +9195,9 @@ class WorkerLifecycleEvent {
   WorkerLifecycleEvent();
 
   WorkerLifecycleEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("containerStartTime")) {
+      containerStartTime = _json["containerStartTime"];
+    }
     if (_json.containsKey("event")) {
       event = _json["event"];
     }
@@ -9115,6 +9210,9 @@ class WorkerLifecycleEvent {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (containerStartTime != null) {
+      _json["containerStartTime"] = containerStartTime;
+    }
     if (event != null) {
       _json["event"] = event;
     }

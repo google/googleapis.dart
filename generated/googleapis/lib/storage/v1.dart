@@ -297,8 +297,7 @@ class BucketAccessControlsResourceApi {
     return _response.then((data) => new BucketAccessControls.fromJson(data));
   }
 
-  /// Updates an ACL entry on the specified bucket. This method supports patch
-  /// semantics.
+  /// Patches an ACL entry on the specified bucket.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1508,8 +1507,7 @@ class DefaultObjectAccessControlsResourceApi {
     return _response.then((data) => new ObjectAccessControls.fromJson(data));
   }
 
-  /// Updates a default object ACL entry on the specified bucket. This method
-  /// supports patch semantics.
+  /// Patches a default object ACL entry on the specified bucket.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2159,8 +2157,7 @@ class ObjectAccessControlsResourceApi {
     return _response.then((data) => new ObjectAccessControls.fromJson(data));
   }
 
-  /// Updates an ACL entry on the specified object. This method supports patch
-  /// semantics.
+  /// Patches an ACL entry on the specified object.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3089,6 +3086,10 @@ class ObjectsResourceApi {
   /// their name, truncated after the delimiter, returned in prefixes. Duplicate
   /// prefixes are omitted.
   ///
+  /// [includeTrailingDelimiter] - If true, objects that end in exactly one
+  /// instance of delimiter will have their metadata included in items in
+  /// addition to prefixes.
+  ///
   /// [maxResults] - Maximum number of items plus prefixes to return in a single
   /// page of responses. As duplicate prefixes are omitted, fewer total results
   /// may be returned than requested. The service will use this parameter or
@@ -3122,6 +3123,7 @@ class ObjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Objects> list(core.String bucket,
       {core.String delimiter,
+      core.bool includeTrailingDelimiter,
       core.int maxResults,
       core.String pageToken,
       core.String prefix,
@@ -3141,6 +3143,11 @@ class ObjectsResourceApi {
     }
     if (delimiter != null) {
       _queryParams["delimiter"] = [delimiter];
+    }
+    if (includeTrailingDelimiter != null) {
+      _queryParams["includeTrailingDelimiter"] = [
+        "${includeTrailingDelimiter}"
+      ];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -3820,6 +3827,10 @@ class ObjectsResourceApi {
   /// their name, truncated after the delimiter, returned in prefixes. Duplicate
   /// prefixes are omitted.
   ///
+  /// [includeTrailingDelimiter] - If true, objects that end in exactly one
+  /// instance of delimiter will have their metadata included in items in
+  /// addition to prefixes.
+  ///
   /// [maxResults] - Maximum number of items plus prefixes to return in a single
   /// page of responses. As duplicate prefixes are omitted, fewer total results
   /// may be returned than requested. The service will use this parameter or
@@ -3853,6 +3864,7 @@ class ObjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Channel> watchAll(Channel request, core.String bucket,
       {core.String delimiter,
+      core.bool includeTrailingDelimiter,
       core.int maxResults,
       core.String pageToken,
       core.String prefix,
@@ -3875,6 +3887,11 @@ class ObjectsResourceApi {
     }
     if (delimiter != null) {
       _queryParams["delimiter"] = [delimiter];
+    }
+    if (includeTrailingDelimiter != null) {
+      _queryParams["includeTrailingDelimiter"] = [
+        "${includeTrailingDelimiter}"
+      ];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -4055,12 +4072,10 @@ class BucketCors {
   }
 }
 
-/// Encryption configuration used by default for newly inserted objects, when no
-/// encryption config is specified.
+/// Encryption configuration for a bucket.
 class BucketEncryption {
   /// A Cloud KMS key that will be used to encrypt objects inserted into this
-  /// bucket, if no encryption method is specified. Limited availability; usable
-  /// only by enabled projects.
+  /// bucket, if no encryption method is specified.
   core.String defaultKmsKeyName;
 
   BucketEncryption();
@@ -4308,23 +4323,24 @@ class BucketOwner {
   }
 }
 
-/// Defines the retention policy for a bucket. The Retention policy enforces a
-/// minimum retention time for all objects contained in the bucket, based on
-/// their creation time. Any attempt to overwrite or delete objects younger than
-/// the retention period will result in a PERMISSION_DENIED error. An unlocked
-/// retention policy can be modified or removed from the bucket via the
-/// UpdateBucketMetadata RPC. A locked retention policy cannot be removed or
-/// shortened in duration for the lifetime of the bucket. Attempting to remove
-/// or decrease period of a locked retention policy will result in a
+/// The bucket's retention policy. The retention policy enforces a minimum
+/// retention time for all objects contained in the bucket, based on their
+/// creation time. Any attempt to overwrite or delete objects younger than the
+/// retention period will result in a PERMISSION_DENIED error. An unlocked
+/// retention policy can be modified or removed from the bucket via a
+/// storage.buckets.update operation. A locked retention policy cannot be
+/// removed or shortened in duration for the lifetime of the bucket. Attempting
+/// to remove or decrease period of a locked retention policy will result in a
 /// PERMISSION_DENIED error.
 class BucketRetentionPolicy {
-  /// The time from which policy was enforced and effective. RFC 3339 format.
+  /// Server-determined value that indicates the time from which policy was
+  /// enforced and effective. This value is in RFC 3339 format.
   core.DateTime effectiveTime;
 
   /// Once locked, an object retention policy cannot be modified.
   core.bool isLocked;
 
-  /// Specifies the duration that objects need to be retained. Retention
+  /// The duration in seconds that objects need to be retained. Retention
   /// duration must be greater than zero and less than 100 years. Note that
   /// enforcement of retention periods less than a day is not guaranteed. Such
   /// periods should only be used for testing purposes.
@@ -4433,24 +4449,25 @@ class Bucket {
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
   core.List<BucketCors> cors;
 
-  /// Defines the default value for Event-Based hold on newly created objects in
-  /// this bucket. Event-Based hold is a way to retain objects indefinitely
-  /// until an event occurs, signified by the hold's release. After being
-  /// released, such objects will be subject to bucket-level retention (if any).
-  /// One sample use case of this flag is for banks to hold loan documents for
-  /// at least 3 years after loan is paid in full. Here bucket-level retention
-  /// is 3 years and the event is loan being paid in full. In this example these
-  /// objects will be held intact for any number of years until the event has
-  /// occurred (hold is released) and then 3 more years after that. Objects
-  /// under Event-Based hold cannot be deleted, overwritten or archived until
-  /// the hold is removed.
+  /// The default value for event-based hold on newly created objects in this
+  /// bucket. Event-based hold is a way to retain objects indefinitely until an
+  /// event occurs, signified by the hold's release. After being released, such
+  /// objects will be subject to bucket-level retention (if any). One sample use
+  /// case of this flag is for banks to hold loan documents for at least 3 years
+  /// after loan is paid in full. Here, bucket-level retention is 3 years and
+  /// the event is loan being paid in full. In this example, these objects will
+  /// be held intact for any number of years until the event has occurred
+  /// (event-based hold on the object is released) and then 3 more years after
+  /// that. That means retention duration of the objects begins from the moment
+  /// event-based hold transitioned from true to false. Objects under
+  /// event-based hold cannot be deleted, overwritten or archived until the hold
+  /// is removed.
   core.bool defaultEventBasedHold;
 
   /// Default access controls to apply to new objects when no ACL is provided.
   core.List<ObjectAccessControl> defaultObjectAcl;
 
-  /// Encryption configuration used by default for newly inserted objects, when
-  /// no encryption config is specified.
+  /// Encryption configuration for a bucket.
   BucketEncryption encryption;
 
   /// HTTP 1.1 Entity tag for the bucket.
@@ -4491,15 +4508,15 @@ class Bucket {
   /// The project number of the project the bucket belongs to.
   core.String projectNumber;
 
-  /// Defines the retention policy for a bucket. The Retention policy enforces a
-  /// minimum retention time for all objects contained in the bucket, based on
-  /// their creation time. Any attempt to overwrite or delete objects younger
-  /// than the retention period will result in a PERMISSION_DENIED error. An
-  /// unlocked retention policy can be modified or removed from the bucket via
-  /// the UpdateBucketMetadata RPC. A locked retention policy cannot be removed
-  /// or shortened in duration for the lifetime of the bucket. Attempting to
-  /// remove or decrease period of a locked retention policy will result in a
-  /// PERMISSION_DENIED error.
+  /// The bucket's retention policy. The retention policy enforces a minimum
+  /// retention time for all objects contained in the bucket, based on their
+  /// creation time. Any attempt to overwrite or delete objects younger than the
+  /// retention period will result in a PERMISSION_DENIED error. An unlocked
+  /// retention policy can be modified or removed from the bucket via a
+  /// storage.buckets.update operation. A locked retention policy cannot be
+  /// removed or shortened in duration for the lifetime of the bucket.
+  /// Attempting to remove or decrease period of a locked retention policy will
+  /// result in a PERMISSION_DENIED error.
   BucketRetentionPolicy retentionPolicy;
 
   /// The URI of this bucket.
@@ -5399,15 +5416,17 @@ class Object {
   /// HTTP 1.1 Entity tag for the object.
   core.String etag;
 
-  /// Defines the Event-Based hold for an object. Event-Based hold is a way to
-  /// retain objects indefinitely until an event occurs, signified by the hold's
-  /// release. After being released, such objects will be subject to
-  /// bucket-level retention (if any). One sample use case of this flag is for
-  /// banks to hold loan documents for at least 3 years after loan is paid in
-  /// full. Here bucket-level retention is 3 years and the event is loan being
-  /// paid in full. In this example these objects will be held intact for any
-  /// number of years until the event has occurred (hold is released) and then 3
-  /// more years after that.
+  /// Whether an object is under event-based hold. Event-based hold is a way to
+  /// retain objects until an event occurs, which is signified by the hold's
+  /// release (i.e. this value is set to false). After being released (set to
+  /// false), such objects will be subject to bucket-level retention (if any).
+  /// One sample use case of this flag is for banks to hold loan documents for
+  /// at least 3 years after loan is paid in full. Here, bucket-level retention
+  /// is 3 years and the event is the loan being paid in full. In this example,
+  /// these objects will be held intact for any number of years until the event
+  /// has occurred (event-based hold on the object is released) and then 3 more
+  /// years after that. That means retention duration of the objects begins from
+  /// the moment event-based hold transitioned from true to false.
   core.bool eventBasedHold;
 
   /// The content generation of this object. Used for object versioning.
@@ -5446,12 +5465,13 @@ class Object {
   /// The owner of the object. This will always be the uploader of the object.
   ObjectOwner owner;
 
-  /// Specifies the earliest time that the object's retention period expires.
-  /// This value is server-determined and is in RFC 3339 format. Note 1: This
-  /// field is not provided for objects with an active Event-Based hold, since
-  /// retention expiration is unknown until the hold is removed. Note 2: This
-  /// value can be provided even when TemporaryHold is set (so that the user can
-  /// reason about policy without having to first unset the TemporaryHold).
+  /// A server-determined value that specifies the earliest time that the
+  /// object's retention period expires. This value is in RFC 3339 format. Note
+  /// 1: This field is not provided for objects with an active event-based hold,
+  /// since retention expiration is unknown until the hold is removed. Note 2:
+  /// This value can be provided even when temporary hold is set (so that the
+  /// user can reason about policy without having to first unset the temporary
+  /// hold).
   core.DateTime retentionExpirationTime;
 
   /// The link to this object.
@@ -5463,11 +5483,12 @@ class Object {
   /// Storage class of the object.
   core.String storageClass;
 
-  /// Defines the temporary hold for an object. This flag is used to enforce a
-  /// temporary hold on an object. While it is set to true, the object is
-  /// protected against deletion and overwrites. A common use case of this flag
-  /// is regulatory investigations where objects need to be retained while the
-  /// investigation is ongoing.
+  /// Whether an object is under temporary hold. While this flag is set to true,
+  /// the object is protected against deletion and overwrites. A common use case
+  /// of this flag is regulatory investigations where objects need to be
+  /// retained while the investigation is ongoing. Note that unlike event-based
+  /// hold, temporary hold does not impact retention expiration time of an
+  /// object.
   core.bool temporaryHold;
 
   /// The creation time of the object in RFC 3339 format.

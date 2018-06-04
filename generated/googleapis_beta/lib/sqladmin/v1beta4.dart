@@ -717,6 +717,62 @@ class InstancesResourceApi {
 
   InstancesResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Add a new trusted Certificate Authority (CA) version for the specified
+  /// instance. Required to prepare for a certificate rotation. If a CA version
+  /// was previously added but never used in a certificate rotation, this
+  /// operation replaces that version. There can not be more than one CA version
+  /// waiting to be rotated in.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addServerCa(core.String project, core.String instance,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/addServerCa';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Creates a Cloud SQL instance as a clone of the source instance. The API is
   /// not ready for Second Generation instances yet.
   ///
@@ -1232,6 +1288,64 @@ class InstancesResourceApi {
     return _response.then((data) => new InstancesListResponse.fromJson(data));
   }
 
+  /// Lists all of the trusted Certificate Authorities (CAs) for the specified
+  /// instance. There can be up to three CAs listed: the CA that was used to
+  /// sign the certificate that is currently in use, a CA that has been added
+  /// but not yet used to sign a certificate, and a CA used to sign a
+  /// certificate that has previously rotated out.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstancesListServerCasResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstancesListServerCasResponse> listServerCas(
+      core.String project, core.String instance,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/listServerCas';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InstancesListServerCasResponse.fromJson(data));
+  }
+
   /// Updates settings of a Cloud SQL instance. Caution: This is not a partial
   /// update, so you must include values for all the settings that you want to
   /// retain. For partial updates, use patch.. This method supports patch
@@ -1502,6 +1616,65 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
         '/restoreBackup';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Rotates the server certificate to one signed by the Certificate Authority
+  /// (CA) version previously added with the addServerCA method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rotateServerCa(InstancesRotateServerCaRequest request,
+      core.String project, core.String instance,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/rotateServerCa';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2524,9 +2697,7 @@ class BackupConfiguration {
   /// This is always sql#backupConfiguration.
   core.String kind;
 
-  /// Whether replication log archiving is enabled. Replication log archiving is
-  /// required for the point-in-time recovery (PITR) feature. PostgreSQL
-  /// instances only.
+  /// Reserved for future use.
   core.bool replicationLogArchivingEnabled;
 
   /// Start time for the daily backup configuration in UTC timezone in the 24
@@ -2801,9 +2972,7 @@ class CloneContext {
   /// This is always sql#cloneContext.
   core.String kind;
 
-  /// The epoch timestamp, in milliseconds, of the time to which a point-in-time
-  /// recovery (PITR) is performed. PostgreSQL instances only. For MySQL
-  /// instances, use the binLogCoordinates property.
+  /// Reserved for future use.
   core.String pitrTimestampMs;
 
   CloneContext();
@@ -3374,6 +3543,15 @@ class DemoteMasterContext {
   /// master.
   DemoteMasterConfiguration replicaConfiguration;
 
+  /// Verify GTID consistency for demote operation. Default value: True. Second
+  /// Generation instances only. Setting this flag to false enables you to
+  /// bypass GTID consistency check between on-premises master and Cloud SQL
+  /// instance during the demotion operation but also exposes you to the risk of
+  /// future replication failures. Change the value only if you know the reason
+  /// for the GTID divergence and are confident that doing so will not cause any
+  /// replication issues.
+  core.bool verifyGtidConsistency;
+
   DemoteMasterContext();
 
   DemoteMasterContext.fromJson(core.Map _json) {
@@ -3386,6 +3564,9 @@ class DemoteMasterContext {
     if (_json.containsKey("replicaConfiguration")) {
       replicaConfiguration =
           new DemoteMasterConfiguration.fromJson(_json["replicaConfiguration"]);
+    }
+    if (_json.containsKey("verifyGtidConsistency")) {
+      verifyGtidConsistency = _json["verifyGtidConsistency"];
     }
   }
 
@@ -3400,6 +3581,9 @@ class DemoteMasterContext {
     }
     if (replicaConfiguration != null) {
       _json["replicaConfiguration"] = (replicaConfiguration).toJson();
+    }
+    if (verifyGtidConsistency != null) {
+      _json["verifyGtidConsistency"] = verifyGtidConsistency;
     }
     return _json;
   }
@@ -4041,6 +4225,48 @@ class InstancesListResponse {
   }
 }
 
+/// Instances ListServerCas response.
+class InstancesListServerCasResponse {
+  core.String activeVersion;
+
+  /// List of server CA certificates for the instance.
+  core.List<SslCert> certs;
+
+  /// This is always sql#instancesListServerCas.
+  core.String kind;
+
+  InstancesListServerCasResponse();
+
+  InstancesListServerCasResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("activeVersion")) {
+      activeVersion = _json["activeVersion"];
+    }
+    if (_json.containsKey("certs")) {
+      certs = (_json["certs"] as core.List)
+          .map<SslCert>((value) => new SslCert.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (activeVersion != null) {
+      _json["activeVersion"] = activeVersion;
+    }
+    if (certs != null) {
+      _json["certs"] = certs.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 /// Database instance restore backup request.
 class InstancesRestoreBackupRequest {
   /// Parameters required to perform the restore backup operation.
@@ -4060,6 +4286,30 @@ class InstancesRestoreBackupRequest {
         new core.Map<core.String, core.Object>();
     if (restoreBackupContext != null) {
       _json["restoreBackupContext"] = (restoreBackupContext).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Rotate Server CA request.
+class InstancesRotateServerCaRequest {
+  /// Contains details about the rotate server CA operation.
+  RotateServerCaContext rotateServerCaContext;
+
+  InstancesRotateServerCaRequest();
+
+  InstancesRotateServerCaRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("rotateServerCaContext")) {
+      rotateServerCaContext =
+          new RotateServerCaContext.fromJson(_json["rotateServerCaContext"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rotateServerCaContext != null) {
+      _json["rotateServerCaContext"] = (rotateServerCaContext).toJson();
     }
     return _json;
   }
@@ -4797,6 +5047,39 @@ class RestoreBackupContext {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// Instance rotate server CA context.
+class RotateServerCaContext {
+  /// This is always sql#rotateServerCaContext.
+  core.String kind;
+
+  /// The fingerprint of the next version to be rotated to. If left unspecified,
+  /// will be rotated to the most recently added server CA version.
+  core.String nextVersion;
+
+  RotateServerCaContext();
+
+  RotateServerCaContext.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextVersion")) {
+      nextVersion = _json["nextVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextVersion != null) {
+      _json["nextVersion"] = nextVersion;
     }
     return _json;
   }

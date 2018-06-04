@@ -187,11 +187,11 @@ class ProjectsServicesResourceApi {
   /// - projects/my-project
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
-  ///
-  /// [pageSize] - Requested size of the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -204,7 +204,7 @@ class ProjectsServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListEnabledServicesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -215,11 +215,11 @@ class ProjectsServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -623,18 +623,8 @@ class Authentication {
 /// If a method doesn't have any auth requirements, request credentials will be
 /// ignored.
 class AuthenticationRule {
-  /// Whether to allow requests without a credential. The credential can be
-  /// an OAuth token, Google cookies (first-party auth) or EndUserCreds.
-  ///
-  /// For requests without credentials, if the service control environment is
-  /// specified, each incoming request **must** be associated with a service
-  /// consumer. This can be done by passing an API key that belongs to a
-  /// consumer
-  /// project.
+  /// If true, the service accepts API keys without any other credential.
   core.bool allowWithoutCredential;
-
-  /// Configuration for custom authentication.
-  CustomAuthRequirements customAuth;
 
   /// The requirements for OAuth credentials.
   OAuthRequirements oauth;
@@ -652,9 +642,6 @@ class AuthenticationRule {
   AuthenticationRule.fromJson(core.Map _json) {
     if (_json.containsKey("allowWithoutCredential")) {
       allowWithoutCredential = _json["allowWithoutCredential"];
-    }
-    if (_json.containsKey("customAuth")) {
-      customAuth = new CustomAuthRequirements.fromJson(_json["customAuth"]);
     }
     if (_json.containsKey("oauth")) {
       oauth = new OAuthRequirements.fromJson(_json["oauth"]);
@@ -674,9 +661,6 @@ class AuthenticationRule {
         new core.Map<core.String, core.Object>();
     if (allowWithoutCredential != null) {
       _json["allowWithoutCredential"] = allowWithoutCredential;
-    }
-    if (customAuth != null) {
-      _json["customAuth"] = (customAuth).toJson();
     }
     if (oauth != null) {
       _json["oauth"] = (oauth).toJson();
@@ -910,6 +894,26 @@ class BillingDestination {
 ///
 /// Available context types are defined in package
 /// `google.rpc.context`.
+///
+/// This also provides mechanism to whitelist any protobuf message extension
+/// that
+/// can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+/// “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+/// specific protobuf types that can appear in grpc metadata as follows in your
+/// yaml file:
+///
+/// Example:
+///
+///     context:
+///       rules:
+///        - selector: "google.example.library.v1.LibraryService.CreateBook"
+///          allowed_request_extensions:
+///          - google.foo.v1.NewExtension
+///          allowed_response_extensions:
+///          - google.foo.v1.NewExtension
+///
+/// You can also specify extension ID instead of fully qualified extension name
+/// here.
 class Context {
   /// A list of RPC context rules that apply to individual API methods.
   ///
@@ -939,6 +943,14 @@ class Context {
 /// A context rule provides information about the context for an individual API
 /// element.
 class ContextRule {
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from client to backend.
+  core.List<core.String> allowedRequestExtensions;
+
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from backend to client.
+  core.List<core.String> allowedResponseExtensions;
+
   /// A list of full type names of provided contexts.
   core.List<core.String> provided;
 
@@ -953,6 +965,14 @@ class ContextRule {
   ContextRule();
 
   ContextRule.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedRequestExtensions")) {
+      allowedRequestExtensions =
+          (_json["allowedRequestExtensions"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("allowedResponseExtensions")) {
+      allowedResponseExtensions =
+          (_json["allowedResponseExtensions"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("provided")) {
       provided = (_json["provided"] as core.List).cast<core.String>();
     }
@@ -967,6 +987,12 @@ class ContextRule {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allowedRequestExtensions != null) {
+      _json["allowedRequestExtensions"] = allowedRequestExtensions;
+    }
+    if (allowedResponseExtensions != null) {
+      _json["allowedResponseExtensions"] = allowedResponseExtensions;
+    }
     if (provided != null) {
       _json["provided"] = provided;
     }
@@ -1001,31 +1027,6 @@ class Control {
         new core.Map<core.String, core.Object>();
     if (environment != null) {
       _json["environment"] = environment;
-    }
-    return _json;
-  }
-}
-
-/// Configuration for a custom authentication provider.
-class CustomAuthRequirements {
-  /// A configuration string containing connection information for the
-  /// authentication provider, typically formatted as a SmartService string
-  /// (go/smartservice).
-  core.String provider;
-
-  CustomAuthRequirements();
-
-  CustomAuthRequirements.fromJson(core.Map _json) {
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (provider != null) {
-      _json["provider"] = provider;
     }
     return _json;
   }
@@ -1199,9 +1200,7 @@ class DisableServiceRequest {
 /// <pre><code>&#91;display text]&#91;fully.qualified.proto.name]</code></pre>
 /// Text can be excluded from doc using the following notation:
 /// <pre><code>&#40;-- internal comment --&#41;</code></pre>
-/// Comments can be made conditional using a visibility label. The below
-/// text will be only rendered if the `BETA` label is available:
-/// <pre><code>&#40;--BETA: comment for BETA users --&#41;</code></pre>
+///
 /// A few directives are available in documentation. Note that
 /// directives must appear on a single line to be properly
 /// identified. The `include` directive includes a markdown file from
@@ -3899,9 +3898,6 @@ class Service {
   /// Configuration controlling usage of this service.
   Usage usage;
 
-  /// API visibility configuration.
-  Visibility visibility;
-
   Service();
 
   Service.fromJson(core.Map _json) {
@@ -4008,9 +4004,6 @@ class Service {
     if (_json.containsKey("usage")) {
       usage = new Usage.fromJson(_json["usage"]);
     }
-    if (_json.containsKey("visibility")) {
-      visibility = new Visibility.fromJson(_json["visibility"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4101,9 +4094,6 @@ class Service {
     }
     if (usage != null) {
       _json["usage"] = (usage).toJson();
-    }
-    if (visibility != null) {
-      _json["visibility"] = (visibility).toJson();
     }
     return _json;
   }
@@ -4655,103 +4645,6 @@ class UsageRule {
     }
     if (skipServiceControl != null) {
       _json["skipServiceControl"] = skipServiceControl;
-    }
-    return _json;
-  }
-}
-
-/// `Visibility` defines restrictions for the visibility of service
-/// elements.  Restrictions are specified using visibility labels
-/// (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-///
-/// Users and projects can have access to more than one visibility label. The
-/// effective visibility for multiple labels is the union of each label's
-/// elements, plus any unrestricted elements.
-///
-/// If an element and its parents have no restrictions, visibility is
-/// unconditionally granted.
-///
-/// Example:
-///
-///     visibility:
-///       rules:
-///       - selector: google.calendar.Calendar.EnhancedSearch
-///         restriction: TRUSTED_TESTER
-///       - selector: google.calendar.Calendar.Delegate
-///         restriction: GOOGLE_INTERNAL
-///
-/// Here, all methods are publicly visible except for the restricted methods
-/// EnhancedSearch and Delegate.
-class Visibility {
-  /// A list of visibility rules that apply to individual API elements.
-  ///
-  /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<VisibilityRule> rules;
-
-  Visibility();
-
-  Visibility.fromJson(core.Map _json) {
-    if (_json.containsKey("rules")) {
-      rules = (_json["rules"] as core.List)
-          .map<VisibilityRule>((value) => new VisibilityRule.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A visibility rule provides visibility configuration for an individual API
-/// element.
-class VisibilityRule {
-  /// A comma-separated list of visibility labels that apply to the `selector`.
-  /// Any of the listed labels can be used to grant the visibility.
-  ///
-  /// If a rule has multiple labels, removing one of the labels but not all of
-  /// them can break clients.
-  ///
-  /// Example:
-  ///
-  ///     visibility:
-  ///       rules:
-  ///       - selector: google.calendar.Calendar.EnhancedSearch
-  ///         restriction: GOOGLE_INTERNAL, TRUSTED_TESTER
-  ///
-  /// Removing GOOGLE_INTERNAL from this restriction will break clients that
-  /// rely on this method and only had access to it through GOOGLE_INTERNAL.
-  core.String restriction;
-
-  /// Selects methods, messages, fields, enums, etc. to which this rule applies.
-  ///
-  /// Refer to selector for syntax details.
-  core.String selector;
-
-  VisibilityRule();
-
-  VisibilityRule.fromJson(core.Map _json) {
-    if (_json.containsKey("restriction")) {
-      restriction = _json["restriction"];
-    }
-    if (_json.containsKey("selector")) {
-      selector = _json["selector"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (restriction != null) {
-      _json["restriction"] = restriction;
-    }
-    if (selector != null) {
-      _json["selector"] = selector;
     }
     return _json;
   }

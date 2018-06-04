@@ -114,6 +114,7 @@ buildCorpusQuery() {
   if (buildCounterCorpusQuery < 3) {
     o.driveQuery = buildHeldDriveQuery();
     o.groupsQuery = buildHeldGroupsQuery();
+    o.hangoutsChatQuery = buildHeldHangoutsChatQuery();
     o.mailQuery = buildHeldMailQuery();
   }
   buildCounterCorpusQuery--;
@@ -125,6 +126,7 @@ checkCorpusQuery(api.CorpusQuery o) {
   if (buildCounterCorpusQuery < 3) {
     checkHeldDriveQuery(o.driveQuery);
     checkHeldGroupsQuery(o.groupsQuery);
+    checkHeldHangoutsChatQuery(o.hangoutsChatQuery);
     checkHeldMailQuery(o.mailQuery);
   }
   buildCounterCorpusQuery--;
@@ -208,6 +210,25 @@ checkHeldGroupsQuery(api.HeldGroupsQuery o) {
   buildCounterHeldGroupsQuery--;
 }
 
+core.int buildCounterHeldHangoutsChatQuery = 0;
+buildHeldHangoutsChatQuery() {
+  var o = new api.HeldHangoutsChatQuery();
+  buildCounterHeldHangoutsChatQuery++;
+  if (buildCounterHeldHangoutsChatQuery < 3) {
+    o.includeRooms = true;
+  }
+  buildCounterHeldHangoutsChatQuery--;
+  return o;
+}
+
+checkHeldHangoutsChatQuery(api.HeldHangoutsChatQuery o) {
+  buildCounterHeldHangoutsChatQuery++;
+  if (buildCounterHeldHangoutsChatQuery < 3) {
+    unittest.expect(o.includeRooms, unittest.isTrue);
+  }
+  buildCounterHeldHangoutsChatQuery--;
+}
+
 core.int buildCounterHeldMailQuery = 0;
 buildHeldMailQuery() {
   var o = new api.HeldMailQuery();
@@ -252,14 +273,14 @@ checkHeldOrgUnit(api.HeldOrgUnit o) {
   buildCounterHeldOrgUnit--;
 }
 
-buildUnnamed2451() {
+buildUnnamed222() {
   var o = new core.List<api.HeldAccount>();
   o.add(buildHeldAccount());
   o.add(buildHeldAccount());
   return o;
 }
 
-checkUnnamed2451(core.List<api.HeldAccount> o) {
+checkUnnamed222(core.List<api.HeldAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeldAccount(o[0]);
   checkHeldAccount(o[1]);
@@ -270,7 +291,7 @@ buildHold() {
   var o = new api.Hold();
   buildCounterHold++;
   if (buildCounterHold < 3) {
-    o.accounts = buildUnnamed2451();
+    o.accounts = buildUnnamed222();
     o.corpus = "foo";
     o.holdId = "foo";
     o.name = "foo";
@@ -285,7 +306,7 @@ buildHold() {
 checkHold(api.Hold o) {
   buildCounterHold++;
   if (buildCounterHold < 3) {
-    checkUnnamed2451(o.accounts);
+    checkUnnamed222(o.accounts);
     unittest.expect(o.corpus, unittest.equals('foo'));
     unittest.expect(o.holdId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -296,14 +317,14 @@ checkHold(api.Hold o) {
   buildCounterHold--;
 }
 
-buildUnnamed2452() {
+buildUnnamed223() {
   var o = new core.List<api.HeldAccount>();
   o.add(buildHeldAccount());
   o.add(buildHeldAccount());
   return o;
 }
 
-checkUnnamed2452(core.List<api.HeldAccount> o) {
+checkUnnamed223(core.List<api.HeldAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeldAccount(o[0]);
   checkHeldAccount(o[1]);
@@ -314,7 +335,7 @@ buildListHeldAccountsResponse() {
   var o = new api.ListHeldAccountsResponse();
   buildCounterListHeldAccountsResponse++;
   if (buildCounterListHeldAccountsResponse < 3) {
-    o.accounts = buildUnnamed2452();
+    o.accounts = buildUnnamed223();
   }
   buildCounterListHeldAccountsResponse--;
   return o;
@@ -323,19 +344,19 @@ buildListHeldAccountsResponse() {
 checkListHeldAccountsResponse(api.ListHeldAccountsResponse o) {
   buildCounterListHeldAccountsResponse++;
   if (buildCounterListHeldAccountsResponse < 3) {
-    checkUnnamed2452(o.accounts);
+    checkUnnamed223(o.accounts);
   }
   buildCounterListHeldAccountsResponse--;
 }
 
-buildUnnamed2453() {
+buildUnnamed224() {
   var o = new core.List<api.Hold>();
   o.add(buildHold());
   o.add(buildHold());
   return o;
 }
 
-checkUnnamed2453(core.List<api.Hold> o) {
+checkUnnamed224(core.List<api.Hold> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHold(o[0]);
   checkHold(o[1]);
@@ -346,7 +367,7 @@ buildListHoldsResponse() {
   var o = new api.ListHoldsResponse();
   buildCounterListHoldsResponse++;
   if (buildCounterListHoldsResponse < 3) {
-    o.holds = buildUnnamed2453();
+    o.holds = buildUnnamed224();
     o.nextPageToken = "foo";
   }
   buildCounterListHoldsResponse--;
@@ -356,20 +377,20 @@ buildListHoldsResponse() {
 checkListHoldsResponse(api.ListHoldsResponse o) {
   buildCounterListHoldsResponse++;
   if (buildCounterListHoldsResponse < 3) {
-    checkUnnamed2453(o.holds);
+    checkUnnamed224(o.holds);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHoldsResponse--;
 }
 
-buildUnnamed2454() {
+buildUnnamed225() {
   var o = new core.List<api.Matter>();
   o.add(buildMatter());
   o.add(buildMatter());
   return o;
 }
 
-checkUnnamed2454(core.List<api.Matter> o) {
+checkUnnamed225(core.List<api.Matter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatter(o[0]);
   checkMatter(o[1]);
@@ -380,7 +401,7 @@ buildListMattersResponse() {
   var o = new api.ListMattersResponse();
   buildCounterListMattersResponse++;
   if (buildCounterListMattersResponse < 3) {
-    o.matters = buildUnnamed2454();
+    o.matters = buildUnnamed225();
     o.nextPageToken = "foo";
   }
   buildCounterListMattersResponse--;
@@ -390,20 +411,20 @@ buildListMattersResponse() {
 checkListMattersResponse(api.ListMattersResponse o) {
   buildCounterListMattersResponse++;
   if (buildCounterListMattersResponse < 3) {
-    checkUnnamed2454(o.matters);
+    checkUnnamed225(o.matters);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMattersResponse--;
 }
 
-buildUnnamed2455() {
+buildUnnamed226() {
   var o = new core.List<api.MatterPermission>();
   o.add(buildMatterPermission());
   o.add(buildMatterPermission());
   return o;
 }
 
-checkUnnamed2455(core.List<api.MatterPermission> o) {
+checkUnnamed226(core.List<api.MatterPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatterPermission(o[0]);
   checkMatterPermission(o[1]);
@@ -416,7 +437,7 @@ buildMatter() {
   if (buildCounterMatter < 3) {
     o.description = "foo";
     o.matterId = "foo";
-    o.matterPermissions = buildUnnamed2455();
+    o.matterPermissions = buildUnnamed226();
     o.name = "foo";
     o.state = "foo";
   }
@@ -429,7 +450,7 @@ checkMatter(api.Matter o) {
   if (buildCounterMatter < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.matterId, unittest.equals('foo'));
-    checkUnnamed2455(o.matterPermissions);
+    checkUnnamed226(o.matterPermissions);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
@@ -587,6 +608,14 @@ main() {
       var o = buildHeldGroupsQuery();
       var od = new api.HeldGroupsQuery.fromJson(o.toJson());
       checkHeldGroupsQuery(od);
+    });
+  });
+
+  unittest.group("obj-schema-HeldHangoutsChatQuery", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildHeldHangoutsChatQuery();
+      var od = new api.HeldHangoutsChatQuery.fromJson(o.toJson());
+      checkHeldHangoutsChatQuery(od);
     });
   });
 
@@ -977,10 +1006,10 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
-      var arg_state = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
+      var arg_state = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1012,12 +1041,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
+        unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1028,10 +1057,10 @@ main() {
       }), true);
       res
           .list(
-              state: arg_state,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               view: arg_view,
+              state: arg_state,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListMattersResponse(response);
@@ -1417,6 +1446,7 @@ main() {
       api.MattersHoldsResourceApi res = new api.VaultApi(mock).matters.holds;
       var arg_matterId = "foo";
       var arg_holdId = "foo";
+      var arg_view = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1460,6 +1490,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1469,7 +1500,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_matterId, arg_holdId, $fields: arg_$fields)
+          .get(arg_matterId, arg_holdId, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkHold(response);
       })));
@@ -1481,6 +1512,7 @@ main() {
       var arg_matterId = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_view = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1525,6 +1557,7 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1537,6 +1570,7 @@ main() {
           .list(arg_matterId,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListHoldsResponse(response);

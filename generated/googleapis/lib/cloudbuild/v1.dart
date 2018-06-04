@@ -159,11 +159,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -176,9 +176,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -190,14 +190,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -231,7 +231,7 @@ class ProjectsBuildsResourceApi {
 
   ProjectsBuildsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Cancels a requested build in progress.
+  /// Cancels a build in progress.
   ///
   /// [request] - The metadata request object.
   ///
@@ -291,9 +291,9 @@ class ProjectsBuildsResourceApi {
 
   /// Starts a build with the specified configuration.
   ///
-  /// The long-running Operation returned by this method will include the ID of
-  /// the build, which can be passed to GetBuild to determine its status (e.g.,
-  /// success or failure).
+  /// This method returns a long-running `Operation`, which includes the build
+  /// ID. Pass the build ID to `GetBuild` to determine the build status (such as
+  /// `SUCCESS` or `FAILURE`).
   ///
   /// [request] - The metadata request object.
   ///
@@ -345,8 +345,8 @@ class ProjectsBuildsResourceApi {
 
   /// Returns information about a previously requested build.
   ///
-  /// The Build that is returned includes its status (e.g., success or failure,
-  /// or in-progress), and timing information.
+  /// The `Build` that is returned includes its status (such as `SUCCESS`,
+  /// `FAILURE`, or `WORKING`), and timing information.
   ///
   /// Request parameters:
   ///
@@ -406,11 +406,11 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of results to return in the list.
-  ///
-  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,9 +423,9 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -437,14 +437,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -463,18 +463,18 @@ class ProjectsBuildsResourceApi {
     return _response.then((data) => new ListBuildsResponse.fromJson(data));
   }
 
-  /// Creates a new build based on the given build.
+  /// Creates a new build based on the specified build.
   ///
-  /// This API creates a new build using the original build request,  which may
+  /// This method creates a new build using the original build request, which
+  /// may
   /// or may not result in an identical build.
   ///
   /// For triggered builds:
   ///
-  /// * Triggered builds resolve to a precise revision, so a retry of a
-  /// triggered
-  /// build will result in a build that uses the same revision.
+  /// * Triggered builds resolve to a precise revision; therefore a retry of a
+  /// triggered build will result in a build that uses the same revision.
   ///
-  /// For non-triggered builds that specify RepoSource:
+  /// For non-triggered builds that specify `RepoSource`:
   ///
   /// * If the original build built from the tip of a branch, the retried build
   /// will build from the tip of that branch, which may not be the same revision
@@ -482,12 +482,12 @@ class ProjectsBuildsResourceApi {
   /// * If the original build specified a commit sha or revision ID, the retried
   /// build will use the identical source.
   ///
-  /// For builds that specify StorageSource:
+  /// For builds that specify `StorageSource`:
   ///
-  /// * If the original build pulled source from Cloud Storage without
-  /// specifying
-  /// the generation of the object, the new build will use the current object,
-  /// which may be different from the original build source.
+  /// * If the original build pulled source from Google Cloud Storage without
+  /// specifying the generation of the object, the new build will use the
+  /// current
+  /// object, which may be different from the original build source.
   /// * If the original build pulled source from Cloud Storage and specified the
   /// generation of the object, the new build will attempt to use the same
   /// object, which may or may not be available depending on the bucket's
@@ -556,7 +556,7 @@ class ProjectsTriggersResourceApi {
   ProjectsTriggersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new BuildTrigger.
+  /// Creates a new `BuildTrigger`.
   ///
   /// This API is experimental.
   ///
@@ -608,7 +608,7 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new BuildTrigger.fromJson(data));
   }
 
-  /// Deletes an BuildTrigger by its project ID and trigger ID.
+  /// Deletes a `BuildTrigger` by its project ID and trigger ID.
   ///
   /// This API is experimental.
   ///
@@ -616,7 +616,7 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - ID of the project that owns the trigger.
   ///
-  /// [triggerId] - ID of the BuildTrigger to delete.
+  /// [triggerId] - ID of the `BuildTrigger` to delete.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,7 +661,7 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets information about a BuildTrigger.
+  /// Returns information about a `BuildTrigger`.
   ///
   /// This API is experimental.
   ///
@@ -669,7 +669,7 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - ID of the project that owns the trigger.
   ///
-  /// [triggerId] - ID of the BuildTrigger to get.
+  /// [triggerId] - ID of the `BuildTrigger` to get.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -714,7 +714,7 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new BuildTrigger.fromJson(data));
   }
 
-  /// Lists existing BuildTrigger.
+  /// Lists existing `BuildTrigger`s.
   ///
   /// This API is experimental.
   ///
@@ -762,7 +762,7 @@ class ProjectsTriggersResourceApi {
         .then((data) => new ListBuildTriggersResponse.fromJson(data));
   }
 
-  /// Updates an BuildTrigger by its project ID and trigger ID.
+  /// Updates a `BuildTrigger` by its project ID and trigger ID.
   ///
   /// This API is experimental.
   ///
@@ -772,7 +772,7 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - ID of the project that owns the trigger.
   ///
-  /// [triggerId] - ID of the BuildTrigger to update.
+  /// [triggerId] - ID of the `BuildTrigger` to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -821,7 +821,7 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new BuildTrigger.fromJson(data));
   }
 
-  /// Runs a BuildTrigger at a particular source revision.
+  /// Runs a `BuildTrigger` at a particular source revision.
   ///
   /// [request] - The metadata request object.
   ///
@@ -880,13 +880,149 @@ class ProjectsTriggersResourceApi {
   }
 }
 
+/// Files in the workspace to upload to Cloud Storage upon successful
+/// completion of all build steps.
+class ArtifactObjects {
+  /// Cloud Storage bucket and optional object path, in the form
+  /// "gs://bucket/path/to/somewhere/". (see [Bucket Name
+  /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  ///
+  /// Files in the workspace matching any path pattern will be uploaded to
+  /// Cloud Storage with this location as a prefix.
+  core.String location;
+
+  /// Path globs used to match files in the build's workspace.
+  core.List<core.String> paths;
+
+  /// Stores timing information for pushing all artifact objects.
+  /// @OutputOnly
+  TimeSpan timing;
+
+  ArtifactObjects();
+
+  ArtifactObjects.fromJson(core.Map _json) {
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("paths")) {
+      paths = (_json["paths"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("timing")) {
+      timing = new TimeSpan.fromJson(_json["timing"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (paths != null) {
+      _json["paths"] = paths;
+    }
+    if (timing != null) {
+      _json["timing"] = (timing).toJson();
+    }
+    return _json;
+  }
+}
+
+/// An artifact that was uploaded during a build. This
+/// is a single record in the artifact manifest JSON file.
+class ArtifactResult {
+  /// The file hash of the artifact.
+  core.List<FileHashes> fileHash;
+
+  /// The path of an artifact in a Google Cloud Storage bucket, with the
+  /// generation number. For example,
+  /// `gs://mybucket/path/to/output.jar#generation`.
+  core.String location;
+
+  ArtifactResult();
+
+  ArtifactResult.fromJson(core.Map _json) {
+    if (_json.containsKey("fileHash")) {
+      fileHash = (_json["fileHash"] as core.List)
+          .map<FileHashes>((value) => new FileHashes.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fileHash != null) {
+      _json["fileHash"] = fileHash.map((value) => (value).toJson()).toList();
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    return _json;
+  }
+}
+
+/// Artifacts produced by a build that should be uploaded upon
+/// successful completion of all build steps.
+class Artifacts {
+  /// A list of images to be pushed upon the successful completion of all build
+  /// steps.
+  ///
+  /// The images will be pushed using the builder service account's credentials.
+  ///
+  /// The digests of the pushed images will be stored in the Build resource's
+  /// results field.
+  ///
+  /// If any of the images fail to be pushed, the build is marked FAILURE.
+  core.List<core.String> images;
+
+  /// A list of objects to be uploaded to Cloud Storage upon successful
+  /// completion of all build steps.
+  ///
+  /// Files in the workspace matching specified paths globs will be uploaded to
+  /// the specified Cloud Storage location using the builder service account's
+  /// credentials.
+  ///
+  /// The location and generation of the uploaded objects will be stored in the
+  /// Build resource's results field.
+  ///
+  /// If any objects fail to be pushed, the build is marked FAILURE.
+  ArtifactObjects objects;
+
+  Artifacts();
+
+  Artifacts.fromJson(core.Map _json) {
+    if (_json.containsKey("images")) {
+      images = (_json["images"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("objects")) {
+      objects = new ArtifactObjects.fromJson(_json["objects"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (images != null) {
+      _json["images"] = images;
+    }
+    if (objects != null) {
+      _json["objects"] = (objects).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A build resource in the Container Builder API.
 ///
-/// At a high level, a Build describes where to find source code, how to build
-/// it (for example, the builder image to run on the source), and what tag to
-/// apply to the built image when it is pushed to Google Container Registry.
+/// At a high level, a `Build` describes where to find source code, how to build
+/// it (for example, the builder image to run on the source), and where to store
+/// the built artifacts.
 ///
-/// Fields can include the following variables which will be expanded when the
+/// Fields can include the following variables, which will be expanded when the
 /// build is created:
 ///
 /// - $PROJECT_ID: the project ID of the build.
@@ -898,7 +1034,11 @@ class ProjectsTriggersResourceApi {
 ///   resolved from the specified branch or tag.
 /// - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 class Build {
-  /// The ID of the BuildTrigger that triggered this build, if it was
+  /// Artifacts produced by the build that should be uploaded upon
+  /// successful completion of all build steps.
+  Artifacts artifacts;
+
+  /// The ID of the `BuildTrigger` that triggered this build, if it was
   /// triggered automatically.
   /// @OutputOnly
   core.String buildTriggerId;
@@ -921,12 +1061,13 @@ class Build {
   /// A list of images to be pushed upon the successful completion of all build
   /// steps.
   ///
-  /// The images will be pushed using the builder service account's credentials.
+  /// The images are pushed using the builder service account's credentials.
   ///
-  /// The digests of the pushed images will be stored in the Build resource's
+  /// The digests of the pushed images will be stored in the `Build` resource's
   /// results field.
   ///
-  /// If any of the images fail to be pushed, the build is marked FAILURE.
+  /// If any of the images fail to be pushed, the build status is marked
+  /// `FAILURE`.
   core.List<core.String> images;
 
   /// URL to logs for this build in Google Cloud Console.
@@ -951,10 +1092,10 @@ class Build {
   /// @OutputOnly
   Results results;
 
-  /// Secrets to decrypt using Cloud KMS.
+  /// Secrets to decrypt using Cloud Key Management Service.
   core.List<Secret> secrets;
 
-  /// Describes where to find the source files to build.
+  /// The location of the source files to build.
   Source source;
 
   /// A permanent fixed identifier for source.
@@ -969,31 +1110,31 @@ class Build {
   /// @OutputOnly
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
-  /// - "QUEUED" : Build is queued; work has not yet begun.
-  /// - "WORKING" : Build is being executed.
-  /// - "SUCCESS" : Build finished successfully.
-  /// - "FAILURE" : Build failed to complete successfully.
-  /// - "INTERNAL_ERROR" : Build failed due to an internal cause.
-  /// - "TIMEOUT" : Build took longer than was allowed.
-  /// - "CANCELLED" : Build was canceled by a user.
+  /// - "QUEUED" : Build or step is queued; work has not yet begun.
+  /// - "WORKING" : Build or step is being executed.
+  /// - "SUCCESS" : Build or step finished successfully.
+  /// - "FAILURE" : Build or step failed to complete successfully.
+  /// - "INTERNAL_ERROR" : Build or step failed due to an internal cause.
+  /// - "TIMEOUT" : Build or step took longer than was allowed.
+  /// - "CANCELLED" : Build or step was canceled by a user.
   core.String status;
 
   /// Customer-readable message about the current status.
   /// @OutputOnly
   core.String statusDetail;
 
-  /// Describes the operations to be performed on the workspace.
+  /// Required. The operations to be performed on the workspace.
   core.List<BuildStep> steps;
 
-  /// Substitutions data for Build resource.
+  /// Substitutions data for `Build` resource.
   core.Map<core.String, core.String> substitutions;
 
-  /// Tags for annotation of a Build. These are not docker tags.
+  /// Tags for annotation of a `Build`. These are not docker tags.
   core.List<core.String> tags;
 
   /// Amount of time that this build should be allowed to run, to second
   /// granularity. If this amount of time elapses, work on the build will cease
-  /// and the build status will be TIMEOUT.
+  /// and the build status will be `TIMEOUT`.
   ///
   /// Default time is ten minutes.
   core.String timeout;
@@ -1004,7 +1145,7 @@ class Build {
   /// * PUSH: time to push all specified images.
   /// * FETCHSOURCE: time to fetch source.
   ///
-  /// If the build does not specify source, or does not specify images,
+  /// If the build does not specify source or images,
   /// these keys will not be included.
   /// @OutputOnly
   core.Map<core.String, TimeSpan> timing;
@@ -1012,6 +1153,9 @@ class Build {
   Build();
 
   Build.fromJson(core.Map _json) {
+    if (_json.containsKey("artifacts")) {
+      artifacts = new Artifacts.fromJson(_json["artifacts"]);
+    }
     if (_json.containsKey("buildTriggerId")) {
       buildTriggerId = _json["buildTriggerId"];
     }
@@ -1088,6 +1232,9 @@ class Build {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (artifacts != null) {
+      _json["artifacts"] = (artifacts).toJson();
+    }
     if (buildTriggerId != null) {
       _json["buildTriggerId"] = buildTriggerId;
     }
@@ -1192,7 +1339,7 @@ class BuildOptions {
   /// more than the maximum are rejected with an error.
   core.String diskSizeGb;
 
-  /// LogStreamingOption to define build log streaming behavior to Google Cloud
+  /// Option to define build log streaming behavior to Google Cloud
   /// Storage.
   /// Possible string values are:
   /// - "STREAM_DEFAULT" : Service may automatically determine build log
@@ -1219,7 +1366,8 @@ class BuildOptions {
   /// Requested hash for SourceProvenance.
   core.List<core.String> sourceProvenanceHash;
 
-  /// SubstitutionOption to allow unmatch substitutions.
+  /// Option to specify behavior when there is an error in the substitution
+  /// checks.
   /// Possible string values are:
   /// - "MUST_MATCH" : Fails the build if error in substitutions checks, like
   /// missing
@@ -1276,14 +1424,14 @@ class BuildOptions {
   }
 }
 
-/// BuildStep describes a step to perform in the build pipeline.
+/// A step in the build pipeline.
 class BuildStep {
   /// A list of arguments that will be presented to the step when it is started.
   ///
-  /// If the image used to run the step's container has an entrypoint, these
-  /// args
-  /// will be used as arguments to that entrypoint. If the image does not define
-  /// an entrypoint, the first element in args will be used as the entrypoint,
+  /// If the image used to run the step's container has an entrypoint, the
+  /// `args`
+  /// are used as arguments to that entrypoint. If the image does not define
+  /// an entrypoint, the first element in args is used as the entrypoint,
   /// and the remainder will be used as arguments.
   core.List<core.String> args;
 
@@ -1293,15 +1441,17 @@ class BuildStep {
   /// directory. If this value is absolute, it may be outside the build's
   /// working
   /// directory, in which case the contents of the path may not be persisted
-  /// across build step executions, unless a volume for that path is specified.
+  /// across build step executions, unless a `volume` for that path is
+  /// specified.
   ///
-  /// If the build specifies a RepoSource with dir and a step with a dir which
-  /// specifies an absolute path, the RepoSource dir is ignored for the step's
-  /// execution.
+  /// If the build specifies a `RepoSource` with `dir` and a step with a `dir`,
+  /// which specifies an absolute path, the `RepoSource` `dir` is ignored for
+  /// the step's execution.
   core.String dir;
 
-  /// Optional entrypoint to be used instead of the build step image's default
-  /// If unset, the image's default will be used.
+  /// Entrypoint to be used instead of the build step image's default
+  /// entrypoint.
+  /// If unset, the image's default entrypoint is used.
   core.String entrypoint;
 
   /// A list of environment variable definitions to be used when running a step.
@@ -1311,13 +1461,14 @@ class BuildStep {
   /// being given the value "VALUE".
   core.List<core.String> env;
 
-  /// Optional unique identifier for this build step, used in wait_for to
+  /// Unique identifier for this build step, used in `wait_for` to
   /// reference this build step as a dependency.
   core.String id;
 
-  /// The name of the container image that will run this particular build step.
+  /// Required. The name of the container image that will run this particular
+  /// build step.
   ///
-  /// If the image is already available in the host's Docker daemon's cache, it
+  /// If the image is available in the host's Docker daemon's cache, it
   /// will be run directly. If not, the host will attempt to pull the image
   /// first, using the builder service account's credentials if necessary.
   ///
@@ -1335,9 +1486,31 @@ class BuildStep {
   /// later build step.
   core.String name;
 
-  /// A list of environment variables which are encrypted using a Cloud KMS
-  /// crypto key. These values must be specified in the build's secrets.
+  /// A list of environment variables which are encrypted using a Cloud Key
+  /// Management Service crypto key. These values must be specified in the
+  /// build's `Secret`.
   core.List<core.String> secretEnv;
+
+  /// Status of the build step. At this time, build step status is only updated
+  /// on build completion; step status is not updated in real-time as the build
+  /// progresses.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "STATUS_UNKNOWN" : Status of the build is unknown.
+  /// - "QUEUED" : Build or step is queued; work has not yet begun.
+  /// - "WORKING" : Build or step is being executed.
+  /// - "SUCCESS" : Build or step finished successfully.
+  /// - "FAILURE" : Build or step failed to complete successfully.
+  /// - "INTERNAL_ERROR" : Build or step failed due to an internal cause.
+  /// - "TIMEOUT" : Build or step took longer than was allowed.
+  /// - "CANCELLED" : Build or step was canceled by a user.
+  core.String status;
+
+  /// Time limit for executing this build step. If not defined, the step has no
+  /// time limit and will be allowed to continue to run until either it
+  /// completes
+  /// or the build itself times out.
+  core.String timeout;
 
   /// Stores timing information for executing this build step.
   /// @OutputOnly
@@ -1354,10 +1527,10 @@ class BuildStep {
   core.List<Volume> volumes;
 
   /// The ID(s) of the step(s) that this build step depends on.
-  /// This build step will not start until all the build steps in wait_for
-  /// have completed successfully. If wait_for is empty, this build step will
-  /// start when all previous build steps in the Build.Steps list have completed
-  /// successfully.
+  /// This build step will not start until all the build steps in `wait_for`
+  /// have completed successfully. If `wait_for` is empty, this build step will
+  /// start when all previous build steps in the `Build.Steps` list have
+  /// completed successfully.
   core.List<core.String> waitFor;
 
   BuildStep();
@@ -1383,6 +1556,12 @@ class BuildStep {
     }
     if (_json.containsKey("secretEnv")) {
       secretEnv = (_json["secretEnv"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("timeout")) {
+      timeout = _json["timeout"];
     }
     if (_json.containsKey("timing")) {
       timing = new TimeSpan.fromJson(_json["timing"]);
@@ -1420,6 +1599,12 @@ class BuildStep {
     }
     if (secretEnv != null) {
       _json["secretEnv"] = secretEnv;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (timeout != null) {
+      _json["timeout"] = timeout;
     }
     if (timing != null) {
       _json["timing"] = (timing).toJson();
@@ -1531,7 +1716,7 @@ class BuildTrigger {
   }
 }
 
-/// BuiltImage describes an image built by the pipeline.
+/// An image built by the pipeline.
 class BuiltImage {
   /// Docker Registry 2.0 digest.
   core.String digest;
@@ -1653,6 +1838,7 @@ class Hash {
   /// Possible string values are:
   /// - "NONE" : No hash requested.
   /// - "SHA256" : Use a sha256 hash.
+  /// - "MD5" : Use a md5 hash.
   core.String type;
 
   /// The hash value.
@@ -1690,9 +1876,9 @@ class Hash {
   }
 }
 
-/// Response containing existing BuildTriggers.
+/// Response containing existing `BuildTriggers`.
 class ListBuildTriggersResponse {
-  /// BuildTriggers for the project, sorted by create_time descending.
+  /// `BuildTriggers` for the project, sorted by `create_time` descending.
   core.List<BuildTrigger> triggers;
 
   ListBuildTriggersResponse();
@@ -1717,7 +1903,7 @@ class ListBuildTriggersResponse {
 
 /// Response including listed builds.
 class ListBuildsResponse {
-  /// Builds will be sorted by create_time, descending.
+  /// Builds will be sorted by `create_time`, descending.
   core.List<Build> builds;
 
   /// Token to receive the next page of results.
@@ -1867,8 +2053,7 @@ class Operation {
   }
 }
 
-/// RepoSource describes the location of the source in a Google Cloud Source
-/// Repository.
+/// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
   /// Name of the branch to build.
   core.String branchName;
@@ -1878,16 +2063,16 @@ class RepoSource {
 
   /// Directory, relative to the source root, in which to run the build.
   ///
-  /// This must be a relative path. If a step's dir is specified and is an
+  /// This must be a relative path. If a step's `dir` is specified and is an
   /// absolute path, this value is ignored for that step's execution.
   core.String dir;
 
-  /// ID of the project that owns the repo. If omitted, the project ID
-  /// requesting
-  /// the build is assumed.
+  /// ID of the project that owns the Cloud Source Repository. If omitted, the
+  /// project ID requesting the build is assumed.
   core.String projectId;
 
-  /// Name of the repo. If omitted, the name "default" is assumed.
+  /// Name of the Cloud Source Repository. If omitted, the name "default" is
+  /// assumed.
   core.String repoName;
 
   /// Name of the tag to build.
@@ -1941,17 +2126,27 @@ class RepoSource {
   }
 }
 
-/// Results describes the artifacts created by the build pipeline.
+/// Artifacts created by the build pipeline.
 class Results {
-  /// List of build step digests, in order corresponding to build step indices.
+  /// Path to the artifact manifest. Only populated when artifacts are uploaded.
+  core.String artifactManifest;
+
+  /// List of build step digests, in the order corresponding to build step
+  /// indices.
   core.List<core.String> buildStepImages;
 
-  /// Images that were built as a part of the build.
+  /// Container images that were built as a part of the build.
   core.List<BuiltImage> images;
+
+  /// Number of artifacts uploaded. Only populated when artifacts are uploaded.
+  core.String numArtifacts;
 
   Results();
 
   Results.fromJson(core.Map _json) {
+    if (_json.containsKey("artifactManifest")) {
+      artifactManifest = _json["artifactManifest"];
+    }
     if (_json.containsKey("buildStepImages")) {
       buildStepImages =
           (_json["buildStepImages"] as core.List).cast<core.String>();
@@ -1961,22 +2156,31 @@ class Results {
           .map<BuiltImage>((value) => new BuiltImage.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("numArtifacts")) {
+      numArtifacts = _json["numArtifacts"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (artifactManifest != null) {
+      _json["artifactManifest"] = artifactManifest;
+    }
     if (buildStepImages != null) {
       _json["buildStepImages"] = buildStepImages;
     }
     if (images != null) {
       _json["images"] = images.map((value) => (value).toJson()).toList();
     }
+    if (numArtifacts != null) {
+      _json["numArtifacts"] = numArtifacts;
+    }
     return _json;
   }
 }
 
-/// RetryBuildRequest specifies a build to retry.
+/// Specifies a build to retry.
 class RetryBuildRequest {
   RetryBuildRequest();
 
@@ -1989,7 +2193,7 @@ class RetryBuildRequest {
   }
 }
 
-/// Secret pairs a set of secret environment variables containing encrypted
+/// Pairs a set of secret environment variables containing encrypted
 /// values with the Cloud KMS key to use to decrypt the value.
 class Secret {
   /// Cloud KMS key name to use to decrypt these envs.
@@ -2029,10 +2233,10 @@ class Secret {
   }
 }
 
-/// Source describes the location of the source in a supported storage
-/// service.
+/// Location of the source in a supported storage service.
 class Source {
-  /// If provided, get source from this location in a Cloud Repo.
+  /// If provided, get the source from this location in a Cloud Source
+  /// Repository.
   RepoSource repoSource;
 
   /// If provided, get the source from this location in Google Cloud Storage.
@@ -2067,22 +2271,23 @@ class Source {
 class SourceProvenance {
   /// Hash(es) of the build source, which can be used to verify that the
   /// original
-  /// source integrity was maintained in the build. Note that FileHashes will
-  /// only be populated if BuildOptions has requested a SourceProvenanceHash.
+  /// source integrity was maintained in the build. Note that `FileHashes` will
+  /// only be populated if `BuildOptions` has requested a
+  /// `SourceProvenanceHash`.
   ///
   /// The keys to this map are file paths used as build source and the values
   /// contain the hash values for those files.
   ///
   /// If the build source came in a single package such as a gzipped tarfile
-  /// (.tar.gz), the FileHash will be for the single path to that file.
+  /// (`.tar.gz`), the `FileHash` will be for the single path to that file.
   /// @OutputOnly
   core.Map<core.String, FileHashes> fileHashes;
 
-  /// A copy of the build's source.repo_source, if exists, with any
+  /// A copy of the build's `source.repo_source`, if exists, with any
   /// revisions resolved.
   RepoSource resolvedRepoSource;
 
-  /// A copy of the build's source.storage_source, if exists, with any
+  /// A copy of the build's `source.storage_source`, if exists, with any
   /// generations resolved.
   StorageSource resolvedStorageSource;
 
@@ -2226,10 +2431,9 @@ class Status {
   }
 }
 
-/// StorageSource describes the location of the source in an archive file in
-/// Google Cloud Storage.
+/// Location of the source in an archive file in Google Cloud Storage.
 class StorageSource {
-  /// Google Cloud Storage bucket containing source (see
+  /// Google Cloud Storage bucket containing the source (see
   /// [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String bucket;
@@ -2238,9 +2442,10 @@ class StorageSource {
   /// omitted, the latest generation will be used.
   core.String generation;
 
-  /// Google Cloud Storage object containing source.
+  /// Google Cloud Storage object containing the source.
   ///
-  /// This object must be a gzipped archive file (.tar.gz) containing source to
+  /// This object must be a gzipped archive file (`.tar.gz`) containing source
+  /// to
   /// build.
   core.String object;
 
@@ -2274,7 +2479,7 @@ class StorageSource {
   }
 }
 
-/// Stores start and end times for a build execution phase.
+/// Start and end times for a build execution phase.
 class TimeSpan {
   /// End of time span.
   core.String endTime;

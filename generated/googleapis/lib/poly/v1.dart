@@ -88,32 +88,6 @@ class AssetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [category] - Filter assets based on the specified category. Supported
-  /// values are:
-  /// `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
-  /// `scenes`,
-  /// `technology`, and `transport`.
-  ///
-  /// [maxComplexity] - Returns assets that are of the specified complexity or
-  /// less. Defaults to
-  /// COMPLEX. For example, a request for
-  /// MEDIUM assets also includes
-  /// SIMPLE assets.
-  /// Possible string values are:
-  /// - "COMPLEXITY_UNSPECIFIED" : A COMPLEXITY_UNSPECIFIED.
-  /// - "COMPLEX" : A COMPLEX.
-  /// - "MEDIUM" : A MEDIUM.
-  /// - "SIMPLE" : A SIMPLE.
-  ///
-  /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from next_page_token.
-  ///
-  /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
-  ///
   /// [keywords] - One or more search terms to be matched against all text that
   /// Poly has
   /// indexed for assets, which includes display_name,
@@ -130,6 +104,32 @@ class AssetsResourceApi {
   ///
   /// [curated] - Return only assets that have been curated by the Poly team.
   ///
+  /// [category] - Filter assets based on the specified category. Supported
+  /// values are:
+  /// `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
+  /// `scenes`,
+  /// `technology`, and `transport`.
+  ///
+  /// [pageToken] - Specifies a continuation token from a previous search whose
+  /// results were
+  /// split into multiple pages. To get the next page, submit the same request
+  /// specifying the value from next_page_token.
+  ///
+  /// [maxComplexity] - Returns assets that are of the specified complexity or
+  /// less. Defaults to
+  /// COMPLEX. For example, a request for
+  /// MEDIUM assets also includes
+  /// SIMPLE assets.
+  /// Possible string values are:
+  /// - "COMPLEXITY_UNSPECIFIED" : A COMPLEXITY_UNSPECIFIED.
+  /// - "COMPLEX" : A COMPLEX.
+  /// - "MEDIUM" : A MEDIUM.
+  /// - "SIMPLE" : A SIMPLE.
+  ///
+  /// [pageSize] - The maximum number of assets to be returned. This value must
+  /// be between `1`
+  /// and `100`. Defaults to `20`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -141,14 +141,14 @@ class AssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(
-      {core.String category,
-      core.String maxComplexity,
-      core.String pageToken,
-      core.int pageSize,
-      core.String keywords,
+      {core.String keywords,
       core.String orderBy,
       core.String format,
       core.bool curated,
+      core.String category,
+      core.String pageToken,
+      core.String maxComplexity,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -157,18 +157,6 @@ class AssetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (category != null) {
-      _queryParams["category"] = [category];
-    }
-    if (maxComplexity != null) {
-      _queryParams["maxComplexity"] = [maxComplexity];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (keywords != null) {
       _queryParams["keywords"] = [keywords];
     }
@@ -180,6 +168,18 @@ class AssetsResourceApi {
     }
     if (curated != null) {
       _queryParams["curated"] = ["${curated}"];
+    }
+    if (category != null) {
+      _queryParams["category"] = [category];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxComplexity != null) {
+      _queryParams["maxComplexity"] = [maxComplexity];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -227,10 +227,6 @@ class UsersAssetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
-  ///
   /// [format] - Return only assets with the matching format. Acceptable values
   /// are:
   /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
@@ -252,6 +248,10 @@ class UsersAssetsResourceApi {
   /// - "PUBLISHED" : A PUBLISHED.
   /// - "PRIVATE" : A PRIVATE.
   ///
+  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
+  /// based on a combination of popularity and other features.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -263,11 +263,11 @@ class UsersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String orderBy,
-      core.String format,
+      {core.String format,
       core.String pageToken,
       core.int pageSize,
       core.String visibility,
+      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -278,9 +278,6 @@ class UsersAssetsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if (format != null) {
       _queryParams["format"] = [format];
@@ -293,6 +290,9 @@ class UsersAssetsResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -328,6 +328,14 @@ class UsersLikedassetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of assets to be returned. This value must
+  /// be between `1`
+  /// and `100`. Defaults to `20`.
+  ///
+  /// [format] - Return only assets with the matching format. Acceptable values
+  /// are:
+  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
+  ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
   /// `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which
   /// ranks assets based on how recently they were liked.
@@ -337,14 +345,6 @@ class UsersLikedassetsResourceApi {
   /// split into multiple pages. To get the next page, submit the same request
   /// specifying the value from
   /// next_page_token.
-  ///
-  /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
-  ///
-  /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,10 +357,10 @@ class UsersLikedassetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLikedAssetsResponse> list(core.String name,
-      {core.String orderBy,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String format,
+      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -372,17 +372,17 @@ class UsersLikedassetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (format != null) {
       _queryParams["format"] = [format];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -572,6 +572,87 @@ class Asset {
   }
 }
 
+/// A message generated by the asset import process.
+class AssetImportMessage {
+  /// The code associated with this message.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Unknown error code.
+  /// - "NO_IMPORTABLE_FILE" : The asset import did not include any file that we
+  /// can import (i.e. an OBJ
+  /// file).
+  /// - "EMPTY_MODEL" : When generating the preview for the import, no geometry
+  /// was found.
+  /// - "OBJ_PARSE_ERROR" : A problem was encountered while parsing the OBJ
+  /// file. The converter makes
+  /// a 'best effort' attempt to continue when encountering such issues. In
+  /// some cases the resulting preview model may still be acceptable. The
+  /// details can be found in the parse error message.
+  /// - "EXPIRED" : The importer was not able to import the model before the
+  /// expiration time.
+  /// - "IMAGE_ERROR" : The importer encountered a problem reading an image
+  /// file.
+  /// - "EXTRA_FILES_WITH_ARCHIVE" : Multiple files were encountered in addition
+  /// to a ZIP archive. When
+  /// uploading an archive only one file is permitted.
+  /// - "DEFAULT_MATERIALS" : Default materials are used in the model. This
+  /// means that one or more
+  /// faces is using default materials either because no usemtl statement was
+  /// specified or because the requested material was not found due to a
+  /// missing material file or bad material name. This does not cover the case
+  /// of missing textures.
+  /// - "FATAL_ERROR" : The importer encountered a fatal error and was unable to
+  /// import the
+  /// model.
+  /// - "INVALID_ELEMENT_TYPE" : The import includes a file of an unsupported
+  /// element type. The file path
+  /// is specified.
+  core.String code;
+
+  /// An optional file path. Only present for those error codes that specify it.
+  core.String filePath;
+
+  /// An optional image error. Only present for INVALID_IMAGE_FILE.
+  ImageError imageError;
+
+  /// An optional OBJ parse error. Only present for OBJ_PARSE_ERROR.
+  ObjParseError objParseError;
+
+  AssetImportMessage();
+
+  AssetImportMessage.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("filePath")) {
+      filePath = _json["filePath"];
+    }
+    if (_json.containsKey("imageError")) {
+      imageError = new ImageError.fromJson(_json["imageError"]);
+    }
+    if (_json.containsKey("objParseError")) {
+      objParseError = new ObjParseError.fromJson(_json["objParseError"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (filePath != null) {
+      _json["filePath"] = filePath;
+    }
+    if (imageError != null) {
+      _json["imageError"] = (imageError).toJson();
+    }
+    if (objParseError != null) {
+      _json["objParseError"] = (objParseError).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Represents a file in Poly, which can be a root,
 /// resource, or thumbnail file.
 class File {
@@ -720,6 +801,44 @@ class FormatComplexity {
   }
 }
 
+/// A message resulting from reading an image file.
+class ImageError {
+  /// The type of image error encountered. Optional for older image errors.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Unknown error code.
+  /// - "INVALID_IMAGE" : We were unable to read the image file.
+  /// - "IMAGE_TOO_BIG" : The image size is too large.
+  /// - "WRONG_IMAGE_TYPE" : The image data does not match the expected MIME
+  /// type of the image.
+  core.String code;
+
+  /// The file path in the import of the image that was rejected.
+  core.String filePath;
+
+  ImageError();
+
+  ImageError.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("filePath")) {
+      filePath = _json["filePath"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (filePath != null) {
+      _json["filePath"] = filePath;
+    }
+    return _json;
+  }
+}
+
 /// A response message from a request to list.
 class ListAssetsResponse {
   /// A list of assets that match the criteria specified in the request.
@@ -859,6 +978,118 @@ class ListUserAssetsResponse {
   }
 }
 
+/// Details of an error resulting from parsing an OBJ file
+class ObjParseError {
+  /// The type of problem found (required).
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Unknown error code.
+  /// - "INCONSISTENT_VERTEX_REFS" : Vertex references are specified in an
+  /// inconsistent style for a face (e.g.
+  /// some vertices specify texture vertices but some don't).
+  /// - "INVALID_COMMAND" : The command is invalid.
+  /// - "INVALID_NUMBER" : A invalid number was specified.
+  /// - "INVALID_VERTEX_REF" : An invalid vertex reference was specified.
+  /// - "MISSING_GEOMETRIC_VERTEX" : A vertex reference does not specify a
+  /// geometric vertex.
+  /// - "MISSING_TOKEN" : An expected token was not found.
+  /// - "TOO_FEW_DIMENSIONS" : The vertex specified too few dimensions for its
+  /// usage.
+  /// - "TOO_FEW_VERTICES" : The face specified too few vertices.
+  /// - "TOO_MANY_DIMENSIONS" : The vertex specified too many dimensions for its
+  /// usage.
+  /// - "UNSUPPORTED_COMMAND" : This command is a valid OBJ command but is not
+  /// supported. This error is
+  /// only generated for the first instance of such a command.
+  /// - "UNUSED_TOKENS" : This line ended with unparsed token characters.
+  /// - "VERTEX_NOT_FOUND" : The specified vertex was not found.
+  /// - "NUMBER_OUT_OF_RANGE" : The specified number was too large or small for
+  /// its usage.
+  /// - "INVALID_VALUE" : The specified parameter value was not recognized.
+  /// - "INVALID_TEXTURE_OPTION" : The specified texture option is not valid.
+  /// - "TOO_MANY_PROBLEMS" : The maximum number of problems to report was
+  /// reached. Parsing continues,
+  /// but further problems will be ignored.
+  /// - "MISSING_FILE_NAME" : An expected file name was not specified.
+  /// - "FILE_NOT_FOUND" : The specified file was not found in the import.
+  /// - "UNKNOWN_MATERIAL" : The specified material was not found in any
+  /// material definition in the
+  /// import.
+  /// - "NO_MATERIAL_DEFINED" : Material parameters were specified before the
+  /// first material definition.
+  /// - "INVALID_SMOOTHING_GROUP" : The smoothing group is not valid.
+  /// - "MISSING_VERTEX_COLORS" : Vertex colors were specified for only some
+  /// vertices of a face.
+  /// - "FILE_SUBSTITUTION" : A missing file was found at a different file path.
+  /// - "LINE_TOO_LONG" : A line in an OBJ or MTL file exceeded the maximum line
+  /// length.
+  /// - "INVALID_FILE_PATH" : The file path was invalid. Only relative paths are
+  /// supported.
+  core.String code;
+
+  /// The ending character index at which the problem was found.
+  core.int endIndex;
+
+  /// The file path in which the problem was found.
+  core.String filePath;
+
+  /// The text of the line. Note that this may be truncated if the line was very
+  /// long. This may not include the error if it occurs after line truncation.
+  core.String line;
+
+  /// Line number at which the problem was found.
+  core.int lineNumber;
+
+  /// The starting character index at which the problem was found.
+  core.int startIndex;
+
+  ObjParseError();
+
+  ObjParseError.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("endIndex")) {
+      endIndex = _json["endIndex"];
+    }
+    if (_json.containsKey("filePath")) {
+      filePath = _json["filePath"];
+    }
+    if (_json.containsKey("line")) {
+      line = _json["line"];
+    }
+    if (_json.containsKey("lineNumber")) {
+      lineNumber = _json["lineNumber"];
+    }
+    if (_json.containsKey("startIndex")) {
+      startIndex = _json["startIndex"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (endIndex != null) {
+      _json["endIndex"] = endIndex;
+    }
+    if (filePath != null) {
+      _json["filePath"] = filePath;
+    }
+    if (line != null) {
+      _json["line"] = line;
+    }
+    if (lineNumber != null) {
+      _json["lineNumber"] = lineNumber;
+    }
+    if (startIndex != null) {
+      _json["startIndex"] = startIndex;
+    }
+    return _json;
+  }
+}
+
 /// Hints for displaying the asset, based on information available when the
 /// asset
 /// was uploaded.
@@ -960,6 +1191,64 @@ class Quaternion {
     }
     if (z != null) {
       _json["z"] = z;
+    }
+    return _json;
+  }
+}
+
+/// A response message from a request to list.
+/// This is returned in the response field of the Operation.
+class StartAssetImportResponse {
+  /// The id of newly created asset. If this is empty when the operation is
+  /// complete it means the import failed. Please refer to the
+  /// asset_import_message field to understand what went wrong.
+  core.String assetId;
+
+  /// The id of the asset import.
+  core.String assetImportId;
+
+  /// The message from the asset import. This will contain any warnings
+  /// (or - in the case of failure - errors) that occurred during import.
+  core.List<AssetImportMessage> assetImportMessages;
+
+  /// The publish URL for the asset.
+  core.String publishUrl;
+
+  StartAssetImportResponse();
+
+  StartAssetImportResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("assetId")) {
+      assetId = _json["assetId"];
+    }
+    if (_json.containsKey("assetImportId")) {
+      assetImportId = _json["assetImportId"];
+    }
+    if (_json.containsKey("assetImportMessages")) {
+      assetImportMessages = (_json["assetImportMessages"] as core.List)
+          .map<AssetImportMessage>(
+              (value) => new AssetImportMessage.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("publishUrl")) {
+      publishUrl = _json["publishUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (assetId != null) {
+      _json["assetId"] = assetId;
+    }
+    if (assetImportId != null) {
+      _json["assetImportId"] = assetImportId;
+    }
+    if (assetImportMessages != null) {
+      _json["assetImportMessages"] =
+          assetImportMessages.map((value) => (value).toJson()).toList();
+    }
+    if (publishUrl != null) {
+      _json["publishUrl"] = publishUrl;
     }
     return _json;
   }

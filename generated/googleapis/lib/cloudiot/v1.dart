@@ -61,6 +61,8 @@ class ProjectsLocationsRegistriesResourceApi {
 
   ProjectsLocationsRegistriesDevicesResourceApi get devices =>
       new ProjectsLocationsRegistriesDevicesResourceApi(_requester);
+  ProjectsLocationsRegistriesGroupsResourceApi get groups =>
+      new ProjectsLocationsRegistriesGroupsResourceApi(_requester);
 
   ProjectsLocationsRegistriesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -274,16 +276,16 @@ class ProjectsLocationsRegistriesResourceApi {
   /// `projects/example-project/locations/us-central1`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListDeviceRegistriesResponse`; indicates
-  /// that this is a continuation of a prior `ListDeviceRegistries` call, and
-  /// that the system should return the next page of data.
-  ///
   /// [pageSize] - The maximum number of registries to return in the response.
   /// If this value
   /// is zero, the service will select a default size. A call may return fewer
   /// objects than requested, but if there is a non-empty `page_token`, it
   /// indicates that more entries are available.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListDeviceRegistriesResponse`; indicates
+  /// that this is a continuation of a prior `ListDeviceRegistries` call, and
+  /// that the system should return the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,7 +298,7 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDeviceRegistriesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -307,11 +309,11 @@ class ProjectsLocationsRegistriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -685,6 +687,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
+  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
+  /// this field. This
+  /// field cannot hold more than 10,000 entries.
+  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListDevices` call, and
@@ -706,10 +712,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// For example, `['device0', 'device12']`. This field cannot hold more than
   /// 10,000 entries.
   ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -721,11 +723,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> deviceNumIds,
+      core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
       core.List<core.String> deviceIds,
-      core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -736,6 +738,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -748,9 +753,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     }
     if (deviceIds != null) {
       _queryParams["deviceIds"] = deviceIds;
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -843,7 +845,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// [updateMask] - Only updates the `device` fields indicated by this mask.
   /// The field mask must not be empty, and it must not contain fields that
   /// are immutable or only set by the server.
-  /// Mutable top-level fields: `credentials`, `enabled_state`, and `metadata`
+  /// Mutable top-level fields: `credentials`, `blocked`, and `metadata`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1023,149 +1025,555 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:foo@gmail.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "fooservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:bar@gmail.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
-class AuditConfig {
-  /// The configuration for logging of each type of permission.
-  /// Next ID: 4
-  core.List<AuditLogConfig> auditLogConfigs;
+class ProjectsLocationsRegistriesGroupsResourceApi {
+  final commons.ApiRequester _requester;
 
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
-  core.String service;
+  ProjectsLocationsRegistriesGroupsDevicesResourceApi get devices =>
+      new ProjectsLocationsRegistriesGroupsDevicesResourceApi(_requester);
 
-  AuditConfig();
+  ProjectsLocationsRegistriesGroupsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
-          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
-          .toList();
+  /// Gets the access control policy for a resource.
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
     }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
     }
-    if (service != null) {
-      _json["service"] = service;
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
     }
-    return _json;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:foo@gmail.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
+  final commons.ApiRequester _requester;
 
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi
+      get configVersions =>
+          new ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi(
+              _requester);
+  ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi get states =>
+      new ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi(_requester);
 
-  AuditLogConfig();
+  ProjectsLocationsRegistriesGroupsDevicesResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
 
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
+  /// Deletes a device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
+  /// Gets details about a device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. If the
+  /// field mask is unset or empty, all fields are returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Device].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Device> get(core.String name,
+      {core.String fieldMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
-    if (logType != null) {
-      _json["logType"] = logType;
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
     }
-    return _json;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Device.fromJson(data));
+  }
+
+  /// Modifies the configuration for the device, which is eventually sent from
+  /// the Cloud IoT Core servers. Returns the modified configuration version and
+  /// its metadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeviceConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeviceConfig> modifyCloudToDeviceConfig(
+      ModifyCloudToDeviceConfigRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':modifyCloudToDeviceConfig';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DeviceConfig.fromJson(data));
+  }
+
+  /// Updates a device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource path name. For example,
+  /// `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or
+  /// `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// When `name` is populated as a response from the service, it always ends
+  /// in the device numeric ID.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [updateMask] - Only updates the `device` fields indicated by this mask.
+  /// The field mask must not be empty, and it must not contain fields that
+  /// are immutable or only set by the server.
+  /// Mutable top-level fields: `credentials`, `blocked`, and `metadata`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Device].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Device> patch(Device request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Device.fromJson(data));
+  }
+}
+
+class ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the last few versions of the device configuration in descending
+  /// order (i.e.: newest first).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [numVersions] - The number of versions to list. Versions are listed in
+  /// decreasing order of
+  /// the version number. The maximum number of versions retained is 10. If this
+  /// value is zero, it will return all the versions available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeviceConfigVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeviceConfigVersionsResponse> list(core.String name,
+      {core.int numVersions, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (numVersions != null) {
+      _queryParams["numVersions"] = ["${numVersions}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/configVersions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListDeviceConfigVersionsResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the last few versions of the device state in descending order (i.e.:
+  /// newest first).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [numStates] - The number of states to list. States are listed in
+  /// descending order of
+  /// update time. The maximum number of states retained is 10. If this
+  /// value is zero, it will return all the states available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeviceStatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeviceStatesResponse> list(core.String name,
+      {core.int numStates, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (numStates != null) {
+      _queryParams["numStates"] = ["${numStates}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListDeviceStatesResponse.fromJson(data));
   }
 }
 
@@ -1181,7 +1589,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1296,9 +1704,8 @@ class Device {
   /// interpreted or indexed by Cloud IoT Core. It can be used to add contextual
   /// information for the device.
   ///
-  /// Keys must conform to the regular expression [a-zA-Z0-9-_]+ and be less
-  /// than
-  /// 128 bytes in length.
+  /// Keys must conform to the regular expression a-zA-Z+ and
+  /// be less than 128 bytes in length.
   ///
   /// Values are free-form strings. Each value must be less than or equal to 32
   /// KB in size.
@@ -1563,11 +1970,12 @@ class DeviceRegistry {
   /// The configuration for notification of telemetry events received from the
   /// device. All telemetry events that were successfully published by the
   /// device and acknowledged by Cloud IoT Core are guaranteed to be
-  /// delivered to Cloud Pub/Sub. Only the first configuration is used. If you
-  /// try to publish a device telemetry event using MQTT without specifying a
-  /// Cloud Pub/Sub topic for the device's registry, the connection closes
-  /// automatically. If you try to do so using an HTTP connection, an error
-  /// is returned.
+  /// delivered to Cloud Pub/Sub. If multiple configurations match a message,
+  /// only the first matching configuration is used. If you try to publish a
+  /// device telemetry event using MQTT without specifying a Cloud Pub/Sub topic
+  /// for the device's registry, the connection closes automatically. If you try
+  /// to do so using an HTTP connection, an error is returned. Up to 10
+  /// configurations may be provided.
   core.List<EventNotificationConfig> eventNotificationConfigs;
 
   /// The DeviceService (HTTP) configuration for this device registry.
@@ -1717,11 +2125,16 @@ class Empty {
   }
 }
 
-/// The configuration to forward telemetry events.
+/// The configuration for forwarding telemetry events.
 class EventNotificationConfig {
   /// A Cloud Pub/Sub topic name. For example,
   /// `projects/myProject/topics/deviceEvents`.
   core.String pubsubTopicName;
+
+  /// If the subfolder name matches this string exactly, this configuration will
+  /// be used. The string must not include the leading '/' character. If empty,
+  /// all strings are matched. This field is used only for telemetry events;
+  /// subfolders are not supported for state changes.
   core.String subfolderMatches;
 
   EventNotificationConfig();
@@ -1996,14 +2409,14 @@ class MqttConfig {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -2013,7 +2426,7 @@ class MqttConfig {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -2023,12 +2436,23 @@ class MqttConfig {
 ///       ]
 ///     }
 ///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
+///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class Policy {
-  /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
-
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
@@ -2060,11 +2484,6 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = (_json["auditConfigs"] as core.List)
-          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
@@ -2081,10 +2500,6 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (auditConfigs != null) {
-      _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
-    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -2233,22 +2648,11 @@ class SetIamPolicyRequest {
   /// might reject them.
   Policy policy;
 
-  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
-  core.String updateMask;
-
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
       policy = new Policy.fromJson(_json["policy"]);
-    }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
     }
   }
 
@@ -2257,9 +2661,6 @@ class SetIamPolicyRequest {
         new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
-    }
-    if (updateMask != null) {
-      _json["updateMask"] = updateMask;
     }
     return _json;
   }

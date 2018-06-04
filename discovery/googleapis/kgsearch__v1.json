@@ -15,13 +15,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -112,6 +112,12 @@
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
                     "parameters": {
+                        "types": {
+                            "description": "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types.",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
                         "indent": {
                             "description": "Enables indenting of json results.",
                             "location": "query",
@@ -143,12 +149,6 @@
                         "query": {
                             "description": "The literal query string for search.",
                             "location": "query",
-                            "type": "string"
-                        },
-                        "types": {
-                            "description": "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types.",
-                            "location": "query",
-                            "repeated": true,
                             "type": "string"
                         }
                     },

@@ -292,8 +292,9 @@ class ServicesResourceApi {
   ///
   /// [pageSize] - The maximum number of results returned by this request.
   /// Currently, the
-  /// default maximum is set to 1000. If page_size is not provided or provided a
-  /// number larger than 1000, it will be automatically set to 1000.
+  /// default maximum is set to 1000. If page_size is not provided or the size
+  /// provided is a number larger than 1000, it will be automatically set to
+  /// 1000.
   ///
   /// Optional.
   ///
@@ -302,7 +303,7 @@ class ServicesResourceApi {
   /// must be in the format: `field_name=literal_string`. The `field_name` is
   /// the
   /// name of the field you want to compare. Supported fields are
-  /// `tenant_resources.tag` and`tenant_resources.resource`.
+  /// `tenant_resources.tag` and `tenant_resources.resource`.
   ///
   /// For example, to search tenancy units that contain at least one tenant
   /// resource with given tag 'xyz', use query `tenant_resources.tag=xyz`.
@@ -374,10 +375,10 @@ class ServicesTenancyUnitsResourceApi {
       : _requester = client;
 
   /// Add a new tenant project to the tenancy unit.
-  /// There can be at most 512 tenant projects in a tenancy units.
-  /// If there are previously failed AddTenantProject calls, you might need to
-  /// call RemoveTenantProject first to clean them before you can make another
-  /// AddTenantProject with the same tag.
+  /// There can be at most 512 tenant projects in a tenancy unit.
+  /// If there are previously failed `AddTenantProject` calls, you might need to
+  /// call `RemoveTenantProject` first to clean them before you can make another
+  /// `AddTenantProject` with the same tag.
   /// Operation<response: Empty>.
   ///
   /// [request] - The metadata request object.
@@ -488,8 +489,9 @@ class ServicesTenancyUnitsResourceApi {
     return _response.then((data) => new TenancyUnit.fromJson(data));
   }
 
-  /// Delete tenancy unit.  Before the tenancy unit is deleted, there should be
-  /// no tenant resource in it.
+  /// Delete a tenancy unit.  Before the tenancy unit is deleted, there should
+  /// be
+  /// no tenant resources in it.
   /// Operation<response: Empty>.
   ///
   /// Request parameters:
@@ -533,10 +535,10 @@ class ServicesTenancyUnitsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Find tenancy unit for a service and consumer.
-  /// This method should not be used in producers' runtime path, e.g. finding
-  /// the tenant project number when creating VMs. Producers should persist
-  /// the tenant project information after the project is created.
+  /// Find the tenancy unit for a service and consumer.
+  /// This method should not be used in producers' runtime path, for example
+  /// finding the tenant project number when creating VMs. Producers should
+  /// persist the tenant project information after the project is created.
   ///
   /// Request parameters:
   ///
@@ -669,7 +671,7 @@ class ServicesTenancyUnitsResourceApi {
   }
 }
 
-/// Request to add a newly created and configured tenant project to tenancy
+/// Request to add a newly created and configured tenant project to a tenancy
 /// unit.
 class AddTenantProjectRequest {
   /// Configuration of the new tenant project that will be added to tenancy unit
@@ -1027,18 +1029,8 @@ class Authentication {
 /// If a method doesn't have any auth requirements, request credentials will be
 /// ignored.
 class AuthenticationRule {
-  /// Whether to allow requests without a credential. The credential can be
-  /// an OAuth token, Google cookies (first-party auth) or EndUserCreds.
-  ///
-  /// For requests without credentials, if the service control environment is
-  /// specified, each incoming request **must** be associated with a service
-  /// consumer. This can be done by passing an API key that belongs to a
-  /// consumer
-  /// project.
+  /// If true, the service accepts API keys without any other credential.
   core.bool allowWithoutCredential;
-
-  /// Configuration for custom authentication.
-  CustomAuthRequirements customAuth;
 
   /// The requirements for OAuth credentials.
   OAuthRequirements oauth;
@@ -1056,9 +1048,6 @@ class AuthenticationRule {
   AuthenticationRule.fromJson(core.Map _json) {
     if (_json.containsKey("allowWithoutCredential")) {
       allowWithoutCredential = _json["allowWithoutCredential"];
-    }
-    if (_json.containsKey("customAuth")) {
-      customAuth = new CustomAuthRequirements.fromJson(_json["customAuth"]);
     }
     if (_json.containsKey("oauth")) {
       oauth = new OAuthRequirements.fromJson(_json["oauth"]);
@@ -1078,9 +1067,6 @@ class AuthenticationRule {
         new core.Map<core.String, core.Object>();
     if (allowWithoutCredential != null) {
       _json["allowWithoutCredential"] = allowWithoutCredential;
-    }
-    if (customAuth != null) {
-      _json["customAuth"] = (customAuth).toJson();
     }
     if (oauth != null) {
       _json["oauth"] = (oauth).toJson();
@@ -1318,7 +1304,7 @@ class Billing {
   }
 }
 
-/// Describes billing configuration for new a Tenant Project
+/// Describes billing configuration for a new tenant project.
 class BillingConfig {
   /// Name of the billing account.
   /// For example `billingAccounts/012345-567890-ABCDEF`.
@@ -1547,13 +1533,13 @@ class Control {
 
 /// Request to create a tenancy unit for a consumer of a service.
 class CreateTenancyUnitRequest {
-  /// Optional producer provided identifier of the tenancy unit
-  /// Must be no longer than 40 characters and preferably URI friendly
-  /// If it is not provided, UID for the tenancy unit will be auto generated
+  /// Optional producer provided identifier of the tenancy unit.
+  /// Must be no longer than 40 characters and preferably URI friendly.
+  /// If it is not provided, a UID for the tenancy unit will be auto generated.
   /// It must be unique across a service.
   /// If the tenancy unit already exists for the service and consumer pair,
-  /// CreateTenancyUnit will return existing tenancy unit if provided identifier
-  /// is identical or empty, otherwise the call will fail.
+  /// `CreateTenancyUnit` will return the existing tenancy unit if the provided
+  /// identifier is identical or empty, otherwise the call will fail.
   core.String tenancyUnitId;
 
   CreateTenancyUnitRequest();
@@ -1569,31 +1555,6 @@ class CreateTenancyUnitRequest {
         new core.Map<core.String, core.Object>();
     if (tenancyUnitId != null) {
       _json["tenancyUnitId"] = tenancyUnitId;
-    }
-    return _json;
-  }
-}
-
-/// Configuration for a custom authentication provider.
-class CustomAuthRequirements {
-  /// A configuration string containing connection information for the
-  /// authentication provider, typically formatted as a SmartService string
-  /// (go/smartservice).
-  core.String provider;
-
-  CustomAuthRequirements();
-
-  CustomAuthRequirements.fromJson(core.Map _json) {
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (provider != null) {
-      _json["provider"] = provider;
     }
     return _json;
   }
@@ -1754,9 +1715,7 @@ class CustomHttpPattern {
 /// <pre><code>&#91;display text]&#91;fully.qualified.proto.name]</code></pre>
 /// Text can be excluded from doc using the following notation:
 /// <pre><code>&#40;-- internal comment --&#41;</code></pre>
-/// Comments can be made conditional using a visibility label. The below
-/// text will be only rendered if the `BETA` label is available:
-/// <pre><code>&#40;--BETA: comment for BETA users --&#41;</code></pre>
+///
 /// A few directives are available in documentation. Note that
 /// directives must appear on a single line to be properly
 /// identified. The `include` directive includes a markdown file from
@@ -2823,7 +2782,7 @@ class ListTenancyUnitsResponse {
   /// Pagination token for large results.
   core.String nextPageToken;
 
-  /// Tenancy Units matching the request.
+  /// Tenancy units matching the request.
   core.List<TenancyUnit> tenancyUnits;
 
   ListTenancyUnitsResponse();
@@ -4059,7 +4018,7 @@ class Page {
 /// Translates to IAM Policy bindings (without auditing at this level)
 class PolicyBinding {
   /// Uses the same format as in IAM policy.
-  /// `member` must include both prefix and id. E.g., `user:{emailId}`,
+  /// `member` must include both prefix and ID. For example, `user:{emailId}`,
   /// `serviceAccount:{emailId}`, `group:{emailId}`.
   core.List<core.String> members;
 
@@ -4533,9 +4492,6 @@ class Service {
   /// Configuration controlling usage of this service.
   Usage usage;
 
-  /// API visibility configuration.
-  Visibility visibility;
-
   Service();
 
   Service.fromJson(core.Map _json) {
@@ -4642,9 +4598,6 @@ class Service {
     if (_json.containsKey("usage")) {
       usage = new Usage.fromJson(_json["usage"]);
     }
-    if (_json.containsKey("visibility")) {
-      visibility = new Visibility.fromJson(_json["visibility"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4736,9 +4689,6 @@ class Service {
     if (usage != null) {
       _json["usage"] = (usage).toJson();
     }
-    if (visibility != null) {
-      _json["visibility"] = (visibility).toJson();
-    }
     return _json;
   }
 }
@@ -4749,10 +4699,11 @@ class ServiceAccountConfig {
   /// The email format of the service account will be
   /// "<account-id>@<tenant-project-id>.iam.gserviceaccount.com".
   /// This account id has to be unique within tenant project and producers
-  /// have to guarantee it.
+  /// have to guarantee it. And it must be 6-30 characters long, and matches the
+  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])`.
   core.String accountId;
 
-  /// Roles for the service account above on tenant project.
+  /// Roles for the associated service account for the tenant project.
   core.List<core.String> tenantProjectRoles;
 
   ServiceAccountConfig();
@@ -5090,8 +5041,8 @@ class SystemParameters {
 
 /// Representation of a tenancy unit.
 class TenancyUnit {
-  /// @OutputOnly Cloud resource One Platform Name of the consumer of this
-  /// service. For example 'projects/123456'.
+  /// @OutputOnly Cloud resource name of the consumer of this service.
+  /// For example 'projects/123456'.
   core.String consumer;
 
   /// @OutputOnly The time this tenancy unit was created.
@@ -5106,7 +5057,7 @@ class TenancyUnit {
   core.String service;
 
   /// Resources constituting the tenancy unit.
-  /// There can be at most 512 tenant resources in a tenancy units.
+  /// There can be at most 512 tenant resources in a tenancy unit.
   core.List<TenantResource> tenantResources;
 
   TenancyUnit();
@@ -5161,7 +5112,7 @@ class TenancyUnit {
 /// removal.
 class TenantProjectConfig {
   /// Billing account properties.
-  /// It may be specified explicitly, or created from the specified group
+  /// It might be specified explicitly, or created from the specified group
   /// during provisioning
   BillingConfig billingConfig;
 
@@ -5180,7 +5131,7 @@ class TenantProjectConfig {
 
   /// Google Cloud API names of services that will be activated on this project
   /// during provisioning.  If any of these services can not be activated,
-  /// addTenantProject method will fail.
+  /// request will fail.
   /// For example: 'compute.googleapis.com','cloudfunctions.googleapis.com'
   core.List<core.String> services;
 
@@ -5238,7 +5189,7 @@ class TenantProjectConfig {
 }
 
 /// Describes policy settings that need to be applied to a newly
-/// created Tenant Project.
+/// created tenant project.
 class TenantProjectPolicy {
   /// Policy bindings to be applied to the tenant project, in addition to the
   /// 'roles/owner' role granted to the Service Consumer Management service
@@ -5272,7 +5223,7 @@ class TenantProjectPolicy {
 /// Resource constituting the TenancyUnit.
 class TenantResource {
   /// @OutputOnly Identifier of the tenant resource.
-  /// For cloud projects it is in the form 'projects/{number}'.
+  /// For cloud projects, it is in the form 'projects/{number}'.
   /// For example 'projects/123456'.
   core.String resource;
 
@@ -5515,103 +5466,6 @@ class UsageRule {
     }
     if (skipServiceControl != null) {
       _json["skipServiceControl"] = skipServiceControl;
-    }
-    return _json;
-  }
-}
-
-/// `Visibility` defines restrictions for the visibility of service
-/// elements.  Restrictions are specified using visibility labels
-/// (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-///
-/// Users and projects can have access to more than one visibility label. The
-/// effective visibility for multiple labels is the union of each label's
-/// elements, plus any unrestricted elements.
-///
-/// If an element and its parents have no restrictions, visibility is
-/// unconditionally granted.
-///
-/// Example:
-///
-///     visibility:
-///       rules:
-///       - selector: google.calendar.Calendar.EnhancedSearch
-///         restriction: TRUSTED_TESTER
-///       - selector: google.calendar.Calendar.Delegate
-///         restriction: GOOGLE_INTERNAL
-///
-/// Here, all methods are publicly visible except for the restricted methods
-/// EnhancedSearch and Delegate.
-class Visibility {
-  /// A list of visibility rules that apply to individual API elements.
-  ///
-  /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<VisibilityRule> rules;
-
-  Visibility();
-
-  Visibility.fromJson(core.Map _json) {
-    if (_json.containsKey("rules")) {
-      rules = (_json["rules"] as core.List)
-          .map<VisibilityRule>((value) => new VisibilityRule.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A visibility rule provides visibility configuration for an individual API
-/// element.
-class VisibilityRule {
-  /// A comma-separated list of visibility labels that apply to the `selector`.
-  /// Any of the listed labels can be used to grant the visibility.
-  ///
-  /// If a rule has multiple labels, removing one of the labels but not all of
-  /// them can break clients.
-  ///
-  /// Example:
-  ///
-  ///     visibility:
-  ///       rules:
-  ///       - selector: google.calendar.Calendar.EnhancedSearch
-  ///         restriction: GOOGLE_INTERNAL, TRUSTED_TESTER
-  ///
-  /// Removing GOOGLE_INTERNAL from this restriction will break clients that
-  /// rely on this method and only had access to it through GOOGLE_INTERNAL.
-  core.String restriction;
-
-  /// Selects methods, messages, fields, enums, etc. to which this rule applies.
-  ///
-  /// Refer to selector for syntax details.
-  core.String selector;
-
-  VisibilityRule();
-
-  VisibilityRule.fromJson(core.Map _json) {
-    if (_json.containsKey("restriction")) {
-      restriction = _json["restriction"];
-    }
-    if (_json.containsKey("selector")) {
-      selector = _json["selector"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (restriction != null) {
-      _json["restriction"] = restriction;
-    }
-    if (selector != null) {
-      _json["selector"] = selector;
     }
     return _json;
   }

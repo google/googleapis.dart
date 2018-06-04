@@ -254,7 +254,7 @@ class Groups {
   core.String spamModerationLevel;
 
   /// Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
-  /// ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
+  /// ALL_OWNERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
   core.String whoCanAdd;
 
   /// Permission to contact owner of the group via web UI. Possible values are:
@@ -263,7 +263,7 @@ class Groups {
   core.String whoCanContactOwner;
 
   /// Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
-  /// ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
+  /// ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE
   core.String whoCanInvite;
 
   /// Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
@@ -271,7 +271,7 @@ class Groups {
   core.String whoCanJoin;
 
   /// Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-  /// ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
+  /// ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
   core.String whoCanLeaveGroup;
 
   /// Permissions to post messages to the group. Possible values are:
@@ -281,6 +281,7 @@ class Groups {
 
   /// Permissions to view group. Possible values are: ANYONE_CAN_VIEW
   /// ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
+  /// ALL_OWNERS_CAN_VIEW
   core.String whoCanViewGroup;
 
   /// Permissions to view membership. Possible values are:

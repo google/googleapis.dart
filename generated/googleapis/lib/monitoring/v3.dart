@@ -52,6 +52,8 @@ class MonitoringApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsAlertPoliciesResourceApi get alertPolicies =>
+      new ProjectsAlertPoliciesResourceApi(_requester);
   ProjectsCollectdTimeSeriesResourceApi get collectdTimeSeries =>
       new ProjectsCollectdTimeSeriesResourceApi(_requester);
   ProjectsGroupsResourceApi get groups =>
@@ -61,12 +63,333 @@ class ProjectsResourceApi {
   ProjectsMonitoredResourceDescriptorsResourceApi
       get monitoredResourceDescriptors =>
           new ProjectsMonitoredResourceDescriptorsResourceApi(_requester);
+  ProjectsNotificationChannelDescriptorsResourceApi
+      get notificationChannelDescriptors =>
+          new ProjectsNotificationChannelDescriptorsResourceApi(_requester);
+  ProjectsNotificationChannelsResourceApi get notificationChannels =>
+      new ProjectsNotificationChannelsResourceApi(_requester);
   ProjectsTimeSeriesResourceApi get timeSeries =>
       new ProjectsTimeSeriesResourceApi(_requester);
   ProjectsUptimeCheckConfigsResourceApi get uptimeCheckConfigs =>
       new ProjectsUptimeCheckConfigsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsAlertPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsAlertPoliciesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new alerting policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The project in which to create the alerting policy. The format is
+  /// projects/[PROJECT_ID].Note that this field names the parent container in
+  /// which the alerting policy will be written, not the name of the created
+  /// policy. The alerting policy that is returned will have a name that
+  /// contains a normalized representation of this name as a prefix but adds a
+  /// suffix of the form /alertPolicies/[POLICY_ID], identifying the policy in
+  /// the container.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AlertPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AlertPolicy> create(AlertPolicy request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/alertPolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AlertPolicy.fromJson(data));
+  }
+
+  /// Deletes an alerting policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The alerting policy to delete. The format is:
+  /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+  /// For more information, see AlertPolicy.
+  /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a single alerting policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The alerting policy to retrieve. The format is
+  /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+  ///
+  /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AlertPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AlertPolicy> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AlertPolicy.fromJson(data));
+  }
+
+  /// Lists the existing alerting policies for the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The project whose alert policies are to be listed. The format is
+  /// projects/[PROJECT_ID]
+  /// Note that this field names the parent container in which the alerting
+  /// policies to be listed are stored. To retrieve a single alerting policy by
+  /// name, use the GetAlertPolicy operation, instead.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by alert policies to be included in the response.For more details, see
+  /// sorting and filtering.
+  ///
+  /// [orderBy] - A comma-separated list of fields by which to sort the result.
+  /// Supports the same set of field references as the filter field. Entries can
+  /// be prefixed with a minus sign to sort by the field in descending order.For
+  /// more details, see sorting and filtering.
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAlertPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAlertPoliciesResponse> list(core.String name,
+      {core.String filter,
+      core.String orderBy,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/alertPolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListAlertPoliciesResponse.fromJson(data));
+  }
+
+  /// Updates an alerting policy. You can either replace the entire policy with
+  /// a new one or replace only certain fields in the current alerting policy by
+  /// specifying the fields to be updated via updateMask. Returns the updated
+  /// alerting policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required if the policy exists. The resource name for this policy.
+  /// The syntax is:
+  /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+  /// [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
+  /// created. When calling the alertPolicies.create method, do not include the
+  /// name field in the alerting policy passed as part of the request.
+  /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
+  ///
+  /// [updateMask] - Optional. A list of alerting policy field names. If this
+  /// field is not empty, each listed field in the existing alerting policy is
+  /// set to the value of the corresponding field in the supplied policy
+  /// (alert_policy), or to the field's default value if the field is not in the
+  /// supplied alerting policy. Fields not listed retain their previous
+  /// value.Examples of valid field masks include display_name, documentation,
+  /// documentation.content, documentation.mime_type, user_labels,
+  /// user_label.nameofkey, enabled, conditions, combiner, etc.If this field is
+  /// empty, then the supplied alerting policy replaces the existing policy. It
+  /// is the same as deleting the existing policy and adding the supplied
+  /// policy, except for the following:
+  /// The new policy will have the same [ALERT_POLICY_ID] as the former policy.
+  /// This gives you continuity with the former policy in your notifications and
+  /// incidents.
+  /// Conditions in the new policy will keep their former [CONDITION_ID] if the
+  /// supplied condition includes the name field with that [CONDITION_ID]. If
+  /// the supplied condition omits the name field, then a new [CONDITION_ID] is
+  /// created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AlertPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AlertPolicy> patch(AlertPolicy request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AlertPolicy.fromJson(data));
+  }
 }
 
 class ProjectsCollectdTimeSeriesResourceApi {
@@ -292,11 +615,6 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
   ///
@@ -318,6 +636,11 @@ class ProjectsGroupsResourceApi {
   /// returned by the childrenOfGroup filter, and includes children-of-children,
   /// and so forth.
   ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -329,11 +652,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String ancestorsOfGroup,
       core.String childrenOfGroup,
       core.String descendantsOfGroup,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -344,9 +667,6 @@ class ProjectsGroupsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -359,6 +679,9 @@ class ProjectsGroupsResourceApi {
     }
     if (descendantsOfGroup != null) {
       _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -822,6 +1145,12 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - An optional filter describing the descriptors to be returned.
+  /// The filter can reference the descriptor's type and labels. For example,
+  /// the following filter returns only Google Compute Engine descriptors that
+  /// have an id label:
+  /// resource.type = starts_with("gce_") AND resource.label:id
+  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -829,12 +1158,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
-  ///
-  /// [filter] - An optional filter describing the descriptors to be returned.
-  /// The filter can reference the descriptor's type and labels. For example,
-  /// the following filter returns only Google Compute Engine descriptors that
-  /// have an id label:
-  /// resource.type = starts_with("gce_") AND resource.label:id
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -847,9 +1170,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -861,14 +1184,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -886,6 +1209,620 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new ListMonitoredResourceDescriptorsResponse.fromJson(data));
+  }
+}
+
+class ProjectsNotificationChannelDescriptorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsNotificationChannelDescriptorsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a single channel descriptor. The descriptor indicates which fields
+  /// are expected / permitted for a notification channel of the given type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The channel type for which to execute the request. The format is
+  /// projects/[PROJECT_ID]/notificationChannelDescriptors/{channel_type}.
+  /// Value must have pattern
+  /// "^projects/[^/]+/notificationChannelDescriptors/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationChannelDescriptor].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationChannelDescriptor> get(core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new NotificationChannelDescriptor.fromJson(data));
+  }
+
+  /// Lists the descriptors for supported channel types. The use of descriptors
+  /// makes it possible for new channel types to be dynamically added.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The REST resource name of the parent from which to retrieve the
+  /// notification channel descriptors. The expected syntax is:
+  /// projects/[PROJECT_ID]
+  /// Note that this names the parent container in which to look for the
+  /// descriptors; to retrieve a single descriptor by name, use the
+  /// GetNotificationChannelDescriptor operation, instead.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// If not set to a positive number, a reasonable value will be chosen by the
+  /// service.
+  ///
+  /// [pageToken] - If non-empty, page_token must contain a value returned as
+  /// the next_page_token in a previous response to request the next set of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotificationChannelDescriptorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotificationChannelDescriptorsResponse> list(
+      core.String name,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/notificationChannelDescriptors';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new ListNotificationChannelDescriptorsResponse.fromJson(data));
+  }
+}
+
+class ProjectsNotificationChannelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsNotificationChannelsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new notification channel, representing a single notification
+  /// endpoint such as an email address, SMS number, or pagerduty service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The project on which to execute the request. The format is:
+  /// projects/[PROJECT_ID]
+  /// Note that this names the container into which the channel will be written.
+  /// This does not name the newly created channel. The resulting channel's name
+  /// will have a normalized version of this field as a prefix, but will add
+  /// /notificationChannels/[CHANNEL_ID] to identify the channel.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationChannel> create(
+      NotificationChannel request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/notificationChannels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationChannel.fromJson(data));
+  }
+
+  /// Deletes a notification channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The channel for which to execute the request. The format is
+  /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].
+  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  ///
+  /// [force] - If true, the notification channel will be deleted regardless of
+  /// its use in alert policies (the policies will be updated to remove the
+  /// channel). If false, channels that are still referenced by an existing
+  /// alerting policy will fail to be deleted in a delete operation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name,
+      {core.bool force, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (force != null) {
+      _queryParams["force"] = ["${force}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a single notification channel. The channel includes the relevant
+  /// configuration details with which the channel was created. However, the
+  /// response may truncate or omit passwords, API keys, or other private key
+  /// matter and thus the response may not be 100% identical to the information
+  /// that was supplied in the call to the create method.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The channel for which to execute the request. The format is
+  /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].
+  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationChannel> get(core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationChannel.fromJson(data));
+  }
+
+  /// Requests a verification code for an already verified channel that can then
+  /// be used in a call to VerifyNotificationChannel() on a different channel
+  /// with an equivalent identity in the same or in a different project. This
+  /// makes it possible to copy a channel between projects without requiring
+  /// manual reverification of the channel. If the channel is not in the
+  /// verified state, this method will fail (in other words, this may only be
+  /// used if the SendNotificationChannelVerificationCode and
+  /// VerifyNotificationChannel paths have already been used to put the given
+  /// channel into the verified state).There is no guarantee that the
+  /// verification codes returned by this method will be of a similar structure
+  /// or form as the ones that are delivered to the channel via
+  /// SendNotificationChannelVerificationCode; while VerifyNotificationChannel()
+  /// will recognize both the codes delivered via
+  /// SendNotificationChannelVerificationCode() and returned from
+  /// GetNotificationChannelVerificationCode(), it is typically the case that
+  /// the verification codes delivered via
+  /// SendNotificationChannelVerificationCode() will be shorter and also have a
+  /// shorter expiration (e.g. codes such as "G-123456") whereas
+  /// GetVerificationCode() will typically return a much longer, websafe base 64
+  /// encoded string that has a longer expiration time.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The notification channel for which a verification code is to be
+  /// generated and retrieved. This must name a channel that is already
+  /// verified; if the specified channel is not verified, the request will fail.
+  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetNotificationChannelVerificationCodeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetNotificationChannelVerificationCodeResponse>
+      getVerificationCode(GetNotificationChannelVerificationCodeRequest request,
+          core.String name,
+          {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':getVerificationCode';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GetNotificationChannelVerificationCodeResponse.fromJson(data));
+  }
+
+  /// Lists the notification channels that have been created for the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The project on which to execute the request. The format is
+  /// projects/[PROJECT_ID]. That is, this names the container in which to look
+  /// for the notification channels; it does not name a specific channel. To
+  /// query a specific channel by REST resource name, use the
+  /// GetNotificationChannel operation.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by notification channels to be included in the response.For more details,
+  /// see sorting and filtering.
+  ///
+  /// [orderBy] - A comma-separated list of fields by which to sort the result.
+  /// Supports the same set of fields as in filter. Entries can be prefixed with
+  /// a minus sign to sort in descending rather than ascending order.For more
+  /// details, see sorting and filtering.
+  ///
+  /// [pageToken] - If non-empty, page_token must contain a value returned as
+  /// the next_page_token in a previous response to request the next set of
+  /// results.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// If not set to a positive number, a reasonable value will be chosen by the
+  /// service.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotificationChannelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotificationChannelsResponse> list(core.String name,
+      {core.String filter,
+      core.String orderBy,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/notificationChannels';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListNotificationChannelsResponse.fromJson(data));
+  }
+
+  /// Updates a notification channel. Fields not specified in the field mask
+  /// remain unchanged.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The full REST resource name for this channel. The syntax is:
+  /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+  /// The [CHANNEL_ID] is automatically assigned by the server on creation.
+  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  ///
+  /// [updateMask] - The fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationChannel> patch(
+      NotificationChannel request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationChannel.fromJson(data));
+  }
+
+  /// Causes a verification code to be delivered to the channel. The code can
+  /// then be supplied in VerifyNotificationChannel to verify the channel.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The notification channel to which to send a verification code.
+  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> sendVerificationCode(
+      SendNotificationChannelVerificationCodeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':sendVerificationCode';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Verifies a NotificationChannel by proving receipt of the code delivered to
+  /// the channel as a result of calling
+  /// SendNotificationChannelVerificationCode.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The notification channel to verify.
+  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationChannel> verify(
+      VerifyNotificationChannelRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':verify';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationChannel.fromJson(data));
   }
 }
 
@@ -958,19 +1895,6 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [aggregation_groupByFields] - The set of fields to preserve when
-  /// crossSeriesReducer is specified. The groupByFields determine how the time
-  /// series are partitioned into subsets prior to applying the aggregation
-  /// function. Each subset contains time series that have the same value for
-  /// each of the grouping fields. Each individual time series is a member of
-  /// exactly one subset. The crossSeriesReducer is applied to each subset of
-  /// time series. It is not possible to reduce across different resource types,
-  /// so this field implicitly contains resource.type. Fields not specified in
-  /// groupByFields are aggregated away. If groupByFields is not specified and
-  /// all the time series have the same resource type, then the time series are
-  /// aggregated into a single output time series. If crossSeriesReducer is not
-  /// defined, this field is ignored.
-  ///
   /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [aggregation_alignmentPeriod] - The alignment period for per-time series
@@ -982,9 +1906,10 @@ class ProjectsTimeSeriesResourceApi {
   /// an error is returned.
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. When view field sets to FULL, it limits the number of Points
-  /// server will return; if view field is HEADERS, it limits the number of
-  /// TimeSeries server will return.
+  /// return. If page_size is empty or more than 100,000 results, the effective
+  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
+  /// number of Points returned. If view is set to HEADERS, this is the maximum
+  /// number of TimeSeries returned.
   ///
   /// [orderBy] - Unsupported: must be left blank. The points in each time
   /// series are returned in reverse time order.
@@ -1019,11 +1944,6 @@ class ProjectsTimeSeriesResourceApi {
   /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
   ///     metric.label.instance_name = "my-instance-name"
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
   /// [aggregation_perSeriesAligner] - The approach to be used to align
   /// individual time series. Not all alignment functions may be applied to all
   /// time series, depending on the metric type and value type of the original
@@ -1053,6 +1973,11 @@ class ProjectsTimeSeriesResourceApi {
   /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
   /// - "ALIGN_PERCENT_CHANGE" : A ALIGN_PERCENT_CHANGE.
   ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
   /// [interval_startTime] - Optional. The beginning of the time interval. The
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
@@ -1061,6 +1986,19 @@ class ProjectsTimeSeriesResourceApi {
   /// Possible string values are:
   /// - "FULL" : A FULL.
   /// - "HEADERS" : A HEADERS.
+  ///
+  /// [aggregation_groupByFields] - The set of fields to preserve when
+  /// crossSeriesReducer is specified. The groupByFields determine how the time
+  /// series are partitioned into subsets prior to applying the aggregation
+  /// function. Each subset contains time series that have the same value for
+  /// each of the grouping fields. Each individual time series is a member of
+  /// exactly one subset. The crossSeriesReducer is applied to each subset of
+  /// time series. It is not possible to reduce across different resource types,
+  /// so this field implicitly contains resource.type. Fields not specified in
+  /// groupByFields are aggregated away. If groupByFields is not specified and
+  /// all the time series have the same resource type, then the time series are
+  /// aggregated into a single output time series. If crossSeriesReducer is not
+  /// defined, this field is ignored.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1073,17 +2011,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.List<core.String> aggregation_groupByFields,
-      core.String interval_endTime,
+      {core.String interval_endTime,
       core.String aggregation_alignmentPeriod,
       core.int pageSize,
       core.String orderBy,
       core.String aggregation_crossSeriesReducer,
       core.String filter,
-      core.String pageToken,
       core.String aggregation_perSeriesAligner,
+      core.String pageToken,
       core.String interval_startTime,
       core.String view,
+      core.List<core.String> aggregation_groupByFields,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1094,9 +2032,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
     }
     if (interval_endTime != null) {
       _queryParams["interval.endTime"] = [interval_endTime];
@@ -1120,19 +2055,22 @@ class ProjectsTimeSeriesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (aggregation_perSeriesAligner != null) {
       _queryParams["aggregation.perSeriesAligner"] = [
         aggregation_perSeriesAligner
       ];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (interval_startTime != null) {
       _queryParams["interval.startTime"] = [interval_startTime];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (aggregation_groupByFields != null) {
+      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1439,15 +2377,15 @@ class UptimeCheckIpsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return more results from the previous method
-  /// call. NOTE: this field is not yet implemented
-  ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
   /// a single page. If the page_size is <=0, the server will decide the number
   /// of results to be returned. NOTE: this field is not yet implemented
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call. NOTE: this field is not yet implemented
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1460,7 +2398,7 @@ class UptimeCheckIpsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckIpsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1468,11 +2406,11 @@ class UptimeCheckIpsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1488,6 +2426,399 @@ class UptimeCheckIpsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ListUptimeCheckIpsResponse.fromJson(data));
+  }
+}
+
+/// Describes how to combine multiple time series to provide different views of
+/// the data. Aggregation consists of an alignment step on individual time
+/// series (alignment_period and per_series_aligner) followed by an optional
+/// reduction step of the data across the aligned time series
+/// (cross_series_reducer and group_by_fields). For more details, see
+/// Aggregation.
+class Aggregation {
+  /// The alignment period for per-time series alignment. If present,
+  /// alignmentPeriod must be at least 60 seconds. After per-time series
+  /// alignment, each time series will contain data points only on the period
+  /// boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE,
+  /// then this field is ignored. If perSeriesAligner is specified and does not
+  /// equal ALIGN_NONE, then this field must be defined; otherwise an error is
+  /// returned.
+  core.String alignmentPeriod;
+
+  /// The approach to be used to combine time series. Not all reducer functions
+  /// may be applied to all time series, depending on the metric type and the
+  /// value type of the original time series. Reduction may change the metric
+  /// type of value type of the time series.Time series data must be aligned in
+  /// order to perform cross-time series reduction. If crossSeriesReducer is
+  /// specified, then perSeriesAligner must be specified and not equal
+  /// ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is
+  /// returned.
+  /// Possible string values are:
+  /// - "REDUCE_NONE" : No cross-time series reduction. The output of the
+  /// aligner is returned.
+  /// - "REDUCE_MEAN" : Reduce by computing the mean across time series for each
+  /// alignment period. This reducer is valid for delta and gauge metrics with
+  /// numeric or distribution values. The value type of the output is DOUBLE.
+  /// - "REDUCE_MIN" : Reduce by computing the minimum across time series for
+  /// each alignment period. This reducer is valid for delta and gauge metrics
+  /// with numeric values. The value type of the output is the same as the value
+  /// type of the input.
+  /// - "REDUCE_MAX" : Reduce by computing the maximum across time series for
+  /// each alignment period. This reducer is valid for delta and gauge metrics
+  /// with numeric values. The value type of the output is the same as the value
+  /// type of the input.
+  /// - "REDUCE_SUM" : Reduce by computing the sum across time series for each
+  /// alignment period. This reducer is valid for delta and gauge metrics with
+  /// numeric and distribution values. The value type of the output is the same
+  /// as the value type of the input.
+  /// - "REDUCE_STDDEV" : Reduce by computing the standard deviation across time
+  /// series for each alignment period. This reducer is valid for delta and
+  /// gauge metrics with numeric or distribution values. The value type of the
+  /// output is DOUBLE.
+  /// - "REDUCE_COUNT" : Reduce by computing the count of data points across
+  /// time series for each alignment period. This reducer is valid for delta and
+  /// gauge metrics of numeric, Boolean, distribution, and string value type.
+  /// The value type of the output is INT64.
+  /// - "REDUCE_COUNT_TRUE" : Reduce by computing the count of True-valued data
+  /// points across time series for each alignment period. This reducer is valid
+  /// for delta and gauge metrics of Boolean value type. The value type of the
+  /// output is INT64.
+  /// - "REDUCE_COUNT_FALSE" : Reduce by computing the count of False-valued
+  /// data points across time series for each alignment period. This reducer is
+  /// valid for delta and gauge metrics of Boolean value type. The value type of
+  /// the output is INT64.
+  /// - "REDUCE_FRACTION_TRUE" : Reduce by computing the fraction of True-valued
+  /// data points across time series for each alignment period. This reducer is
+  /// valid for delta and gauge metrics of Boolean value type. The output value
+  /// is in the range 0, 1 and has value type DOUBLE.
+  /// - "REDUCE_PERCENTILE_99" : Reduce by computing 99th percentile of data
+  /// points across time series for each alignment period. This reducer is valid
+  /// for gauge and delta metrics of numeric and distribution type. The value of
+  /// the output is DOUBLE
+  /// - "REDUCE_PERCENTILE_95" : Reduce by computing 95th percentile of data
+  /// points across time series for each alignment period. This reducer is valid
+  /// for gauge and delta metrics of numeric and distribution type. The value of
+  /// the output is DOUBLE
+  /// - "REDUCE_PERCENTILE_50" : Reduce by computing 50th percentile of data
+  /// points across time series for each alignment period. This reducer is valid
+  /// for gauge and delta metrics of numeric and distribution type. The value of
+  /// the output is DOUBLE
+  /// - "REDUCE_PERCENTILE_05" : Reduce by computing 5th percentile of data
+  /// points across time series for each alignment period. This reducer is valid
+  /// for gauge and delta metrics of numeric and distribution type. The value of
+  /// the output is DOUBLE
+  core.String crossSeriesReducer;
+
+  /// The set of fields to preserve when crossSeriesReducer is specified. The
+  /// groupByFields determine how the time series are partitioned into subsets
+  /// prior to applying the aggregation function. Each subset contains time
+  /// series that have the same value for each of the grouping fields. Each
+  /// individual time series is a member of exactly one subset. The
+  /// crossSeriesReducer is applied to each subset of time series. It is not
+  /// possible to reduce across different resource types, so this field
+  /// implicitly contains resource.type. Fields not specified in groupByFields
+  /// are aggregated away. If groupByFields is not specified and all the time
+  /// series have the same resource type, then the time series are aggregated
+  /// into a single output time series. If crossSeriesReducer is not defined,
+  /// this field is ignored.
+  core.List<core.String> groupByFields;
+
+  /// The approach to be used to align individual time series. Not all alignment
+  /// functions may be applied to all time series, depending on the metric type
+  /// and value type of the original time series. Alignment may change the
+  /// metric type or the value type of the time series.Time series data must be
+  /// aligned in order to perform cross-time series reduction. If
+  /// crossSeriesReducer is specified, then perSeriesAligner must be specified
+  /// and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise,
+  /// an error is returned.
+  /// Possible string values are:
+  /// - "ALIGN_NONE" : No alignment. Raw data is returned. Not valid if
+  /// cross-time series reduction is requested. The value type of the result is
+  /// the same as the value type of the input.
+  /// - "ALIGN_DELTA" : Align and convert to delta metric type. This alignment
+  /// is valid for cumulative metrics and delta metrics. Aligning an existing
+  /// delta metric to a delta metric requires that the alignment period be
+  /// increased. The value type of the result is the same as the value type of
+  /// the input.One can think of this aligner as a rate but without time units;
+  /// that is, the output is conceptually (second_point - first_point).
+  /// - "ALIGN_RATE" : Align and convert to a rate. This alignment is valid for
+  /// cumulative metrics and delta metrics with numeric values. The output is a
+  /// gauge metric with value type DOUBLE.One can think of this aligner as
+  /// conceptually providing the slope of the line that passes through the value
+  /// at the start and end of the window. In other words, this is conceptually
+  /// ((y1 - y0)/(t1 - t0)), and the output unit is one that has a "/time"
+  /// dimension.If, by rate, you are looking for percentage change, see the
+  /// ALIGN_PERCENT_CHANGE aligner option.
+  /// - "ALIGN_INTERPOLATE" : Align by interpolating between adjacent points
+  /// around the period boundary. This alignment is valid for gauge metrics with
+  /// numeric values. The value type of the result is the same as the value type
+  /// of the input.
+  /// - "ALIGN_NEXT_OLDER" : Align by shifting the oldest data point before the
+  /// period boundary to the boundary. This alignment is valid for gauge
+  /// metrics. The value type of the result is the same as the value type of the
+  /// input.
+  /// - "ALIGN_MIN" : Align time series via aggregation. The resulting data
+  /// point in the alignment period is the minimum of all data points in the
+  /// period. This alignment is valid for gauge and delta metrics with numeric
+  /// values. The value type of the result is the same as the value type of the
+  /// input.
+  /// - "ALIGN_MAX" : Align time series via aggregation. The resulting data
+  /// point in the alignment period is the maximum of all data points in the
+  /// period. This alignment is valid for gauge and delta metrics with numeric
+  /// values. The value type of the result is the same as the value type of the
+  /// input.
+  /// - "ALIGN_MEAN" : Align time series via aggregation. The resulting data
+  /// point in the alignment period is the average or arithmetic mean of all
+  /// data points in the period. This alignment is valid for gauge and delta
+  /// metrics with numeric values. The value type of the output is DOUBLE.
+  /// - "ALIGN_COUNT" : Align time series via aggregation. The resulting data
+  /// point in the alignment period is the count of all data points in the
+  /// period. This alignment is valid for gauge and delta metrics with numeric
+  /// or Boolean values. The value type of the output is INT64.
+  /// - "ALIGN_SUM" : Align time series via aggregation. The resulting data
+  /// point in the alignment period is the sum of all data points in the period.
+  /// This alignment is valid for gauge and delta metrics with numeric and
+  /// distribution values. The value type of the output is the same as the value
+  /// type of the input.
+  /// - "ALIGN_STDDEV" : Align time series via aggregation. The resulting data
+  /// point in the alignment period is the standard deviation of all data points
+  /// in the period. This alignment is valid for gauge and delta metrics with
+  /// numeric values. The value type of the output is DOUBLE.
+  /// - "ALIGN_COUNT_TRUE" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the count of True-valued data points
+  /// in the period. This alignment is valid for gauge metrics with Boolean
+  /// values. The value type of the output is INT64.
+  /// - "ALIGN_COUNT_FALSE" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the count of False-valued data
+  /// points in the period. This alignment is valid for gauge metrics with
+  /// Boolean values. The value type of the output is INT64.
+  /// - "ALIGN_FRACTION_TRUE" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the fraction of True-valued data
+  /// points in the period. This alignment is valid for gauge metrics with
+  /// Boolean values. The output value is in the range 0, 1 and has value type
+  /// DOUBLE.
+  /// - "ALIGN_PERCENTILE_99" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the 99th percentile of all data
+  /// points in the period. This alignment is valid for gauge and delta metrics
+  /// with distribution values. The output is a gauge metric with value type
+  /// DOUBLE.
+  /// - "ALIGN_PERCENTILE_95" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the 95th percentile of all data
+  /// points in the period. This alignment is valid for gauge and delta metrics
+  /// with distribution values. The output is a gauge metric with value type
+  /// DOUBLE.
+  /// - "ALIGN_PERCENTILE_50" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the 50th percentile of all data
+  /// points in the period. This alignment is valid for gauge and delta metrics
+  /// with distribution values. The output is a gauge metric with value type
+  /// DOUBLE.
+  /// - "ALIGN_PERCENTILE_05" : Align time series via aggregation. The resulting
+  /// data point in the alignment period is the 5th percentile of all data
+  /// points in the period. This alignment is valid for gauge and delta metrics
+  /// with distribution values. The output is a gauge metric with value type
+  /// DOUBLE.
+  /// - "ALIGN_PERCENT_CHANGE" : Align and convert to a percentage change. This
+  /// alignment is valid for gauge and delta metrics with numeric values. This
+  /// alignment conceptually computes the equivalent of "((current -
+  /// previous)/previous)*100" where previous value is determined based on the
+  /// alignmentPeriod. In the event that previous is 0 the calculated value is
+  /// infinity with the exception that if both (current - previous) and previous
+  /// are 0 the calculated value is 0. A 10 minute moving mean is computed at
+  /// each point of the time window prior to the above calculation to smooth the
+  /// metric and prevent false positives from very short lived spikes. Only
+  /// applicable for data that is >= 0. Any values < 0 are treated as no data.
+  /// While delta metrics are accepted by this alignment special care should be
+  /// taken that the values for the metric will always be positive. The output
+  /// is a gauge metric with value type DOUBLE.
+  core.String perSeriesAligner;
+
+  Aggregation();
+
+  Aggregation.fromJson(core.Map _json) {
+    if (_json.containsKey("alignmentPeriod")) {
+      alignmentPeriod = _json["alignmentPeriod"];
+    }
+    if (_json.containsKey("crossSeriesReducer")) {
+      crossSeriesReducer = _json["crossSeriesReducer"];
+    }
+    if (_json.containsKey("groupByFields")) {
+      groupByFields = (_json["groupByFields"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("perSeriesAligner")) {
+      perSeriesAligner = _json["perSeriesAligner"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alignmentPeriod != null) {
+      _json["alignmentPeriod"] = alignmentPeriod;
+    }
+    if (crossSeriesReducer != null) {
+      _json["crossSeriesReducer"] = crossSeriesReducer;
+    }
+    if (groupByFields != null) {
+      _json["groupByFields"] = groupByFields;
+    }
+    if (perSeriesAligner != null) {
+      _json["perSeriesAligner"] = perSeriesAligner;
+    }
+    return _json;
+  }
+}
+
+/// A description of the conditions under which some aspect of your system is
+/// considered to be "unhealthy" and the ways to notify people or services about
+/// this state. For an overview of alert policies, see Introduction to Alerting.
+class AlertPolicy {
+  /// How to combine the results of multiple conditions to determine if an
+  /// incident should be opened.
+  /// Possible string values are:
+  /// - "COMBINE_UNSPECIFIED" : An unspecified combiner.
+  /// - "AND" : Combine conditions using the logical AND operator. An incident
+  /// is created only if all conditions are met simultaneously. This combiner is
+  /// satisfied if all conditions are met, even if they are met on completely
+  /// different resources.
+  /// - "OR" : Combine conditions using the logical OR operator. An incident is
+  /// created if any of the listed conditions is met.
+  /// - "AND_WITH_MATCHING_RESOURCE" : Combine conditions using logical AND
+  /// operator, but unlike the regular AND option, an incident is created only
+  /// if all conditions are met simultaneously on at least one resource.
+  core.String combiner;
+
+  /// A list of conditions for the policy. The conditions are combined by AND or
+  /// OR according to the combiner field. If the combined conditions evaluate to
+  /// true, then an incident is created. A policy can have from one to six
+  /// conditions.
+  core.List<Condition> conditions;
+
+  /// A read-only record of the creation of the alerting policy. If provided in
+  /// a call to create or update, this field will be ignored.
+  MutationRecord creationRecord;
+
+  /// A short name or phrase used to identify the policy in dashboards,
+  /// notifications, and incidents. To avoid confusion, don't use the same
+  /// display name for multiple policies in the same project. The name is
+  /// limited to 512 Unicode characters.
+  core.String displayName;
+
+  /// Documentation that is included with notifications and incidents related to
+  /// this policy. Best practice is for the documentation to include information
+  /// to help responders understand, mitigate, escalate, and correct the
+  /// underlying problems detected by the alerting policy. Notification channels
+  /// that have limited capacity might not show this documentation.
+  Documentation documentation;
+
+  /// Whether or not the policy is enabled. On write, the default interpretation
+  /// if unset is that the policy is enabled. On read, clients should not make
+  /// any assumption about the state if it has not been populated. The field
+  /// should always be populated on List and Get operations, unless a field
+  /// projection has been specified that strips it out.
+  core.bool enabled;
+
+  /// A read-only record of the most recent change to the alerting policy. If
+  /// provided in a call to create or update, this field will be ignored.
+  MutationRecord mutationRecord;
+
+  /// Required if the policy exists. The resource name for this policy. The
+  /// syntax is:
+  /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+  /// [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
+  /// created. When calling the alertPolicies.create method, do not include the
+  /// name field in the alerting policy passed as part of the request.
+  core.String name;
+
+  /// Identifies the notification channels to which notifications should be sent
+  /// when incidents are opened or closed or when new violations occur on an
+  /// already opened incident. Each element of this array corresponds to the
+  /// name field in each of the NotificationChannel objects that are returned
+  /// from the ListNotificationChannels method. The syntax of the entries in
+  /// this field is:
+  /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+  core.List<core.String> notificationChannels;
+
+  /// User-supplied key/value data to be used for organizing and identifying the
+  /// AlertPolicy objects.The field can contain up to 64 entries. Each key and
+  /// value is limited to 63 Unicode characters or 128 bytes, whichever is
+  /// smaller. Labels and values can contain only lowercase letters, numerals,
+  /// underscores, and dashes. Keys must begin with a letter.
+  core.Map<core.String, core.String> userLabels;
+
+  AlertPolicy();
+
+  AlertPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("combiner")) {
+      combiner = _json["combiner"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = (_json["conditions"] as core.List)
+          .map<Condition>((value) => new Condition.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("creationRecord")) {
+      creationRecord = new MutationRecord.fromJson(_json["creationRecord"]);
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("documentation")) {
+      documentation = new Documentation.fromJson(_json["documentation"]);
+    }
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("mutationRecord")) {
+      mutationRecord = new MutationRecord.fromJson(_json["mutationRecord"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("notificationChannels")) {
+      notificationChannels =
+          (_json["notificationChannels"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("userLabels")) {
+      userLabels =
+          (_json["userLabels"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (combiner != null) {
+      _json["combiner"] = combiner;
+    }
+    if (conditions != null) {
+      _json["conditions"] =
+          conditions.map((value) => (value).toJson()).toList();
+    }
+    if (creationRecord != null) {
+      _json["creationRecord"] = (creationRecord).toJson();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (documentation != null) {
+      _json["documentation"] = (documentation).toJson();
+    }
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (mutationRecord != null) {
+      _json["mutationRecord"] = (mutationRecord).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (notificationChannels != null) {
+      _json["notificationChannels"] = notificationChannels;
+    }
+    if (userLabels != null) {
+      _json["userLabels"] = userLabels;
+    }
+    return _json;
   }
 }
 
@@ -1807,11 +3138,81 @@ class CollectdValueError {
   }
 }
 
+/// A condition is a true/false test that determines when an alerting policy
+/// should open an incident. If a condition evaluates to true, it signifies that
+/// something is wrong.
+class Condition {
+  /// A condition that checks that a time series continues to receive new data
+  /// points.
+  MetricAbsence conditionAbsent;
+
+  /// A condition that compares a time series against a threshold.
+  MetricThreshold conditionThreshold;
+
+  /// A short name or phrase used to identify the condition in dashboards,
+  /// notifications, and incidents. To avoid confusion, don't use the same
+  /// display name for multiple conditions in the same policy.
+  core.String displayName;
+
+  /// Required if the condition exists. The unique resource name for this
+  /// condition. Its syntax is:
+  /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+  /// [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is
+  /// created as part of a new or updated alerting policy.When calling the
+  /// alertPolicies.create method, do not include the name field in the
+  /// conditions of the requested alerting policy. Stackdriver Monitoring
+  /// creates the condition identifiers and includes them in the new policy.When
+  /// calling the alertPolicies.update method to update a policy, including a
+  /// condition name causes the existing condition to be updated. Conditions
+  /// without names are added to the updated policy. Existing conditions are
+  /// deleted if they are not updated.Best practice is to preserve
+  /// [CONDITION_ID] if you make only small changes, such as those to condition
+  /// thresholds, durations, or trigger values. Otherwise, treat the change as a
+  /// new condition and let the existing condition be deleted.
+  core.String name;
+
+  Condition();
+
+  Condition.fromJson(core.Map _json) {
+    if (_json.containsKey("conditionAbsent")) {
+      conditionAbsent = new MetricAbsence.fromJson(_json["conditionAbsent"]);
+    }
+    if (_json.containsKey("conditionThreshold")) {
+      conditionThreshold =
+          new MetricThreshold.fromJson(_json["conditionThreshold"]);
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (conditionAbsent != null) {
+      _json["conditionAbsent"] = (conditionAbsent).toJson();
+    }
+    if (conditionThreshold != null) {
+      _json["conditionThreshold"] = (conditionThreshold).toJson();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// Used to perform string matching. Currently, this matches on the exact
 /// content. In the future, it can be expanded to allow for regular expressions
 /// and more complex matching.
 class ContentMatcher {
-  /// String content to match
+  /// String content to match (max 1024 bytes)
   core.String content;
 
   ContentMatcher();
@@ -1969,6 +3370,11 @@ class Distribution {
   /// provided.
   core.String count;
 
+  /// Must be in increasing order of |value| field. The current requirement
+  /// enforced by the backend is that at most one Exemplar will fall into any
+  /// bucket.
+  core.List<Exemplar> exemplars;
+
   /// The arithmetic mean of the values in the population. If count is zero then
   /// this field must be zero.
   core.double mean;
@@ -1998,6 +3404,11 @@ class Distribution {
     if (_json.containsKey("count")) {
       count = _json["count"];
     }
+    if (_json.containsKey("exemplars")) {
+      exemplars = (_json["exemplars"] as core.List)
+          .map<Exemplar>((value) => new Exemplar.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("mean")) {
       mean = _json["mean"].toDouble();
     }
@@ -2021,6 +3432,9 @@ class Distribution {
     if (count != null) {
       _json["count"] = count;
     }
+    if (exemplars != null) {
+      _json["exemplars"] = exemplars.map((value) => (value).toJson()).toList();
+    }
     if (mean != null) {
       _json["mean"] = mean;
     }
@@ -2029,6 +3443,42 @@ class Distribution {
     }
     if (sumOfSquaredDeviation != null) {
       _json["sumOfSquaredDeviation"] = sumOfSquaredDeviation;
+    }
+    return _json;
+  }
+}
+
+/// A content string and a MIME type that describes the content string's format.
+class Documentation {
+  /// The text of the documentation, interpreted according to mime_type. The
+  /// content may not exceed 8,192 Unicode characters and may not exceed more
+  /// than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+  core.String content;
+
+  /// The format of the content field. Presently, only the value "text/markdown"
+  /// is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for
+  /// more information.
+  core.String mimeType;
+
+  Documentation();
+
+  Documentation.fromJson(core.Map _json) {
+    if (_json.containsKey("content")) {
+      content = _json["content"];
+    }
+    if (_json.containsKey("mimeType")) {
+      mimeType = _json["mimeType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (content != null) {
+      _json["content"] = content;
+    }
+    if (mimeType != null) {
+      _json["mimeType"] = mimeType;
     }
     return _json;
   }
@@ -2049,6 +3499,63 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Exemplars are example points that may be used to annotate aggregated
+/// distribution values. They are metadata that gives information about a
+/// particular value added to a Distribution bucket, such as a trace ID that was
+/// active when a value was added. They may contain further information, such as
+/// a example values and timestamps, origin, etc.
+class Exemplar {
+  /// Contextual information about the example value. Examples are:Trace ID:
+  /// type.googleapis.com/google.devtools.cloudtrace.v1.TraceLiteral string:
+  /// type.googleapis.com/google.protobuf.StringValueLabels dropped during
+  /// aggregation:  type.googleapis.com/google.monitoring.v3.DroppedLabelsThere
+  /// may be only a single attachment of any given message type in a single
+  /// exemplar, and this is enforced by the system.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> attachments;
+
+  /// The observation (sampling) time of the above value.
+  core.String timestamp;
+
+  /// Value of the exemplar point. This value determines to which bucket the
+  /// exemplar belongs.
+  core.double value;
+
+  Exemplar();
+
+  Exemplar.fromJson(core.Map _json) {
+    if (_json.containsKey("attachments")) {
+      attachments = (_json["attachments"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attachments != null) {
+      _json["attachments"] = attachments;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
     return _json;
   }
 }
@@ -2257,6 +3764,74 @@ class Field {
     }
     if (typeUrl != null) {
       _json["typeUrl"] = typeUrl;
+    }
+    return _json;
+  }
+}
+
+/// The GetNotificationChannelVerificationCode request.
+class GetNotificationChannelVerificationCodeRequest {
+  /// The desired expiration time. If specified, the API will guarantee that the
+  /// returned code will not be valid after the specified timestamp; however,
+  /// the API cannot guarantee that the returned code will be valid for at least
+  /// as long as the requested time (the API puts an upper bound on the amount
+  /// of time for which a code may be valid). If omitted, a default expiration
+  /// will be used, which may be less than the max permissible expiration (so
+  /// specifying an expiration may extend the code's lifetime over omitting an
+  /// expiration, even though the API does impose an upper limit on the maximum
+  /// expiration that is permitted).
+  core.String expireTime;
+
+  GetNotificationChannelVerificationCodeRequest();
+
+  GetNotificationChannelVerificationCodeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    return _json;
+  }
+}
+
+/// The GetNotificationChannelVerificationCode request.
+class GetNotificationChannelVerificationCodeResponse {
+  /// The verification code, which may be used to verify other channels that
+  /// have an equivalent identity (i.e. other channels of the same type with the
+  /// same fingerprint such as other email channels with the same email address
+  /// or other sms channels with the same number).
+  core.String code;
+
+  /// The expiration time associated with the code that was returned. If an
+  /// expiration was provided in the request, this is the minimum of the
+  /// requested expiration in the request and the max permitted expiration.
+  core.String expireTime;
+
+  GetNotificationChannelVerificationCodeResponse();
+
+  GetNotificationChannelVerificationCodeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
     }
     return _json;
   }
@@ -2585,6 +4160,43 @@ class Linear {
   }
 }
 
+/// The protocol for the ListAlertPolicies response.
+class ListAlertPoliciesResponse {
+  /// The returned alert policies.
+  core.List<AlertPolicy> alertPolicies;
+
+  /// If there might be more results than were returned, then this field is set
+  /// to a non-empty value. To see the additional results, use that value as
+  /// pageToken in the next call to this method.
+  core.String nextPageToken;
+
+  ListAlertPoliciesResponse();
+
+  ListAlertPoliciesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("alertPolicies")) {
+      alertPolicies = (_json["alertPolicies"] as core.List)
+          .map<AlertPolicy>((value) => new AlertPolicy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alertPolicies != null) {
+      _json["alertPolicies"] =
+          alertPolicies.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// The ListGroupMembers response.
 class ListGroupMembersResponse {
   /// A set of monitored resources in the group.
@@ -2745,8 +4357,89 @@ class ListMonitoredResourceDescriptorsResponse {
   }
 }
 
+/// The ListNotificationChannelDescriptors response.
+class ListNotificationChannelDescriptorsResponse {
+  /// The monitored resource descriptors supported for the specified project,
+  /// optionally filtered.
+  core.List<NotificationChannelDescriptor> channelDescriptors;
+
+  /// If not empty, indicates that there may be more results that match the
+  /// request. Use the value in the page_token field in a subsequent request to
+  /// fetch the next set of results. If empty, all results have been returned.
+  core.String nextPageToken;
+
+  ListNotificationChannelDescriptorsResponse();
+
+  ListNotificationChannelDescriptorsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("channelDescriptors")) {
+      channelDescriptors = (_json["channelDescriptors"] as core.List)
+          .map<NotificationChannelDescriptor>(
+              (value) => new NotificationChannelDescriptor.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (channelDescriptors != null) {
+      _json["channelDescriptors"] =
+          channelDescriptors.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The ListNotificationChannels response.
+class ListNotificationChannelsResponse {
+  /// If not empty, indicates that there may be more results that match the
+  /// request. Use the value in the page_token field in a subsequent request to
+  /// fetch the next set of results. If empty, all results have been returned.
+  core.String nextPageToken;
+
+  /// The notification channels defined for the specified project.
+  core.List<NotificationChannel> notificationChannels;
+
+  ListNotificationChannelsResponse();
+
+  ListNotificationChannelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("notificationChannels")) {
+      notificationChannels = (_json["notificationChannels"] as core.List)
+          .map<NotificationChannel>(
+              (value) => new NotificationChannel.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (notificationChannels != null) {
+      _json["notificationChannels"] =
+          notificationChannels.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The ListTimeSeries response.
 class ListTimeSeriesResponse {
+  /// Query execution errors that may have caused the time series data returned
+  /// to be incomplete.
+  core.List<Status> executionErrors;
+
   /// If there are more results than have been returned, then this field is set
   /// to a non-empty value. To see the additional results, use that value as
   /// pageToken in the next call to this method.
@@ -2758,6 +4451,11 @@ class ListTimeSeriesResponse {
   ListTimeSeriesResponse();
 
   ListTimeSeriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionErrors")) {
+      executionErrors = (_json["executionErrors"] as core.List)
+          .map<Status>((value) => new Status.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
@@ -2771,6 +4469,10 @@ class ListTimeSeriesResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (executionErrors != null) {
+      _json["executionErrors"] =
+          executionErrors.map((value) => (value).toJson()).toList();
+    }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2908,6 +4610,82 @@ class Metric {
   }
 }
 
+/// A condition type that checks that monitored resources are reporting data.
+/// The configuration defines a metric and a set of monitored resources. The
+/// predicate is considered in violation when a time series for the specified
+/// metric of a monitored resource does not include any data in the specified
+/// duration.
+class MetricAbsence {
+  /// Specifies the alignment of data points in individual time series as well
+  /// as how to combine the retrieved time series together (such as when
+  /// aggregating multiple streams on each resource to a single stream for each
+  /// resource or when aggregating streams across all members of a group of
+  /// resrouces). Multiple aggregations are applied in the order specified.This
+  /// field is similar to the one in the MetricService.ListTimeSeries request.
+  /// It is advisable to use the ListTimeSeries method when debugging this
+  /// field.
+  core.List<Aggregation> aggregations;
+
+  /// The amount of time that a time series must fail to report new data to be
+  /// considered failing. Currently, only values that are a multiple of a
+  /// minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value
+  /// is given, an error will be returned. The Duration.nanos field is ignored.
+  core.String duration;
+
+  /// A filter that identifies which time series should be compared with the
+  /// threshold.The filter is similar to the one that is specified in the
+  /// MetricService.ListTimeSeries request (that call is useful to verify the
+  /// time series that will be retrieved / processed) and must specify the
+  /// metric type and optionally may contain restrictions on resource type,
+  /// resource labels, and metric labels. This field may not exceed 2048 Unicode
+  /// characters in length.
+  core.String filter;
+
+  /// The number/percent of time series for which the comparison must hold in
+  /// order for the condition to trigger. If unspecified, then the condition
+  /// will trigger if the comparison is true for any of the time series that
+  /// have been identified by filter and aggregations.
+  Trigger trigger;
+
+  MetricAbsence();
+
+  MetricAbsence.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregations")) {
+      aggregations = (_json["aggregations"] as core.List)
+          .map<Aggregation>((value) => new Aggregation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("trigger")) {
+      trigger = new Trigger.fromJson(_json["trigger"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (aggregations != null) {
+      _json["aggregations"] =
+          aggregations.map((value) => (value).toJson()).toList();
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (trigger != null) {
+      _json["trigger"] = (trigger).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Defines a metric type and its schema. Once a metric descriptor is created,
 /// deleting or altering it stops data collection and makes the metric type's
 /// existing data unusable.
@@ -3029,6 +4807,154 @@ class MetricDescriptor {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// A condition type that compares a collection of time series against a
+/// threshold.
+class MetricThreshold {
+  /// Specifies the alignment of data points in individual time series as well
+  /// as how to combine the retrieved time series together (such as when
+  /// aggregating multiple streams on each resource to a single stream for each
+  /// resource or when aggregating streams across all members of a group of
+  /// resrouces). Multiple aggregations are applied in the order specified.This
+  /// field is similar to the one in the MetricService.ListTimeSeries request.
+  /// It is advisable to use the ListTimeSeries method when debugging this
+  /// field.
+  core.List<Aggregation> aggregations;
+
+  /// The comparison to apply between the time series (indicated by filter and
+  /// aggregation) and the threshold (indicated by threshold_value). The
+  /// comparison is applied on each time series, with the time series on the
+  /// left-hand side and the threshold on the right-hand side.Only COMPARISON_LT
+  /// and COMPARISON_GT are supported currently.
+  /// Possible string values are:
+  /// - "COMPARISON_UNSPECIFIED" : No ordering relationship is specified.
+  /// - "COMPARISON_GT" : The left argument is greater than the right argument.
+  /// - "COMPARISON_GE" : The left argument is greater than or equal to the
+  /// right argument.
+  /// - "COMPARISON_LT" : The left argument is less than the right argument.
+  /// - "COMPARISON_LE" : The left argument is less than or equal to the right
+  /// argument.
+  /// - "COMPARISON_EQ" : The left argument is equal to the right argument.
+  /// - "COMPARISON_NE" : The left argument is not equal to the right argument.
+  core.String comparison;
+
+  /// Specifies the alignment of data points in individual time series selected
+  /// by denominatorFilter as well as how to combine the retrieved time series
+  /// together (such as when aggregating multiple streams on each resource to a
+  /// single stream for each resource or when aggregating streams across all
+  /// members of a group of resources).When computing ratios, the aggregations
+  /// and denominator_aggregations fields must use the same alignment period and
+  /// produce time series that have the same periodicity and labels.This field
+  /// is similar to the one in the MetricService.ListTimeSeries request. It is
+  /// advisable to use the ListTimeSeries method when debugging this field.
+  core.List<Aggregation> denominatorAggregations;
+
+  /// A filter that identifies a time series that should be used as the
+  /// denominator of a ratio that will be compared with the threshold. If a
+  /// denominator_filter is specified, the time series specified by the filter
+  /// field will be used as the numerator.The filter is similar to the one that
+  /// is specified in the MetricService.ListTimeSeries request (that call is
+  /// useful to verify the time series that will be retrieved / processed) and
+  /// must specify the metric type and optionally may contain restrictions on
+  /// resource type, resource labels, and metric labels. This field may not
+  /// exceed 2048 Unicode characters in length.
+  core.String denominatorFilter;
+
+  /// The amount of time that a time series must violate the threshold to be
+  /// considered failing. Currently, only values that are a multiple of a
+  /// minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid
+  /// value is given, an error will be returned. When choosing a duration, it is
+  /// useful to keep in mind the frequency of the underlying time series data
+  /// (which may also be affected by any alignments specified in the
+  /// aggregations field); a good duration is long enough so that a single
+  /// outlier does not generate spurious alerts, but short enough that unhealthy
+  /// states are detected and alerted on quickly.
+  core.String duration;
+
+  /// A filter that identifies which time series should be compared with the
+  /// threshold.The filter is similar to the one that is specified in the
+  /// MetricService.ListTimeSeries request (that call is useful to verify the
+  /// time series that will be retrieved / processed) and must specify the
+  /// metric type and optionally may contain restrictions on resource type,
+  /// resource labels, and metric labels. This field may not exceed 2048 Unicode
+  /// characters in length.
+  core.String filter;
+
+  /// A value against which to compare the time series.
+  core.double thresholdValue;
+
+  /// The number/percent of time series for which the comparison must hold in
+  /// order for the condition to trigger. If unspecified, then the condition
+  /// will trigger if the comparison is true for any of the time series that
+  /// have been identified by filter and aggregations, or by the ratio, if
+  /// denominator_filter and denominator_aggregations are specified.
+  Trigger trigger;
+
+  MetricThreshold();
+
+  MetricThreshold.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregations")) {
+      aggregations = (_json["aggregations"] as core.List)
+          .map<Aggregation>((value) => new Aggregation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("comparison")) {
+      comparison = _json["comparison"];
+    }
+    if (_json.containsKey("denominatorAggregations")) {
+      denominatorAggregations = (_json["denominatorAggregations"] as core.List)
+          .map<Aggregation>((value) => new Aggregation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("denominatorFilter")) {
+      denominatorFilter = _json["denominatorFilter"];
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("thresholdValue")) {
+      thresholdValue = _json["thresholdValue"].toDouble();
+    }
+    if (_json.containsKey("trigger")) {
+      trigger = new Trigger.fromJson(_json["trigger"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (aggregations != null) {
+      _json["aggregations"] =
+          aggregations.map((value) => (value).toJson()).toList();
+    }
+    if (comparison != null) {
+      _json["comparison"] = comparison;
+    }
+    if (denominatorAggregations != null) {
+      _json["denominatorAggregations"] =
+          denominatorAggregations.map((value) => (value).toJson()).toList();
+    }
+    if (denominatorFilter != null) {
+      _json["denominatorFilter"] = denominatorFilter;
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (thresholdValue != null) {
+      _json["thresholdValue"] = thresholdValue;
+    }
+    if (trigger != null) {
+      _json["trigger"] = (trigger).toJson();
     }
     return _json;
   }
@@ -3211,6 +5137,257 @@ class MonitoredResourceMetadata {
   }
 }
 
+/// Describes a change made to a configuration.
+class MutationRecord {
+  /// When the change occurred.
+  core.String mutateTime;
+
+  /// The email address of the user making the change.
+  core.String mutatedBy;
+
+  MutationRecord();
+
+  MutationRecord.fromJson(core.Map _json) {
+    if (_json.containsKey("mutateTime")) {
+      mutateTime = _json["mutateTime"];
+    }
+    if (_json.containsKey("mutatedBy")) {
+      mutatedBy = _json["mutatedBy"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (mutateTime != null) {
+      _json["mutateTime"] = mutateTime;
+    }
+    if (mutatedBy != null) {
+      _json["mutatedBy"] = mutatedBy;
+    }
+    return _json;
+  }
+}
+
+/// A NotificationChannel is a medium through which an alert is delivered when a
+/// policy violation is detected. Examples of channels include email, SMS, and
+/// third-party messaging applications. Fields containing sensitive information
+/// like authentication tokens or contact info are only partially populated on
+/// retrieval.
+class NotificationChannel {
+  /// An optional human-readable description of this notification channel. This
+  /// description may provide additional details, beyond the display name, for
+  /// the channel. This may not exceeed 1024 Unicode characters.
+  core.String description;
+
+  /// An optional human-readable name for this notification channel. It is
+  /// recommended that you specify a non-empty and unique name in order to make
+  /// it easier to identify the channels in your project, though this is not
+  /// enforced. The display name is limited to 512 Unicode characters.
+  core.String displayName;
+
+  /// Whether notifications are forwarded to the described channel. This makes
+  /// it possible to disable delivery of notifications to a particular channel
+  /// without removing the channel from all alerting policies that reference the
+  /// channel. This is a more convenient approach when the change is temporary
+  /// and you want to receive notifications from the same set of alerting
+  /// policies on the channel at some point in the future.
+  core.bool enabled;
+
+  /// Configuration fields that define the channel and its behavior. The
+  /// permissible and required labels are specified in the
+  /// NotificationChannelDescriptor.labels of the NotificationChannelDescriptor
+  /// corresponding to the type field.
+  core.Map<core.String, core.String> labels;
+
+  /// The full REST resource name for this channel. The syntax is:
+  /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+  /// The [CHANNEL_ID] is automatically assigned by the server on creation.
+  core.String name;
+
+  /// The type of the notification channel. This field matches the value of the
+  /// NotificationChannelDescriptor.type field.
+  core.String type;
+
+  /// User-supplied key/value data that does not need to conform to the
+  /// corresponding NotificationChannelDescriptor's schema, unlike the labels
+  /// field. This field is intended to be used for organizing and identifying
+  /// the NotificationChannel objects.The field can contain up to 64 entries.
+  /// Each key and value is limited to 63 Unicode characters or 128 bytes,
+  /// whichever is smaller. Labels and values can contain only lowercase
+  /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
+  core.Map<core.String, core.String> userLabels;
+
+  /// Indicates whether this channel has been verified or not. On a
+  /// ListNotificationChannels or GetNotificationChannel operation, this field
+  /// is expected to be populated.If the value is UNVERIFIED, then it indicates
+  /// that the channel is non-functioning (it both requires verification and
+  /// lacks verification); otherwise, it is assumed that the channel works.If
+  /// the channel is neither VERIFIED nor UNVERIFIED, it implies that the
+  /// channel is of a type that does not require verification or that this
+  /// specific channel has been exempted from verification because it was
+  /// created prior to verification being required for channels of this
+  /// type.This field cannot be modified using a standard
+  /// UpdateNotificationChannel operation. To change the value of this field,
+  /// you must call VerifyNotificationChannel.
+  /// Possible string values are:
+  /// - "VERIFICATION_STATUS_UNSPECIFIED" : Sentinel value used to indicate that
+  /// the state is unknown, omitted, or is not applicable (as in the case of
+  /// channels that neither support nor require verification in order to
+  /// function).
+  /// - "UNVERIFIED" : The channel has yet to be verified and requires
+  /// verification to function. Note that this state also applies to the case
+  /// where the verification process has been initiated by sending a
+  /// verification code but where the verification code has not been submitted
+  /// to complete the process.
+  /// - "VERIFIED" : It has been proven that notifications can be received on
+  /// this notification channel and that someone on the project has access to
+  /// messages that are delivered to that channel.
+  core.String verificationStatus;
+
+  NotificationChannel();
+
+  NotificationChannel.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("userLabels")) {
+      userLabels =
+          (_json["userLabels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("verificationStatus")) {
+      verificationStatus = _json["verificationStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (userLabels != null) {
+      _json["userLabels"] = userLabels;
+    }
+    if (verificationStatus != null) {
+      _json["verificationStatus"] = verificationStatus;
+    }
+    return _json;
+  }
+}
+
+/// A description of a notification channel. The descriptor includes the
+/// properties of the channel and the set of labels or fields that must be
+/// specified to configure channels of a given type.
+class NotificationChannelDescriptor {
+  /// A human-readable description of the notification channel type. The
+  /// description may include a description of the properties of the channel and
+  /// pointers to external documentation.
+  core.String description;
+
+  /// A human-readable name for the notification channel type. This form of the
+  /// name is suitable for a user interface.
+  core.String displayName;
+
+  /// The set of labels that must be defined to identify a particular channel of
+  /// the corresponding type. Each label includes a description for how that
+  /// field should be populated.
+  core.List<LabelDescriptor> labels;
+
+  /// The full REST resource name for this descriptor. The syntax is:
+  /// projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]
+  /// In the above, [TYPE] is the value of the type field.
+  core.String name;
+
+  /// The tiers that support this notification channel; the project service tier
+  /// must be one of the supported_tiers.
+  core.List<core.String> supportedTiers;
+
+  /// The type of notification channel, such as "email", "sms", etc.
+  /// Notification channel types are globally unique.
+  core.String type;
+
+  NotificationChannelDescriptor();
+
+  NotificationChannelDescriptor.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.List)
+          .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("supportedTiers")) {
+      supportedTiers =
+          (_json["supportedTiers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (labels != null) {
+      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (supportedTiers != null) {
+      _json["supportedTiers"] = supportedTiers;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
 class Option {
@@ -3359,6 +5536,19 @@ class ResourceGroup {
     if (resourceType != null) {
       _json["resourceType"] = resourceType;
     }
+    return _json;
+  }
+}
+
+/// The SendNotificationChannelVerificationCode request.
+class SendNotificationChannelVerificationCodeRequest {
+  SendNotificationChannelVerificationCodeRequest();
+
+  SendNotificationChannelVerificationCodeRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3645,6 +5835,41 @@ class TimeSeries {
   }
 }
 
+/// Specifies how many time series must fail a predicate to trigger a condition.
+/// If not specified, then a {count: 1} trigger is used.
+class Trigger {
+  /// The absolute number of time series that must fail the predicate for the
+  /// condition to be triggered.
+  core.int count;
+
+  /// The percentage of time series that must fail the predicate for the
+  /// condition to be triggered.
+  core.double percent;
+
+  Trigger();
+
+  Trigger.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("percent")) {
+      percent = _json["percent"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (percent != null) {
+      _json["percent"] = percent;
+    }
+    return _json;
+  }
+}
+
 /// A protocol buffer message type.
 class Type {
   /// The list of fields.
@@ -3821,7 +6046,7 @@ class UptimeCheckConfig {
 
   /// How often, in seconds, the uptime check is performed. Currently, the only
   /// supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes),
-  /// and 900s (15 minutes). Required.
+  /// and 900s (15 minutes). Optional, defaults to 300s.
   core.String period;
 
   /// The group resource associated with the configuration.
@@ -3986,6 +6211,35 @@ class UptimeCheckIp {
     }
     if (region != null) {
       _json["region"] = region;
+    }
+    return _json;
+  }
+}
+
+/// The VerifyNotificationChannel request.
+class VerifyNotificationChannelRequest {
+  /// The verification code that was delivered to the channel as a result of
+  /// invoking the SendNotificationChannelVerificationCode API method or that
+  /// was retrieved from a verified channel via
+  /// GetNotificationChannelVerificationCode. For example, one might have
+  /// "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in general, one is only
+  /// guaranteed that the code is valid UTF-8; one should not make any
+  /// assumptions regarding the structure or format of the code).
+  core.String code;
+
+  VerifyNotificationChannelRequest();
+
+  VerifyNotificationChannelRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
     }
     return _json;
   }

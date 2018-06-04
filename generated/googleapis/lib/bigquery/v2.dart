@@ -444,7 +444,8 @@ class JobsResourceApi {
   /// [jobId] - [Required] Job ID of the job to cancel
   ///
   /// [location] - [Experimental] The geographic location of the job. Required
-  /// except for US and EU.
+  /// except for US and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -505,7 +506,8 @@ class JobsResourceApi {
   /// [jobId] - [Required] Job ID of the requested job
   ///
   /// [location] - [Experimental] The geographic location of the job. Required
-  /// except for US and EU.
+  /// except for US and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -562,7 +564,8 @@ class JobsResourceApi {
   /// [jobId] - [Required] Job ID of the query job
   ///
   /// [location] - [Experimental] The geographic location where the job should
-  /// run. Required except for US and EU.
+  /// run. Required except for US and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
   ///
   /// [maxResults] - Maximum number of results to read
   ///
@@ -722,7 +725,15 @@ class JobsResourceApi {
   /// [allUsers] - Whether to display jobs owned by all users in the project.
   /// Default false
   ///
+  /// [maxCreationTime] - Max value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created before or at this timestamp are
+  /// returned
+  ///
   /// [maxResults] - Maximum number of results to return
+  ///
+  /// [minCreationTime] - Min value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
+  /// returned
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
@@ -746,7 +757,9 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<JobList> list(core.String projectId,
       {core.bool allUsers,
+      core.String maxCreationTime,
       core.int maxResults,
+      core.String minCreationTime,
       core.String pageToken,
       core.String projection,
       core.List<core.String> stateFilter,
@@ -764,8 +777,14 @@ class JobsResourceApi {
     if (allUsers != null) {
       _queryParams["allUsers"] = ["${allUsers}"];
     }
+    if (maxCreationTime != null) {
+      _queryParams["maxCreationTime"] = [maxCreationTime];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (minCreationTime != null) {
+      _queryParams["minCreationTime"] = [minCreationTime];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1725,6 +1744,31 @@ class BigtableOptions {
   }
 }
 
+class Clustering {
+  /// [Repeated] One or more fields on which data should be clustered. Only
+  /// top-level, non-repeated, simple-type fields are supported. The order of
+  /// the fields will determine how clusters will be generated, so it is
+  /// important.
+  core.List<core.String> fields;
+
+  Clustering();
+
+  Clustering.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = (_json["fields"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    return _json;
+  }
+}
+
 class CsvOptions {
   /// [Optional] Indicates if BigQuery should accept rows that are missing
   /// trailing optional columns. If true, BigQuery treats missing trailing
@@ -1948,8 +1992,9 @@ class Dataset {
   /// modified, in milliseconds since the epoch.
   core.String lastModifiedTime;
 
-  /// The geographic location where the dataset should reside. Possible values
-  /// include EU and US. The default value is US.
+  /// The geographic location where the dataset should reside. The default value
+  /// is US. See details at
+  /// https://cloud.google.com/bigquery/docs/dataset-locations.
   core.String location;
 
   /// [Output-only] A URL that can be used to access the resource again. You can
@@ -2338,7 +2383,7 @@ class ExplainQueryStage {
   /// Relative amount of time the slowest shard spent on CPU-bound tasks.
   core.double computeRatioMax;
 
-  /// Stage end time in milliseconds.
+  /// Stage end time represented as milliseconds since epoch.
   core.String endMs;
 
   /// Unique ID for stage within plan.
@@ -2377,7 +2422,7 @@ class ExplainQueryStage {
   /// Total number of bytes written to shuffle and spilled to disk.
   core.String shuffleOutputBytesSpilled;
 
-  /// Stage start time in milliseconds.
+  /// Stage start time represented as milliseconds since epoch.
   core.String startMs;
 
   /// Current status for the stage.
@@ -2937,6 +2982,10 @@ class GetServiceAccountResponse {
 }
 
 class GoogleSheetsOptions {
+  /// [Experimental] [Optional] Range of a sheet to query from. Only used when
+  /// non-empty. Typical format: !:
+  core.String range;
+
   /// [Optional] The number of rows at the top of a sheet that BigQuery will
   /// skip when reading the data. The default value is 0. This property is
   /// useful if you have header rows that should be skipped. When autodetect is
@@ -2953,6 +3002,9 @@ class GoogleSheetsOptions {
   GoogleSheetsOptions();
 
   GoogleSheetsOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = _json["range"];
+    }
     if (_json.containsKey("skipLeadingRows")) {
       skipLeadingRows = _json["skipLeadingRows"];
     }
@@ -2961,6 +3013,9 @@ class GoogleSheetsOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (range != null) {
+      _json["range"] = range;
+    }
     if (skipLeadingRows != null) {
       _json["skipLeadingRows"] = skipLeadingRows;
     }
@@ -3278,9 +3333,14 @@ class JobConfigurationLoad {
   /// newline characters in a CSV file. The default value is false.
   core.bool allowQuotedNewlines;
 
-  /// Indicates if we should automatically infer the options and schema for CSV
-  /// and JSON sources.
+  /// [Optional] Indicates if we should automatically infer the options and
+  /// schema for CSV and JSON sources.
   core.bool autodetect;
+
+  /// [Experimental] Clustering specification for the destination table. Must be
+  /// specified with time-based partitioning, data in the table will be first
+  /// partitioned and subsequently clustered.
+  Clustering clustering;
 
   /// [Optional] Specifies whether the job is allowed to create new tables. The
   /// following values are supported: CREATE_IF_NEEDED: If the table does not
@@ -3402,8 +3462,7 @@ class JobConfigurationLoad {
   /// the '*' wildcard character is not allowed.
   core.List<core.String> sourceUris;
 
-  /// If specified, configures time-based partitioning for the destination
-  /// table.
+  /// Time-based partitioning specification for the destination table.
   TimePartitioning timePartitioning;
 
   /// [Optional] Specifies the action that occurs if the destination table
@@ -3428,6 +3487,9 @@ class JobConfigurationLoad {
     }
     if (_json.containsKey("autodetect")) {
       autodetect = _json["autodetect"];
+    }
+    if (_json.containsKey("clustering")) {
+      clustering = new Clustering.fromJson(_json["clustering"]);
     }
     if (_json.containsKey("createDisposition")) {
       createDisposition = _json["createDisposition"];
@@ -3508,6 +3570,9 @@ class JobConfigurationLoad {
     if (autodetect != null) {
       _json["autodetect"] = autodetect;
     }
+    if (clustering != null) {
+      _json["clustering"] = (clustering).toJson();
+    }
     if (createDisposition != null) {
       _json["createDisposition"] = createDisposition;
     }
@@ -3583,6 +3648,11 @@ class JobConfigurationQuery {
   /// size.
   core.bool allowLargeResults;
 
+  /// [Experimental] Clustering specification for the destination table. Must be
+  /// specified with time-based partitioning, data in the table will be first
+  /// partitioned and subsequently clustered.
+  Clustering clustering;
+
   /// [Optional] Specifies whether the job is allowed to create new tables. The
   /// following values are supported: CREATE_IF_NEEDED: If the table does not
   /// exist, BigQuery creates the table. CREATE_NEVER: The table must already
@@ -3656,8 +3726,7 @@ class JobConfigurationQuery {
   /// as if it were a standard BigQuery table.
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
 
-  /// If specified, configures time-based partitioning for the destination
-  /// table.
+  /// Time-based partitioning specification for the destination table.
   TimePartitioning timePartitioning;
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The
@@ -3694,6 +3763,9 @@ class JobConfigurationQuery {
   JobConfigurationQuery.fromJson(core.Map _json) {
     if (_json.containsKey("allowLargeResults")) {
       allowLargeResults = _json["allowLargeResults"];
+    }
+    if (_json.containsKey("clustering")) {
+      clustering = new Clustering.fromJson(_json["clustering"]);
     }
     if (_json.containsKey("createDisposition")) {
       createDisposition = _json["createDisposition"];
@@ -3770,6 +3842,9 @@ class JobConfigurationQuery {
         new core.Map<core.String, core.Object>();
     if (allowLargeResults != null) {
       _json["allowLargeResults"] = allowLargeResults;
+    }
+    if (clustering != null) {
+      _json["clustering"] = (clustering).toJson();
     }
     if (createDisposition != null) {
       _json["createDisposition"] = createDisposition;
@@ -4077,7 +4152,8 @@ class JobReference {
   core.String jobId;
 
   /// [Experimental] The geographic location of the job. Required except for US
-  /// and EU.
+  /// and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
   core.String location;
 
   /// [Required] The ID of the project containing this job.
@@ -4204,6 +4280,38 @@ class JobStatistics {
   }
 }
 
+class JobStatistics2ReservationUsage {
+  /// [Output-only] Reservation name or "unreserved" for on-demand resources
+  /// usage.
+  core.String name;
+
+  /// [Output-only] Slot-milliseconds the job spent in the given reservation.
+  core.String slotMs;
+
+  JobStatistics2ReservationUsage();
+
+  JobStatistics2ReservationUsage.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("slotMs")) {
+      slotMs = _json["slotMs"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (slotMs != null) {
+      _json["slotMs"] = slotMs;
+    }
+    return _json;
+  }
+}
+
 class JobStatistics2 {
   /// [Output-only] Billing tier for the job.
   core.int billingTier;
@@ -4239,6 +4347,9 @@ class JobStatistics2 {
   /// than 50 tables will not have a complete list.
   core.List<TableReference> referencedTables;
 
+  /// [Output-only] Job resource usage breakdown by reservation.
+  core.List<JobStatistics2ReservationUsage> reservationUsage;
+
   /// [Output-only] The schema of the results. Present only for successful dry
   /// run of non-legacy SQL queries.
   TableSchema schema;
@@ -4265,6 +4376,10 @@ class JobStatistics2 {
 
   /// [Output-only] Total bytes processed for the job.
   core.String totalBytesProcessed;
+
+  /// [Output-only] Total number of partitions processed from all partitioned
+  /// tables referenced in the job.
+  core.String totalPartitionsProcessed;
 
   /// [Output-only] Slot-milliseconds for the job.
   core.String totalSlotMs;
@@ -4305,6 +4420,12 @@ class JobStatistics2 {
           .map<TableReference>((value) => new TableReference.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("reservationUsage")) {
+      reservationUsage = (_json["reservationUsage"] as core.List)
+          .map<JobStatistics2ReservationUsage>(
+              (value) => new JobStatistics2ReservationUsage.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
     }
@@ -4322,6 +4443,9 @@ class JobStatistics2 {
     }
     if (_json.containsKey("totalBytesProcessed")) {
       totalBytesProcessed = _json["totalBytesProcessed"];
+    }
+    if (_json.containsKey("totalPartitionsProcessed")) {
+      totalPartitionsProcessed = _json["totalPartitionsProcessed"];
     }
     if (_json.containsKey("totalSlotMs")) {
       totalSlotMs = _json["totalSlotMs"];
@@ -4362,6 +4486,10 @@ class JobStatistics2 {
       _json["referencedTables"] =
           referencedTables.map((value) => (value).toJson()).toList();
     }
+    if (reservationUsage != null) {
+      _json["reservationUsage"] =
+          reservationUsage.map((value) => (value).toJson()).toList();
+    }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
     }
@@ -4376,6 +4504,9 @@ class JobStatistics2 {
     }
     if (totalBytesProcessed != null) {
       _json["totalBytesProcessed"] = totalBytesProcessed;
+    }
+    if (totalPartitionsProcessed != null) {
+      _json["totalPartitionsProcessed"] = totalPartitionsProcessed;
     }
     if (totalSlotMs != null) {
       _json["totalSlotMs"] = totalSlotMs;
@@ -5160,18 +5291,19 @@ class QueryResponse {
 }
 
 class QueryTimelineSample {
-  /// Total number of active workers. This does not correspond directly to slot
-  /// usage. This is the largest value observed since the last sample.
-  core.String activeInputs;
+  /// Total number of units currently being processed by workers. This does not
+  /// correspond directly to slot usage. This is the largest value observed
+  /// since the last sample.
+  core.String activeUnits;
 
   /// Total parallel units of work completed by this query.
-  core.String completedInputs;
+  core.String completedUnits;
 
   /// Milliseconds elapsed since the start of query execution.
   core.String elapsedMs;
 
   /// Total parallel units of work remaining for the active stages.
-  core.String pendingInputs;
+  core.String pendingUnits;
 
   /// Cumulative slot-ms consumed by the query.
   core.String totalSlotMs;
@@ -5179,17 +5311,17 @@ class QueryTimelineSample {
   QueryTimelineSample();
 
   QueryTimelineSample.fromJson(core.Map _json) {
-    if (_json.containsKey("activeInputs")) {
-      activeInputs = _json["activeInputs"];
+    if (_json.containsKey("activeUnits")) {
+      activeUnits = _json["activeUnits"];
     }
-    if (_json.containsKey("completedInputs")) {
-      completedInputs = _json["completedInputs"];
+    if (_json.containsKey("completedUnits")) {
+      completedUnits = _json["completedUnits"];
     }
     if (_json.containsKey("elapsedMs")) {
       elapsedMs = _json["elapsedMs"];
     }
-    if (_json.containsKey("pendingInputs")) {
-      pendingInputs = _json["pendingInputs"];
+    if (_json.containsKey("pendingUnits")) {
+      pendingUnits = _json["pendingUnits"];
     }
     if (_json.containsKey("totalSlotMs")) {
       totalSlotMs = _json["totalSlotMs"];
@@ -5199,17 +5331,17 @@ class QueryTimelineSample {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (activeInputs != null) {
-      _json["activeInputs"] = activeInputs;
+    if (activeUnits != null) {
+      _json["activeUnits"] = activeUnits;
     }
-    if (completedInputs != null) {
-      _json["completedInputs"] = completedInputs;
+    if (completedUnits != null) {
+      _json["completedUnits"] = completedUnits;
     }
     if (elapsedMs != null) {
       _json["elapsedMs"] = elapsedMs;
     }
-    if (pendingInputs != null) {
-      _json["pendingInputs"] = pendingInputs;
+    if (pendingUnits != null) {
+      _json["pendingUnits"] = pendingUnits;
     }
     if (totalSlotMs != null) {
       _json["totalSlotMs"] = totalSlotMs;
@@ -5263,6 +5395,11 @@ class Streamingbuffer {
 }
 
 class Table {
+  /// [Experimental] Clustering specification for the table. Must be specified
+  /// with time-based partitioning, data in the table will be first partitioned
+  /// and subsequently clustered.
+  Clustering clustering;
+
   /// [Output-only] The time when this table was created, in milliseconds since
   /// the epoch.
   core.String creationTime;
@@ -5339,7 +5476,7 @@ class Table {
   /// [Required] Reference describing the ID of this table.
   TableReference tableReference;
 
-  /// If specified, configures time-based partitioning for this table.
+  /// Time-based partitioning specification for this table.
   TimePartitioning timePartitioning;
 
   /// [Output-only] Describes the table type. The following values are
@@ -5355,6 +5492,9 @@ class Table {
   Table();
 
   Table.fromJson(core.Map _json) {
+    if (_json.containsKey("clustering")) {
+      clustering = new Clustering.fromJson(_json["clustering"]);
+    }
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];
     }
@@ -5429,6 +5569,9 @@ class Table {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clustering != null) {
+      _json["clustering"] = (clustering).toJson();
+    }
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -5850,6 +5993,9 @@ class TableListTablesView {
 }
 
 class TableListTables {
+  /// [Experimental] Clustering specification for this table, if configured.
+  Clustering clustering;
+
   /// The time when this table was created, in milliseconds since the epoch.
   core.String creationTime;
 
@@ -5874,7 +6020,7 @@ class TableListTables {
   /// A reference uniquely identifying the table.
   TableReference tableReference;
 
-  /// The time-based partitioning for this table.
+  /// The time-based partitioning specification for this table, if configured.
   TimePartitioning timePartitioning;
 
   /// The type of table. Possible values are: TABLE, VIEW.
@@ -5886,6 +6032,9 @@ class TableListTables {
   TableListTables();
 
   TableListTables.fromJson(core.Map _json) {
+    if (_json.containsKey("clustering")) {
+      clustering = new Clustering.fromJson(_json["clustering"]);
+    }
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];
     }
@@ -5922,6 +6071,9 @@ class TableListTables {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clustering != null) {
+      _json["clustering"] = (clustering).toJson();
+    }
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -6109,14 +6261,16 @@ class TableSchema {
 }
 
 class TimePartitioning {
-  /// [Optional] Number of milliseconds for which to keep the storage for a
-  /// partition.
+  /// [Optional] Number of milliseconds for which to keep the storage for
+  /// partitions in the table. The storage in a partition will have an
+  /// expiration time of its partition time plus this value.
   core.String expirationMs;
 
   /// [Experimental] [Optional] If not set, the table is partitioned by pseudo
-  /// column '_PARTITIONTIME'; if set, the table is partitioned by this field.
-  /// The field must be a top-level TIMESTAMP or DATE field. Its mode must be
-  /// NULLABLE or REQUIRED.
+  /// column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
+  /// '_PARTITIONDATE' as DATE type. If field is specified, the table is instead
+  /// partitioned by this field. The field must be a top-level TIMESTAMP or DATE
+  /// field. Its mode must be NULLABLE or REQUIRED.
   core.String field;
 
   /// [Experimental] [Optional] If set to true, queries over this table require

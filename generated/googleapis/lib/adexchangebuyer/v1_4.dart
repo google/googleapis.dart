@@ -2194,6 +2194,13 @@ class AccountBidderLocation {
 
 /// Configuration data for an Ad Exchange buyer account.
 class Account {
+  /// When this is false, bid requests that include a deal ID for a private
+  /// auction or preferred deal are always sent to your bidder. When true, all
+  /// active pretargeting configs will be applied to private auctions and
+  /// preferred deals. Programmatic Guaranteed deals (when enabled) are always
+  /// sent to your bidder.
+  core.bool applyPretargetingToNonGuaranteedDeals;
+
   /// Your bidder locations that have distinct URLs.
   core.List<AccountBidderLocation> bidderLocation;
 
@@ -2226,6 +2233,10 @@ class Account {
   Account();
 
   Account.fromJson(core.Map _json) {
+    if (_json.containsKey("applyPretargetingToNonGuaranteedDeals")) {
+      applyPretargetingToNonGuaranteedDeals =
+          _json["applyPretargetingToNonGuaranteedDeals"];
+    }
     if (_json.containsKey("bidderLocation")) {
       bidderLocation = (_json["bidderLocation"] as core.List)
           .map<AccountBidderLocation>(
@@ -2258,6 +2269,10 @@ class Account {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (applyPretargetingToNonGuaranteedDeals != null) {
+      _json["applyPretargetingToNonGuaranteedDeals"] =
+          applyPretargetingToNonGuaranteedDeals;
+    }
     if (bidderLocation != null) {
       _json["bidderLocation"] =
           bidderLocation.map((value) => (value).toJson()).toList();
@@ -2983,8 +2998,8 @@ class CreativeNativeAdLogo {
   }
 }
 
-/// If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
-/// not be set. (The videoURL inside nativeAd can be set.)
+/// If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of
+/// nativeAd should not be set. (The videoURL inside nativeAd can be set.)
 class CreativeNativeAd {
   core.String advertiser;
 
@@ -3265,7 +3280,7 @@ class CreativeServingRestrictions {
 /// A creative and its classification data.
 class Creative {
   /// The HTML snippet that displays the ad when inserted in the web page. If
-  /// set, videoURL should not be set.
+  /// set, videoURL, videoVastXML, and nativeAd should not be set.
   core.String HTMLSnippet;
 
   /// Account id.
@@ -3334,8 +3349,8 @@ class Creative {
   /// set in requests.
   core.List<core.String> languages;
 
-  /// If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd
-  /// should not be set. (The videoURL inside nativeAd can be set.)
+  /// If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of
+  /// nativeAd should not be set. (The videoURL inside nativeAd can be set.)
   CreativeNativeAd nativeAd;
 
   /// Top-level open auction status. Read-only. This field should not be set in
@@ -3375,10 +3390,15 @@ class Creative {
   /// requests.
   core.int version;
 
-  /// The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should
-  /// not be set. Note, this is different from resource.native_ad.video_url
-  /// above.
+  /// The URL to fetch a video ad. If set, HTMLSnippet, videoVastXML, and
+  /// nativeAd should not be set. Note, this is different from
+  /// resource.native_ad.video_url above.
   core.String videoURL;
+
+  /// The contents of a VAST document for a video ad. This document should
+  /// conform to the VAST 2.0 or 3.0 standard. If set, HTMLSnippet, videoURL,
+  /// and nativeAd and should not be set.
+  core.String videoVastXML;
 
   /// Ad width.
   core.int width;
@@ -3480,6 +3500,9 @@ class Creative {
     if (_json.containsKey("videoURL")) {
       videoURL = _json["videoURL"];
     }
+    if (_json.containsKey("videoVastXML")) {
+      videoVastXML = _json["videoVastXML"];
+    }
     if (_json.containsKey("width")) {
       width = _json["width"];
     }
@@ -3570,6 +3593,9 @@ class Creative {
     }
     if (videoURL != null) {
       _json["videoURL"] = videoURL;
+    }
+    if (videoVastXML != null) {
+      _json["videoVastXML"] = videoVastXML;
     }
     if (width != null) {
       _json["width"] = width;
@@ -6785,6 +6811,8 @@ class TargetingValue {
   /// The daypart targeting to include / exclude. Filled in when the key is
   /// GOOG_DAYPART_TARGETING.
   TargetingValueDayPartTargeting dayPartTargetingValue;
+  TargetingValueDemogAgeCriteria demogAgeCriteriaValue;
+  TargetingValueDemogGenderCriteria demogGenderCriteriaValue;
 
   /// The long value to exclude/include.
   core.String longValue;
@@ -6803,6 +6831,14 @@ class TargetingValue {
       dayPartTargetingValue = new TargetingValueDayPartTargeting.fromJson(
           _json["dayPartTargetingValue"]);
     }
+    if (_json.containsKey("demogAgeCriteriaValue")) {
+      demogAgeCriteriaValue = new TargetingValueDemogAgeCriteria.fromJson(
+          _json["demogAgeCriteriaValue"]);
+    }
+    if (_json.containsKey("demogGenderCriteriaValue")) {
+      demogGenderCriteriaValue = new TargetingValueDemogGenderCriteria.fromJson(
+          _json["demogGenderCriteriaValue"]);
+    }
     if (_json.containsKey("longValue")) {
       longValue = _json["longValue"];
     }
@@ -6820,6 +6856,12 @@ class TargetingValue {
     if (dayPartTargetingValue != null) {
       _json["dayPartTargetingValue"] = (dayPartTargetingValue).toJson();
     }
+    if (demogAgeCriteriaValue != null) {
+      _json["demogAgeCriteriaValue"] = (demogAgeCriteriaValue).toJson();
+    }
+    if (demogGenderCriteriaValue != null) {
+      _json["demogGenderCriteriaValue"] = (demogGenderCriteriaValue).toJson();
+    }
     if (longValue != null) {
       _json["longValue"] = longValue;
     }
@@ -6830,7 +6872,11 @@ class TargetingValue {
   }
 }
 
+/// Next Id: 7
 class TargetingValueCreativeSize {
+  /// The formats allowed by the publisher.
+  core.List<core.String> allowedFormats;
+
   /// For video size type, the list of companion sizes.
   core.List<TargetingValueSize> companionSizes;
 
@@ -6850,6 +6896,10 @@ class TargetingValueCreativeSize {
   TargetingValueCreativeSize();
 
   TargetingValueCreativeSize.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedFormats")) {
+      allowedFormats =
+          (_json["allowedFormats"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("companionSizes")) {
       companionSizes = (_json["companionSizes"] as core.List)
           .map<TargetingValueSize>(
@@ -6873,6 +6923,9 @@ class TargetingValueCreativeSize {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allowedFormats != null) {
+      _json["allowedFormats"] = allowedFormats;
+    }
     if (companionSizes != null) {
       _json["companionSizes"] =
           companionSizes.map((value) => (value).toJson()).toList();
@@ -6968,6 +7021,50 @@ class TargetingValueDayPartTargetingDayPart {
     }
     if (startMinute != null) {
       _json["startMinute"] = startMinute;
+    }
+    return _json;
+  }
+}
+
+class TargetingValueDemogAgeCriteria {
+  core.List<core.String> demogAgeCriteriaIds;
+
+  TargetingValueDemogAgeCriteria();
+
+  TargetingValueDemogAgeCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("demogAgeCriteriaIds")) {
+      demogAgeCriteriaIds =
+          (_json["demogAgeCriteriaIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (demogAgeCriteriaIds != null) {
+      _json["demogAgeCriteriaIds"] = demogAgeCriteriaIds;
+    }
+    return _json;
+  }
+}
+
+class TargetingValueDemogGenderCriteria {
+  core.List<core.String> demogGenderCriteriaIds;
+
+  TargetingValueDemogGenderCriteria();
+
+  TargetingValueDemogGenderCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("demogGenderCriteriaIds")) {
+      demogGenderCriteriaIds =
+          (_json["demogGenderCriteriaIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (demogGenderCriteriaIds != null) {
+      _json["demogGenderCriteriaIds"] = demogGenderCriteriaIds;
     }
     return _json;
   }

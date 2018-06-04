@@ -47,7 +47,7 @@ class ProjectsResourceApi {
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Get the service account information associated with your project. You need
-  /// this information in order to grant the service account persmissions for
+  /// this information in order to grant the service account permissions for
   /// the Google Cloud Storage location where you put your model training code
   /// for training the model with Google Cloud Machine Learning.
   ///
@@ -361,6 +361,13 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
+  /// results. If there
+  /// are more remaining results than this number, the response message will
+  /// contain a valid value in the `next_page_token` field.
+  ///
+  /// The default value is 20, and the maximum page size is 100.
+  ///
   /// [filter] - Optional. Specifies the subset of jobs to retrieve.
   /// You can filter on the value of one or more attributes of the job object.
   /// For example, retrieve jobs with a job identifier that starts with
@@ -370,19 +377,12 @@ class ProjectsJobsResourceApi {
   /// <p><code>gcloud ml-engine jobs list --filter='jobId:rnn*
   /// AND state:FAILED'</code>
   /// <p>For more examples, see the guide to
-  /// <a href="/ml-engine/docs/monitor-training">monitoring jobs</a>.
+  /// <a href="/ml-engine/docs/tensorflow/monitor-training">monitoring jobs</a>.
   ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
   /// the previous call.
-  ///
-  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
-  /// results. If there
-  /// are more remaining results than this number, the response message will
-  /// contain a valid value in the `next_page_token` field.
-  ///
-  /// The default value is 20, and the maximum page size is 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -395,9 +395,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -409,14 +409,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -611,17 +611,17 @@ class ProjectsLocationsResourceApi {
   /// listed (since some locations might be whitelisted for specific projects).
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
+  ///
   /// [pageSize] - Optional. The number of locations to retrieve per "page" of
   /// results. If there
   /// are more remaining results than this number, the response message will
   /// contain a valid value in the `next_page_token` field.
   ///
   /// The default value is 20, and the maximum page size is 100.
-  ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -634,7 +634,7 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListLocationsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -645,11 +645,11 @@ class ProjectsLocationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -890,6 +890,8 @@ class ProjectsModelsResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of models to retrieve.
+  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -902,8 +904,6 @@ class ProjectsModelsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
-  /// [filter] - Optional. Specifies the subset of models to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -915,9 +915,9 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -929,14 +929,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1327,6 +1327,8 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of versions to retrieve.
+  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -1339,8 +1341,6 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
-  /// [filter] - Optional. Specifies the subset of versions to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1352,9 +1352,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1366,14 +1366,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1693,11 +1693,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1710,9 +1710,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1724,14 +1724,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1880,11 +1880,11 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 /// Options for automatically scaling a model.
 class GoogleCloudMlV1AutoScaling {
   /// Optional. The minimum number of nodes to allocate for this model. These
-  /// nodes are always up, starting from the time the model is deployed, so the
-  /// cost of operating this model will be at least
+  /// nodes are always up, starting from the time the model is deployed.
+  /// Therefore, the cost of operating this model will be at least
   /// `rate` * `min_nodes` * number of hours since last billing cycle,
-  /// where `rate` is the cost per node-hour as documented in
-  /// [pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing),
+  /// where `rate` is the cost per node-hour as documented in the
+  /// [pricing guide](/ml-engine/docs/pricing),
   /// even if no predictions are performed. There is additional cost for each
   /// prediction performed.
   ///
@@ -1897,6 +1897,22 @@ class GoogleCloudMlV1AutoScaling {
   /// If not specified, `min_nodes` defaults to 0, in which case, when traffic
   /// to a model stops (and after a cool-down period), nodes will be shut down
   /// and no charges will be incurred until traffic to the model resumes.
+  ///
+  /// You can set `min_nodes` when creating the model version, and you can also
+  /// update `min_nodes` for an existing version:
+  /// <pre>
+  /// update_body.json:
+  /// {
+  ///   'autoScaling': {
+  ///     'minNodes': 5
+  ///   }
+  /// }
+  /// </pre>
+  /// HTTP request:
+  /// <pre>
+  /// PATCH https://ml.googleapis.com/v1/{name=projects / * /models / *
+  /// /versions / * }?update_mask=autoScaling.minNodes -d @./update_body.json
+  /// </pre>
   core.int minNodes;
 
   GoogleCloudMlV1AutoScaling();
@@ -1967,8 +1983,32 @@ class GoogleCloudMlV1Capability {
   }
 }
 
+class GoogleCloudMlV1Config {
+  /// The service account Cloud ML uses to run on TPU node.
+  core.String tpuServiceAccount;
+
+  GoogleCloudMlV1Config();
+
+  GoogleCloudMlV1Config.fromJson(core.Map _json) {
+    if (_json.containsKey("tpuServiceAccount")) {
+      tpuServiceAccount = _json["tpuServiceAccount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tpuServiceAccount != null) {
+      _json["tpuServiceAccount"] = tpuServiceAccount;
+    }
+    return _json;
+  }
+}
+
 /// Returns service account information associated with a project.
 class GoogleCloudMlV1GetConfigResponse {
+  GoogleCloudMlV1Config config;
+
   /// The service account Cloud ML uses to access resources in the project.
   core.String serviceAccount;
 
@@ -1978,6 +2018,9 @@ class GoogleCloudMlV1GetConfigResponse {
   GoogleCloudMlV1GetConfigResponse();
 
   GoogleCloudMlV1GetConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("config")) {
+      config = new GoogleCloudMlV1Config.fromJson(_json["config"]);
+    }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
     }
@@ -1989,6 +2032,9 @@ class GoogleCloudMlV1GetConfigResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (config != null) {
+      _json["config"] = (config).toJson();
+    }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
     }
@@ -2073,6 +2119,19 @@ class GoogleCloudMlV1HyperparameterOutput {
 
 /// Represents a set of hyperparameters to optimize.
 class GoogleCloudMlV1HyperparameterSpec {
+  /// Optional. The search algorithm specified for the hyperparameter
+  /// tuning job.
+  /// Uses the default CloudML Engine hyperparameter tuning
+  /// algorithm if unspecified.
+  /// Possible string values are:
+  /// - "ALGORITHM_UNSPECIFIED" : The default algorithm used by hyperparameter
+  /// tuning service.
+  /// - "GRID_SEARCH" : Simple grid search within the feasible space. To use
+  /// grid search,
+  /// all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`.
+  /// - "RANDOM_SEARCH" : Simple random search within the feasible space.
+  core.String algorithm;
+
   /// Optional. Indicates if the hyperparameter tuning job enables auto trial
   /// early stopping.
   core.bool enableTrialEarlyStopping;
@@ -2125,6 +2184,9 @@ class GoogleCloudMlV1HyperparameterSpec {
   GoogleCloudMlV1HyperparameterSpec();
 
   GoogleCloudMlV1HyperparameterSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("algorithm")) {
+      algorithm = _json["algorithm"];
+    }
     if (_json.containsKey("enableTrialEarlyStopping")) {
       enableTrialEarlyStopping = _json["enableTrialEarlyStopping"];
     }
@@ -2154,6 +2216,9 @@ class GoogleCloudMlV1HyperparameterSpec {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (algorithm != null) {
+      _json["algorithm"] = algorithm;
+    }
     if (enableTrialEarlyStopping != null) {
       _json["enableTrialEarlyStopping"] = enableTrialEarlyStopping;
     }
@@ -2531,8 +2596,8 @@ class GoogleCloudMlV1Model {
   /// Optional. The list of regions where the model is going to be deployed.
   /// Currently only one region per model is supported.
   /// Defaults to 'us-central1' if nothing is set.
-  /// See the <a href="/ml-engine/docs/regions">available regions</a> for
-  /// ML Engine services.
+  /// See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
+  /// for ML Engine services.
   /// Note:
   /// *   No matter where a model is deployed, it can always be accessed by
   ///     users from anywhere, both for online and batch prediction.
@@ -2690,7 +2755,7 @@ class GoogleCloudMlV1ParameterSpec {
   /// should not contain more than 1,000 values.
   core.List<core.double> discreteValues;
 
-  /// Required if typeis `DOUBLE` or `INTEGER`. This field
+  /// Required if type is `DOUBLE` or `INTEGER`. This field
   /// should be unset if type is `CATEGORICAL`. This value should be integers if
   /// type is `INTEGER`.
   core.double maxValue;
@@ -2850,15 +2915,15 @@ class GoogleCloudMlV1PredictionInput {
   /// Use this field if you want to use the default version for the specified
   /// model. The string must use the following format:
   ///
-  /// `"projects/<var>[YOUR_PROJECT]</var>/models/<var>[YOUR_MODEL]</var>"`
+  /// `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
   core.String modelName;
 
   /// Required. The output Google Cloud Storage location.
   core.String outputPath;
 
   /// Required. The Google Compute Engine region to run the prediction job in.
-  /// See the <a href="/ml-engine/docs/regions">available regions</a> for
-  /// ML Engine services.
+  /// See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
+  /// for ML Engine services.
   core.String region;
 
   /// Optional. The Google Cloud ML runtime version to use for this batch
@@ -2886,7 +2951,7 @@ class GoogleCloudMlV1PredictionInput {
   /// string is formatted the same way as `model_version`, with the addition
   /// of the version information:
   ///
-  /// `"projects/<var>[YOUR_PROJECT]</var>/models/<var>YOUR_MODEL/versions/<var>[YOUR_VERSION]</var>"`
+  /// `"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION"`
   core.String versionName;
 
   GoogleCloudMlV1PredictionInput();
@@ -3037,7 +3102,8 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
 /// configuration
 /// file referenced from the --config command-line argument. For
 /// details, see the guide to
-/// <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
+/// <a href="/ml-engine/docs/tensorflow/training-jobs">submitting a training
+/// job</a>.
 class GoogleCloudMlV1TrainingInput {
   /// Optional. Command line arguments to pass to the program.
   core.List<core.String> args;
@@ -3047,7 +3113,8 @@ class GoogleCloudMlV1TrainingInput {
 
   /// Optional. A Google Cloud Storage path in which to store training outputs
   /// and other data needed for training. This path is passed to your TensorFlow
-  /// program as the 'job_dir' command-line argument. The benefit of specifying
+  /// program as the '--job-dir' command-line argument. The benefit of
+  /// specifying
   /// this field is that Cloud ML validates the path for use in training.
   core.String jobDir;
 
@@ -3077,44 +3144,48 @@ class GoogleCloudMlV1TrainingInput {
   ///   <dt>complex_model_m</dt>
   ///   <dd>
   ///   A machine with roughly twice the number of cores and roughly double the
-  ///   memory of <code suppresswarning="true">complex_model_s</code>.
+  ///   memory of <i>complex_model_s</i>.
   ///   </dd>
   ///   <dt>complex_model_l</dt>
   ///   <dd>
   ///   A machine with roughly twice the number of cores and roughly double the
-  ///   memory of <code suppresswarning="true">complex_model_m</code>.
+  ///   memory of <i>complex_model_m</i>.
   ///   </dd>
   ///   <dt>standard_gpu</dt>
   ///   <dd>
-  /// A machine equivalent to <code suppresswarning="true">standard</code> that
+  ///   A machine equivalent to <i>standard</i> that
   ///   also includes a single NVIDIA Tesla K80 GPU. See more about
-  ///   <a href="/ml-engine/docs/how-tos/using-gpus">
-  ///   using GPUs for training your model</a>.
+  ///   <a href="/ml-engine/docs/tensorflow/using-gpus">using GPUs to
+  ///   train your model</a>.
   ///   </dd>
   ///   <dt>complex_model_m_gpu</dt>
   ///   <dd>
-  ///   A machine equivalent to
-  ///   <code suppresswarning="true">complex_model_m</code> that also includes
+  ///   A machine equivalent to <i>complex_model_m</i> that also includes
   ///   four NVIDIA Tesla K80 GPUs.
   ///   </dd>
   ///   <dt>complex_model_l_gpu</dt>
   ///   <dd>
-  ///   A machine equivalent to
-  ///   <code suppresswarning="true">complex_model_l</code> that also includes
+  ///   A machine equivalent to <i>complex_model_l</i> that also includes
   ///   eight NVIDIA Tesla K80 GPUs.
   ///   </dd>
   ///   <dt>standard_p100</dt>
   ///   <dd>
-  /// A machine equivalent to <code suppresswarning="true">standard</code> that
+  ///   A machine equivalent to <i>standard</i> that
   ///   also includes a single NVIDIA Tesla P100 GPU. The availability of these
-  ///   GPUs is in the Beta launch stage.
+  ///   GPUs is in the <i>Beta</i> launch stage.
   ///   </dd>
   ///   <dt>complex_model_m_p100</dt>
   ///   <dd>
-  ///   A machine equivalent to
-  ///   <code suppresswarning="true">complex_model_m</code> that also includes
+  ///   A machine equivalent to <i>complex_model_m</i> that also includes
   ///   four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
-  ///   the Beta launch stage.
+  ///   the <i>Beta</i> launch stage.
+  ///   </dd>
+  ///   <dt>cloud_tpu</dt>
+  ///   <dd>
+  ///   A TPU VM including one Cloud TPU. The availability of Cloud TPU is in
+  ///   <i>Beta</i> launch stage. See more about
+  ///   <a href="/ml-engine/docs/tensorflow/using-tpus">using TPUs to train
+  ///   your model</a>.
   ///   </dd>
   /// </dl>
   ///
@@ -3154,12 +3225,13 @@ class GoogleCloudMlV1TrainingInput {
   core.String pythonVersion;
 
   /// Required. The Google Compute Engine region to run the training job in.
-  /// See the <a href="/ml-engine/docs/regions">available regions</a> for
-  /// ML Engine services.
+  /// See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
+  /// for ML Engine services.
   core.String region;
 
   /// Optional. The Google Cloud ML runtime version to use for training.  If not
-  /// set, Google Cloud ML will choose the latest stable version.
+  /// set, Google Cloud ML will choose a stable version, which is defined in the
+  /// documentation of runtime version list.
   core.String runtimeVersion;
 
   /// Required. Specifies the machine types, the number of replicas for workers
@@ -3171,8 +3243,10 @@ class GoogleCloudMlV1TrainingInput {
   /// - "STANDARD_1" : Many workers and a few parameter servers.
   /// - "PREMIUM_1" : A large number of workers with many parameter servers.
   /// - "BASIC_GPU" : A single worker instance [with a
-  /// GPU](/ml-engine/docs/how-tos/using-gpus).
-  /// - "BASIC_TPU" : A single worker instance with a [Cloud TPU](/tpu)
+  /// GPU](/ml-engine/docs/tensorflow/using-gpus).
+  /// - "BASIC_TPU" : A single worker instance with a
+  /// [Cloud TPU](/ml-engine/docs/tensorflow/using-tpus).
+  /// The availability of Cloud TPU is in <i>Beta</i> launch stage.
   /// - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
   /// use your
   /// own cluster specification. When you use this tier, set values to
@@ -3374,8 +3448,6 @@ class GoogleCloudMlV1TrainingOutput {
 /// prediction requests. A model can have multiple versions. You can get
 /// information about all of the versions of a given model by calling
 /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
-///
-/// LINT.IfChange
 class GoogleCloudMlV1Version {
   /// Automatically scale the number of nodes used to serve the model in
   /// response to increases and decreases in traffic. Care should be
@@ -3388,8 +3460,8 @@ class GoogleCloudMlV1Version {
 
   /// Required. The Google Cloud Storage location of the trained model used to
   /// create the version. See the
-  /// [overview of model
-  /// deployment](/ml-engine/docs/concepts/deployment-overview) for more
+  /// [guide to model
+  /// deployment](/ml-engine/docs/tensorflow/deploying-models) for more
   /// information.
   ///
   /// When passing Version to
@@ -3405,6 +3477,18 @@ class GoogleCloudMlV1Version {
 
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
+
+  /// Optional. The machine learning framework Cloud ML Engine uses to train
+  /// this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
+  /// and `XGBOOST`. If you do not specify a framework, Cloud ML Engine uses
+  /// TensorFlow. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set
+  /// the runtime version of the model to 1.4 or greater.
+  /// Possible string values are:
+  /// - "FRAMEWORK_UNSPECIFIED"
+  /// - "TENSORFLOW"
+  /// - "SCIKIT_LEARN"
+  /// - "XGBOOST"
+  core.String framework;
 
   /// Output only. If true, this version will be used to handle prediction
   /// requests that do not specify a version.
@@ -3428,6 +3512,13 @@ class GoogleCloudMlV1Version {
   ///
   /// The version name must be unique within the model it is created in.
   core.String name;
+
+  /// Optional. The version of Python used in prediction. If not set, the
+  /// default
+  /// version is '2.7'. Python '3.5' is available when `runtime_version` is set
+  /// to '1.4' and above. Python '2.7' works with all supported runtime
+  /// versions.
+  core.String pythonVersion;
 
   /// Optional. The Google Cloud ML runtime version to use for this deployment.
   /// If not set, Google Cloud ML will choose a version.
@@ -3469,6 +3560,9 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
+    if (_json.containsKey("framework")) {
+      framework = _json["framework"];
+    }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
     }
@@ -3481,6 +3575,9 @@ class GoogleCloudMlV1Version {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("pythonVersion")) {
+      pythonVersion = _json["pythonVersion"];
     }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
@@ -3508,6 +3605,9 @@ class GoogleCloudMlV1Version {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
+    if (framework != null) {
+      _json["framework"] = framework;
+    }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
     }
@@ -3520,11 +3620,160 @@ class GoogleCloudMlV1Version {
     if (name != null) {
       _json["name"] = name;
     }
+    if (pythonVersion != null) {
+      _json["pythonVersion"] = pythonVersion;
+    }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the audit configuration for a service.
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging.
+/// An AuditConfig must have one or more AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service,
+/// the union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditLogConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+///     {
+///       "audit_configs": [
+///         {
+///           "service": "allServices"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///               "exempted_members": [
+///                 "user:foo@gmail.com"
+///               ]
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///             },
+///             {
+///               "log_type": "ADMIN_READ",
+///             }
+///           ]
+///         },
+///         {
+///           "service": "fooservice.googleapis.com"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///               "exempted_members": [
+///                 "user:bar@gmail.com"
+///               ]
+///             }
+///           ]
+///         }
+///       ]
+///     }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
+class GoogleIamV1AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String service;
+
+  GoogleIamV1AuditConfig();
+
+  GoogleIamV1AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+          .map<GoogleIamV1AuditLogConfig>(
+              (value) => new GoogleIamV1AuditLogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Provides the configuration for logging a type of permissions.
+/// Example:
+///
+///     {
+///       "audit_log_configs": [
+///         {
+///           "log_type": "DATA_READ",
+///           "exempted_members": [
+///             "user:foo@gmail.com"
+///           ]
+///         },
+///         {
+///           "log_type": "DATA_WRITE",
+///         }
+///       ]
+///     }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
+class GoogleIamV1AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  /// Follows the same format of Binding.members.
+  core.List<core.String> exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String logType;
+
+  GoogleIamV1AuditLogConfig();
+
+  GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
     }
     return _json;
   }
@@ -3542,7 +3791,7 @@ class GoogleIamV1Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -3589,14 +3838,14 @@ class GoogleIamV1Binding {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -3606,7 +3855,7 @@ class GoogleIamV1Binding {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -3616,9 +3865,26 @@ class GoogleIamV1Binding {
 ///       ]
 ///     }
 ///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
+///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
 class GoogleIamV1Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<GoogleIamV1AuditConfig> auditConfigs;
+
   /// Associates a list of `members` to a `role`.
   /// `bindings` with no members will result in an error.
   core.List<GoogleIamV1Binding> bindings;
@@ -3650,6 +3916,12 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy();
 
   GoogleIamV1Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = (_json["auditConfigs"] as core.List)
+          .map<GoogleIamV1AuditConfig>(
+              (value) => new GoogleIamV1AuditConfig.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
           .map<GoogleIamV1Binding>(
@@ -3667,6 +3939,10 @@ class GoogleIamV1Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
+    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -3688,11 +3964,22 @@ class GoogleIamV1SetIamPolicyRequest {
   /// might reject them.
   GoogleIamV1Policy policy;
 
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  /// Only
+  /// the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used:
+  /// paths: "bindings, etag"
+  /// This field is only used by Cloud IAM.
+  core.String updateMask;
+
   GoogleIamV1SetIamPolicyRequest();
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
       policy = new GoogleIamV1Policy.fromJson(_json["policy"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
     }
   }
 
@@ -3701,6 +3988,9 @@ class GoogleIamV1SetIamPolicyRequest {
         new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
     }
     return _json;
   }

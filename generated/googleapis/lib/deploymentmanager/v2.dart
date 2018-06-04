@@ -127,7 +127,6 @@ class DeploymentsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
@@ -298,6 +297,11 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
+  /// [createPolicy] - Sets the policy to use for creating new resources.
+  /// Possible string values are:
+  /// - "ACQUIRE"
+  /// - "CREATE_OR_ACQUIRE"
+  ///
   /// [preview] - If set to true, creates a deployment and creates "shell"
   /// resources but does not actually instantiate these resources. This allows
   /// you to preview what your deployment looks like. After previewing a
@@ -318,7 +322,7 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Deployment request, core.String project,
-      {core.bool preview, core.String $fields}) {
+      {core.String createPolicy, core.bool preview, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -331,6 +335,9 @@ class DeploymentsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (createPolicy != null) {
+      _queryParams["createPolicy"] = [createPolicy];
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
@@ -358,30 +365,27 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -575,7 +579,7 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      Policy request, core.String project, core.String resource,
+      GlobalSetPolicyRequest request, core.String project, core.String resource,
       {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -904,30 +908,27 @@ class ManifestsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1076,30 +1077,27 @@ class OperationsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1253,30 +1251,27 @@ class ResourcesResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1373,30 +1368,27 @@ class TypesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1620,7 +1612,7 @@ class Binding {
   /// is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  /// account. For example, `alice@gmail.com` or `joe@example.com`.
+  /// account. For example, `alice@gmail.com` .
   ///
   ///
   ///
@@ -2188,6 +2180,60 @@ class Expr {
   }
 }
 
+class GlobalSetPolicyRequest {
+  /// Flatten Policy to create a backwacd compatible wire-format. Deprecated.
+  /// Use 'policy' to specify bindings.
+  core.List<Binding> bindings;
+
+  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
+  /// Use 'policy' to specify the etag.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// REQUIRED: The complete policy to be applied to the 'resource'. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is in general a
+  /// valid policy but certain services (like Projects) might reject them.
+  Policy policy;
+
+  GlobalSetPolicyRequest();
+
+  GlobalSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
 class ImportFile {
   /// The contents of the file.
   core.String content;
@@ -2653,7 +2699,8 @@ class OperationWarnings {
 /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (==
 /// resource_for beta.zoneOperations ==)
 class Operation {
-  /// [Output Only] Reserved for future use.
+  /// [Output Only] The value of `requestId` if you provided it in the request.
+  /// Not present otherwise.
   core.String clientOperationId;
 
   /// [Deprecated] This field is deprecated.
@@ -2944,17 +2991,25 @@ class OperationsListResponse {
 ///
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups, Google domains, and service accounts. A `role` is a named list of
 /// permissions defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 /// { "bindings": [ { "role": "roles/owner", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
+/// "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role":
 /// "roles/viewer", "members": ["user:sean@example.com"] } ] }
+///
+/// **YAML Example**
+///
+/// bindings: - members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+/// role: roles/owner - members: - user:sean@example.com role: roles/viewer
+///
+///
 ///
 /// For a description of IAM and its features, see the [IAM developer's
 /// guide](https://cloud.google.com/iam/docs).

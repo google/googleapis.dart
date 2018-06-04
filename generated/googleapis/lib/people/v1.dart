@@ -78,10 +78,10 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceNames] - The resource names of the contact groups to get.
-  ///
   /// [maxMembers] - Specifies the maximum number of members to return for each
   /// group.
+  ///
+  /// [resourceNames] - The resource names of the contact groups to get.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -94,8 +94,8 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetContactGroupsResponse> batchGet(
-      {core.List<core.String> resourceNames,
-      core.int maxMembers,
+      {core.int maxMembers,
+      core.List<core.String> resourceNames,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -104,11 +104,11 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
-    }
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -275,15 +275,15 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The next_page_token value returned from a previous call to
-  /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
-  /// Requests the next page of resources.
-  ///
   /// [pageSize] - The maximum number of resources to return.
   ///
   /// [syncToken] - A sync token, returned by a previous call to
   /// `contactgroups.list`.
   /// Only resources changed since the sync token was created will be returned.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous call to
+  /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
+  /// Requests the next page of resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,9 +296,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String syncToken,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -307,14 +307,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -568,7 +568,8 @@ class PeopleResourceApi {
   ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// the person are
-  /// returned. Valid values are:
+  /// returned. Multiple fields can be specified by separating them with commas.
+  /// Valid values are:
   ///
   /// * addresses
   /// * ageRanges
@@ -594,9 +595,11 @@ class PeopleResourceApi {
   /// * relationshipInterests
   /// * relationshipStatuses
   /// * residences
+  /// * sipAddresses
   /// * skills
   /// * taglines
   /// * urls
+  /// * userDefined
   ///
   /// [requestMask_includeField] - **Required.** Comma-separated list of person
   /// fields to be included in the
@@ -658,7 +661,8 @@ class PeopleResourceApi {
   ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// each person are
-  /// returned. Valid values are:
+  /// returned. Multiple fields can be specified by separating them with commas.
+  /// Valid values are:
   ///
   /// * addresses
   /// * ageRanges
@@ -684,9 +688,11 @@ class PeopleResourceApi {
   /// * relationshipInterests
   /// * relationshipStatuses
   /// * residences
+  /// * sipAddresses
   /// * skills
   /// * taglines
   /// * urls
+  /// * userDefined
   ///
   /// [requestMask_includeField] - **Required.** Comma-separated list of person
   /// fields to be included in the
@@ -776,12 +782,12 @@ class PeopleResourceApi {
   ///
   /// [updatePersonFields] - **Required.** A field mask to restrict which fields
   /// on the person are
-  /// updated. Valid values are:
+  /// updated. Multiple fields can be specified by separating them with commas.
+  /// All updated fields will be replaced. Valid values are:
   ///
   /// * addresses
   /// * biographies
   /// * birthdays
-  /// * braggingRights
   /// * emailAddresses
   /// * events
   /// * genders
@@ -795,8 +801,9 @@ class PeopleResourceApi {
   /// * phoneNumbers
   /// * relations
   /// * residences
-  /// * skills
+  /// * sipAddresses
   /// * urls
+  /// * userDefined
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -861,14 +868,6 @@ class PeopleConnectionsResourceApi {
   /// `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [sortOrder] - The order in which the connections should be sorted.
-  /// Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
-  /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
-  ///
   /// [requestSyncToken] - Whether the response should include a sync token,
   /// which can be used to get
   /// all changes since the last request. For subsequent sync requests use the
@@ -893,7 +892,8 @@ class PeopleConnectionsResourceApi {
   ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// each person are
-  /// returned. Valid values are:
+  /// returned. Multiple fields can be specified by separating them with commas.
+  /// Valid values are:
   ///
   /// * addresses
   /// * ageRanges
@@ -919,9 +919,19 @@ class PeopleConnectionsResourceApi {
   /// * relationshipInterests
   /// * relationshipStatuses
   /// * residences
+  /// * sipAddresses
   /// * skills
   /// * taglines
   /// * urls
+  /// * userDefined
+  ///
+  /// [sortOrder] - The order in which the connections should be sorted.
+  /// Defaults to
+  /// `LAST_MODIFIED_ASCENDING`.
+  /// Possible string values are:
+  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -934,13 +944,13 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.String sortOrder,
-      core.bool requestSyncToken,
+      {core.bool requestSyncToken,
       core.String pageToken,
       core.int pageSize,
       core.String requestMask_includeField,
       core.String syncToken,
       core.String personFields,
+      core.String sortOrder,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -951,9 +961,6 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
     }
     if (requestSyncToken != null) {
       _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
@@ -972,6 +979,9 @@ class PeopleConnectionsResourceApi {
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1030,8 +1040,8 @@ class Address {
   /// The street address.
   core.String streetAddress;
 
-  /// The type of the address. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the address. The type can be custom or one of these predefined
+  /// values:
   ///
   /// * `home`
   /// * `work`
@@ -1409,8 +1419,7 @@ class ContactGroup {
 /// A Google contact group membership.
 class ContactGroupMembership {
   /// The contact group ID for the contact group membership. The contact group
-  /// ID can be custom or predefined. Possible values include, but are not
-  /// limited to, the following:
+  /// ID can be custom or one of these predefined values:
   ///
   /// *  `myContacts`
   /// *  `starred`
@@ -1589,7 +1598,8 @@ class Date {
   /// if specifying a year/month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+  /// month.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -1661,8 +1671,8 @@ class EmailAddress {
   /// Metadata about the email address.
   FieldMetadata metadata;
 
-  /// The type of the email address. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the email address. The type can be custom or one of these
+  /// predefined values:
   ///
   /// * `home`
   /// * `work`
@@ -1747,8 +1757,8 @@ class Event {
   /// Metadata about the event.
   FieldMetadata metadata;
 
-  /// The type of the event. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the event. The type can be custom or one of these predefined
+  /// values:
   ///
   /// * `anniversary`
   /// * `other`
@@ -1843,9 +1853,8 @@ class Gender {
   /// Metadata about the gender.
   FieldMetadata metadata;
 
-  /// The gender for the person. The gender can be custom or predefined.
-  /// Possible values include, but are not limited to, the
-  /// following:
+  /// The gender for the person. The gender can be custom or one of these
+  /// predefined values:
   ///
   /// * `male`
   /// * `female`
@@ -1920,8 +1929,8 @@ class ImClient {
   /// Metadata about the IM client.
   FieldMetadata metadata;
 
-  /// The protocol of the IM client. The protocol can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The protocol of the IM client. The protocol can be custom or one of these
+  /// predefined values:
   ///
   /// * `aim`
   /// * `msn`
@@ -1934,8 +1943,8 @@ class ImClient {
   /// * `netMeeting`
   core.String protocol;
 
-  /// The type of the IM client. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the IM client. The type can be custom or one of these
+  /// predefined values:
   ///
   /// * `home`
   /// * `work`
@@ -2217,7 +2226,9 @@ class Membership {
   }
 }
 
-/// A request to modify an existing contact group's members.
+/// A request to modify an existing contact group's members. Contacts can be
+/// removed from any group but they can only be added to a user group or
+/// myContacts or starred system groups.
 class ModifyContactGroupMembersRequest {
   /// The resource names of the contact people to add in the form of in the form
   /// `people/`<var>person_id</var>.
@@ -2548,8 +2559,8 @@ class Organization {
   /// The person's job title at the organization.
   core.String title;
 
-  /// The type of the organization. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the organization. The type can be custom or  one of these
+  /// predefined values:
   ///
   /// * `work`
   /// * `school`
@@ -2749,6 +2760,9 @@ class Person {
   /// `people/`<var>person_id</var>.
   core.String resourceName;
 
+  /// The person's SIP addresses.
+  core.List<SipAddress> sipAddresses;
+
   /// The person's skills.
   core.List<Skill> skills;
 
@@ -2893,6 +2907,11 @@ class Person {
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
     }
+    if (_json.containsKey("sipAddresses")) {
+      sipAddresses = (_json["sipAddresses"] as core.List)
+          .map<SipAddress>((value) => new SipAddress.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("skills")) {
       skills = (_json["skills"] as core.List)
           .map<Skill>((value) => new Skill.fromJson(value))
@@ -3009,6 +3028,10 @@ class Person {
     }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
+    }
+    if (sipAddresses != null) {
+      _json["sipAddresses"] =
+          sipAddresses.map((value) => (value).toJson()).toList();
     }
     if (skills != null) {
       _json["skills"] = skills.map((value) => (value).toJson()).toList();
@@ -3177,8 +3200,8 @@ class PhoneNumber {
   /// Metadata about the phone number.
   FieldMetadata metadata;
 
-  /// The type of the phone number. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the phone number. The type can be custom or one of these
+  /// predefined values:
   ///
   /// * `home`
   /// * `work`
@@ -3332,9 +3355,9 @@ class Relation {
   /// The name of the other person this relation refers to.
   core.String person;
 
-  /// The person's relation to the other person. The type can be custom or
-  /// predefined.
-  /// Possible values include, but are not limited to, the following values:
+  /// The person's relation to the other person. The type can be custom or one
+  /// of
+  /// these predefined values:
   ///
   /// * `spouse`
   /// * `child`
@@ -3400,8 +3423,7 @@ class RelationshipInterest {
 
   /// The kind of relationship the person is looking for. The value can be
   /// custom
-  /// or predefined. Possible values include, but are not limited to, the
-  /// following values:
+  /// or one of these predefined values:
   ///
   /// * `friend`
   /// * `date`
@@ -3448,8 +3470,8 @@ class RelationshipStatus {
   /// Metadata about the relationship status.
   FieldMetadata metadata;
 
-  /// The relationship status. The value can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The relationship status. The value can be custom or one of these
+  /// predefined values:
   ///
   /// * `single`
   /// * `inARelationship`
@@ -3526,6 +3548,66 @@ class Residence {
     }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// A person's SIP address. Session Initial Protocol addresses are used for VoIP
+/// communications to make voice or video calls over the internet.
+class SipAddress {
+  /// The read-only type of the SIP address translated and formatted in the
+  /// viewer's account locale or the `Accept-Language` HTTP header locale.
+  core.String formattedType;
+
+  /// Metadata about the SIP address.
+  FieldMetadata metadata;
+
+  /// The type of the SIP address. The type can be custom or or one of these
+  /// predefined values:
+  ///
+  /// * `home`
+  /// * `work`
+  /// * `mobile`
+  /// * `other`
+  core.String type;
+
+  /// The SIP address in the
+  /// [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
+  /// format.
+  core.String value;
+
+  SipAddress();
+
+  SipAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("formattedType")) {
+      formattedType = _json["formattedType"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (formattedType != null) {
+      _json["formattedType"] = formattedType;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     if (value != null) {
       _json["value"] = value;
@@ -3782,7 +3864,8 @@ class Tagline {
   }
 }
 
-/// A request to update an existing contact group. Only the name can be updated.
+/// A request to update an existing user contact group. All updated fields will
+/// be replaced.
 class UpdateContactGroupRequest {
   /// The contact group to update.
   ContactGroup contactGroup;
@@ -3814,8 +3897,8 @@ class Url {
   /// Metadata about the URL.
   FieldMetadata metadata;
 
-  /// The type of the URL. The type can be custom or predefined.
-  /// Possible values include, but are not limited to, the following:
+  /// The type of the URL. The type can be custom or one of these predefined
+  /// values:
   ///
   /// * `home`
   /// * `work`

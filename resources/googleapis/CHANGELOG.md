@@ -1,3 +1,74 @@
+## 0.51.0
+
+* [api-new] cloudresourcemanager:v2
+* [api-new] dfareporting:v3_1
+* [api-new] dlp:v2
+* [api-new] jobs:v2
+* [api-new] servicebroker:v1
+* [api-new] tpu:v1
+* [api-new] videointelligence:v1
+* [api] adexchangebuyer:v1_4
+* [api] admin:directory_v1
+* [api] analytics:v3
+* [api] androiddeviceprovisioning:v1
+* [api] androidenterprise:v1
+* [api] androidmanagement:v1
+* [api] androidpublisher:v2
+* [api] appengine:v1
+* [api] bigquerydatatransfer:v1
+* [api] bigquery:v2
+* [api] cloudbilling:v1
+* [api] cloudbuild:v1
+* [api] cloudfunctions:v1
+* [api] cloudiot:v1
+* [api] cloudkms:v1
+* [api] compute:v1
+* [api] container:v1
+* [api] content:v2
+* [api] content:v2sandbox
+* [api] customsearch:v1
+* [api] dataproc:v1
+* [api] datastore:v1
+* [api] deploymentmanager:v2
+* [api] dns:v1
+* [api] firebasedynamiclinks:v1
+* [api] genomics:v1
+* [api] identitytoolkit:v3
+* [api] logging:v2
+* [api] manufacturers:v1
+* [api] ml:v1
+* [api] monitoring:v3
+* [api] oslogin:v1
+* [api] partners:v2
+* [api] people:v1
+* [api] poly:v1
+* [api] servicemanagement:v1
+* [api] serviceuser:v1
+* [api] sheets:v4
+* [api] slides:v1
+* [api] sourcerepo:v1
+* [api] speech:v1
+* [api] testing:v1
+* [api] vault:v1
+* [api] vision:v1
+* [api] youtube:v3
+* [api-breaking] analytics:v3
+* [api-breaking] androidpublisher:v2
+* [api-breaking] bigquery:v2
+* [api-breaking] classroom:v1
+* [api-breaking] cloudiot:v1
+* [api-breaking] deploymentmanager:v2
+* [api-breaking] manufacturers:v1
+* [api-breaking] serviceconsumermanagement:v1
+* [api-breaking] servicemanagement:v1
+* [api-breaking] serviceuser:v1
+* [api-breaking] sourcerepo:v1
+* [api-breaking] speech:v1
+* [api-breaking] surveys:v2
+* [api-breaking] youtube:v3
+* [api-removed] cloudresourcemanager:v2beta1
+* [api-removed] serviceusage:v1
+
 ## 0.50.4
 
 * Re-generated with updated code generator to support the dataWrapper feature

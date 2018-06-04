@@ -23,14 +23,81 @@ class FirebasedynamiclinksApi {
 
   final commons.ApiRequester _requester;
 
+  ManagedShortLinksResourceApi get managedShortLinks =>
+      new ManagedShortLinksResourceApi(_requester);
   ShortLinksResourceApi get shortLinks => new ShortLinksResourceApi(_requester);
   V1ResourceApi get v1 => new V1ResourceApi(_requester);
 
   FirebasedynamiclinksApi(http.Client client,
-      {core.String rootUrl: "https://firebasedynamiclinks-ipv6.googleapis.com/",
+      {core.String rootUrl: "https://firebasedynamiclinks.googleapis.com/",
       core.String servicePath: ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+class ManagedShortLinksResourceApi {
+  final commons.ApiRequester _requester;
+
+  ManagedShortLinksResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a managed short Dynamic Link given either a valid long Dynamic
+  /// Link
+  /// or details such as Dynamic Link domain, Android and iOS app information.
+  /// The created short Dynamic Link will not expire.
+  ///
+  /// This differs from CreateShortDynamicLink in the following ways:
+  ///   - The request will also contain a name for the link (non unique name
+  ///     for the front end).
+  ///   - The response must be authenticated with an auth token (generated with
+  ///     the admin service account).
+  /// - The link will appear in the FDL list of links in the console front end.
+  ///
+  /// The Dynamic Link domain in the request must be owned by requester's
+  /// Firebase project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CreateManagedShortLinkResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CreateManagedShortLinkResponse> create(
+      CreateManagedShortLinkRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/managedShortLinks:create';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new CreateManagedShortLinkResponse.fromJson(data));
+  }
 }
 
 class ShortLinksResourceApi {
@@ -278,18 +345,122 @@ class AndroidInfo {
   }
 }
 
-/// Request to create a short Dynamic Link.
-class CreateShortDynamicLinkRequest {
+/// Request to create a managed Short Dynamic Link.
+class CreateManagedShortLinkRequest {
   /// Information about the Dynamic Link to be shortened.
   /// [Learn
-  /// more](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
+  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   DynamicLinkInfo dynamicLinkInfo;
 
   /// Full long Dynamic Link URL with desired query parameters specified.
   /// For example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
   /// [Learn
-  /// more](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
+  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+  core.String longDynamicLink;
+
+  /// Link name to associate with the link. It's used for marketer to identify
+  /// manually-created links in the Firebase console
+  /// (https://console.firebase.google.com/).
+  /// Links must be named to be tracked.
+  core.String name;
+
+  /// Short Dynamic Link suffix. Optional.
+  Suffix suffix;
+
+  CreateManagedShortLinkRequest();
+
+  CreateManagedShortLinkRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dynamicLinkInfo")) {
+      dynamicLinkInfo = new DynamicLinkInfo.fromJson(_json["dynamicLinkInfo"]);
+    }
+    if (_json.containsKey("longDynamicLink")) {
+      longDynamicLink = _json["longDynamicLink"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("suffix")) {
+      suffix = new Suffix.fromJson(_json["suffix"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dynamicLinkInfo != null) {
+      _json["dynamicLinkInfo"] = (dynamicLinkInfo).toJson();
+    }
+    if (longDynamicLink != null) {
+      _json["longDynamicLink"] = longDynamicLink;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (suffix != null) {
+      _json["suffix"] = (suffix).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response to create a short Dynamic Link.
+class CreateManagedShortLinkResponse {
+  /// Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz
+  ManagedShortLink managedShortLink;
+
+  /// Preview link to show the link flow chart. (debug info.)
+  core.String previewLink;
+
+  /// Information about potential warnings on link creation.
+  core.List<DynamicLinkWarning> warning;
+
+  CreateManagedShortLinkResponse();
+
+  CreateManagedShortLinkResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("managedShortLink")) {
+      managedShortLink =
+          new ManagedShortLink.fromJson(_json["managedShortLink"]);
+    }
+    if (_json.containsKey("previewLink")) {
+      previewLink = _json["previewLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = (_json["warning"] as core.List)
+          .map<DynamicLinkWarning>(
+              (value) => new DynamicLinkWarning.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (managedShortLink != null) {
+      _json["managedShortLink"] = (managedShortLink).toJson();
+    }
+    if (previewLink != null) {
+      _json["previewLink"] = previewLink;
+    }
+    if (warning != null) {
+      _json["warning"] = warning.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Request to create a short Dynamic Link.
+class CreateShortDynamicLinkRequest {
+  /// Information about the Dynamic Link to be shortened.
+  /// [Learn
+  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+  DynamicLinkInfo dynamicLinkInfo;
+
+  /// Full long Dynamic Link URL with desired query parameters specified.
+  /// For example,
+  /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
+  /// [Learn
+  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   core.String longDynamicLink;
 
   /// Short Dynamic Link suffix. Optional.
@@ -327,7 +498,7 @@ class CreateShortDynamicLinkRequest {
 
 /// Response to create a short Dynamic Link.
 class CreateShortDynamicLinkResponse {
-  /// Preivew link to show the link flow chart.
+  /// Preview link to show the link flow chart. (debug info.)
   core.String previewLink;
 
   /// Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz
@@ -501,8 +672,8 @@ class DynamicLinkEventStat {
   /// - "IOS" : Represents iOS platform.
   /// All apps and browsers on iOS are classfied in this category.
   /// - "DESKTOP" : Represents desktop.
-  /// Note: other platforms like Windows, Blackberry, Amazon fall into this
-  /// category.
+  /// - "OTHER" : Platforms are not categorized as Android/iOS/Destop fall into
+  /// here.
   core.String platform;
 
   DynamicLinkEventStat();
@@ -549,6 +720,11 @@ class DynamicLinkInfo {
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
   DesktopInfo desktopInfo;
 
+  /// E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps
+  /// More examples can be found in description of getNormalizedUriPrefix in
+  /// j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
+  core.String domainUriPrefix;
+
   /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
   /// [Learn
   /// more](https://firebase.google.com/docs/dynamic-links/android/receive)
@@ -589,6 +765,9 @@ class DynamicLinkInfo {
     if (_json.containsKey("desktopInfo")) {
       desktopInfo = new DesktopInfo.fromJson(_json["desktopInfo"]);
     }
+    if (_json.containsKey("domainUriPrefix")) {
+      domainUriPrefix = _json["domainUriPrefix"];
+    }
     if (_json.containsKey("dynamicLinkDomain")) {
       dynamicLinkDomain = _json["dynamicLinkDomain"];
     }
@@ -618,6 +797,9 @@ class DynamicLinkInfo {
     }
     if (desktopInfo != null) {
       _json["desktopInfo"] = (desktopInfo).toJson();
+    }
+    if (domainUriPrefix != null) {
+      _json["domainUriPrefix"] = domainUriPrefix;
     }
     if (dynamicLinkDomain != null) {
       _json["dynamicLinkDomain"] = dynamicLinkDomain;
@@ -911,6 +1093,13 @@ class GetIosPostInstallAttributionResponse {
   /// This message will be publicly visible.
   core.String matchMessage;
 
+  /// Which IP version the request was made from.
+  /// Possible string values are:
+  /// - "UNKNOWN_IP_VERSION" : Unset.
+  /// - "IP_V4" : Request made from an IPv4 IP address.
+  /// - "IP_V6" : Request made from an IPv6 IP address.
+  core.String requestIpVersion;
+
   /// Entire FDL (short or long) attributed post-install via one of several
   /// techniques (fingerprint, copy unique).
   core.String requestedLink;
@@ -958,6 +1147,9 @@ class GetIosPostInstallAttributionResponse {
     if (_json.containsKey("matchMessage")) {
       matchMessage = _json["matchMessage"];
     }
+    if (_json.containsKey("requestIpVersion")) {
+      requestIpVersion = _json["requestIpVersion"];
+    }
     if (_json.containsKey("requestedLink")) {
       requestedLink = _json["requestedLink"];
     }
@@ -1001,6 +1193,9 @@ class GetIosPostInstallAttributionResponse {
     }
     if (matchMessage != null) {
       _json["matchMessage"] = matchMessage;
+    }
+    if (requestIpVersion != null) {
+      _json["requestIpVersion"] = requestIpVersion;
     }
     if (requestedLink != null) {
       _json["requestedLink"] = requestedLink;
@@ -1220,6 +1415,87 @@ class IosInfo {
   }
 }
 
+/// Managed Short Link.
+class ManagedShortLink {
+  /// Creation timestamp of the short link.
+  core.String creationTime;
+
+  /// Attributes that have been flagged about this short url.
+  core.List<core.String> flaggedAttribute;
+
+  /// Full Dyamic Link info
+  DynamicLinkInfo info;
+
+  /// Short durable link url, for example, "https://sample.app.goo.gl/xyz123".
+  ///
+  /// Required.
+  core.String link;
+
+  /// Link name defined by the creator.
+  ///
+  /// Required.
+  core.String linkName;
+
+  /// Visibility status of link.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_VISIBILITY" : Visibility of the link is not specified.
+  /// - "UNARCHIVED" : Link created in console and should be shown in console.
+  /// - "ARCHIVED" : Link created in console and should not be shown in console
+  /// (but can
+  /// be shown in the console again if it is unarchived).
+  /// - "NEVER_SHOWN" : Link created outside of console and should never be
+  /// shown in console.
+  core.String visibility;
+
+  ManagedShortLink();
+
+  ManagedShortLink.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("flaggedAttribute")) {
+      flaggedAttribute =
+          (_json["flaggedAttribute"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("info")) {
+      info = new DynamicLinkInfo.fromJson(_json["info"]);
+    }
+    if (_json.containsKey("link")) {
+      link = _json["link"];
+    }
+    if (_json.containsKey("linkName")) {
+      linkName = _json["linkName"];
+    }
+    if (_json.containsKey("visibility")) {
+      visibility = _json["visibility"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (flaggedAttribute != null) {
+      _json["flaggedAttribute"] = flaggedAttribute;
+    }
+    if (info != null) {
+      _json["info"] = (info).toJson();
+    }
+    if (link != null) {
+      _json["link"] = link;
+    }
+    if (linkName != null) {
+      _json["linkName"] = linkName;
+    }
+    if (visibility != null) {
+      _json["visibility"] = visibility;
+    }
+    return _json;
+  }
+}
+
 /// Information of navigation behavior.
 class NavigationInfo {
   /// If this option is on, FDL click will be forced to redirect rather than
@@ -1288,10 +1564,13 @@ class SocialMetaTagInfo {
 
 /// Short Dynamic Link suffix.
 class Suffix {
+  /// Only applies to Option.CUSTOM.
+  core.String customSuffix;
+
   /// Suffix option.
   /// Possible string values are:
   /// - "OPTION_UNSPECIFIED" : The suffix option is not specified, performs as
-  /// NOT_GUESSABLE .
+  /// UNGUESSABLE .
   /// - "UNGUESSABLE" : Short Dynamic Link suffix is a base62 [0-9A-Za-z]
   /// encoded string of
   /// a random generated 96 bit random number, which has a length of 17 chars.
@@ -1302,11 +1581,18 @@ class Suffix {
   /// starting with a
   /// length of 4 chars. the length will increase when all the space is
   /// occupied.
+  /// - "CUSTOM" : Custom DDL suffix is a client specified string, for example,
+  /// "buy2get1free".
+  /// NOTE: custom suffix should only be available to managed short link
+  /// creation
   core.String option;
 
   Suffix();
 
   Suffix.fromJson(core.Map _json) {
+    if (_json.containsKey("customSuffix")) {
+      customSuffix = _json["customSuffix"];
+    }
     if (_json.containsKey("option")) {
       option = _json["option"];
     }
@@ -1315,6 +1601,9 @@ class Suffix {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customSuffix != null) {
+      _json["customSuffix"] = customSuffix;
+    }
     if (option != null) {
       _json["option"] = option;
     }

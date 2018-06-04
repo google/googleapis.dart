@@ -159,22 +159,13 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations`
-  /// that indicates from where listing should continue.
-  /// This field is optional.
-  ///
-  /// [pageSize] - The maximum number of Organizations to return in the
-  /// response.
-  /// This field is optional.
-  ///
   /// [filter] - An optional query string used to filter the Organizations to
   /// return in
   /// the response. Filter rules are case-insensitive.
   ///
   ///
   /// Organizations may be filtered by `owner.directoryCustomerId` or by
-  /// `domain`, where the domain is a Google for Work domain, for example:
+  /// `domain`, where the domain is a G Suite domain, for example:
   ///
   /// |Filter|Description|
   /// |------|-----------|
@@ -183,6 +174,15 @@ class OrganizationsResourceApi {
   /// |domain:google.com|Organizations corresponding to the domain
   /// `google.com`.|
   ///
+  /// This field is optional.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations`
+  /// that indicates from where listing should continue.
+  /// This field is optional.
+  ///
+  /// [pageSize] - The maximum number of Organizations to return in the
+  /// response.
   /// This field is optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -196,9 +196,9 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list(
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -207,14 +207,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -411,7 +411,14 @@ class ProjectsResourceApi {
   /// Project.
   ///
   /// Several APIs are activated automatically for the Project, including
-  /// Google Cloud Storage.
+  /// Google Cloud Storage. The parent is identified by a specified
+  /// ResourceId, which must include both an ID and a type, such as
+  /// project, folder, or organization.
+  ///
+  /// This method does not associate the new project with a billing account.
+  /// You can set or update the billing account associated with a project using
+  /// the [`projects.updateBillingInfo`]
+  /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -462,11 +469,7 @@ class ProjectsResourceApi {
 
   /// Marks the Project identified by the specified
   /// `project_id` (for example, `my-project-123`) for deletion.
-  /// This method will only affect the Project if the following criteria are
-  /// met:
-  ///
-  /// + The Project does not have a billing account associated with it.
-  /// + The Project has a lifecycle state of
+  /// This method will only affect the Project if it has a lifecycle state of
   /// ACTIVE.
   ///
   /// This method changes the Project's lifecycle state from
@@ -697,12 +700,6 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of Projects to return in the response.
-  /// The server can return fewer Projects than requested.
-  /// If unspecified, server picks an appropriate default.
-  ///
-  /// Optional.
-  ///
   /// [filter] - An expression for filtering the results of the request.  Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -742,6 +739,12 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
+  /// [pageSize] - The maximum number of Projects to return in the response.
+  /// The server can return fewer Projects than requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -753,9 +756,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -764,14 +767,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1122,7 +1125,6 @@ class Ancestor {
 /// bar@gmail.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  /// Next ID: 4
   core.List<AuditLogConfig> auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
@@ -1227,7 +1229,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1632,7 +1634,7 @@ class Organization {
 /// will
 /// be deleted.
 class OrganizationOwner {
-  /// The Google for Work customer id used in the Directory API.
+  /// The G Suite customer id used in the Directory API.
   core.String directoryCustomerId;
 
   OrganizationOwner();
@@ -1657,14 +1659,14 @@ class OrganizationOwner {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -1674,7 +1676,7 @@ class OrganizationOwner {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -1683,6 +1685,20 @@ class OrganizationOwner {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).

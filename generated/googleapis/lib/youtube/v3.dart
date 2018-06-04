@@ -63,8 +63,6 @@ class YoutubeApi {
   CommentThreadsResourceApi get commentThreads =>
       new CommentThreadsResourceApi(_requester);
   CommentsResourceApi get comments => new CommentsResourceApi(_requester);
-  FanFundingEventsResourceApi get fanFundingEvents =>
-      new FanFundingEventsResourceApi(_requester);
   GuideCategoriesResourceApi get guideCategories =>
       new GuideCategoriesResourceApi(_requester);
   I18nLanguagesResourceApi get i18nLanguages =>
@@ -2082,89 +2080,6 @@ class CommentsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Comment.fromJson(data));
-  }
-}
-
-class FanFundingEventsResourceApi {
-  final commons.ApiRequester _requester;
-
-  FanFundingEventsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists fan funding events for a channel.
-  ///
-  /// Request parameters:
-  ///
-  /// [part] - The part parameter specifies the fanFundingEvent resource parts
-  /// that the API response will include. Supported values are id and snippet.
-  ///
-  /// [hl] - The hl parameter instructs the API to retrieve localized resource
-  /// metadata for a specific application language that the YouTube website
-  /// supports. The parameter value must be a language code included in the list
-  /// returned by the i18nLanguages.list method.
-  ///
-  /// If localized resource details are available in that language, the
-  /// resource's snippet.localized object will contain the localized values.
-  /// However, if localized details are not available, the snippet.localized
-  /// object will contain resource details in the resource's default language.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [FanFundingEventListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<FanFundingEventListResponse> list(core.String part,
-      {core.String hl,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (part == null) {
-      throw new core.ArgumentError("Parameter part is required.");
-    }
-    _queryParams["part"] = [part];
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'fanFundingEvents';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new FanFundingEventListResponse.fromJson(data));
   }
 }
 
@@ -9189,6 +9104,7 @@ class ChannelStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "unlisted_new"
   core.String privacyStatus;
 
   ChannelStatus();
@@ -10201,6 +10117,7 @@ class ContentRating {
   /// The video's rating in Israel.
   /// Possible string values are:
   /// - "ilfilm12"
+  /// - "ilfilm14"
   /// - "ilfilm16"
   /// - "ilfilm18"
   /// - "ilfilmAa"
@@ -11015,224 +10932,6 @@ class ContentRating {
     }
     if (ytRating != null) {
       _json["ytRating"] = ytRating;
-    }
-    return _json;
-  }
-}
-
-/// A fanFundingEvent resource represents a fan funding event on a YouTube
-/// channel. Fan funding events occur when a user gives one-time monetary
-/// support to the channel owner.
-class FanFundingEvent {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// The ID that YouTube assigns to uniquely identify the fan funding event.
-  core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#fanFundingEvent".
-  core.String kind;
-
-  /// The snippet object contains basic details about the fan funding event.
-  FanFundingEventSnippet snippet;
-
-  FanFundingEvent();
-
-  FanFundingEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("snippet")) {
-      snippet = new FanFundingEventSnippet.fromJson(_json["snippet"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
-    }
-    return _json;
-  }
-}
-
-class FanFundingEventListResponse {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-
-  /// A list of fan funding events that match the request criteria.
-  core.List<FanFundingEvent> items;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#fanFundingEventListResponse".
-  core.String kind;
-
-  /// The token that can be used as the value of the pageToken parameter to
-  /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
-  TokenPagination tokenPagination;
-
-  /// The visitorId identifies the visitor.
-  core.String visitorId;
-
-  FanFundingEventListResponse();
-
-  FanFundingEventListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<FanFundingEvent>((value) => new FanFundingEvent.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
-    }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
-    }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (eventId != null) {
-      _json["eventId"] = eventId;
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
-    }
-    if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
-    }
-    if (visitorId != null) {
-      _json["visitorId"] = visitorId;
-    }
-    return _json;
-  }
-}
-
-class FanFundingEventSnippet {
-  /// The amount of funding in micros of fund_currency. e.g., 1 is represented
-  core.String amountMicros;
-
-  /// Channel id where the funding event occurred.
-  core.String channelId;
-
-  /// The text contents of the comment left by the user.
-  core.String commentText;
-
-  /// The date and time when the funding occurred. The value is specified in ISO
-  /// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime createdAt;
-
-  /// The currency in which the fund was made. ISO 4217.
-  core.String currency;
-
-  /// A rendered string that displays the fund amount and currency (e.g.,
-  /// "$1.00"). The string is rendered for the given language.
-  core.String displayString;
-
-  /// Details about the supporter. Only filled if the event was made public by
-  /// the user.
-  ChannelProfileDetails supporterDetails;
-
-  FanFundingEventSnippet();
-
-  FanFundingEventSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("amountMicros")) {
-      amountMicros = _json["amountMicros"];
-    }
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
-    }
-    if (_json.containsKey("commentText")) {
-      commentText = _json["commentText"];
-    }
-    if (_json.containsKey("createdAt")) {
-      createdAt = core.DateTime.parse(_json["createdAt"]);
-    }
-    if (_json.containsKey("currency")) {
-      currency = _json["currency"];
-    }
-    if (_json.containsKey("displayString")) {
-      displayString = _json["displayString"];
-    }
-    if (_json.containsKey("supporterDetails")) {
-      supporterDetails =
-          new ChannelProfileDetails.fromJson(_json["supporterDetails"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (amountMicros != null) {
-      _json["amountMicros"] = amountMicros;
-    }
-    if (channelId != null) {
-      _json["channelId"] = channelId;
-    }
-    if (commentText != null) {
-      _json["commentText"] = commentText;
-    }
-    if (createdAt != null) {
-      _json["createdAt"] = (createdAt).toIso8601String();
-    }
-    if (currency != null) {
-      _json["currency"] = currency;
-    }
-    if (displayString != null) {
-      _json["displayString"] = displayString;
-    }
-    if (supporterDetails != null) {
-      _json["supporterDetails"] = (supporterDetails).toJson();
     }
     return _json;
   }
@@ -12452,6 +12151,13 @@ class LiveBroadcastContentDetails {
   /// slate and make your broadcast stream visible to viewers.
   core.bool startWithSlate;
 
+  ///
+  /// Possible string values are:
+  /// - "left_right"
+  /// - "mono"
+  /// - "top_bottom"
+  core.String stereoLayout;
+
   LiveBroadcastContentDetails();
 
   LiveBroadcastContentDetails.fromJson(core.Map _json) {
@@ -12500,6 +12206,9 @@ class LiveBroadcastContentDetails {
     }
     if (_json.containsKey("startWithSlate")) {
       startWithSlate = _json["startWithSlate"];
+    }
+    if (_json.containsKey("stereoLayout")) {
+      stereoLayout = _json["stereoLayout"];
     }
   }
 
@@ -12551,6 +12260,9 @@ class LiveBroadcastContentDetails {
     }
     if (startWithSlate != null) {
       _json["startWithSlate"] = startWithSlate;
+    }
+    if (stereoLayout != null) {
+      _json["stereoLayout"] = stereoLayout;
     }
     return _json;
   }
@@ -12854,6 +12566,7 @@ class LiveBroadcastStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "unlisted_new"
   core.String privacyStatus;
 
   /// The broadcast's recording status.
@@ -15155,6 +14868,7 @@ class PlaylistItemStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "unlisted_new"
   core.String privacyStatus;
 
   PlaylistItemStatus();
@@ -15429,6 +15143,7 @@ class PlaylistStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "unlisted_new"
   core.String privacyStatus;
 
   PlaylistStatus();
@@ -15910,9 +15625,6 @@ class Sponsor {
   /// Etag of this resource.
   core.String etag;
 
-  /// The ID that YouTube assigns to uniquely identify the sponsor.
-  core.String id;
-
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "youtube#sponsor".
   core.String kind;
@@ -15925,9 +15637,6 @@ class Sponsor {
   Sponsor.fromJson(core.Map _json) {
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -15942,9 +15651,6 @@ class Sponsor {
         new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
-    }
-    if (id != null) {
-      _json["id"] = id;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16045,6 +15751,9 @@ class SponsorSnippet {
   /// The id of the channel being sponsored.
   core.String channelId;
 
+  /// The cumulative time a user has been a sponsor in months.
+  core.int cumulativeDurationMonths;
+
   /// Details about the sponsor.
   ChannelProfileDetails sponsorDetails;
 
@@ -16057,6 +15766,9 @@ class SponsorSnippet {
   SponsorSnippet.fromJson(core.Map _json) {
     if (_json.containsKey("channelId")) {
       channelId = _json["channelId"];
+    }
+    if (_json.containsKey("cumulativeDurationMonths")) {
+      cumulativeDurationMonths = _json["cumulativeDurationMonths"];
     }
     if (_json.containsKey("sponsorDetails")) {
       sponsorDetails =
@@ -16072,6 +15784,9 @@ class SponsorSnippet {
         new core.Map<core.String, core.Object>();
     if (channelId != null) {
       _json["channelId"] = channelId;
+    }
+    if (cumulativeDurationMonths != null) {
+      _json["cumulativeDurationMonths"] = cumulativeDurationMonths;
     }
     if (sponsorDetails != null) {
       _json["sponsorDetails"] = (sponsorDetails).toJson();
@@ -18819,6 +18534,7 @@ class VideoStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "unlisted_new"
   core.String privacyStatus;
 
   /// This value indicates if the extended video statistics on the watch page

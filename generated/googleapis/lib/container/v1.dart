@@ -37,10 +37,1841 @@ class ContainerApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
   ProjectsZonesResourceApi get zones =>
       new ProjectsZonesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersResourceApi get clusters =>
+      new ProjectsLocationsClustersResourceApi(_requester);
+  ProjectsLocationsOperationsResourceApi get operations =>
+      new ProjectsLocationsOperationsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns configuration info about the Kubernetes Engine service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project and location) of the server config to get
+  /// Specified in the format 'projects / * /locations / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServerConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServerConfig> getServerConfig(core.String name,
+      {core.String zone, core.String projectId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/serverConfig';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServerConfig.fromJson(data));
+  }
+}
+
+class ProjectsLocationsClustersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersNodePoolsResourceApi get nodePools =>
+      new ProjectsLocationsClustersNodePoolsResourceApi(_requester);
+
+  ProjectsLocationsClustersResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Completes master IP rotation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster id) of the cluster to
+  /// complete IP
+  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
+  /// * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> completeIpRotation(
+      CompleteIPRotationRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':completeIpRotation';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Creates a cluster, consisting of the specified number and type of Google
+  /// Compute Engine instances.
+  ///
+  /// By default, the cluster is created in the project's
+  /// [default network](/compute/docs/networks-and-firewalls#networks).
+  ///
+  /// One firewall is added for the cluster. After cluster creation,
+  /// the cluster creates routes for each node to allow the containers
+  /// on that node to communicate with all other instances in the
+  /// cluster.
+  ///
+  /// Finally, an entry is added to the project's global metadata indicating
+  /// which CIDR range is being used by the cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project and location) where the cluster will be
+  /// created.
+  /// Specified in the format 'projects / * /locations / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+      CreateClusterRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes the cluster, including the Kubernetes endpoint and all worker
+  /// nodes.
+  ///
+  /// Firewalls and routes that were configured during cluster creation
+  /// are also deleted.
+  ///
+  /// Other Google Compute Engine resources that might be in use by the cluster
+  /// (e.g. load balancer resources) will not be deleted if they weren't present
+  /// at the initial create time.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to delete.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster to delete.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(core.String name,
+      {core.String projectId,
+      core.String zone,
+      core.String clusterId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if (clusterId != null) {
+      _queryParams["clusterId"] = [clusterId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Gets the details of a specific cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to retrieve.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster to retrieve.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Cluster].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Cluster> get(core.String name,
+      {core.String projectId,
+      core.String zone,
+      core.String clusterId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if (clusterId != null) {
+      _queryParams["clusterId"] = [clusterId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Cluster.fromJson(data));
+  }
+
+  /// Lists all clusters owned by a project in either the specified zone or all
+  /// zones.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project and location) where the clusters will be
+  /// listed.
+  /// Specified in the format 'projects / * /locations / * '.
+  /// Location "-" matches all zones and all regions.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides, or "-" for all zones.
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListClustersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListClustersResponse> list(core.String parent,
+      {core.String projectId, core.String zone, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListClustersResponse.fromJson(data));
+  }
+
+  /// Sets the addons for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to set
+  /// addons.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setAddons(
+      SetAddonsConfigRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setAddons';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Enables or disables the ABAC authorization mechanism on a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// legacy abac.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLegacyAbac(
+      SetLegacyAbacRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setLegacyAbac';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the locations for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to set
+  /// locations.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLocations(
+      SetLocationsRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setLocations';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the logging service for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to set
+  /// logging.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLogging(
+      SetLoggingServiceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setLogging';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the maintenance policy for a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// maintenance
+  /// policy.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setMaintenancePolicy(
+      SetMaintenancePolicyRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setMaintenancePolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Used to set master auth materials. Currently supports :-
+  /// Changing the admin password for a specific cluster.
+  /// This can be either via password generation or explicitly set the password.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to set auth.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setMasterAuth(
+      SetMasterAuthRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setMasterAuth';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the monitoring service for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to set
+  /// monitoring.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setMonitoring(
+      SetMonitoringServiceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setMonitoring';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Enables/Disables Network Policy for a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// networking
+  /// policy. Specified in the format 'projects / * /locations / * /clusters / *
+  /// '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setNetworkPolicy(
+      SetNetworkPolicyRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setNetworkPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets labels on a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// labels.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setResourceLabels(
+      SetLabelsRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setResourceLabels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Start master IP rotation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster id) of the cluster to start
+  /// IP
+  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
+  /// * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> startIpRotation(
+      StartIPRotationRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':startIpRotation';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Updates the settings of a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to update.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(UpdateClusterRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Updates the master for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to update.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateMaster(
+      UpdateMasterRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':updateMaster';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsLocationsClustersNodePoolsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersNodePoolsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a node pool for a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project, location, cluster id) where the node pool
+  /// will be
+  /// created. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+      CreateNodePoolRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes a node pool from a cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to
+  /// delete. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(core.String name,
+      {core.String zone,
+      core.String clusterId,
+      core.String nodePoolId,
+      core.String projectId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if (clusterId != null) {
+      _queryParams["clusterId"] = [clusterId];
+    }
+    if (nodePoolId != null) {
+      _queryParams["nodePoolId"] = [nodePoolId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the node pool requested.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to
+  /// get. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [nodePoolId] - Deprecated. The name of the node pool.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodePool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodePool> get(core.String name,
+      {core.String zone,
+      core.String clusterId,
+      core.String nodePoolId,
+      core.String projectId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if (clusterId != null) {
+      _queryParams["clusterId"] = [clusterId];
+    }
+    if (nodePoolId != null) {
+      _queryParams["nodePoolId"] = [nodePoolId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodePool.fromJson(data));
+  }
+
+  /// Lists the node pools for a cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project, location, cluster id) where the node pools
+  /// will be
+  /// listed. Specified in the format 'projects / * /locations / * /clusters / *
+  /// '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNodePoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNodePoolsResponse> list(core.String parent,
+      {core.String projectId,
+      core.String zone,
+      core.String clusterId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if (clusterId != null) {
+      _queryParams["clusterId"] = [clusterId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
+  }
+
+  /// Roll back the previously Aborted or Failed NodePool upgrade.
+  /// This will be an no-op if the last upgrade successfully completed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// poll to
+  /// rollback upgrade.
+  /// Specified in the format 'projects / * /locations / * /clusters / *
+  /// /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rollback(
+      RollbackNodePoolUpgradeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rollback';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the autoscaling settings for a specific node pool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool) of the node pool
+  /// to set
+  /// autoscaler settings. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setAutoscaling(
+      SetNodePoolAutoscalingRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setAutoscaling';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the NodeManagement options for a node pool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to set
+  /// management properties. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setManagement(
+      SetNodePoolManagementRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':setManagement';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the size for a specific node pool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to set
+  /// size.
+  /// Specified in the format 'projects / * /locations / * /clusters / *
+  /// /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setSize(
+      SetNodePoolSizeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setSize';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Updates the version and/or image type for a specific node pool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool) of the node pool
+  /// to
+  /// update. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+      UpdateNodePoolRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsLocationsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Cancels the specified operation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, operation id) of the operation to
+  /// cancel.
+  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the specified operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, operation id) of the operation to
+  /// get.
+  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [operationId] - Deprecated. The server-assigned `name` of the operation.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name,
+      {core.String operationId,
+      core.String projectId,
+      core.String zone,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (operationId != null) {
+      _queryParams["operationId"] = [operationId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists all operations in a project in a specific zone or all zones.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent (project and location) where the operations will be
+  /// listed.
+  /// Specified in the format 'projects / * /locations / * '.
+  /// Location "-" matches all zones and all regions.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
+  /// all zones. This field has been deprecated and replaced by the parent
+  /// field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(core.String parent,
+      {core.String projectId, core.String zone, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/operations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
 }
 
 class ProjectsZonesResourceApi {
@@ -57,12 +1888,17 @@ class ProjectsZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available)
-  /// to return operations for.
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [name] - The name (project and location) of the server config to get
+  /// Specified in the format 'projects / * /locations / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -76,7 +1912,7 @@ class ProjectsZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<ServerConfig> getServerconfig(
       core.String projectId, core.String zone,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -89,6 +1925,9 @@ class ProjectsZonesResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -119,20 +1958,24 @@ class ProjectsZonesClustersResourceApi {
   ProjectsZonesClustersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Sets the addons of a specific cluster.
+  /// Sets the addons for a specific cluster.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -193,14 +2036,18 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -273,12 +2120,15 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -340,14 +2190,21 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to delete.
+  /// [clusterId] - Deprecated. The name of the cluster to delete.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to delete.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -361,7 +2218,7 @@ class ProjectsZonesClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -377,6 +2234,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -402,14 +2262,21 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to retrieve.
+  /// [clusterId] - Deprecated. The name of the cluster to retrieve.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to retrieve.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,7 +2290,7 @@ class ProjectsZonesClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Cluster> get(
       core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -439,6 +2306,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -466,14 +2336,18 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to update.
+  /// [clusterId] - Deprecated. The name of the cluster to update.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -533,12 +2407,20 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides, or "-" for all zones.
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [parent] - The parent (project and location) where the clusters will be
+  /// listed.
+  /// Specified in the format 'projects / * /locations / * '.
+  /// Location "-" matches all zones and all regions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -552,7 +2434,7 @@ class ProjectsZonesClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String zone,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -565,6 +2447,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -585,20 +2470,24 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new ListClustersResponse.fromJson(data));
   }
 
-  /// Sets the locations of a specific cluster.
+  /// Sets the locations for a specific cluster.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -653,20 +2542,24 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets the logging service of a specific cluster.
+  /// Sets the logging service for a specific cluster.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -721,20 +2614,24 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Updates the master of a specific cluster.
+  /// Updates the master for a specific cluster.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -789,20 +2686,24 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets the monitoring service of a specific cluster.
+  /// Sets the monitoring service for a specific cluster.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -863,14 +2764,18 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -997,21 +2902,25 @@ class ProjectsZonesClustersResourceApi {
   }
 
   /// Used to set master auth materials. Currently supports :-
-  /// Changing the admin password of a specific cluster.
+  /// Changing the admin password for a specific cluster.
   /// This can be either via password generation or explicitly set the password.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1072,14 +2981,18 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1140,14 +3053,18 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1208,14 +3125,18 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1276,22 +3197,27 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ProjectsZonesClustersNodePoolsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Sets the autoscaling settings of a specific node pool.
+  /// Sets the autoscaling settings for a specific node pool.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool to upgrade.
+  /// [nodePoolId] - Deprecated. The name of the node pool to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1361,14 +3287,18 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1427,16 +3357,26 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool to delete.
+  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to
+  /// delete. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1450,7 +3390,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String projectId, core.String zone,
       core.String clusterId, core.String nodePoolId,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1469,6 +3409,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1496,16 +3439,26 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool.
+  /// [nodePoolId] - Deprecated. The name of the node pool.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to
+  /// get. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1519,7 +3472,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<NodePool> get(core.String projectId, core.String zone,
       core.String clusterId, core.String nodePoolId,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1538,6 +3491,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1565,14 +3521,23 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [clusterId] - The name of the cluster.
+  /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [parent] - The parent (project, location, cluster id) where the node pools
+  /// will be
+  /// listed. Specified in the format 'projects / * /locations / * /clusters / *
+  /// '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1586,7 +3551,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNodePoolsResponse> list(
       core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1602,6 +3567,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1631,16 +3599,21 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to rollback.
+  /// [clusterId] - Deprecated. The name of the cluster to rollback.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool to rollback.
+  /// [nodePoolId] - Deprecated. The name of the node pool to rollback.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1710,16 +3683,21 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to update.
+  /// [clusterId] - Deprecated. The name of the cluster to update.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool to update.
+  /// [nodePoolId] - Deprecated. The name of the node pool to update.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1783,22 +3761,27 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets the size of a specific node pool.
+  /// Sets the size for a specific node pool.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to update.
+  /// [clusterId] - Deprecated. The name of the cluster to update.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool to update.
+  /// [nodePoolId] - Deprecated. The name of the node pool to update.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1862,22 +3845,27 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Updates the version and/or image type of a specific node pool.
+  /// Updates the version and/or image type for a specific node pool.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [clusterId] - The name of the cluster to upgrade.
+  /// [clusterId] - Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - The name of the node pool to upgrade.
+  /// [nodePoolId] - Deprecated. The name of the node pool to upgrade.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1954,13 +3942,17 @@ class ProjectsZonesOperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the operation resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [operationId] - The server-assigned `name` of the operation.
+  /// [operationId] - Deprecated. The server-assigned `name` of the operation.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2019,14 +4011,22 @@ class ProjectsZonesOperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [zone] - The name of the Google Compute Engine
+  /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field has been deprecated and replaced by the name field.
   ///
-  /// [operationId] - The server-assigned `name` of the operation.
+  /// [operationId] - Deprecated. The server-assigned `name` of the operation.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [name] - The name (project, location, operation id) of the operation to
+  /// get.
+  /// Specified in the format 'projects / * /locations / * /operations / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2040,7 +4040,7 @@ class ProjectsZonesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(
       core.String projectId, core.String zone, core.String operationId,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2056,6 +4056,9 @@ class ProjectsZonesOperationsResourceApi {
     }
     if (operationId == null) {
       throw new core.ArgumentError("Parameter operationId is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2081,12 +4084,20 @@ class ProjectsZonesOperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [zone] - The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available)
-  /// to return operations for, or `-` for all zones.
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
+  /// all zones. This field has been deprecated and replaced by the parent
+  /// field.
+  ///
+  /// [parent] - The parent (project and location) where the operations will be
+  /// listed.
+  /// Specified in the format 'projects / * /locations / * '.
+  /// Location "-" matches all zones and all regions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2100,7 +4111,7 @@ class ProjectsZonesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
       core.String projectId, core.String zone,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2113,6 +4124,9 @@ class ProjectsZonesOperationsResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2265,13 +4279,56 @@ class AutoUpgradeOptions {
 
 /// CancelOperationRequest cancels a single operation.
 class CancelOperationRequest {
+  /// The name (project, location, operation id) of the operation to cancel.
+  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  core.String name;
+
+  /// Deprecated. The server-assigned `name` of the operation.
+  /// This field has been deprecated and replaced by the name field.
+  core.String operationId;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the operation resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   CancelOperationRequest();
 
-  CancelOperationRequest.fromJson(core.Map _json) {}
+  CancelOperationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
     return _json;
   }
 }
@@ -2385,6 +4442,15 @@ class Cluster {
   /// found in validMasterVersions returned by getServerConfig.  The version can
   /// be upgraded over time; such upgrades are reflected in
   /// currentMasterVersion and currentNodeVersion.
+  ///
+  /// Users may specify either explicit versions offered by
+  /// Kubernetes Engine or version aliases, which have the following behavior:
+  ///
+  /// - "latest": picks the highest valid Kubernetes version
+  /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+  /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+  /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+  /// - "","-": picks the default Kubernetes version
   core.String initialClusterVersion;
 
   /// The number of nodes to create in this cluster. You must ensure that your
@@ -2409,6 +4475,12 @@ class Cluster {
   /// Configuration for the legacy ABAC authorization mode.
   LegacyAbac legacyAbac;
 
+  /// [Output only] The name of the Google Compute Engine
+  /// [zone](/compute/docs/regions-zones/regions-zones#available) or
+  /// [region](/compute/docs/regions-zones/regions-zones#available) in which
+  /// the cluster resides.
+  core.String location;
+
   /// The list of Google Compute Engine
   /// [locations](/compute/docs/zones#available) in which the cluster's nodes
   /// should be located.
@@ -2428,7 +4500,6 @@ class Cluster {
   /// The authentication information for accessing the master endpoint.
   MasterAuth masterAuth;
 
-  /// Master authorized networks is a Beta feature.
   /// The configuration options for master authorized networks feature.
   MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
 
@@ -2508,6 +4579,9 @@ class Cluster {
   /// - "STOPPING" : The STOPPING state indicates the cluster is being deleted.
   /// - "ERROR" : The ERROR state indicates the cluster may be unusable. Details
   /// can be found in the `statusMessage` field.
+  /// - "DEGRADED" : The DEGRADED state indicates the cluster requires user
+  /// action to restore
+  /// full functionality. Details can be found in the `statusMessage` field.
   core.String status;
 
   /// [Output only] Additional information about the current status of this
@@ -2522,6 +4596,7 @@ class Cluster {
   /// [Output only] The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
+  /// This field is deprecated, use location instead.
   core.String zone;
 
   Cluster();
@@ -2576,6 +4651,9 @@ class Cluster {
     }
     if (_json.containsKey("legacyAbac")) {
       legacyAbac = new LegacyAbac.fromJson(_json["legacyAbac"]);
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List).cast<core.String>();
@@ -2693,6 +4771,9 @@ class Cluster {
     if (legacyAbac != null) {
       _json["legacyAbac"] = (legacyAbac).toJson();
     }
+    if (location != null) {
+      _json["location"] = location;
+    }
     if (locations != null) {
       _json["locations"] = locations;
     }
@@ -2775,14 +4856,19 @@ class ClusterUpdate {
   /// This list must always include the cluster's primary zone.
   core.List<core.String> desiredLocations;
 
-  /// Master authorized networks is a Beta feature.
   /// The desired configuration options for master authorized networks feature.
   MasterAuthorizedNetworksConfig desiredMasterAuthorizedNetworksConfig;
 
-  /// The Kubernetes version to change the master to. The only valid value is
-  /// the
-  /// latest supported version. Use "-" to have the server automatically select
-  /// the latest version.
+  /// The Kubernetes version to change the master to.
+  ///
+  /// Users may specify either explicit versions offered by
+  /// Kubernetes Engine or version aliases, which have the following behavior:
+  ///
+  /// - "latest": picks the highest valid Kubernetes version
+  /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+  /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+  /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+  /// - "-": picks the default Kubernetes version
   core.String desiredMasterVersion;
 
   /// The monitoring service the cluster should use to write metrics.
@@ -2805,8 +4891,16 @@ class ClusterUpdate {
   core.String desiredNodePoolId;
 
   /// The Kubernetes version to change the nodes to (typically an
-  /// upgrade). Use `-` to upgrade to the latest version supported by
-  /// the server.
+  /// upgrade).
+  ///
+  /// Users may specify either explicit versions offered by
+  /// Kubernetes Engine or version aliases, which have the following behavior:
+  ///
+  /// - "latest": picks the highest valid Kubernetes version
+  /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+  /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+  /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+  /// - "-": picks the Kubernetes master version
   core.String desiredNodeVersion;
 
   ClusterUpdate();
@@ -2884,13 +4978,58 @@ class ClusterUpdate {
 
 /// CompleteIPRotationRequest moves the cluster master back into single-IP mode.
 class CompleteIPRotationRequest {
+  /// Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster id) of the cluster to complete IP
+  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
+  /// * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   CompleteIPRotationRequest();
 
-  CompleteIPRotationRequest.fromJson(core.Map _json) {}
+  CompleteIPRotationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
     return _json;
   }
 }
@@ -2901,11 +5040,35 @@ class CreateClusterRequest {
   /// resource](/container-engine/reference/rest/v1/projects.zones.clusters)
   Cluster cluster;
 
+  /// The parent (project and location) where the cluster will be created.
+  /// Specified in the format 'projects / * /locations / * '.
+  core.String parent;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the parent field.
+  core.String zone;
+
   CreateClusterRequest();
 
   CreateClusterRequest.fromJson(core.Map _json) {
     if (_json.containsKey("cluster")) {
       cluster = new Cluster.fromJson(_json["cluster"]);
+    }
+    if (_json.containsKey("parent")) {
+      parent = _json["parent"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
@@ -2915,28 +5078,81 @@ class CreateClusterRequest {
     if (cluster != null) {
       _json["cluster"] = (cluster).toJson();
     }
+    if (parent != null) {
+      _json["parent"] = parent;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
     return _json;
   }
 }
 
 /// CreateNodePoolRequest creates a node pool for a cluster.
 class CreateNodePoolRequest {
+  /// Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the parent field.
+  core.String clusterId;
+
   /// The node pool to create.
   NodePool nodePool;
+
+  /// The parent (project, location, cluster id) where the node pool will be
+  /// created. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  core.String parent;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the parent field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the parent field.
+  core.String zone;
 
   CreateNodePoolRequest();
 
   CreateNodePoolRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("nodePool")) {
       nodePool = new NodePool.fromJson(_json["nodePool"]);
+    }
+    if (_json.containsKey("parent")) {
+      parent = _json["parent"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (nodePool != null) {
       _json["nodePool"] = (nodePool).toJson();
+    }
+    if (parent != null) {
+      _json["parent"] = parent;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -3498,7 +5714,6 @@ class MasterAuth {
   }
 }
 
-/// Master authorized networks is a Beta feature.
 /// Configuration options for the master authorized networks feature. Enabled
 /// master authorized networks will disallow all external traffic to access
 /// Kubernetes master through HTTPS except traffic from the given CIDR blocks,
@@ -3648,6 +5863,7 @@ class NodeConfig {
   /// in length. These are reflected as part of a URL in the metadata server.
   /// Additionally, to avoid ambiguity, keys must not conflict with any other
   /// metadata keys for the project or be one of the reserved keys:
+  ///  "cluster-location"
   ///  "cluster-name"
   ///  "cluster-uid"
   ///  "configure-sh"
@@ -4033,6 +6249,12 @@ class Operation {
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   core.String endTime;
 
+  /// [Output only] The name of the Google Compute Engine
+  /// [zone](/compute/docs/regions-zones/regions-zones#available) or
+  /// [region](/compute/docs/regions-zones/regions-zones#available) in which
+  /// the cluster resides.
+  core.String location;
+
   /// The server-assigned ID for the operation.
   core.String name;
 
@@ -4082,6 +6304,7 @@ class Operation {
   /// The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the operation
   /// is taking place.
+  /// This field is deprecated, use location instead.
   core.String zone;
 
   Operation();
@@ -4092,6 +6315,9 @@ class Operation {
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -4128,6 +6354,9 @@ class Operation {
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
+    if (location != null) {
+      _json["location"] = location;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -4160,13 +6389,69 @@ class Operation {
 /// NodePool upgrade. This will be an no-op if the last upgrade successfully
 /// completed.
 class RollbackNodePoolUpgradeRequest {
+  /// Deprecated. The name of the cluster to rollback.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster, node pool id) of the node poll to
+  /// rollback upgrade.
+  /// Specified in the format 'projects / * /locations / * /clusters / *
+  /// /nodePools / * '.
+  core.String name;
+
+  /// Deprecated. The name of the node pool to rollback.
+  /// This field has been deprecated and replaced by the name field.
+  core.String nodePoolId;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   RollbackNodePoolUpgradeRequest();
 
-  RollbackNodePoolUpgradeRequest.fromJson(core.Map _json) {}
+  RollbackNodePoolUpgradeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodePoolId")) {
+      nodePoolId = _json["nodePoolId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodePoolId != null) {
+      _json["nodePoolId"] = nodePoolId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
     return _json;
   }
 }
@@ -4239,11 +6524,42 @@ class SetAddonsConfigRequest {
   /// cluster.
   AddonsConfig addonsConfig;
 
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster) of the cluster to set addons.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   SetAddonsConfigRequest();
 
   SetAddonsConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addonsConfig")) {
       addonsConfig = new AddonsConfig.fromJson(_json["addonsConfig"]);
+    }
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
@@ -4253,6 +6569,18 @@ class SetAddonsConfigRequest {
     if (addonsConfig != null) {
       _json["addonsConfig"] = (addonsConfig).toJson();
     }
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
     return _json;
   }
 }
@@ -4261,6 +6589,10 @@ class SetAddonsConfigRequest {
 /// Engine cluster, which will in turn set them for Google Compute Engine
 /// resources used by that cluster
 class SetLabelsRequest {
+  /// Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// The fingerprint of the previous set of labels for this resource,
   /// used to detect conflicts. The fingerprint is initially generated by
   /// Kubernetes Engine and changes after every request to modify or update
@@ -4269,29 +6601,68 @@ class SetLabelsRequest {
   /// resource to get the latest fingerprint.
   core.String labelFingerprint;
 
+  /// The name (project, location, cluster id) of the cluster to set labels.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
   /// The labels to set for that cluster.
   core.Map<core.String, core.String> resourceLabels;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   SetLabelsRequest();
 
   SetLabelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("labelFingerprint")) {
       labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
     }
     if (_json.containsKey("resourceLabels")) {
       resourceLabels = (_json["resourceLabels"] as core.Map)
           .cast<core.String, core.String>();
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (labelFingerprint != null) {
       _json["labelFingerprint"] = labelFingerprint;
     }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
     if (resourceLabels != null) {
       _json["resourceLabels"] = resourceLabels;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4301,22 +6672,66 @@ class SetLabelsRequest {
 /// for
 /// a cluster.
 class SetLegacyAbacRequest {
+  /// Deprecated. The name of the cluster to update.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// Whether ABAC authorization will be enabled in the cluster.
   core.bool enabled;
+
+  /// The name (project, location, cluster id) of the cluster to set legacy
+  /// abac.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   SetLegacyAbacRequest();
 
   SetLegacyAbacRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4324,6 +6739,10 @@ class SetLegacyAbacRequest {
 
 /// SetLocationsRequest sets the locations of the cluster.
 class SetLocationsRequest {
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// The desired list of Google Compute Engine
   /// [locations](/compute/docs/zones#available) in which the cluster's nodes
   /// should be located. Changing the locations a cluster is in will result
@@ -4333,19 +6752,58 @@ class SetLocationsRequest {
   /// This list must always include the cluster's primary zone.
   core.List<core.String> locations;
 
+  /// The name (project, location, cluster) of the cluster to set locations.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   SetLocationsRequest();
 
   SetLocationsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (locations != null) {
       _json["locations"] = locations;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4353,6 +6811,10 @@ class SetLocationsRequest {
 
 /// SetLoggingServiceRequest sets the logging service of a cluster.
 class SetLoggingServiceRequest {
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// The logging service the cluster should use to write metrics.
   /// Currently available options:
   ///
@@ -4360,19 +6822,58 @@ class SetLoggingServiceRequest {
   /// * "none" - no metrics will be exported from the cluster
   core.String loggingService;
 
+  /// The name (project, location, cluster) of the cluster to set logging.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   SetLoggingServiceRequest();
 
   SetLoggingServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("loggingService")) {
       loggingService = _json["loggingService"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (loggingService != null) {
       _json["loggingService"] = loggingService;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4380,24 +6881,65 @@ class SetLoggingServiceRequest {
 
 /// SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
 class SetMaintenancePolicyRequest {
+  /// The name of the cluster to update.
+  core.String clusterId;
+
   /// The maintenance policy to be set for the cluster. An empty field
   /// clears the existing maintenance policy.
   MaintenancePolicy maintenancePolicy;
 
+  /// The name (project, location, cluster id) of the cluster to set maintenance
+  /// policy.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  core.String projectId;
+
+  /// The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  core.String zone;
+
   SetMaintenancePolicyRequest();
 
   SetMaintenancePolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("maintenancePolicy")) {
       maintenancePolicy =
           new MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (maintenancePolicy != null) {
       _json["maintenancePolicy"] = (maintenancePolicy).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4417,8 +6959,27 @@ class SetMasterAuthRequest {
   /// one.
   core.String action;
 
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster) of the cluster to set auth.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
   /// A description of the update.
   MasterAuth update;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   SetMasterAuthRequest();
 
@@ -4426,8 +6987,20 @@ class SetMasterAuthRequest {
     if (_json.containsKey("action")) {
       action = _json["action"];
     }
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
     if (_json.containsKey("update")) {
       update = new MasterAuth.fromJson(_json["update"]);
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
@@ -4437,8 +7010,20 @@ class SetMasterAuthRequest {
     if (action != null) {
       _json["action"] = action;
     }
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
     if (update != null) {
       _json["update"] = (update).toJson();
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4446,6 +7031,10 @@ class SetMasterAuthRequest {
 
 /// SetMonitoringServiceRequest sets the monitoring service of a cluster.
 class SetMonitoringServiceRequest {
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// The monitoring service the cluster should use to write metrics.
   /// Currently available options:
   ///
@@ -4453,19 +7042,58 @@ class SetMonitoringServiceRequest {
   /// * "none" - no metrics will be exported from the cluster
   core.String monitoringService;
 
+  /// The name (project, location, cluster) of the cluster to set monitoring.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   SetMonitoringServiceRequest();
 
   SetMonitoringServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("monitoringService")) {
       monitoringService = _json["monitoringService"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (monitoringService != null) {
       _json["monitoringService"] = monitoringService;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4473,22 +7101,66 @@ class SetMonitoringServiceRequest {
 
 /// SetNetworkPolicyRequest enables/disables network policy for a cluster.
 class SetNetworkPolicyRequest {
+  /// Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster id) of the cluster to set networking
+  /// policy. Specified in the format 'projects / * /locations / * /clusters / *
+  /// '.
+  core.String name;
+
   /// Configuration options for the NetworkPolicy feature.
   NetworkPolicy networkPolicy;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   SetNetworkPolicyRequest();
 
   SetNetworkPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("networkPolicy")) {
       networkPolicy = new NetworkPolicy.fromJson(_json["networkPolicy"]);
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
     if (networkPolicy != null) {
       _json["networkPolicy"] = (networkPolicy).toJson();
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4499,11 +7171,50 @@ class SetNodePoolAutoscalingRequest {
   /// Autoscaling configuration for the node pool.
   NodePoolAutoscaling autoscaling;
 
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster, node pool) of the node pool to set
+  /// autoscaler settings. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  core.String name;
+
+  /// Deprecated. The name of the node pool to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String nodePoolId;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   SetNodePoolAutoscalingRequest();
 
   SetNodePoolAutoscalingRequest.fromJson(core.Map _json) {
     if (_json.containsKey("autoscaling")) {
       autoscaling = new NodePoolAutoscaling.fromJson(_json["autoscaling"]);
+    }
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodePoolId")) {
+      nodePoolId = _json["nodePoolId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
@@ -4513,6 +7224,21 @@ class SetNodePoolAutoscalingRequest {
     if (autoscaling != null) {
       _json["autoscaling"] = (autoscaling).toJson();
     }
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodePoolId != null) {
+      _json["nodePoolId"] = nodePoolId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
     return _json;
   }
 }
@@ -4520,22 +7246,77 @@ class SetNodePoolAutoscalingRequest {
 /// SetNodePoolManagementRequest sets the node management properties of a node
 /// pool.
 class SetNodePoolManagementRequest {
+  /// Deprecated. The name of the cluster to update.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// NodeManagement configuration for the node pool.
   NodeManagement management;
+
+  /// The name (project, location, cluster, node pool id) of the node pool to
+  /// set
+  /// management properties. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  core.String name;
+
+  /// Deprecated. The name of the node pool to update.
+  /// This field has been deprecated and replaced by the name field.
+  core.String nodePoolId;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   SetNodePoolManagementRequest();
 
   SetNodePoolManagementRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("management")) {
       management = new NodeManagement.fromJson(_json["management"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodePoolId")) {
+      nodePoolId = _json["nodePoolId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (management != null) {
       _json["management"] = (management).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodePoolId != null) {
+      _json["nodePoolId"] = nodePoolId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4544,22 +7325,78 @@ class SetNodePoolManagementRequest {
 /// SetNodePoolSizeRequest sets the size a node
 /// pool.
 class SetNodePoolSizeRequest {
+  /// Deprecated. The name of the cluster to update.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster, node pool id) of the node pool to
+  /// set
+  /// size.
+  /// Specified in the format 'projects / * /locations / * /clusters / *
+  /// /nodePools / * '.
+  core.String name;
+
   /// The desired node count for the pool.
   core.int nodeCount;
+
+  /// Deprecated. The name of the node pool to update.
+  /// This field has been deprecated and replaced by the name field.
+  core.String nodePoolId;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   SetNodePoolSizeRequest();
 
   SetNodePoolSizeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("nodeCount")) {
       nodeCount = _json["nodeCount"];
+    }
+    if (_json.containsKey("nodePoolId")) {
+      nodePoolId = _json["nodePoolId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
     if (nodeCount != null) {
       _json["nodeCount"] = nodeCount;
+    }
+    if (nodePoolId != null) {
+      _json["nodePoolId"] = nodePoolId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4568,35 +7405,132 @@ class SetNodePoolSizeRequest {
 /// StartIPRotationRequest creates a new IP for the cluster and then performs
 /// a node upgrade on each node pool to point to the new IP.
 class StartIPRotationRequest {
+  /// Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster id) of the cluster to start IP
+  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
+  /// * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Whether to rotate credentials during IP rotation.
+  core.bool rotateCredentials;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
   StartIPRotationRequest();
 
-  StartIPRotationRequest.fromJson(core.Map _json) {}
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
-/// UpdateClusterRequest updates the settings of a cluster.
-class UpdateClusterRequest {
-  /// A description of the update.
-  ClusterUpdate update;
-
-  UpdateClusterRequest();
-
-  UpdateClusterRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("update")) {
-      update = new ClusterUpdate.fromJson(_json["update"]);
+  StartIPRotationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("rotateCredentials")) {
+      rotateCredentials = _json["rotateCredentials"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (rotateCredentials != null) {
+      _json["rotateCredentials"] = rotateCredentials;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// UpdateClusterRequest updates the settings of a cluster.
+class UpdateClusterRequest {
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The name (project, location, cluster) of the cluster to update.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// A description of the update.
+  ClusterUpdate update;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
+
+  UpdateClusterRequest();
+
+  UpdateClusterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("update")) {
+      update = new ClusterUpdate.fromJson(_json["update"]);
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
     if (update != null) {
       _json["update"] = (update).toJson();
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4604,23 +7538,74 @@ class UpdateClusterRequest {
 
 /// UpdateMasterRequest updates the master of the cluster.
 class UpdateMasterRequest {
-  /// The Kubernetes version to change the master to. Use "-" to have the server
-  /// automatically select the default version.
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
+  /// The Kubernetes version to change the master to.
+  ///
+  /// Users may specify either explicit versions offered by Kubernetes Engine or
+  /// version aliases, which have the following behavior:
+  ///
+  /// - "latest": picks the highest valid Kubernetes version
+  /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+  /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+  /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+  /// - "-": picks the default Kubernetes version
   core.String masterVersion;
+
+  /// The name (project, location, cluster) of the cluster to update.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  core.String name;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   UpdateMasterRequest();
 
   UpdateMasterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("masterVersion")) {
       masterVersion = _json["masterVersion"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (masterVersion != null) {
       _json["masterVersion"] = masterVersion;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }
@@ -4628,33 +7613,95 @@ class UpdateMasterRequest {
 
 /// UpdateNodePoolRequests update a node pool's image and/or version.
 class UpdateNodePoolRequest {
+  /// Deprecated. The name of the cluster to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String clusterId;
+
   /// The desired image type for the node pool.
   core.String imageType;
 
+  /// The name (project, location, cluster, node pool) of the node pool to
+  /// update. Specified in the format
+  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  core.String name;
+
+  /// Deprecated. The name of the node pool to upgrade.
+  /// This field has been deprecated and replaced by the name field.
+  core.String nodePoolId;
+
   /// The Kubernetes version to change the nodes to (typically an
-  /// upgrade). Use `-` to upgrade to the latest version supported by
-  /// the server.
+  /// upgrade).
+  ///
+  /// Users may specify either explicit versions offered by Kubernetes Engine or
+  /// version aliases, which have the following behavior:
+  ///
+  /// - "latest": picks the highest valid Kubernetes version
+  /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+  /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+  /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+  /// - "-": picks the Kubernetes master version
   core.String nodeVersion;
+
+  /// Deprecated. The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  core.String projectId;
+
+  /// Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  core.String zone;
 
   UpdateNodePoolRequest();
 
   UpdateNodePoolRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("imageType")) {
       imageType = _json["imageType"];
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodePoolId")) {
+      nodePoolId = _json["nodePoolId"];
+    }
     if (_json.containsKey("nodeVersion")) {
       nodeVersion = _json["nodeVersion"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (imageType != null) {
       _json["imageType"] = imageType;
     }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodePoolId != null) {
+      _json["nodePoolId"] = nodePoolId;
+    }
     if (nodeVersion != null) {
       _json["nodeVersion"] = nodeVersion;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }

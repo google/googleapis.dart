@@ -1417,6 +1417,14 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   /// The session_id passed by client.
   core.String sessionId;
 
+  /// For multi-tenant use cases, in order to construct sign-in URL with the
+  /// correct IDP parameters, Firebear needs to know which Tenant to retrieve
+  /// IDP configs from.
+  core.String tenantId;
+
+  /// Tenant project number to be used for idp discovery.
+  core.String tenantProjectNumber;
+
   IdentitytoolkitRelyingpartyCreateAuthUriRequest();
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map _json) {
@@ -1462,6 +1470,12 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (_json.containsKey("sessionId")) {
       sessionId = _json["sessionId"];
+    }
+    if (_json.containsKey("tenantId")) {
+      tenantId = _json["tenantId"];
+    }
+    if (_json.containsKey("tenantProjectNumber")) {
+      tenantProjectNumber = _json["tenantProjectNumber"];
     }
   }
 
@@ -1509,6 +1523,12 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (sessionId != null) {
       _json["sessionId"] = sessionId;
+    }
+    if (tenantId != null) {
+      _json["tenantId"] = tenantId;
+    }
+    if (tenantProjectNumber != null) {
+      _json["tenantProjectNumber"] = tenantProjectNumber;
     }
     return _json;
   }
@@ -2463,6 +2483,14 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   /// The photo url of the user.
   core.String photoUrl;
 
+  /// For multi-tenant use cases, in order to construct sign-in URL with the
+  /// correct IDP parameters, Firebear needs to know which Tenant to retrieve
+  /// IDP configs from.
+  core.String tenantId;
+
+  /// Tenant project number to be used for idp discovery.
+  core.String tenantProjectNumber;
+
   IdentitytoolkitRelyingpartySignupNewUserRequest();
 
   IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map _json) {
@@ -2501,6 +2529,12 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
+    }
+    if (_json.containsKey("tenantId")) {
+      tenantId = _json["tenantId"];
+    }
+    if (_json.containsKey("tenantProjectNumber")) {
+      tenantProjectNumber = _json["tenantProjectNumber"];
     }
   }
 
@@ -2542,6 +2576,12 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
+    }
+    if (tenantId != null) {
+      _json["tenantId"] = tenantId;
+    }
+    if (tenantProjectNumber != null) {
+      _json["tenantProjectNumber"] = tenantProjectNumber;
     }
     return _json;
   }
@@ -2743,6 +2783,14 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /// Session ID, which should match the one in previous createAuthUri request.
   core.String sessionId;
 
+  /// For multi-tenant use cases, in order to construct sign-in URL with the
+  /// correct IDP parameters, Firebear needs to know which Tenant to retrieve
+  /// IDP configs from.
+  core.String tenantId;
+
+  /// Tenant project number to be used for idp discovery.
+  core.String tenantProjectNumber;
+
   IdentitytoolkitRelyingpartyVerifyAssertionRequest();
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json) {
@@ -2778,6 +2826,12 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
     if (_json.containsKey("sessionId")) {
       sessionId = _json["sessionId"];
+    }
+    if (_json.containsKey("tenantId")) {
+      tenantId = _json["tenantId"];
+    }
+    if (_json.containsKey("tenantProjectNumber")) {
+      tenantProjectNumber = _json["tenantProjectNumber"];
     }
   }
 
@@ -2816,6 +2870,12 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
     if (sessionId != null) {
       _json["sessionId"] = sessionId;
+    }
+    if (tenantId != null) {
+      _json["tenantId"] = tenantId;
+    }
+    if (tenantProjectNumber != null) {
+      _json["tenantProjectNumber"] = tenantProjectNumber;
     }
     return _json;
   }
@@ -2903,6 +2963,14 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   /// Whether return sts id token and refresh token instead of gitkit token.
   core.bool returnSecureToken;
 
+  /// For multi-tenant use cases, in order to construct sign-in URL with the
+  /// correct IDP parameters, Firebear needs to know which Tenant to retrieve
+  /// IDP configs from.
+  core.String tenantId;
+
+  /// Tenant project number to be used for idp discovery.
+  core.String tenantProjectNumber;
+
   IdentitytoolkitRelyingpartyVerifyPasswordRequest();
 
   IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(core.Map _json) {
@@ -2932,6 +3000,12 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
     if (_json.containsKey("returnSecureToken")) {
       returnSecureToken = _json["returnSecureToken"];
+    }
+    if (_json.containsKey("tenantId")) {
+      tenantId = _json["tenantId"];
+    }
+    if (_json.containsKey("tenantProjectNumber")) {
+      tenantProjectNumber = _json["tenantProjectNumber"];
     }
   }
 
@@ -2964,6 +3038,12 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
     if (returnSecureToken != null) {
       _json["returnSecureToken"] = returnSecureToken;
+    }
+    if (tenantId != null) {
+      _json["tenantId"] = tenantId;
+    }
+    if (tenantProjectNumber != null) {
+      _json["tenantProjectNumber"] = tenantProjectNumber;
     }
     return _json;
   }

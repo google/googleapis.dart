@@ -17,9 +17,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client admin/directory_v1';
 
-/// The Admin SDK Directory API lets you view and manage enterprise resources
-/// such as users and groups, administrative notifications, security features,
-/// and more.
+/// Manages enterprise resources such as users and groups, administrative
+/// notifications, security features, and more.
 class AdminApi {
   /// View and manage customer related information
   static const AdminDirectoryCustomerScope =
@@ -1473,7 +1472,7 @@ class GroupsResourceApi {
     return _response.then((data) => new Group.fromJson(data));
   }
 
-  /// Retrieve all groups in a domain (paginated)
+  /// Retrieve all groups of a domain or of a user given a userKey (paginated)
   ///
   /// Request parameters:
   ///
@@ -1486,10 +1485,24 @@ class GroupsResourceApi {
   ///
   /// [maxResults] - Maximum number of results to return. Default is 200
   ///
+  /// [orderBy] - Column to use for sorting results
+  /// Possible string values are:
+  /// - "email" : Email of the group.
+  ///
   /// [pageToken] - Token to specify next page in the list
   ///
-  /// [userKey] - Email or immutable ID of the user if only those groups are to
-  /// be listed, the given user is a member of. If ID, it should match with id
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at
+  /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users
+  ///
+  /// [sortOrder] - Whether to return results in ascending or descending order.
+  /// Only of use when orderBy is also used
+  /// Possible string values are:
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
+  ///
+  /// [userKey] - Email or immutable Id of the user if only those groups are to
+  /// be listed, the given user is a member of. If Id, it should match with id
   /// of user object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1506,7 +1519,10 @@ class GroupsResourceApi {
       {core.String customer,
       core.String domain,
       core.int maxResults,
+      core.String orderBy,
       core.String pageToken,
+      core.String query,
+      core.String sortOrder,
       core.String userKey,
       core.String $fields}) {
     var _url = null;
@@ -1525,8 +1541,17 @@ class GroupsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (userKey != null) {
       _queryParams["userKey"] = [userKey];
@@ -1899,13 +1924,16 @@ class MembersResourceApi {
     return _response.then((data) => new Member.fromJson(data));
   }
 
-  /// Checks Membership of an user within a Group
+  /// Checks whether the given user is a member of the group. Membership can be
+  /// direct or nested.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
-  /// [memberKey] - Email or immutable Id of the member
+  /// [memberKey] - Identifies the user member in the API request. The value can
+  /// be the user's primary email address, alias, or unique ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2005,6 +2033,9 @@ class MembersResourceApi {
   ///
   /// [groupKey] - Email or immutable ID of the group
   ///
+  /// [includeDerivedMembership] - Whether to list indirect memberships.
+  /// Default: false.
+  ///
   /// [maxResults] - Maximum number of results to return. Default is 200
   ///
   /// [pageToken] - Token to specify next page in the list
@@ -2022,7 +2053,8 @@ class MembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Members> list(core.String groupKey,
-      {core.int maxResults,
+      {core.bool includeDerivedMembership,
+      core.int maxResults,
       core.String pageToken,
       core.String roles,
       core.String $fields}) {
@@ -2035,6 +2067,11 @@ class MembersResourceApi {
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if (includeDerivedMembership != null) {
+      _queryParams["includeDerivedMembership"] = [
+        "${includeDerivedMembership}"
+      ];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -3405,6 +3442,11 @@ class ResourcesBuildingsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
+  ///
+  /// [pageToken] - Token to specify the next page in the list.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3415,7 +3457,8 @@ class ResourcesBuildingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Buildings> list(core.String customer, {core.String $fields}) {
+  async.Future<Buildings> list(core.String customer,
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -3425,6 +3468,12 @@ class ResourcesBuildingsResourceApi {
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3752,8 +3801,11 @@ class ResourcesCalendarsResourceApi {
   /// [query] - String query used to filter results. Should be of the form
   /// "field operator value" where field can be any of supported fields and
   /// operators can be any of supported operations. Operators include '=' for
-  /// exact match and ':' for prefix match where applicable. For prefix match,
-  /// the value should always be followed by a *.
+  /// exact match and ':' for prefix match or HAS match where applicable. For
+  /// prefix match, the value should always be followed by a *. Supported fields
+  /// include generatedResourceName, name, buildingId,
+  /// featureInstances.feature.name. For example buildingId=US-NYC-9TH AND
+  /// featureInstances.feature.name:Phone.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4109,6 +4161,9 @@ class ResourcesFeaturesResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
+  ///
   /// [pageToken] - Token to specify the next page in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4122,7 +4177,7 @@ class ResourcesFeaturesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Features> list(core.String customer,
-      {core.String pageToken, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -4132,6 +4187,9 @@ class ResourcesFeaturesResourceApi {
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -7387,7 +7445,7 @@ class ChromeOsDeviceDeviceFiles {
   /// Date and time the file was created
   core.DateTime createTime;
 
-  /// File downlod URL
+  /// File download URL
   core.String downloadUrl;
 
   /// File name
@@ -7463,12 +7521,24 @@ class ChromeOsDeviceRecentUsers {
   }
 }
 
+/// Trusted Platform Module (TPM) (Read-only)
 class ChromeOsDeviceTpmVersionInfo {
+  /// TPM family.
   core.String family;
+
+  /// TPM firmware version.
   core.String firmwareVersion;
+
+  /// TPM manufacturer code.
   core.String manufacturer;
+
+  /// TPM specification level.
   core.String specLevel;
+
+  /// TPM model number.
   core.String tpmModel;
+
+  /// Vendor-specific information such as Vendor ID.
   core.String vendorSpecific;
 
   ChromeOsDeviceTpmVersionInfo();
@@ -7598,6 +7668,8 @@ class ChromeOsDevice {
 
   /// Final date the device will be supported (Read-only)
   core.DateTime supportEndDate;
+
+  /// Trusted Platform Module (TPM) (Read-only)
   ChromeOsDeviceTpmVersionInfo tpmVersionInfo;
 
   /// Will Chromebook auto renew after support end date (Read-only)
@@ -8377,6 +8449,8 @@ class Feature {
 
 /// JSON template for a "feature instance".
 class FeatureInstance {
+  /// The feature that this is an instance of. A calendar resource may have
+  /// multiple instances of a feature.
   Feature feature;
 
   FeatureInstance();
@@ -8762,7 +8836,8 @@ class Members {
 
 /// JSON template for Has Member response in Directory API.
 class MembersHasMember {
-  /// Identifies whether given user is a member or not.
+  /// Identifies whether the given user is a member of the group. Membership can
+  /// be direct or nested.
   core.bool isMember;
 
   MembersHasMember();
@@ -10015,6 +10090,9 @@ class Roles {
 
 /// JSON template for Schema resource in Directory API.
 class Schema {
+  /// Display name for the schema.
+  core.String displayName;
+
   /// ETag of the resource.
   core.String etag;
 
@@ -10033,6 +10111,9 @@ class Schema {
   Schema();
 
   Schema.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
@@ -10055,6 +10136,9 @@ class Schema {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -10114,6 +10198,9 @@ class SchemaFieldSpecNumericIndexingSpec {
 
 /// JSON template for FieldSpec resource for Schemas in Directory API.
 class SchemaFieldSpec {
+  /// Display Name of the field.
+  core.String displayName;
+
   /// ETag of the resource.
   core.String etag;
 
@@ -10147,6 +10234,9 @@ class SchemaFieldSpec {
   SchemaFieldSpec();
 
   SchemaFieldSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
@@ -10180,6 +10270,9 @@ class SchemaFieldSpec {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -11879,6 +11972,9 @@ class UserPosixAccount {
   /// The path to the home directory for this account.
   core.String homeDirectory;
 
+  /// The operating system type for this account.
+  core.String operatingSystemType;
+
   /// If this is user's primary account within the SystemId.
   core.bool primary;
 
@@ -11908,6 +12004,9 @@ class UserPosixAccount {
     }
     if (_json.containsKey("homeDirectory")) {
       homeDirectory = _json["homeDirectory"];
+    }
+    if (_json.containsKey("operatingSystemType")) {
+      operatingSystemType = _json["operatingSystemType"];
     }
     if (_json.containsKey("primary")) {
       primary = _json["primary"];
@@ -11940,6 +12039,9 @@ class UserPosixAccount {
     }
     if (homeDirectory != null) {
       _json["homeDirectory"] = homeDirectory;
+    }
+    if (operatingSystemType != null) {
+      _json["operatingSystemType"] = operatingSystemType;
     }
     if (primary != null) {
       _json["primary"] = primary;

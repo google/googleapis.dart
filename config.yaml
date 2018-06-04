@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.50.4
+    version: 0.51.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -21,18 +21,20 @@ packages:
     - adsense:v1.4  # https://developers.google.com/adsense/management/
     - analyticsreporting:v4  # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - analytics:v3  # https://developers.google.com/analytics/
-    - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
-    - androidpublisher:v2  # https://developers.google.com/android-publisher/
     - androiddeviceprovisioning:v1  # https://developers.google.com/zero-touch/
+    - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidmanagement:v1  # https://developers.google.com/android/management
+    - androidpublisher:v2  # https://developers.google.com/android-publisher/
+    - androidpublisher:v3  # https://developers.google.com/android-publisher/
     - appengine:v1  # https://cloud.google.com/appengine/docs/admin-api/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
-    - bigquery:v2  # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1  # https://cloud.google.com/bigquery/transfer/
+    - bigquery:v2  # https://developers.google.com/bigquery/
     - blogger:v3  # https://developers.google.com/blogger/
     - books:v1  # https://developers.google.com/books/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
+    - chat:v1  # https://developers.google.com/hangouts/chat
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - classroom:v1  # https://developers.google.com/classroom/
     - cloudbilling:v1  # https://cloud.google.com/billing/
@@ -41,9 +43,9 @@ packages:
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudiot:v1  # https://cloud.google.com/iot
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
-    - cloudshell:v1  # https://cloud.google.com/shell/docs/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
-    - cloudresourcemanager:v2beta1  # https://cloud.google.com/resource-manager/
+    - cloudresourcemanager:v2  # https://cloud.google.com/resource-manager/
+    - cloudshell:v1  # https://cloud.google.com/shell/docs/
     - cloudtrace:v1 # v2 included
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
@@ -56,13 +58,17 @@ packages:
     - deploymentmanager:v2  # https://cloud.google.com/deployment-manager/
     - dfareporting:v2.8  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v3.0  # https://developers.google.com/doubleclick-advertisers/reporting/
-    - discovery:v1  # https://developers.google.com/discovery/
+    - dfareporting:v3.1  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1  # https://developers.google.com/digital-asset-links/
+    - discovery:v1  # https://developers.google.com/discovery/
+    - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - drive:v3  # https://developers.google.com/drive/v3/reference/
+    - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - firebasedynamiclinks:v1  # https://firebase.google.com/docs/dynamic-links/
     - firebaseremoteconfig:v1  # https://firebase.google.com/docs/remote-config/
     - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
@@ -78,6 +84,7 @@ packages:
     - groupssettings:v1  # https://developers.google.com/admin-sdk/groups-settings/
     - iam:v1 # https://cloud.google.com/iam/
     - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
+    - jobs:v2  # https://cloud.google.com/job-discovery/docs
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - language:v1 # https://cloud.google.com/natural-language/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
@@ -90,6 +97,7 @@ packages:
     - oslogin:v1  # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
     - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
+    - pagespeedonline:v4  # https://developers.google.com/speed/docs/insights/about
     - partners:v2  # https://developers.google.com/partners/
     - people:v1 # https://developers.google.com/people/
     - playcustomapp:v1  # https://developers.google.com/android/work/play/custom-app-api
@@ -103,9 +111,11 @@ packages:
     - safebrowsing:v4  # https://developers.google.com/safe-browsing/
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
     - searchconsole:v1  # https://developers.google.com/webmaster-tools/search-console-api/
+    - servicebroker:v1  # https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker
+    - serviceconsumermanagement:v1  # https://cloud.google.com/service-consumer-management/docs/overview
     - servicecontrol:v1  # https://cloud.google.com/service-control/
     - servicemanagement:v1  # https://cloud.google.com/service-management/
-    - serviceconsumermanagement:v1  # https://cloud.google.com/service-consumer-management/docs/overview
+    - serviceusage:v1  # https://cloud.google.com/service-usage/
     - serviceuser:v1  # https://cloud.google.com/service-user/
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
@@ -117,23 +127,25 @@ packages:
     - storage:v1  # https://developers.google.com/storage/
     - streetviewpublish:v1  # https://developers.google.com/streetview/publish/
     - surveys:v2
-    - serviceusage:v1  # https://cloud.google.com/service-usage/
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tagmanager:v2  # https://developers.google.com/tag-manager/
-    - testing:v1  # https://developers.google.com/cloud-test-lab/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
+    - testing:v1  # https://developers.google.com/cloud-test-lab/
+    - tpu:v1  # https://cloud.google.com/tpu/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
     - vault:v1  # https://apps.google.com/products/vault/
+    - videointelligence:v1  # https://cloud.google.com/video-intelligence/
     - vision:v1  # https://cloud.google.com/vision/reference/rest/
     - webfonts:v1  # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3  # https://developers.google.com/webmaster-tools/
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
+    - youtubeAnalytics:v2  # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1  # https://developers.google.com/youtube/reporting/v1/reports/
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.45.3
+    version: 0.46.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -148,10 +160,9 @@ packages:
     - cloudresourcemanager:v1beta1  # https://cloud.google.com/resource-manager
     - cloudtasks:v2beta2  # https://cloud.google.com/cloud-tasks/
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
-    - dialogflow:v2beta1  # https://cloud.google.com/dialogflow-enterprise/
+    - composer:v1beta1  # https://cloud.google.com/composer/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
-    - dlp:v2beta1 # https://cloud.google.com/dlp/
-    - dlp:v2beta2 # https://cloud.google.com/dlp/
+    - dialogflow:v2beta1  # https://cloud.google.com/dialogflow-enterprise/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - firestore:v1beta1  # https://cloud.google.com/firestore
     - language:v1beta1  # https://cloud.google.com/natural-language/
@@ -161,18 +172,19 @@ packages:
     - oslogin:v1beta  # https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
+    - redis:v1beta1  # https://cloud.google.com/memorystore/docs/redis/
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - replicapool:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/manager/
-    - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)
     - resourceviews:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/
     - runtimeconfig:v1beta1  # https://cloud.google.com/deployment-manager/docs/
     - speech:v1beta1  # https://cloud.google.com/speech/
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
-    - tpu:v1alpha1  # https://cloud.google.com/tpu/
+    - texttospeech:v1beta1  # https://cloud.google.com/text-to-speech/
     - toolresults:v1beta3  # https://developers.google.com/cloud-test-lab/
-    - videointelligence:v1beta1  # https://cloud.google.com/video-intelligence/
+    - tpu:v1alpha1  # https://cloud.google.com/tpu/
+    - websecurityscanner:v1alpha
 
 skipped_apis:
 - adexchangebuyer:v1.2  # v1.3 included
@@ -180,6 +192,7 @@ skipped_apis:
 - analytics:v2.4  # v3 included
 - androidpublisher:v1.1  # v2 included
 - androidpublisher:v1  # v2 included
+- serviceusage:v1beta1  # v1 included
 - appengine:v1alpha  # v1 included
 - blogger:v2  # v3 included
 - cloudfunctions:v1beta2 # v1 included
@@ -198,6 +211,7 @@ skipped_apis:
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
 - genomics:v1alpha2 # v1 included
+- genomics:v2alpha1
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included
 - prediction:v1.3  # v1.6 included
@@ -210,4 +224,5 @@ skipped_apis:
 - storage:v1beta2  # v1 included
 - taskqueue:v1beta1  # v1beta2 included
 - vision:v1p1beta1  # v1 included
+- vision:v1p2beta1 # v1 included
 - youtubeAnalytics:v1beta1  # v1 included

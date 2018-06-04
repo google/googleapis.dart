@@ -1448,6 +1448,7 @@ class ReportRequestFilters {
   core.String operator;
 
   /// A list of values to filter the column value against.
+  /// The maximum number of filter values per request is 300.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1658,6 +1659,7 @@ class ReportRequest {
   /// columnName parameter is required. For saved columns only the
   /// savedColumnName parameter is required. Both columnName and savedColumnName
   /// cannot be set in the same stanza.
+  /// The maximum number of columns per request is 300.
   core.List<ReportApiColumnSpec> columns;
 
   /// Format that the report should be returned in. Currently csv or tsv is
@@ -1665,6 +1667,7 @@ class ReportRequest {
   core.String downloadFormat;
 
   /// A list of filters to be applied to the report.
+  /// The maximum number of filters per request is 300.
   core.List<ReportRequestFilters> filters;
 
   /// Determines if removed entities should be included in the report. Defaults
@@ -1682,6 +1685,7 @@ class ReportRequest {
 
   /// Synchronous report only. A list of columns and directions defining sorting
   /// to be performed on the report rows.
+  /// The maximum number of orderings per request is 300.
   core.List<ReportRequestOrderBy> orderBy;
 
   /// The reportScope is a set of IDs that are used to determine which subset of

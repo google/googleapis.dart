@@ -135,6 +135,7 @@ class ViolatingSitesResourceApi {
 }
 
 /// Response message for GetSiteSummary.
+/// Do not confuse with same message in google.ads.experiencereport.v1
 class SiteSummaryResponse {
   /// The status of the site reviewed for the abusive experiences.
   /// Possible string values are:
