@@ -68,6 +68,7 @@ packages:
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - drive:v3  # https://developers.google.com/drive/v3/reference/
+    - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - firebasedynamiclinks:v1  # https://firebase.google.com/docs/dynamic-links/
     - firebaseremoteconfig:v1  # https://firebase.google.com/docs/remote-config/
     - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
