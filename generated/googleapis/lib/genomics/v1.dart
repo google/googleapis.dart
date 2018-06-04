@@ -656,10 +656,6 @@ class CallsetsResourceApi {
 
   /// Creates a new call set.
   ///
-  /// For the definitions of call sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -701,10 +697,6 @@ class CallsetsResourceApi {
   }
 
   /// Deletes a call set.
-  ///
-  /// For the definitions of call sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Request parameters:
   ///
@@ -748,10 +740,6 @@ class CallsetsResourceApi {
 
   /// Gets a call set by ID.
   ///
-  /// For the definitions of call sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Request parameters:
   ///
   /// [callSetId] - The ID of the call set.
@@ -793,10 +781,6 @@ class CallsetsResourceApi {
   }
 
   /// Updates a call set.
-  ///
-  /// For the definitions of call sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// This method supports patch semantics.
   ///
@@ -857,10 +841,6 @@ class CallsetsResourceApi {
 
   /// Gets a list of call sets matching the criteria.
   ///
-  /// For the definitions of call sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Implements
   /// [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L178).
   ///
@@ -913,10 +893,6 @@ class DatasetsResourceApi {
 
   /// Creates a new dataset.
   ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -964,10 +940,6 @@ class DatasetsResourceApi {
   /// datasets.undelete
   /// operation.
   ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Request parameters:
   ///
   /// [datasetId] - The ID of the dataset to be deleted.
@@ -1009,10 +981,6 @@ class DatasetsResourceApi {
   }
 
   /// Gets a dataset by ID.
-  ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Request parameters:
   ///
@@ -1059,10 +1027,6 @@ class DatasetsResourceApi {
   ///
   /// See <a href="/iam/docs/managing-policies#getting_a_policy">Getting a
   /// Policy</a> for more information.
-  ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// [request] - The metadata request object.
   ///
@@ -1117,10 +1081,6 @@ class DatasetsResourceApi {
   }
 
   /// Lists datasets within a project.
-  ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Request parameters:
   ///
@@ -1183,10 +1143,6 @@ class DatasetsResourceApi {
 
   /// Updates a dataset.
   ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
@@ -1247,10 +1203,6 @@ class DatasetsResourceApi {
   /// Sets the access control policy on the specified dataset. Replaces any
   /// existing policy.
   ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// See <a href="/iam/docs/managing-policies#setting_a_policy">Setting a
   /// Policy</a> for more information.
   ///
@@ -1310,10 +1262,6 @@ class DatasetsResourceApi {
   /// See <a href="/iam/docs/managing-policies#testing_permissions">Testing
   /// Permissions</a> for more information.
   ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1368,10 +1316,6 @@ class DatasetsResourceApi {
   }
 
   /// Undeletes a dataset by restoring a dataset which was deleted via this API.
-  ///
-  /// For the definitions of datasets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// This operation is only possible for a week after the deletion occurred.
   ///
@@ -1535,8 +1479,22 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [pageSize] - The maximum number of results to return. If unspecified,
+  /// defaults to
+  /// 256. The maximum value is 2048.
+  ///
   /// [filter] - A string for filtering Operations.
-  /// The following filter fields are supported&#58;
+  /// In v2alpha1, the following filter fields are supported&#58;
+  ///
+  /// * createTime&#58; The time this job was created
+  /// * events&#58; The set of event (names) that have occurred while running
+  ///   the pipeline.  The &#58; operator can be used to determine if a
+  ///   particular event has occurred.
+  /// * error&#58; If the pipeline is running, this value is NULL.  Once the
+  ///   pipeline finishes, the value is the standard Google error code.
+  /// * labels.key or labels."key with space" where key is a label key.
+  ///
+  /// In v1 and v1alpha2, the following filter fields are supported&#58;
   ///
   /// * projectId&#58; Required. Corresponds to
   ///   OperationMetadata.projectId.
@@ -1557,10 +1515,6 @@ class OperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The maximum number of results to return. If unspecified,
-  /// defaults to
-  /// 256. The maximum value is 2048.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1572,9 +1526,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1586,14 +1540,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1620,10 +1574,6 @@ class ReadgroupsetsResourceApi {
   ReadgroupsetsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a read group set.
-  ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Request parameters:
   ///
@@ -1670,10 +1620,6 @@ class ReadgroupsetsResourceApi {
   }
 
   /// Exports a read group set to a BAM file in Google Cloud Storage.
-  ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Note that currently there may be some differences between exported BAM
   /// files and the original BAM file at the time of import. See
@@ -1733,10 +1679,6 @@ class ReadgroupsetsResourceApi {
 
   /// Gets a read group set by ID.
   ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Request parameters:
   ///
   /// [readGroupSetId] - The ID of the read group set.
@@ -1781,10 +1723,6 @@ class ReadgroupsetsResourceApi {
 
   /// Creates read group sets by asynchronously importing the provided
   /// information.
-  ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// The caller must have WRITE permissions to the dataset.
   ///
@@ -1841,10 +1779,6 @@ class ReadgroupsetsResourceApi {
   }
 
   /// Updates a read group set.
-  ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// This method supports patch semantics.
   ///
@@ -1912,10 +1846,6 @@ class ReadgroupsetsResourceApi {
 
   /// Searches for read group sets matching the criteria.
   ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Implements
   /// [GlobalAllianceApi.searchReadGroupSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L135).
   ///
@@ -1973,10 +1903,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// correspond to a range of a reference sequence. Each bucket summarizes
   /// coverage information across its corresponding genomic range.
   ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Coverage is defined as the number of reads which are aligned to a given
   /// base in the reference sequence. Coverage buckets are available at several
   /// precomputed bucket widths, enabling retrieval of various coverage 'zoom
@@ -1987,6 +1913,19 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   ///
   /// [readGroupSetId] - Required. The ID of the read group set over which
   /// coverage is requested.
+  ///
+  /// [start] - The start position of the range on the reference, 0-based
+  /// inclusive. If
+  /// specified, `referenceName` must also be specified. Defaults to 0.
+  ///
+  /// [targetBucketWidth] - The desired width of each reported coverage bucket
+  /// in base pairs. This
+  /// will be rounded down to the nearest precomputed bucket width; the value
+  /// of which is returned as `bucketWidth` in the response. Defaults
+  /// to infinity (each bucket spans an entire reference sequence) or the length
+  /// of the target range, if specified. The smallest precomputed
+  /// `bucketWidth` is currently 2048 base pairs; this is subject to
+  /// change.
   ///
   /// [referenceName] - The name of the reference to query, within the reference
   /// set associated
@@ -2006,19 +1945,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// unspecified,
   /// defaults to 1024. The maximum value is 2048.
   ///
-  /// [start] - The start position of the range on the reference, 0-based
-  /// inclusive. If
-  /// specified, `referenceName` must also be specified. Defaults to 0.
-  ///
-  /// [targetBucketWidth] - The desired width of each reported coverage bucket
-  /// in base pairs. This
-  /// will be rounded down to the nearest precomputed bucket width; the value
-  /// of which is returned as `bucketWidth` in the response. Defaults
-  /// to infinity (each bucket spans an entire reference sequence) or the length
-  /// of the target range, if specified. The smallest precomputed
-  /// `bucketWidth` is currently 2048 base pairs; this is subject to
-  /// change.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2030,12 +1956,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId,
-      {core.String referenceName,
+      {core.String start,
+      core.String targetBucketWidth,
+      core.String referenceName,
       core.String end,
       core.String pageToken,
       core.int pageSize,
-      core.String start,
-      core.String targetBucketWidth,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2046,6 +1972,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if (start != null) {
+      _queryParams["start"] = [start];
+    }
+    if (targetBucketWidth != null) {
+      _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
     if (referenceName != null) {
       _queryParams["referenceName"] = [referenceName];
@@ -2058,12 +1990,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (start != null) {
-      _queryParams["start"] = [start];
-    }
-    if (targetBucketWidth != null) {
-      _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2090,10 +2016,6 @@ class ReadsResourceApi {
   ReadsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Gets a list of reads for one or more read group sets.
-  ///
-  /// For the definitions of read group sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Reads search operates over a genomic coordinate space of reference
   /// sequence
@@ -2169,10 +2091,6 @@ class ReferencesResourceApi {
 
   /// Gets a reference.
   ///
-  /// For the definitions of references and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Implements
   /// [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L158).
   ///
@@ -2217,10 +2135,6 @@ class ReferencesResourceApi {
   }
 
   /// Searches for references which match the given criteria.
-  ///
-  /// For the definitions of references and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Implements
   /// [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L146).
@@ -2275,16 +2189,16 @@ class ReferencesBasesResourceApi {
 
   /// Lists the bases in a reference, optionally restricted to a range.
   ///
-  /// For the definitions of references and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Implements
   /// [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L221).
   ///
   /// Request parameters:
   ///
   /// [referenceId] - The ID of the reference.
+  ///
+  /// [end] - The end position (0-based, exclusive) of this query. Defaults to
+  /// the length
+  /// of this reference.
   ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// result sets.
@@ -2299,10 +2213,6 @@ class ReferencesBasesResourceApi {
   ///
   /// [start] - The start position (0-based) of this query. Defaults to 0.
   ///
-  /// [end] - The end position (0-based, exclusive) of this query. Defaults to
-  /// the length
-  /// of this reference.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2314,10 +2224,10 @@ class ReferencesBasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBasesResponse> list(core.String referenceId,
-      {core.String pageToken,
+      {core.String end,
+      core.String pageToken,
       core.int pageSize,
       core.String start,
-      core.String end,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2329,6 +2239,9 @@ class ReferencesBasesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
+    if (end != null) {
+      _queryParams["end"] = [end];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -2337,9 +2250,6 @@ class ReferencesBasesResourceApi {
     }
     if (start != null) {
       _queryParams["start"] = [start];
-    }
-    if (end != null) {
-      _queryParams["end"] = [end];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2365,10 +2275,6 @@ class ReferencesetsResourceApi {
   ReferencesetsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Gets a reference set.
-  ///
-  /// For the definitions of references and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Implements
   /// [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L83).
@@ -2416,10 +2322,6 @@ class ReferencesetsResourceApi {
   }
 
   /// Searches for reference sets which match the given criteria.
-  ///
-  /// For the definitions of references and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Implements
   /// [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L71)
@@ -2475,10 +2377,6 @@ class VariantsResourceApi {
 
   /// Creates a new variant.
   ///
-  /// For the definitions of variants and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2520,10 +2418,6 @@ class VariantsResourceApi {
   }
 
   /// Deletes a variant.
-  ///
-  /// For the definitions of variants and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Request parameters:
   ///
@@ -2567,10 +2461,6 @@ class VariantsResourceApi {
 
   /// Gets a variant by ID.
   ///
-  /// For the definitions of variants and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Request parameters:
   ///
   /// [variantId] - The ID of the variant.
@@ -2612,10 +2502,6 @@ class VariantsResourceApi {
   }
 
   /// Creates variant data by asynchronously importing the provided information.
-  ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// The variants for import will be merged with any existing variant that
   /// matches its reference sequence, start, end, reference bases, and
@@ -2674,10 +2560,6 @@ class VariantsResourceApi {
   }
 
   /// Merges the given variants with existing variants.
-  ///
-  /// For the definitions of variants and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Each variant will be
   /// merged with an existing variant that matches its reference sequence,
@@ -2808,10 +2690,6 @@ class VariantsResourceApi {
 
   /// Updates a variant.
   ///
-  /// For the definitions of variants and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// This method supports patch semantics. Returns the modified variant without
   /// its calls.
   ///
@@ -2872,10 +2750,6 @@ class VariantsResourceApi {
 
   /// Gets a list of variants matching the criteria.
   ///
-  /// For the definitions of variants and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Implements
   /// [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L126).
   ///
@@ -2928,10 +2802,6 @@ class VariantsetsResourceApi {
 
   /// Creates a new variant set.
   ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// The provided variant set must have a valid `datasetId` set - all other
   /// fields are optional. Note that the `id` field will be ignored, as this is
   /// assigned by the server.
@@ -2979,10 +2849,6 @@ class VariantsetsResourceApi {
   /// Deletes a variant set including all variants, call sets, and calls within.
   /// This is not reversible.
   ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Request parameters:
   ///
   /// [variantSetId] - The ID of the variant set to be deleted.
@@ -3024,10 +2890,6 @@ class VariantsetsResourceApi {
   }
 
   /// Exports variant set data to an external destination.
-  ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// [request] - The metadata request object.
   ///
@@ -3082,10 +2944,6 @@ class VariantsetsResourceApi {
 
   /// Gets a variant set by ID.
   ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-  ///
   /// Request parameters:
   ///
   /// [variantSetId] - Required. The ID of the variant set.
@@ -3128,10 +2986,6 @@ class VariantsetsResourceApi {
   }
 
   /// Updates a variant set using patch semantics.
-  ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// [request] - The metadata request object.
   ///
@@ -3193,10 +3047,6 @@ class VariantsetsResourceApi {
   }
 
   /// Returns a list of all variant sets matching search criteria.
-  ///
-  /// For the definitions of variant sets and other genomics resources, see
-  /// [Fundamentals of Google
-  /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
   ///
   /// Implements
   /// [GlobalAllianceApi.searchVariantSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L49).
@@ -3585,7 +3435,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -3630,9 +3480,6 @@ class Binding {
 
 /// A call set is a collection of variant calls, typically for one sample. It
 /// belongs to a variant set.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 class CallSet {
   /// The date this call set was created in milliseconds from the epoch.
   core.String created;
@@ -3953,6 +3800,101 @@ class ComputeEngine {
   }
 }
 
+/// This event is generated when a container starts.
+class ContainerStartedEvent {
+  /// The numeric ID of the action that started this container.
+  core.int actionId;
+
+  /// The public IP address that can be used to connect to the container.  This
+  /// field is only populated when at least one port mapping is present.  If the
+  /// instance was created with a private address this field will be empty even
+  /// if port mappings exist.
+  core.String ipAddress;
+
+  /// The container to host port mappings installed for this container.  This
+  /// set will contain any ports exposed using the PUBLISH_EXPOSED_PORTS flag as
+  /// well as any specified in the Action definition.
+  core.Map<core.String, core.int> portMappings;
+
+  ContainerStartedEvent();
+
+  ContainerStartedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("actionId")) {
+      actionId = _json["actionId"];
+    }
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("portMappings")) {
+      portMappings =
+          (_json["portMappings"] as core.Map).cast<core.String, core.int>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actionId != null) {
+      _json["actionId"] = actionId;
+    }
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (portMappings != null) {
+      _json["portMappings"] = portMappings;
+    }
+    return _json;
+  }
+}
+
+/// This event is generated when a container exits.
+class ContainerStoppedEvent {
+  /// The numeric ID of the action that started this container.
+  core.int actionId;
+
+  /// The exit status of the container.
+  core.int exitStatus;
+
+  /// The tail end of any content written to standard error by the container.
+  /// To prevent this from being recorded if the action is known to emit
+  /// large amounts of debugging noise or sensitive information, set the
+  /// DISABLE_STANDARD_ERROR_CAPTURE flag.
+  ///
+  /// Note that only a small amount of the end of the stream is captured here.
+  /// The entire stream is stored in the /google/logs directory mounted into
+  /// each action, and may be copied off the machine as described elsewhere.
+  core.String stderr;
+
+  ContainerStoppedEvent();
+
+  ContainerStoppedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("actionId")) {
+      actionId = _json["actionId"];
+    }
+    if (_json.containsKey("exitStatus")) {
+      exitStatus = _json["exitStatus"];
+    }
+    if (_json.containsKey("stderr")) {
+      stderr = _json["stderr"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actionId != null) {
+      _json["actionId"] = actionId;
+    }
+    if (exitStatus != null) {
+      _json["exitStatus"] = exitStatus;
+    }
+    if (stderr != null) {
+      _json["stderr"] = stderr;
+    }
+    return _json;
+  }
+}
+
 /// A bucket over which read coverage has been precomputed. A bucket corresponds
 /// to a specific range of the reference sequence.
 class CoverageBucket {
@@ -3988,9 +3930,6 @@ class CoverageBucket {
 }
 
 /// A Dataset is a collection of genomic data.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 class Dataset {
   /// The time this dataset was created, in seconds from the epoch.
   core.String createTime;
@@ -4035,6 +3974,44 @@ class Dataset {
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
+/// This event is generated whenever a resource limitation or transient error
+/// delays execution of a pipeline that was otherwise ready to run.
+class DelayedEvent {
+  /// A textual description of the cause of the delay.  The string may change
+  /// without notice since it is often generated by another service (such as
+  /// Compute Engine).
+  core.String cause;
+
+  /// If the delay was caused by a resource shortage, this field lists the
+  /// Compute Engine metrics that are preventing this operation from running
+  /// (for example, CPUS or INSTANCES).  If the particular metric is not known,
+  /// a single UNKNOWN metric will be present.
+  core.List<core.String> metrics;
+
+  DelayedEvent();
+
+  DelayedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("cause")) {
+      cause = _json["cause"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = (_json["metrics"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cause != null) {
+      _json["cause"] = cause;
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics;
     }
     return _json;
   }
@@ -4087,6 +4064,52 @@ class Entry {
     }
     if (status != null) {
       _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Event carries information about events that occur during pipeline execution.
+class Event {
+  /// A human readable description of the event.  Note that these strings may
+  /// change at any time without notice.  Any application logic must use the
+  /// information in the details field.
+  core.String description;
+
+  /// Machine readable details about the event.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> details;
+
+  /// The time that the event occurred.
+  core.String timestamp;
+
+  Event();
+
+  Event.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("details")) {
+      details = (_json["details"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
     }
     return _json;
   }
@@ -4345,6 +4368,172 @@ class ExternalId {
     }
     if (sourceName != null) {
       _json["sourceName"] = sourceName;
+    }
+    return _json;
+  }
+}
+
+/// This event is generated when the execution of a pipeline has failed.  Note
+/// that other events may continue to occur after this event.
+class FailedEvent {
+  /// The human readable description of the cause of the failure.
+  core.String cause;
+
+  /// The Google standard error code that best describes this failure.
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success
+  ///
+  /// HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller.
+  ///
+  /// HTTP Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error.  For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to
+  /// an error space that is not known in this address space.  Also
+  /// errors raised by APIs that do not return enough error information
+  /// may be converted to this error.
+  ///
+  /// HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument.  Note
+  /// that this differs
+  /// from `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments
+  /// that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name).
+  ///
+  /// HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations
+  /// that change the state of the system, this error may be returned
+  /// even if the operation has completed successfully.  For example, a
+  /// successful response from a server could have been delayed long
+  /// enough for the deadline to expire.
+  ///
+  /// HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found.
+  ///
+  /// Note to server developers: if a request is denied for an entire class
+  /// of users, such as gradual feature rollout or undocumented whitelist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within
+  /// a class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used.
+  ///
+  /// HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory)
+  /// already exists.
+  ///
+  /// HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified
+  /// operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED`
+  /// instead for those errors). `PERMISSION_DENIED` must not be
+  /// used if the caller can not be identified (use `UNAUTHENTICATED`
+  /// instead for those errors). This error code does not imply the
+  /// request is valid or the requested entity exists or satisfies
+  /// other pre-conditions.
+  ///
+  /// HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the
+  /// operation.
+  ///
+  /// HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or
+  /// perhaps the entire file system is out of space.
+  ///
+  /// HTTP Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state
+  /// required for the operation's execution.  For example, the directory
+  /// to be deleted is non-empty, an rmdir operation is applied to
+  /// a non-directory, etc.
+  ///
+  /// Service implementors can use the following guidelines to decide
+  /// between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
+  ///  (a) Use `UNAVAILABLE` if the client can retry just the failing call.
+  ///  (b) Use `ABORTED` if the client should retry at a higher level
+  ///      (e.g., when a client-specified test-and-set fails, indicating the
+  ///      client should restart a read-modify-write sequence).
+  ///  (c) Use `FAILED_PRECONDITION` if the client should not retry until
+  ///      the system state has been explicitly fixed.  E.g., if an "rmdir"
+  ///      fails because the directory is non-empty, `FAILED_PRECONDITION`
+  ///      should be returned since the client should not retry unless
+  ///      the files are deleted from the directory.
+  ///
+  /// HTTP Mapping: 400 Bad Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as
+  /// a sequencer check failure or transaction abort.
+  ///
+  /// See the guidelines above for deciding between `FAILED_PRECONDITION`,
+  /// `ABORTED`, and `UNAVAILABLE`.
+  ///
+  /// HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range.
+  /// E.g., seeking or
+  /// reading past end-of-file.
+  ///
+  /// Unlike `INVALID_ARGUMENT`, this error indicates a problem that may
+  /// be fixed if the system state changes. For example, a 32-bit file
+  /// system will generate `INVALID_ARGUMENT` if asked to read at an
+  /// offset that is not in the range [0,2^32-1], but it will generate
+  /// `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size.
+  ///
+  /// There is a fair bit of overlap between `FAILED_PRECONDITION` and
+  /// `OUT_OF_RANGE`.  We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through
+  /// a space can easily look for an `OUT_OF_RANGE` error to detect when
+  /// they are done.
+  ///
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this
+  /// service.
+  ///
+  /// HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors.  This means that some invariants expected
+  /// by the
+  /// underlying system have been broken.  This error code is reserved
+  /// for serious errors.
+  ///
+  /// HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable.  This is most
+  /// likely a
+  /// transient condition, which can be corrected by retrying with
+  /// a backoff.
+  ///
+  /// See the guidelines above for deciding between `FAILED_PRECONDITION`,
+  /// `ABORTED`, and `UNAVAILABLE`.
+  ///
+  /// HTTP Mapping: 503 Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption.
+  ///
+  /// HTTP Mapping: 500 Internal Server Error
+  core.String code;
+
+  FailedEvent();
+
+  FailedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("cause")) {
+      cause = _json["cause"];
+    }
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cause != null) {
+      _json["cause"] = cause;
+    }
+    if (code != null) {
+      _json["code"] = code;
     }
     return _json;
   }
@@ -4844,8 +5033,8 @@ class Operation {
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// An OperationMetadata object. This will always be returned with the
-  /// Operation.
+  /// An OperationMetadata or Metadata object. This will always be returned with
+  /// the Operation.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5065,14 +5254,14 @@ class OperationMetadata {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -5082,7 +5271,7 @@ class OperationMetadata {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -5091,6 +5280,20 @@ class OperationMetadata {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -5261,6 +5464,52 @@ class Program {
   }
 }
 
+/// This event is generated when the worker starts pulling an image.
+class PullStartedEvent {
+  /// The URI of the image that was pulled.
+  core.String imageUri;
+
+  PullStartedEvent();
+
+  PullStartedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("imageUri")) {
+      imageUri = _json["imageUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageUri != null) {
+      _json["imageUri"] = imageUri;
+    }
+    return _json;
+  }
+}
+
+/// This event is generated when the worker stops pulling an image.
+class PullStoppedEvent {
+  /// The URI of the image that was pulled.
+  core.String imageUri;
+
+  PullStoppedEvent();
+
+  PullStoppedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("imageUri")) {
+      imageUri = _json["imageUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageUri != null) {
+      _json["imageUri"] = imageUri;
+    }
+    return _json;
+  }
+}
+
 /// A 0-based half-open genomic coordinate range for search requests.
 class Range {
   /// The end position of the range on the reference, 0-based exclusive.
@@ -5309,9 +5558,6 @@ class Range {
 /// which were read by the sequencer). A read is equivalent to a line in a SAM
 /// file. A read belongs to exactly one read group and exactly one
 /// read group set.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 ///
 /// ### Reverse-stranded reads
 ///
@@ -5727,9 +5973,6 @@ class ReadGroup {
 /// * A read group set belongs to one dataset.
 /// * A read group belongs to one read group set.
 /// * A read belongs to one read group.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 class ReadGroupSet {
   /// The dataset to which this read group set belongs.
   core.String datasetId;
@@ -5821,9 +6064,6 @@ class ReadGroupSet {
 /// reference coordinate space for other genomic annotations. A single reference
 /// might represent the human chromosome 1 or mitochandrial DNA, for instance. A
 /// reference belongs to one or more reference sets.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 class Reference {
   /// The server-generated reference ID, unique across all references.
   core.String id;
@@ -5944,9 +6184,6 @@ class ReferenceBound {
 /// of the human genome. A reference set defines a common coordinate space for
 /// comparing reference-aligned experimental data. A reference set contains 1 or
 /// more references.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 class ReferenceSet {
   /// Public id of this reference set, such as `GRCh37`.
   core.String assemblyId;
@@ -7323,12 +7560,44 @@ class UndeleteDatasetRequest {
   }
 }
 
+/// This event is generated when the execution of a container results in a
+/// non-zero exit status that was not otherwise ignored.  Execution will
+/// continue, but only actions that are flagged as ALWAYS_RUN will be executed:
+/// other actions will be skipped.
+class UnexpectedExitStatusEvent {
+  /// The numeric ID of the action that started the container.
+  core.int actionId;
+
+  /// The exit status of the container.
+  core.int exitStatus;
+
+  UnexpectedExitStatusEvent();
+
+  UnexpectedExitStatusEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("actionId")) {
+      actionId = _json["actionId"];
+    }
+    if (_json.containsKey("exitStatus")) {
+      exitStatus = _json["exitStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actionId != null) {
+      _json["actionId"] = actionId;
+    }
+    if (exitStatus != null) {
+      _json["exitStatus"] = exitStatus;
+    }
+    return _json;
+  }
+}
+
 /// A variant represents a change in DNA sequence relative to a reference
 /// sequence. For example, a variant could represent a SNP or an insertion.
 /// Variants belong to a variant set.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 ///
 /// Each of the calls on a variant represent a determination of genotype with
 /// respect to that variant. For example, a call might assign probability of
@@ -7733,9 +8002,6 @@ class VariantCall {
 
 /// A variant set is a collection of call sets and variants. It contains summary
 /// statistics of those contents. A variant set belongs to a dataset.
-///
-/// For more genomics resource definitions, see [Fundamentals of Google
-/// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 class VariantSet {
   /// The dataset to which this variant set belongs.
   core.String datasetId;
@@ -7921,6 +8187,72 @@ class VariantSetMetadata {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// This event is generated once a worker VM has been assigned to run the
+/// pipeline.
+class WorkerAssignedEvent {
+  /// The worker's instance name.
+  core.String instance;
+
+  /// The zone the worker is running in.
+  core.String zone;
+
+  WorkerAssignedEvent();
+
+  WorkerAssignedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("instance")) {
+      instance = _json["instance"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instance != null) {
+      _json["instance"] = instance;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// This event is generated when the worker VM that was assigned to the pipeline
+/// has been released (i.e., deleted).
+class WorkerReleasedEvent {
+  /// The worker's instance name.
+  core.String instance;
+
+  /// The zone the worker was running in.
+  core.String zone;
+
+  WorkerReleasedEvent();
+
+  WorkerReleasedEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("instance")) {
+      instance = _json["instance"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instance != null) {
+      _json["instance"] = instance;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }

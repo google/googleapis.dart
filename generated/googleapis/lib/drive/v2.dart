@@ -3426,8 +3426,7 @@ class PropertiesResourceApi {
     return _response.then((data) => new PropertyList.fromJson(data));
   }
 
-  /// Updates a property, or adds it if it doesn't exist. This method supports
-  /// patch semantics.
+  /// Updates a property.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3437,7 +3436,8 @@ class PropertiesResourceApi {
   ///
   /// [propertyKey] - The key of the property.
   ///
-  /// [visibility] - The visibility of the property.
+  /// [visibility] - The visibility of the property. Allowed values are PRIVATE
+  /// and PUBLIC. (Default: PRIVATE)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3489,7 +3489,7 @@ class PropertiesResourceApi {
     return _response.then((data) => new Property.fromJson(data));
   }
 
-  /// Updates a property, or adds it if it doesn't exist.
+  /// Updates a property.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3499,7 +3499,8 @@ class PropertiesResourceApi {
   ///
   /// [propertyKey] - The key of the property.
   ///
-  /// [visibility] - The visibility of the property.
+  /// [visibility] - The visibility of the property. Allowed values are PRIVATE
+  /// and PUBLIC. (Default: PRIVATE)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8305,7 +8306,8 @@ class Property {
   /// The value of this property.
   core.String value;
 
-  /// The visibility of this property.
+  /// The visibility of this property. Allowed values are PRIVATE and PUBLIC.
+  /// (Default: PRIVATE)
   core.String visibility;
 
   Property();

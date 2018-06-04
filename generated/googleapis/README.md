@@ -68,7 +68,7 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Abusive Experience Report API - abusiveexperiencereport v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Abusive Experience Report API - abusiveexperiencereport v1
 
 View Abusive Experience Report data, and get a list of sites that have a significant number of abusive experiences.
 
@@ -105,7 +105,7 @@ Accesses the inventory of Ad Exchange seller users and generates reports.
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Ad Experience Report API - adexperiencereport v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Ad Experience Report API - adexperiencereport v1
 
 View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.
 
@@ -119,7 +119,7 @@ Official API documentation: https://developers.google.com/admin-sdk/data-transfe
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Admin Directory API - admin directory_v1
 
-The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.
+Manages enterprise resources such as users and groups, administrative notifications, security features, and more.
 
 Official API documentation: https://developers.google.com/admin-sdk/directory/
 
@@ -147,7 +147,7 @@ Views and manages your Google Analytics data.
 
 Official API documentation: https://developers.google.com/analytics/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Analytics Reporting API - analyticsreporting v4
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Analytics Reporting API - analyticsreporting v4
 
 Accesses Analytics report data.
 
@@ -177,7 +177,13 @@ Lets Android application developers access their Google Play accounts.
 
 Official API documentation: https://developers.google.com/android-publisher
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1
+#### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play Developer API - androidpublisher v3
+
+Lets Android application developers access their Google Play accounts.
+
+Official API documentation: https://developers.google.com/android-publisher
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) App Engine Admin API - appengine v1
 
 The App Engine Admin API enables developers to provision and manage their App Engine applications.
 
@@ -225,6 +231,12 @@ Manipulates events and other calendar data.
 
 Official API documentation: https://developers.google.com/google-apps/calendar/firstapp
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Hangouts Chat API - chat v1
+
+Enables bots to fetch information and perform actions in the new Hangouts Chat.
+
+Official API documentation: https://developers.google.com/hangouts/chat
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Civic Information API - civicinfo v2
 
 Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.
@@ -237,14 +249,14 @@ Manages classes, rosters, and invitations in Google Classroom.
 
 Official API documentation: https://developers.google.com/classroom/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Billing API - cloudbilling v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Billing API - cloudbilling v1
 
 Allows developers to manage billing for their Google Cloud Platform projects
     programmatically.
 
 Official API documentation: https://cloud.google.com/billing/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Container Builder API - cloudbuild v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Container Builder API - cloudbuild v1
 
 Builds container images in the cloud.
 
@@ -255,34 +267,34 @@ Official API documentation: https://cloud.google.com/container-builder/docs/
 Examines the call stack and variables of a running application without stopping or slowing it down.
 
 
-Official API documentation: http://cloud.google.com/debugger
+Official API documentation: https://cloud.google.com/debugger
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Functions API - cloudfunctions v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Functions API - cloudfunctions v1
 
-API for managing lightweight user-provided functions executed in response to events.
+Manages lightweight user-provided functions executed in response to events.
 
 Official API documentation: https://cloud.google.com/functions
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud IoT API - cloudiot v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud IoT API - cloudiot v1
 
 Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform.
 
 
 Official API documentation: https://cloud.google.com/iot
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Key Management Service (KMS) API - cloudkms v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Key Management Service (KMS) API - cloudkms v1
 
 Manages encryption for your cloud services the same way you do on-premises. You can generate, use, rotate, and destroy AES256 encryption keys.
 
 Official API documentation: https://cloud.google.com/kms/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Resource Manager API - cloudresourcemanager v1
 
 The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
 
 Official API documentation: https://cloud.google.com/resource-manager
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v2beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Resource Manager API - cloudresourcemanager v2
 
 The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
 
@@ -315,7 +327,7 @@ Creates and runs virtual machines on Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/compute/docs/reference/latest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Kubernetes Engine API - container v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Kubernetes Engine API - container v1
 
 The Google Kubernetes Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
 
@@ -339,13 +351,13 @@ Searches over a website or collection of websites
 
 Official API documentation: https://developers.google.com/custom-search/v1/using_rest
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Dataproc API - dataproc v1
 
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Datastore API - datastore v1
 
 Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
@@ -370,6 +382,18 @@ Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v3.1
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Dialogflow API - dialogflow v2
+
+An end-to-end development suite for conversational interfaces (e.g., chatbots, voice-powered apps and devices).
+
+Official API documentation: https://cloud.google.com/dialogflow-enterprise/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Digital Asset Links API - digitalassetlinks v1
 
 API for discovering relationships between online assets such as web sites or mobile apps.
@@ -381,6 +405,12 @@ Official API documentation: https://developers.google.com/digital-asset-links/
 Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.
 
 Official API documentation: https://developers.google.com/discovery/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Data Loss Prevention (DLP) API - dlp v2
+
+Provides methods for detection, risk analysis, and de-identification of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.
+
+Official API documentation: https://cloud.google.com/dlp/docs/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v1
 
@@ -491,7 +521,7 @@ Lets you manage permission levels and related settings of a group.
 
 Official API documentation: https://developers.google.com/google-apps/groups-settings/get_started
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Identity and Access Management (IAM) API - iam v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Identity and Access Management (IAM) API - iam v1
 
 Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.
 
@@ -503,13 +533,20 @@ Help the third party sites to implement federated login.
 
 Official API documentation: https://developers.google.com/identity-toolkit/v3/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Job Discovery - jobs v2
+
+Cloud Job Discovery provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.
+
+
+Official API documentation: https://cloud.google.com/job-discovery/docs
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Knowledge Graph Search API - kgsearch v1
 
 Searches the Google Knowledge Graph for entities.
 
 Official API documentation: https://developers.google.com/knowledge-graph/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Natural Language API - language v1
 
 Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.
 
@@ -539,7 +576,7 @@ Interacts with Glass users via the timeline.
 
 Official API documentation: https://developers.google.com/glass
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Machine Learning Engine - ml v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Machine Learning Engine - ml v1
 
 An API to enable creating and using machine learning models.
 
@@ -557,7 +594,7 @@ Obtains end-user authorization grants for use with other Google APIs.
 
 Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud OS Login API - oslogin v1
 
 Manages OS login configuration for Google account users.
 
@@ -575,13 +612,19 @@ Analyzes the performance of a web page and provides tailored suggestions to make
 
 Official API documentation: https://developers.google.com/speed/docs/insights/v2/getting-started
 
+#### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v4
+
+Analyzes the performance of a web page and provides tailored suggestions to make that page faster.
+
+Official API documentation: https://developers.google.com/speed/docs/insights/v4/getting-started
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Partners API - partners v2
 
 Searches certified companies and creates contact leads with them, and also audits the usage of clients.
 
 Official API documentation: https://developers.google.com/partners/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google People API - people v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) People API - people v1
 
 Provides access to information about profiles and contacts.
 
@@ -618,7 +661,7 @@ Lets you access a cloud hosted machine learning service that makes it easy to bu
 
 Official API documentation: https://developers.google.com/prediction/docs/developer-guide
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Pub/Sub API - pubsub v1
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
 
@@ -631,21 +674,22 @@ Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Runtime Configuration API - runtimeconfig v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Runtime Configuration API - runtimeconfig v1
 
 The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Safe Browsing API - safebrowsing v4
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Safe Browsing API - safebrowsing v4
 
 Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.
 
 Official API documentation: https://developers.google.com/safe-browsing/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script API - script v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Apps Script API - script v1
 
-An API for managing and executing Google Apps Script projects.
+An API for managing and executing Google Apps Script projects. <aside class="note"><b>Note</b>: In order to use this API in your apps, you must <a href="/apps-script/api/how-tos/enable#using_the_apps_script_api_in_your_app"> enable it for use</a>. To allow other apps to manage your scripts, you must <a href="/apps-script/api/how-tos/enable#granting_third-party_applications_access_to_your_script_projects"> grant them access</a>.</aside>
+
 
 Official API documentation: https://developers.google.com/apps-script/api/
 
@@ -655,31 +699,34 @@ Provides tools for running validation tests against single URLs
 
 Official API documentation: https://developers.google.com/webmaster-tools/search-console-api/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Broker API - servicebroker v1
+
+The Google Cloud Platform Service Broker API provides Google hosted
+implementation of the Open Service Broker API
+(https://www.openservicebrokerapi.org/).
+
+
+Official API documentation: https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Consumer Management API - serviceconsumermanagement v1
 
 Provides management methods for configuring service producer resources on Google Cloud.
 
 Official API documentation: https://cloud.google.com/service-consumer-management/docs/overview
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Control API - servicecontrol v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Control API - servicecontrol v1
 
 Google Service Control provides control plane functionality to managed services, such as logging, monitoring, and status checks.
 
 Official API documentation: https://cloud.google.com/service-control/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Management API - servicemanagement v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Management API - servicemanagement v1
 
 Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.
 
 Official API documentation: https://cloud.google.com/service-management/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Usage API - serviceusage v1
-
-Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.
-
-Official API documentation: https://cloud.google.com/service-usage/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service User API - serviceuser v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service User API - serviceuser v1
 
 Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.
 
@@ -715,7 +762,7 @@ Cloud Spanner is a managed, mission-critical, globally consistent and scalable r
 
 Official API documentation: https://cloud.google.com/spanner/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Speech API - speech v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Speech API - speech v1
 
 Converts audio to text by applying powerful neural network models.
 
@@ -727,7 +774,7 @@ Stores and retrieves potentially large, immutable data objects.
 
 Official API documentation: https://developers.google.com/storage/docs/json_api/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Storage Transfer API - storagetransfer v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Storage Transfer API - storagetransfer v1
 
 Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.
 
@@ -762,11 +809,17 @@ Lets you manage your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Testing API - testing v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Testing API - testing v1
 
 Allows developers to run automated tests for their mobile applications on Google infrastructure.
 
 Official API documentation: https://developers.google.com/cloud-test-lab/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud TPU API - tpu v1
+
+TPU API provides customers with access to Google TPU technology.
+
+Official API documentation: https://cloud.google.com/tpu/
 
 #### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Google Cloud Translation API - translate v2
 
@@ -781,13 +834,19 @@ Lets you create, inspect, and manage goo.gl short URLs
 
 Official API documentation: https://developers.google.com/url-shortener/v1/getting_started
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Vault API - vault v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) G Suite Vault API - vault v1
 
 Archiving and eDiscovery for G Suite.
 
 Official API documentation: https://developers.google.com/vault
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Vision API - vision v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Video Intelligence API - videointelligence v1
+
+Cloud Video Intelligence API.
+
+Official API documentation: https://cloud.google.com/video-intelligence/docs/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Vision API - vision v1
 
 Integrates Google Vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.
 
@@ -816,6 +875,12 @@ Official API documentation: https://developers.google.com/youtube/v3
 Retrieves your YouTube Analytics data.
 
 Official API documentation: http://developers.google.com/youtube/analytics/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) YouTube Analytics API - youtubeAnalytics v2
+
+Retrieves your YouTube Analytics data.
+
+Official API documentation: https://developers.google.com/youtube/analytics
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) YouTube Reporting API - youtubereporting v1
 

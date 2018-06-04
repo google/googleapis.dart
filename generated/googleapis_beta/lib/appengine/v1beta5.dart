@@ -221,7 +221,7 @@ class AppsLocationsResourceApi {
 
   AppsLocationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -279,11 +279,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,9 +296,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -310,14 +310,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -586,9 +586,9 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `name`. Name of the resource requested. Example:
   /// apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -601,7 +601,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -612,11 +612,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1838,6 +1838,31 @@ class CpuUtilization {
 }
 
 /// Metadata for the given google.longrunning.Operation during a
+/// google.appengine.v1.CreateVersionRequest.
+class CreateVersionMetadataV1 {
+  /// The Cloud Build ID if one was created as part of the version create.
+  /// @OutputOnly
+  core.String cloudBuildId;
+
+  CreateVersionMetadataV1();
+
+  CreateVersionMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudBuildId")) {
+      cloudBuildId = _json["cloudBuildId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudBuildId != null) {
+      _json["cloudBuildId"] = cloudBuildId;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1alpha.CreateVersionRequest.
 class CreateVersionMetadataV1Alpha {
   /// The Cloud Build ID if one was created as part of the version create.
@@ -2020,8 +2045,9 @@ class DiskUtilization {
 
 /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
 /// Endpoints API Service provides tooling for serving Open API and gRPC
-/// endpoints via an NGINX proxy.The fields here refer to the name and
-/// configuration id of a "service" resource in the Service Management API
+/// endpoints via an NGINX proxy. Only valid for App Engine Flexible environment
+/// deployments.The fields here refer to the name and configuration id of a
+/// "service" resource in the Service Management API
 /// (https://cloud.google.com/service-management/overview).
 class EndpointsApiService {
   /// Endpoints service configuration id as specified by the Service Management
@@ -2035,6 +2061,16 @@ class EndpointsApiService {
   /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
   core.String name;
 
+  /// Endpoints rollout strategy. If FIXED, config_id must be specified. If
+  /// MANAGED, config_id must be omitted.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_ROLLOUT_STRATEGY" : Not specified. Defaults to FIXED.
+  /// - "FIXED" : Endpoints service configuration id will be fixed to the
+  /// configuration id specified by config_id.
+  /// - "MANAGED" : Endpoints service configuration id will be updated with each
+  /// rollout.
+  core.String rolloutStrategy;
+
   EndpointsApiService();
 
   EndpointsApiService.fromJson(core.Map _json) {
@@ -2043,6 +2079,9 @@ class EndpointsApiService {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("rolloutStrategy")) {
+      rolloutStrategy = _json["rolloutStrategy"];
     }
   }
 
@@ -2054,6 +2093,9 @@ class EndpointsApiService {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (rolloutStrategy != null) {
+      _json["rolloutStrategy"] = rolloutStrategy;
     }
     return _json;
   }
@@ -2664,6 +2706,10 @@ class ListVersionsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
@@ -2685,6 +2731,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -2703,6 +2752,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -3050,6 +3102,8 @@ class OperationMetadata {
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1 {
+  CreateVersionMetadataV1 createVersionMetadata;
+
   /// Time that this operation completed.@OutputOnly
   core.String endTime;
 
@@ -3077,6 +3131,10 @@ class OperationMetadataV1 {
   OperationMetadataV1();
 
   OperationMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("createVersionMetadata")) {
+      createVersionMetadata =
+          new CreateVersionMetadataV1.fromJson(_json["createVersionMetadata"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -3103,6 +3161,9 @@ class OperationMetadataV1 {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createVersionMetadata != null) {
+      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }

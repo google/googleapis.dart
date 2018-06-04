@@ -138,6 +138,12 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// [debuggeeId] - Identifies the debuggee.
   ///
+  /// [waitToken] - A token that, if specified, blocks the method call until the
+  /// list
+  /// of active breakpoints has changed, or a server-selected timeout has
+  /// expired. The value should be set from the `next_wait_token` field in
+  /// the last response. The initial value should be set to `"init"`.
+  ///
   /// [successOnTimeout] - If set to `true` (recommended), returns
   /// `google.rpc.Code.OK` status and
   /// sets the `wait_expired` response field to `true` when the server-selected
@@ -145,12 +151,6 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status
   /// when the server-selected timeout has expired.
-  ///
-  /// [waitToken] - A token that, if specified, blocks the method call until the
-  /// list
-  /// of active breakpoints has changed, or a server-selected timeout has
-  /// expired. The value should be set from the `next_wait_token` field in
-  /// the last response. The initial value should be set to `"init"`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -163,8 +163,8 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool successOnTimeout,
-      core.String waitToken,
+      {core.String waitToken,
+      core.bool successOnTimeout,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -176,11 +176,11 @@ class ControllerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (successOnTimeout != null) {
-      _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
-    }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
+    }
+    if (successOnTimeout != null) {
+      _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -290,15 +290,15 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [clientVersion] - The client version making the call.
+  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  ///
   /// [includeInactive] - When set to `true`, the result includes all debuggees.
   /// Otherwise, the
   /// result includes only debuggees that are active.
   ///
   /// [project] - Project number of a Google Cloud project whose debuggees to
   /// list.
-  ///
-  /// [clientVersion] - The client version making the call.
-  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -311,9 +311,9 @@ class DebuggerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list(
-      {core.bool includeInactive,
+      {core.String clientVersion,
+      core.bool includeInactive,
       core.String project,
-      core.String clientVersion,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -322,14 +322,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (project != null) {
       _queryParams["project"] = [project];
-    }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -733,7 +733,8 @@ class Breakpoint {
   /// `expressions` = `[ message.id, message.count ]`.
   core.String logMessageFormat;
 
-  /// The stack at breakpoint time.
+  /// The stack at breakpoint time, where stack_frames[0] represents the most
+  /// recently entered function.
   core.List<StackFrame> stackFrames;
 
   /// Breakpoint status.

@@ -108,19 +108,23 @@ class ServicesResourceApi {
     return _response.then((data) => new AllocateQuotaResponse.fromJson(data));
   }
 
-  /// Checks an operation with Google Service Control to decide whether
-  /// the given operation should proceed. It should be called before the
-  /// operation is executed.
+  /// Checks whether an operation on a service should be allowed to proceed
+  /// based on the configuration of the service and related policies. It must be
+  /// called before the operation is executed.
   ///
   /// If feasible, the client should cache the check results and reuse them for
-  /// 60 seconds. In case of server errors, the client can rely on the cached
-  /// results for longer time.
+  /// 60 seconds. In case of any server errors, the client should rely on the
+  /// cached results for much longer time to avoid outage.
+  /// WARNING: There is general 60s delay for the configuration and policy
+  /// propagation, therefore callers MUST NOT depend on the `Check` method
+  /// having
+  /// the latest policy information.
   ///
   /// NOTE: the CheckRequest has the size limit of 64KB.
   ///
   /// This method requires the `servicemanagement.services.check` permission
   /// on the specified service. For more information, see
-  /// [Google Cloud IAM](https://cloud.google.com/iam).
+  /// [Cloud IAM](https://cloud.google.com/iam).
   ///
   /// [request] - The metadata request object.
   ///
@@ -910,6 +914,8 @@ class CheckError {
   /// LoquatV2.
   /// - "SECURITY_POLICY_VIOLATED" : Request is not allowed as per security
   /// policies defined in Org Policy.
+  /// - "INVALID_CREDENTIAL" : The credential in the request can not be
+  /// verified.
   /// - "NAMESPACE_LOOKUP_UNAVAILABLE" : The backend server for looking up
   /// project id/number is unavailable.
   /// - "SERVICE_STATUS_UNAVAILABLE" : The backend server for checking service
@@ -1862,7 +1868,8 @@ class Operation {
   /// - `servicecontrol.googleapis.com/service_agent` describing the service
   ///        used to handle the API request (e.g. ESP),
   ///     - `servicecontrol.googleapis.com/platform` describing the platform
-  ///        where the API is served (e.g. GAE, GCE, GKE).
+  ///        where the API is served, such as App Engine, Compute Engine, or
+  ///        Kubernetes Engine.
   core.Map<core.String, core.String> labels;
 
   /// Represents information to be logged.
@@ -1910,6 +1917,7 @@ class Operation {
   core.String resourceContainer;
 
   /// The resources that are involved in the operation.
+  /// The maximum supported number of entries in this field is 100.
   core.List<ResourceInfo> resources;
 
   /// Required. Start time of the operation.

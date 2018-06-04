@@ -317,6 +317,7 @@ class TestEnvironmentCatalogResourceApi {
   /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : A ENVIRONMENT_TYPE_UNSPECIFIED.
   /// - "ANDROID" : A ANDROID.
   /// - "NETWORK_CONFIGURATION" : A NETWORK_CONFIGURATION.
+  /// - "PROVIDED_SOFTWARE" : A PROVIDED_SOFTWARE.
   ///
   /// [projectId] - For authorization, the cloud project requesting the
   /// TestEnvironmentCatalog.
@@ -772,6 +773,11 @@ class AndroidModel {
   /// Examples: "default", "preview", "deprecated"
   core.List<core.String> tags;
 
+  /// True if and only if tests with this model DO NOT have video output.
+  /// See also TestSpecification.disable_video_recording
+  /// @OutputOnly
+  core.bool videoRecordingNotSupported;
+
   AndroidModel();
 
   AndroidModel.fromJson(core.Map _json) {
@@ -811,6 +817,9 @@ class AndroidModel {
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("videoRecordingNotSupported")) {
+      videoRecordingNotSupported = _json["videoRecordingNotSupported"];
     }
   }
 
@@ -853,6 +862,9 @@ class AndroidModel {
     if (tags != null) {
       _json["tags"] = tags;
     }
+    if (videoRecordingNotSupported != null) {
+      _json["videoRecordingNotSupported"] = videoRecordingNotSupported;
+    }
     return _json;
   }
 }
@@ -890,6 +902,11 @@ class AndroidRoboTest {
   /// Optional
   core.List<RoboDirective> roboDirectives;
 
+  /// A JSON file with a sequence of actions Robo should perform as a prologue
+  /// for the crawl.
+  /// Optional
+  FileReference roboScript;
+
   /// The intents used to launch the app for the crawl.
   /// If none are provided, then the main launcher activity is launched.
   /// If some are provided, then only those provided are launched (the main
@@ -918,6 +935,9 @@ class AndroidRoboTest {
       roboDirectives = (_json["roboDirectives"] as core.List)
           .map<RoboDirective>((value) => new RoboDirective.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("roboScript")) {
+      roboScript = new FileReference.fromJson(_json["roboScript"]);
     }
     if (_json.containsKey("startingIntents")) {
       startingIntents = (_json["startingIntents"] as core.List)
@@ -948,6 +968,9 @@ class AndroidRoboTest {
     if (roboDirectives != null) {
       _json["roboDirectives"] =
           roboDirectives.map((value) => (value).toJson()).toList();
+    }
+    if (roboScript != null) {
+      _json["roboScript"] = (roboScript).toJson();
     }
     if (startingIntents != null) {
       _json["startingIntents"] =
@@ -1143,6 +1166,40 @@ class AndroidVersion {
     }
     if (versionString != null) {
       _json["versionString"] = versionString;
+    }
+    return _json;
+  }
+}
+
+/// An Android package file to install.
+class Apk {
+  /// The path to an APK to be installed on the device before the test begins.
+  /// Optional
+  FileReference location;
+
+  /// The java package for the APK to be installed.
+  /// Optional, value is determined by examining the application's manifest.
+  core.String packageName;
+
+  Apk();
+
+  Apk.fromJson(core.Map _json) {
+    if (_json.containsKey("location")) {
+      location = new FileReference.fromJson(_json["location"]);
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (location != null) {
+      _json["location"] = (location).toJson();
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
     }
     return _json;
   }
@@ -1387,7 +1444,8 @@ class Date {
   /// if specifying a year/month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+  /// month.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -1429,11 +1487,17 @@ class DeviceFile {
   /// A reference to an opaque binary blob file
   ObbFile obbFile;
 
+  /// A reference to a regular file
+  RegularFile regularFile;
+
   DeviceFile();
 
   DeviceFile.fromJson(core.Map _json) {
     if (_json.containsKey("obbFile")) {
       obbFile = new ObbFile.fromJson(_json["obbFile"]);
+    }
+    if (_json.containsKey("regularFile")) {
+      regularFile = new RegularFile.fromJson(_json["regularFile"]);
     }
   }
 
@@ -1442,6 +1506,9 @@ class DeviceFile {
         new core.Map<core.String, core.Object>();
     if (obbFile != null) {
       _json["obbFile"] = (obbFile).toJson();
+    }
+    if (regularFile != null) {
+      _json["regularFile"] = (regularFile).toJson();
     }
     return _json;
   }
@@ -1930,6 +1997,81 @@ class Orientation {
   }
 }
 
+/// The currently provided software environment on the devices under test.
+class ProvidedSoftwareCatalog {
+  /// A string representing the current version of Android Test Orchestrator
+  /// that
+  /// is provided by TestExecutionService. Example: "1.0.2 beta"
+  core.String orchestratorVersion;
+
+  ProvidedSoftwareCatalog();
+
+  ProvidedSoftwareCatalog.fromJson(core.Map _json) {
+    if (_json.containsKey("orchestratorVersion")) {
+      orchestratorVersion = _json["orchestratorVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (orchestratorVersion != null) {
+      _json["orchestratorVersion"] = orchestratorVersion;
+    }
+    return _json;
+  }
+}
+
+/// A file or directory to install on the device before the test starts
+class RegularFile {
+  /// Required
+  FileReference content;
+
+  /// Where to put the content on the device. Must be an absolute, whitelisted
+  /// path. If the file exists, it will be replaced.
+  /// The following device-side directories and any of their subdirectories are
+  /// whitelisted:
+  /// <p>${EXTERNAL_STORAGE}, or /sdcard</p>
+  /// <p>${ANDROID_DATA}/local/tmp, or /data/local/tmp</p>
+  /// <p>Specifying a path outside of these directory trees is invalid.
+  ///
+  /// <p> The paths /sdcard and /data will be made available and treated as
+  /// implicit path substitutions. E.g. if /sdcard on a particular device does
+  /// not map to external storage, the system will replace it with the external
+  /// storage path prefix for that device and copy the file there.
+  ///
+  /// <p> It is strongly advised to use the <a href=
+  /// "http://developer.android.com/reference/android/os/Environment.html">
+  /// Environment API</a> in app and test code to access files on the device in
+  /// a
+  /// portable way.
+  /// Required
+  core.String devicePath;
+
+  RegularFile();
+
+  RegularFile.fromJson(core.Map _json) {
+    if (_json.containsKey("content")) {
+      content = new FileReference.fromJson(_json["content"]);
+    }
+    if (_json.containsKey("devicePath")) {
+      devicePath = _json["devicePath"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (content != null) {
+      _json["content"] = (content).toJson();
+    }
+    if (devicePath != null) {
+      _json["devicePath"] = devicePath;
+    }
+    return _json;
+  }
+}
+
 /// Locations where the results of running the test are stored.
 class ResultStorage {
   /// Required.
@@ -2128,6 +2270,13 @@ class TestDetails {
   /// @OutputOnly
   core.List<core.String> progressMessages;
 
+  /// Indicates that video will not be recorded for this execution either
+  /// because
+  /// the user chose to disable it or the device does not support it.
+  /// See AndroidModel.video_recording_not_supported
+  /// @OutputOnly
+  core.bool videoRecordingDisabled;
+
   TestDetails();
 
   TestDetails.fromJson(core.Map _json) {
@@ -2137,6 +2286,9 @@ class TestDetails {
     if (_json.containsKey("progressMessages")) {
       progressMessages =
           (_json["progressMessages"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("videoRecordingDisabled")) {
+      videoRecordingDisabled = _json["videoRecordingDisabled"];
     }
   }
 
@@ -2148,6 +2300,9 @@ class TestDetails {
     }
     if (progressMessages != null) {
       _json["progressMessages"] = progressMessages;
+    }
+    if (videoRecordingDisabled != null) {
+      _json["videoRecordingDisabled"] = videoRecordingDisabled;
     }
     return _json;
   }
@@ -2161,6 +2316,9 @@ class TestEnvironmentCatalog {
   /// Supported network configurations
   NetworkConfigurationCatalog networkConfigurationCatalog;
 
+  /// The software test environment provided by TestExecutionService.
+  ProvidedSoftwareCatalog softwareCatalog;
+
   TestEnvironmentCatalog();
 
   TestEnvironmentCatalog.fromJson(core.Map _json) {
@@ -2171,6 +2329,10 @@ class TestEnvironmentCatalog {
     if (_json.containsKey("networkConfigurationCatalog")) {
       networkConfigurationCatalog = new NetworkConfigurationCatalog.fromJson(
           _json["networkConfigurationCatalog"]);
+    }
+    if (_json.containsKey("softwareCatalog")) {
+      softwareCatalog =
+          new ProvidedSoftwareCatalog.fromJson(_json["softwareCatalog"]);
     }
   }
 
@@ -2183,6 +2345,9 @@ class TestEnvironmentCatalog {
     if (networkConfigurationCatalog != null) {
       _json["networkConfigurationCatalog"] =
           (networkConfigurationCatalog).toJson();
+    }
+    if (softwareCatalog != null) {
+      _json["softwareCatalog"] = (softwareCatalog).toJson();
     }
     return _json;
   }
@@ -2397,9 +2562,14 @@ class TestMatrix {
   /// allowed.
   /// - "TEST_ONLY_APK" : The APK is marked as "testOnly".
   /// NOT USED
+  /// - "MALFORMED_IPA" : The input IPA could not be parsed.
+  /// NOT USED
   /// - "NO_CODE_APK" : APK contains no code.
   /// See also
   /// https://developer.android.com/guide/topics/manifest/application-element.html#code
+  /// - "INVALID_INPUT_APK" : Either the provided input APK path was malformed,
+  /// the APK file does not exist, or the user does not have permission to
+  /// access the APK file.
   core.String invalidMatrixDetails;
 
   /// The cloud project that owns the test matrix.
@@ -2551,11 +2721,16 @@ class TestMatrix {
   }
 }
 
-/// A description of how to set up the device prior to running the test
+/// A description of how to set up the Android device prior to running the test.
 class TestSetup {
   /// The device will be logged in on this account for the duration of the test.
   /// Optional
   Account account;
+
+  /// APKs to install in addition to those being directly tested.
+  /// Currently capped at 100.
+  /// Optional
+  core.List<Apk> additionalApks;
 
   /// List of directories on the device to upload to GCS at the end of the test;
   /// they must be absolute paths under /sdcard or /data/local/tmp.
@@ -2588,6 +2763,11 @@ class TestSetup {
     if (_json.containsKey("account")) {
       account = new Account.fromJson(_json["account"]);
     }
+    if (_json.containsKey("additionalApks")) {
+      additionalApks = (_json["additionalApks"] as core.List)
+          .map<Apk>((value) => new Apk.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("directoriesToPull")) {
       directoriesToPull =
           (_json["directoriesToPull"] as core.List).cast<core.String>();
@@ -2613,6 +2793,10 @@ class TestSetup {
         new core.Map<core.String, core.Object>();
     if (account != null) {
       _json["account"] = (account).toJson();
+    }
+    if (additionalApks != null) {
+      _json["additionalApks"] =
+          additionalApks.map((value) => (value).toJson()).toList();
     }
     if (directoriesToPull != null) {
       _json["directoriesToPull"] = directoriesToPull;
@@ -2661,7 +2845,8 @@ class TestSpecification {
   /// Disables video recording; may reduce test latency.
   core.bool disableVideoRecording;
 
-  /// Test setup requirements e.g. files to install, bootstrap scripts
+  /// Test setup requirements for Android e.g. files to install, bootstrap
+  /// scripts.
   /// Optional
   TestSetup testSetup;
 

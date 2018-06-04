@@ -742,8 +742,6 @@ class AccountsCreativesResourceApi {
   /// creatives.list
   /// method.
   ///
-  /// [accountId1] - The account the creative belongs to.
-  ///
   /// [duplicateIdMode] - Indicates if multiple creatives can share an ID or
   /// not. Default is
   /// NO_DUPLICATES (one ID per creative).
@@ -762,9 +760,7 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> create(Creative request, core.String accountId,
-      {core.String accountId1,
-      core.String duplicateIdMode,
-      core.String $fields}) {
+      {core.String duplicateIdMode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -777,9 +773,6 @@ class AccountsCreativesResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (accountId1 != null) {
-      _queryParams["accountId1"] = [accountId1];
     }
     if (duplicateIdMode != null) {
       _queryParams["duplicateIdMode"] = [duplicateIdMode];
@@ -874,7 +867,7 @@ class AccountsCreativesResourceApi {
   /// [query] - An optional query string to filter creatives. If no filter is
   /// specified,
   /// all active creatives will be returned.
-  /// Supported queries are:
+  /// <p>Supported queries are:
   /// <ul>
   /// <li>accountId=<i>account_id_string</i>
   /// <li>creativeId=<i>creative_id_string</i>
@@ -1016,8 +1009,6 @@ class AccountsCreativesResourceApi {
   /// creatives.list
   /// method.
   ///
-  /// [accountId1] - The account the creative belongs to.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1030,7 +1021,7 @@ class AccountsCreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> update(
       Creative request, core.String accountId, core.String creativeId,
-      {core.String accountId1, core.String $fields}) {
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1046,9 +1037,6 @@ class AccountsCreativesResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
-    }
-    if (accountId1 != null) {
-      _queryParams["accountId1"] = [accountId1];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1206,6 +1194,12 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// [creativeId] - The creative ID to list the associations from.
   /// Specify "-" to list all creatives under the above account.
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListDealAssociationsResponse.next_page_token
+  /// returned from the previous call to 'ListDealAssociations' method.
+  ///
   /// [pageSize] - Requested page size. Server may return fewer associations
   /// than requested.
   /// If unspecified, server will pick an appropriate default.
@@ -1225,12 +1219,6 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// </ul>
   /// Example: 'dealsId=12345 AND dealsStatus:disapproved'
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListDealAssociationsResponse.next_page_token
-  /// returned from the previous call to 'ListDealAssociations' method.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1243,9 +1231,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDealAssociationsResponse> list(
       core.String accountId, core.String creativeId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String query,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1260,14 +1248,14 @@ class AccountsCreativesDealAssociationsResourceApi {
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (query != null) {
       _queryParams["query"] = [query];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2305,16 +2293,16 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListImpressionMetricsResponse.nextPageToken
   /// returned from the previous call to the impressionMetrics.list
   /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2327,7 +2315,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2338,11 +2326,11 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4348,6 +4336,8 @@ class Correction {
 }
 
 /// A creative and its classification data.
+///
+/// Next ID: 35
 class Creative {
   /// The account that this creative belongs to.
   /// Can be used to filter the response of the
@@ -4756,7 +4746,8 @@ class Date {
   /// if specifying a year/month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+  /// month.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -4948,6 +4939,12 @@ class Disapproval {
   /// specifications.
   /// - "UNSUPPORTED_FLASH_CONTENT" : Flash content was found in an unsupported
   /// context.
+  /// - "MISUSE_BY_OMID_SCRIPT" : Misuse by an Open Measurement SDK script.
+  /// - "NON_WHITELISTED_OMID_VENDOR" : Use of an Open Measurement SDK vendor
+  /// not on approved whitelist.
+  /// - "DESTINATION_EXPERIENCE" : Unacceptable landing page.
+  /// - "UNSUPPORTED_LANGUAGE" : Unsupported language.
+  /// - "NON_SSL_COMPLIANT" : Non-SSL compliant.
   core.String reason;
 
   Disapproval();
@@ -5029,27 +5026,6 @@ class FilterSet {
   /// - "APP" : The ad impression appears in an app.
   core.String environment;
 
-  /// DEPRECATED: use repeated formats field instead.
-  /// The format on which to filter; optional.
-  /// Possible string values are:
-  /// - "FORMAT_UNSPECIFIED" : A placeholder for an undefined format; indicates
-  /// that no format filter
-  /// will be applied.
-  /// - "DISPLAY" : DEPRECATED: use combination of NATIVE_DISPLAY and
-  /// NON_NATIVE_DISPLAY
-  /// The ad impression is display format (i.e. an image).
-  /// - "VIDEO" : DEPRECATED: use combination of NATIVE_VIDEO and
-  /// NON_NATIVE_VIDEO
-  /// The ad impression is video format.
-  /// - "NATIVE_DISPLAY" : The ad impression is a native ad, and display (i.e.
-  /// image) format.
-  /// - "NATIVE_VIDEO" : The ad impression is a native ad, and video format.
-  /// - "NON_NATIVE_DISPLAY" : The ad impression is not a native ad, and display
-  /// (i.e. image) format.
-  /// - "NON_NATIVE_VIDEO" : The ad impression is not a native ad, and video
-  /// format.
-  core.String format;
-
   /// The list of formats on which to filter; may be empty. The filters
   /// represented by multiple formats are ORed together (i.e. if non-empty,
   /// results must match any one of the formats).
@@ -5073,6 +5049,12 @@ class FilterSet {
   /// results must match any one of the platforms).
   core.List<core.String> platforms;
 
+  /// For Exchange Bidding buyers only.
+  /// The list of publisher identifiers on which to filter; may be empty.
+  /// The filters represented by multiple publisher identifiers are ORed
+  /// together.
+  core.List<core.String> publisherIdentifiers;
+
   /// An open-ended realtime time range, defined by the aggregation start
   /// timestamp.
   RealtimeTimeRange realtimeTimeRange;
@@ -5081,6 +5063,7 @@ class FilterSet {
   /// Interpreted relative to Pacific time zone.
   RelativeDateRange relativeDateRange;
 
+  /// For Ad Exchange buyers only.
   /// The list of IDs of the seller (publisher) networks on which to filter;
   /// may be empty. The filters represented by multiple seller network IDs are
   /// ORed together (i.e. if non-empty, results must match any one of the
@@ -5117,9 +5100,6 @@ class FilterSet {
     if (_json.containsKey("environment")) {
       environment = _json["environment"];
     }
-    if (_json.containsKey("format")) {
-      format = _json["format"];
-    }
     if (_json.containsKey("formats")) {
       formats = (_json["formats"] as core.List).cast<core.String>();
     }
@@ -5128,6 +5108,10 @@ class FilterSet {
     }
     if (_json.containsKey("platforms")) {
       platforms = (_json["platforms"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("publisherIdentifiers")) {
+      publisherIdentifiers =
+          (_json["publisherIdentifiers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("realtimeTimeRange")) {
       realtimeTimeRange =
@@ -5161,9 +5145,6 @@ class FilterSet {
     if (environment != null) {
       _json["environment"] = environment;
     }
-    if (format != null) {
-      _json["format"] = format;
-    }
     if (formats != null) {
       _json["formats"] = formats;
     }
@@ -5172,6 +5153,9 @@ class FilterSet {
     }
     if (platforms != null) {
       _json["platforms"] = platforms;
+    }
+    if (publisherIdentifiers != null) {
+      _json["publisherIdentifiers"] = publisherIdentifiers;
     }
     if (realtimeTimeRange != null) {
       _json["realtimeTimeRange"] = (realtimeTimeRange).toJson();

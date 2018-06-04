@@ -653,15 +653,12 @@ class ManagedZonesResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [ManagedZonesDeleteResponse].
-  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ManagedZonesDeleteResponse> delete(
-      core.String project, core.String managedZone,
+  async.Future delete(core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -683,6 +680,8 @@ class ManagedZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
+    _downloadOptions = null;
+
     _url = commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
@@ -693,8 +692,7 @@ class ManagedZonesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ManagedZonesDeleteResponse.fromJson(data));
+    return _response.then((data) => null);
   }
 
   /// Fetch the representation of an existing ManagedZone.
@@ -819,7 +817,7 @@ class ManagedZonesResourceApi {
         .then((data) => new ManagedZonesListResponse.fromJson(data));
   }
 
-  /// Update an existing ManagedZone. This method supports patch semantics.
+  /// Apply a partial update to an existing ManagedZone.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1567,6 +1565,9 @@ class ManagedZone {
   /// "dns#managedZone".
   core.String kind;
 
+  /// User labels.
+  core.Map<core.String, core.String> labels;
+
   /// User assigned name for this resource. Must be unique within the project.
   /// The name must be 1-63 characters long, must begin with a letter, end with
   /// a letter or digit, and only contain lowercase letters, digits or dashes.
@@ -1603,6 +1604,9 @@ class ManagedZone {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1634,6 +1638,9 @@ class ManagedZone {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (name != null) {
       _json["name"] = name;
@@ -1765,27 +1772,6 @@ class ManagedZoneOperationsListResponse {
     if (operations != null) {
       _json["operations"] =
           operations.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-class ManagedZonesDeleteResponse {
-  ResponseHeader header;
-
-  ManagedZonesDeleteResponse();
-
-  ManagedZonesDeleteResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (header != null) {
-      _json["header"] = (header).toJson();
     }
     return _json;
   }
@@ -2072,6 +2058,9 @@ class Project {
 
 /// Limits associated with a Project.
 class Quota {
+  /// Whether a black hole zone should suppress system zones for this project.
+  core.bool blackHoleHidesSystemZones;
+
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int dnsKeysPerManagedZone;
 
@@ -2106,6 +2095,9 @@ class Quota {
   Quota();
 
   Quota.fromJson(core.Map _json) {
+    if (_json.containsKey("blackHoleHidesSystemZones")) {
+      blackHoleHidesSystemZones = _json["blackHoleHidesSystemZones"];
+    }
     if (_json.containsKey("dnsKeysPerManagedZone")) {
       dnsKeysPerManagedZone = _json["dnsKeysPerManagedZone"];
     }
@@ -2140,6 +2132,9 @@ class Quota {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (blackHoleHidesSystemZones != null) {
+      _json["blackHoleHidesSystemZones"] = blackHoleHidesSystemZones;
+    }
     if (dnsKeysPerManagedZone != null) {
       _json["dnsKeysPerManagedZone"] = dnsKeysPerManagedZone;
     }

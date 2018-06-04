@@ -149,27 +149,27 @@ checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-buildUnnamed2646() {
+buildUnnamed2641() {
   var o = new core.List<api.MobileFriendlyIssue>();
   o.add(buildMobileFriendlyIssue());
   o.add(buildMobileFriendlyIssue());
   return o;
 }
 
-checkUnnamed2646(core.List<api.MobileFriendlyIssue> o) {
+checkUnnamed2641(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileFriendlyIssue(o[0]);
   checkMobileFriendlyIssue(o[1]);
 }
 
-buildUnnamed2647() {
+buildUnnamed2642() {
   var o = new core.List<api.ResourceIssue>();
   o.add(buildResourceIssue());
   o.add(buildResourceIssue());
   return o;
 }
 
-checkUnnamed2647(core.List<api.ResourceIssue> o) {
+checkUnnamed2642(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceIssue(o[0]);
   checkResourceIssue(o[1]);
@@ -181,8 +181,8 @@ buildRunMobileFriendlyTestResponse() {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     o.mobileFriendliness = "foo";
-    o.mobileFriendlyIssues = buildUnnamed2646();
-    o.resourceIssues = buildUnnamed2647();
+    o.mobileFriendlyIssues = buildUnnamed2641();
+    o.resourceIssues = buildUnnamed2642();
     o.screenshot = buildImage();
     o.testStatus = buildTestStatus();
   }
@@ -194,8 +194,8 @@ checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     unittest.expect(o.mobileFriendliness, unittest.equals('foo'));
-    checkUnnamed2646(o.mobileFriendlyIssues);
-    checkUnnamed2647(o.resourceIssues);
+    checkUnnamed2641(o.mobileFriendlyIssues);
+    checkUnnamed2642(o.resourceIssues);
     checkImage(o.screenshot);
     checkTestStatus(o.testStatus);
   }

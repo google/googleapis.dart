@@ -45,6 +45,8 @@ class ProjectsResourceApi {
 class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAcceleratorTypesResourceApi get acceleratorTypes =>
+      new ProjectsLocationsAcceleratorTypesResourceApi(_requester);
   ProjectsLocationsNodesResourceApi get nodes =>
       new ProjectsLocationsNodesResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
@@ -55,7 +57,7 @@ class ProjectsLocationsResourceApi {
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get information about a location.
+  /// Gets information about a location.
   ///
   /// Request parameters:
   ///
@@ -105,11 +107,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -122,9 +124,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -136,14 +138,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -160,6 +162,129 @@ class ProjectsLocationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsAcceleratorTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAcceleratorTypesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets AcceleratorType.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/acceleratorTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AcceleratorType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AcceleratorType> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AcceleratorType.fromJson(data));
+  }
+
+  /// Lists accelerator types supported by this API.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [filter] - List filter.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [orderBy] - Sort results.
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAcceleratorTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAcceleratorTypesResponse> list(core.String parent,
+      {core.String filter,
+      core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/acceleratorTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListAcceleratorTypesResponse.fromJson(data));
   }
 }
 
@@ -922,6 +1047,38 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   }
 }
 
+/// A accelerator type that a Node can be configured with.
+class AcceleratorType {
+  /// The resource name.
+  core.String name;
+
+  /// the accelerator type.
+  core.String type;
+
+  AcceleratorType();
+
+  AcceleratorType.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -939,6 +1096,41 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response for ListAcceleratorTypes.
+class ListAcceleratorTypesResponse {
+  /// The listed nodes.
+  core.List<AcceleratorType> acceleratorTypes;
+
+  /// The next page token or empty if none.
+  core.String nextPageToken;
+
+  ListAcceleratorTypesResponse();
+
+  ListAcceleratorTypesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorTypes")) {
+      acceleratorTypes = (_json["acceleratorTypes"] as core.List)
+          .map<AcceleratorType>((value) => new AcceleratorType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (acceleratorTypes != null) {
+      _json["acceleratorTypes"] =
+          acceleratorTypes.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
     return _json;
   }
 }
@@ -1084,6 +1276,10 @@ class ListTensorFlowVersionsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  /// For example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   ///
   ///     {"cloud.googleapis.com/region": "us-east1"}
@@ -1106,6 +1302,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -1124,6 +1323,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -1238,6 +1440,7 @@ class Node {
   /// DEPRECATED! Use network_endpoints instead.
   /// The network port for the TPU Node as visible to Compute Engine instances.
   core.String port;
+  SchedulingConfig schedulingConfig;
 
   /// Output only.
   /// The service account used to run the tensor flow services within the node.
@@ -1260,6 +1463,8 @@ class Node {
   /// found in the `help_description` field.
   /// - "STOPPED" : 7 - Reserved. Was SUSPENDED.
   /// TPU node is stopped.
+  /// - "STOPPING" : TPU node is currently stopping.
+  /// - "STARTING" : TPU node is currently starting.
   core.String state;
 
   /// The version of Tensorflow running in the Node.
@@ -1306,6 +1511,10 @@ class Node {
     }
     if (_json.containsKey("port")) {
       port = _json["port"];
+    }
+    if (_json.containsKey("schedulingConfig")) {
+      schedulingConfig =
+          new SchedulingConfig.fromJson(_json["schedulingConfig"]);
     }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
@@ -1357,6 +1566,9 @@ class Node {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    if (schedulingConfig != null) {
+      _json["schedulingConfig"] = (schedulingConfig).toJson();
     }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
@@ -1567,6 +1779,27 @@ class ResetNodeRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+class SchedulingConfig {
+  core.bool preemptible;
+
+  SchedulingConfig();
+
+  SchedulingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("preemptible")) {
+      preemptible = _json["preemptible"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (preemptible != null) {
+      _json["preemptible"] = preemptible;
+    }
     return _json;
   }
 }

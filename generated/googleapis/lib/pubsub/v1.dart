@@ -56,22 +56,23 @@ class ProjectsSnapshotsResourceApi {
   ProjectsSnapshotsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a snapshot from the requested subscription.
+  /// Creates a snapshot from the requested subscription.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   /// If the snapshot already exists, returns `ALREADY_EXISTS`.
   /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
   /// If the backlog in the subscription is too old -- and the resulting
   /// snapshot
   /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is
   /// returned.
-  /// See also the `Snapshot.expire_time` field.
-  ///
-  /// If the name is not provided in the request, the server will assign a
-  /// random
+  /// See also the `Snapshot.expire_time` field. If the name is not provided in
+  /// the request, the server will assign a random
   /// name for this snapshot on the same project as the subscription, conforming
-  /// to the
-  /// [resource name
-  /// format](https://cloud.google.com/pubsub/docs/overview#names). The
-  /// generated
+  /// to the [resource name
+  /// format](https://cloud.google.com/pubsub/docs/overview#names).
+  /// The generated
   /// name is populated in the returned Snapshot object. Note that for REST API
   /// requests, you must specify a name in the request.
   ///
@@ -127,7 +128,12 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Snapshot.fromJson(data));
   }
 
-  /// Removes an existing snapshot. All messages retained in the snapshot
+  /// Removes an existing snapshot. <br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
+  /// When the snapshot is deleted, all messages retained in the snapshot
   /// are immediately dropped. After a snapshot is deleted, a new one may be
   /// created with the same name, but the new one has no association with the
   /// old
@@ -175,7 +181,11 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the configuration details of a snapshot.
+  /// Gets the configuration details of a snapshot.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   ///
   /// Request parameters:
   ///
@@ -269,7 +279,11 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Lists the existing snapshots.
+  /// Lists the existing snapshots.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   ///
   /// Request parameters:
   ///
@@ -329,8 +343,12 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
   }
 
-  /// Updates an existing snapshot. Note that certain properties of a
-  /// snapshot are not modifiable.
+  /// Updates an existing snapshot.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
+  /// Note that certain properties of a snapshot are not modifiable.
   ///
   /// [request] - The metadata request object.
   ///
@@ -561,7 +579,8 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Creates a subscription to a given topic.
+  /// Creates a subscription to a given topic. See the
+  /// <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
   /// If the subscription already exists, returns `ALREADY_EXISTS`.
   /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
   ///
@@ -779,12 +798,12 @@ class ProjectsSubscriptionsResourceApi {
   /// Format is `projects/{project}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of subscriptions to return.
-  ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
   /// indicates that
   /// this is a continuation of a prior `ListSubscriptions` call, and that the
   /// system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -797,7 +816,7 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -808,11 +827,11 @@ class ProjectsSubscriptionsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1059,7 +1078,11 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
-  /// whichever is provided in the request.
+  /// whichever is provided in the request.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1237,7 +1260,8 @@ class ProjectsTopicsResourceApi {
 
   ProjectsTopicsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates the given topic with the given name.
+  /// Creates the given topic with the given name. See the
+  /// <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1668,7 +1692,11 @@ class ProjectsTopicsSnapshotsResourceApi {
   ProjectsTopicsSnapshotsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the names of the snapshots on this topic.
+  /// Lists the names of the snapshots on this topic.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   ///
   /// Request parameters:
   ///
@@ -1834,7 +1862,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1877,7 +1905,11 @@ class Binding {
   }
 }
 
-/// Request for the `CreateSnapshot` method.
+/// Request for the `CreateSnapshot` method.<br><br>
+/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// changed in
+/// backward-incompatible ways and is not recommended for production use.
+/// It is not subject to any SLA or deprecation policy.
 class CreateSnapshotRequest {
   /// The subscription whose backlog the snapshot retains.
   /// Specifically, the created snapshot is guaranteed to retain:
@@ -1929,7 +1961,10 @@ class Empty {
   }
 }
 
-/// Response for the `ListSnapshots` method.
+/// Response for the `ListSnapshots` method.<br><br>
+/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// changed in backward-incompatible ways and is not recommended for production
+/// use. It is not subject to any SLA or deprecation policy.
 class ListSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshot that match the
   /// request; this value should be passed in a new `ListSnapshotsRequest`.
@@ -2001,7 +2036,10 @@ class ListSubscriptionsResponse {
   }
 }
 
-/// Response for the `ListTopicSnapshots` method.
+/// Response for the `ListTopicSnapshots` method.<br><br>
+/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// changed in backward-incompatible ways and is not recommended for production
+/// use. It is not subject to any SLA or deprecation policy.
 class ListTopicSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshots that match
   /// the request; this value should be passed in a new
@@ -2174,14 +2212,14 @@ class ModifyPushConfigRequest {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -2191,7 +2229,7 @@ class ModifyPushConfigRequest {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -2200,6 +2238,20 @@ class ModifyPushConfigRequest {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -2532,7 +2584,10 @@ class ReceivedMessage {
   }
 }
 
-/// Request for the `Seek` method.
+/// Request for the `Seek` method.<br><br>
+/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// changed in backward-incompatible ways and is not recommended for production
+/// use. It is not subject to any SLA or deprecation policy.
 class SeekRequest {
   /// The snapshot to seek to. The snapshot's topic must be the same as that of
   /// the provided subscription.
@@ -2614,7 +2669,10 @@ class SetIamPolicyRequest {
   }
 }
 
-/// A snapshot resource.
+/// A snapshot resource.<br><br>
+/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// changed in backward-incompatible ways and is not recommended for production
+/// use. It is not subject to any SLA or deprecation policy.
 class Snapshot {
   /// The snapshot is guaranteed to exist up until this time.
   /// A newly-created snapshot expires no later than 7 days from the time of its
@@ -2700,7 +2758,11 @@ class Subscription {
   /// `Seek`
   /// can be done. Defaults to 7 days. Cannot be more than 7 days or less than
   /// 10
-  /// minutes.
+  /// minutes.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   core.String messageRetentionDuration;
 
   /// The name of the subscription. It must have the format
@@ -2720,7 +2782,11 @@ class Subscription {
   /// messages are not expunged from the subscription's backlog, even if they
   /// are
   /// acknowledged, until they fall out of the `message_retention_duration`
-  /// window.
+  /// window.<br><br>
+  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
   core.bool retainAckedMessages;
 
   /// The name of the topic from which this subscription is receiving messages.
@@ -2855,9 +2921,12 @@ class Topic {
   }
 }
 
-/// Request for the UpdateSnapshot method.
+/// Request for the UpdateSnapshot method.<br><br>
+/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// changed in backward-incompatible ways and is not recommended for production
+/// use. It is not subject to any SLA or deprecation policy.
 class UpdateSnapshotRequest {
-  /// The updated snpashot object.
+  /// The updated snapshot object.
   Snapshot snapshot;
 
   /// Indicates which fields in the provided snapshot to update.

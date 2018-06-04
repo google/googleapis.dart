@@ -223,6 +223,7 @@ class PlatformSummary {
 }
 
 /// Response message for GetSiteSummary.
+/// Do not confuse with same message in google.chrome.abusiveexperiencereport.v1
 class SiteSummaryResponse {
   /// Summary for the desktop review of the site.
   PlatformSummary desktopSummary;

@@ -59,13 +59,13 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
-  /// enterprise.
+  /// [projectId] - The ID of the Google Cloud Platform project which will own
+  /// the enterprise.
   ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
-  /// [projectId] - The ID of the Google Cloud Platform project which will own
-  /// the enterprise.
+  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
+  /// enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -78,9 +78,9 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
-      {core.String signupUrlName,
+      {core.String projectId,
       core.String enterpriseToken,
-      core.String projectId,
+      core.String signupUrlName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -92,14 +92,14 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (signupUrlName != null) {
-      _queryParams["signupUrlName"] = [signupUrlName];
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if (enterpriseToken != null) {
       _queryParams["enterpriseToken"] = [enterpriseToken];
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+    if (signupUrlName != null) {
+      _queryParams["signupUrlName"] = [signupUrlName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -435,11 +435,11 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageSize] - The requested page size. The actual page size may be fixed to
-  /// a min or max value.
-  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
+  ///
+  /// [pageSize] - The requested page size. The actual page size may be fixed to
+  /// a min or max value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -452,7 +452,7 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -463,11 +463,11 @@ class EnterprisesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -708,11 +708,11 @@ class EnterprisesDevicesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+/operations$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -725,9 +725,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -739,14 +739,14 @@ class EnterprisesDevicesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -972,11 +972,11 @@ class EnterprisesPoliciesResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageSize] - The requested page size. The actual page size may be fixed to
-  /// a min or max value.
-  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
+  ///
+  /// [pageSize] - The requested page size. The actual page size may be fixed to
+  /// a min or max value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -989,7 +989,7 @@ class EnterprisesPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPoliciesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1000,11 +1000,11 @@ class EnterprisesPoliciesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1315,6 +1315,50 @@ class Application {
   }
 }
 
+/// An app-related event.
+class ApplicationEvent {
+  /// The creation time of the event.
+  core.String createTime;
+
+  /// App event type.
+  /// Possible string values are:
+  /// - "APPLICATION_EVENT_TYPE_UNSPECIFIED" : This value is disallowed.
+  /// - "INSTALLED" : The app was installed.
+  /// - "CHANGED" : The app was changed, for example, a component was enabled or
+  /// disabled.
+  /// - "DATA_CLEARED" : The app data was cleared.
+  /// - "REMOVED" : The app was removed.
+  /// - "REPLACED" : A new version of the app has been installed, replacing the
+  /// old version.
+  /// - "RESTARTED" : The app was restarted.
+  /// - "PINNED" : The app was pinned to the foreground.
+  /// - "UNPINNED" : The app was unpinned.
+  core.String eventType;
+
+  ApplicationEvent();
+
+  ApplicationEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("eventType")) {
+      eventType = _json["eventType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (eventType != null) {
+      _json["eventType"] = eventType;
+    }
+    return _json;
+  }
+}
+
 /// A permission required by the app.
 class ApplicationPermission {
   /// A longer description of the permission, providing more detail on what it
@@ -1361,7 +1405,8 @@ class ApplicationPermission {
 class ApplicationPolicy {
   /// The default policy for all permissions requested by the app. If specified,
   /// this overrides the policy-level default_permission_policy which applies to
-  /// all apps.
+  /// all apps. It does not override the permission_grants which applies to all
+  /// apps.
   /// Possible string values are:
   /// - "PERMISSION_POLICY_UNSPECIFIED" : Policy not specified. If no policy is
   /// specified for a permission at any level, then the PROMPT behavior is used
@@ -1373,6 +1418,9 @@ class ApplicationPolicy {
 
   /// The scopes delegated to the app from Android Device Policy.
   core.List<core.String> delegatedScopes;
+
+  /// Whether the app should be disabled, but app data is preserved.
+  core.bool disabled;
 
   /// The type of installation to perform.
   /// Possible string values are:
@@ -1416,7 +1464,8 @@ class ApplicationPolicy {
   core.String packageName;
 
   /// Explicit permission grants or denials for the app. These values override
-  /// the default_permission_policy.
+  /// the default_permission_policy and permission_grants which apply to all
+  /// apps.
   core.List<PermissionGrant> permissionGrants;
 
   ApplicationPolicy();
@@ -1428,6 +1477,9 @@ class ApplicationPolicy {
     if (_json.containsKey("delegatedScopes")) {
       delegatedScopes =
           (_json["delegatedScopes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
     }
     if (_json.containsKey("installType")) {
       installType = _json["installType"];
@@ -1461,6 +1513,9 @@ class ApplicationPolicy {
     if (delegatedScopes != null) {
       _json["delegatedScopes"] = delegatedScopes;
     }
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
     if (installType != null) {
       _json["installType"] = installType;
     }
@@ -1484,6 +1539,181 @@ class ApplicationPolicy {
   }
 }
 
+/// Information reported about an installed app.
+class ApplicationReport {
+  /// The source of the package.
+  /// Possible string values are:
+  /// - "APPLICATION_SOURCE_UNSPECIFIED" : The app was sideloaded from an
+  /// unspecified source.
+  /// - "SYSTEM_APP_FACTORY_VERSION" : This is a system app from the device's
+  /// factory image.
+  /// - "SYSTEM_APP_UPDATED_VERSION" : This is an updated system app.
+  /// - "INSTALLED_FROM_PLAY_STORE" : The app was installed from the Google Play
+  /// Store.
+  core.String applicationSource;
+
+  /// The display name of the app.
+  core.String displayName;
+
+  /// List of app events. The most recent 20 events are stored in the list.
+  core.List<ApplicationEvent> events;
+
+  /// The package name of the app that installed this app.
+  core.String installerPackageName;
+
+  /// Package name of the app.
+  core.String packageName;
+
+  /// The SHA-256 hash of the app's APK file, which can be used to verify the
+  /// app hasn't been modified. Each byte of the hash value is represented as a
+  /// two-digit hexadecimal number.
+  core.String packageSha256Hash;
+
+  /// The SHA-1 hash of each android.content.pm.Signature
+  /// (https://developer.android.com/reference/android/content/pm/Signature.html)
+  /// associated with the app package. Each byte of each hash value is
+  /// represented as a two-digit hexadecimal number.
+  core.List<core.String> signingKeyCertFingerprints;
+
+  /// Application state.
+  /// Possible string values are:
+  /// - "INSTALLED" : App is installed on the device
+  /// - "REMOVED" : App was removed from the device
+  core.String state;
+
+  /// The app version code, which can be used to determine whether one version
+  /// is more recent than another.
+  core.int versionCode;
+
+  /// The app version as displayed to the user.
+  core.String versionName;
+
+  ApplicationReport();
+
+  ApplicationReport.fromJson(core.Map _json) {
+    if (_json.containsKey("applicationSource")) {
+      applicationSource = _json["applicationSource"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("events")) {
+      events = (_json["events"] as core.List)
+          .map<ApplicationEvent>(
+              (value) => new ApplicationEvent.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("installerPackageName")) {
+      installerPackageName = _json["installerPackageName"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+    if (_json.containsKey("packageSha256Hash")) {
+      packageSha256Hash = _json["packageSha256Hash"];
+    }
+    if (_json.containsKey("signingKeyCertFingerprints")) {
+      signingKeyCertFingerprints =
+          (_json["signingKeyCertFingerprints"] as core.List)
+              .cast<core.String>();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+    if (_json.containsKey("versionName")) {
+      versionName = _json["versionName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (applicationSource != null) {
+      _json["applicationSource"] = applicationSource;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (events != null) {
+      _json["events"] = events.map((value) => (value).toJson()).toList();
+    }
+    if (installerPackageName != null) {
+      _json["installerPackageName"] = installerPackageName;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    if (packageSha256Hash != null) {
+      _json["packageSha256Hash"] = packageSha256Hash;
+    }
+    if (signingKeyCertFingerprints != null) {
+      _json["signingKeyCertFingerprints"] = signingKeyCertFingerprints;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    if (versionName != null) {
+      _json["versionName"] = versionName;
+    }
+    return _json;
+  }
+}
+
+/// A rule for automatically choosing a private key and certificate to
+/// authenticate the device to a server.
+class ChoosePrivateKeyRule {
+  /// The package names for which outgoing requests are subject to this rule. If
+  /// no package names are specified, then the rule applies to all packages. For
+  /// each package name listed, the rule applies to that package and all other
+  /// packages that shared the same Android UID. The SHA256 hash of the signing
+  /// key signatures of each package_name will be verified against those
+  /// provided by Play
+  core.List<core.String> packageNames;
+
+  /// The alias of the private key to be used.
+  core.String privateKeyAlias;
+
+  /// The URL pattern to match against the URL of the outgoing request. The
+  /// pattern may contain asterisk (*) wildcards. Any URL is matched if
+  /// unspecified.
+  core.String urlPattern;
+
+  ChoosePrivateKeyRule();
+
+  ChoosePrivateKeyRule.fromJson(core.Map _json) {
+    if (_json.containsKey("packageNames")) {
+      packageNames = (_json["packageNames"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("privateKeyAlias")) {
+      privateKeyAlias = _json["privateKeyAlias"];
+    }
+    if (_json.containsKey("urlPattern")) {
+      urlPattern = _json["urlPattern"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (packageNames != null) {
+      _json["packageNames"] = packageNames;
+    }
+    if (privateKeyAlias != null) {
+      _json["privateKeyAlias"] = privateKeyAlias;
+    }
+    if (urlPattern != null) {
+      _json["urlPattern"] = urlPattern;
+    }
+    return _json;
+  }
+}
+
 /// A command.
 class Command {
   /// The timestamp at which the command was created. The timestamp is
@@ -1494,6 +1724,19 @@ class Command {
   /// not executed by the device during this time. The default duration if
   /// unspecified is ten minutes. There is no maximum duration.
   core.String duration;
+
+  /// If the command failed, an error code explaining the failure. This is not
+  /// set when the command is cancelled by the caller.
+  /// Possible string values are:
+  /// - "COMMAND_ERROR_CODE_UNSPECIFIED" : There was no error.
+  /// - "UNKNOWN" : An unknown error occurred.
+  /// - "API_LEVEL" : The API level of the device does not support this command.
+  /// - "MANAGEMENT_MODE" : The management mode (profile owner, device owner,
+  /// etc.) does not support the command.
+  /// - "INVALID_VALUE" : The command has an invalid parameter value.
+  /// - "UNSUPPORTED" : The device doesn't support the command. Updating Android
+  /// Device Policy to the latest version may resolve the issue.
+  core.String errorCode;
 
   /// For commands of type RESET_PASSWORD, optionally specifies the new
   /// password.
@@ -1510,6 +1753,11 @@ class Command {
   /// - "REBOOT" : Reboot the device. Only supported on API level 24+.
   core.String type;
 
+  /// The resource name of the user that owns the device in the form
+  /// enterprises/{enterpriseId}/users/{userId}. This is automatically generated
+  /// by the server based on the device the command is sent to.
+  core.String userName;
+
   Command();
 
   Command.fromJson(core.Map _json) {
@@ -1518,6 +1766,9 @@ class Command {
     }
     if (_json.containsKey("duration")) {
       duration = _json["duration"];
+    }
+    if (_json.containsKey("errorCode")) {
+      errorCode = _json["errorCode"];
     }
     if (_json.containsKey("newPassword")) {
       newPassword = _json["newPassword"];
@@ -1528,6 +1779,9 @@ class Command {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("userName")) {
+      userName = _json["userName"];
     }
   }
 
@@ -1540,6 +1794,9 @@ class Command {
     if (duration != null) {
       _json["duration"] = duration;
     }
+    if (errorCode != null) {
+      _json["errorCode"] = errorCode;
+    }
     if (newPassword != null) {
       _json["newPassword"] = newPassword;
     }
@@ -1548,6 +1805,9 @@ class Command {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (userName != null) {
+      _json["userName"] = userName;
     }
     return _json;
   }
@@ -1612,6 +1872,10 @@ class ComplianceRule {
 class Device {
   /// The API level of the Android platform version running on the device.
   core.int apiLevel;
+
+  /// Reports for apps installed on the device. This information is only
+  /// available when application_reports_enabled is true in the device's policy.
+  core.List<ApplicationReport> applicationReports;
 
   /// The name of the policy currently applied to the device.
   core.String appliedPolicyName;
@@ -1742,6 +2006,12 @@ class Device {
     if (_json.containsKey("apiLevel")) {
       apiLevel = _json["apiLevel"];
     }
+    if (_json.containsKey("applicationReports")) {
+      applicationReports = (_json["applicationReports"] as core.List)
+          .map<ApplicationReport>(
+              (value) => new ApplicationReport.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("appliedPolicyName")) {
       appliedPolicyName = _json["appliedPolicyName"];
     }
@@ -1840,6 +2110,10 @@ class Device {
         new core.Map<core.String, core.Object>();
     if (apiLevel != null) {
       _json["apiLevel"] = apiLevel;
+    }
+    if (applicationReports != null) {
+      _json["applicationReports"] =
+          applicationReports.map((value) => (value).toJson()).toList();
     }
     if (appliedPolicyName != null) {
       _json["appliedPolicyName"] = appliedPolicyName;
@@ -2220,9 +2494,7 @@ class EnrollmentToken {
 
 /// The configuration applied to an enterprise.
 class Enterprise {
-  /// Whether permissions for apps installed via policy are automatically
-  /// approved. If enabled, you must display an app's permissions to the
-  /// enterprise admin before setting the app to be installed in a policy.
+  /// Deprecated and unused.
   core.bool appAutoApprovalEnabled;
 
   /// The types of Google Pub/Sub notifications enabled for the enterprise.
@@ -2251,6 +2523,10 @@ class Enterprise {
   /// notifications are enabled.
   core.String pubsubTopic;
 
+  /// Terms and conditions that must be accepted when provisioning a device for
+  /// this enterprise. A page of terms is generated for each value in this list.
+  core.List<TermsAndConditions> termsAndConditions;
+
   Enterprise();
 
   Enterprise.fromJson(core.Map _json) {
@@ -2275,6 +2551,12 @@ class Enterprise {
     }
     if (_json.containsKey("pubsubTopic")) {
       pubsubTopic = _json["pubsubTopic"];
+    }
+    if (_json.containsKey("termsAndConditions")) {
+      termsAndConditions = (_json["termsAndConditions"] as core.List)
+          .map<TermsAndConditions>(
+              (value) => new TermsAndConditions.fromJson(value))
+          .toList();
     }
   }
 
@@ -2301,6 +2583,10 @@ class Enterprise {
     }
     if (pubsubTopic != null) {
       _json["pubsubTopic"] = pubsubTopic;
+    }
+    if (termsAndConditions != null) {
+      _json["termsAndConditions"] =
+          termsAndConditions.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3029,8 +3315,8 @@ class NonComplianceDetail {
   /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
   /// - "API_LEVEL" : The setting is not supported in the API level of the
   /// Android version running on the device.
-  /// - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.)
-  /// doesn't support the setting.
+  /// - "MANAGEMENT_MODE" : The management mode (profile owner, device owner,
+  /// etc.) doesn't support the setting.
   /// - "USER_ACTION" : The user has not taken required action to comply with
   /// the setting.
   /// - "INVALID_VALUE" : The setting has an invalid value.
@@ -3115,8 +3401,8 @@ class NonComplianceDetailCondition {
   /// - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
   /// - "API_LEVEL" : The setting is not supported in the API level of the
   /// Android version running on the device.
-  /// - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.)
-  /// doesn't support the setting.
+  /// - "MANAGEMENT_MODE" : The management mode (profile owner, device owner,
+  /// etc.) doesn't support the setting.
   /// - "USER_ACTION" : The user has not taken required action to comply with
   /// the setting.
   /// - "INVALID_VALUE" : The setting has an invalid value.
@@ -3529,6 +3815,17 @@ class Policy {
   /// specified, then the device only uses the production track.
   core.List<core.String> androidDevicePolicyTracks;
 
+  /// The app auto update policy, which controls when automatic app updates can
+  /// be applied.
+  /// Possible string values are:
+  /// - "APP_AUTO_UPDATE_POLICY_UNSPECIFIED" : The auto-update policy is not
+  /// set. Equivalent to CHOICE_TO_THE_USER.
+  /// - "CHOICE_TO_THE_USER" : The user can control auto-updates.
+  /// - "NEVER" : Apps are never auto-updated.
+  /// - "WIFI_ONLY" : Apps are auto-updated over Wi-Fi only.
+  /// - "ALWAYS" : Apps are auto-updated at any time. Data charges may apply.
+  core.String appAutoUpdatePolicy;
+
   /// Policy applied to apps.
   core.List<ApplicationPolicy> applications;
 
@@ -3559,6 +3856,12 @@ class Policy {
   /// Whether configuring cell broadcast is disabled.
   core.bool cellBroadcastsConfigDisabled;
 
+  /// Rules for automatically choosing a private key and certificate to
+  /// authenticate the device to a server. The rules are ordered by increasing
+  /// precedence, so if an outgoing request matches more than one rule, the last
+  /// rule defines which private key to use.
+  core.List<ChoosePrivateKeyRule> choosePrivateKeyRules;
+
   /// Rules declaring which mitigating actions to take when a device is not
   /// compliant with its policy. When the conditions for multiple rules are
   /// satisfied, all of the mitigating actions for the rules are taken. There is
@@ -3586,6 +3889,19 @@ class Policy {
   /// - "GRANT" : Automatically grant a permission.
   /// - "DENY" : Automatically deny a permission.
   core.String defaultPermissionPolicy;
+
+  /// The device owner information to be shown on the lock screen.
+  UserFacingMessage deviceOwnerLockScreenInfo;
+
+  /// Whether encryption is enabled
+  /// Possible string values are:
+  /// - "ENCRYPTION_POLICY_UNSPECIFIED" : This value is ignored, i.e. no
+  /// encryption required
+  /// - "ENABLED_WITHOUT_PASSWORD" : Encryption required but no password
+  /// required to boot
+  /// - "ENABLED_WITH_PASSWORD" : Encryption required with password required to
+  /// boot
+  core.String encryptionPolicy;
 
   /// Whether app verification is force-enabled.
   core.bool ensureVerifyAppsEnabled;
@@ -3623,6 +3939,17 @@ class Policy {
   /// alphabetical order. It is recommended to also use status_bar_disabled to
   /// block access to device settings.
   core.bool kioskCustomLauncherEnabled;
+
+  /// The degree of location detection enabled. The user may change the value
+  /// unless the user is otherwise blocked from accessing device settings.
+  /// Possible string values are:
+  /// - "LOCATION_MODE_UNSPECIFIED" : The current device value is not modified.
+  /// - "HIGH_ACCURACY" : All location detection methods are enabled, including
+  /// GPS, networks, and other sensors.
+  /// - "SENSORS_ONLY" : Only GPS and other sensors are enabled.
+  /// - "BATTERY_SAVING" : Only the network location provider is enabled.
+  /// - "OFF" : Location detection is disabled.
+  core.String locationMode;
 
   /// A message displayed to the user in the device administators settings
   /// screen.
@@ -3682,6 +4009,11 @@ class Policy {
   /// Default intent handler activities.
   core.List<PersistentPreferredActivity> persistentPreferredActivities;
 
+  /// Allows showing UI on a device for a user to choose a private key alias if
+  /// there are no matching rules in ChoosePrivateKeyRules. For devices below
+  /// Android P, setting this may leave enterprise keys vulnerable.
+  core.bool privateKeySelectionEnabled;
+
   /// The network-independent global HTTP proxy. Typically proxies should be
   /// configured per-network in open_network_configuration. However for unusual
   /// configurations like general internal filtering a global HTTP proxy may be
@@ -3704,9 +4036,17 @@ class Policy {
   /// Whether changing the wallpaper is disabled.
   core.bool setWallpaperDisabled;
 
+  /// Whether location sharing is disabled.
+  core.bool shareLocationDisabled;
+
   /// A message displayed to the user in the settings screen wherever
   /// functionality has been disabled by the admin.
   UserFacingMessage shortSupportMessage;
+
+  /// Flag to skip hints on the first use. Enterprise admin can enable the
+  /// system recommendation for apps to skip their user tutorial and other
+  /// introductory hints on first start-up.
+  core.bool skipFirstUseHintsEnabled;
 
   /// Whether sending and receiving SMS messages is disabled.
   core.bool smsDisabled;
@@ -3741,6 +4081,9 @@ class Policy {
 
   /// Whether transferring files over USB is disabled.
   core.bool usbFileTransferDisabled;
+
+  /// Whether USB storage is enabled.
+  core.bool usbMassStorageEnabled;
 
   /// The version of the policy. This is a read-only field. The version is
   /// incremented each time the policy is updated.
@@ -3778,6 +4121,9 @@ class Policy {
       androidDevicePolicyTracks =
           (_json["androidDevicePolicyTracks"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("appAutoUpdatePolicy")) {
+      appAutoUpdatePolicy = _json["appAutoUpdatePolicy"];
+    }
     if (_json.containsKey("applications")) {
       applications = (_json["applications"] as core.List)
           .map<ApplicationPolicy>(
@@ -3806,6 +4152,12 @@ class Policy {
     if (_json.containsKey("cellBroadcastsConfigDisabled")) {
       cellBroadcastsConfigDisabled = _json["cellBroadcastsConfigDisabled"];
     }
+    if (_json.containsKey("choosePrivateKeyRules")) {
+      choosePrivateKeyRules = (_json["choosePrivateKeyRules"] as core.List)
+          .map<ChoosePrivateKeyRule>(
+              (value) => new ChoosePrivateKeyRule.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("complianceRules")) {
       complianceRules = (_json["complianceRules"] as core.List)
           .map<ComplianceRule>((value) => new ComplianceRule.fromJson(value))
@@ -3825,6 +4177,13 @@ class Policy {
     }
     if (_json.containsKey("defaultPermissionPolicy")) {
       defaultPermissionPolicy = _json["defaultPermissionPolicy"];
+    }
+    if (_json.containsKey("deviceOwnerLockScreenInfo")) {
+      deviceOwnerLockScreenInfo =
+          new UserFacingMessage.fromJson(_json["deviceOwnerLockScreenInfo"]);
+    }
+    if (_json.containsKey("encryptionPolicy")) {
+      encryptionPolicy = _json["encryptionPolicy"];
     }
     if (_json.containsKey("ensureVerifyAppsEnabled")) {
       ensureVerifyAppsEnabled = _json["ensureVerifyAppsEnabled"];
@@ -3854,6 +4213,9 @@ class Policy {
     }
     if (_json.containsKey("kioskCustomLauncherEnabled")) {
       kioskCustomLauncherEnabled = _json["kioskCustomLauncherEnabled"];
+    }
+    if (_json.containsKey("locationMode")) {
+      locationMode = _json["locationMode"];
     }
     if (_json.containsKey("longSupportMessage")) {
       longSupportMessage =
@@ -3905,6 +4267,9 @@ class Policy {
                   (value) => new PersistentPreferredActivity.fromJson(value))
               .toList();
     }
+    if (_json.containsKey("privateKeySelectionEnabled")) {
+      privateKeySelectionEnabled = _json["privateKeySelectionEnabled"];
+    }
     if (_json.containsKey("recommendedGlobalProxy")) {
       recommendedGlobalProxy =
           new ProxyInfo.fromJson(_json["recommendedGlobalProxy"]);
@@ -3924,9 +4289,15 @@ class Policy {
     if (_json.containsKey("setWallpaperDisabled")) {
       setWallpaperDisabled = _json["setWallpaperDisabled"];
     }
+    if (_json.containsKey("shareLocationDisabled")) {
+      shareLocationDisabled = _json["shareLocationDisabled"];
+    }
     if (_json.containsKey("shortSupportMessage")) {
       shortSupportMessage =
           new UserFacingMessage.fromJson(_json["shortSupportMessage"]);
+    }
+    if (_json.containsKey("skipFirstUseHintsEnabled")) {
+      skipFirstUseHintsEnabled = _json["skipFirstUseHintsEnabled"];
     }
     if (_json.containsKey("smsDisabled")) {
       smsDisabled = _json["smsDisabled"];
@@ -3956,6 +4327,9 @@ class Policy {
     }
     if (_json.containsKey("usbFileTransferDisabled")) {
       usbFileTransferDisabled = _json["usbFileTransferDisabled"];
+    }
+    if (_json.containsKey("usbMassStorageEnabled")) {
+      usbMassStorageEnabled = _json["usbMassStorageEnabled"];
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -3990,6 +4364,9 @@ class Policy {
     if (androidDevicePolicyTracks != null) {
       _json["androidDevicePolicyTracks"] = androidDevicePolicyTracks;
     }
+    if (appAutoUpdatePolicy != null) {
+      _json["appAutoUpdatePolicy"] = appAutoUpdatePolicy;
+    }
     if (applications != null) {
       _json["applications"] =
           applications.map((value) => (value).toJson()).toList();
@@ -4016,6 +4393,10 @@ class Policy {
     if (cellBroadcastsConfigDisabled != null) {
       _json["cellBroadcastsConfigDisabled"] = cellBroadcastsConfigDisabled;
     }
+    if (choosePrivateKeyRules != null) {
+      _json["choosePrivateKeyRules"] =
+          choosePrivateKeyRules.map((value) => (value).toJson()).toList();
+    }
     if (complianceRules != null) {
       _json["complianceRules"] =
           complianceRules.map((value) => (value).toJson()).toList();
@@ -4034,6 +4415,12 @@ class Policy {
     }
     if (defaultPermissionPolicy != null) {
       _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
+    }
+    if (deviceOwnerLockScreenInfo != null) {
+      _json["deviceOwnerLockScreenInfo"] = (deviceOwnerLockScreenInfo).toJson();
+    }
+    if (encryptionPolicy != null) {
+      _json["encryptionPolicy"] = encryptionPolicy;
     }
     if (ensureVerifyAppsEnabled != null) {
       _json["ensureVerifyAppsEnabled"] = ensureVerifyAppsEnabled;
@@ -4061,6 +4448,9 @@ class Policy {
     }
     if (kioskCustomLauncherEnabled != null) {
       _json["kioskCustomLauncherEnabled"] = kioskCustomLauncherEnabled;
+    }
+    if (locationMode != null) {
+      _json["locationMode"] = locationMode;
     }
     if (longSupportMessage != null) {
       _json["longSupportMessage"] = (longSupportMessage).toJson();
@@ -4106,6 +4496,9 @@ class Policy {
           .map((value) => (value).toJson())
           .toList();
     }
+    if (privateKeySelectionEnabled != null) {
+      _json["privateKeySelectionEnabled"] = privateKeySelectionEnabled;
+    }
     if (recommendedGlobalProxy != null) {
       _json["recommendedGlobalProxy"] = (recommendedGlobalProxy).toJson();
     }
@@ -4124,8 +4517,14 @@ class Policy {
     if (setWallpaperDisabled != null) {
       _json["setWallpaperDisabled"] = setWallpaperDisabled;
     }
+    if (shareLocationDisabled != null) {
+      _json["shareLocationDisabled"] = shareLocationDisabled;
+    }
     if (shortSupportMessage != null) {
       _json["shortSupportMessage"] = (shortSupportMessage).toJson();
+    }
+    if (skipFirstUseHintsEnabled != null) {
+      _json["skipFirstUseHintsEnabled"] = skipFirstUseHintsEnabled;
     }
     if (smsDisabled != null) {
       _json["smsDisabled"] = smsDisabled;
@@ -4153,6 +4552,9 @@ class Policy {
     }
     if (usbFileTransferDisabled != null) {
       _json["usbFileTransferDisabled"] = usbFileTransferDisabled;
+    }
+    if (usbMassStorageEnabled != null) {
+      _json["usbMassStorageEnabled"] = usbMassStorageEnabled;
     }
     if (version != null) {
       _json["version"] = version;
@@ -4493,6 +4895,9 @@ class Status {
 
 /// Settings controlling the behavior of status reports.
 class StatusReportingSettings {
+  /// Whether app reports are enabled.
+  core.bool applicationReportsEnabled;
+
   /// Whether device settings reporting is enabled.
   core.bool deviceSettingsEnabled;
 
@@ -4517,6 +4922,9 @@ class StatusReportingSettings {
   StatusReportingSettings();
 
   StatusReportingSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("applicationReportsEnabled")) {
+      applicationReportsEnabled = _json["applicationReportsEnabled"];
+    }
     if (_json.containsKey("deviceSettingsEnabled")) {
       deviceSettingsEnabled = _json["deviceSettingsEnabled"];
     }
@@ -4543,6 +4951,9 @@ class StatusReportingSettings {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (applicationReportsEnabled != null) {
+      _json["applicationReportsEnabled"] = applicationReportsEnabled;
+    }
     if (deviceSettingsEnabled != null) {
       _json["deviceSettingsEnabled"] = deviceSettingsEnabled;
     }
@@ -4621,6 +5032,39 @@ class SystemUpdate {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// A terms and conditions page to be accepted during provisioning.
+class TermsAndConditions {
+  /// A well-formatted HTML string. It will be parsed on the client with
+  /// android.text.Html#fromHtml.
+  UserFacingMessage content;
+
+  /// A short header which appears above the HTML content.
+  UserFacingMessage header;
+
+  TermsAndConditions();
+
+  TermsAndConditions.fromJson(core.Map _json) {
+    if (_json.containsKey("content")) {
+      content = new UserFacingMessage.fromJson(_json["content"]);
+    }
+    if (_json.containsKey("header")) {
+      header = new UserFacingMessage.fromJson(_json["header"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (content != null) {
+      _json["content"] = (content).toJson();
+    }
+    if (header != null) {
+      _json["header"] = (header).toJson();
     }
     return _json;
   }

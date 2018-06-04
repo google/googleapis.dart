@@ -479,6 +479,15 @@ class PosixAccount {
   /// The path to the home directory for this account.
   core.String homeDirectory;
 
+  /// The operating system type where this account applies.
+  /// Possible string values are:
+  /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : The operating system type
+  /// associated with the user account information is
+  /// unspecified.
+  /// - "LINUX" : Linux user account information.
+  /// - "WINDOWS" : Windows user account information.
+  core.String operatingSystemType;
+
   /// Only one POSIX account can be marked as primary.
   core.bool primary;
 
@@ -509,6 +518,9 @@ class PosixAccount {
     }
     if (_json.containsKey("homeDirectory")) {
       homeDirectory = _json["homeDirectory"];
+    }
+    if (_json.containsKey("operatingSystemType")) {
+      operatingSystemType = _json["operatingSystemType"];
     }
     if (_json.containsKey("primary")) {
       primary = _json["primary"];
@@ -541,6 +553,9 @@ class PosixAccount {
     }
     if (homeDirectory != null) {
       _json["homeDirectory"] = homeDirectory;
+    }
+    if (operatingSystemType != null) {
+      _json["operatingSystemType"] = operatingSystemType;
     }
     if (primary != null) {
       _json["primary"] = primary;

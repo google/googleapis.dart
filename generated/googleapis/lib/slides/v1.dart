@@ -137,8 +137,9 @@ class PresentationsResourceApi {
         .then((data) => new BatchUpdatePresentationResponse.fromJson(data));
   }
 
-  /// Creates a new presentation using the title given in the request. Other
-  /// fields in the request are ignored.
+  /// Creates a new presentation using the title given in the request. If a
+  /// presentationId is provided, uses it as the ID of the new presentation.
+  /// Otherwise, a new presentationId is generated.
   /// Returns the created presentation.
   ///
   /// [request] - The metadata request object.
@@ -742,10 +743,11 @@ class CreateImageRequest {
   ///
   /// The image is fetched once at insertion time and a copy is stored for
   /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
   /// format.
   ///
-  /// The provided URL can be at most 2 kB in length.
+  /// The provided URL can be at most 2 kB in length. The URL itself is saved
+  /// with the image, and exposed via the Image.source_url field.
   core.String url;
 
   CreateImageRequest();
@@ -1391,7 +1393,7 @@ class CreateShapeResponse {
 /// Creates an embedded Google Sheets chart.
 ///
 /// NOTE: Chart creation requires at least one of the spreadsheets.readonly,
-/// spreadsheets, drive.readonly, or drive OAuth scopes.
+/// spreadsheets, drive.readonly, drive.file, or drive OAuth scopes.
 class CreateSheetsChartRequest {
   /// The ID of the specific chart in the Google Sheets spreadsheet.
   core.int chartId;
@@ -2776,7 +2778,7 @@ class LayoutReference {
 }
 
 /// A PageElement kind representing a
-/// line, curved connector, or bent connector.
+/// non-connector line, straight connector, curved connector, or bent connector.
 class Line {
   /// The properties of the line.
   LineProperties lineProperties;
@@ -2811,6 +2813,9 @@ class Line {
   /// - "CURVED_CONNECTOR_5" : Curved connector 5 form. Corresponds to ECMA-376
   /// ST_ShapeType
   /// 'curvedConnector5'.
+  /// - "STRAIGHT_LINE" : Straight line. Corresponds to ECMA-376 ST_ShapeType
+  /// 'line'. This line
+  /// type is not a connector.
   core.String lineType;
 
   Line();
@@ -4385,6 +4390,9 @@ class RefreshSheetsChartRequest {
 }
 
 /// Replaces all shapes that match the given criteria with the provided image.
+///
+/// The images replacing the shapes are rectangular after being inserted into
+/// the presentation and do not take on the forms of the shapes.
 class ReplaceAllShapesWithImageRequest {
   /// If set, this request will replace all of the shapes that contain the
   /// given text.
@@ -4418,10 +4426,11 @@ class ReplaceAllShapesWithImageRequest {
   ///
   /// The image is fetched once at insertion time and a copy is stored for
   /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
   /// format.
   ///
-  /// The provided URL can be at most 2 kB in length.
+  /// The provided URL can be at most 2 kB in length. The URL itself is saved
+  /// with the image, and exposed via the Image.source_url field.
   core.String imageUrl;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
@@ -4683,6 +4692,69 @@ class ReplaceAllTextResponse {
   }
 }
 
+/// Replaces an existing image with a new image.
+///
+/// Replacing an image removes some image effects from the existing image.
+class ReplaceImageRequest {
+  /// The ID of the existing image that will be replaced.
+  core.String imageObjectId;
+
+  /// The replacement method.
+  /// Possible string values are:
+  /// - "IMAGE_REPLACE_METHOD_UNSPECIFIED" : Unspecified image replace method.
+  /// This value must not be used.
+  /// - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
+  /// of the original
+  /// shape and maintains the image's aspect ratio. The rendered size of the
+  /// image may be smaller than the size of the shape. This is the default
+  /// method when one is not specified.
+  /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
+  /// original shape.
+  /// The image may be cropped in order to fill the shape. The rendered size of
+  /// the image will be the same as that of the original shape.
+  core.String imageReplaceMethod;
+
+  /// The URL of the new image.
+  ///
+  /// The image is fetched once at insertion time and a copy is stored for
+  /// display inside the presentation. Images must be less than 50MB in size,
+  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
+  /// format.
+  ///
+  /// The provided URL can be at most 2 kB in length. The URL itself is saved
+  /// with the image, and exposed via the Image.source_url field.
+  core.String url;
+
+  ReplaceImageRequest();
+
+  ReplaceImageRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("imageObjectId")) {
+      imageObjectId = _json["imageObjectId"];
+    }
+    if (_json.containsKey("imageReplaceMethod")) {
+      imageReplaceMethod = _json["imageReplaceMethod"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageObjectId != null) {
+      _json["imageObjectId"] = imageObjectId;
+    }
+    if (imageReplaceMethod != null) {
+      _json["imageReplaceMethod"] = imageReplaceMethod;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
 /// A single kind of update to apply to a presentation.
 class Request {
   /// Creates an image.
@@ -4753,6 +4825,9 @@ class Request {
 
   /// Replaces all instances of specified text.
   ReplaceAllTextRequest replaceAllText;
+
+  /// Replaces an existing image with a new image.
+  ReplaceImageRequest replaceImage;
 
   /// Ungroups objects, such as groups.
   UngroupObjectsRequest ungroupObjects;
@@ -4889,6 +4964,9 @@ class Request {
     if (_json.containsKey("replaceAllText")) {
       replaceAllText =
           new ReplaceAllTextRequest.fromJson(_json["replaceAllText"]);
+    }
+    if (_json.containsKey("replaceImage")) {
+      replaceImage = new ReplaceImageRequest.fromJson(_json["replaceImage"]);
     }
     if (_json.containsKey("ungroupObjects")) {
       ungroupObjects =
@@ -5031,6 +5109,9 @@ class Request {
     }
     if (replaceAllText != null) {
       _json["replaceAllText"] = (replaceAllText).toJson();
+    }
+    if (replaceImage != null) {
+      _json["replaceImage"] = (replaceImage).toJson();
     }
     if (ungroupObjects != null) {
       _json["ungroupObjects"] = (ungroupObjects).toJson();
@@ -6033,10 +6114,12 @@ class Size {
 /// The properties of Page that are only
 /// relevant for pages with page_type SLIDE.
 class SlideProperties {
-  /// The object ID of the layout that this slide is based on.
+  /// The object ID of the layout that this slide is based on. This property is
+  /// read-only.
   core.String layoutObjectId;
 
-  /// The object ID of the master that this slide is based on.
+  /// The object ID of the master that this slide is based on. This property is
+  /// read-only.
   core.String masterObjectId;
 
   /// The notes page that this slide is associated with. It defines the visual
@@ -6048,7 +6131,7 @@ class SlideProperties {
   /// notes for this slide. The ID of this shape is identified by the
   /// speakerNotesObjectId field.
   /// The notes page is read-only except for the text content and styles of the
-  /// speaker notes shape.
+  /// speaker notes shape. This property is read-only.
   Page notesPage;
 
   SlideProperties();
@@ -6137,7 +6220,7 @@ class StretchedPictureFill {
   ///
   /// The picture is fetched once at insertion time and a copy is stored for
   /// display inside the presentation. Pictures must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
   /// format.
   ///
   /// The provided URL can be at most 2 kB in length.
@@ -8199,23 +8282,70 @@ class Video {
 
 /// The properties of the Video.
 class VideoProperties {
+  /// Whether to enable video autoplay when the page is displayed in present
+  /// mode. Defaults to false.
+  core.bool autoPlay;
+
+  /// The time at which to end playback, measured in seconds from the beginning
+  /// of the video.
+  /// If set, the end time should be after the start time.
+  /// If not set or if you set this to a value that exceeds the video's length,
+  /// the video will be played until its end.
+  core.int end;
+
+  /// Whether to mute the audio during video playback. Defaults to false.
+  core.bool mute;
+
   /// The outline of the video. The default outline matches the defaults for new
   /// videos created in the Slides editor.
   Outline outline;
 
+  /// The time at which to start playback, measured in seconds from the
+  /// beginning
+  /// of the video.
+  /// If set, the start time should be before the end time.
+  /// If you set this to a value that exceeds the video's length in seconds, the
+  /// video will be played from the last second.
+  /// If not set, the video will be played from the beginning.
+  core.int start;
+
   VideoProperties();
 
   VideoProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("autoPlay")) {
+      autoPlay = _json["autoPlay"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("mute")) {
+      mute = _json["mute"];
+    }
     if (_json.containsKey("outline")) {
       outline = new Outline.fromJson(_json["outline"]);
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoPlay != null) {
+      _json["autoPlay"] = autoPlay;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (mute != null) {
+      _json["mute"] = mute;
+    }
     if (outline != null) {
       _json["outline"] = (outline).toJson();
+    }
+    if (start != null) {
+      _json["start"] = start;
     }
     return _json;
   }

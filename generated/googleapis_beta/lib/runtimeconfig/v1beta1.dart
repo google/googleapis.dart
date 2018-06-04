@@ -816,6 +816,11 @@ class ProjectsConfigsVariablesResourceApi {
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
   /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
   ///
+  /// [filter] - Filters variables by matching the specified filter. For
+  /// example:
+  ///
+  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+  ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken`
   /// returned by a previous list request to get the next page of results.
@@ -830,11 +835,6 @@ class ProjectsConfigsVariablesResourceApi {
   /// are fewer
   /// elements than the specified number, returns all elements.
   ///
-  /// [filter] - Filters variables by matching the specified filter. For
-  /// example:
-  ///
-  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -846,10 +846,10 @@ class ProjectsConfigsVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.bool returnValues,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -861,6 +861,9 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -869,9 +872,6 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1378,7 +1378,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1719,14 +1719,14 @@ class Operation {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -1736,7 +1736,7 @@ class Operation {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -1745,6 +1745,20 @@ class Operation {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).

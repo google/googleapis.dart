@@ -25,17 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
@@ -110,6 +99,17 @@
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -161,7 +161,7 @@
             }
         }
     },
-    "revision": "20180129",
+    "revision": "20180516",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "schemas": {
         "ViolatingSitesResponse": {
@@ -179,16 +179,24 @@
             "type": "object"
         },
         "SiteSummaryResponse": {
-            "description": "Response message for GetSiteSummary.",
+            "description": "Response message for GetSiteSummary.\nDo not confuse with same message in google.ads.experiencereport.v1",
             "id": "SiteSummaryResponse",
             "properties": {
-                "reviewedSite": {
-                    "description": "The name of the site reviewed.",
+                "underReview": {
+                    "description": "Whether the site is currently under review.",
+                    "type": "boolean"
+                },
+                "reportUrl": {
+                    "description": "A link that leads to a full abusive experience report.",
                     "type": "string"
                 },
                 "lastChangeTime": {
                     "description": "The last time that the site changed status.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "reviewedSite": {
+                    "description": "The name of the site reviewed.",
                     "type": "string"
                 },
                 "abusiveStatus": {
@@ -227,20 +235,12 @@
                         "Ad filtering is pending."
                     ],
                     "type": "string"
-                },
-                "underReview": {
-                    "description": "Whether the site is currently under review.",
-                    "type": "boolean"
-                },
-                "reportUrl": {
-                    "description": "A link that leads to a full abusive experience report.",
-                    "type": "string"
                 }
             },
             "type": "object"
         }
     },
     "servicePath": "",
-    "title": "Google Abusive Experience Report API",
+    "title": "Abusive Experience Report API",
     "version": "v1"
 }

@@ -888,6 +888,7 @@ class ListUpdateRequest {
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
+  /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   core.String threatType;
 
   ListUpdateRequest();
@@ -1019,6 +1020,7 @@ class ListUpdateResponse {
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
+  /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   core.String threatType;
 
   ListUpdateResponse();
@@ -1475,6 +1477,7 @@ class ThreatHit {
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
+  /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   core.String threatType;
 
   /// Details about the user that encountered the threat.
@@ -1636,6 +1639,7 @@ class ThreatListDescriptor {
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
+  /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   core.String threatType;
 
   ThreatListDescriptor();
@@ -1727,6 +1731,7 @@ class ThreatMatch {
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
+  /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   core.String threatType;
 
   ThreatMatch();

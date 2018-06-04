@@ -760,6 +760,20 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
+  /// [ranges] - The A1 notation of the values to retrieve.
+  ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -777,20 +791,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
-  ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -802,10 +802,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.String valueRenderOption,
-      core.String dateTimeRenderOption,
-      core.List<core.String> ranges,
+      {core.List<core.String> ranges,
       core.String majorDimension,
+      core.String valueRenderOption,
+      core.String dateTimeRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -817,17 +817,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
-    }
-    if (dateTimeRenderOption != null) {
-      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
+    }
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
+    if (dateTimeRenderOption != null) {
+      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1178,6 +1178,22 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to update.
   ///
+  /// [valueInputOption] - How the input data should be interpreted.
+  /// Possible string values are:
+  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
+  /// - "RAW" : A RAW.
+  /// - "USER_ENTERED" : A USER_ENTERED.
+  ///
+  /// [responseDateTimeRenderOption] - Determines how dates, times, and
+  /// durations in the response should be
+  /// rendered. This is ignored if response_value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// DateTimeRenderOption.SERIAL_NUMBER.
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
+  ///
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values
   /// of the cells that were updated. By default, responses
@@ -1194,22 +1210,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
   /// - "FORMULA" : A FORMULA.
   ///
-  /// [valueInputOption] - How the input data should be interpreted.
-  /// Possible string values are:
-  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
-  /// - "RAW" : A RAW.
-  /// - "USER_ENTERED" : A USER_ENTERED.
-  ///
-  /// [responseDateTimeRenderOption] - Determines how dates, times, and
-  /// durations in the response should be
-  /// rendered. This is ignored if response_value_render_option is
-  /// FORMATTED_VALUE.
-  /// The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
-  /// Possible string values are:
-  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1222,10 +1222,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
-      core.String valueInputOption,
+      {core.String valueInputOption,
       core.String responseDateTimeRenderOption,
+      core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1243,12 +1243,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
-    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
     }
@@ -1256,6 +1250,12 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1403,6 +1403,70 @@ class AddConditionalFormatRuleRequest {
     }
     if (rule != null) {
       _json["rule"] = (rule).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Creates a group over the specified range.
+///
+/// If the requested range is a superset of the range of an existing group G,
+/// then the depth of G is incremented and this new group G' has the
+/// depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
+/// groups [B:E, depth 1] and [C:D, depth 2].
+/// If the requested range is a subset of the range of an existing group G,
+/// then the depth of the new group G' becomes one greater than the depth of G.
+/// For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
+/// and [C:D, depth 2].
+/// If the requested range starts before and ends within, or starts within and
+/// ends after, the range of an existing group G, then the range of the existing
+/// group G becomes the union of the ranges, and the new group G' has
+/// depth one greater than the depth of G and range as the intersection of the
+/// ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
+/// depth 1] and [C:D, depth 2].
+class AddDimensionGroupRequest {
+  /// The range over which to create a group.
+  DimensionRange range;
+
+  AddDimensionGroupRequest();
+
+  AddDimensionGroupRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new DimensionRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of adding a group.
+class AddDimensionGroupResponse {
+  /// All groups of a dimension after adding a group to that dimension.
+  core.List<DimensionGroup> dimensionGroups;
+
+  AddDimensionGroupResponse();
+
+  AddDimensionGroupResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionGroups")) {
+      dimensionGroups = (_json["dimensionGroups"] as core.List)
+          .map<DimensionGroup>((value) => new DimensionGroup.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensionGroups != null) {
+      _json["dimensionGroups"] =
+          dimensionGroups.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1821,7 +1885,7 @@ class BandedRange {
   /// The id of the banded range.
   core.int bandedRangeId;
 
-  /// Properties for column bands. These properties will be applied on a column-
+  /// Properties for column bands. These properties are applied on a column-
   /// by-column basis throughout all the columns in the range. At least one of
   /// row_properties or column_properties must be specified.
   BandingProperties columnProperties;
@@ -1829,7 +1893,7 @@ class BandedRange {
   /// The range over which these properties are applied.
   GridRange range;
 
-  /// Properties for row bands. These properties will be applied on a row-by-row
+  /// Properties for row bands. These properties are applied on a row-by-row
   /// basis throughout all the rows in the range. At least one of
   /// row_properties or column_properties must be specified.
   BandingProperties rowProperties;
@@ -2044,6 +2108,10 @@ class BasicChartDomain {
 /// For example, if charting stock prices over time, multiple series may exist,
 /// one for the "Open Price", "High Price", "Low Price" and "Close Price".
 class BasicChartSeries {
+  /// The color for elements (i.e. bars, lines, points) associated with this
+  /// series.  If empty, a default color is used.
+  Color color;
+
   /// The line style of this series. Valid only if the
   /// chartType is AREA,
   /// LINE, or SCATTER.
@@ -2103,6 +2171,9 @@ class BasicChartSeries {
   BasicChartSeries();
 
   BasicChartSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("color")) {
+      color = new Color.fromJson(_json["color"]);
+    }
     if (_json.containsKey("lineStyle")) {
       lineStyle = new LineStyle.fromJson(_json["lineStyle"]);
     }
@@ -2120,6 +2191,9 @@ class BasicChartSeries {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (color != null) {
+      _json["color"] = (color).toJson();
+    }
     if (lineStyle != null) {
       _json["lineStyle"] = (lineStyle).toJson();
     }
@@ -2209,7 +2283,7 @@ class BasicChartSpec {
   core.List<BasicChartSeries> series;
 
   /// The stacked type for charts that support vertical stacking.
-  /// Applies to Area, Bar, Column, and Stepped Area charts.
+  /// Applies to Area, Bar, Column, Combo, and Stepped Area charts.
   /// Possible string values are:
   /// - "BASIC_CHART_STACKED_TYPE_UNSPECIFIED" : Default value, do not use.
   /// - "NOT_STACKED" : Series are not stacked.
@@ -2671,7 +2745,7 @@ class BatchUpdateSpreadsheetRequest {
   core.List<Request> requests;
 
   /// True if grid data should be returned. Meaningful only if
-  /// if include_spreadsheet_response is 'true'.
+  /// if include_spreadsheet_in_response is 'true'.
   /// This parameter is ignored if a field mask was set in the request.
   core.bool responseIncludeGridData;
 
@@ -3247,7 +3321,8 @@ class BooleanCondition {
   /// Supported by data validation.
   /// Requires a single ConditionValue,
   /// and the value must be a valid range in A1 notation.
-  /// - "ONE_OF_LIST" : The cell's value must in the list of condition values.
+  /// - "ONE_OF_LIST" : The cell's value must be in the list of condition
+  /// values.
   /// Supported by data validation.
   /// Supports any number of condition values,
   /// one per item in the list.
@@ -3261,6 +3336,19 @@ class BooleanCondition {
   /// - "CUSTOM_FORMULA" : The condition's formula must evaluate to true.
   /// Supported by data validation, conditional formatting and filters.
   /// Requires a single ConditionValue.
+  /// - "BOOLEAN" : The cell's value must be TRUE/FALSE or in the list of
+  /// condition values.
+  /// Supported by data validation.
+  /// Renders as a cell checkbox.
+  /// Supports zero, one or two ConditionValues.  No
+  /// values indicates the cell must be TRUE or FALSE, where TRUE renders as
+  /// checked and FALSE renders as unchecked.  One value indicates the cell
+  /// will render as checked when it contains that value and unchecked when it
+  /// is blank.  Two values indicate that the cell will render as checked when
+  /// it contains the first value and unchecked when it contains the second
+  /// value.  For example, ["Yes","No"] indicates that the cell will render a
+  /// checked box when it has the value "Yes" and an unchecked box when it has
+  /// the value "No".
   core.String type;
 
   /// The values of the condition. The number of supported values depends
@@ -3298,7 +3386,7 @@ class BooleanCondition {
 /// A rule that may or may not match, depending on the condition.
 class BooleanRule {
   /// The condition of the rule. If the condition evaluates to true,
-  /// the format will be applied.
+  /// the format is applied.
   BooleanCondition condition;
 
   /// The format to apply.
@@ -3470,7 +3558,7 @@ class BubbleChartSpec {
   ChartData domain;
 
   /// The data containing the bubble group IDs. All bubbles with the same group
-  /// ID will be drawn in the same color. If bubble_sizes is specified then
+  /// ID are drawn in the same color. If bubble_sizes is specified then
   /// this field must also be specified but may contain blank values.
   /// This field is optional.
   ChartData groupIds;
@@ -3733,8 +3821,8 @@ class CellData {
   /// This field is read-only.
   CellFormat effectiveFormat;
 
-  /// The effective value of the cell. For cells with formulas, this will be
-  /// the calculated value.  For cells with literals, this will be
+  /// The effective value of the cell. For cells with formulas, this is
+  /// the calculated value.  For cells with literals, this is
   /// the same as the user_entered_value.
   /// This field is read-only.
   ExtendedValue effectiveValue;
@@ -3768,7 +3856,7 @@ class CellData {
   /// the properties of the cell unless explicitly changed).
   ///
   /// When writing, the new runs will overwrite any prior runs.  When writing a
-  /// new user_entered_value, previous runs will be erased.
+  /// new user_entered_value, previous runs are erased.
   core.List<TextFormatRun> textFormatRuns;
 
   /// The format the user entered for the cell.
@@ -4062,7 +4150,8 @@ class ChartSourceRange {
   /// with length 1.
   /// The domain (if it exists) & all series must have the same number
   /// of source ranges. If using more than one source range, then the source
-  /// range at a given offset must be contiguous across the domain and series.
+  /// range at a given offset must be in order and contiguous across the domain
+  /// and series.
   ///
   /// For example, these are valid configurations:
   ///
@@ -4168,6 +4257,9 @@ class ChartSpec {
   /// This field is optional.
   TextPosition titleTextPosition;
 
+  /// A treemap chart specification.
+  TreemapChartSpec treemapChart;
+
   /// A waterfall chart specification.
   WaterfallChartSpec waterfallChart;
 
@@ -4227,6 +4319,9 @@ class ChartSpec {
     if (_json.containsKey("titleTextPosition")) {
       titleTextPosition = new TextPosition.fromJson(_json["titleTextPosition"]);
     }
+    if (_json.containsKey("treemapChart")) {
+      treemapChart = new TreemapChartSpec.fromJson(_json["treemapChart"]);
+    }
     if (_json.containsKey("waterfallChart")) {
       waterfallChart = new WaterfallChartSpec.fromJson(_json["waterfallChart"]);
     }
@@ -4285,6 +4380,9 @@ class ChartSpec {
     }
     if (titleTextPosition != null) {
       _json["titleTextPosition"] = (titleTextPosition).toJson();
+    }
+    if (treemapChart != null) {
+      _json["treemapChart"] = (treemapChart).toJson();
     }
     if (waterfallChart != null) {
       _json["waterfallChart"] = (waterfallChart).toJson();
@@ -4560,8 +4658,8 @@ class ConditionValue {
   core.String relativeDate;
 
   /// A value the condition is based on.
-  /// The value will be parsed as if the user typed into a cell.
-  /// Formulas are supported (and must begin with an `=`).
+  /// The value is parsed as if the user typed into a cell.
+  /// Formulas are supported (and must begin with an `=` or a '+').
   core.String userEnteredValue;
 
   ConditionValue();
@@ -4596,7 +4694,7 @@ class ConditionalFormatRule {
   /// The formatting will vary based on the gradients in the rule.
   GradientRule gradientRule;
 
-  /// The ranges that will be formatted if the condition is true.
+  /// The ranges that are formatted if the condition is true.
   /// All the ranges must be on the same grid.
   core.List<GridRange> ranges;
 
@@ -4973,6 +5071,84 @@ class DataValidationRule {
   }
 }
 
+/// Allows you to organize the date-time values in a source data column into
+/// buckets based on selected parts of their date or time values. For example,
+/// consider a pivot table showing sales transactions by date:
+///
+///     +----------+--------------+
+///     | Date     | SUM of Sales |
+///     +----------+--------------+
+///     | 1/1/2017 |      $621.14 |
+///     | 2/3/2017 |      $708.84 |
+///     | 5/8/2017 |      $326.84 |
+///     ...
+///     +----------+--------------+
+/// Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
+/// results in the following pivot table.
+///
+///     +--------------+--------------+
+///     | Grouped Date | SUM of Sales |
+///     +--------------+--------------+
+///     | 2017-Jan     |   $53,731.78 |
+///     | 2017-Feb     |   $83,475.32 |
+///     | 2017-Mar     |   $94,385.05 |
+///     ...
+///     +--------------+--------------+
+class DateTimeRule {
+  /// The type of date-time grouping to apply.
+  /// Possible string values are:
+  /// - "DATE_TIME_RULE_TYPE_UNSPECIFIED" : The default type, do not use.
+  /// - "SECOND" : Group dates by second, from 0 to 59.
+  /// - "MINUTE" : Group dates by minute, from 0 to 59.
+  /// - "HOUR" : Group dates by hour using a 24-hour system, from 0 to 23.
+  /// - "HOUR_MINUTE" : Group dates by hour and minute using a 24-hour system,
+  /// for example 19:45.
+  /// - "HOUR_MINUTE_AMPM" : Group dates by hour and minute using a 12-hour
+  /// system, for example 7:45
+  /// PM. The AM/PM designation is translated based on the spreadsheet
+  /// locale.
+  /// - "DAY_OF_WEEK" : Group dates by day of week, for example Sunday. The days
+  /// of the week will
+  /// be translated based on the spreadsheet locale.
+  /// - "DAY_OF_YEAR" : Group dates by day of year, from 1 to 366. Note that
+  /// dates after Feb. 29
+  /// fall in different buckets in leap years than in non-leap years.
+  /// - "DAY_OF_MONTH" : Group dates by day of month, from 1 to 31.
+  /// - "DAY_MONTH" : Group dates by day and month, for example 22-Nov. The
+  /// month is
+  /// translated based on the spreadsheet locale.
+  /// - "MONTH" : Group dates by month, for example Nov. The month is translated
+  /// based
+  /// on the spreadsheet locale.
+  /// - "QUARTER" : Group dates by quarter, for example Q1 (which represents
+  /// Jan-Mar).
+  /// - "YEAR" : Group dates by year, for example 2008.
+  /// - "YEAR_MONTH" : Group dates by year and month, for example 2008-Nov. The
+  /// month is
+  /// translated based on the spreadsheet locale.
+  /// - "YEAR_QUARTER" : Group dates by year and quarter, for example 2008 Q4.
+  /// - "YEAR_MONTH_DAY" : Group dates by year, month, and day, for example
+  /// 2008-11-22.
+  core.String type;
+
+  DateTimeRule();
+
+  DateTimeRule.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// Removes the banded range with the given ID from the spreadsheet.
 class DeleteBandingRequest {
   /// The ID of the banded range to delete.
@@ -5099,6 +5275,60 @@ class DeleteDeveloperMetadataResponse {
     if (deletedDeveloperMetadata != null) {
       _json["deletedDeveloperMetadata"] =
           deletedDeveloperMetadata.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Deletes a group over the specified range by decrementing the depth of the
+/// dimensions in the range.
+///
+/// For example, assume the sheet has a depth-1 group over B:E and a depth-2
+/// group over C:D. Deleting a group over D:E leaves the sheet with a
+/// depth-1 group over B:D and a depth-2 group over C:C.
+class DeleteDimensionGroupRequest {
+  /// The range of the group to be deleted.
+  DimensionRange range;
+
+  DeleteDimensionGroupRequest();
+
+  DeleteDimensionGroupRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new DimensionRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of deleting a group.
+class DeleteDimensionGroupResponse {
+  /// All groups of a dimension after deleting a group from that dimension.
+  core.List<DimensionGroup> dimensionGroups;
+
+  DeleteDimensionGroupResponse();
+
+  DeleteDimensionGroupResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionGroups")) {
+      dimensionGroups = (_json["dimensionGroups"] as core.List)
+          .map<DimensionGroup>((value) => new DimensionGroup.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensionGroups != null) {
+      _json["dimensionGroups"] =
+          dimensionGroups.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5288,7 +5518,7 @@ class DeleteSheetRequest {
 /// metadata is associated with row 5 and another row is then subsequently
 /// inserted above row 5, that original metadata will still be associated with
 /// the row it was first associated with (what is now row 6). If the associated
-/// object is deleted its metadata will be deleted too.
+/// object is deleted its metadata is deleted too.
 class DeveloperMetadata {
   /// The location where the metadata is associated.
   DeveloperMetadataLocation location;
@@ -5559,6 +5789,57 @@ class DeveloperMetadataLookup {
     }
     if (visibility != null) {
       _json["visibility"] = visibility;
+    }
+    return _json;
+  }
+}
+
+/// A group over an interval of rows or columns on a sheet, which can contain or
+/// be contained within other groups. A group can be collapsed or expanded as a
+/// unit on the sheet.
+class DimensionGroup {
+  /// This field is true if this group is collapsed. A collapsed group remains
+  /// collapsed if an overlapping group at a shallower depth is expanded.
+  ///
+  /// A true value does not imply that all dimensions within the group are
+  /// hidden, since a dimension's visibility can change independently from this
+  /// group property. However, when this property is updated, all dimensions
+  /// within it are set to hidden if this field is true, or set to visible if
+  /// this field is false.
+  core.bool collapsed;
+
+  /// The depth of the group, representing how many groups have a range that
+  /// wholly contains the range of this group.
+  core.int depth;
+
+  /// The range over which this group exists.
+  DimensionRange range;
+
+  DimensionGroup();
+
+  DimensionGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("collapsed")) {
+      collapsed = _json["collapsed"];
+    }
+    if (_json.containsKey("depth")) {
+      depth = _json["depth"];
+    }
+    if (_json.containsKey("range")) {
+      range = new DimensionRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (collapsed != null) {
+      _json["collapsed"] = collapsed;
+    }
+    if (depth != null) {
+      _json["depth"] = depth;
+    }
+    if (range != null) {
+      _json["range"] = (range).toJson();
     }
     return _json;
   }
@@ -5884,7 +6165,7 @@ class EmbeddedChart {
 
 /// The position of an embedded object such as a chart.
 class EmbeddedObjectPosition {
-  /// If true, the embedded object will be put on a new sheet whose ID
+  /// If true, the embedded object is put on a new sheet whose ID
   /// is chosen for you. Used only when writing.
   core.bool newSheet;
 
@@ -6518,6 +6799,9 @@ class GridProperties {
   /// The number of columns in the grid.
   core.int columnCount;
 
+  /// True if the column grouping control toggle is shown after the group.
+  core.bool columnGroupControlAfter;
+
   /// The number of columns that are frozen in the grid.
   core.int frozenColumnCount;
 
@@ -6530,11 +6814,17 @@ class GridProperties {
   /// The number of rows in the grid.
   core.int rowCount;
 
+  /// True if the row grouping control toggle is shown after the group.
+  core.bool rowGroupControlAfter;
+
   GridProperties();
 
   GridProperties.fromJson(core.Map _json) {
     if (_json.containsKey("columnCount")) {
       columnCount = _json["columnCount"];
+    }
+    if (_json.containsKey("columnGroupControlAfter")) {
+      columnGroupControlAfter = _json["columnGroupControlAfter"];
     }
     if (_json.containsKey("frozenColumnCount")) {
       frozenColumnCount = _json["frozenColumnCount"];
@@ -6548,6 +6838,9 @@ class GridProperties {
     if (_json.containsKey("rowCount")) {
       rowCount = _json["rowCount"];
     }
+    if (_json.containsKey("rowGroupControlAfter")) {
+      rowGroupControlAfter = _json["rowGroupControlAfter"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6555,6 +6848,9 @@ class GridProperties {
         new core.Map<core.String, core.Object>();
     if (columnCount != null) {
       _json["columnCount"] = columnCount;
+    }
+    if (columnGroupControlAfter != null) {
+      _json["columnGroupControlAfter"] = columnGroupControlAfter;
     }
     if (frozenColumnCount != null) {
       _json["frozenColumnCount"] = frozenColumnCount;
@@ -6567,6 +6863,9 @@ class GridProperties {
     }
     if (rowCount != null) {
       _json["rowCount"] = rowCount;
+    }
+    if (rowGroupControlAfter != null) {
+      _json["rowGroupControlAfter"] = rowGroupControlAfter;
     }
     return _json;
   }
@@ -6750,10 +7049,10 @@ class HistogramChartSpec {
 
 /// Allows you to organize the numeric values in a source data column into
 /// buckets of a constant size. All values from HistogramRule.start to
-/// HistogramRule.end will be placed into groups of size
+/// HistogramRule.end are placed into groups of size
 /// HistogramRule.interval. In addition, all values below
-/// HistogramRule.start will be placed in one group, and all values above
-/// HistogramRule.end will be placed in another. Only
+/// HistogramRule.start are placed in one group, and all values above
+/// HistogramRule.end are placed in another. Only
 /// HistogramRule.interval is required, though if HistogramRule.start
 /// and HistogramRule.end are both provided, HistogramRule.start must
 /// be less than HistogramRule.end. For example, a pivot table showing
@@ -6783,15 +7082,17 @@ class HistogramChartSpec {
 ///     | Grand Total |            $29.12 |
 ///     +-------------+-------------------+
 class HistogramRule {
-  /// Optional. The maximum value at which items will be placed into buckets
-  /// of constant size. Values above end will be lumped into a single bucket.
+  /// The maximum value at which items are placed into buckets
+  /// of constant size. Values above end are lumped into a single bucket.
+  /// This field is optional.
   core.double end;
 
-  /// Required. The size of the buckets that will be created. Must be positive.
+  /// The size of the buckets that are created. Must be positive.
   core.double interval;
 
-  /// Optional. The minimum value at which items will be placed into buckets
-  /// of constant size. Values below start will be lumped into a single bucket.
+  /// The minimum value at which items are placed into buckets
+  /// of constant size. Values below start are lumped into a single bucket.
+  /// This field is optional.
   core.double start;
 
   HistogramRule();
@@ -6948,19 +7249,19 @@ class InterpolationPoint {
   /// How the value should be interpreted.
   /// Possible string values are:
   /// - "INTERPOLATION_POINT_TYPE_UNSPECIFIED" : The default value, do not use.
-  /// - "MIN" : The interpolation point will use the minimum value in the
+  /// - "MIN" : The interpolation point uses the minimum value in the
   /// cells over the range of the conditional format.
-  /// - "MAX" : The interpolation point will use the maximum value in the
+  /// - "MAX" : The interpolation point uses the maximum value in the
   /// cells over the range of the conditional format.
-  /// - "NUMBER" : The interpolation point will use exactly the value in
+  /// - "NUMBER" : The interpolation point uses exactly the value in
   /// InterpolationPoint.value.
-  /// - "PERCENT" : The interpolation point will be the given percentage over
+  /// - "PERCENT" : The interpolation point is the given percentage over
   /// all the cells in the range of the conditional format.
   /// This is equivalent to NUMBER if the value was:
   /// `=(MAX(FLATTEN(range)) * (value / 100))
   ///   + (MIN(FLATTEN(range)) * (1 - (value / 100)))`
   /// (where errors in the range are ignored when flattening).
-  /// - "PERCENTILE" : The interpolation point will be the given percentile
+  /// - "PERCENTILE" : The interpolation point is the given percentile
   /// over all the cells in the range of the conditional format.
   /// This is equivalent to NUMBER if the value was:
   /// `=PERCENTILE(FLATTEN(range), value / 100)`
@@ -7096,7 +7397,7 @@ class LineStyle {
 ///     ...
 ///     +-------+-------------------+
 /// could be turned into a pivot table that aggregates population by time zone
-/// by providing a list of groups (e.g. groupName = 'Central',
+/// by providing a list of groups (for example, groupName = 'Central',
 /// items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
 /// Note that a similar effect could be achieved by adding a time zone column
 /// to the source data and adjusting the pivot table.
@@ -7802,7 +8103,7 @@ class PivotGroup {
   core.String label;
 
   /// True if the headings in this pivot group should be repeated.
-  /// This is only valid for row groupings and will be ignored by columns.
+  /// This is only valid for row groupings and is ignored by columns.
   ///
   /// By default, we minimize repitition of headings by not showing higher
   /// level headings where they are the same. For example, even though the
@@ -7914,6 +8215,9 @@ class PivotGroup {
 /// the source data, though on any given column you may add both a
 /// PivotGroup that has a rule and a PivotGroup that does not.
 class PivotGroupRule {
+  /// A DateTimeRule.
+  DateTimeRule dateTimeRule;
+
   /// A HistogramRule.
   HistogramRule histogramRule;
 
@@ -7923,6 +8227,9 @@ class PivotGroupRule {
   PivotGroupRule();
 
   PivotGroupRule.fromJson(core.Map _json) {
+    if (_json.containsKey("dateTimeRule")) {
+      dateTimeRule = new DateTimeRule.fromJson(_json["dateTimeRule"]);
+    }
     if (_json.containsKey("histogramRule")) {
       histogramRule = new HistogramRule.fromJson(_json["histogramRule"]);
     }
@@ -7934,6 +8241,9 @@ class PivotGroupRule {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (dateTimeRule != null) {
+      _json["dateTimeRule"] = (dateTimeRule).toJson();
+    }
     if (histogramRule != null) {
       _json["histogramRule"] = (histogramRule).toJson();
     }
@@ -8028,7 +8338,7 @@ class PivotTable {
 
   /// An optional mapping of filters per source column offset.
   ///
-  /// The filters will be applied before aggregating data into the pivot table.
+  /// The filters are applied before aggregating data into the pivot table.
   /// The map's key is the column offset of the source range that you want to
   /// filter, and the value is the criteria for that column.
   ///
@@ -8116,7 +8426,7 @@ class PivotValue {
   /// If specified, indicates that pivot values should be displayed as
   /// the result of a calculation with another pivot value. For example, if
   /// calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the
-  /// pivot values will be displayed as the percentage of the grand total. In
+  /// pivot values are displayed as the percentage of the grand total. In
   /// the Sheets UI, this is referred to as "Show As" in the value section of a
   /// pivot table.
   /// Possible string values are:
@@ -8412,6 +8722,9 @@ class Request {
   /// Adds a new conditional format rule.
   AddConditionalFormatRuleRequest addConditionalFormatRule;
 
+  /// Creates a group over the specified range.
+  AddDimensionGroupRequest addDimensionGroup;
+
   /// Adds a filter view.
   AddFilterViewRequest addFilterView;
 
@@ -8460,6 +8773,9 @@ class Request {
 
   /// Deletes rows or columns in a sheet.
   DeleteDimensionRequest deleteDimension;
+
+  /// Deletes a group over the specified range.
+  DeleteDimensionGroupRequest deleteDimensionGroup;
 
   /// Deletes an embedded object (e.g, chart, image) in a sheet.
   DeleteEmbeddedObjectRequest deleteEmbeddedObject;
@@ -8542,6 +8858,9 @@ class Request {
   /// Updates an existing developer metadata entry
   UpdateDeveloperMetadataRequest updateDeveloperMetadata;
 
+  /// Updates the state of the specified group.
+  UpdateDimensionGroupRequest updateDimensionGroup;
+
   /// Updates dimensions' properties.
   UpdateDimensionPropertiesRequest updateDimensionProperties;
 
@@ -8575,6 +8894,10 @@ class Request {
     if (_json.containsKey("addConditionalFormatRule")) {
       addConditionalFormatRule = new AddConditionalFormatRuleRequest.fromJson(
           _json["addConditionalFormatRule"]);
+    }
+    if (_json.containsKey("addDimensionGroup")) {
+      addDimensionGroup =
+          new AddDimensionGroupRequest.fromJson(_json["addDimensionGroup"]);
     }
     if (_json.containsKey("addFilterView")) {
       addFilterView = new AddFilterViewRequest.fromJson(_json["addFilterView"]);
@@ -8632,6 +8955,10 @@ class Request {
     if (_json.containsKey("deleteDimension")) {
       deleteDimension =
           new DeleteDimensionRequest.fromJson(_json["deleteDimension"]);
+    }
+    if (_json.containsKey("deleteDimensionGroup")) {
+      deleteDimensionGroup = new DeleteDimensionGroupRequest.fromJson(
+          _json["deleteDimensionGroup"]);
     }
     if (_json.containsKey("deleteEmbeddedObject")) {
       deleteEmbeddedObject = new DeleteEmbeddedObjectRequest.fromJson(
@@ -8728,6 +9055,10 @@ class Request {
       updateDeveloperMetadata = new UpdateDeveloperMetadataRequest.fromJson(
           _json["updateDeveloperMetadata"]);
     }
+    if (_json.containsKey("updateDimensionGroup")) {
+      updateDimensionGroup = new UpdateDimensionGroupRequest.fromJson(
+          _json["updateDimensionGroup"]);
+    }
     if (_json.containsKey("updateDimensionProperties")) {
       updateDimensionProperties = new UpdateDimensionPropertiesRequest.fromJson(
           _json["updateDimensionProperties"]);
@@ -8771,6 +9102,9 @@ class Request {
     }
     if (addConditionalFormatRule != null) {
       _json["addConditionalFormatRule"] = (addConditionalFormatRule).toJson();
+    }
+    if (addDimensionGroup != null) {
+      _json["addDimensionGroup"] = (addDimensionGroup).toJson();
     }
     if (addFilterView != null) {
       _json["addFilterView"] = (addFilterView).toJson();
@@ -8820,6 +9154,9 @@ class Request {
     }
     if (deleteDimension != null) {
       _json["deleteDimension"] = (deleteDimension).toJson();
+    }
+    if (deleteDimensionGroup != null) {
+      _json["deleteDimensionGroup"] = (deleteDimensionGroup).toJson();
     }
     if (deleteEmbeddedObject != null) {
       _json["deleteEmbeddedObject"] = (deleteEmbeddedObject).toJson();
@@ -8903,6 +9240,9 @@ class Request {
     if (updateDeveloperMetadata != null) {
       _json["updateDeveloperMetadata"] = (updateDeveloperMetadata).toJson();
     }
+    if (updateDimensionGroup != null) {
+      _json["updateDimensionGroup"] = (updateDimensionGroup).toJson();
+    }
     if (updateDimensionProperties != null) {
       _json["updateDimensionProperties"] = (updateDimensionProperties).toJson();
     }
@@ -8938,6 +9278,9 @@ class Response {
   /// A reply from adding a chart.
   AddChartResponse addChart;
 
+  /// A reply from adding a dimension group.
+  AddDimensionGroupResponse addDimensionGroup;
+
   /// A reply from adding a filter view.
   AddFilterViewResponse addFilterView;
 
@@ -8958,6 +9301,9 @@ class Response {
 
   /// A reply from deleting a developer metadata entry.
   DeleteDeveloperMetadataResponse deleteDeveloperMetadata;
+
+  /// A reply from deleting a dimension group.
+  DeleteDimensionGroupResponse deleteDimensionGroup;
 
   /// A reply from duplicating a filter view.
   DuplicateFilterViewResponse duplicateFilterView;
@@ -8986,6 +9332,10 @@ class Response {
     if (_json.containsKey("addChart")) {
       addChart = new AddChartResponse.fromJson(_json["addChart"]);
     }
+    if (_json.containsKey("addDimensionGroup")) {
+      addDimensionGroup =
+          new AddDimensionGroupResponse.fromJson(_json["addDimensionGroup"]);
+    }
     if (_json.containsKey("addFilterView")) {
       addFilterView =
           new AddFilterViewResponse.fromJson(_json["addFilterView"]);
@@ -9013,6 +9363,10 @@ class Response {
     if (_json.containsKey("deleteDeveloperMetadata")) {
       deleteDeveloperMetadata = new DeleteDeveloperMetadataResponse.fromJson(
           _json["deleteDeveloperMetadata"]);
+    }
+    if (_json.containsKey("deleteDimensionGroup")) {
+      deleteDimensionGroup = new DeleteDimensionGroupResponse.fromJson(
+          _json["deleteDimensionGroup"]);
     }
     if (_json.containsKey("duplicateFilterView")) {
       duplicateFilterView = new DuplicateFilterViewResponse.fromJson(
@@ -9050,6 +9404,9 @@ class Response {
     if (addChart != null) {
       _json["addChart"] = (addChart).toJson();
     }
+    if (addDimensionGroup != null) {
+      _json["addDimensionGroup"] = (addDimensionGroup).toJson();
+    }
     if (addFilterView != null) {
       _json["addFilterView"] = (addFilterView).toJson();
     }
@@ -9071,6 +9428,9 @@ class Response {
     }
     if (deleteDeveloperMetadata != null) {
       _json["deleteDeveloperMetadata"] = (deleteDeveloperMetadata).toJson();
+    }
+    if (deleteDimensionGroup != null) {
+      _json["deleteDimensionGroup"] = (deleteDimensionGroup).toJson();
     }
     if (duplicateFilterView != null) {
       _json["duplicateFilterView"] = (duplicateFilterView).toJson();
@@ -9238,7 +9598,7 @@ class SetDataValidationRequest {
 
 /// A sheet in a spreadsheet.
 class Sheet {
-  /// The banded (i.e. alternating colors) ranges on this sheet.
+  /// The banded (alternating colors) ranges on this sheet.
   core.List<BandedRange> bandedRanges;
 
   /// The filter on this sheet, if any.
@@ -9246,6 +9606,10 @@ class Sheet {
 
   /// The specifications of every chart on this sheet.
   core.List<EmbeddedChart> charts;
+
+  /// All column groups on this sheet, ordered by increasing range start index,
+  /// then by group depth.
+  core.List<DimensionGroup> columnGroups;
 
   /// The conditional format rules in this sheet.
   core.List<ConditionalFormatRule> conditionalFormats;
@@ -9275,6 +9639,11 @@ class Sheet {
   /// The protected ranges in this sheet.
   core.List<ProtectedRange> protectedRanges;
 
+  /// All row groups on this sheet, ordered by increasing range start index,
+  /// then
+  /// by group depth.
+  core.List<DimensionGroup> rowGroups;
+
   Sheet();
 
   Sheet.fromJson(core.Map _json) {
@@ -9289,6 +9658,11 @@ class Sheet {
     if (_json.containsKey("charts")) {
       charts = (_json["charts"] as core.List)
           .map<EmbeddedChart>((value) => new EmbeddedChart.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("columnGroups")) {
+      columnGroups = (_json["columnGroups"] as core.List)
+          .map<DimensionGroup>((value) => new DimensionGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("conditionalFormats")) {
@@ -9326,6 +9700,11 @@ class Sheet {
           .map<ProtectedRange>((value) => new ProtectedRange.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("rowGroups")) {
+      rowGroups = (_json["rowGroups"] as core.List)
+          .map<DimensionGroup>((value) => new DimensionGroup.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -9340,6 +9719,10 @@ class Sheet {
     }
     if (charts != null) {
       _json["charts"] = charts.map((value) => (value).toJson()).toList();
+    }
+    if (columnGroups != null) {
+      _json["columnGroups"] =
+          columnGroups.map((value) => (value).toJson()).toList();
     }
     if (conditionalFormats != null) {
       _json["conditionalFormats"] =
@@ -9366,6 +9749,9 @@ class Sheet {
       _json["protectedRanges"] =
           protectedRanges.map((value) => (value).toJson()).toList();
     }
+    if (rowGroups != null) {
+      _json["rowGroups"] = rowGroups.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -9383,12 +9769,12 @@ class SheetProperties {
 
   /// The index of the sheet within the spreadsheet.
   /// When adding or updating sheet properties, if this field
-  /// is excluded then the sheet will be added or moved to the end
+  /// is excluded then the sheet is added or moved to the end
   /// of the sheet list. When updating sheet indices or inserting
   /// sheets, movement is considered in "before the move" indexes.
   /// For example, if there were 3 sheets (S1, S2, S3) in order to
   /// move S1 ahead of S2 the index would have to be set to 2. A sheet
-  /// index update request will be ignored if the requested index is
+  /// index update request is ignored if the requested index is
   /// identical to the sheets current index or if the requested new
   /// index is equal to the current sheet index + 1.
   core.int index;
@@ -9686,9 +10072,9 @@ class SpreadsheetProperties {
   core.String autoRecalc;
 
   /// The default format of all cells in the spreadsheet.
-  /// CellData.effectiveFormat will not be set if the
-  /// cell's format is equal to this default format.
-  /// This field is read-only.
+  /// CellData.effectiveFormat will not be set if
+  /// the cell's format is equal to this default format. This field is
+  /// read-only.
   CellFormat defaultFormat;
 
   /// Determines whether and how circular references are resolved with iterative
@@ -10001,6 +10387,218 @@ class TextToColumnsRequest {
     }
     if (source != null) {
       _json["source"] = (source).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A color scale for a treemap chart.
+class TreemapChartColorScale {
+  /// The background color for cells with a color value greater than or equal
+  /// to maxValue. Defaults to #109618 if not
+  /// specified.
+  Color maxValueColor;
+
+  /// The background color for cells with a color value at the midpoint between
+  /// minValue and
+  /// maxValue. Defaults to #efe6dc if not
+  /// specified.
+  Color midValueColor;
+
+  /// The background color for cells with a color value less than or equal to
+  /// minValue. Defaults to #dc3912 if not
+  /// specified.
+  Color minValueColor;
+
+  /// The background color for cells that have no color data associated with
+  /// them. Defaults to #000000 if not specified.
+  Color noDataColor;
+
+  TreemapChartColorScale();
+
+  TreemapChartColorScale.fromJson(core.Map _json) {
+    if (_json.containsKey("maxValueColor")) {
+      maxValueColor = new Color.fromJson(_json["maxValueColor"]);
+    }
+    if (_json.containsKey("midValueColor")) {
+      midValueColor = new Color.fromJson(_json["midValueColor"]);
+    }
+    if (_json.containsKey("minValueColor")) {
+      minValueColor = new Color.fromJson(_json["minValueColor"]);
+    }
+    if (_json.containsKey("noDataColor")) {
+      noDataColor = new Color.fromJson(_json["noDataColor"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxValueColor != null) {
+      _json["maxValueColor"] = (maxValueColor).toJson();
+    }
+    if (midValueColor != null) {
+      _json["midValueColor"] = (midValueColor).toJson();
+    }
+    if (minValueColor != null) {
+      _json["minValueColor"] = (minValueColor).toJson();
+    }
+    if (noDataColor != null) {
+      _json["noDataColor"] = (noDataColor).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A <a href="/chart/interactive/docs/gallery/treemap">Treemap chart</a>.
+class TreemapChartSpec {
+  /// The data that determines the background color of each treemap data cell.
+  /// This field is optional. If not specified, size_data is used to
+  /// determine background colors. If specified, the data is expected to be
+  /// numeric. color_scale will determine how the values in this data map to
+  /// data cell background colors.
+  ChartData colorData;
+
+  /// The color scale for data cells in the treemap chart. Data cells are
+  /// assigned colors based on their color values. These color values come from
+  /// color_data, or from size_data if color_data is not specified.
+  /// Cells with color values less than or equal to min_value will
+  /// have minValueColor as their
+  /// background color. Cells with color values greater than or equal to
+  /// max_value will have
+  /// maxValueColor as their background
+  /// color. Cells with color values between min_value and max_value will
+  /// have background colors on a gradient between
+  /// minValueColor and
+  /// maxValueColor, the midpoint of
+  /// the gradient being midValueColor.
+  /// Cells with missing or non-numeric color values will have
+  /// noDataColor as their background
+  /// color.
+  TreemapChartColorScale colorScale;
+
+  /// The background color for header cells.
+  Color headerColor;
+
+  /// True to hide tooltips.
+  core.bool hideTooltips;
+
+  /// The number of additional data levels beyond the labeled levels to be shown
+  /// on the treemap chart. These levels are not interactive and are shown
+  /// without their labels. Defaults to 0 if not specified.
+  core.int hintedLevels;
+
+  /// The data that contains the treemap cell labels.
+  ChartData labels;
+
+  /// The number of data levels to show on the treemap chart. These levels are
+  /// interactive and are shown with their labels. Defaults to 2 if not
+  /// specified.
+  core.int levels;
+
+  /// The maximum possible data value. Cells with values greater than this will
+  /// have the same color as cells with this value. If not specified, defaults
+  /// to the actual maximum value from color_data, or the maximum value from
+  /// size_data if color_data is not specified.
+  core.double maxValue;
+
+  /// The minimum possible data value. Cells with values less than this will
+  /// have the same color as cells with this value. If not specified, defaults
+  /// to the actual minimum value from color_data, or the minimum value from
+  /// size_data if color_data is not specified.
+  core.double minValue;
+
+  /// The data the contains the treemap cells' parent labels.
+  ChartData parentLabels;
+
+  /// The data that determines the size of each treemap data cell. This data is
+  /// expected to be numeric. The cells corresponding to non-numeric or missing
+  /// data will not be rendered. If color_data is not specified, this data
+  /// is used to determine data cell background colors as well.
+  ChartData sizeData;
+
+  /// The text format for all labels on the chart.
+  TextFormat textFormat;
+
+  TreemapChartSpec();
+
+  TreemapChartSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("colorData")) {
+      colorData = new ChartData.fromJson(_json["colorData"]);
+    }
+    if (_json.containsKey("colorScale")) {
+      colorScale = new TreemapChartColorScale.fromJson(_json["colorScale"]);
+    }
+    if (_json.containsKey("headerColor")) {
+      headerColor = new Color.fromJson(_json["headerColor"]);
+    }
+    if (_json.containsKey("hideTooltips")) {
+      hideTooltips = _json["hideTooltips"];
+    }
+    if (_json.containsKey("hintedLevels")) {
+      hintedLevels = _json["hintedLevels"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = new ChartData.fromJson(_json["labels"]);
+    }
+    if (_json.containsKey("levels")) {
+      levels = _json["levels"];
+    }
+    if (_json.containsKey("maxValue")) {
+      maxValue = _json["maxValue"].toDouble();
+    }
+    if (_json.containsKey("minValue")) {
+      minValue = _json["minValue"].toDouble();
+    }
+    if (_json.containsKey("parentLabels")) {
+      parentLabels = new ChartData.fromJson(_json["parentLabels"]);
+    }
+    if (_json.containsKey("sizeData")) {
+      sizeData = new ChartData.fromJson(_json["sizeData"]);
+    }
+    if (_json.containsKey("textFormat")) {
+      textFormat = new TextFormat.fromJson(_json["textFormat"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (colorData != null) {
+      _json["colorData"] = (colorData).toJson();
+    }
+    if (colorScale != null) {
+      _json["colorScale"] = (colorScale).toJson();
+    }
+    if (headerColor != null) {
+      _json["headerColor"] = (headerColor).toJson();
+    }
+    if (hideTooltips != null) {
+      _json["hideTooltips"] = hideTooltips;
+    }
+    if (hintedLevels != null) {
+      _json["hintedLevels"] = hintedLevels;
+    }
+    if (labels != null) {
+      _json["labels"] = (labels).toJson();
+    }
+    if (levels != null) {
+      _json["levels"] = levels;
+    }
+    if (maxValue != null) {
+      _json["maxValue"] = maxValue;
+    }
+    if (minValue != null) {
+      _json["minValue"] = minValue;
+    }
+    if (parentLabels != null) {
+      _json["parentLabels"] = (parentLabels).toJson();
+    }
+    if (sizeData != null) {
+      _json["sizeData"] = (sizeData).toJson();
+    }
+    if (textFormat != null) {
+      _json["textFormat"] = (textFormat).toJson();
     }
     return _json;
   }
@@ -10426,6 +11024,41 @@ class UpdateDeveloperMetadataResponse {
     if (developerMetadata != null) {
       _json["developerMetadata"] =
           developerMetadata.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Updates the state of the specified group.
+class UpdateDimensionGroupRequest {
+  /// The group whose state should be updated. The range and depth of the group
+  /// should specify a valid group on the sheet, and all other fields updated.
+  DimensionGroup dimensionGroup;
+
+  /// The fields that should be updated.  At least one field must be specified.
+  /// The root `dimensionGroup` is implied and should not be specified.
+  /// A single `"*"` can be used as short-hand for listing every field.
+  core.String fields;
+
+  UpdateDimensionGroupRequest();
+
+  UpdateDimensionGroupRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionGroup")) {
+      dimensionGroup = new DimensionGroup.fromJson(_json["dimensionGroup"]);
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensionGroup != null) {
+      _json["dimensionGroup"] = (dimensionGroup).toJson();
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
     }
     return _json;
   }
@@ -10985,9 +11618,9 @@ class WaterfallChartCustomSubtotal {
   /// subtotal. Otherwise, the subtotal appears after the data point with
   /// this index. A series can have multiple subtotals at arbitrary indices,
   /// but subtotals do not affect the indices of the data points. For
-  /// example, if a series has 3 data points, their indices will always be 0,
-  /// 1, and 2, regardless of how many subtotals exist on the series or what
-  /// data points they are associated with.
+  /// example, if a series has three data points, their indices will always
+  /// be 0, 1, and 2, regardless of how many subtotals exist on the series or
+  /// what data points they are associated with.
   core.int subtotalIndex;
 
   WaterfallChartCustomSubtotal();

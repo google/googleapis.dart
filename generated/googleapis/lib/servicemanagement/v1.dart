@@ -516,14 +516,14 @@ class ServicesResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
-  /// [configId] - The id of the service configuration resource.
-  ///
   /// [view] - Specifies which parts of the Service Config should be returned in
   /// the
   /// response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [configId] - The id of the service configuration resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -536,7 +536,7 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<Service> getConfig(core.String serviceName,
-      {core.String configId, core.String view, core.String $fields}) {
+      {core.String view, core.String configId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -547,11 +547,11 @@ class ServicesResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (configId != null) {
-      _queryParams["configId"] = [configId];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (configId != null) {
+      _queryParams["configId"] = [configId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -638,10 +638,6 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
-  /// [producerProjectId] - Include services produced by the specified project.
-  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -651,6 +647,10 @@ class ServicesResourceApi {
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
+  ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -663,10 +663,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.int pageSize,
-      core.String producerProjectId,
-      core.String consumerId,
+      {core.String consumerId,
       core.String pageToken,
+      core.int pageSize,
+      core.String producerProjectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -675,17 +675,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (producerProjectId != null) {
-      _queryParams["producerProjectId"] = [producerProjectId];
-    }
     if (consumerId != null) {
       _queryParams["consumerId"] = [consumerId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (producerProjectId != null) {
+      _queryParams["producerProjectId"] = [producerProjectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -881,6 +881,10 @@ class ServicesConfigsResourceApi {
   /// configuration to backend systems please call
   /// CreateServiceRollout.
   ///
+  /// Only the 100 most recent service configurations and ones referenced by
+  /// existing rollouts are kept for each service. The rest will be deleted
+  /// eventually.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1061,6 +1065,10 @@ class ServicesConfigsResourceApi {
   /// generated service configuration. To rollout the service configuration to
   /// other services,
   /// please call CreateServiceRollout.
+  ///
+  /// Only the 100 most recent configuration sources and ones referenced by
+  /// existing service configurtions are kept for each service. The rest will be
+  /// deleted eventually.
   ///
   /// Operation<response: SubmitConfigSourceResponse>
   ///
@@ -1309,6 +1317,10 @@ class ServicesRolloutsResourceApi {
   /// Please note that any previous pending and running Rollouts and associated
   /// Operations will be automatically cancelled so that the latest Rollout will
   /// not be blocked by previous Rollouts.
+  ///
+  /// Only the 100 most recent (in any state) and the last 10 successful (if not
+  /// already part of the set of 100 most recent) rollouts are kept for each
+  /// service. The rest will be deleted eventually.
   ///
   /// Operation<response: Rollout>
   ///
@@ -1684,7 +1696,6 @@ class Api {
 /// bar@gmail.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  /// Next ID: 4
   core.List<AuditLogConfig> auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
@@ -1985,18 +1996,8 @@ class Authentication {
 /// If a method doesn't have any auth requirements, request credentials will be
 /// ignored.
 class AuthenticationRule {
-  /// Whether to allow requests without a credential. The credential can be
-  /// an OAuth token, Google cookies (first-party auth) or EndUserCreds.
-  ///
-  /// For requests without credentials, if the service control environment is
-  /// specified, each incoming request **must** be associated with a service
-  /// consumer. This can be done by passing an API key that belongs to a
-  /// consumer
-  /// project.
+  /// If true, the service accepts API keys without any other credential.
   core.bool allowWithoutCredential;
-
-  /// Configuration for custom authentication.
-  CustomAuthRequirements customAuth;
 
   /// The requirements for OAuth credentials.
   OAuthRequirements oauth;
@@ -2014,9 +2015,6 @@ class AuthenticationRule {
   AuthenticationRule.fromJson(core.Map _json) {
     if (_json.containsKey("allowWithoutCredential")) {
       allowWithoutCredential = _json["allowWithoutCredential"];
-    }
-    if (_json.containsKey("customAuth")) {
-      customAuth = new CustomAuthRequirements.fromJson(_json["customAuth"]);
     }
     if (_json.containsKey("oauth")) {
       oauth = new OAuthRequirements.fromJson(_json["oauth"]);
@@ -2036,9 +2034,6 @@ class AuthenticationRule {
         new core.Map<core.String, core.Object>();
     if (allowWithoutCredential != null) {
       _json["allowWithoutCredential"] = allowWithoutCredential;
-    }
-    if (customAuth != null) {
-      _json["customAuth"] = (customAuth).toJson();
     }
     if (oauth != null) {
       _json["oauth"] = (oauth).toJson();
@@ -2257,13 +2252,6 @@ class BillingDestination {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
-  /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
-  Expr condition;
-
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -2274,7 +2262,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2296,9 +2284,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
-    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -2310,9 +2295,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (condition != null) {
-      _json["condition"] = (condition).toJson();
-    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -2592,6 +2574,26 @@ class ConfigSource {
 ///
 /// Available context types are defined in package
 /// `google.rpc.context`.
+///
+/// This also provides mechanism to whitelist any protobuf message extension
+/// that
+/// can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+/// “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+/// specific protobuf types that can appear in grpc metadata as follows in your
+/// yaml file:
+///
+/// Example:
+///
+///     context:
+///       rules:
+///        - selector: "google.example.library.v1.LibraryService.CreateBook"
+///          allowed_request_extensions:
+///          - google.foo.v1.NewExtension
+///          allowed_response_extensions:
+///          - google.foo.v1.NewExtension
+///
+/// You can also specify extension ID instead of fully qualified extension name
+/// here.
 class Context {
   /// A list of RPC context rules that apply to individual API methods.
   ///
@@ -2621,6 +2623,14 @@ class Context {
 /// A context rule provides information about the context for an individual API
 /// element.
 class ContextRule {
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from client to backend.
+  core.List<core.String> allowedRequestExtensions;
+
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from backend to client.
+  core.List<core.String> allowedResponseExtensions;
+
   /// A list of full type names of provided contexts.
   core.List<core.String> provided;
 
@@ -2635,6 +2645,14 @@ class ContextRule {
   ContextRule();
 
   ContextRule.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedRequestExtensions")) {
+      allowedRequestExtensions =
+          (_json["allowedRequestExtensions"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("allowedResponseExtensions")) {
+      allowedResponseExtensions =
+          (_json["allowedResponseExtensions"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("provided")) {
       provided = (_json["provided"] as core.List).cast<core.String>();
     }
@@ -2649,6 +2667,12 @@ class ContextRule {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allowedRequestExtensions != null) {
+      _json["allowedRequestExtensions"] = allowedRequestExtensions;
+    }
+    if (allowedResponseExtensions != null) {
+      _json["allowedResponseExtensions"] = allowedResponseExtensions;
+    }
     if (provided != null) {
       _json["provided"] = provided;
     }
@@ -2683,31 +2707,6 @@ class Control {
         new core.Map<core.String, core.Object>();
     if (environment != null) {
       _json["environment"] = environment;
-    }
-    return _json;
-  }
-}
-
-/// Configuration for a custom authentication provider.
-class CustomAuthRequirements {
-  /// A configuration string containing connection information for the
-  /// authentication provider, typically formatted as a SmartService string
-  /// (go/smartservice).
-  core.String provider;
-
-  CustomAuthRequirements();
-
-  CustomAuthRequirements.fromJson(core.Map _json) {
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (provider != null) {
-      _json["provider"] = provider;
     }
     return _json;
   }
@@ -2957,9 +2956,7 @@ class DisableServiceRequest {
 /// <pre><code>&#91;display text]&#91;fully.qualified.proto.name]</code></pre>
 /// Text can be excluded from doc using the following notation:
 /// <pre><code>&#40;-- internal comment --&#41;</code></pre>
-/// Comments can be made conditional using a visibility label. The below
-/// text will be only rendered if the `BETA` label is available:
-/// <pre><code>&#40;--BETA: comment for BETA users --&#41;</code></pre>
+///
 /// A few directives are available in documentation. Note that
 /// directives must appear on a single line to be properly
 /// identified. The `include` directive includes a markdown file from
@@ -3345,68 +3342,6 @@ class Experimental {
         new core.Map<core.String, core.Object>();
     if (authorization != null) {
       _json["authorization"] = (authorization).toJson();
-    }
-    return _json;
-  }
-}
-
-/// Represents an expression text. Example:
-///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
-class Expr {
-  /// An optional description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
-  core.String description;
-
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
-  core.String expression;
-
-  /// An optional string indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
-  core.String location;
-
-  /// An optional title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
-  core.String title;
-
-  Expr();
-
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("expression")) {
-      expression = _json["expression"];
-    }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
-    }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (expression != null) {
-      _json["expression"] = expression;
-    }
-    if (location != null) {
-      _json["location"] = location;
-    }
-    if (title != null) {
-      _json["title"] = title;
     }
     return _json;
   }
@@ -5541,14 +5476,14 @@ class Page {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -5558,7 +5493,7 @@ class Page {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -5567,6 +5502,20 @@ class Page {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -6135,9 +6084,6 @@ class Service {
   /// Configuration controlling usage of this service.
   Usage usage;
 
-  /// API visibility configuration.
-  Visibility visibility;
-
   Service();
 
   Service.fromJson(core.Map _json) {
@@ -6244,9 +6190,6 @@ class Service {
     if (_json.containsKey("usage")) {
       usage = new Usage.fromJson(_json["usage"]);
     }
-    if (_json.containsKey("visibility")) {
-      visibility = new Visibility.fromJson(_json["visibility"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6337,9 +6280,6 @@ class Service {
     }
     if (usage != null) {
       _json["usage"] = (usage).toJson();
-    }
-    if (visibility != null) {
-      _json["visibility"] = (visibility).toJson();
     }
     return _json;
   }
@@ -7117,103 +7057,6 @@ class UsageRule {
     }
     if (skipServiceControl != null) {
       _json["skipServiceControl"] = skipServiceControl;
-    }
-    return _json;
-  }
-}
-
-/// `Visibility` defines restrictions for the visibility of service
-/// elements.  Restrictions are specified using visibility labels
-/// (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-///
-/// Users and projects can have access to more than one visibility label. The
-/// effective visibility for multiple labels is the union of each label's
-/// elements, plus any unrestricted elements.
-///
-/// If an element and its parents have no restrictions, visibility is
-/// unconditionally granted.
-///
-/// Example:
-///
-///     visibility:
-///       rules:
-///       - selector: google.calendar.Calendar.EnhancedSearch
-///         restriction: TRUSTED_TESTER
-///       - selector: google.calendar.Calendar.Delegate
-///         restriction: GOOGLE_INTERNAL
-///
-/// Here, all methods are publicly visible except for the restricted methods
-/// EnhancedSearch and Delegate.
-class Visibility {
-  /// A list of visibility rules that apply to individual API elements.
-  ///
-  /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<VisibilityRule> rules;
-
-  Visibility();
-
-  Visibility.fromJson(core.Map _json) {
-    if (_json.containsKey("rules")) {
-      rules = (_json["rules"] as core.List)
-          .map<VisibilityRule>((value) => new VisibilityRule.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A visibility rule provides visibility configuration for an individual API
-/// element.
-class VisibilityRule {
-  /// A comma-separated list of visibility labels that apply to the `selector`.
-  /// Any of the listed labels can be used to grant the visibility.
-  ///
-  /// If a rule has multiple labels, removing one of the labels but not all of
-  /// them can break clients.
-  ///
-  /// Example:
-  ///
-  ///     visibility:
-  ///       rules:
-  ///       - selector: google.calendar.Calendar.EnhancedSearch
-  ///         restriction: GOOGLE_INTERNAL, TRUSTED_TESTER
-  ///
-  /// Removing GOOGLE_INTERNAL from this restriction will break clients that
-  /// rely on this method and only had access to it through GOOGLE_INTERNAL.
-  core.String restriction;
-
-  /// Selects methods, messages, fields, enums, etc. to which this rule applies.
-  ///
-  /// Refer to selector for syntax details.
-  core.String selector;
-
-  VisibilityRule();
-
-  VisibilityRule.fromJson(core.Map _json) {
-    if (_json.containsKey("restriction")) {
-      restriction = _json["restriction"];
-    }
-    if (_json.containsKey("selector")) {
-      selector = _json["selector"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (restriction != null) {
-      _json["restriction"] = restriction;
-    }
-    if (selector != null) {
-      _json["selector"] = selector;
     }
     return _json;
   }

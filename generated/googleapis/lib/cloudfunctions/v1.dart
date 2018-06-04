@@ -16,8 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudfunctions/v1';
 
-/// API for managing lightweight user-provided functions executed in response to
-/// events.
+/// Manages lightweight user-provided functions executed in response to events.
 class CloudfunctionsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -476,7 +475,7 @@ class ProjectsLocationsFunctionsResourceApi {
   /// When making a HTTP PUT request, these two headers need to be specified:
   ///
   /// * `content-type: application/zip`
-  /// * `x-google-content-length-range: 0,104857600`
+  /// * `x-goog-content-length-range: 0,104857600`
   ///
   /// [request] - The metadata request object.
   ///
@@ -793,6 +792,10 @@ class CloudFunction {
   /// globally and match pattern `projects / * /locations / * /functions / * `
   core.String name;
 
+  /// The runtime in which the function is going to run. If empty, defaults to
+  /// Node.js 6.
+  core.String runtime;
+
   /// Output only. The email of the function's service account.
   core.String serviceAccountEmail;
 
@@ -858,6 +861,9 @@ class CloudFunction {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("runtime")) {
+      runtime = _json["runtime"];
+    }
     if (_json.containsKey("serviceAccountEmail")) {
       serviceAccountEmail = _json["serviceAccountEmail"];
     }
@@ -908,6 +914,9 @@ class CloudFunction {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (runtime != null) {
+      _json["runtime"] = runtime;
     }
     if (serviceAccountEmail != null) {
       _json["serviceAccountEmail"] = serviceAccountEmail;
@@ -1264,6 +1273,10 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  /// For example, "Tokyo".
+  core.String displayName;
+
   /// Cross-service attributes for the location. For example
   ///
   ///     {"cloud.googleapis.com/region": "us-east1"}
@@ -1286,6 +1299,9 @@ class Location {
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -1304,6 +1320,9 @@ class Location {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
     }

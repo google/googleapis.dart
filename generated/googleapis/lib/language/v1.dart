@@ -821,7 +821,8 @@ class ClassificationCategory {
   /// the classifier is that this category represents the given text.
   core.double confidence;
 
-  /// The name of the category representing the document.
+  /// The name of the category representing the document, from the [predefined
+  /// taxonomy](/natural-language/docs/categories).
   core.String name;
 
   ClassificationCategory();
@@ -1026,6 +1027,7 @@ class DependencyEdge {
 /// Represents the input to API methods.
 class Document {
   /// The content of the input in string format.
+  /// Cloud audit logging exempt since it is based on user data.
   core.String content;
 
   /// The Google Cloud Storage URI where the file content is located.

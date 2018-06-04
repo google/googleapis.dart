@@ -434,6 +434,14 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a
+  /// previous ListInstancesResponse.
+  ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -455,14 +463,6 @@ class ProjectsInstancesResourceApi {
   ///                                  it has the label "env" with its value
   ///                                  containing "dev".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a
-  /// previous ListInstancesResponse.
-  ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -474,9 +474,9 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -488,14 +488,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1005,13 +1005,13 @@ class ProjectsInstancesDatabasesResourceApi {
   /// Values are of the form `projects/<project>/instances/<instance>`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
-  /// [pageSize] - Number of databases to be returned in the response. If 0 or
-  /// less,
-  /// defaults to the server's maximum allowed page size.
-  ///
   /// [pageToken] - If non-empty, `page_token` should contain a
   /// next_page_token from a
   /// previous ListDatabasesResponse.
+  ///
+  /// [pageSize] - Number of databases to be returned in the response. If 0 or
+  /// less,
+  /// defaults to the server's maximum allowed page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1024,7 +1024,7 @@ class ProjectsInstancesDatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDatabasesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1035,11 +1035,11 @@ class ProjectsInstancesDatabasesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1703,12 +1703,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Executes an SQL query, returning all rows in a single reply. This
+  /// Executes an SQL statement, returning all results in a single reply. This
   /// method cannot be used to return a result set larger than 10 MiB;
   /// if the query yields more data than that, the query fails with
   /// a `FAILED_PRECONDITION` error.
   ///
-  /// Queries inside read-write transactions might return `ABORTED`. If
+  /// Operations inside read-write transactions might return `ABORTED`. If
   /// this occurs, the application should restart the transaction from
   /// the beginning. See Transaction for more details.
   ///
@@ -1879,14 +1879,6 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a previous
-  /// ListSessionsResponse.
-  ///
-  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1899,6 +1891,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   ///   * `labels.env:dev` --> The session has the label "env" and the value of
   ///                        the label contains the string "dev".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
+  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1910,9 +1910,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1924,14 +1924,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2419,11 +2419,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2436,9 +2436,9 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2450,14 +2450,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2510,7 +2510,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2912,6 +2912,8 @@ class Database {
 /// Arguments to delete operations.
 class Delete {
   /// Required. The primary keys of the rows within table to delete.
+  /// Delete is idempotent. The transaction will succeed even if some or all
+  /// rows do not exist.
   KeySet keySet;
 
   /// Required. The table whose rows will be deleted.
@@ -2970,12 +2972,12 @@ class ExecuteSqlRequest {
   /// of type `STRING` both appear in params as JSON strings.
   ///
   /// In these cases, `param_types` can be used to specify the exact
-  /// SQL type for some or all of the SQL query parameters. See the
+  /// SQL type for some or all of the SQL statement parameters. See the
   /// definition of Type for more information
   /// about SQL types.
   core.Map<core.String, Type> paramTypes;
 
-  /// The SQL query string can contain parameter placeholders. A parameter
+  /// The SQL string can contain parameter placeholders. A parameter
   /// placeholder consists of `'@'` followed by the parameter
   /// name. Parameter names consist of any combination of letters,
   /// numbers, and underscores.
@@ -2984,7 +2986,7 @@ class ExecuteSqlRequest {
   /// parameter name can be used more than once, for example:
   ///   `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// It is an error to execute an SQL query with unbound parameters.
+  /// It is an error to execute an SQL statement with unbound parameters.
   ///
   /// Parameter values are specified using `params`, which is a JSON
   /// object whose keys are parameter names, and whose values are the
@@ -3012,21 +3014,18 @@ class ExecuteSqlRequest {
   /// ResultSetStats. If partition_token is set, query_mode can only
   /// be set to QueryMode.NORMAL.
   /// Possible string values are:
-  /// - "NORMAL" : The default mode where only the query result, without any
-  /// information
-  /// about the query plan is returned.
-  /// - "PLAN" : This mode returns only the query plan, without any result rows
-  /// or
+  /// - "NORMAL" : The default mode. Only the statement results are returned.
+  /// - "PLAN" : This mode returns only the query plan, without any results or
   /// execution statistics information.
   /// - "PROFILE" : This mode returns both the query plan and the execution
   /// statistics along
-  /// with the result rows.
+  /// with the results.
   core.String queryMode;
 
-  /// If this request is resuming a previously interrupted SQL query
+  /// If this request is resuming a previously interrupted SQL statement
   /// execution, `resume_token` should be copied from the last
   /// PartialResultSet yielded before the interruption. Doing this
-  /// enables the new SQL query execution to resume where the last one left
+  /// enables the new SQL statement execution to resume where the last one left
   /// off. The rest of the request parameters must exactly match the
   /// request that yielded this token.
   core.String resumeToken;
@@ -3039,7 +3038,7 @@ class ExecuteSqlRequest {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Required. The SQL query string.
+  /// Required. The SQL string.
   core.String sql;
 
   /// The transaction to use. If none is provided, the default is a
@@ -3898,7 +3897,7 @@ class PartialResultSet {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Query plan and execution statistics for the query that produced this
+  /// Query plan and execution statistics for the statement that produced this
   /// streaming result set. These can be requested by setting
   /// ExecuteSqlRequest.query_mode and are sent
   /// only once with the last response in the stream.
@@ -4062,13 +4061,19 @@ class Partition {
 /// Options for a PartitionQueryRequest and
 /// PartitionReadRequest.
 class PartitionOptions {
+  /// **Note:** This hint is currently ignored by PartitionQuery and
+  /// PartitionRead requests.
+  ///
   /// The desired maximum number of partitions to return.  For example, this may
   /// be set to the number of workers available.  The default for this option
   /// is currently 10,000. The maximum value is currently 200,000.  This is only
-  /// a hint.  The actual number of partitions returned may be smaller than
-  /// this maximum count request.
+  /// a hint.  The actual number of partitions returned may be smaller or larger
+  /// than this maximum count request.
   core.String maxPartitions;
 
+  /// **Note:** This hint is currently ignored by PartitionQuery and
+  /// PartitionRead requests.
+  ///
   /// The desired data size for each partition generated.  The default for this
   /// option is currently 1 GiB.  This is only a hint. The actual size of each
   /// partition may be smaller or larger than this size request.
@@ -4424,14 +4429,14 @@ class PlanNode {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -4441,7 +4446,7 @@ class PlanNode {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -4450,6 +4455,20 @@ class PlanNode {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -4812,8 +4831,8 @@ class ResultSet {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.List<core.Object>> rows;
 
-  /// Query plan and execution statistics for the query that produced this
-  /// result set. These can be requested by setting
+  /// Query plan and execution statistics for the SQL statement that
+  /// produced this result set. These can be requested by setting
   /// ExecuteSqlRequest.query_mode.
   ResultSetStats stats;
 
@@ -5350,6 +5369,7 @@ class Transaction {
 ///      read at timestamps in the past. Snapshot read-only
 ///      transactions do not need to be committed.
 ///
+///
 /// For transactions that only read, snapshot read-only transactions
 /// provide simpler semantics and are almost always faster. In
 /// particular, read-only transactions do not take locks, so they do
@@ -5543,6 +5563,8 @@ class Transaction {
 /// restriction also applies to in-progress reads and/or SQL queries whose
 /// timestamp become too old while executing. Reads and SQL queries with
 /// too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+///
+/// ##
 class TransactionOptions {
   /// Transaction will not write.
   ///
@@ -5657,6 +5679,12 @@ class Type {
   /// - "TIMESTAMP" : Encoded as `string` in RFC 3339 timestamp format. The time
   /// zone
   /// must be present, and must be `"Z"`.
+  ///
+  /// If the schema has the column option
+  /// `allow_commit_timestamp=true`, the placeholder string
+  /// `"spanner.commit_timestamp()"` can be used to instruct the system
+  /// to insert the commit timestamp associated with the transaction
+  /// commit.
   /// - "DATE" : Encoded as `string` in RFC 3339 date format.
   /// - "STRING" : Encoded as `string`.
   /// - "BYTES" : Encoded as a base64-encoded `string`, as described in RFC

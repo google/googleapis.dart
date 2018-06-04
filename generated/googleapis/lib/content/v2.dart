@@ -32,7 +32,14 @@ class ContentApi {
   DatafeedstatusesResourceApi get datafeedstatuses =>
       new DatafeedstatusesResourceApi(_requester);
   InventoryResourceApi get inventory => new InventoryResourceApi(_requester);
+  LiasettingsResourceApi get liasettings =>
+      new LiasettingsResourceApi(_requester);
+  OrderinvoicesResourceApi get orderinvoices =>
+      new OrderinvoicesResourceApi(_requester);
+  OrderpaymentsResourceApi get orderpayments =>
+      new OrderpaymentsResourceApi(_requester);
   OrdersResourceApi get orders => new OrdersResourceApi(_requester);
+  PosResourceApi get pos => new PosResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ProductstatusesResourceApi get productstatuses =>
       new ProductstatusesResourceApi(_requester);
@@ -611,6 +618,9 @@ class AccountstatusesResourceApi {
   ///
   /// [accountId] - The ID of the account.
   ///
+  /// [destinations] - If set, only issues for the specified destinations are
+  /// returned, otherwise only issues for the Shopping destination.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -622,7 +632,7 @@ class AccountstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountStatus> get(core.String merchantId, core.String accountId,
-      {core.String $fields}) {
+      {core.List<core.String> destinations, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -635,6 +645,9 @@ class AccountstatusesResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (destinations != null) {
+      _queryParams["destinations"] = destinations;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -660,6 +673,9 @@ class AccountstatusesResourceApi {
   /// [merchantId] - The ID of the managing account. This must be a multi-client
   /// account.
   ///
+  /// [destinations] - If set, only issues for the specified destinations are
+  /// returned, otherwise only issues for the Shopping destination.
+  ///
   /// [maxResults] - The maximum number of account statuses to return in the
   /// response, used for paging.
   ///
@@ -676,7 +692,10 @@ class AccountstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountstatusesListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.List<core.String> destinations,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -686,6 +705,9 @@ class AccountstatusesResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (destinations != null) {
+      _queryParams["destinations"] = destinations;
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1114,6 +1136,65 @@ class DatafeedsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => null);
+  }
+
+  /// Invokes a fetch for the datafeed in your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
+  ///
+  /// [datafeedId] - The ID of the datafeed to be fetched.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DatafeedsFetchNowResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DatafeedsFetchNowResponse> fetchnow(
+      core.String merchantId, core.String datafeedId,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (datafeedId == null) {
+      throw new core.ArgumentError("Parameter datafeedId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/datafeeds/' +
+        commons.Escaper.ecapeVariable('$datafeedId') +
+        '/fetchNow';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new DatafeedsFetchNowResponse.fromJson(data));
   }
 
   /// Retrieves a datafeed configuration from your Merchant Center account.
@@ -1705,6 +1786,945 @@ class InventoryResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new InventorySetResponse.fromJson(data));
+  }
+}
+
+class LiasettingsResourceApi {
+  final commons.ApiRequester _requester;
+
+  LiasettingsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves and/or updates the LIA settings of multiple accounts in a single
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiasettingsCustomBatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiasettingsCustomBatchResponse> custombatch(
+      LiasettingsCustomBatchRequest request,
+      {core.bool dryRun,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'liasettings/batch';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new LiasettingsCustomBatchResponse.fromJson(data));
+  }
+
+  /// Retrieves the LIA settings of the account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account for which to get or update LIA
+  /// settings.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiaSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiaSettings> get(core.String merchantId, core.String accountId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiaSettings.fromJson(data));
+  }
+
+  /// Retrieves the list of accessible Google My Business accounts.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account for which to retrieve accessible
+  /// Google My Business accounts.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiasettingsGetAccessibleGmbAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiasettingsGetAccessibleGmbAccountsResponse>
+      getaccessiblegmbaccounts(core.String merchantId, core.String accountId,
+          {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/accessiblegmbaccounts';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new LiasettingsGetAccessibleGmbAccountsResponse.fromJson(data));
+  }
+
+  /// Lists the LIA settings of the sub-accounts in your Merchant Center
+  /// account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
+  ///
+  /// [maxResults] - The maximum number of LIA settings to return in the
+  /// response, used for paging.
+  ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiasettingsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiasettingsListResponse> list(core.String merchantId,
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/liasettings';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiasettingsListResponse.fromJson(data));
+  }
+
+  /// Updates the LIA settings of the account. This method supports patch
+  /// semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account for which to get or update LIA
+  /// settings.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiaSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiaSettings> patch(
+      LiaSettings request, core.String merchantId, core.String accountId,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiaSettings.fromJson(data));
+  }
+
+  /// Requests access to a specified Google My Business account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account for which GMB access is requested.
+  ///
+  /// [gmbEmail] - The email of the Google My Business account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiasettingsRequestGmbAccessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiasettingsRequestGmbAccessResponse> requestgmbaccess(
+      core.String merchantId, core.String accountId,
+      {core.String gmbEmail, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (gmbEmail != null) {
+      _queryParams["gmbEmail"] = [gmbEmail];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/requestgmbaccess';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new LiasettingsRequestGmbAccessResponse.fromJson(data));
+  }
+
+  /// Requests inventory validation for the specified country.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account that manages the order. This cannot be
+  /// a multi-client account.
+  ///
+  /// [country] - The country for which inventory validation is requested.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiasettingsRequestInventoryVerificationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiasettingsRequestInventoryVerificationResponse>
+      requestinventoryverification(
+          core.String merchantId, core.String accountId, core.String country,
+          {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (country == null) {
+      throw new core.ArgumentError("Parameter country is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/requestinventoryverification/' +
+        commons.Escaper.ecapeVariable('$country');
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new LiasettingsRequestInventoryVerificationResponse.fromJson(data));
+  }
+
+  /// Sets the inventory verification contract for the specified country.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account that manages the order. This cannot be
+  /// a multi-client account.
+  ///
+  /// [contactEmail] - The email of the inventory verification contact.
+  ///
+  /// [contactName] - The name of the inventory verification contact.
+  ///
+  /// [country] - The country for which inventory verification is requested.
+  ///
+  /// [language] - The language for which inventory verification is requested.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiasettingsSetInventoryVerificationContactResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiasettingsSetInventoryVerificationContactResponse>
+      setinventoryverificationcontact(
+          core.String merchantId, core.String accountId,
+          {core.String contactEmail,
+          core.String contactName,
+          core.String country,
+          core.String language,
+          core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (contactEmail != null) {
+      _queryParams["contactEmail"] = [contactEmail];
+    }
+    if (contactName != null) {
+      _queryParams["contactName"] = [contactName];
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/setinventoryverificationcontact';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new LiasettingsSetInventoryVerificationContactResponse.fromJson(data));
+  }
+
+  /// Updates the LIA settings of the account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account. If this parameter is not
+  /// the same as accountId, then this account must be a multi-client account
+  /// and accountId must be the ID of a sub-account of this account.
+  ///
+  /// [accountId] - The ID of the account for which to get or update LIA
+  /// settings.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LiaSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LiaSettings> update(
+      LiaSettings request, core.String merchantId, core.String accountId,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings/' +
+        commons.Escaper.ecapeVariable('$accountId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiaSettings.fromJson(data));
+  }
+}
+
+class OrderinvoicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrderinvoicesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a charge invoice for a shipment group, and triggers a charge
+  /// capture for non-facilitated payment orders.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderinvoicesCreateChargeInvoiceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderinvoicesCreateChargeInvoiceResponse> createchargeinvoice(
+      OrderinvoicesCreateChargeInvoiceRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderinvoices/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/createChargeInvoice';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new OrderinvoicesCreateChargeInvoiceResponse.fromJson(data));
+  }
+
+  /// Creates a refund invoice for one or more shipment groups, and triggers a
+  /// refund for non-facilitated payment orders.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderinvoicesCreateRefundInvoiceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderinvoicesCreateRefundInvoiceResponse> createrefundinvoice(
+      OrderinvoicesCreateRefundInvoiceRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderinvoices/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/createRefundInvoice';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new OrderinvoicesCreateRefundInvoiceResponse.fromJson(data));
+  }
+}
+
+class OrderpaymentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrderpaymentsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Notify about successfully authorizing user's payment method for a given
+  /// amount.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order for for which payment authorization is
+  /// happening.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderpaymentsNotifyAuthApprovedResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderpaymentsNotifyAuthApprovedResponse> notifyauthapproved(
+      OrderpaymentsNotifyAuthApprovedRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderpayments/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/notifyAuthApproved';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new OrderpaymentsNotifyAuthApprovedResponse.fromJson(data));
+  }
+
+  /// Notify about failure to authorize user's payment method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order for which payment authorization was
+  /// declined.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderpaymentsNotifyAuthDeclinedResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderpaymentsNotifyAuthDeclinedResponse> notifyauthdeclined(
+      OrderpaymentsNotifyAuthDeclinedRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderpayments/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/notifyAuthDeclined';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new OrderpaymentsNotifyAuthDeclinedResponse.fromJson(data));
+  }
+
+  /// Notify about charge on user's selected payments method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order for which charge is happening.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderpaymentsNotifyChargeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderpaymentsNotifyChargeResponse> notifycharge(
+      OrderpaymentsNotifyChargeRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderpayments/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/notifyCharge';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new OrderpaymentsNotifyChargeResponse.fromJson(data));
+  }
+
+  /// Notify about refund on user's selected payments method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order for which charge is happening.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderpaymentsNotifyRefundResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderpaymentsNotifyRefundResponse> notifyrefund(
+      OrderpaymentsNotifyRefundRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderpayments/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/notifyRefund';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new OrderpaymentsNotifyRefundResponse.fromJson(data));
   }
 }
 
@@ -2925,6 +3945,421 @@ class OrdersResourceApi {
   }
 }
 
+class PosResourceApi {
+  final commons.ApiRequester _requester;
+
+  PosResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Batches multiple POS-related calls in a single request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosCustomBatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosCustomBatchResponse> custombatch(
+      PosCustomBatchRequest request,
+      {core.bool dryRun,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'pos/batch';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PosCustomBatchResponse.fromJson(data));
+  }
+
+  /// Deletes a store for the given merchant.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the POS or inventory data provider.
+  ///
+  /// [targetMerchantId] - The ID of the target merchant.
+  ///
+  /// [storeCode] - A store code that is unique per merchant.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String merchantId, core.String targetMerchantId,
+      core.String storeCode,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (targetMerchantId == null) {
+      throw new core.ArgumentError("Parameter targetMerchantId is required.");
+    }
+    if (storeCode == null) {
+      throw new core.ArgumentError("Parameter storeCode is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/pos/' +
+        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        '/store/' +
+        commons.Escaper.ecapeVariable('$storeCode');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Retrieves information about the given store.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the POS or inventory data provider.
+  ///
+  /// [targetMerchantId] - The ID of the target merchant.
+  ///
+  /// [storeCode] - A store code that is unique per merchant.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosStore].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosStore> get(core.String merchantId,
+      core.String targetMerchantId, core.String storeCode,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (targetMerchantId == null) {
+      throw new core.ArgumentError("Parameter targetMerchantId is required.");
+    }
+    if (storeCode == null) {
+      throw new core.ArgumentError("Parameter storeCode is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/pos/' +
+        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        '/store/' +
+        commons.Escaper.ecapeVariable('$storeCode');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PosStore.fromJson(data));
+  }
+
+  /// Creates a store for the given merchant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the POS or inventory data provider.
+  ///
+  /// [targetMerchantId] - The ID of the target merchant.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosStore].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosStore> insert(
+      PosStore request, core.String merchantId, core.String targetMerchantId,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (targetMerchantId == null) {
+      throw new core.ArgumentError("Parameter targetMerchantId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/pos/' +
+        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        '/store';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PosStore.fromJson(data));
+  }
+
+  /// Submit inventory for the given merchant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the POS or inventory data provider.
+  ///
+  /// [targetMerchantId] - The ID of the target merchant.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosInventoryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosInventoryResponse> inventory(PosInventoryRequest request,
+      core.String merchantId, core.String targetMerchantId,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (targetMerchantId == null) {
+      throw new core.ArgumentError("Parameter targetMerchantId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/pos/' +
+        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        '/inventory';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PosInventoryResponse.fromJson(data));
+  }
+
+  /// Lists the stores of the target merchant.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the POS or inventory data provider.
+  ///
+  /// [targetMerchantId] - The ID of the target merchant.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosListResponse> list(
+      core.String merchantId, core.String targetMerchantId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (targetMerchantId == null) {
+      throw new core.ArgumentError("Parameter targetMerchantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/pos/' +
+        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        '/store';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PosListResponse.fromJson(data));
+  }
+
+  /// Submit a sale event for the given merchant.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the POS or inventory data provider.
+  ///
+  /// [targetMerchantId] - The ID of the target merchant.
+  ///
+  /// [dryRun] - Flag to run the request in dry-run mode.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosSaleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosSaleResponse> sale(PosSaleRequest request,
+      core.String merchantId, core.String targetMerchantId,
+      {core.bool dryRun, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (targetMerchantId == null) {
+      throw new core.ArgumentError("Parameter targetMerchantId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/pos/' +
+        commons.Escaper.ecapeVariable('$targetMerchantId') +
+        '/sale';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PosSaleResponse.fromJson(data));
+  }
+}
+
 class ProductsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -3278,6 +4713,9 @@ class ProductstatusesResourceApi {
   ///
   /// [productId] - The REST id of the product.
   ///
+  /// [destinations] - If set, only issues for the specified destinations are
+  /// returned, otherwise only issues for the Shopping destination.
+  ///
   /// [includeAttributes] - Flag to include full product data in the result of
   /// this get request. The default value is false.
   ///
@@ -3292,7 +4730,9 @@ class ProductstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductStatus> get(core.String merchantId, core.String productId,
-      {core.bool includeAttributes, core.String $fields}) {
+      {core.List<core.String> destinations,
+      core.bool includeAttributes,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -3305,6 +4745,9 @@ class ProductstatusesResourceApi {
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (destinations != null) {
+      _queryParams["destinations"] = destinations;
     }
     if (includeAttributes != null) {
       _queryParams["includeAttributes"] = ["${includeAttributes}"];
@@ -3333,6 +4776,9 @@ class ProductstatusesResourceApi {
   /// [merchantId] - The ID of the account that contains the products. This
   /// account cannot be a multi-client account.
   ///
+  /// [destinations] - If set, only issues for the specified destinations are
+  /// returned, otherwise only issues for the Shopping destination.
+  ///
   /// [includeAttributes] - Flag to include full product data in the results of
   /// the list request. The default value is false.
   ///
@@ -3356,7 +4802,8 @@ class ProductstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductstatusesListResponse> list(core.String merchantId,
-      {core.bool includeAttributes,
+      {core.List<core.String> destinations,
+      core.bool includeAttributes,
       core.bool includeInvalidInsertedItems,
       core.int maxResults,
       core.String pageToken,
@@ -3370,6 +4817,9 @@ class ProductstatusesResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (destinations != null) {
+      _queryParams["destinations"] = destinations;
     }
     if (includeAttributes != null) {
       _queryParams["includeAttributes"] = ["${includeAttributes}"];
@@ -3817,7 +5267,7 @@ class Account {
   /// Display name for the account.
   core.String name;
 
-  /// URL for individual seller reviews, i.e., reviews for each child account.
+  /// [DEPRECATED] This field is never returned and will be ignored if provided.
   core.String reviewsUrl;
 
   /// Client-specific, locally-unique, internal ID for the child account.
@@ -3967,7 +5417,9 @@ class AccountAdwordsLink {
 }
 
 class AccountGoogleMyBusinessLink {
-  /// The GMB email address.
+  /// The GMB email address of which a specific account within a GMB account. A
+  /// sample account within a GMB account could be a business account with set
+  /// of locations, managed under the GMB account.
   core.String gmbEmail;
 
   /// Status of the link between this Merchant Center account and the GMB
@@ -4103,6 +5555,9 @@ class AccountStatusAccountLevelIssue {
   /// Country for which this issue is reported.
   core.String country;
 
+  /// The destination the issue applies to.
+  core.String destination;
+
   /// Additional details about the issue.
   core.String detail;
 
@@ -4120,6 +5575,9 @@ class AccountStatusAccountLevelIssue {
   AccountStatusAccountLevelIssue.fromJson(core.Map _json) {
     if (_json.containsKey("country")) {
       country = _json["country"];
+    }
+    if (_json.containsKey("destination")) {
+      destination = _json["destination"];
     }
     if (_json.containsKey("detail")) {
       detail = _json["detail"];
@@ -4141,6 +5599,9 @@ class AccountStatusAccountLevelIssue {
     if (country != null) {
       _json["country"] = country;
     }
+    if (destination != null) {
+      _json["destination"] = destination;
+    }
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -4160,6 +5621,9 @@ class AccountStatusAccountLevelIssue {
 class AccountStatusDataQualityIssue {
   /// Country for which this issue is reported.
   core.String country;
+
+  /// The destination the issue applies to.
+  core.String destination;
 
   /// A more detailed description of the issue.
   core.String detail;
@@ -4193,6 +5657,9 @@ class AccountStatusDataQualityIssue {
   AccountStatusDataQualityIssue.fromJson(core.Map _json) {
     if (_json.containsKey("country")) {
       country = _json["country"];
+    }
+    if (_json.containsKey("destination")) {
+      destination = _json["destination"];
     }
     if (_json.containsKey("detail")) {
       detail = _json["detail"];
@@ -4231,6 +5698,9 @@ class AccountStatusDataQualityIssue {
         new core.Map<core.String, core.Object>();
     if (country != null) {
       _json["country"] = country;
+    }
+    if (destination != null) {
+      _json["destination"] = destination;
     }
     if (detail != null) {
       _json["detail"] = detail;
@@ -4831,6 +6301,10 @@ class AccountstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
+  /// If set, only issues for the specified destinations are returned, otherwise
+  /// only issues for the Shopping destination.
+  core.List<core.String> destinations;
+
   /// The ID of the managing account.
   core.String merchantId;
 
@@ -4845,6 +6319,9 @@ class AccountstatusesCustomBatchRequestEntry {
     }
     if (_json.containsKey("batchId")) {
       batchId = _json["batchId"];
+    }
+    if (_json.containsKey("destinations")) {
+      destinations = (_json["destinations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("merchantId")) {
       merchantId = _json["merchantId"];
@@ -4862,6 +6339,9 @@ class AccountstatusesCustomBatchRequestEntry {
     }
     if (batchId != null) {
       _json["batchId"] = batchId;
+    }
+    if (destinations != null) {
+      _json["destinations"] = destinations;
     }
     if (merchantId != null) {
       _json["merchantId"] = merchantId;
@@ -5195,6 +6675,37 @@ class AccounttaxListResponse {
     }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Amount {
+  /// Value before taxes.
+  Price pretax;
+
+  /// Tax value.
+  Price tax;
+
+  Amount();
+
+  Amount.fromJson(core.Map _json) {
+    if (_json.containsKey("pretax")) {
+      pretax = new Price.fromJson(_json["pretax"]);
+    }
+    if (_json.containsKey("tax")) {
+      tax = new Price.fromJson(_json["tax"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pretax != null) {
+      _json["pretax"] = (pretax).toJson();
+    }
+    if (tax != null) {
+      _json["tax"] = (tax).toJson();
     }
     return _json;
   }
@@ -5891,7 +7402,7 @@ class DatafeedsCustomBatchRequestEntry {
   /// The data feed to insert.
   Datafeed datafeed;
 
-  /// The ID of the data feed to get or delete.
+  /// The ID of the data feed to get, delete or fetch.
   core.String datafeedId;
 
   /// The ID of the managing account.
@@ -6012,6 +7523,29 @@ class DatafeedsCustomBatchResponseEntry {
     }
     if (errors != null) {
       _json["errors"] = (errors).toJson();
+    }
+    return _json;
+  }
+}
+
+class DatafeedsFetchNowResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#datafeedsFetchNowResponse".
+  core.String kind;
+
+  DatafeedsFetchNowResponse();
+
+  DatafeedsFetchNowResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -6397,6 +7931,90 @@ class Errors {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class GmbAccounts {
+  /// The ID of the account.
+  core.String accountId;
+
+  /// A list of GMB accounts which are available to the merchant.
+  core.List<GmbAccountsGmbAccount> gmbAccounts;
+
+  GmbAccounts();
+
+  GmbAccounts.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("gmbAccounts")) {
+      gmbAccounts = (_json["gmbAccounts"] as core.List)
+          .map<GmbAccountsGmbAccount>(
+              (value) => new GmbAccountsGmbAccount.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (gmbAccounts != null) {
+      _json["gmbAccounts"] =
+          gmbAccounts.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class GmbAccountsGmbAccount {
+  /// The email which identifies the GMB account.
+  core.String email;
+
+  /// Number of listings under this account.
+  core.String listingCount;
+
+  /// The name of the GMB account.
+  core.String name;
+
+  /// The type of the GMB account (User or Business).
+  core.String type;
+
+  GmbAccountsGmbAccount();
+
+  GmbAccountsGmbAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("listingCount")) {
+      listingCount = _json["listingCount"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (listingCount != null) {
+      _json["listingCount"] = listingCount;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -7086,6 +8704,750 @@ class InventorySetResponse {
   }
 }
 
+class InvoiceSummary {
+  /// Summary of the total amounts of the additional charges.
+  core.List<InvoiceSummaryAdditionalChargeSummary> additionalChargeSummaries;
+
+  /// Customer balance on this invoice. A positive amount means the customer is
+  /// paying, a negative one means the customer is receiving money. Note that it
+  /// must always be true that merchant_balance + customer_balance +
+  /// google_balance = 0.
+  Amount customerBalance;
+
+  /// Google balance on this invoice. A positive amount means Google is paying,
+  /// a negative one means Google is receiving money. Note that it must always
+  /// be true that merchant_balance + customer_balance + google_balance = 0.
+  Amount googleBalance;
+
+  /// Merchant balance on this invoice. A positive amount means the merchant is
+  /// paying, a negative one means the merchant is receiving money. Note that it
+  /// must always be true that merchant_balance + customer_balance +
+  /// google_balance = 0.
+  Amount merchantBalance;
+
+  /// Total price for the product.
+  Amount productTotal;
+
+  /// Summary for each promotion.
+  core.List<Promotion> promotionSummaries;
+
+  InvoiceSummary();
+
+  InvoiceSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalChargeSummaries")) {
+      additionalChargeSummaries =
+          (_json["additionalChargeSummaries"] as core.List)
+              .map<InvoiceSummaryAdditionalChargeSummary>((value) =>
+                  new InvoiceSummaryAdditionalChargeSummary.fromJson(value))
+              .toList();
+    }
+    if (_json.containsKey("customerBalance")) {
+      customerBalance = new Amount.fromJson(_json["customerBalance"]);
+    }
+    if (_json.containsKey("googleBalance")) {
+      googleBalance = new Amount.fromJson(_json["googleBalance"]);
+    }
+    if (_json.containsKey("merchantBalance")) {
+      merchantBalance = new Amount.fromJson(_json["merchantBalance"]);
+    }
+    if (_json.containsKey("productTotal")) {
+      productTotal = new Amount.fromJson(_json["productTotal"]);
+    }
+    if (_json.containsKey("promotionSummaries")) {
+      promotionSummaries = (_json["promotionSummaries"] as core.List)
+          .map<Promotion>((value) => new Promotion.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (additionalChargeSummaries != null) {
+      _json["additionalChargeSummaries"] =
+          additionalChargeSummaries.map((value) => (value).toJson()).toList();
+    }
+    if (customerBalance != null) {
+      _json["customerBalance"] = (customerBalance).toJson();
+    }
+    if (googleBalance != null) {
+      _json["googleBalance"] = (googleBalance).toJson();
+    }
+    if (merchantBalance != null) {
+      _json["merchantBalance"] = (merchantBalance).toJson();
+    }
+    if (productTotal != null) {
+      _json["productTotal"] = (productTotal).toJson();
+    }
+    if (promotionSummaries != null) {
+      _json["promotionSummaries"] =
+          promotionSummaries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class InvoiceSummaryAdditionalChargeSummary {
+  /// Total additional charge for this type.
+  Amount totalAmount;
+
+  /// Type of the additional charge.
+  core.String type;
+
+  InvoiceSummaryAdditionalChargeSummary();
+
+  InvoiceSummaryAdditionalChargeSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("totalAmount")) {
+      totalAmount = new Amount.fromJson(_json["totalAmount"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (totalAmount != null) {
+      _json["totalAmount"] = (totalAmount).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class LiaAboutPageSettings {
+  /// The status of the verification process for the About page.
+  core.String status;
+
+  /// The URL for the About page.
+  core.String url;
+
+  LiaAboutPageSettings();
+
+  LiaAboutPageSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+class LiaCountrySettings {
+  /// The settings for the About page.
+  LiaAboutPageSettings about;
+
+  /// CLDR country code (e.g. "US").
+  core.String country;
+
+  /// The status of the "Merchant hosted local storefront" feature.
+  core.bool hostedLocalStorefrontActive;
+
+  /// LIA inventory verification settings.
+  LiaInventorySettings inventory;
+
+  /// LIA "On Display To Order" settings.
+  LiaOnDisplayToOrderSettings onDisplayToOrder;
+
+  /// The status of the "Store pickup" feature.
+  core.bool storePickupActive;
+
+  LiaCountrySettings();
+
+  LiaCountrySettings.fromJson(core.Map _json) {
+    if (_json.containsKey("about")) {
+      about = new LiaAboutPageSettings.fromJson(_json["about"]);
+    }
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("hostedLocalStorefrontActive")) {
+      hostedLocalStorefrontActive = _json["hostedLocalStorefrontActive"];
+    }
+    if (_json.containsKey("inventory")) {
+      inventory = new LiaInventorySettings.fromJson(_json["inventory"]);
+    }
+    if (_json.containsKey("onDisplayToOrder")) {
+      onDisplayToOrder =
+          new LiaOnDisplayToOrderSettings.fromJson(_json["onDisplayToOrder"]);
+    }
+    if (_json.containsKey("storePickupActive")) {
+      storePickupActive = _json["storePickupActive"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (about != null) {
+      _json["about"] = (about).toJson();
+    }
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (hostedLocalStorefrontActive != null) {
+      _json["hostedLocalStorefrontActive"] = hostedLocalStorefrontActive;
+    }
+    if (inventory != null) {
+      _json["inventory"] = (inventory).toJson();
+    }
+    if (onDisplayToOrder != null) {
+      _json["onDisplayToOrder"] = (onDisplayToOrder).toJson();
+    }
+    if (storePickupActive != null) {
+      _json["storePickupActive"] = storePickupActive;
+    }
+    return _json;
+  }
+}
+
+class LiaInventorySettings {
+  /// The email of the contact for the inventory verification process.
+  core.String inventoryVerificationContactEmail;
+
+  /// The name of the contact for the inventory verification process.
+  core.String inventoryVerificationContactName;
+
+  /// The status of the verification contact.
+  core.String inventoryVerificationContactStatus;
+
+  /// The status of the inventory verification process.
+  core.String status;
+
+  LiaInventorySettings();
+
+  LiaInventorySettings.fromJson(core.Map _json) {
+    if (_json.containsKey("inventoryVerificationContactEmail")) {
+      inventoryVerificationContactEmail =
+          _json["inventoryVerificationContactEmail"];
+    }
+    if (_json.containsKey("inventoryVerificationContactName")) {
+      inventoryVerificationContactName =
+          _json["inventoryVerificationContactName"];
+    }
+    if (_json.containsKey("inventoryVerificationContactStatus")) {
+      inventoryVerificationContactStatus =
+          _json["inventoryVerificationContactStatus"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (inventoryVerificationContactEmail != null) {
+      _json["inventoryVerificationContactEmail"] =
+          inventoryVerificationContactEmail;
+    }
+    if (inventoryVerificationContactName != null) {
+      _json["inventoryVerificationContactName"] =
+          inventoryVerificationContactName;
+    }
+    if (inventoryVerificationContactStatus != null) {
+      _json["inventoryVerificationContactStatus"] =
+          inventoryVerificationContactStatus;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+class LiaOnDisplayToOrderSettings {
+  /// Shipping cost and policy URL.
+  core.String shippingCostPolicyUrl;
+
+  /// The status of the ?On display to order? feature.
+  core.String status;
+
+  LiaOnDisplayToOrderSettings();
+
+  LiaOnDisplayToOrderSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("shippingCostPolicyUrl")) {
+      shippingCostPolicyUrl = _json["shippingCostPolicyUrl"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (shippingCostPolicyUrl != null) {
+      _json["shippingCostPolicyUrl"] = shippingCostPolicyUrl;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+class LiaSettings {
+  /// The ID of the account to which these LIA settings belong. Ignored upon
+  /// update, always present in get request responses.
+  core.String accountId;
+
+  /// The LIA settings for each country.
+  core.List<LiaCountrySettings> countrySettings;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liaSettings".
+  core.String kind;
+
+  LiaSettings();
+
+  LiaSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("countrySettings")) {
+      countrySettings = (_json["countrySettings"] as core.List)
+          .map<LiaCountrySettings>(
+              (value) => new LiaCountrySettings.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (countrySettings != null) {
+      _json["countrySettings"] =
+          countrySettings.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class LiasettingsCustomBatchRequest {
+  /// The request entries to be processed in the batch.
+  core.List<LiasettingsCustomBatchRequestEntry> entries;
+
+  LiasettingsCustomBatchRequest();
+
+  LiasettingsCustomBatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<LiasettingsCustomBatchRequestEntry>(
+              (value) => new LiasettingsCustomBatchRequestEntry.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class LiasettingsCustomBatchRequestEntry {
+  /// The ID of the account for which to get/update account shipping settings.
+  core.String accountId;
+
+  /// An entry ID, unique within the batch request.
+  core.int batchId;
+
+  /// Inventory validation contact email. Required only for
+  /// SetInventoryValidationContact.
+  core.String contactEmail;
+
+  /// Inventory validation contact name. Required only for
+  /// SetInventoryValidationContact.
+  core.String contactName;
+
+  /// The country code. Required only for RequestInventoryVerification.
+  core.String country;
+
+  /// The GMB account. Required only for RequestGmbAccess.
+  core.String gmbEmail;
+
+  /// The account Lia settings to update. Only defined if the method is update.
+  LiaSettings liaSettings;
+
+  /// The ID of the managing account.
+  core.String merchantId;
+  core.String method;
+
+  /// The ID of POS data provider. Required only for SetPosProvider.
+  core.String posDataProviderId;
+
+  /// The account ID by which this merchant is known to the POS provider.
+  core.String posExternalAccountId;
+
+  LiasettingsCustomBatchRequestEntry();
+
+  LiasettingsCustomBatchRequestEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("contactEmail")) {
+      contactEmail = _json["contactEmail"];
+    }
+    if (_json.containsKey("contactName")) {
+      contactName = _json["contactName"];
+    }
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("gmbEmail")) {
+      gmbEmail = _json["gmbEmail"];
+    }
+    if (_json.containsKey("liaSettings")) {
+      liaSettings = new LiaSettings.fromJson(_json["liaSettings"]);
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("posDataProviderId")) {
+      posDataProviderId = _json["posDataProviderId"];
+    }
+    if (_json.containsKey("posExternalAccountId")) {
+      posExternalAccountId = _json["posExternalAccountId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (contactEmail != null) {
+      _json["contactEmail"] = contactEmail;
+    }
+    if (contactName != null) {
+      _json["contactName"] = contactName;
+    }
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (gmbEmail != null) {
+      _json["gmbEmail"] = gmbEmail;
+    }
+    if (liaSettings != null) {
+      _json["liaSettings"] = (liaSettings).toJson();
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (posDataProviderId != null) {
+      _json["posDataProviderId"] = posDataProviderId;
+    }
+    if (posExternalAccountId != null) {
+      _json["posExternalAccountId"] = posExternalAccountId;
+    }
+    return _json;
+  }
+}
+
+class LiasettingsCustomBatchResponse {
+  /// The result of the execution of the batch requests.
+  core.List<LiasettingsCustomBatchResponseEntry> entries;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsCustomBatchResponse".
+  core.String kind;
+
+  LiasettingsCustomBatchResponse();
+
+  LiasettingsCustomBatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<LiasettingsCustomBatchResponseEntry>((value) =>
+              new LiasettingsCustomBatchResponseEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class LiasettingsCustomBatchResponseEntry {
+  /// The ID of the request entry to which this entry responds.
+  core.int batchId;
+
+  /// A list of errors defined if, and only if, the request failed.
+  Errors errors;
+
+  /// The the list of accessible GMB accounts.
+  GmbAccounts gmbAccounts;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsCustomBatchResponseEntry".
+  core.String kind;
+
+  /// The retrieved or updated Lia settings.
+  LiaSettings liaSettings;
+
+  /// The list of POS data providers.
+  core.List<PosDataProviders> posDataProviders;
+
+  LiasettingsCustomBatchResponseEntry();
+
+  LiasettingsCustomBatchResponseEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("errors")) {
+      errors = new Errors.fromJson(_json["errors"]);
+    }
+    if (_json.containsKey("gmbAccounts")) {
+      gmbAccounts = new GmbAccounts.fromJson(_json["gmbAccounts"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("liaSettings")) {
+      liaSettings = new LiaSettings.fromJson(_json["liaSettings"]);
+    }
+    if (_json.containsKey("posDataProviders")) {
+      posDataProviders = (_json["posDataProviders"] as core.List)
+          .map<PosDataProviders>(
+              (value) => new PosDataProviders.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (errors != null) {
+      _json["errors"] = (errors).toJson();
+    }
+    if (gmbAccounts != null) {
+      _json["gmbAccounts"] = (gmbAccounts).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (liaSettings != null) {
+      _json["liaSettings"] = (liaSettings).toJson();
+    }
+    if (posDataProviders != null) {
+      _json["posDataProviders"] =
+          posDataProviders.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class LiasettingsGetAccessibleGmbAccountsResponse {
+  /// The ID of the account.
+  core.String accountId;
+
+  /// A list of GMB accounts which are available to the merchant.
+  core.List<GmbAccountsGmbAccount> gmbAccounts;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsGetAccessibleGmbAccountsResponse".
+  core.String kind;
+
+  LiasettingsGetAccessibleGmbAccountsResponse();
+
+  LiasettingsGetAccessibleGmbAccountsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("gmbAccounts")) {
+      gmbAccounts = (_json["gmbAccounts"] as core.List)
+          .map<GmbAccountsGmbAccount>(
+              (value) => new GmbAccountsGmbAccount.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (gmbAccounts != null) {
+      _json["gmbAccounts"] =
+          gmbAccounts.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class LiasettingsListResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsListResponse".
+  core.String kind;
+
+  /// The token for the retrieval of the next page of LIA settings.
+  core.String nextPageToken;
+  core.List<LiaSettings> resources;
+
+  LiasettingsListResponse();
+
+  LiasettingsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = (_json["resources"] as core.List)
+          .map<LiaSettings>((value) => new LiaSettings.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class LiasettingsRequestGmbAccessResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsRequestGmbAccessResponse".
+  core.String kind;
+
+  LiasettingsRequestGmbAccessResponse();
+
+  LiasettingsRequestGmbAccessResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class LiasettingsRequestInventoryVerificationResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsRequestInventoryVerificationResponse".
+  core.String kind;
+
+  LiasettingsRequestInventoryVerificationResponse();
+
+  LiasettingsRequestInventoryVerificationResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class LiasettingsSetInventoryVerificationContactResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#liasettingsSetInventoryVerificationContactResponse".
+  core.String kind;
+
+  LiasettingsSetInventoryVerificationContactResponse();
+
+  LiasettingsSetInventoryVerificationContactResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 class LocationIdSet {
   /// A non-empty list of location IDs. They must all be of the same location
   /// type (e.g., state).
@@ -7459,9 +9821,9 @@ class OrderCancellation {
   core.int quantity;
 
   /// The reason for the cancellation. Orders that are cancelled with a
-  /// noInventory reason will lead to the removal of the product from POG until
-  /// you make an update to that product. This will not affect your Shopping
-  /// ads.
+  /// noInventory reason will lead to the removal of the product from Shopping
+  /// Actions until you make an update to that product. This will not affect
+  /// your Shopping ads.
   core.String reason;
 
   /// The explanation of the reason.
@@ -7510,17 +9872,18 @@ class OrderCancellation {
 }
 
 class OrderCustomer {
-  /// Email address of the customer.
+  /// Email address that should be used for order related communications. In
+  /// certain cases this might not be a real users email, but a proxy email.
   core.String email;
 
-  /// If set, this indicates the user explicitly chose to opt in or out of
-  /// providing marketing rights to the merchant. If unset, this indicates the
-  /// user has already made this choice in a previous purchase, and was thus not
-  /// shown the marketing right opt in/out checkbox during the checkout flow.
+  /// Deprecated. Please use marketingRightsInfo instead.
   core.bool explicitMarketingPreference;
 
   /// Full name of the customer.
   core.String fullName;
+
+  /// Customer's marketing preferences.
+  OrderCustomerMarketingRightsInfo marketingRightsInfo;
 
   OrderCustomer();
 
@@ -7533,6 +9896,10 @@ class OrderCustomer {
     }
     if (_json.containsKey("fullName")) {
       fullName = _json["fullName"];
+    }
+    if (_json.containsKey("marketingRightsInfo")) {
+      marketingRightsInfo = new OrderCustomerMarketingRightsInfo.fromJson(
+          _json["marketingRightsInfo"]);
     }
   }
 
@@ -7547,6 +9914,52 @@ class OrderCustomer {
     }
     if (fullName != null) {
       _json["fullName"] = fullName;
+    }
+    if (marketingRightsInfo != null) {
+      _json["marketingRightsInfo"] = (marketingRightsInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+class OrderCustomerMarketingRightsInfo {
+  /// Last known user selection regarding marketing preferences. In certain
+  /// cases this selection might not be known, so this field would be empty.
+  core.String explicitMarketingPreference;
+
+  /// Timestamp when last time marketing preference was updated. Could be empty,
+  /// if user wasn't offered a selection yet.
+  core.String lastUpdatedTimestamp;
+
+  /// Email address that can be used for marketing purposes. This field is only
+  /// filled when explicitMarketingPreference is equal to 'granted'.
+  core.String marketingEmailAddress;
+
+  OrderCustomerMarketingRightsInfo();
+
+  OrderCustomerMarketingRightsInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("explicitMarketingPreference")) {
+      explicitMarketingPreference = _json["explicitMarketingPreference"];
+    }
+    if (_json.containsKey("lastUpdatedTimestamp")) {
+      lastUpdatedTimestamp = _json["lastUpdatedTimestamp"];
+    }
+    if (_json.containsKey("marketingEmailAddress")) {
+      marketingEmailAddress = _json["marketingEmailAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (explicitMarketingPreference != null) {
+      _json["explicitMarketingPreference"] = explicitMarketingPreference;
+    }
+    if (lastUpdatedTimestamp != null) {
+      _json["lastUpdatedTimestamp"] = lastUpdatedTimestamp;
+    }
+    if (marketingEmailAddress != null) {
+      _json["marketingEmailAddress"] = marketingEmailAddress;
     }
     return _json;
   }
@@ -8568,6 +10981,506 @@ class OrderShipmentLineItemShipment {
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
+    }
+    return _json;
+  }
+}
+
+class OrderinvoicesCreateChargeInvoiceRequest {
+  /// The ID of the invoice.
+  core.String invoiceId;
+
+  /// Invoice summary.
+  InvoiceSummary invoiceSummary;
+
+  /// Invoice details per line item.
+  core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
+
+  /// The ID of the operation, unique across all operations for a given order.
+  core.String operationId;
+
+  /// ID of the shipment group.
+  core.String shipmentGroupId;
+
+  OrderinvoicesCreateChargeInvoiceRequest();
+
+  OrderinvoicesCreateChargeInvoiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("invoiceId")) {
+      invoiceId = _json["invoiceId"];
+    }
+    if (_json.containsKey("invoiceSummary")) {
+      invoiceSummary = new InvoiceSummary.fromJson(_json["invoiceSummary"]);
+    }
+    if (_json.containsKey("lineItemInvoices")) {
+      lineItemInvoices = (_json["lineItemInvoices"] as core.List)
+          .map<ShipmentInvoiceLineItemInvoice>(
+              (value) => new ShipmentInvoiceLineItemInvoice.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("shipmentGroupId")) {
+      shipmentGroupId = _json["shipmentGroupId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (invoiceId != null) {
+      _json["invoiceId"] = invoiceId;
+    }
+    if (invoiceSummary != null) {
+      _json["invoiceSummary"] = (invoiceSummary).toJson();
+    }
+    if (lineItemInvoices != null) {
+      _json["lineItemInvoices"] =
+          lineItemInvoices.map((value) => (value).toJson()).toList();
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (shipmentGroupId != null) {
+      _json["shipmentGroupId"] = shipmentGroupId;
+    }
+    return _json;
+  }
+}
+
+class OrderinvoicesCreateChargeInvoiceResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderinvoicesCreateChargeInvoiceResponse".
+  core.String kind;
+
+  OrderinvoicesCreateChargeInvoiceResponse();
+
+  OrderinvoicesCreateChargeInvoiceResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrderinvoicesCreateRefundInvoiceRequest {
+  /// The ID of the invoice.
+  core.String invoiceId;
+
+  /// The ID of the operation, unique across all operations for a given order.
+  core.String operationId;
+
+  /// Option to create a refund-only invoice. Exactly one of refund_option and
+  /// return_option must be provided.
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
+      refundOnlyOption;
+
+  /// Option to create an invoice for a refund and mark all items within the
+  /// invoice as returned. Exactly one of refund_option and return_option must
+  /// be provided.
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
+      returnOption;
+
+  /// Invoice details for different shipment groups.
+  core.List<ShipmentInvoice> shipmentInvoices;
+
+  OrderinvoicesCreateRefundInvoiceRequest();
+
+  OrderinvoicesCreateRefundInvoiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("invoiceId")) {
+      invoiceId = _json["invoiceId"];
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("refundOnlyOption")) {
+      refundOnlyOption =
+          new OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
+              .fromJson(_json["refundOnlyOption"]);
+    }
+    if (_json.containsKey("returnOption")) {
+      returnOption =
+          new OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
+              .fromJson(_json["returnOption"]);
+    }
+    if (_json.containsKey("shipmentInvoices")) {
+      shipmentInvoices = (_json["shipmentInvoices"] as core.List)
+          .map<ShipmentInvoice>((value) => new ShipmentInvoice.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (invoiceId != null) {
+      _json["invoiceId"] = invoiceId;
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (refundOnlyOption != null) {
+      _json["refundOnlyOption"] = (refundOnlyOption).toJson();
+    }
+    if (returnOption != null) {
+      _json["returnOption"] = (returnOption).toJson();
+    }
+    if (shipmentInvoices != null) {
+      _json["shipmentInvoices"] =
+          shipmentInvoices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class OrderinvoicesCreateRefundInvoiceResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderinvoicesCreateRefundInvoiceResponse".
+  core.String kind;
+
+  OrderinvoicesCreateRefundInvoiceResponse();
+
+  OrderinvoicesCreateRefundInvoiceResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
+  /// Optional description of the refund reason.
+  core.String description;
+
+  /// Reason for the refund.
+  core.String reason;
+
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
+
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    return _json;
+  }
+}
+
+class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
+  /// Optional description of the return reason.
+  core.String description;
+
+  /// Reason for the return.
+  core.String reason;
+
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
+
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyAuthApprovedRequest {
+  Price authAmountPretax;
+  Price authAmountTax;
+
+  OrderpaymentsNotifyAuthApprovedRequest();
+
+  OrderpaymentsNotifyAuthApprovedRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("authAmountPretax")) {
+      authAmountPretax = new Price.fromJson(_json["authAmountPretax"]);
+    }
+    if (_json.containsKey("authAmountTax")) {
+      authAmountTax = new Price.fromJson(_json["authAmountTax"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (authAmountPretax != null) {
+      _json["authAmountPretax"] = (authAmountPretax).toJson();
+    }
+    if (authAmountTax != null) {
+      _json["authAmountTax"] = (authAmountTax).toJson();
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyAuthApprovedResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderpaymentsNotifyAuthApprovedResponse".
+  core.String kind;
+
+  OrderpaymentsNotifyAuthApprovedResponse();
+
+  OrderpaymentsNotifyAuthApprovedResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyAuthDeclinedRequest {
+  /// Reason why payment authorization was declined.
+  core.String declineReason;
+
+  OrderpaymentsNotifyAuthDeclinedRequest();
+
+  OrderpaymentsNotifyAuthDeclinedRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("declineReason")) {
+      declineReason = _json["declineReason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (declineReason != null) {
+      _json["declineReason"] = declineReason;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyAuthDeclinedResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderpaymentsNotifyAuthDeclinedResponse".
+  core.String kind;
+
+  OrderpaymentsNotifyAuthDeclinedResponse();
+
+  OrderpaymentsNotifyAuthDeclinedResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyChargeRequest {
+  /// Whether charge was successful.
+  core.String chargeState;
+
+  /// Invoice ID from orderInvoice service that corresponds to the charge.
+  core.String invoiceId;
+
+  OrderpaymentsNotifyChargeRequest();
+
+  OrderpaymentsNotifyChargeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("chargeState")) {
+      chargeState = _json["chargeState"];
+    }
+    if (_json.containsKey("invoiceId")) {
+      invoiceId = _json["invoiceId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (chargeState != null) {
+      _json["chargeState"] = chargeState;
+    }
+    if (invoiceId != null) {
+      _json["invoiceId"] = invoiceId;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyChargeResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderpaymentsNotifyChargeResponse".
+  core.String kind;
+
+  OrderpaymentsNotifyChargeResponse();
+
+  OrderpaymentsNotifyChargeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyRefundRequest {
+  /// Invoice ID from orderInvoice service that corresponds to the charge.
+  core.String invoiceId;
+
+  /// Whether refund was successful.
+  core.String refundState;
+
+  OrderpaymentsNotifyRefundRequest();
+
+  OrderpaymentsNotifyRefundRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("invoiceId")) {
+      invoiceId = _json["invoiceId"];
+    }
+    if (_json.containsKey("refundState")) {
+      refundState = _json["refundState"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (invoiceId != null) {
+      _json["invoiceId"] = invoiceId;
+    }
+    if (refundState != null) {
+      _json["refundState"] = refundState;
+    }
+    return _json;
+  }
+}
+
+class OrderpaymentsNotifyRefundResponse {
+  /// The status of the execution.
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderpaymentsNotifyRefundResponse".
+  core.String kind;
+
+  OrderpaymentsNotifyRefundResponse();
+
+  OrderpaymentsNotifyRefundResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -9642,6 +12555,10 @@ class OrdersCustomBatchRequestEntryShipLineItems {
   /// Line items to ship.
   core.List<OrderShipmentLineItemShipment> lineItems;
 
+  /// ID of the shipment group. Required for orders that use the orderinvoices
+  /// service.
+  core.String shipmentGroupId;
+
   /// Deprecated. Please use shipmentInfo instead. The ID of the shipment.
   core.String shipmentId;
 
@@ -9665,6 +12582,9 @@ class OrdersCustomBatchRequestEntryShipLineItems {
           .map<OrderShipmentLineItemShipment>(
               (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("shipmentGroupId")) {
+      shipmentGroupId = _json["shipmentGroupId"];
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
@@ -9690,6 +12610,9 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (lineItems != null) {
       _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+    }
+    if (shipmentGroupId != null) {
+      _json["shipmentGroupId"] = shipmentGroupId;
     }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
@@ -10692,6 +13615,10 @@ class OrdersShipLineItemsRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
+  /// ID of the shipment group. Required for orders that use the orderinvoices
+  /// service.
+  core.String shipmentGroupId;
+
   /// Deprecated. Please use shipmentInfo instead. The ID of the shipment.
   core.String shipmentId;
 
@@ -10718,6 +13645,9 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
+    }
+    if (_json.containsKey("shipmentGroupId")) {
+      shipmentGroupId = _json["shipmentGroupId"];
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
@@ -10746,6 +13676,9 @@ class OrdersShipLineItemsRequest {
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
+    }
+    if (shipmentGroupId != null) {
+      _json["shipmentGroupId"] = shipmentGroupId;
     }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
@@ -11038,6 +13971,951 @@ class OrdersUpdateShipmentResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class PosCustomBatchRequest {
+  /// The request entries to be processed in the batch.
+  core.List<PosCustomBatchRequestEntry> entries;
+
+  PosCustomBatchRequest();
+
+  PosCustomBatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<PosCustomBatchRequestEntry>(
+              (value) => new PosCustomBatchRequestEntry.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PosCustomBatchRequestEntry {
+  /// An entry ID, unique within the batch request.
+  core.int batchId;
+
+  /// The inventory to submit. Set this only if the method is inventory.
+  PosInventory inventory;
+
+  /// The ID of the POS data provider.
+  core.String merchantId;
+  core.String method;
+
+  /// The sale information to submit. Set this only if the method is sale.
+  PosSale sale;
+
+  /// The store information to submit. Set this only if the method is insert.
+  PosStore store;
+
+  /// The store code. Set this only if the method is delete or get.
+  core.String storeCode;
+
+  /// The ID of the account for which to get/submit data.
+  core.String targetMerchantId;
+
+  PosCustomBatchRequestEntry();
+
+  PosCustomBatchRequestEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("inventory")) {
+      inventory = new PosInventory.fromJson(_json["inventory"]);
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("sale")) {
+      sale = new PosSale.fromJson(_json["sale"]);
+    }
+    if (_json.containsKey("store")) {
+      store = new PosStore.fromJson(_json["store"]);
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetMerchantId")) {
+      targetMerchantId = _json["targetMerchantId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (inventory != null) {
+      _json["inventory"] = (inventory).toJson();
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (sale != null) {
+      _json["sale"] = (sale).toJson();
+    }
+    if (store != null) {
+      _json["store"] = (store).toJson();
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetMerchantId != null) {
+      _json["targetMerchantId"] = targetMerchantId;
+    }
+    return _json;
+  }
+}
+
+class PosCustomBatchResponse {
+  /// The result of the execution of the batch requests.
+  core.List<PosCustomBatchResponseEntry> entries;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posCustomBatchResponse".
+  core.String kind;
+
+  PosCustomBatchResponse();
+
+  PosCustomBatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<PosCustomBatchResponseEntry>(
+              (value) => new PosCustomBatchResponseEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class PosCustomBatchResponseEntry {
+  /// The ID of the request entry to which this entry responds.
+  core.int batchId;
+
+  /// A list of errors defined if, and only if, the request failed.
+  Errors errors;
+
+  /// The updated inventory information.
+  PosInventory inventory;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posCustomBatchResponseEntry".
+  core.String kind;
+
+  /// The updated sale information.
+  PosSale sale;
+
+  /// The retrieved or updated store information.
+  PosStore store;
+
+  PosCustomBatchResponseEntry();
+
+  PosCustomBatchResponseEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("errors")) {
+      errors = new Errors.fromJson(_json["errors"]);
+    }
+    if (_json.containsKey("inventory")) {
+      inventory = new PosInventory.fromJson(_json["inventory"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("sale")) {
+      sale = new PosSale.fromJson(_json["sale"]);
+    }
+    if (_json.containsKey("store")) {
+      store = new PosStore.fromJson(_json["store"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (errors != null) {
+      _json["errors"] = (errors).toJson();
+    }
+    if (inventory != null) {
+      _json["inventory"] = (inventory).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (sale != null) {
+      _json["sale"] = (sale).toJson();
+    }
+    if (store != null) {
+      _json["store"] = (store).toJson();
+    }
+    return _json;
+  }
+}
+
+class PosDataProviders {
+  /// Country code.
+  core.String country;
+
+  /// A list of POS data providers.
+  core.List<PosDataProvidersPosDataProvider> posDataProviders;
+
+  PosDataProviders();
+
+  PosDataProviders.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("posDataProviders")) {
+      posDataProviders = (_json["posDataProviders"] as core.List)
+          .map<PosDataProvidersPosDataProvider>(
+              (value) => new PosDataProvidersPosDataProvider.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (posDataProviders != null) {
+      _json["posDataProviders"] =
+          posDataProviders.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PosDataProvidersPosDataProvider {
+  /// The display name of Pos data Provider.
+  core.String displayName;
+
+  /// The full name of this POS data Provider.
+  core.String fullName;
+
+  /// The ID of the account.
+  core.String providerId;
+
+  PosDataProvidersPosDataProvider();
+
+  PosDataProvidersPosDataProvider.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("fullName")) {
+      fullName = _json["fullName"];
+    }
+    if (_json.containsKey("providerId")) {
+      providerId = _json["providerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (fullName != null) {
+      _json["fullName"] = fullName;
+    }
+    if (providerId != null) {
+      _json["providerId"] = providerId;
+    }
+    return _json;
+  }
+}
+
+/// The absolute quantity of an item available at the given store.
+class PosInventory {
+  /// The two-letter ISO 639-1 language code for the item.
+  core.String contentLanguage;
+
+  /// Global Trade Item Number.
+  core.String gtin;
+
+  /// A unique identifier for the item.
+  core.String itemId;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posInventory".
+  core.String kind;
+
+  /// The current price of the item.
+  Price price;
+
+  /// The available quantity of the item.
+  core.String quantity;
+
+  /// The identifier of the merchant's store. Either a storeCode inserted via
+  /// the API or the code of the store in Google My Business.
+  core.String storeCode;
+
+  /// The CLDR territory code for the item.
+  core.String targetCountry;
+
+  /// The inventory timestamp, in ISO 8601 format.
+  core.String timestamp;
+
+  PosInventory();
+
+  PosInventory.fromJson(core.Map _json) {
+    if (_json.containsKey("contentLanguage")) {
+      contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetCountry")) {
+      targetCountry = _json["targetCountry"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentLanguage != null) {
+      _json["contentLanguage"] = contentLanguage;
+    }
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetCountry != null) {
+      _json["targetCountry"] = targetCountry;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+class PosInventoryRequest {
+  /// The two-letter ISO 639-1 language code for the item.
+  core.String contentLanguage;
+
+  /// Global Trade Item Number.
+  core.String gtin;
+
+  /// A unique identifier for the item.
+  core.String itemId;
+
+  /// The current price of the item.
+  Price price;
+
+  /// The available quantity of the item.
+  core.String quantity;
+
+  /// The identifier of the merchant's store. Either a storeCode inserted via
+  /// the API or the code of the store in Google My Business.
+  core.String storeCode;
+
+  /// The CLDR territory code for the item.
+  core.String targetCountry;
+
+  /// The inventory timestamp, in ISO 8601 format.
+  core.String timestamp;
+
+  PosInventoryRequest();
+
+  PosInventoryRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contentLanguage")) {
+      contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetCountry")) {
+      targetCountry = _json["targetCountry"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentLanguage != null) {
+      _json["contentLanguage"] = contentLanguage;
+    }
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetCountry != null) {
+      _json["targetCountry"] = targetCountry;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+class PosInventoryResponse {
+  /// The two-letter ISO 639-1 language code for the item.
+  core.String contentLanguage;
+
+  /// Global Trade Item Number.
+  core.String gtin;
+
+  /// A unique identifier for the item.
+  core.String itemId;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posInventoryResponse".
+  core.String kind;
+
+  /// The current price of the item.
+  Price price;
+
+  /// The available quantity of the item.
+  core.String quantity;
+
+  /// The identifier of the merchant's store. Either a storeCode inserted via
+  /// the API or the code of the store in Google My Business.
+  core.String storeCode;
+
+  /// The CLDR territory code for the item.
+  core.String targetCountry;
+
+  /// The inventory timestamp, in ISO 8601 format.
+  core.String timestamp;
+
+  PosInventoryResponse();
+
+  PosInventoryResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("contentLanguage")) {
+      contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetCountry")) {
+      targetCountry = _json["targetCountry"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentLanguage != null) {
+      _json["contentLanguage"] = contentLanguage;
+    }
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetCountry != null) {
+      _json["targetCountry"] = targetCountry;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+class PosListResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posListResponse".
+  core.String kind;
+  core.List<PosStore> resources;
+
+  PosListResponse();
+
+  PosListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = (_json["resources"] as core.List)
+          .map<PosStore>((value) => new PosStore.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The change of the available quantity of an item at the given store.
+class PosSale {
+  /// The two-letter ISO 639-1 language code for the item.
+  core.String contentLanguage;
+
+  /// Global Trade Item Number.
+  core.String gtin;
+
+  /// A unique identifier for the item.
+  core.String itemId;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posSale".
+  core.String kind;
+
+  /// The price of the item.
+  Price price;
+
+  /// The relative change of the available quantity. Negative for items sold.
+  core.String quantity;
+
+  /// A unique ID to group items from the same sale event.
+  core.String saleId;
+
+  /// The identifier of the merchant's store. Either a storeCode inserted via
+  /// the API or the code of the store in Google My Business.
+  core.String storeCode;
+
+  /// The CLDR territory code for the item.
+  core.String targetCountry;
+
+  /// The inventory timestamp, in ISO 8601 format.
+  core.String timestamp;
+
+  PosSale();
+
+  PosSale.fromJson(core.Map _json) {
+    if (_json.containsKey("contentLanguage")) {
+      contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("saleId")) {
+      saleId = _json["saleId"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetCountry")) {
+      targetCountry = _json["targetCountry"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentLanguage != null) {
+      _json["contentLanguage"] = contentLanguage;
+    }
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (saleId != null) {
+      _json["saleId"] = saleId;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetCountry != null) {
+      _json["targetCountry"] = targetCountry;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+class PosSaleRequest {
+  /// The two-letter ISO 639-1 language code for the item.
+  core.String contentLanguage;
+
+  /// Global Trade Item Number.
+  core.String gtin;
+
+  /// A unique identifier for the item.
+  core.String itemId;
+
+  /// The price of the item.
+  Price price;
+
+  /// The relative change of the available quantity. Negative for items sold.
+  core.String quantity;
+
+  /// A unique ID to group items from the same sale event.
+  core.String saleId;
+
+  /// The identifier of the merchant's store. Either a storeCode inserted via
+  /// the API or the code of the store in Google My Business.
+  core.String storeCode;
+
+  /// The CLDR territory code for the item.
+  core.String targetCountry;
+
+  /// The inventory timestamp, in ISO 8601 format.
+  core.String timestamp;
+
+  PosSaleRequest();
+
+  PosSaleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contentLanguage")) {
+      contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("saleId")) {
+      saleId = _json["saleId"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetCountry")) {
+      targetCountry = _json["targetCountry"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentLanguage != null) {
+      _json["contentLanguage"] = contentLanguage;
+    }
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (saleId != null) {
+      _json["saleId"] = saleId;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetCountry != null) {
+      _json["targetCountry"] = targetCountry;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+class PosSaleResponse {
+  /// The two-letter ISO 639-1 language code for the item.
+  core.String contentLanguage;
+
+  /// Global Trade Item Number.
+  core.String gtin;
+
+  /// A unique identifier for the item.
+  core.String itemId;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posSaleResponse".
+  core.String kind;
+
+  /// The price of the item.
+  Price price;
+
+  /// The relative change of the available quantity. Negative for items sold.
+  core.String quantity;
+
+  /// A unique ID to group items from the same sale event.
+  core.String saleId;
+
+  /// The identifier of the merchant's store. Either a storeCode inserted via
+  /// the API or the code of the store in Google My Business.
+  core.String storeCode;
+
+  /// The CLDR territory code for the item.
+  core.String targetCountry;
+
+  /// The inventory timestamp, in ISO 8601 format.
+  core.String timestamp;
+
+  PosSaleResponse();
+
+  PosSaleResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("contentLanguage")) {
+      contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("saleId")) {
+      saleId = _json["saleId"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+    if (_json.containsKey("targetCountry")) {
+      targetCountry = _json["targetCountry"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentLanguage != null) {
+      _json["contentLanguage"] = contentLanguage;
+    }
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (saleId != null) {
+      _json["saleId"] = saleId;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
+    }
+    if (targetCountry != null) {
+      _json["targetCountry"] = targetCountry;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+/// Store resource.
+class PosStore {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#posStore".
+  core.String kind;
+
+  /// The street address of the store.
+  core.String storeAddress;
+
+  /// A store identifier that is unique for the given merchant.
+  core.String storeCode;
+
+  PosStore();
+
+  PosStore.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("storeAddress")) {
+      storeAddress = _json["storeAddress"];
+    }
+    if (_json.containsKey("storeCode")) {
+      storeCode = _json["storeCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (storeAddress != null) {
+      _json["storeAddress"] = storeAddress;
+    }
+    if (storeCode != null) {
+      _json["storeCode"] = storeCode;
     }
     return _json;
   }
@@ -12326,6 +16204,9 @@ class ProductStatus {
 }
 
 class ProductStatusDataQualityIssue {
+  /// The destination the issue applies to.
+  core.String destination;
+
   /// A more detailed error string.
   core.String detail;
 
@@ -12353,6 +16234,9 @@ class ProductStatusDataQualityIssue {
   ProductStatusDataQualityIssue();
 
   ProductStatusDataQualityIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("destination")) {
+      destination = _json["destination"];
+    }
     if (_json.containsKey("detail")) {
       detail = _json["detail"];
     }
@@ -12382,6 +16266,9 @@ class ProductStatusDataQualityIssue {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (destination != null) {
+      _json["destination"] = destination;
+    }
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -12466,8 +16353,17 @@ class ProductStatusItemLevelIssue {
   /// The error code of the issue.
   core.String code;
 
+  /// A short issue description in English.
+  core.String description;
+
   /// The destination the issue applies to.
   core.String destination;
+
+  /// A detailed issue description in English.
+  core.String detail;
+
+  /// The URL of a web page to help with resolving this issue.
+  core.String documentation;
 
   /// Whether the issue can be resolved by the merchant.
   core.String resolution;
@@ -12484,8 +16380,17 @@ class ProductStatusItemLevelIssue {
     if (_json.containsKey("code")) {
       code = _json["code"];
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
+    }
+    if (_json.containsKey("detail")) {
+      detail = _json["detail"];
+    }
+    if (_json.containsKey("documentation")) {
+      documentation = _json["documentation"];
     }
     if (_json.containsKey("resolution")) {
       resolution = _json["resolution"];
@@ -12504,8 +16409,17 @@ class ProductStatusItemLevelIssue {
     if (code != null) {
       _json["code"] = code;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (destination != null) {
       _json["destination"] = destination;
+    }
+    if (detail != null) {
+      _json["detail"] = detail;
+    }
+    if (documentation != null) {
+      _json["documentation"] = documentation;
     }
     if (resolution != null) {
       _json["resolution"] = resolution;
@@ -12891,6 +16805,10 @@ class ProductstatusesCustomBatchRequest {
 class ProductstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
+
+  /// If set, only issues for the specified destinations are returned, otherwise
+  /// only issues for the Shopping destination.
+  core.List<core.String> destinations;
   core.bool includeAttributes;
 
   /// The ID of the managing account.
@@ -12905,6 +16823,9 @@ class ProductstatusesCustomBatchRequestEntry {
   ProductstatusesCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey("batchId")) {
       batchId = _json["batchId"];
+    }
+    if (_json.containsKey("destinations")) {
+      destinations = (_json["destinations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("includeAttributes")) {
       includeAttributes = _json["includeAttributes"];
@@ -12925,6 +16846,9 @@ class ProductstatusesCustomBatchRequestEntry {
         new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
+    }
+    if (destinations != null) {
+      _json["destinations"] = destinations;
     }
     if (includeAttributes != null) {
       _json["includeAttributes"] = includeAttributes;
@@ -13069,6 +16993,38 @@ class ProductstatusesListResponse {
   }
 }
 
+class Promotion {
+  /// Amount of the promotion. The values here are the promotion applied to the
+  /// unit price pretax and to the total of the tax amounts.
+  Amount promotionAmount;
+
+  /// ID of the promotion.
+  core.String promotionId;
+
+  Promotion();
+
+  Promotion.fromJson(core.Map _json) {
+    if (_json.containsKey("promotionAmount")) {
+      promotionAmount = new Amount.fromJson(_json["promotionAmount"]);
+    }
+    if (_json.containsKey("promotionId")) {
+      promotionId = _json["promotionId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (promotionAmount != null) {
+      _json["promotionAmount"] = (promotionAmount).toJson();
+    }
+    if (promotionId != null) {
+      _json["promotionId"] = promotionId;
+    }
+    return _json;
+  }
+}
+
 class RateGroup {
   /// A list of shipping labels defining the products to which this rate group
   /// applies to. This is a disjunction: only one of the labels has to match for
@@ -13182,6 +17138,9 @@ class Service {
   /// Required.
   DeliveryTime deliveryTime;
 
+  /// Eligibility for this service.
+  core.String eligibility;
+
   /// Minimum order value for this service. If set, indicates that customers
   /// will have to spend at least this amount. All prices within a service must
   /// have the same currency.
@@ -13211,6 +17170,9 @@ class Service {
     if (_json.containsKey("deliveryTime")) {
       deliveryTime = new DeliveryTime.fromJson(_json["deliveryTime"]);
     }
+    if (_json.containsKey("eligibility")) {
+      eligibility = _json["eligibility"];
+    }
     if (_json.containsKey("minimumOrderValue")) {
       minimumOrderValue = new Price.fromJson(_json["minimumOrderValue"]);
     }
@@ -13239,6 +17201,9 @@ class Service {
     if (deliveryTime != null) {
       _json["deliveryTime"] = (deliveryTime).toJson();
     }
+    if (eligibility != null) {
+      _json["eligibility"] = eligibility;
+    }
     if (minimumOrderValue != null) {
       _json["minimumOrderValue"] = (minimumOrderValue).toJson();
     }
@@ -13248,6 +17213,101 @@ class Service {
     if (rateGroups != null) {
       _json["rateGroups"] =
           rateGroups.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ShipmentInvoice {
+  /// Invoice summary.
+  InvoiceSummary invoiceSummary;
+
+  /// Invoice details per line item.
+  core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
+
+  /// ID of the shipment group.
+  core.String shipmentGroupId;
+
+  ShipmentInvoice();
+
+  ShipmentInvoice.fromJson(core.Map _json) {
+    if (_json.containsKey("invoiceSummary")) {
+      invoiceSummary = new InvoiceSummary.fromJson(_json["invoiceSummary"]);
+    }
+    if (_json.containsKey("lineItemInvoices")) {
+      lineItemInvoices = (_json["lineItemInvoices"] as core.List)
+          .map<ShipmentInvoiceLineItemInvoice>(
+              (value) => new ShipmentInvoiceLineItemInvoice.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("shipmentGroupId")) {
+      shipmentGroupId = _json["shipmentGroupId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (invoiceSummary != null) {
+      _json["invoiceSummary"] = (invoiceSummary).toJson();
+    }
+    if (lineItemInvoices != null) {
+      _json["lineItemInvoices"] =
+          lineItemInvoices.map((value) => (value).toJson()).toList();
+    }
+    if (shipmentGroupId != null) {
+      _json["shipmentGroupId"] = shipmentGroupId;
+    }
+    return _json;
+  }
+}
+
+class ShipmentInvoiceLineItemInvoice {
+  /// ID of the line item. Either lineItemId or productId must be set.
+  core.String lineItemId;
+
+  /// ID of the product. This is the REST ID used in the products service.
+  /// Either lineItemId or productId must be set.
+  core.String productId;
+
+  /// Unit IDs to define specific units within the line item.
+  core.List<core.String> shipmentUnitIds;
+
+  /// Invoice details for a single unit.
+  UnitInvoice unitInvoice;
+
+  ShipmentInvoiceLineItemInvoice();
+
+  ShipmentInvoiceLineItemInvoice.fromJson(core.Map _json) {
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("shipmentUnitIds")) {
+      shipmentUnitIds =
+          (_json["shipmentUnitIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("unitInvoice")) {
+      unitInvoice = new UnitInvoice.fromJson(_json["unitInvoice"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (shipmentUnitIds != null) {
+      _json["shipmentUnitIds"] = shipmentUnitIds;
+    }
+    if (unitInvoice != null) {
+      _json["unitInvoice"] = (unitInvoice).toJson();
     }
     return _json;
   }
@@ -13752,15 +17812,14 @@ class TestOrderCustomer {
   /// Email address of the customer.
   core.String email;
 
-  /// If set, this indicates the user explicitly chose to opt in or out of
-  /// providing marketing rights to the merchant. If unset, this indicates the
-  /// user has already made this choice in a previous purchase, and was thus not
-  /// shown the marketing right opt in/out checkbox during the checkout flow.
-  /// Optional.
+  /// Deprecated. Please use marketingRightsInfo instead.
   core.bool explicitMarketingPreference;
 
   /// Full name of the customer.
   core.String fullName;
+
+  /// Customer's marketing preferences.
+  TestOrderCustomerMarketingRightsInfo marketingRightsInfo;
 
   TestOrderCustomer();
 
@@ -13773,6 +17832,10 @@ class TestOrderCustomer {
     }
     if (_json.containsKey("fullName")) {
       fullName = _json["fullName"];
+    }
+    if (_json.containsKey("marketingRightsInfo")) {
+      marketingRightsInfo = new TestOrderCustomerMarketingRightsInfo.fromJson(
+          _json["marketingRightsInfo"]);
     }
   }
 
@@ -13787,6 +17850,42 @@ class TestOrderCustomer {
     }
     if (fullName != null) {
       _json["fullName"] = fullName;
+    }
+    if (marketingRightsInfo != null) {
+      _json["marketingRightsInfo"] = (marketingRightsInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+class TestOrderCustomerMarketingRightsInfo {
+  /// Last know user use selection regards marketing preferences. In certain
+  /// cases selection might not be known, so this field would be empty.
+  core.String explicitMarketingPreference;
+
+  /// Timestamp when last time marketing preference was updated. Could be empty,
+  /// if user wasn't offered a selection yet.
+  core.String lastUpdatedTimestamp;
+
+  TestOrderCustomerMarketingRightsInfo();
+
+  TestOrderCustomerMarketingRightsInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("explicitMarketingPreference")) {
+      explicitMarketingPreference = _json["explicitMarketingPreference"];
+    }
+    if (_json.containsKey("lastUpdatedTimestamp")) {
+      lastUpdatedTimestamp = _json["lastUpdatedTimestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (explicitMarketingPreference != null) {
+      _json["explicitMarketingPreference"] = explicitMarketingPreference;
+    }
+    if (lastUpdatedTimestamp != null) {
+      _json["lastUpdatedTimestamp"] = lastUpdatedTimestamp;
     }
     return _json;
   }
@@ -14039,6 +18138,151 @@ class TestOrderPaymentMethod {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class UnitInvoice {
+  /// Additional charges for a unit, e.g. shipping costs.
+  core.List<UnitInvoiceAdditionalCharge> additionalCharges;
+
+  /// Promotions applied to a unit.
+  core.List<Promotion> promotions;
+
+  /// Price of the unit, before applying taxes.
+  Price unitPricePretax;
+
+  /// Tax amounts to apply to the unit price.
+  core.List<UnitInvoiceTaxLine> unitPriceTaxes;
+
+  UnitInvoice();
+
+  UnitInvoice.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalCharges")) {
+      additionalCharges = (_json["additionalCharges"] as core.List)
+          .map<UnitInvoiceAdditionalCharge>(
+              (value) => new UnitInvoiceAdditionalCharge.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("promotions")) {
+      promotions = (_json["promotions"] as core.List)
+          .map<Promotion>((value) => new Promotion.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("unitPricePretax")) {
+      unitPricePretax = new Price.fromJson(_json["unitPricePretax"]);
+    }
+    if (_json.containsKey("unitPriceTaxes")) {
+      unitPriceTaxes = (_json["unitPriceTaxes"] as core.List)
+          .map<UnitInvoiceTaxLine>(
+              (value) => new UnitInvoiceTaxLine.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (additionalCharges != null) {
+      _json["additionalCharges"] =
+          additionalCharges.map((value) => (value).toJson()).toList();
+    }
+    if (promotions != null) {
+      _json["promotions"] =
+          promotions.map((value) => (value).toJson()).toList();
+    }
+    if (unitPricePretax != null) {
+      _json["unitPricePretax"] = (unitPricePretax).toJson();
+    }
+    if (unitPriceTaxes != null) {
+      _json["unitPriceTaxes"] =
+          unitPriceTaxes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class UnitInvoiceAdditionalCharge {
+  /// Amount of the additional charge.
+  Amount additionalChargeAmount;
+
+  /// Promotions applied to the additional charge.
+  core.List<Promotion> additionalChargePromotions;
+
+  /// Type of the additional charge.
+  core.String type;
+
+  UnitInvoiceAdditionalCharge();
+
+  UnitInvoiceAdditionalCharge.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalChargeAmount")) {
+      additionalChargeAmount =
+          new Amount.fromJson(_json["additionalChargeAmount"]);
+    }
+    if (_json.containsKey("additionalChargePromotions")) {
+      additionalChargePromotions =
+          (_json["additionalChargePromotions"] as core.List)
+              .map<Promotion>((value) => new Promotion.fromJson(value))
+              .toList();
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (additionalChargeAmount != null) {
+      _json["additionalChargeAmount"] = (additionalChargeAmount).toJson();
+    }
+    if (additionalChargePromotions != null) {
+      _json["additionalChargePromotions"] =
+          additionalChargePromotions.map((value) => (value).toJson()).toList();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class UnitInvoiceTaxLine {
+  /// Tax amount for the tax type.
+  Price taxAmount;
+
+  /// Optional name of the tax type.
+  core.String taxName;
+
+  /// Type of the tax.
+  core.String taxType;
+
+  UnitInvoiceTaxLine();
+
+  UnitInvoiceTaxLine.fromJson(core.Map _json) {
+    if (_json.containsKey("taxAmount")) {
+      taxAmount = new Price.fromJson(_json["taxAmount"]);
+    }
+    if (_json.containsKey("taxName")) {
+      taxName = _json["taxName"];
+    }
+    if (_json.containsKey("taxType")) {
+      taxType = _json["taxType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (taxAmount != null) {
+      _json["taxAmount"] = (taxAmount).toJson();
+    }
+    if (taxName != null) {
+      _json["taxName"] = taxName;
+    }
+    if (taxType != null) {
+      _json["taxType"] = taxType;
     }
     return _json;
   }

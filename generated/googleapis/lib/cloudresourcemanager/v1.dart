@@ -485,14 +485,14 @@ class LiensResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - The maximum number of items to return. This is a suggestion
+  /// for the server.
+  ///
   /// [parent] - The name of the resource to list all attached Liens.
   /// For example, `projects/1234`.
   ///
   /// [pageToken] - The `next_page_token` value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of items to return. This is a suggestion
-  /// for the server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -505,9 +505,9 @@ class LiensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLiensResponse> list(
-      {core.String parent,
+      {core.int pageSize,
+      core.String parent,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -516,14 +516,14 @@ class LiensResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (parent != null) {
       _queryParams["parent"] = [parent];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1268,7 +1268,13 @@ class ProjectsResourceApi {
   ///
   /// Authorization requires the Google IAM permission
   /// `resourcemanager.projects.create` on the specified parent for the new
-  /// project.
+  /// project. The parent is identified by a specified ResourceId,
+  /// which must include both an ID and a type, such as organization.
+  ///
+  /// This method does not associate the new project with a billing account.
+  /// You can set or update the billing account associated with a project using
+  /// the [`projects.updateBillingInfo`]
+  /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1312,11 +1318,7 @@ class ProjectsResourceApi {
 
   /// Marks the Project identified by the specified
   /// `project_id` (for example, `my-project-123`) for deletion.
-  /// This method will only affect the Project if the following criteria are
-  /// met:
-  ///
-  /// + The Project does not have a billing account associated with it.
-  /// + The Project has a lifecycle state of
+  /// This method will only affect the Project if it has a lifecycle state of
   /// ACTIVE.
   ///
   /// This method changes the Project's lifecycle state from
@@ -1879,9 +1881,11 @@ class ProjectsResourceApi {
   /// must be granted the owner role using the Cloud Platform Console and must
   /// explicitly accept the invitation.
   ///
-  /// + Invitations to grant the owner role cannot be sent using
-  /// `setIamPolicy()`;
-  /// they must be sent only using the Cloud Platform Console.
+  /// + You can only grant ownership of a project to a member by using the
+  /// GCP Console. Inviting a member will deliver an invitation email that
+  /// they must accept. An invitation email is not generated if you are
+  /// granting a role other than owner, or if both the member you are inviting
+  /// and the project are part of your organization.
   ///
   /// + Membership changes that leave the project without any owners that have
   /// accepted the Terms of Service (ToS) will be rejected.
@@ -2258,7 +2262,6 @@ class Ancestor {
 /// bar@gmail.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  /// Next ID: 4
   core.List<AuditLogConfig> auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
@@ -2363,7 +2366,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///    account. For example, `alice@gmail.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2778,7 +2781,7 @@ class GetAncestryRequest {
 class GetAncestryResponse {
   /// Ancestors are ordered from bottom to top of the resource hierarchy. The
   /// first ancestor is the project itself, followed by the project's parent,
-  /// etc.
+  /// etc..
   core.List<Ancestor> ancestor;
 
   GetAncestryResponse();
@@ -2885,7 +2888,7 @@ class Lien {
   core.String parent;
 
   /// Concise user-visible strings indicating why an action cannot be performed
-  /// on a resource. Maximum lenth of 200 characters.
+  /// on a resource. Maximum length of 200 characters.
   ///
   /// Example: 'Holds production API key'
   core.String reason;
@@ -3639,7 +3642,7 @@ class Organization {
 /// will
 /// be deleted.
 class OrganizationOwner {
-  /// The Google for Work customer id used in the Directory API.
+  /// The G Suite customer id used in the Directory API.
   core.String directoryCustomerId;
 
   OrganizationOwner();
@@ -3664,14 +3667,14 @@ class OrganizationOwner {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 /// `members` to a `role`, where the members can be user accounts, Google
 /// groups,
 /// Google domains, and service accounts. A `role` is a named list of
 /// permissions
 /// defined by IAM.
 ///
-/// **Example**
+/// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
@@ -3681,7 +3684,7 @@ class OrganizationOwner {
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
@@ -3690,6 +3693,20 @@ class OrganizationOwner {
 ///         }
 ///       ]
 ///     }
+///
+/// **YAML Example**
+///
+///     bindings:
+///     - members:
+///       - user:mike@example.com
+///       - group:admins@example.com
+///       - domain:google.com
+///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///       role: roles/owner
+///     - members:
+///       - user:sean@example.com
+///       role: roles/viewer
+///
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -4012,7 +4029,7 @@ class SearchOrganizationsRequest {
   ///
   ///
   /// Organizations may be filtered by `owner.directoryCustomerId` or by
-  /// `domain`, where the domain is a Google for Work domain, for example:
+  /// `domain`, where the domain is a G Suite domain, for example:
   ///
   /// |Filter|Description|
   /// |------|-----------|

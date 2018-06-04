@@ -287,15 +287,6 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [state] - If set, list only matters with that specific state. The default
-  /// is listing
-  /// matters of all states.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
-  /// - "OPEN" : A OPEN.
-  /// - "CLOSED" : A CLOSED.
-  /// - "DELETED" : A DELETED.
-  ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
   /// [pageSize] - The number of matters to return in the response.
@@ -306,6 +297,15 @@ class MattersResourceApi {
   /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [state] - If set, list only matters with that specific state. The default
+  /// is listing
+  /// matters of all states.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
+  /// - "OPEN" : A OPEN.
+  /// - "CLOSED" : A CLOSED.
+  /// - "DELETED" : A DELETED.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -318,10 +318,10 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
-      {core.String state,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String state,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -330,9 +330,6 @@ class MattersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (state != null) {
-      _queryParams["state"] = [state];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -341,6 +338,9 @@ class MattersResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (state != null) {
+      _queryParams["state"] = [state];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -677,6 +677,12 @@ class MattersHoldsResourceApi {
   ///
   /// [holdId] - The hold ID.
   ///
+  /// [view] - Specifies which parts of the Hold to return.
+  /// Possible string values are:
+  /// - "HOLD_VIEW_UNSPECIFIED" : A HOLD_VIEW_UNSPECIFIED.
+  /// - "BASIC_HOLD" : A BASIC_HOLD.
+  /// - "FULL_HOLD" : A FULL_HOLD.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -688,7 +694,7 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Hold> get(core.String matterId, core.String holdId,
-      {core.String $fields}) {
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -701,6 +707,9 @@ class MattersHoldsResourceApi {
     }
     if (holdId == null) {
       throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -734,6 +743,12 @@ class MattersHoldsResourceApi {
   /// 100 inclusive.
   /// Leaving this empty, or as 0, is the same as page_size = 100.
   ///
+  /// [view] - Specifies which parts of the Hold to return.
+  /// Possible string values are:
+  /// - "HOLD_VIEW_UNSPECIFIED" : A HOLD_VIEW_UNSPECIFIED.
+  /// - "BASIC_HOLD" : A BASIC_HOLD.
+  /// - "FULL_HOLD" : A FULL_HOLD.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -745,7 +760,10 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHoldsResponse> list(core.String matterId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -761,6 +779,9 @@ class MattersHoldsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1113,6 +1134,10 @@ class CorpusQuery {
   /// Details pertaining to Groups holds. If set, corpus must be Groups.
   HeldGroupsQuery groupsQuery;
 
+  /// Details pertaining to Hangouts Chat holds. If set, corpus must be
+  /// Hangouts Chat.
+  HeldHangoutsChatQuery hangoutsChatQuery;
+
   /// Details pertaining to mail holds. If set, corpus must be mail.
   HeldMailQuery mailQuery;
 
@@ -1124,6 +1149,10 @@ class CorpusQuery {
     }
     if (_json.containsKey("groupsQuery")) {
       groupsQuery = new HeldGroupsQuery.fromJson(_json["groupsQuery"]);
+    }
+    if (_json.containsKey("hangoutsChatQuery")) {
+      hangoutsChatQuery =
+          new HeldHangoutsChatQuery.fromJson(_json["hangoutsChatQuery"]);
     }
     if (_json.containsKey("mailQuery")) {
       mailQuery = new HeldMailQuery.fromJson(_json["mailQuery"]);
@@ -1138,6 +1167,9 @@ class CorpusQuery {
     }
     if (groupsQuery != null) {
       _json["groupsQuery"] = (groupsQuery).toJson();
+    }
+    if (hangoutsChatQuery != null) {
+      _json["hangoutsChatQuery"] = (hangoutsChatQuery).toJson();
     }
     if (mailQuery != null) {
       _json["mailQuery"] = (mailQuery).toJson();
@@ -1201,7 +1233,7 @@ class HeldAccount {
   }
 }
 
-/// Query options for drive holds.
+/// Query options for Drive holds.
 class HeldDriveQuery {
   /// If true, include files in Team Drives in the hold.
   core.bool includeTeamDriveFiles;
@@ -1267,6 +1299,29 @@ class HeldGroupsQuery {
   }
 }
 
+/// Query options for hangouts chat holds.
+class HeldHangoutsChatQuery {
+  /// If true, include rooms the user has participated in.
+  core.bool includeRooms;
+
+  HeldHangoutsChatQuery();
+
+  HeldHangoutsChatQuery.fromJson(core.Map _json) {
+    if (_json.containsKey("includeRooms")) {
+      includeRooms = _json["includeRooms"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeRooms != null) {
+      _json["includeRooms"] = includeRooms;
+    }
+    return _json;
+  }
+}
+
 /// Query options for mail holds.
 class HeldMailQuery {
   /// The end time range for the search query. These timestamps are in GMT and
@@ -1316,7 +1371,7 @@ class HeldOrgUnit {
   /// When the org unit was put on hold. This property is immutable.
   core.String holdTime;
 
-  /// The org unit's immutable ID as provided by the admin SDK.
+  /// The org unit's immutable ID as provided by the Admin SDK.
   core.String orgUnitId;
 
   HeldOrgUnit();
@@ -1358,6 +1413,7 @@ class Hold {
   /// - "DRIVE" : Drive.
   /// - "MAIL" : Mail.
   /// - "GROUPS" : Groups.
+  /// - "HANGOUTS_CHAT" : Hangouts Chat.
   core.String corpus;
 
   /// The unique immutable ID of the hold. Assigned during creation.

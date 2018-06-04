@@ -83,6 +83,8 @@ class ComputeApi {
       new InterconnectLocationsResourceApi(_requester);
   InterconnectsResourceApi get interconnects =>
       new InterconnectsResourceApi(_requester);
+  LicenseCodesResourceApi get licenseCodes =>
+      new LicenseCodesResourceApi(_requester);
   LicensesResourceApi get licenses => new LicensesResourceApi(_requester);
   MachineTypesResourceApi get machineTypes =>
       new MachineTypesResourceApi(_requester);
@@ -94,6 +96,10 @@ class ComputeApi {
       new RegionBackendServicesResourceApi(_requester);
   RegionCommitmentsResourceApi get regionCommitments =>
       new RegionCommitmentsResourceApi(_requester);
+  RegionDiskTypesResourceApi get regionDiskTypes =>
+      new RegionDiskTypesResourceApi(_requester);
+  RegionDisksResourceApi get regionDisks =>
+      new RegionDisksResourceApi(_requester);
   RegionInstanceGroupManagersResourceApi get regionInstanceGroupManagers =>
       new RegionInstanceGroupManagersResourceApi(_requester);
   RegionInstanceGroupsResourceApi get regionInstanceGroups =>
@@ -106,6 +112,8 @@ class ComputeApi {
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
   SslCertificatesResourceApi get sslCertificates =>
       new SslCertificatesResourceApi(_requester);
+  SslPoliciesResourceApi get sslPolicies =>
+      new SslPoliciesResourceApi(_requester);
   SubnetworksResourceApi get subnetworks =>
       new SubnetworksResourceApi(_requester);
   TargetHttpProxiesResourceApi get targetHttpProxies =>
@@ -149,30 +157,27 @@ class AcceleratorTypesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -251,8 +256,7 @@ class AcceleratorTypesResourceApi {
         .then((data) => new AcceleratorTypeAggregatedList.fromJson(data));
   }
 
-  /// Returns the specified accelerator type. Get a list of available
-  /// accelerator types by making a list() request.
+  /// Returns the specified accelerator type.
   ///
   /// Request parameters:
   ///
@@ -325,30 +329,27 @@ class AcceleratorTypesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -444,30 +445,27 @@ class AddressesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -771,30 +769,27 @@ class AddressesResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -890,30 +885,27 @@ class AutoscalersResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1069,7 +1061,7 @@ class AutoscalersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified autoscaler resource. Get a list of available
+  /// Returns the specified autoscaler resource. Gets a list of available
   /// autoscalers by making a list() request.
   ///
   /// Request parameters:
@@ -1220,30 +1212,27 @@ class AutoscalersResourceApi {
   /// [zone] - Name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1567,7 +1556,7 @@ class BackendBucketsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified BackendBucket resource. Get a list of available
+  /// Returns the specified BackendBucket resource. Gets a list of available
   /// backend buckets by making a list() request.
   ///
   /// Request parameters:
@@ -1698,30 +1687,27 @@ class BackendBucketsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -1965,30 +1951,27 @@ class BackendServicesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -2136,7 +2119,7 @@ class BackendServicesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified BackendService resource. Get a list of available
+  /// Returns the specified BackendService resource. Gets a list of available
   /// backend services by making a list() request.
   ///
   /// Request parameters:
@@ -2334,30 +2317,27 @@ class BackendServicesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -2605,30 +2585,27 @@ class DiskTypesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -2704,7 +2681,7 @@ class DiskTypesResourceApi {
     return _response.then((data) => new DiskTypeAggregatedList.fromJson(data));
   }
 
-  /// Returns the specified disk type. Get a list of available disk types by
+  /// Returns the specified disk type. Gets a list of available disk types by
   /// making a list() request.
   ///
   /// Request parameters:
@@ -2778,30 +2755,27 @@ class DiskTypesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -2897,30 +2871,27 @@ class DisksResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -3165,7 +3136,7 @@ class DisksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns a specified persistent disk. Get a list of available persistent
+  /// Returns a specified persistent disk. Gets a list of available persistent
   /// disks by making a list() request.
   ///
   /// Request parameters:
@@ -3324,30 +3295,27 @@ class DisksResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -3802,30 +3770,27 @@ class FirewallsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -4069,30 +4034,27 @@ class ForwardingRulesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -4399,30 +4361,27 @@ class ForwardingRulesResourceApi {
   /// [region] - Name of the region scoping this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -4665,7 +4624,7 @@ class GlobalAddressesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified address resource. Get a list of available addresses
+  /// Returns the specified address resource. Gets a list of available addresses
   /// by making a list() request.
   ///
   /// Request parameters:
@@ -4794,30 +4753,27 @@ class GlobalAddressesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -4970,7 +4926,7 @@ class GlobalForwardingRulesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified GlobalForwardingRule resource. Get a list of
+  /// Returns the specified GlobalForwardingRule resource. Gets a list of
   /// available forwarding rules by making a list() request.
   ///
   /// Request parameters:
@@ -5102,30 +5058,27 @@ class GlobalForwardingRulesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -5295,30 +5248,27 @@ class GlobalOperationsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -5447,7 +5397,7 @@ class GlobalOperationsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Retrieves the specified Operations resource. Get a list of operations by
+  /// Retrieves the specified Operations resource. Gets a list of operations by
   /// making a list() request.
   ///
   /// Request parameters:
@@ -5510,30 +5460,27 @@ class GlobalOperationsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -5684,8 +5631,8 @@ class HealthChecksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified HealthCheck resource. Get a list of available health
-  /// checks by making a list() request.
+  /// Returns the specified HealthCheck resource. Gets a list of available
+  /// health checks by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -5814,30 +5761,27 @@ class HealthChecksResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -6143,7 +6087,7 @@ class HttpHealthChecksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified HttpHealthCheck resource. Get a list of available
+  /// Returns the specified HttpHealthCheck resource. Gets a list of available
   /// HTTP health checks by making a list() request.
   ///
   /// Request parameters:
@@ -6275,30 +6219,27 @@ class HttpHealthChecksResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -6605,7 +6546,7 @@ class HttpsHealthChecksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified HttpsHealthCheck resource. Get a list of available
+  /// Returns the specified HttpsHealthCheck resource. Gets a list of available
   /// HTTPS health checks by making a list() request.
   ///
   /// Request parameters:
@@ -6737,30 +6678,27 @@ class HttpsHealthChecksResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -7143,7 +7081,7 @@ class ImagesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified image. Get a list of available images by making a
+  /// Returns the specified image. Gets a list of available images by making a
   /// list() request.
   ///
   /// Request parameters:
@@ -7336,30 +7274,27 @@ class ImagesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -7612,30 +7547,27 @@ class InstanceGroupManagersResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -7892,8 +7824,9 @@ class InstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns all of the details about the specified managed instance group. Get
-  /// a list of available managed instance groups by making a list() request.
+  /// Returns all of the details about the specified managed instance group.
+  /// Gets a list of available managed instance groups by making a list()
+  /// request.
   ///
   /// Request parameters:
   ///
@@ -8050,30 +7983,27 @@ class InstanceGroupManagersResourceApi {
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -8726,30 +8656,27 @@ class InstanceGroupsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -8905,7 +8832,7 @@ class InstanceGroupsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified instance group. Get a list of available instance
+  /// Returns the specified instance group. Gets a list of available instance
   /// groups by making a list() request.
   ///
   /// Request parameters:
@@ -9053,30 +8980,27 @@ class InstanceGroupsResourceApi {
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -9173,30 +9097,27 @@ class InstanceGroupsResourceApi {
   /// [instanceGroup] - The name of the instance group from which you want to
   /// generate a list of included instances.
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -9549,7 +9470,7 @@ class InstanceTemplatesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified instance template. Get a list of available instance
+  /// Returns the specified instance template. Gets a list of available instance
   /// templates by making a list() request.
   ///
   /// Request parameters:
@@ -9683,30 +9604,27 @@ class InstanceTemplatesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -9893,30 +9811,27 @@ class InstancesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -10011,6 +9926,9 @@ class InstancesResourceApi {
   /// [instance] - The instance name for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [forceAttach] - Whether to force attach the disk even if it's currently
+  /// attached to another instance. This is only available for regional disks.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed.
@@ -10036,7 +9954,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> attachDisk(AttachedDisk request, core.String project,
       core.String zone, core.String instance,
-      {core.String requestId, core.String $fields}) {
+      {core.bool forceAttach, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -10055,6 +9973,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (forceAttach != null) {
+      _queryParams["forceAttach"] = ["${forceAttach}"];
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
@@ -10339,8 +10260,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified Instance resource. Get a list of available instances
-  /// by making a list() request.
+  /// Returns the specified Instance resource. Gets a list of available
+  /// instances by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -10507,6 +10428,16 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [sourceInstanceTemplate] - Specifies instance template to create the
+  /// instance.
+  ///
+  /// This field is optional. It can be a full or partial URL. For example, the
+  /// following are all valid URLs to an instance template:
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
+  /// - projects/project/global/global/instanceTemplates/instanceTemplate
+  /// - global/instancesTemplates/instanceTemplate
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -10519,7 +10450,9 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Instance request, core.String project, core.String zone,
-      {core.String requestId, core.String $fields}) {
+      {core.String requestId,
+      core.String sourceInstanceTemplate,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -10538,6 +10471,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if (sourceInstanceTemplate != null) {
+      _queryParams["sourceInstanceTemplate"] = [sourceInstanceTemplate];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10568,30 +10504,27 @@ class InstancesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -10689,30 +10622,27 @@ class InstancesResourceApi {
   /// the request should span over all instances in the container.
   /// Value must have pattern "-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -11756,8 +11686,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Starts an instance that was stopped using the using the instances().stop
-  /// method. For more information, see Restart an instance.
+  /// Starts an instance that was stopped using the instances().stop method. For
+  /// more information, see Restart an instance.
   ///
   /// Request parameters:
   ///
@@ -11836,8 +11766,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Starts an instance that was stopped using the using the instances().stop
-  /// method. For more information, see Restart an instance.
+  /// Starts an instance that was stopped using the instances().stop method. For
+  /// more information, see Restart an instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12106,6 +12036,102 @@ class InstancesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Updates an instance's network interface. This method follows PATCH
+  /// semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - The instance name for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [networkInterface] - The name of the network interface to update.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateNetworkInterface(
+      NetworkInterface request,
+      core.String project,
+      core.String zone,
+      core.String instance,
+      core.String networkInterface,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (networkInterface == null) {
+      throw new core.ArgumentError("Parameter networkInterface is required.");
+    }
+    _queryParams["networkInterface"] = [networkInterface];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/updateNetworkInterface';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class InterconnectAttachmentsResourceApi {
@@ -12122,30 +12148,27 @@ class InterconnectAttachmentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -12455,30 +12478,27 @@ class InterconnectAttachmentsResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -12561,6 +12581,96 @@ class InterconnectAttachmentsResourceApi {
     return _response
         .then((data) => new InterconnectAttachmentList.fromJson(data));
   }
+
+  /// Updates the specified interconnect attachment with the data included in
+  /// the request. This method supports PATCH semantics and uses the JSON merge
+  /// patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [interconnectAttachment] - Name of the interconnect attachment to patch.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      InterconnectAttachment request,
+      core.String project,
+      core.String region,
+      core.String interconnectAttachment,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (interconnectAttachment == null) {
+      throw new core.ArgumentError(
+          "Parameter interconnectAttachment is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/interconnectAttachments/' +
+        commons.Escaper.ecapeVariable('$interconnectAttachment');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class InterconnectLocationsResourceApi {
@@ -12569,8 +12679,8 @@ class InterconnectLocationsResourceApi {
   InterconnectLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Returns the details for the specified interconnect location. Get a list of
-  /// available interconnect locations by making a list() request.
+  /// Returns the details for the specified interconnect location. Gets a list
+  /// of available interconnect locations by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -12634,30 +12744,27 @@ class InterconnectLocationsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -12939,30 +13046,27 @@ class InterconnectsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -13116,10 +13220,200 @@ class InterconnectsResourceApi {
   }
 }
 
+class LicenseCodesResourceApi {
+  final commons.ApiRequester _requester;
+
+  LicenseCodesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Return a specified license code. License codes are mirrored across all
+  /// projects that have permissions to read the License Code.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [licenseCode] - Number corresponding to the License code resource to
+  /// return.
+  /// Value must have pattern "[0-9]{0,61}?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LicenseCode].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseCode> get(core.String project, core.String licenseCode,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (licenseCode == null) {
+      throw new core.ArgumentError("Parameter licenseCode is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/licenseCodes/' +
+        commons.Escaper.ecapeVariable('$licenseCode');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LicenseCode.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name of the resource for this request.
+  /// Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/licenseCodes/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
+}
+
 class LicensesResourceApi {
   final commons.ApiRequester _requester;
 
   LicensesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the specified license.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [license] - Name of the license resource to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(core.String project, core.String license,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (license == null) {
+      throw new core.ArgumentError("Parameter license is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses/' +
+        commons.Escaper.ecapeVariable('$license');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 
   /// Returns the specified License resource.
   ///
@@ -13173,6 +13467,241 @@ class LicensesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new License.fromJson(data));
   }
+
+  /// Create a License resource in the specified project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(License request, core.String project,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the list of licenses available in the specified project. This
+  /// method does not get any licenses that belong to other projects, including
+  /// licenses attached to publicly-available images, like Debian 9. If you want
+  /// to get a list of publicly-available licenses, use this method to make a
+  /// request to the respective image project, such as debian-cloud or
+  /// windows-cloud.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LicensesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicensesListResponse> list(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LicensesListResponse.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name of the resource for this request.
+  /// Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
 }
 
 class MachineTypesResourceApi {
@@ -13188,30 +13717,27 @@ class MachineTypesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -13289,7 +13815,7 @@ class MachineTypesResourceApi {
         .then((data) => new MachineTypeAggregatedList.fromJson(data));
   }
 
-  /// Returns the specified machine type. Get a list of available machine types
+  /// Returns the specified machine type. Gets a list of available machine types
   /// by making a list() request.
   ///
   /// Request parameters:
@@ -13363,30 +13889,27 @@ class MachineTypesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -13619,7 +14142,7 @@ class NetworksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified network. Get a list of available networks by making
+  /// Returns the specified network. Gets a list of available networks by making
   /// a list() request.
   ///
   /// Request parameters:
@@ -13748,30 +14271,27 @@ class NetworksResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -14379,7 +14899,7 @@ class ProjectsResourceApi {
     return _response.then((data) => new Project.fromJson(data));
   }
 
-  /// Get the shared VPC host project that this project links to. May be empty
+  /// Gets the shared VPC host project that this project links to. May be empty
   /// if no link exists.
   ///
   /// Request parameters:
@@ -14424,7 +14944,7 @@ class ProjectsResourceApi {
     return _response.then((data) => new Project.fromJson(data));
   }
 
-  /// Get service resources (a.k.a service project) associated with this host
+  /// Gets service resources (a.k.a service project) associated with this host
   /// project.
   ///
   /// Request parameters:
@@ -14494,7 +15014,7 @@ class ProjectsResourceApi {
     return _response.then((data) => new ProjectsGetXpnResources.fromJson(data));
   }
 
-  /// List all shared VPC host projects visible to the user in an organization.
+  /// Lists all shared VPC host projects visible to the user in an organization.
   ///
   /// [request] - The metadata request object.
   ///
@@ -15076,30 +15596,27 @@ class RegionAutoscalersResourceApi {
   /// [region] - Name of the region scoping this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -15661,30 +16178,27 @@ class RegionBackendServicesResourceApi {
   /// [region] - Name of the region scoping this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -15954,30 +16468,27 @@ class RegionCommitmentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -16055,7 +16566,7 @@ class RegionCommitmentsResourceApi {
         .then((data) => new CommitmentAggregatedList.fromJson(data));
   }
 
-  /// Returns the specified commitment resource. Get a list of available
+  /// Returns the specified commitment resource. Gets a list of available
   /// commitments by making a list() request.
   ///
   /// Request parameters:
@@ -16206,30 +16717,27 @@ class RegionCommitmentsResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -16309,6 +16817,856 @@ class RegionCommitmentsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new CommitmentList.fromJson(data));
+  }
+}
+
+class RegionDiskTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionDiskTypesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the specified regional disk type. Gets a list of available disk
+  /// types by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [diskType] - Name of the disk type to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DiskType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DiskType> get(
+      core.String project, core.String region, core.String diskType,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (diskType == null) {
+      throw new core.ArgumentError("Parameter diskType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/diskTypes/' +
+        commons.Escaper.ecapeVariable('$diskType');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DiskType.fromJson(data));
+  }
+
+  /// Retrieves a list of regional disk types available to the specified
+  /// project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionDiskTypeList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionDiskTypeList> list(core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/diskTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionDiskTypeList.fromJson(data));
+  }
+}
+
+class RegionDisksResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionDisksResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a snapshot of this regional disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - Name of the regional persistent disk to snapshot.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createSnapshot(Snapshot request, core.String project,
+      core.String region, core.String disk,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk') +
+        '/createSnapshot';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes the specified regional persistent disk. Deleting a regional disk
+  /// removes all the replicas of its data permanently and is irreversible.
+  /// However, deleting a disk does not delete any snapshots previously made
+  /// from the disk. You must separately delete snapshots.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - Name of the regional persistent disk to delete.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String region, core.String disk,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns a specified regional persistent disk.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - Name of the regional persistent disk to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Disk].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Disk> get(
+      core.String project, core.String region, core.String disk,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Disk.fromJson(data));
+  }
+
+  /// Creates a persistent regional disk in the specified project using the data
+  /// included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [sourceImage] - Optional. Source image to restore onto a disk.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      Disk request, core.String project, core.String region,
+      {core.String requestId, core.String sourceImage, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if (sourceImage != null) {
+      _queryParams["sourceImage"] = [sourceImage];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the list of persistent disks contained within the specified
+  /// region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DiskList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DiskList> list(core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DiskList.fromJson(data));
+  }
+
+  /// Resizes the specified regional persistent disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - The project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - Name of the regional persistent disk.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resize(RegionDisksResizeRequest request,
+      core.String project, core.String region, core.String disk,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk') +
+        '/resize';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the labels on the target regional disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name of the resource for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLabels(RegionSetLabelsRequest request,
+      core.String project, core.String region, core.String resource,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setLabels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name of the resource for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String region,
+      core.String resource,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
   }
 }
 
@@ -16751,30 +18109,27 @@ class RegionInstanceGroupManagersResourceApi {
   ///
   /// [region] - Name of the region scoping this request.
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -17395,30 +18750,27 @@ class RegionInstanceGroupsResourceApi {
   ///
   /// [region] - Name of the region scoping this request.
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -17518,30 +18870,27 @@ class RegionInstanceGroupsResourceApi {
   /// [instanceGroup] - Name of the regional instance group for which we want to
   /// list the instances.
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -17866,30 +19215,27 @@ class RegionOperationsResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -17977,7 +19323,7 @@ class RegionsResourceApi {
 
   RegionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns the specified Region resource. Get a list of available regions by
+  /// Returns the specified Region resource. Gets a list of available regions by
   /// making a list() request.
   ///
   /// Request parameters:
@@ -18039,30 +19385,27 @@ class RegionsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -18152,30 +19495,27 @@ class RoutersResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -18329,7 +19669,7 @@ class RoutersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified Router resource. Get a list of available routers by
+  /// Returns the specified Router resource. Gets a list of available routers by
   /// making a list() request.
   ///
   /// Request parameters:
@@ -18543,30 +19883,27 @@ class RoutersResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -18961,7 +20298,7 @@ class RoutesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified Route resource. Get a list of available routes by
+  /// Returns the specified Route resource. Gets a list of available routes by
   /// making a list() request.
   ///
   /// Request parameters:
@@ -19090,30 +20427,27 @@ class RoutesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -19270,8 +20604,8 @@ class SnapshotsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified Snapshot resource. Get a list of available snapshots
-  /// by making a list() request.
+  /// Returns the specified Snapshot resource. Gets a list of available
+  /// snapshots by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -19333,30 +20667,27 @@ class SnapshotsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -19569,8 +20900,8 @@ class SslCertificatesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified SslCertificate resource. Get a list of available SSL
-  /// certificates by making a list() request.
+  /// Returns the specified SslCertificate resource. Gets a list of available
+  /// SSL certificates by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -19701,30 +21032,27 @@ class SslCertificatesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -19802,6 +21130,491 @@ class SslCertificatesResourceApi {
   }
 }
 
+class SslPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  SslPoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the specified SSL policy. The SSL policy resource can be deleted
+  /// only if it is not in use by any TargetHttpsProxy or TargetSslProxy
+  /// resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [sslPolicy] - Name of the SSL policy to delete. The name must be 1-63
+  /// characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(core.String project, core.String sslPolicy,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (sslPolicy == null) {
+      throw new core.ArgumentError("Parameter sslPolicy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies/' +
+        commons.Escaper.ecapeVariable('$sslPolicy');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists all of the ordered rules present in a single specified policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [sslPolicy] - Name of the SSL policy to update. The name must be 1-63
+  /// characters long, and comply with RFC1035.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SslPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SslPolicy> get(core.String project, core.String sslPolicy,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (sslPolicy == null) {
+      throw new core.ArgumentError("Parameter sslPolicy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies/' +
+        commons.Escaper.ecapeVariable('$sslPolicy');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SslPolicy.fromJson(data));
+  }
+
+  /// Returns the specified SSL policy resource. Gets a list of available SSL
+  /// policies by making a list() request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(SslPolicy request, core.String project,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslPolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists all the SSL policies that have been configured for the specified
+  /// project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SslPoliciesList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SslPoliciesList> list(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslPolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SslPoliciesList.fromJson(data));
+  }
+
+  /// Lists all features that can be specified in the SSL policy when using
+  /// custom profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SslPoliciesListAvailableFeaturesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SslPoliciesListAvailableFeaturesResponse> listAvailableFeatures(
+      core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies/listAvailableFeatures';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new SslPoliciesListAvailableFeaturesResponse.fromJson(data));
+  }
+
+  /// Patches the specified SSL policy with the data included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [sslPolicy] - Name of the SSL policy to update. The name must be 1-63
+  /// characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      SslPolicy request, core.String project, core.String sslPolicy,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (sslPolicy == null) {
+      throw new core.ArgumentError("Parameter sslPolicy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies/' +
+        commons.Escaper.ecapeVariable('$sslPolicy');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
 class SubnetworksResourceApi {
   final commons.ApiRequester _requester;
 
@@ -19815,30 +21628,27 @@ class SubnetworksResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -20082,7 +21892,7 @@ class SubnetworksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified subnetwork. Get a list of available subnetworks
+  /// Returns the specified subnetwork. Gets a list of available subnetworks
   /// list() request.
   ///
   /// Request parameters:
@@ -20233,30 +22043,27 @@ class SubnetworksResourceApi {
   /// [region] - Name of the region scoping this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -20336,6 +22143,93 @@ class SubnetworksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SubnetworkList.fromJson(data));
+  }
+
+  /// Patches the specified subnetwork with the data included in the request.
+  /// Only the following fields within the subnetwork resource can be specified
+  /// in the request: secondary_ip_range, allow_subnet_cidr_routes_overlap and
+  /// role. It is also mandatory to specify the current fingeprint of the
+  /// subnetwork resource being patched.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [subnetwork] - Name of the Subnetwork resource to patch.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(Subnetwork request, core.String project,
+      core.String region, core.String subnetwork,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (subnetwork == null) {
+      throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/subnetworks/' +
+        commons.Escaper.ecapeVariable('$subnetwork');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Set whether VMs in this subnet can access Google services without
@@ -20504,7 +22398,7 @@ class TargetHttpProxiesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified TargetHttpProxy resource. Get a list of available
+  /// Returns the specified TargetHttpProxy resource. Gets a list of available
   /// target HTTP proxies by making a list() request.
   ///
   /// Request parameters:
@@ -20636,30 +22530,27 @@ class TargetHttpProxiesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -20889,7 +22780,7 @@ class TargetHttpsProxiesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified TargetHttpsProxy resource. Get a list of available
+  /// Returns the specified TargetHttpsProxy resource. Gets a list of available
   /// target HTTPS proxies by making a list() request.
   ///
   /// Request parameters:
@@ -21021,30 +22912,27 @@ class TargetHttpsProxiesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -21121,6 +23009,85 @@ class TargetHttpsProxiesResourceApi {
     return _response.then((data) => new TargetHttpsProxyList.fromJson(data));
   }
 
+  /// Sets the QUIC override policy for TargetHttpsProxy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set the QUIC
+  /// override policy for. The name should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setQuicOverride(
+      TargetHttpsProxiesSetQuicOverrideRequest request,
+      core.String project,
+      core.String targetHttpsProxy,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpsProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpsProxies/' +
+        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        '/setQuicOverride';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Replaces SslCertificates for TargetHttpsProxy.
   ///
   /// [request] - The metadata request object.
@@ -21191,6 +23158,86 @@ class TargetHttpsProxiesResourceApi {
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setSslCertificates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the
+  /// server-side support for SSL features. This affects connections between
+  /// clients and the HTTPS proxy load balancer. They do not affect the
+  /// connection between the load balancer and the backends.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose SSL
+  /// policy is to be set. The name must be 1-63 characters long, and comply
+  /// with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setSslPolicy(SslPolicyReference request,
+      core.String project, core.String targetHttpsProxy,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpsProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpsProxies/' +
+        commons.Escaper.ecapeVariable('$targetHttpsProxy') +
+        '/setSslPolicy';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -21292,30 +23339,27 @@ class TargetInstancesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -21471,7 +23515,7 @@ class TargetInstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified TargetInstance resource. Get a list of available
+  /// Returns the specified TargetInstance resource. Gets a list of available
   /// target instances by making a list() request.
   ///
   /// Request parameters:
@@ -21623,30 +23667,27 @@ class TargetInstancesResourceApi {
   /// [zone] - Name of the zone scoping this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -21914,30 +23955,27 @@ class TargetPoolsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -22093,8 +24131,8 @@ class TargetPoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified target pool. Get a list of available target pools by
-  /// making a list() request.
+  /// Returns the specified target pool. Gets a list of available target pools
+  /// by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -22316,30 +24354,27 @@ class TargetPoolsResourceApi {
   /// [region] - Name of the region scoping this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -22763,7 +24798,7 @@ class TargetSslProxiesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified TargetSslProxy resource. Get a list of available
+  /// Returns the specified TargetSslProxy resource. Gets a list of available
   /// target SSL proxies by making a list() request.
   ///
   /// Request parameters:
@@ -22895,30 +24930,27 @@ class TargetSslProxiesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -23234,6 +25266,85 @@ class TargetSslProxiesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Sets the SSL policy for TargetSslProxy. The SSL policy specifies the
+  /// server-side support for SSL features. This affects connections between
+  /// clients and the SSL proxy load balancer. They do not affect the connection
+  /// between the load balancer and the backends.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetSslProxy] - Name of the TargetSslProxy resource whose SSL policy is
+  /// to be set. The name must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setSslPolicy(SslPolicyReference request,
+      core.String project, core.String targetSslProxy,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetSslProxy == null) {
+      throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetSslProxies/' +
+        commons.Escaper.ecapeVariable('$targetSslProxy') +
+        '/setSslPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class TargetTcpProxiesResourceApi {
@@ -23312,7 +25423,7 @@ class TargetTcpProxiesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified TargetTcpProxy resource. Get a list of available
+  /// Returns the specified TargetTcpProxy resource. Gets a list of available
   /// target TCP proxies by making a list() request.
   ///
   /// Request parameters:
@@ -23444,30 +25555,27 @@ class TargetTcpProxiesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -23719,30 +25827,27 @@ class TargetVpnGatewaysResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -23899,7 +26004,7 @@ class TargetVpnGatewaysResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified target VPN gateway. Get a list of available target
+  /// Returns the specified target VPN gateway. Gets a list of available target
   /// VPN gateways by making a list() request.
   ///
   /// Request parameters:
@@ -24051,30 +26156,27 @@ class TargetVpnGatewaysResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -24232,8 +26334,8 @@ class UrlMapsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified UrlMap resource. Get a list of available URL maps by
-  /// making a list() request.
+  /// Returns the specified UrlMap resource. Gets a list of available URL maps
+  /// by making a list() request.
   ///
   /// Request parameters:
   ///
@@ -24438,30 +26540,27 @@ class UrlMapsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -24766,30 +26865,27 @@ class VpnTunnelsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -24943,7 +27039,7 @@ class VpnTunnelsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified VpnTunnel resource. Get a list of available VPN
+  /// Returns the specified VpnTunnel resource. Gets a list of available VPN
   /// tunnels by making a list() request.
   ///
   /// Request parameters:
@@ -25095,30 +27191,27 @@ class VpnTunnelsResourceApi {
   /// [region] - Name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -25342,30 +27435,27 @@ class ZoneOperationsResourceApi {
   /// [zone] - Name of the zone for request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -25453,7 +27543,7 @@ class ZonesResourceApi {
 
   ZonesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns the specified Zone resource. Get a list of available zones by
+  /// Returns the specified Zone resource. Gets a list of available zones by
   /// making a list() request.
   ///
   /// Request parameters:
@@ -25515,30 +27605,27 @@ class ZonesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
-  /// {expression} must be in the format: field_name comparison_string
-  /// literal_string.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// The field_name is the name of the field you want to compare. Only atomic
-  /// field types are supported (string, number, boolean). The comparison_string
-  /// must be either eq (equals) or ne (not equals). The literal_string is the
-  /// string value to filter to. The literal value must be valid for the type of
-  /// field you are filtering by (string, number, boolean). For string fields,
-  /// the literal value is interpreted as a regular expression using RE2 syntax.
-  /// The literal value must match the entire field.
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// For example, to filter for instances that do not have a name of
-  /// example-instance, you would use name ne example-instance.
-  ///
-  /// You can filter on nested fields. For example, you could filter on
-  /// instances that have set the scheduling.automaticRestart field to true. Use
-  /// filtering on nested fields to take advantage of labels to organize and
-  /// search for results based on label values.
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
-  /// us-central1-f). Multiple expressions are treated as AND expressions,
-  /// meaning that resources must match all expressions to pass the filters.
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
   ///
   /// [maxResults] - The maximum number of results per page that should be
   /// returned. If the number of available results is larger than maxResults,
@@ -26230,7 +28317,7 @@ class AcceleratorTypesScopedListWarning {
 }
 
 class AcceleratorTypesScopedList {
-  /// [Output Only] List of accelerator types contained in this scope.
+  /// [Output Only] A list of accelerator types contained in this scope.
   core.List<AcceleratorType> acceleratorTypes;
 
   /// [Output Only] An informational warning that appears when the accelerator
@@ -26385,8 +28472,8 @@ class Address {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -26986,7 +29073,7 @@ class AddressesScopedListWarning {
 }
 
 class AddressesScopedList {
-  /// [Output Only] List of addresses contained in this scope.
+  /// [Output Only] A list of addresses contained in this scope.
   core.List<Address> addresses;
 
   /// [Output Only] Informational warning which replaces the list of addresses
@@ -27097,6 +29184,11 @@ class AttachedDisk {
   /// cannot use your own keys to encrypt disks in a managed instance group.
   CustomerEncryptionKey diskEncryptionKey;
 
+  /// A list of features to enable on the guest operating system. Applicable
+  /// only for bootable images. Read  Enabling guest operating system features
+  /// to see a list of available options.
+  core.List<GuestOsFeature> guestOsFeatures;
+
   /// [Output Only] A zero-based index to this disk, where 0 is reserved for the
   /// boot disk. If you have many disks attached to an instance, each disk would
   /// have a unique index number.
@@ -27169,6 +29261,11 @@ class AttachedDisk {
       diskEncryptionKey =
           new CustomerEncryptionKey.fromJson(_json["diskEncryptionKey"]);
     }
+    if (_json.containsKey("guestOsFeatures")) {
+      guestOsFeatures = (_json["guestOsFeatures"] as core.List)
+          .map<GuestOsFeature>((value) => new GuestOsFeature.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("index")) {
       index = _json["index"];
     }
@@ -27210,6 +29307,10 @@ class AttachedDisk {
     }
     if (diskEncryptionKey != null) {
       _json["diskEncryptionKey"] = (diskEncryptionKey).toJson();
+    }
+    if (guestOsFeatures != null) {
+      _json["guestOsFeatures"] =
+          guestOsFeatures.map((value) => (value).toJson()).toList();
     }
     if (index != null) {
       _json["index"] = index;
@@ -27391,8 +29492,8 @@ class Autoscaler {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -28037,7 +30138,7 @@ class AutoscalersScopedListWarning {
 }
 
 class AutoscalersScopedList {
-  /// [Output Only] List of autoscalers contained in this scope.
+  /// [Output Only] A list of autoscalers contained in this scope.
   core.List<Autoscaler> autoscalers;
 
   /// [Output Only] Informational warning which replaces the list of autoscalers
@@ -28443,8 +30544,8 @@ class BackendBucket {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -28771,8 +30872,8 @@ class BackendService {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -29555,7 +31656,7 @@ class BackendServicesScopedListWarning {
 }
 
 class BackendServicesScopedList {
-  /// List of BackendServices contained in this scope.
+  /// A list of BackendServices contained in this scope.
   core.List<BackendService> backendServices;
 
   /// Informational warning which replaces the list of backend services when the
@@ -29723,8 +31824,8 @@ class Commitment {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -29741,7 +31842,7 @@ class Commitment {
   /// [Output Only] URL of the region where this commitment may be used.
   core.String region;
 
-  /// List of commitment amounts for particular resources. Note that VCPU and
+  /// A list of commitment amounts for particular resources. Note that VCPU and
   /// MEMORY resource commitments must occur together.
   core.List<ResourceCommitment> resources;
 
@@ -30334,7 +32435,7 @@ class CommitmentsScopedListWarning {
 }
 
 class CommitmentsScopedList {
-  /// [Output Only] List of commitments contained in this scope.
+  /// [Output Only] A list of commitments contained in this scope.
   core.List<Commitment> commitments;
 
   /// [Output Only] Informational warning which replaces the list of commitments
@@ -30559,6 +32660,11 @@ class Disk {
   /// need to provide a key to use the disk later.
   CustomerEncryptionKey diskEncryptionKey;
 
+  /// A list of features to enable on the guest operating system. Applicable
+  /// only for bootable images. Read  Enabling guest operating system features
+  /// to see a list of available options.
+  core.List<GuestOsFeature> guestOsFeatures;
+
   /// [Output Only] The unique identifier for the resource. This identifier is
   /// defined by the server.
   core.String id;
@@ -30593,20 +32699,32 @@ class Disk {
   /// [Output Only] Last detach timestamp in RFC3339 text format.
   core.String lastDetachTimestamp;
 
+  /// Integer license codes indicating which licenses are attached to this disk.
+  core.List<core.String> licenseCodes;
+
   /// Any applicable publicly visible licenses.
   core.List<core.String> licenses;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
 
   /// Internal use only.
   core.String options;
+
+  /// [Output Only] URL of the region where the disk resides. Only applicable
+  /// for regional resources. You must specify this field as part of the HTTP
+  /// request URL. It is not settable as a field in the request body.
+  core.String region;
+
+  /// URLs of the zones where the disk should be replicated to. Only applicable
+  /// for regional resources.
+  core.List<core.String> replicaZones;
 
   /// [Output Only] Server-defined fully-qualified URL for this resource.
   core.String selfLink;
@@ -30711,6 +32829,11 @@ class Disk {
       diskEncryptionKey =
           new CustomerEncryptionKey.fromJson(_json["diskEncryptionKey"]);
     }
+    if (_json.containsKey("guestOsFeatures")) {
+      guestOsFeatures = (_json["guestOsFeatures"] as core.List)
+          .map<GuestOsFeature>((value) => new GuestOsFeature.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -30729,6 +32852,9 @@ class Disk {
     if (_json.containsKey("lastDetachTimestamp")) {
       lastDetachTimestamp = _json["lastDetachTimestamp"];
     }
+    if (_json.containsKey("licenseCodes")) {
+      licenseCodes = (_json["licenseCodes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("licenses")) {
       licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
@@ -30737,6 +32863,12 @@ class Disk {
     }
     if (_json.containsKey("options")) {
       options = _json["options"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("replicaZones")) {
+      replicaZones = (_json["replicaZones"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -30790,6 +32922,10 @@ class Disk {
     if (diskEncryptionKey != null) {
       _json["diskEncryptionKey"] = (diskEncryptionKey).toJson();
     }
+    if (guestOsFeatures != null) {
+      _json["guestOsFeatures"] =
+          guestOsFeatures.map((value) => (value).toJson()).toList();
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -30808,6 +32944,9 @@ class Disk {
     if (lastDetachTimestamp != null) {
       _json["lastDetachTimestamp"] = lastDetachTimestamp;
     }
+    if (licenseCodes != null) {
+      _json["licenseCodes"] = licenseCodes;
+    }
     if (licenses != null) {
       _json["licenses"] = licenses;
     }
@@ -30816,6 +32955,12 @@ class Disk {
     }
     if (options != null) {
       _json["options"] = options;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (replicaZones != null) {
+      _json["replicaZones"] = replicaZones;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -31291,6 +33436,11 @@ class DiskType {
   /// [Output Only] Name of the resource.
   core.String name;
 
+  /// [Output Only] URL of the region where the disk type resides. Only
+  /// applicable for regional resources. You must specify this field as part of
+  /// the HTTP request URL. It is not settable as a field in the request body.
+  core.String region;
+
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
@@ -31327,6 +33477,9 @@ class DiskType {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -31361,6 +33514,9 @@ class DiskType {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -31851,7 +34007,7 @@ class DiskTypesScopedListWarning {
 }
 
 class DiskTypesScopedList {
-  /// [Output Only] List of disk types contained in this scope.
+  /// [Output Only] A list of disk types contained in this scope.
   core.List<DiskType> diskTypes;
 
   /// [Output Only] Informational warning which replaces the list of disk types
@@ -32016,7 +34172,7 @@ class DisksScopedListWarning {
 }
 
 class DisksScopedList {
-  /// [Output Only] List of disks contained in this scope.
+  /// [Output Only] A list of disks contained in this scope.
   core.List<Disk> disks;
 
   /// [Output Only] Informational warning which replaces the list of disks when
@@ -32169,8 +34325,8 @@ class Firewall {
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -32644,8 +34800,8 @@ class ForwardingRule {
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -33304,7 +35460,7 @@ class ForwardingRulesScopedListWarning {
 }
 
 class ForwardingRulesScopedList {
-  /// List of forwarding rules contained in this scope.
+  /// A list of forwarding rules contained in this scope.
   core.List<ForwardingRule> forwardingRules;
 
   /// Informational warning which replaces the list of forwarding rules when the
@@ -33357,7 +35513,7 @@ class GlobalSetLabelsRequest {
 
   /// A list of labels to apply for this resource. Each label key & value must
   /// comply with RFC1035. Specifically, the name must be 1-63 characters long
-  /// and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means
+  /// and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash. For example, "webserver-frontend":
@@ -33395,6 +35551,8 @@ class GuestOsFeature {
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "MULTI_IP_SUBNET"
+  /// - "SECURE_BOOT"
+  /// - "UEFI_COMPATIBLE"
   /// - "VIRTIO_SCSI_MULTIQUEUE"
   /// - "WINDOWS"
   core.String type;
@@ -33581,8 +35739,8 @@ class HealthCheck {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -34056,8 +36214,8 @@ class HttpHealthCheck {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -34386,8 +36544,8 @@ class HttpsHealthCheck {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -34805,14 +36963,18 @@ class Image {
   /// setLabels method.
   core.Map<core.String, core.String> labels;
 
+  /// Integer license codes indicating which licenses are attached to this
+  /// image.
+  core.List<core.String> licenseCodes;
+
   /// Any applicable license URI.
   core.List<core.String> licenses;
 
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -34857,6 +37019,23 @@ class Image {
   /// value may be used to determine whether the image was taken from the
   /// current or a previous instance of a given image name.
   core.String sourceImageId;
+
+  /// URL of the source snapshot used to create this image. This can be a full
+  /// or valid partial URL. You must provide exactly one of:
+  /// - this property, or
+  /// - the sourceImage property, or
+  /// - the rawDisk.source property, or
+  /// - the sourceDisk property   in order to create an image.
+  core.String sourceSnapshot;
+
+  /// The customer-supplied encryption key of the source snapshot. Required if
+  /// the source snapshot is protected by a customer-supplied encryption key.
+  CustomerEncryptionKey sourceSnapshotEncryptionKey;
+
+  /// [Output Only] The ID value of the snapshot used to create this image. This
+  /// value may be used to determine whether the snapshot was taken from the
+  /// current or a previous instance of a given snapshot name.
+  core.String sourceSnapshotId;
 
   /// The type of the image used to create this disk. The default and only value
   /// is RAW
@@ -34916,6 +37095,9 @@ class Image {
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("licenseCodes")) {
+      licenseCodes = (_json["licenseCodes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("licenses")) {
       licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
@@ -34947,6 +37129,16 @@ class Image {
     }
     if (_json.containsKey("sourceImageId")) {
       sourceImageId = _json["sourceImageId"];
+    }
+    if (_json.containsKey("sourceSnapshot")) {
+      sourceSnapshot = _json["sourceSnapshot"];
+    }
+    if (_json.containsKey("sourceSnapshotEncryptionKey")) {
+      sourceSnapshotEncryptionKey = new CustomerEncryptionKey.fromJson(
+          _json["sourceSnapshotEncryptionKey"]);
+    }
+    if (_json.containsKey("sourceSnapshotId")) {
+      sourceSnapshotId = _json["sourceSnapshotId"];
     }
     if (_json.containsKey("sourceType")) {
       sourceType = _json["sourceType"];
@@ -34996,6 +37188,9 @@ class Image {
     if (labels != null) {
       _json["labels"] = labels;
     }
+    if (licenseCodes != null) {
+      _json["licenseCodes"] = licenseCodes;
+    }
     if (licenses != null) {
       _json["licenses"] = licenses;
     }
@@ -35025,6 +37220,16 @@ class Image {
     }
     if (sourceImageId != null) {
       _json["sourceImageId"] = sourceImageId;
+    }
+    if (sourceSnapshot != null) {
+      _json["sourceSnapshot"] = sourceSnapshot;
+    }
+    if (sourceSnapshotEncryptionKey != null) {
+      _json["sourceSnapshotEncryptionKey"] =
+          (sourceSnapshotEncryptionKey).toJson();
+    }
+    if (sourceSnapshotId != null) {
+      _json["sourceSnapshotId"] = sourceSnapshotId;
     }
     if (sourceType != null) {
       _json["sourceType"] = sourceType;
@@ -35244,7 +37449,8 @@ class Instance {
   /// created before you can assign them.
   core.List<AttachedDisk> disks;
 
-  /// List of the type and count of accelerator cards attached to the instance.
+  /// A list of the type and count of accelerator cards attached to the
+  /// instance.
   core.List<AcceleratorConfig> guestAccelerators;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -35254,11 +37460,11 @@ class Instance {
   /// [Output Only] Type of the resource. Always compute#instance for instances.
   core.String kind;
 
-  /// A fingerprint for this request, which is essentially a hash of the
-  /// metadata's contents and used for optimistic locking. The fingerprint is
-  /// initially generated by Compute Engine and changes after every request to
-  /// modify or update metadata. You must always provide an up-to-date
-  /// fingerprint hash in order to update or change metadata.
+  /// A fingerprint for this request, which is essentially a hash of the label's
+  /// contents and used for optimistic locking. The fingerprint is initially
+  /// generated by Compute Engine and changes after every request to modify or
+  /// update labels. You must always provide an up-to-date fingerprint hash in
+  /// order to update or change labels.
   ///
   /// To see the latest fingerprint, make get() request to the instance.
   core.String labelFingerprint;
@@ -35308,7 +37514,7 @@ class Instance {
   /// The name of the resource, provided by the client when initially creating
   /// the resource. The resource name must be 1-63 characters long, and comply
   /// with RFC1035. Specifically, the name must be 1-63 characters long and
-  /// match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
   /// first character must be a lowercase letter, and all following characters
   /// must be a dash, lowercase letter, or digit, except the last character,
   /// which cannot be a dash.
@@ -35769,8 +37975,8 @@ class InstanceGroup {
   /// belong.
   core.String network;
 
-  /// The URL of the region where the instance group is located (for regional
-  /// resources).
+  /// [Output Only] The URL of the region where the instance group is located
+  /// (for regional resources).
   core.String region;
 
   /// [Output Only] The URL for this instance group. The server generates this
@@ -35780,8 +37986,8 @@ class InstanceGroup {
   /// [Output Only] The total number of instances in the instance group.
   core.int size;
 
-  /// The URL of the subnetwork to which all instances in the instance group
-  /// belong.
+  /// [Output Only] The URL of the subnetwork to which all instances in the
+  /// instance group belong.
   core.String subnetwork;
 
   /// [Output Only] The URL of the zone where the instance group is located (for
@@ -36273,8 +38479,10 @@ class InstanceGroupManager {
   /// create the resource.
   core.String description;
 
-  /// [Output Only] The fingerprint of the resource data. You can use this
-  /// optional field for optimistic locking when you update the resource.
+  /// Fingerprint of this resource. This field may be used in optimistic
+  /// locking. It will be ignored when inserting an InstanceGroupManager. An
+  /// up-to-date fingerprint must be provided in order to update the
+  /// InstanceGroupManager.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -38291,8 +40499,8 @@ class InstanceTemplate {
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -38704,7 +40912,7 @@ class InstancesScopedListWarning {
 }
 
 class InstancesScopedList {
-  /// [Output Only] List of instances contained in this scope.
+  /// [Output Only] A list of instances contained in this scope.
   core.List<Instance> instances;
 
   /// [Output Only] Informational warning which replaces the list of instances
@@ -38778,7 +40986,8 @@ class InstancesSetLabelsRequest {
 }
 
 class InstancesSetMachineResourcesRequest {
-  /// List of the type and count of accelerator cards attached to the instance.
+  /// A list of the type and count of accelerator cards attached to the
+  /// instance.
   core.List<AcceleratorConfig> guestAccelerators;
 
   InstancesSetMachineResourcesRequest();
@@ -38923,7 +41132,7 @@ class Interconnect {
   /// exchanged over it. By default, the status is set to true.
   core.bool adminEnabled;
 
-  /// [Output Only] List of CircuitInfo objects, that describe the individual
+  /// [Output Only] A list of CircuitInfo objects, that describe the individual
   /// circuits in this LAG.
   core.List<InterconnectCircuitInfo> circuitInfos;
 
@@ -38938,7 +41147,7 @@ class Interconnect {
   /// create the resource.
   core.String description;
 
-  /// [Output Only] List of outages expected for this Interconnect.
+  /// [Output Only] A list of outages expected for this Interconnect.
   core.List<InterconnectOutageNotification> expectedOutages;
 
   /// [Output Only] IP address configured on the Google side of the Interconnect
@@ -38962,6 +41171,7 @@ class Interconnect {
   /// Possible string values are:
   /// - "DEDICATED"
   /// - "IT_PRIVATE"
+  /// - "PARTNER"
   core.String interconnectType;
 
   /// [Output Only] Type of the resource. Always compute#interconnect for
@@ -38982,8 +41192,8 @@ class Interconnect {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -39015,6 +41225,13 @@ class Interconnect {
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
+
+  /// [Output Only] The current state of whether or not this Interconnect is
+  /// functional.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "UNPROVISIONED"
+  core.String state;
 
   Interconnect();
 
@@ -39089,6 +41306,9 @@ class Interconnect {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -39159,6 +41379,9 @@ class Interconnect {
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
+    if (state != null) {
+      _json["state"] = state;
+    }
     return _json;
   }
 }
@@ -39168,6 +41391,36 @@ class Interconnect {
 /// beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments
 /// ==)
 class InterconnectAttachment {
+  /// Determines whether this Attachment will carry packets. Not present for
+  /// PARTNER_PROVIDER.
+  core.bool adminEnabled;
+
+  /// Provisioned bandwidth capacity for the interconnectAttachment. Can be set
+  /// by the partner to update the customer's provisioned bandwidth. Output only
+  /// for for PARTNER type, mutable for PARTNER_PROVIDER, not available for
+  /// DEDICATED.
+  /// Possible string values are:
+  /// - "BPS_100M"
+  /// - "BPS_10G"
+  /// - "BPS_1G"
+  /// - "BPS_200M"
+  /// - "BPS_2G"
+  /// - "BPS_300M"
+  /// - "BPS_400M"
+  /// - "BPS_500M"
+  /// - "BPS_50M"
+  /// - "BPS_5G"
+  core.String bandwidth;
+
+  /// Up to 16 candidate prefixes that can be used to restrict the allocation of
+  /// cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
+  /// prefixes must be within link-local address space (169.254.0.0/16) and must
+  /// be /29 or shorter (/28, /27, etc). Google will attempt to select an unused
+  /// /29 from the supplied candidate prefix(es). The request will fail if all
+  /// possible /29s are in use on Google?s edge. If not supplied, Google will
+  /// randomly select an unused /29 from all of link-local space.
+  core.List<core.String> candidateSubnets;
+
   /// [Output Only] IPv4 address + prefix length to be configured on Cloud
   /// Router Interface for this interconnect attachment.
   core.String cloudRouterIpAddress;
@@ -39181,6 +41434,19 @@ class InterconnectAttachment {
 
   /// An optional description of this resource.
   core.String description;
+
+  /// Desired availability domain for the attachment. Only available for type
+  /// PARTNER, at creation time. For improved reliability, customers should
+  /// configure a pair of attachments with one per availability domain. The
+  /// selected availability domain will be provided to the Partner via the
+  /// pairing key so that the provisioned circuit will lie in the specified
+  /// domain. If not specified, the value will default to
+  /// AVAILABILITY_DOMAIN_ANY.
+  /// Possible string values are:
+  /// - "AVAILABILITY_DOMAIN_1"
+  /// - "AVAILABILITY_DOMAIN_2"
+  /// - "AVAILABILITY_DOMAIN_ANY"
+  core.String edgeAvailabilityDomain;
 
   /// [Output Only] Google reference ID, to be used when raising support tickets
   /// with Google or otherwise to debug backend connectivity issues.
@@ -39201,8 +41467,8 @@ class InterconnectAttachment {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -39213,6 +41479,23 @@ class InterconnectAttachment {
   /// - "OS_ACTIVE"
   /// - "OS_UNPROVISIONED"
   core.String operationalStatus;
+
+  /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not
+  /// present for DEDICATED]. The opaque identifier of an PARTNER attachment
+  /// used to initiate provisioning with a selected partner. Of the form
+  /// "XXXXX/region/domain"
+  core.String pairingKey;
+
+  /// Optional BGP ASN for the router that should be supplied by a layer 3
+  /// Partner if they configured BGP on behalf of the customer. Output only for
+  /// PARTNER type, input only for PARTNER_PROVIDER, not available for
+  /// DEDICATED.
+  core.String partnerAsn;
+
+  /// Informational metadata about Partner attachments from Partners to display
+  /// to customers. Output only for for PARTNER type, mutable for
+  /// PARTNER_PROVIDER, not available for DEDICATED.
+  InterconnectAttachmentPartnerMetadata partnerMetadata;
 
   /// [Output Only] Information specific to an InterconnectAttachment. This
   /// property is populated if the interconnect that this is attached to is of
@@ -39233,9 +41516,42 @@ class InterconnectAttachment {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
+  /// [Output Only] The current state of this attachment's functionality.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "DEFUNCT"
+  /// - "PARTNER_REQUEST_RECEIVED"
+  /// - "PENDING_CUSTOMER"
+  /// - "PENDING_PARTNER"
+  /// - "STATE_UNSPECIFIED"
+  /// - "UNPROVISIONED"
+  core.String state;
+
+  ///
+  /// Possible string values are:
+  /// - "DEDICATED"
+  /// - "PARTNER"
+  /// - "PARTNER_PROVIDER"
+  core.String type;
+
+  /// Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for
+  /// this attachment, in the range 2-4094. This field refers to 802.1q VLAN
+  /// tag, also known as IEEE 802.1Q Only specified at creation time.
+  core.int vlanTag8021q;
+
   InterconnectAttachment();
 
   InterconnectAttachment.fromJson(core.Map _json) {
+    if (_json.containsKey("adminEnabled")) {
+      adminEnabled = _json["adminEnabled"];
+    }
+    if (_json.containsKey("bandwidth")) {
+      bandwidth = _json["bandwidth"];
+    }
+    if (_json.containsKey("candidateSubnets")) {
+      candidateSubnets =
+          (_json["candidateSubnets"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("cloudRouterIpAddress")) {
       cloudRouterIpAddress = _json["cloudRouterIpAddress"];
     }
@@ -39247,6 +41563,9 @@ class InterconnectAttachment {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("edgeAvailabilityDomain")) {
+      edgeAvailabilityDomain = _json["edgeAvailabilityDomain"];
     }
     if (_json.containsKey("googleReferenceId")) {
       googleReferenceId = _json["googleReferenceId"];
@@ -39266,6 +41585,16 @@ class InterconnectAttachment {
     if (_json.containsKey("operationalStatus")) {
       operationalStatus = _json["operationalStatus"];
     }
+    if (_json.containsKey("pairingKey")) {
+      pairingKey = _json["pairingKey"];
+    }
+    if (_json.containsKey("partnerAsn")) {
+      partnerAsn = _json["partnerAsn"];
+    }
+    if (_json.containsKey("partnerMetadata")) {
+      partnerMetadata = new InterconnectAttachmentPartnerMetadata.fromJson(
+          _json["partnerMetadata"]);
+    }
     if (_json.containsKey("privateInterconnectInfo")) {
       privateInterconnectInfo = new InterconnectAttachmentPrivateInfo.fromJson(
           _json["privateInterconnectInfo"]);
@@ -39279,11 +41608,29 @@ class InterconnectAttachment {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("vlanTag8021q")) {
+      vlanTag8021q = _json["vlanTag8021q"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (adminEnabled != null) {
+      _json["adminEnabled"] = adminEnabled;
+    }
+    if (bandwidth != null) {
+      _json["bandwidth"] = bandwidth;
+    }
+    if (candidateSubnets != null) {
+      _json["candidateSubnets"] = candidateSubnets;
+    }
     if (cloudRouterIpAddress != null) {
       _json["cloudRouterIpAddress"] = cloudRouterIpAddress;
     }
@@ -39295,6 +41642,9 @@ class InterconnectAttachment {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (edgeAvailabilityDomain != null) {
+      _json["edgeAvailabilityDomain"] = edgeAvailabilityDomain;
     }
     if (googleReferenceId != null) {
       _json["googleReferenceId"] = googleReferenceId;
@@ -39314,6 +41664,15 @@ class InterconnectAttachment {
     if (operationalStatus != null) {
       _json["operationalStatus"] = operationalStatus;
     }
+    if (pairingKey != null) {
+      _json["pairingKey"] = pairingKey;
+    }
+    if (partnerAsn != null) {
+      _json["partnerAsn"] = partnerAsn;
+    }
+    if (partnerMetadata != null) {
+      _json["partnerMetadata"] = (partnerMetadata).toJson();
+    }
     if (privateInterconnectInfo != null) {
       _json["privateInterconnectInfo"] = (privateInterconnectInfo).toJson();
     }
@@ -39325,6 +41684,15 @@ class InterconnectAttachment {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (vlanTag8021q != null) {
+      _json["vlanTag8021q"] = vlanTag8021q;
     }
     return _json;
   }
@@ -39704,6 +42072,54 @@ class InterconnectAttachmentList {
   }
 }
 
+/// Informational metadata about Partner attachments from Partners to display to
+/// customers. These fields are propagated from PARTNER_PROVIDER attachments to
+/// their corresponding PARTNER attachments.
+class InterconnectAttachmentPartnerMetadata {
+  /// Plain text name of the Interconnect this attachment is connected to, as
+  /// displayed in the Partner?s portal. For instance ?Chicago 1?. This value
+  /// may be validated to match approved Partner values.
+  core.String interconnectName;
+
+  /// Plain text name of the Partner providing this attachment. This value may
+  /// be validated to match approved Partner values.
+  core.String partnerName;
+
+  /// URL of the Partner?s portal for this Attachment. Partners may customise
+  /// this to be a deep-link to the specific resource on the Partner portal.
+  /// This value may be validated to match approved Partner values.
+  core.String portalUrl;
+
+  InterconnectAttachmentPartnerMetadata();
+
+  InterconnectAttachmentPartnerMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("interconnectName")) {
+      interconnectName = _json["interconnectName"];
+    }
+    if (_json.containsKey("partnerName")) {
+      partnerName = _json["partnerName"];
+    }
+    if (_json.containsKey("portalUrl")) {
+      portalUrl = _json["portalUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (interconnectName != null) {
+      _json["interconnectName"] = interconnectName;
+    }
+    if (partnerName != null) {
+      _json["partnerName"] = partnerName;
+    }
+    if (portalUrl != null) {
+      _json["portalUrl"] = portalUrl;
+    }
+    return _json;
+  }
+}
+
 /// Information for an interconnect attachment when this belongs to an
 /// interconnect of type DEDICATED.
 class InterconnectAttachmentPrivateInfo {
@@ -39839,7 +42255,7 @@ class InterconnectAttachmentsScopedListWarning {
 }
 
 class InterconnectAttachmentsScopedList {
-  /// List of interconnect attachments contained in this scope.
+  /// A list of interconnect attachments contained in this scope.
   core.List<InterconnectAttachment> interconnectAttachments;
 
   /// Informational warning which replaces the list of addresses when the list
@@ -40505,7 +42921,7 @@ class InterconnectLocationRegionInfo {
 
 /// Description of a planned outage on this Interconnect. Next id: 9
 class InterconnectOutageNotification {
-  /// Iff issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs
+  /// If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs
   /// that will be affected.
   core.List<core.String> affectedCircuits;
 
@@ -40613,15 +43029,35 @@ class License {
   /// charges a usage fee.
   core.bool chargesUseFee;
 
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional textual description of the resource; provided by the client
+  /// when the resource is created.
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
   /// [Output Only] Type of resource. Always compute#license for licenses.
   core.String kind;
+
+  /// [Output Only] The unique code used to attach this license to images,
+  /// snapshots, and disks.
+  core.String licenseCode;
 
   /// [Output Only] Name of the resource. The name is 1-63 characters long and
   /// complies with RFC1035.
   core.String name;
+  LicenseResourceRequirements resourceRequirements;
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
+
+  /// If false, licenses will not be copied from the source resource when
+  /// creating an image from a disk, disk from snapshot, or snapshot from disk.
+  core.bool transferable;
 
   License();
 
@@ -40629,14 +43065,33 @@ class License {
     if (_json.containsKey("chargesUseFee")) {
       chargesUseFee = _json["chargesUseFee"];
     }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("licenseCode")) {
+      licenseCode = _json["licenseCode"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("resourceRequirements")) {
+      resourceRequirements = new LicenseResourceRequirements.fromJson(
+          _json["resourceRequirements"]);
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("transferable")) {
+      transferable = _json["transferable"];
     }
   }
 
@@ -40646,14 +43101,376 @@ class License {
     if (chargesUseFee != null) {
       _json["chargesUseFee"] = chargesUseFee;
     }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (licenseCode != null) {
+      _json["licenseCode"] = licenseCode;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (resourceRequirements != null) {
+      _json["resourceRequirements"] = (resourceRequirements).toJson();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (transferable != null) {
+      _json["transferable"] = transferable;
+    }
+    return _json;
+  }
+}
+
+class LicenseCode {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// [Output Only] Description of this License Code.
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] Type of resource. Always compute#licenseCode for licenses.
+  core.String kind;
+
+  /// [Output Only] URL and description aliases of Licenses with the same
+  /// License Code.
+  core.List<LicenseCodeLicenseAlias> licenseAlias;
+
+  /// [Output Only] Name of the resource. The name is 1-20 characters long and
+  /// must be a valid 64 bit integer.
+  core.String name;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output Only] Current state of this License Code.
+  /// Possible string values are:
+  /// - "DISABLED"
+  /// - "ENABLED"
+  /// - "RESTRICTED"
+  /// - "STATE_UNSPECIFIED"
+  /// - "TERMINATED"
+  core.String state;
+
+  /// [Output Only] If true, the license will remain attached when creating
+  /// images or snapshots from disks. Otherwise, the license is not transferred.
+  core.bool transferable;
+
+  LicenseCode();
+
+  LicenseCode.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("licenseAlias")) {
+      licenseAlias = (_json["licenseAlias"] as core.List)
+          .map<LicenseCodeLicenseAlias>(
+              (value) => new LicenseCodeLicenseAlias.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("transferable")) {
+      transferable = _json["transferable"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (licenseAlias != null) {
+      _json["licenseAlias"] =
+          licenseAlias.map((value) => (value).toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (transferable != null) {
+      _json["transferable"] = transferable;
+    }
+    return _json;
+  }
+}
+
+class LicenseCodeLicenseAlias {
+  /// [Output Only] Description of this License Code.
+  core.String description;
+
+  /// [Output Only] URL of license corresponding to this License Code.
+  core.String selfLink;
+
+  LicenseCodeLicenseAlias();
+
+  LicenseCodeLicenseAlias.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class LicenseResourceRequirements {
+  /// Minimum number of guest cpus required to use the Instance. Enforced at
+  /// Instance creation and Instance start.
+  core.int minGuestCpuCount;
+
+  /// Minimum memory required to use the Instance. Enforced at Instance creation
+  /// and Instance start.
+  core.int minMemoryMb;
+
+  LicenseResourceRequirements();
+
+  LicenseResourceRequirements.fromJson(core.Map _json) {
+    if (_json.containsKey("minGuestCpuCount")) {
+      minGuestCpuCount = _json["minGuestCpuCount"];
+    }
+    if (_json.containsKey("minMemoryMb")) {
+      minMemoryMb = _json["minMemoryMb"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (minGuestCpuCount != null) {
+      _json["minGuestCpuCount"] = minGuestCpuCount;
+    }
+    if (minMemoryMb != null) {
+      _json["minMemoryMb"] = minMemoryMb;
+    }
+    return _json;
+  }
+}
+
+class LicensesListResponseWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  LicensesListResponseWarningData();
+
+  LicensesListResponseWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class LicensesListResponseWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<LicensesListResponseWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  LicensesListResponseWarning();
+
+  LicensesListResponseWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<LicensesListResponseWarningData>(
+              (value) => new LicensesListResponseWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class LicensesListResponse {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of License resources.
+  core.List<License> items;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  LicensesListResponseWarning warning;
+
+  LicensesListResponse();
+
+  LicensesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<License>((value) => new License.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new LicensesListResponseWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -40726,7 +43543,7 @@ class MachineType {
   /// [Output Only] Name of the resource.
   core.String name;
 
-  /// [Output Only] List of extended scratch disks assigned to the instance.
+  /// [Output Only] A list of extended scratch disks assigned to the instance.
   core.List<MachineTypeScratchDisks> scratchDisks;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -41319,7 +44136,7 @@ class MachineTypesScopedListWarning {
 }
 
 class MachineTypesScopedList {
-  /// [Output Only] List of machine types contained in this scope.
+  /// [Output Only] A list of machine types contained in this scope.
   core.List<MachineType> machineTypes;
 
   /// [Output Only] An informational warning that appears when the machine types
@@ -41353,6 +44170,7 @@ class MachineTypesScopedList {
   }
 }
 
+/// Next available tag: 12
 class ManagedInstance {
   /// [Output Only] The current action that the managed instance group has
   /// scheduled for the instance. Possible values:
@@ -41713,13 +44531,13 @@ class Network {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
 
-  /// [Output Only] List of network peerings for the resource.
+  /// [Output Only] A list of network peerings for the resource.
   core.List<NetworkPeering> peerings;
 
   /// The network-level routing configuration for this network. Used by Cloud
@@ -41830,6 +44648,20 @@ class NetworkInterface {
   /// specified for network interfaces on subnet-mode networks.
   core.List<AliasIpRange> aliasIpRanges;
 
+  /// Fingerprint hash of contents stored in this network interface. This field
+  /// will be ignored when inserting an Instance or adding a NetworkInterface.
+  /// An up-to-date fingerprint must be provided in order to update the
+  /// NetworkInterface.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// [Output Only] Type of the resource. Always compute#networkInterface for
   /// network interfaces.
   core.String kind;
@@ -41884,6 +44716,9 @@ class NetworkInterface {
           .map<AliasIpRange>((value) => new AliasIpRange.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -41911,6 +44746,9 @@ class NetworkInterface {
     if (aliasIpRanges != null) {
       _json["aliasIpRanges"] =
           aliasIpRanges.map((value) => (value).toJson()).toList();
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -42127,7 +44965,7 @@ class NetworkPeering {
 
   /// Name of this peering. Provided by the client when the peering is created.
   /// The name must comply with RFC1035. Specifically, the name must be 1-63
-  /// characters long and match regular expression [a-z]([-a-z0-9]*[a-z0-9])?
+  /// characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
   /// which means the first character must be a lowercase letter, and all the
   /// following characters must be a dash, lowercase letter, or digit, except
   /// the last character, which cannot be a dash.
@@ -42469,7 +45307,8 @@ class OperationWarnings {
 /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (==
 /// resource_for beta.zoneOperations ==)
 class Operation {
-  /// [Output Only] Reserved for future use.
+  /// [Output Only] The value of `requestId` if you provided it in the request.
+  /// Not present otherwise.
   core.String clientOperationId;
 
   /// [Deprecated] This field is deprecated.
@@ -43202,7 +46041,7 @@ class OperationsScopedListWarning {
 }
 
 class OperationsScopedList {
-  /// [Output Only] List of operations contained in this scope.
+  /// [Output Only] A list of operations contained in this scope.
   core.List<Operation> operations;
 
   /// [Output Only] Informational warning which replaces the list of operations
@@ -43611,16 +46450,20 @@ class Quota {
   /// - "INSTANCE_GROUP_MANAGERS"
   /// - "INSTANCE_TEMPLATES"
   /// - "INTERCONNECTS"
+  /// - "INTERCONNECT_ATTACHMENTS_PER_REGION"
+  /// - "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS"
   /// - "INTERNAL_ADDRESSES"
   /// - "IN_USE_ADDRESSES"
   /// - "LOCAL_SSD_TOTAL_GB"
   /// - "NETWORKS"
   /// - "NVIDIA_K80_GPUS"
   /// - "NVIDIA_P100_GPUS"
+  /// - "NVIDIA_V100_GPUS"
   /// - "PREEMPTIBLE_CPUS"
   /// - "PREEMPTIBLE_LOCAL_SSD_GB"
   /// - "PREEMPTIBLE_NVIDIA_K80_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_P100_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
   /// - "REGIONAL_AUTOSCALERS"
   /// - "REGIONAL_INSTANCE_GROUP_MANAGERS"
   /// - "ROUTERS"
@@ -44018,6 +46861,210 @@ class RegionAutoscalerList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class RegionDiskTypeListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionDiskTypeListWarningData();
+
+  RegionDiskTypeListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionDiskTypeListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionDiskTypeListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionDiskTypeListWarning();
+
+  RegionDiskTypeListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<RegionDiskTypeListWarningData>(
+              (value) => new RegionDiskTypeListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class RegionDiskTypeList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of DiskType resources.
+  core.List<DiskType> items;
+
+  /// [Output Only] Type of resource. Always compute#regionDiskTypeList for
+  /// region disk types.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  RegionDiskTypeListWarning warning;
+
+  RegionDiskTypeList();
+
+  RegionDiskTypeList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<DiskType>((value) => new DiskType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new RegionDiskTypeListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class RegionDisksResizeRequest {
+  /// The new size of the regional persistent disk, which is specified in GB.
+  core.String sizeGb;
+
+  RegionDisksResizeRequest();
+
+  RegionDisksResizeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sizeGb")) {
+      sizeGb = _json["sizeGb"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sizeGb != null) {
+      _json["sizeGb"] = sizeGb;
     }
     return _json;
   }
@@ -44438,7 +47485,7 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
 }
 
 class RegionInstanceGroupManagersListInstancesResponse {
-  /// List of managed instances.
+  /// A list of managed instances.
   core.List<ManagedInstance> managedInstances;
 
   RegionInstanceGroupManagersListInstancesResponse();
@@ -45001,6 +48048,50 @@ class RegionList {
   }
 }
 
+class RegionSetLabelsRequest {
+  /// The fingerprint of the previous set of labels for this resource, used to
+  /// detect conflicts. The fingerprint is initially generated by Compute Engine
+  /// and changes after every request to modify or update labels. You must
+  /// always provide an up-to-date fingerprint hash in order to update or change
+  /// labels. Make a get() request to the resource to get the latest
+  /// fingerprint.
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.base64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The labels to set for this resource.
+  core.Map<core.String, core.String> labels;
+
+  RegionSetLabelsRequest();
+
+  RegionSetLabelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
 /// Commitment for a particular resource (a Commitment is composed of one or
 /// more of these).
 class ResourceCommitment {
@@ -45211,8 +48302,8 @@ class Route {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -45591,8 +48682,8 @@ class Router {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -45686,6 +48777,38 @@ class Router {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/// Description-tagged IP ranges for the router to advertise.
+class RouterAdvertisedIpRange {
+  /// User-specified description for the IP range.
+  core.String description;
+
+  /// The IP range to advertise. The value must be a CIDR-formatted string.
+  core.String range;
+
+  RouterAdvertisedIpRange();
+
+  RouterAdvertisedIpRange.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("range")) {
+      range = _json["range"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (range != null) {
+      _json["range"] = range;
     }
     return _json;
   }
@@ -45876,6 +48999,26 @@ class RouterAggregatedList {
 }
 
 class RouterBgp {
+  /// User-specified flag to indicate which mode to use for advertisement.
+  /// Possible string values are:
+  /// - "CUSTOM"
+  /// - "DEFAULT"
+  core.String advertiseMode;
+
+  /// User-specified list of prefix groups to advertise in custom mode. This
+  /// field can only be populated if advertise_mode is CUSTOM and is advertised
+  /// to all peers of the router. These groups will be advertised in addition to
+  /// any specified prefixes. Leave this field blank to advertise no custom
+  /// groups.
+  core.List<core.String> advertisedGroups;
+
+  /// User-specified list of individual IP ranges to advertise in custom mode.
+  /// This field can only be populated if advertise_mode is CUSTOM and is
+  /// advertised to all peers of the router. These IP ranges will be advertised
+  /// in addition to any specified groups. Leave this field blank to advertise
+  /// no custom IP ranges.
+  core.List<RouterAdvertisedIpRange> advertisedIpRanges;
+
   /// Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN,
   /// either 16-bit or 32-bit. The value will be fixed for this router resource.
   /// All VPN tunnels that link to this router will have the same local ASN.
@@ -45884,6 +49027,19 @@ class RouterBgp {
   RouterBgp();
 
   RouterBgp.fromJson(core.Map _json) {
+    if (_json.containsKey("advertiseMode")) {
+      advertiseMode = _json["advertiseMode"];
+    }
+    if (_json.containsKey("advertisedGroups")) {
+      advertisedGroups =
+          (_json["advertisedGroups"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("advertisedIpRanges")) {
+      advertisedIpRanges = (_json["advertisedIpRanges"] as core.List)
+          .map<RouterAdvertisedIpRange>(
+              (value) => new RouterAdvertisedIpRange.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("asn")) {
       asn = _json["asn"];
     }
@@ -45892,6 +49048,16 @@ class RouterBgp {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (advertiseMode != null) {
+      _json["advertiseMode"] = advertiseMode;
+    }
+    if (advertisedGroups != null) {
+      _json["advertisedGroups"] = advertisedGroups;
+    }
+    if (advertisedIpRanges != null) {
+      _json["advertisedIpRanges"] =
+          advertisedIpRanges.map((value) => (value).toJson()).toList();
+    }
     if (asn != null) {
       _json["asn"] = asn;
     }
@@ -45900,6 +49066,26 @@ class RouterBgp {
 }
 
 class RouterBgpPeer {
+  /// User-specified flag to indicate which mode to use for advertisement.
+  /// Possible string values are:
+  /// - "CUSTOM"
+  /// - "DEFAULT"
+  core.String advertiseMode;
+
+  /// User-specified list of prefix groups to advertise in custom mode. This
+  /// field can only be populated if advertise_mode is CUSTOM and overrides the
+  /// list defined for the router (in Bgp message). These groups will be
+  /// advertised in addition to any specified prefixes. Leave this field blank
+  /// to advertise no custom groups.
+  core.List<core.String> advertisedGroups;
+
+  /// User-specified list of individual IP ranges to advertise in custom mode.
+  /// This field can only be populated if advertise_mode is CUSTOM and overrides
+  /// the list defined for the router (in Bgp message). These IP ranges will be
+  /// advertised in addition to any specified groups. Leave this field blank to
+  /// advertise no custom IP ranges.
+  core.List<RouterAdvertisedIpRange> advertisedIpRanges;
+
   /// The priority of routes advertised to this BGP peer. In the case where
   /// there is more than one matching route of maximum length, the routes with
   /// lowest priority value win.
@@ -45911,6 +49097,16 @@ class RouterBgpPeer {
   /// IP address of the interface inside Google Cloud Platform. Only IPv4 is
   /// supported.
   core.String ipAddress;
+
+  /// [Output Only] Type of how the resource/configuration of the BGP peer is
+  /// managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
+  /// represents an BGP peer that is automatically created for PARTNER
+  /// interconnectAttachment, Google will automatically create/delete this type
+  /// of BGP peer when the PARTNER interconnectAttachment is created/deleted.
+  /// Possible string values are:
+  /// - "MANAGED_BY_ATTACHMENT"
+  /// - "MANAGED_BY_USER"
+  core.String managementType;
 
   /// Name of this BGP peer. The name must be 1-63 characters long and comply
   /// with RFC1035.
@@ -45927,6 +49123,19 @@ class RouterBgpPeer {
   RouterBgpPeer();
 
   RouterBgpPeer.fromJson(core.Map _json) {
+    if (_json.containsKey("advertiseMode")) {
+      advertiseMode = _json["advertiseMode"];
+    }
+    if (_json.containsKey("advertisedGroups")) {
+      advertisedGroups =
+          (_json["advertisedGroups"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("advertisedIpRanges")) {
+      advertisedIpRanges = (_json["advertisedIpRanges"] as core.List)
+          .map<RouterAdvertisedIpRange>(
+              (value) => new RouterAdvertisedIpRange.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("advertisedRoutePriority")) {
       advertisedRoutePriority = _json["advertisedRoutePriority"];
     }
@@ -45935,6 +49144,9 @@ class RouterBgpPeer {
     }
     if (_json.containsKey("ipAddress")) {
       ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("managementType")) {
+      managementType = _json["managementType"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -45950,6 +49162,16 @@ class RouterBgpPeer {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (advertiseMode != null) {
+      _json["advertiseMode"] = advertiseMode;
+    }
+    if (advertisedGroups != null) {
+      _json["advertisedGroups"] = advertisedGroups;
+    }
+    if (advertisedIpRanges != null) {
+      _json["advertisedIpRanges"] =
+          advertisedIpRanges.map((value) => (value).toJson()).toList();
+    }
     if (advertisedRoutePriority != null) {
       _json["advertisedRoutePriority"] = advertisedRoutePriority;
     }
@@ -45958,6 +49180,9 @@ class RouterBgpPeer {
     }
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
+    }
+    if (managementType != null) {
+      _json["managementType"] = managementType;
     }
     if (name != null) {
       _json["name"] = name;
@@ -45989,6 +49214,17 @@ class RouterInterface {
   /// a VPN Tunnel or an interconnect attachment.
   core.String linkedVpnTunnel;
 
+  /// [Output Only] Type of how the resource/configuration of the interface is
+  /// managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
+  /// represents an interface that is automatically created for PARTNER type
+  /// interconnectAttachment, Google will automatically create/update/delete
+  /// this type of interface when the PARTNER interconnectAttachment is
+  /// created/provisioned/deleted.
+  /// Possible string values are:
+  /// - "MANAGED_BY_ATTACHMENT"
+  /// - "MANAGED_BY_USER"
+  core.String managementType;
+
   /// Name of this interface entry. The name must be 1-63 characters long and
   /// comply with RFC1035.
   core.String name;
@@ -46004,6 +49240,9 @@ class RouterInterface {
     }
     if (_json.containsKey("linkedVpnTunnel")) {
       linkedVpnTunnel = _json["linkedVpnTunnel"];
+    }
+    if (_json.containsKey("managementType")) {
+      managementType = _json["managementType"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -46021,6 +49260,9 @@ class RouterInterface {
     }
     if (linkedVpnTunnel != null) {
       _json["linkedVpnTunnel"] = linkedVpnTunnel;
+    }
+    if (managementType != null) {
+      _json["managementType"] = managementType;
     }
     if (name != null) {
       _json["name"] = name;
@@ -46540,7 +49782,7 @@ class RoutersScopedListWarning {
 }
 
 class RoutersScopedList {
-  /// List of routers contained in this scope.
+  /// A list of routers contained in this scope.
   core.List<Router> routers;
 
   /// Informational warning which replaces the list of routers when the list is
@@ -46836,6 +50078,10 @@ class Snapshot {
   /// setLabels method. Label values may be empty.
   core.Map<core.String, core.String> labels;
 
+  /// [Output Only] Integer license codes indicating which licenses are attached
+  /// to this snapshot.
+  core.List<core.String> licenseCodes;
+
   /// [Output Only] A list of public visible licenses that apply to this
   /// snapshot. This can be because the original image had licenses attached
   /// (such as a Windows image).
@@ -46844,8 +50090,8 @@ class Snapshot {
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -46928,6 +50174,9 @@ class Snapshot {
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("licenseCodes")) {
+      licenseCodes = (_json["licenseCodes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("licenses")) {
       licenses = (_json["licenses"] as core.List).cast<core.String>();
     }
@@ -46985,6 +50234,9 @@ class Snapshot {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    if (licenseCodes != null) {
+      _json["licenseCodes"] = licenseCodes;
     }
     if (licenses != null) {
       _json["licenses"] = licenses;
@@ -47230,8 +50482,8 @@ class SslCertificate {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -47485,6 +50737,505 @@ class SslCertificateList {
   }
 }
 
+class SslPoliciesListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SslPoliciesListWarningData();
+
+  SslPoliciesListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class SslPoliciesListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SslPoliciesListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SslPoliciesListWarning();
+
+  SslPoliciesListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<SslPoliciesListWarningData>(
+              (value) => new SslPoliciesListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class SslPoliciesList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of SslPolicy resources.
+  core.List<SslPolicy> items;
+
+  /// [Output Only] Type of the resource. Always compute#sslPoliciesList for
+  /// lists of sslPolicies.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  SslPoliciesListWarning warning;
+
+  SslPoliciesList();
+
+  SslPoliciesList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<SslPolicy>((value) => new SslPolicy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new SslPoliciesListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class SslPoliciesListAvailableFeaturesResponse {
+  core.List<core.String> features;
+
+  SslPoliciesListAvailableFeaturesResponse();
+
+  SslPoliciesListAvailableFeaturesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("features")) {
+      features = (_json["features"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (features != null) {
+      _json["features"] = features;
+    }
+    return _json;
+  }
+}
+
+class SslPolicyWarningsData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SslPolicyWarningsData();
+
+  SslPolicyWarningsData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+class SslPolicyWarnings {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SslPolicyWarningsData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SslPolicyWarnings();
+
+  SslPolicyWarnings.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<SslPolicyWarningsData>(
+              (value) => new SslPolicyWarningsData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// A SSL policy specifies the server-side support for SSL features. This can be
+/// attached to a TargetHttpsProxy or a TargetSslProxy. This affects connections
+/// between clients and the HTTPS or SSL proxy load balancer. They do not affect
+/// the connection between the load balancers and the backends.
+class SslPolicy {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// A list of features enabled when the selected profile is CUSTOM. The
+  /// - method returns the set of features that can be specified in this list.
+  /// This field must be empty if the profile is not CUSTOM.
+  core.List<core.String> customFeatures;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] The list of features enabled in the SSL policy.
+  core.List<core.String> enabledFeatures;
+
+  /// Fingerprint of this resource. A hash of the contents stored in this
+  /// object. This field is used in optimistic locking. This field will be
+  /// ignored when inserting a SslPolicy. An up-to-date fingerprint must be
+  /// provided in order to update the SslPolicy.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output only] Type of the resource. Always compute#sslPolicyfor SSL
+  /// policies.
+  core.String kind;
+
+  /// The minimum version of SSL protocol that can be used by the clients to
+  /// establish a connection with the load balancer. This can be one of TLS_1_0,
+  /// TLS_1_1, TLS_1_2.
+  /// Possible string values are:
+  /// - "TLS_1_0"
+  /// - "TLS_1_1"
+  /// - "TLS_1_2"
+  core.String minTlsVersion;
+
+  /// Name of the resource. The name must be 1-63 characters long, and comply
+  /// with RFC1035. Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last character,
+  /// which cannot be a dash.
+  core.String name;
+
+  /// Profile specifies the set of SSL features that can be used by the load
+  /// balancer when negotiating SSL with clients. This can be one of COMPATIBLE,
+  /// MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to
+  /// enable must be specified in the customFeatures field.
+  /// Possible string values are:
+  /// - "COMPATIBLE"
+  /// - "CUSTOM"
+  /// - "MODERN"
+  /// - "RESTRICTED"
+  core.String profile;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output Only] If potential misconfigurations are detected for this SSL
+  /// policy, this field will be populated with warning messages.
+  core.List<SslPolicyWarnings> warnings;
+
+  SslPolicy();
+
+  SslPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("customFeatures")) {
+      customFeatures =
+          (_json["customFeatures"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("enabledFeatures")) {
+      enabledFeatures =
+          (_json["enabledFeatures"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("minTlsVersion")) {
+      minTlsVersion = _json["minTlsVersion"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("profile")) {
+      profile = _json["profile"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warnings")) {
+      warnings = (_json["warnings"] as core.List)
+          .map<SslPolicyWarnings>(
+              (value) => new SslPolicyWarnings.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (customFeatures != null) {
+      _json["customFeatures"] = customFeatures;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (enabledFeatures != null) {
+      _json["enabledFeatures"] = enabledFeatures;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (minTlsVersion != null) {
+      _json["minTlsVersion"] = minTlsVersion;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (profile != null) {
+      _json["profile"] = profile;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warnings != null) {
+      _json["warnings"] = warnings.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class SslPolicyReference {
+  /// URL of the SSL policy resource. Set this to empty string to clear any
+  /// existing SSL policy associated with the target proxy resource.
+  core.String sslPolicy;
+
+  SslPolicyReference();
+
+  SslPolicyReference.fromJson(core.Map _json) {
+    if (_json.containsKey("sslPolicy")) {
+      sslPolicy = _json["sslPolicy"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sslPolicy != null) {
+      _json["sslPolicy"] = sslPolicy;
+    }
+    return _json;
+  }
+}
+
 /// A Subnetwork resource. (== resource_for beta.subnetworks ==) (==
 /// resource_for v1.subnetworks ==)
 class Subnetwork {
@@ -47494,6 +51245,23 @@ class Subnetwork {
   /// An optional description of this resource. Provide this property when you
   /// create the resource. This field can be set only at resource creation time.
   core.String description;
+
+  /// Whether to enable flow logging for this subnetwork.
+  core.bool enableFlowLogs;
+
+  /// Fingerprint of this resource. A hash of the contents stored in this
+  /// object. This field is used in optimistic locking. This field will be
+  /// ignored when inserting a Subnetwork. An up-to-date fingerprint must be
+  /// provided in order to update the Subnetwork.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
 
   /// [Output Only] The gateway address for default routes to reach destination
   /// addresses outside this subnetwork.
@@ -47517,7 +51285,7 @@ class Subnetwork {
   /// The name of the resource, provided by the client when initially creating
   /// the resource. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match the
-  /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first
+  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
   /// character must be a lowercase letter, and all following characters must be
   /// a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
@@ -47555,6 +51323,12 @@ class Subnetwork {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("enableFlowLogs")) {
+      enableFlowLogs = _json["enableFlowLogs"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("gatewayAddress")) {
       gatewayAddress = _json["gatewayAddress"];
@@ -47599,6 +51373,12 @@ class Subnetwork {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (enableFlowLogs != null) {
+      _json["enableFlowLogs"] = enableFlowLogs;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
     }
     if (gatewayAddress != null) {
       _json["gatewayAddress"] = gatewayAddress;
@@ -48173,7 +51953,7 @@ class SubnetworksScopedListWarning {
 }
 
 class SubnetworksScopedList {
-  /// List of subnetworks contained in this scope.
+  /// A list of subnetworks contained in this scope.
   core.List<Subnetwork> subnetworks;
 
   /// An informational warning that appears when the list of addresses is empty.
@@ -48299,10 +52079,10 @@ class TCPHealthCheck {
 /// A set of instance tags.
 class Tags {
   /// Specifies a fingerprint for this request, which is essentially a hash of
-  /// the metadata's contents and used for optimistic locking. The fingerprint
-  /// is initially generated by Compute Engine and changes after every request
-  /// to modify or update metadata. You must always provide an up-to-date
-  /// fingerprint hash in order to update or change metadata.
+  /// the tags' contents and used for optimistic locking. The fingerprint is
+  /// initially generated by Compute Engine and changes after every request to
+  /// modify or update tags. You must always provide an up-to-date fingerprint
+  /// hash in order to update or change tags.
   ///
   /// To see the latest fingerprint, make get() request to the instance.
   core.String fingerprint;
@@ -48365,8 +52145,8 @@ class TargetHttpProxy {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -48615,6 +52395,32 @@ class TargetHttpProxyList {
   }
 }
 
+class TargetHttpsProxiesSetQuicOverrideRequest {
+  /// QUIC policy for the TargetHttpsProxy resource.
+  /// Possible string values are:
+  /// - "DISABLE"
+  /// - "ENABLE"
+  /// - "NONE"
+  core.String quicOverride;
+
+  TargetHttpsProxiesSetQuicOverrideRequest();
+
+  TargetHttpsProxiesSetQuicOverrideRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("quicOverride")) {
+      quicOverride = _json["quicOverride"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (quicOverride != null) {
+      _json["quicOverride"] = quicOverride;
+    }
+    return _json;
+  }
+}
+
 class TargetHttpsProxiesSetSslCertificatesRequest {
   /// New set of SslCertificate resources to associate with this
   /// TargetHttpsProxy resource. Currently exactly one SslCertificate resource
@@ -48662,11 +52468,24 @@ class TargetHttpsProxy {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
+
+  /// Specifies the QUIC override policy for this TargetHttpsProxy resource.
+  /// This determines whether the load balancer will attempt to negotiate QUIC
+  /// with clients or not. Can specify one of NONE, ENABLE, or DISABLE. Specify
+  /// ENABLE to always enable QUIC, Enables QUIC when set to ENABLE, and
+  /// disables QUIC when set to DISABLE. If NONE is specified, uses the QUIC
+  /// policy with no user overrides, which is equivalent to DISABLE. Not
+  /// specifying this field is equivalent to specifying NONE.
+  /// Possible string values are:
+  /// - "DISABLE"
+  /// - "ENABLE"
+  /// - "NONE"
+  core.String quicOverride;
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
@@ -48675,6 +52494,11 @@ class TargetHttpsProxy {
   /// between users and the load balancer. Currently, exactly one SSL
   /// certificate must be specified.
   core.List<core.String> sslCertificates;
+
+  /// URL of SslPolicy resource that will be associated with the
+  /// TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource will
+  /// not have any SSL policy configured.
+  core.String sslPolicy;
 
   /// A fully-qualified or valid partial URL to the UrlMap resource that defines
   /// the mapping from URL to the BackendService. For example, the following are
@@ -48703,12 +52527,18 @@ class TargetHttpsProxy {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("quicOverride")) {
+      quicOverride = _json["quicOverride"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("sslCertificates")) {
       sslCertificates =
           (_json["sslCertificates"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("sslPolicy")) {
+      sslPolicy = _json["sslPolicy"];
     }
     if (_json.containsKey("urlMap")) {
       urlMap = _json["urlMap"];
@@ -48733,11 +52563,17 @@ class TargetHttpsProxy {
     if (name != null) {
       _json["name"] = name;
     }
+    if (quicOverride != null) {
+      _json["quicOverride"] = quicOverride;
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
     if (sslCertificates != null) {
       _json["sslCertificates"] = sslCertificates;
+    }
+    if (sslPolicy != null) {
+      _json["sslPolicy"] = sslPolicy;
     }
     if (urlMap != null) {
       _json["urlMap"] = urlMap;
@@ -48962,8 +52798,8 @@ class TargetInstance {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -49524,7 +53360,7 @@ class TargetInstancesScopedListWarning {
 }
 
 class TargetInstancesScopedList {
-  /// List of target instances contained in this scope.
+  /// A list of target instances contained in this scope.
   core.List<TargetInstance> targetInstances;
 
   /// Informational warning which replaces the list of addresses when the list
@@ -49621,8 +53457,8 @@ class TargetPool {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -50356,7 +54192,7 @@ class TargetPoolsScopedListWarning {
 }
 
 class TargetPoolsScopedList {
-  /// List of target pools contained in this scope.
+  /// A list of target pools contained in this scope.
   core.List<TargetPool> targetPools;
 
   /// Informational warning which replaces the list of addresses when the list
@@ -50505,8 +54341,8 @@ class TargetSslProxy {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -50527,6 +54363,11 @@ class TargetSslProxy {
   /// URLs to SslCertificate resources that are used to authenticate connections
   /// to Backends. Currently exactly one SSL certificate must be specified.
   core.List<core.String> sslCertificates;
+
+  /// URL of SslPolicy resource that will be associated with the TargetSslProxy
+  /// resource. If not set, the TargetSslProxy resource will not have any SSL
+  /// policy configured.
+  core.String sslPolicy;
 
   TargetSslProxy();
 
@@ -50559,6 +54400,9 @@ class TargetSslProxy {
       sslCertificates =
           (_json["sslCertificates"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("sslPolicy")) {
+      sslPolicy = _json["sslPolicy"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -50590,6 +54434,9 @@ class TargetSslProxy {
     }
     if (sslCertificates != null) {
       _json["sslCertificates"] = sslCertificates;
+    }
+    if (sslPolicy != null) {
+      _json["sslPolicy"] = sslPolicy;
     }
     return _json;
   }
@@ -50847,8 +54694,8 @@ class TargetTcpProxy {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -51134,8 +54981,8 @@ class TargetVpnGateway {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -51723,7 +55570,7 @@ class TargetVpnGatewaysScopedListWarning {
 }
 
 class TargetVpnGatewaysScopedList {
-  /// [Output Only] List of target vpn gateways contained in this scope.
+  /// [Output Only] A list of target vpn gateways contained in this scope.
   core.List<TargetVpnGateway> targetVpnGateways;
 
   /// [Output Only] Informational warning which replaces the list of addresses
@@ -51801,6 +55648,52 @@ class TestFailure {
   }
 }
 
+class TestPermissionsRequest {
+  /// The set of permissions to check for the 'resource'. Permissions with
+  /// wildcards (such as '*' or 'storage.*') are not allowed.
+  core.List<core.String> permissions;
+
+  TestPermissionsRequest();
+
+  TestPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+class TestPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String> permissions;
+
+  TestPermissionsResponse();
+
+  TestPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
 /// A UrlMap resource. This resource defines the mapping from URL to the
 /// BackendService resource, based on the "longest-match" of the URL's host and
 /// path.
@@ -51842,8 +55735,8 @@ class UrlMap {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -52366,8 +56259,8 @@ class VpnTunnel {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -53009,7 +56902,7 @@ class VpnTunnelsScopedListWarning {
 }
 
 class VpnTunnelsScopedList {
-  /// List of vpn tunnels contained in this scope.
+  /// A list of vpn tunnels contained in this scope.
   core.List<VpnTunnel> vpnTunnels;
 
   /// Informational warning which replaces the list of addresses when the list

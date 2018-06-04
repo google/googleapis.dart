@@ -33,10 +33,9 @@ class AndroidpublisherApi {
   final commons.ApiRequester _requester;
 
   EditsResourceApi get edits => new EditsResourceApi(_requester);
-  EntitlementsResourceApi get entitlements =>
-      new EntitlementsResourceApi(_requester);
   InappproductsResourceApi get inappproducts =>
       new InappproductsResourceApi(_requester);
+  OrdersResourceApi get orders => new OrdersResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
   ReviewsResourceApi get reviews => new ReviewsResourceApi(_requester);
 
@@ -53,6 +52,8 @@ class EditsResourceApi {
   EditsApklistingsResourceApi get apklistings =>
       new EditsApklistingsResourceApi(_requester);
   EditsApksResourceApi get apks => new EditsApksResourceApi(_requester);
+  EditsBundlesResourceApi get bundles =>
+      new EditsBundlesResourceApi(_requester);
   EditsDeobfuscationfilesResourceApi get deobfuscationfiles =>
       new EditsDeobfuscationfilesResourceApi(_requester);
   EditsDetailsResourceApi get details =>
@@ -940,6 +941,138 @@ class EditsApksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Apk.fromJson(data));
+  }
+}
+
+class EditsBundlesResourceApi {
+  final commons.ApiRequester _requester;
+
+  EditsBundlesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BundlesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BundlesListResponse> list(
+      core.String packageName, core.String editId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (editId == null) {
+      throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/bundles';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new BundlesListResponse.fromJson(data));
+  }
+
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [Bundle].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Bundle> upload(core.String packageName, core.String editId,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (editId == null) {
+      throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/bundles';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/bundles';
+    } else {
+      _url = '/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/bundles';
+    }
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Bundle.fromJson(data));
   }
 }
 
@@ -2311,8 +2444,8 @@ class EditsTestersResourceApi {
   /// [editId] - Unique identifier for this edit.
   ///
   /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production" or "rollout".
-  /// Value must have pattern "(alpha|beta|production|rollout)".
+  /// "beta", "production", "rollout" or "internal".
+  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2372,8 +2505,8 @@ class EditsTestersResourceApi {
   /// [editId] - Unique identifier for this edit.
   ///
   /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production" or "rollout".
-  /// Value must have pattern "(alpha|beta|production|rollout)".
+  /// "beta", "production", "rollout" or "internal".
+  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2436,8 +2569,8 @@ class EditsTestersResourceApi {
   /// [editId] - Unique identifier for this edit.
   ///
   /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production" or "rollout".
-  /// Value must have pattern "(alpha|beta|production|rollout)".
+  /// "beta", "production", "rollout" or "internal".
+  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2506,9 +2639,7 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production" or "rollout".
-  /// Value must have pattern "(alpha|beta|production|rollout)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2624,9 +2755,7 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production" or "rollout".
-  /// Value must have pattern "(alpha|beta|production|rollout)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2692,9 +2821,7 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production" or "rollout".
-  /// Value must have pattern "(alpha|beta|production|rollout)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2745,82 +2872,6 @@ class EditsTracksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Track.fromJson(data));
-  }
-}
-
-class EntitlementsResourceApi {
-  final commons.ApiRequester _requester;
-
-  EntitlementsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Lists the user's current inapp item or subscription entitlements
-  ///
-  /// Request parameters:
-  ///
-  /// [packageName] - The package name of the application the inapp product was
-  /// sold in (for example, 'com.some.thing').
-  ///
-  /// [maxResults] - null
-  ///
-  /// [productId] - The product id of the inapp product (for example, 'sku1').
-  /// This can be used to restrict the result set.
-  ///
-  /// [startIndex] - null
-  ///
-  /// [token] - null
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [EntitlementsListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<EntitlementsListResponse> list(core.String packageName,
-      {core.int maxResults,
-      core.String productId,
-      core.int startIndex,
-      core.String token,
-      core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (packageName == null) {
-      throw new core.ArgumentError("Parameter packageName is required.");
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (productId != null) {
-      _queryParams["productId"] = [productId];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
-    if (token != null) {
-      _queryParams["token"] = [token];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/entitlements';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new EntitlementsListResponse.fromJson(data));
   }
 }
 
@@ -3187,6 +3238,74 @@ class InappproductsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new InAppProduct.fromJson(data));
+  }
+}
+
+class OrdersResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrdersResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Refund a user's subscription or in-app purchase order.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription or in-app item was purchased (for example, 'com.some.thing').
+  ///
+  /// [orderId] - The order ID provided to the user when the subscription or
+  /// in-app order was purchased.
+  ///
+  /// [revoke] - Whether to revoke the purchased item. If set to true, access to
+  /// the subscription or in-app item will be terminated immediately. If the
+  /// item is a recurring subscription, all future payments will also be
+  /// terminated. Consumed in-app items need to be handled by developer's app.
+  /// (optional)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future refund(core.String packageName, core.String orderId,
+      {core.bool revoke, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if (revoke != null) {
+      _queryParams["revoke"] = ["${revoke}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/orders/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        ':refund';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 }
 
@@ -4174,6 +4293,82 @@ class AppEdit {
   }
 }
 
+class Bundle {
+  /// A sha1 hash of the upload payload, encoded as a hex string and matching
+  /// the output of the sha1sum command.
+  core.String sha1;
+
+  /// A sha256 hash of the upload payload, encoded as a hex string and matching
+  /// the output of the sha256sum command.
+  core.String sha256;
+
+  /// The version code of the Android App Bundle. As specified in the Android
+  /// App Bundle's base module APK manifest file.
+  core.int versionCode;
+
+  Bundle();
+
+  Bundle.fromJson(core.Map _json) {
+    if (_json.containsKey("sha1")) {
+      sha1 = _json["sha1"];
+    }
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
+    }
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sha1 != null) {
+      _json["sha1"] = sha1;
+    }
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
+    }
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    return _json;
+  }
+}
+
+class BundlesListResponse {
+  core.List<Bundle> bundles;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#bundlesListResponse".
+  core.String kind;
+
+  BundlesListResponse();
+
+  BundlesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("bundles")) {
+      bundles = (_json["bundles"] as core.List)
+          .map<Bundle>((value) => new Bundle.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bundles != null) {
+      _json["bundles"] = bundles.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 class Comment {
   /// A comment from a developer.
   DeveloperComment developerComment;
@@ -4389,97 +4584,6 @@ class DeviceMetadata {
     }
     if (screenWidthPx != null) {
       _json["screenWidthPx"] = screenWidthPx;
-    }
-    return _json;
-  }
-}
-
-/// An Entitlement resource indicates a user's current entitlement to an inapp
-/// item or subscription.
-class Entitlement {
-  /// This kind represents an entitlement object in the androidpublisher
-  /// service.
-  core.String kind;
-
-  /// The SKU of the product.
-  core.String productId;
-
-  /// The type of the inapp product. Possible values are:
-  /// - In-app item: "inapp"
-  /// - Subscription: "subs"
-  core.String productType;
-
-  /// The token which can be verified using the subscriptions or products API.
-  core.String token;
-
-  Entitlement();
-
-  Entitlement.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
-    }
-    if (_json.containsKey("productType")) {
-      productType = _json["productType"];
-    }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (productId != null) {
-      _json["productId"] = productId;
-    }
-    if (productType != null) {
-      _json["productType"] = productType;
-    }
-    if (token != null) {
-      _json["token"] = token;
-    }
-    return _json;
-  }
-}
-
-class EntitlementsListResponse {
-  PageInfo pageInfo;
-  core.List<Entitlement> resources;
-  TokenPagination tokenPagination;
-
-  EntitlementsListResponse();
-
-  EntitlementsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
-    }
-    if (_json.containsKey("resources")) {
-      resources = (_json["resources"] as core.List)
-          .map<Entitlement>((value) => new Entitlement.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
-    }
-    if (resources != null) {
-      _json["resources"] = resources.map((value) => (value).toJson()).toList();
-    }
-    if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
     }
     return _json;
   }
@@ -5552,6 +5656,45 @@ class Season {
   }
 }
 
+/// Information provided by the user when they complete the subscription
+/// cancellation flow (cancellation reason survey).
+class SubscriptionCancelSurveyResult {
+  /// The cancellation reason the user chose in the survey. Possible values are:
+  /// - Other
+  /// - I don't use this service enough
+  /// - Technical issues
+  /// - Cost-related reasons
+  /// - I found a better app
+  core.int cancelSurveyReason;
+
+  /// The customized input cancel reason from the user. Only present when
+  /// cancelReason is 0.
+  core.String userInputCancelReason;
+
+  SubscriptionCancelSurveyResult();
+
+  SubscriptionCancelSurveyResult.fromJson(core.Map _json) {
+    if (_json.containsKey("cancelSurveyReason")) {
+      cancelSurveyReason = _json["cancelSurveyReason"];
+    }
+    if (_json.containsKey("userInputCancelReason")) {
+      userInputCancelReason = _json["userInputCancelReason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cancelSurveyReason != null) {
+      _json["cancelSurveyReason"] = cancelSurveyReason;
+    }
+    if (userInputCancelReason != null) {
+      _json["userInputCancelReason"] = userInputCancelReason;
+    }
+    return _json;
+  }
+}
+
 /// A SubscriptionDeferralInfo contains the data needed to defer a subscription
 /// purchase to a future expiry time.
 class SubscriptionDeferralInfo {
@@ -5605,6 +5748,10 @@ class SubscriptionPurchase {
   /// - Subscription was canceled by the developer
   core.int cancelReason;
 
+  /// Information provided by the user when they complete the subscription
+  /// cancellation flow (cancellation reason survey).
+  SubscriptionCancelSurveyResult cancelSurveyResult;
+
   /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the
   /// subscription was granted.
   core.String countryCode;
@@ -5613,9 +5760,21 @@ class SubscriptionPurchase {
   /// an order.
   core.String developerPayload;
 
+  /// The email address of the user when the subscription was purchased. Only
+  /// present for purchases made with 'Subscribe with Google'.
+  core.String emailAddress;
+
   /// Time at which the subscription will expire, in milliseconds since the
   /// Epoch.
   core.String expiryTimeMillis;
+
+  /// The family name of the user when the subscription was purchased. Only
+  /// present for purchases made with 'Subscribe with Google'.
+  core.String familyName;
+
+  /// The given name of the user when the subscription was purchased. Only
+  /// present for purchases made with 'Subscribe with Google'.
+  core.String givenName;
 
   /// This kind represents a subscriptionPurchase object in the androidpublisher
   /// service.
@@ -5655,6 +5814,14 @@ class SubscriptionPurchase {
   /// "GBP".
   core.String priceCurrencyCode;
 
+  /// The profile id of the user when the subscription was purchased. Only
+  /// present for purchases made with 'Subscribe with Google'.
+  core.String profileId;
+
+  /// The profile name of the user when the subscription was purchased. Only
+  /// present for purchases made with 'Subscribe with Google'.
+  core.String profileName;
+
   /// The type of purchase of the subscription. This field is only set if this
   /// purchase was not made using the standard in-app billing flow. Possible
   /// values are:
@@ -5678,14 +5845,27 @@ class SubscriptionPurchase {
     if (_json.containsKey("cancelReason")) {
       cancelReason = _json["cancelReason"];
     }
+    if (_json.containsKey("cancelSurveyResult")) {
+      cancelSurveyResult = new SubscriptionCancelSurveyResult.fromJson(
+          _json["cancelSurveyResult"]);
+    }
     if (_json.containsKey("countryCode")) {
       countryCode = _json["countryCode"];
     }
     if (_json.containsKey("developerPayload")) {
       developerPayload = _json["developerPayload"];
     }
+    if (_json.containsKey("emailAddress")) {
+      emailAddress = _json["emailAddress"];
+    }
     if (_json.containsKey("expiryTimeMillis")) {
       expiryTimeMillis = _json["expiryTimeMillis"];
+    }
+    if (_json.containsKey("familyName")) {
+      familyName = _json["familyName"];
+    }
+    if (_json.containsKey("givenName")) {
+      givenName = _json["givenName"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5704,6 +5884,12 @@ class SubscriptionPurchase {
     }
     if (_json.containsKey("priceCurrencyCode")) {
       priceCurrencyCode = _json["priceCurrencyCode"];
+    }
+    if (_json.containsKey("profileId")) {
+      profileId = _json["profileId"];
+    }
+    if (_json.containsKey("profileName")) {
+      profileName = _json["profileName"];
     }
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
@@ -5725,14 +5911,26 @@ class SubscriptionPurchase {
     if (cancelReason != null) {
       _json["cancelReason"] = cancelReason;
     }
+    if (cancelSurveyResult != null) {
+      _json["cancelSurveyResult"] = (cancelSurveyResult).toJson();
+    }
     if (countryCode != null) {
       _json["countryCode"] = countryCode;
     }
     if (developerPayload != null) {
       _json["developerPayload"] = developerPayload;
     }
+    if (emailAddress != null) {
+      _json["emailAddress"] = emailAddress;
+    }
     if (expiryTimeMillis != null) {
       _json["expiryTimeMillis"] = expiryTimeMillis;
+    }
+    if (familyName != null) {
+      _json["familyName"] = familyName;
+    }
+    if (givenName != null) {
+      _json["givenName"] = givenName;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5751,6 +5949,12 @@ class SubscriptionPurchase {
     }
     if (priceCurrencyCode != null) {
       _json["priceCurrencyCode"] = priceCurrencyCode;
+    }
+    if (profileId != null) {
+      _json["profileId"] = profileId;
+    }
+    if (profileName != null) {
+      _json["profileName"] = profileName;
     }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
@@ -5896,10 +6100,13 @@ class TokenPagination {
 }
 
 class Track {
-  /// Identifier for this track. One of "alpha", "beta", "production" or
-  /// "rollout".
+  /// Identifier for this track.
   core.String track;
   core.double userFraction;
+
+  /// Version codes to make active on this track. Note that this list should
+  /// contain all versions you wish to be active, including those you wish to
+  /// retain from previous releases.
   core.List<core.int> versionCodes;
 
   Track();

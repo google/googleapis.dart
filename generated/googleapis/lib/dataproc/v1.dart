@@ -73,6 +73,15 @@ class ProjectsRegionsClustersResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two CreateClusterRequest requests with the same id, then
+  /// the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.It is recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -85,7 +94,7 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> create(
       Cluster request, core.String projectId, core.String region,
-      {core.String $fields}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -101,6 +110,9 @@ class ProjectsRegionsClustersResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -133,6 +145,15 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two DeleteClusterRequest requests with the same id, then
+  /// the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.It is recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
   /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
   /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
@@ -148,7 +169,7 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String projectId, core.String region, core.String clusterName,
-      {core.String clusterUuid, core.String $fields}) {
+      {core.String requestId, core.String clusterUuid, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -164,6 +185,9 @@ class ProjectsRegionsClustersResourceApi {
     }
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if (clusterUuid != null) {
       _queryParams["clusterUuid"] = [clusterUuid];
@@ -327,6 +351,10 @@ class ProjectsRegionsClustersResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
+  /// [pageSize] - Optional. The standard List page size.
+  ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -338,10 +366,6 @@ class ProjectsRegionsClustersResourceApi {
   /// operator is supported; space-separated items are treated as having an
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
-  ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
-  /// [pageSize] - Optional. The standard List page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -355,9 +379,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -372,14 +396,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -414,14 +438,6 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
-  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
-  /// cluster without interrupting jobs in progress. Timeout specifies how long
-  /// to wait for jobs in progress to finish before forcefully removing nodes
-  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
-  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
-  /// Dataproc image versions 1.2 and higher.
-  ///
   /// [updateMask] - Required. Specifies the path, relative to Cluster, of the
   /// field to update. For example, to change the number of workers in a cluster
   /// to 5, the update_mask parameter would be specified as
@@ -455,6 +471,23 @@ class ProjectsRegionsClustersResourceApi {
   /// <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>
   /// <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
   ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
+  /// Dataproc image versions 1.2 and higher.
+  ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two UpdateClusterRequest requests with the same id, then
+  /// the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.It is recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -467,8 +500,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String gracefulDecommissionTimeout,
-      core.String updateMask,
+      {core.String updateMask,
+      core.String gracefulDecommissionTimeout,
+      core.String requestId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -489,13 +523,16 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
     if (gracefulDecommissionTimeout != null) {
       _queryParams["gracefulDecommissionTimeout"] = [
         gracefulDecommissionTimeout
       ];
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -726,14 +763,6 @@ class ProjectsRegionsJobsResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
-  /// [pageToken] - Optional. The page token, returned by a previous call, to
-  /// request the next page of results.
-  ///
-  /// [pageSize] - Optional. The number of results to return in each response.
-  ///
-  /// [clusterName] - Optional. If set, the returned jobs list includes only
-  /// jobs that were submitted to the named cluster.
-  ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
@@ -751,6 +780,14 @@ class ProjectsRegionsJobsResourceApi {
   /// - "ACTIVE" : A ACTIVE.
   /// - "NON_ACTIVE" : A NON_ACTIVE.
   ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The number of results to return in each response.
+  ///
+  /// [clusterName] - Optional. If set, the returned jobs list includes only
+  /// jobs that were submitted to the named cluster.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -762,11 +799,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String pageToken,
+      {core.String filter,
+      core.String jobStateMatcher,
+      core.String pageToken,
       core.int pageSize,
       core.String clusterName,
-      core.String filter,
-      core.String jobStateMatcher,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -781,6 +818,12 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (jobStateMatcher != null) {
+      _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -789,12 +832,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (jobStateMatcher != null) {
-      _queryParams["jobStateMatcher"] = [jobStateMatcher];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1172,17 +1209,18 @@ class ProjectsRegionsOperationsResourceApi {
 }
 
 /// Specifies the type and number of accelerator cards attached to the instances
-/// of an instance group (see GPUs on Compute Engine).
+/// of an instance. See GPUs on Compute Engine.
 class AcceleratorConfig {
   /// The number of the accelerator cards of this type exposed to this instance.
   core.int acceleratorCount;
 
   /// Full URL, partial URI, or short name of the accelerator type resource to
-  /// expose to this instance. See Google Compute Engine AcceleratorTypes(
-  /// /compute/docs/reference/beta/acceleratorTypes)Examples *
+  /// expose to this instance. See Compute Engine AcceleratorTypes.Examples:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-  /// * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-  /// * nvidia-tesla-k80
+  /// projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+  /// nvidia-tesla-k80Auto Zone Exception: If you are using the Cloud Dataproc
+  /// Auto Zone Placement feature, you must use the short name of the
+  /// accelerator type resource, for example, nvidia-tesla-k80.
   core.String acceleratorTypeUri;
 
   AcceleratorConfig();
@@ -1223,7 +1261,7 @@ class CancelJobRequest {
 }
 
 /// Describes the identifying information, config, and status of a cluster of
-/// Google Compute Engine instances.
+/// Compute Engine instances.
 class Cluster {
   /// Required. The cluster name. Cluster names within a project must be unique.
   /// Names of deleted clusters can be reused.
@@ -1325,16 +1363,16 @@ class Cluster {
 
 /// The cluster config.
 class ClusterConfig {
-  /// Optional. A Google Cloud Storage staging bucket used for sharing generated
-  /// SSH keys and config. If you do not specify a staging bucket, Cloud
-  /// Dataproc will determine an appropriate Cloud Storage location (US, ASIA,
-  /// or EU) for your cluster's staging bucket according to the Google Compute
-  /// Engine zone where your cluster is deployed, and then it will create and
-  /// manage this project-level, per-location bucket for you.
+  /// Optional. A Cloud Storage staging bucket used for sharing generated SSH
+  /// keys and config. If you do not specify a staging bucket, Cloud Dataproc
+  /// will determine an appropriate Cloud Storage location (US, ASIA, or EU) for
+  /// your cluster's staging bucket according to the Google Compute Engine zone
+  /// where your cluster is deployed, and then it will create and manage this
+  /// project-level, per-location bucket for you.
   core.String configBucket;
 
-  /// Required. The shared Google Compute Engine config settings for all
-  /// instances in a cluster.
+  /// Required. The shared Compute Engine config settings for all instances in a
+  /// cluster.
   GceClusterConfig gceClusterConfig;
 
   /// Optional. Commands to execute on each node after config is completed. By
@@ -1350,19 +1388,19 @@ class ClusterConfig {
   /// fi
   core.List<NodeInitializationAction> initializationActions;
 
-  /// Optional. The Google Compute Engine config settings for the master
-  /// instance in a cluster.
+  /// Optional. The Compute Engine config settings for the master instance in a
+  /// cluster.
   InstanceGroupConfig masterConfig;
 
-  /// Optional. The Google Compute Engine config settings for additional worker
+  /// Optional. The Compute Engine config settings for additional worker
   /// instances in a cluster.
   InstanceGroupConfig secondaryWorkerConfig;
 
   /// Optional. The config settings for software inside the cluster.
   SoftwareConfig softwareConfig;
 
-  /// Optional. The Google Compute Engine config settings for worker instances
-  /// in a cluster.
+  /// Optional. The Compute Engine config settings for worker instances in a
+  /// cluster.
   InstanceGroupConfig workerConfig;
 
   ClusterConfig();
@@ -1689,9 +1727,8 @@ class DiagnoseClusterRequest {
 
 /// The location of diagnostic output.
 class DiagnoseClusterResults {
-  /// Output only. The Google Cloud Storage URI of the diagnostic output. The
-  /// output report is a plain text file with a summary of collected
-  /// diagnostics.
+  /// Output only. The Cloud Storage URI of the diagnostic output. The output
+  /// report is a plain text file with a summary of collected diagnostics.
   core.String outputUri;
 
   DiagnoseClusterResults();
@@ -1767,8 +1804,8 @@ class Empty {
   }
 }
 
-/// Common config settings for resources of Google Compute Engine cluster
-/// instances, applicable to all instances in the cluster.
+/// Common config settings for resources of Compute Engine cluster instances,
+/// applicable to all instances in the cluster.
 class GceClusterConfig {
   /// Optional. If true, all instances in the cluster will only have internal IP
   /// addresses. By default, clusters are not restricted to internal IP
@@ -1778,12 +1815,12 @@ class GceClusterConfig {
   /// configured to be accessible without external IP addresses.
   core.bool internalIpOnly;
 
-  /// The Google Compute Engine metadata entries to add to all instances (see
-  /// Project and instance metadata
+  /// The Compute Engine metadata entries to add to all instances (see Project
+  /// and instance metadata
   /// (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
   core.Map<core.String, core.String> metadata;
 
-  /// Optional. The Google Compute Engine network to be used for machine
+  /// Optional. The Compute Engine network to be used for machine
   /// communications. Cannot be specified with subnetwork_uri. If neither
   /// network_uri nor subnetwork_uri is specified, the "default" network of the
   /// project is used, if it exists. Cannot be a "Custom Subnet Network" (see
@@ -1795,8 +1832,8 @@ class GceClusterConfig {
   core.String networkUri;
 
   /// Optional. The service account of the instances. Defaults to the default
-  /// Google Compute Engine service account. Custom service accounts need
-  /// permissions equivalent to the folloing IAM roles:
+  /// Compute Engine service account. Custom service accounts need permissions
+  /// equivalent to the following IAM roles:
   /// roles/logging.logWriter
   /// roles/storage.objectAdmin(see
   /// https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts
@@ -1804,9 +1841,8 @@ class GceClusterConfig {
   /// [account_id]@[project_id].iam.gserviceaccount.com
   core.String serviceAccount;
 
-  /// Optional. The URIs of service account scopes to be included in Google
-  /// Compute Engine instances. The following base set of scopes is always
-  /// included:
+  /// Optional. The URIs of service account scopes to be included in Compute
+  /// Engine instances. The following base set of scopes is always included:
   /// https://www.googleapis.com/auth/cloud.useraccounts.readonly
   /// https://www.googleapis.com/auth/devstorage.read_write
   /// https://www.googleapis.com/auth/logging.writeIf no scopes are specified,
@@ -1817,7 +1853,7 @@ class GceClusterConfig {
   /// https://www.googleapis.com/auth/devstorage.full_control
   core.List<core.String> serviceAccountScopes;
 
-  /// Optional. The Google Compute Engine subnetwork to be used for machine
+  /// Optional. The Compute Engine subnetwork to be used for machine
   /// communications. Cannot be specified with network_uri.A full URL, partial
   /// URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0
@@ -1825,16 +1861,14 @@ class GceClusterConfig {
   /// sub0
   core.String subnetworkUri;
 
-  /// The Google Compute Engine tags to add to all instances (see Tagging
-  /// instances).
+  /// The Compute Engine tags to add to all instances (see Tagging instances).
   core.List<core.String> tags;
 
-  /// Optional. The zone where the Google Compute Engine cluster will be
-  /// located. On a create request, it is required in the "global" region. If
-  /// omitted in a non-global Cloud Dataproc region, the service will pick a
-  /// zone in the corresponding Compute Engine region. On a get request, zone
-  /// will always be present.A full URL, partial URI, or short name are valid.
-  /// Examples:
+  /// Optional. The zone where the Compute Engine cluster will be located. On a
+  /// create request, it is required in the "global" region. If omitted in a
+  /// non-global Cloud Dataproc region, the service will pick a zone in the
+  /// corresponding Compute Engine region. On a get request, zone will always be
+  /// present.A full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
   /// projects/[project_id]/zones/[zone]
   /// us-central1-f
@@ -2084,10 +2118,10 @@ class HiveJob {
   }
 }
 
-/// Optional. The config settings for Google Compute Engine resources in an
-/// instance group, such as a master or worker group.
+/// Optional. The config settings for Compute Engine resources in an instance
+/// group, such as a master or worker group.
 class InstanceGroupConfig {
-  /// Optional. The Google Compute Engine accelerator configuration for these
+  /// Optional. The Compute Engine accelerator configuration for these
   /// instances.Beta Feature: This feature is still under development. It may be
   /// changed before final release.
   core.List<AcceleratorConfig> accelerators;
@@ -2095,29 +2129,29 @@ class InstanceGroupConfig {
   /// Optional. Disk option config settings.
   DiskConfig diskConfig;
 
-  /// Output only. The Google Compute Engine image resource used for cluster
-  /// instances. Inferred from SoftwareConfig.image_version.
+  /// Output only. The Compute Engine image resource used for cluster instances.
+  /// Inferred from SoftwareConfig.image_version.
   core.String imageUri;
 
-  /// Optional. The list of instance names. Cloud Dataproc derives the names
-  /// from cluster_name, num_instances, and the instance group if not set by
-  /// user (recommended practice is to let Cloud Dataproc derive the name).
+  /// Output only. The list of instance names. Cloud Dataproc derives the names
+  /// from cluster_name, num_instances, and the instance group.
   core.List<core.String> instanceNames;
 
   /// Optional. Specifies that this instance group contains preemptible
   /// instances.
   core.bool isPreemptible;
 
-  /// Optional. The Google Compute Engine machine type used for cluster
-  /// instances.A full URL, partial URI, or short name are valid. Examples:
+  /// Optional. The Compute Engine machine type used for cluster instances.A
+  /// full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
   /// projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
-  /// n1-standard-2
+  /// n1-standard-2Auto Zone Exception: If you are using the Cloud Dataproc Auto
+  /// Zone Placement feature, you must use the short name of the machine type
+  /// resource, for example, n1-standard-2.
   core.String machineTypeUri;
 
-  /// Output only. The config for Google Compute Engine Instance Group Manager
-  /// that manages this group. This is only used for preemptible instance
-  /// groups.
+  /// Output only. The config for Compute Engine Instance Group Manager that
+  /// manages this group. This is only used for preemptible instance groups.
   ManagedGroupConfig managedGroupConfig;
 
   /// Optional. The number of VM instances in the instance group. For master
@@ -2703,7 +2737,7 @@ class ManagedGroupConfig {
 /// Specifies an executable to run on a fully configured node and a timeout
 /// period for executable completion.
 class NodeInitializationAction {
-  /// Required. Google Cloud Storage URI of executable file.
+  /// Required. Cloud Storage URI of executable file.
   core.String executableFile;
 
   /// Optional. Amount of time executable has to complete. Default is 10
@@ -3041,9 +3075,10 @@ class QueryList {
 
 /// Specifies the selection and config of software inside the cluster.
 class SoftwareConfig {
-  /// Optional. The version of software inside the cluster. It must match the
-  /// regular expression [0-9]+\.[0-9]+. If unspecified, it defaults to the
-  /// latest version (see Cloud Dataproc Versioning).
+  /// Optional. The version of software inside the cluster. It must be one of
+  /// the supported Cloud Dataproc Versions, such as "1.2" (including a subminor
+  /// version, such as "1.2.29"), or the "preview" version. If unspecified, it
+  /// defaults to the latest version.
   core.String imageVersion;
 
   /// Optional. The properties to set on daemon config files.Property keys are
@@ -3346,11 +3381,23 @@ class SubmitJobRequest {
   /// Required. The job resource.
   Job job;
 
+  /// Optional. A unique id used to identify the request. If the server receives
+  /// two SubmitJobRequest requests with the same id, then the second request
+  /// will be ignored and the first Job created and stored in the backend is
+  /// returned.It is recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  core.String requestId;
+
   SubmitJobRequest();
 
   SubmitJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey("job")) {
       job = new Job.fromJson(_json["job"]);
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
     }
   }
 
@@ -3359,6 +3406,9 @@ class SubmitJobRequest {
         new core.Map<core.String, core.Object>();
     if (job != null) {
       _json["job"] = (job).toJson();
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
     }
     return _json;
   }

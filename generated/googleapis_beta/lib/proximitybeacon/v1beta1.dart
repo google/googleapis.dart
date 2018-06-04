@@ -457,6 +457,9 @@ class BeaconsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - A pagination token obtained from a previous request to list
+  /// beacons.
+  ///
   /// [q] - Filter query string that supports the following field filters:
   ///
   /// * **description:`"<string>"`**
@@ -535,9 +538,6 @@ class BeaconsResourceApi {
   /// credential that made the request is used as the project.
   /// Optional.
   ///
-  /// [pageToken] - A pagination token obtained from a previous request to list
-  /// beacons.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -549,10 +549,10 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconsResponse> list(
-      {core.String q,
+      {core.String pageToken,
+      core.String q,
       core.int pageSize,
       core.String projectId,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -561,6 +561,9 @@ class BeaconsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (q != null) {
       _queryParams["q"] = [q];
     }
@@ -569,9 +572,6 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1773,7 +1773,8 @@ class Date {
   /// if specifying a year/month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+  /// month.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without

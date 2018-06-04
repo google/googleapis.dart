@@ -30,24 +30,19 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "pp": {
             "default": "true",
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -72,6 +67,11 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -82,11 +82,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -113,6 +108,11 @@
         },
         "access_token": {
             "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         }
@@ -157,16 +157,16 @@
                         "appsId"
                     ],
                     "parameters": {
-                        "appsId": {
-                            "description": "Part of `name`. Name of the Application resource to update. Example: apps/myapp.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "mask": {
                             "description": "Standard field mask for the set of fields to be updated.",
                             "format": "google-fieldmask",
                             "location": "query",
+                            "type": "string"
+                        },
+                        "appsId": {
+                            "description": "Part of `name`. Name of the Application resource to update. Example: apps/myapp.",
+                            "location": "path",
+                            "required": true,
                             "type": "string"
                         }
                     },
@@ -211,14 +211,14 @@
                                 "servicesId"
                             ],
                             "parameters": {
-                                "appsId": {
-                                    "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.",
+                                "servicesId": {
+                                    "description": "Part of `name`. See documentation of `appsId`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
-                                "servicesId": {
-                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                "appsId": {
+                                    "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -272,6 +272,12 @@
                                 "appsId"
                             ],
                             "parameters": {
+                                "pageSize": {
+                                    "description": "Maximum results to return per page.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
                                 "appsId": {
                                     "description": "Part of `name`. Name of the resource requested. Example: apps/myapp.",
                                     "location": "path",
@@ -282,12 +288,6 @@
                                     "description": "Continuation token for fetching the next page of results.",
                                     "location": "query",
                                     "type": "string"
-                                },
-                                "pageSize": {
-                                    "description": "Maximum results to return per page.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
                                 }
                             },
                             "path": "v1beta5/apps/{appsId}/services",
@@ -309,6 +309,17 @@
                                 "servicesId"
                             ],
                             "parameters": {
+                                "migrateTraffic": {
+                                    "description": "Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#automaticscaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services#shardby) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
+                                "mask": {
+                                    "description": "Standard field mask for the set of fields to be updated.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "servicesId": {
                                     "description": "Part of `name`. See documentation of `appsId`.",
                                     "location": "path",
@@ -319,17 +330,6 @@
                                     "description": "Part of `name`. Name of the resource to update. Example: apps/myapp/services/default.",
                                     "location": "path",
                                     "required": true,
-                                    "type": "string"
-                                },
-                                "migrateTraffic": {
-                                    "description": "Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#automaticscaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services#shardby) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).",
-                                    "location": "query",
-                                    "type": "boolean"
-                                },
-                                "mask": {
-                                    "description": "Standard field mask for the set of fields to be updated.",
-                                    "format": "google-fieldmask",
-                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -348,6 +348,76 @@
                     "resources": {
                         "versions": {
                             "methods": {
+                                "create": {
+                                    "description": "Deploys new code and resource files to a new version.",
+                                    "httpMethod": "POST",
+                                    "id": "appengine.apps.services.versions.create",
+                                    "parameterOrder": [
+                                        "appsId",
+                                        "servicesId"
+                                    ],
+                                    "parameters": {
+                                        "servicesId": {
+                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "appsId": {
+                                            "description": "Part of `name`. Name of the resource to update. For example: \"apps/myapp/services/default\".",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions",
+                                    "request": {
+                                        "$ref": "Version"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes an existing version.",
+                                    "httpMethod": "DELETE",
+                                    "id": "appengine.apps.services.versions.delete",
+                                    "parameterOrder": [
+                                        "appsId",
+                                        "servicesId",
+                                        "versionsId"
+                                    ],
+                                    "parameters": {
+                                        "servicesId": {
+                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "appsId": {
+                                            "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "versionsId": {
+                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.",
                                     "httpMethod": "GET",
@@ -358,6 +428,18 @@
                                         "versionsId"
                                     ],
                                     "parameters": {
+                                        "servicesId": {
+                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "appsId": {
+                                            "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
                                         "versionsId": {
                                             "description": "Part of `name`. See documentation of `appsId`.",
                                             "location": "path",
@@ -371,18 +453,6 @@
                                                 "FULL"
                                             ],
                                             "location": "query",
-                                            "type": "string"
-                                        },
-                                        "servicesId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "appsId": {
-                                            "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.",
-                                            "location": "path",
-                                            "required": true,
                                             "type": "string"
                                         }
                                     },
@@ -493,125 +563,11 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
-                                },
-                                "create": {
-                                    "description": "Deploys new code and resource files to a new version.",
-                                    "httpMethod": "POST",
-                                    "id": "appengine.apps.services.versions.create",
-                                    "parameterOrder": [
-                                        "appsId",
-                                        "servicesId"
-                                    ],
-                                    "parameters": {
-                                        "servicesId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "appsId": {
-                                            "description": "Part of `name`. Name of the resource to update. For example: \"apps/myapp/services/default\".",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions",
-                                    "request": {
-                                        "$ref": "Version"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "delete": {
-                                    "description": "Deletes an existing version.",
-                                    "httpMethod": "DELETE",
-                                    "id": "appengine.apps.services.versions.delete",
-                                    "parameterOrder": [
-                                        "appsId",
-                                        "servicesId",
-                                        "versionsId"
-                                    ],
-                                    "parameters": {
-                                        "appsId": {
-                                            "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "versionsId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "servicesId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
                                 }
                             },
                             "resources": {
                                 "instances": {
                                     "methods": {
-                                        "delete": {
-                                            "description": "Stops a running instance.",
-                                            "httpMethod": "DELETE",
-                                            "id": "appengine.apps.services.versions.instances.delete",
-                                            "parameterOrder": [
-                                                "appsId",
-                                                "servicesId",
-                                                "versionsId",
-                                                "instancesId"
-                                            ],
-                                            "parameters": {
-                                                "servicesId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "appsId": {
-                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1/instances/instance-1\".",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "instancesId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "versionsId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
-                                            "response": {
-                                                "$ref": "Operation"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
-                                            ]
-                                        },
                                         "get": {
                                             "description": "Gets instance information.",
                                             "httpMethod": "GET",
@@ -623,12 +579,6 @@
                                                 "instancesId"
                                             ],
                                             "parameters": {
-                                                "servicesId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
                                                 "appsId": {
                                                     "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.",
                                                     "location": "path",
@@ -642,6 +592,12 @@
                                                     "type": "string"
                                                 },
                                                 "versionsId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "servicesId": {
                                                     "description": "Part of `name`. See documentation of `appsId`.",
                                                     "location": "path",
                                                     "required": true,
@@ -719,12 +675,6 @@
                                                 "instancesId"
                                             ],
                                             "parameters": {
-                                                "servicesId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                                    "location": "path",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
                                                 "appsId": {
                                                     "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.",
                                                     "location": "path",
@@ -742,12 +692,62 @@
                                                     "location": "path",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "servicesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
                                                 }
                                             },
                                             "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug",
                                             "request": {
                                                 "$ref": "DebugInstanceRequest"
                                             },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "delete": {
+                                            "description": "Stops a running instance.",
+                                            "httpMethod": "DELETE",
+                                            "id": "appengine.apps.services.versions.instances.delete",
+                                            "parameterOrder": [
+                                                "appsId",
+                                                "servicesId",
+                                                "versionsId",
+                                                "instancesId"
+                                            ],
+                                            "parameters": {
+                                                "servicesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "appsId": {
+                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1/instances/instance-1\".",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "instancesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "versionsId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
                                             "response": {
                                                 "$ref": "Operation"
                                             },
@@ -848,6 +848,11 @@
                                 "appsId"
                             ],
                             "parameters": {
+                                "filter": {
+                                    "description": "The standard list filter.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "appsId": {
                                     "description": "Part of `name`. The resource that owns the locations collection, if applicable.",
                                     "location": "path",
@@ -864,11 +869,6 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
-                                },
-                                "filter": {
-                                    "description": "The standard list filter.",
-                                    "location": "query",
-                                    "type": "string"
                                 }
                             },
                             "path": "v1beta5/apps/{appsId}/locations",
@@ -882,7 +882,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Get information about a location.",
+                            "description": "Gets information about a location.",
                             "httpMethod": "GET",
                             "id": "appengine.apps.locations.get",
                             "parameterOrder": [
@@ -918,105 +918,40 @@
             }
         }
     },
-    "revision": "20180209",
+    "revision": "20180525",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
-        "HealthCheck": {
-            "description": "Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.",
-            "id": "HealthCheck",
+        "ListInstancesResponse": {
+            "description": "Response message for Instances.ListInstances.",
+            "id": "ListInstancesResponse",
             "properties": {
-                "restartThreshold": {
-                    "description": "Number of consecutive failed health checks required before an instance is restarted.",
-                    "format": "uint32",
-                    "type": "integer"
+                "instances": {
+                    "description": "The instances belonging to the requested version.",
+                    "items": {
+                        "$ref": "Instance"
+                    },
+                    "type": "array"
                 },
-                "healthyThreshold": {
-                    "description": "Number of consecutive successful health checks required before receiving traffic.",
-                    "format": "uint32",
-                    "type": "integer"
-                },
-                "checkInterval": {
-                    "description": "Interval between health checks.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "timeout": {
-                    "description": "Time before the health check is considered failed.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "unhealthyThreshold": {
-                    "description": "Number of consecutive failed health checks required before removing traffic.",
-                    "format": "uint32",
-                    "type": "integer"
-                },
-                "disableHealthCheck": {
-                    "description": "Whether to explicitly disable health checks for this instance.",
-                    "type": "boolean"
-                },
-                "host": {
-                    "description": "Host header to send when performing an HTTP health check. Example: \"myapp.appspot.com\"",
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
-        "SourceReference": {
-            "description": "Reference to a particular snapshot of the source tree used to build and deploy the application.",
-            "id": "SourceReference",
-            "properties": {
-                "repository": {
-                    "description": "URI string identifying the repository. Example: \"https://source.developers.google.com/p/app-123/r/default\"",
-                    "type": "string"
-                },
-                "revisionId": {
-                    "description": "The canonical, persistent identifier of the deployed revision. Aliases that include tags or branch names are not allowed. Example (git): \"2198322f89e0bb2e25021667c2ed489d1fd34e6b\"",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DebugInstanceRequest": {
-            "description": "Request message for Instances.DebugInstance.",
-            "id": "DebugInstanceRequest",
-            "properties": {
-                "sshKey": {
-                    "description": "Public SSH key to add to the instance. Examples:\n[USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]\n[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {\"userName\":\"[USERNAME]\",\"expireOn\":\"[EXPIRE_TIME]\"}For more information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Library": {
-            "description": "Third-party Python runtime library that is required by the application.",
-            "id": "Library",
-            "properties": {
-                "name": {
-                    "description": "Name of the library. Example: \"django\".",
-                    "type": "string"
-                },
-                "version": {
-                    "description": "Version of the library to select, or \"latest\".",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "OperationMetadataV1Beta5": {
+        "OperationMetadataV1Alpha": {
             "description": "Metadata for the given google.longrunning.Operation.",
-            "id": "OperationMetadataV1Beta5",
+            "id": "OperationMetadataV1Alpha",
             "properties": {
-                "method": {
-                    "description": "API method name that initiated this operation. Example: google.appengine.v1beta5.Version.CreateVersion.@OutputOnly",
-                    "type": "string"
+                "warning": {
+                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "insertTime": {
-                    "description": "Timestamp that this operation was created.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "Timestamp that this operation completed.@OutputOnly",
+                    "description": "Time that this operation was created.@OutputOnly",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -1027,16 +962,147 @@
                 "target": {
                     "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
                     "type": "string"
+                },
+                "ephemeralMessage": {
+                    "description": "Ephemeral message that may change every time the operation is polled. @OutputOnly",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "API method that initiated this operation. Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Time that this operation completed.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "createVersionMetadata": {
+                    "$ref": "CreateVersionMetadataV1Alpha"
                 }
             },
             "type": "object"
         },
-        "CreateVersionMetadataV1Alpha": {
-            "description": "Metadata for the given google.longrunning.Operation during a google.appengine.v1alpha.CreateVersionRequest.",
-            "id": "CreateVersionMetadataV1Alpha",
+        "UrlDispatchRule": {
+            "description": "Rules to match an HTTP request and dispatch that request to a service.",
+            "id": "UrlDispatchRule",
             "properties": {
-                "cloudBuildId": {
-                    "description": "The Cloud Build ID if one was created as part of the version create. @OutputOnly",
+                "domain": {
+                    "description": "Domain name to match against. The wildcard \"*\" is supported if specified before a period: \"*.\".Defaults to matching all domains: \"*\".",
+                    "type": "string"
+                },
+                "service": {
+                    "description": "Resource id of a service in this application that should serve the matched request. The service must already exist. Example: default.",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "Pathname within the host. Must start with a \"/\". A single \"*\" can be included at the end of the path. The sum of the lengths of the domain and path may not exceed 100 characters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListVersionsResponse": {
+            "description": "Response message for Versions.ListVersions.",
+            "id": "ListVersionsResponse",
+            "properties": {
+                "versions": {
+                    "description": "The versions belonging to the requested service.",
+                    "items": {
+                        "$ref": "Version"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ApiEndpointHandler": {
+            "description": "Uses Google Cloud Endpoints to handle requests.",
+            "id": "ApiEndpointHandler",
+            "properties": {
+                "scriptPath": {
+                    "description": "Path to the script from the application root directory.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutomaticScaling": {
+            "description": "Automatic scaling is based on request rate, response latencies, and other application metrics.",
+            "id": "AutomaticScaling",
+            "properties": {
+                "maxTotalInstances": {
+                    "description": "Maximum number of instances that should be started to handle requests.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minTotalInstances": {
+                    "description": "Minimum number of instances that should be maintained for this version.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "networkUtilization": {
+                    "$ref": "NetworkUtilization",
+                    "description": "Target scaling by network usage."
+                },
+                "maxConcurrentRequests": {
+                    "description": "Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "coolDownPeriod": {
+                    "description": "Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait between changes to the number of virtual machines. Only applicable for VM runtimes.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "maxPendingLatency": {
+                    "description": "Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "cpuUtilization": {
+                    "$ref": "CpuUtilization",
+                    "description": "Target scaling by CPU usage."
+                },
+                "diskUtilization": {
+                    "$ref": "DiskUtilization",
+                    "description": "Target scaling by disk usage."
+                },
+                "minPendingLatency": {
+                    "description": "Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "requestUtilization": {
+                    "$ref": "RequestUtilization",
+                    "description": "Target scaling by request utilization."
+                },
+                "maxIdleInstances": {
+                    "description": "Maximum number of idle instances that should be maintained for this version.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minIdleInstances": {
+                    "description": "Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a module.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Library": {
+            "description": "Third-party Python runtime library that is required by the application.",
+            "id": "Library",
+            "properties": {
+                "version": {
+                    "description": "Version of the library to select, or \"latest\".",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the library. Example: \"django\".",
                     "type": "string"
                 }
             },
@@ -1046,192 +1112,16 @@
             "description": "The response message for Locations.ListLocations.",
             "id": "ListLocationsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
                 "locations": {
                     "description": "A list of locations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Location"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Version": {
-            "description": "A Version resource is a specific set of source code and configuration files that are deployed into a service.",
-            "id": "Version",
-            "properties": {
-                "envVariables": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Environment variables made available to the application.Only returned in GET requests if view=FULL is set.",
-                    "type": "object"
-                },
-                "network": {
-                    "$ref": "Network",
-                    "description": "Extra network settings. Only applicable for VM runtimes."
-                },
-                "betaSettings": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Metadata settings that are supplied to this version to enable beta runtime features.",
-                    "type": "object"
-                },
-                "env": {
-                    "description": "App Engine execution environment to use for this version.Defaults to 1.",
-                    "type": "string"
-                },
-                "handlers": {
-                    "description": "An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.",
-                    "items": {
-                        "$ref": "UrlMap"
-                    },
-                    "type": "array"
-                },
-                "deployer": {
-                    "description": "Email address of the user who created this version.@OutputOnly",
-                    "type": "string"
-                },
-                "automaticScaling": {
-                    "$ref": "AutomaticScaling",
-                    "description": "Automatic scaling is based on request rate, response latencies, and other application metrics."
-                },
-                "diskUsageBytes": {
-                    "description": "Total size of version files hosted on App Engine disk in bytes.@OutputOnly",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "healthCheck": {
-                    "$ref": "HealthCheck",
-                    "description": "Configures health checking for VM instances. Unhealthy instances are be stopped and replaced with new instances. Only applicable for VM runtimes.Only returned in GET requests if view=FULL is set."
-                },
-                "threadsafe": {
-                    "description": "Whether multiple requests can be dispatched to this version at once.",
-                    "type": "boolean"
-                },
-                "manualScaling": {
-                    "$ref": "ManualScaling",
-                    "description": "A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time."
-                },
-                "name": {
-                    "description": "Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly",
-                    "type": "string"
-                },
-                "apiConfig": {
-                    "$ref": "ApiConfigHandler",
-                    "description": "Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set."
-                },
-                "endpointsApiService": {
-                    "$ref": "EndpointsApiService",
-                    "description": "Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app."
-                },
-                "vm": {
-                    "description": "Whether to deploy this version in a container on a virtual machine.",
-                    "type": "boolean"
-                },
-                "instanceClass": {
-                    "description": "Instance class that is used to run this version. Valid values are:\nAutomaticScaling: F1, F2, F4, F4_1G\nManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.",
-                    "type": "string"
-                },
-                "servingStatus": {
-                    "description": "Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.",
-                    "enum": [
-                        "SERVING_STATUS_UNSPECIFIED",
-                        "SERVING",
-                        "STOPPED"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Currently serving. Instances are created according to the scaling settings of the version.",
-                        "Disabled from serving. No instances will be created and the scaling settings are ignored until the state of the version changes to SERVING."
-                    ],
-                    "type": "string"
-                },
-                "runtimeApiVersion": {
-                    "description": "The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard/<language>/config/appref",
-                    "type": "string"
-                },
-                "deployment": {
-                    "$ref": "Deployment",
-                    "description": "Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set."
-                },
-                "inboundServices": {
-                    "description": "Before an application can receive email or XMPP messages, the application must be configured to enable the service.",
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Allows an application to receive mail.",
-                        "Allows an application to receive email-bound notifications.",
-                        "Allows an application to receive error stanzas.",
-                        "Allows an application to receive instant messages.",
-                        "Allows an application to receive user subscription POSTs.",
-                        "Allows an application to receive a user's chat presence.",
-                        "Registers an application for notifications when a client connects or disconnects from a channel.",
-                        "Enables warmup requests."
-                    ],
-                    "items": {
-                        "enum": [
-                            "INBOUND_SERVICE_UNSPECIFIED",
-                            "INBOUND_SERVICE_MAIL",
-                            "INBOUND_SERVICE_MAIL_BOUNCE",
-                            "INBOUND_SERVICE_XMPP_ERROR",
-                            "INBOUND_SERVICE_XMPP_MESSAGE",
-                            "INBOUND_SERVICE_XMPP_SUBSCRIBE",
-                            "INBOUND_SERVICE_XMPP_PRESENCE",
-                            "INBOUND_SERVICE_CHANNEL_PRESENCE",
-                            "INBOUND_SERVICE_WARMUP"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "resources": {
-                    "$ref": "Resources",
-                    "description": "Machine resources for this version. Only applicable for VM runtimes."
-                },
-                "errorHandlers": {
-                    "description": "Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.",
-                    "items": {
-                        "$ref": "ErrorHandler"
-                    },
-                    "type": "array"
-                },
-                "defaultExpiration": {
-                    "description": "Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "libraries": {
-                    "description": "Configuration for third-party Python runtime libraries required by the application.Only returned in GET requests if view=FULL is set.",
-                    "items": {
-                        "$ref": "Library"
-                    },
-                    "type": "array"
-                },
-                "nobuildFilesRegex": {
-                    "description": "Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.",
-                    "type": "string"
-                },
-                "creationTime": {
-                    "description": "Time that this version was created.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "basicScaling": {
-                    "$ref": "BasicScaling",
-                    "description": "A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity."
-                },
-                "runtime": {
-                    "description": "Desired runtime. Example: python27.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Relative name of the version within the module. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: \"default\", \"latest\", and any name with the prefix \"ah-\".",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1260,6 +1150,35 @@
                     "description": "Target number of concurrent requests.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "EndpointsApiService": {
+            "description": "Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration id of a \"service\" resource in the Service Management API (https://cloud.google.com/service-management/overview).",
+            "id": "EndpointsApiService",
+            "properties": {
+                "name": {
+                    "description": "Endpoints service name which is the name of the \"service\" resource in the Service Management API. For example \"myapi.endpoints.myproject.cloud.goog\"",
+                    "type": "string"
+                },
+                "configId": {
+                    "description": "Endpoints service configuration id as specified by the Service Management API. For example \"2016-09-19r1\"By default, the Endpoints service configuration id is fixed and config_id must be specified. To keep the Endpoints service configuration id updated with each rollout, specify RolloutStrategy.MANAGED and omit config_id.",
+                    "type": "string"
+                },
+                "rolloutStrategy": {
+                    "description": "Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.",
+                    "enum": [
+                        "UNSPECIFIED_ROLLOUT_STRATEGY",
+                        "FIXED",
+                        "MANAGED"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified. Defaults to FIXED.",
+                        "Endpoints service configuration id will be fixed to the configuration id specified by config_id.",
+                        "Endpoints service configuration id will be updated with each rollout."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1353,64 +1272,10 @@
             },
             "type": "object"
         },
-        "EndpointsApiService": {
-            "description": "Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy.The fields here refer to the name and configuration id of a \"service\" resource in the Service Management API (https://cloud.google.com/service-management/overview).",
-            "id": "EndpointsApiService",
-            "properties": {
-                "name": {
-                    "description": "Endpoints service name which is the name of the \"service\" resource in the Service Management API. For example \"myapi.endpoints.myproject.cloud.goog\"",
-                    "type": "string"
-                },
-                "configId": {
-                    "description": "Endpoints service configuration id as specified by the Service Management API. For example \"2016-09-19r1\"By default, the Endpoints service configuration id is fixed and config_id must be specified. To keep the Endpoints service configuration id updated with each rollout, specify RolloutStrategy.MANAGED and omit config_id.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Operation": {
-            "description": "This resource represents a long-running operation that is the result of a network API call.",
-            "id": "Operation",
-            "properties": {
-                "response": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse.",
-                    "type": "object"
-                },
-                "name": {
-                    "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should have the format of operations/some/unique/name.",
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "Status",
-                    "description": "The error result of the operation in case of failure or cancellation."
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
-                    "type": "object"
-                },
-                "done": {
-                    "description": "If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
         "ApiConfigHandler": {
             "description": "Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.",
             "id": "ApiConfigHandler",
             "properties": {
-                "url": {
-                    "description": "URL to serve the endpoint at.",
-                    "type": "string"
-                },
                 "securityLevel": {
                     "description": "Security (HTTPS) enforcement for this URL.",
                     "enum": [
@@ -1462,17 +1327,45 @@
                         "If the user has signed in, the handler proceeds normally. Otherwise, the action given in auth_fail_action is taken."
                     ],
                     "type": "string"
+                },
+                "url": {
+                    "description": "URL to serve the endpoint at.",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
-        "ScriptHandler": {
-            "description": "Executes a script to handle the request that matches the URL pattern.",
-            "id": "ScriptHandler",
+        "Operation": {
+            "description": "This resource represents a long-running operation that is the result of a network API call.",
+            "id": "Operation",
             "properties": {
-                "scriptPath": {
-                    "description": "Path to the script from the application root directory.",
+                "done": {
+                    "description": "If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.",
+                    "type": "boolean"
+                },
+                "response": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should have the format of operations/some/unique/name.",
                     "type": "string"
+                },
+                "error": {
+                    "$ref": "Status",
+                    "description": "The error result of the operation in case of failure or cancellation."
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -1481,6 +1374,18 @@
             "description": "Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.",
             "id": "StaticFilesHandler",
             "properties": {
+                "uploadPathRegex": {
+                    "description": "Regular expression that matches the file paths for all files that should be referenced by this handler.",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.",
+                    "type": "string"
+                },
+                "mimeType": {
+                    "description": "MIME type used to serve all files served by this handler. Defaults to file-specific MIME types, which are derived from each file's filename extension.",
+                    "type": "string"
+                },
                 "requireMatchingFile": {
                     "description": "Whether this handler should match the request if the file referenced by the handler does not exist.",
                     "type": "boolean"
@@ -1500,54 +1405,6 @@
                     },
                     "description": "HTTP headers to use for all responses from these URLs.",
                     "type": "object"
-                },
-                "uploadPathRegex": {
-                    "description": "Regular expression that matches the file paths for all files that should be referenced by this handler.",
-                    "type": "string"
-                },
-                "path": {
-                    "description": "Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.",
-                    "type": "string"
-                },
-                "mimeType": {
-                    "description": "MIME type used to serve all files served by this handler. Defaults to file-specific MIME types, which are derived from each file's filename extension.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "FileInfo": {
-            "description": "Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.",
-            "id": "FileInfo",
-            "properties": {
-                "sourceUrl": {
-                    "description": "URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com/<bucket>/<object>'.",
-                    "type": "string"
-                },
-                "sha1Sum": {
-                    "description": "The SHA1 hash of the file, in hex.",
-                    "type": "string"
-                },
-                "mimeType": {
-                    "description": "The MIME type of the file.Defaults to the value from Google Cloud Storage.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "BasicScaling": {
-            "description": "A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.",
-            "id": "BasicScaling",
-            "properties": {
-                "maxInstances": {
-                    "description": "Maximum number of instances to create for this version.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "idleTimeout": {
-                    "description": "Duration of time after the last request that an instance must wait before the instance is shut down.",
-                    "format": "google-duration",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1579,6 +1436,23 @@
             },
             "type": "object"
         },
+        "BasicScaling": {
+            "description": "A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.",
+            "id": "BasicScaling",
+            "properties": {
+                "maxInstances": {
+                    "description": "Maximum number of instances to create for this version.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "idleTimeout": {
+                    "description": "Duration of time after the last request that an instance must wait before the instance is shut down.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CpuUtilization": {
             "description": "Target scaling by CPU usage.",
             "id": "CpuUtilization",
@@ -1592,29 +1466,6 @@
                     "description": "Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.",
                     "format": "double",
                     "type": "number"
-                }
-            },
-            "type": "object"
-        },
-        "IdentityAwareProxy": {
-            "description": "Identity-Aware Proxy",
-            "id": "IdentityAwareProxy",
-            "properties": {
-                "oauth2ClientSecret": {
-                    "description": "For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly",
-                    "type": "string"
-                },
-                "oauth2ClientId": {
-                    "description": "OAuth2 client ID to use for the authentication flow.",
-                    "type": "string"
-                },
-                "oauth2ClientSecretSha256": {
-                    "description": "Hex-encoded SHA-256 hash of the client secret.@OutputOnly",
-                    "type": "string"
-                },
-                "enabled": {
-                    "description": "Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.",
-                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1646,31 +1497,25 @@
             },
             "type": "object"
         },
-        "TrafficSplit": {
-            "description": "Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.",
-            "id": "TrafficSplit",
+        "IdentityAwareProxy": {
+            "description": "Identity-Aware Proxy",
+            "id": "IdentityAwareProxy",
             "properties": {
-                "shardBy": {
-                    "description": "Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.",
-                    "enum": [
-                        "UNSPECIFIED",
-                        "COOKIE",
-                        "IP"
-                    ],
-                    "enumDescriptions": [
-                        "Diversion method unspecified.",
-                        "Diversion based on a specially named cookie, \"GOOGAPPUID.\" The cookie must be set by the application itself or else no diversion will occur.",
-                        "Diversion based on applying the modulus operation to a fingerprint of the IP address."
-                    ],
+                "enabled": {
+                    "description": "Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.",
+                    "type": "boolean"
+                },
+                "oauth2ClientSecret": {
+                    "description": "For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly",
                     "type": "string"
                 },
-                "allocations": {
-                    "additionalProperties": {
-                        "format": "double",
-                        "type": "number"
-                    },
-                    "description": "Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.",
-                    "type": "object"
+                "oauth2ClientId": {
+                    "description": "OAuth2 client ID to use for the authentication flow.",
+                    "type": "string"
+                },
+                "oauth2ClientSecretSha256": {
+                    "description": "Hex-encoded SHA-256 hash of the client secret.@OutputOnly",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1691,147 +1536,23 @@
             "description": "Metadata for the given google.cloud.location.Location.",
             "id": "LocationMetadata",
             "properties": {
-                "standardEnvironmentAvailable": {
-                    "description": "App Engine standard environment is available in the given location.@OutputOnly",
-                    "type": "boolean"
-                },
                 "flexibleEnvironmentAvailable": {
                     "description": "App Engine flexible environment is available in the given location.@OutputOnly",
                     "type": "boolean"
+                },
+                "standardEnvironmentAvailable": {
+                    "description": "App Engine standard environment is available in the given location.@OutputOnly",
+                    "type": "boolean"
                 }
             },
             "type": "object"
         },
-        "OperationMetadataV1Beta": {
-            "description": "Metadata for the given google.longrunning.Operation.",
-            "id": "OperationMetadataV1Beta",
+        "CreateVersionMetadataV1": {
+            "description": "Metadata for the given google.longrunning.Operation during a google.appengine.v1.CreateVersionRequest.",
+            "id": "CreateVersionMetadataV1",
             "properties": {
-                "endTime": {
-                    "description": "Time that this operation completed.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "createVersionMetadata": {
-                    "$ref": "CreateVersionMetadataV1Beta"
-                },
-                "warning": {
-                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "insertTime": {
-                    "description": "Time that this operation was created.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "target": {
-                    "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
-                    "type": "string"
-                },
-                "user": {
-                    "description": "User who requested this operation.@OutputOnly",
-                    "type": "string"
-                },
-                "ephemeralMessage": {
-                    "description": "Ephemeral message that may change every time the operation is polled. @OutputOnly",
-                    "type": "string"
-                },
-                "method": {
-                    "description": "API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListServicesResponse": {
-            "description": "Response message for Services.ListServices.",
-            "id": "ListServicesResponse",
-            "properties": {
-                "services": {
-                    "description": "The services belonging to the requested application.",
-                    "items": {
-                        "$ref": "Service"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "Continuation token for fetching the next page of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Resources": {
-            "description": "Machine resources for a version.",
-            "id": "Resources",
-            "properties": {
-                "volumes": {
-                    "description": "Volumes mounted within the app container.",
-                    "items": {
-                        "$ref": "Volume"
-                    },
-                    "type": "array"
-                },
-                "diskGb": {
-                    "description": "Disk size (GB) needed.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "cpu": {
-                    "description": "Number of CPU cores needed.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "memoryGb": {
-                    "description": "Memory (GB) needed.",
-                    "format": "double",
-                    "type": "number"
-                }
-            },
-            "type": "object"
-        },
-        "Deployment": {
-            "description": "Code and application artifacts used to deploy a version to App Engine.",
-            "id": "Deployment",
-            "properties": {
-                "files": {
-                    "additionalProperties": {
-                        "$ref": "FileInfo"
-                    },
-                    "description": "Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.",
-                    "type": "object"
-                },
-                "container": {
-                    "$ref": "ContainerInfo",
-                    "description": "The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment."
-                },
-                "sourceReferences": {
-                    "description": "Origin of the source code for this deployment. There can be more than one source reference per version if source code is distributed among multiple repositories.",
-                    "items": {
-                        "$ref": "SourceReference"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Volume": {
-            "description": "Volumes mounted within the app container. Only applicable for VM runtimes.",
-            "id": "Volume",
-            "properties": {
-                "volumeType": {
-                    "description": "Underlying volume type, e.g. 'tmpfs'.",
-                    "type": "string"
-                },
-                "sizeGb": {
-                    "description": "Volume size in gigabytes.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "name": {
-                    "description": "Unique name for the volume.",
+                "cloudBuildId": {
+                    "description": "The Cloud Build ID if one was created as part of the version create. @OutputOnly",
                     "type": "string"
                 }
             },
@@ -1841,6 +1562,10 @@
             "description": "A Service resource is a logical component of an application that can share state and communicate in a secure fashion with other services. For example, an application that handles customer requests might include separate services to handle other tasks such as API requests from mobile devices or backend data analysis. Each service has a collection of versions that define a specific set of code used to implement the functionality of that service.",
             "id": "Service",
             "properties": {
+                "split": {
+                    "$ref": "TrafficSplit",
+                    "description": "Mapping that defines fractional HTTP traffic diversion to different versions within the service."
+                },
                 "id": {
                     "description": "Relative name of the service within the application. Example: default.@OutputOnly",
                     "type": "string"
@@ -1848,10 +1573,6 @@
                 "name": {
                     "description": "Full path to the Service resource in the API. Example: apps/myapp/services/default.@OutputOnly",
                     "type": "string"
-                },
-                "split": {
-                    "$ref": "TrafficSplit",
-                    "description": "Mapping that defines fractional HTTP traffic diversion to different versions within the service."
                 }
             },
             "type": "object"
@@ -1860,16 +1581,16 @@
             "description": "The response message for Operations.ListOperations.",
             "id": "ListOperationsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                },
                 "operations": {
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1878,6 +1599,10 @@
             "description": "Metadata for the given google.longrunning.Operation.",
             "id": "OperationMetadata",
             "properties": {
+                "method": {
+                    "description": "API method that initiated this operation. Example: google.appengine.v1beta4.Version.CreateVersion.@OutputOnly",
+                    "type": "string"
+                },
                 "endTime": {
                     "description": "Timestamp that this operation completed.@OutputOnly",
                     "format": "google-datetime",
@@ -1899,10 +1624,6 @@
                 "target": {
                     "description": "Name of the resource that this operation is acting on. Example: apps/myapp/modules/default.@OutputOnly",
                     "type": "string"
-                },
-                "method": {
-                    "description": "API method that initiated this operation. Example: google.appengine.v1beta4.Version.CreateVersion.@OutputOnly",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1913,64 +1634,6 @@
             "properties": {
                 "cloudBuildId": {
                     "description": "The Cloud Build ID if one was created as part of the version create. @OutputOnly",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListInstancesResponse": {
-            "description": "Response message for Instances.ListInstances.",
-            "id": "ListInstancesResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "Continuation token for fetching the next page of results.",
-                    "type": "string"
-                },
-                "instances": {
-                    "description": "The instances belonging to the requested version.",
-                    "items": {
-                        "$ref": "Instance"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "OperationMetadataV1": {
-            "description": "Metadata for the given google.longrunning.Operation.",
-            "id": "OperationMetadataV1",
-            "properties": {
-                "ephemeralMessage": {
-                    "description": "Ephemeral message that may change every time the operation is polled. @OutputOnly",
-                    "type": "string"
-                },
-                "method": {
-                    "description": "API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "Time that this operation completed.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "warning": {
-                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "insertTime": {
-                    "description": "Time that this operation was created.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "user": {
-                    "description": "User who requested this operation.@OutputOnly",
-                    "type": "string"
-                },
-                "target": {
-                    "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
                     "type": "string"
                 }
             },
@@ -2009,22 +1672,10 @@
             },
             "type": "object"
         },
-        "OperationMetadataV1Alpha": {
+        "OperationMetadataV1": {
             "description": "Metadata for the given google.longrunning.Operation.",
-            "id": "OperationMetadataV1Alpha",
+            "id": "OperationMetadataV1",
             "properties": {
-                "warning": {
-                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "insertTime": {
-                    "description": "Time that this operation was created.@OutputOnly",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
                 "target": {
                     "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
                     "type": "string"
@@ -2038,7 +1689,7 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "API method that initiated this operation. Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly",
+                    "description": "API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly",
                     "type": "string"
                 },
                 "endTime": {
@@ -2047,57 +1698,19 @@
                     "type": "string"
                 },
                 "createVersionMetadata": {
-                    "$ref": "CreateVersionMetadataV1Alpha"
-                }
-            },
-            "type": "object"
-        },
-        "Application": {
-            "description": "An Application resource contains the top-level configuration of an App Engine application.",
-            "id": "Application",
-            "properties": {
-                "dispatchRules": {
-                    "description": "HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent.@OutputOnly",
+                    "$ref": "CreateVersionMetadataV1"
+                },
+                "insertTime": {
+                    "description": "Time that this operation was created.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "warning": {
+                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
                     "items": {
-                        "$ref": "UrlDispatchRule"
+                        "type": "string"
                     },
                     "type": "array"
-                },
-                "defaultHostname": {
-                    "description": "Hostname used to reach the application, as resolved by App Engine.@OutputOnly",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly",
-                    "type": "string"
-                },
-                "authDomain": {
-                    "description": "Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.",
-                    "type": "string"
-                },
-                "iap": {
-                    "$ref": "IdentityAwareProxy"
-                },
-                "id": {
-                    "description": "Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.",
-                    "type": "string"
-                },
-                "defaultCookieExpiration": {
-                    "description": "Cookie expiration policy for this application.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "codeBucket": {
-                    "description": "A Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly",
-                    "type": "string"
-                },
-                "location": {
-                    "description": "Location from which this application will be run. Application instances will run out of data centers in the chosen location, which is also where all of the application's end user content is stored.Defaults to us-central.Options are:us-central - Central USeurope-west - Western Europeus-east1 - Eastern US",
-                    "type": "string"
-                },
-                "defaultBucket": {
-                    "description": "A Google Cloud Storage bucket that can be used by the application to store content.@OutputOnly",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2123,6 +1736,56 @@
                 },
                 "name": {
                     "description": "Google Cloud Platform network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Application": {
+            "description": "An Application resource contains the top-level configuration of an App Engine application.",
+            "id": "Application",
+            "properties": {
+                "defaultBucket": {
+                    "description": "A Google Cloud Storage bucket that can be used by the application to store content.@OutputOnly",
+                    "type": "string"
+                },
+                "dispatchRules": {
+                    "description": "HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent.@OutputOnly",
+                    "items": {
+                        "$ref": "UrlDispatchRule"
+                    },
+                    "type": "array"
+                },
+                "defaultHostname": {
+                    "description": "Hostname used to reach the application, as resolved by App Engine.@OutputOnly",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly",
+                    "type": "string"
+                },
+                "iap": {
+                    "$ref": "IdentityAwareProxy"
+                },
+                "authDomain": {
+                    "description": "Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.",
+                    "type": "string"
+                },
+                "defaultCookieExpiration": {
+                    "description": "Cookie expiration policy for this application.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.",
+                    "type": "string"
+                },
+                "codeBucket": {
+                    "description": "A Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Location from which this application will be run. Application instances will run out of data centers in the chosen location, which is also where all of the application's end user content is stored.Defaults to us-central.Options are:us-central - Central USeurope-west - Western Europeus-east1 - Eastern US",
                     "type": "string"
                 }
             },
@@ -2176,8 +1839,8 @@
                     "format": "int32",
                     "type": "integer"
                 },
-                "id": {
-                    "description": "Relative name of the instance within the version. Example: instance-1.@OutputOnly",
+                "vmIp": {
+                    "description": "The IP address of this instance. Only applicable for instances in App Engine flexible environment.@OutputOnly",
                     "type": "string"
                 },
                 "memoryUsage": {
@@ -2185,9 +1848,14 @@
                     "format": "int64",
                     "type": "string"
                 },
-                "vmIp": {
-                    "description": "The IP address of this instance. Only applicable for instances in App Engine flexible environment.@OutputOnly",
+                "id": {
+                    "description": "Relative name of the instance within the version. Example: instance-1.@OutputOnly",
                     "type": "string"
+                },
+                "errors": {
+                    "description": "Number of errors since this instance was started.@OutputOnly",
+                    "format": "uint32",
+                    "type": "integer"
                 },
                 "vmStatus": {
                     "description": "Status of the virtual machine where this instance lives. Only applicable for instances in App Engine flexible environment.@OutputOnly",
@@ -2206,122 +1874,6 @@
                         ""
                     ],
                     "type": "string"
-                },
-                "errors": {
-                    "description": "Number of errors since this instance was started.@OutputOnly",
-                    "format": "uint32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "UrlDispatchRule": {
-            "description": "Rules to match an HTTP request and dispatch that request to a service.",
-            "id": "UrlDispatchRule",
-            "properties": {
-                "path": {
-                    "description": "Pathname within the host. Must start with a \"/\". A single \"*\" can be included at the end of the path. The sum of the lengths of the domain and path may not exceed 100 characters.",
-                    "type": "string"
-                },
-                "domain": {
-                    "description": "Domain name to match against. The wildcard \"*\" is supported if specified before a period: \"*.\".Defaults to matching all domains: \"*\".",
-                    "type": "string"
-                },
-                "service": {
-                    "description": "Resource id of a service in this application that should serve the matched request. The service must already exist. Example: default.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListVersionsResponse": {
-            "description": "Response message for Versions.ListVersions.",
-            "id": "ListVersionsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "Continuation token for fetching the next page of results.",
-                    "type": "string"
-                },
-                "versions": {
-                    "description": "The versions belonging to the requested service.",
-                    "items": {
-                        "$ref": "Version"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ApiEndpointHandler": {
-            "description": "Uses Google Cloud Endpoints to handle requests.",
-            "id": "ApiEndpointHandler",
-            "properties": {
-                "scriptPath": {
-                    "description": "Path to the script from the application root directory.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AutomaticScaling": {
-            "description": "Automatic scaling is based on request rate, response latencies, and other application metrics.",
-            "id": "AutomaticScaling",
-            "properties": {
-                "diskUtilization": {
-                    "$ref": "DiskUtilization",
-                    "description": "Target scaling by disk usage."
-                },
-                "minPendingLatency": {
-                    "description": "Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "maxIdleInstances": {
-                    "description": "Maximum number of idle instances that should be maintained for this version.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "requestUtilization": {
-                    "$ref": "RequestUtilization",
-                    "description": "Target scaling by request utilization."
-                },
-                "minIdleInstances": {
-                    "description": "Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a module.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "maxTotalInstances": {
-                    "description": "Maximum number of instances that should be started to handle requests.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "minTotalInstances": {
-                    "description": "Minimum number of instances that should be maintained for this version.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "networkUtilization": {
-                    "$ref": "NetworkUtilization",
-                    "description": "Target scaling by network usage."
-                },
-                "coolDownPeriod": {
-                    "description": "Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait between changes to the number of virtual machines. Only applicable for VM runtimes.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "maxConcurrentRequests": {
-                    "description": "Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "maxPendingLatency": {
-                    "description": "Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "cpuUtilization": {
-                    "$ref": "CpuUtilization",
-                    "description": "Target scaling by CPU usage."
                 }
             },
             "type": "object"
@@ -2357,18 +1909,6 @@
             "description": "A resource that represents Google Cloud Platform location.",
             "id": "Location",
             "properties": {
-                "locationId": {
-                    "description": "The canonical id for this location. For example: \"us-east1\".",
-                    "type": "string"
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata. For example the available capacity at the given location.",
-                    "type": "object"
-                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -2379,12 +1919,504 @@
                 "name": {
                     "description": "Resource name for the location, which may vary between implementations. For example: \"projects/example-project/locations/us-east1\"",
                     "type": "string"
+                },
+                "locationId": {
+                    "description": "The canonical id for this location. For example: \"us-east1\".",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+                    "type": "string"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata. For example the available capacity at the given location.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheck": {
+            "description": "Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.",
+            "id": "HealthCheck",
+            "properties": {
+                "unhealthyThreshold": {
+                    "description": "Number of consecutive failed health checks required before removing traffic.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "disableHealthCheck": {
+                    "description": "Whether to explicitly disable health checks for this instance.",
+                    "type": "boolean"
+                },
+                "host": {
+                    "description": "Host header to send when performing an HTTP health check. Example: \"myapp.appspot.com\"",
+                    "type": "string"
+                },
+                "restartThreshold": {
+                    "description": "Number of consecutive failed health checks required before an instance is restarted.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "healthyThreshold": {
+                    "description": "Number of consecutive successful health checks required before receiving traffic.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "checkInterval": {
+                    "description": "Interval between health checks.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "timeout": {
+                    "description": "Time before the health check is considered failed.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SourceReference": {
+            "description": "Reference to a particular snapshot of the source tree used to build and deploy the application.",
+            "id": "SourceReference",
+            "properties": {
+                "repository": {
+                    "description": "URI string identifying the repository. Example: \"https://source.developers.google.com/p/app-123/r/default\"",
+                    "type": "string"
+                },
+                "revisionId": {
+                    "description": "The canonical, persistent identifier of the deployed revision. Aliases that include tags or branch names are not allowed. Example (git): \"2198322f89e0bb2e25021667c2ed489d1fd34e6b\"",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DebugInstanceRequest": {
+            "description": "Request message for Instances.DebugInstance.",
+            "id": "DebugInstanceRequest",
+            "properties": {
+                "sshKey": {
+                    "description": "Public SSH key to add to the instance. Examples:\n[USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]\n[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {\"userName\":\"[USERNAME]\",\"expireOn\":\"[EXPIRE_TIME]\"}For more information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadataV1Beta5": {
+            "description": "Metadata for the given google.longrunning.Operation.",
+            "id": "OperationMetadataV1Beta5",
+            "properties": {
+                "insertTime": {
+                    "description": "Timestamp that this operation was created.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Timestamp that this operation completed.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "user": {
+                    "description": "User who requested this operation.@OutputOnly",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "API method name that initiated this operation. Example: google.appengine.v1beta5.Version.CreateVersion.@OutputOnly",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CreateVersionMetadataV1Alpha": {
+            "description": "Metadata for the given google.longrunning.Operation during a google.appengine.v1alpha.CreateVersionRequest.",
+            "id": "CreateVersionMetadataV1Alpha",
+            "properties": {
+                "cloudBuildId": {
+                    "description": "The Cloud Build ID if one was created as part of the version create. @OutputOnly",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Version": {
+            "description": "A Version resource is a specific set of source code and configuration files that are deployed into a service.",
+            "id": "Version",
+            "properties": {
+                "betaSettings": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata settings that are supplied to this version to enable beta runtime features.",
+                    "type": "object"
+                },
+                "env": {
+                    "description": "App Engine execution environment to use for this version.Defaults to 1.",
+                    "type": "string"
+                },
+                "handlers": {
+                    "description": "An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.",
+                    "items": {
+                        "$ref": "UrlMap"
+                    },
+                    "type": "array"
+                },
+                "deployer": {
+                    "description": "Email address of the user who created this version.@OutputOnly",
+                    "type": "string"
+                },
+                "automaticScaling": {
+                    "$ref": "AutomaticScaling",
+                    "description": "Automatic scaling is based on request rate, response latencies, and other application metrics."
+                },
+                "diskUsageBytes": {
+                    "description": "Total size of version files hosted on App Engine disk in bytes.@OutputOnly",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "healthCheck": {
+                    "$ref": "HealthCheck",
+                    "description": "Configures health checking for VM instances. Unhealthy instances are be stopped and replaced with new instances. Only applicable for VM runtimes.Only returned in GET requests if view=FULL is set."
+                },
+                "threadsafe": {
+                    "description": "Whether multiple requests can be dispatched to this version at once.",
+                    "type": "boolean"
+                },
+                "manualScaling": {
+                    "$ref": "ManualScaling",
+                    "description": "A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time."
+                },
+                "name": {
+                    "description": "Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly",
+                    "type": "string"
+                },
+                "apiConfig": {
+                    "$ref": "ApiConfigHandler",
+                    "description": "Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set."
+                },
+                "endpointsApiService": {
+                    "$ref": "EndpointsApiService",
+                    "description": "Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app."
+                },
+                "vm": {
+                    "description": "Whether to deploy this version in a container on a virtual machine.",
+                    "type": "boolean"
+                },
+                "instanceClass": {
+                    "description": "Instance class that is used to run this version. Valid values are:\nAutomaticScaling: F1, F2, F4, F4_1G\nManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.",
+                    "type": "string"
+                },
+                "servingStatus": {
+                    "description": "Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.",
+                    "enum": [
+                        "SERVING_STATUS_UNSPECIFIED",
+                        "SERVING",
+                        "STOPPED"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "Currently serving. Instances are created according to the scaling settings of the version.",
+                        "Disabled from serving. No instances will be created and the scaling settings are ignored until the state of the version changes to SERVING."
+                    ],
+                    "type": "string"
+                },
+                "deployment": {
+                    "$ref": "Deployment",
+                    "description": "Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set."
+                },
+                "runtimeApiVersion": {
+                    "description": "The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard/<language>/config/appref",
+                    "type": "string"
+                },
+                "resources": {
+                    "$ref": "Resources",
+                    "description": "Machine resources for this version. Only applicable for VM runtimes."
+                },
+                "inboundServices": {
+                    "description": "Before an application can receive email or XMPP messages, the application must be configured to enable the service.",
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "Allows an application to receive mail.",
+                        "Allows an application to receive email-bound notifications.",
+                        "Allows an application to receive error stanzas.",
+                        "Allows an application to receive instant messages.",
+                        "Allows an application to receive user subscription POSTs.",
+                        "Allows an application to receive a user's chat presence.",
+                        "Registers an application for notifications when a client connects or disconnects from a channel.",
+                        "Enables warmup requests."
+                    ],
+                    "items": {
+                        "enum": [
+                            "INBOUND_SERVICE_UNSPECIFIED",
+                            "INBOUND_SERVICE_MAIL",
+                            "INBOUND_SERVICE_MAIL_BOUNCE",
+                            "INBOUND_SERVICE_XMPP_ERROR",
+                            "INBOUND_SERVICE_XMPP_MESSAGE",
+                            "INBOUND_SERVICE_XMPP_SUBSCRIBE",
+                            "INBOUND_SERVICE_XMPP_PRESENCE",
+                            "INBOUND_SERVICE_CHANNEL_PRESENCE",
+                            "INBOUND_SERVICE_WARMUP"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "errorHandlers": {
+                    "description": "Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.",
+                    "items": {
+                        "$ref": "ErrorHandler"
+                    },
+                    "type": "array"
+                },
+                "defaultExpiration": {
+                    "description": "Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "libraries": {
+                    "description": "Configuration for third-party Python runtime libraries required by the application.Only returned in GET requests if view=FULL is set.",
+                    "items": {
+                        "$ref": "Library"
+                    },
+                    "type": "array"
+                },
+                "nobuildFilesRegex": {
+                    "description": "Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.",
+                    "type": "string"
+                },
+                "creationTime": {
+                    "description": "Time that this version was created.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "basicScaling": {
+                    "$ref": "BasicScaling",
+                    "description": "A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity."
+                },
+                "runtime": {
+                    "description": "Desired runtime. Example: python27.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Relative name of the version within the module. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: \"default\", \"latest\", and any name with the prefix \"ah-\".",
+                    "type": "string"
+                },
+                "envVariables": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environment variables made available to the application.Only returned in GET requests if view=FULL is set.",
+                    "type": "object"
+                },
+                "network": {
+                    "$ref": "Network",
+                    "description": "Extra network settings. Only applicable for VM runtimes."
+                }
+            },
+            "type": "object"
+        },
+        "FileInfo": {
+            "description": "Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.",
+            "id": "FileInfo",
+            "properties": {
+                "sourceUrl": {
+                    "description": "URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com/<bucket>/<object>'.",
+                    "type": "string"
+                },
+                "sha1Sum": {
+                    "description": "The SHA1 hash of the file, in hex.",
+                    "type": "string"
+                },
+                "mimeType": {
+                    "description": "The MIME type of the file.Defaults to the value from Google Cloud Storage.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ScriptHandler": {
+            "description": "Executes a script to handle the request that matches the URL pattern.",
+            "id": "ScriptHandler",
+            "properties": {
+                "scriptPath": {
+                    "description": "Path to the script from the application root directory.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TrafficSplit": {
+            "description": "Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.",
+            "id": "TrafficSplit",
+            "properties": {
+                "shardBy": {
+                    "description": "Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.",
+                    "enum": [
+                        "UNSPECIFIED",
+                        "COOKIE",
+                        "IP"
+                    ],
+                    "enumDescriptions": [
+                        "Diversion method unspecified.",
+                        "Diversion based on a specially named cookie, \"GOOGAPPUID.\" The cookie must be set by the application itself or else no diversion will occur.",
+                        "Diversion based on applying the modulus operation to a fingerprint of the IP address."
+                    ],
+                    "type": "string"
+                },
+                "allocations": {
+                    "additionalProperties": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "description": "Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadataV1Beta": {
+            "description": "Metadata for the given google.longrunning.Operation.",
+            "id": "OperationMetadataV1Beta",
+            "properties": {
+                "user": {
+                    "description": "User who requested this operation.@OutputOnly",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
+                    "type": "string"
+                },
+                "ephemeralMessage": {
+                    "description": "Ephemeral message that may change every time the operation is polled. @OutputOnly",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Time that this operation completed.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "createVersionMetadata": {
+                    "$ref": "CreateVersionMetadataV1Beta"
+                },
+                "warning": {
+                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "insertTime": {
+                    "description": "Time that this operation was created.@OutputOnly",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListServicesResponse": {
+            "description": "Response message for Services.ListServices.",
+            "id": "ListServicesResponse",
+            "properties": {
+                "services": {
+                    "description": "The services belonging to the requested application.",
+                    "items": {
+                        "$ref": "Service"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Deployment": {
+            "description": "Code and application artifacts used to deploy a version to App Engine.",
+            "id": "Deployment",
+            "properties": {
+                "container": {
+                    "$ref": "ContainerInfo",
+                    "description": "The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment."
+                },
+                "sourceReferences": {
+                    "description": "Origin of the source code for this deployment. There can be more than one source reference per version if source code is distributed among multiple repositories.",
+                    "items": {
+                        "$ref": "SourceReference"
+                    },
+                    "type": "array"
+                },
+                "files": {
+                    "additionalProperties": {
+                        "$ref": "FileInfo"
+                    },
+                    "description": "Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Resources": {
+            "description": "Machine resources for a version.",
+            "id": "Resources",
+            "properties": {
+                "volumes": {
+                    "description": "Volumes mounted within the app container.",
+                    "items": {
+                        "$ref": "Volume"
+                    },
+                    "type": "array"
+                },
+                "diskGb": {
+                    "description": "Disk size (GB) needed.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "cpu": {
+                    "description": "Number of CPU cores needed.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "memoryGb": {
+                    "description": "Memory (GB) needed.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "Volume": {
+            "description": "Volumes mounted within the app container. Only applicable for VM runtimes.",
+            "id": "Volume",
+            "properties": {
+                "volumeType": {
+                    "description": "Underlying volume type, e.g. 'tmpfs'.",
+                    "type": "string"
+                },
+                "sizeGb": {
+                    "description": "Volume size in gigabytes.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "name": {
+                    "description": "Unique name for the volume.",
+                    "type": "string"
                 }
             },
             "type": "object"
         }
     },
     "servicePath": "",
-    "title": "Google App Engine Admin API",
+    "title": "App Engine Admin API",
     "version": "v1beta5"
 }

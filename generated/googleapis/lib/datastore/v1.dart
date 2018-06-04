@@ -202,6 +202,123 @@ class ProjectsResourceApi {
     return _response.then((data) => new CommitResponse.fromJson(data));
   }
 
+  /// Exports a copy of all or a subset of entities from Google Cloud Datastore
+  /// to another storage system, such as Google Cloud Storage. Recent updates to
+  /// entities may not be reflected in the export. The export occurs in the
+  /// background and its progress can be monitored and managed via the
+  /// Operation resource that is created. The output of an export may only be
+  /// used once the associated operation is done. If an export operation is
+  /// cancelled before completion it may leave partial data behind in Google
+  /// Cloud Storage.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID against which to make the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+      GoogleDatastoreAdminV1ExportEntitiesRequest request,
+      core.String projectId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':export';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Imports entities into Google Cloud Datastore. Existing entities with the
+  /// same key are overwritten. The import occurs in the background and its
+  /// progress can be monitored and managed via the Operation resource that is
+  /// created. If an ImportEntities operation is cancelled, it is possible
+  /// that a subset of the data has already been imported to Cloud Datastore.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID against which to make the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+      GoogleDatastoreAdminV1ImportEntitiesRequest request,
+      core.String projectId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':import';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
   /// Looks up entities by key.
   ///
   /// [request] - The metadata request object.
@@ -576,11 +693,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -593,9 +710,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -607,14 +724,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1074,6 +1191,454 @@ class Filter {
     }
     if (propertyFilter != null) {
       _json["propertyFilter"] = (propertyFilter).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Metadata common to all Datastore Admin operations.
+class GoogleDatastoreAdminV1CommonMetadata {
+  /// The time the operation ended, either successfully or otherwise.
+  core.String endTime;
+
+  /// The client-assigned labels which were provided when the operation was
+  /// created. May also include additional labels.
+  core.Map<core.String, core.String> labels;
+
+  /// The type of the operation. Can be used as a filter in
+  /// ListOperationsRequest.
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "EXPORT_ENTITIES" : ExportEntities.
+  /// - "IMPORT_ENTITIES" : ImportEntities.
+  core.String operationType;
+
+  /// The time that work began on the operation.
+  core.String startTime;
+
+  /// The current state of the Operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "INITIALIZING" : Request is being prepared for processing.
+  /// - "PROCESSING" : Request is actively being processed.
+  /// - "CANCELLING" : Request is in the process of being cancelled after user
+  /// called
+  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// - "FINALIZING" : Request has been processed and is in its finalization
+  /// stage.
+  /// - "SUCCESSFUL" : Request has completed successfully.
+  /// - "FAILED" : Request has finished being processed, but encountered an
+  /// error.
+  /// - "CANCELLED" : Request has finished being cancelled after user called
+  /// google.longrunning.Operations.CancelOperation.
+  core.String state;
+
+  GoogleDatastoreAdminV1CommonMetadata();
+
+  GoogleDatastoreAdminV1CommonMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Identifies a subset of entities in a project. This is specified as
+/// combinations of kinds and namespaces (either or both of which may be all, as
+/// described in the following examples).
+/// Example usage:
+///
+/// Entire project:
+///   kinds=[], namespace_ids=[]
+///
+/// Kinds Foo and Bar in all namespaces:
+///   kinds=['Foo', 'Bar'], namespace_ids=[]
+///
+/// Kinds Foo and Bar only in the default namespace:
+///   kinds=['Foo', 'Bar'], namespace_ids=['']
+///
+/// Kinds Foo and Bar in both the default and Baz namespaces:
+///   kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
+///
+/// The entire Baz namespace:
+///   kinds=[], namespace_ids=['Baz']
+class GoogleDatastoreAdminV1EntityFilter {
+  /// If empty, then this represents all kinds.
+  core.List<core.String> kinds;
+
+  /// An empty list represents all namespaces. This is the preferred
+  /// usage for projects that don't use namespaces.
+  ///
+  /// An empty string element represents the default namespace. This should be
+  /// used if the project has data in non-default namespaces, but doesn't want
+  /// to
+  /// include them.
+  /// Each namespace in this list must be unique.
+  core.List<core.String> namespaceIds;
+
+  GoogleDatastoreAdminV1EntityFilter();
+
+  GoogleDatastoreAdminV1EntityFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("kinds")) {
+      kinds = (_json["kinds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("namespaceIds")) {
+      namespaceIds = (_json["namespaceIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kinds != null) {
+      _json["kinds"] = kinds;
+    }
+    if (namespaceIds != null) {
+      _json["namespaceIds"] = namespaceIds;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for ExportEntities operations.
+class GoogleDatastoreAdminV1ExportEntitiesMetadata {
+  /// Metadata common to all Datastore Admin operations.
+  GoogleDatastoreAdminV1CommonMetadata common;
+
+  /// Description of which entities are being exported.
+  GoogleDatastoreAdminV1EntityFilter entityFilter;
+
+  /// Location for the export metadata and data files. This will be the same
+  /// value as the
+  /// google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix
+  /// field. The final output location is provided in
+  /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
+  core.String outputUrlPrefix;
+
+  /// An estimate of the number of bytes processed.
+  GoogleDatastoreAdminV1Progress progressBytes;
+
+  /// An estimate of the number of entities processed.
+  GoogleDatastoreAdminV1Progress progressEntities;
+
+  GoogleDatastoreAdminV1ExportEntitiesMetadata();
+
+  GoogleDatastoreAdminV1ExportEntitiesMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("common")) {
+      common =
+          new GoogleDatastoreAdminV1CommonMetadata.fromJson(_json["common"]);
+    }
+    if (_json.containsKey("entityFilter")) {
+      entityFilter = new GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json["entityFilter"]);
+    }
+    if (_json.containsKey("outputUrlPrefix")) {
+      outputUrlPrefix = _json["outputUrlPrefix"];
+    }
+    if (_json.containsKey("progressBytes")) {
+      progressBytes =
+          new GoogleDatastoreAdminV1Progress.fromJson(_json["progressBytes"]);
+    }
+    if (_json.containsKey("progressEntities")) {
+      progressEntities = new GoogleDatastoreAdminV1Progress.fromJson(
+          _json["progressEntities"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (common != null) {
+      _json["common"] = (common).toJson();
+    }
+    if (entityFilter != null) {
+      _json["entityFilter"] = (entityFilter).toJson();
+    }
+    if (outputUrlPrefix != null) {
+      _json["outputUrlPrefix"] = outputUrlPrefix;
+    }
+    if (progressBytes != null) {
+      _json["progressBytes"] = (progressBytes).toJson();
+    }
+    if (progressEntities != null) {
+      _json["progressEntities"] = (progressEntities).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The request for
+/// google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
+class GoogleDatastoreAdminV1ExportEntitiesRequest {
+  /// Description of what data from the project is included in the export.
+  GoogleDatastoreAdminV1EntityFilter entityFilter;
+
+  /// Client-assigned labels.
+  core.Map<core.String, core.String> labels;
+
+  /// Location for the export metadata and data files.
+  ///
+  /// The full resource URL of the external storage location. Currently, only
+  /// Google Cloud Storage is supported. So output_url_prefix should be of the
+  /// form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
+  /// name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud
+  /// Storage namespace path (this is not a Cloud Datastore namespace). For more
+  /// information about Cloud Storage namespace paths, see
+  /// [Object name
+  /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
+  ///
+  /// The resulting files will be nested deeper than the specified URL prefix.
+  /// The final output URL will be provided in the
+  /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That
+  /// value should be used for subsequent ImportEntities operations.
+  ///
+  /// By nesting the data files deeper, the same Cloud Storage bucket can be
+  /// used
+  /// in multiple ExportEntities operations without conflict.
+  core.String outputUrlPrefix;
+
+  GoogleDatastoreAdminV1ExportEntitiesRequest();
+
+  GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("entityFilter")) {
+      entityFilter = new GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json["entityFilter"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("outputUrlPrefix")) {
+      outputUrlPrefix = _json["outputUrlPrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entityFilter != null) {
+      _json["entityFilter"] = (entityFilter).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (outputUrlPrefix != null) {
+      _json["outputUrlPrefix"] = outputUrlPrefix;
+    }
+    return _json;
+  }
+}
+
+/// The response for
+/// google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
+class GoogleDatastoreAdminV1ExportEntitiesResponse {
+  /// Location of the output metadata file. This can be used to begin an import
+  /// into Cloud Datastore (this project or another project). See
+  /// google.datastore.admin.v1.ImportEntitiesRequest.input_url.
+  /// Only present if the operation completed successfully.
+  core.String outputUrl;
+
+  GoogleDatastoreAdminV1ExportEntitiesResponse();
+
+  GoogleDatastoreAdminV1ExportEntitiesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("outputUrl")) {
+      outputUrl = _json["outputUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (outputUrl != null) {
+      _json["outputUrl"] = outputUrl;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for ImportEntities operations.
+class GoogleDatastoreAdminV1ImportEntitiesMetadata {
+  /// Metadata common to all Datastore Admin operations.
+  GoogleDatastoreAdminV1CommonMetadata common;
+
+  /// Description of which entities are being imported.
+  GoogleDatastoreAdminV1EntityFilter entityFilter;
+
+  /// The location of the import metadata file. This will be the same value as
+  /// the google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
+  core.String inputUrl;
+
+  /// An estimate of the number of bytes processed.
+  GoogleDatastoreAdminV1Progress progressBytes;
+
+  /// An estimate of the number of entities processed.
+  GoogleDatastoreAdminV1Progress progressEntities;
+
+  GoogleDatastoreAdminV1ImportEntitiesMetadata();
+
+  GoogleDatastoreAdminV1ImportEntitiesMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("common")) {
+      common =
+          new GoogleDatastoreAdminV1CommonMetadata.fromJson(_json["common"]);
+    }
+    if (_json.containsKey("entityFilter")) {
+      entityFilter = new GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json["entityFilter"]);
+    }
+    if (_json.containsKey("inputUrl")) {
+      inputUrl = _json["inputUrl"];
+    }
+    if (_json.containsKey("progressBytes")) {
+      progressBytes =
+          new GoogleDatastoreAdminV1Progress.fromJson(_json["progressBytes"]);
+    }
+    if (_json.containsKey("progressEntities")) {
+      progressEntities = new GoogleDatastoreAdminV1Progress.fromJson(
+          _json["progressEntities"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (common != null) {
+      _json["common"] = (common).toJson();
+    }
+    if (entityFilter != null) {
+      _json["entityFilter"] = (entityFilter).toJson();
+    }
+    if (inputUrl != null) {
+      _json["inputUrl"] = inputUrl;
+    }
+    if (progressBytes != null) {
+      _json["progressBytes"] = (progressBytes).toJson();
+    }
+    if (progressEntities != null) {
+      _json["progressEntities"] = (progressEntities).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The request for
+/// google.datastore.admin.v1.DatastoreAdmin.ImportEntities.
+class GoogleDatastoreAdminV1ImportEntitiesRequest {
+  /// Optionally specify which kinds/namespaces are to be imported. If provided,
+  /// the list must be a subset of the EntityFilter used in creating the export,
+  /// otherwise a FAILED_PRECONDITION error will be returned. If no filter is
+  /// specified then all entities from the export are imported.
+  GoogleDatastoreAdminV1EntityFilter entityFilter;
+
+  /// The full resource URL of the external storage location. Currently, only
+  /// Google Cloud Storage is supported. So input_url should be of the form:
+  /// `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
+  /// `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is
+  /// an optional Cloud Storage namespace path (this is not a Cloud Datastore
+  /// namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file
+  /// written
+  /// by the ExportEntities operation. For more information about Cloud Storage
+  /// namespace paths, see
+  /// [Object name
+  /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
+  ///
+  /// For more information, see
+  /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
+  core.String inputUrl;
+
+  /// Client-assigned labels.
+  core.Map<core.String, core.String> labels;
+
+  GoogleDatastoreAdminV1ImportEntitiesRequest();
+
+  GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("entityFilter")) {
+      entityFilter = new GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json["entityFilter"]);
+    }
+    if (_json.containsKey("inputUrl")) {
+      inputUrl = _json["inputUrl"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entityFilter != null) {
+      _json["entityFilter"] = (entityFilter).toJson();
+    }
+    if (inputUrl != null) {
+      _json["inputUrl"] = inputUrl;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+/// Measures the progress of a particular metric.
+class GoogleDatastoreAdminV1Progress {
+  /// The amount of work that has been completed. Note that this may be greater
+  /// than work_estimated.
+  core.String workCompleted;
+
+  /// An estimate of how much work needs to be performed. May be zero if the
+  /// work estimate is unavailable.
+  core.String workEstimated;
+
+  GoogleDatastoreAdminV1Progress();
+
+  GoogleDatastoreAdminV1Progress.fromJson(core.Map _json) {
+    if (_json.containsKey("workCompleted")) {
+      workCompleted = _json["workCompleted"];
+    }
+    if (_json.containsKey("workEstimated")) {
+      workEstimated = _json["workEstimated"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (workCompleted != null) {
+      _json["workCompleted"] = workCompleted;
+    }
+    if (workEstimated != null) {
+      _json["workEstimated"] = workEstimated;
     }
     return _json;
   }
