@@ -71,26 +71,11 @@ Stream<List<int>> byteStream(String s) {
   return bodyController.stream;
 }
 
-class _ApiRequestError extends TypeMatcher {
-  const _ApiRequestError() : super("ApiRequestError");
-  bool matches(item, Map matchState) => item is ApiRequestError;
-}
-
-class _DetailedApiRequestError extends TypeMatcher {
-  const _DetailedApiRequestError() : super("DetailedApiRequestError");
-  bool matches(item, Map matchState) => item is DetailedApiRequestError;
-}
-
 class TestError {}
 
-class _TestError extends TypeMatcher {
-  const _TestError() : super("TestError");
-  bool matches(item, Map matchState) => item is TestError;
-}
-
-const isApiRequestError = const _ApiRequestError();
-const isDetailedApiRequestError = const _DetailedApiRequestError();
-const isTestError = const _TestError();
+const isApiRequestError = const TypeMatcher<ApiRequestError>();
+const isDetailedApiRequestError = const TypeMatcher<DetailedApiRequestError>();
+const isTestError = const TypeMatcher<TestError>();
 
 main() {
   group('discoveryapi_commons', () {
