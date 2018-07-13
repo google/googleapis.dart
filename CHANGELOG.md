@@ -1,3 +1,7 @@
+## 0.1.6+1
+
+- Require Dart 2.0.0-dev.64
+
 ## 0.1.6
 
 - Fix Dart 2 runtime issue.
