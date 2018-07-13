@@ -24,13 +24,13 @@ class Media {
    * is used.
    */
   Media(this.stream, this.length,
-      {this.contentType: "application/octet-stream"}) {
+      {this.contentType = 'application/octet-stream'}) {
     if (stream == null || contentType == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           'Arguments stream, contentType and length must not be null.');
     }
     if (length != null && length < 0) {
-      throw new core.ArgumentError('A negative content length is not allowed');
+      throw core.ArgumentError('A negative content length is not allowed');
     }
   }
 }
@@ -40,10 +40,10 @@ class Media {
  */
 class UploadOptions {
   /** Use either simple uploads (only media) or multipart for media+metadata */
-  static const UploadOptions Default = const UploadOptions();
+  static const UploadOptions Default = UploadOptions();
 
   /** Make resumable uploads */
-  static final ResumableUploadOptions Resumable = new ResumableUploadOptions();
+  static final ResumableUploadOptions Resumable = ResumableUploadOptions();
 
   const UploadOptions();
 }
@@ -58,7 +58,7 @@ class ResumableUploadOptions extends UploadOptions {
 
     // Wait for 2^(failedAttempts-1) seconds, before retrying.
     // i.e. 1 second, 2 seconds, 4 seconds, ...
-    return new core.Duration(seconds: 1 << (failedAttempts - 1));
+    return core.Duration(seconds: 1 << (failedAttempts - 1));
   };
 
   /**
@@ -81,8 +81,8 @@ class ResumableUploadOptions extends UploadOptions {
   final core.Function backoffFunction;
 
   ResumableUploadOptions(
-      {this.numberOfAttempts: 3,
-      this.chunkSize: 1024 * 1024,
+      {this.numberOfAttempts = 3,
+      this.chunkSize = 1024 * 1024,
       core.Function backoffFunction})
       : backoffFunction =
             backoffFunction == null ? ExponentialBackoff : backoffFunction {
@@ -99,7 +99,7 @@ class ResumableUploadOptions extends UploadOptions {
     // to keep the upload efficient.
     //
     if (numberOfAttempts < 1 || (chunkSize % (256 * 1024)) != 0) {
-      throw new core.ArgumentError('Invalid arguments.');
+      throw core.ArgumentError('Invalid arguments.');
     }
   }
 }
@@ -111,11 +111,11 @@ class ResumableUploadOptions extends UploadOptions {
  */
 class DownloadOptions {
   /** Download only metadata. */
-  static const DownloadOptions Metadata = const DownloadOptions();
+  static const DownloadOptions Metadata = DownloadOptions();
 
   /** Download full media. */
   static final PartialDownloadOptions FullMedia =
-      new PartialDownloadOptions(new ByteRange(0, -1));
+      PartialDownloadOptions(ByteRange(0, -1));
 
   const DownloadOptions();
 
@@ -156,7 +156,7 @@ class ByteRange {
 
   ByteRange(this.start, this.end) {
     if (!(start == 0 && end == -1 || start >= 0 && end >= start)) {
-      throw new core.ArgumentError('Invalid media range [$start, $end]');
+      throw core.ArgumentError('Invalid media range [$start, $end]');
     }
   }
 }
@@ -181,7 +181,7 @@ class DetailedApiRequestError extends ApiRequestError {
   final core.List<ApiRequestErrorDetail> errors;
 
   DetailedApiRequestError(this.status, core.String message,
-      {this.errors: const []})
+      {this.errors = const []})
       : super(message);
 
   core.String toString() =>
@@ -237,15 +237,12 @@ class ApiRequestErrorDetail {
       this.sendReport})
       : originalJson = null;
 
-  ApiRequestErrorDetail.fromJson(core.Map json)
-      : originalJson = json,
-        domain = json.containsKey('domain') ? json['domain'] : null,
-        reason = json.containsKey('reason') ? json['reason'] : null,
-        message = json.containsKey('message') ? json['message'] : null,
-        location = json.containsKey('location') ? json['location'] : null,
-        locationType =
-            json.containsKey('locationType') ? json['locationType'] : null,
-        extendedHelp =
-            json.containsKey('extendedHelp') ? json['extendedHelp'] : null,
-        sendReport = json.containsKey('sendReport') ? json['sendReport'] : null;
+  ApiRequestErrorDetail.fromJson(this.originalJson)
+      : domain = originalJson['domain'] as core.String,
+        reason = originalJson['reason'] as core.String,
+        message = originalJson['message'] as core.String,
+        location = originalJson['location'] as core.String,
+        locationType = originalJson['locationType'] as core.String,
+        extendedHelp = originalJson['extendedHelp'] as core.String,
+        sendReport = originalJson['sendReport'] as core.String;
 }
