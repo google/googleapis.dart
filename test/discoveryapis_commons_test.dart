@@ -615,8 +615,8 @@ main() {
               var end = start + bytesToExpect;
               var sublist = bytes.sublist(start, end);
 
-              var firstContentRange = 'bytes $start-${end-1}/$lengthMarker';
-              var firstRange = 'bytes=0-${end-1}';
+              var firstContentRange = 'bytes $start-${end - 1}/$lengthMarker';
+              var firstRange = 'bytes=0-${end - 1}';
 
               // We issue [numberOfServerErrors] 503 errors first, and then a
               // successfull response.

@@ -439,8 +439,7 @@ class ResumableMediaUploader {
           } else {
             fullChunks = chunkStack.removeSublist(0, chunkStack.length - 1);
           }
-          Future
-              .forEach(fullChunks, (c) => _uploadChunkDrained(uploadUri, c))
+          Future.forEach(fullChunks, (c) => _uploadChunkDrained(uploadUri, c))
               .then((_) {
             // All chunks uploaded, we can continue consuming data.
             subscription.resume();
