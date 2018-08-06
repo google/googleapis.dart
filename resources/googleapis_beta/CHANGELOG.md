@@ -1,3 +1,7 @@
+## 0.46.1
+
+* Support Dart 2 stable.
+
 ## 0.46.0
 
 * [api-new] websecurityscanner:v1alpha

@@ -1,3 +1,7 @@
+## 0.51.1
+
+* Support Dart 2 stable.
+
 ## 0.51.0
 
 * [api-new] cloudresourcemanager:v2

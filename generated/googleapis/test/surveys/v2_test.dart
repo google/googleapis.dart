@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4310() {
+buildUnnamed3380() {
   var o = new core.List<api.FieldMask>();
   o.add(buildFieldMask());
   o.add(buildFieldMask());
   return o;
 }
 
-checkUnnamed4310(core.List<api.FieldMask> o) {
+checkUnnamed3380(core.List<api.FieldMask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldMask(o[0]);
   checkFieldMask(o[1]);
@@ -68,7 +68,7 @@ buildFieldMask() {
   var o = new api.FieldMask();
   buildCounterFieldMask++;
   if (buildCounterFieldMask < 3) {
-    o.fields = buildUnnamed4310();
+    o.fields = buildUnnamed3380();
     o.id = 42;
   }
   buildCounterFieldMask--;
@@ -78,7 +78,7 @@ buildFieldMask() {
 checkFieldMask(api.FieldMask o) {
   buildCounterFieldMask++;
   if (buildCounterFieldMask < 3) {
-    checkUnnamed4310(o.fields);
+    checkUnnamed3380(o.fields);
     unittest.expect(o.id, unittest.equals(42));
   }
   buildCounterFieldMask--;
@@ -126,14 +126,14 @@ checkResultsGetRequest(api.ResultsGetRequest o) {
   buildCounterResultsGetRequest--;
 }
 
-buildUnnamed4311() {
+buildUnnamed3381() {
   var o = new core.List<api.FieldMask>();
   o.add(buildFieldMask());
   o.add(buildFieldMask());
   return o;
 }
 
-checkUnnamed4311(core.List<api.FieldMask> o) {
+checkUnnamed3381(core.List<api.FieldMask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldMask(o[0]);
   checkFieldMask(o[1]);
@@ -144,7 +144,7 @@ buildResultsMask() {
   var o = new api.ResultsMask();
   buildCounterResultsMask++;
   if (buildCounterResultsMask < 3) {
-    o.fields = buildUnnamed4311();
+    o.fields = buildUnnamed3381();
     o.projection = "foo";
   }
   buildCounterResultsMask--;
@@ -154,33 +154,33 @@ buildResultsMask() {
 checkResultsMask(api.ResultsMask o) {
   buildCounterResultsMask++;
   if (buildCounterResultsMask < 3) {
-    checkUnnamed4311(o.fields);
+    checkUnnamed3381(o.fields);
     unittest.expect(o.projection, unittest.equals('foo'));
   }
   buildCounterResultsMask--;
 }
 
-buildUnnamed4312() {
+buildUnnamed3382() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4312(core.List<core.String> o) {
+checkUnnamed3382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4313() {
+buildUnnamed3383() {
   var o = new core.List<api.SurveyQuestion>();
   o.add(buildSurveyQuestion());
   o.add(buildSurveyQuestion());
   return o;
 }
 
-checkUnnamed4313(core.List<api.SurveyQuestion> o) {
+checkUnnamed3383(core.List<api.SurveyQuestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurveyQuestion(o[0]);
   checkSurveyQuestion(o[1]);
@@ -195,8 +195,8 @@ buildSurvey() {
     o.cost = buildSurveyCost();
     o.customerData = "foo";
     o.description = "foo";
-    o.owners = buildUnnamed4312();
-    o.questions = buildUnnamed4313();
+    o.owners = buildUnnamed3382();
+    o.questions = buildUnnamed3383();
     o.rejectionReason = buildSurveyRejection();
     o.state = "foo";
     o.surveyUrlId = "foo";
@@ -214,8 +214,8 @@ checkSurvey(api.Survey o) {
     checkSurveyCost(o.cost);
     unittest.expect(o.customerData, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed4312(o.owners);
-    checkUnnamed4313(o.questions);
+    checkUnnamed3382(o.owners);
+    checkUnnamed3383(o.questions);
     checkSurveyRejection(o.rejectionReason);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.surveyUrlId, unittest.equals('foo'));
@@ -225,27 +225,27 @@ checkSurvey(api.Survey o) {
   buildCounterSurvey--;
 }
 
-buildUnnamed4314() {
+buildUnnamed3384() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4314(core.List<core.String> o) {
+checkUnnamed3384(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4315() {
+buildUnnamed3385() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4315(core.List<core.String> o) {
+checkUnnamed3385(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -256,11 +256,11 @@ buildSurveyAudience() {
   var o = new api.SurveyAudience();
   buildCounterSurveyAudience++;
   if (buildCounterSurveyAudience < 3) {
-    o.ages = buildUnnamed4314();
+    o.ages = buildUnnamed3384();
     o.country = "foo";
     o.countrySubdivision = "foo";
     o.gender = "foo";
-    o.languages = buildUnnamed4315();
+    o.languages = buildUnnamed3385();
     o.populationSource = "foo";
   }
   buildCounterSurveyAudience--;
@@ -270,11 +270,11 @@ buildSurveyAudience() {
 checkSurveyAudience(api.SurveyAudience o) {
   buildCounterSurveyAudience++;
   if (buildCounterSurveyAudience < 3) {
-    checkUnnamed4314(o.ages);
+    checkUnnamed3384(o.ages);
     unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.countrySubdivision, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
-    checkUnnamed4315(o.languages);
+    checkUnnamed3385(o.languages);
     unittest.expect(o.populationSource, unittest.equals('foo'));
   }
   buildCounterSurveyAudience--;
@@ -305,53 +305,53 @@ checkSurveyCost(api.SurveyCost o) {
   buildCounterSurveyCost--;
 }
 
-buildUnnamed4316() {
+buildUnnamed3386() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4316(core.List<core.String> o) {
+checkUnnamed3386(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4317() {
+buildUnnamed3387() {
   var o = new core.List<api.SurveyQuestionImage>();
   o.add(buildSurveyQuestionImage());
   o.add(buildSurveyQuestionImage());
   return o;
 }
 
-checkUnnamed4317(core.List<api.SurveyQuestionImage> o) {
+checkUnnamed3387(core.List<api.SurveyQuestionImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurveyQuestionImage(o[0]);
   checkSurveyQuestionImage(o[1]);
 }
 
-buildUnnamed4318() {
+buildUnnamed3388() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4318(core.List<core.String> o) {
+checkUnnamed3388(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4319() {
+buildUnnamed3389() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4319(core.List<core.String> o) {
+checkUnnamed3389(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -363,20 +363,20 @@ buildSurveyQuestion() {
   buildCounterSurveyQuestion++;
   if (buildCounterSurveyQuestion < 3) {
     o.answerOrder = "foo";
-    o.answers = buildUnnamed4316();
+    o.answers = buildUnnamed3386();
     o.hasOther = true;
     o.highValueLabel = "foo";
-    o.images = buildUnnamed4317();
+    o.images = buildUnnamed3387();
     o.lastAnswerPositionPinned = true;
     o.lowValueLabel = "foo";
     o.mustPickSuggestion = true;
     o.numStars = "foo";
     o.openTextPlaceholder = "foo";
-    o.openTextSuggestions = buildUnnamed4318();
+    o.openTextSuggestions = buildUnnamed3388();
     o.question = "foo";
     o.sentimentText = "foo";
     o.singleLineResponse = true;
-    o.thresholdAnswers = buildUnnamed4319();
+    o.thresholdAnswers = buildUnnamed3389();
     o.type = "foo";
     o.unitOfMeasurementLabel = "foo";
     o.videoId = "foo";
@@ -389,20 +389,20 @@ checkSurveyQuestion(api.SurveyQuestion o) {
   buildCounterSurveyQuestion++;
   if (buildCounterSurveyQuestion < 3) {
     unittest.expect(o.answerOrder, unittest.equals('foo'));
-    checkUnnamed4316(o.answers);
+    checkUnnamed3386(o.answers);
     unittest.expect(o.hasOther, unittest.isTrue);
     unittest.expect(o.highValueLabel, unittest.equals('foo'));
-    checkUnnamed4317(o.images);
+    checkUnnamed3387(o.images);
     unittest.expect(o.lastAnswerPositionPinned, unittest.isTrue);
     unittest.expect(o.lowValueLabel, unittest.equals('foo'));
     unittest.expect(o.mustPickSuggestion, unittest.isTrue);
     unittest.expect(o.numStars, unittest.equals('foo'));
     unittest.expect(o.openTextPlaceholder, unittest.equals('foo'));
-    checkUnnamed4318(o.openTextSuggestions);
+    checkUnnamed3388(o.openTextSuggestions);
     unittest.expect(o.question, unittest.equals('foo'));
     unittest.expect(o.sentimentText, unittest.equals('foo'));
     unittest.expect(o.singleLineResponse, unittest.isTrue);
-    checkUnnamed4319(o.thresholdAnswers);
+    checkUnnamed3389(o.thresholdAnswers);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.unitOfMeasurementLabel, unittest.equals('foo'));
     unittest.expect(o.videoId, unittest.equals('foo'));
@@ -494,14 +494,14 @@ checkSurveysDeleteResponse(api.SurveysDeleteResponse o) {
   buildCounterSurveysDeleteResponse--;
 }
 
-buildUnnamed4320() {
+buildUnnamed3390() {
   var o = new core.List<api.Survey>();
   o.add(buildSurvey());
   o.add(buildSurvey());
   return o;
 }
 
-checkUnnamed4320(core.List<api.Survey> o) {
+checkUnnamed3390(core.List<api.Survey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurvey(o[0]);
   checkSurvey(o[1]);
@@ -514,7 +514,7 @@ buildSurveysListResponse() {
   if (buildCounterSurveysListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.requestId = "foo";
-    o.resources = buildUnnamed4320();
+    o.resources = buildUnnamed3390();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterSurveysListResponse--;
@@ -526,7 +526,7 @@ checkSurveysListResponse(api.SurveysListResponse o) {
   if (buildCounterSurveysListResponse < 3) {
     checkPageInfo(o.pageInfo);
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed4320(o.resources);
+    checkUnnamed3390(o.resources);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterSurveysListResponse--;

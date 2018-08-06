@@ -80,14 +80,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed2240() {
+buildUnnamed1738() {
   var o = new core.List<api.PublicKey>();
   o.add(buildPublicKey());
   o.add(buildPublicKey());
   return o;
 }
 
-checkUnnamed2240(core.List<api.PublicKey> o) {
+checkUnnamed1738(core.List<api.PublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublicKey(o[0]);
   checkPublicKey(o[1]);
@@ -101,7 +101,7 @@ buildEnvironment() {
     o.dockerImage = "foo";
     o.id = "foo";
     o.name = "foo";
-    o.publicKeys = buildUnnamed2240();
+    o.publicKeys = buildUnnamed1738();
     o.sshHost = "foo";
     o.sshPort = 42;
     o.sshUsername = "foo";
@@ -117,7 +117,7 @@ checkEnvironment(api.Environment o) {
     unittest.expect(o.dockerImage, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2240(o.publicKeys);
+    checkUnnamed1738(o.publicKeys);
     unittest.expect(o.sshHost, unittest.equals('foo'));
     unittest.expect(o.sshPort, unittest.equals(42));
     unittest.expect(o.sshUsername, unittest.equals('foo'));
@@ -126,14 +126,14 @@ checkEnvironment(api.Environment o) {
   buildCounterEnvironment--;
 }
 
-buildUnnamed2241() {
+buildUnnamed1739() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed2241(core.List<api.Operation> o) {
+checkUnnamed1739(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -145,7 +145,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed2241();
+    o.operations = buildUnnamed1739();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -155,12 +155,12 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2241(o.operations);
+    checkUnnamed1739(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed2242() {
+buildUnnamed1740() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -175,7 +175,7 @@ buildUnnamed2242() {
   return o;
 }
 
-checkUnnamed2242(core.Map<core.String, core.Object> o) {
+checkUnnamed1740(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -189,7 +189,7 @@ checkUnnamed2242(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2243() {
+buildUnnamed1741() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -204,7 +204,7 @@ buildUnnamed2243() {
   return o;
 }
 
-checkUnnamed2243(core.Map<core.String, core.Object> o) {
+checkUnnamed1741(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -225,9 +225,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2242();
+    o.metadata = buildUnnamed1740();
     o.name = "foo";
-    o.response = buildUnnamed2243();
+    o.response = buildUnnamed1741();
   }
   buildCounterOperation--;
   return o;
@@ -238,9 +238,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed2242(o.metadata);
+    checkUnnamed1740(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2243(o.response);
+    checkUnnamed1741(o.response);
   }
   buildCounterOperation--;
 }
@@ -306,7 +306,7 @@ checkStartEnvironmentResponse(api.StartEnvironmentResponse o) {
   buildCounterStartEnvironmentResponse--;
 }
 
-buildUnnamed2244() {
+buildUnnamed1742() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -321,7 +321,7 @@ buildUnnamed2244() {
   return o;
 }
 
-checkUnnamed2244(core.Map<core.String, core.Object> o) {
+checkUnnamed1742(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -335,17 +335,17 @@ checkUnnamed2244(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2245() {
+buildUnnamed1743() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2244());
-  o.add(buildUnnamed2244());
+  o.add(buildUnnamed1742());
+  o.add(buildUnnamed1742());
   return o;
 }
 
-checkUnnamed2245(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1743(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2244(o[0]);
-  checkUnnamed2244(o[1]);
+  checkUnnamed1742(o[0]);
+  checkUnnamed1742(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -354,7 +354,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2245();
+    o.details = buildUnnamed1743();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -365,7 +365,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2245(o.details);
+    checkUnnamed1743(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
