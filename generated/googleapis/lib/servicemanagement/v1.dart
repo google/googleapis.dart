@@ -516,14 +516,14 @@ class ServicesResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
+  /// [configId] - The id of the service configuration resource.
+  ///
   /// [view] - Specifies which parts of the Service Config should be returned in
   /// the
   /// response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [configId] - The id of the service configuration resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -536,7 +536,7 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<Service> getConfig(core.String serviceName,
-      {core.String view, core.String configId, core.String $fields}) {
+      {core.String configId, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -547,11 +547,11 @@ class ServicesResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (configId != null) {
       _queryParams["configId"] = [configId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -638,6 +638,10 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
+  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -647,10 +651,6 @@ class ServicesResourceApi {
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
-  ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
-  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -663,10 +663,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.String consumerId,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String producerProjectId,
+      core.String consumerId,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -675,17 +675,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consumerId != null) {
-      _queryParams["consumerId"] = [consumerId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (producerProjectId != null) {
       _queryParams["producerProjectId"] = [producerProjectId];
+    }
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1436,6 +1436,8 @@ class ServicesRolloutsResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
+  /// [pageToken] - The token of the page to retrieve.
+  ///
   /// [pageSize] - The max number of items to include in the response list.
   ///
   /// [filter] - Use `filter` to return subset of rollouts.
@@ -1446,8 +1448,6 @@ class ServicesRolloutsResourceApi {
   ///   -- To limit the results to those in
   ///      [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'
   ///      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
-  ///
-  /// [pageToken] - The token of the page to retrieve.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1460,9 +1460,9 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceRolloutsResponse> list(core.String serviceName,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1474,14 +1474,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2252,6 +2252,12 @@ class BillingDestination {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -2278,12 +2284,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -2295,6 +2303,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -3342,6 +3353,68 @@ class Experimental {
         new core.Map<core.String, core.Object>();
     if (authorization != null) {
       _json["authorization"] = (authorization).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }
@@ -4667,6 +4740,9 @@ class MetricDescriptor {
   /// for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. Metadata which can be used to guide usage of the metric.
+  MetricDescriptorMetadata metadata;
+
   /// Whether the metric records instantaneous values, changes to a value, etc.
   /// Some combinations of `metric_kind` and `value_type` might not be
   /// supported.
@@ -4685,11 +4761,12 @@ class MetricDescriptor {
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded.  All user-defined custom metric types have the DNS name
-  /// `custom.googleapis.com`.  Metric types should use a natural hierarchical
-  /// grouping. For example:
+  /// URL-encoded.  All user-defined metric types have the DNS name
+  /// `custom.googleapis.com` or `external.googleapis.com`.  Metric types should
+  /// use a natural hierarchical grouping. For example:
   ///
   ///     "custom.googleapis.com/invoice/paid/amount"
+  ///     "external.googleapis.com/prometheus/up"
   ///     "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
@@ -4789,6 +4866,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("metadata")) {
+      metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
+    }
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
@@ -4818,6 +4898,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
@@ -4832,6 +4915,85 @@ class MetricDescriptor {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// Additional annotations that can be used to guide the usage of a metric.
+class MetricDescriptorMetadata {
+  /// The delay of data points caused by ingestion. Data points older than this
+  /// age are guaranteed to be ingested and available to be read, excluding
+  /// data loss due to errors.
+  core.String ingestDelay;
+
+  /// The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use
+  /// these features, you must sign up in advance and sign a Trusted Tester
+  /// agreement (which includes confidentiality provisions). These features may
+  /// be unstable, changed in backward-incompatible ways, and are not
+  /// guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared
+  /// for widespread use. By Alpha, all significant design issues are resolved
+  /// and we are in the process of verifying functionality. Alpha customers
+  /// need to apply for access, agree to applicable terms, and have their
+  /// projects whitelisted. Alpha releases don’t have to be feature complete,
+  /// no SLAs are provided, and there are no technical support obligations, but
+  /// they will be far enough along that customers can actually use them in
+  /// test environments or for limited-use tests -- just like they would in
+  /// normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any
+  /// customer to use. There are no SLA or technical support obligations in a
+  /// Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and
+  /// fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more
+  /// information, see the “Deprecation Policy” section of our [Terms of
+  /// Service](https://cloud.google.com/terms/)
+  /// and the [Google Cloud Platform Subject to the Deprecation
+  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
+  /// The sampling period of metric data points. For metrics which are written
+  /// periodically, consecutive data points are stored at this time interval,
+  /// excluding data loss due to errors. Metrics with a higher granularity have
+  /// a smaller sampling period.
+  core.String samplePeriod;
+
+  MetricDescriptorMetadata();
+
+  MetricDescriptorMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("ingestDelay")) {
+      ingestDelay = _json["ingestDelay"];
+    }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
+    if (_json.containsKey("samplePeriod")) {
+      samplePeriod = _json["samplePeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingestDelay != null) {
+      _json["ingestDelay"] = ingestDelay;
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
+    if (samplePeriod != null) {
+      _json["samplePeriod"] = samplePeriod;
     }
     return _json;
   }

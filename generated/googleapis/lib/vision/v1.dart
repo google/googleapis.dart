@@ -380,11 +380,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -397,9 +397,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -411,14 +411,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1056,7 +1056,7 @@ class CancelOperationRequest {
 ///          if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) {
 ///            return nil;
 ///          }
-///          Color* result = [Color alloc] init];
+///          Color* result = [[Color alloc] init];
 ///          [result setRed:red];
 ///          [result setGreen:green];
 ///          [result setBlue:blue];
@@ -3797,7 +3797,8 @@ class GoogleCloudVisionV1p2beta1Vertex {
 
 /// Relevant information for the image from the Internet.
 class GoogleCloudVisionV1p2beta1WebDetection {
-  /// Best guess text labels for the request image.
+  /// The service's best guess as to the topic of the request image.
+  /// Inferred from similar images on the open web.
   core.List<GoogleCloudVisionV1p2beta1WebDetectionWebLabel> bestGuessLabels;
 
   /// Fully matching images from the Internet.
@@ -5697,7 +5698,8 @@ class Vertex {
 
 /// Relevant information for the image from the Internet.
 class WebDetection {
-  /// Best guess text labels for the request image.
+  /// The service's best guess as to the topic of the request image.
+  /// Inferred from similar images on the open web.
   core.List<WebLabel> bestGuessLabels;
 
   /// Fully matching images from the Internet.

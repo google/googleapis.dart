@@ -147,11 +147,11 @@ class LanguagesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [model] - The model type for which supported languages should be returned.
+  ///
   /// [target] - The language to use to return localized, human readable names
   /// of supported
   /// languages.
-  ///
-  /// [model] - The model type for which supported languages should be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -164,7 +164,7 @@ class LanguagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(
-      {core.String target, core.String model, core.String $fields}) {
+      {core.String model, core.String target, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -172,11 +172,11 @@ class LanguagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (target != null) {
-      _queryParams["target"] = [target];
-    }
     if (model != null) {
       _queryParams["model"] = [model];
+    }
+    if (target != null) {
+      _queryParams["target"] = [target];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -14,7 +14,7 @@
     "description": "Views and manages licenses for your domain.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/licensing/",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/tIOs6izg-EVHX4TTrroawBuzhAM\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/OKwopR-ihRCbSmeswp3aMih18pg\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -357,7 +357,6 @@
             }
         }
     },
-    "revision": "20170213",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "LicenseAssignment": {

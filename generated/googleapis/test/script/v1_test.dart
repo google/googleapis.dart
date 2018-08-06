@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3390() {
+buildUnnamed3263() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed3390(core.List<api.File> o) {
+checkUnnamed3263(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -68,7 +68,7 @@ buildContent() {
   var o = new api.Content();
   buildCounterContent++;
   if (buildCounterContent < 3) {
-    o.files = buildUnnamed3390();
+    o.files = buildUnnamed3263();
     o.scriptId = "foo";
   }
   buildCounterContent--;
@@ -78,7 +78,7 @@ buildContent() {
 checkContent(api.Content o) {
   buildCounterContent++;
   if (buildCounterContent < 3) {
-    checkUnnamed3390(o.files);
+    checkUnnamed3263(o.files);
     unittest.expect(o.scriptId, unittest.equals('foo'));
   }
   buildCounterContent--;
@@ -105,14 +105,14 @@ checkCreateProjectRequest(api.CreateProjectRequest o) {
   buildCounterCreateProjectRequest--;
 }
 
-buildUnnamed3391() {
+buildUnnamed3264() {
   var o = new core.List<api.EntryPoint>();
   o.add(buildEntryPoint());
   o.add(buildEntryPoint());
   return o;
 }
 
-checkUnnamed3391(core.List<api.EntryPoint> o) {
+checkUnnamed3264(core.List<api.EntryPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntryPoint(o[0]);
   checkEntryPoint(o[1]);
@@ -125,9 +125,7 @@ buildDeployment() {
   if (buildCounterDeployment < 3) {
     o.deploymentConfig = buildDeploymentConfig();
     o.deploymentId = "foo";
-    o.entryPoints = buildUnnamed3391();
-    o.functionSet = buildGoogleAppsScriptTypeFunctionSet();
-    o.scopeSet = buildGoogleAppsScriptTypeScopeSet();
+    o.entryPoints = buildUnnamed3264();
     o.updateTime = "foo";
   }
   buildCounterDeployment--;
@@ -139,9 +137,7 @@ checkDeployment(api.Deployment o) {
   if (buildCounterDeployment < 3) {
     checkDeploymentConfig(o.deploymentConfig);
     unittest.expect(o.deploymentId, unittest.equals('foo'));
-    checkUnnamed3391(o.entryPoints);
-    checkGoogleAppsScriptTypeFunctionSet(o.functionSet);
-    checkGoogleAppsScriptTypeScopeSet(o.scopeSet);
+    checkUnnamed3264(o.entryPoints);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterDeployment--;
@@ -212,14 +208,14 @@ checkEntryPoint(api.EntryPoint o) {
   buildCounterEntryPoint--;
 }
 
-buildUnnamed3392() {
+buildUnnamed3265() {
   var o = new core.List<api.ScriptStackTraceElement>();
   o.add(buildScriptStackTraceElement());
   o.add(buildScriptStackTraceElement());
   return o;
 }
 
-checkUnnamed3392(core.List<api.ScriptStackTraceElement> o) {
+checkUnnamed3265(core.List<api.ScriptStackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScriptStackTraceElement(o[0]);
   checkScriptStackTraceElement(o[1]);
@@ -232,7 +228,7 @@ buildExecutionError() {
   if (buildCounterExecutionError < 3) {
     o.errorMessage = "foo";
     o.errorType = "foo";
-    o.scriptStackTraceElements = buildUnnamed3392();
+    o.scriptStackTraceElements = buildUnnamed3265();
   }
   buildCounterExecutionError--;
   return o;
@@ -243,12 +239,12 @@ checkExecutionError(api.ExecutionError o) {
   if (buildCounterExecutionError < 3) {
     unittest.expect(o.errorMessage, unittest.equals('foo'));
     unittest.expect(o.errorType, unittest.equals('foo'));
-    checkUnnamed3392(o.scriptStackTraceElements);
+    checkUnnamed3265(o.scriptStackTraceElements);
   }
   buildCounterExecutionError--;
 }
 
-buildUnnamed3393() {
+buildUnnamed3266() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -263,7 +259,7 @@ buildUnnamed3393() {
   return o;
 }
 
-checkUnnamed3393(core.List<core.Object> o) {
+checkUnnamed3266(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -284,7 +280,7 @@ buildExecutionRequest() {
   if (buildCounterExecutionRequest < 3) {
     o.devMode = true;
     o.function = "foo";
-    o.parameters = buildUnnamed3393();
+    o.parameters = buildUnnamed3266();
     o.sessionState = "foo";
   }
   buildCounterExecutionRequest--;
@@ -296,7 +292,7 @@ checkExecutionRequest(api.ExecutionRequest o) {
   if (buildCounterExecutionRequest < 3) {
     unittest.expect(o.devMode, unittest.isTrue);
     unittest.expect(o.function, unittest.equals('foo'));
-    checkUnnamed3393(o.parameters);
+    checkUnnamed3266(o.parameters);
     unittest.expect(o.sessionState, unittest.equals('foo'));
   }
   buildCounterExecutionRequest--;
@@ -449,14 +445,14 @@ checkGoogleAppsScriptTypeFunction(api.GoogleAppsScriptTypeFunction o) {
   buildCounterGoogleAppsScriptTypeFunction--;
 }
 
-buildUnnamed3394() {
+buildUnnamed3267() {
   var o = new core.List<api.GoogleAppsScriptTypeFunction>();
   o.add(buildGoogleAppsScriptTypeFunction());
   o.add(buildGoogleAppsScriptTypeFunction());
   return o;
 }
 
-checkUnnamed3394(core.List<api.GoogleAppsScriptTypeFunction> o) {
+checkUnnamed3267(core.List<api.GoogleAppsScriptTypeFunction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsScriptTypeFunction(o[0]);
   checkGoogleAppsScriptTypeFunction(o[1]);
@@ -467,7 +463,7 @@ buildGoogleAppsScriptTypeFunctionSet() {
   var o = new api.GoogleAppsScriptTypeFunctionSet();
   buildCounterGoogleAppsScriptTypeFunctionSet++;
   if (buildCounterGoogleAppsScriptTypeFunctionSet < 3) {
-    o.values = buildUnnamed3394();
+    o.values = buildUnnamed3267();
   }
   buildCounterGoogleAppsScriptTypeFunctionSet--;
   return o;
@@ -476,7 +472,7 @@ buildGoogleAppsScriptTypeFunctionSet() {
 checkGoogleAppsScriptTypeFunctionSet(api.GoogleAppsScriptTypeFunctionSet o) {
   buildCounterGoogleAppsScriptTypeFunctionSet++;
   if (buildCounterGoogleAppsScriptTypeFunctionSet < 3) {
-    checkUnnamed3394(o.values);
+    checkUnnamed3267(o.values);
   }
   buildCounterGoogleAppsScriptTypeFunctionSet--;
 }
@@ -512,59 +508,6 @@ checkGoogleAppsScriptTypeProcess(api.GoogleAppsScriptTypeProcess o) {
     unittest.expect(o.userAccessLevel, unittest.equals('foo'));
   }
   buildCounterGoogleAppsScriptTypeProcess--;
-}
-
-core.int buildCounterGoogleAppsScriptTypeScope = 0;
-buildGoogleAppsScriptTypeScope() {
-  var o = new api.GoogleAppsScriptTypeScope();
-  buildCounterGoogleAppsScriptTypeScope++;
-  if (buildCounterGoogleAppsScriptTypeScope < 3) {
-    o.authorizer = "foo";
-    o.name = "foo";
-  }
-  buildCounterGoogleAppsScriptTypeScope--;
-  return o;
-}
-
-checkGoogleAppsScriptTypeScope(api.GoogleAppsScriptTypeScope o) {
-  buildCounterGoogleAppsScriptTypeScope++;
-  if (buildCounterGoogleAppsScriptTypeScope < 3) {
-    unittest.expect(o.authorizer, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterGoogleAppsScriptTypeScope--;
-}
-
-buildUnnamed3395() {
-  var o = new core.List<api.GoogleAppsScriptTypeScope>();
-  o.add(buildGoogleAppsScriptTypeScope());
-  o.add(buildGoogleAppsScriptTypeScope());
-  return o;
-}
-
-checkUnnamed3395(core.List<api.GoogleAppsScriptTypeScope> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsScriptTypeScope(o[0]);
-  checkGoogleAppsScriptTypeScope(o[1]);
-}
-
-core.int buildCounterGoogleAppsScriptTypeScopeSet = 0;
-buildGoogleAppsScriptTypeScopeSet() {
-  var o = new api.GoogleAppsScriptTypeScopeSet();
-  buildCounterGoogleAppsScriptTypeScopeSet++;
-  if (buildCounterGoogleAppsScriptTypeScopeSet < 3) {
-    o.values = buildUnnamed3395();
-  }
-  buildCounterGoogleAppsScriptTypeScopeSet--;
-  return o;
-}
-
-checkGoogleAppsScriptTypeScopeSet(api.GoogleAppsScriptTypeScopeSet o) {
-  buildCounterGoogleAppsScriptTypeScopeSet++;
-  if (buildCounterGoogleAppsScriptTypeScopeSet < 3) {
-    checkUnnamed3395(o.values);
-  }
-  buildCounterGoogleAppsScriptTypeScopeSet--;
 }
 
 core.int buildCounterGoogleAppsScriptTypeUser = 0;
@@ -635,14 +578,14 @@ checkGoogleAppsScriptTypeWebAppEntryPoint(
   buildCounterGoogleAppsScriptTypeWebAppEntryPoint--;
 }
 
-buildUnnamed3396() {
+buildUnnamed3268() {
   var o = new core.List<api.Deployment>();
   o.add(buildDeployment());
   o.add(buildDeployment());
   return o;
 }
 
-checkUnnamed3396(core.List<api.Deployment> o) {
+checkUnnamed3268(core.List<api.Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeployment(o[0]);
   checkDeployment(o[1]);
@@ -653,7 +596,7 @@ buildListDeploymentsResponse() {
   var o = new api.ListDeploymentsResponse();
   buildCounterListDeploymentsResponse++;
   if (buildCounterListDeploymentsResponse < 3) {
-    o.deployments = buildUnnamed3396();
+    o.deployments = buildUnnamed3268();
     o.nextPageToken = "foo";
   }
   buildCounterListDeploymentsResponse--;
@@ -663,20 +606,20 @@ buildListDeploymentsResponse() {
 checkListDeploymentsResponse(api.ListDeploymentsResponse o) {
   buildCounterListDeploymentsResponse++;
   if (buildCounterListDeploymentsResponse < 3) {
-    checkUnnamed3396(o.deployments);
+    checkUnnamed3268(o.deployments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDeploymentsResponse--;
 }
 
-buildUnnamed3397() {
+buildUnnamed3269() {
   var o = new core.List<api.GoogleAppsScriptTypeProcess>();
   o.add(buildGoogleAppsScriptTypeProcess());
   o.add(buildGoogleAppsScriptTypeProcess());
   return o;
 }
 
-checkUnnamed3397(core.List<api.GoogleAppsScriptTypeProcess> o) {
+checkUnnamed3269(core.List<api.GoogleAppsScriptTypeProcess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsScriptTypeProcess(o[0]);
   checkGoogleAppsScriptTypeProcess(o[1]);
@@ -688,7 +631,7 @@ buildListScriptProcessesResponse() {
   buildCounterListScriptProcessesResponse++;
   if (buildCounterListScriptProcessesResponse < 3) {
     o.nextPageToken = "foo";
-    o.processes = buildUnnamed3397();
+    o.processes = buildUnnamed3269();
   }
   buildCounterListScriptProcessesResponse--;
   return o;
@@ -698,19 +641,19 @@ checkListScriptProcessesResponse(api.ListScriptProcessesResponse o) {
   buildCounterListScriptProcessesResponse++;
   if (buildCounterListScriptProcessesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3397(o.processes);
+    checkUnnamed3269(o.processes);
   }
   buildCounterListScriptProcessesResponse--;
 }
 
-buildUnnamed3398() {
+buildUnnamed3270() {
   var o = new core.List<api.GoogleAppsScriptTypeProcess>();
   o.add(buildGoogleAppsScriptTypeProcess());
   o.add(buildGoogleAppsScriptTypeProcess());
   return o;
 }
 
-checkUnnamed3398(core.List<api.GoogleAppsScriptTypeProcess> o) {
+checkUnnamed3270(core.List<api.GoogleAppsScriptTypeProcess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsScriptTypeProcess(o[0]);
   checkGoogleAppsScriptTypeProcess(o[1]);
@@ -722,7 +665,7 @@ buildListUserProcessesResponse() {
   buildCounterListUserProcessesResponse++;
   if (buildCounterListUserProcessesResponse < 3) {
     o.nextPageToken = "foo";
-    o.processes = buildUnnamed3398();
+    o.processes = buildUnnamed3270();
   }
   buildCounterListUserProcessesResponse--;
   return o;
@@ -732,19 +675,19 @@ checkListUserProcessesResponse(api.ListUserProcessesResponse o) {
   buildCounterListUserProcessesResponse++;
   if (buildCounterListUserProcessesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3398(o.processes);
+    checkUnnamed3270(o.processes);
   }
   buildCounterListUserProcessesResponse--;
 }
 
-buildUnnamed3399() {
+buildUnnamed3271() {
   var o = new core.List<api.Version>();
   o.add(buildVersion());
   o.add(buildVersion());
   return o;
 }
 
-checkUnnamed3399(core.List<api.Version> o) {
+checkUnnamed3271(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVersion(o[0]);
   checkVersion(o[1]);
@@ -756,7 +699,7 @@ buildListVersionsResponse() {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.versions = buildUnnamed3399();
+    o.versions = buildUnnamed3271();
   }
   buildCounterListVersionsResponse--;
   return o;
@@ -766,45 +709,45 @@ checkListVersionsResponse(api.ListVersionsResponse o) {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3399(o.versions);
+    checkUnnamed3271(o.versions);
   }
   buildCounterListVersionsResponse--;
 }
 
-buildUnnamed3400() {
+buildUnnamed3272() {
   var o = new core.List<api.MetricsValue>();
   o.add(buildMetricsValue());
   o.add(buildMetricsValue());
   return o;
 }
 
-checkUnnamed3400(core.List<api.MetricsValue> o) {
+checkUnnamed3272(core.List<api.MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricsValue(o[0]);
   checkMetricsValue(o[1]);
 }
 
-buildUnnamed3401() {
+buildUnnamed3273() {
   var o = new core.List<api.MetricsValue>();
   o.add(buildMetricsValue());
   o.add(buildMetricsValue());
   return o;
 }
 
-checkUnnamed3401(core.List<api.MetricsValue> o) {
+checkUnnamed3273(core.List<api.MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricsValue(o[0]);
   checkMetricsValue(o[1]);
 }
 
-buildUnnamed3402() {
+buildUnnamed3274() {
   var o = new core.List<api.MetricsValue>();
   o.add(buildMetricsValue());
   o.add(buildMetricsValue());
   return o;
 }
 
-checkUnnamed3402(core.List<api.MetricsValue> o) {
+checkUnnamed3274(core.List<api.MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricsValue(o[0]);
   checkMetricsValue(o[1]);
@@ -815,9 +758,9 @@ buildMetrics() {
   var o = new api.Metrics();
   buildCounterMetrics++;
   if (buildCounterMetrics < 3) {
-    o.activeUsers = buildUnnamed3400();
-    o.failedExecutions = buildUnnamed3401();
-    o.totalExecutions = buildUnnamed3402();
+    o.activeUsers = buildUnnamed3272();
+    o.failedExecutions = buildUnnamed3273();
+    o.totalExecutions = buildUnnamed3274();
   }
   buildCounterMetrics--;
   return o;
@@ -826,9 +769,9 @@ buildMetrics() {
 checkMetrics(api.Metrics o) {
   buildCounterMetrics++;
   if (buildCounterMetrics < 3) {
-    checkUnnamed3400(o.activeUsers);
-    checkUnnamed3401(o.failedExecutions);
-    checkUnnamed3402(o.totalExecutions);
+    checkUnnamed3272(o.activeUsers);
+    checkUnnamed3273(o.failedExecutions);
+    checkUnnamed3274(o.totalExecutions);
   }
   buildCounterMetrics--;
 }
@@ -856,7 +799,7 @@ checkMetricsValue(api.MetricsValue o) {
   buildCounterMetricsValue--;
 }
 
-buildUnnamed3403() {
+buildUnnamed3275() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -871,7 +814,7 @@ buildUnnamed3403() {
   return o;
 }
 
-checkUnnamed3403(core.Map<core.String, core.Object> o) {
+checkUnnamed3275(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted4 = (o["x"]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
@@ -892,7 +835,7 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.response = buildUnnamed3403();
+    o.response = buildUnnamed3275();
   }
   buildCounterOperation--;
   return o;
@@ -903,7 +846,7 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed3403(o.response);
+    checkUnnamed3275(o.response);
   }
   buildCounterOperation--;
 }
@@ -960,7 +903,7 @@ checkScriptStackTraceElement(api.ScriptStackTraceElement o) {
   buildCounterScriptStackTraceElement--;
 }
 
-buildUnnamed3404() {
+buildUnnamed3276() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -975,7 +918,7 @@ buildUnnamed3404() {
   return o;
 }
 
-checkUnnamed3404(core.Map<core.String, core.Object> o) {
+checkUnnamed3276(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted6 = (o["x"]) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
@@ -989,17 +932,17 @@ checkUnnamed3404(core.Map<core.String, core.Object> o) {
   unittest.expect(casted7["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3405() {
+buildUnnamed3277() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3404());
-  o.add(buildUnnamed3404());
+  o.add(buildUnnamed3276());
+  o.add(buildUnnamed3276());
   return o;
 }
 
-checkUnnamed3405(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3277(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3404(o[0]);
-  checkUnnamed3404(o[1]);
+  checkUnnamed3276(o[0]);
+  checkUnnamed3276(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1008,7 +951,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3405();
+    o.details = buildUnnamed3277();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1019,7 +962,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3405(o.details);
+    checkUnnamed3277(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -1069,79 +1012,79 @@ checkVersion(api.Version o) {
   buildCounterVersion--;
 }
 
-buildUnnamed3406() {
+buildUnnamed3278() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3406(core.List<core.String> o) {
+checkUnnamed3278(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3407() {
+buildUnnamed3279() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3407(core.List<core.String> o) {
+checkUnnamed3279(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3408() {
+buildUnnamed3280() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3408(core.List<core.String> o) {
+checkUnnamed3280(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3409() {
+buildUnnamed3281() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3409(core.List<core.String> o) {
+checkUnnamed3281(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3410() {
+buildUnnamed3282() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3410(core.List<core.String> o) {
+checkUnnamed3282(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3411() {
+buildUnnamed3283() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3411(core.List<core.String> o) {
+checkUnnamed3283(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1278,22 +1221,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-GoogleAppsScriptTypeScope", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleAppsScriptTypeScope();
-      var od = new api.GoogleAppsScriptTypeScope.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeScope(od);
-    });
-  });
-
-  unittest.group("obj-schema-GoogleAppsScriptTypeScopeSet", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleAppsScriptTypeScopeSet();
-      var od = new api.GoogleAppsScriptTypeScopeSet.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeScopeSet(od);
-    });
-  });
-
   unittest.group("obj-schema-GoogleAppsScriptTypeUser", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsScriptTypeUser();
@@ -1425,11 +1352,11 @@ main() {
       var arg_pageSize = 42;
       var arg_userProcessFilter_startTime = "foo";
       var arg_userProcessFilter_projectName = "foo";
-      var arg_userProcessFilter_userAccessLevels = buildUnnamed3406();
+      var arg_userProcessFilter_userAccessLevels = buildUnnamed3278();
       var arg_userProcessFilter_functionName = "foo";
       var arg_userProcessFilter_scriptId = "foo";
-      var arg_userProcessFilter_types = buildUnnamed3407();
-      var arg_userProcessFilter_statuses = buildUnnamed3408();
+      var arg_userProcessFilter_types = buildUnnamed3279();
+      var arg_userProcessFilter_statuses = buildUnnamed3280();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1516,16 +1443,16 @@ main() {
     unittest.test("method--listScriptProcesses", () {
       var mock = new HttpServerMock();
       api.ProcessesResourceApi res = new api.ScriptApi(mock).processes;
-      var arg_scriptProcessFilter_functionName = "foo";
+      var arg_scriptProcessFilter_endTime = "foo";
+      var arg_scriptProcessFilter_userAccessLevels = buildUnnamed3281();
+      var arg_scriptProcessFilter_statuses = buildUnnamed3282();
       var arg_scriptProcessFilter_startTime = "foo";
+      var arg_scriptProcessFilter_functionName = "foo";
       var arg_scriptProcessFilter_deploymentId = "foo";
       var arg_scriptId = "foo";
-      var arg_scriptProcessFilter_types = buildUnnamed3409();
+      var arg_scriptProcessFilter_types = buildUnnamed3283();
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_scriptProcessFilter_endTime = "foo";
-      var arg_scriptProcessFilter_userAccessLevels = buildUnnamed3410();
-      var arg_scriptProcessFilter_statuses = buildUnnamed3411();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1557,10 +1484,16 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["scriptProcessFilter.functionName"].first,
-            unittest.equals(arg_scriptProcessFilter_functionName));
+        unittest.expect(queryMap["scriptProcessFilter.endTime"].first,
+            unittest.equals(arg_scriptProcessFilter_endTime));
+        unittest.expect(queryMap["scriptProcessFilter.userAccessLevels"],
+            unittest.equals(arg_scriptProcessFilter_userAccessLevels));
+        unittest.expect(queryMap["scriptProcessFilter.statuses"],
+            unittest.equals(arg_scriptProcessFilter_statuses));
         unittest.expect(queryMap["scriptProcessFilter.startTime"].first,
             unittest.equals(arg_scriptProcessFilter_startTime));
+        unittest.expect(queryMap["scriptProcessFilter.functionName"].first,
+            unittest.equals(arg_scriptProcessFilter_functionName));
         unittest.expect(queryMap["scriptProcessFilter.deploymentId"].first,
             unittest.equals(arg_scriptProcessFilter_deploymentId));
         unittest.expect(
@@ -1571,12 +1504,6 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["scriptProcessFilter.endTime"].first,
-            unittest.equals(arg_scriptProcessFilter_endTime));
-        unittest.expect(queryMap["scriptProcessFilter.userAccessLevels"],
-            unittest.equals(arg_scriptProcessFilter_userAccessLevels));
-        unittest.expect(queryMap["scriptProcessFilter.statuses"],
-            unittest.equals(arg_scriptProcessFilter_statuses));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1587,19 +1514,19 @@ main() {
       }), true);
       res
           .listScriptProcesses(
+              scriptProcessFilter_endTime: arg_scriptProcessFilter_endTime,
+              scriptProcessFilter_userAccessLevels:
+                  arg_scriptProcessFilter_userAccessLevels,
+              scriptProcessFilter_statuses: arg_scriptProcessFilter_statuses,
+              scriptProcessFilter_startTime: arg_scriptProcessFilter_startTime,
               scriptProcessFilter_functionName:
                   arg_scriptProcessFilter_functionName,
-              scriptProcessFilter_startTime: arg_scriptProcessFilter_startTime,
               scriptProcessFilter_deploymentId:
                   arg_scriptProcessFilter_deploymentId,
               scriptId: arg_scriptId,
               scriptProcessFilter_types: arg_scriptProcessFilter_types,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              scriptProcessFilter_endTime: arg_scriptProcessFilter_endTime,
-              scriptProcessFilter_userAccessLevels:
-                  arg_scriptProcessFilter_userAccessLevels,
-              scriptProcessFilter_statuses: arg_scriptProcessFilter_statuses,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListScriptProcessesResponse(response);
@@ -2107,8 +2034,8 @@ main() {
       api.ProjectsDeploymentsResourceApi res =
           new api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2149,10 +2076,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2163,8 +2090,8 @@ main() {
       }), true);
       res
           .list(arg_scriptId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDeploymentsResponse(response);

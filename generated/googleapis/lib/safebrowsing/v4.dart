@@ -889,6 +889,7 @@ class ListUpdateRequest {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ListUpdateRequest();
@@ -1021,6 +1022,7 @@ class ListUpdateResponse {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ListUpdateResponse();
@@ -1478,6 +1480,7 @@ class ThreatHit {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   /// Details about the user that encountered the threat.
@@ -1640,6 +1643,7 @@ class ThreatListDescriptor {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ThreatListDescriptor();
@@ -1732,6 +1736,7 @@ class ThreatMatch {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ThreatMatch();

@@ -361,9 +361,9 @@ class CseSiterestrictResourceApi {
 
   CseSiterestrictResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// (Closed Beta API) Returns metadata about the search performed, metadata
-  /// about the custom search engine used for the search, and the search results
-  /// only for site-restrict cses.
+  /// Returns metadata about the search performed, metadata about the custom
+  /// search engine used for the search, and the search results. Uses a small
+  /// set of url patterns.
   ///
   /// Request parameters:
   ///

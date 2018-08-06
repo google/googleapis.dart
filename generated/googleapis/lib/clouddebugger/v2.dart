@@ -138,12 +138,6 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// [debuggeeId] - Identifies the debuggee.
   ///
-  /// [waitToken] - A token that, if specified, blocks the method call until the
-  /// list
-  /// of active breakpoints has changed, or a server-selected timeout has
-  /// expired. The value should be set from the `next_wait_token` field in
-  /// the last response. The initial value should be set to `"init"`.
-  ///
   /// [successOnTimeout] - If set to `true` (recommended), returns
   /// `google.rpc.Code.OK` status and
   /// sets the `wait_expired` response field to `true` when the server-selected
@@ -151,6 +145,12 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status
   /// when the server-selected timeout has expired.
+  ///
+  /// [waitToken] - A token that, if specified, blocks the method call until the
+  /// list
+  /// of active breakpoints has changed, or a server-selected timeout has
+  /// expired. The value should be set from the `next_wait_token` field in
+  /// the last response. The initial value should be set to `"init"`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -163,8 +163,8 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId,
-      {core.String waitToken,
-      core.bool successOnTimeout,
+      {core.bool successOnTimeout,
+      core.String waitToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -176,11 +176,11 @@ class ControllerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (waitToken != null) {
-      _queryParams["waitToken"] = [waitToken];
-    }
     if (successOnTimeout != null) {
       _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
+    }
+    if (waitToken != null) {
+      _queryParams["waitToken"] = [waitToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -474,13 +474,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// [debuggeeId] - ID of the debuggee whose breakpoints to list.
   ///
-  /// [waitToken] - A wait token that, if specified, blocks the call until the
-  /// breakpoints
-  /// list has changed, or a server selected timeout has expired.  The value
-  /// should be set from the last response. The error code
-  /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
-  /// should be called again with the same `wait_token`.
-  ///
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
@@ -490,17 +483,24 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// - "CAPTURE" : A CAPTURE.
   /// - "LOG" : A LOG.
   ///
-  /// [includeAllUsers] - When set to `true`, the response includes the list of
-  /// breakpoints set by
-  /// any user. Otherwise, it includes only breakpoints set by the caller.
-  ///
   /// [includeInactive] - When set to `true`, the response includes active and
   /// inactive
   /// breakpoints. Otherwise, it includes only active breakpoints.
   ///
+  /// [includeAllUsers] - When set to `true`, the response includes the list of
+  /// breakpoints set by
+  /// any user. Otherwise, it includes only breakpoints set by the caller.
+  ///
   /// [stripResults] - This field is deprecated. The following fields are always
   /// stripped out of
   /// the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
+  ///
+  /// [waitToken] - A wait token that, if specified, blocks the call until the
+  /// breakpoints
+  /// list has changed, or a server selected timeout has expired.  The value
+  /// should be set from the last response. The error code
+  /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
+  /// should be called again with the same `wait_token`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -513,12 +513,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(core.String debuggeeId,
-      {core.String waitToken,
-      core.String clientVersion,
+      {core.String clientVersion,
       core.String action_value,
-      core.bool includeAllUsers,
       core.bool includeInactive,
+      core.bool includeAllUsers,
       core.bool stripResults,
+      core.String waitToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -530,23 +530,23 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (waitToken != null) {
-      _queryParams["waitToken"] = [waitToken];
-    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
     }
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
-    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    }
     if (stripResults != null) {
       _queryParams["stripResults"] = ["${stripResults}"];
+    }
+    if (waitToken != null) {
+      _queryParams["waitToken"] = [waitToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1674,6 +1674,11 @@ class SourceContext {
 
 /// Represents a location in the source code.
 class SourceLocation {
+  /// Column within a line. The first column in a line as the value `1`.
+  /// Agents that do not support setting breakpoints on specific columns ignore
+  /// this field.
+  core.int column;
+
   /// Line inside the file. The first line in the file has the value `1`.
   core.int line;
 
@@ -1683,6 +1688,9 @@ class SourceLocation {
   SourceLocation();
 
   SourceLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("column")) {
+      column = _json["column"];
+    }
     if (_json.containsKey("line")) {
       line = _json["line"];
     }
@@ -1694,6 +1702,9 @@ class SourceLocation {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (column != null) {
+      _json["column"] = column;
+    }
     if (line != null) {
       _json["line"] = line;
     }

@@ -54,6 +54,127 @@ class ProjectsDatabasesResourceApi {
 
   ProjectsDatabasesResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Exports a copy of all or a subset of documents from Google Cloud Firestore
+  /// to another storage system, such as Google Cloud Storage. Recent updates to
+  /// documents may not be reflected in the export. The export occurs in the
+  /// background and its progress can be monitored and managed via the
+  /// Operation resource that is created. The output of an export may only be
+  /// used once the associated operation is done. If an export operation is
+  /// cancelled before completion it may leave partial data behind in Google
+  /// Cloud Storage.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Database to export. Should be of the form:
+  /// `projects/{project_id}/databases/{database_id}`.
+  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> exportDocuments(
+      GoogleFirestoreAdminV1beta1ExportDocumentsRequest request,
+      core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':exportDocuments';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Imports documents into Google Cloud Firestore. Existing documents with the
+  /// same name are overwritten. The import occurs in the background and its
+  /// progress can be monitored and managed via the Operation resource that is
+  /// created. If an ImportDocuments operation is cancelled, it is possible
+  /// that a subset of the data has already been imported to Cloud Firestore.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Database to import into. Should be of the form:
+  /// `projects/{project_id}/databases/{database_id}`.
+  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> importDocuments(
+      GoogleFirestoreAdminV1beta1ImportDocumentsRequest request,
+      core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':importDocuments';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
 }
 
 class ProjectsDatabasesDocumentsResourceApi {
@@ -312,13 +433,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [currentDocument_exists] - When set to `true`, the target document must
-  /// exist.
-  /// When set to `false`, the target document must not exist.
-  ///
   /// [currentDocument_updateTime] - When set, the target document must exist
   /// and have been last updated at
   /// that time.
+  ///
+  /// [currentDocument_exists] - When set to `true`, the target document must
+  /// exist.
+  /// When set to `false`, the target document must not exist.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -331,8 +452,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.bool currentDocument_exists,
-      core.String currentDocument_updateTime,
+      {core.String currentDocument_updateTime,
+      core.bool currentDocument_exists,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -344,11 +465,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
-    }
     if (currentDocument_updateTime != null) {
       _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+    }
+    if (currentDocument_exists != null) {
+      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -449,8 +570,6 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// example: `chatrooms`
   /// or `messages`.
   ///
-  /// [transaction] - Reads documents in a transaction.
-  ///
   /// [orderBy] - The order to sort results by. For example: `priority desc,
   /// name`.
   ///
@@ -475,6 +594,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// [pageSize] - The maximum number of documents to return.
   ///
+  /// [transaction] - Reads documents in a transaction.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -487,13 +608,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDocumentsResponse> list(
       core.String parent, core.String collectionId,
-      {core.String transaction,
-      core.String orderBy,
+      {core.String orderBy,
       core.String readTime,
       core.bool showMissing,
       core.List<core.String> mask_fieldPaths,
       core.String pageToken,
       core.int pageSize,
+      core.String transaction,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -507,9 +628,6 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-    if (transaction != null) {
-      _queryParams["transaction"] = [transaction];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -528,6 +646,9 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (transaction != null) {
+      _queryParams["transaction"] = [transaction];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -668,10 +789,6 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [currentDocument_exists] - When set to `true`, the target document must
-  /// exist.
-  /// When set to `false`, the target document must not exist.
-  ///
   /// [updateMask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
@@ -684,6 +801,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// and have been last updated at
   /// that time.
   ///
+  /// [currentDocument_exists] - When set to `true`, the target document must
+  /// exist.
+  /// When set to `false`, the target document must not exist.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -695,10 +816,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> patch(Document request, core.String name,
-      {core.bool currentDocument_exists,
-      core.List<core.String> updateMask_fieldPaths,
+      {core.List<core.String> updateMask_fieldPaths,
       core.List<core.String> mask_fieldPaths,
       core.String currentDocument_updateTime,
+      core.bool currentDocument_exists,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -713,9 +834,6 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
-    }
     if (updateMask_fieldPaths != null) {
       _queryParams["updateMask.fieldPaths"] = updateMask_fieldPaths;
     }
@@ -724,6 +842,9 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (currentDocument_updateTime != null) {
       _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+    }
+    if (currentDocument_exists != null) {
+      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -935,14 +1056,15 @@ class ProjectsDatabasesIndexesResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Operation].
+  /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Index request, core.String parent,
+  async.Future<GoogleLongrunningOperation> create(
+      GoogleFirestoreAdminV1beta1Index request, core.String parent,
       {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -971,7 +1093,8 @@ class ProjectsDatabasesIndexesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes an index.
@@ -1029,14 +1152,15 @@ class ProjectsDatabasesIndexesResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Index].
+  /// Completes with a [GoogleFirestoreAdminV1beta1Index].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Index> get(core.String name, {core.String $fields}) {
+  async.Future<GoogleFirestoreAdminV1beta1Index> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1059,7 +1183,8 @@ class ProjectsDatabasesIndexesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Index.fromJson(data));
+    return _response
+        .then((data) => new GoogleFirestoreAdminV1beta1Index.fromJson(data));
   }
 
   /// Lists the indexes that match the specified filters.
@@ -1079,14 +1204,15 @@ class ProjectsDatabasesIndexesResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [ListIndexesResponse].
+  /// Completes with a [GoogleFirestoreAdminV1beta1ListIndexesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListIndexesResponse> list(core.String parent,
+  async.Future<GoogleFirestoreAdminV1beta1ListIndexesResponse> list(
+      core.String parent,
       {core.String filter,
       core.String pageToken,
       core.int pageSize,
@@ -1124,7 +1250,8 @@ class ProjectsDatabasesIndexesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListIndexesResponse.fromJson(data));
+    return _response.then((data) =>
+        new GoogleFirestoreAdminV1beta1ListIndexesResponse.fromJson(data));
   }
 }
 
@@ -1950,6 +2077,7 @@ class FieldFilter {
   /// come first in
   /// `order_by`.
   /// - "EQUAL" : Equal.
+  /// - "ARRAY_CONTAINS" : Contains. Requires that the field is an array.
   core.String op;
 
   /// The value to compare to.
@@ -2009,9 +2137,35 @@ class FieldReference {
 
 /// A transformation of a field of the document.
 class FieldTransform {
+  /// Append the given elements in order if they are not already present in
+  /// the current field value.
+  /// If the field is not an array, or if the field does not yet exist, it is
+  /// first set to the empty array.
+  ///
+  /// Equivalent numbers of different types (e.g. 3L and 3.0) are
+  /// considered equal when checking if a value is missing.
+  /// NaN is equal to NaN, and Null is equal to Null.
+  /// If the input contains multiple equivalent values, only the first will
+  /// be considered.
+  ///
+  /// The corresponding transform_result will be the null value.
+  ArrayValue appendMissingElements;
+
   /// The path of the field. See Document.fields for the field path syntax
   /// reference.
   core.String fieldPath;
+
+  /// Remove all of the given elements from the array in the field.
+  /// If the field is not an array, or if the field does not yet exist, it is
+  /// set to the empty array.
+  ///
+  /// Equivalent numbers of the different types (e.g. 3L and 3.0) are
+  /// considered equal when deciding whether an element should be removed.
+  /// NaN is equal to NaN, and Null is equal to Null.
+  /// This will remove all equivalent values if there are duplicates.
+  ///
+  /// The corresponding transform_result will be the null value.
+  ArrayValue removeAllFromArray;
 
   /// Sets the field to the given server value.
   /// Possible string values are:
@@ -2024,8 +2178,15 @@ class FieldTransform {
   FieldTransform();
 
   FieldTransform.fromJson(core.Map _json) {
+    if (_json.containsKey("appendMissingElements")) {
+      appendMissingElements =
+          new ArrayValue.fromJson(_json["appendMissingElements"]);
+    }
     if (_json.containsKey("fieldPath")) {
       fieldPath = _json["fieldPath"];
+    }
+    if (_json.containsKey("removeAllFromArray")) {
+      removeAllFromArray = new ArrayValue.fromJson(_json["removeAllFromArray"]);
     }
     if (_json.containsKey("setToServerValue")) {
       setToServerValue = _json["setToServerValue"];
@@ -2035,8 +2196,14 @@ class FieldTransform {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (appendMissingElements != null) {
+      _json["appendMissingElements"] = (appendMissingElements).toJson();
+    }
     if (fieldPath != null) {
       _json["fieldPath"] = fieldPath;
+    }
+    if (removeAllFromArray != null) {
+      _json["removeAllFromArray"] = (removeAllFromArray).toJson();
     }
     if (setToServerValue != null) {
       _json["setToServerValue"] = setToServerValue;
@@ -2086,13 +2253,302 @@ class Filter {
   }
 }
 
+/// Metadata for ExportDocuments operations.
+class GoogleFirestoreAdminV1beta1ExportDocumentsMetadata {
+  /// Which collection ids are being exported.
+  core.List<core.String> collectionIds;
+
+  /// The time the operation ended, either successfully or otherwise. Unset if
+  /// the operation is still active.
+  core.String endTime;
+
+  /// The state of the export operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "INITIALIZING" : Request is being prepared for processing.
+  /// - "PROCESSING" : Request is actively being processed.
+  /// - "CANCELLING" : Request is in the process of being cancelled after user
+  /// called
+  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// - "FINALIZING" : Request has been processed and is in its finalization
+  /// stage.
+  /// - "SUCCESSFUL" : Request has completed successfully.
+  /// - "FAILED" : Request has finished being processed, but encountered an
+  /// error.
+  /// - "CANCELLED" : Request has finished being cancelled after user called
+  /// google.longrunning.Operations.CancelOperation.
+  core.String operationState;
+
+  /// Where the entities are being exported to.
+  core.String outputUriPrefix;
+
+  /// An estimate of the number of bytes processed.
+  GoogleFirestoreAdminV1beta1Progress progressBytes;
+
+  /// An estimate of the number of documents processed.
+  GoogleFirestoreAdminV1beta1Progress progressDocuments;
+
+  /// The time that work began on the operation.
+  core.String startTime;
+
+  GoogleFirestoreAdminV1beta1ExportDocumentsMetadata();
+
+  GoogleFirestoreAdminV1beta1ExportDocumentsMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("collectionIds")) {
+      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("operationState")) {
+      operationState = _json["operationState"];
+    }
+    if (_json.containsKey("outputUriPrefix")) {
+      outputUriPrefix = _json["outputUriPrefix"];
+    }
+    if (_json.containsKey("progressBytes")) {
+      progressBytes = new GoogleFirestoreAdminV1beta1Progress.fromJson(
+          _json["progressBytes"]);
+    }
+    if (_json.containsKey("progressDocuments")) {
+      progressDocuments = new GoogleFirestoreAdminV1beta1Progress.fromJson(
+          _json["progressDocuments"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (collectionIds != null) {
+      _json["collectionIds"] = collectionIds;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (operationState != null) {
+      _json["operationState"] = operationState;
+    }
+    if (outputUriPrefix != null) {
+      _json["outputUriPrefix"] = outputUriPrefix;
+    }
+    if (progressBytes != null) {
+      _json["progressBytes"] = (progressBytes).toJson();
+    }
+    if (progressDocuments != null) {
+      _json["progressDocuments"] = (progressDocuments).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// The request for FirestoreAdmin.ExportDocuments.
+class GoogleFirestoreAdminV1beta1ExportDocumentsRequest {
+  /// Which collection ids to export. Unspecified means all collections.
+  core.List<core.String> collectionIds;
+
+  /// The output URI. Currently only supports Google Cloud Storage URIs of the
+  /// form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name
+  /// of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional
+  /// Google Cloud Storage namespace path. When
+  /// choosing a name, be sure to consider Google Cloud Storage naming
+  /// guidelines: https://cloud.google.com/storage/docs/naming.
+  /// If the URI is a bucket (without a namespace path), a prefix will be
+  /// generated based on the start time.
+  core.String outputUriPrefix;
+
+  GoogleFirestoreAdminV1beta1ExportDocumentsRequest();
+
+  GoogleFirestoreAdminV1beta1ExportDocumentsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("collectionIds")) {
+      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("outputUriPrefix")) {
+      outputUriPrefix = _json["outputUriPrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (collectionIds != null) {
+      _json["collectionIds"] = collectionIds;
+    }
+    if (outputUriPrefix != null) {
+      _json["outputUriPrefix"] = outputUriPrefix;
+    }
+    return _json;
+  }
+}
+
+/// Returned in the google.longrunning.Operation response field.
+class GoogleFirestoreAdminV1beta1ExportDocumentsResponse {
+  /// Location of the output files. This can be used to begin an import
+  /// into Cloud Firestore (this project or another project) after the operation
+  /// completes successfully.
+  core.String outputUriPrefix;
+
+  GoogleFirestoreAdminV1beta1ExportDocumentsResponse();
+
+  GoogleFirestoreAdminV1beta1ExportDocumentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("outputUriPrefix")) {
+      outputUriPrefix = _json["outputUriPrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (outputUriPrefix != null) {
+      _json["outputUriPrefix"] = outputUriPrefix;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for ImportDocuments operations.
+class GoogleFirestoreAdminV1beta1ImportDocumentsMetadata {
+  /// Which collection ids are being imported.
+  core.List<core.String> collectionIds;
+
+  /// The time the operation ended, either successfully or otherwise. Unset if
+  /// the operation is still active.
+  core.String endTime;
+
+  /// The location of the documents being imported.
+  core.String inputUriPrefix;
+
+  /// The state of the import operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "INITIALIZING" : Request is being prepared for processing.
+  /// - "PROCESSING" : Request is actively being processed.
+  /// - "CANCELLING" : Request is in the process of being cancelled after user
+  /// called
+  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// - "FINALIZING" : Request has been processed and is in its finalization
+  /// stage.
+  /// - "SUCCESSFUL" : Request has completed successfully.
+  /// - "FAILED" : Request has finished being processed, but encountered an
+  /// error.
+  /// - "CANCELLED" : Request has finished being cancelled after user called
+  /// google.longrunning.Operations.CancelOperation.
+  core.String operationState;
+
+  /// An estimate of the number of bytes processed.
+  GoogleFirestoreAdminV1beta1Progress progressBytes;
+
+  /// An estimate of the number of documents processed.
+  GoogleFirestoreAdminV1beta1Progress progressDocuments;
+
+  /// The time that work began on the operation.
+  core.String startTime;
+
+  GoogleFirestoreAdminV1beta1ImportDocumentsMetadata();
+
+  GoogleFirestoreAdminV1beta1ImportDocumentsMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("collectionIds")) {
+      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("inputUriPrefix")) {
+      inputUriPrefix = _json["inputUriPrefix"];
+    }
+    if (_json.containsKey("operationState")) {
+      operationState = _json["operationState"];
+    }
+    if (_json.containsKey("progressBytes")) {
+      progressBytes = new GoogleFirestoreAdminV1beta1Progress.fromJson(
+          _json["progressBytes"]);
+    }
+    if (_json.containsKey("progressDocuments")) {
+      progressDocuments = new GoogleFirestoreAdminV1beta1Progress.fromJson(
+          _json["progressDocuments"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (collectionIds != null) {
+      _json["collectionIds"] = collectionIds;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (inputUriPrefix != null) {
+      _json["inputUriPrefix"] = inputUriPrefix;
+    }
+    if (operationState != null) {
+      _json["operationState"] = operationState;
+    }
+    if (progressBytes != null) {
+      _json["progressBytes"] = (progressBytes).toJson();
+    }
+    if (progressDocuments != null) {
+      _json["progressDocuments"] = (progressDocuments).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// The request for FirestoreAdmin.ImportDocuments.
+class GoogleFirestoreAdminV1beta1ImportDocumentsRequest {
+  /// Which collection ids to import. Unspecified means all collections included
+  /// in the import.
+  core.List<core.String> collectionIds;
+
+  /// Location of the exported files.
+  /// This must match the output_uri_prefix of an ExportDocumentsResponse from
+  /// an export that has completed successfully.
+  /// See:
+  /// google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix.
+  core.String inputUriPrefix;
+
+  GoogleFirestoreAdminV1beta1ImportDocumentsRequest();
+
+  GoogleFirestoreAdminV1beta1ImportDocumentsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("collectionIds")) {
+      collectionIds = (_json["collectionIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("inputUriPrefix")) {
+      inputUriPrefix = _json["inputUriPrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (collectionIds != null) {
+      _json["collectionIds"] = collectionIds;
+    }
+    if (inputUriPrefix != null) {
+      _json["inputUriPrefix"] = inputUriPrefix;
+    }
+    return _json;
+  }
+}
+
 /// An index definition.
-class Index {
+class GoogleFirestoreAdminV1beta1Index {
   /// The collection ID to which this index applies. Required.
   core.String collectionId;
 
   /// The fields to index.
-  core.List<IndexField> fields;
+  core.List<GoogleFirestoreAdminV1beta1IndexField> fields;
 
   /// The resource name of the index.
   /// Output only.
@@ -2116,15 +2572,16 @@ class Index {
   /// Some index data may exist.
   core.String state;
 
-  Index();
+  GoogleFirestoreAdminV1beta1Index();
 
-  Index.fromJson(core.Map _json) {
+  GoogleFirestoreAdminV1beta1Index.fromJson(core.Map _json) {
     if (_json.containsKey("collectionId")) {
       collectionId = _json["collectionId"];
     }
     if (_json.containsKey("fields")) {
       fields = (_json["fields"] as core.List)
-          .map<IndexField>((value) => new IndexField.fromJson(value))
+          .map<GoogleFirestoreAdminV1beta1IndexField>((value) =>
+              new GoogleFirestoreAdminV1beta1IndexField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -2155,7 +2612,7 @@ class Index {
 }
 
 /// A field of an index.
-class IndexField {
+class GoogleFirestoreAdminV1beta1IndexField {
   /// The path of the field. Must match the field path specification described
   /// by google.firestore.v1beta1.Document.fields.
   /// Special field path `__name__` may be used by itself or at the end of a
@@ -2171,11 +2628,14 @@ class IndexField {
   /// - "DESCENDING" : The field's values are indexed so as to support
   /// sequencing in
   /// descending order and also query by <, >, <=, >=, and =.
+  /// - "ARRAY_CONTAINS" : The field's array values are indexed so as to support
+  /// membership using
+  /// ARRAY_CONTAINS queries.
   core.String mode;
 
-  IndexField();
+  GoogleFirestoreAdminV1beta1IndexField();
 
-  IndexField.fromJson(core.Map _json) {
+  GoogleFirestoreAdminV1beta1IndexField.fromJson(core.Map _json) {
     if (_json.containsKey("fieldPath")) {
       fieldPath = _json["fieldPath"];
     }
@@ -2192,6 +2652,249 @@ class IndexField {
     }
     if (mode != null) {
       _json["mode"] = mode;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for index operations. This metadata populates
+/// the metadata field of google.longrunning.Operation.
+class GoogleFirestoreAdminV1beta1IndexOperationMetadata {
+  /// True if the [google.longrunning.Operation] was cancelled. If the
+  /// cancellation is in progress, cancelled will be true but
+  /// google.longrunning.Operation.done will be false.
+  core.bool cancelled;
+
+  /// Progress of the existing operation, measured in number of documents.
+  GoogleFirestoreAdminV1beta1Progress documentProgress;
+
+  /// The time the operation ended, either successfully or otherwise. Unset if
+  /// the operation is still active.
+  core.String endTime;
+
+  /// The index resource that this operation is acting on. For example:
+  /// `projects/{project_id}/databases/{database_id}/indexes/{index_id}`
+  core.String index;
+
+  /// The type of index operation.
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified. Never set by server.
+  /// - "CREATING_INDEX" : The operation is creating the index. Initiated by a
+  /// `CreateIndex` call.
+  core.String operationType;
+
+  /// The time that work began on the operation.
+  core.String startTime;
+
+  GoogleFirestoreAdminV1beta1IndexOperationMetadata();
+
+  GoogleFirestoreAdminV1beta1IndexOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("cancelled")) {
+      cancelled = _json["cancelled"];
+    }
+    if (_json.containsKey("documentProgress")) {
+      documentProgress = new GoogleFirestoreAdminV1beta1Progress.fromJson(
+          _json["documentProgress"]);
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cancelled != null) {
+      _json["cancelled"] = cancelled;
+    }
+    if (documentProgress != null) {
+      _json["documentProgress"] = (documentProgress).toJson();
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// The response for FirestoreAdmin.ListIndexes.
+class GoogleFirestoreAdminV1beta1ListIndexesResponse {
+  /// The indexes.
+  core.List<GoogleFirestoreAdminV1beta1Index> indexes;
+
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  GoogleFirestoreAdminV1beta1ListIndexesResponse();
+
+  GoogleFirestoreAdminV1beta1ListIndexesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("indexes")) {
+      indexes = (_json["indexes"] as core.List)
+          .map<GoogleFirestoreAdminV1beta1Index>(
+              (value) => new GoogleFirestoreAdminV1beta1Index.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (indexes != null) {
+      _json["indexes"] = indexes.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The metadata message for google.cloud.location.Location.metadata.
+class GoogleFirestoreAdminV1beta1LocationMetadata {
+  GoogleFirestoreAdminV1beta1LocationMetadata();
+
+  GoogleFirestoreAdminV1beta1LocationMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Measures the progress of a particular metric.
+class GoogleFirestoreAdminV1beta1Progress {
+  /// An estimate of how much work has been completed. Note that this may be
+  /// greater than `work_estimated`.
+  core.String workCompleted;
+
+  /// An estimate of how much work needs to be performed. Zero if the
+  /// work estimate is unavailable. May change as work progresses.
+  core.String workEstimated;
+
+  GoogleFirestoreAdminV1beta1Progress();
+
+  GoogleFirestoreAdminV1beta1Progress.fromJson(core.Map _json) {
+    if (_json.containsKey("workCompleted")) {
+      workCompleted = _json["workCompleted"];
+    }
+    if (_json.containsKey("workEstimated")) {
+      workEstimated = _json["workEstimated"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (workCompleted != null) {
+      _json["workCompleted"] = workCompleted;
+    }
+    if (workEstimated != null) {
+      _json["workEstimated"] = workEstimated;
+    }
+    return _json;
+  }
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class GoogleLongrunningOperation {
+  /// If the value is `false`, it means the operation is still in progress.
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status error;
+
+  /// Service-specific metadata associated with the operation.  It typically
+  /// contains progress information and common metadata such as create time.
+  /// Some services might not provide such metadata.  Any method that returns a
+  /// long-running operation should document the metadata type, if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that
+  /// originally returns it. If you use the default HTTP mapping, the
+  /// `name` should have the format of `operations/some/unique/name`.
+  core.String name;
+
+  /// The normal response of the operation in case of success.  If the original
+  /// method returns no data on success, such as `Delete`, the response is
+  /// `google.protobuf.Empty`.  If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx`
+  /// is the original method name.  For example, if the original method name
+  /// is `TakeSnapshot()`, the inferred response type is
+  /// `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> response;
+
+  GoogleLongrunningOperation();
+
+  GoogleLongrunningOperation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
     }
     return _json;
   }
@@ -2333,40 +3036,6 @@ class ListDocumentsResponse {
   }
 }
 
-/// The response for FirestoreAdmin.ListIndexes.
-class ListIndexesResponse {
-  /// The indexes.
-  core.List<Index> indexes;
-
-  /// The standard List next-page token.
-  core.String nextPageToken;
-
-  ListIndexesResponse();
-
-  ListIndexesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("indexes")) {
-      indexes = (_json["indexes"] as core.List)
-          .map<Index>((value) => new Index.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (indexes != null) {
-      _json["indexes"] = indexes.map((value) => (value).toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
 /// A request for Firestore.Listen
 class ListenRequest {
   /// A target to add to this stream.
@@ -2500,89 +3169,6 @@ class MapValue {
       _json["fields"] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
               fields, (Value item) => (item).toJson());
-    }
-    return _json;
-  }
-}
-
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
-class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
-  core.bool done;
-
-  /// The error result of the operation in case of failure or cancellation.
-  Status error;
-
-  /// Service-specific metadata associated with the operation.  It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
-  /// long-running operation should document the metadata type, if any.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
-  core.String name;
-
-  /// The normal response of the operation in case of success.  If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
-
-  Operation();
-
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey("done")) {
-      done = _json["done"];
-    }
-    if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
-    }
-    if (_json.containsKey("metadata")) {
-      metadata =
-          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("response")) {
-      response =
-          (_json["response"] as core.Map).cast<core.String, core.Object>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (done != null) {
-      _json["done"] = done;
-    }
-    if (error != null) {
-      _json["error"] = (error).toJson();
-    }
-    if (metadata != null) {
-      _json["metadata"] = metadata;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (response != null) {
-      _json["response"] = response;
     }
     return _json;
   }

@@ -16,13 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client script/v1';
 
-/// An API for managing and executing Google Apps Script projects. <aside
-/// class="note"><b>Note</b>: In order to use this API in your apps, you must <a
-/// href="/apps-script/api/how-tos/enable#using_the_apps_script_api_in_your_app">
-/// enable it for use</a>. To allow other apps to manage your scripts, you must
-/// <a
-/// href="/apps-script/api/how-tos/enable#granting_third-party_applications_access_to_your_script_projects">
-/// grant them access</a>.</aside>
+/// An API for managing and executing Google Apps Script projects.
 class ScriptApi {
   /// Read, send, delete, and manage your email
   static const MailGoogleComScope = "https://mail.google.com/";
@@ -41,6 +35,9 @@ class ScriptApi {
   /// View and manage the provisioning of users on your domain
   static const AdminDirectoryUserScope =
       "https://www.googleapis.com/auth/admin.directory.user";
+
+  /// View and manage your Google Docs documents
+  static const DocumentsScope = "https://www.googleapis.com/auth/documents";
 
   /// View and manage the files in your Google Drive
   static const DriveScope = "https://www.googleapis.com/auth/drive";
@@ -223,13 +220,25 @@ class ProcessesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [scriptProcessFilter_functionName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// a script function with the given function name.
+  /// [scriptProcessFilter_endTime] - Optional field used to limit returned
+  /// processes to those that completed
+  /// on or before the given timestamp.
+  ///
+  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
+  /// returned processes to those having one of
+  /// the specified user access levels.
+  ///
+  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process statuses.
   ///
   /// [scriptProcessFilter_startTime] - Optional field used to limit returned
   /// processes to those that were
   /// started on or after the given timestamp.
+  ///
+  /// [scriptProcessFilter_functionName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// a script function with the given function name.
   ///
   /// [scriptProcessFilter_deploymentId] - Optional field used to limit returned
   /// processes to those originating from
@@ -249,18 +258,6 @@ class ProcessesResourceApi {
   /// Defaults to
   /// 50.
   ///
-  /// [scriptProcessFilter_endTime] - Optional field used to limit returned
-  /// processes to those that completed
-  /// on or before the given timestamp.
-  ///
-  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
-  /// returned processes to those having one of
-  /// the specified user access levels.
-  ///
-  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process statuses.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -272,16 +269,16 @@ class ProcessesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScriptProcessesResponse> listScriptProcesses(
-      {core.String scriptProcessFilter_functionName,
+      {core.String scriptProcessFilter_endTime,
+      core.List<core.String> scriptProcessFilter_userAccessLevels,
+      core.List<core.String> scriptProcessFilter_statuses,
       core.String scriptProcessFilter_startTime,
+      core.String scriptProcessFilter_functionName,
       core.String scriptProcessFilter_deploymentId,
       core.String scriptId,
       core.List<core.String> scriptProcessFilter_types,
       core.String pageToken,
       core.int pageSize,
-      core.String scriptProcessFilter_endTime,
-      core.List<core.String> scriptProcessFilter_userAccessLevels,
-      core.List<core.String> scriptProcessFilter_statuses,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -290,14 +287,27 @@ class ProcessesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (scriptProcessFilter_functionName != null) {
-      _queryParams["scriptProcessFilter.functionName"] = [
-        scriptProcessFilter_functionName
+    if (scriptProcessFilter_endTime != null) {
+      _queryParams["scriptProcessFilter.endTime"] = [
+        scriptProcessFilter_endTime
       ];
+    }
+    if (scriptProcessFilter_userAccessLevels != null) {
+      _queryParams["scriptProcessFilter.userAccessLevels"] =
+          scriptProcessFilter_userAccessLevels;
+    }
+    if (scriptProcessFilter_statuses != null) {
+      _queryParams["scriptProcessFilter.statuses"] =
+          scriptProcessFilter_statuses;
     }
     if (scriptProcessFilter_startTime != null) {
       _queryParams["scriptProcessFilter.startTime"] = [
         scriptProcessFilter_startTime
+      ];
+    }
+    if (scriptProcessFilter_functionName != null) {
+      _queryParams["scriptProcessFilter.functionName"] = [
+        scriptProcessFilter_functionName
       ];
     }
     if (scriptProcessFilter_deploymentId != null) {
@@ -316,19 +326,6 @@ class ProcessesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (scriptProcessFilter_endTime != null) {
-      _queryParams["scriptProcessFilter.endTime"] = [
-        scriptProcessFilter_endTime
-      ];
-    }
-    if (scriptProcessFilter_userAccessLevels != null) {
-      _queryParams["scriptProcessFilter.userAccessLevels"] =
-          scriptProcessFilter_userAccessLevels;
-    }
-    if (scriptProcessFilter_statuses != null) {
-      _queryParams["scriptProcessFilter.statuses"] =
-          scriptProcessFilter_statuses;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -780,12 +777,12 @@ class ProjectsDeploymentsResourceApi {
   ///
   /// [scriptId] - The script project's Drive ID.
   ///
+  /// [pageSize] - The maximum number of deployments on each returned page.
+  /// Defaults to 50.
+  ///
   /// [pageToken] - The token for continuing a previous list request on the next
   /// page. This
   /// should be set to the value of `nextPageToken` from a previous response.
-  ///
-  /// [pageSize] - The maximum number of deployments on each returned page.
-  /// Defaults to 50.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -798,7 +795,7 @@ class ProjectsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDeploymentsResponse> list(core.String scriptId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -809,11 +806,11 @@ class ProjectsDeploymentsResourceApi {
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1204,12 +1201,6 @@ class Deployment {
   /// The deployment's entry points.
   core.List<EntryPoint> entryPoints;
 
-  /// Script's defined set of functions.
-  GoogleAppsScriptTypeFunctionSet functionSet;
-
-  /// Set of scopes required by the deployment.
-  GoogleAppsScriptTypeScopeSet scopeSet;
-
   /// Last modified date time stamp.
   core.String updateTime;
 
@@ -1228,13 +1219,6 @@ class Deployment {
           .map<EntryPoint>((value) => new EntryPoint.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("functionSet")) {
-      functionSet =
-          new GoogleAppsScriptTypeFunctionSet.fromJson(_json["functionSet"]);
-    }
-    if (_json.containsKey("scopeSet")) {
-      scopeSet = new GoogleAppsScriptTypeScopeSet.fromJson(_json["scopeSet"]);
-    }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
@@ -1252,12 +1236,6 @@ class Deployment {
     if (entryPoints != null) {
       _json["entryPoints"] =
           entryPoints.map((value) => (value).toJson()).toList();
-    }
-    if (functionSet != null) {
-      _json["functionSet"] = (functionSet).toJson();
-    }
-    if (scopeSet != null) {
-      _json["scopeSet"] = (scopeSet).toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -1839,7 +1817,7 @@ class GoogleAppsScriptTypeFunctionSet {
 /// Representation of a single script process execution that was started from
 /// the script editor, a trigger, an application, or using the Apps Script API.
 /// This is distinct from the `Operation`
-/// resource, which only represents exeuctions started via the Apps Script API.
+/// resource, which only represents executions started via the Apps Script API.
 class GoogleAppsScriptTypeProcess {
   /// Duration the execution spent executing.
   core.String duration;
@@ -1872,8 +1850,9 @@ class GoogleAppsScriptTypeProcess {
   /// - "TRIGGER" : The process was started from an event-based trigger.
   /// - "WEBAPP" : The process was started from a web app entry point.
   /// - "EDITOR" : The process was started using the Apps Script IDE.
-  /// - "SIMPLE_TRIGGER" : The process was started from a GSuite simple trigger.
-  /// - "MENU" : The process was started from a GSuite menu item.
+  /// - "SIMPLE_TRIGGER" : The process was started from a G Suite simple
+  /// trigger.
+  /// - "MENU" : The process was started from a G Suite menu item.
   core.String processType;
 
   /// Name of the script being executed.
@@ -1946,68 +1925,6 @@ class GoogleAppsScriptTypeProcess {
     }
     if (userAccessLevel != null) {
       _json["userAccessLevel"] = userAccessLevel;
-    }
-    return _json;
-  }
-}
-
-/// Represents an authorization scope.
-class GoogleAppsScriptTypeScope {
-  /// Who authorized the scope.
-  /// Possible string values are:
-  /// - "SCOPE_AUTHORIZER_UNSPECIFIED" : Authorizer unspecified.
-  /// - "AUTHORIZED_BY_DEVELOPER" : Developer authorized scope.
-  /// - "AUTHORIZED_BY_END_USER" : End user authorized scope.
-  core.String authorizer;
-
-  /// The scope's identifying string.
-  core.String name;
-
-  GoogleAppsScriptTypeScope();
-
-  GoogleAppsScriptTypeScope.fromJson(core.Map _json) {
-    if (_json.containsKey("authorizer")) {
-      authorizer = _json["authorizer"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (authorizer != null) {
-      _json["authorizer"] = authorizer;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
-/// A set of scopes. No duplicates are permitted.
-class GoogleAppsScriptTypeScopeSet {
-  /// List of scope values in the set.
-  core.List<GoogleAppsScriptTypeScope> values;
-
-  GoogleAppsScriptTypeScopeSet();
-
-  GoogleAppsScriptTypeScopeSet.fromJson(core.Map _json) {
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List)
-          .map<GoogleAppsScriptTypeScope>(
-              (value) => new GoogleAppsScriptTypeScope.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

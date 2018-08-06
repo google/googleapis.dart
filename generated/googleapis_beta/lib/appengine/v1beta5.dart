@@ -586,9 +586,9 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `name`. Name of the resource requested. Example:
   /// apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -601,7 +601,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -612,11 +612,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -922,14 +922,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -943,9 +943,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -960,14 +960,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2057,6 +2057,10 @@ class EndpointsApiService {
   /// RolloutStrategy.MANAGED and omit config_id.
   core.String configId;
 
+  /// Enable or disable trace sampling. By default, this is set to false for
+  /// enabled.
+  core.bool disableTraceSampling;
+
   /// Endpoints service name which is the name of the "service" resource in the
   /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
   core.String name;
@@ -2077,6 +2081,9 @@ class EndpointsApiService {
     if (_json.containsKey("configId")) {
       configId = _json["configId"];
     }
+    if (_json.containsKey("disableTraceSampling")) {
+      disableTraceSampling = _json["disableTraceSampling"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2090,6 +2097,9 @@ class EndpointsApiService {
         new core.Map<core.String, core.Object>();
     if (configId != null) {
       _json["configId"] = configId;
+    }
+    if (disableTraceSampling != null) {
+      _json["disableTraceSampling"] = disableTraceSampling;
     }
     if (name != null) {
       _json["name"] = name;

@@ -639,6 +639,9 @@ class AuditLog {
   /// Metadata about the operation.
   RequestMetadata requestMetadata;
 
+  /// The resource location information.
+  ResourceLocation resourceLocation;
+
   /// The resource or collection that is the target of the operation.
   /// The name is a scheme-less URI, not including the API service name.
   /// For example:
@@ -702,6 +705,10 @@ class AuditLog {
     if (_json.containsKey("requestMetadata")) {
       requestMetadata = new RequestMetadata.fromJson(_json["requestMetadata"]);
     }
+    if (_json.containsKey("resourceLocation")) {
+      resourceLocation =
+          new ResourceLocation.fromJson(_json["resourceLocation"]);
+    }
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
     }
@@ -746,6 +753,9 @@ class AuditLog {
     if (requestMetadata != null) {
       _json["requestMetadata"] = (requestMetadata).toJson();
     }
+    if (resourceLocation != null) {
+      _json["resourceLocation"] = (resourceLocation).toJson();
+    }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
     }
@@ -760,6 +770,110 @@ class AuditLog {
     }
     if (status != null) {
       _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// This message defines request authentication attributes. Terminology is
+/// based on the JSON Web Token (JWT) standard, but the terms also
+/// correlate to concepts in other standards.
+class Auth {
+  /// A list of access level resource names that allow resources to be
+  /// accessed by authenticated requester. It is part of Secure GCP processing
+  /// for the incoming request. An access level string has the format:
+  /// "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}"
+  ///
+  /// Example:
+  /// "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"
+  core.List<core.String> accessLevels;
+
+  /// The intended audience(s) for this authentication information. Reflects
+  /// the audience (`aud`) claim within a JWT. The audience
+  /// value(s) depends on the `issuer`, but typically include one or more of
+  /// the following pieces of information:
+  ///
+  /// *  The services intended to receive the credential such as
+  ///    ["pubsub.googleapis.com", "storage.googleapis.com"]
+  /// *  A set of service-based scopes. For example,
+  ///    ["https://www.googleapis.com/auth/cloud-platform"]
+  /// *  The client id of an app, such as the Firebase project id for JWTs
+  ///    from Firebase Auth.
+  ///
+  /// Consult the documentation for the credential issuer to determine the
+  /// information provided.
+  core.List<core.String> audiences;
+
+  /// Structured claims presented with the credential. JWTs include
+  /// `{key: value}` pairs for standard and private claims. The following
+  /// is a subset of the standard required and optional claims that would
+  /// typically be presented for a Google-based JWT:
+  ///
+  ///    {'iss': 'accounts.google.com',
+  ///     'sub': '113289723416554971153',
+  ///     'aud': ['123456789012', 'pubsub.googleapis.com'],
+  ///     'azp': '123456789012.apps.googleusercontent.com',
+  ///     'email': 'jsmith@example.com',
+  ///     'iat': 1353601026,
+  ///     'exp': 1353604926}
+  ///
+  /// SAML assertions are similarly specified, but with an identity provider
+  /// dependent structure.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> claims;
+
+  /// The authorized presenter of the credential. Reflects the optional
+  /// Authorized Presenter (`azp`) claim within a JWT or the
+  /// OAuth client id. For example, a Google Cloud Platform client id looks
+  /// as follows: "123456789012.apps.googleusercontent.com".
+  core.String presenter;
+
+  /// The authenticated principal. Reflects the issuer (`iss`) and subject
+  /// (`sub`) claims within a JWT. The issuer and subject should be `/`
+  /// delimited, with `/` percent-encoded within the subject fragment. For
+  /// Google accounts, the principal format is:
+  /// "https://accounts.google.com/{id}"
+  core.String principal;
+
+  Auth();
+
+  Auth.fromJson(core.Map _json) {
+    if (_json.containsKey("accessLevels")) {
+      accessLevels = (_json["accessLevels"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("audiences")) {
+      audiences = (_json["audiences"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("claims")) {
+      claims = (_json["claims"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("presenter")) {
+      presenter = _json["presenter"];
+    }
+    if (_json.containsKey("principal")) {
+      principal = _json["principal"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accessLevels != null) {
+      _json["accessLevels"] = accessLevels;
+    }
+    if (audiences != null) {
+      _json["audiences"] = audiences;
+    }
+    if (claims != null) {
+      _json["claims"] = claims;
+    }
+    if (presenter != null) {
+      _json["presenter"] = presenter;
+    }
+    if (principal != null) {
+      _json["principal"] = principal;
     }
     return _json;
   }
@@ -831,6 +945,14 @@ class AuthorizationInfo {
   ///     bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
   core.String resource;
 
+  /// Resource attributes used in IAM condition evaluation. This field contains
+  /// resource attributes like resource type and resource name.
+  ///
+  /// To get the whole view of the attributes used in IAM
+  /// condition evaluation, the user must also look into
+  /// `AuditLog.request_metadata.request_attributes`.
+  Resource resourceAttributes;
+
   AuthorizationInfo();
 
   AuthorizationInfo.fromJson(core.Map _json) {
@@ -842,6 +964,9 @@ class AuthorizationInfo {
     }
     if (_json.containsKey("resource")) {
       resource = _json["resource"];
+    }
+    if (_json.containsKey("resourceAttributes")) {
+      resourceAttributes = new Resource.fromJson(_json["resourceAttributes"]);
     }
   }
 
@@ -856,6 +981,9 @@ class AuthorizationInfo {
     }
     if (resource != null) {
       _json["resource"] = resource;
+    }
+    if (resourceAttributes != null) {
+      _json["resourceAttributes"] = (resourceAttributes).toJson();
     }
     return _json;
   }
@@ -1535,6 +1663,10 @@ class LogEntry {
   /// `"book_log"`.
   core.String name;
 
+  /// Optional. Information about an operation associated with the log entry, if
+  /// applicable.
+  LogEntryOperation operation;
+
   /// The log entry payload, represented as a protocol buffer that is
   /// expressed as a JSON object. The only accepted type currently is
   /// AuditLog.
@@ -1587,6 +1719,9 @@ class LogEntry {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("operation")) {
+      operation = new LogEntryOperation.fromJson(_json["operation"]);
+    }
     if (_json.containsKey("protoPayload")) {
       protoPayload =
           (_json["protoPayload"] as core.Map).cast<core.String, core.Object>();
@@ -1618,6 +1753,9 @@ class LogEntry {
     if (name != null) {
       _json["name"] = name;
     }
+    if (operation != null) {
+      _json["operation"] = (operation).toJson();
+    }
     if (protoPayload != null) {
       _json["protoPayload"] = protoPayload;
     }
@@ -1632,6 +1770,61 @@ class LogEntry {
     }
     if (timestamp != null) {
       _json["timestamp"] = timestamp;
+    }
+    return _json;
+  }
+}
+
+/// Additional information about a potentially long-running operation with which
+/// a log entry is associated.
+class LogEntryOperation {
+  /// Optional. Set this to True if this is the first log entry in the
+  /// operation.
+  core.bool first;
+
+  /// Optional. An arbitrary operation identifier. Log entries with the
+  /// same identifier are assumed to be part of the same operation.
+  core.String id;
+
+  /// Optional. Set this to True if this is the last log entry in the operation.
+  core.bool last;
+
+  /// Optional. An arbitrary producer identifier. The combination of
+  /// `id` and `producer` must be globally unique.  Examples for `producer`:
+  /// `"MyDivision.MyBigCompany.com"`, `"github.com/MyProject/MyApplication"`.
+  core.String producer;
+
+  LogEntryOperation();
+
+  LogEntryOperation.fromJson(core.Map _json) {
+    if (_json.containsKey("first")) {
+      first = _json["first"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("last")) {
+      last = _json["last"];
+    }
+    if (_json.containsKey("producer")) {
+      producer = _json["producer"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (first != null) {
+      _json["first"] = first;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (last != null) {
+      _json["last"] = last;
+    }
+    if (producer != null) {
+      _json["producer"] = producer;
     }
     return _json;
   }
@@ -2613,6 +2806,150 @@ class ReportResponse {
   }
 }
 
+/// This message defines attributes for an HTTP request. If the actual
+/// request is not an HTTP request, the runtime system should try to map
+/// the actual request to an equivalent HTTP request.
+class Request {
+  /// The request authentication. May be absent for unauthenticated requests.
+  /// Derived from the HTTP request `Authorization` header or equivalent.
+  Auth auth;
+
+  /// The HTTP URL fragment. No URL decoding is performed.
+  core.String fragment;
+
+  /// The HTTP request headers. If multiple headers share the same key, they
+  /// must be merged according to the HTTP spec. All header keys must be
+  /// lowercased, because HTTP header keys are case-insensitive.
+  core.Map<core.String, core.String> headers;
+
+  /// The HTTP request `Host` header value.
+  core.String host;
+
+  /// The unique ID for a request, which can be propagated to downstream
+  /// systems. The ID should have low probability of collision
+  /// within a single day for a specific service.
+  core.String id;
+
+  /// The HTTP request method, such as `GET`, `POST`.
+  core.String method;
+
+  /// The HTTP URL path.
+  core.String path;
+
+  /// The network protocol used with the request, such as "http/1.1",
+  /// "spdy/3", "h2", "h2c", "webrtc", "tcp", "udp", "quic". See
+  /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
+  /// for details.
+  core.String protocol;
+
+  /// The HTTP URL query in the format of `name1=value`&name2=value2`, as it
+  /// appears in the first line of the HTTP request. No decoding is performed.
+  core.String query;
+
+  /// A special parameter for request reason. It is used by security systems
+  /// to associate auditing information with a request.
+  core.String reason;
+
+  /// The HTTP URL scheme, such as `http` and `https`.
+  core.String scheme;
+
+  /// The HTTP request size in bytes. If unknown, it must be -1.
+  core.String size;
+
+  /// The timestamp when the `destination` service receives the first byte of
+  /// the request.
+  core.String time;
+
+  Request();
+
+  Request.fromJson(core.Map _json) {
+    if (_json.containsKey("auth")) {
+      auth = new Auth.fromJson(_json["auth"]);
+    }
+    if (_json.containsKey("fragment")) {
+      fragment = _json["fragment"];
+    }
+    if (_json.containsKey("headers")) {
+      headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("protocol")) {
+      protocol = _json["protocol"];
+    }
+    if (_json.containsKey("query")) {
+      query = _json["query"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("scheme")) {
+      scheme = _json["scheme"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auth != null) {
+      _json["auth"] = (auth).toJson();
+    }
+    if (fragment != null) {
+      _json["fragment"] = fragment;
+    }
+    if (headers != null) {
+      _json["headers"] = headers;
+    }
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (protocol != null) {
+      _json["protocol"] = protocol;
+    }
+    if (query != null) {
+      _json["query"] = query;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (scheme != null) {
+      _json["scheme"] = scheme;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    if (time != null) {
+      _json["time"] = time;
+    }
+    return _json;
+  }
+}
+
 /// Metadata about the request.
 class RequestMetadata {
   /// The IP address of the caller.
@@ -2649,6 +2986,15 @@ class RequestMetadata {
   /// NOLINT
   core.String callerSuppliedUserAgent;
 
+  /// Request attributes used in IAM condition evaluation. This field contains
+  /// request attributes like request time and access levels associated with
+  /// the request.
+  ///
+  /// To get the whole view of the attributes used in IAM
+  /// condition evaluation, the user must also look into
+  /// `AuditLog.authentication_info.resource_attributes`.
+  Request requestAttributes;
+
   RequestMetadata();
 
   RequestMetadata.fromJson(core.Map _json) {
@@ -2660,6 +3006,9 @@ class RequestMetadata {
     }
     if (_json.containsKey("callerSuppliedUserAgent")) {
       callerSuppliedUserAgent = _json["callerSuppliedUserAgent"];
+    }
+    if (_json.containsKey("requestAttributes")) {
+      requestAttributes = new Request.fromJson(_json["requestAttributes"]);
     }
   }
 
@@ -2675,6 +3024,76 @@ class RequestMetadata {
     if (callerSuppliedUserAgent != null) {
       _json["callerSuppliedUserAgent"] = callerSuppliedUserAgent;
     }
+    if (requestAttributes != null) {
+      _json["requestAttributes"] = (requestAttributes).toJson();
+    }
+    return _json;
+  }
+}
+
+/// This message defines core attributes for a resource. A resource is an
+/// addressable (named) entity provided by the destination service. For
+/// example, a file stored on a network storage service.
+class Resource {
+  /// The labels or tags on the resource, such as AWS resource tags and
+  /// Kubernetes resource labels.
+  core.Map<core.String, core.String> labels;
+
+  /// The stable identifier (name) of a resource on the `service`. A resource
+  /// can be logically identified as "//{resource.service}/{resource.name}".
+  /// The differences between a resource name and a URI are:
+  ///
+  /// *   Resource name is a logical identifier, independent of network
+  ///     protocol and API version. For example,
+  ///     `//pubsub.googleapis.com/projects/123/topics/news-feed`.
+  /// *   URI often includes protocol and version information, so it can
+  ///     be used directly by applications. For example,
+  ///     `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
+  ///
+  /// See https://cloud.google.com/apis/design/resource_names for details.
+  core.String name;
+
+  /// The name of the service that this resource belongs to, such as
+  /// `pubsub.googleapis.com`. The service may be different from the DNS
+  /// hostname that actually serves the request.
+  core.String service;
+
+  /// The type of the resource. The scheme is platform-specific because
+  /// different platforms define their resources differently.
+  core.String type;
+
+  Resource();
+
+  Resource.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
     return _json;
   }
 }
@@ -2688,6 +3107,11 @@ class ResourceInfo {
   ///     - “organizations/<organization-id>”
   core.String resourceContainer;
 
+  /// The location of the resource. If not empty, the resource will be checked
+  /// against location policy. The value must be a valid zone, region or
+  /// multiregion. For example: "europe-west4" or "northamerica-northeast1-a"
+  core.String resourceLocation;
+
   /// Name of the resource. This is used for auditing purposes.
   core.String resourceName;
 
@@ -2696,6 +3120,9 @@ class ResourceInfo {
   ResourceInfo.fromJson(core.Map _json) {
     if (_json.containsKey("resourceContainer")) {
       resourceContainer = _json["resourceContainer"];
+    }
+    if (_json.containsKey("resourceLocation")) {
+      resourceLocation = _json["resourceLocation"];
     }
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
@@ -2708,8 +3135,40 @@ class ResourceInfo {
     if (resourceContainer != null) {
       _json["resourceContainer"] = resourceContainer;
     }
+    if (resourceLocation != null) {
+      _json["resourceLocation"] = resourceLocation;
+    }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
+/// Location information about a resource.
+class ResourceLocation {
+  /// The locations of a resource after the execution of the operation.
+  /// For example:
+  ///
+  ///     "europe-west1-a"
+  ///     "us-east1"
+  ///     "nam3"
+  core.List<core.String> currentLocations;
+
+  ResourceLocation();
+
+  ResourceLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("currentLocations")) {
+      currentLocations =
+          (_json["currentLocations"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (currentLocations != null) {
+      _json["currentLocations"] = currentLocations;
     }
     return _json;
   }
