@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3226() {
+buildUnnamed2964() {
   var o = new core.List<api.Format>();
   o.add(buildFormat());
   o.add(buildFormat());
   return o;
 }
 
-checkUnnamed3226(core.List<api.Format> o) {
+checkUnnamed2964(core.List<api.Format> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFormat(o[0]);
   checkFormat(o[1]);
@@ -72,7 +72,7 @@ buildAsset() {
     o.createTime = "foo";
     o.description = "foo";
     o.displayName = "foo";
-    o.formats = buildUnnamed3226();
+    o.formats = buildUnnamed2964();
     o.isCurated = true;
     o.license = "foo";
     o.metadata = "foo";
@@ -93,7 +93,7 @@ checkAsset(api.Asset o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed3226(o.formats);
+    checkUnnamed2964(o.formats);
     unittest.expect(o.isCurated, unittest.isTrue);
     unittest.expect(o.license, unittest.equals('foo'));
     unittest.expect(o.metadata, unittest.equals('foo'));
@@ -154,14 +154,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed3227() {
+buildUnnamed2965() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed3227(core.List<api.File> o) {
+checkUnnamed2965(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -174,7 +174,7 @@ buildFormat() {
   if (buildCounterFormat < 3) {
     o.formatComplexity = buildFormatComplexity();
     o.formatType = "foo";
-    o.resources = buildUnnamed3227();
+    o.resources = buildUnnamed2965();
     o.root = buildFile();
   }
   buildCounterFormat--;
@@ -186,7 +186,7 @@ checkFormat(api.Format o) {
   if (buildCounterFormat < 3) {
     checkFormatComplexity(o.formatComplexity);
     unittest.expect(o.formatType, unittest.equals('foo'));
-    checkUnnamed3227(o.resources);
+    checkUnnamed2965(o.resources);
     checkFile(o.root);
   }
   buildCounterFormat--;
@@ -234,14 +234,14 @@ checkImageError(api.ImageError o) {
   buildCounterImageError--;
 }
 
-buildUnnamed3228() {
+buildUnnamed2966() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed3228(core.List<api.Asset> o) {
+checkUnnamed2966(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -252,7 +252,7 @@ buildListAssetsResponse() {
   var o = new api.ListAssetsResponse();
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
-    o.assets = buildUnnamed3228();
+    o.assets = buildUnnamed2966();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -263,21 +263,21 @@ buildListAssetsResponse() {
 checkListAssetsResponse(api.ListAssetsResponse o) {
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
-    checkUnnamed3228(o.assets);
+    checkUnnamed2966(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListAssetsResponse--;
 }
 
-buildUnnamed3229() {
+buildUnnamed2967() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed3229(core.List<api.Asset> o) {
+checkUnnamed2967(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -288,7 +288,7 @@ buildListLikedAssetsResponse() {
   var o = new api.ListLikedAssetsResponse();
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    o.assets = buildUnnamed3229();
+    o.assets = buildUnnamed2967();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -299,21 +299,21 @@ buildListLikedAssetsResponse() {
 checkListLikedAssetsResponse(api.ListLikedAssetsResponse o) {
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    checkUnnamed3229(o.assets);
+    checkUnnamed2967(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListLikedAssetsResponse--;
 }
 
-buildUnnamed3230() {
+buildUnnamed2968() {
   var o = new core.List<api.UserAsset>();
   o.add(buildUserAsset());
   o.add(buildUserAsset());
   return o;
 }
 
-checkUnnamed3230(core.List<api.UserAsset> o) {
+checkUnnamed2968(core.List<api.UserAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAsset(o[0]);
   checkUserAsset(o[1]);
@@ -326,7 +326,7 @@ buildListUserAssetsResponse() {
   if (buildCounterListUserAssetsResponse < 3) {
     o.nextPageToken = "foo";
     o.totalSize = 42;
-    o.userAssets = buildUnnamed3230();
+    o.userAssets = buildUnnamed2968();
   }
   buildCounterListUserAssetsResponse--;
   return o;
@@ -337,7 +337,7 @@ checkListUserAssetsResponse(api.ListUserAssetsResponse o) {
   if (buildCounterListUserAssetsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
-    checkUnnamed3230(o.userAssets);
+    checkUnnamed2968(o.userAssets);
   }
   buildCounterListUserAssetsResponse--;
 }
@@ -417,14 +417,14 @@ checkQuaternion(api.Quaternion o) {
   buildCounterQuaternion--;
 }
 
-buildUnnamed3231() {
+buildUnnamed2969() {
   var o = new core.List<api.AssetImportMessage>();
   o.add(buildAssetImportMessage());
   o.add(buildAssetImportMessage());
   return o;
 }
 
-checkUnnamed3231(core.List<api.AssetImportMessage> o) {
+checkUnnamed2969(core.List<api.AssetImportMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssetImportMessage(o[0]);
   checkAssetImportMessage(o[1]);
@@ -437,7 +437,7 @@ buildStartAssetImportResponse() {
   if (buildCounterStartAssetImportResponse < 3) {
     o.assetId = "foo";
     o.assetImportId = "foo";
-    o.assetImportMessages = buildUnnamed3231();
+    o.assetImportMessages = buildUnnamed2969();
     o.publishUrl = "foo";
   }
   buildCounterStartAssetImportResponse--;
@@ -449,7 +449,7 @@ checkStartAssetImportResponse(api.StartAssetImportResponse o) {
   if (buildCounterStartAssetImportResponse < 3) {
     unittest.expect(o.assetId, unittest.equals('foo'));
     unittest.expect(o.assetImportId, unittest.equals('foo'));
-    checkUnnamed3231(o.assetImportMessages);
+    checkUnnamed2969(o.assetImportMessages);
     unittest.expect(o.publishUrl, unittest.equals('foo'));
   }
   buildCounterStartAssetImportResponse--;

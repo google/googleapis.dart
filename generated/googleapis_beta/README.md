@@ -111,12 +111,6 @@ Manages the execution of large numbers of distributed requests. Cloud Tasks is i
 
 Official API documentation: https://cloud.google.com/cloud-tasks/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Composer API - composer v1beta1
-
-Manages Apache Airflow environments on Google Cloud Platform.
-
-Official API documentation: https://cloud.google.com/composer/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Dataflow API - dataflow v1b3
 
 Manages Google Cloud Dataflow projects on Google Cloud Platform.
@@ -184,12 +178,6 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Memorystore for Redis API - redis v1beta1
-
-The Google Cloud Memorystore for Redis API is used for creating and managing Redis instances on the Google Cloud Platform.
-
-Official API documentation: https://cloud.google.com/memorystore/docs/redis/
-
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Group Manager API - replicapool v1beta2
 
 [Deprecated. Please use Instance Group Manager in Compute API] Provides groups of homogenous Compute Engine instances.
@@ -238,12 +226,6 @@ Accesses a Google App Engine Pull Task Queue over REST.
 
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Text-to-Speech API - texttospeech v1beta1
-
-Synthesizes natural-sounding speech by applying powerful neural network models.
-
-Official API documentation: https://cloud.google.com/text-to-speech/
-
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
 
 Reads and publishes results from Firebase Test Lab.
@@ -255,10 +237,4 @@ Official API documentation: https://firebase.google.com/docs/test-lab/
 TPU API provides customers with access to Google TPU technology.
 
 Official API documentation: https://cloud.google.com/tpu/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Web Security Scanner API - websecurityscanner v1alpha
-
-Web Security Scanner API (under development).
-
-Official API documentation: https://cloud.google.com/security-scanner/
 
