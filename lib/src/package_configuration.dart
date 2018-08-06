@@ -126,8 +126,8 @@ class DiscoveryPackagesConfiguration {
 
     // Load discovery documents from disc & initialize this object.
     List<RestDescription> allApis = [];
-    yaml['packages'].forEach((Map package) {
-      package.forEach((name, _) {
+    (yaml['packages'] as List).forEach((package) {
+      (package as Map).forEach((name, _) {
         allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
       });
     });
@@ -204,7 +204,7 @@ package.
 
   static Map<String, Package> _packagesFromYaml(YamlList configPackages,
       String configFile, List<RestDescription> allApis) {
-    var packages = {};
+    var packages = <String, Package>{};
     configPackages.forEach((package) {
       package.forEach((name, values) {
         packages[name] = _packageFromYaml(name, values, configFile, allApis);
@@ -243,7 +243,7 @@ package.
     }
 
     // Generate package description.
-    var apiDescriptions = [];
+    var apiDescriptions = <RestDescription>[];
     var sb = new StringBuffer()
       ..write('"Auto-generated client libraries for accessing '
           'the following APIs:');
@@ -270,15 +270,16 @@ package.
     // Create package description with pubspec.yaml information.
     var pubspec = new Pubspec(name, version, sb.toString(),
         author: author, homepage: homepage);
-    return new Package(name, apis, pubspec, readme, license, changelog);
+    return new Package(
+        name, new List<String>.from(apis), pubspec, readme, license, changelog);
   }
 
   /// The known APIs are the APis mentioned in each package together with
   /// the APIs explicitly skipped.
   static Set<String> _calculateKnownApis(
       Map<String, Package> packages, YamlList skippedApis) {
-    var knownApis = new Set();
-    knownApis.addAll(skippedApis);
+    var knownApis = new Set<String>();
+    knownApis.addAll(skippedApis.cast<String>());
     packages.forEach((_, package) => knownApis.addAll(package.apis));
     return knownApis;
   }
