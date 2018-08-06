@@ -40,6 +40,8 @@ class DatastoreApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsIndexesResourceApi get indexes =>
+      new ProjectsIndexesResourceApi(_requester);
   ProjectsOperationsResourceApi get operations =>
       new ProjectsOperationsResourceApi(_requester);
 
@@ -522,6 +524,135 @@ class ProjectsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new RunQueryResponse.fromJson(data));
+  }
+}
+
+class ProjectsIndexesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsIndexesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets an index.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID against which to make the request.
+  ///
+  /// [indexId] - The resource ID of the index to get.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleDatastoreAdminV1Index].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleDatastoreAdminV1Index> get(
+      core.String projectId, core.String indexId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (indexId == null) {
+      throw new core.ArgumentError("Parameter indexId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/indexes/' +
+        commons.Escaper.ecapeVariable('$indexId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleDatastoreAdminV1Index.fromJson(data));
+  }
+
+  /// Lists the indexes that match the specified filters.  Datastore uses an
+  /// eventually consistent query to fetch the list of indexes and may
+  /// occasionally return stale results.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID against which to make the request.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of items to return.  If zero, then all
+  /// results will be
+  /// returned.
+  ///
+  /// [filter] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleDatastoreAdminV1ListIndexesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleDatastoreAdminV1ListIndexesResponse> list(
+      core.String projectId,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/indexes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GoogleDatastoreAdminV1ListIndexesResponse.fromJson(data));
   }
 }
 
@@ -1211,6 +1342,8 @@ class GoogleDatastoreAdminV1CommonMetadata {
   /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
   /// - "EXPORT_ENTITIES" : ExportEntities.
   /// - "IMPORT_ENTITIES" : ImportEntities.
+  /// - "CREATE_INDEX" : CreateIndex.
+  /// - "DELETE_INDEX" : DeleteIndex.
   core.String operationType;
 
   /// The time that work began on the operation.
@@ -1605,6 +1738,230 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+/// A minimal index definition.
+/// Next tag: 8
+class GoogleDatastoreAdminV1Index {
+  /// The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
+  /// Required.
+  /// Possible string values are:
+  /// - "ANCESTOR_MODE_UNSPECIFIED" : The ancestor mode is unspecified.
+  /// - "NONE" : Do not include the entity's ancestors in the index.
+  /// - "ALL_ANCESTORS" : Include all the entity's ancestors in the index.
+  core.String ancestor;
+
+  /// The resource ID of the index.
+  /// Output only.
+  core.String indexId;
+
+  /// The entity kind to which this index applies.
+  /// Required.
+  core.String kind;
+
+  /// Project ID.
+  /// Output only.
+  core.String projectId;
+
+  /// An ordered sequence of property names and their index attributes.
+  /// Required.
+  core.List<GoogleDatastoreAdminV1IndexedProperty> properties;
+
+  /// The state of the index.
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "CREATING" : The index is being created, and cannot be used by queries.
+  /// There is an active long-running operation for the index.
+  /// The index is updated when writing an entity.
+  /// Some index data may exist.
+  /// - "READY" : The index is ready to be used.
+  /// The index is updated when writing an entity.
+  /// The index is fully populated from all stored entities it applies to.
+  /// - "DELETING" : The index is being deleted, and cannot be used by queries.
+  /// There is an active long-running operation for the index.
+  /// The index is not updated when writing an entity.
+  /// Some index data may exist.
+  /// - "ERROR" : The index was being created or deleted, but something went
+  /// wrong.
+  /// The index cannot by used by queries.
+  /// There is no active long-running operation for the index,
+  /// and the most recently finished long-running operation failed.
+  /// The index is not updated when writing an entity.
+  /// Some index data may exist.
+  core.String state;
+
+  GoogleDatastoreAdminV1Index();
+
+  GoogleDatastoreAdminV1Index.fromJson(core.Map _json) {
+    if (_json.containsKey("ancestor")) {
+      ancestor = _json["ancestor"];
+    }
+    if (_json.containsKey("indexId")) {
+      indexId = _json["indexId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("properties")) {
+      properties = (_json["properties"] as core.List)
+          .map<GoogleDatastoreAdminV1IndexedProperty>((value) =>
+              new GoogleDatastoreAdminV1IndexedProperty.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ancestor != null) {
+      _json["ancestor"] = ancestor;
+    }
+    if (indexId != null) {
+      _json["indexId"] = indexId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (properties != null) {
+      _json["properties"] =
+          properties.map((value) => (value).toJson()).toList();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Metadata for Index operations.
+class GoogleDatastoreAdminV1IndexOperationMetadata {
+  /// Metadata common to all Datastore Admin operations.
+  GoogleDatastoreAdminV1CommonMetadata common;
+
+  /// The index resource ID that this operation is acting on.
+  core.String indexId;
+
+  /// An estimate of the number of entities processed.
+  GoogleDatastoreAdminV1Progress progressEntities;
+
+  GoogleDatastoreAdminV1IndexOperationMetadata();
+
+  GoogleDatastoreAdminV1IndexOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("common")) {
+      common =
+          new GoogleDatastoreAdminV1CommonMetadata.fromJson(_json["common"]);
+    }
+    if (_json.containsKey("indexId")) {
+      indexId = _json["indexId"];
+    }
+    if (_json.containsKey("progressEntities")) {
+      progressEntities = new GoogleDatastoreAdminV1Progress.fromJson(
+          _json["progressEntities"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (common != null) {
+      _json["common"] = (common).toJson();
+    }
+    if (indexId != null) {
+      _json["indexId"] = indexId;
+    }
+    if (progressEntities != null) {
+      _json["progressEntities"] = (progressEntities).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Next tag: 3
+class GoogleDatastoreAdminV1IndexedProperty {
+  /// The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
+  /// Required.
+  /// Possible string values are:
+  /// - "DIRECTION_UNSPECIFIED" : The direction is unspecified.
+  /// - "ASCENDING" : The property's values are indexed so as to support
+  /// sequencing in
+  /// ascending order and also query by <, >, <=, >=, and =.
+  /// - "DESCENDING" : The property's values are indexed so as to support
+  /// sequencing in
+  /// descending order and also query by <, >, <=, >=, and =.
+  core.String direction;
+
+  /// The property name to index.
+  /// Required.
+  core.String name;
+
+  GoogleDatastoreAdminV1IndexedProperty();
+
+  GoogleDatastoreAdminV1IndexedProperty.fromJson(core.Map _json) {
+    if (_json.containsKey("direction")) {
+      direction = _json["direction"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (direction != null) {
+      _json["direction"] = direction;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// The response for
+/// google.datastore.admin.v1.DatastoreAdmin.ListIndexes.
+class GoogleDatastoreAdminV1ListIndexesResponse {
+  /// The indexes.
+  core.List<GoogleDatastoreAdminV1Index> indexes;
+
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  GoogleDatastoreAdminV1ListIndexesResponse();
+
+  GoogleDatastoreAdminV1ListIndexesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("indexes")) {
+      indexes = (_json["indexes"] as core.List)
+          .map<GoogleDatastoreAdminV1Index>(
+              (value) => new GoogleDatastoreAdminV1Index.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (indexes != null) {
+      _json["indexes"] = indexes.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

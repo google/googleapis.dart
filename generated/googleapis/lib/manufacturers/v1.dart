@@ -205,12 +205,6 @@ class AccountsProductsResourceApi {
   /// `account_id` - The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [pageSize] - Maximum number of product statuses to return in the response,
-  /// used for
-  /// paging.
-  ///
   /// [include] - The information to be included in the response. Only sections
   /// listed here
   /// will be returned.
@@ -219,6 +213,12 @@ class AccountsProductsResourceApi {
   /// This behavior is temporary and will be removed once all clients are ready
   /// or at the latest end of July 2018. After that no sections will be
   /// returned.
+  ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [pageSize] - Maximum number of product statuses to return in the response,
+  /// used for
+  /// paging.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -231,9 +231,9 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> include,
+      core.String pageToken,
       core.int pageSize,
-      core.List<core.String> include,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -245,14 +245,14 @@ class AccountsProductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (include != null) {
+      _queryParams["include"] = include;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (include != null) {
-      _queryParams["include"] = include;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

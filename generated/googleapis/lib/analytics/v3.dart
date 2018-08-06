@@ -465,6 +465,8 @@ class ManagementResourceApi {
       new ManagementAccountUserLinksResourceApi(_requester);
   ManagementAccountsResourceApi get accounts =>
       new ManagementAccountsResourceApi(_requester);
+  ManagementClientIdResourceApi get clientId =>
+      new ManagementClientIdResourceApi(_requester);
   ManagementCustomDataSourcesResourceApi get customDataSources =>
       new ManagementCustomDataSourcesResourceApi(_requester);
   ManagementCustomDimensionsResourceApi get customDimensions =>
@@ -837,6 +839,56 @@ class ManagementAccountsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Accounts.fromJson(data));
+  }
+}
+
+class ManagementClientIdResourceApi {
+  final commons.ApiRequester _requester;
+
+  ManagementClientIdResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Hashes the given Client ID.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HashClientIdResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HashClientIdResponse> hashClientId(HashClientIdRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'management/clientId:hashClientId';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HashClientIdResponse.fromJson(data));
   }
 }
 
@@ -10586,6 +10638,85 @@ class Goals {
     }
     if (username != null) {
       _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for a hash Client Id request resource.
+class HashClientIdRequest {
+  core.String clientId;
+  core.String kind;
+  core.String webPropertyId;
+
+  HashClientIdRequest();
+
+  HashClientIdRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clientId")) {
+      clientId = _json["clientId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clientId != null) {
+      _json["clientId"] = clientId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for a hash Client Id response resource.
+class HashClientIdResponse {
+  core.String clientId;
+  core.String hashedClientId;
+  core.String kind;
+  core.String webPropertyId;
+
+  HashClientIdResponse();
+
+  HashClientIdResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("clientId")) {
+      clientId = _json["clientId"];
+    }
+    if (_json.containsKey("hashedClientId")) {
+      hashedClientId = _json["hashedClientId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clientId != null) {
+      _json["clientId"] = clientId;
+    }
+    if (hashedClientId != null) {
+      _json["hashedClientId"] = hashedClientId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
     }
     return _json;
   }

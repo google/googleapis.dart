@@ -31,34 +31,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -73,13 +52,18 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -93,6 +77,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -189,34 +178,6 @@
                 },
                 "instances": {
                     "methods": {
-                        "getIamPolicy": {
-                            "description": "Gets the access control policy for an instance resource. Returns an empty\npolicy if an instance exists but does not have a policy set.\n\nAuthorization requires `spanner.instances.getIamPolicy` on\nresource.",
-                            "httpMethod": "POST",
-                            "id": "spanner.projects.instances.getIamPolicy",
-                            "parameterOrder": [
-                                "resource"
-                            ],
-                            "parameters": {
-                                "resource": {
-                                    "description": "REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for database resources.",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/instances/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/{+resource}:getIamPolicy",
-                            "request": {
-                                "$ref": "GetIamPolicyRequest"
-                            },
-                            "response": {
-                                "$ref": "Policy"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/spanner.admin"
-                            ]
-                        },
                         "get": {
                             "description": "Gets information about a particular instance.",
                             "httpMethod": "GET",
@@ -364,6 +325,34 @@
                                 "https://www.googleapis.com/auth/spanner.admin"
                             ]
                         },
+                        "setIamPolicy": {
+                            "description": "Sets the access control policy on an instance resource. Replaces any\nexisting policy.\n\nAuthorization requires `spanner.instances.setIamPolicy` on\nresource.",
+                            "httpMethod": "POST",
+                            "id": "spanner.projects.instances.setIamPolicy",
+                            "parameterOrder": [
+                                "resource"
+                            ],
+                            "parameters": {
+                                "resource": {
+                                    "description": "REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for databases resources.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/instances/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+resource}:setIamPolicy",
+                            "request": {
+                                "$ref": "SetIamPolicyRequest"
+                            },
+                            "response": {
+                                "$ref": "Policy"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/spanner.admin"
+                            ]
+                        },
                         "create": {
                             "description": "Creates an instance and begins preparing it to begin serving. The\nreturned long-running operation\ncan be used to track the progress of preparing the new\ninstance. The instance name is assigned by the caller. If the\nnamed instance already exists, `CreateInstance` returns\n`ALREADY_EXISTS`.\n\nImmediately upon completion of this request:\n\n  * The instance is readable via the API, with all requested attributes\n    but no allocated resources. Its state is `CREATING`.\n\nUntil completion of the returned operation:\n\n  * Cancelling the operation renders the instance immediately unreadable\n    via the API.\n  * The instance can be deleted.\n  * All other attempts to modify the instance are rejected.\n\nUpon completion of the returned operation:\n\n  * Billing for all successfully-allocated resources begins (some types\n    may have lower than the requested levels).\n  * Databases can be created in the instance.\n  * The instance's allocated resource levels are readable via the API.\n  * The instance's state becomes `READY`.\n\nThe returned long-running operation will\nhave a name of the format `<instance_name>/operations/<operation_id>` and\ncan be used to track creation of the instance.  The\nmetadata field type is\nCreateInstanceMetadata.\nThe response field type is\nInstance, if successful.",
                             "httpMethod": "POST",
@@ -392,25 +381,25 @@
                                 "https://www.googleapis.com/auth/spanner.admin"
                             ]
                         },
-                        "setIamPolicy": {
-                            "description": "Sets the access control policy on an instance resource. Replaces any\nexisting policy.\n\nAuthorization requires `spanner.instances.setIamPolicy` on\nresource.",
+                        "getIamPolicy": {
+                            "description": "Gets the access control policy for an instance resource. Returns an empty\npolicy if an instance exists but does not have a policy set.\n\nAuthorization requires `spanner.instances.getIamPolicy` on\nresource.",
                             "httpMethod": "POST",
-                            "id": "spanner.projects.instances.setIamPolicy",
+                            "id": "spanner.projects.instances.getIamPolicy",
                             "parameterOrder": [
                                 "resource"
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for databases resources.",
+                                    "description": "REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for database resources.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/instances/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "v1/{+resource}:setIamPolicy",
+                            "path": "v1/{+resource}:getIamPolicy",
                             "request": {
-                                "$ref": "SetIamPolicyRequest"
+                                "$ref": "GetIamPolicyRequest"
                             },
                             "response": {
                                 "$ref": "Policy"
@@ -424,6 +413,90 @@
                     "resources": {
                         "databases": {
                             "methods": {
+                                "create": {
+                                    "description": "Creates a new Cloud Spanner database and starts to prepare it for serving.\nThe returned long-running operation will\nhave a name of the format `<database_name>/operations/<operation_id>` and\ncan be used to track preparation of the database. The\nmetadata field type is\nCreateDatabaseMetadata. The\nresponse field type is\nDatabase, if successful.",
+                                    "httpMethod": "POST",
+                                    "id": "spanner.projects.instances.databases.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The name of the instance that will serve the new database.\nValues are of the form `projects/<project>/instances/<instance>`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/databases",
+                                    "request": {
+                                        "$ref": "CreateDatabaseRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/spanner.admin"
+                                    ]
+                                },
+                                "setIamPolicy": {
+                                    "description": "Sets the access control policy on a database resource. Replaces any\nexisting policy.\n\nAuthorization requires `spanner.databases.setIamPolicy` permission on\nresource.",
+                                    "httpMethod": "POST",
+                                    "id": "spanner.projects.instances.databases.setIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for databases resources.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:setIamPolicy",
+                                    "request": {
+                                        "$ref": "SetIamPolicyRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/spanner.admin"
+                                    ]
+                                },
+                                "getIamPolicy": {
+                                    "description": "Gets the access control policy for a database resource. Returns an empty\npolicy if a database exists but does not have a policy set.\n\nAuthorization requires `spanner.databases.getIamPolicy` permission on\nresource.",
+                                    "httpMethod": "POST",
+                                    "id": "spanner.projects.instances.databases.getIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for database resources.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:getIamPolicy",
+                                    "request": {
+                                        "$ref": "GetIamPolicyRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/spanner.admin"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets the state of a Cloud Spanner database.",
                                     "httpMethod": "GET",
@@ -590,161 +663,11 @@
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/spanner.admin"
                                     ]
-                                },
-                                "create": {
-                                    "description": "Creates a new Cloud Spanner database and starts to prepare it for serving.\nThe returned long-running operation will\nhave a name of the format `<database_name>/operations/<operation_id>` and\ncan be used to track preparation of the database. The\nmetadata field type is\nCreateDatabaseMetadata. The\nresponse field type is\nDatabase, if successful.",
-                                    "httpMethod": "POST",
-                                    "id": "spanner.projects.instances.databases.create",
-                                    "parameterOrder": [
-                                        "parent"
-                                    ],
-                                    "parameters": {
-                                        "parent": {
-                                            "description": "Required. The name of the instance that will serve the new database.\nValues are of the form `projects/<project>/instances/<instance>`.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/instances/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+parent}/databases",
-                                    "request": {
-                                        "$ref": "CreateDatabaseRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/spanner.admin"
-                                    ]
-                                },
-                                "setIamPolicy": {
-                                    "description": "Sets the access control policy on a database resource. Replaces any\nexisting policy.\n\nAuthorization requires `spanner.databases.setIamPolicy` permission on\nresource.",
-                                    "httpMethod": "POST",
-                                    "id": "spanner.projects.instances.databases.setIamPolicy",
-                                    "parameterOrder": [
-                                        "resource"
-                                    ],
-                                    "parameters": {
-                                        "resource": {
-                                            "description": "REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for databases resources.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+resource}:setIamPolicy",
-                                    "request": {
-                                        "$ref": "SetIamPolicyRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Policy"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/spanner.admin"
-                                    ]
-                                },
-                                "getIamPolicy": {
-                                    "description": "Gets the access control policy for a database resource. Returns an empty\npolicy if a database exists but does not have a policy set.\n\nAuthorization requires `spanner.databases.getIamPolicy` permission on\nresource.",
-                                    "httpMethod": "POST",
-                                    "id": "spanner.projects.instances.databases.getIamPolicy",
-                                    "parameterOrder": [
-                                        "resource"
-                                    ],
-                                    "parameters": {
-                                        "resource": {
-                                            "description": "REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects/<project ID>/instances/<instance ID>` for instance resources and `projects/<project ID>/instances/<instance ID>/databases/<database ID>` for database resources.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+resource}:getIamPolicy",
-                                    "request": {
-                                        "$ref": "GetIamPolicyRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Policy"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/spanner.admin"
-                                    ]
                                 }
                             },
                             "resources": {
                                 "operations": {
                                     "methods": {
-                                        "list": {
-                                            "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
-                                            "httpMethod": "GET",
-                                            "id": "spanner.projects.instances.databases.operations.list",
-                                            "parameterOrder": [
-                                                "name"
-                                            ],
-                                            "parameters": {
-                                                "filter": {
-                                                    "description": "The standard list filter.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "name": {
-                                                    "description": "The name of the operation's parent resource.",
-                                                    "location": "path",
-                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
-                                                "pageToken": {
-                                                    "description": "The standard list page token.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "The standard list page size.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "path": "v1/{+name}",
-                                            "response": {
-                                                "$ref": "ListOperationsResponse"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform",
-                                                "https://www.googleapis.com/auth/spanner.admin"
-                                            ]
-                                        },
-                                        "get": {
-                                            "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-                                            "httpMethod": "GET",
-                                            "id": "spanner.projects.instances.databases.operations.get",
-                                            "parameterOrder": [
-                                                "name"
-                                            ],
-                                            "parameters": {
-                                                "name": {
-                                                    "description": "The name of the operation resource.",
-                                                    "location": "path",
-                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "path": "v1/{+name}",
-                                            "response": {
-                                                "$ref": "Operation"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform",
-                                                "https://www.googleapis.com/auth/spanner.admin"
-                                            ]
-                                        },
                                         "cancel": {
                                             "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
                                             "httpMethod": "POST",
@@ -794,64 +717,77 @@
                                                 "https://www.googleapis.com/auth/cloud-platform",
                                                 "https://www.googleapis.com/auth/spanner.admin"
                                             ]
-                                        }
-                                    }
-                                },
-                                "sessions": {
-                                    "methods": {
-                                        "commit": {
-                                            "description": "Commits a transaction. The request includes the mutations to be\napplied to rows in the database.\n\n`Commit` might return an `ABORTED` error. This can occur at any time;\ncommonly, the cause is conflicts with concurrent\ntransactions. However, it can also happen for a variety of other\nreasons. If `Commit` returns `ABORTED`, the caller should re-attempt\nthe transaction from the beginning, re-using the same session.",
-                                            "httpMethod": "POST",
-                                            "id": "spanner.projects.instances.databases.sessions.commit",
+                                        },
+                                        "list": {
+                                            "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+                                            "httpMethod": "GET",
+                                            "id": "spanner.projects.instances.databases.operations.list",
                                             "parameterOrder": [
-                                                "session"
+                                                "name"
                                             ],
                                             "parameters": {
-                                                "session": {
-                                                    "description": "Required. The session in which the transaction to be committed is running.",
+                                                "pageSize": {
+                                                    "description": "The standard list page size.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "filter": {
+                                                    "description": "The standard list filter.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "description": "The name of the operation's parent resource.",
                                                     "location": "path",
-                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$",
                                                     "required": true,
+                                                    "type": "string"
+                                                },
+                                                "pageToken": {
+                                                    "description": "The standard list page token.",
+                                                    "location": "query",
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1/{+session}:commit",
-                                            "request": {
-                                                "$ref": "CommitRequest"
-                                            },
+                                            "path": "v1/{+name}",
                                             "response": {
-                                                "$ref": "CommitResponse"
+                                                "$ref": "ListOperationsResponse"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform",
-                                                "https://www.googleapis.com/auth/spanner.data"
+                                                "https://www.googleapis.com/auth/spanner.admin"
                                             ]
                                         },
-                                        "delete": {
-                                            "description": "Ends a session, releasing server resources associated with it.",
-                                            "httpMethod": "DELETE",
-                                            "id": "spanner.projects.instances.databases.sessions.delete",
+                                        "get": {
+                                            "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+                                            "httpMethod": "GET",
+                                            "id": "spanner.projects.instances.databases.operations.get",
                                             "parameterOrder": [
                                                 "name"
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The name of the session to delete.",
+                                                    "description": "The name of the operation resource.",
                                                     "location": "path",
-                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
                                                 }
                                             },
                                             "path": "v1/{+name}",
                                             "response": {
-                                                "$ref": "Empty"
+                                                "$ref": "Operation"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform",
-                                                "https://www.googleapis.com/auth/spanner.data"
+                                                "https://www.googleapis.com/auth/spanner.admin"
                                             ]
-                                        },
+                                        }
+                                    }
+                                },
+                                "sessions": {
+                                    "methods": {
                                         "executeSql": {
                                             "description": "Executes an SQL statement, returning all results in a single reply. This\nmethod cannot be used to return a result set larger than 10 MiB;\nif the query yields more data than that, the query fails with\na `FAILED_PRECONDITION` error.\n\nOperations inside read-write transactions might return `ABORTED`. If\nthis occurs, the application should restart the transaction from\nthe beginning. See Transaction for more details.\n\nLarger result sets can be fetched in streaming fashion by calling\nExecuteStreamingSql instead.",
                                             "httpMethod": "POST",
@@ -1028,6 +964,12 @@
                                                 "database"
                                             ],
                                             "parameters": {
+                                                "pageSize": {
+                                                    "description": "Number of sessions to be returned in the response. If 0 or less, defaults\nto the server's maximum allowed page size.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
                                                 "database": {
                                                     "description": "Required. The database in which to list sessions.",
                                                     "location": "path",
@@ -1044,12 +986,6 @@
                                                     "description": "If non-empty, `page_token` should contain a\nnext_page_token from a previous\nListSessionsResponse.",
                                                     "location": "query",
                                                     "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Number of sessions to be returned in the response. If 0 or less, defaults\nto the server's maximum allowed page size.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
                                                 }
                                             },
                                             "path": "v1/{+database}/sessions",
@@ -1164,6 +1100,59 @@
                                             "path": "v1/{+name}",
                                             "response": {
                                                 "$ref": "Session"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/spanner.data"
+                                            ]
+                                        },
+                                        "commit": {
+                                            "description": "Commits a transaction. The request includes the mutations to be\napplied to rows in the database.\n\n`Commit` might return an `ABORTED` error. This can occur at any time;\ncommonly, the cause is conflicts with concurrent\ntransactions. However, it can also happen for a variety of other\nreasons. If `Commit` returns `ABORTED`, the caller should re-attempt\nthe transaction from the beginning, re-using the same session.",
+                                            "httpMethod": "POST",
+                                            "id": "spanner.projects.instances.databases.sessions.commit",
+                                            "parameterOrder": [
+                                                "session"
+                                            ],
+                                            "parameters": {
+                                                "session": {
+                                                    "description": "Required. The session in which the transaction to be committed is running.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+session}:commit",
+                                            "request": {
+                                                "$ref": "CommitRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "CommitResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/spanner.data"
+                                            ]
+                                        },
+                                        "delete": {
+                                            "description": "Ends a session, releasing server resources associated with it.",
+                                            "httpMethod": "DELETE",
+                                            "id": "spanner.projects.instances.databases.sessions.delete",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The name of the session to delete.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "response": {
+                                                "$ref": "Empty"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -1299,586 +1288,9 @@
             }
         }
     },
-    "revision": "20180531",
+    "revision": "20180731",
     "rootUrl": "https://spanner.googleapis.com/",
     "schemas": {
-        "Field": {
-            "description": "Message representing a single field of a struct.",
-            "id": "Field",
-            "properties": {
-                "type": {
-                    "$ref": "Type",
-                    "description": "The type of the field."
-                },
-                "name": {
-                    "description": "The name of the field. For reads, this is the column name. For\nSQL queries, it is the column alias (e.g., `\"Word\"` in the\nquery `\"SELECT 'hello' AS Word\"`), or the column name (e.g.,\n`\"ColName\"` in the query `\"SELECT ColName FROM Table\"`). Some\ncolumns might have an empty name (e.g., !\"SELECT\nUPPER(ColName)\"`). Note that a query result can contain\nmultiple fields with the same name.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ResultSetStats": {
-            "description": "Additional statistics about a ResultSet or PartialResultSet.",
-            "id": "ResultSetStats",
-            "properties": {
-                "queryStats": {
-                    "additionalProperties": {
-                        "description": "Properties of the object.",
-                        "type": "any"
-                    },
-                    "description": "Aggregated statistics from the execution of the query. Only present when\nthe query is profiled. For example, a query could return the statistics as\nfollows:\n\n    {\n      \"rows_returned\": \"3\",\n      \"elapsed_time\": \"1.22 secs\",\n      \"cpu_time\": \"1.19 secs\"\n    }",
-                    "type": "object"
-                },
-                "queryPlan": {
-                    "$ref": "QueryPlan",
-                    "description": "QueryPlan for the query associated with this result."
-                }
-            },
-            "type": "object"
-        },
-        "TestIamPermissionsRequest": {
-            "description": "Request message for `TestIamPermissions` method.",
-            "id": "TestIamPermissionsRequest",
-            "properties": {
-                "permissions": {
-                    "description": "REQUIRED: The set of permissions to check for 'resource'.\nPermissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*') are not allowed.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "CommitResponse": {
-            "description": "The response for Commit.",
-            "id": "CommitResponse",
-            "properties": {
-                "commitTimestamp": {
-                    "description": "The Cloud Spanner timestamp at which the transaction committed.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Type": {
-            "description": "`Type` indicates the type of a Cloud Spanner value, as might be stored in a\ntable cell or returned from an SQL query.",
-            "id": "Type",
-            "properties": {
-                "structType": {
-                    "$ref": "StructType",
-                    "description": "If code == STRUCT, then `struct_type`\nprovides type information for the struct's fields."
-                },
-                "arrayElementType": {
-                    "$ref": "Type",
-                    "description": "If code == ARRAY, then `array_element_type`\nis the type of the array elements."
-                },
-                "code": {
-                    "description": "Required. The TypeCode for this type.",
-                    "enum": [
-                        "TYPE_CODE_UNSPECIFIED",
-                        "BOOL",
-                        "INT64",
-                        "FLOAT64",
-                        "TIMESTAMP",
-                        "DATE",
-                        "STRING",
-                        "BYTES",
-                        "ARRAY",
-                        "STRUCT"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Encoded as JSON `true` or `false`.",
-                        "Encoded as `string`, in decimal format.",
-                        "Encoded as `number`, or the strings `\"NaN\"`, `\"Infinity\"`, or\n`\"-Infinity\"`.",
-                        "Encoded as `string` in RFC 3339 timestamp format. The time zone\nmust be present, and must be `\"Z\"`.\n\nIf the schema has the column option\n`allow_commit_timestamp=true`, the placeholder string\n`\"spanner.commit_timestamp()\"` can be used to instruct the system\nto insert the commit timestamp associated with the transaction\ncommit.",
-                        "Encoded as `string` in RFC 3339 date format.",
-                        "Encoded as `string`.",
-                        "Encoded as a base64-encoded `string`, as described in RFC 4648,\nsection 4.",
-                        "Encoded as `list`, where the list elements are represented\naccording to array_element_type.",
-                        "Encoded as `list`, where list element `i` is represented according\nto [struct_type.fields[i]][google.spanner.v1.StructType.fields]."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PlanNode": {
-            "description": "Node information for nodes appearing in a QueryPlan.plan_nodes.",
-            "id": "PlanNode",
-            "properties": {
-                "executionStats": {
-                    "additionalProperties": {
-                        "description": "Properties of the object.",
-                        "type": "any"
-                    },
-                    "description": "The execution statistics associated with the node, contained in a group of\nkey-value pairs. Only present if the plan was returned as a result of a\nprofile query. For example, number of executions, number of rows/time per\nexecution etc.",
-                    "type": "object"
-                },
-                "shortRepresentation": {
-                    "$ref": "ShortRepresentation",
-                    "description": "Condensed representation for SCALAR nodes."
-                },
-                "index": {
-                    "description": "The `PlanNode`'s index in node list.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "kind": {
-                    "description": "Used to determine the type of node. May be needed for visualizing\ndifferent kinds of nodes differently. For example, If the node is a\nSCALAR node, it will have a condensed representation\nwhich can be used to directly embed a description of the node in its\nparent.",
-                    "enum": [
-                        "KIND_UNSPECIFIED",
-                        "RELATIONAL",
-                        "SCALAR"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Denotes a Relational operator node in the expression tree. Relational\noperators represent iterative processing of rows during query execution.\nFor example, a `TableScan` operation that reads rows from a table.",
-                        "Denotes a Scalar node in the expression tree. Scalar nodes represent\nnon-iterable entities in the query plan. For example, constants or\narithmetic operators appearing inside predicate expressions or references\nto column names."
-                    ],
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "The display name for the node.",
-                    "type": "string"
-                },
-                "childLinks": {
-                    "description": "List of child node `index`es and their relationship to this parent.",
-                    "items": {
-                        "$ref": "ChildLink"
-                    },
-                    "type": "array"
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object.",
-                        "type": "any"
-                    },
-                    "description": "Attributes relevant to the node contained in a group of key-value pairs.\nFor example, a Parameter Reference node could have the following\ninformation in its metadata:\n\n    {\n      \"parameter_reference\": \"param1\",\n      \"parameter_type\": \"array\"\n    }",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "CreateInstanceMetadata": {
-            "description": "Metadata type for the operation returned by\nCreateInstance.",
-            "id": "CreateInstanceMetadata",
-            "properties": {
-                "cancelTime": {
-                    "description": "The time at which this operation was cancelled. If set, this operation is\nin the process of undoing itself (which is guaranteed to succeed) and\ncannot be cancelled again.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "The time at which this operation failed or was completed successfully.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "instance": {
-                    "$ref": "Instance",
-                    "description": "The instance being created."
-                },
-                "startTime": {
-                    "description": "The time at which the\nCreateInstance request was\nreceived.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PartitionOptions": {
-            "description": "Options for a PartitionQueryRequest and\nPartitionReadRequest.",
-            "id": "PartitionOptions",
-            "properties": {
-                "partitionSizeBytes": {
-                    "description": "**Note:** This hint is currently ignored by PartitionQuery and\nPartitionRead requests.\n\nThe desired data size for each partition generated.  The default for this\noption is currently 1 GiB.  This is only a hint. The actual size of each\npartition may be smaller or larger than this size request.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "maxPartitions": {
-                    "description": "**Note:** This hint is currently ignored by PartitionQuery and\nPartitionRead requests.\n\nThe desired maximum number of partitions to return.  For example, this may\nbe set to the number of workers available.  The default for this option\nis currently 10,000. The maximum value is currently 200,000.  This is only\na hint.  The actual number of partitions returned may be smaller or larger\nthan this maximum count request.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ChildLink": {
-            "description": "Metadata associated with a parent-child relationship appearing in a\nPlanNode.",
-            "id": "ChildLink",
-            "properties": {
-                "childIndex": {
-                    "description": "The node to which the link points.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "variable": {
-                    "description": "Only present if the child node is SCALAR and corresponds\nto an output variable of the parent node. The field carries the name of\nthe output variable.\nFor example, a `TableScan` operator that reads rows from a table will\nhave child links to the `SCALAR` nodes representing the output variables\ncreated for each column that is read by the operator. The corresponding\n`variable` fields will be set to the variable names assigned to the\ncolumns.",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "The type of the link. For example, in Hash Joins this could be used to\ndistinguish between the build child and the probe child, or in the case\nof the child being an output variable, to represent the tag associated\nwith the output variable.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PartitionReadRequest": {
-            "description": "The request for PartitionRead",
-            "id": "PartitionReadRequest",
-            "properties": {
-                "transaction": {
-                    "$ref": "TransactionSelector",
-                    "description": "Read only snapshot transactions are supported, read/write and single use\ntransactions are not."
-                },
-                "table": {
-                    "description": "Required. The name of the table in the database to be read.",
-                    "type": "string"
-                },
-                "partitionOptions": {
-                    "$ref": "PartitionOptions",
-                    "description": "Additional options that affect how many partitions are created."
-                },
-                "index": {
-                    "description": "If non-empty, the name of an index on table. This index is\nused instead of the table primary key when interpreting key_set\nand sorting result rows. See key_set for further information.",
-                    "type": "string"
-                },
-                "keySet": {
-                    "$ref": "KeySet",
-                    "description": "Required. `key_set` identifies the rows to be yielded. `key_set` names the\nprimary keys of the rows in table to be yielded, unless index\nis present. If index is present, then key_set instead names\nindex keys in index.\n\nIt is not an error for the `key_set` to name rows that do not\nexist in the database. Read yields nothing for nonexistent rows."
-                },
-                "columns": {
-                    "description": "The columns of table to be returned for each row matching\nthis request.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Delete": {
-            "description": "Arguments to delete operations.",
-            "id": "Delete",
-            "properties": {
-                "table": {
-                    "description": "Required. The table whose rows will be deleted.",
-                    "type": "string"
-                },
-                "keySet": {
-                    "$ref": "KeySet",
-                    "description": "Required. The primary keys of the rows within table to delete.\nDelete is idempotent. The transaction will succeed even if some or all\nrows do not exist."
-                }
-            },
-            "type": "object"
-        },
-        "ListInstanceConfigsResponse": {
-            "description": "The response for ListInstanceConfigs.",
-            "id": "ListInstanceConfigsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "`next_page_token` can be sent in a subsequent\nListInstanceConfigs call to\nfetch more of the matching instance configurations.",
-                    "type": "string"
-                },
-                "instanceConfigs": {
-                    "description": "The list of requested instance configurations.",
-                    "items": {
-                        "$ref": "InstanceConfig"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "BeginTransactionRequest": {
-            "description": "The request for BeginTransaction.",
-            "id": "BeginTransactionRequest",
-            "properties": {
-                "options": {
-                    "$ref": "TransactionOptions",
-                    "description": "Required. Options for the new transaction."
-                }
-            },
-            "type": "object"
-        },
-        "CommitRequest": {
-            "description": "The request for Commit.",
-            "id": "CommitRequest",
-            "properties": {
-                "singleUseTransaction": {
-                    "$ref": "TransactionOptions",
-                    "description": "Execute mutations in a temporary transaction. Note that unlike\ncommit of a previously-started transaction, commit with a\ntemporary transaction is non-idempotent. That is, if the\n`CommitRequest` is sent to Cloud Spanner more than once (for\ninstance, due to retries in the application, or in the\ntransport library), it is possible that the mutations are\nexecuted more than once. If this is undesirable, use\nBeginTransaction and\nCommit instead."
-                },
-                "mutations": {
-                    "description": "The mutations to be executed when this transaction commits. All\nmutations are applied atomically, in the order they appear in\nthis list.",
-                    "items": {
-                        "$ref": "Mutation"
-                    },
-                    "type": "array"
-                },
-                "transactionId": {
-                    "description": "Commit a previously-started transaction.",
-                    "format": "byte",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TestIamPermissionsResponse": {
-            "description": "Response message for `TestIamPermissions` method.",
-            "id": "TestIamPermissionsResponse",
-            "properties": {
-                "permissions": {
-                    "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "GetIamPolicyRequest": {
-            "description": "Request message for `GetIamPolicy` method.",
-            "id": "GetIamPolicyRequest",
-            "properties": {},
-            "type": "object"
-        },
-        "CreateDatabaseMetadata": {
-            "description": "Metadata type for the operation returned by\nCreateDatabase.",
-            "id": "CreateDatabaseMetadata",
-            "properties": {
-                "database": {
-                    "description": "The database being created.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListSessionsResponse": {
-            "description": "The response for ListSessions.",
-            "id": "ListSessionsResponse",
-            "properties": {
-                "sessions": {
-                    "description": "The list of requested sessions.",
-                    "items": {
-                        "$ref": "Session"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "`next_page_token` can be sent in a subsequent\nListSessions call to fetch more of the matching\nsessions.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Session": {
-            "description": "A session in the Cloud Spanner API.",
-            "id": "Session",
-            "properties": {
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "The labels for the session.\n\n * Label keys must be between 1 and 63 characters long and must conform to\n   the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.\n * Label values must be between 0 and 63 characters long and must conform\n   to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.\n * No more than 64 labels can be associated with a given session.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.",
-                    "type": "object"
-                },
-                "createTime": {
-                    "description": "Output only. The timestamp when the session is created.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name of the session. This is always system-assigned; values provided\nwhen creating a session are ignored.",
-                    "type": "string"
-                },
-                "approximateLastUseTime": {
-                    "description": "Output only. The approximate timestamp when the session is last used. It is\ntypically earlier than the actual last use time.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListInstancesResponse": {
-            "description": "The response for ListInstances.",
-            "id": "ListInstancesResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "`next_page_token` can be sent in a subsequent\nListInstances call to fetch more\nof the matching instances.",
-                    "type": "string"
-                },
-                "instances": {
-                    "description": "The list of requested instances.",
-                    "items": {
-                        "$ref": "Instance"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "KeyRange": {
-            "description": "KeyRange represents a range of rows in a table or index.\n\nA range has a start key and an end key. These keys can be open or\nclosed, indicating if the range includes rows with that key.\n\nKeys are represented by lists, where the ith value in the list\ncorresponds to the ith component of the table or index primary key.\nIndividual values are encoded as described here.\n\nFor example, consider the following table definition:\n\n    CREATE TABLE UserEvents (\n      UserName STRING(MAX),\n      EventDate STRING(10)\n    ) PRIMARY KEY(UserName, EventDate);\n\nThe following keys name rows in this table:\n\n    \"Bob\", \"2014-09-23\"\n\nSince the `UserEvents` table's `PRIMARY KEY` clause names two\ncolumns, each `UserEvents` key has two elements; the first is the\n`UserName`, and the second is the `EventDate`.\n\nKey ranges with multiple components are interpreted\nlexicographically by component using the table or index key's declared\nsort order. For example, the following range returns all events for\nuser `\"Bob\"` that occurred in the year 2015:\n\n    \"start_closed\": [\"Bob\", \"2015-01-01\"]\n    \"end_closed\": [\"Bob\", \"2015-12-31\"]\n\nStart and end keys can omit trailing key components. This affects the\ninclusion and exclusion of rows that exactly match the provided key\ncomponents: if the key is closed, then rows that exactly match the\nprovided components are included; if the key is open, then rows\nthat exactly match are not included.\n\nFor example, the following range includes all events for `\"Bob\"` that\noccurred during and after the year 2000:\n\n    \"start_closed\": [\"Bob\", \"2000-01-01\"]\n    \"end_closed\": [\"Bob\"]\n\nThe next example retrieves all events for `\"Bob\"`:\n\n    \"start_closed\": [\"Bob\"]\n    \"end_closed\": [\"Bob\"]\n\nTo retrieve events before the year 2000:\n\n    \"start_closed\": [\"Bob\"]\n    \"end_open\": [\"Bob\", \"2000-01-01\"]\n\nThe following range includes all rows in the table:\n\n    \"start_closed\": []\n    \"end_closed\": []\n\nThis range returns all users whose `UserName` begins with any\ncharacter from A to C:\n\n    \"start_closed\": [\"A\"]\n    \"end_open\": [\"D\"]\n\nThis range returns all users whose `UserName` begins with B:\n\n    \"start_closed\": [\"B\"]\n    \"end_open\": [\"C\"]\n\nKey ranges honor column sort order. For example, suppose a table is\ndefined as follows:\n\n    CREATE TABLE DescendingSortedTable {\n      Key INT64,\n      ...\n    ) PRIMARY KEY(Key DESC);\n\nThe following range retrieves all rows with key values between 1\nand 100 inclusive:\n\n    \"start_closed\": [\"100\"]\n    \"end_closed\": [\"1\"]\n\nNote that 100 is passed as the start, and 1 is passed as the end,\nbecause `Key` is a descending column in the schema.",
-            "id": "KeyRange",
-            "properties": {
-                "endClosed": {
-                    "description": "If the end is closed, then the range includes all rows whose\nfirst `len(end_closed)` key columns exactly match `end_closed`.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
-                },
-                "startClosed": {
-                    "description": "If the start is closed, then the range includes all rows whose\nfirst `len(start_closed)` key columns exactly match `start_closed`.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
-                },
-                "startOpen": {
-                    "description": "If the start is open, then the range excludes rows whose first\n`len(start_open)` key columns exactly match `start_open`.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
-                },
-                "endOpen": {
-                    "description": "If the end is open, then the range excludes rows whose first\n`len(end_open)` key columns exactly match `end_open`.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ShortRepresentation": {
-            "description": "Condensed representation of a node and its subtree. Only present for\n`SCALAR` PlanNode(s).",
-            "id": "ShortRepresentation",
-            "properties": {
-                "description": {
-                    "description": "A string representation of the expression subtree rooted at this node.",
-                    "type": "string"
-                },
-                "subqueries": {
-                    "additionalProperties": {
-                        "format": "int32",
-                        "type": "integer"
-                    },
-                    "description": "A mapping of (subquery variable name) -> (subquery node id) for cases\nwhere the `description` string of this node references a `SCALAR`\nsubquery contained in the expression subtree rooted at this node. The\nreferenced `SCALAR` subquery may not necessarily be a direct child of\nthis node.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "InstanceConfig": {
-            "description": "A possible configuration for a Cloud Spanner instance. Configurations\ndefine the geographic placement of nodes and their replication.",
-            "id": "InstanceConfig",
-            "properties": {
-                "name": {
-                    "description": "A unique identifier for the instance configuration.  Values\nare of the form\n`projects/<project>/instanceConfigs/a-z*`",
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "The name of this instance configuration as it appears in UIs.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PartitionQueryRequest": {
-            "description": "The request for PartitionQuery",
-            "id": "PartitionQueryRequest",
-            "properties": {
-                "sql": {
-                    "description": "The query request to generate partitions for. The request will fail if\nthe query is not root partitionable. The query plan of a root\npartitionable query has a single distributed union operator. A distributed\nunion operator conceptually divides one or more tables into multiple\nsplits, remotely evaluates a subquery independently on each split, and\nthen unions all results.",
-                    "type": "string"
-                },
-                "transaction": {
-                    "$ref": "TransactionSelector",
-                    "description": "Read only snapshot transactions are supported, read/write and single use\ntransactions are not."
-                },
-                "partitionOptions": {
-                    "$ref": "PartitionOptions",
-                    "description": "Additional options that affect how many partitions are created."
-                },
-                "params": {
-                    "additionalProperties": {
-                        "description": "Properties of the object.",
-                        "type": "any"
-                    },
-                    "description": "The SQL query string can contain parameter placeholders. A parameter\nplaceholder consists of `'@'` followed by the parameter\nname. Parameter names consist of any combination of letters,\nnumbers, and underscores.\n\nParameters can appear anywhere that a literal value is expected.  The same\nparameter name can be used more than once, for example:\n  `\"WHERE id > @msg_id AND id < @msg_id + 100\"`\n\nIt is an error to execute an SQL query with unbound parameters.\n\nParameter values are specified using `params`, which is a JSON\nobject whose keys are parameter names, and whose values are the\ncorresponding parameter values.",
-                    "type": "object"
-                },
-                "paramTypes": {
-                    "additionalProperties": {
-                        "$ref": "Type"
-                    },
-                    "description": "It is not always possible for Cloud Spanner to infer the right SQL type\nfrom a JSON value.  For example, values of type `BYTES` and values\nof type `STRING` both appear in params as JSON strings.\n\nIn these cases, `param_types` can be used to specify the exact\nSQL type for some or all of the SQL query parameters. See the\ndefinition of Type for more information\nabout SQL types.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "UpdateInstanceRequest": {
-            "description": "The request for UpdateInstance.",
-            "id": "UpdateInstanceRequest",
-            "properties": {
-                "instance": {
-                    "$ref": "Instance",
-                    "description": "Required. The instance to update, which must always include the instance\nname.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included."
-                },
-                "fieldMask": {
-                    "description": "Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.\nThe field mask must always be specified; this prevents any future fields in\n[][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know\nabout them.",
-                    "format": "google-fieldmask",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
-            "type": "object"
-        },
-        "TransactionOptions": {
-            "description": "# Transactions\n\n\nEach session can have at most one active transaction at a time. After the\nactive transaction is completed, the session can immediately be\nre-used for the next transaction. It is not necessary to create a\nnew session for each transaction.\n\n# Transaction Modes\n\nCloud Spanner supports two transaction modes:\n\n  1. Locking read-write. This type of transaction is the only way\n     to write data into Cloud Spanner. These transactions rely on\n     pessimistic locking and, if necessary, two-phase commit.\n     Locking read-write transactions may abort, requiring the\n     application to retry.\n\n  2. Snapshot read-only. This transaction type provides guaranteed\n     consistency across several reads, but does not allow\n     writes. Snapshot read-only transactions can be configured to\n     read at timestamps in the past. Snapshot read-only\n     transactions do not need to be committed.\n\n\nFor transactions that only read, snapshot read-only transactions\nprovide simpler semantics and are almost always faster. In\nparticular, read-only transactions do not take locks, so they do\nnot conflict with read-write transactions. As a consequence of not\ntaking locks, they also do not abort, so retry loops are not needed.\n\nTransactions may only read/write data in a single database. They\nmay, however, read/write data in different tables within that\ndatabase.\n\n## Locking Read-Write Transactions\n\nLocking transactions may be used to atomically read-modify-write\ndata anywhere in a database. This type of transaction is externally\nconsistent.\n\nClients should attempt to minimize the amount of time a transaction\nis active. Faster transactions commit with higher probability\nand cause less contention. Cloud Spanner attempts to keep read locks\nactive as long as the transaction continues to do reads, and the\ntransaction has not been terminated by\nCommit or\nRollback.  Long periods of\ninactivity at the client may cause Cloud Spanner to release a\ntransaction's locks and abort it.\n\nReads performed within a transaction acquire locks on the data\nbeing read. Writes can only be done at commit time, after all reads\nhave been completed.\nConceptually, a read-write transaction consists of zero or more\nreads or SQL queries followed by\nCommit. At any time before\nCommit, the client can send a\nRollback request to abort the\ntransaction.\n\n### Semantics\n\nCloud Spanner can commit the transaction if all read locks it acquired\nare still valid at commit time, and it is able to acquire write\nlocks for all writes. Cloud Spanner can abort the transaction for any\nreason. If a commit attempt returns `ABORTED`, Cloud Spanner guarantees\nthat the transaction has not modified any user data in Cloud Spanner.\n\nUnless the transaction commits, Cloud Spanner makes no guarantees about\nhow long the transaction's locks were held for. It is an error to\nuse Cloud Spanner locks for any sort of mutual exclusion other than\nbetween Cloud Spanner transactions themselves.\n\n### Retrying Aborted Transactions\n\nWhen a transaction aborts, the application can choose to retry the\nwhole transaction again. To maximize the chances of successfully\ncommitting the retry, the client should execute the retry in the\nsame session as the original attempt. The original session's lock\npriority increases with each consecutive abort, meaning that each\nattempt has a slightly better chance of success than the previous.\n\nUnder some circumstances (e.g., many transactions attempting to\nmodify the same row(s)), a transaction can abort many times in a\nshort period before successfully committing. Thus, it is not a good\nidea to cap the number of retries a transaction can attempt;\ninstead, it is better to limit the total amount of wall time spent\nretrying.\n\n### Idle Transactions\n\nA transaction is considered idle if it has no outstanding reads or\nSQL queries and has not started a read or SQL query within the last 10\nseconds. Idle transactions can be aborted by Cloud Spanner so that they\ndon't hold on to locks indefinitely. In that case, the commit will\nfail with error `ABORTED`.\n\nIf this behavior is undesirable, periodically executing a simple\nSQL query in the transaction (e.g., `SELECT 1`) prevents the\ntransaction from becoming idle.\n\n## Snapshot Read-Only Transactions\n\nSnapshot read-only transactions provides a simpler method than\nlocking read-write transactions for doing several consistent\nreads. However, this type of transaction does not support writes.\n\nSnapshot transactions do not take locks. Instead, they work by\nchoosing a Cloud Spanner timestamp, then executing all reads at that\ntimestamp. Since they do not acquire locks, they do not block\nconcurrent read-write transactions.\n\nUnlike locking read-write transactions, snapshot read-only\ntransactions never abort. They can fail if the chosen read\ntimestamp is garbage collected; however, the default garbage\ncollection policy is generous enough that most applications do not\nneed to worry about this in practice.\n\nSnapshot read-only transactions do not need to call\nCommit or\nRollback (and in fact are not\npermitted to do so).\n\nTo execute a snapshot transaction, the client specifies a timestamp\nbound, which tells Cloud Spanner how to choose a read timestamp.\n\nThe types of timestamp bound are:\n\n  - Strong (the default).\n  - Bounded staleness.\n  - Exact staleness.\n\nIf the Cloud Spanner database to be read is geographically distributed,\nstale read-only transactions can execute more quickly than strong\nor read-write transaction, because they are able to execute far\nfrom the leader replica.\n\nEach type of timestamp bound is discussed in detail below.\n\n### Strong\n\nStrong reads are guaranteed to see the effects of all transactions\nthat have committed before the start of the read. Furthermore, all\nrows yielded by a single read are consistent with each other -- if\nany part of the read observes a transaction, all parts of the read\nsee the transaction.\n\nStrong reads are not repeatable: two consecutive strong read-only\ntransactions might return inconsistent results if there are\nconcurrent writes. If consistency across reads is required, the\nreads should be executed within a transaction or at an exact read\ntimestamp.\n\nSee TransactionOptions.ReadOnly.strong.\n\n### Exact Staleness\n\nThese timestamp bounds execute reads at a user-specified\ntimestamp. Reads at a timestamp are guaranteed to see a consistent\nprefix of the global transaction history: they observe\nmodifications done by all transactions with a commit timestamp <=\nthe read timestamp, and observe none of the modifications done by\ntransactions with a larger commit timestamp. They will block until\nall conflicting transactions that may be assigned commit timestamps\n<= the read timestamp have finished.\n\nThe timestamp can either be expressed as an absolute Cloud Spanner commit\ntimestamp or a staleness relative to the current time.\n\nThese modes do not require a \"negotiation phase\" to pick a\ntimestamp. As a result, they execute slightly faster than the\nequivalent boundedly stale concurrency modes. On the other hand,\nboundedly stale reads usually return fresher results.\n\nSee TransactionOptions.ReadOnly.read_timestamp and\nTransactionOptions.ReadOnly.exact_staleness.\n\n### Bounded Staleness\n\nBounded staleness modes allow Cloud Spanner to pick the read timestamp,\nsubject to a user-provided staleness bound. Cloud Spanner chooses the\nnewest timestamp within the staleness bound that allows execution\nof the reads at the closest available replica without blocking.\n\nAll rows yielded are consistent with each other -- if any part of\nthe read observes a transaction, all parts of the read see the\ntransaction. Boundedly stale reads are not repeatable: two stale\nreads, even if they use the same staleness bound, can execute at\ndifferent timestamps and thus return inconsistent results.\n\nBoundedly stale reads execute in two phases: the first phase\nnegotiates a timestamp among all replicas needed to serve the\nread. In the second phase, reads are executed at the negotiated\ntimestamp.\n\nAs a result of the two phase execution, bounded staleness reads are\nusually a little slower than comparable exact staleness\nreads. However, they are typically able to return fresher\nresults, and are more likely to execute at the closest replica.\n\nBecause the timestamp negotiation requires up-front knowledge of\nwhich rows will be read, it can only be used with single-use\nread-only transactions.\n\nSee TransactionOptions.ReadOnly.max_staleness and\nTransactionOptions.ReadOnly.min_read_timestamp.\n\n### Old Read Timestamps and Garbage Collection\n\nCloud Spanner continuously garbage collects deleted and overwritten data\nin the background to reclaim storage space. This process is known\nas \"version GC\". By default, version GC reclaims versions after they\nare one hour old. Because of this, Cloud Spanner cannot perform reads\nat read timestamps more than one hour in the past. This\nrestriction also applies to in-progress reads and/or SQL queries whose\ntimestamp become too old while executing. Reads and SQL queries with\ntoo-old read timestamps fail with the error `FAILED_PRECONDITION`.\n\n##",
-            "id": "TransactionOptions",
-            "properties": {
-                "readWrite": {
-                    "$ref": "ReadWrite",
-                    "description": "Transaction may write.\n\nAuthorization to begin a read-write transaction requires\n`spanner.databases.beginOrRollbackReadWriteTransaction` permission\non the `session` resource."
-                },
-                "readOnly": {
-                    "$ref": "ReadOnly",
-                    "description": "Transaction will not write.\n\nAuthorization to begin a read-only transaction requires\n`spanner.databases.beginReadOnlyTransaction` permission\non the `session` resource."
-                }
-            },
-            "type": "object"
-        },
-        "CreateDatabaseRequest": {
-            "description": "The request for CreateDatabase.",
-            "id": "CreateDatabaseRequest",
-            "properties": {
-                "extraStatements": {
-                    "description": "An optional list of DDL statements to run inside the newly created\ndatabase. Statements can create tables, indexes, etc. These\nstatements execute atomically with the creation of the database:\nif there is an error in any statement, the database is not created.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "createStatement": {
-                    "description": "Required. A `CREATE DATABASE` statement, which specifies the ID of the\nnew database.  The database ID must conform to the regular expression\n`a-z*[a-z0-9]` and be between 2 and 30 characters in length.\nIf the database ID is a reserved word or if it contains a hyphen, the\ndatabase ID must be enclosed in backticks (`` ` ``).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "CreateInstanceRequest": {
             "description": "The request for CreateInstance.",
             "id": "CreateInstanceRequest",
@@ -1898,6 +1310,15 @@
             "description": "Message type to initiate a read-only transaction.",
             "id": "ReadOnly",
             "properties": {
+                "strong": {
+                    "description": "Read at a timestamp where all previously committed transactions\nare visible.",
+                    "type": "boolean"
+                },
+                "minReadTimestamp": {
+                    "description": "Executes all reads at a timestamp >= `min_read_timestamp`.\n\nThis is useful for requesting fresher data than some previous\nread, or data that is fresh enough to observe the effects of some\npreviously committed transaction whose timestamp is known.\n\nNote that this option can only be used in single-use transactions.\n\nA timestamp in RFC3339 UTC \\\"Zulu\\\" format, accurate to nanoseconds.\nExample: `\"2014-10-02T15:01:23.045123456Z\"`.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "maxStaleness": {
                     "description": "Read data at a timestamp >= `NOW - max_staleness`\nseconds. Guarantees that all writes that have committed more\nthan the specified number of seconds ago are visible. Because\nCloud Spanner chooses the exact timestamp, this mode works even if\nthe client's local clock is substantially skewed from Cloud Spanner\ncommit timestamps.\n\nUseful for reading the freshest data available at a nearby\nreplica, while bounding the possible staleness if the local\nreplica has fallen behind.\n\nNote that this option can only be used in single-use\ntransactions.",
                     "format": "google-duration",
@@ -1916,15 +1337,6 @@
                     "description": "Executes all reads at a timestamp that is `exact_staleness`\nold. The timestamp is chosen soon after the read is started.\n\nGuarantees that all writes that have committed more than the\nspecified number of seconds ago are visible. Because Cloud Spanner\nchooses the exact timestamp, this mode works even if the client's\nlocal clock is substantially skewed from Cloud Spanner commit\ntimestamps.\n\nUseful for reading at nearby replicas without the distributed\ntimestamp negotiation overhead of `max_staleness`.",
                     "format": "google-duration",
                     "type": "string"
-                },
-                "strong": {
-                    "description": "Read at a timestamp where all previously committed transactions\nare visible.",
-                    "type": "boolean"
-                },
-                "minReadTimestamp": {
-                    "description": "Executes all reads at a timestamp >= `min_read_timestamp`.\n\nThis is useful for requesting fresher data than some previous\nread, or data that is fresh enough to observe the effects of some\npreviously committed transaction whose timestamp is known.\n\nNote that this option can only be used in single-use transactions.\n\nA timestamp in RFC3339 UTC \\\"Zulu\\\" format, accurate to nanoseconds.\nExample: `\"2014-10-02T15:01:23.045123456Z\"`.",
-                    "format": "google-datetime",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1933,6 +1345,31 @@
             "description": "The request for ExecuteSql and\nExecuteStreamingSql.",
             "id": "ExecuteSqlRequest",
             "properties": {
+                "transaction": {
+                    "$ref": "TransactionSelector",
+                    "description": "The transaction to use. If none is provided, the default is a\ntemporary read-only transaction with strong concurrency."
+                },
+                "resumeToken": {
+                    "description": "If this request is resuming a previously interrupted SQL statement\nexecution, `resume_token` should be copied from the last\nPartialResultSet yielded before the interruption. Doing this\nenables the new SQL statement execution to resume where the last one left\noff. The rest of the request parameters must exactly match the\nrequest that yielded this token.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "partitionToken": {
+                    "description": "If present, results will be restricted to the specified partition\npreviously created using PartitionQuery().  There must be an exact\nmatch for the values of fields common to this message and the\nPartitionQueryRequest message used to create this partition_token.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "paramTypes": {
+                    "additionalProperties": {
+                        "$ref": "Type"
+                    },
+                    "description": "It is not always possible for Cloud Spanner to infer the right SQL type\nfrom a JSON value.  For example, values of type `BYTES` and values\nof type `STRING` both appear in params as JSON strings.\n\nIn these cases, `param_types` can be used to specify the exact\nSQL type for some or all of the SQL statement parameters. See the\ndefinition of Type for more information\nabout SQL types.",
+                    "type": "object"
+                },
+                "sql": {
+                    "description": "Required. The SQL string.",
+                    "type": "string"
+                },
                 "params": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -1954,31 +1391,6 @@
                         "This mode returns both the query plan and the execution statistics along\nwith the results."
                     ],
                     "type": "string"
-                },
-                "transaction": {
-                    "$ref": "TransactionSelector",
-                    "description": "The transaction to use. If none is provided, the default is a\ntemporary read-only transaction with strong concurrency."
-                },
-                "partitionToken": {
-                    "description": "If present, results will be restricted to the specified partition\npreviously created using PartitionQuery().  There must be an exact\nmatch for the values of fields common to this message and the\nPartitionQueryRequest message used to create this partition_token.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "resumeToken": {
-                    "description": "If this request is resuming a previously interrupted SQL statement\nexecution, `resume_token` should be copied from the last\nPartialResultSet yielded before the interruption. Doing this\nenables the new SQL statement execution to resume where the last one left\noff. The rest of the request parameters must exactly match the\nrequest that yielded this token.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "paramTypes": {
-                    "additionalProperties": {
-                        "$ref": "Type"
-                    },
-                    "description": "It is not always possible for Cloud Spanner to infer the right SQL type\nfrom a JSON value.  For example, values of type `BYTES` and values\nof type `STRING` both appear in params as JSON strings.\n\nIn these cases, `param_types` can be used to specify the exact\nSQL type for some or all of the SQL statement parameters. See the\ndefinition of Type for more information\nabout SQL types.",
-                    "type": "object"
-                },
-                "sql": {
-                    "description": "Required. The SQL string.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1987,6 +1399,13 @@
             "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
             "id": "Policy",
             "properties": {
+                "bindings": {
+                    "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+                    "items": {
+                        "$ref": "Binding"
+                    },
+                    "type": "array"
+                },
                 "etag": {
                     "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
                     "format": "byte",
@@ -1996,13 +1415,6 @@
                     "description": "Deprecated.",
                     "format": "int32",
                     "type": "integer"
-                },
-                "bindings": {
-                    "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-                    "items": {
-                        "$ref": "Binding"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -2011,6 +1423,24 @@
             "description": "The request for Read and\nStreamingRead.",
             "id": "ReadRequest",
             "properties": {
+                "transaction": {
+                    "$ref": "TransactionSelector",
+                    "description": "The transaction to use. If none is provided, the default is a\ntemporary read-only transaction with strong concurrency."
+                },
+                "resumeToken": {
+                    "description": "If this request is resuming a previously interrupted read,\n`resume_token` should be copied from the last\nPartialResultSet yielded before the interruption. Doing this\nenables the new read to resume where the last read left off. The\nrest of the request parameters must exactly match the request\nthat yielded this token.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "partitionToken": {
+                    "description": "If present, results will be restricted to the specified partition\npreviously created using PartitionRead().    There must be an exact\nmatch for the values of fields common to this message and the\nPartitionReadRequest message used to create this partition_token.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "table": {
+                    "description": "Required. The name of the table in the database to be read.",
+                    "type": "string"
+                },
                 "limit": {
                     "description": "If greater than zero, only the first `limit` rows are yielded. If `limit`\nis zero, the default is no limit. A limit cannot be specified if\n`partition_token` is set.",
                     "format": "int64",
@@ -2030,24 +1460,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "transaction": {
-                    "$ref": "TransactionSelector",
-                    "description": "The transaction to use. If none is provided, the default is a\ntemporary read-only transaction with strong concurrency."
-                },
-                "resumeToken": {
-                    "description": "If this request is resuming a previously interrupted read,\n`resume_token` should be copied from the last\nPartialResultSet yielded before the interruption. Doing this\nenables the new read to resume where the last read left off. The\nrest of the request parameters must exactly match the request\nthat yielded this token.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "partitionToken": {
-                    "description": "If present, results will be restricted to the specified partition\npreviously created using PartitionRead().    There must be an exact\nmatch for the values of fields common to this message and the\nPartitionReadRequest message used to create this partition_token.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "table": {
-                    "description": "Required. The name of the table in the database to be read.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2056,6 +1468,10 @@
             "description": "Arguments to insert, update, insert_or_update, and\nreplace operations.",
             "id": "Write",
             "properties": {
+                "table": {
+                    "description": "Required. The table whose rows will be written.",
+                    "type": "string"
+                },
                 "columns": {
                     "description": "The names of the columns in table to be written.\n\nThe list of columns must contain enough columns to allow\nCloud Spanner to derive values for all primary key columns in the\nrow(s) to be modified.",
                     "items": {
@@ -2072,10 +1488,6 @@
                         "type": "array"
                     },
                     "type": "array"
-                },
-                "table": {
-                    "description": "Required. The table whose rows will be written.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2125,10 +1537,6 @@
             "description": "Results from Read or\nExecuteSql.",
             "id": "ResultSet",
             "properties": {
-                "metadata": {
-                    "$ref": "ResultSetMetadata",
-                    "description": "Metadata about the result set, such as row type information."
-                },
                 "stats": {
                     "$ref": "ResultSetStats",
                     "description": "Query plan and execution statistics for the SQL statement that\nproduced this result set. These can be requested by setting\nExecuteSqlRequest.query_mode."
@@ -2142,6 +1550,10 @@
                         "type": "array"
                     },
                     "type": "array"
+                },
+                "metadata": {
+                    "$ref": "ResultSetMetadata",
+                    "description": "Metadata about the result set, such as row type information."
                 }
             },
             "type": "object"
@@ -2224,6 +1636,10 @@
             "description": "Partial results from a streaming read or SQL query. Streaming reads and\nSQL queries better tolerate large result sets, large rows, and large\nvalues, but are a little trickier to consume.",
             "id": "PartialResultSet",
             "properties": {
+                "stats": {
+                    "$ref": "ResultSetStats",
+                    "description": "Query plan and execution statistics for the statement that produced this\nstreaming result set. These can be requested by setting\nExecuteSqlRequest.query_mode and are sent\nonly once with the last response in the stream."
+                },
                 "chunkedValue": {
                     "description": "If true, then the final value in values is chunked, and must\nbe combined with more values from subsequent `PartialResultSet`s\nto obtain a complete field value.",
                     "type": "boolean"
@@ -2243,10 +1659,6 @@
                     "description": "Streaming calls might be interrupted for a variety of reasons, such\nas TCP connection loss. If this occurs, the stream of results can\nbe resumed by re-sending the original request and including\n`resume_token`. Note that executing any other transaction in the\nsame session invalidates the token.",
                     "format": "byte",
                     "type": "string"
-                },
-                "stats": {
-                    "$ref": "ResultSetStats",
-                    "description": "Query plan and execution statistics for the statement that produced this\nstreaming result set. These can be requested by setting\nExecuteSqlRequest.query_mode and are sent\nonly once with the last response in the stream."
                 }
             },
             "type": "object"
@@ -2255,16 +1667,16 @@
             "description": "The response message for Operations.ListOperations.",
             "id": "ListOperationsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
                 "operations": {
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2273,6 +1685,15 @@
             "description": "Metadata type for the operation returned by\nUpdateInstance.",
             "id": "UpdateInstanceMetadata",
             "properties": {
+                "instance": {
+                    "$ref": "Instance",
+                    "description": "The desired end state of the update."
+                },
+                "startTime": {
+                    "description": "The time at which UpdateInstance\nrequest was received.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "cancelTime": {
                     "description": "The time at which this operation was cancelled. If set, this operation is\nin the process of undoing itself (which is guaranteed to succeed) and\ncannot be cancelled again.",
                     "format": "google-datetime",
@@ -2280,15 +1701,6 @@
                 },
                 "endTime": {
                     "description": "The time at which this operation failed or was completed successfully.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "instance": {
-                    "$ref": "Instance",
-                    "description": "The desired end state of the update."
-                },
-                "startTime": {
-                    "description": "The time at which UpdateInstance\nrequest was received.",
                     "format": "google-datetime",
                     "type": "string"
                 }
@@ -2299,13 +1711,13 @@
             "description": "Metadata about a ResultSet or PartialResultSet.",
             "id": "ResultSetMetadata",
             "properties": {
-                "transaction": {
-                    "$ref": "Transaction",
-                    "description": "If the read or SQL query began a transaction as a side-effect, the\ninformation about the new transaction is yielded here."
-                },
                 "rowType": {
                     "$ref": "StructType",
                     "description": "Indicates the field names and types for the rows in the result\nset.  For example, a SQL query like `\"SELECT UserId, UserName FROM\nUsers\"` could return a `row_type` value like:\n\n    \"fields\": [\n      { \"name\": \"UserId\", \"type\": { \"code\": \"INT64\" } },\n      { \"name\": \"UserName\", \"type\": { \"code\": \"STRING\" } },\n    ]"
+                },
+                "transaction": {
+                    "$ref": "Transaction",
+                    "description": "If the read or SQL query began a transaction as a side-effect, the\ninformation about the new transaction is yielded here."
                 }
             },
             "type": "object"
@@ -2374,10 +1786,6 @@
             "description": "A modification to one or more Cloud Spanner rows.  Mutations can be\napplied to a Cloud Spanner database by sending them in a\nCommit call.",
             "id": "Mutation",
             "properties": {
-                "delete": {
-                    "$ref": "Delete",
-                    "description": "Delete rows from a table. Succeeds whether or not the named\nrows were present."
-                },
                 "insert": {
                     "$ref": "Write",
                     "description": "Insert new rows in a table. If any of the rows already exist,\nthe write or transaction fails with error `ALREADY_EXISTS`."
@@ -2393,6 +1801,10 @@
                 "replace": {
                     "$ref": "Write",
                     "description": "Like insert, except that if the row already exists, it is\ndeleted, and the column values provided are inserted\ninstead. Unlike insert_or_update, this means any values not\nexplicitly written become `NULL`."
+                },
+                "delete": {
+                    "$ref": "Delete",
+                    "description": "Delete rows from a table. Succeeds whether or not the named\nrows were present."
                 }
             },
             "type": "object"
@@ -2436,13 +1848,47 @@
             },
             "type": "object"
         },
-        "SetIamPolicyRequest": {
-            "description": "Request message for `SetIamPolicy` method.",
-            "id": "SetIamPolicyRequest",
+        "Instance": {
+            "description": "An isolated set of Cloud Spanner resources on which databases can be hosted.",
+            "id": "Instance",
             "properties": {
-                "policy": {
-                    "$ref": "Policy",
-                    "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+                "displayName": {
+                    "description": "Required. The descriptive name for this instance as it appears in UIs.\nMust be unique per project and between 4 and 30 characters in length.",
+                    "type": "string"
+                },
+                "nodeCount": {
+                    "description": "Required. The number of nodes allocated to this instance. This may be zero\nin API responses for instances that are not yet in state `READY`.\n\nSee [the documentation](https://cloud.google.com/spanner/docs/instances#node_count)\nfor more information about nodes.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Cloud Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. Cloud Labels can be used to filter collections of\nresources. They can be used to control how resource metrics are aggregated.\nAnd they can be used as arguments to policy management rules (e.g. route,\nfirewall, load balancing, etc.).\n\n * Label keys must be between 1 and 63 characters long and must conform to\n   the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.\n * Label values must be between 0 and 63 characters long and must conform\n   to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.\n * No more than 64 labels can be associated with a given resource.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.\n\nIf you plan to use labels in your own code, please note that additional\ncharacters may be allowed in the future. And so you are advised to use an\ninternal label representation, such as JSON, which doesn't rely upon\nspecific characters being disallowed.  For example, representing labels\nas the string:  name + \"_\" + value  would prove problematic if we were to\nallow \"_\" in a future release.",
+                    "type": "object"
+                },
+                "config": {
+                    "description": "Required. The name of the instance's configuration. Values are of the form\n`projects/<project>/instanceConfigs/<configuration>`. See\nalso InstanceConfig and\nListInstanceConfigs.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current instance state. For\nCreateInstance, the state must be\neither omitted or set to `CREATING`. For\nUpdateInstance, the state must be\neither omitted or set to `READY`.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "CREATING",
+                        "READY"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "The instance is still being created. Resources may not be\navailable yet, and operations such as database creation may not\nwork.",
+                        "The instance is fully created and ready to do work such as\ncreating databases."
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. A unique identifier for the instance, which cannot be changed\nafter the instance is created. Values are of the form\n`projects/<project>/instances/a-z*[a-z0-9]`. The final\nsegment of the name must be between 6 and 30 characters in length.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2465,47 +1911,13 @@
             },
             "type": "object"
         },
-        "Instance": {
-            "description": "An isolated set of Cloud Spanner resources on which databases can be hosted.",
-            "id": "Instance",
+        "SetIamPolicyRequest": {
+            "description": "Request message for `SetIamPolicy` method.",
+            "id": "SetIamPolicyRequest",
             "properties": {
-                "config": {
-                    "description": "Required. The name of the instance's configuration. Values are of the form\n`projects/<project>/instanceConfigs/<configuration>`. See\nalso InstanceConfig and\nListInstanceConfigs.",
-                    "type": "string"
-                },
-                "state": {
-                    "description": "Output only. The current instance state. For\nCreateInstance, the state must be\neither omitted or set to `CREATING`. For\nUpdateInstance, the state must be\neither omitted or set to `READY`.",
-                    "enum": [
-                        "STATE_UNSPECIFIED",
-                        "CREATING",
-                        "READY"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "The instance is still being created. Resources may not be\navailable yet, and operations such as database creation may not\nwork.",
-                        "The instance is fully created and ready to do work such as\ncreating databases."
-                    ],
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Required. A unique identifier for the instance, which cannot be changed\nafter the instance is created. Values are of the form\n`projects/<project>/instances/a-z*[a-z0-9]`. The final\nsegment of the name must be between 6 and 30 characters in length.",
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "Required. The descriptive name for this instance as it appears in UIs.\nMust be unique per project and between 4 and 30 characters in length.",
-                    "type": "string"
-                },
-                "nodeCount": {
-                    "description": "Required. The number of nodes allocated to this instance. This may be zero\nin API responses for instances that are not yet in state `READY`.\n\nSee [the documentation](https://cloud.google.com/spanner/docs/instances#node_count)\nfor more information about nodes.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Cloud Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. Cloud Labels can be used to filter collections of\nresources. They can be used to control how resource metrics are aggregated.\nAnd they can be used as arguments to policy management rules (e.g. route,\nfirewall, load balancing, etc.).\n\n * Label keys must be between 1 and 63 characters long and must conform to\n   the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.\n * Label values must be between 0 and 63 characters long and must conform\n   to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.\n * No more than 64 labels can be associated with a given resource.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.\n\nIf you plan to use labels in your own code, please note that additional\ncharacters may be allowed in the future. And so you are advised to use an\ninternal label representation, such as JSON, which doesn't rely upon\nspecific characters being disallowed.  For example, representing labels\nas the string:  name + \"_\" + value  would prove problematic if we were to\nallow \"_\" in a future release.",
-                    "type": "object"
+                "policy": {
+                    "$ref": "Policy",
+                    "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
                 }
             },
             "type": "object"
@@ -2543,6 +1955,10 @@
             "description": "Metadata type for the operation returned by\nUpdateDatabaseDdl.",
             "id": "UpdateDatabaseDdlMetadata",
             "properties": {
+                "database": {
+                    "description": "The database being modified.",
+                    "type": "string"
+                },
                 "statements": {
                     "description": "For an update this list contains all the statements. For an\nindividual statement, this list contains only that statement.",
                     "items": {
@@ -2557,10 +1973,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "database": {
-                    "description": "The database being modified.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2583,6 +1995,20 @@
             },
             "type": "object"
         },
+        "StructType": {
+            "description": "`StructType` defines the fields of a STRUCT type.",
+            "id": "StructType",
+            "properties": {
+                "fields": {
+                    "description": "The list of fields that make up this struct. Order is\nsignificant, because values of this struct type are represented as\nlists, where the order of field values matches the order of\nfields in the StructType. In turn, the order of fields\nmatches the order of columns in a read request, or the order of\nfields in the `SELECT` clause of a query.",
+                    "items": {
+                        "$ref": "Field"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "QueryPlan": {
             "description": "Contains an ordered list of nodes appearing in the query plan.",
             "id": "QueryPlan",
@@ -2597,14 +2023,577 @@
             },
             "type": "object"
         },
-        "StructType": {
-            "description": "`StructType` defines the fields of a STRUCT type.",
-            "id": "StructType",
+        "Field": {
+            "description": "Message representing a single field of a struct.",
+            "id": "Field",
             "properties": {
-                "fields": {
-                    "description": "The list of fields that make up this struct. Order is\nsignificant, because values of this struct type are represented as\nlists, where the order of field values matches the order of\nfields in the StructType. In turn, the order of fields\nmatches the order of columns in a read request, or the order of\nfields in the `SELECT` clause of a query.",
+                "type": {
+                    "$ref": "Type",
+                    "description": "The type of the field."
+                },
+                "name": {
+                    "description": "The name of the field. For reads, this is the column name. For\nSQL queries, it is the column alias (e.g., `\"Word\"` in the\nquery `\"SELECT 'hello' AS Word\"`), or the column name (e.g.,\n`\"ColName\"` in the query `\"SELECT ColName FROM Table\"`). Some\ncolumns might have an empty name (e.g., !\"SELECT\nUPPER(ColName)\"`). Note that a query result can contain\nmultiple fields with the same name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsRequest": {
+            "description": "Request message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsRequest",
+            "properties": {
+                "permissions": {
+                    "description": "REQUIRED: The set of permissions to check for 'resource'.\nPermissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*') are not allowed.",
                     "items": {
-                        "$ref": "Field"
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ResultSetStats": {
+            "description": "Additional statistics about a ResultSet or PartialResultSet.",
+            "id": "ResultSetStats",
+            "properties": {
+                "queryStats": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Aggregated statistics from the execution of the query. Only present when\nthe query is profiled. For example, a query could return the statistics as\nfollows:\n\n    {\n      \"rows_returned\": \"3\",\n      \"elapsed_time\": \"1.22 secs\",\n      \"cpu_time\": \"1.19 secs\"\n    }",
+                    "type": "object"
+                },
+                "queryPlan": {
+                    "$ref": "QueryPlan",
+                    "description": "QueryPlan for the query associated with this result."
+                }
+            },
+            "type": "object"
+        },
+        "CommitResponse": {
+            "description": "The response for Commit.",
+            "id": "CommitResponse",
+            "properties": {
+                "commitTimestamp": {
+                    "description": "The Cloud Spanner timestamp at which the transaction committed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Type": {
+            "description": "`Type` indicates the type of a Cloud Spanner value, as might be stored in a\ntable cell or returned from an SQL query.",
+            "id": "Type",
+            "properties": {
+                "structType": {
+                    "$ref": "StructType",
+                    "description": "If code == STRUCT, then `struct_type`\nprovides type information for the struct's fields."
+                },
+                "arrayElementType": {
+                    "$ref": "Type",
+                    "description": "If code == ARRAY, then `array_element_type`\nis the type of the array elements."
+                },
+                "code": {
+                    "description": "Required. The TypeCode for this type.",
+                    "enum": [
+                        "TYPE_CODE_UNSPECIFIED",
+                        "BOOL",
+                        "INT64",
+                        "FLOAT64",
+                        "TIMESTAMP",
+                        "DATE",
+                        "STRING",
+                        "BYTES",
+                        "ARRAY",
+                        "STRUCT"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "Encoded as JSON `true` or `false`.",
+                        "Encoded as `string`, in decimal format.",
+                        "Encoded as `number`, or the strings `\"NaN\"`, `\"Infinity\"`, or\n`\"-Infinity\"`.",
+                        "Encoded as `string` in RFC 3339 timestamp format. The time zone\nmust be present, and must be `\"Z\"`.\n\nIf the schema has the column option\n`allow_commit_timestamp=true`, the placeholder string\n`\"spanner.commit_timestamp()\"` can be used to instruct the system\nto insert the commit timestamp associated with the transaction\ncommit.",
+                        "Encoded as `string` in RFC 3339 date format.",
+                        "Encoded as `string`.",
+                        "Encoded as a base64-encoded `string`, as described in RFC 4648,\nsection 4.",
+                        "Encoded as `list`, where the list elements are represented\naccording to array_element_type.",
+                        "Encoded as `list`, where list element `i` is represented according\nto [struct_type.fields[i]][google.spanner.v1.StructType.fields]."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PlanNode": {
+            "description": "Node information for nodes appearing in a QueryPlan.plan_nodes.",
+            "id": "PlanNode",
+            "properties": {
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Attributes relevant to the node contained in a group of key-value pairs.\nFor example, a Parameter Reference node could have the following\ninformation in its metadata:\n\n    {\n      \"parameter_reference\": \"param1\",\n      \"parameter_type\": \"array\"\n    }",
+                    "type": "object"
+                },
+                "executionStats": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "The execution statistics associated with the node, contained in a group of\nkey-value pairs. Only present if the plan was returned as a result of a\nprofile query. For example, number of executions, number of rows/time per\nexecution etc.",
+                    "type": "object"
+                },
+                "shortRepresentation": {
+                    "$ref": "ShortRepresentation",
+                    "description": "Condensed representation for SCALAR nodes."
+                },
+                "index": {
+                    "description": "The `PlanNode`'s index in node list.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "kind": {
+                    "description": "Used to determine the type of node. May be needed for visualizing\ndifferent kinds of nodes differently. For example, If the node is a\nSCALAR node, it will have a condensed representation\nwhich can be used to directly embed a description of the node in its\nparent.",
+                    "enum": [
+                        "KIND_UNSPECIFIED",
+                        "RELATIONAL",
+                        "SCALAR"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "Denotes a Relational operator node in the expression tree. Relational\noperators represent iterative processing of rows during query execution.\nFor example, a `TableScan` operation that reads rows from a table.",
+                        "Denotes a Scalar node in the expression tree. Scalar nodes represent\nnon-iterable entities in the query plan. For example, constants or\narithmetic operators appearing inside predicate expressions or references\nto column names."
+                    ],
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The display name for the node.",
+                    "type": "string"
+                },
+                "childLinks": {
+                    "description": "List of child node `index`es and their relationship to this parent.",
+                    "items": {
+                        "$ref": "ChildLink"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CreateInstanceMetadata": {
+            "description": "Metadata type for the operation returned by\nCreateInstance.",
+            "id": "CreateInstanceMetadata",
+            "properties": {
+                "cancelTime": {
+                    "description": "The time at which this operation was cancelled. If set, this operation is\nin the process of undoing itself (which is guaranteed to succeed) and\ncannot be cancelled again.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "The time at which this operation failed or was completed successfully.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "instance": {
+                    "$ref": "Instance",
+                    "description": "The instance being created."
+                },
+                "startTime": {
+                    "description": "The time at which the\nCreateInstance request was\nreceived.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PartitionOptions": {
+            "description": "Options for a PartitionQueryRequest and\nPartitionReadRequest.",
+            "id": "PartitionOptions",
+            "properties": {
+                "partitionSizeBytes": {
+                    "description": "**Note:** This hint is currently ignored by PartitionQuery and\nPartitionRead requests.\n\nThe desired data size for each partition generated.  The default for this\noption is currently 1 GiB.  This is only a hint. The actual size of each\npartition may be smaller or larger than this size request.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "maxPartitions": {
+                    "description": "**Note:** This hint is currently ignored by PartitionQuery and\nPartitionRead requests.\n\nThe desired maximum number of partitions to return.  For example, this may\nbe set to the number of workers available.  The default for this option\nis currently 10,000. The maximum value is currently 200,000.  This is only\na hint.  The actual number of partitions returned may be smaller or larger\nthan this maximum count request.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ChildLink": {
+            "description": "Metadata associated with a parent-child relationship appearing in a\nPlanNode.",
+            "id": "ChildLink",
+            "properties": {
+                "type": {
+                    "description": "The type of the link. For example, in Hash Joins this could be used to\ndistinguish between the build child and the probe child, or in the case\nof the child being an output variable, to represent the tag associated\nwith the output variable.",
+                    "type": "string"
+                },
+                "childIndex": {
+                    "description": "The node to which the link points.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "variable": {
+                    "description": "Only present if the child node is SCALAR and corresponds\nto an output variable of the parent node. The field carries the name of\nthe output variable.\nFor example, a `TableScan` operator that reads rows from a table will\nhave child links to the `SCALAR` nodes representing the output variables\ncreated for each column that is read by the operator. The corresponding\n`variable` fields will be set to the variable names assigned to the\ncolumns.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PartitionReadRequest": {
+            "description": "The request for PartitionRead",
+            "id": "PartitionReadRequest",
+            "properties": {
+                "columns": {
+                    "description": "The columns of table to be returned for each row matching\nthis request.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "transaction": {
+                    "$ref": "TransactionSelector",
+                    "description": "Read only snapshot transactions are supported, read/write and single use\ntransactions are not."
+                },
+                "table": {
+                    "description": "Required. The name of the table in the database to be read.",
+                    "type": "string"
+                },
+                "partitionOptions": {
+                    "$ref": "PartitionOptions",
+                    "description": "Additional options that affect how many partitions are created."
+                },
+                "index": {
+                    "description": "If non-empty, the name of an index on table. This index is\nused instead of the table primary key when interpreting key_set\nand sorting result rows. See key_set for further information.",
+                    "type": "string"
+                },
+                "keySet": {
+                    "$ref": "KeySet",
+                    "description": "Required. `key_set` identifies the rows to be yielded. `key_set` names the\nprimary keys of the rows in table to be yielded, unless index\nis present. If index is present, then key_set instead names\nindex keys in index.\n\nIt is not an error for the `key_set` to name rows that do not\nexist in the database. Read yields nothing for nonexistent rows."
+                }
+            },
+            "type": "object"
+        },
+        "Delete": {
+            "description": "Arguments to delete operations.",
+            "id": "Delete",
+            "properties": {
+                "table": {
+                    "description": "Required. The table whose rows will be deleted.",
+                    "type": "string"
+                },
+                "keySet": {
+                    "$ref": "KeySet",
+                    "description": "Required. The primary keys of the rows within table to delete.\nDelete is idempotent. The transaction will succeed even if some or all\nrows do not exist."
+                }
+            },
+            "type": "object"
+        },
+        "CommitRequest": {
+            "description": "The request for Commit.",
+            "id": "CommitRequest",
+            "properties": {
+                "singleUseTransaction": {
+                    "$ref": "TransactionOptions",
+                    "description": "Execute mutations in a temporary transaction. Note that unlike\ncommit of a previously-started transaction, commit with a\ntemporary transaction is non-idempotent. That is, if the\n`CommitRequest` is sent to Cloud Spanner more than once (for\ninstance, due to retries in the application, or in the\ntransport library), it is possible that the mutations are\nexecuted more than once. If this is undesirable, use\nBeginTransaction and\nCommit instead."
+                },
+                "mutations": {
+                    "description": "The mutations to be executed when this transaction commits. All\nmutations are applied atomically, in the order they appear in\nthis list.",
+                    "items": {
+                        "$ref": "Mutation"
+                    },
+                    "type": "array"
+                },
+                "transactionId": {
+                    "description": "Commit a previously-started transaction.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BeginTransactionRequest": {
+            "description": "The request for BeginTransaction.",
+            "id": "BeginTransactionRequest",
+            "properties": {
+                "options": {
+                    "$ref": "TransactionOptions",
+                    "description": "Required. Options for the new transaction."
+                }
+            },
+            "type": "object"
+        },
+        "ListInstanceConfigsResponse": {
+            "description": "The response for ListInstanceConfigs.",
+            "id": "ListInstanceConfigsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "`next_page_token` can be sent in a subsequent\nListInstanceConfigs call to\nfetch more of the matching instance configurations.",
+                    "type": "string"
+                },
+                "instanceConfigs": {
+                    "description": "The list of requested instance configurations.",
+                    "items": {
+                        "$ref": "InstanceConfig"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GetIamPolicyRequest": {
+            "description": "Request message for `GetIamPolicy` method.",
+            "id": "GetIamPolicyRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "TestIamPermissionsResponse": {
+            "description": "Response message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsResponse",
+            "properties": {
+                "permissions": {
+                    "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CreateDatabaseMetadata": {
+            "description": "Metadata type for the operation returned by\nCreateDatabase.",
+            "id": "CreateDatabaseMetadata",
+            "properties": {
+                "database": {
+                    "description": "The database being created.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListSessionsResponse": {
+            "description": "The response for ListSessions.",
+            "id": "ListSessionsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "`next_page_token` can be sent in a subsequent\nListSessions call to fetch more of the matching\nsessions.",
+                    "type": "string"
+                },
+                "sessions": {
+                    "description": "The list of requested sessions.",
+                    "items": {
+                        "$ref": "Session"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Session": {
+            "description": "A session in the Cloud Spanner API.",
+            "id": "Session",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The labels for the session.\n\n * Label keys must be between 1 and 63 characters long and must conform to\n   the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.\n * Label values must be between 0 and 63 characters long and must conform\n   to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.\n * No more than 64 labels can be associated with a given session.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.",
+                    "type": "object"
+                },
+                "createTime": {
+                    "description": "Output only. The timestamp when the session is created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the session. This is always system-assigned; values provided\nwhen creating a session are ignored.",
+                    "type": "string"
+                },
+                "approximateLastUseTime": {
+                    "description": "Output only. The approximate timestamp when the session is last used. It is\ntypically earlier than the actual last use time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "KeyRange": {
+            "description": "KeyRange represents a range of rows in a table or index.\n\nA range has a start key and an end key. These keys can be open or\nclosed, indicating if the range includes rows with that key.\n\nKeys are represented by lists, where the ith value in the list\ncorresponds to the ith component of the table or index primary key.\nIndividual values are encoded as described here.\n\nFor example, consider the following table definition:\n\n    CREATE TABLE UserEvents (\n      UserName STRING(MAX),\n      EventDate STRING(10)\n    ) PRIMARY KEY(UserName, EventDate);\n\nThe following keys name rows in this table:\n\n    \"Bob\", \"2014-09-23\"\n\nSince the `UserEvents` table's `PRIMARY KEY` clause names two\ncolumns, each `UserEvents` key has two elements; the first is the\n`UserName`, and the second is the `EventDate`.\n\nKey ranges with multiple components are interpreted\nlexicographically by component using the table or index key's declared\nsort order. For example, the following range returns all events for\nuser `\"Bob\"` that occurred in the year 2015:\n\n    \"start_closed\": [\"Bob\", \"2015-01-01\"]\n    \"end_closed\": [\"Bob\", \"2015-12-31\"]\n\nStart and end keys can omit trailing key components. This affects the\ninclusion and exclusion of rows that exactly match the provided key\ncomponents: if the key is closed, then rows that exactly match the\nprovided components are included; if the key is open, then rows\nthat exactly match are not included.\n\nFor example, the following range includes all events for `\"Bob\"` that\noccurred during and after the year 2000:\n\n    \"start_closed\": [\"Bob\", \"2000-01-01\"]\n    \"end_closed\": [\"Bob\"]\n\nThe next example retrieves all events for `\"Bob\"`:\n\n    \"start_closed\": [\"Bob\"]\n    \"end_closed\": [\"Bob\"]\n\nTo retrieve events before the year 2000:\n\n    \"start_closed\": [\"Bob\"]\n    \"end_open\": [\"Bob\", \"2000-01-01\"]\n\nThe following range includes all rows in the table:\n\n    \"start_closed\": []\n    \"end_closed\": []\n\nThis range returns all users whose `UserName` begins with any\ncharacter from A to C:\n\n    \"start_closed\": [\"A\"]\n    \"end_open\": [\"D\"]\n\nThis range returns all users whose `UserName` begins with B:\n\n    \"start_closed\": [\"B\"]\n    \"end_open\": [\"C\"]\n\nKey ranges honor column sort order. For example, suppose a table is\ndefined as follows:\n\n    CREATE TABLE DescendingSortedTable {\n      Key INT64,\n      ...\n    ) PRIMARY KEY(Key DESC);\n\nThe following range retrieves all rows with key values between 1\nand 100 inclusive:\n\n    \"start_closed\": [\"100\"]\n    \"end_closed\": [\"1\"]\n\nNote that 100 is passed as the start, and 1 is passed as the end,\nbecause `Key` is a descending column in the schema.",
+            "id": "KeyRange",
+            "properties": {
+                "endOpen": {
+                    "description": "If the end is open, then the range excludes rows whose first\n`len(end_open)` key columns exactly match `end_open`.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "endClosed": {
+                    "description": "If the end is closed, then the range includes all rows whose\nfirst `len(end_closed)` key columns exactly match `end_closed`.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "startClosed": {
+                    "description": "If the start is closed, then the range includes all rows whose\nfirst `len(start_closed)` key columns exactly match `start_closed`.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "startOpen": {
+                    "description": "If the start is open, then the range excludes rows whose first\n`len(start_open)` key columns exactly match `start_open`.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListInstancesResponse": {
+            "description": "The response for ListInstances.",
+            "id": "ListInstancesResponse",
+            "properties": {
+                "instances": {
+                    "description": "The list of requested instances.",
+                    "items": {
+                        "$ref": "Instance"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "`next_page_token` can be sent in a subsequent\nListInstances call to fetch more\nof the matching instances.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ShortRepresentation": {
+            "description": "Condensed representation of a node and its subtree. Only present for\n`SCALAR` PlanNode(s).",
+            "id": "ShortRepresentation",
+            "properties": {
+                "description": {
+                    "description": "A string representation of the expression subtree rooted at this node.",
+                    "type": "string"
+                },
+                "subqueries": {
+                    "additionalProperties": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "description": "A mapping of (subquery variable name) -> (subquery node id) for cases\nwhere the `description` string of this node references a `SCALAR`\nsubquery contained in the expression subtree rooted at this node. The\nreferenced `SCALAR` subquery may not necessarily be a direct child of\nthis node.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceConfig": {
+            "description": "A possible configuration for a Cloud Spanner instance. Configurations\ndefine the geographic placement of nodes and their replication.",
+            "id": "InstanceConfig",
+            "properties": {
+                "name": {
+                    "description": "A unique identifier for the instance configuration.  Values\nare of the form\n`projects/<project>/instanceConfigs/a-z*`",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The name of this instance configuration as it appears in UIs.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PartitionQueryRequest": {
+            "description": "The request for PartitionQuery",
+            "id": "PartitionQueryRequest",
+            "properties": {
+                "transaction": {
+                    "$ref": "TransactionSelector",
+                    "description": "Read only snapshot transactions are supported, read/write and single use\ntransactions are not."
+                },
+                "partitionOptions": {
+                    "$ref": "PartitionOptions",
+                    "description": "Additional options that affect how many partitions are created."
+                },
+                "params": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "The SQL query string can contain parameter placeholders. A parameter\nplaceholder consists of `'@'` followed by the parameter\nname. Parameter names consist of any combination of letters,\nnumbers, and underscores.\n\nParameters can appear anywhere that a literal value is expected.  The same\nparameter name can be used more than once, for example:\n  `\"WHERE id > @msg_id AND id < @msg_id + 100\"`\n\nIt is an error to execute an SQL query with unbound parameters.\n\nParameter values are specified using `params`, which is a JSON\nobject whose keys are parameter names, and whose values are the\ncorresponding parameter values.",
+                    "type": "object"
+                },
+                "paramTypes": {
+                    "additionalProperties": {
+                        "$ref": "Type"
+                    },
+                    "description": "It is not always possible for Cloud Spanner to infer the right SQL type\nfrom a JSON value.  For example, values of type `BYTES` and values\nof type `STRING` both appear in params as JSON strings.\n\nIn these cases, `param_types` can be used to specify the exact\nSQL type for some or all of the SQL query parameters. See the\ndefinition of Type for more information\nabout SQL types.",
+                    "type": "object"
+                },
+                "sql": {
+                    "description": "The query request to generate partitions for. The request will fail if\nthe query is not root partitionable. The query plan of a root\npartitionable query has a single distributed union operator. A distributed\nunion operator conceptually divides one or more tables into multiple\nsplits, remotely evaluates a subquery independently on each split, and\nthen unions all results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateInstanceRequest": {
+            "description": "The request for UpdateInstance.",
+            "id": "UpdateInstanceRequest",
+            "properties": {
+                "instance": {
+                    "$ref": "Instance",
+                    "description": "Required. The instance to update, which must always include the instance\nname.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included."
+                },
+                "fieldMask": {
+                    "description": "Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.\nThe field mask must always be specified; this prevents any future fields in\n[][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know\nabout them.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "TransactionOptions": {
+            "description": "# Transactions\n\n\nEach session can have at most one active transaction at a time. After the\nactive transaction is completed, the session can immediately be\nre-used for the next transaction. It is not necessary to create a\nnew session for each transaction.\n\n# Transaction Modes\n\nCloud Spanner supports two transaction modes:\n\n  1. Locking read-write. This type of transaction is the only way\n     to write data into Cloud Spanner. These transactions rely on\n     pessimistic locking and, if necessary, two-phase commit.\n     Locking read-write transactions may abort, requiring the\n     application to retry.\n\n  2. Snapshot read-only. This transaction type provides guaranteed\n     consistency across several reads, but does not allow\n     writes. Snapshot read-only transactions can be configured to\n     read at timestamps in the past. Snapshot read-only\n     transactions do not need to be committed.\n\n\nFor transactions that only read, snapshot read-only transactions\nprovide simpler semantics and are almost always faster. In\nparticular, read-only transactions do not take locks, so they do\nnot conflict with read-write transactions. As a consequence of not\ntaking locks, they also do not abort, so retry loops are not needed.\n\nTransactions may only read/write data in a single database. They\nmay, however, read/write data in different tables within that\ndatabase.\n\n## Locking Read-Write Transactions\n\nLocking transactions may be used to atomically read-modify-write\ndata anywhere in a database. This type of transaction is externally\nconsistent.\n\nClients should attempt to minimize the amount of time a transaction\nis active. Faster transactions commit with higher probability\nand cause less contention. Cloud Spanner attempts to keep read locks\nactive as long as the transaction continues to do reads, and the\ntransaction has not been terminated by\nCommit or\nRollback.  Long periods of\ninactivity at the client may cause Cloud Spanner to release a\ntransaction's locks and abort it.\n\nReads performed within a transaction acquire locks on the data\nbeing read. Writes can only be done at commit time, after all reads\nhave been completed.\nConceptually, a read-write transaction consists of zero or more\nreads or SQL queries followed by\nCommit. At any time before\nCommit, the client can send a\nRollback request to abort the\ntransaction.\n\n### Semantics\n\nCloud Spanner can commit the transaction if all read locks it acquired\nare still valid at commit time, and it is able to acquire write\nlocks for all writes. Cloud Spanner can abort the transaction for any\nreason. If a commit attempt returns `ABORTED`, Cloud Spanner guarantees\nthat the transaction has not modified any user data in Cloud Spanner.\n\nUnless the transaction commits, Cloud Spanner makes no guarantees about\nhow long the transaction's locks were held for. It is an error to\nuse Cloud Spanner locks for any sort of mutual exclusion other than\nbetween Cloud Spanner transactions themselves.\n\n### Retrying Aborted Transactions\n\nWhen a transaction aborts, the application can choose to retry the\nwhole transaction again. To maximize the chances of successfully\ncommitting the retry, the client should execute the retry in the\nsame session as the original attempt. The original session's lock\npriority increases with each consecutive abort, meaning that each\nattempt has a slightly better chance of success than the previous.\n\nUnder some circumstances (e.g., many transactions attempting to\nmodify the same row(s)), a transaction can abort many times in a\nshort period before successfully committing. Thus, it is not a good\nidea to cap the number of retries a transaction can attempt;\ninstead, it is better to limit the total amount of wall time spent\nretrying.\n\n### Idle Transactions\n\nA transaction is considered idle if it has no outstanding reads or\nSQL queries and has not started a read or SQL query within the last 10\nseconds. Idle transactions can be aborted by Cloud Spanner so that they\ndon't hold on to locks indefinitely. In that case, the commit will\nfail with error `ABORTED`.\n\nIf this behavior is undesirable, periodically executing a simple\nSQL query in the transaction (e.g., `SELECT 1`) prevents the\ntransaction from becoming idle.\n\n## Snapshot Read-Only Transactions\n\nSnapshot read-only transactions provides a simpler method than\nlocking read-write transactions for doing several consistent\nreads. However, this type of transaction does not support writes.\n\nSnapshot transactions do not take locks. Instead, they work by\nchoosing a Cloud Spanner timestamp, then executing all reads at that\ntimestamp. Since they do not acquire locks, they do not block\nconcurrent read-write transactions.\n\nUnlike locking read-write transactions, snapshot read-only\ntransactions never abort. They can fail if the chosen read\ntimestamp is garbage collected; however, the default garbage\ncollection policy is generous enough that most applications do not\nneed to worry about this in practice.\n\nSnapshot read-only transactions do not need to call\nCommit or\nRollback (and in fact are not\npermitted to do so).\n\nTo execute a snapshot transaction, the client specifies a timestamp\nbound, which tells Cloud Spanner how to choose a read timestamp.\n\nThe types of timestamp bound are:\n\n  - Strong (the default).\n  - Bounded staleness.\n  - Exact staleness.\n\nIf the Cloud Spanner database to be read is geographically distributed,\nstale read-only transactions can execute more quickly than strong\nor read-write transaction, because they are able to execute far\nfrom the leader replica.\n\nEach type of timestamp bound is discussed in detail below.\n\n### Strong\n\nStrong reads are guaranteed to see the effects of all transactions\nthat have committed before the start of the read. Furthermore, all\nrows yielded by a single read are consistent with each other -- if\nany part of the read observes a transaction, all parts of the read\nsee the transaction.\n\nStrong reads are not repeatable: two consecutive strong read-only\ntransactions might return inconsistent results if there are\nconcurrent writes. If consistency across reads is required, the\nreads should be executed within a transaction or at an exact read\ntimestamp.\n\nSee TransactionOptions.ReadOnly.strong.\n\n### Exact Staleness\n\nThese timestamp bounds execute reads at a user-specified\ntimestamp. Reads at a timestamp are guaranteed to see a consistent\nprefix of the global transaction history: they observe\nmodifications done by all transactions with a commit timestamp <=\nthe read timestamp, and observe none of the modifications done by\ntransactions with a larger commit timestamp. They will block until\nall conflicting transactions that may be assigned commit timestamps\n<= the read timestamp have finished.\n\nThe timestamp can either be expressed as an absolute Cloud Spanner commit\ntimestamp or a staleness relative to the current time.\n\nThese modes do not require a \"negotiation phase\" to pick a\ntimestamp. As a result, they execute slightly faster than the\nequivalent boundedly stale concurrency modes. On the other hand,\nboundedly stale reads usually return fresher results.\n\nSee TransactionOptions.ReadOnly.read_timestamp and\nTransactionOptions.ReadOnly.exact_staleness.\n\n### Bounded Staleness\n\nBounded staleness modes allow Cloud Spanner to pick the read timestamp,\nsubject to a user-provided staleness bound. Cloud Spanner chooses the\nnewest timestamp within the staleness bound that allows execution\nof the reads at the closest available replica without blocking.\n\nAll rows yielded are consistent with each other -- if any part of\nthe read observes a transaction, all parts of the read see the\ntransaction. Boundedly stale reads are not repeatable: two stale\nreads, even if they use the same staleness bound, can execute at\ndifferent timestamps and thus return inconsistent results.\n\nBoundedly stale reads execute in two phases: the first phase\nnegotiates a timestamp among all replicas needed to serve the\nread. In the second phase, reads are executed at the negotiated\ntimestamp.\n\nAs a result of the two phase execution, bounded staleness reads are\nusually a little slower than comparable exact staleness\nreads. However, they are typically able to return fresher\nresults, and are more likely to execute at the closest replica.\n\nBecause the timestamp negotiation requires up-front knowledge of\nwhich rows will be read, it can only be used with single-use\nread-only transactions.\n\nSee TransactionOptions.ReadOnly.max_staleness and\nTransactionOptions.ReadOnly.min_read_timestamp.\n\n### Old Read Timestamps and Garbage Collection\n\nCloud Spanner continuously garbage collects deleted and overwritten data\nin the background to reclaim storage space. This process is known\nas \"version GC\". By default, version GC reclaims versions after they\nare one hour old. Because of this, Cloud Spanner cannot perform reads\nat read timestamps more than one hour in the past. This\nrestriction also applies to in-progress reads and/or SQL queries whose\ntimestamp become too old while executing. Reads and SQL queries with\ntoo-old read timestamps fail with the error `FAILED_PRECONDITION`.\n\n##",
+            "id": "TransactionOptions",
+            "properties": {
+                "readWrite": {
+                    "$ref": "ReadWrite",
+                    "description": "Transaction may write.\n\nAuthorization to begin a read-write transaction requires\n`spanner.databases.beginOrRollbackReadWriteTransaction` permission\non the `session` resource."
+                },
+                "readOnly": {
+                    "$ref": "ReadOnly",
+                    "description": "Transaction will not write.\n\nAuthorization to begin a read-only transaction requires\n`spanner.databases.beginReadOnlyTransaction` permission\non the `session` resource."
+                }
+            },
+            "type": "object"
+        },
+        "CreateDatabaseRequest": {
+            "description": "The request for CreateDatabase.",
+            "id": "CreateDatabaseRequest",
+            "properties": {
+                "createStatement": {
+                    "description": "Required. A `CREATE DATABASE` statement, which specifies the ID of the\nnew database.  The database ID must conform to the regular expression\n`a-z*[a-z0-9]` and be between 2 and 30 characters in length.\nIf the database ID is a reserved word or if it contains a hyphen, the\ndatabase ID must be enclosed in backticks (`` ` ``).",
+                    "type": "string"
+                },
+                "extraStatements": {
+                    "description": "An optional list of DDL statements to run inside the newly created\ndatabase. Statements can create tables, indexes, etc. These\nstatements execute atomically with the creation of the database:\nif there is an error in any statement, the database is not created.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -2614,5 +2603,6 @@
     },
     "servicePath": "",
     "title": "Cloud Spanner API",
-    "version": "v1"
+    "version": "v1",
+    "version_module": true
 }

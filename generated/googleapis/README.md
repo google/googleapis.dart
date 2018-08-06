@@ -233,7 +233,7 @@ Official API documentation: https://developers.google.com/google-apps/calendar/f
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Hangouts Chat API - chat v1
 
-Enables bots to fetch information and perform actions in the new Hangouts Chat.
+Enables bots to fetch information and perform actions in Hangouts Chat.
 
 Official API documentation: https://developers.google.com/hangouts/chat
 
@@ -256,11 +256,11 @@ Allows developers to manage billing for their Google Cloud Platform projects
 
 Official API documentation: https://cloud.google.com/billing/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Container Builder API - cloudbuild v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Build API - cloudbuild v1
 
-Builds container images in the cloud.
+Creates and manages builds on Google Cloud Platform.
 
-Official API documentation: https://cloud.google.com/container-builder/docs/
+Official API documentation: https://cloud.google.com/cloud-build/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Debugger API - clouddebugger v2
 
@@ -448,12 +448,6 @@ Programmatically creates and manages Firebase Dynamic Links.
 
 Official API documentation: https://firebase.google.com/docs/dynamic-links/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Remote Config API - firebaseremoteconfig v1
-
-Firebase Remote Config API allows the 3P clients to manage Remote Config conditions and parameters for Firebase applications.
-
-Official API documentation: https://firebase.google.com/docs/remote-config/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Rules API - firebaserules v1
 
 Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.
@@ -533,9 +527,9 @@ Help the third party sites to implement federated login.
 
 Official API documentation: https://developers.google.com/identity-toolkit/v3/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Job Discovery - jobs v2
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Talent Solution API - jobs v2
 
-Cloud Job Discovery provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.
+Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.
 
 
 Official API documentation: https://cloud.google.com/job-discovery/docs
@@ -560,7 +554,7 @@ Official API documentation: https://developers.google.com/google-apps/licensing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Logging API - logging v2
 
-Writes log entries and manages your Stackdriver Logging configuration.
+Writes log entries and manages your Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
@@ -655,12 +649,6 @@ The Poly API provides read-only access to assets hosted on <a href="https://poly
 
 Official API documentation: https://developers.google.com/poly/
 
-#### ![Logo](https://www.google.com/images/icons/feature/predictionapi-16.png) Prediction API - prediction v1.6
-
-Lets you access a cloud hosted machine learning service that makes it easy to build smart apps
-
-Official API documentation: https://developers.google.com/prediction/docs/developer-guide
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Pub/Sub API - pubsub v1
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
@@ -688,7 +676,7 @@ Official API documentation: https://developers.google.com/safe-browsing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Apps Script API - script v1
 
-An API for managing and executing Google Apps Script projects. <aside class="note"><b>Note</b>: In order to use this API in your apps, you must <a href="/apps-script/api/how-tos/enable#using_the_apps_script_api_in_your_app"> enable it for use</a>. To allow other apps to manage your scripts, you must <a href="/apps-script/api/how-tos/enable#granting_third-party_applications_access_to_your_script_projects"> grant them access</a>.</aside>
+An API for managing and executing Google Apps Script projects.
 
 
 Official API documentation: https://developers.google.com/apps-script/api/
@@ -725,6 +713,12 @@ Official API documentation: https://cloud.google.com/service-control/
 Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.
 
 Official API documentation: https://cloud.google.com/service-management/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Usage API - serviceusage v1
+
+Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.
+
+Official API documentation: https://cloud.google.com/service-usage/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service User API - serviceuser v1
 
@@ -766,7 +760,7 @@ Official API documentation: https://cloud.google.com/spanner/
 
 Converts audio to text by applying powerful neural network models.
 
-Official API documentation: https://cloud.google.com/speech/
+Official API documentation: https://cloud.google.com/speech-to-text/docs/quickstart-protocol
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - storage v1
 

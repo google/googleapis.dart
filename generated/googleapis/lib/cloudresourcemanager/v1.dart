@@ -103,6 +103,8 @@ class FoldersResourceApi {
   /// Gets the effective `Policy` on a resource. This is the result of merging
   /// `Policies` in the resource hierarchy. The returned `Policy` will not have
   /// an `etag`set because it is a computed `Policy` across multiple resources.
+  /// Subtrees of Resource Manager resource hierarchy with 'under:' prefix will
+  /// not be expanded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -477,6 +479,54 @@ class LiensResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
+  /// Retrieve a Lien by `name`.
+  ///
+  /// Callers of this method will require permission on the `parent` resource.
+  /// For example, a Lien with a `parent` of `projects/1234` requires permission
+  /// requires permission `resourcemanager.projects.get` or
+  /// `resourcemanager.projects.updateLiens`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name/identifier of the Lien.
+  /// Value must have pattern "^liens/.+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Lien].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Lien> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Lien.fromJson(data));
+  }
+
   /// List all Liens applied to the `parent` resource.
   ///
   /// Callers of this method will require permission on the `parent` resource.
@@ -485,14 +535,14 @@ class LiensResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The `next_page_token` value returned from a previous List
+  /// request, if any.
+  ///
   /// [pageSize] - The maximum number of items to return. This is a suggestion
   /// for the server.
   ///
   /// [parent] - The name of the resource to list all attached Liens.
   /// For example, `projects/1234`.
-  ///
-  /// [pageToken] - The `next_page_token` value returned from a previous List
-  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -505,9 +555,9 @@ class LiensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLiensResponse> list(
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String parent,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -516,14 +566,14 @@ class LiensResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -697,6 +747,8 @@ class OrganizationsResourceApi {
   /// Gets the effective `Policy` on a resource. This is the result of merging
   /// `Policies` in the resource hierarchy. The returned `Policy` will not have
   /// an `etag`set because it is a computed `Policy` across multiple resources.
+  /// Subtrees of Resource Manager resource hierarchy with 'under:' prefix will
+  /// not be expanded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1486,6 +1538,8 @@ class ProjectsResourceApi {
   /// Gets the effective `Policy` on a resource. This is the result of merging
   /// `Policies` in the resource hierarchy. The returned `Policy` will not have
   /// an `etag`set because it is a computed `Policy` across multiple resources.
+  /// Subtrees of Resource Manager resource hierarchy with 'under:' prefix will
+  /// not be expanded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1665,18 +1719,6 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListProjects
-  /// that indicates from where listing should continue.
-  ///
-  /// Optional.
-  ///
-  /// [pageSize] - The maximum number of Projects to return in the response.
-  /// The server can return fewer Projects than requested.
-  /// If unspecified, server picks an appropriate default.
-  ///
-  /// Optional.
-  ///
   /// [filter] - An expression for filtering the results of the request.  Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1710,6 +1752,18 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListProjects
+  /// that indicates from where listing should continue.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of Projects to return in the response.
+  /// The server can return fewer Projects than requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1721,9 +1775,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1732,14 +1786,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2356,6 +2410,12 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -2382,12 +2442,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -2399,6 +2461,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -2656,6 +2721,68 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
     return _json;
   }
 }
@@ -3031,11 +3158,20 @@ class ListConstraint {
   /// that matches the value specified in this `Constraint`.
   core.String suggestedValue;
 
+  /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
+  /// can be used in `Policy.allowed_values` and `Policy.denied_values`. For
+  /// example, `"under:folders/123"` would match any resource under the
+  /// 'folders/123' folder.
+  core.bool supportsUnder;
+
   ListConstraint();
 
   ListConstraint.fromJson(core.Map _json) {
     if (_json.containsKey("suggestedValue")) {
       suggestedValue = _json["suggestedValue"];
+    }
+    if (_json.containsKey("supportsUnder")) {
+      supportsUnder = _json["supportsUnder"];
     }
   }
 
@@ -3044,6 +3180,9 @@ class ListConstraint {
         new core.Map<core.String, core.Object>();
     if (suggestedValue != null) {
       _json["suggestedValue"] = suggestedValue;
+    }
+    if (supportsUnder != null) {
+      _json["supportsUnder"] = supportsUnder;
     }
     return _json;
   }
@@ -3159,30 +3298,39 @@ class ListOrgPoliciesResponse {
 /// Used in `policy_type` to specify how `list_policy` behaves at this
 /// resource.
 ///
-/// A `ListPolicy` can define specific values that are allowed or denied by
-/// setting either the `allowed_values` or `denied_values` fields. It can also
-/// be used to allow or deny all values, by setting the `all_values` field. If
-/// `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
-/// or `denied_values` must be set (attempting to set both or neither will
-/// result in a failed request). If `all_values` is set to either `ALLOW` or
-/// `DENY`, `allowed_values` and `denied_values` must be unset.
+/// `ListPolicy` can define specific values and subtrees of Cloud Resource
+/// Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that
+/// are allowed or denied by setting the `allowed_values` and `denied_values`
+/// fields. This is achieved by using the `under:` and optional `is:` prefixes.
+/// The `under:` prefix is used to denote resource subtree values.
+/// The `is:` prefix is used to denote specific values, and is required only
+/// if the value contains a ":". Values prefixed with "is:" are treated the
+/// same as values with no prefix.
+/// Ancestry subtrees must be in one of the following formats:
+///     - “projects/<project-id>”, e.g. “projects/tokyo-rain-123”
+///     - “folders/<folder-id>”, e.g. “folders/1234”
+///     - “organizations/<organization-id>”, e.g. “organizations/1234”
+/// The `supports_under` field of the associated `Constraint`  defines whether
+/// ancestry prefixes can be used. You can set `allowed_values` and
+/// `denied_values` in the same `Policy` if `all_values` is
+/// `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all
+/// values. If `all_values` is set to either `ALLOW` or `DENY`,
+/// `allowed_values` and `denied_values` must be unset.
 class ListPolicy {
   /// The policy all_values state.
   /// Possible string values are:
-  /// - "ALL_VALUES_UNSPECIFIED" : Indicates that either allowed_values or
+  /// - "ALL_VALUES_UNSPECIFIED" : Indicates that allowed_values or
   /// denied_values must be set.
   /// - "ALLOW" : A policy with this set allows all values.
   /// - "DENY" : A policy with this set denies all values.
   core.String allValues;
 
-  /// List of values allowed  at this resource. Can only be set if no values
-  /// are set for `denied_values` and `all_values` is set to
-  /// `ALL_VALUES_UNSPECIFIED`.
+  /// List of values allowed  at this resource. Can only be set if `all_values`
+  /// is set to `ALL_VALUES_UNSPECIFIED`.
   core.List<core.String> allowedValues;
 
-  /// List of values denied at this resource. Can only be set if no values are
-  /// set for `allowed_values` and `all_values` is set to
-  /// `ALL_VALUES_UNSPECIFIED`.
+  /// List of values denied at this resource. Can only be set if `all_values`
+  /// is set to `ALL_VALUES_UNSPECIFIED`.
   core.List<core.String> deniedValues;
 
   /// Determines the inheritance behavior for this `Policy`.
@@ -3209,12 +3357,13 @@ class ListPolicy {
   /// `inherit_from_parent` set to `false` and field all_values set to DENY,
   /// then an attempt to activate any API will be denied.
   ///
-  /// The following examples demonstrate different possible layerings:
+  /// The following examples demonstrate different possible layerings for
+  /// `projects/bar` parented by `organizations/foo`:
   ///
   /// Example 1 (no inherited values):
   ///   `organizations/foo` has a `Policy` with values:
   ///     {allowed_values: “E1” allowed_values:”E2”}
-  ///   ``projects/bar`` has `inherit_from_parent` `false` and values:
+  ///   `projects/bar` has `inherit_from_parent` `false` and values:
   ///     {allowed_values: "E3" allowed_values: "E4"}
   /// The accepted values at `organizations/foo` are `E1`, `E2`.
   /// The accepted values at `projects/bar` are `E3`, and `E4`.
@@ -3267,6 +3416,20 @@ class ListPolicy {
   ///     {all: DENY}
   /// The accepted values at `organizations/foo` are `E1`, E2`.
   /// No value is accepted at `projects/bar`.
+  ///
+  /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy):
+  /// Given the following resource hierarchy
+  ///   O1->{F1, F2}; F1->{P1}; F2->{P2, P3},
+  ///   `organizations/foo` has a `Policy` with values:
+  ///     {allowed_values: "under:organizations/O1"}
+  ///   `projects/bar` has a `Policy` with:
+  ///     {allowed_values: "under:projects/P3"}
+  ///     {denied_values: "under:folders/F2"}
+  /// The accepted values at `organizations/foo` are `organizations/O1`,
+  ///   `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,
+  ///   `projects/P3`.
+  /// The accepted values at `projects/bar` are `organizations/O1`,
+  ///   `folders/F1`, `projects/P1`.
   core.bool inheritFromParent;
 
   /// Optional. The Google Cloud Console will try to default to a configuration

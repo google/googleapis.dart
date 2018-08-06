@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/ByLOW4yZfePRIGOjXTVOsRUK1H4\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/pUM8DBD2OzixJYx62P8tPpv6aFY\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1161,7 +1161,6 @@
             }
         }
     },
-    "revision": "20180531",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AndroidAppInfo": {
@@ -2260,6 +2259,20 @@
             "description": "An issue detected occurring during a test execution.",
             "id": "TestIssue",
             "properties": {
+                "category": {
+                    "description": "Category of issue. Required.",
+                    "enum": [
+                        "common",
+                        "robo",
+                        "unspecifiedCategory"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
                 "errorMessage": {
                     "description": "A brief human-readable message describing the issue. Required.",
                     "type": "string"
@@ -2269,10 +2282,12 @@
                     "enum": [
                         "info",
                         "severe",
+                        "suggestion",
                         "unspecifiedSeverity",
                         "warning"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -2288,18 +2303,24 @@
                     "description": "Type of issue. Required.",
                     "enum": [
                         "anr",
+                        "availableDeepLinks",
                         "compatibleWithOrchestrator",
                         "completeRoboScriptExecution",
+                        "encounteredNonAndroidUiWidgetScreen",
                         "failedToInstall",
                         "fatalException",
                         "incompleteRoboScriptExecution",
                         "launcherActivityNotFound",
                         "nativeCrash",
+                        "nonSdkApiUsageViolation",
                         "startActivityNotFound",
                         "unspecifiedType",
                         "unusedRoboDirective"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",

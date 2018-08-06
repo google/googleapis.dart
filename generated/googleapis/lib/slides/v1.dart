@@ -312,6 +312,8 @@ class PresentationsPagesResourceApi {
   /// Possible string values are:
   /// - "THUMBNAIL_SIZE_UNSPECIFIED" : A THUMBNAIL_SIZE_UNSPECIFIED.
   /// - "LARGE" : A LARGE.
+  /// - "MEDIUM" : A MEDIUM.
+  /// - "SMALL" : A SMALL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1691,6 +1693,9 @@ class CreateTableResponse {
 }
 
 /// Creates a video.
+///
+/// NOTE: Creating a video from Google Drive requires that the requesting app
+/// have at least one of the drive, drive.readonly, or drive.file OAuth scopes.
 class CreateVideoRequest {
   /// The element properties for the video.
   ///
@@ -1707,7 +1712,9 @@ class CreateVideoRequest {
   /// The video source's unique identifier for this video.
   ///
   /// e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,
-  /// the ID is 7U3axjORYZ0.
+  /// the ID is 7U3axjORYZ0. For a Google Drive video
+  /// https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID
+  /// is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.
   core.String id;
 
   /// A user-supplied object ID.
@@ -1727,6 +1734,7 @@ class CreateVideoRequest {
   /// Possible string values are:
   /// - "SOURCE_UNSPECIFIED" : The video source is unspecified.
   /// - "YOUTUBE" : The video source is YouTube.
+  /// - "DRIVE" : The video source is Google Drive.
   core.String source;
 
   CreateVideoRequest();
@@ -3915,7 +3923,7 @@ class ParagraphStyle {
   /// inherited from the parent.
   Dimension spaceAbove;
 
-  /// The amount of extra space above the paragraph. If unset, the value is
+  /// The amount of extra space below the paragraph. If unset, the value is
   /// inherited from the parent.
   Dimension spaceBelow;
 
@@ -6754,13 +6762,13 @@ class TableColumnProperties {
 /// like this:
 ///
 ///
-///   [             ]
+///      [             ]
 ///
 /// A table range with location = (0, 0), row span = 3 and column span = 2
 /// specifies the following cells:
 ///
-///    x     x
-///   [      x      ]
+///       x     x
+///      [      x      ]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -8235,10 +8243,11 @@ class Video {
   /// Possible string values are:
   /// - "SOURCE_UNSPECIFIED" : The video source is unspecified.
   /// - "YOUTUBE" : The video source is YouTube.
+  /// - "DRIVE" : The video source is Google Drive.
   core.String source;
 
-  /// An URL to a video. The URL is valid as long as the source video
-  /// exists and sharing settings do not change.
+  /// An URL to a video. The URL is valid as long as the source video exists and
+  /// sharing settings do not change.
   core.String url;
 
   /// The properties of the video.

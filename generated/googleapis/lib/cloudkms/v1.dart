@@ -509,7 +509,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
   /// Create a new CryptoKey within a KeyRing.
   ///
-  /// CryptoKey.purpose is required.
+  /// CryptoKey.purpose and CryptoKey.version_template.algorithm are
+  /// required.
   ///
   /// [request] - The metadata request object.
   ///
@@ -568,7 +569,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     return _response.then((data) => new CryptoKey.fromJson(data));
   }
 
-  /// Decrypts data that was protected by Encrypt.
+  /// Decrypts data that was protected by Encrypt. The CryptoKey.purpose
+  /// must be ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///
@@ -622,6 +624,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   }
 
   /// Encrypts data, so that it can only be recovered by a call to Decrypt.
+  /// The CryptoKey.purpose must be
+  /// ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1008,7 +1012,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
-  /// Update the version of a CryptoKey that will be used in Encrypt
+  /// Update the version of a CryptoKey that will be used in Encrypt.
+  ///
+  /// Returns an error if called on an asymmetric key.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1243,14 +1249,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeyVersionsResponse.next_page_token.
-  ///
   /// [pageSize] - Optional limit on the number of CryptoKeyVersions to
   /// include in the response. Further CryptoKeyVersions can
   /// subsequently be obtained by including the
   /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeyVersionsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1263,7 +1269,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1274,11 +1280,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1568,6 +1574,12 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1594,12 +1606,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -1611,6 +1625,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1647,6 +1664,10 @@ class CryptoKey {
   /// CreateCryptoKeyVersion and
   /// UpdateCryptoKeyPrimaryVersion
   /// do not affect next_rotation_time.
+  ///
+  /// Keys with purpose
+  /// ENCRYPT_DECRYPT support automatic
+  /// rotation. For other keys, this field must be omitted.
   core.String nextRotationTime;
 
   /// Output only. A copy of the "primary" CryptoKeyVersion that will be used
@@ -1655,10 +1676,13 @@ class CryptoKey {
   ///
   /// The CryptoKey's primary version can be updated via
   /// UpdateCryptoKeyPrimaryVersion.
+  ///
+  /// All keys with purpose
+  /// ENCRYPT_DECRYPT have a primary. For
+  /// other keys, this field will be omitted.
   CryptoKeyVersion primary;
 
-  /// The immutable purpose of this CryptoKey. Currently, the only acceptable
-  /// purpose is ENCRYPT_DECRYPT.
+  /// The immutable purpose of this CryptoKey.
   /// Possible string values are:
   /// - "CRYPTO_KEY_PURPOSE_UNSPECIFIED" : Not specified.
   /// - "ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
@@ -1670,6 +1694,10 @@ class CryptoKey {
   /// automatically rotates a key. Must be at least one day.
   ///
   /// If rotation_period is set, next_rotation_time must also be set.
+  ///
+  /// Keys with purpose
+  /// ENCRYPT_DECRYPT support automatic
+  /// rotation. For other keys, this field must be omitted.
   core.String rotationPeriod;
 
   CryptoKey();
@@ -1729,14 +1757,14 @@ class CryptoKey {
 /// A CryptoKeyVersion represents an individual cryptographic key, and the
 /// associated key material.
 ///
-/// It can be used for cryptographic operations either directly, or via its
-/// parent CryptoKey, in which case the server will choose the appropriate
-/// version for the operation.
+/// An ENABLED version can be
+/// used for cryptographic operations.
 ///
 /// For security reasons, the raw cryptographic key material represented by a
 /// CryptoKeyVersion can never be viewed or exported. It can only be used to
-/// encrypt or decrypt data when an authorized user or application invokes Cloud
-/// KMS.
+/// encrypt, decrypt, or sign data when an authorized user or application
+/// invokes
+/// Cloud KMS.
 class CryptoKeyVersion {
   /// Output only. The time at which this CryptoKeyVersion was created.
   core.String createTime;
@@ -1759,8 +1787,7 @@ class CryptoKeyVersion {
   /// The current state of the CryptoKeyVersion.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" : Not specified.
-  /// - "ENABLED" : This version may be used in Encrypt and
-  /// Decrypt requests.
+  /// - "ENABLED" : This version may be used for cryptographic operations.
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available,
   /// and the version can be placed back into the ENABLED state.
@@ -1913,8 +1940,14 @@ class DestroyCryptoKeyVersionRequest {
 /// Request message for KeyManagementService.Encrypt.
 class EncryptRequest {
   /// Optional data that, if specified, must also be provided during decryption
-  /// through DecryptRequest.additional_authenticated_data.  Must be no
-  /// larger than 64KiB.
+  /// through DecryptRequest.additional_authenticated_data.
+  ///
+  /// The maximum size depends on the key version's
+  /// protection_level. For
+  /// SOFTWARE keys, the AAD must be no larger than
+  /// 64KiB. For HSM keys, the combined length of the
+  /// plaintext and additional_authenticated_data fields must be no larger than
+  /// 8KiB.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes {
     return convert.base64.decode(additionalAuthenticatedData);
@@ -1926,6 +1959,13 @@ class EncryptRequest {
   }
 
   /// Required. The data to encrypt. Must be no larger than 64KiB.
+  ///
+  /// The maximum size depends on the key version's
+  /// protection_level. For
+  /// SOFTWARE keys, the plaintext must be no larger
+  /// than 64KiB. For HSM keys, the combined length of the
+  /// plaintext and additional_authenticated_data fields must be no larger than
+  /// 8KiB.
   core.String plaintext;
   core.List<core.int> get plaintextAsBytes {
     return convert.base64.decode(plaintext);
@@ -1995,6 +2035,68 @@ class EncryptResponse {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

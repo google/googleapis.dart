@@ -4610,6 +4610,13 @@ class TestExecutionStep {
 
 /// An issue detected occurring during a test execution.
 class TestIssue {
+  /// Category of issue. Required.
+  /// Possible string values are:
+  /// - "common"
+  /// - "robo"
+  /// - "unspecifiedCategory"
+  core.String category;
+
   /// A brief human-readable message describing the issue. Required.
   core.String errorMessage;
 
@@ -4617,6 +4624,7 @@ class TestIssue {
   /// Possible string values are:
   /// - "info"
   /// - "severe"
+  /// - "suggestion"
   /// - "unspecifiedSeverity"
   /// - "warning"
   core.String severity;
@@ -4627,13 +4635,16 @@ class TestIssue {
   /// Type of issue. Required.
   /// Possible string values are:
   /// - "anr"
+  /// - "availableDeepLinks"
   /// - "compatibleWithOrchestrator"
   /// - "completeRoboScriptExecution"
+  /// - "encounteredNonAndroidUiWidgetScreen"
   /// - "failedToInstall"
   /// - "fatalException"
   /// - "incompleteRoboScriptExecution"
   /// - "launcherActivityNotFound"
   /// - "nativeCrash"
+  /// - "nonSdkApiUsageViolation"
   /// - "startActivityNotFound"
   /// - "unspecifiedType"
   /// - "unusedRoboDirective"
@@ -4646,6 +4657,9 @@ class TestIssue {
   TestIssue();
 
   TestIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
@@ -4666,6 +4680,9 @@ class TestIssue {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (category != null) {
+      _json["category"] = category;
+    }
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }

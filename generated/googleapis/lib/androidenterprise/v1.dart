@@ -614,51 +614,6 @@ class EnterprisesResourceApi {
     return _response.then((data) => new AdministratorWebToken.fromJson(data));
   }
 
-  /// Deletes the binding between the EMM and enterprise. This is now
-  /// deprecated. Use this method only to unenroll customers that were
-  /// previously enrolled with the insert call, then enroll them again with the
-  /// enroll call.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future delete(core.String enterpriseId, {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
   /// Enrolls an enterprise with the calling EMM.
   ///
   /// [request] - The metadata request object.
@@ -961,56 +916,6 @@ class EnterprisesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new StoreLayout.fromJson(data));
-  }
-
-  /// Establishes the binding between the EMM and an enterprise. This is now
-  /// deprecated; use enroll instead.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [token] - The token provided by the enterprise to register the EMM.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Enterprise].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Enterprise> insert(Enterprise request, core.String token,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (token == null) {
-      throw new core.ArgumentError("Parameter token is required.");
-    }
-    _queryParams["token"] = [token];
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Enterprise.fromJson(data));
   }
 
   /// Looks up an enterprise by domain name. This is only supported for

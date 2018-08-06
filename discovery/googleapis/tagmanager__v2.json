@@ -33,7 +33,7 @@
     "description": "Accesses Tag Manager accounts and containers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/tag-manager/api/v2/",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/Ly5SZRQhmBss2ESZ1jrbd2AlrXQ\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/RVdc7SxGD2Wawtu86CTmC8Lo4wM\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -2685,7 +2685,6 @@
             }
         }
     },
-    "revision": "20171108",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

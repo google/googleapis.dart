@@ -275,15 +275,15 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The next_page_token value returned from a previous call to
+  /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
+  /// Requests the next page of resources.
+  ///
   /// [pageSize] - The maximum number of resources to return.
   ///
   /// [syncToken] - A sync token, returned by a previous call to
   /// `contactgroups.list`.
   /// Only resources changed since the sync token was created will be returned.
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous call to
-  /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
-  /// Requests the next page of resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,9 +296,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String syncToken,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -307,14 +307,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -566,6 +566,11 @@ class PeopleResourceApi {
   /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
   /// Value must have pattern "^people/[^/]+$".
   ///
+  /// [requestMask_includeField] - **Required.** Comma-separated list of person
+  /// fields to be included in the
+  /// response. Each path should start with `person.`: for example,
+  /// `person.names` or `person.photos`.
+  ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// the person are
   /// returned. Multiple fields can be specified by separating them with commas.
@@ -601,11 +606,6 @@ class PeopleResourceApi {
   /// * urls
   /// * userDefined
   ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -617,8 +617,8 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> get(core.String resourceName,
-      {core.String personFields,
-      core.String requestMask_includeField,
+      {core.String requestMask_includeField,
+      core.String personFields,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -630,11 +630,11 @@ class PeopleResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

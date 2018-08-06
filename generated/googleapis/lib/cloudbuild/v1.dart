@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudbuild/v1';
 
-/// Builds container images in the cloud.
+/// Creates and manages builds on Google Cloud Platform.
 class CloudbuildApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -894,8 +894,7 @@ class ArtifactObjects {
   /// Path globs used to match files in the build's workspace.
   core.List<core.String> paths;
 
-  /// Stores timing information for pushing all artifact objects.
-  /// @OutputOnly
+  /// Output only. Stores timing information for pushing all artifact objects.
   TimeSpan timing;
 
   ArtifactObjects();
@@ -1016,7 +1015,7 @@ class Artifacts {
   }
 }
 
-/// A build resource in the Container Builder API.
+/// A build resource in the Cloud Build API.
 ///
 /// At a high level, a `Build` describes where to find source code, how to build
 /// it (for example, the builder image to run on the source), and where to store
@@ -1038,24 +1037,20 @@ class Build {
   /// successful completion of all build steps.
   Artifacts artifacts;
 
-  /// The ID of the `BuildTrigger` that triggered this build, if it was
-  /// triggered automatically.
-  /// @OutputOnly
+  /// Output only. The ID of the `BuildTrigger` that triggered this build, if it
+  /// was triggered automatically.
   core.String buildTriggerId;
 
-  /// Time at which the request to create the build was received.
-  /// @OutputOnly
+  /// Output only. Time at which the request to create the build was received.
   core.String createTime;
 
-  /// Time at which execution of the build was finished.
+  /// Output only. Time at which execution of the build was finished.
   ///
   /// The difference between finish_time and start_time is the duration of the
   /// build's execution.
-  /// @OutputOnly
   core.String finishTime;
 
-  /// Unique identifier of the build.
-  /// @OutputOnly
+  /// Output only. Unique identifier of the build.
   core.String id;
 
   /// A list of images to be pushed upon the successful completion of all build
@@ -1070,8 +1065,7 @@ class Build {
   /// `FAILURE`.
   core.List<core.String> images;
 
-  /// URL to logs for this build in Google Cloud Console.
-  /// @OutputOnly
+  /// Output only. URL to logs for this build in Google Cloud Console.
   core.String logUrl;
 
   /// Google Cloud Storage bucket where logs should be written (see
@@ -1084,12 +1078,10 @@ class Build {
   /// Special options for this build.
   BuildOptions options;
 
-  /// ID of the project.
-  /// @OutputOnly.
+  /// Output only. ID of the project.
   core.String projectId;
 
-  /// Results of the build.
-  /// @OutputOnly
+  /// Output only. Results of the build.
   Results results;
 
   /// Secrets to decrypt using Cloud Key Management Service.
@@ -1098,16 +1090,13 @@ class Build {
   /// The location of the source files to build.
   Source source;
 
-  /// A permanent fixed identifier for source.
-  /// @OutputOnly
+  /// Output only. A permanent fixed identifier for source.
   SourceProvenance sourceProvenance;
 
-  /// Time at which execution of the build was started.
-  /// @OutputOnly
+  /// Output only. Time at which execution of the build was started.
   core.String startTime;
 
-  /// Status of the build.
-  /// @OutputOnly
+  /// Output only. Status of the build.
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
   /// - "QUEUED" : Build or step is queued; work has not yet begun.
@@ -1119,8 +1108,7 @@ class Build {
   /// - "CANCELLED" : Build or step was canceled by a user.
   core.String status;
 
-  /// Customer-readable message about the current status.
-  /// @OutputOnly
+  /// Output only. Customer-readable message about the current status.
   core.String statusDetail;
 
   /// Required. The operations to be performed on the workspace.
@@ -1139,7 +1127,8 @@ class Build {
   /// Default time is ten minutes.
   core.String timeout;
 
-  /// Stores timing information for phases of the build. Valid keys are:
+  /// Output only. Stores timing information for phases of the build. Valid keys
+  /// are:
   ///
   /// * BUILD: time to execute all build steps
   /// * PUSH: time to push all specified images.
@@ -1147,7 +1136,6 @@ class Build {
   ///
   /// If the build does not specify source or images,
   /// these keys will not be included.
-  /// @OutputOnly
   core.Map<core.String, TimeSpan> timing;
 
   Build();
@@ -1491,10 +1479,9 @@ class BuildStep {
   /// build's `Secret`.
   core.List<core.String> secretEnv;
 
-  /// Status of the build step. At this time, build step status is only updated
-  /// on build completion; step status is not updated in real-time as the build
-  /// progresses.
-  /// @OutputOnly
+  /// Output only. Status of the build step. At this time, build step status is
+  /// only updated on build completion; step status is not updated in real-time
+  /// as the build progresses.
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
   /// - "QUEUED" : Build or step is queued; work has not yet begun.
@@ -1512,8 +1499,7 @@ class BuildStep {
   /// or the build itself times out.
   core.String timeout;
 
-  /// Stores timing information for executing this build step.
-  /// @OutputOnly
+  /// Output only. Stores timing information for executing this build step.
   TimeSpan timing;
 
   /// List of volumes to mount into the build step.
@@ -1625,9 +1611,7 @@ class BuildTrigger {
   /// Contents of the build template.
   Build build;
 
-  /// Time when the trigger was created.
-  ///
-  /// @OutputOnly
+  /// Output only. Time when the trigger was created.
   core.String createTime;
 
   /// Human-readable description of this trigger.
@@ -1640,9 +1624,7 @@ class BuildTrigger {
   /// template.
   core.String filename;
 
-  /// Unique identifier of the trigger.
-  ///
-  /// @OutputOnly
+  /// Output only. Unique identifier of the trigger.
   core.String id;
 
   /// Substitutions data for Build resource.
@@ -1725,8 +1707,7 @@ class BuiltImage {
   /// presented to `docker push`.
   core.String name;
 
-  /// Stores timing information for pushing the specified image.
-  /// @OutputOnly
+  /// Output only. Stores timing information for pushing the specified image.
   TimeSpan pushTiming;
 
   BuiltImage();
@@ -2269,10 +2250,10 @@ class Source {
 /// Provenance of the source. Ways to find the original source, or verify that
 /// some source was used for this build.
 class SourceProvenance {
-  /// Hash(es) of the build source, which can be used to verify that the
-  /// original
-  /// source integrity was maintained in the build. Note that `FileHashes` will
-  /// only be populated if `BuildOptions` has requested a
+  /// Output only. Hash(es) of the build source, which can be used to verify
+  /// that
+  /// the originalsource integrity was maintained in the build. Note that
+  /// `FileHashes` willonly be populated if `BuildOptions` has requested a
   /// `SourceProvenanceHash`.
   ///
   /// The keys to this map are file paths used as build source and the values
@@ -2280,7 +2261,6 @@ class SourceProvenance {
   ///
   /// If the build source came in a single package such as a gzipped tarfile
   /// (`.tar.gz`), the `FileHash` will be for the single path to that file.
-  /// @OutputOnly
   core.Map<core.String, FileHashes> fileHashes;
 
   /// A copy of the build's `source.repo_source`, if exists, with any

@@ -145,6 +145,9 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
+  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
+  ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two DeleteClusterRequest requests with the same id, then
   /// the second request will be ignored and the first
@@ -153,9 +156,6 @@ class ProjectsRegionsClustersResourceApi {
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
-  ///
-  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
-  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -169,7 +169,7 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String projectId, core.String region, core.String clusterName,
-      {core.String requestId, core.String clusterUuid, core.String $fields}) {
+      {core.String clusterUuid, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -186,11 +186,11 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
     if (clusterUuid != null) {
       _queryParams["clusterUuid"] = [clusterUuid];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -351,10 +351,6 @@ class ProjectsRegionsClustersResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
-  /// [pageSize] - Optional. The standard List page size.
-  ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -366,6 +362,10 @@ class ProjectsRegionsClustersResourceApi {
   /// operator is supported; space-separated items are treated as having an
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
+  ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
+  /// [pageSize] - Optional. The standard List page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -379,9 +379,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -396,14 +396,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -438,6 +438,23 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
+  /// Dataproc image versions 1.2 and higher.
+  ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two UpdateClusterRequest requests with the same id, then
+  /// the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.It is recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
   /// [updateMask] - Required. Specifies the path, relative to Cluster, of the
   /// field to update. For example, to change the number of workers in a cluster
   /// to 5, the update_mask parameter would be specified as
@@ -471,23 +488,6 @@ class ProjectsRegionsClustersResourceApi {
   /// <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>
   /// <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
   ///
-  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
-  /// cluster without interrupting jobs in progress. Timeout specifies how long
-  /// to wait for jobs in progress to finish before forcefully removing nodes
-  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
-  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
-  /// Dataproc image versions 1.2 and higher.
-  ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two UpdateClusterRequest requests with the same id, then
-  /// the second request will be ignored and the first
-  /// google.longrunning.Operation created and stored in the backend is
-  /// returned.It is recommended to always set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
-  /// hyphens (-). The maximum length is 40 characters.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -500,9 +500,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String updateMask,
-      core.String gracefulDecommissionTimeout,
+      {core.String gracefulDecommissionTimeout,
       core.String requestId,
+      core.String updateMask,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -523,9 +523,6 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (gracefulDecommissionTimeout != null) {
       _queryParams["gracefulDecommissionTimeout"] = [
         gracefulDecommissionTimeout
@@ -533,6 +530,9 @@ class ProjectsRegionsClustersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -763,6 +763,9 @@ class ProjectsRegionsJobsResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [clusterName] - Optional. If set, the returned jobs list includes only
+  /// jobs that were submitted to the named cluster.
+  ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
@@ -785,9 +788,6 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [pageSize] - Optional. The number of results to return in each response.
   ///
-  /// [clusterName] - Optional. If set, the returned jobs list includes only
-  /// jobs that were submitted to the named cluster.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -799,11 +799,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String filter,
+      {core.String clusterName,
+      core.String filter,
       core.String jobStateMatcher,
       core.String pageToken,
       core.int pageSize,
-      core.String clusterName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -818,6 +818,9 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -829,9 +832,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,6 +1499,47 @@ class ClusterMetrics {
   }
 }
 
+/// The cluster operation triggered by a workflow.
+class ClusterOperation {
+  /// Output only. Indicates the operation is done.
+  core.bool done;
+
+  /// Output only. Error, if operation failed.
+  core.String error;
+
+  /// Output only. The id of the cluster operation.
+  core.String operationId;
+
+  ClusterOperation();
+
+  ClusterOperation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = _json["error"];
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = error;
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    return _json;
+  }
+}
+
 /// Metadata describing the operation.
 class ClusterOperationMetadata {
   /// Output only. Name of the cluster for the operation.
@@ -1754,6 +1795,11 @@ class DiskConfig {
   /// Optional. Size in GB of the boot disk (default is 500GB).
   core.int bootDiskSizeGb;
 
+  /// Optional. Type of the boot disk (default is "pd-standard"). Valid values:
+  /// "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent
+  /// Disk Hard Disk Drive).
+  core.String bootDiskType;
+
   /// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
   /// not attached, the boot disk is used to store runtime logs and HDFS
   /// (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one
@@ -1767,6 +1813,9 @@ class DiskConfig {
     if (_json.containsKey("bootDiskSizeGb")) {
       bootDiskSizeGb = _json["bootDiskSizeGb"];
     }
+    if (_json.containsKey("bootDiskType")) {
+      bootDiskType = _json["bootDiskType"];
+    }
     if (_json.containsKey("numLocalSsds")) {
       numLocalSsds = _json["numLocalSsds"];
     }
@@ -1777,6 +1826,9 @@ class DiskConfig {
         new core.Map<core.String, core.Object>();
     if (bootDiskSizeGb != null) {
       _json["bootDiskSizeGb"] = bootDiskSizeGb;
+    }
+    if (bootDiskType != null) {
+      _json["bootDiskType"] = bootDiskType;
     }
     if (numLocalSsds != null) {
       _json["numLocalSsds"] = numLocalSsds;
@@ -2129,8 +2181,8 @@ class InstanceGroupConfig {
   /// Optional. Disk option config settings.
   DiskConfig diskConfig;
 
-  /// Output only. The Compute Engine image resource used for cluster instances.
-  /// Inferred from SoftwareConfig.image_version.
+  /// Optional. The Compute Engine image resource used for cluster instances. It
+  /// can be specified or may be inferred from SoftwareConfig.image_version.
   core.String imageUri;
 
   /// Output only. The list of instance names. Cloud Dataproc derives the names
@@ -3409,6 +3461,192 @@ class SubmitJobRequest {
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
+    }
+    return _json;
+  }
+}
+
+/// The workflow graph.
+class WorkflowGraph {
+  /// Output only. The workflow nodes.
+  core.List<WorkflowNode> nodes;
+
+  WorkflowGraph();
+
+  WorkflowGraph.fromJson(core.Map _json) {
+    if (_json.containsKey("nodes")) {
+      nodes = (_json["nodes"] as core.List)
+          .map<WorkflowNode>((value) => new WorkflowNode.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodes != null) {
+      _json["nodes"] = nodes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A Cloud Dataproc workflow template resource.
+class WorkflowMetadata {
+  /// Output only. The name of the managed cluster.
+  core.String clusterName;
+
+  /// Output only. The create cluster operation metadata.
+  ClusterOperation createCluster;
+
+  /// Output only. The delete cluster operation metadata.
+  ClusterOperation deleteCluster;
+
+  /// Output only. The workflow graph.
+  WorkflowGraph graph;
+
+  /// Map from parameter names to values that were used for those parameters.
+  core.Map<core.String, core.String> parameters;
+
+  /// Output only. The workflow state.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unused.
+  /// - "PENDING" : The operation has been created.
+  /// - "RUNNING" : The operation is running.
+  /// - "DONE" : The operation is done; either cancelled or completed.
+  core.String state;
+
+  /// Output only. The "resource name" of the template.
+  core.String template;
+
+  /// Output only. The version of template at the time of workflow
+  /// instantiation.
+  core.int version;
+
+  WorkflowMetadata();
+
+  WorkflowMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterName")) {
+      clusterName = _json["clusterName"];
+    }
+    if (_json.containsKey("createCluster")) {
+      createCluster = new ClusterOperation.fromJson(_json["createCluster"]);
+    }
+    if (_json.containsKey("deleteCluster")) {
+      deleteCluster = new ClusterOperation.fromJson(_json["deleteCluster"]);
+    }
+    if (_json.containsKey("graph")) {
+      graph = new WorkflowGraph.fromJson(_json["graph"]);
+    }
+    if (_json.containsKey("parameters")) {
+      parameters =
+          (_json["parameters"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("template")) {
+      template = _json["template"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterName != null) {
+      _json["clusterName"] = clusterName;
+    }
+    if (createCluster != null) {
+      _json["createCluster"] = (createCluster).toJson();
+    }
+    if (deleteCluster != null) {
+      _json["deleteCluster"] = (deleteCluster).toJson();
+    }
+    if (graph != null) {
+      _json["graph"] = (graph).toJson();
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (template != null) {
+      _json["template"] = template;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// The workflow node.
+class WorkflowNode {
+  /// Output only. The error detail.
+  core.String error;
+
+  /// Output only. The job id; populated after the node enters RUNNING state.
+  core.String jobId;
+
+  /// Output only. Node's prerequisite nodes.
+  core.List<core.String> prerequisiteStepIds;
+
+  /// Output only. The node state.
+  /// Possible string values are:
+  /// - "NODE_STATE_UNSPECIFIED" : State is unspecified.
+  /// - "BLOCKED" : The node is awaiting prerequisite node to finish.
+  /// - "RUNNABLE" : The node is runnable but not running.
+  /// - "RUNNING" : The node is running.
+  /// - "COMPLETED" : The node completed successfully.
+  /// - "FAILED" : The node failed. A node can be marked FAILED because its
+  /// ancestor or peer failed.
+  core.String state;
+
+  /// Output only. The name of the node.
+  core.String stepId;
+
+  WorkflowNode();
+
+  WorkflowNode.fromJson(core.Map _json) {
+    if (_json.containsKey("error")) {
+      error = _json["error"];
+    }
+    if (_json.containsKey("jobId")) {
+      jobId = _json["jobId"];
+    }
+    if (_json.containsKey("prerequisiteStepIds")) {
+      prerequisiteStepIds =
+          (_json["prerequisiteStepIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("stepId")) {
+      stepId = _json["stepId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (error != null) {
+      _json["error"] = error;
+    }
+    if (jobId != null) {
+      _json["jobId"] = jobId;
+    }
+    if (prerequisiteStepIds != null) {
+      _json["prerequisiteStepIds"] = prerequisiteStepIds;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (stepId != null) {
+      _json["stepId"] = stepId;
     }
     return _json;
   }

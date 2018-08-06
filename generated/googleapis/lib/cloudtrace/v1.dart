@@ -171,20 +171,6 @@ class ProjectsTracesResourceApi {
   ///
   /// [projectId] - ID of the Cloud project where the trace data is stored.
   ///
-  /// [orderBy] - Field used to sort the returned traces. Optional.
-  /// Can be one of the following:
-  ///
-  /// *   `trace_id`
-  /// *   `name` (`name` field of root span in the trace)
-  /// *   `duration` (difference between `end_time` and `start_time` fields of
-  ///      the root span)
-  /// *   `start` (`start_time` field of the root span)
-  ///
-  /// Descending order can be specified by appending `desc` to the sort field
-  /// (for example, `name desc`).
-  ///
-  /// Only one sort field is permitted.
-  ///
   /// [filter] - An optional filter against labels for the request.
   ///
   /// By default, searches use prefix matching. To specify exact match, prepend
@@ -242,6 +228,20 @@ class ProjectsTracesResourceApi {
   /// - "ROOTSPAN" : A ROOTSPAN.
   /// - "COMPLETE" : A COMPLETE.
   ///
+  /// [orderBy] - Field used to sort the returned traces. Optional.
+  /// Can be one of the following:
+  ///
+  /// *   `trace_id`
+  /// *   `name` (`name` field of root span in the trace)
+  /// *   `duration` (difference between `end_time` and `start_time` fields of
+  ///      the root span)
+  /// *   `start` (`start_time` field of the root span)
+  ///
+  /// Descending order can be specified by appending `desc` to the sort field
+  /// (for example, `name desc`).
+  ///
+  /// Only one sort field is permitted.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -253,13 +253,13 @@ class ProjectsTracesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTracesResponse> list(core.String projectId,
-      {core.String orderBy,
-      core.String filter,
+      {core.String filter,
       core.String endTime,
       core.String startTime,
       core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -270,9 +270,6 @@ class ProjectsTracesResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -291,6 +288,9 @@ class ProjectsTracesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

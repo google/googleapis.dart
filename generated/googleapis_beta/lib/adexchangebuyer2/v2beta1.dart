@@ -1925,16 +1925,16 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListFilteredBidRequestsResponse.nextPageToken
   /// returned from the previous call to the filteredBidRequests.list
   /// method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1947,7 +1947,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1958,11 +1958,11 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2461,16 +2461,16 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListNonBillableWinningBidsResponse.nextPageToken
   /// returned from the previous call to the nonBillableWinningBids.list
   /// method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2484,8 +2484,8 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNonBillableWinningBidsResponse> list(
       core.String filterSetName,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2497,11 +2497,11 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2829,16 +2829,16 @@ class BiddersFilterSetsBidMetricsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListBidMetricsResponse.nextPageToken
   /// returned from the previous call to the bidMetrics.list
   /// method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2851,7 +2851,7 @@ class BiddersFilterSetsBidMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBidMetricsResponse> list(core.String filterSetName,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2862,11 +2862,11 @@ class BiddersFilterSetsBidMetricsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3534,16 +3534,16 @@ class BiddersFilterSetsLosingBidsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListLosingBidsResponse.nextPageToken
   /// returned from the previous call to the losingBids.list
   /// method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3556,7 +3556,7 @@ class BiddersFilterSetsLosingBidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLosingBidsResponse> list(core.String filterSetName,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -3567,11 +3567,11 @@ class BiddersFilterSetsLosingBidsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4337,7 +4337,7 @@ class Correction {
 
 /// A creative and its classification data.
 ///
-/// Next ID: 35
+/// Next ID: 36
 class Creative {
   /// The account that this creative belongs to.
   /// Can be used to filter the response of the
@@ -6664,11 +6664,21 @@ class ServingRestriction {
   /// The contexts for the restriction.
   core.List<ServingContext> contexts;
 
+  /// Disapproval bound to this restriction.
+  /// Only present if status=DISAPPROVED.
+  /// Can be used to filter the response of the
+  /// creatives.list
+  /// method.
+  Disapproval disapproval;
+
   /// Any disapprovals bound to this restriction.
   /// Only present if status=DISAPPROVED.
   /// Can be used to filter the response of the
   /// creatives.list
   /// method.
+  /// Deprecated; please use
+  /// disapproval
+  /// field instead.
   core.List<Disapproval> disapprovalReasons;
 
   /// The status of the creative in this context (for example, it has been
@@ -6687,6 +6697,9 @@ class ServingRestriction {
           .map<ServingContext>((value) => new ServingContext.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("disapproval")) {
+      disapproval = new Disapproval.fromJson(_json["disapproval"]);
+    }
     if (_json.containsKey("disapprovalReasons")) {
       disapprovalReasons = (_json["disapprovalReasons"] as core.List)
           .map<Disapproval>((value) => new Disapproval.fromJson(value))
@@ -6702,6 +6715,9 @@ class ServingRestriction {
         new core.Map<core.String, core.Object>();
     if (contexts != null) {
       _json["contexts"] = contexts.map((value) => (value).toJson()).toList();
+    }
+    if (disapproval != null) {
+      _json["disapproval"] = (disapproval).toJson();
     }
     if (disapprovalReasons != null) {
       _json["disapprovalReasons"] =
