@@ -1,9 +1,7 @@
 name: googleapis_generator_dependency
-version: 0.1.0
-author: Dart Team
-description: A dart package for pin-pointing the version of the generator used to generate APIs.
+
 environment:
-  sdk: '>=2.0.0-dev.22.0 <2.0.0'
+  sdk: '>=2.0.0-dev.22.0 <3.0.0'
 
 dependencies:
   discoveryapis_generator: '>=0.9.1 <0.10.0'
