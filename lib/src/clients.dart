@@ -50,7 +50,7 @@ class ApiRequester {
       client_requests.Media uploadMedia,
       client_requests.UploadOptions uploadOptions,
       client_requests.DownloadOptions downloadOptions =
-          client_requests.DownloadOptions.Metadata}) {
+          client_requests.DownloadOptions.Metadata}) async {
     if (uploadMedia != null &&
         downloadOptions != client_requests.DownloadOptions.Metadata) {
       throw ArgumentError('When uploading a [Media] you cannot download a '
@@ -63,63 +63,55 @@ class ApiRequester {
     }
     queryParams = queryParams?.cast<String, List<String>>();
 
-    return _request(requestUrl, method, body, queryParams, uploadMedia,
-            uploadOptions, downloadOptions, downloadRange)
-        .then(_validateResponse)
-        .then((http.StreamedResponse response) {
-      if (downloadOptions == null) {
-        // If no download options are given, the response is of no interest
-        // and we will drain the stream.
-        return response.stream.drain();
-      } else if (downloadOptions == client_requests.DownloadOptions.Metadata) {
-        // Downloading JSON Metadata
-        var stringStream = _decodeStreamAsText(response);
-        if (stringStream != null) {
-          return stringStream.join('').then((String bodyString) {
-            if (bodyString == '') return null;
-            return json.decode(bodyString);
-          });
-        } else {
-          throw client_requests.ApiRequestError(
-              'Unable to read response with content-type '
-              "${response.headers['content-type']}.");
-        }
-      } else {
-        // Downloading Media.
-        var contentType = response.headers['content-type'];
-        if (contentType == null) {
-          throw client_requests.ApiRequestError(
-              "No 'content-type' header in media response.");
-        }
-        int contentLength;
-        try {
-          contentLength = int.parse(response.headers['content-length']);
-        } catch (_) {
-          // We silently ignore errors here. If no content-length was specified
-          // we use `null`.
-          // Please note that the code below still asserts the content-length
-          // is correct for range downloads.
-        }
+    var response = await _request(requestUrl, method, body, queryParams,
+        uploadMedia, uploadOptions, downloadOptions, downloadRange);
 
-        if (downloadRange != null) {
-          if (contentLength != downloadRange.length) {
-            throw client_requests.ApiRequestError(
-                'Content length of response does not match requested range '
-                'length.');
-          }
-          var contentRange = response.headers['content-range'];
-          var expected = 'bytes ${downloadRange.start}-${downloadRange.end}/';
-          if (contentRange == null || !contentRange.startsWith(expected)) {
-            throw client_requests.ApiRequestError('Attempting partial '
-                "download but got invalid 'Content-Range' header "
-                '(was: $contentRange, expected: $expected).');
-          }
-        }
+    response = await _validateResponse(response);
 
-        return client_requests.Media(response.stream, contentLength,
-            contentType: contentType);
+    if (downloadOptions == null) {
+      // If no download options are given, the response is of no interest
+      // and we will drain the stream.
+      return response.stream.drain();
+    } else if (downloadOptions == client_requests.DownloadOptions.Metadata) {
+      // Downloading JSON Metadata
+      var stringStream = _decodeStreamAsText(response);
+      if (stringStream == null) {
+        throw client_requests.ApiRequestError(
+            'Unable to read response with content-type '
+            "${response.headers['content-type']}.");
       }
-    });
+
+      var bodyString = await stringStream.join('');
+      if (bodyString.isEmpty) return null;
+      return json.decode(bodyString);
+    }
+
+    // Downloading Media.
+    var contentType = response.headers['content-type'];
+    if (contentType == null) {
+      throw client_requests.ApiRequestError(
+          "No 'content-type' header in media response.");
+    }
+
+    var contentLength = int.tryParse(response.headers['content-length']);
+
+    if (downloadRange != null) {
+      if (contentLength != downloadRange.length) {
+        throw client_requests.ApiRequestError(
+            'Content length of response does not match requested range '
+            'length.');
+      }
+      var contentRange = response.headers['content-range'];
+      var expected = 'bytes ${downloadRange.start}-${downloadRange.end}/';
+      if (contentRange == null || !contentRange.startsWith(expected)) {
+        throw client_requests.ApiRequestError('Attempting partial '
+            "download but got invalid 'Content-Range' header "
+            '(was: $contentRange, expected: $expected).');
+      }
+    }
+
+    return client_requests.Media(response.stream, contentLength,
+        contentType: contentType);
   }
 
   Future<http.StreamedResponse> _request(
@@ -852,44 +844,36 @@ class Escaper {
 }
 
 Future<http.StreamedResponse> _validateResponse(
-    http.StreamedResponse response) {
+    http.StreamedResponse response) async {
   var statusCode = response.statusCode;
 
-  // TODO: We assume that status codes between [200..400[ are OK.
+  // TODO: We assume that status codes between [200..400] are OK.
   // Can we assume this?
   if (statusCode < 200 || statusCode >= 400) {
-    void throwGeneralError() {
-      throw client_requests.DetailedApiRequestError(
-          statusCode, 'No error details. HTTP status was: $statusCode.');
-    }
-
     // Some error happened, try to decode the response and fetch the error.
     var stringStream = _decodeStreamAsText(response);
     if (stringStream != null) {
-      return stringStream.transform(json.decoder).first.then((jsonResponse) {
-        if (jsonResponse is Map && jsonResponse['error'] is Map) {
-          final Map error = jsonResponse['error'];
-          final code = error['code'] as int;
-          final message = error['message'] as String;
-          var errors = <client_requests.ApiRequestErrorDetail>[];
-          if (error.containsKey('errors') && error['errors'] is List) {
-            errors = (error['errors'] as List)
-                .map((e) =>
-                    client_requests.ApiRequestErrorDetail.fromJson(e as Map))
-                .toList();
-          }
-          throw client_requests.DetailedApiRequestError(code, message,
-              errors: errors);
-        } else {
-          throwGeneralError();
+      var jsonResponse = await stringStream.transform(json.decoder).first;
+      if (jsonResponse is Map && jsonResponse['error'] is Map) {
+        final Map error = jsonResponse['error'];
+        final code = error['code'] as int;
+        final message = error['message'] as String;
+        var errors = <client_requests.ApiRequestErrorDetail>[];
+        if (error.containsKey('errors') && error['errors'] is List) {
+          errors = (error['errors'] as List)
+              .map((e) =>
+                  client_requests.ApiRequestErrorDetail.fromJson(e as Map))
+              .toList();
         }
-      });
-    } else {
-      throwGeneralError();
+        throw client_requests.DetailedApiRequestError(code, message,
+            errors: errors);
+      }
     }
+    throw client_requests.DetailedApiRequestError(
+        statusCode, 'No error details. HTTP status was: $statusCode.');
   }
 
-  return Future.value(response);
+  return response;
 }
 
 Stream<String> _decodeStreamAsText(http.StreamedResponse response) {
