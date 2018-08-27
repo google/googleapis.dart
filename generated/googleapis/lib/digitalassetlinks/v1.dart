@@ -63,77 +63,6 @@ class AssetlinksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [target_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
-  /// fingerprint of the certificate.  From the PEM
-  ///  certificate, it can be acquired like this:
-  ///
-  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
-  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// or like this:
-  ///
-  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
-  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
-  /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`.
-  ///
-  /// If these tools are not available to you, you can convert the PEM
-  /// certificate into the DER format, compute the SHA-256 hash of that string
-  /// and represent the result as a hexstring (that is, uppercase hexadecimal
-  /// representations of each octet, separated by colons).
-  ///
-  /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname
-  /// and port parts.  The format is
-  ///
-  ///     http[s]://<hostname>[:<port>]
-  ///
-  /// Hostnames must be fully qualified: they must end in a single period
-  /// ("`.`").
-  ///
-  /// Only the schemes "http" and "https" are currently allowed.
-  ///
-  /// Port numbers are given as a decimal number, and they must be omitted if
-  /// the
-  /// standard port numbers are used: 80 for http and 443 for https.
-  ///
-  /// We call this limited URL the "site".  All URLs that share the same scheme,
-  /// hostname and port are considered to be a part of the site and thus belong
-  /// to the web asset.
-  ///
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs:
-  ///
-  ///   *   `https://www.google.com/`
-  ///   *   `https://www.google.com:443/`
-  ///   *   `https://www.google.com/foo`
-  ///   *   `https://www.google.com/foo?bar`
-  ///   *   `https://www.google.com/foo#bar`
-  ///   *   `https://user@password:www.google.com/`
-  ///
-  /// But it does not contain these URLs:
-  ///
-  ///   *   `http://www.google.com/`       (wrong scheme)
-  ///   *   `https://google.com/`          (hostname does not match)
-  ///   *   `https://www.google.com:444/`  (port does not match)
-  /// REQUIRED
-  ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name.
-  /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
-  ///
-  /// [target_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name.
-  /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
-  ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate.  From the PEM
   ///  certificate, it can be acquired like this:
@@ -211,6 +140,77 @@ class AssetlinksResourceApi {
   ///   *   `https://www.google.com:444/`  (port does not match)
   /// REQUIRED
   ///
+  /// [target_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
+  /// fingerprint of the certificate.  From the PEM
+  ///  certificate, it can be acquired like this:
+  ///
+  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
+  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+  ///
+  /// or like this:
+  ///
+  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
+  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+  ///
+  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+  /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
+  /// 44:E5`.
+  ///
+  /// If these tools are not available to you, you can convert the PEM
+  /// certificate into the DER format, compute the SHA-256 hash of that string
+  /// and represent the result as a hexstring (that is, uppercase hexadecimal
+  /// representations of each octet, separated by colons).
+  ///
+  /// [source_web_site] - Web assets are identified by a URL that contains only
+  /// the scheme, hostname
+  /// and port parts.  The format is
+  ///
+  ///     http[s]://<hostname>[:<port>]
+  ///
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`").
+  ///
+  /// Only the schemes "http" and "https" are currently allowed.
+  ///
+  /// Port numbers are given as a decimal number, and they must be omitted if
+  /// the
+  /// standard port numbers are used: 80 for http and 443 for https.
+  ///
+  /// We call this limited URL the "site".  All URLs that share the same scheme,
+  /// hostname and port are considered to be a part of the site and thus belong
+  /// to the web asset.
+  ///
+  /// Example: the asset with the site `https://www.google.com` contains all
+  /// these URLs:
+  ///
+  ///   *   `https://www.google.com/`
+  ///   *   `https://www.google.com:443/`
+  ///   *   `https://www.google.com/foo`
+  ///   *   `https://www.google.com/foo?bar`
+  ///   *   `https://www.google.com/foo#bar`
+  ///   *   `https://user@password:www.google.com/`
+  ///
+  /// But it does not contain these URLs:
+  ///
+  ///   *   `http://www.google.com/`       (wrong scheme)
+  ///   *   `https://google.com/`          (hostname does not match)
+  ///   *   `https://www.google.com:444/`  (port does not match)
+  /// REQUIRED
+  ///
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name.
+  /// For example, the Google Maps app uses the package name
+  /// `com.google.android.apps.maps`.
+  /// REQUIRED
+  ///
+  /// [target_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name.
+  /// For example, the Google Maps app uses the package name
+  /// `com.google.android.apps.maps`.
+  /// REQUIRED
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -222,13 +222,13 @@ class AssetlinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check(
-      {core.String target_androidApp_certificate_sha256Fingerprint,
+      {core.String source_androidApp_certificate_sha256Fingerprint,
+      core.String relation,
+      core.String target_web_site,
+      core.String target_androidApp_certificate_sha256Fingerprint,
       core.String source_web_site,
       core.String source_androidApp_packageName,
       core.String target_androidApp_packageName,
-      core.String source_androidApp_certificate_sha256Fingerprint,
-      core.String relation,
-      core.String target_web_site,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -237,6 +237,17 @@ class AssetlinksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (source_androidApp_certificate_sha256Fingerprint != null) {
+      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
+        source_androidApp_certificate_sha256Fingerprint
+      ];
+    }
+    if (relation != null) {
+      _queryParams["relation"] = [relation];
+    }
+    if (target_web_site != null) {
+      _queryParams["target.web.site"] = [target_web_site];
+    }
     if (target_androidApp_certificate_sha256Fingerprint != null) {
       _queryParams["target.androidApp.certificate.sha256Fingerprint"] = [
         target_androidApp_certificate_sha256Fingerprint
@@ -254,17 +265,6 @@ class AssetlinksResourceApi {
       _queryParams["target.androidApp.packageName"] = [
         target_androidApp_packageName
       ];
-    }
-    if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
-        source_androidApp_certificate_sha256Fingerprint
-      ];
-    }
-    if (relation != null) {
-      _queryParams["relation"] = [relation];
-    }
-    if (target_web_site != null) {
-      _queryParams["target.web.site"] = [target_web_site];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

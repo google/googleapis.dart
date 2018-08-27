@@ -293,6 +293,8 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
+  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -303,7 +305,8 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+  async.Future<Empty> delete(core.String name,
+      {core.List<core.String> wipeDataFlags, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -313,6 +316,9 @@ class EnterprisesDevicesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (wipeDataFlags != null) {
+      _queryParams["wipeDataFlags"] = wipeDataFlags;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1419,17 +1425,18 @@ class ApplicationPolicy {
   /// The scopes delegated to the app from Android Device Policy.
   core.List<core.String> delegatedScopes;
 
-  /// Whether the app should be disabled, but app data is preserved.
+  /// Whether the app is disabled. When disabled, the app data is still
+  /// preserved.
   core.bool disabled;
 
   /// The type of installation to perform.
   /// Possible string values are:
-  /// - "INSTALL_TYPE_UNSPECIFIED" : No automatic installation is performed. Any
-  /// other app policies will be applied if the user installs the app.
+  /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "PREINSTALLED" : The app is automatically installed and can be removed
   /// by the user.
   /// - "FORCE_INSTALLED" : The app is automatically installed and can't be
   /// removed by the user.
+  /// - "AVAILABLE" : The app is available to install.
   core.String installType;
 
   /// Whether the app is allowed to lock itself in full-screen mode.
@@ -1834,6 +1841,10 @@ class ComplianceRule {
   /// NonComplianceDetail for the device.
   NonComplianceDetailCondition nonComplianceDetailCondition;
 
+  /// If set, the rule includes a mitigating action to disable apps specified in
+  /// the list, but app data is preserved.
+  core.List<core.String> packageNamesToDisable;
+
   ComplianceRule();
 
   ComplianceRule.fromJson(core.Map _json) {
@@ -1847,6 +1858,10 @@ class ComplianceRule {
     if (_json.containsKey("nonComplianceDetailCondition")) {
       nonComplianceDetailCondition = new NonComplianceDetailCondition.fromJson(
           _json["nonComplianceDetailCondition"]);
+    }
+    if (_json.containsKey("packageNamesToDisable")) {
+      packageNamesToDisable =
+          (_json["packageNamesToDisable"] as core.List).cast<core.String>();
     }
   }
 
@@ -1862,6 +1877,9 @@ class ComplianceRule {
     if (nonComplianceDetailCondition != null) {
       _json["nonComplianceDetailCondition"] =
           (nonComplianceDetailCondition).toJson();
+    }
+    if (packageNamesToDisable != null) {
+      _json["packageNamesToDisable"] = packageNamesToDisable;
     }
     return _json;
   }
@@ -1926,7 +1944,7 @@ class Device {
   /// available if hardwareStatusEnabled is true in the device's policy.
   core.List<HardwareStatus> hardwareStatusSamples;
 
-  /// The last time the device sent a policy compliance report.
+  /// Deprecated.
   core.String lastPolicyComplianceReportTime;
 
   /// The last time the device fetched its policy.
@@ -1934,6 +1952,16 @@ class Device {
 
   /// The last time the device sent a status report.
   core.String lastStatusReportTime;
+
+  /// The type of management mode Android Device Policy takes on the device.
+  /// This influences which policy settings are supported.
+  /// Possible string values are:
+  /// - "MANAGEMENT_MODE_UNSPECIFIED" : This value is disallowed.
+  /// - "DEVICE_OWNER" : Device owner. Android Device Policy has full control
+  /// over the device.
+  /// - "PROFILE_OWNER" : Profile owner. Android Device Policy has control over
+  /// a managed profile on the device.
+  core.String managementMode;
 
   /// Events related to memory and storage measurements in chronological order.
   /// This information is only available if memoryInfoEnabled is true in the
@@ -2058,6 +2086,9 @@ class Device {
     if (_json.containsKey("lastStatusReportTime")) {
       lastStatusReportTime = _json["lastStatusReportTime"];
     }
+    if (_json.containsKey("managementMode")) {
+      managementMode = _json["managementMode"];
+    }
     if (_json.containsKey("memoryEvents")) {
       memoryEvents = (_json["memoryEvents"] as core.List)
           .map<MemoryEvent>((value) => new MemoryEvent.fromJson(value))
@@ -2157,6 +2188,9 @@ class Device {
     }
     if (lastStatusReportTime != null) {
       _json["lastStatusReportTime"] = lastStatusReportTime;
+    }
+    if (managementMode != null) {
+      _json["managementMode"] = managementMode;
     }
     if (memoryEvents != null) {
       _json["memoryEvents"] =
@@ -2419,6 +2453,10 @@ class EnrollmentToken {
   /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
   core.String name;
 
+  /// Whether the enrollment token is for one time use only. If the flag is set
+  /// to true, only one device can use it for registration.
+  core.bool oneTimeOnly;
+
   /// The name of the policy initially applied to the enrolled device, in the
   /// form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the
   /// policy_name for the device’s user is applied. If user_name is also not
@@ -2453,6 +2491,9 @@ class EnrollmentToken {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("oneTimeOnly")) {
+      oneTimeOnly = _json["oneTimeOnly"];
+    }
     if (_json.containsKey("policyName")) {
       policyName = _json["policyName"];
     }
@@ -2478,6 +2519,9 @@ class EnrollmentToken {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (oneTimeOnly != null) {
+      _json["oneTimeOnly"] = oneTimeOnly;
     }
     if (policyName != null) {
       _json["policyName"] = policyName;
@@ -3305,7 +3349,7 @@ class NonComplianceDetail {
   /// - "NO_LICENSES_REMAINING" : There are no licenses available to assign to
   /// the user.
   /// - "NOT_ENROLLED" : The enterprise is no longer enrolled with managed Play
-  /// or Android Device Policy is not enabled for the enterprise.
+  /// or the admin has not accepted the latest managed Play terms of service.
   /// - "USER_INVALID" : The user is no longer valid. The user may have been
   /// deleted or disabled.
   core.String installationFailureReason;
@@ -3706,7 +3750,8 @@ class PasswordRequirements {
 
 /// Configuration for an Android permission and its grant state.
 class PermissionGrant {
-  /// The android permission, e.g. android.permission.READ_CALENDAR.
+  /// The Android permission or group, e.g. android.permission.READ_CALENDAR or
+  /// android.permission_group.CALENDAR.
   core.String permission;
 
   /// The policy for granting the permission.
@@ -4001,6 +4046,10 @@ class Policy {
   /// Password requirements.
   PasswordRequirements passwordRequirements;
 
+  /// Explicit permission or group grants or denials for all apps. These values
+  /// override the default_permission_policy.
+  core.List<PermissionGrant> permissionGrants;
+
   /// If present, only the input methods provided by packages in this list are
   /// permitted. If this field is present, but the list is empty, then only
   /// system input methods are permitted.
@@ -4256,6 +4305,11 @@ class Policy {
       passwordRequirements =
           new PasswordRequirements.fromJson(_json["passwordRequirements"]);
     }
+    if (_json.containsKey("permissionGrants")) {
+      permissionGrants = (_json["permissionGrants"] as core.List)
+          .map<PermissionGrant>((value) => new PermissionGrant.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("permittedInputMethods")) {
       permittedInputMethods =
           new PackageNameList.fromJson(_json["permittedInputMethods"]);
@@ -4487,6 +4541,10 @@ class Policy {
     }
     if (passwordRequirements != null) {
       _json["passwordRequirements"] = (passwordRequirements).toJson();
+    }
+    if (permissionGrants != null) {
+      _json["permissionGrants"] =
+          permissionGrants.map((value) => (value).toJson()).toList();
     }
     if (permittedInputMethods != null) {
       _json["permittedInputMethods"] = (permittedInputMethods).toJson();
@@ -4740,6 +4798,9 @@ class SoftwareInfo {
   /// Kernel version, for example, 2.6.32.9-g103d848.
   core.String deviceKernelVersion;
 
+  /// An IETF BCP 47 language code for the primary locale on the device.
+  core.String primaryLanguageCode;
+
   /// Security patch level, e.g. 2016-05-01.
   core.String securityPatchLevel;
 
@@ -4769,6 +4830,9 @@ class SoftwareInfo {
     }
     if (_json.containsKey("deviceKernelVersion")) {
       deviceKernelVersion = _json["deviceKernelVersion"];
+    }
+    if (_json.containsKey("primaryLanguageCode")) {
+      primaryLanguageCode = _json["primaryLanguageCode"];
     }
     if (_json.containsKey("securityPatchLevel")) {
       securityPatchLevel = _json["securityPatchLevel"];
@@ -4801,6 +4865,9 @@ class SoftwareInfo {
     }
     if (deviceKernelVersion != null) {
       _json["deviceKernelVersion"] = deviceKernelVersion;
+    }
+    if (primaryLanguageCode != null) {
+      _json["primaryLanguageCode"] = primaryLanguageCode;
     }
     if (securityPatchLevel != null) {
       _json["securityPatchLevel"] = securityPatchLevel;

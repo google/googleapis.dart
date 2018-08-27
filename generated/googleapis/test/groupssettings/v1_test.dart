@@ -64,6 +64,7 @@ buildGroups() {
     o.defaultMessageDenyNotificationText = "foo";
     o.description = "foo";
     o.email = "foo";
+    o.favoriteRepliesOnTop = "foo";
     o.includeCustomFooter = "foo";
     o.includeInGlobalAddressList = "foo";
     o.isArchived = "foo";
@@ -79,11 +80,22 @@ buildGroups() {
     o.showInGroupDirectory = "foo";
     o.spamModerationLevel = "foo";
     o.whoCanAdd = "foo";
+    o.whoCanAddReferences = "foo";
+    o.whoCanAssignTopics = "foo";
     o.whoCanContactOwner = "foo";
+    o.whoCanEnterFreeFormTags = "foo";
     o.whoCanInvite = "foo";
     o.whoCanJoin = "foo";
     o.whoCanLeaveGroup = "foo";
+    o.whoCanMarkDuplicate = "foo";
+    o.whoCanMarkFavoriteReplyOnAnyTopic = "foo";
+    o.whoCanMarkFavoriteReplyOnOwnTopic = "foo";
+    o.whoCanMarkNoResponseNeeded = "foo";
+    o.whoCanModifyTagsAndCategories = "foo";
     o.whoCanPostMessage = "foo";
+    o.whoCanTakeTopics = "foo";
+    o.whoCanUnassignTopic = "foo";
+    o.whoCanUnmarkFavoriteReplyOnAnyTopic = "foo";
     o.whoCanViewGroup = "foo";
     o.whoCanViewMembership = "foo";
   }
@@ -104,6 +116,7 @@ checkGroups(api.Groups o) {
         o.defaultMessageDenyNotificationText, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.email, unittest.equals('foo'));
+    unittest.expect(o.favoriteRepliesOnTop, unittest.equals('foo'));
     unittest.expect(o.includeCustomFooter, unittest.equals('foo'));
     unittest.expect(o.includeInGlobalAddressList, unittest.equals('foo'));
     unittest.expect(o.isArchived, unittest.equals('foo'));
@@ -119,11 +132,25 @@ checkGroups(api.Groups o) {
     unittest.expect(o.showInGroupDirectory, unittest.equals('foo'));
     unittest.expect(o.spamModerationLevel, unittest.equals('foo'));
     unittest.expect(o.whoCanAdd, unittest.equals('foo'));
+    unittest.expect(o.whoCanAddReferences, unittest.equals('foo'));
+    unittest.expect(o.whoCanAssignTopics, unittest.equals('foo'));
     unittest.expect(o.whoCanContactOwner, unittest.equals('foo'));
+    unittest.expect(o.whoCanEnterFreeFormTags, unittest.equals('foo'));
     unittest.expect(o.whoCanInvite, unittest.equals('foo'));
     unittest.expect(o.whoCanJoin, unittest.equals('foo'));
     unittest.expect(o.whoCanLeaveGroup, unittest.equals('foo'));
+    unittest.expect(o.whoCanMarkDuplicate, unittest.equals('foo'));
+    unittest.expect(
+        o.whoCanMarkFavoriteReplyOnAnyTopic, unittest.equals('foo'));
+    unittest.expect(
+        o.whoCanMarkFavoriteReplyOnOwnTopic, unittest.equals('foo'));
+    unittest.expect(o.whoCanMarkNoResponseNeeded, unittest.equals('foo'));
+    unittest.expect(o.whoCanModifyTagsAndCategories, unittest.equals('foo'));
     unittest.expect(o.whoCanPostMessage, unittest.equals('foo'));
+    unittest.expect(o.whoCanTakeTopics, unittest.equals('foo'));
+    unittest.expect(o.whoCanUnassignTopic, unittest.equals('foo'));
+    unittest.expect(
+        o.whoCanUnmarkFavoriteReplyOnAnyTopic, unittest.equals('foo'));
     unittest.expect(o.whoCanViewGroup, unittest.equals('foo'));
     unittest.expect(o.whoCanViewMembership, unittest.equals('foo'));
   }

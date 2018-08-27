@@ -18,7 +18,9 @@ const core.String USER_AGENT = 'dart-api-client cloudtrace/v1';
 
 /// Sends application trace data to Stackdriver Trace for viewing. Trace data is
 /// collected for all App Engine applications by default. Trace data from other
-/// applications can be provided using this API.
+/// applications can be provided using this API. This library is used to
+/// interact with the Trace API directly. If you are looking to instrument your
+/// application for Stackdriver Trace, we recommend using OpenCensus.
 class CloudtraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -171,6 +173,20 @@ class ProjectsTracesResourceApi {
   ///
   /// [projectId] - ID of the Cloud project where the trace data is stored.
   ///
+  /// [pageSize] - Maximum number of traces to return. If not specified or <= 0,
+  /// the
+  /// implementation selects a reasonable value.  The implementation may
+  /// return fewer traces than the requested page size. Optional.
+  ///
+  /// [view] - Type of data returned for traces in the list. Optional. Default
+  /// is
+  /// `MINIMAL`.
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "MINIMAL" : A MINIMAL.
+  /// - "ROOTSPAN" : A ROOTSPAN.
+  /// - "COMPLETE" : A COMPLETE.
+  ///
   /// [orderBy] - Field used to sort the returned traces. Optional.
   /// Can be one of the following:
   ///
@@ -220,27 +236,13 @@ class ProjectsTracesResourceApi {
   /// data was
   /// collected from the application.
   ///
-  /// [startTime] - Start of the time interval (inclusive) during which the
-  /// trace data was
-  /// collected from the application.
-  ///
   /// [pageToken] - Token identifying the page of results to return. If
   /// provided, use the
   /// value of the `next_page_token` field from a previous request. Optional.
   ///
-  /// [pageSize] - Maximum number of traces to return. If not specified or <= 0,
-  /// the
-  /// implementation selects a reasonable value.  The implementation may
-  /// return fewer traces than the requested page size. Optional.
-  ///
-  /// [view] - Type of data returned for traces in the list. Optional. Default
-  /// is
-  /// `MINIMAL`.
-  /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "MINIMAL" : A MINIMAL.
-  /// - "ROOTSPAN" : A ROOTSPAN.
-  /// - "COMPLETE" : A COMPLETE.
+  /// [startTime] - Start of the time interval (inclusive) during which the
+  /// trace data was
+  /// collected from the application.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -253,13 +255,13 @@ class ProjectsTracesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTracesResponse> list(core.String projectId,
-      {core.String orderBy,
+      {core.int pageSize,
+      core.String view,
+      core.String orderBy,
       core.String filter,
       core.String endTime,
-      core.String startTime,
       core.String pageToken,
-      core.int pageSize,
-      core.String view,
+      core.String startTime,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -271,6 +273,12 @@ class ProjectsTracesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -280,17 +288,11 @@ class ProjectsTracesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -478,7 +480,7 @@ class TraceSpan {
 
   /// Name of the span. Must be less than 128 bytes. The span name is sanitized
   /// and displayed in the Stackdriver Trace tool in the
-  /// {% dynamic print site_values.console_name %}.
+  /// Google Cloud Platform Console.
   /// The name may be a method name or some other per-call site name.
   /// For the same executable and the same call point, a best practice is
   /// to use a consistent name, which makes it easier to correlate

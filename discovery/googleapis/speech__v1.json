@@ -14,7 +14,7 @@
     "canonicalName": "Speech",
     "description": "Converts audio to text by applying powerful neural network models.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://cloud.google.com/speech/",
+    "documentationLink": "https://cloud.google.com/speech-to-text/docs/quickstart-protocol",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,38 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
@@ -69,6 +37,11 @@
         },
         "callback": {
             "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -110,6 +83,22 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -181,23 +170,9 @@
             }
         }
     },
-    "revision": "20180531",
+    "revision": "20180713",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
-        "SpeechRecognitionResult": {
-            "description": "A speech recognition result corresponding to a portion of the audio.",
-            "id": "SpeechRecognitionResult",
-            "properties": {
-                "alternatives": {
-                    "description": "Output only. May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).\nThese alternatives are ordered in terms of accuracy, with the top (first)\nalternative being the most probable, as ranked by the recognizer.",
-                    "items": {
-                        "$ref": "SpeechRecognitionAlternative"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "RecognitionConfig": {
             "description": "Provides information to the recognizer that specifies how to process the\nrequest.",
             "id": "RecognitionConfig",
@@ -218,13 +193,6 @@
                 "profanityFilter": {
                     "description": "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out.",
                     "type": "boolean"
-                },
-                "speechContexts": {
-                    "description": "*Optional* A means to provide context to assist the speech recognition.",
-                    "items": {
-                        "$ref": "SpeechContext"
-                    },
-                    "type": "array"
                 },
                 "encoding": {
                     "description": "Encoding of audio data sent in all `RecognitionAudio` messages.\nThis field is optional for `FLAC` and `WAV` audio files and required\nfor all other audio formats. For details, see AudioEncoding.",
@@ -250,6 +218,13 @@
                     ],
                     "type": "string"
                 },
+                "speechContexts": {
+                    "description": "*Optional* A means to provide context to assist the speech recognition.",
+                    "items": {
+                        "$ref": "SpeechContext"
+                    },
+                    "type": "array"
+                },
                 "sampleRateHertz": {
                     "description": "Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).\nThis field is optional for `FLAC` and `WAV` audio files and required\nfor all other audio formats. For details, see AudioEncoding.",
                     "format": "int32",
@@ -262,6 +237,11 @@
             "description": "Word-specific information for recognized words.",
             "id": "WordInfo",
             "properties": {
+                "speakerTag": {
+                    "description": "Output only. A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "endTime": {
                     "description": "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the end of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary.",
                     "format": "google-duration",
@@ -275,11 +255,6 @@
                 "word": {
                     "description": "Output only. The word corresponding to this set of information.",
                     "type": "string"
-                },
-                "speakerTag": {
-                    "description": "Output only. A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -288,13 +263,13 @@
             "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[audio limits](https://cloud.google.com/speech/limits#content).",
             "id": "RecognitionAudio",
             "properties": {
-                "uri": {
-                    "description": "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. Currently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
-                    "type": "string"
-                },
                 "content": {
                     "description": "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, protobuffers use a\npure binary representation, whereas JSON representations use base64.",
                     "format": "byte",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. Currently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
                     "type": "string"
                 }
             },
@@ -304,15 +279,6 @@
             "description": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
             "id": "Status",
             "properties": {
-                "code": {
-                    "description": "The status code, which should be an enum value of google.rpc.Code.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-                    "type": "string"
-                },
                 "details": {
                     "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
                     "items": {
@@ -323,6 +289,15 @@
                         "type": "object"
                     },
                     "type": "array"
+                },
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -371,14 +346,23 @@
             },
             "type": "object"
         },
-        "SpeechContext": {
-            "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases\nin the results.",
-            "id": "SpeechContext",
+        "SpeechRecognitionAlternative": {
+            "description": "Alternative hypotheses (a.k.a. n-best list).",
+            "id": "SpeechRecognitionAlternative",
             "properties": {
-                "phrases": {
-                    "description": "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech/limits#content).",
+                "confidence": {
+                    "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "transcript": {
+                    "description": "Output only. Transcript text representing the words that the user spoke.",
+                    "type": "string"
+                },
+                "words": {
+                    "description": "Output only. A list of word-specific information for each recognized word.\nNote: When enable_speaker_diarization is true, you will see all the words\nfrom the beginning of the audio.",
                     "items": {
-                        "type": "string"
+                        "$ref": "WordInfo"
                     },
                     "type": "array"
                 }
@@ -420,23 +404,28 @@
             },
             "type": "object"
         },
-        "SpeechRecognitionAlternative": {
-            "description": "Alternative hypotheses (a.k.a. n-best list).",
-            "id": "SpeechRecognitionAlternative",
+        "SpeechContext": {
+            "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases\nin the results.",
+            "id": "SpeechContext",
             "properties": {
-                "confidence": {
-                    "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "transcript": {
-                    "description": "Output only. Transcript text representing the words that the user spoke.",
-                    "type": "string"
-                },
-                "words": {
-                    "description": "Output only. A list of word-specific information for each recognized word.\nNote: When enable_speaker_diarization is true, you will see all the words\nfrom the beginning of the audio.",
+                "phrases": {
+                    "description": "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech/limits#content).",
                     "items": {
-                        "$ref": "WordInfo"
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SpeechRecognitionResult": {
+            "description": "A speech recognition result corresponding to a portion of the audio.",
+            "id": "SpeechRecognitionResult",
+            "properties": {
+                "alternatives": {
+                    "description": "Output only. May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).\nThese alternatives are ordered in terms of accuracy, with the top (first)\nalternative being the most probable, as ranked by the recognizer.",
+                    "items": {
+                        "$ref": "SpeechRecognitionAlternative"
                     },
                     "type": "array"
                 }
@@ -446,5 +435,6 @@
     },
     "servicePath": "",
     "title": "Cloud Speech API",
-    "version": "v1"
+    "version": "v1",
+    "version_module": true
 }

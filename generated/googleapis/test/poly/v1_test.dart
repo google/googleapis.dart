@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2964() {
+buildUnnamed3668() {
   var o = new core.List<api.Format>();
   o.add(buildFormat());
   o.add(buildFormat());
   return o;
 }
 
-checkUnnamed2964(core.List<api.Format> o) {
+checkUnnamed3668(core.List<api.Format> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFormat(o[0]);
   checkFormat(o[1]);
@@ -72,12 +72,13 @@ buildAsset() {
     o.createTime = "foo";
     o.description = "foo";
     o.displayName = "foo";
-    o.formats = buildUnnamed2964();
+    o.formats = buildUnnamed3668();
     o.isCurated = true;
     o.license = "foo";
     o.metadata = "foo";
     o.name = "foo";
     o.presentationParams = buildPresentationParams();
+    o.remixInfo = buildRemixInfo();
     o.thumbnail = buildFile();
     o.updateTime = "foo";
     o.visibility = "foo";
@@ -93,12 +94,13 @@ checkAsset(api.Asset o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed2964(o.formats);
+    checkUnnamed3668(o.formats);
     unittest.expect(o.isCurated, unittest.isTrue);
     unittest.expect(o.license, unittest.equals('foo'));
     unittest.expect(o.metadata, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkPresentationParams(o.presentationParams);
+    checkRemixInfo(o.remixInfo);
     checkFile(o.thumbnail);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.visibility, unittest.equals('foo'));
@@ -154,14 +156,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed2965() {
+buildUnnamed3669() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed2965(core.List<api.File> o) {
+checkUnnamed3669(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -174,7 +176,7 @@ buildFormat() {
   if (buildCounterFormat < 3) {
     o.formatComplexity = buildFormatComplexity();
     o.formatType = "foo";
-    o.resources = buildUnnamed2965();
+    o.resources = buildUnnamed3669();
     o.root = buildFile();
   }
   buildCounterFormat--;
@@ -186,7 +188,7 @@ checkFormat(api.Format o) {
   if (buildCounterFormat < 3) {
     checkFormatComplexity(o.formatComplexity);
     unittest.expect(o.formatType, unittest.equals('foo'));
-    checkUnnamed2965(o.resources);
+    checkUnnamed3669(o.resources);
     checkFile(o.root);
   }
   buildCounterFormat--;
@@ -234,14 +236,14 @@ checkImageError(api.ImageError o) {
   buildCounterImageError--;
 }
 
-buildUnnamed2966() {
+buildUnnamed3670() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed2966(core.List<api.Asset> o) {
+checkUnnamed3670(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -252,7 +254,7 @@ buildListAssetsResponse() {
   var o = new api.ListAssetsResponse();
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
-    o.assets = buildUnnamed2966();
+    o.assets = buildUnnamed3670();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -263,21 +265,21 @@ buildListAssetsResponse() {
 checkListAssetsResponse(api.ListAssetsResponse o) {
   buildCounterListAssetsResponse++;
   if (buildCounterListAssetsResponse < 3) {
-    checkUnnamed2966(o.assets);
+    checkUnnamed3670(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListAssetsResponse--;
 }
 
-buildUnnamed2967() {
+buildUnnamed3671() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed2967(core.List<api.Asset> o) {
+checkUnnamed3671(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -288,7 +290,7 @@ buildListLikedAssetsResponse() {
   var o = new api.ListLikedAssetsResponse();
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    o.assets = buildUnnamed2967();
+    o.assets = buildUnnamed3671();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -299,21 +301,21 @@ buildListLikedAssetsResponse() {
 checkListLikedAssetsResponse(api.ListLikedAssetsResponse o) {
   buildCounterListLikedAssetsResponse++;
   if (buildCounterListLikedAssetsResponse < 3) {
-    checkUnnamed2967(o.assets);
+    checkUnnamed3671(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListLikedAssetsResponse--;
 }
 
-buildUnnamed2968() {
+buildUnnamed3672() {
   var o = new core.List<api.UserAsset>();
   o.add(buildUserAsset());
   o.add(buildUserAsset());
   return o;
 }
 
-checkUnnamed2968(core.List<api.UserAsset> o) {
+checkUnnamed3672(core.List<api.UserAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAsset(o[0]);
   checkUserAsset(o[1]);
@@ -326,7 +328,7 @@ buildListUserAssetsResponse() {
   if (buildCounterListUserAssetsResponse < 3) {
     o.nextPageToken = "foo";
     o.totalSize = 42;
-    o.userAssets = buildUnnamed2968();
+    o.userAssets = buildUnnamed3672();
   }
   buildCounterListUserAssetsResponse--;
   return o;
@@ -337,7 +339,7 @@ checkListUserAssetsResponse(api.ListUserAssetsResponse o) {
   if (buildCounterListUserAssetsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
-    checkUnnamed2968(o.userAssets);
+    checkUnnamed3672(o.userAssets);
   }
   buildCounterListUserAssetsResponse--;
 }
@@ -376,6 +378,7 @@ buildPresentationParams() {
   var o = new api.PresentationParams();
   buildCounterPresentationParams++;
   if (buildCounterPresentationParams < 3) {
+    o.backgroundColor = "foo";
     o.colorSpace = "foo";
     o.orientingRotation = buildQuaternion();
   }
@@ -386,6 +389,7 @@ buildPresentationParams() {
 checkPresentationParams(api.PresentationParams o) {
   buildCounterPresentationParams++;
   if (buildCounterPresentationParams < 3) {
+    unittest.expect(o.backgroundColor, unittest.equals('foo'));
     unittest.expect(o.colorSpace, unittest.equals('foo'));
     checkQuaternion(o.orientingRotation);
   }
@@ -417,14 +421,46 @@ checkQuaternion(api.Quaternion o) {
   buildCounterQuaternion--;
 }
 
-buildUnnamed2969() {
+buildUnnamed3673() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3673(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRemixInfo = 0;
+buildRemixInfo() {
+  var o = new api.RemixInfo();
+  buildCounterRemixInfo++;
+  if (buildCounterRemixInfo < 3) {
+    o.sourceAsset = buildUnnamed3673();
+  }
+  buildCounterRemixInfo--;
+  return o;
+}
+
+checkRemixInfo(api.RemixInfo o) {
+  buildCounterRemixInfo++;
+  if (buildCounterRemixInfo < 3) {
+    checkUnnamed3673(o.sourceAsset);
+  }
+  buildCounterRemixInfo--;
+}
+
+buildUnnamed3674() {
   var o = new core.List<api.AssetImportMessage>();
   o.add(buildAssetImportMessage());
   o.add(buildAssetImportMessage());
   return o;
 }
 
-checkUnnamed2969(core.List<api.AssetImportMessage> o) {
+checkUnnamed3674(core.List<api.AssetImportMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssetImportMessage(o[0]);
   checkAssetImportMessage(o[1]);
@@ -437,7 +473,7 @@ buildStartAssetImportResponse() {
   if (buildCounterStartAssetImportResponse < 3) {
     o.assetId = "foo";
     o.assetImportId = "foo";
-    o.assetImportMessages = buildUnnamed2969();
+    o.assetImportMessages = buildUnnamed3674();
     o.publishUrl = "foo";
   }
   buildCounterStartAssetImportResponse--;
@@ -449,7 +485,7 @@ checkStartAssetImportResponse(api.StartAssetImportResponse o) {
   if (buildCounterStartAssetImportResponse < 3) {
     unittest.expect(o.assetId, unittest.equals('foo'));
     unittest.expect(o.assetImportId, unittest.equals('foo'));
-    checkUnnamed2969(o.assetImportMessages);
+    checkUnnamed3674(o.assetImportMessages);
     unittest.expect(o.publishUrl, unittest.equals('foo'));
   }
   buildCounterStartAssetImportResponse--;
@@ -571,6 +607,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-RemixInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRemixInfo();
+      var od = new api.RemixInfo.fromJson(o.toJson());
+      checkRemixInfo(od);
+    });
+  });
+
   unittest.group("obj-schema-StartAssetImportResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildStartAssetImportResponse();
@@ -647,8 +691,8 @@ main() {
       var arg_format = "foo";
       var arg_curated = true;
       var arg_category = "foo";
-      var arg_pageToken = "foo";
       var arg_maxComplexity = "foo";
+      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -690,10 +734,10 @@ main() {
             queryMap["curated"].first, unittest.equals("$arg_curated"));
         unittest.expect(
             queryMap["category"].first, unittest.equals(arg_category));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["maxComplexity"].first,
             unittest.equals(arg_maxComplexity));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -711,8 +755,8 @@ main() {
               format: arg_format,
               curated: arg_curated,
               category: arg_category,
-              pageToken: arg_pageToken,
               maxComplexity: arg_maxComplexity,
+              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -726,11 +770,11 @@ main() {
       var mock = new HttpServerMock();
       api.UsersAssetsResourceApi res = new api.PolyApi(mock).users.assets;
       var arg_name = "foo";
+      var arg_visibility = "foo";
+      var arg_orderBy = "foo";
       var arg_format = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_visibility = "foo";
-      var arg_orderBy = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -763,15 +807,15 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["visibility"].first, unittest.equals(arg_visibility));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["visibility"].first, unittest.equals(arg_visibility));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -782,11 +826,11 @@ main() {
       }), true);
       res
           .list(arg_name,
+              visibility: arg_visibility,
+              orderBy: arg_orderBy,
               format: arg_format,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              visibility: arg_visibility,
-              orderBy: arg_orderBy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListUserAssetsResponse(response);
@@ -800,10 +844,10 @@ main() {
       api.UsersLikedassetsResourceApi res =
           new api.PolyApi(mock).users.likedassets;
       var arg_name = "foo";
-      var arg_pageSize = 42;
-      var arg_format = "foo";
       var arg_orderBy = "foo";
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_format = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -836,13 +880,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -853,10 +897,10 @@ main() {
       }), true);
       res
           .list(arg_name,
-              pageSize: arg_pageSize,
-              format: arg_format,
               orderBy: arg_orderBy,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              format: arg_format,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLikedAssetsResponse(response);

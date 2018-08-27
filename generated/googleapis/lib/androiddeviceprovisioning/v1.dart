@@ -747,6 +747,8 @@ class PartnersResourceApi {
       new PartnersCustomersResourceApi(_requester);
   PartnersDevicesResourceApi get devices =>
       new PartnersDevicesResourceApi(_requester);
+  PartnersVendorsResourceApi get vendors =>
+      new PartnersVendorsResourceApi(_requester);
 
   PartnersResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -1354,6 +1356,137 @@ class PartnersDevicesResourceApi {
   }
 }
 
+class PartnersVendorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  PartnersVendorsCustomersResourceApi get customers =>
+      new PartnersVendorsCustomersResourceApi(_requester);
+
+  PartnersVendorsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the vendors of the partner.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name in the format
+  /// `partners/[PARTNER_ID]`.
+  /// Value must have pattern "^partners/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
+  ///
+  /// [pageSize] - The maximum number of results to be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVendorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVendorsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/vendors';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListVendorsResponse.fromJson(data));
+  }
+}
+
+class PartnersVendorsCustomersResourceApi {
+  final commons.ApiRequester _requester;
+
+  PartnersVendorsCustomersResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the customers of the vendor.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name in the format
+  /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
+  /// Value must have pattern "^partners/[^/]+/vendors/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
+  ///
+  /// [pageSize] - The maximum number of results to be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVendorCustomersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVendorCustomersResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListVendorCustomersResponse.fromJson(data));
+  }
+}
+
 /// Request message to claim a device on behalf of a customer.
 class ClaimDeviceRequest {
   /// Required. The ID of the customer for whom the device is being claimed.
@@ -1365,6 +1498,7 @@ class ClaimDeviceRequest {
   /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
@@ -1459,7 +1593,8 @@ class ClaimDevicesRequest {
   }
 }
 
-/// A customer resource in the zero-touch enrollment API.
+/// A reseller, vendor, or customer in the zero-touch reseller and customer
+/// APIs.
 class Company {
   /// Input only. Optional. Email address of customer's users in the admin role.
   /// Each email address must be associated with a Google Account.
@@ -1468,14 +1603,20 @@ class Company {
   /// Output only. The ID of the company. Assigned by the server.
   core.String companyId;
 
-  /// Required. The name of the company. For example _XYZ Corp_. Characters
-  /// allowed are: Latin letters, numerals, hyphens, and spaces. Displayed to
+  /// Required. The name of the company. For example _XYZ Corp_. Displayed to
   /// the
-  /// customer's employees in the zero-touch enrollment portal.
+  /// company's employees in the zero-touch enrollment portal.
   core.String companyName;
 
-  /// Output only. The API resource name of the company in the format
-  /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`. Assigned by the server.
+  /// Output only. The API resource name of the company. The resource name is
+  /// one
+  /// of the following formats:
+  ///
+  /// * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`
+  /// * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`
+  /// * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`
+  ///
+  /// Assigned by the server.
   core.String name;
 
   /// Input only. Email address of customer's users in the owner role. At least
@@ -1997,9 +2138,13 @@ class DeviceClaim {
   /// The ID of the Customer that purchased the device.
   core.String ownerCompanyId;
 
+  /// The ID of the reseller that claimed the device.
+  core.String resellerId;
+
   /// Output only. The type of claim made on the device.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
@@ -2008,6 +2153,9 @@ class DeviceClaim {
   DeviceClaim.fromJson(core.Map _json) {
     if (_json.containsKey("ownerCompanyId")) {
       ownerCompanyId = _json["ownerCompanyId"];
+    }
+    if (_json.containsKey("resellerId")) {
+      resellerId = _json["resellerId"];
     }
     if (_json.containsKey("sectionType")) {
       sectionType = _json["sectionType"];
@@ -2020,6 +2168,9 @@ class DeviceClaim {
     if (ownerCompanyId != null) {
       _json["ownerCompanyId"] = ownerCompanyId;
     }
+    if (resellerId != null) {
+      _json["resellerId"] = resellerId;
+    }
     if (sectionType != null) {
       _json["sectionType"] = sectionType;
     }
@@ -2027,22 +2178,29 @@ class DeviceClaim {
   }
 }
 
-/// Encapsulates hardware and product IDs to identify a manufactured device. To
-/// learn more, read [Identifiers](/zero-touch/guides/identifiers).
+/// Encapsulates hardware and product IDs to identify a manufactured device.
+/// To understand requirements on identifier sets, read
+/// [Identifiers](/zero-touch/guides/identifiers).
 class DeviceIdentifier {
   /// The device’s IMEI number. Validated on input.
   core.String imei;
 
-  /// Required. The device manufacturer’s name. Matches the device's built-in
+  /// The device manufacturer’s name. Matches the device's built-in
   /// value returned from `android.os.Build.MANUFACTURER`. Allowed values are
-  /// listed in [manufacturer names](/zero-touch/resources/manufacturer-names).
+  /// listed in
+  /// [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
   core.String manufacturer;
 
   /// The device’s MEID number.
   core.String meid;
 
+  /// The device model's name. Matches the device's built-in value returned from
+  /// `android.os.Build.MODEL`. Allowed values are listed in
+  /// [models](/zero-touch/resources/manufacturer-names#model-names).
+  core.String model;
+
   /// The manufacturer's serial number for the device. This value might not be
-  /// unique.
+  /// unique across different device models.
   core.String serialNumber;
 
   DeviceIdentifier();
@@ -2056,6 +2214,9 @@ class DeviceIdentifier {
     }
     if (_json.containsKey("meid")) {
       meid = _json["meid"];
+    }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
     }
     if (_json.containsKey("serialNumber")) {
       serialNumber = _json["serialNumber"];
@@ -2073,6 +2234,9 @@ class DeviceIdentifier {
     }
     if (meid != null) {
       _json["meid"] = meid;
+    }
+    if (model != null) {
+      _json["model"] = model;
     }
     if (serialNumber != null) {
       _json["serialNumber"] = serialNumber;
@@ -2163,7 +2327,7 @@ class DevicesLongRunningOperationMetadata {
   /// - "BATCH_PROCESS_PENDING" : Pending.
   /// - "BATCH_PROCESS_IN_PROGRESS" : In progress.
   /// - "BATCH_PROCESS_PROCESSED" : Processed.
-  /// This doesn't mean all items were processed sucessfully, you should
+  /// This doesn't mean all items were processed successfully, you should
   /// check the `response` field for the result of every item.
   core.String processingStatus;
 
@@ -2409,6 +2573,7 @@ class FindDevicesByOwnerRequest {
   /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
@@ -2503,6 +2668,79 @@ class ListCustomersResponse {
         new core.Map<core.String, core.Object>();
     if (customers != null) {
       _json["customers"] = customers.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message to list customers of the vendor.
+class ListVendorCustomersResponse {
+  /// List of customers of the vendor.
+  core.List<Company> customers;
+
+  /// A token to retrieve the next page of results. Omitted if no further
+  /// results
+  /// are available.
+  core.String nextPageToken;
+
+  ListVendorCustomersResponse();
+
+  ListVendorCustomersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("customers")) {
+      customers = (_json["customers"] as core.List)
+          .map<Company>((value) => new Company.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customers != null) {
+      _json["customers"] = customers.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message to list vendors of the partner.
+class ListVendorsResponse {
+  /// A token to retrieve the next page of results. Omitted if no further
+  /// results
+  /// are available.
+  core.String nextPageToken;
+
+  /// List of vendors of the reseller partner. Fields `name`, `companyId` and
+  /// `companyName` are populated to the Company object.
+  core.List<Company> vendors;
+
+  ListVendorsResponse();
+
+  ListVendorsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("vendors")) {
+      vendors = (_json["vendors"] as core.List)
+          .map<Company>((value) => new Company.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (vendors != null) {
+      _json["vendors"] = vendors.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2654,6 +2892,7 @@ class PartnerClaim {
   /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
@@ -2705,6 +2944,7 @@ class PartnerUnclaim {
   /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
@@ -2919,6 +3159,7 @@ class UnclaimDeviceRequest {
   /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
+  /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 

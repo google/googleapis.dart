@@ -18,7 +18,9 @@ const core.String USER_AGENT = 'dart-api-client cloudtrace/v2';
 
 /// Sends application trace data to Stackdriver Trace for viewing. Trace data is
 /// collected for all App Engine applications by default. Trace data from other
-/// applications can be provided using this API.
+/// applications can be provided using this API. This library is used to
+/// interact with the Trace API directly. If you are looking to instrument your
+/// application for Stackdriver Trace, we recommend using OpenCensus.
 class CloudtraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -545,7 +547,7 @@ class Span {
 
   /// A description of the span's operation (up to 128 bytes).
   /// Stackdriver Trace displays the description in the
-  /// {% dynamic print site_values.console_name %}.
+  /// Google Cloud Platform Console.
   /// For example, the display name can be a qualified method name or a file
   /// name
   /// and a line number where the operation is called. A best practice is to use

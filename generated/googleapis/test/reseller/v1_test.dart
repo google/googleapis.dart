@@ -168,14 +168,14 @@ checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-buildUnnamed2663() {
+buildUnnamed4365() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2663(core.List<core.String> o) {
+checkUnnamed4365(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -186,7 +186,7 @@ buildResellernotifyGetwatchdetailsResponse() {
   var o = new api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed2663();
+    o.serviceAccountEmailAddresses = buildUnnamed4365();
     o.topicName = "foo";
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -197,7 +197,7 @@ checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed2663(o.serviceAccountEmailAddresses);
+    checkUnnamed4365(o.serviceAccountEmailAddresses);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -292,14 +292,14 @@ checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-buildUnnamed2664() {
+buildUnnamed4366() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2664(core.List<core.String> o) {
+checkUnnamed4366(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -367,7 +367,7 @@ buildSubscription() {
     o.skuName = "foo";
     o.status = "foo";
     o.subscriptionId = "foo";
-    o.suspensionReasons = buildUnnamed2664();
+    o.suspensionReasons = buildUnnamed4366();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -393,21 +393,21 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed2664(o.suspensionReasons);
+    checkUnnamed4366(o.suspensionReasons);
     checkSubscriptionTransferInfo(o.transferInfo);
     checkSubscriptionTrialSettings(o.trialSettings);
   }
   buildCounterSubscription--;
 }
 
-buildUnnamed2665() {
+buildUnnamed4367() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed2665(core.List<api.Subscription> o) {
+checkUnnamed4367(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -420,7 +420,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed2665();
+    o.subscriptions = buildUnnamed4367();
   }
   buildCounterSubscriptions--;
   return o;
@@ -431,7 +431,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2665(o.subscriptions);
+    checkUnnamed4367(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }

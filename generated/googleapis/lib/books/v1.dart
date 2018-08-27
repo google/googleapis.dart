@@ -6363,6 +6363,7 @@ class Notification {
   core.String docType;
   core.bool dontShowNotification;
   core.String iconUrl;
+  core.bool isDocumentMature;
 
   /// Resource type.
   core.String kind;
@@ -6395,6 +6396,9 @@ class Notification {
     }
     if (_json.containsKey("iconUrl")) {
       iconUrl = _json["iconUrl"];
+    }
+    if (_json.containsKey("is_document_mature")) {
+      isDocumentMature = _json["is_document_mature"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6443,6 +6447,9 @@ class Notification {
     }
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
+    }
+    if (isDocumentMature != null) {
+      _json["is_document_mature"] = isDocumentMature;
     }
     if (kind != null) {
       _json["kind"] = kind;

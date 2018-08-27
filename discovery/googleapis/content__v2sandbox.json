@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/PbOl5zh9XyiHW1B4ZXQHhUQtpkA\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kgPtidcipbzhbCRh7x96H2hAeIM\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -109,7 +109,7 @@
                     ]
                 },
                 "createrefundinvoice": {
-                    "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated payment orders.",
+                    "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated payment orders. This can only be used for line items that have previously been charged using createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous invoice.",
                     "httpMethod": "POST",
                     "id": "content.orderinvoices.createrefundinvoice",
                     "parameterOrder": [
@@ -532,6 +532,11 @@
                         "templateName"
                     ],
                     "parameters": {
+                        "country": {
+                            "description": "The country of the template to retrieve. Defaults to US.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "merchantId": {
                             "description": "The ID of the account that should manage the order. This cannot be a multi-client account.",
                             "format": "uint64",
@@ -567,7 +572,7 @@
                     ]
                 },
                 "instorerefundlineitem": {
-                    "description": "Notifies that item return and refund was handled directly in store.",
+                    "description": "Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).",
                     "httpMethod": "POST",
                     "id": "content.orders.instorerefundlineitem",
                     "parameterOrder": [
@@ -696,7 +701,7 @@
                     ]
                 },
                 "refund": {
-                    "description": "Refund a portion of the order, up to the full amount paid.",
+                    "description": "Deprecated, please use returnRefundLineItem instead.",
                     "httpMethod": "POST",
                     "id": "content.orders.refund",
                     "parameterOrder": [
@@ -1004,7 +1009,7 @@
             }
         }
     },
-    "revision": "20180529",
+    "revision": "20180821",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Amount": {
@@ -1012,11 +1017,11 @@
             "properties": {
                 "pretax": {
                     "$ref": "Price",
-                    "description": "Value before taxes."
+                    "description": "[required] Value before taxes."
                 },
                 "tax": {
                     "$ref": "Price",
-                    "description": "Tax value."
+                    "description": "[required] Tax value."
                 }
             },
             "type": "object"
@@ -1075,19 +1080,19 @@
                 },
                 "customerBalance": {
                     "$ref": "Amount",
-                    "description": "Customer balance on this invoice. A positive amount means the customer is paying, a negative one means the customer is receiving money. Note that it must always be true that merchant_balance + customer_balance + google_balance = 0."
+                    "description": "[required] Customer balance on this invoice. A negative amount means the customer is paying, a positive one means the customer is receiving money. Note: the sum of merchant_balance, customer_balance and google_balance must always be zero.\n\nFurthermore the absolute value of this amount is expected to be equal to the sum of product amount and additional charges, minus promotions."
                 },
                 "googleBalance": {
                     "$ref": "Amount",
-                    "description": "Google balance on this invoice. A positive amount means Google is paying, a negative one means Google is receiving money. Note that it must always be true that merchant_balance + customer_balance + google_balance = 0."
+                    "description": "[required] Google balance on this invoice. A negative amount means Google is paying, a positive one means Google is receiving money. Note: the sum of merchant_balance, customer_balance and google_balance must always be zero."
                 },
                 "merchantBalance": {
                     "$ref": "Amount",
-                    "description": "Merchant balance on this invoice. A positive amount means the merchant is paying, a negative one means the merchant is receiving money. Note that it must always be true that merchant_balance + customer_balance + google_balance = 0."
+                    "description": "[required] Merchant balance on this invoice. A negative amount means the merchant is paying, a positive one means the merchant is receiving money. Note: the sum of merchant_balance, customer_balance and google_balance must always be zero."
                 },
                 "productTotal": {
                     "$ref": "Amount",
-                    "description": "Total price for the product."
+                    "description": "[required] Total price for the product."
                 },
                 "promotionSummaries": {
                     "description": "Summary for each promotion.",
@@ -1104,10 +1109,10 @@
             "properties": {
                 "totalAmount": {
                     "$ref": "Amount",
-                    "description": "Total additional charge for this type."
+                    "description": "[required] Total additional charge for this type."
                 },
                 "type": {
-                    "description": "Type of the additional charge.",
+                    "description": "[required] Type of the additional charge.",
                     "type": "string"
                 }
             },
@@ -1243,7 +1248,7 @@
                     "type": "string"
                 },
                 "region": {
-                    "description": "Top-level administrative subdivision of the country (e.g. \"CA\").",
+                    "description": "Top-level administrative subdivision of the country. For example, a state like California (\"CA\") or a province like Quebec (\"QC\").",
                     "type": "string"
                 },
                 "streetAddress": {
@@ -1783,7 +1788,7 @@
                     "type": "string"
                 },
                 "deliveryDate": {
-                    "description": "Date on which the shipment has been delivered, in ISO 8601 format. Present only if status is delievered",
+                    "description": "Date on which the shipment has been delivered, in ISO 8601 format. Present only if status is delivered",
                     "type": "string"
                 },
                 "id": {
@@ -1831,26 +1836,26 @@
             "id": "OrderinvoicesCreateChargeInvoiceRequest",
             "properties": {
                 "invoiceId": {
-                    "description": "The ID of the invoice.",
+                    "description": "[required] The ID of the invoice.",
                     "type": "string"
                 },
                 "invoiceSummary": {
                     "$ref": "InvoiceSummary",
-                    "description": "Invoice summary."
+                    "description": "[required] Invoice summary."
                 },
                 "lineItemInvoices": {
-                    "description": "Invoice details per line item.",
+                    "description": "[required] Invoice details per line item.",
                     "items": {
                         "$ref": "ShipmentInvoiceLineItemInvoice"
                     },
                     "type": "array"
                 },
                 "operationId": {
-                    "description": "The ID of the operation, unique across all operations for a given order.",
+                    "description": "[required] The ID of the operation, unique across all operations for a given order.",
                     "type": "string"
                 },
                 "shipmentGroupId": {
-                    "description": "ID of the shipment group.",
+                    "description": "[required] ID of the shipment group.",
                     "type": "string"
                 }
             },
@@ -1875,20 +1880,20 @@
             "id": "OrderinvoicesCreateRefundInvoiceRequest",
             "properties": {
                 "invoiceId": {
-                    "description": "The ID of the invoice.",
+                    "description": "[required] The ID of the invoice.",
                     "type": "string"
                 },
                 "operationId": {
-                    "description": "The ID of the operation, unique across all operations for a given order.",
+                    "description": "[required] The ID of the operation, unique across all operations for a given order.",
                     "type": "string"
                 },
                 "refundOnlyOption": {
                     "$ref": "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption",
-                    "description": "Option to create a refund-only invoice. Exactly one of refund_option and return_option must be provided."
+                    "description": "Option to create a refund-only invoice. Exactly one of refundOnlyOption or returnOption must be provided."
                 },
                 "returnOption": {
                     "$ref": "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption",
-                    "description": "Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly one of refund_option and return_option must be provided."
+                    "description": "Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly one of refundOnlyOption or returnOption must be provided."
                 },
                 "shipmentInvoices": {
                     "description": "Invoice details for different shipment groups.",
@@ -1923,7 +1928,7 @@
                     "type": "string"
                 },
                 "reason": {
-                    "description": "Reason for the refund.",
+                    "description": "[required] Reason for the refund.",
                     "type": "string"
                 }
             },
@@ -1937,7 +1942,7 @@
                     "type": "string"
                 },
                 "reason": {
-                    "description": "Reason for the return.",
+                    "description": "[required] Reason for the return.",
                     "type": "string"
                 }
             },
@@ -2094,7 +2099,7 @@
             "properties": {
                 "amount": {
                     "$ref": "Price",
-                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                    "description": "Deprecated. Please use amountPretax and amountTax instead."
                 },
                 "amountPretax": {
                     "$ref": "Price",
@@ -2183,6 +2188,10 @@
         "OrdersCreateTestOrderRequest": {
             "id": "OrdersCreateTestOrderRequest",
             "properties": {
+                "country": {
+                    "description": "The  CLDR territory code of the country of the test order to create. Affects the currency and addresses of orders created via template_name, or the addresses of orders created via test_order.\n\nAcceptable values are:  \n- \"US\" \n- \"FR\"  Defaults to US.",
+                    "type": "string"
+                },
                 "templateName": {
                     "description": "The test order template to use. Specify as an alternative to testOrder as a shortcut for retrieving a template and then creating an order using that template.",
                     "type": "string"
@@ -2317,7 +2326,7 @@
             "properties": {
                 "amount": {
                     "$ref": "Price",
-                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                    "description": "Deprecated. Please use amountPretax and amountTax instead."
                 },
                 "amountPretax": {
                     "$ref": "Price",
@@ -2391,7 +2400,7 @@
             "properties": {
                 "amount": {
                     "$ref": "Price",
-                    "description": "The amount that is refunded."
+                    "description": "Deprecated. Please use amountPretax and amountTax instead."
                 },
                 "amountPretax": {
                     "$ref": "Price",
@@ -2471,7 +2480,7 @@
             "properties": {
                 "amountPretax": {
                     "$ref": "Price",
-                    "description": "The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be set."
+                    "description": "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set."
                 },
                 "amountTax": {
                     "$ref": "Price",
@@ -2609,6 +2618,10 @@
                     "description": "The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders resource representation for a list of acceptable values.",
                     "type": "string"
                 },
+                "deliveryDate": {
+                    "description": "Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided only if status is delivered.",
+                    "type": "string"
+                },
                 "shipmentId": {
                     "description": "The ID of the shipment.",
                     "type": "string"
@@ -2655,7 +2668,7 @@
                     "description": "A list of errors defined if and only if the request failed."
                 },
                 "executionStatus": {
-                    "description": "The status of the execution. Only defined if the method is not get or getByMerchantOrderId and if the request was successful.",
+                    "description": "The status of the execution. Only defined if  \n- the request was successful; and \n- the method is not get, getByMerchantOrderId, or one of the test methods.",
                     "type": "string"
                 },
                 "kind": {
@@ -2780,7 +2793,7 @@
             "properties": {
                 "amount": {
                     "$ref": "Price",
-                    "description": "The amount that is refunded."
+                    "description": "Deprecated. Please use amountPretax and amountTax instead."
                 },
                 "amountPretax": {
                     "$ref": "Price",
@@ -2917,7 +2930,7 @@
             "properties": {
                 "amountPretax": {
                     "$ref": "Price",
-                    "description": "The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be set."
+                    "description": "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set."
                 },
                 "amountTax": {
                     "$ref": "Price",
@@ -3137,6 +3150,10 @@
                     "description": "The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders resource representation for a list of acceptable values.",
                     "type": "string"
                 },
+                "deliveryDate": {
+                    "description": "Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided only if status is delivered.",
+                    "type": "string"
+                },
                 "operationId": {
                     "description": "The ID of the operation. Unique across all operations for a given order.",
                     "type": "string"
@@ -3190,10 +3207,10 @@
             "properties": {
                 "promotionAmount": {
                     "$ref": "Amount",
-                    "description": "Amount of the promotion. The values here are the promotion applied to the unit price pretax and to the total of the tax amounts."
+                    "description": "[required] Amount of the promotion. The values here are the promotion applied to the unit price pretax and to the total of the tax amounts."
                 },
                 "promotionId": {
-                    "description": "ID of the promotion.",
+                    "description": "[required] ID of the promotion.",
                     "type": "string"
                 }
             },
@@ -3204,17 +3221,17 @@
             "properties": {
                 "invoiceSummary": {
                     "$ref": "InvoiceSummary",
-                    "description": "Invoice summary."
+                    "description": "[required] Invoice summary."
                 },
                 "lineItemInvoices": {
-                    "description": "Invoice details per line item.",
+                    "description": "[required] Invoice details per line item.",
                     "items": {
                         "$ref": "ShipmentInvoiceLineItemInvoice"
                     },
                     "type": "array"
                 },
                 "shipmentGroupId": {
-                    "description": "ID of the shipment group.",
+                    "description": "[required] ID of the shipment group.",
                     "type": "string"
                 }
             },
@@ -3232,7 +3249,7 @@
                     "type": "string"
                 },
                 "shipmentUnitIds": {
-                    "description": "Unit IDs to define specific units within the line item.",
+                    "description": "[required] Unit IDs to define specific units within the line item.",
                     "items": {
                         "type": "string"
                     },
@@ -3240,7 +3257,7 @@
                 },
                 "unitInvoice": {
                     "$ref": "UnitInvoice",
-                    "description": "Invoice details for a single unit."
+                    "description": "[required] Invoice details for a single unit."
                 }
             },
             "type": "object"
@@ -3256,6 +3273,10 @@
                         ]
                     },
                     "description": "The details of the customer who placed the order."
+                },
+                "enableOrderinvoices": {
+                    "description": "Whether the orderinvoices service should support this order.",
+                    "type": "boolean"
                 },
                 "kind": {
                     "default": "content#testOrder",
@@ -3569,7 +3590,7 @@
                 },
                 "unitPricePretax": {
                     "$ref": "Price",
-                    "description": "Price of the unit, before applying taxes."
+                    "description": "[required] Price of the unit, before applying taxes."
                 },
                 "unitPriceTaxes": {
                     "description": "Tax amounts to apply to the unit price.",
@@ -3586,7 +3607,7 @@
             "properties": {
                 "additionalChargeAmount": {
                     "$ref": "Amount",
-                    "description": "Amount of the additional charge."
+                    "description": "[required] Amount of the additional charge."
                 },
                 "additionalChargePromotions": {
                     "description": "Promotions applied to the additional charge.",
@@ -3596,7 +3617,7 @@
                     "type": "array"
                 },
                 "type": {
-                    "description": "Type of the additional charge.",
+                    "description": "[required] Type of the additional charge.",
                     "type": "string"
                 }
             },
@@ -3607,14 +3628,14 @@
             "properties": {
                 "taxAmount": {
                     "$ref": "Price",
-                    "description": "Tax amount for the tax type."
+                    "description": "[required] Tax amount for the tax type."
                 },
                 "taxName": {
-                    "description": "Optional name of the tax type.",
+                    "description": "Optional name of the tax type. This should only be provided if taxType is otherFeeTax.",
                     "type": "string"
                 },
                 "taxType": {
-                    "description": "Type of the tax.",
+                    "description": "[required] Type of the tax.",
                     "type": "string"
                 }
             },

@@ -1000,6 +1000,12 @@ class EditsBundlesResourceApi {
     return _response.then((data) => new BundlesListResponse.fromJson(data));
   }
 
+  /// Uploads a new Android App Bundle to this edit. If you are using the Google
+  /// API client libraries, please increase the timeout of the http request
+  /// before calling this endpoint (a timeout of 2 minutes is recommended). See:
+  /// https://developers.google.com/api-client-library/java/google-api-java-client/errors
+  /// for an example in java.
+  ///
   /// Request parameters:
   ///
   /// [packageName] - Unique identifier for the Android app that is being
@@ -4951,6 +4957,12 @@ class InAppProduct {
   /// price is always in the developer's Checkout merchant currency.
   Price defaultPrice;
 
+  /// Grace period of the subscription, specified in ISO 8601 format. It will
+  /// allow developers to give their subscribers a grace period when the payment
+  /// for the new recurrence period is declined. Acceptable values = "P3D"
+  /// (three days) and "P7D" (seven days)
+  core.String gracePeriod;
+
   /// List of localized title and description data.
   core.Map<core.String, InAppProductListing> listings;
 
@@ -4990,6 +5002,9 @@ class InAppProduct {
     }
     if (_json.containsKey("defaultPrice")) {
       defaultPrice = new Price.fromJson(_json["defaultPrice"]);
+    }
+    if (_json.containsKey("gracePeriod")) {
+      gracePeriod = _json["gracePeriod"];
     }
     if (_json.containsKey("listings")) {
       listings = commons.mapMap<core.Map, InAppProductListing>(
@@ -5032,6 +5047,9 @@ class InAppProduct {
     }
     if (defaultPrice != null) {
       _json["defaultPrice"] = (defaultPrice).toJson();
+    }
+    if (gracePeriod != null) {
+      _json["gracePeriod"] = gracePeriod;
     }
     if (listings != null) {
       _json["listings"] = commons
@@ -5732,6 +5750,49 @@ class SubscriptionDeferralInfo {
   }
 }
 
+/// Contains the price change information for a subscription that can be used to
+/// control the user journey for the price change in the app. This can be in the
+/// form of seeking confirmation from the user or tailoring the experience for a
+/// successful conversion.
+class SubscriptionPriceChange {
+  /// The new price the subscription will renew with if the price change is
+  /// accepted by the user.
+  Price newPrice;
+
+  /// The current state of the price change. Possible values are:
+  /// - Outstanding: State for a pending price change waiting for the user to
+  /// agree. In this state, you can optionally seek confirmation from the user
+  /// using the In-App API.
+  /// - Accepted: State for an accepted price change that the subscription will
+  /// renew with unless it's canceled. The price change takes effect on a future
+  /// date when the subscription renews. Note that the change might not occur
+  /// when the subscription is renewed next.
+  core.int state;
+
+  SubscriptionPriceChange();
+
+  SubscriptionPriceChange.fromJson(core.Map _json) {
+    if (_json.containsKey("newPrice")) {
+      newPrice = new Price.fromJson(_json["newPrice"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (newPrice != null) {
+      _json["newPrice"] = (newPrice).toJson();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
 /// A SubscriptionPurchase resource indicates the status of a user's
 /// subscription purchase.
 class SubscriptionPurchase {
@@ -5809,6 +5870,13 @@ class SubscriptionPurchase {
   /// price_amount_micros is 1990000.
   core.String priceAmountMicros;
 
+  /// The latest price change information available. This is present only when
+  /// there is an upcoming price change for the subscription yet to be applied.
+  ///
+  /// Once the subscription renews with the new price or the subscription is
+  /// canceled, no price change information will be returned.
+  SubscriptionPriceChange priceChange;
+
   /// ISO 4217 currency code for the subscription price. For example, if the
   /// price is specified in British pounds sterling, price_currency_code is
   /// "GBP".
@@ -5882,6 +5950,9 @@ class SubscriptionPurchase {
     if (_json.containsKey("priceAmountMicros")) {
       priceAmountMicros = _json["priceAmountMicros"];
     }
+    if (_json.containsKey("priceChange")) {
+      priceChange = new SubscriptionPriceChange.fromJson(_json["priceChange"]);
+    }
     if (_json.containsKey("priceCurrencyCode")) {
       priceCurrencyCode = _json["priceCurrencyCode"];
     }
@@ -5946,6 +6017,9 @@ class SubscriptionPurchase {
     }
     if (priceAmountMicros != null) {
       _json["priceAmountMicros"] = priceAmountMicros;
+    }
+    if (priceChange != null) {
+      _json["priceChange"] = (priceChange).toJson();
     }
     if (priceCurrencyCode != null) {
       _json["priceCurrencyCode"] = priceCurrencyCode;

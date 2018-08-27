@@ -1,3 +1,31 @@
+## 0.47.0
+
+* [api-new] iap:v1beta1
+* [api-new] websecurityscanner:v1alpha
+* [api-new] redis:v1beta1
+* [api-new] binaryauthorization:v1beta1
+* [api] logging:v2beta1
+* [api] dialogflow:v2beta1
+* [api] adexchangebuyer2:v2beta1
+* [api] cloudresourcemanager:v1beta1
+* [api] cloudtasks:v2beta2
+* [api] pubsub:v1beta2
+* [api] dataflow:v1b3
+* [api] toolresults:v1beta3
+* [api] runtimeconfig:v1beta1
+* [api] appengine:v1beta5
+* [api] appengine:v1beta
+* [api] appengine:v1beta4
+* [api] sqladmin:v1beta4
+* [api-breaking] tpu:v1alpha1
+* [api-breaking] dns:v2beta1
+* [api-breaking] cloudtasks:v2beta2
+* [api-breaking] toolresults:v1beta3
+* [api-removed] replicapool:v1beta2
+* [api-removed] firestore:v1beta1
+* [api-removed] resourceviews:v1beta2
+* [api-removed] taskqueue:v1beta2
+
 ## 0.46.1
 
 * Support Dart 2 stable.

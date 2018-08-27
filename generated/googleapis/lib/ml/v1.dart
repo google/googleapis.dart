@@ -361,13 +361,6 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
-  /// results. If there
-  /// are more remaining results than this number, the response message will
-  /// contain a valid value in the `next_page_token` field.
-  ///
-  /// The default value is 20, and the maximum page size is 100.
-  ///
   /// [filter] - Optional. Specifies the subset of jobs to retrieve.
   /// You can filter on the value of one or more attributes of the job object.
   /// For example, retrieve jobs with a job identifier that starts with
@@ -384,6 +377,13 @@ class ProjectsJobsResourceApi {
   /// You get the token from the `next_page_token` field of the response from
   /// the previous call.
   ///
+  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
+  /// results. If there
+  /// are more remaining results than this number, the response message will
+  /// contain a valid value in the `next_page_token` field.
+  ///
+  /// The default value is 20, and the maximum page size is 100.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -395,9 +395,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -409,14 +409,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -432,6 +432,82 @@ class ProjectsJobsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new GoogleCloudMlV1ListJobsResponse.fromJson(data));
+  }
+
+  /// Updates a specific job resource.
+  ///
+  /// Currently the only supported fields to update are `labels`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The job name.
+  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  ///
+  /// [updateMask] - Required. Specifies the path, relative to `Job`, of the
+  /// field to update.
+  /// To adopt etag mechanism, include `etag` field in the mask, and include the
+  /// `etag` value in your job resource.
+  ///
+  /// For example, to change the labels of a job, the `update_mask` parameter
+  /// would be specified as `labels`, `etag`, and the
+  /// `PATCH` request body would specify the new value, as follows:
+  ///     {
+  ///       "labels": {
+  ///          "owner": "Google",
+  ///          "color": "Blue"
+  ///       }
+  ///       "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4"
+  ///     }
+  /// If `etag` matches the one on the server, the labels of the job will be
+  /// replaced with the given ones, and the server end `etag` will be
+  /// recalculated.
+  ///
+  /// Currently the only supported update masks are `labels` and `etag`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudMlV1Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudMlV1Job> patch(
+      GoogleCloudMlV1Job request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1327,19 +1403,19 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
-  /// [filter] - Optional. Specifies the subset of versions to retrieve.
-  ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
-  ///
   /// [pageSize] - Optional. The number of versions to retrieve per "page" of
   /// results. If
   /// there are more remaining results than this number, the response message
   /// will contain a valid value in the `next_page_token` field.
   ///
   /// The default value is 20, and the maximum page size is 100.
+  ///
+  /// [filter] - Optional. Specifies the subset of versions to retrieve.
+  ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1352,9 +1428,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1366,14 +1442,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1394,7 +1470,8 @@ class ProjectsModelsVersionsResourceApi {
 
   /// Updates the specified Version resource.
   ///
-  /// Currently the only supported field to update is `description`.
+  /// Currently the only update-able fields are `description` and
+  /// `autoScaling.minNodes`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1414,7 +1491,8 @@ class ProjectsModelsVersionsResourceApi {
   ///       "description": "foo"
   ///     }
   ///
-  /// Currently the only supported update mask is`description`.
+  /// Currently the only supported update mask fields are `description` and
+  /// `autoScaling.minNodes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1693,11 +1771,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1710,9 +1788,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1724,14 +1802,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1872,6 +1950,45 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
     }
     if (trainingStep != null) {
       _json["trainingStep"] = trainingStep;
+    }
+    return _json;
+  }
+}
+
+/// Represents a hardware accelerator request config.
+class GoogleCloudMlV1AcceleratorConfig {
+  /// The number of accelerators to attach to each machine running the job.
+  core.String count;
+
+  /// The available types of accelerators.
+  /// Possible string values are:
+  /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Unspecified accelerator type. Default
+  /// to no GPU.
+  /// - "NVIDIA_TESLA_K80" : Nvidia tesla k80 GPU.
+  /// - "NVIDIA_TESLA_P100" : Nvidia tesla P100 GPU.
+  /// - "NVIDIA_TESLA_V100" : Nvidia tesla V100 GPU. Not supported for batch
+  /// prediction.
+  core.String type;
+
+  GoogleCloudMlV1AcceleratorConfig();
+
+  GoogleCloudMlV1AcceleratorConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -2255,8 +2372,32 @@ class GoogleCloudMlV1Job {
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
 
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a job from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform job updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetJob`, and
+  /// systems are expected to put that etag in the request to `UpdateJob` to
+  /// ensure that their change will be applied to the same version of the job.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// Required. The user-specified id of the job.
   core.String jobId;
+
+  /// Optional. One or more labels that you can add, to organize your jobs.
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings that you supply.
+  /// For more information, see the documentation on
+  /// <a href="/ml-engine/docs/tensorflow/resource-labels">using labels</a>.
+  core.Map<core.String, core.String> labels;
 
   /// Input parameters to create a prediction job.
   GoogleCloudMlV1PredictionInput predictionInput;
@@ -2301,8 +2442,14 @@ class GoogleCloudMlV1Job {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("predictionInput")) {
       predictionInput =
@@ -2340,8 +2487,14 @@ class GoogleCloudMlV1Job {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (jobId != null) {
       _json["jobId"] = jobId;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (predictionInput != null) {
       _json["predictionInput"] = (predictionInput).toJson();
@@ -2584,6 +2737,30 @@ class GoogleCloudMlV1Model {
   /// Optional. The description specified for the model when it was created.
   core.String description;
 
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a model from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform model updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetModel`, and
+  /// systems are expected to put that etag in the request to `UpdateModel` to
+  /// ensure that their change will be applied to the model as intended.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Optional. One or more labels that you can add, to organize your models.
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings that you supply.
+  /// For more information, see the documentation on
+  /// <a href="/ml-engine/docs/tensorflow/resource-labels">using labels</a>.
+  core.Map<core.String, core.String> labels;
+
   /// Required. The name specified for the model when it was created.
   ///
   /// The model name must be unique within the project it is created in.
@@ -2616,6 +2793,12 @@ class GoogleCloudMlV1Model {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2635,6 +2818,12 @@ class GoogleCloudMlV1Model {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2659,6 +2848,10 @@ class GoogleCloudMlV1OperationMetadata {
 
   /// Indicates whether a request to cancel this operation has been made.
   core.bool isCancellationRequested;
+
+  /// The user labels, inherited from the model or the model version being
+  /// operated on.
+  core.Map<core.String, core.String> labels;
 
   /// Contains the name of the model associated with the operation.
   core.String modelName;
@@ -2695,6 +2888,9 @@ class GoogleCloudMlV1OperationMetadata {
     if (_json.containsKey("isCancellationRequested")) {
       isCancellationRequested = _json["isCancellationRequested"];
     }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("modelName")) {
       modelName = _json["modelName"];
     }
@@ -2723,6 +2919,9 @@ class GoogleCloudMlV1OperationMetadata {
     }
     if (isCancellationRequested != null) {
       _json["isCancellationRequested"] = isCancellationRequested;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (modelName != null) {
       _json["modelName"] = modelName;
@@ -2886,6 +3085,10 @@ class GoogleCloudMlV1PredictRequest {
 
 /// Represents input parameters for a prediction job.
 class GoogleCloudMlV1PredictionInput {
+  /// Optional. The type and number of accelerators to be attached to each
+  /// machine running the job.
+  GoogleCloudMlV1AcceleratorConfig accelerator;
+
   /// Optional. Number of records per batch, defaults to 64.
   /// The service will buffer batch_size number of records in memory before
   /// invoking one Tensorflow prediction call internally. So take the record
@@ -2957,6 +3160,10 @@ class GoogleCloudMlV1PredictionInput {
   GoogleCloudMlV1PredictionInput();
 
   GoogleCloudMlV1PredictionInput.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerator")) {
+      accelerator =
+          new GoogleCloudMlV1AcceleratorConfig.fromJson(_json["accelerator"]);
+    }
     if (_json.containsKey("batchSize")) {
       batchSize = _json["batchSize"];
     }
@@ -2995,6 +3202,9 @@ class GoogleCloudMlV1PredictionInput {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accelerator != null) {
+      _json["accelerator"] = (accelerator).toJson();
+    }
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
@@ -3182,8 +3392,7 @@ class GoogleCloudMlV1TrainingInput {
   ///   </dd>
   ///   <dt>cloud_tpu</dt>
   ///   <dd>
-  ///   A TPU VM including one Cloud TPU. The availability of Cloud TPU is in
-  ///   <i>Beta</i> launch stage. See more about
+  ///   A TPU VM including one Cloud TPU. See more about
   ///   <a href="/ml-engine/docs/tensorflow/using-tpus">using TPUs to train
   ///   your model</a>.
   ///   </dd>
@@ -3246,7 +3455,6 @@ class GoogleCloudMlV1TrainingInput {
   /// GPU](/ml-engine/docs/tensorflow/using-gpus).
   /// - "BASIC_TPU" : A single worker instance with a
   /// [Cloud TPU](/ml-engine/docs/tensorflow/using-tpus).
-  /// The availability of Cloud TPU is in <i>Beta</i> launch stage.
   /// - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
   /// use your
   /// own cluster specification. When you use this tier, set values to
@@ -3478,16 +3686,33 @@ class GoogleCloudMlV1Version {
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
 
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a model from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform model updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetVersion`, and
+  /// systems are expected to put that etag in the request to `UpdateVersion` to
+  /// ensure that their change will be applied to the model as intended.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// Optional. The machine learning framework Cloud ML Engine uses to train
   /// this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
   /// and `XGBOOST`. If you do not specify a framework, Cloud ML Engine uses
   /// TensorFlow. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set
   /// the runtime version of the model to 1.4 or greater.
   /// Possible string values are:
-  /// - "FRAMEWORK_UNSPECIFIED"
-  /// - "TENSORFLOW"
-  /// - "SCIKIT_LEARN"
-  /// - "XGBOOST"
+  /// - "FRAMEWORK_UNSPECIFIED" : Unspecified framework. Defaults to TensorFlow.
+  /// - "TENSORFLOW" : Tensorflow framework.
+  /// - "SCIKIT_LEARN" : Scikit-learn framework.
+  /// - "XGBOOST" : XGBoost framework.
   core.String framework;
 
   /// Output only. If true, this version will be used to handle prediction
@@ -3497,8 +3722,26 @@ class GoogleCloudMlV1Version {
   /// [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
   core.bool isDefault;
 
+  /// Optional. One or more labels that you can add, to organize your model
+  /// versions. Each label is a key-value pair, where both the key and the value
+  /// are arbitrary strings that you supply.
+  /// For more information, see the documentation on
+  /// <a href="/ml-engine/docs/tensorflow/resource-labels">using labels</a>.
+  core.Map<core.String, core.String> labels;
+
   /// Output only. The time the version was last used for prediction.
   core.String lastUseTime;
+
+  /// Optional. The type of machine on which to serve the model. Currently only
+  /// applies to online prediction service.
+  /// The following are currently supported and will be deprecated in
+  /// Beta release.
+  ///   mls1-highmem-1    1 core    2 Gb RAM
+  ///   mls1-highcpu-4    4 core    2 Gb RAM
+  /// The following are available in Beta:
+  ///   mls1-c1-m2        1 core    2 Gb RAM   Default
+  ///   mls1-c4-m2        4 core    2 Gb RAM
+  core.String machineType;
 
   /// Manually select the number of nodes to use for serving the
   /// model. You should generally use `auto_scaling` with an appropriate
@@ -3560,14 +3803,23 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("framework")) {
       framework = _json["framework"];
     }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
     }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("lastUseTime")) {
       lastUseTime = _json["lastUseTime"];
+    }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
     }
     if (_json.containsKey("manualScaling")) {
       manualScaling =
@@ -3605,14 +3857,23 @@ class GoogleCloudMlV1Version {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (framework != null) {
       _json["framework"] = framework;
     }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
     }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (lastUseTime != null) {
       _json["lastUseTime"] = lastUseTime;
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
     }
     if (manualScaling != null) {
       _json["manualScaling"] = (manualScaling).toJson();
@@ -3781,6 +4042,12 @@ class GoogleIamV1AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  GoogleTypeExpr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -3807,12 +4074,14 @@ class GoogleIamV1Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   GoogleIamV1Binding();
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new GoogleTypeExpr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -3824,6 +4093,9 @@ class GoogleIamV1Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -4286,6 +4558,68 @@ class GoogleRpcStatus {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class GoogleTypeExpr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  GoogleTypeExpr();
+
+  GoogleTypeExpr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

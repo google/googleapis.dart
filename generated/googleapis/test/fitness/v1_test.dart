@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed736() {
+buildUnnamed3538() {
   var o = new core.List<api.Dataset>();
   o.add(buildDataset());
   o.add(buildDataset());
   return o;
 }
 
-checkUnnamed736(core.List<api.Dataset> o) {
+checkUnnamed3538(core.List<api.Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataset(o[0]);
   checkDataset(o[1]);
@@ -69,7 +69,7 @@ buildAggregateBucket() {
   buildCounterAggregateBucket++;
   if (buildCounterAggregateBucket < 3) {
     o.activity = 42;
-    o.dataset = buildUnnamed736();
+    o.dataset = buildUnnamed3538();
     o.endTimeMillis = "foo";
     o.session = buildSession();
     o.startTimeMillis = "foo";
@@ -83,7 +83,7 @@ checkAggregateBucket(api.AggregateBucket o) {
   buildCounterAggregateBucket++;
   if (buildCounterAggregateBucket < 3) {
     unittest.expect(o.activity, unittest.equals(42));
-    checkUnnamed736(o.dataset);
+    checkUnnamed3538(o.dataset);
     unittest.expect(o.endTimeMillis, unittest.equals('foo'));
     checkSession(o.session);
     unittest.expect(o.startTimeMillis, unittest.equals('foo'));
@@ -113,27 +113,27 @@ checkAggregateBy(api.AggregateBy o) {
   buildCounterAggregateBy--;
 }
 
-buildUnnamed737() {
+buildUnnamed3539() {
   var o = new core.List<api.AggregateBy>();
   o.add(buildAggregateBy());
   o.add(buildAggregateBy());
   return o;
 }
 
-checkUnnamed737(core.List<api.AggregateBy> o) {
+checkUnnamed3539(core.List<api.AggregateBy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAggregateBy(o[0]);
   checkAggregateBy(o[1]);
 }
 
-buildUnnamed738() {
+buildUnnamed3540() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed738(core.List<core.String> o) {
+checkUnnamed3540(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -144,13 +144,13 @@ buildAggregateRequest() {
   var o = new api.AggregateRequest();
   buildCounterAggregateRequest++;
   if (buildCounterAggregateRequest < 3) {
-    o.aggregateBy = buildUnnamed737();
+    o.aggregateBy = buildUnnamed3539();
     o.bucketByActivitySegment = buildBucketByActivity();
     o.bucketByActivityType = buildBucketByActivity();
     o.bucketBySession = buildBucketBySession();
     o.bucketByTime = buildBucketByTime();
     o.endTimeMillis = "foo";
-    o.filteredDataQualityStandard = buildUnnamed738();
+    o.filteredDataQualityStandard = buildUnnamed3540();
     o.startTimeMillis = "foo";
   }
   buildCounterAggregateRequest--;
@@ -160,26 +160,26 @@ buildAggregateRequest() {
 checkAggregateRequest(api.AggregateRequest o) {
   buildCounterAggregateRequest++;
   if (buildCounterAggregateRequest < 3) {
-    checkUnnamed737(o.aggregateBy);
+    checkUnnamed3539(o.aggregateBy);
     checkBucketByActivity(o.bucketByActivitySegment);
     checkBucketByActivity(o.bucketByActivityType);
     checkBucketBySession(o.bucketBySession);
     checkBucketByTime(o.bucketByTime);
     unittest.expect(o.endTimeMillis, unittest.equals('foo'));
-    checkUnnamed738(o.filteredDataQualityStandard);
+    checkUnnamed3540(o.filteredDataQualityStandard);
     unittest.expect(o.startTimeMillis, unittest.equals('foo'));
   }
   buildCounterAggregateRequest--;
 }
 
-buildUnnamed739() {
+buildUnnamed3541() {
   var o = new core.List<api.AggregateBucket>();
   o.add(buildAggregateBucket());
   o.add(buildAggregateBucket());
   return o;
 }
 
-checkUnnamed739(core.List<api.AggregateBucket> o) {
+checkUnnamed3541(core.List<api.AggregateBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAggregateBucket(o[0]);
   checkAggregateBucket(o[1]);
@@ -190,7 +190,7 @@ buildAggregateResponse() {
   var o = new api.AggregateResponse();
   buildCounterAggregateResponse++;
   if (buildCounterAggregateResponse < 3) {
-    o.bucket = buildUnnamed739();
+    o.bucket = buildUnnamed3541();
   }
   buildCounterAggregateResponse--;
   return o;
@@ -199,7 +199,7 @@ buildAggregateResponse() {
 checkAggregateResponse(api.AggregateResponse o) {
   buildCounterAggregateResponse++;
   if (buildCounterAggregateResponse < 3) {
-    checkUnnamed739(o.bucket);
+    checkUnnamed3541(o.bucket);
   }
   buildCounterAggregateResponse--;
 }
@@ -313,14 +313,14 @@ checkBucketByTimePeriod(api.BucketByTimePeriod o) {
   buildCounterBucketByTimePeriod--;
 }
 
-buildUnnamed740() {
+buildUnnamed3542() {
   var o = new core.List<api.Value>();
   o.add(buildValue());
   o.add(buildValue());
   return o;
 }
 
-checkUnnamed740(core.List<api.Value> o) {
+checkUnnamed3542(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o[0]);
   checkValue(o[1]);
@@ -338,7 +338,7 @@ buildDataPoint() {
     o.originDataSourceId = "foo";
     o.rawTimestampNanos = "foo";
     o.startTimeNanos = "foo";
-    o.value = buildUnnamed740();
+    o.value = buildUnnamed3542();
   }
   buildCounterDataPoint--;
   return o;
@@ -354,19 +354,19 @@ checkDataPoint(api.DataPoint o) {
     unittest.expect(o.originDataSourceId, unittest.equals('foo'));
     unittest.expect(o.rawTimestampNanos, unittest.equals('foo'));
     unittest.expect(o.startTimeNanos, unittest.equals('foo'));
-    checkUnnamed740(o.value);
+    checkUnnamed3542(o.value);
   }
   buildCounterDataPoint--;
 }
 
-buildUnnamed741() {
+buildUnnamed3543() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed741(core.List<core.String> o) {
+checkUnnamed3543(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -378,7 +378,7 @@ buildDataSource() {
   buildCounterDataSource++;
   if (buildCounterDataSource < 3) {
     o.application = buildApplication();
-    o.dataQualityStandard = buildUnnamed741();
+    o.dataQualityStandard = buildUnnamed3543();
     o.dataStreamId = "foo";
     o.dataStreamName = "foo";
     o.dataType = buildDataType();
@@ -394,7 +394,7 @@ checkDataSource(api.DataSource o) {
   buildCounterDataSource++;
   if (buildCounterDataSource < 3) {
     checkApplication(o.application);
-    checkUnnamed741(o.dataQualityStandard);
+    checkUnnamed3543(o.dataQualityStandard);
     unittest.expect(o.dataStreamId, unittest.equals('foo'));
     unittest.expect(o.dataStreamName, unittest.equals('foo'));
     checkDataType(o.dataType);
@@ -405,14 +405,14 @@ checkDataSource(api.DataSource o) {
   buildCounterDataSource--;
 }
 
-buildUnnamed742() {
+buildUnnamed3544() {
   var o = new core.List<api.DataTypeField>();
   o.add(buildDataTypeField());
   o.add(buildDataTypeField());
   return o;
 }
 
-checkUnnamed742(core.List<api.DataTypeField> o) {
+checkUnnamed3544(core.List<api.DataTypeField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataTypeField(o[0]);
   checkDataTypeField(o[1]);
@@ -423,7 +423,7 @@ buildDataType() {
   var o = new api.DataType();
   buildCounterDataType++;
   if (buildCounterDataType < 3) {
-    o.field = buildUnnamed742();
+    o.field = buildUnnamed3544();
     o.name = "foo";
   }
   buildCounterDataType--;
@@ -433,7 +433,7 @@ buildDataType() {
 checkDataType(api.DataType o) {
   buildCounterDataType++;
   if (buildCounterDataType < 3) {
-    checkUnnamed742(o.field);
+    checkUnnamed3544(o.field);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterDataType--;
@@ -462,14 +462,14 @@ checkDataTypeField(api.DataTypeField o) {
   buildCounterDataTypeField--;
 }
 
-buildUnnamed743() {
+buildUnnamed3545() {
   var o = new core.List<api.DataPoint>();
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-checkUnnamed743(core.List<api.DataPoint> o) {
+checkUnnamed3545(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
@@ -484,7 +484,7 @@ buildDataset() {
     o.maxEndTimeNs = "foo";
     o.minStartTimeNs = "foo";
     o.nextPageToken = "foo";
-    o.point = buildUnnamed743();
+    o.point = buildUnnamed3545();
   }
   buildCounterDataset--;
   return o;
@@ -497,7 +497,7 @@ checkDataset(api.Dataset o) {
     unittest.expect(o.maxEndTimeNs, unittest.equals('foo'));
     unittest.expect(o.minStartTimeNs, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed743(o.point);
+    checkUnnamed3545(o.point);
   }
   buildCounterDataset--;
 }
@@ -529,27 +529,27 @@ checkDevice(api.Device o) {
   buildCounterDevice--;
 }
 
-buildUnnamed744() {
+buildUnnamed3546() {
   var o = new core.List<api.DataPoint>();
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-checkUnnamed744(core.List<api.DataPoint> o) {
+checkUnnamed3546(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
 }
 
-buildUnnamed745() {
+buildUnnamed3547() {
   var o = new core.List<api.DataPoint>();
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-checkUnnamed745(core.List<api.DataPoint> o) {
+checkUnnamed3547(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
@@ -561,8 +561,8 @@ buildListDataPointChangesResponse() {
   buildCounterListDataPointChangesResponse++;
   if (buildCounterListDataPointChangesResponse < 3) {
     o.dataSourceId = "foo";
-    o.deletedDataPoint = buildUnnamed744();
-    o.insertedDataPoint = buildUnnamed745();
+    o.deletedDataPoint = buildUnnamed3546();
+    o.insertedDataPoint = buildUnnamed3547();
     o.nextPageToken = "foo";
   }
   buildCounterListDataPointChangesResponse--;
@@ -573,21 +573,21 @@ checkListDataPointChangesResponse(api.ListDataPointChangesResponse o) {
   buildCounterListDataPointChangesResponse++;
   if (buildCounterListDataPointChangesResponse < 3) {
     unittest.expect(o.dataSourceId, unittest.equals('foo'));
-    checkUnnamed744(o.deletedDataPoint);
-    checkUnnamed745(o.insertedDataPoint);
+    checkUnnamed3546(o.deletedDataPoint);
+    checkUnnamed3547(o.insertedDataPoint);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDataPointChangesResponse--;
 }
 
-buildUnnamed746() {
+buildUnnamed3548() {
   var o = new core.List<api.DataSource>();
   o.add(buildDataSource());
   o.add(buildDataSource());
   return o;
 }
 
-checkUnnamed746(core.List<api.DataSource> o) {
+checkUnnamed3548(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataSource(o[0]);
   checkDataSource(o[1]);
@@ -598,7 +598,7 @@ buildListDataSourcesResponse() {
   var o = new api.ListDataSourcesResponse();
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    o.dataSource = buildUnnamed746();
+    o.dataSource = buildUnnamed3548();
   }
   buildCounterListDataSourcesResponse--;
   return o;
@@ -607,32 +607,32 @@ buildListDataSourcesResponse() {
 checkListDataSourcesResponse(api.ListDataSourcesResponse o) {
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    checkUnnamed746(o.dataSource);
+    checkUnnamed3548(o.dataSource);
   }
   buildCounterListDataSourcesResponse--;
 }
 
-buildUnnamed747() {
+buildUnnamed3549() {
   var o = new core.List<api.Session>();
   o.add(buildSession());
   o.add(buildSession());
   return o;
 }
 
-checkUnnamed747(core.List<api.Session> o) {
+checkUnnamed3549(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSession(o[0]);
   checkSession(o[1]);
 }
 
-buildUnnamed748() {
+buildUnnamed3550() {
   var o = new core.List<api.Session>();
   o.add(buildSession());
   o.add(buildSession());
   return o;
 }
 
-checkUnnamed748(core.List<api.Session> o) {
+checkUnnamed3550(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSession(o[0]);
   checkSession(o[1]);
@@ -643,10 +643,10 @@ buildListSessionsResponse() {
   var o = new api.ListSessionsResponse();
   buildCounterListSessionsResponse++;
   if (buildCounterListSessionsResponse < 3) {
-    o.deletedSession = buildUnnamed747();
+    o.deletedSession = buildUnnamed3549();
     o.hasMoreData = true;
     o.nextPageToken = "foo";
-    o.session = buildUnnamed748();
+    o.session = buildUnnamed3550();
   }
   buildCounterListSessionsResponse--;
   return o;
@@ -655,10 +655,10 @@ buildListSessionsResponse() {
 checkListSessionsResponse(api.ListSessionsResponse o) {
   buildCounterListSessionsResponse++;
   if (buildCounterListSessionsResponse < 3) {
-    checkUnnamed747(o.deletedSession);
+    checkUnnamed3549(o.deletedSession);
     unittest.expect(o.hasMoreData, unittest.isTrue);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed748(o.session);
+    checkUnnamed3550(o.session);
   }
   buildCounterListSessionsResponse--;
 }
@@ -717,14 +717,14 @@ checkSession(api.Session o) {
   buildCounterSession--;
 }
 
-buildUnnamed749() {
+buildUnnamed3551() {
   var o = new core.List<api.ValueMapValEntry>();
   o.add(buildValueMapValEntry());
   o.add(buildValueMapValEntry());
   return o;
 }
 
-checkUnnamed749(core.List<api.ValueMapValEntry> o) {
+checkUnnamed3551(core.List<api.ValueMapValEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueMapValEntry(o[0]);
   checkValueMapValEntry(o[1]);
@@ -737,7 +737,7 @@ buildValue() {
   if (buildCounterValue < 3) {
     o.fpVal = 42.0;
     o.intVal = 42;
-    o.mapVal = buildUnnamed749();
+    o.mapVal = buildUnnamed3551();
     o.stringVal = "foo";
   }
   buildCounterValue--;
@@ -749,7 +749,7 @@ checkValue(api.Value o) {
   if (buildCounterValue < 3) {
     unittest.expect(o.fpVal, unittest.equals(42.0));
     unittest.expect(o.intVal, unittest.equals(42));
-    checkUnnamed749(o.mapVal);
+    checkUnnamed3551(o.mapVal);
     unittest.expect(o.stringVal, unittest.equals('foo'));
   }
   buildCounterValue--;
@@ -776,14 +776,14 @@ checkValueMapValEntry(api.ValueMapValEntry o) {
   buildCounterValueMapValEntry--;
 }
 
-buildUnnamed750() {
+buildUnnamed3552() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed750(core.List<core.String> o) {
+checkUnnamed3552(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1122,7 +1122,7 @@ main() {
       api.UsersDataSourcesResourceApi res =
           new api.FitnessApi(mock).users.dataSources;
       var arg_userId = "foo";
-      var arg_dataTypeName = buildUnnamed750();
+      var arg_dataTypeName = buildUnnamed3552();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

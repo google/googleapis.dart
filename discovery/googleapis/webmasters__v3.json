@@ -17,7 +17,7 @@
     "description": "View Google Search Console data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/A9TiHRTk7P-Hk9YYSilxDnOYPGs\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/hnSRX7l-psY4c00ug38J7MgHwv8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"
@@ -605,7 +605,7 @@
             }
         }
     },
-    "revision": "20180125",
+    "revision": "20180627",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApiDataRow": {

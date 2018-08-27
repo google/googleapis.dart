@@ -615,16 +615,6 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
-  /// [ancestorsOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups that
-  /// are ancestors of the specified group. The groups are returned in order,
-  /// starting with the immediate parent and ending with the most distant
-  /// ancestor. If the specified group has no immediate parent, the results are
-  /// empty.
-  ///
   /// [childrenOfGroup] - A group name:
   /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
   /// parentName field contains the group name. If no groups have this parent,
@@ -641,6 +631,16 @@ class ProjectsGroupsResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
+  /// [ancestorsOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups that
+  /// are ancestors of the specified group. The groups are returned in order,
+  /// starting with the immediate parent and ending with the most distant
+  /// ancestor. If the specified group has no immediate parent, the results are
+  /// empty.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -652,11 +652,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String ancestorsOfGroup,
-      core.String childrenOfGroup,
+      {core.String childrenOfGroup,
       core.String descendantsOfGroup,
       core.String pageToken,
+      core.int pageSize,
+      core.String ancestorsOfGroup,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -668,12 +668,6 @@ class ProjectsGroupsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (ancestorsOfGroup != null) {
-      _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
-    }
     if (childrenOfGroup != null) {
       _queryParams["childrenOfGroup"] = [childrenOfGroup];
     }
@@ -682,6 +676,12 @@ class ProjectsGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (ancestorsOfGroup != null) {
+      _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -773,6 +773,13 @@ class ProjectsGroupsMembersResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
   /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [filter] - An optional list filter describing the members to be returned.
@@ -786,13 +793,6 @@ class ProjectsGroupsMembersResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -804,11 +804,11 @@ class ProjectsGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(core.String name,
-      {core.String interval_endTime,
+      {core.String interval_startTime,
+      core.int pageSize,
+      core.String interval_endTime,
       core.String filter,
       core.String pageToken,
-      core.String interval_startTime,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -820,6 +820,12 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (interval_endTime != null) {
       _queryParams["interval.endTime"] = [interval_endTime];
     }
@@ -828,12 +834,6 @@ class ProjectsGroupsMembersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1014,6 +1014,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
   /// [filter] - If this field is empty, all custom and system-defined metric
   /// descriptors are returned. Otherwise, the filter specifies which metric
   /// descriptors are to be returned. For example, the following filter matches
@@ -1024,9 +1027,6 @@ class ProjectsMetricDescriptorsResourceApi {
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1039,9 +1039,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1053,14 +1053,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1895,22 +1895,6 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
-  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
-  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
-  /// per-time series alignment, each time series will contain data points only
-  /// on the period boundaries. If perSeriesAligner is not specified or equals
-  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
-  /// an error is returned.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. If page_size is empty or more than 100,000 results, the effective
-  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
-  /// number of Points returned. If view is set to HEADERS, this is the maximum
-  /// number of TimeSeries returned.
-  ///
   /// [orderBy] - Unsupported: must be left blank. The points in each time
   /// series are returned in reverse time order.
   ///
@@ -2000,6 +1984,22 @@ class ProjectsTimeSeriesResourceApi {
   /// aggregated into a single output time series. If crossSeriesReducer is not
   /// defined, this field is ignored.
   ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
+  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
+  /// per-time series alignment, each time series will contain data points only
+  /// on the period boundaries. If perSeriesAligner is not specified or equals
+  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
+  /// an error is returned.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return. If page_size is empty or more than 100,000 results, the effective
+  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
+  /// number of Points returned. If view is set to HEADERS, this is the maximum
+  /// number of TimeSeries returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2011,10 +2011,7 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.String interval_endTime,
-      core.String aggregation_alignmentPeriod,
-      core.int pageSize,
-      core.String orderBy,
+      {core.String orderBy,
       core.String aggregation_crossSeriesReducer,
       core.String filter,
       core.String aggregation_perSeriesAligner,
@@ -2022,6 +2019,9 @@ class ProjectsTimeSeriesResourceApi {
       core.String interval_startTime,
       core.String view,
       core.List<core.String> aggregation_groupByFields,
+      core.String interval_endTime,
+      core.String aggregation_alignmentPeriod,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2032,17 +2032,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams["aggregation.alignmentPeriod"] = [
-        aggregation_alignmentPeriod
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -2071,6 +2060,17 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (aggregation_alignmentPeriod != null) {
+      _queryParams["aggregation.alignmentPeriod"] = [
+        aggregation_alignmentPeriod
+      ];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2377,15 +2377,15 @@ class UptimeCheckIpsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// The server may further constrain the maximum number of results returned in
-  /// a single page. If the page_size is <=0, the server will decide the number
-  /// of results to be returned. NOTE: this field is not yet implemented
-  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return more results from the previous method
   /// call. NOTE: this field is not yet implemented
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// The server may further constrain the maximum number of results returned in
+  /// a single page. If the page_size is <=0, the server will decide the number
+  /// of results to be returned. NOTE: this field is not yet implemented
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2398,7 +2398,7 @@ class UptimeCheckIpsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckIpsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2406,11 +2406,11 @@ class UptimeCheckIpsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3370,9 +3370,7 @@ class Distribution {
   /// provided.
   core.String count;
 
-  /// Must be in increasing order of |value| field. The current requirement
-  /// enforced by the backend is that at most one Exemplar will fall into any
-  /// bucket.
+  /// Must be in increasing order of value field.
   core.List<Exemplar> exemplars;
 
   /// The arithmetic mean of the values in the population. If count is zero then
@@ -3479,6 +3477,40 @@ class Documentation {
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
+    }
+    return _json;
+  }
+}
+
+/// A set of (label, value) pairs which were dropped during aggregation,
+/// attached to google.api.Distribution.Exemplars in google.api.Distribution
+/// values during aggregation.These values are used in combination with the
+/// label values that remain on the aggregated Distribution timeseries to
+/// construct the full label set for the exemplar values. The resulting full
+/// label set may be used to identify the specific task/job/instance (for
+/// example) which may be contributing to a long-tail, while allowing the
+/// storage savings of only storing aggregated distribution values for a large
+/// group.Note that there are no guarantees on ordering of the labels from
+/// exemplar-to-exemplar and from distribution-to-distribution in the same
+/// stream, and there may be duplicates. It is up to clients to resolve any
+/// ambiguities.
+class DroppedLabels {
+  /// Map from label to its value, for all labels dropped in any aggregation.
+  core.Map<core.String, core.String> label;
+
+  DroppedLabels();
+
+  DroppedLabels.fromJson(core.Map _json) {
+    if (_json.containsKey("label")) {
+      label = (_json["label"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (label != null) {
+      _json["label"] = label;
     }
     return _json;
   }
@@ -4706,6 +4738,9 @@ class MetricDescriptor {
   /// latencies for successful responses or just for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. Metadata which can be used to guide usage of the metric.
+  MetricDescriptorMetadata metadata;
+
   /// Whether the metric records instantaneous values, changes to a value, etc.
   /// Some combinations of metric_kind and value_type might not be supported.
   /// Possible string values are:
@@ -4722,18 +4757,64 @@ class MetricDescriptor {
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded. All user-defined custom metric types have the DNS name
-  /// custom.googleapis.com. Metric types should use a natural hierarchical
-  /// grouping. For example:
+  /// URL-encoded. All user-defined metric types have the DNS name
+  /// custom.googleapis.com or external.googleapis.com. Metric types should use
+  /// a natural hierarchical grouping. For example:
   /// "custom.googleapis.com/invoice/paid/amount"
+  /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// Optional. The unit in which the metric value is reported. For example,
-  /// kBy/s means kilobytes/sec, and 1 is the dimensionless unit. The supported
-  /// units are a subset of The Unified Code for Units of Measure standard
-  /// (http://unitsofmeasure.org/ucum.html).<br><br> This field is part of the
-  /// metric's documentation, but it is ignored by Stackdriver.
+  /// The unit in which the metric value is reported. It is only applicable if
+  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are
+  /// a subset of The Unified Code for Units of Measure
+  /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
+  /// bit bit
+  /// By byte
+  /// s second
+  /// min minute
+  /// h hour
+  /// d dayPrefixes (PREFIX)
+  /// k kilo (10**3)
+  /// M mega (10**6)
+  /// G giga (10**9)
+  /// T tera (10**12)
+  /// P peta (10**15)
+  /// E exa (10**18)
+  /// Z zetta (10**21)
+  /// Y yotta (10**24)
+  /// m milli (10**-3)
+  /// u micro (10**-6)
+  /// n nano (10**-9)
+  /// p pico (10**-12)
+  /// f femto (10**-15)
+  /// a atto (10**-18)
+  /// z zepto (10**-21)
+  /// y yocto (10**-24)
+  /// Ki kibi (2**10)
+  /// Mi mebi (2**20)
+  /// Gi gibi (2**30)
+  /// Ti tebi (2**40)GrammarThe grammar also includes these connectors:
+  /// / division (as an infix operator, e.g. 1/s).
+  /// . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
+  /// is as follows:
+  /// Expression = Component { "." Component } { "/" Component } ;
+  ///
+  /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
+  ///           | Annotation
+  ///           | "1"
+  ///           ;
+  ///
+  /// Annotation = "{" NAME "}" ;
+  /// Notes:
+  /// Annotation is just a comment if it follows a UNIT and is  equivalent to 1
+  /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s
+  /// == By/s.
+  /// NAME is a sequence of non-blank printable ASCII characters not  containing
+  /// '{' or '}'.
+  /// 1 represents dimensionless value 1, such as in 1/s.
+  /// % represents dimensionless value 1/100, and annotates values giving  a
+  /// percentage.
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some
@@ -4764,6 +4845,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("metadata")) {
+      metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
+    }
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
@@ -4793,6 +4877,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
@@ -4807,6 +4894,80 @@ class MetricDescriptor {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// Additional annotations that can be used to guide the usage of a metric.
+class MetricDescriptorMetadata {
+  /// The delay of data points caused by ingestion. Data points older than this
+  /// age are guaranteed to be ingested and available to be read, excluding data
+  /// loss due to errors.
+  core.String ingestDelay;
+
+  /// The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
+  /// Platform Subject to the Deprecation Policy
+  /// (https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
+  /// The sampling period of metric data points. For metrics which are written
+  /// periodically, consecutive data points are stored at this time interval,
+  /// excluding data loss due to errors. Metrics with a higher granularity have
+  /// a smaller sampling period.
+  core.String samplePeriod;
+
+  MetricDescriptorMetadata();
+
+  MetricDescriptorMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("ingestDelay")) {
+      ingestDelay = _json["ingestDelay"];
+    }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
+    if (_json.containsKey("samplePeriod")) {
+      samplePeriod = _json["samplePeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingestDelay != null) {
+      _json["ingestDelay"] = ingestDelay;
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
+    if (samplePeriod != null) {
+      _json["samplePeriod"] = samplePeriod;
     }
     return _json;
   }
@@ -5089,17 +5250,14 @@ class MonitoredResourceDescriptor {
 
 /// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
 /// contain the minimum set of information to uniquely identify a monitored
-/// resource instance. There is some other useful auxiliary metadata. Google
-/// Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
-/// metadata for cloud resources of all types , and stores the metadata in this
-/// message.
+/// resource instance. There is some other useful auxiliary metadata. Monitoring
+/// and Logging use an ingestion pipeline to extract metadata for cloud
+/// resources of all types, and store the metadata in this message.
 class MonitoredResourceMetadata {
   /// Output only. Values for predefined system metadata labels. System labels
-  /// are a kind of metadata extracted by Google Stackdriver. Stackdriver
-  /// determines what system labels are useful and how to obtain their values.
-  /// Some examples: "machine_image", "vpc", "subnet_id", "security_group",
-  /// "name", etc. System label values can be only strings, Boolean values, or a
-  /// list of strings. For example:
+  /// are a kind of metadata extracted by Google, including "machine_image",
+  /// "vpc", "subnet_id", "security_group", "name", etc. System label values can
+  /// be only strings, Boolean values, or a list of strings. For example:
   /// { "name": "my-test-instance",
   ///   "security_group": ["a", "b", "c"],
   ///   "spot_instance": false }
@@ -5573,6 +5731,36 @@ class SourceContext {
         new core.Map<core.String, core.Object>();
     if (fileName != null) {
       _json["fileName"] = fileName;
+    }
+    return _json;
+  }
+}
+
+/// The context of a span, attached to google.api.Distribution.Exemplars in
+/// google.api.Distribution values during aggregation.It contains the name of a
+/// span with format:  projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID
+class SpanContext {
+  /// The resource name of the span in the following format:
+  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
+  /// TRACE_ID is a unique identifier for a trace within a project; it is a
+  /// 32-character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique
+  /// identifier for a span within a trace; it is a 16-character hexadecimal
+  /// encoding of an 8-byte array.
+  core.String spanName;
+
+  SpanContext();
+
+  SpanContext.fromJson(core.Map _json) {
+    if (_json.containsKey("spanName")) {
+      spanName = _json["spanName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (spanName != null) {
+      _json["spanName"] = spanName;
     }
     return _json;
   }

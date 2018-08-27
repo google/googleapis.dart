@@ -61,7 +61,7 @@ class ActivitiesResourceApi {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)".
+  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)".
   ///
   /// [actorIpAddress] - IP Address of host where the event was performed.
   /// Supports both IPv4 and IPv6 addresses.
@@ -180,7 +180,7 @@ class ActivitiesResourceApi {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)".
+  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)".
   ///
   /// [actorIpAddress] - IP Address of host where the event was performed.
   /// Supports both IPv4 and IPv6 addresses.

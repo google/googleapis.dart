@@ -434,14 +434,6 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a
-  /// previous ListInstancesResponse.
-  ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -463,6 +455,14 @@ class ProjectsInstancesResourceApi {
   ///                                  it has the label "env" with its value
   ///                                  containing "dev".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a
+  /// previous ListInstancesResponse.
+  ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -474,9 +474,9 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -488,14 +488,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1879,6 +1879,10 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
+  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1895,10 +1899,6 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// next_page_token from a previous
   /// ListSessionsResponse.
   ///
-  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1910,9 +1910,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1924,14 +1924,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1956,8 +1956,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// of the query result to read.  The same session and read-only transaction
   /// must be used by the PartitionQueryRequest used to create the
   /// partition tokens and the ExecuteSqlRequests that use the partition tokens.
+  ///
   /// Partition tokens become invalid when the session used to create them
-  /// is deleted or begins a new transaction.
+  /// is deleted, is idle for too long, begins a new transaction, or becomes too
+  /// old.  When any of these happen, it is not possible to resume the query,
+  /// and
+  /// the whole operation must be restarted from the beginning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2016,9 +2020,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// result to read.  The same session and read-only transaction must be used
   /// by
   /// the PartitionReadRequest used to create the partition tokens and the
-  /// ReadRequests that use the partition tokens.
+  /// ReadRequests that use the partition tokens.  There are no ordering
+  /// guarantees on rows returned among the returned partition tokens, or even
+  /// within each individual StreamingRead call issued with a partition_token.
+  ///
   /// Partition tokens become invalid when the session used to create them
-  /// is deleted or begins a new transaction.
+  /// is deleted, is idle for too long, begins a new transaction, or becomes too
+  /// old.  When any of these happen, it is not possible to resume the read, and
+  /// the whole operation must be restarted from the beginning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2500,6 +2509,12 @@ class BeginTransactionRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -2526,12 +2541,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -2543,6 +2560,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -3098,6 +3118,68 @@ class ExecuteSqlRequest {
     }
     if (transaction != null) {
       _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

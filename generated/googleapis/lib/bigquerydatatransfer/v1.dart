@@ -174,15 +174,15 @@ class ProjectsDataSourcesResourceApi {
   /// Must be in the form: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListDataSourcesRequest` list results. For multiple-page
   /// results, `ListDataSourcesResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -195,7 +195,7 @@ class ProjectsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -206,11 +206,11 @@ class ProjectsDataSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -291,11 +291,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -308,9 +308,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -322,14 +322,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -713,6 +713,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
   /// [dataSourceIds] - When specified, only configurations of requested data
   /// sources are returned.
   ///
@@ -722,9 +725,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// results, `ListTransfersResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
-  ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -737,9 +737,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.List<core.String> dataSourceIds,
+      {core.int pageSize,
+      core.List<core.String> dataSourceIds,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -751,14 +751,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -794,8 +794,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -814,6 +812,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [updateMask] - Required list of fields to be updated in this request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -825,8 +825,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String updateMask,
-      core.String authorizationCode,
+      {core.String authorizationCode,
+      core.String updateMask,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -841,11 +841,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1693,13 +1693,6 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferRunsRequest` list results. For multiple-page
-  /// results, `ListTransferRunsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
-  ///
   /// [states] - When specified, only transfer runs with requested states are
   /// returned.
   ///
@@ -1710,6 +1703,13 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// Possible string values are:
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
   /// - "LATEST" : A LATEST.
+  ///
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page
+  /// of `ListTransferRunsRequest` list results. For multiple-page
+  /// results, `ListTransferRunsResponse` outputs
+  /// a `next_page` token, which can be used as the
+  /// `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1722,10 +1722,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.List<core.String> states,
+      {core.List<core.String> states,
       core.int pageSize,
       core.String runAttempt,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1737,9 +1737,6 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (states != null) {
       _queryParams["states"] = states;
     }
@@ -1748,6 +1745,9 @@ class ProjectsTransferConfigsRunsResourceApi {
     }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1905,7 +1905,6 @@ class DataSource {
   core.String authorizationType;
 
   /// Data source client id which should be used to receive refresh token.
-  /// When not supplied, no offline credentials are populated for data transfer.
   core.String clientId;
 
   /// Specifies whether the data source supports automatic data refresh for the
@@ -1961,10 +1960,9 @@ class DataSource {
   /// Data source parameters.
   core.List<DataSourceParameter> parameters;
 
-  /// Api auth scopes for which refresh token needs to be obtained. Only valid
-  /// when `client_id` is specified. Ignored otherwise. These are scopes needed
-  /// by a data source to prepare data and ingest them into BigQuery,
-  /// e.g., https://www.googleapis.com/auth/bigquery
+  /// Api auth scopes for which refresh token needs to be obtained. These are
+  /// scopes needed by a data source to prepare data and ingest them into
+  /// BigQuery, e.g., https://www.googleapis.com/auth/bigquery
   core.List<core.String> scopes;
 
   /// Specifies whether the data source supports a user defined schedule, or
@@ -2975,7 +2973,7 @@ class TransferRun {
   /// created as part of a regular schedule. For batch transfer runs that are
   /// scheduled manually, this is empty.
   /// NOTE: the system might choose to delay the schedule depending on the
-  /// current load, so `schedule_time` doesn't always matches this.
+  /// current load, so `schedule_time` doesn't always match this.
   core.String schedule;
 
   /// Minimum time after which a transfer run can be started.

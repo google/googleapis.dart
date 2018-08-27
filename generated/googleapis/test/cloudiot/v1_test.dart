@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2271() {
+buildUnnamed4812() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2271(core.List<core.String> o) {
+checkUnnamed4812(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -68,7 +68,8 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed2271();
+    o.condition = buildExpr();
+    o.members = buildUnnamed4812();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -78,33 +79,34 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed2271(o.members);
+    checkExpr(o.condition);
+    checkUnnamed4812(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-buildUnnamed2272() {
+buildUnnamed4813() {
   var o = new core.List<api.DeviceCredential>();
   o.add(buildDeviceCredential());
   o.add(buildDeviceCredential());
   return o;
 }
 
-checkUnnamed2272(core.List<api.DeviceCredential> o) {
+checkUnnamed4813(core.List<api.DeviceCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceCredential(o[0]);
   checkDeviceCredential(o[1]);
 }
 
-buildUnnamed2273() {
+buildUnnamed4814() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2273(core.Map<core.String, core.String> o) {
+checkUnnamed4814(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -117,7 +119,7 @@ buildDevice() {
   if (buildCounterDevice < 3) {
     o.blocked = true;
     o.config = buildDeviceConfig();
-    o.credentials = buildUnnamed2272();
+    o.credentials = buildUnnamed4813();
     o.id = "foo";
     o.lastConfigAckTime = "foo";
     o.lastConfigSendTime = "foo";
@@ -126,7 +128,7 @@ buildDevice() {
     o.lastEventTime = "foo";
     o.lastHeartbeatTime = "foo";
     o.lastStateTime = "foo";
-    o.metadata = buildUnnamed2273();
+    o.metadata = buildUnnamed4814();
     o.name = "foo";
     o.numId = "foo";
     o.state = buildDeviceState();
@@ -140,7 +142,7 @@ checkDevice(api.Device o) {
   if (buildCounterDevice < 3) {
     unittest.expect(o.blocked, unittest.isTrue);
     checkDeviceConfig(o.config);
-    checkUnnamed2272(o.credentials);
+    checkUnnamed4813(o.credentials);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastConfigAckTime, unittest.equals('foo'));
     unittest.expect(o.lastConfigSendTime, unittest.equals('foo'));
@@ -149,7 +151,7 @@ checkDevice(api.Device o) {
     unittest.expect(o.lastEventTime, unittest.equals('foo'));
     unittest.expect(o.lastHeartbeatTime, unittest.equals('foo'));
     unittest.expect(o.lastStateTime, unittest.equals('foo'));
-    checkUnnamed2273(o.metadata);
+    checkUnnamed4814(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numId, unittest.equals('foo'));
     checkDeviceState(o.state);
@@ -203,27 +205,27 @@ checkDeviceCredential(api.DeviceCredential o) {
   buildCounterDeviceCredential--;
 }
 
-buildUnnamed2274() {
+buildUnnamed4815() {
   var o = new core.List<api.RegistryCredential>();
   o.add(buildRegistryCredential());
   o.add(buildRegistryCredential());
   return o;
 }
 
-checkUnnamed2274(core.List<api.RegistryCredential> o) {
+checkUnnamed4815(core.List<api.RegistryCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegistryCredential(o[0]);
   checkRegistryCredential(o[1]);
 }
 
-buildUnnamed2275() {
+buildUnnamed4816() {
   var o = new core.List<api.EventNotificationConfig>();
   o.add(buildEventNotificationConfig());
   o.add(buildEventNotificationConfig());
   return o;
 }
 
-checkUnnamed2275(core.List<api.EventNotificationConfig> o) {
+checkUnnamed4816(core.List<api.EventNotificationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventNotificationConfig(o[0]);
   checkEventNotificationConfig(o[1]);
@@ -234,8 +236,8 @@ buildDeviceRegistry() {
   var o = new api.DeviceRegistry();
   buildCounterDeviceRegistry++;
   if (buildCounterDeviceRegistry < 3) {
-    o.credentials = buildUnnamed2274();
-    o.eventNotificationConfigs = buildUnnamed2275();
+    o.credentials = buildUnnamed4815();
+    o.eventNotificationConfigs = buildUnnamed4816();
     o.httpConfig = buildHttpConfig();
     o.id = "foo";
     o.mqttConfig = buildMqttConfig();
@@ -249,8 +251,8 @@ buildDeviceRegistry() {
 checkDeviceRegistry(api.DeviceRegistry o) {
   buildCounterDeviceRegistry++;
   if (buildCounterDeviceRegistry < 3) {
-    checkUnnamed2274(o.credentials);
-    checkUnnamed2275(o.eventNotificationConfigs);
+    checkUnnamed4815(o.credentials);
+    checkUnnamed4816(o.eventNotificationConfigs);
     checkHttpConfig(o.httpConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     checkMqttConfig(o.mqttConfig);
@@ -317,6 +319,31 @@ checkEventNotificationConfig(api.EventNotificationConfig o) {
   buildCounterEventNotificationConfig--;
 }
 
+core.int buildCounterExpr = 0;
+buildExpr() {
+  var o = new api.Expr();
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    o.description = "foo";
+    o.expression = "foo";
+    o.location = "foo";
+    o.title = "foo";
+  }
+  buildCounterExpr--;
+  return o;
+}
+
+checkExpr(api.Expr o) {
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.expression, unittest.equals('foo'));
+    unittest.expect(o.location, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterExpr--;
+}
+
 core.int buildCounterGetIamPolicyRequest = 0;
 buildGetIamPolicyRequest() {
   var o = new api.GetIamPolicyRequest();
@@ -351,14 +378,14 @@ checkHttpConfig(api.HttpConfig o) {
   buildCounterHttpConfig--;
 }
 
-buildUnnamed2276() {
+buildUnnamed4817() {
   var o = new core.List<api.DeviceConfig>();
   o.add(buildDeviceConfig());
   o.add(buildDeviceConfig());
   return o;
 }
 
-checkUnnamed2276(core.List<api.DeviceConfig> o) {
+checkUnnamed4817(core.List<api.DeviceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceConfig(o[0]);
   checkDeviceConfig(o[1]);
@@ -369,7 +396,7 @@ buildListDeviceConfigVersionsResponse() {
   var o = new api.ListDeviceConfigVersionsResponse();
   buildCounterListDeviceConfigVersionsResponse++;
   if (buildCounterListDeviceConfigVersionsResponse < 3) {
-    o.deviceConfigs = buildUnnamed2276();
+    o.deviceConfigs = buildUnnamed4817();
   }
   buildCounterListDeviceConfigVersionsResponse--;
   return o;
@@ -378,19 +405,19 @@ buildListDeviceConfigVersionsResponse() {
 checkListDeviceConfigVersionsResponse(api.ListDeviceConfigVersionsResponse o) {
   buildCounterListDeviceConfigVersionsResponse++;
   if (buildCounterListDeviceConfigVersionsResponse < 3) {
-    checkUnnamed2276(o.deviceConfigs);
+    checkUnnamed4817(o.deviceConfigs);
   }
   buildCounterListDeviceConfigVersionsResponse--;
 }
 
-buildUnnamed2277() {
+buildUnnamed4818() {
   var o = new core.List<api.DeviceRegistry>();
   o.add(buildDeviceRegistry());
   o.add(buildDeviceRegistry());
   return o;
 }
 
-checkUnnamed2277(core.List<api.DeviceRegistry> o) {
+checkUnnamed4818(core.List<api.DeviceRegistry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceRegistry(o[0]);
   checkDeviceRegistry(o[1]);
@@ -401,7 +428,7 @@ buildListDeviceRegistriesResponse() {
   var o = new api.ListDeviceRegistriesResponse();
   buildCounterListDeviceRegistriesResponse++;
   if (buildCounterListDeviceRegistriesResponse < 3) {
-    o.deviceRegistries = buildUnnamed2277();
+    o.deviceRegistries = buildUnnamed4818();
     o.nextPageToken = "foo";
   }
   buildCounterListDeviceRegistriesResponse--;
@@ -411,20 +438,20 @@ buildListDeviceRegistriesResponse() {
 checkListDeviceRegistriesResponse(api.ListDeviceRegistriesResponse o) {
   buildCounterListDeviceRegistriesResponse++;
   if (buildCounterListDeviceRegistriesResponse < 3) {
-    checkUnnamed2277(o.deviceRegistries);
+    checkUnnamed4818(o.deviceRegistries);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDeviceRegistriesResponse--;
 }
 
-buildUnnamed2278() {
+buildUnnamed4819() {
   var o = new core.List<api.DeviceState>();
   o.add(buildDeviceState());
   o.add(buildDeviceState());
   return o;
 }
 
-checkUnnamed2278(core.List<api.DeviceState> o) {
+checkUnnamed4819(core.List<api.DeviceState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceState(o[0]);
   checkDeviceState(o[1]);
@@ -435,7 +462,7 @@ buildListDeviceStatesResponse() {
   var o = new api.ListDeviceStatesResponse();
   buildCounterListDeviceStatesResponse++;
   if (buildCounterListDeviceStatesResponse < 3) {
-    o.deviceStates = buildUnnamed2278();
+    o.deviceStates = buildUnnamed4819();
   }
   buildCounterListDeviceStatesResponse--;
   return o;
@@ -444,19 +471,19 @@ buildListDeviceStatesResponse() {
 checkListDeviceStatesResponse(api.ListDeviceStatesResponse o) {
   buildCounterListDeviceStatesResponse++;
   if (buildCounterListDeviceStatesResponse < 3) {
-    checkUnnamed2278(o.deviceStates);
+    checkUnnamed4819(o.deviceStates);
   }
   buildCounterListDeviceStatesResponse--;
 }
 
-buildUnnamed2279() {
+buildUnnamed4820() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed2279(core.List<api.Device> o) {
+checkUnnamed4820(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -467,7 +494,7 @@ buildListDevicesResponse() {
   var o = new api.ListDevicesResponse();
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    o.devices = buildUnnamed2279();
+    o.devices = buildUnnamed4820();
     o.nextPageToken = "foo";
   }
   buildCounterListDevicesResponse--;
@@ -477,7 +504,7 @@ buildListDevicesResponse() {
 checkListDevicesResponse(api.ListDevicesResponse o) {
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    checkUnnamed2279(o.devices);
+    checkUnnamed4820(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDevicesResponse--;
@@ -523,14 +550,14 @@ checkMqttConfig(api.MqttConfig o) {
   buildCounterMqttConfig--;
 }
 
-buildUnnamed2280() {
+buildUnnamed4821() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed2280(core.List<api.Binding> o) {
+checkUnnamed4821(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -541,7 +568,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed2280();
+    o.bindings = buildUnnamed4821();
     o.etag = "foo";
     o.version = 42;
   }
@@ -552,7 +579,7 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed2280(o.bindings);
+    checkUnnamed4821(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -660,7 +687,7 @@ checkStateNotificationConfig(api.StateNotificationConfig o) {
   buildCounterStateNotificationConfig--;
 }
 
-buildUnnamed2281() {
+buildUnnamed4822() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -675,7 +702,7 @@ buildUnnamed2281() {
   return o;
 }
 
-checkUnnamed2281(core.Map<core.String, core.Object> o) {
+checkUnnamed4822(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -689,17 +716,17 @@ checkUnnamed2281(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2282() {
+buildUnnamed4823() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2281());
-  o.add(buildUnnamed2281());
+  o.add(buildUnnamed4822());
+  o.add(buildUnnamed4822());
   return o;
 }
 
-checkUnnamed2282(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed4823(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2281(o[0]);
-  checkUnnamed2281(o[1]);
+  checkUnnamed4822(o[0]);
+  checkUnnamed4822(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -708,7 +735,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2282();
+    o.details = buildUnnamed4823();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -719,20 +746,20 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2282(o.details);
+    checkUnnamed4823(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed2283() {
+buildUnnamed4824() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2283(core.List<core.String> o) {
+checkUnnamed4824(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -743,7 +770,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed2283();
+    o.permissions = buildUnnamed4824();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -752,19 +779,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed2283(o.permissions);
+    checkUnnamed4824(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed2284() {
+buildUnnamed4825() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2284(core.List<core.String> o) {
+checkUnnamed4825(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -775,7 +802,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed2284();
+    o.permissions = buildUnnamed4825();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -784,7 +811,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed2284(o.permissions);
+    checkUnnamed4825(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -818,27 +845,53 @@ checkX509CertificateDetails(api.X509CertificateDetails o) {
   buildCounterX509CertificateDetails--;
 }
 
-buildUnnamed2285() {
+buildUnnamed4826() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2285(core.List<core.String> o) {
+checkUnnamed4826(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2286() {
+buildUnnamed4827() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2286(core.List<core.String> o) {
+checkUnnamed4827(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4828() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4828(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4829() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4829(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -906,6 +959,14 @@ main() {
       var o = buildEventNotificationConfig();
       var od = new api.EventNotificationConfig.fromJson(o.toJson());
       checkEventNotificationConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-Expr", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildExpr();
+      var od = new api.Expr.fromJson(o.toJson());
+      checkExpr(od);
     });
   });
 
@@ -1673,11 +1734,11 @@ main() {
       api.ProjectsLocationsRegistriesDevicesResourceApi res =
           new api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_parent = "foo";
-      var arg_deviceNumIds = buildUnnamed2285();
+      var arg_deviceNumIds = buildUnnamed4826();
       var arg_pageToken = "foo";
       var arg_fieldMask = "foo";
       var arg_pageSize = 42;
-      var arg_deviceIds = buildUnnamed2286();
+      var arg_deviceIds = buildUnnamed4827();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2157,63 +2218,6 @@ main() {
 
   unittest.group("resource-ProjectsLocationsRegistriesGroupsDevicesResourceApi",
       () {
-    unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.ProjectsLocationsRegistriesGroupsDevicesResourceApi res =
-          new api.CloudiotApi(mock)
-              .projects
-              .locations
-              .registries
-              .groups
-              .devices;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
-      })));
-    });
-
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsLocationsRegistriesGroupsDevicesResourceApi res =
@@ -2271,6 +2275,83 @@ main() {
           .get(arg_name, fieldMask: arg_fieldMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDevice(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesGroupsDevicesResourceApi res =
+          new api.CloudiotApi(mock)
+              .projects
+              .locations
+              .registries
+              .groups
+              .devices;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_fieldMask = "foo";
+      var arg_pageSize = 42;
+      var arg_deviceIds = buildUnnamed4828();
+      var arg_deviceNumIds = buildUnnamed4829();
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
+        unittest.expect(
+            queryMap["deviceNumIds"], unittest.equals(arg_deviceNumIds));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildListDevicesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              fieldMask: arg_fieldMask,
+              pageSize: arg_pageSize,
+              deviceIds: arg_deviceIds,
+              deviceNumIds: arg_deviceNumIds,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListDevicesResponse(response);
       })));
     });
 

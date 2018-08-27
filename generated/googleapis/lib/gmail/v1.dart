@@ -1849,6 +1849,8 @@ class UsersMessagesAttachmentsResourceApi {
 class UsersSettingsResourceApi {
   final commons.ApiRequester _requester;
 
+  UsersSettingsDelegatesResourceApi get delegates =>
+      new UsersSettingsDelegatesResourceApi(_requester);
   UsersSettingsFiltersResourceApi get filters =>
       new UsersSettingsFiltersResourceApi(_requester);
   UsersSettingsForwardingAddressesResourceApi get forwardingAddresses =>
@@ -2236,6 +2238,242 @@ class UsersSettingsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new VacationSettings.fromJson(data));
+  }
+}
+
+class UsersSettingsDelegatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  UsersSettingsDelegatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds a delegate with its verification status set directly to accepted,
+  /// without sending any verification email. The delegate user must be a member
+  /// of the same G Suite organization as the delegator user.
+  ///
+  /// Gmail imposes limtations on the number of delegates and delegators each
+  /// user in a G Suite organization can have. These limits depend on your
+  /// organization, but in general each user can have up to 25 delegates and up
+  /// to 10 delegators.
+  ///
+  /// Note that a delegate user must be referred to by their primary email
+  /// address, and not an email alias.
+  ///
+  /// Also note that when a new delegate is created, there may be up to a one
+  /// minute delay before the new delegate is available for use.
+  ///
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - User's email address. The special value "me" can be used to
+  /// indicate the authenticated user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Delegate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Delegate> create(Delegate request, core.String userId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/delegates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Delegate.fromJson(data));
+  }
+
+  /// Removes the specified delegate (which can be of any verification status),
+  /// and revokes any verification that may have been required for using it.
+  ///
+  /// Note that a delegate user must be referred to by their primary email
+  /// address, and not an email alias.
+  ///
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - User's email address. The special value "me" can be used to
+  /// indicate the authenticated user.
+  ///
+  /// [delegateEmail] - The email address of the user to be removed as a
+  /// delegate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String userId, core.String delegateEmail,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (delegateEmail == null) {
+      throw new core.ArgumentError("Parameter delegateEmail is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/settings/delegates/' +
+        commons.Escaper.ecapeVariable('$delegateEmail');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets the specified delegate.
+  ///
+  /// Note that a delegate user must be referred to by their primary email
+  /// address, and not an email alias.
+  ///
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - User's email address. The special value "me" can be used to
+  /// indicate the authenticated user.
+  ///
+  /// [delegateEmail] - The email address of the user whose delegate
+  /// relationship is to be retrieved.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Delegate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Delegate> get(core.String userId, core.String delegateEmail,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (delegateEmail == null) {
+      throw new core.ArgumentError("Parameter delegateEmail is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/settings/delegates/' +
+        commons.Escaper.ecapeVariable('$delegateEmail');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Delegate.fromJson(data));
+  }
+
+  /// Lists the delegates for the specified account.
+  ///
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - User's email address. The special value "me" can be used to
+  /// indicate the authenticated user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDelegatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDelegatesResponse> list(core.String userId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/delegates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListDelegatesResponse.fromJson(data));
   }
 }
 
@@ -3841,6 +4079,47 @@ class BatchModifyMessagesRequest {
   }
 }
 
+/// Settings for a delegate. Delegates can read, send, and delete messages, as
+/// well as manage contacts, for the delegator's account. See "Set up mail
+/// delegation" for more information about delegates.
+class Delegate {
+  /// The email address of the delegate.
+  core.String delegateEmail;
+
+  /// Indicates whether this address has been verified and can act as a delegate
+  /// for the account. Read-only.
+  /// Possible string values are:
+  /// - "accepted"
+  /// - "expired"
+  /// - "pending"
+  /// - "rejected"
+  /// - "verificationStatusUnspecified"
+  core.String verificationStatus;
+
+  Delegate();
+
+  Delegate.fromJson(core.Map _json) {
+    if (_json.containsKey("delegateEmail")) {
+      delegateEmail = _json["delegateEmail"];
+    }
+    if (_json.containsKey("verificationStatus")) {
+      verificationStatus = _json["verificationStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (delegateEmail != null) {
+      _json["delegateEmail"] = delegateEmail;
+    }
+    if (verificationStatus != null) {
+      _json["verificationStatus"] = verificationStatus;
+    }
+    return _json;
+  }
+}
+
 /// A draft email in the user's mailbox.
 class Draft {
   /// The immutable ID of the draft.
@@ -4521,6 +4800,31 @@ class LabelColor {
     }
     if (textColor != null) {
       _json["textColor"] = textColor;
+    }
+    return _json;
+  }
+}
+
+/// Response for the ListDelegates method.
+class ListDelegatesResponse {
+  /// List of the user's delegates (with any verification status).
+  core.List<Delegate> delegates;
+
+  ListDelegatesResponse();
+
+  ListDelegatesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("delegates")) {
+      delegates = (_json["delegates"] as core.List)
+          .map<Delegate>((value) => new Delegate.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (delegates != null) {
+      _json["delegates"] = delegates.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

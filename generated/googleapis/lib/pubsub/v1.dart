@@ -287,16 +287,16 @@ class ProjectsSnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - The name of the cloud project that snapshots belong to.
-  /// Format is `projects/{project}`.
+  /// [project] - The name of the project in which to list snapshots.
+  /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageSize] - Maximum number of snapshots to return.
   ///
   /// [pageToken] - The value returned by the last `ListSnapshotsResponse`;
   /// indicates that this
   /// is a continuation of a prior `ListSnapshots` call, and that the system
   /// should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of snapshots to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,7 +309,7 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSnapshotsResponse> list(core.String project,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -320,11 +320,11 @@ class ProjectsSnapshotsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -794,16 +794,16 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - The name of the cloud project that subscriptions belong to.
-  /// Format is `projects/{project}`.
+  /// [project] - The name of the project in which to list subscriptions.
+  /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
   /// indicates that
   /// this is a continuation of a prior `ListSubscriptions` call, and that the
   /// system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -816,7 +816,7 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -827,11 +827,11 @@ class ProjectsSubscriptionsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1022,8 +1022,7 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Subscription.fromJson(data));
   }
 
-  /// Pulls messages from the server. Returns an empty list if there are no
-  /// messages available in the backlog. The server may return `UNAVAILABLE` if
+  /// Pulls messages from the server. The server may return `UNAVAILABLE` if
   /// there are too many concurrent pull requests pending for the given
   /// subscription.
   ///
@@ -1461,8 +1460,8 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - The name of the cloud project that topics belong to.
-  /// Format is `projects/{project}`.
+  /// [project] - The name of the project in which to list topics.
+  /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - The value returned by the last `ListTopicsResponse`;
@@ -1516,9 +1515,63 @@ class ProjectsTopicsResourceApi {
     return _response.then((data) => new ListTopicsResponse.fromJson(data));
   }
 
+  /// Updates an existing topic. Note that certain properties of a
+  /// topic are not modifiable.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the topic. It must have the format
+  /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+  /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+  /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+  /// signs (`%`). It must be between 3 and 255 characters in length, and it
+  /// must not start with `"goog"`.
+  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Topic].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Topic> patch(UpdateTopicRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Topic.fromJson(data));
+  }
+
   /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
-  /// does not exist. The message payload must not be empty; it must contain
-  ///  either a non-empty data field, or at least one attribute.
+  /// does not exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1704,12 +1757,12 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of snapshot names to return.
+  ///
   /// [pageToken] - The value returned by the last `ListTopicSnapshotsResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListTopicSnapshots` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of snapshot names to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1722,7 +1775,7 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicSnapshotsResponse> list(core.String topic,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1733,11 +1786,11 @@ class ProjectsTopicsSnapshotsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1771,12 +1824,12 @@ class ProjectsTopicsSubscriptionsResourceApi {
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of subscription names to return.
+  ///
   /// [pageToken] - The value returned by the last
   /// `ListTopicSubscriptionsResponse`; indicates
   /// that this is a continuation of a prior `ListTopicSubscriptions` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of subscription names to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1789,7 +1842,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicSubscriptionsResponse> list(core.String topic,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1800,11 +1853,11 @@ class ProjectsTopicsSubscriptionsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1852,6 +1905,12 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1878,12 +1937,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -1895,6 +1956,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1911,6 +1975,9 @@ class Binding {
 /// backward-incompatible ways and is not recommended for production use.
 /// It is not subject to any SLA or deprecation policy.
 class CreateSnapshotRequest {
+  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  core.Map<core.String, core.String> labels;
+
   /// The subscription whose backlog the snapshot retains.
   /// Specifically, the created snapshot is guaranteed to retain:
   ///  (a) The existing backlog on the subscription. More precisely, this is
@@ -1925,6 +1992,9 @@ class CreateSnapshotRequest {
   CreateSnapshotRequest();
 
   CreateSnapshotRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("subscription")) {
       subscription = _json["subscription"];
     }
@@ -1933,6 +2003,9 @@ class CreateSnapshotRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (subscription != null) {
       _json["subscription"] = subscription;
     }
@@ -1957,6 +2030,68 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
     return _json;
   }
 }
@@ -2366,13 +2501,15 @@ class PublishResponse {
   }
 }
 
-/// A message data and its attributes. The message payload must not be empty;
-/// it must contain either a non-empty data field, or at least one attribute.
+/// A message that is published by publishers and consumed by subscribers. The
+/// message must contain either a non-empty data field or at least one
+/// attribute.
 class PubsubMessage {
   /// Optional attributes for this message.
   core.Map<core.String, core.String> attributes;
 
-  /// The message payload.
+  /// The message data field. If this field is empty, the message must contain
+  /// at least one attribute.
   core.String data;
   core.List<core.int> get dataAsBytes {
     return convert.base64.decode(data);
@@ -2440,9 +2577,7 @@ class PullRequest {
   /// If this field set to true, the system will respond immediately even if
   /// it there are no messages available to return in the `Pull` response.
   /// Otherwise, the system may wait (for a bounded amount of time) until at
-  /// least one message is available, rather than returning no messages. The
-  /// client may cancel the request if it does not wish to wait any longer for
-  /// the response.
+  /// least one message is available, rather than returning no messages.
   core.bool returnImmediately;
 
   PullRequest();
@@ -2471,10 +2606,11 @@ class PullRequest {
 
 /// Response for the `Pull` method.
 class PullResponse {
-  /// Received Pub/Sub messages. The Pub/Sub system will return zero messages if
-  /// there are no more available in the backlog. The Pub/Sub system may return
-  /// fewer than the `maxMessages` requested even if there are more messages
-  /// available in the backlog.
+  /// Received Pub/Sub messages. The list will be empty if there are no more
+  /// messages available in the backlog. For JSON, the response can be entirely
+  /// empty. The Pub/Sub system may return fewer than the `maxMessages`
+  /// requested
+  /// even if there are more messages available in the backlog.
   core.List<ReceivedMessage> receivedMessages;
 
   PullResponse();
@@ -2689,6 +2825,9 @@ class Snapshot {
   /// snapshot that would expire in less than 1 hour after creation.
   core.String expireTime;
 
+  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  core.Map<core.String, core.String> labels;
+
   /// The name of the snapshot.
   core.String name;
 
@@ -2700,6 +2839,9 @@ class Snapshot {
   Snapshot.fromJson(core.Map _json) {
     if (_json.containsKey("expireTime")) {
       expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2714,6 +2856,9 @@ class Snapshot {
         new core.Map<core.String, core.Object>();
     if (expireTime != null) {
       _json["expireTime"] = expireTime;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2749,6 +2894,9 @@ class Subscription {
   /// If the subscriber never acknowledges the message, the Pub/Sub
   /// system will eventually redeliver the message.
   core.int ackDeadlineSeconds;
+
+  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  core.Map<core.String, core.String> labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,
   /// from the moment a message is published.
@@ -2801,6 +2949,9 @@ class Subscription {
     if (_json.containsKey("ackDeadlineSeconds")) {
       ackDeadlineSeconds = _json["ackDeadlineSeconds"];
     }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("messageRetentionDuration")) {
       messageRetentionDuration = _json["messageRetentionDuration"];
     }
@@ -2823,6 +2974,9 @@ class Subscription {
         new core.Map<core.String, core.Object>();
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (messageRetentionDuration != null) {
       _json["messageRetentionDuration"] = messageRetentionDuration;
@@ -2895,6 +3049,9 @@ class TestIamPermissionsResponse {
 
 /// A topic resource.
 class Topic {
+  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  core.Map<core.String, core.String> labels;
+
   /// The name of the topic. It must have the format
   /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
   /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
@@ -2906,6 +3063,9 @@ class Topic {
   Topic();
 
   Topic.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2914,6 +3074,9 @@ class Topic {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -2982,6 +3145,43 @@ class UpdateSubscriptionRequest {
         new core.Map<core.String, core.Object>();
     if (subscription != null) {
       _json["subscription"] = (subscription).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Request for the UpdateTopic method.
+class UpdateTopicRequest {
+  /// The updated topic object.
+  Topic topic;
+
+  /// Indicates which fields in the provided topic to update. Must be specified
+  /// and non-empty. Note that if `update_mask` contains
+  /// "message_storage_policy" then the new value will be determined based on
+  /// the
+  /// policy configured at the project or organization level. The
+  /// `message_storage_policy` must not be set in the `topic` provided above.
+  core.String updateMask;
+
+  UpdateTopicRequest();
+
+  UpdateTopicRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("topic")) {
+      topic = new Topic.fromJson(_json["topic"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (topic != null) {
+      _json["topic"] = (topic).toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;

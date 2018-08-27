@@ -369,8 +369,6 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Next page token for the next batch of `Release` instances.
-  ///
   /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
   /// Note: `page_size` is just a hint and the service may choose to load fewer
   /// than `page_size` results due to the size of the output. To traverse all of
@@ -404,6 +402,8 @@ class ProjectsReleasesResourceApi {
   /// relative to the project. Fully qualified prefixed may also be used. e.g.
   /// `test_suite_name=projects/foo/testsuites/uuid1`
   ///
+  /// [pageToken] - Next page token for the next batch of `Release` instances.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -415,9 +415,9 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReleasesResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -429,14 +429,14 @@ class ProjectsReleasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -678,6 +678,14 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
+  ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load less
+  /// than `page_size` due to the size of the output. To traverse all of the
+  /// releases, caller should iterate until the `page_token` is empty.
+  ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
   /// restrictions on
   /// `Ruleset.name`.
@@ -686,14 +694,6 @@ class ProjectsRulesetsResourceApi {
   /// parses strings that conform to the RFC 3339 date/time specifications.
   ///
   /// Example: `create_time > date("2017-01-01") AND name=UUID-*`
-  ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-  /// Note: `page_size` is just a hint and the service may choose to load less
-  /// than `page_size` due to the size of the output. To traverse all of the
-  /// releases, caller should iterate until the `page_token` is empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -706,9 +706,9 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -720,14 +720,14 @@ class ProjectsRulesetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1498,6 +1498,10 @@ class TestResult {
   /// - "FAILURE" : Test is a failure.
   core.String state;
 
+  /// The set of visited expressions for a given test. This returns positions
+  /// and evaluation results of all visited expressions.
+  core.List<VisitedExpression> visitedExpressions;
+
   TestResult();
 
   TestResult.fromJson(core.Map _json) {
@@ -1514,6 +1518,12 @@ class TestResult {
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
+    }
+    if (_json.containsKey("visitedExpressions")) {
+      visitedExpressions = (_json["visitedExpressions"] as core.List)
+          .map<VisitedExpression>(
+              (value) => new VisitedExpression.fromJson(value))
+          .toList();
     }
   }
 
@@ -1532,6 +1542,10 @@ class TestResult {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (visitedExpressions != null) {
+      _json["visitedExpressions"] =
+          visitedExpressions.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1667,6 +1681,41 @@ class UpdateReleaseRequest {
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Store the position and access outcome for an expression visited in rules.
+class VisitedExpression {
+  /// Position in the `Source` or `Ruleset` where an expression was visited.
+  SourcePosition sourcePosition;
+
+  /// The evaluated value for the visited expression, e.g. true/false
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object value;
+
+  VisitedExpression();
+
+  VisitedExpression.fromJson(core.Map _json) {
+    if (_json.containsKey("sourcePosition")) {
+      sourcePosition = new SourcePosition.fromJson(_json["sourcePosition"]);
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sourcePosition != null) {
+      _json["sourcePosition"] = (sourcePosition).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

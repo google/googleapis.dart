@@ -1368,6 +1368,12 @@ class ProjectsConfigsWaitersResourceApi {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1394,12 +1400,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -1411,6 +1419,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1506,6 +1517,68 @@ class EndCondition {
         new core.Map<core.String, core.Object>();
     if (cardinality != null) {
       _json["cardinality"] = (cardinality).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }
@@ -2154,7 +2227,7 @@ class Variable {
 /// A Waiter resource waits for some end condition within a RuntimeConfig
 /// resource
 /// to be met before it returns. For example, assume you have a distributed
-/// system where each node writes to a Variable resource indidicating the node's
+/// system where each node writes to a Variable resource indicating the node's
 /// readiness as part of the startup process.
 ///
 /// You then configure a Waiter resource with the success condition set to wait

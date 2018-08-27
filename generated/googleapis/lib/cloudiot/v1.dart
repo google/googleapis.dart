@@ -1220,53 +1220,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes a device.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the device. For example,
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
-  /// or
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
   /// Gets details about a device.
   ///
   /// Request parameters:
@@ -1320,6 +1273,98 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Device.fromJson(data));
+  }
+
+  /// List devices in a device registry.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The device registry path. Required. For example,
+  /// `projects/my-project/locations/us-central1/registries/my-registry`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
+  /// indicates
+  /// that this is a continuation of a prior `ListDevices` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. The
+  /// fields `id`, and `num_id` are always returned by default, along with any
+  /// other fields specified.
+  ///
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// this value
+  /// is zero, the service will select a default size. A call may return fewer
+  /// objects than requested, but if there is a non-empty `page_token`, it
+  /// indicates that more entries are available.
+  ///
+  /// [deviceIds] - A list of device string identifiers. If empty, it will
+  /// ignore this field.
+  /// For example, `['device0', 'device12']`. This field cannot hold more than
+  /// 10,000 entries.
+  ///
+  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
+  /// this field. This
+  /// field cannot hold more than 10,000 entries.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDevicesResponse> list(core.String parent,
+      {core.String pageToken,
+      core.String fieldMask,
+      core.int pageSize,
+      core.List<core.String> deviceIds,
+      core.List<core.String> deviceNumIds,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListDevicesResponse.fromJson(data));
   }
 
   /// Modifies the configuration for the device, which is eventually sent from
@@ -1579,6 +1624,12 @@ class ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1605,12 +1656,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -1622,6 +1675,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -2156,6 +2212,68 @@ class EventNotificationConfig {
     }
     if (subfolderMatches != null) {
       _json["subfolderMatches"] = subfolderMatches;
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

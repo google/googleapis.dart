@@ -1369,11 +1369,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1386,9 +1386,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1400,14 +1400,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,11 +1499,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1516,9 +1516,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1530,14 +1530,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3145,10 +3145,9 @@ class BatchUpdateIngressRulesResponse {
   }
 }
 
-/// Google Cloud Container Builder build information.
+/// Google Cloud Build information.
 class BuildInfo {
-  /// The Google Cloud Container Builder build id. Example:
-  /// "f966068f-08b2-42c8-bdfe-74137dff2bf9"
+  /// The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
   core.String cloudBuildId;
 
   BuildInfo();
@@ -3475,15 +3474,15 @@ class DebugInstanceRequest {
 
 /// Code and application artifacts used to deploy a version to App Engine.
 class Deployment {
-  /// Google Cloud Container Builder build information. Only applicable for
-  /// instances running in the App Engine flexible environment.
+  /// Google Cloud Build build information. Only applicable for instances
+  /// running in the App Engine flexible environment.
   BuildInfo build;
 
-  /// Options for any Google Cloud Container Builder builds created as a part of
-  /// this deployment.Note that this is orthogonal to the build parameter, where
-  /// the deployment depends on an already existing cloud build. These options
-  /// will only be used if a new build is created, such as when deploying to the
-  /// App Engine flexible environment using files or zip.
+  /// Options for any Google Cloud Build builds created as a part of this
+  /// deployment.Note that this is orthogonal to the build parameter, where the
+  /// deployment depends on an already existing cloud build. These options will
+  /// only be used if a new build is created, such as when deploying to the App
+  /// Engine flexible environment using files or zip.
   CloudBuildOptions cloudBuildOptions;
 
   /// The Docker image for the container that runs the version. Only applicable
@@ -3687,9 +3686,12 @@ class EndpointsApiService {
   /// is used to give the configuration ID and is required in this
   /// case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED.
   /// When using this, Endpoints fetches the latest configuration and does not
-  /// need to be told the configuration ID. In this case, config_id must be
-  /// omitted.
+  /// need the configuration ID. In this case, config_id must be omitted.
   core.String configId;
+
+  /// Enable or disable trace sampling. By default, this is set to false for
+  /// enabled.
+  core.bool disableTraceSampling;
 
   /// Endpoints service name which is the name of the "service" resource in the
   /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
@@ -3711,6 +3713,9 @@ class EndpointsApiService {
     if (_json.containsKey("configId")) {
       configId = _json["configId"];
     }
+    if (_json.containsKey("disableTraceSampling")) {
+      disableTraceSampling = _json["disableTraceSampling"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3725,11 +3730,37 @@ class EndpointsApiService {
     if (configId != null) {
       _json["configId"] = configId;
     }
+    if (disableTraceSampling != null) {
+      _json["disableTraceSampling"] = disableTraceSampling;
+    }
     if (name != null) {
       _json["name"] = name;
     }
     if (rolloutStrategy != null) {
       _json["rolloutStrategy"] = rolloutStrategy;
+    }
+    return _json;
+  }
+}
+
+/// The entrypoint for the application.
+class Entrypoint {
+  /// The format should be a shell command that can be fed to bash -c.
+  core.String shell;
+
+  Entrypoint();
+
+  Entrypoint.fromJson(core.Map _json) {
+    if (_json.containsKey("shell")) {
+      shell = _json["shell"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (shell != null) {
+      _json["shell"] = shell;
     }
     return _json;
   }
@@ -4026,6 +4057,10 @@ class IdentityAwareProxy {
   /// OAuth2 client ID to use for the authentication flow.
   core.String oauth2ClientId;
 
+  /// InputOnly OAuth client info required to generate client id to be used for
+  /// IAP.
+  OAuth2ClientInfo oauth2ClientInfo;
+
   /// OAuth2 client secret to use for the authentication flow.For security
   /// reasons, this value cannot be retrieved via the API. Instead, the SHA-256
   /// hash of the value is returned in the oauth2_client_secret_sha256
@@ -4044,6 +4079,10 @@ class IdentityAwareProxy {
     if (_json.containsKey("oauth2ClientId")) {
       oauth2ClientId = _json["oauth2ClientId"];
     }
+    if (_json.containsKey("oauth2ClientInfo")) {
+      oauth2ClientInfo =
+          new OAuth2ClientInfo.fromJson(_json["oauth2ClientInfo"]);
+    }
     if (_json.containsKey("oauth2ClientSecret")) {
       oauth2ClientSecret = _json["oauth2ClientSecret"];
     }
@@ -4060,6 +4099,9 @@ class IdentityAwareProxy {
     }
     if (oauth2ClientId != null) {
       _json["oauth2ClientId"] = oauth2ClientId;
+    }
+    if (oauth2ClientInfo != null) {
+      _json["oauth2ClientInfo"] = (oauth2ClientInfo).toJson();
     }
     if (oauth2ClientSecret != null) {
       _json["oauth2ClientSecret"] = oauth2ClientSecret;
@@ -4977,6 +5019,47 @@ class NetworkUtilization {
     }
     if (targetSentPacketsPerSecond != null) {
       _json["targetSentPacketsPerSecond"] = targetSentPacketsPerSecond;
+    }
+    return _json;
+  }
+}
+
+class OAuth2ClientInfo {
+  /// Application name to be used in OAuth consent screen.
+  core.String applicationName;
+
+  /// Nameof the client to be generated. Optional - If not provided, the name
+  /// will be autogenerated by the backend.
+  core.String clientName;
+
+  /// Developer's information to be used in OAuth consent screen.
+  core.String developerEmailAddress;
+
+  OAuth2ClientInfo();
+
+  OAuth2ClientInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("applicationName")) {
+      applicationName = _json["applicationName"];
+    }
+    if (_json.containsKey("clientName")) {
+      clientName = _json["clientName"];
+    }
+    if (_json.containsKey("developerEmailAddress")) {
+      developerEmailAddress = _json["developerEmailAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (applicationName != null) {
+      _json["applicationName"] = applicationName;
+    }
+    if (clientName != null) {
+      _json["clientName"] = clientName;
+    }
+    if (developerEmailAddress != null) {
+      _json["developerEmailAddress"] = developerEmailAddress;
     }
     return _json;
   }
@@ -6168,7 +6251,8 @@ class UrlMap {
   /// code and an error message.
   core.String authFailAction;
 
-  /// Level of login required to access this resource.
+  /// Level of login required to access this resource. Not supported for Node.js
+  /// in the App Engine standard environment.
   /// Possible string values are:
   /// - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
   /// - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
@@ -6191,7 +6275,9 @@ class UrlMap {
   /// - "REDIRECT_HTTP_RESPONSE_CODE_307" : 307 Temporary Redirect code.
   core.String redirectHttpResponseCode;
 
-  /// Executes a script to handle the request that matches this URL pattern.
+  /// Executes a script to handle the requests that match this URL pattern. Only
+  /// the auto value is supported for Node.js in the App Engine standard
+  /// environment, for example "script": "auto".
   ScriptHandler script;
 
   /// Security (HTTPS) enforcement for this URL.
@@ -6326,6 +6412,9 @@ class Version {
   /// Endpoints Extensible Service Proxy will be provided to serve the API
   /// implemented by the app.
   EndpointsApiService endpointsApiService;
+
+  /// The entrypoint for the application.
+  Entrypoint entrypoint;
 
   /// App Engine execution environment for this version.Defaults to standard.
   core.String env;
@@ -6472,6 +6561,9 @@ class Version {
       endpointsApiService =
           new EndpointsApiService.fromJson(_json["endpointsApiService"]);
     }
+    if (_json.containsKey("entrypoint")) {
+      entrypoint = new Entrypoint.fromJson(_json["entrypoint"]);
+    }
     if (_json.containsKey("env")) {
       env = _json["env"];
     }
@@ -6586,6 +6678,9 @@ class Version {
     }
     if (endpointsApiService != null) {
       _json["endpointsApiService"] = (endpointsApiService).toJson();
+    }
+    if (entrypoint != null) {
+      _json["entrypoint"] = (entrypoint).toJson();
     }
     if (env != null) {
       _json["env"] = env;

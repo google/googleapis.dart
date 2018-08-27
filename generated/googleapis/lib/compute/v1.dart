@@ -89,6 +89,10 @@ class ComputeApi {
   MachineTypesResourceApi get machineTypes =>
       new MachineTypesResourceApi(_requester);
   NetworksResourceApi get networks => new NetworksResourceApi(_requester);
+  NodeGroupsResourceApi get nodeGroups => new NodeGroupsResourceApi(_requester);
+  NodeTemplatesResourceApi get nodeTemplates =>
+      new NodeTemplatesResourceApi(_requester);
+  NodeTypesResourceApi get nodeTypes => new NodeTypesResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   RegionAutoscalersResourceApi get regionAutoscalers =>
       new RegionAutoscalersResourceApi(_requester);
@@ -1487,6 +1491,83 @@ class BackendBucketsResourceApi {
 
   BackendBucketsResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Adds a key for validating requests with signed URLs for this backend
+  /// bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [backendBucket] - Name of the BackendBucket resource to which the Signed
+  /// URL Key should be added. The name should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addSignedUrlKey(
+      SignedUrlKey request, core.String project, core.String backendBucket,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendBucket == null) {
+      throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/backendBuckets/' +
+        commons.Escaper.ecapeVariable('$backendBucket') +
+        '/addSignedUrlKey';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Deletes the specified BackendBucket resource.
   ///
   /// Request parameters:
@@ -1548,6 +1629,84 @@ class BackendBucketsResourceApi {
         commons.Escaper.ecapeVariable('$backendBucket');
 
     var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes a key for validating requests with signed URLs for this backend
+  /// bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [backendBucket] - Name of the BackendBucket resource to which the Signed
+  /// URL Key should be added. The name should conform to RFC1035.
+  ///
+  /// [keyName] - The name of the Signed URL Key to delete.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteSignedUrlKey(
+      core.String project, core.String backendBucket, core.String keyName,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendBucket == null) {
+      throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+    if (keyName == null) {
+      throw new core.ArgumentError("Parameter keyName is required.");
+    }
+    _queryParams["keyName"] = [keyName];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/backendBuckets/' +
+        commons.Escaper.ecapeVariable('$backendBucket') +
+        '/deleteSignedUrlKey';
+
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -1942,6 +2101,83 @@ class BackendServicesResourceApi {
 
   BackendServicesResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Adds a key for validating requests with signed URLs for this backend
+  /// service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [backendService] - Name of the BackendService resource to which the Signed
+  /// URL Key should be added. The name should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addSignedUrlKey(
+      SignedUrlKey request, core.String project, core.String backendService,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices/' +
+        commons.Escaper.ecapeVariable('$backendService') +
+        '/addSignedUrlKey';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Retrieves the list of all BackendService resources, regional and global,
   /// available to the specified project.
   ///
@@ -2111,6 +2347,84 @@ class BackendServicesResourceApi {
         commons.Escaper.ecapeVariable('$backendService');
 
     var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes a key for validating requests with signed URLs for this backend
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [backendService] - Name of the BackendService resource to which the Signed
+  /// URL Key should be added. The name should conform to RFC1035.
+  ///
+  /// [keyName] - The name of the Signed URL Key to delete.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteSignedUrlKey(
+      core.String project, core.String backendService, core.String keyName,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (keyName == null) {
+      throw new core.ArgumentError("Parameter keyName is required.");
+    }
+    _queryParams["keyName"] = [keyName];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices/' +
+        commons.Escaper.ecapeVariable('$backendService') +
+        '/deleteSignedUrlKey';
+
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -8103,13 +8417,48 @@ class InstanceGroupManagersResourceApi {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
-  /// [filter] - null
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// [maxResults] - null
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// [orderBy] - null
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
-  /// [pageToken] - null
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11686,6 +12035,69 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Simulates a maintenance event on the instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name of the instance scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> simulateMaintenanceEvent(
+      core.String project, core.String zone, core.String instance,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/simulateMaintenanceEvent';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Starts an instance that was stopped using the instances().stop method. For
   /// more information, see Restart an instance.
   ///
@@ -14591,6 +15003,1563 @@ class NetworksResourceApi {
   }
 }
 
+class NodeGroupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  NodeGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Adds specified number of nodes to the node group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeGroup] - Name of the NodeGroup resource to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addNodes(NodeGroupsAddNodesRequest request,
+      core.String project, core.String zone, core.String nodeGroup,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeGroup == null) {
+      throw new core.ArgumentError("Parameter nodeGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$nodeGroup') +
+        '/addNodes';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves an aggregated list of node groups. Note: use
+  /// nodeGroups.listNodes for more details about each group.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeGroupAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeGroupAggregatedList> aggregatedList(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeGroups';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeGroupAggregatedList.fromJson(data));
+  }
+
+  /// Deletes the specified NodeGroup resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeGroup] - Name of the NodeGroup resource to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String zone, core.String nodeGroup,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeGroup == null) {
+      throw new core.ArgumentError("Parameter nodeGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$nodeGroup');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes specified nodes from the node group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeGroup] - Name of the NodeGroup resource to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteNodes(NodeGroupsDeleteNodesRequest request,
+      core.String project, core.String zone, core.String nodeGroup,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeGroup == null) {
+      throw new core.ArgumentError("Parameter nodeGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$nodeGroup') +
+        '/deleteNodes';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified NodeGroup. Get a list of available NodeGroups by
+  /// making a list() request. Note: the "nodes" field should not be used. Use
+  /// nodeGroups.listNodes instead.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeGroup] - Name of the node group to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeGroup> get(
+      core.String project, core.String zone, core.String nodeGroup,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeGroup == null) {
+      throw new core.ArgumentError("Parameter nodeGroup is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$nodeGroup');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeGroup.fromJson(data));
+  }
+
+  /// Creates a NodeGroup resource in the specified project using the data
+  /// included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [initialNodeCount] - Initial count of nodes in the node group.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(NodeGroup request, core.String project,
+      core.String zone, core.int initialNodeCount,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (initialNodeCount == null) {
+      throw new core.ArgumentError("Parameter initialNodeCount is required.");
+    }
+    _queryParams["initialNodeCount"] = ["${initialNodeCount}"];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves a list of node groups available to the specified project. Note:
+  /// use nodeGroups.listNodes for more details about each group.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeGroupList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeGroupList> list(core.String project, core.String zone,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeGroupList.fromJson(data));
+  }
+
+  /// Lists nodes in the node group.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeGroup] - Name of the NodeGroup resource whose nodes you want to list.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeGroupsListNodes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeGroupsListNodes> listNodes(
+      core.String project, core.String zone, core.String nodeGroup,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeGroup == null) {
+      throw new core.ArgumentError("Parameter nodeGroup is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$nodeGroup') +
+        '/listNodes';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeGroupsListNodes.fromJson(data));
+  }
+
+  /// Updates the node template of the node group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeGroup] - Name of the NodeGroup resource to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setNodeTemplate(
+      NodeGroupsSetNodeTemplateRequest request,
+      core.String project,
+      core.String zone,
+      core.String nodeGroup,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeGroup == null) {
+      throw new core.ArgumentError("Parameter nodeGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$nodeGroup') +
+        '/setNodeTemplate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class NodeTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  NodeTemplatesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves an aggregated list of node templates.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeTemplateAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeTemplateAggregatedList> aggregatedList(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new NodeTemplateAggregatedList.fromJson(data));
+  }
+
+  /// Deletes the specified NodeTemplate resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeTemplate] - Name of the NodeTemplate resource to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String region, core.String nodeTemplate,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (nodeTemplate == null) {
+      throw new core.ArgumentError("Parameter nodeTemplate is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates/' +
+        commons.Escaper.ecapeVariable('$nodeTemplate');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified node template. Gets a list of available node
+  /// templates by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeTemplate] - Name of the node template to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeTemplate> get(
+      core.String project, core.String region, core.String nodeTemplate,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (nodeTemplate == null) {
+      throw new core.ArgumentError("Parameter nodeTemplate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates/' +
+        commons.Escaper.ecapeVariable('$nodeTemplate');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeTemplate.fromJson(data));
+  }
+
+  /// Creates a NodeTemplate resource in the specified project using the data
+  /// included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      NodeTemplate request, core.String project, core.String region,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves a list of node templates available to the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeTemplateList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeTemplateList> list(core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeTemplateList.fromJson(data));
+  }
+}
+
+class NodeTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  NodeTypesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves an aggregated list of node types.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeTypeAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeTypeAggregatedList> aggregatedList(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeTypeAggregatedList.fromJson(data));
+  }
+
+  /// Returns the specified node type. Gets a list of available node types by
+  /// making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [nodeType] - Name of the node type to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeType> get(
+      core.String project, core.String zone, core.String nodeType,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (nodeType == null) {
+      throw new core.ArgumentError("Parameter nodeType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeTypes/' +
+        commons.Escaper.ecapeVariable('$nodeType');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeType.fromJson(data));
+  }
+
+  /// Retrieves a list of node types available to the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NodeTypeList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NodeTypeList> list(core.String project, core.String zone,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodeTypeList.fromJson(data));
+  }
+}
+
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -14953,13 +16922,48 @@ class ProjectsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - null
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// [maxResults] - null
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// [orderBy] - null
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
-  /// [pageToken] - null
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15024,13 +17028,48 @@ class ProjectsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - null
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// [maxResults] - null
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// [orderBy] - null
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
-  /// [pageToken] - null
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15282,6 +17321,75 @@ class ProjectsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/setCommonInstanceMetadata';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the default network tier of the project. The default network tier is
+  /// used when an address/forwardingRule/instance is created without specifying
+  /// the network tier field.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setDefaultNetworkTier(
+      ProjectsSetDefaultNetworkTierRequest request, core.String project,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/setDefaultNetworkTier';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -18227,13 +20335,48 @@ class RegionInstanceGroupManagersResourceApi {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
-  /// [filter] - null
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
   ///
-  /// [maxResults] - null
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
   ///
-  /// [orderBy] - null
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
   ///
-  /// [pageToken] - null
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22143,6 +24286,112 @@ class SubnetworksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SubnetworkList.fromJson(data));
+  }
+
+  /// Retrieves an aggregated list of usable subnetworks.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UsableSubnetworksAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UsableSubnetworksAggregatedList> listUsable(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/subnetworks/listUsable';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UsableSubnetworksAggregatedList.fromJson(data));
   }
 
   /// Patches the specified subnetwork with the data included in the request.
@@ -28371,6 +30620,20 @@ class AccessConfig {
   /// the zone of the instance.
   core.String natIP;
 
+  /// This signifies the networking tier used for configuring this access
+  /// configuration and can only take the following values: PREMIUM, STANDARD.
+  ///
+  /// If an AccessConfig is specified without a valid external IP address, an
+  /// ephemeral IP will be created with this networkTier.
+  ///
+  /// If an AccessConfig with a valid external IP address is specified, it must
+  /// match that of the networkTier associated with the Address resource owning
+  /// that IP.
+  /// Possible string values are:
+  /// - "PREMIUM"
+  /// - "STANDARD"
+  core.String networkTier;
+
   /// The DNS domain name for the public PTR record. This field can only be set
   /// when the set_public_ptr field is enabled.
   core.String publicPtrDomainName;
@@ -28396,6 +30659,9 @@ class AccessConfig {
     if (_json.containsKey("natIP")) {
       natIP = _json["natIP"];
     }
+    if (_json.containsKey("networkTier")) {
+      networkTier = _json["networkTier"];
+    }
     if (_json.containsKey("publicPtrDomainName")) {
       publicPtrDomainName = _json["publicPtrDomainName"];
     }
@@ -28418,6 +30684,9 @@ class AccessConfig {
     }
     if (natIP != null) {
       _json["natIP"] = natIP;
+    }
+    if (networkTier != null) {
+      _json["networkTier"] = networkTier;
     }
     if (publicPtrDomainName != null) {
       _json["publicPtrDomainName"] = publicPtrDomainName;
@@ -28478,6 +30747,15 @@ class Address {
   /// dash.
   core.String name;
 
+  /// This signifies the networking tier used for configuring this Address and
+  /// can only take the following values: PREMIUM , STANDARD.
+  ///
+  /// If this field is not specified, it is assumed to be PREMIUM.
+  /// Possible string values are:
+  /// - "PREMIUM"
+  /// - "STANDARD"
+  core.String networkTier;
+
   /// [Output Only] URL of the region where the regional address resides. This
   /// field is not applicable to global addresses. You must specify this field
   /// as part of the HTTP request URL. You cannot set this field in the request
@@ -28495,6 +30773,7 @@ class Address {
   /// Possible string values are:
   /// - "IN_USE"
   /// - "RESERVED"
+  /// - "RESERVING"
   core.String status;
 
   /// The URL of the subnetwork in which to reserve the address. If an IP
@@ -28532,6 +30811,9 @@ class Address {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("networkTier")) {
+      networkTier = _json["networkTier"];
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -28576,6 +30858,9 @@ class Address {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (networkTier != null) {
+      _json["networkTier"] = networkTier;
     }
     if (region != null) {
       _json["region"] = region;
@@ -29348,7 +31633,8 @@ class AttachedDisk {
 /// define one or the other, but not both.
 class AttachedDiskInitializeParams {
   /// Specifies the disk name. If not specified, the default is to use the name
-  /// of the instance.
+  /// of the instance. If the disk with the instance name exists already in the
+  /// given zone/region, a new name will be automatically generated.
   core.String diskName;
 
   /// Specifies the size of the disk in base-2 GB.
@@ -29379,13 +31665,13 @@ class AttachedDiskInitializeParams {
   /// SSD.
   ///
   /// To create a disk with one of the public operating system images, specify
-  /// the image by its family name. For example, specify family/debian-8 to use
-  /// the latest Debian 8 image:
-  /// projects/debian-cloud/global/images/family/debian-8
+  /// the image by its family name. For example, specify family/debian-9 to use
+  /// the latest Debian 9 image:
+  /// projects/debian-cloud/global/images/family/debian-9
   ///
   ///
   /// Alternatively, use a specific version of a public operating system image:
-  /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
+  /// projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
   ///
   ///
   /// To create a disk with a custom image that you created, specify the image
@@ -30525,6 +32811,9 @@ class BackendBucket {
   /// Cloud Storage bucket name.
   core.String bucketName;
 
+  /// Cloud CDN configuration for this BackendBucket.
+  BackendBucketCdnPolicy cdnPolicy;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -30559,6 +32848,9 @@ class BackendBucket {
     if (_json.containsKey("bucketName")) {
       bucketName = _json["bucketName"];
     }
+    if (_json.containsKey("cdnPolicy")) {
+      cdnPolicy = new BackendBucketCdnPolicy.fromJson(_json["cdnPolicy"]);
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -30588,6 +32880,9 @@ class BackendBucket {
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
+    if (cdnPolicy != null) {
+      _json["cdnPolicy"] = (cdnPolicy).toJson();
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -30608,6 +32903,45 @@ class BackendBucket {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/// Message containing Cloud CDN configuration for a backend bucket.
+class BackendBucketCdnPolicy {
+  /// Maximum number of seconds the response to a signed URL request will be
+  /// considered fresh. After this time period, the response will be revalidated
+  /// before being served. Defaults to 1hr (3600s). When serving responses to
+  /// signed URL requests, Cloud CDN will internally behave as though all
+  /// responses from this backend had a ?Cache-Control: public, max-age=[TTL]?
+  /// header, regardless of any existing Cache-Control header. The actual
+  /// headers served in responses will not be altered.
+  core.String signedUrlCacheMaxAgeSec;
+
+  /// [Output Only] Names of the keys for signing request URLs.
+  core.List<core.String> signedUrlKeyNames;
+
+  BackendBucketCdnPolicy();
+
+  BackendBucketCdnPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("signedUrlCacheMaxAgeSec")) {
+      signedUrlCacheMaxAgeSec = _json["signedUrlCacheMaxAgeSec"];
+    }
+    if (_json.containsKey("signedUrlKeyNames")) {
+      signedUrlKeyNames =
+          (_json["signedUrlKeyNames"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (signedUrlCacheMaxAgeSec != null) {
+      _json["signedUrlCacheMaxAgeSec"] = signedUrlCacheMaxAgeSec;
+    }
+    if (signedUrlKeyNames != null) {
+      _json["signedUrlKeyNames"] = signedUrlKeyNames;
     }
     return _json;
   }
@@ -30830,6 +33164,9 @@ class BackendService {
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a BackendService. An up-to-date fingerprint must be
   /// provided in order to update the BackendService.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve a
+  /// BackendService.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -31266,11 +33603,30 @@ class BackendServiceCdnPolicy {
   /// The CacheKeyPolicy for this CdnPolicy.
   CacheKeyPolicy cacheKeyPolicy;
 
+  /// Maximum number of seconds the response to a signed URL request will be
+  /// considered fresh. After this time period, the response will be revalidated
+  /// before being served. Defaults to 1hr (3600s). When serving responses to
+  /// signed URL requests, Cloud CDN will internally behave as though all
+  /// responses from this backend had a ?Cache-Control: public, max-age=[TTL]?
+  /// header, regardless of any existing Cache-Control header. The actual
+  /// headers served in responses will not be altered.
+  core.String signedUrlCacheMaxAgeSec;
+
+  /// [Output Only] Names of the keys for signing request URLs.
+  core.List<core.String> signedUrlKeyNames;
+
   BackendServiceCdnPolicy();
 
   BackendServiceCdnPolicy.fromJson(core.Map _json) {
     if (_json.containsKey("cacheKeyPolicy")) {
       cacheKeyPolicy = new CacheKeyPolicy.fromJson(_json["cacheKeyPolicy"]);
+    }
+    if (_json.containsKey("signedUrlCacheMaxAgeSec")) {
+      signedUrlCacheMaxAgeSec = _json["signedUrlCacheMaxAgeSec"];
+    }
+    if (_json.containsKey("signedUrlKeyNames")) {
+      signedUrlKeyNames =
+          (_json["signedUrlKeyNames"] as core.List).cast<core.String>();
     }
   }
 
@@ -31279,6 +33635,12 @@ class BackendServiceCdnPolicy {
         new core.Map<core.String, core.Object>();
     if (cacheKeyPolicy != null) {
       _json["cacheKeyPolicy"] = (cacheKeyPolicy).toJson();
+    }
+    if (signedUrlCacheMaxAgeSec != null) {
+      _json["signedUrlCacheMaxAgeSec"] = signedUrlCacheMaxAgeSec;
+    }
+    if (signedUrlKeyNames != null) {
+      _json["signedUrlKeyNames"] = signedUrlKeyNames;
     }
     return _json;
   }
@@ -32702,7 +35064,7 @@ class Disk {
   /// Integer license codes indicating which licenses are attached to this disk.
   core.List<core.String> licenseCodes;
 
-  /// Any applicable publicly visible licenses.
+  /// A list of publicly visible licenses. Reserved for Google's use.
   core.List<core.String> licenses;
 
   /// Name of the resource. Provided by the client when the resource is created.
@@ -32742,13 +35104,13 @@ class Disk {
   /// this field will not be set.
   ///
   /// To create a disk with one of the public operating system images, specify
-  /// the image by its family name. For example, specify family/debian-8 to use
-  /// the latest Debian 8 image:
-  /// projects/debian-cloud/global/images/family/debian-8
+  /// the image by its family name. For example, specify family/debian-9 to use
+  /// the latest Debian 9 image:
+  /// projects/debian-cloud/global/images/family/debian-9
   ///
   ///
   /// Alternatively, use a specific version of a public operating system image:
-  /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
+  /// projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
   ///
   ///
   /// To create a disk with a custom image that you created, specify the image
@@ -33182,6 +35544,81 @@ class DiskAggregatedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A specification of the desired way to instantiate a disk in the instance
+/// template when its created from a source instance.
+class DiskInstantiationConfig {
+  /// Specifies whether the disk will be auto-deleted when the instance is
+  /// deleted (but not when the disk is detached from the instance).
+  core.bool autoDelete;
+
+  /// The custom source image to be used to restore this disk when instantiating
+  /// this instance template.
+  core.String customImage;
+
+  /// Specifies the device name of the disk to which the configurations apply
+  /// to.
+  core.String deviceName;
+
+  /// Specifies whether to include the disk and what image to use. Possible
+  /// values are:
+  /// - source-image: to use the same image that was used to create the source
+  /// instance's corresponding disk. Applicable to the boot disk and additional
+  /// read-write disks.
+  /// - source-image-family: to use the same image family that was used to
+  /// create the source instance's corresponding disk. Applicable to the boot
+  /// disk and additional read-write disks.
+  /// - custom-image: to use a user-provided image url for disk creation.
+  /// Applicable to the boot disk and additional read-write disks.
+  /// - attach-read-only: to attach a read-only disk. Applicable to read-only
+  /// disks.
+  /// - do-not-include: to exclude a disk from the template. Applicable to
+  /// additional read-write disks, local SSDs, and read-only disks.
+  /// Possible string values are:
+  /// - "ATTACH_READ_ONLY"
+  /// - "BLANK"
+  /// - "CUSTOM_IMAGE"
+  /// - "DEFAULT"
+  /// - "DO_NOT_INCLUDE"
+  /// - "SOURCE_IMAGE"
+  /// - "SOURCE_IMAGE_FAMILY"
+  core.String instantiateFrom;
+
+  DiskInstantiationConfig();
+
+  DiskInstantiationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("autoDelete")) {
+      autoDelete = _json["autoDelete"];
+    }
+    if (_json.containsKey("customImage")) {
+      customImage = _json["customImage"];
+    }
+    if (_json.containsKey("deviceName")) {
+      deviceName = _json["deviceName"];
+    }
+    if (_json.containsKey("instantiateFrom")) {
+      instantiateFrom = _json["instantiateFrom"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoDelete != null) {
+      _json["autoDelete"] = autoDelete;
+    }
+    if (customImage != null) {
+      _json["customImage"] = customImage;
+    }
+    if (deviceName != null) {
+      _json["deviceName"] = deviceName;
+    }
+    if (instantiateFrom != null) {
+      _json["instantiateFrom"] = instantiateFrom;
     }
     return _json;
   }
@@ -34205,6 +36642,55 @@ class DisksScopedList {
   }
 }
 
+class DistributionPolicy {
+  /// Zones where the regional managed instance group will create and manage
+  /// instances.
+  core.List<DistributionPolicyZoneConfiguration> zones;
+
+  DistributionPolicy();
+
+  DistributionPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("zones")) {
+      zones = (_json["zones"] as core.List)
+          .map<DistributionPolicyZoneConfiguration>((value) =>
+              new DistributionPolicyZoneConfiguration.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (zones != null) {
+      _json["zones"] = zones.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class DistributionPolicyZoneConfiguration {
+  /// The URL of the zone. The zone must exist in the region where the managed
+  /// instance group is located.
+  core.String zone;
+
+  DistributionPolicyZoneConfiguration();
+
+  DistributionPolicyZoneConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
 class FirewallAllowed {
   /// The IP protocol to which this rule applies. The protocol type is required
   /// when creating a firewall rule. This value can either be one of the
@@ -34726,6 +37212,10 @@ class ForwardingRule {
   /// regional) will be assigned. A regional forwarding rule supports IPv4 only.
   /// A global forwarding rule supports either IPv4 or IPv6.
   ///
+  /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a
+  /// URL reference to an existing Address resource ( internal regional static
+  /// IP address).
+  ///
   /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918
   /// IP address belonging to the network/subnet configured for the forwarding
   /// rule. By default, if this field is empty, an ephemeral internal IP address
@@ -34748,6 +37238,7 @@ class ForwardingRule {
   /// ESP, AH, SCTP or ICMP.
   ///
   /// When the load balancing scheme is INTERNAL, only TCP and UDP are valid.
+  /// When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCPis valid.
   /// Possible string values are:
   /// - "AH"
   /// - "ESP"
@@ -34757,7 +37248,7 @@ class ForwardingRule {
   /// - "UDP"
   core.String IPProtocol;
 
-  /// This field is not used for external load balancing.
+  /// This field is only used for INTERNAL load balancing.
   ///
   /// For internal load balancing, this field identifies the BackendService
   /// resource to receive the matched traffic.
@@ -34775,7 +37266,8 @@ class ForwardingRule {
   core.String id;
 
   /// The IP Version that will be used by this forwarding rule. Valid options
-  /// are IPV4 or IPV6. This can only be specified for a global forwarding rule.
+  /// are IPV4 or IPV6. This can only be specified for an external global
+  /// forwarding rule.
   /// Possible string values are:
   /// - "IPV4"
   /// - "IPV6"
@@ -34787,10 +37279,12 @@ class ForwardingRule {
   core.String kind;
 
   /// This signifies what the ForwardingRule will be used for and can only take
-  /// the following values: INTERNAL, EXTERNAL The value of INTERNAL means that
-  /// this will be used for Internal Network Load Balancing (TCP, UDP). The
-  /// value of EXTERNAL means that this will be used for External Load Balancing
-  /// (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
+  /// the following values: INTERNAL, INTERNAL_SELF_MANAGED, EXTERNAL. The value
+  /// of INTERNAL means that this will be used for Internal Network Load
+  /// Balancing (TCP, UDP). The value of INTERNAL_SELF_MANAGED means that this
+  /// will be used for Internal Global HTTP(S) LB. The value of EXTERNAL means
+  /// that this will be used for External Load Balancing (HTTP(S) LB, External
+  /// TCP/UDP LB, SSL Proxy)
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "INTERNAL"
@@ -34808,10 +37302,24 @@ class ForwardingRule {
 
   /// This field is not used for external load balancing.
   ///
-  /// For internal load balancing, this field identifies the network that the
-  /// load balanced IP should belong to for this Forwarding Rule. If this field
-  /// is not specified, the default network will be used.
+  /// For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field
+  /// identifies the network that the load balanced IP should belong to for this
+  /// Forwarding Rule. If this field is not specified, the default network will
+  /// be used.
   core.String network;
+
+  /// This signifies the networking tier used for configuring this load balancer
+  /// and can only take the following values: PREMIUM , STANDARD.
+  ///
+  /// For regional ForwardingRule, the valid values are PREMIUM and STANDARD.
+  /// For GlobalForwardingRule, the valid value is PREMIUM.
+  ///
+  /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress
+  /// is specified, this value must be equal to the networkTier of the Address.
+  /// Possible string values are:
+  /// - "PREMIUM"
+  /// - "STANDARD"
+  core.String networkTier;
 
   /// This field is used along with the target field for TargetHttpProxy,
   /// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -34852,7 +37360,7 @@ class ForwardingRule {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// This field is not used for external load balancing.
+  /// This field is only used for INTERNAL load balancing.
   ///
   /// For internal load balancing, this field identifies the subnetwork that the
   /// load balanced IP should belong to for this Forwarding Rule.
@@ -34866,7 +37374,8 @@ class ForwardingRule {
   /// regional forwarding rules, this target must live in the same region as the
   /// forwarding rule. For global forwarding rules, this target must be a global
   /// load balancing resource. The forwarded traffic must be of a type
-  /// appropriate to the target object.
+  /// appropriate to the target object. For INTERNAL_SELF_MANAGED" load
+  /// balancing, only HTTP and HTTPS targets are valid.
   core.String target;
 
   ForwardingRule();
@@ -34904,6 +37413,9 @@ class ForwardingRule {
     }
     if (_json.containsKey("network")) {
       network = _json["network"];
+    }
+    if (_json.containsKey("networkTier")) {
+      networkTier = _json["networkTier"];
     }
     if (_json.containsKey("portRange")) {
       portRange = _json["portRange"];
@@ -34960,6 +37472,9 @@ class ForwardingRule {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (networkTier != null) {
+      _json["networkTier"] = networkTier;
     }
     if (portRange != null) {
       _json["portRange"] = portRange;
@@ -36999,9 +39514,9 @@ class Image {
   /// source disk is protected by a customer-supplied encryption key.
   CustomerEncryptionKey sourceDiskEncryptionKey;
 
-  /// The ID value of the disk used to create this image. This value may be used
-  /// to determine whether the image was taken from the current or a previous
-  /// instance of a given disk name.
+  /// [Output Only] The ID value of the disk used to create this image. This
+  /// value may be used to determine whether the image was taken from the
+  /// current or a previous instance of a given disk name.
   core.String sourceDiskId;
 
   /// URL of the source image used to create this image. This can be a full or
@@ -37561,10 +40076,11 @@ class Instance {
   /// [Output Only] An optional, human-readable explanation of the status.
   core.String statusMessage;
 
-  /// A list of tags to apply to this instance. Tags are used to identify valid
-  /// sources or targets for network firewalls and are specified by the client
-  /// during instance creation. The tags can be later modified by the setTags
-  /// method. Each tag within the list must comply with RFC1035.
+  /// Tags to apply to this instance. Tags are used to identify valid sources or
+  /// targets for network firewalls and are specified by the client during
+  /// instance creation. The tags can be later modified by the setTags method.
+  /// Each tag within the list must comply with RFC1035. Multiple tags can be
+  /// specified via the 'tags.items' field.
   Tags tags;
 
   /// [Output Only] URL of the zone where the instance resides. You must specify
@@ -38479,9 +40995,16 @@ class InstanceGroupManager {
   /// create the resource.
   core.String description;
 
+  /// Policy specifying intended distribution of instances in regional managed
+  /// instance group.
+  DistributionPolicy distributionPolicy;
+
   /// Fingerprint of this resource. This field may be used in optimistic
   /// locking. It will be ignored when inserting an InstanceGroupManager. An
   /// up-to-date fingerprint must be provided in order to update the
+  /// InstanceGroupManager.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve an
   /// InstanceGroupManager.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -38555,6 +41078,10 @@ class InstanceGroupManager {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("distributionPolicy")) {
+      distributionPolicy =
+          new DistributionPolicy.fromJson(_json["distributionPolicy"]);
+    }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
     }
@@ -38609,6 +41136,9 @@ class InstanceGroupManager {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (distributionPolicy != null) {
+      _json["distributionPolicy"] = (distributionPolicy).toJson();
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
@@ -40512,6 +43042,17 @@ class InstanceTemplate {
   /// URL.
   core.String selfLink;
 
+  /// The source instance used to create the template. You can provide this as a
+  /// partial or full URL to the resource. For example, the following are valid
+  /// values:
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+  /// - projects/project/zones/zone/instances/instance
+  core.String sourceInstance;
+
+  /// The source instance params to use to create this instance template.
+  SourceInstanceParams sourceInstanceParams;
+
   InstanceTemplate();
 
   InstanceTemplate.fromJson(core.Map _json) {
@@ -40535,6 +43076,13 @@ class InstanceTemplate {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("sourceInstance")) {
+      sourceInstance = _json["sourceInstance"];
+    }
+    if (_json.containsKey("sourceInstanceParams")) {
+      sourceInstanceParams =
+          new SourceInstanceParams.fromJson(_json["sourceInstanceParams"]);
     }
   }
 
@@ -40561,6 +43109,12 @@ class InstanceTemplate {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (sourceInstance != null) {
+      _json["sourceInstance"] = sourceInstance;
+    }
+    if (sourceInstanceParams != null) {
+      _json["sourceInstanceParams"] = (sourceInstanceParams).toJson();
     }
     return _json;
   }
@@ -44170,7 +46724,7 @@ class MachineTypesScopedList {
   }
 }
 
-/// Next available tag: 12
+/// A Managed Instance resource.
 class ManagedInstance {
   /// [Output Only] The current action that the managed instance group has
   /// scheduled for the instance. Possible values:
@@ -44410,6 +46964,9 @@ class Metadata {
   /// is initially generated by Compute Engine and changes after every request
   /// to modify or update metadata. You must always provide an up-to-date
   /// fingerprint hash in order to update or change metadata.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve the
+  /// resource.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -45120,6 +47677,2269 @@ class NetworksRemovePeeringRequest {
         new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// A NodeGroup resource.
+class NodeGroup {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] The type of the resource. Always compute#nodeGroup for node
+  /// group.
+  core.String kind;
+
+  /// The name of the resource, provided by the client when initially creating
+  /// the resource. The resource name must be 1-63 characters long, and comply
+  /// with RFC1035. Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last character,
+  /// which cannot be a dash.
+  core.String name;
+
+  /// The URL of the node template to which this node group belongs.
+  core.String nodeTemplate;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output Only] The total number of nodes in the node group.
+  core.int size;
+
+  ///
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "INVALID"
+  /// - "READY"
+  core.String status;
+
+  /// [Output Only] The name of the zone where the node group resides, such as
+  /// us-central1-a.
+  core.String zone;
+
+  NodeGroup();
+
+  NodeGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodeTemplate")) {
+      nodeTemplate = _json["nodeTemplate"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodeTemplate != null) {
+      _json["nodeTemplate"] = nodeTemplate;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeGroupAggregatedListWarningData();
+
+  NodeGroupAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeGroupAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeGroupAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeGroupAggregatedListWarning();
+
+  NodeGroupAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeGroupAggregatedListWarningData>(
+              (value) => new NodeGroupAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupAggregatedList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NodeGroupsScopedList resources.
+  core.Map<core.String, NodeGroupsScopedList> items;
+
+  /// [Output Only] Type of resource.Always compute#nodeGroupAggregatedList for
+  /// aggregated lists of node groups.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeGroupAggregatedListWarning warning;
+
+  NodeGroupAggregatedList();
+
+  NodeGroupAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map, NodeGroupsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new NodeGroupsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeGroupAggregatedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons
+          .mapMap<NodeGroupsScopedList, core.Map<core.String, core.Object>>(
+              items, (NodeGroupsScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeGroupListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeGroupListWarningData();
+
+  NodeGroupListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeGroupListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeGroupListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeGroupListWarning();
+
+  NodeGroupListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeGroupListWarningData>(
+              (value) => new NodeGroupListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Contains a list of nodeGroups.
+class NodeGroupList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NodeGroup resources.
+  core.List<NodeGroup> items;
+
+  /// [Output Only] Type of resource.Always compute#nodeGroupList for lists of
+  /// node groups.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeGroupListWarning warning;
+
+  NodeGroupList();
+
+  NodeGroupList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NodeGroup>((value) => new NodeGroup.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeGroupListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeGroupNode {
+  /// Instances scheduled on this node.
+  core.List<core.String> instances;
+
+  /// The name of the node.
+  core.String name;
+
+  /// The type of this node.
+  core.String nodeType;
+
+  ///
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "INVALID"
+  /// - "READY"
+  core.String status;
+
+  NodeGroupNode();
+
+  NodeGroupNode.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = (_json["instances"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodeType")) {
+      nodeType = _json["nodeType"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodeType != null) {
+      _json["nodeType"] = nodeType;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsAddNodesRequest {
+  /// Count of additional nodes to be added to the node group.
+  core.int additionalNodeCount;
+
+  NodeGroupsAddNodesRequest();
+
+  NodeGroupsAddNodesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalNodeCount")) {
+      additionalNodeCount = _json["additionalNodeCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (additionalNodeCount != null) {
+      _json["additionalNodeCount"] = additionalNodeCount;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsDeleteNodesRequest {
+  core.List<core.String> nodes;
+
+  NodeGroupsDeleteNodesRequest();
+
+  NodeGroupsDeleteNodesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("nodes")) {
+      nodes = (_json["nodes"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodes != null) {
+      _json["nodes"] = nodes;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsListNodesWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeGroupsListNodesWarningData();
+
+  NodeGroupsListNodesWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeGroupsListNodesWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeGroupsListNodesWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeGroupsListNodesWarning();
+
+  NodeGroupsListNodesWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeGroupsListNodesWarningData>(
+              (value) => new NodeGroupsListNodesWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsListNodes {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of Node resources.
+  core.List<NodeGroupNode> items;
+
+  /// [Output Only] The resource type, which is always
+  /// compute.nodeGroupsListNodes for the list of nodes in the specified node
+  /// group.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeGroupsListNodesWarning warning;
+
+  NodeGroupsListNodes();
+
+  NodeGroupsListNodes.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NodeGroupNode>((value) => new NodeGroupNode.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeGroupsListNodesWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeGroupsScopedListWarningData();
+
+  NodeGroupsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] An informational warning that appears when the nodeGroup list
+/// is empty.
+class NodeGroupsScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeGroupsScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeGroupsScopedListWarning();
+
+  NodeGroupsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeGroupsScopedListWarningData>(
+              (value) => new NodeGroupsScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsScopedList {
+  /// [Output Only] A list of node groups contained in this scope.
+  core.List<NodeGroup> nodeGroups;
+
+  /// [Output Only] An informational warning that appears when the nodeGroup
+  /// list is empty.
+  NodeGroupsScopedListWarning warning;
+
+  NodeGroupsScopedList();
+
+  NodeGroupsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeGroups")) {
+      nodeGroups = (_json["nodeGroups"] as core.List)
+          .map<NodeGroup>((value) => new NodeGroup.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeGroupsScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodeGroups != null) {
+      _json["nodeGroups"] =
+          nodeGroups.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeGroupsSetNodeTemplateRequest {
+  /// Full or partial URL of the node template resource to be updated for this
+  /// node group.
+  core.String nodeTemplate;
+
+  NodeGroupsSetNodeTemplateRequest();
+
+  NodeGroupsSetNodeTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeTemplate")) {
+      nodeTemplate = _json["nodeTemplate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodeTemplate != null) {
+      _json["nodeTemplate"] = nodeTemplate;
+    }
+    return _json;
+  }
+}
+
+/// A Node Template resource.
+class NodeTemplate {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] The type of the resource. Always compute#nodeTemplate for
+  /// node templates.
+  core.String kind;
+
+  /// The name of the resource, provided by the client when initially creating
+  /// the resource. The resource name must be 1-63 characters long, and comply
+  /// with RFC1035. Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last charaicter,
+  /// which cannot be a dash.
+  core.String name;
+
+  /// Labels to use for node affinity, which will be used in instance
+  /// scheduling.
+  core.Map<core.String, core.String> nodeAffinityLabels;
+
+  /// The node type to use for nodes group that are created from this template.
+  core.String nodeType;
+
+  /// The flexible properties of the desired node type. Node groups that use
+  /// this node template will create nodes of a type that matches these
+  /// properties.
+  ///
+  /// This field is mutually exclusive with the node_type property; you can only
+  /// define one or the other, but not both.
+  NodeTemplateNodeTypeFlexibility nodeTypeFlexibility;
+
+  /// [Output Only] The name of the region where the node template resides, such
+  /// as us-central1.
+  core.String region;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output Only] The status of the node template. One of the following
+  /// values: CREATING, READY, and DELETING.
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "INVALID"
+  /// - "READY"
+  core.String status;
+
+  /// [Output Only] An optional, human-readable explanation of the status.
+  core.String statusMessage;
+
+  NodeTemplate();
+
+  NodeTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nodeAffinityLabels")) {
+      nodeAffinityLabels = (_json["nodeAffinityLabels"] as core.Map)
+          .cast<core.String, core.String>();
+    }
+    if (_json.containsKey("nodeType")) {
+      nodeType = _json["nodeType"];
+    }
+    if (_json.containsKey("nodeTypeFlexibility")) {
+      nodeTypeFlexibility = new NodeTemplateNodeTypeFlexibility.fromJson(
+          _json["nodeTypeFlexibility"]);
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusMessage")) {
+      statusMessage = _json["statusMessage"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nodeAffinityLabels != null) {
+      _json["nodeAffinityLabels"] = nodeAffinityLabels;
+    }
+    if (nodeType != null) {
+      _json["nodeType"] = nodeType;
+    }
+    if (nodeTypeFlexibility != null) {
+      _json["nodeTypeFlexibility"] = (nodeTypeFlexibility).toJson();
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusMessage != null) {
+      _json["statusMessage"] = statusMessage;
+    }
+    return _json;
+  }
+}
+
+class NodeTemplateAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeTemplateAggregatedListWarningData();
+
+  NodeTemplateAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeTemplateAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeTemplateAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeTemplateAggregatedListWarning();
+
+  NodeTemplateAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeTemplateAggregatedListWarningData>((value) =>
+              new NodeTemplateAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeTemplateAggregatedList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NodeTemplatesScopedList resources.
+  core.Map<core.String, NodeTemplatesScopedList> items;
+
+  /// [Output Only] Type of resource.Always compute#nodeTemplateAggregatedList
+  /// for aggregated lists of node templates.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeTemplateAggregatedListWarning warning;
+
+  NodeTemplateAggregatedList();
+
+  NodeTemplateAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map, NodeTemplatesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new NodeTemplatesScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new NodeTemplateAggregatedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons
+          .mapMap<NodeTemplatesScopedList, core.Map<core.String, core.Object>>(
+              items, (NodeTemplatesScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeTemplateListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeTemplateListWarningData();
+
+  NodeTemplateListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeTemplateListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeTemplateListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeTemplateListWarning();
+
+  NodeTemplateListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeTemplateListWarningData>(
+              (value) => new NodeTemplateListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Contains a list of node templates.
+class NodeTemplateList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NodeTemplate resources.
+  core.List<NodeTemplate> items;
+
+  /// [Output Only] Type of resource.Always compute#nodeTemplateList for lists
+  /// of node templates.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeTemplateListWarning warning;
+
+  NodeTemplateList();
+
+  NodeTemplateList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NodeTemplate>((value) => new NodeTemplate.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeTemplateListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeTemplateNodeTypeFlexibility {
+  core.String cpus;
+  core.String localSsd;
+  core.String memory;
+
+  NodeTemplateNodeTypeFlexibility();
+
+  NodeTemplateNodeTypeFlexibility.fromJson(core.Map _json) {
+    if (_json.containsKey("cpus")) {
+      cpus = _json["cpus"];
+    }
+    if (_json.containsKey("localSsd")) {
+      localSsd = _json["localSsd"];
+    }
+    if (_json.containsKey("memory")) {
+      memory = _json["memory"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cpus != null) {
+      _json["cpus"] = cpus;
+    }
+    if (localSsd != null) {
+      _json["localSsd"] = localSsd;
+    }
+    if (memory != null) {
+      _json["memory"] = memory;
+    }
+    return _json;
+  }
+}
+
+class NodeTemplatesScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeTemplatesScopedListWarningData();
+
+  NodeTemplatesScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] An informational warning that appears when the node templates
+/// list is empty.
+class NodeTemplatesScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeTemplatesScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeTemplatesScopedListWarning();
+
+  NodeTemplatesScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeTemplatesScopedListWarningData>(
+              (value) => new NodeTemplatesScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeTemplatesScopedList {
+  /// [Output Only] A list of node templates contained in this scope.
+  core.List<NodeTemplate> nodeTemplates;
+
+  /// [Output Only] An informational warning that appears when the node
+  /// templates list is empty.
+  NodeTemplatesScopedListWarning warning;
+
+  NodeTemplatesScopedList();
+
+  NodeTemplatesScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeTemplates")) {
+      nodeTemplates = (_json["nodeTemplates"] as core.List)
+          .map<NodeTemplate>((value) => new NodeTemplate.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeTemplatesScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodeTemplates != null) {
+      _json["nodeTemplates"] =
+          nodeTemplates.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A Node Type resource.
+class NodeType {
+  /// [Output Only] The CPU platform used by this node type.
+  core.String cpuPlatform;
+
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// [Output Only] The deprecation status associated with this node type.
+  DeprecationStatus deprecated;
+
+  /// [Output Only] An optional textual description of the resource.
+  core.String description;
+
+  /// [Output Only] The number of virtual CPUs that are available to the node
+  /// type.
+  core.int guestCpus;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] The type of the resource. Always compute#nodeType for node
+  /// types.
+  core.String kind;
+
+  /// [Output Only] Local SSD available to the node type, defined in GB.
+  core.int localSsdGb;
+
+  /// [Output Only] The amount of physical memory available to the node type,
+  /// defined in MB.
+  core.int memoryMb;
+
+  /// [Output Only] Name of the resource.
+  core.String name;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output Only] The name of the zone where the node type resides, such as
+  /// us-central1-a.
+  core.String zone;
+
+  NodeType();
+
+  NodeType.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuPlatform")) {
+      cpuPlatform = _json["cpuPlatform"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("deprecated")) {
+      deprecated = new DeprecationStatus.fromJson(_json["deprecated"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("guestCpus")) {
+      guestCpus = _json["guestCpus"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("localSsdGb")) {
+      localSsdGb = _json["localSsdGb"];
+    }
+    if (_json.containsKey("memoryMb")) {
+      memoryMb = _json["memoryMb"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cpuPlatform != null) {
+      _json["cpuPlatform"] = cpuPlatform;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (deprecated != null) {
+      _json["deprecated"] = (deprecated).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (guestCpus != null) {
+      _json["guestCpus"] = guestCpus;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (localSsdGb != null) {
+      _json["localSsdGb"] = localSsdGb;
+    }
+    if (memoryMb != null) {
+      _json["memoryMb"] = memoryMb;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class NodeTypeAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeTypeAggregatedListWarningData();
+
+  NodeTypeAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeTypeAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeTypeAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeTypeAggregatedListWarning();
+
+  NodeTypeAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeTypeAggregatedListWarningData>(
+              (value) => new NodeTypeAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeTypeAggregatedList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NodeTypesScopedList resources.
+  core.Map<core.String, NodeTypesScopedList> items;
+
+  /// [Output Only] Type of resource.Always compute#nodeTypeAggregatedList for
+  /// aggregated lists of node types.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeTypeAggregatedListWarning warning;
+
+  NodeTypeAggregatedList();
+
+  NodeTypeAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map, NodeTypesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new NodeTypesScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeTypeAggregatedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons
+          .mapMap<NodeTypesScopedList, core.Map<core.String, core.Object>>(
+              items, (NodeTypesScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeTypeListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeTypeListWarningData();
+
+  NodeTypeListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NodeTypeListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeTypeListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeTypeListWarning();
+
+  NodeTypeListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeTypeListWarningData>(
+              (value) => new NodeTypeListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Contains a list of node types.
+class NodeTypeList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NodeType resources.
+  core.List<NodeType> items;
+
+  /// [Output Only] Type of resource.Always compute#nodeTypeList for lists of
+  /// node types.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NodeTypeListWarning warning;
+
+  NodeTypeList();
+
+  NodeTypeList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NodeType>((value) => new NodeType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeTypeListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NodeTypesScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NodeTypesScopedListWarningData();
+
+  NodeTypesScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] An informational warning that appears when the node types list
+/// is empty.
+class NodeTypesScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NodeTypesScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NodeTypesScopedListWarning();
+
+  NodeTypesScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NodeTypesScopedListWarningData>(
+              (value) => new NodeTypesScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NodeTypesScopedList {
+  /// [Output Only] A list of node types contained in this scope.
+  core.List<NodeType> nodeTypes;
+
+  /// [Output Only] An informational warning that appears when the node types
+  /// list is empty.
+  NodeTypesScopedListWarning warning;
+
+  NodeTypesScopedList();
+
+  NodeTypesScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeTypes")) {
+      nodeTypes = (_json["nodeTypes"] as core.List)
+          .map<NodeType>((value) => new NodeType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NodeTypesScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodeTypes != null) {
+      _json["nodeTypes"] = nodeTypes.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -46184,6 +51004,14 @@ class Project {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
+  /// This signifies the default network tier used for configuring resources of
+  /// the project and can only take the following values: PREMIUM, STANDARD.
+  /// Initially the default network tier is PREMIUM.
+  /// Possible string values are:
+  /// - "PREMIUM"
+  /// - "STANDARD"
+  core.String defaultNetworkTier;
+
   /// [Output Only] Default service account used by VMs running in this project.
   core.String defaultServiceAccount;
 
@@ -46232,6 +51060,9 @@ class Project {
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
+    if (_json.containsKey("defaultNetworkTier")) {
+      defaultNetworkTier = _json["defaultNetworkTier"];
+    }
     if (_json.containsKey("defaultServiceAccount")) {
       defaultServiceAccount = _json["defaultServiceAccount"];
     }
@@ -46276,6 +51107,9 @@ class Project {
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (defaultNetworkTier != null) {
+      _json["defaultNetworkTier"] = defaultNetworkTier;
     }
     if (defaultServiceAccount != null) {
       _json["defaultServiceAccount"] = defaultServiceAccount;
@@ -46427,6 +51261,31 @@ class ProjectsListXpnHostsRequest {
   }
 }
 
+class ProjectsSetDefaultNetworkTierRequest {
+  /// Default network tier to be set.
+  /// Possible string values are:
+  /// - "PREMIUM"
+  /// - "STANDARD"
+  core.String networkTier;
+
+  ProjectsSetDefaultNetworkTierRequest();
+
+  ProjectsSetDefaultNetworkTierRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("networkTier")) {
+      networkTier = _json["networkTier"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (networkTier != null) {
+      _json["networkTier"] = networkTier;
+    }
+    return _json;
+  }
+}
+
 /// A quotas entry.
 class Quota {
   /// [Output Only] Quota limit for this metric.
@@ -46443,6 +51302,7 @@ class Quota {
   /// - "DISKS_TOTAL_GB"
   /// - "FIREWALLS"
   /// - "FORWARDING_RULES"
+  /// - "GPUS_ALL_REGIONS"
   /// - "HEALTH_CHECKS"
   /// - "IMAGES"
   /// - "INSTANCES"
@@ -46454,18 +51314,26 @@ class Quota {
   /// - "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS"
   /// - "INTERNAL_ADDRESSES"
   /// - "IN_USE_ADDRESSES"
+  /// - "IN_USE_BACKUP_SCHEDULES"
   /// - "LOCAL_SSD_TOTAL_GB"
   /// - "NETWORKS"
   /// - "NVIDIA_K80_GPUS"
   /// - "NVIDIA_P100_GPUS"
+  /// - "NVIDIA_P100_VWS_GPUS"
+  /// - "NVIDIA_P4_GPUS"
+  /// - "NVIDIA_P4_VWS_GPUS"
   /// - "NVIDIA_V100_GPUS"
   /// - "PREEMPTIBLE_CPUS"
   /// - "PREEMPTIBLE_LOCAL_SSD_GB"
   /// - "PREEMPTIBLE_NVIDIA_K80_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_P100_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_P100_VWS_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_P4_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_P4_VWS_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
   /// - "REGIONAL_AUTOSCALERS"
   /// - "REGIONAL_INSTANCE_GROUP_MANAGERS"
+  /// - "RESOURCE_POLICIES"
   /// - "ROUTERS"
   /// - "ROUTES"
   /// - "SECURITY_POLICIES"
@@ -49895,6 +54763,9 @@ class Scheduling {
   /// if it is terminated by Compute Engine.
   core.bool automaticRestart;
 
+  /// A set of node affinity and anti-affinity.
+  core.List<SchedulingNodeAffinity> nodeAffinities;
+
   /// Defines the maintenance behavior for this instance. For standard
   /// instances, the default behavior is MIGRATE. For preemptible instances, the
   /// default and only possible behavior is TERMINATE. For more information, see
@@ -49915,6 +54786,12 @@ class Scheduling {
     if (_json.containsKey("automaticRestart")) {
       automaticRestart = _json["automaticRestart"];
     }
+    if (_json.containsKey("nodeAffinities")) {
+      nodeAffinities = (_json["nodeAffinities"] as core.List)
+          .map<SchedulingNodeAffinity>(
+              (value) => new SchedulingNodeAffinity.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("onHostMaintenance")) {
       onHostMaintenance = _json["onHostMaintenance"];
     }
@@ -49929,11 +54806,61 @@ class Scheduling {
     if (automaticRestart != null) {
       _json["automaticRestart"] = automaticRestart;
     }
+    if (nodeAffinities != null) {
+      _json["nodeAffinities"] =
+          nodeAffinities.map((value) => (value).toJson()).toList();
+    }
     if (onHostMaintenance != null) {
       _json["onHostMaintenance"] = onHostMaintenance;
     }
     if (preemptible != null) {
       _json["preemptible"] = preemptible;
+    }
+    return _json;
+  }
+}
+
+/// Node Affinity: the configuration of desired nodes onto which this Instance
+/// could be scheduled.
+class SchedulingNodeAffinity {
+  /// Corresponds to the label key of Node resource.
+  core.String key;
+
+  /// Defines the operation of node selection.
+  /// Possible string values are:
+  /// - "IN"
+  /// - "NOT_IN"
+  /// - "OPERATOR_UNSPECIFIED"
+  core.String operator;
+
+  /// Corresponds to the label values of Node resource.
+  core.List<core.String> values;
+
+  SchedulingNodeAffinity();
+
+  SchedulingNodeAffinity.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("operator")) {
+      operator = _json["operator"];
+    }
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (operator != null) {
+      _json["operator"] = operator;
+    }
+    if (values != null) {
+      _json["values"] = values;
     }
     return _json;
   }
@@ -50030,6 +54957,44 @@ class ServiceAccount {
     }
     if (scopes != null) {
       _json["scopes"] = scopes;
+    }
+    return _json;
+  }
+}
+
+/// Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs
+class SignedUrlKey {
+  /// Name of the key. The name must be 1-63 characters long, and comply with
+  /// RFC1035. Specifically, the name must be 1-63 characters long and match the
+  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must be
+  /// a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String keyName;
+
+  /// 128-bit key value used for signing the URL. The key value must be a valid
+  /// RFC 4648 Section 5 base64url encoded string.
+  core.String keyValue;
+
+  SignedUrlKey();
+
+  SignedUrlKey.fromJson(core.Map _json) {
+    if (_json.containsKey("keyName")) {
+      keyName = _json["keyName"];
+    }
+    if (_json.containsKey("keyValue")) {
+      keyValue = _json["keyValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (keyName != null) {
+      _json["keyName"] = keyName;
+    }
+    if (keyValue != null) {
+      _json["keyValue"] = keyValue;
     }
     return _json;
   }
@@ -50449,6 +55414,37 @@ class SnapshotList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A specification of the parameters to use when creating the instance template
+/// from a source instance.
+class SourceInstanceParams {
+  /// Attached disks configuration. If not provided, defaults are applied: For
+  /// boot disk and any other R/W disks, new custom images will be created from
+  /// each disk. For read-only disks, they will be attached in read-only mode.
+  /// Local SSD disks will be created as blank volumes.
+  core.List<DiskInstantiationConfig> diskConfigs;
+
+  SourceInstanceParams();
+
+  SourceInstanceParams.fromJson(core.Map _json) {
+    if (_json.containsKey("diskConfigs")) {
+      diskConfigs = (_json["diskConfigs"] as core.List)
+          .map<DiskInstantiationConfig>(
+              (value) => new DiskInstantiationConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (diskConfigs != null) {
+      _json["diskConfigs"] =
+          diskConfigs.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -51071,6 +56067,9 @@ class SslPolicy {
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a SslPolicy. An up-to-date fingerprint must be
   /// provided in order to update the SslPolicy.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve an
+  /// SslPolicy.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -51253,6 +56252,9 @@ class Subnetwork {
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a Subnetwork. An up-to-date fingerprint must be
   /// provided in order to update the Subnetwork.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve a
+  /// Subnetwork.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -55712,6 +60714,8 @@ class UrlMap {
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a UrlMap. An up-to-date fingerprint must be
   /// provided in order to update the UrlMap.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve a UrlMap.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -56180,6 +61184,280 @@ class UrlMapsValidateResponse {
         new core.Map<core.String, core.Object>();
     if (result != null) {
       _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Subnetwork which the current user has compute.subnetworks.use permission on.
+class UsableSubnetwork {
+  /// The range of internal addresses that are owned by this subnetwork.
+  core.String ipCidrRange;
+
+  /// Network URL.
+  core.String network;
+
+  /// Secondary IP ranges.
+  core.List<UsableSubnetworkSecondaryRange> secondaryIpRanges;
+
+  /// Subnetwork URL.
+  core.String subnetwork;
+
+  UsableSubnetwork();
+
+  UsableSubnetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("secondaryIpRanges")) {
+      secondaryIpRanges = (_json["secondaryIpRanges"] as core.List)
+          .map<UsableSubnetworkSecondaryRange>(
+              (value) => new UsableSubnetworkSecondaryRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (secondaryIpRanges != null) {
+      _json["secondaryIpRanges"] =
+          secondaryIpRanges.map((value) => (value).toJson()).toList();
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
+    return _json;
+  }
+}
+
+/// Secondary IP range of a usable subnetwork.
+class UsableSubnetworkSecondaryRange {
+  /// The range of IP addresses belonging to this subnetwork secondary range.
+  core.String ipCidrRange;
+
+  /// The name associated with this subnetwork secondary range, used when adding
+  /// an alias IP range to a VM instance. The name must be 1-63 characters long,
+  /// and comply with RFC1035. The name must be unique within the subnetwork.
+  core.String rangeName;
+
+  UsableSubnetworkSecondaryRange();
+
+  UsableSubnetworkSecondaryRange.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("rangeName")) {
+      rangeName = _json["rangeName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (rangeName != null) {
+      _json["rangeName"] = rangeName;
+    }
+    return _json;
+  }
+}
+
+class UsableSubnetworksAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  UsableSubnetworksAggregatedListWarningData();
+
+  UsableSubnetworksAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class UsableSubnetworksAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<UsableSubnetworksAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  UsableSubnetworksAggregatedListWarning();
+
+  UsableSubnetworksAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<UsableSubnetworksAggregatedListWarningData>((value) =>
+              new UsableSubnetworksAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class UsableSubnetworksAggregatedList {
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output] A list of usable subnetwork URLs.
+  core.List<UsableSubnetwork> items;
+
+  /// [Output Only] Type of resource. Always
+  /// compute#usableSubnetworksAggregatedList for aggregated lists of usable
+  /// subnetworks.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  UsableSubnetworksAggregatedListWarning warning;
+
+  UsableSubnetworksAggregatedList();
+
+  UsableSubnetworksAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<UsableSubnetwork>(
+              (value) => new UsableSubnetwork.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new UsableSubnetworksAggregatedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }

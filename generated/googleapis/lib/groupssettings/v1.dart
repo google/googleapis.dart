@@ -206,6 +206,9 @@ class Groups {
   /// Email id of the group
   core.String email;
 
+  /// If favorite replies should be displayed above other replies.
+  core.String favoriteRepliesOnTop;
+
   /// Whether to include custom footer.
   core.String includeCustomFooter;
 
@@ -257,10 +260,22 @@ class Groups {
   /// ALL_OWNERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
   core.String whoCanAdd;
 
+  /// Permission to add references to a topic. Possible values are: NONE
+  /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanAddReferences;
+
+  /// Permission to assign topics in a forum to another user. Possible values
+  /// are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanAssignTopics;
+
   /// Permission to contact owner of the group via web UI. Possible values are:
   /// ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
   /// ALL_MANAGERS_CAN_CONTACT
   core.String whoCanContactOwner;
+
+  /// Permission to enter free form tags for topics in a forum. Possible values
+  /// are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanEnterFreeFormTags;
 
   /// Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
   /// ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE
@@ -274,10 +289,43 @@ class Groups {
   /// ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
   core.String whoCanLeaveGroup;
 
+  /// Permission to mark a topic as a duplicate of another topic. Possible
+  /// values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanMarkDuplicate;
+
+  /// Permission to mark any other user's post as a favorite reply. Possible
+  /// values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanMarkFavoriteReplyOnAnyTopic;
+
+  /// Permission to mark a post for a topic they started as a favorite reply.
+  /// Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS
+  /// ALL_MEMBERS
+  core.String whoCanMarkFavoriteReplyOnOwnTopic;
+
+  /// Permission to mark a topic as not needing a response. Possible values are:
+  /// NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanMarkNoResponseNeeded;
+
+  /// Permission to change tags and categories. Possible values are: NONE
+  /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanModifyTagsAndCategories;
+
   /// Permissions to post messages to the group. Possible values are:
   /// NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST
   /// ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
   core.String whoCanPostMessage;
+
+  /// Permission to take topics in a forum. Possible values are: NONE
+  /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanTakeTopics;
+
+  /// Permission to unassign any topic in a forum. Possible values are: NONE
+  /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanUnassignTopic;
+
+  /// Permission to unmark any post from a favorite reply. Possible values are:
+  /// NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanUnmarkFavoriteReplyOnAnyTopic;
 
   /// Permissions to view group. Possible values are: ANYONE_CAN_VIEW
   /// ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
@@ -318,6 +366,9 @@ class Groups {
     }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("favoriteRepliesOnTop")) {
+      favoriteRepliesOnTop = _json["favoriteRepliesOnTop"];
     }
     if (_json.containsKey("includeCustomFooter")) {
       includeCustomFooter = _json["includeCustomFooter"];
@@ -364,8 +415,17 @@ class Groups {
     if (_json.containsKey("whoCanAdd")) {
       whoCanAdd = _json["whoCanAdd"];
     }
+    if (_json.containsKey("whoCanAddReferences")) {
+      whoCanAddReferences = _json["whoCanAddReferences"];
+    }
+    if (_json.containsKey("whoCanAssignTopics")) {
+      whoCanAssignTopics = _json["whoCanAssignTopics"];
+    }
     if (_json.containsKey("whoCanContactOwner")) {
       whoCanContactOwner = _json["whoCanContactOwner"];
+    }
+    if (_json.containsKey("whoCanEnterFreeFormTags")) {
+      whoCanEnterFreeFormTags = _json["whoCanEnterFreeFormTags"];
     }
     if (_json.containsKey("whoCanInvite")) {
       whoCanInvite = _json["whoCanInvite"];
@@ -376,8 +436,35 @@ class Groups {
     if (_json.containsKey("whoCanLeaveGroup")) {
       whoCanLeaveGroup = _json["whoCanLeaveGroup"];
     }
+    if (_json.containsKey("whoCanMarkDuplicate")) {
+      whoCanMarkDuplicate = _json["whoCanMarkDuplicate"];
+    }
+    if (_json.containsKey("whoCanMarkFavoriteReplyOnAnyTopic")) {
+      whoCanMarkFavoriteReplyOnAnyTopic =
+          _json["whoCanMarkFavoriteReplyOnAnyTopic"];
+    }
+    if (_json.containsKey("whoCanMarkFavoriteReplyOnOwnTopic")) {
+      whoCanMarkFavoriteReplyOnOwnTopic =
+          _json["whoCanMarkFavoriteReplyOnOwnTopic"];
+    }
+    if (_json.containsKey("whoCanMarkNoResponseNeeded")) {
+      whoCanMarkNoResponseNeeded = _json["whoCanMarkNoResponseNeeded"];
+    }
+    if (_json.containsKey("whoCanModifyTagsAndCategories")) {
+      whoCanModifyTagsAndCategories = _json["whoCanModifyTagsAndCategories"];
+    }
     if (_json.containsKey("whoCanPostMessage")) {
       whoCanPostMessage = _json["whoCanPostMessage"];
+    }
+    if (_json.containsKey("whoCanTakeTopics")) {
+      whoCanTakeTopics = _json["whoCanTakeTopics"];
+    }
+    if (_json.containsKey("whoCanUnassignTopic")) {
+      whoCanUnassignTopic = _json["whoCanUnassignTopic"];
+    }
+    if (_json.containsKey("whoCanUnmarkFavoriteReplyOnAnyTopic")) {
+      whoCanUnmarkFavoriteReplyOnAnyTopic =
+          _json["whoCanUnmarkFavoriteReplyOnAnyTopic"];
     }
     if (_json.containsKey("whoCanViewGroup")) {
       whoCanViewGroup = _json["whoCanViewGroup"];
@@ -417,6 +504,9 @@ class Groups {
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (favoriteRepliesOnTop != null) {
+      _json["favoriteRepliesOnTop"] = favoriteRepliesOnTop;
     }
     if (includeCustomFooter != null) {
       _json["includeCustomFooter"] = includeCustomFooter;
@@ -463,8 +553,17 @@ class Groups {
     if (whoCanAdd != null) {
       _json["whoCanAdd"] = whoCanAdd;
     }
+    if (whoCanAddReferences != null) {
+      _json["whoCanAddReferences"] = whoCanAddReferences;
+    }
+    if (whoCanAssignTopics != null) {
+      _json["whoCanAssignTopics"] = whoCanAssignTopics;
+    }
     if (whoCanContactOwner != null) {
       _json["whoCanContactOwner"] = whoCanContactOwner;
+    }
+    if (whoCanEnterFreeFormTags != null) {
+      _json["whoCanEnterFreeFormTags"] = whoCanEnterFreeFormTags;
     }
     if (whoCanInvite != null) {
       _json["whoCanInvite"] = whoCanInvite;
@@ -475,8 +574,35 @@ class Groups {
     if (whoCanLeaveGroup != null) {
       _json["whoCanLeaveGroup"] = whoCanLeaveGroup;
     }
+    if (whoCanMarkDuplicate != null) {
+      _json["whoCanMarkDuplicate"] = whoCanMarkDuplicate;
+    }
+    if (whoCanMarkFavoriteReplyOnAnyTopic != null) {
+      _json["whoCanMarkFavoriteReplyOnAnyTopic"] =
+          whoCanMarkFavoriteReplyOnAnyTopic;
+    }
+    if (whoCanMarkFavoriteReplyOnOwnTopic != null) {
+      _json["whoCanMarkFavoriteReplyOnOwnTopic"] =
+          whoCanMarkFavoriteReplyOnOwnTopic;
+    }
+    if (whoCanMarkNoResponseNeeded != null) {
+      _json["whoCanMarkNoResponseNeeded"] = whoCanMarkNoResponseNeeded;
+    }
+    if (whoCanModifyTagsAndCategories != null) {
+      _json["whoCanModifyTagsAndCategories"] = whoCanModifyTagsAndCategories;
+    }
     if (whoCanPostMessage != null) {
       _json["whoCanPostMessage"] = whoCanPostMessage;
+    }
+    if (whoCanTakeTopics != null) {
+      _json["whoCanTakeTopics"] = whoCanTakeTopics;
+    }
+    if (whoCanUnassignTopic != null) {
+      _json["whoCanUnassignTopic"] = whoCanUnassignTopic;
+    }
+    if (whoCanUnmarkFavoriteReplyOnAnyTopic != null) {
+      _json["whoCanUnmarkFavoriteReplyOnAnyTopic"] =
+          whoCanUnmarkFavoriteReplyOnAnyTopic;
     }
     if (whoCanViewGroup != null) {
       _json["whoCanViewGroup"] = whoCanViewGroup;

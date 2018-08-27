@@ -50,7 +50,7 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed77() {
+buildUnnamed365() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -65,7 +65,7 @@ buildUnnamed77() {
   return o;
 }
 
-checkUnnamed77(core.List<core.Object> o) {
+checkUnnamed365(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -94,7 +94,7 @@ buildSearchResponse() {
       'bool': true,
       'string': 'foo'
     };
-    o.itemListElement = buildUnnamed77();
+    o.itemListElement = buildUnnamed365();
   }
   buildCounterSearchResponse--;
   return o;
@@ -113,45 +113,45 @@ checkSearchResponse(api.SearchResponse o) {
     unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
     unittest.expect(casted4["bool"], unittest.equals(true));
     unittest.expect(casted4["string"], unittest.equals('foo'));
-    checkUnnamed77(o.itemListElement);
+    checkUnnamed365(o.itemListElement);
   }
   buildCounterSearchResponse--;
 }
 
-buildUnnamed78() {
+buildUnnamed366() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed78(core.List<core.String> o) {
+checkUnnamed366(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed79() {
+buildUnnamed367() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed79(core.List<core.String> o) {
+checkUnnamed367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed80() {
+buildUnnamed368() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed80(core.List<core.String> o) {
+checkUnnamed368(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -170,13 +170,13 @@ main() {
     unittest.test("method--search", () {
       var mock = new HttpServerMock();
       api.EntitiesResourceApi res = new api.KgsearchApi(mock).entities;
-      var arg_types = buildUnnamed78();
-      var arg_indent = true;
-      var arg_languages = buildUnnamed79();
-      var arg_ids = buildUnnamed80();
       var arg_limit = 42;
       var arg_prefix = true;
       var arg_query = "foo";
+      var arg_types = buildUnnamed366();
+      var arg_indent = true;
+      var arg_languages = buildUnnamed367();
+      var arg_ids = buildUnnamed368();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -208,16 +208,16 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["types"], unittest.equals(arg_types));
-        unittest.expect(
-            queryMap["indent"].first, unittest.equals("$arg_indent"));
-        unittest.expect(queryMap["languages"], unittest.equals(arg_languages));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["limit"].first),
             unittest.equals(arg_limit));
         unittest.expect(
             queryMap["prefix"].first, unittest.equals("$arg_prefix"));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(queryMap["types"], unittest.equals(arg_types));
+        unittest.expect(
+            queryMap["indent"].first, unittest.equals("$arg_indent"));
+        unittest.expect(queryMap["languages"], unittest.equals(arg_languages));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -228,13 +228,13 @@ main() {
       }), true);
       res
           .search(
+              limit: arg_limit,
+              prefix: arg_prefix,
+              query: arg_query,
               types: arg_types,
               indent: arg_indent,
               languages: arg_languages,
               ids: arg_ids,
-              limit: arg_limit,
-              prefix: arg_prefix,
-              query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchResponse(response);

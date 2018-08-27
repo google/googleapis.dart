@@ -64,13 +64,13 @@ class ProjectsLocationsResourceApi {
   /// Specified in the format 'projects / * /locations / * '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for.
-  /// This field has been deprecated and replaced by the name field.
-  ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -84,7 +84,7 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServerConfig> getServerConfig(core.String name,
-      {core.String zone, core.String projectId, core.String $fields}) {
+      {core.String projectId, core.String zone, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -95,11 +95,11 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1122,7 +1122,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [parent] - The parent (project, location, cluster id) where the node pool
   /// will be
   /// created. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// 'projects / * /locations / * /clusters / * '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1178,6 +1178,11 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
@@ -1187,11 +1192,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [nodePoolId] - Deprecated. The name of the node pool to delete.
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1205,10 +1205,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
-      {core.String zone,
+      {core.String projectId,
+      core.String zone,
       core.String clusterId,
       core.String nodePoolId,
-      core.String projectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1220,6 +1220,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
     }
@@ -1228,9 +1231,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     }
     if (nodePoolId != null) {
       _queryParams["nodePoolId"] = [nodePoolId];
-    }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1746,17 +1746,17 @@ class ProjectsLocationsOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
   ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
   /// [operationId] - Deprecated. The server-assigned `name` of the operation.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1770,9 +1770,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name,
-      {core.String operationId,
+      {core.String zone,
+      core.String operationId,
       core.String projectId,
-      core.String zone,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1784,14 +1784,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
     if (operationId != null) {
       _queryParams["operationId"] = [operationId];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4409,9 +4409,11 @@ class Cluster {
   /// [Output only] The number of nodes currently in the cluster.
   core.int currentNodeCount;
 
-  /// [Output only] The current version of the node software components.
-  /// If they are currently at multiple versions because they're in the process
-  /// of being upgraded, this reflects the minimum version of all nodes.
+  /// [Output only] Deprecated, use
+  /// [NodePool.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePool)
+  /// instead. The current version of the node software components. If they are
+  /// currently at multiple versions because they're in the process of being
+  /// upgraded, this reflects the minimum version of all nodes.
   core.String currentNodeVersion;
 
   /// An optional description of this cluster.
@@ -4524,6 +4526,9 @@ class Cluster {
   /// cluster is connected. If left unspecified, the `default` network
   /// will be used.
   core.String network;
+
+  /// Configuration for cluster networking.
+  NetworkConfig networkConfig;
 
   /// Configuration options for the NetworkPolicy feature.
   NetworkPolicy networkPolicy;
@@ -4682,6 +4687,9 @@ class Cluster {
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
+    if (_json.containsKey("networkConfig")) {
+      networkConfig = new NetworkConfig.fromJson(_json["networkConfig"]);
+    }
     if (_json.containsKey("networkPolicy")) {
       networkPolicy = new NetworkPolicy.fromJson(_json["networkPolicy"]);
     }
@@ -4798,6 +4806,9 @@ class Cluster {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (networkConfig != null) {
+      _json["networkConfig"] = (networkConfig).toJson();
     }
     if (networkPolicy != null) {
       _json["networkPolicy"] = (networkPolicy).toJson();
@@ -5102,7 +5113,7 @@ class CreateNodePoolRequest {
 
   /// The parent (project, location, cluster id) where the node pool will be
   /// created. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// 'projects / * /locations / * /clusters / * '.
   core.String parent;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -5642,8 +5653,9 @@ class MasterAuth {
   /// authenticate to the cluster endpoint.
   core.String clientCertificate;
 
-  /// Configuration for client certificate authentication on the cluster.  If no
-  /// configuration is specified, a client certificate is issued.
+  /// Configuration for client certificate authentication on the cluster. For
+  /// clusters before v1.12, if no configuration is specified, a client
+  /// certificate is issued.
   ClientCertificateConfig clientCertificateConfig;
 
   /// [Output only] Base64-encoded private key used by clients to authenticate
@@ -5753,6 +5765,43 @@ class MasterAuthorizedNetworksConfig {
   }
 }
 
+/// NetworkConfig reports the relative names of network & subnetwork.
+class NetworkConfig {
+  /// Output only. The relative name of the Google Compute Engine
+  /// network(/compute/docs/networks-and-firewalls#networks) to which
+  /// the cluster is connected.
+  /// Example: projects/my-project/global/networks/my-network
+  core.String network;
+
+  /// Output only. The relative name of the Google Compute Engine
+  /// [subnetwork](/compute/docs/vpc) to which the cluster is connected.
+  /// Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+  core.String subnetwork;
+
+  NetworkConfig();
+
+  NetworkConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
+    return _json;
+  }
+}
+
 /// Configuration options for the NetworkPolicy feature.
 /// https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
 class NetworkPolicy {
@@ -5826,6 +5875,11 @@ class NodeConfig {
   ///
   /// If unspecified, the default disk size is 100GB.
   core.int diskSizeGb;
+
+  /// Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')
+  ///
+  /// If unspecified, the default disk type is 'pd-standard'
+  core.String diskType;
 
   /// The image type to use for this node. Note that for a given image type,
   /// the latest version of it will be used.
@@ -5934,6 +5988,9 @@ class NodeConfig {
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
     }
+    if (_json.containsKey("diskType")) {
+      diskType = _json["diskType"];
+    }
     if (_json.containsKey("imageType")) {
       imageType = _json["imageType"];
     }
@@ -5976,6 +6033,9 @@ class NodeConfig {
     }
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
+    }
+    if (diskType != null) {
+      _json["diskType"] = diskType;
     }
     if (imageType != null) {
       _json["imageType"] = imageType;

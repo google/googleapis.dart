@@ -28,24 +28,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -59,11 +48,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -83,13 +67,18 @@
             "location": "query",
             "type": "string"
         },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -98,19 +87,19 @@
             "location": "query",
             "type": "string"
         },
-        "pp": {
+        "prettyPrint": {
             "default": "true",
-            "description": "Pretty-print response.",
+            "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -180,12 +169,6 @@
                         "name"
                     ],
                     "parameters": {
-                        "pageSize": {
-                            "description": "The standard list page size.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
                         "filter": {
                             "description": "The standard list filter.",
                             "location": "query",
@@ -202,6 +185,12 @@
                             "description": "The standard list page token.",
                             "location": "query",
                             "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The standard list page size.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
                         }
                     },
                     "path": "v1/{+name}",
@@ -216,7 +205,7 @@
             }
         }
     },
-    "revision": "20180521",
+    "revision": "20180806",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {
@@ -274,6 +263,18 @@
             "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
             "id": "Operation",
             "properties": {
+                "error": {
+                    "$ref": "Status",
+                    "description": "The error result of the operation in case of failure or cancellation."
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+                    "type": "object"
+                },
                 "done": {
                     "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
                     "type": "boolean"
@@ -289,18 +290,6 @@
                 "name": {
                     "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
                     "type": "string"
-                },
-                "error": {
-                    "$ref": "Status",
-                    "description": "The error result of the operation in case of failure or cancellation."
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-                    "type": "object"
                 }
             },
             "type": "object"
@@ -314,5 +303,6 @@
     },
     "servicePath": "",
     "title": "Cloud Runtime Configuration API",
-    "version": "v1"
+    "version": "v1",
+    "version_module": true
 }

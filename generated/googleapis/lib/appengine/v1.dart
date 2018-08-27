@@ -595,9 +595,9 @@ class AppsAuthorizedDomainsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -610,7 +610,7 @@ class AppsAuthorizedDomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedDomainsResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -621,11 +621,11 @@ class AppsAuthorizedDomainsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1181,13 +1181,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
-  /// [matchingAddress] - A valid IP Address. If set, only rules matching this
-  /// address will be returned. The first returned rule will be the rule that
-  /// fires on requests from this IP.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [matchingAddress] - A valid IP Address. If set, only rules matching this
+  /// address will be returned. The first returned rule will be the rule that
+  /// fires on requests from this IP.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1200,9 +1200,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.String matchingAddress,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String matchingAddress,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1214,14 +1214,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (matchingAddress != null) {
-      _queryParams["matchingAddress"] = [matchingAddress];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (matchingAddress != null) {
+      _queryParams["matchingAddress"] = [matchingAddress];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1368,11 +1368,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1385,9 +1385,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1399,14 +1399,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1730,6 +1730,8 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
   /// [migrateTraffic] - Set to true to gradually shift traffic to one or more
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
@@ -1744,8 +1746,6 @@ class AppsServicesResourceApi {
   /// Splitting Traffic
   /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1758,7 +1758,7 @@ class AppsServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Service request, core.String appsId, core.String servicesId,
-      {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
+      {core.String updateMask, core.bool migrateTraffic, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1775,11 +1775,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (migrateTraffic != null) {
-      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (migrateTraffic != null) {
+      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3370,11 +3370,11 @@ class DebugInstanceRequest {
 
 /// Code and application artifacts used to deploy a version to App Engine.
 class Deployment {
-  /// Options for any Google Cloud Container Builder builds created as a part of
-  /// this deployment.Note that this is orthogonal to the build parameter, where
-  /// the deployment depends on an already existing cloud build. These options
-  /// will only be used if a new build is created, such as when deploying to the
-  /// App Engine flexible environment using files or zip.
+  /// Options for any Google Cloud Build builds created as a part of this
+  /// deployment.Note that this is orthogonal to the build parameter, where the
+  /// deployment depends on an already existing cloud build. These options will
+  /// only be used if a new build is created, such as when deploying to the App
+  /// Engine flexible environment using files or zip.
   CloudBuildOptions cloudBuildOptions;
 
   /// The Docker image for the container that runs the version. Only applicable
@@ -3579,6 +3579,16 @@ class EndpointsApiService {
   /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
   core.String name;
 
+  /// Endpoints rollout strategy. If FIXED, config_id must be specified. If
+  /// MANAGED, config_id must be omitted.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_ROLLOUT_STRATEGY" : Not specified. Defaults to FIXED.
+  /// - "FIXED" : Endpoints service configuration ID will be fixed to the
+  /// configuration ID specified by config_id.
+  /// - "MANAGED" : Endpoints service configuration ID will be updated with each
+  /// rollout.
+  core.String rolloutStrategy;
+
   EndpointsApiService();
 
   EndpointsApiService.fromJson(core.Map _json) {
@@ -3587,6 +3597,9 @@ class EndpointsApiService {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("rolloutStrategy")) {
+      rolloutStrategy = _json["rolloutStrategy"];
     }
   }
 
@@ -3598,6 +3611,32 @@ class EndpointsApiService {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (rolloutStrategy != null) {
+      _json["rolloutStrategy"] = rolloutStrategy;
+    }
+    return _json;
+  }
+}
+
+/// The entrypoint for the application.
+class Entrypoint {
+  /// The format should be a shell command that can be fed to bash -c.
+  core.String shell;
+
+  Entrypoint();
+
+  Entrypoint.fromJson(core.Map _json) {
+    if (_json.containsKey("shell")) {
+      shell = _json["shell"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (shell != null) {
+      _json["shell"] = shell;
     }
     return _json;
   }
@@ -6018,7 +6057,8 @@ class UrlMap {
   /// code and an error message.
   core.String authFailAction;
 
-  /// Level of login required to access this resource.
+  /// Level of login required to access this resource. Not supported for Node.js
+  /// in the App Engine standard environment.
   /// Possible string values are:
   /// - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
   /// - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
@@ -6041,7 +6081,9 @@ class UrlMap {
   /// - "REDIRECT_HTTP_RESPONSE_CODE_307" : 307 Temporary Redirect code.
   core.String redirectHttpResponseCode;
 
-  /// Executes a script to handle the request that matches this URL pattern.
+  /// Executes a script to handle the requests that match this URL pattern. Only
+  /// the auto value is supported for Node.js in the App Engine standard
+  /// environment, for example "script": "auto".
   ScriptHandler script;
 
   /// Security (HTTPS) enforcement for this URL.
@@ -6176,6 +6218,9 @@ class Version {
   /// Endpoints Extensible Service Proxy will be provided to serve the API
   /// implemented by the app.
   EndpointsApiService endpointsApiService;
+
+  /// The entrypoint for the application.
+  Entrypoint entrypoint;
 
   /// App Engine execution environment for this version.Defaults to standard.
   core.String env;
@@ -6322,6 +6367,9 @@ class Version {
       endpointsApiService =
           new EndpointsApiService.fromJson(_json["endpointsApiService"]);
     }
+    if (_json.containsKey("entrypoint")) {
+      entrypoint = new Entrypoint.fromJson(_json["entrypoint"]);
+    }
     if (_json.containsKey("env")) {
       env = _json["env"];
     }
@@ -6436,6 +6484,9 @@ class Version {
     }
     if (endpointsApiService != null) {
       _json["endpointsApiService"] = (endpointsApiService).toJson();
+    }
+    if (entrypoint != null) {
+      _json["entrypoint"] = (entrypoint).toJson();
     }
     if (env != null) {
       _json["env"] = env;
