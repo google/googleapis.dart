@@ -216,7 +216,7 @@ package.
 
   static Package _packageFromYaml(String name, YamlMap values,
       String configFile, List<RestDescription> allApis) {
-    var apis = _listFromYaml(values['apis']);
+    var apis = _listFromYaml(values['apis']).cast<String>();
     var version = values['version'] != null ? values['version'] : '0.1.0-dev';
     var author = values['author'];
     var homepage = values['homepage'];
