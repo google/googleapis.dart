@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta4';
 
-/// Creates and configures Cloud SQL instances, which provide fully-managed
-/// MySQL databases.
+/// Cloud SQL provides the Cloud SQL Admin API, a REST API for administering
+/// your instances programmatically.
 class SqladminApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -481,8 +481,7 @@ class DatabasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the project for which to list Cloud SQL
-  /// instances.
+  /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
@@ -667,7 +666,7 @@ class FlagsResourceApi {
 
   FlagsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// List all available database flags for Google Cloud SQL instances.
+  /// List all available database flags for Cloud SQL instances.
   ///
   /// Request parameters:
   ///
@@ -720,7 +719,7 @@ class InstancesResourceApi {
   /// Add a new trusted Certificate Authority (CA) version for the specified
   /// instance. Required to prepare for a certificate rotation. If a CA version
   /// was previously added but never used in a certificate rotation, this
-  /// operation replaces that version. There can not be more than one CA version
+  /// operation replaces that version. There cannot be more than one CA version
   /// waiting to be rotated in.
   ///
   /// Request parameters:
@@ -773,8 +772,7 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Creates a Cloud SQL instance as a clone of the source instance. The API is
-  /// not ready for Second Generation instances yet.
+  /// Creates a Cloud SQL instance as a clone of the source instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -886,7 +884,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Reserved for future use.
+  /// Demotes the stand-alone instance to be a Cloud SQL read replica for an
+  /// external database server.
   ///
   /// [request] - The metadata request object.
   ///
@@ -944,8 +943,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as
-  /// a MySQL dump file.
+  /// Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL
+  /// dump or CSV file.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1113,7 +1112,7 @@ class InstancesResourceApi {
     return _response.then((data) => new DatabaseInstance.fromJson(data));
   }
 
-  /// Imports data into a Cloud SQL instance from a MySQL dump file in Google
+  /// Imports data into a Cloud SQL instance from a SQL dump or CSV file in
   /// Cloud Storage.
   ///
   /// [request] - The metadata request object.
@@ -1460,9 +1459,7 @@ class InstancesResourceApi {
   }
 
   /// Deletes all client certificates and generates a new server SSL certificate
-  /// for the instance. The changes will not take effect until the instance is
-  /// restarted. Existing instances without a server certificate will need to
-  /// call this once to set a server certificate.
+  /// for the instance.
   ///
   /// Request parameters:
   ///
@@ -2094,13 +2091,12 @@ class SslCertsResourceApi {
     return _response.then((data) => new SslCert.fromJson(data));
   }
 
-  /// Deletes the SSL certificate. The change will not take effect until the
-  /// instance is restarted.
+  /// Deletes the SSL certificate. For First Generation instances, the
+  /// certificate remains valid until the instance is restarted.
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the project that contains the instance to be
-  /// deleted.
+  /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
@@ -2224,8 +2220,7 @@ class SslCertsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the project to which the newly created Cloud SQL
-  /// instances should belong.
+  /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
@@ -2281,8 +2276,7 @@ class SslCertsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the project for which to list Cloud SQL
-  /// instances.
+  /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
@@ -2337,8 +2331,8 @@ class TiersResourceApi {
 
   TiersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists all available service tiers for Google Cloud SQL, for example D1,
-  /// D2. For related information, see Pricing.
+  /// Lists all available machine types (tiers) for Cloud SQL, for example,
+  /// db-n1-standard-1. For related information, see Pricing.
   ///
   /// Request parameters:
   ///
@@ -2961,9 +2955,9 @@ class BinLogCoordinates {
 
 /// Database instance clone context.
 class CloneContext {
-  /// Binary log coordinates, if specified, indentify the the position up to
-  /// which the source instance should be cloned. If not specified, the source
-  /// instance is cloned up to the most recent binary log coordintes.
+  /// Binary log coordinates, if specified, identify the position up to which
+  /// the source instance should be cloned. If not specified, the source
+  /// instance is cloned up to the most recent binary log coordinates.
   BinLogCoordinates binLogCoordinates;
 
   /// Name of the Cloud SQL instance to be created as a clone.
@@ -3660,6 +3654,8 @@ class DemoteMasterMySqlReplicaConfiguration {
 }
 
 /// Options for exporting data as CSV.
+/// Exporting in CSV format using the Cloud SQL Admin API is not supported for
+/// PostgreSQL instances.
 class ExportContextCsvExportOptions {
   /// The select query used to extract the data.
   core.String selectQuery;
@@ -3688,7 +3684,8 @@ class ExportContextSqlExportOptions {
   core.bool schemaOnly;
 
   /// Tables to export, or that were exported, from the specified database. If
-  /// you specify tables, specify one and only one database.
+  /// you specify tables, specify one and only one database. For PostgreSQL
+  /// instances, you can specify only one table.
   core.List<core.String> tables;
 
   ExportContextSqlExportOptions();
@@ -3718,18 +3715,24 @@ class ExportContextSqlExportOptions {
 /// Database instance export context.
 class ExportContext {
   /// Options for exporting data as CSV.
+  /// Exporting in CSV format using the Cloud SQL Admin API is not supported for
+  /// PostgreSQL instances.
   ExportContextCsvExportOptions csvExportOptions;
 
-  /// Databases (for example, guestbook) from which the export is made. If
-  /// fileType is SQL and no database is specified, all databases are exported.
-  /// If fileType is CSV, you can optionally specify at most one database to
-  /// export. If csvExportOptions.selectQuery also specifies the database, this
-  /// field will be ignored.
+  /// Databases to be exported.
+  /// MySQL instances: If fileType is SQL and no database is specified, all
+  /// databases are exported, except for the mysql system database. If fileType
+  /// is CSV, you can specify one database, either by using this property or by
+  /// using the csvExportOptions.selectQuery property, which takes precedence
+  /// over this property.
+  /// PostgreSQL instances: If fileType is SQL, you must specify one database to
+  /// be exported. A fileType of CSV is not supported for PostgreSQL instances.
   core.List<core.String> databases;
 
   /// The file type for the specified uri.
   /// SQL: The file contains SQL statements.
   /// CSV: The file contains CSV data.
+  /// CSV is not supported for PostgreSQL instances.
   core.String fileType;
 
   /// This is always sql#exportContext.
@@ -3955,6 +3958,8 @@ class FlagsListResponse {
 }
 
 /// Options for importing data as CSV.
+/// Importing CSV data using the Cloud SQL Admin API is not supported for
+/// PostgreSQL instances.
 class ImportContextCsvImportOptions {
   /// The columns to which CSV data is imported. If not specified, all columns
   /// of the database table are loaded with CSV data.
@@ -3990,29 +3995,34 @@ class ImportContextCsvImportOptions {
 /// Database instance import context.
 class ImportContext {
   /// Options for importing data as CSV.
+  /// Importing CSV data using the Cloud SQL Admin API is not supported for
+  /// PostgreSQL instances.
   ImportContextCsvImportOptions csvImportOptions;
 
-  /// The database (for example, guestbook) to which the import is made. If
-  /// fileType is SQL and no database is specified, it is assumed that the
-  /// database is specified in the file to be imported. If fileType is CSV, it
-  /// must be specified.
+  /// The target database for the import. If fileType is SQL, this field is
+  /// required only if the import file does not specify a database, and is
+  /// overridden by any database specification in the import file. If fileType
+  /// is CSV, one database must be specified.
   core.String database;
 
   /// The file type for the specified uri.
   /// SQL: The file contains SQL statements.
   /// CSV: The file contains CSV data.
+  /// Importing CSV data using the Cloud SQL Admin API is not supported for
+  /// PostgreSQL instances.
   core.String fileType;
 
   /// The PostgreSQL user for this import operation. Defaults to
-  /// cloudsqlsuperuser. Used only for PostgreSQL instances.
+  /// cloudsqlsuperuser. PostgreSQL instances only.
   core.String importUser;
 
   /// This is always sql#importContext.
   core.String kind;
 
-  /// A path to the file in Google Cloud Storage from which the import is made.
-  /// The URI is in the form gs://bucketName/fileName. Compressed gzip files
-  /// (.gz) are supported when fileType is SQL.
+  /// Path to the import file in Cloud Storage, in the form
+  /// gs://bucketName/fileName. Compressed gzip files (.gz) are supported when
+  /// fileType is SQL. The instance must have write permissions to the bucket
+  /// and read access to the file.
   core.String uri;
 
   ImportContext();
@@ -4349,6 +4359,9 @@ class IpConfiguration {
   /// Whether the instance should be assigned an IP address or not.
   core.bool ipv4Enabled;
 
+  /// Reserved for future use.
+  core.String privateNetwork;
+
   /// Whether SSL connections over IP should be enforced or not.
   core.bool requireSsl;
 
@@ -4362,6 +4375,9 @@ class IpConfiguration {
     }
     if (_json.containsKey("ipv4Enabled")) {
       ipv4Enabled = _json["ipv4Enabled"];
+    }
+    if (_json.containsKey("privateNetwork")) {
+      privateNetwork = _json["privateNetwork"];
     }
     if (_json.containsKey("requireSsl")) {
       requireSsl = _json["requireSsl"];
@@ -4377,6 +4393,9 @@ class IpConfiguration {
     }
     if (ipv4Enabled != null) {
       _json["ipv4Enabled"] = ipv4Enabled;
+    }
+    if (privateNetwork != null) {
+      _json["privateNetwork"] = privateNetwork;
     }
     if (requireSsl != null) {
       _json["requireSsl"] = requireSsl;
@@ -4443,7 +4462,7 @@ class LocationPreference {
   /// This is always sql#locationPreference.
   core.String kind;
 
-  /// The preferred Compute Engine zone (e.g. us-centra1-a, us-central1-b,
+  /// The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b,
   /// etc.).
   core.String zone;
 
@@ -4681,10 +4700,9 @@ class OnPremisesConfiguration {
   }
 }
 
-/// An Operations resource contains information about database instance
-/// operations such as create, delete, and restart. Operations resources are
-/// created in response to operations that were initiated; you never create them
-/// directly.
+/// An Operation resource. For successful operations that return an Operation
+/// resource, only the fields relevant to the operation are populated in the
+/// resource.
 class Operation {
   /// The time this operation finished in UTC timezone in RFC 3339 format, for
   /// example 2012-11-15T16:19:00.094Z.
@@ -5482,8 +5500,7 @@ class SslCertsCreateEphemeralRequest {
 /// SslCerts insert request.
 class SslCertsInsertRequest {
   /// User supplied name. Must be a distinct name from the other certificates
-  /// for this instance. New certificates will not be usable until the instance
-  /// is restarted.
+  /// for this instance.
   core.String commonName;
 
   SslCertsInsertRequest();
@@ -5606,8 +5623,8 @@ class Tier {
   /// The applicable regions for this tier.
   core.List<core.String> region;
 
-  /// An identifier for the service tier, for example D1, D2 etc. For related
-  /// information, see Pricing.
+  /// An identifier for the machine type, for example, db-n1-standard-1. For
+  /// related information, see Pricing.
   core.String tier;
 
   Tier();

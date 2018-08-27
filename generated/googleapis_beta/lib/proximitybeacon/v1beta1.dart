@@ -754,18 +754,18 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
-  /// [namespacedType] - Specifies the namespace and type of attachments to
-  /// delete in
-  /// `namespace/type` format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
-  /// Optional.
-  ///
   /// [projectId] - The project id to delete beacon attachments under. This
   /// field can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
   /// may have multiple attachments with multiple namespaces. If "*" is
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
+  /// Optional.
+  ///
+  /// [namespacedType] - Specifies the namespace and type of attachments to
+  /// delete in
+  /// `namespace/type` format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
   /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -779,8 +779,8 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName,
-      {core.String namespacedType,
-      core.String projectId,
+      {core.String projectId,
+      core.String namespacedType,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -792,11 +792,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

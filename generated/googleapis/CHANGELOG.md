@@ -1,3 +1,85 @@
+## 0.52.0
+
+* [api-new] dfareporting:v3_1
+* [api-new] dfareporting:v3_2
+* [api-new] dlp:v2
+* [api-new] cloudprofiler:v2
+* [api-new] firestore:v1
+* [api-new] serviceusage:v1
+* [api-new] tpu:v1
+* [api-new] youtubeanalytics:v2
+* [api-new] dialogflow:v2
+* [api-new] pagespeedonline:v4
+* [api-new] indexing:v3
+* [api-new] jobs:v2
+* [api-new] jobs:v3
+* [api-new] videointelligence:v1
+* [api-new] cloudresourcemanager:v2
+* [api-new] texttospeech:v1
+* [api-new] iamcredentials:v1
+* [api-new] chat:v1
+* [api-new] composer:v1
+* [api-new] androidpublisher:v3
+* [api-new] servicebroker:v1
+* [api] adsense:v1_4
+* [api] spanner:v1
+* [api] poly:v1
+* [api] vision:v1
+* [api] vault:v1
+* [api] gmail:v1
+* [api] logging:v2
+* [api] cloudbilling:v1
+* [api] container:v1
+* [api] ml:v1
+* [api] sourcerepo:v1
+* [api] dataproc:v1
+* [api] iam:v1
+* [api] androiddeviceprovisioning:v1
+* [api] firebaserules:v1
+* [api] serviceconsumermanagement:v1
+* [api] cloudiot:v1
+* [api] monitoring:v3
+* [api] books:v1
+* [api] cloudfunctions:v1
+* [api] servicecontrol:v1
+* [api] drive:v2
+* [api] drive:v3
+* [api] content:v2
+* [api] content:v2sandbox
+* [api] clouddebugger:v2
+* [api] testing:v1
+* [api] cloudbuild:v1
+* [api] serviceuser:v1
+* [api] cloudresourcemanager:v1
+* [api] servicemanagement:v1
+* [api] genomics:v1
+* [api] script:v1
+* [api] admin:directory_v1
+* [api] groupssettings:v1
+* [api] pubsub:v1
+* [api] datastore:v1
+* [api] classroom:v1
+* [api] analytics:v3
+* [api] androidmanagement:v1
+* [api] androidpublisher:v2
+* [api] cloudkms:v1
+* [api] bigquery:v2
+* [api] civicinfo:v2
+* [api] appengine:v1
+* [api] compute:v1
+* [api-breaking] dns:v1
+* [api-breaking] serviceconsumermanagement:v1
+* [api-breaking] cloudiot:v1
+* [api-breaking] script:v1
+* [api-breaking] androidenterprise:v1
+* [api-breaking] civicinfo:v2
+* [api-removed] firebaseremoteconfig:v1
+* [api-removed] prediction:v1_6
+
+## 0.51.1
+
+* Support Dart 2 stable.
+
 ## 0.51.0
 
 * [api-new] cloudresourcemanager:v2

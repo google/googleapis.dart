@@ -4337,7 +4337,7 @@ class Correction {
 
 /// A creative and its classification data.
 ///
-/// Next ID: 35
+/// Next ID: 38
 class Creative {
   /// The account that this creative belongs to.
   /// Can be used to filter the response of the
@@ -4392,6 +4392,9 @@ class Creative {
   /// - "APPROVED" : The creative has been approved.
   /// - "DISAPPROVED" : The creative has been disapproved.
   core.String dealsStatus;
+
+  /// The set of declared destination URLs for the creative.
+  core.List<core.String> declaredClickThroughUrls;
 
   /// @OutputOnly Detected advertiser IDs, if any.
   core.List<core.String> detectedAdvertiserIds;
@@ -4506,6 +4509,10 @@ class Creative {
     if (_json.containsKey("dealsStatus")) {
       dealsStatus = _json["dealsStatus"];
     }
+    if (_json.containsKey("declaredClickThroughUrls")) {
+      declaredClickThroughUrls =
+          (_json["declaredClickThroughUrls"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("detectedAdvertiserIds")) {
       detectedAdvertiserIds =
           (_json["detectedAdvertiserIds"] as core.List).cast<core.String>();
@@ -4596,6 +4603,9 @@ class Creative {
     }
     if (dealsStatus != null) {
       _json["dealsStatus"] = dealsStatus;
+    }
+    if (declaredClickThroughUrls != null) {
+      _json["declaredClickThroughUrls"] = declaredClickThroughUrls;
     }
     if (detectedAdvertiserIds != null) {
       _json["detectedAdvertiserIds"] = detectedAdvertiserIds;
@@ -6664,11 +6674,21 @@ class ServingRestriction {
   /// The contexts for the restriction.
   core.List<ServingContext> contexts;
 
+  /// Disapproval bound to this restriction.
+  /// Only present if status=DISAPPROVED.
+  /// Can be used to filter the response of the
+  /// creatives.list
+  /// method.
+  Disapproval disapproval;
+
   /// Any disapprovals bound to this restriction.
   /// Only present if status=DISAPPROVED.
   /// Can be used to filter the response of the
   /// creatives.list
   /// method.
+  /// Deprecated; please use
+  /// disapproval
+  /// field instead.
   core.List<Disapproval> disapprovalReasons;
 
   /// The status of the creative in this context (for example, it has been
@@ -6687,6 +6707,9 @@ class ServingRestriction {
           .map<ServingContext>((value) => new ServingContext.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("disapproval")) {
+      disapproval = new Disapproval.fromJson(_json["disapproval"]);
+    }
     if (_json.containsKey("disapprovalReasons")) {
       disapprovalReasons = (_json["disapprovalReasons"] as core.List)
           .map<Disapproval>((value) => new Disapproval.fromJson(value))
@@ -6702,6 +6725,9 @@ class ServingRestriction {
         new core.Map<core.String, core.Object>();
     if (contexts != null) {
       _json["contexts"] = contexts.map((value) => (value).toJson()).toList();
+    }
+    if (disapproval != null) {
+      _json["disapproval"] = (disapproval).toJson();
     }
     if (disapprovalReasons != null) {
       _json["disapprovalReasons"] =

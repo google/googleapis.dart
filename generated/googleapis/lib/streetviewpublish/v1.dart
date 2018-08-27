@@ -461,16 +461,16 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [photoIds] - Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
+  ///
   /// [view] - Specifies if a download URL for the photo bytes should be
   /// returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-  ///
-  /// [photoIds] - Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -483,8 +483,8 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String view,
-      core.List<core.String> photoIds,
+      {core.List<core.String> photoIds,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -493,11 +493,11 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (photoIds != null) {
       _queryParams["photoIds"] = photoIds;
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

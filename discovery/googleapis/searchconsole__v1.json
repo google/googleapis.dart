@@ -32,13 +32,23 @@
             "location": "query",
             "type": "string"
         },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -52,16 +62,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -81,13 +81,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         }
@@ -117,7 +117,7 @@
             }
         }
     },
-    "revision": "20180601",
+    "revision": "20180825",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "MobileFriendlyIssue": {
@@ -241,21 +241,6 @@
             },
             "type": "object"
         },
-        "RunMobileFriendlyTestRequest": {
-            "description": "Mobile-friendly test request.",
-            "id": "RunMobileFriendlyTestRequest",
-            "properties": {
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
-                },
-                "requestScreenshot": {
-                    "description": "Whether or not screenshot is requested. Default is false.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
         "Image": {
             "description": "Describe image data.",
             "id": "Image",
@@ -271,9 +256,25 @@
                 }
             },
             "type": "object"
+        },
+        "RunMobileFriendlyTestRequest": {
+            "description": "Mobile-friendly test request.",
+            "id": "RunMobileFriendlyTestRequest",
+            "properties": {
+                "url": {
+                    "description": "URL for inspection.",
+                    "type": "string"
+                },
+                "requestScreenshot": {
+                    "description": "Whether or not screenshot is requested. Default is false.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
         }
     },
     "servicePath": "",
     "title": "Google Search Console URL Testing Tools API",
-    "version": "v1"
+    "version": "v1",
+    "version_module": true
 }

@@ -24,39 +24,23 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         },
@@ -66,18 +50,23 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
         "callback": {
             "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -113,6 +102,80 @@
     },
     "protocol": "rest",
     "resources": {
+        "beaconinfo": {
+            "methods": {
+                "getforobserved": {
+                    "description": "Given one or more beacon observations, returns any beacon information\nand attachments accessible to your application. Authorize by using the\n[API key](https://developers.google.com/beacons/proximity/get-started#request_a_browser_api_key)\nfor the application.",
+                    "httpMethod": "POST",
+                    "id": "proximitybeacon.beaconinfo.getforobserved",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/beaconinfo:getforobserved",
+                    "request": {
+                        "$ref": "GetInfoForObservedBeaconsRequest"
+                    },
+                    "response": {
+                        "$ref": "GetInfoForObservedBeaconsResponse"
+                    }
+                }
+            }
+        },
+        "namespaces": {
+            "methods": {
+                "update": {
+                    "description": "Updates the information about the specified namespace. Only the namespace\nvisibility can be updated.",
+                    "httpMethod": "PUT",
+                    "id": "proximitybeacon.namespaces.update",
+                    "parameterOrder": [
+                        "namespaceName"
+                    ],
+                    "parameters": {
+                        "namespaceName": {
+                            "description": "Resource name of this namespace. Namespaces names have the format:\n<code>namespaces/<var>namespace</var></code>.",
+                            "location": "path",
+                            "pattern": "^namespaces/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project id of the namespace to update. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/{+namespaceName}",
+                    "request": {
+                        "$ref": "Namespace"
+                    },
+                    "response": {
+                        "$ref": "Namespace"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                    ]
+                },
+                "list": {
+                    "description": "Lists all attachment namespaces owned by your Google Developers Console\nproject. Attachment data associated with a beacon must include a\nnamespaced type, and the namespace must be owned by your project.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **viewer**, **Is owner** or **Can edit**\npermissions in the Google Developers Console project.",
+                    "httpMethod": "GET",
+                    "id": "proximitybeacon.namespaces.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "projectId": {
+                            "description": "The project id to list namespaces under.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/namespaces",
+                    "response": {
+                        "$ref": "ListNamespacesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                    ]
+                }
+            }
+        },
         "v1beta1": {
             "methods": {
                 "getEidparams": {
@@ -133,6 +196,96 @@
         },
         "beacons": {
             "methods": {
+                "get": {
+                    "description": "Returns detailed information about the specified beacon.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **viewer**, **Is owner** or **Can edit**\npermissions in the Google Developers Console project.\n\nRequests may supply an Eddystone-EID beacon name in the form:\n`beacons/4!beaconId` where the `beaconId` is the base16 ephemeral ID\nbroadcast by the beacon. The returned `Beacon` object will contain the\nbeacon's stable Eddystone-UID. Clients not authorized to resolve the\nbeacon's ephemeral Eddystone-EID broadcast will receive an error.",
+                    "httpMethod": "GET",
+                    "id": "proximitybeacon.beacons.get",
+                    "parameterOrder": [
+                        "beaconName"
+                    ],
+                    "parameters": {
+                        "beaconName": {
+                            "description": "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
+                            "location": "path",
+                            "pattern": "^beacons/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project id of the beacon to request. If the project id is not specified\nthen the project making the request is used. The project id must match the\nproject that owns the beacon.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/{+beaconName}",
+                    "response": {
+                        "$ref": "Beacon"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                    ]
+                },
+                "update": {
+                    "description": "Updates the information about the specified beacon. **Any field that you do\nnot populate in the submitted beacon will be permanently erased**, so you\nshould follow the \"read, modify, write\" pattern to avoid inadvertently\ndestroying data.\n\nChanges to the beacon status via this method will be  silently ignored.\nTo update beacon status, use the separate methods on this API for\nactivation, deactivation, and decommissioning.\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
+                    "httpMethod": "PUT",
+                    "id": "proximitybeacon.beacons.update",
+                    "parameterOrder": [
+                        "beaconName"
+                    ],
+                    "parameters": {
+                        "projectId": {
+                            "description": "The project id of the beacon to update. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "beaconName": {
+                            "description": "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.\n\nThis field must be left empty when registering. After reading a beacon,\nclients can use the name for future operations.",
+                            "location": "path",
+                            "pattern": "^beacons/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/{+beaconName}",
+                    "request": {
+                        "$ref": "Beacon"
+                    },
+                    "response": {
+                        "$ref": "Beacon"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                    ]
+                },
+                "decommission": {
+                    "description": "Decommissions the specified beacon in the service. This beacon will no\nlonger be returned from `beaconinfo.getforobserved`. This operation is\npermanent -- you will not be able to re-register a beacon with this ID\nagain.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
+                    "httpMethod": "POST",
+                    "id": "proximitybeacon.beacons.decommission",
+                    "parameterOrder": [
+                        "beaconName"
+                    ],
+                    "parameters": {
+                        "projectId": {
+                            "description": "The project id of the beacon to decommission. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "beaconName": {
+                            "description": "Beacon that should be decommissioned. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID of the beacon's \"stable\" UID.\nRequired.",
+                            "location": "path",
+                            "pattern": "^beacons/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/{+beaconName}:decommission",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                    ]
+                },
                 "delete": {
                     "description": "Deletes the specified beacon including all diagnostics data for the beacon\nas well as any attachments on the beacon (including those belonging to\nother projects). This operation cannot be undone.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
                     "httpMethod": "DELETE",
@@ -170,16 +323,16 @@
                         "beaconName"
                     ],
                     "parameters": {
+                        "projectId": {
+                            "description": "The project id of the beacon to deactivate. If the project id is not\nspecified then the project making the request is used. The project id must\nmatch the project that owns the beacon.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "beaconName": {
                             "description": "Beacon that should be deactivated. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
                             "location": "path",
                             "pattern": "^beacons/[^/]+$",
                             "required": true,
-                            "type": "string"
-                        },
-                        "projectId": {
-                            "description": "The project id of the beacon to deactivate. If the project id is not\nspecified then the project making the request is used. The project id must\nmatch the project that owns the beacon.\nOptional.",
-                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -258,110 +411,20 @@
                         "beaconName"
                     ],
                     "parameters": {
+                        "projectId": {
+                            "description": "The project id of the beacon to activate. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "beaconName": {
                             "description": "Beacon that should be activated. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
                             "location": "path",
                             "pattern": "^beacons/[^/]+$",
                             "required": true,
                             "type": "string"
-                        },
-                        "projectId": {
-                            "description": "The project id of the beacon to activate. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
-                            "location": "query",
-                            "type": "string"
                         }
                     },
                     "path": "v1beta1/{+beaconName}:activate",
-                    "response": {
-                        "$ref": "Empty"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                    ]
-                },
-                "get": {
-                    "description": "Returns detailed information about the specified beacon.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **viewer**, **Is owner** or **Can edit**\npermissions in the Google Developers Console project.\n\nRequests may supply an Eddystone-EID beacon name in the form:\n`beacons/4!beaconId` where the `beaconId` is the base16 ephemeral ID\nbroadcast by the beacon. The returned `Beacon` object will contain the\nbeacon's stable Eddystone-UID. Clients not authorized to resolve the\nbeacon's ephemeral Eddystone-EID broadcast will receive an error.",
-                    "httpMethod": "GET",
-                    "id": "proximitybeacon.beacons.get",
-                    "parameterOrder": [
-                        "beaconName"
-                    ],
-                    "parameters": {
-                        "beaconName": {
-                            "description": "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
-                            "location": "path",
-                            "pattern": "^beacons/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "projectId": {
-                            "description": "The project id of the beacon to request. If the project id is not specified\nthen the project making the request is used. The project id must match the\nproject that owns the beacon.\nOptional.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1beta1/{+beaconName}",
-                    "response": {
-                        "$ref": "Beacon"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                    ]
-                },
-                "update": {
-                    "description": "Updates the information about the specified beacon. **Any field that you do\nnot populate in the submitted beacon will be permanently erased**, so you\nshould follow the \"read, modify, write\" pattern to avoid inadvertently\ndestroying data.\n\nChanges to the beacon status via this method will be  silently ignored.\nTo update beacon status, use the separate methods on this API for\nactivation, deactivation, and decommissioning.\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
-                    "httpMethod": "PUT",
-                    "id": "proximitybeacon.beacons.update",
-                    "parameterOrder": [
-                        "beaconName"
-                    ],
-                    "parameters": {
-                        "beaconName": {
-                            "description": "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.\n\nThis field must be left empty when registering. After reading a beacon,\nclients can use the name for future operations.",
-                            "location": "path",
-                            "pattern": "^beacons/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "projectId": {
-                            "description": "The project id of the beacon to update. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1beta1/{+beaconName}",
-                    "request": {
-                        "$ref": "Beacon"
-                    },
-                    "response": {
-                        "$ref": "Beacon"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                    ]
-                },
-                "decommission": {
-                    "description": "Decommissions the specified beacon in the service. This beacon will no\nlonger be returned from `beaconinfo.getforobserved`. This operation is\npermanent -- you will not be able to re-register a beacon with this ID\nagain.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
-                    "httpMethod": "POST",
-                    "id": "proximitybeacon.beacons.decommission",
-                    "parameterOrder": [
-                        "beaconName"
-                    ],
-                    "parameters": {
-                        "beaconName": {
-                            "description": "Beacon that should be decommissioned. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID of the beacon's \"stable\" UID.\nRequired.",
-                            "location": "path",
-                            "pattern": "^beacons/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "projectId": {
-                            "description": "The project id of the beacon to decommission. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1beta1/{+beaconName}:decommission",
                     "response": {
                         "$ref": "Empty"
                     },
@@ -428,72 +491,6 @@
                 },
                 "attachments": {
                     "methods": {
-                        "create": {
-                            "description": "Associates the given data with the specified beacon. Attachment data must\ncontain two parts:\n<ul>\n<li>A namespaced type.</li>\n<li>The actual attachment data itself.</li>\n</ul>\nThe namespaced type consists of two parts, the namespace and the type.\nThe namespace must be one of the values returned by the `namespaces`\nendpoint, while the type can be a string of any characters except for the\nforward slash (`/`) up to 100 characters in length.\n\nAttachment data can be up to 1024 bytes long.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
-                            "httpMethod": "POST",
-                            "id": "proximitybeacon.beacons.attachments.create",
-                            "parameterOrder": [
-                                "beaconName"
-                            ],
-                            "parameters": {
-                                "beaconName": {
-                                    "description": "Beacon on which the attachment should be created. A beacon name has the\nformat \"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast\nby the beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
-                                    "location": "path",
-                                    "pattern": "^beacons/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "projectId": {
-                                    "description": "The project id of the project the attachment will belong to. If\nthe project id is not specified then the project making the request\nis used.\nOptional.",
-                                    "location": "query",
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta1/{+beaconName}/attachments",
-                            "request": {
-                                "$ref": "BeaconAttachment"
-                            },
-                            "response": {
-                                "$ref": "BeaconAttachment"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                            ]
-                        },
-                        "batchDelete": {
-                            "description": "Deletes multiple attachments on a given beacon. This operation is\npermanent and cannot be undone.\n\nYou can optionally specify `namespacedType` to choose which attachments\nshould be deleted. If you do not specify `namespacedType`,  all your\nattachments on the given beacon will be deleted. You also may explicitly\nspecify `*/*` to delete all.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
-                            "httpMethod": "POST",
-                            "id": "proximitybeacon.beacons.attachments.batchDelete",
-                            "parameterOrder": [
-                                "beaconName"
-                            ],
-                            "parameters": {
-                                "namespacedType": {
-                                    "description": "Specifies the namespace and type of attachments to delete in\n`namespace/type` format. Accepts `*/*` to specify\n\"all types in all namespaces\".\nOptional.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "beaconName": {
-                                    "description": "The beacon whose attachments should be deleted. A beacon name has the\nformat \"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast\nby the beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
-                                    "location": "path",
-                                    "pattern": "^beacons/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "projectId": {
-                                    "description": "The project id to delete beacon attachments under. This field can be\nused when \"*\" is specified to mean all attachment namespaces. Projects\nmay have multiple attachments with multiple namespaces. If \"*\" is\nspecified and the projectId string is empty, then the project\nmaking the request is used.\nOptional.",
-                                    "location": "query",
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta1/{+beaconName}/attachments:batchDelete",
-                            "response": {
-                                "$ref": "DeleteAttachmentsResponse"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                            ]
-                        },
                         "delete": {
                             "description": "Deletes the specified attachment for the given beacon. Each attachment has\na unique attachment name (`attachmentName`) which is returned when you\nfetch the attachment data via this API. You specify this with the delete\nrequest to control which attachment is removed. This operation cannot be\nundone.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
                             "httpMethod": "DELETE",
@@ -502,16 +499,16 @@
                                 "attachmentName"
                             ],
                             "parameters": {
-                                "projectId": {
-                                    "description": "The project id of the attachment to delete. If not provided, the project\nthat is making the request is used.\nOptional.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "attachmentName": {
                                     "description": "The attachment name (`attachmentName`) of\nthe attachment to remove. For example:\n`beacons/3!893737abc9/attachments/c5e937-af0-494-959-ec49d12738`. For\nEddystone-EID beacons, the beacon ID portion (`3!893737abc9`) may be the\nbeacon's current EID, or its \"stable\" Eddystone-UID.\nRequired.",
                                     "location": "path",
                                     "pattern": "^beacons/[^/]+/attachments/[^/]+$",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "projectId": {
+                                    "description": "The project id of the attachment to delete. If not provided, the project\nthat is making the request is used.\nOptional.",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -556,89 +553,135 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/userlocation.beacon.registry"
                             ]
-                        }
-                    }
-                }
-            }
-        },
-        "beaconinfo": {
-            "methods": {
-                "getforobserved": {
-                    "description": "Given one or more beacon observations, returns any beacon information\nand attachments accessible to your application. Authorize by using the\n[API key](https://developers.google.com/beacons/proximity/get-started#request_a_browser_api_key)\nfor the application.",
-                    "httpMethod": "POST",
-                    "id": "proximitybeacon.beaconinfo.getforobserved",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/beaconinfo:getforobserved",
-                    "request": {
-                        "$ref": "GetInfoForObservedBeaconsRequest"
-                    },
-                    "response": {
-                        "$ref": "GetInfoForObservedBeaconsResponse"
-                    }
-                }
-            }
-        },
-        "namespaces": {
-            "methods": {
-                "list": {
-                    "description": "Lists all attachment namespaces owned by your Google Developers Console\nproject. Attachment data associated with a beacon must include a\nnamespaced type, and the namespace must be owned by your project.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **viewer**, **Is owner** or **Can edit**\npermissions in the Google Developers Console project.",
-                    "httpMethod": "GET",
-                    "id": "proximitybeacon.namespaces.list",
-                    "parameterOrder": [],
-                    "parameters": {
-                        "projectId": {
-                            "description": "The project id to list namespaces under.\nOptional.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1beta1/namespaces",
-                    "response": {
-                        "$ref": "ListNamespacesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                    ]
-                },
-                "update": {
-                    "description": "Updates the information about the specified namespace. Only the namespace\nvisibility can be updated.",
-                    "httpMethod": "PUT",
-                    "id": "proximitybeacon.namespaces.update",
-                    "parameterOrder": [
-                        "namespaceName"
-                    ],
-                    "parameters": {
-                        "namespaceName": {
-                            "description": "Resource name of this namespace. Namespaces names have the format:\n<code>namespaces/<var>namespace</var></code>.",
-                            "location": "path",
-                            "pattern": "^namespaces/[^/]+$",
-                            "required": true,
-                            "type": "string"
                         },
-                        "projectId": {
-                            "description": "The project id of the namespace to update. If the project id is not\nspecified then the project making the request is used. The project id\nmust match the project that owns the beacon.\nOptional.",
-                            "location": "query",
-                            "type": "string"
+                        "create": {
+                            "description": "Associates the given data with the specified beacon. Attachment data must\ncontain two parts:\n<ul>\n<li>A namespaced type.</li>\n<li>The actual attachment data itself.</li>\n</ul>\nThe namespaced type consists of two parts, the namespace and the type.\nThe namespace must be one of the values returned by the `namespaces`\nendpoint, while the type can be a string of any characters except for the\nforward slash (`/`) up to 100 characters in length.\n\nAttachment data can be up to 1024 bytes long.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
+                            "httpMethod": "POST",
+                            "id": "proximitybeacon.beacons.attachments.create",
+                            "parameterOrder": [
+                                "beaconName"
+                            ],
+                            "parameters": {
+                                "beaconName": {
+                                    "description": "Beacon on which the attachment should be created. A beacon name has the\nformat \"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast\nby the beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
+                                    "location": "path",
+                                    "pattern": "^beacons/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "projectId": {
+                                    "description": "The project id of the project the attachment will belong to. If\nthe project id is not specified then the project making the request\nis used.\nOptional.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+beaconName}/attachments",
+                            "request": {
+                                "$ref": "BeaconAttachment"
+                            },
+                            "response": {
+                                "$ref": "BeaconAttachment"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                            ]
+                        },
+                        "batchDelete": {
+                            "description": "Deletes multiple attachments on a given beacon. This operation is\npermanent and cannot be undone.\n\nYou can optionally specify `namespacedType` to choose which attachments\nshould be deleted. If you do not specify `namespacedType`,  all your\nattachments on the given beacon will be deleted. You also may explicitly\nspecify `*/*` to delete all.\n\nAuthenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2)\nfrom a signed-in user with **Is owner** or **Can edit** permissions in the\nGoogle Developers Console project.",
+                            "httpMethod": "POST",
+                            "id": "proximitybeacon.beacons.attachments.batchDelete",
+                            "parameterOrder": [
+                                "beaconName"
+                            ],
+                            "parameters": {
+                                "projectId": {
+                                    "description": "The project id to delete beacon attachments under. This field can be\nused when \"*\" is specified to mean all attachment namespaces. Projects\nmay have multiple attachments with multiple namespaces. If \"*\" is\nspecified and the projectId string is empty, then the project\nmaking the request is used.\nOptional.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "namespacedType": {
+                                    "description": "Specifies the namespace and type of attachments to delete in\n`namespace/type` format. Accepts `*/*` to specify\n\"all types in all namespaces\".\nOptional.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "beaconName": {
+                                    "description": "The beacon whose attachments should be deleted. A beacon name has the\nformat \"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast\nby the beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`\nfor AltBeacon. For Eddystone-EID beacons, you may use either the\ncurrent EID or the beacon's \"stable\" UID.\nRequired.",
+                                    "location": "path",
+                                    "pattern": "^beacons/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+beaconName}/attachments:batchDelete",
+                            "response": {
+                                "$ref": "DeleteAttachmentsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/userlocation.beacon.registry"
+                            ]
                         }
-                    },
-                    "path": "v1beta1/{+namespaceName}",
-                    "request": {
-                        "$ref": "Namespace"
-                    },
-                    "response": {
-                        "$ref": "Namespace"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/userlocation.beacon.registry"
-                    ]
+                    }
                 }
             }
         }
     },
-    "revision": "20180521",
+    "revision": "20180731",
     "rootUrl": "https://proximitybeacon.googleapis.com/",
     "schemas": {
+        "EphemeralIdRegistration": {
+            "description": "Write-only registration parameters for beacons using Eddystone-EID format.\nTwo ways of securely registering an Eddystone-EID beacon with the service\nare supported:\n\n1. Perform an ECDH key exchange via this API, including a previous call\n   to `GET /v1beta1/eidparams`. In this case the fields\n   `beacon_ecdh_public_key` and `service_ecdh_public_key` should be\n   populated and `beacon_identity_key` should not be populated. This\n   method ensures that only the two parties in the ECDH key exchange can\n   compute the identity key, which becomes a secret between them.\n2. Derive or obtain the beacon's identity key via other secure means\n   (perhaps an ECDH key exchange between the beacon and a mobile device\n   or any other secure method), and then submit the resulting identity key\n   to the service. In this case `beacon_identity_key` field should be\n   populated, and neither of `beacon_ecdh_public_key` nor\n   `service_ecdh_public_key` fields should be. The security of this method\n   depends on how securely the parties involved (in particular the\n   bluetooth client) handle the identity key, and obviously on how\n   securely the identity key was generated.\n\nSee [the Eddystone specification](https://github.com/google/eddystone/tree/master/eddystone-eid) at GitHub.",
+            "id": "EphemeralIdRegistration",
+            "properties": {
+                "serviceEcdhPublicKey": {
+                    "description": "The service's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `beacon_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "beaconIdentityKey": {
+                    "description": "The private key of the beacon. If this field is populated,\n`beacon_ecdh_public_key` and `service_ecdh_public_key` must not be\npopulated.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "initialEid": {
+                    "description": "An initial ephemeral ID calculated using the clock value submitted as\n`initial_clock_value`, and the secret key generated by the\nDiffie-Hellman key exchange using `service_ecdh_public_key` and\n`service_ecdh_public_key`. This initial EID value will be used by the\nservice to confirm that the key exchange process was successful.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "beaconEcdhPublicKey": {
+                    "description": "The beacon's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `service_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "initialClockValue": {
+                    "description": "The initial clock value of the beacon. The beacon's clock must have\nbegun counting at this value immediately prior to transmitting this\nvalue to the resolving service. Significant delay in transmitting this\nvalue to the service risks registration or resolution failures. If a\nvalue is not provided, the default is zero.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "rotationPeriodExponent": {
+                    "description": "Indicates the nominal period between each rotation of the beacon's\nephemeral ID. \"Nominal\" because the beacon should randomize the\nactual interval. See [the spec at github](https://github.com/google/eddystone/tree/master/eddystone-eid)\nfor details. This value corresponds to a power-of-two scaler on the\nbeacon's clock: when the scaler value is K, the beacon will begin\nbroadcasting a new ephemeral ID on average every 2^K seconds.",
+                    "format": "uint32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "LatLng": {
+            "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n<a href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\">WGS84\nstandard</a>. Values must be within normalized ranges.",
+            "id": "LatLng",
+            "properties": {
+                "latitude": {
+                    "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
+                    "format": "double",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "ListBeaconAttachmentsResponse": {
             "description": "Response to `ListBeaconAttachments` that contains the requested attachments.",
             "id": "ListBeaconAttachmentsResponse",
@@ -759,6 +802,11 @@
             "description": "Represents one beacon observed once.",
             "id": "Observation",
             "properties": {
+                "telemetry": {
+                    "description": "The array of telemetry bytes received from the beacon. The server is\nresponsible for parsing it. This field may frequently be empty, as\nwith a beacon that transmits telemetry only occasionally.",
+                    "format": "byte",
+                    "type": "string"
+                },
                 "timestampMs": {
                     "description": "Time when the beacon was observed.",
                     "format": "google-datetime",
@@ -767,11 +815,6 @@
                 "advertisedId": {
                     "$ref": "AdvertisedId",
                     "description": "The ID advertised by the beacon the client has encountered.\n\nIf the submitted `advertised_id` type is Eddystone-EID, then the client\nmust be authorized to resolve the given beacon. Otherwise no data will be\nreturned for that beacon.\nRequired."
-                },
-                "telemetry": {
-                    "description": "The array of telemetry bytes received from the beacon. The server is\nresponsible for parsing it. This field may frequently be empty, as\nwith a beacon that transmits telemetry only occasionally.",
-                    "format": "byte",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -812,6 +855,18 @@
             "description": "Details of a beacon device.",
             "id": "Beacon",
             "properties": {
+                "latLng": {
+                    "$ref": "LatLng",
+                    "description": "The location of the beacon, expressed as a latitude and longitude pair.\nThis location is given when the beacon is registered or updated. It does\nnot necessarily indicate the actual current location of the beacon.\nOptional."
+                },
+                "description": {
+                    "description": "Free text used to identify and describe the beacon. Maximum length 140\ncharacters.\nOptional.",
+                    "type": "string"
+                },
+                "placeId": {
+                    "description": "The [Google Places API](/places/place-id) Place ID of the place where\nthe beacon is deployed. This is given when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional.",
+                    "type": "string"
+                },
                 "properties": {
                     "additionalProperties": {
                         "type": "string"
@@ -873,18 +928,6 @@
                 "ephemeralIdRegistration": {
                     "$ref": "EphemeralIdRegistration",
                     "description": "Write-only registration parameters for beacons using Eddystone-EID\n(remotely resolved ephemeral ID) format. This information will not be\npopulated in API responses. When submitting this data, the `advertised_id`\nfield must contain an ID of type Eddystone-UID. Any other ID type will\nresult in an error."
-                },
-                "latLng": {
-                    "$ref": "LatLng",
-                    "description": "The location of the beacon, expressed as a latitude and longitude pair.\nThis location is given when the beacon is registered or updated. It does\nnot necessarily indicate the actual current location of the beacon.\nOptional."
-                },
-                "placeId": {
-                    "description": "The [Google Places API](/places/place-id) Place ID of the place where\nthe beacon is deployed. This is given when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional.",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Free text used to identify and describe the beacon. Maximum length 140\ncharacters.\nOptional.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -934,11 +977,6 @@
             "description": "Represents a whole calendar date, e.g. date of birth. The time of day and\ntime zone are either specified elsewhere or are not significant. The date\nis relative to the Proleptic Gregorian Calendar. The day may be 0 to\nrepresent a year and month where the day is not significant, e.g. credit card\nexpiration date. The year may be 0 to represent a month and day independent\nof year, e.g. anniversary date. Related types are google.type.TimeOfDay\nand `google.protobuf.Timestamp`.",
             "id": "Date",
             "properties": {
-                "month": {
-                    "description": "Month of year. Must be from 1 to 12, or 0 if specifying a date without a\nmonth.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "year": {
                     "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
                     "format": "int32",
@@ -946,6 +984,11 @@
                 },
                 "day": {
                     "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year/month where the day is not significant.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "month": {
+                    "description": "Month of year. Must be from 1 to 12, or 0 if specifying a date without a\nmonth.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -1054,11 +1097,6 @@
             "description": "Project-specific data associated with a beacon.",
             "id": "BeaconAttachment",
             "properties": {
-                "data": {
-                    "description": "An opaque data container for client-provided data. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses.\nRequired.",
-                    "format": "byte",
-                    "type": "string"
-                },
                 "creationTimeMs": {
                     "description": "The UTC time when this attachment was created, in milliseconds since the\nUNIX epoch.",
                     "format": "google-datetime",
@@ -1076,60 +1114,11 @@
                 "namespacedType": {
                     "description": "Specifies what kind of attachment this is. Tells a client how to\ninterpret the `data` field. Format is <var>namespace/type</var>. Namespace\nprovides type separation between clients. Type describes the type of\n`data`, for use by the client when parsing the `data` field.\nRequired.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "EphemeralIdRegistration": {
-            "description": "Write-only registration parameters for beacons using Eddystone-EID format.\nTwo ways of securely registering an Eddystone-EID beacon with the service\nare supported:\n\n1. Perform an ECDH key exchange via this API, including a previous call\n   to `GET /v1beta1/eidparams`. In this case the fields\n   `beacon_ecdh_public_key` and `service_ecdh_public_key` should be\n   populated and `beacon_identity_key` should not be populated. This\n   method ensures that only the two parties in the ECDH key exchange can\n   compute the identity key, which becomes a secret between them.\n2. Derive or obtain the beacon's identity key via other secure means\n   (perhaps an ECDH key exchange between the beacon and a mobile device\n   or any other secure method), and then submit the resulting identity key\n   to the service. In this case `beacon_identity_key` field should be\n   populated, and neither of `beacon_ecdh_public_key` nor\n   `service_ecdh_public_key` fields should be. The security of this method\n   depends on how securely the parties involved (in particular the\n   bluetooth client) handle the identity key, and obviously on how\n   securely the identity key was generated.\n\nSee [the Eddystone specification](https://github.com/google/eddystone/tree/master/eddystone-eid) at GitHub.",
-            "id": "EphemeralIdRegistration",
-            "properties": {
-                "rotationPeriodExponent": {
-                    "description": "Indicates the nominal period between each rotation of the beacon's\nephemeral ID. \"Nominal\" because the beacon should randomize the\nactual interval. See [the spec at github](https://github.com/google/eddystone/tree/master/eddystone-eid)\nfor details. This value corresponds to a power-of-two scaler on the\nbeacon's clock: when the scaler value is K, the beacon will begin\nbroadcasting a new ephemeral ID on average every 2^K seconds.",
-                    "format": "uint32",
-                    "type": "integer"
                 },
-                "serviceEcdhPublicKey": {
-                    "description": "The service's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `beacon_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be.",
+                "data": {
+                    "description": "An opaque data container for client-provided data. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses.\nRequired.",
                     "format": "byte",
                     "type": "string"
-                },
-                "beaconIdentityKey": {
-                    "description": "The private key of the beacon. If this field is populated,\n`beacon_ecdh_public_key` and `service_ecdh_public_key` must not be\npopulated.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "initialEid": {
-                    "description": "An initial ephemeral ID calculated using the clock value submitted as\n`initial_clock_value`, and the secret key generated by the\nDiffie-Hellman key exchange using `service_ecdh_public_key` and\n`service_ecdh_public_key`. This initial EID value will be used by the\nservice to confirm that the key exchange process was successful.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "beaconEcdhPublicKey": {
-                    "description": "The beacon's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `service_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "initialClockValue": {
-                    "description": "The initial clock value of the beacon. The beacon's clock must have\nbegun counting at this value immediately prior to transmitting this\nvalue to the resolving service. Significant delay in transmitting this\nvalue to the service risks registration or resolution failures. If a\nvalue is not provided, the default is zero.",
-                    "format": "uint64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LatLng": {
-            "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n<a href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\">WGS84\nstandard</a>. Values must be within normalized ranges.",
-            "id": "LatLng",
-            "properties": {
-                "latitude": {
-                    "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
-                    "format": "double",
-                    "type": "number"
-                },
-                "longitude": {
-                    "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
-                    "format": "double",
-                    "type": "number"
                 }
             },
             "type": "object"
@@ -1137,5 +1126,6 @@
     },
     "servicePath": "",
     "title": "Proximity Beacon API",
-    "version": "v1beta1"
+    "version": "v1beta1",
+    "version_module": true
 }

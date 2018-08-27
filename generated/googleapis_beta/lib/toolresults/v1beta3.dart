@@ -3988,42 +3988,24 @@ class Specification {
 
 /// A stacktrace.
 class StackTrace {
-  /// Exception cluster ID
-  core.String clusterId;
-
   /// The stack trace message.
   ///
   /// Required
   core.String exception;
 
-  /// Exception report ID
-  core.String reportId;
-
   StackTrace();
 
   StackTrace.fromJson(core.Map _json) {
-    if (_json.containsKey("clusterId")) {
-      clusterId = _json["clusterId"];
-    }
     if (_json.containsKey("exception")) {
       exception = _json["exception"];
-    }
-    if (_json.containsKey("reportId")) {
-      reportId = _json["reportId"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (clusterId != null) {
-      _json["clusterId"] = clusterId;
-    }
     if (exception != null) {
       _json["exception"] = exception;
-    }
-    if (reportId != null) {
-      _json["reportId"] = reportId;
     }
     return _json;
   }
@@ -4610,6 +4592,13 @@ class TestExecutionStep {
 
 /// An issue detected occurring during a test execution.
 class TestIssue {
+  /// Category of issue. Required.
+  /// Possible string values are:
+  /// - "common"
+  /// - "robo"
+  /// - "unspecifiedCategory"
+  core.String category;
+
   /// A brief human-readable message describing the issue. Required.
   core.String errorMessage;
 
@@ -4617,6 +4606,7 @@ class TestIssue {
   /// Possible string values are:
   /// - "info"
   /// - "severe"
+  /// - "suggestion"
   /// - "unspecifiedSeverity"
   /// - "warning"
   core.String severity;
@@ -4627,13 +4617,20 @@ class TestIssue {
   /// Type of issue. Required.
   /// Possible string values are:
   /// - "anr"
+  /// - "availableDeepLinks"
   /// - "compatibleWithOrchestrator"
   /// - "completeRoboScriptExecution"
+  /// - "encounteredLoginScreen"
+  /// - "encounteredNonAndroidUiWidgetScreen"
   /// - "failedToInstall"
   /// - "fatalException"
   /// - "incompleteRoboScriptExecution"
+  /// - "iosCrash"
+  /// - "iosException"
   /// - "launcherActivityNotFound"
   /// - "nativeCrash"
+  /// - "nonSdkApiUsageViolation"
+  /// - "performedGoogleLogin"
   /// - "startActivityNotFound"
   /// - "unspecifiedType"
   /// - "unusedRoboDirective"
@@ -4646,6 +4643,9 @@ class TestIssue {
   TestIssue();
 
   TestIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
@@ -4666,6 +4666,9 @@ class TestIssue {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (category != null) {
+      _json["category"] = category;
+    }
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }

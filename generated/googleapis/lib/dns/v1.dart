@@ -2058,9 +2058,6 @@ class Project {
 
 /// Limits associated with a Project.
 class Quota {
-  /// Whether a black hole zone should suppress system zones for this project.
-  core.bool blackHoleHidesSystemZones;
-
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int dnsKeysPerManagedZone;
 
@@ -2095,9 +2092,6 @@ class Quota {
   Quota();
 
   Quota.fromJson(core.Map _json) {
-    if (_json.containsKey("blackHoleHidesSystemZones")) {
-      blackHoleHidesSystemZones = _json["blackHoleHidesSystemZones"];
-    }
     if (_json.containsKey("dnsKeysPerManagedZone")) {
       dnsKeysPerManagedZone = _json["dnsKeysPerManagedZone"];
     }
@@ -2132,9 +2126,6 @@ class Quota {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (blackHoleHidesSystemZones != null) {
-      _json["blackHoleHidesSystemZones"] = blackHoleHidesSystemZones;
-    }
     if (dnsKeysPerManagedZone != null) {
       _json["dnsKeysPerManagedZone"] = dnsKeysPerManagedZone;
     }

@@ -1479,10 +1479,6 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageSize] - The maximum number of results to return. If unspecified,
-  /// defaults to
-  /// 256. The maximum value is 2048.
-  ///
   /// [filter] - A string for filtering Operations.
   /// In v2alpha1, the following filter fields are supported&#58;
   ///
@@ -1493,6 +1489,8 @@ class OperationsResourceApi {
   /// * error&#58; If the pipeline is running, this value is NULL.  Once the
   ///   pipeline finishes, the value is the standard Google error code.
   /// * labels.key or labels."key with space" where key is a label key.
+  /// * done&#58; If the pipeline is running, this value is false. Once the
+  ///   pipeline finishes, the value is true.
   ///
   /// In v1 and v1alpha2, the following filter fields are supported&#58;
   ///
@@ -1515,6 +1513,10 @@ class OperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [pageSize] - The maximum number of results to return. If unspecified,
+  /// defaults to
+  /// 256. The maximum value is 2048.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1526,9 +1528,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1540,14 +1542,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1914,19 +1916,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// [readGroupSetId] - Required. The ID of the read group set over which
   /// coverage is requested.
   ///
-  /// [start] - The start position of the range on the reference, 0-based
-  /// inclusive. If
-  /// specified, `referenceName` must also be specified. Defaults to 0.
-  ///
-  /// [targetBucketWidth] - The desired width of each reported coverage bucket
-  /// in base pairs. This
-  /// will be rounded down to the nearest precomputed bucket width; the value
-  /// of which is returned as `bucketWidth` in the response. Defaults
-  /// to infinity (each bucket spans an entire reference sequence) or the length
-  /// of the target range, if specified. The smallest precomputed
-  /// `bucketWidth` is currently 2048 base pairs; this is subject to
-  /// change.
-  ///
   /// [referenceName] - The name of the reference to query, within the reference
   /// set associated
   /// with this query. Optional.
@@ -1945,6 +1934,19 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// unspecified,
   /// defaults to 1024. The maximum value is 2048.
   ///
+  /// [start] - The start position of the range on the reference, 0-based
+  /// inclusive. If
+  /// specified, `referenceName` must also be specified. Defaults to 0.
+  ///
+  /// [targetBucketWidth] - The desired width of each reported coverage bucket
+  /// in base pairs. This
+  /// will be rounded down to the nearest precomputed bucket width; the value
+  /// of which is returned as `bucketWidth` in the response. Defaults
+  /// to infinity (each bucket spans an entire reference sequence) or the length
+  /// of the target range, if specified. The smallest precomputed
+  /// `bucketWidth` is currently 2048 base pairs; this is subject to
+  /// change.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1956,12 +1958,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId,
-      {core.String start,
-      core.String targetBucketWidth,
-      core.String referenceName,
+      {core.String referenceName,
       core.String end,
       core.String pageToken,
       core.int pageSize,
+      core.String start,
+      core.String targetBucketWidth,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1972,12 +1974,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
-    }
-    if (start != null) {
-      _queryParams["start"] = [start];
-    }
-    if (targetBucketWidth != null) {
-      _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
     if (referenceName != null) {
       _queryParams["referenceName"] = [referenceName];
@@ -1990,6 +1986,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (start != null) {
+      _queryParams["start"] = [start];
+    }
+    if (targetBucketWidth != null) {
+      _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2196,10 +2198,6 @@ class ReferencesBasesResourceApi {
   ///
   /// [referenceId] - The ID of the reference.
   ///
-  /// [end] - The end position (0-based, exclusive) of this query. Defaults to
-  /// the length
-  /// of this reference.
-  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// result sets.
   /// To get the next page of results, set this parameter to the value of
@@ -2213,6 +2211,10 @@ class ReferencesBasesResourceApi {
   ///
   /// [start] - The start position (0-based) of this query. Defaults to 0.
   ///
+  /// [end] - The end position (0-based, exclusive) of this query. Defaults to
+  /// the length
+  /// of this reference.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2224,10 +2226,10 @@ class ReferencesBasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBasesResponse> list(core.String referenceId,
-      {core.String end,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String start,
+      core.String end,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2239,9 +2241,6 @@ class ReferencesBasesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
-    if (end != null) {
-      _queryParams["end"] = [end];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -2250,6 +2249,9 @@ class ReferencesBasesResourceApi {
     }
     if (start != null) {
       _queryParams["start"] = [start];
+    }
+    if (end != null) {
+      _queryParams["end"] = [end];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3425,6 +3427,12 @@ class BatchCreateAnnotationsResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -3451,12 +3459,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -3468,6 +3478,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -3800,20 +3813,45 @@ class ComputeEngine {
   }
 }
 
-/// This event is generated when a container starts.
+/// An event generated when a container is forcibly terminated by the
+/// worker. Currently, this only occurs when the container outlives the
+/// timeout specified by the user.
+class ContainerKilledEvent {
+  /// The numeric ID of the action that started the container.
+  core.int actionId;
+
+  ContainerKilledEvent();
+
+  ContainerKilledEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("actionId")) {
+      actionId = _json["actionId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actionId != null) {
+      _json["actionId"] = actionId;
+    }
+    return _json;
+  }
+}
+
+/// An event generated when a container starts.
 class ContainerStartedEvent {
   /// The numeric ID of the action that started this container.
   core.int actionId;
 
-  /// The public IP address that can be used to connect to the container.  This
-  /// field is only populated when at least one port mapping is present.  If the
-  /// instance was created with a private address this field will be empty even
+  /// The public IP address that can be used to connect to the container. This
+  /// field is only populated when at least one port mapping is present. If the
+  /// instance was created with a private address, this field will be empty even
   /// if port mappings exist.
   core.String ipAddress;
 
-  /// The container to host port mappings installed for this container.  This
-  /// set will contain any ports exposed using the PUBLISH_EXPOSED_PORTS flag as
-  /// well as any specified in the Action definition.
+  /// The container-to-host port mappings installed for this container. This
+  /// set will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS` flag
+  /// as well as any specified in the `Action` definition.
   core.Map<core.String, core.int> portMappings;
 
   ContainerStartedEvent();
@@ -3847,7 +3885,7 @@ class ContainerStartedEvent {
   }
 }
 
-/// This event is generated when a container exits.
+/// An event generated when a container exits.
 class ContainerStoppedEvent {
   /// The numeric ID of the action that started this container.
   core.int actionId;
@@ -3856,13 +3894,13 @@ class ContainerStoppedEvent {
   core.int exitStatus;
 
   /// The tail end of any content written to standard error by the container.
-  /// To prevent this from being recorded if the action is known to emit
-  /// large amounts of debugging noise or sensitive information, set the
-  /// DISABLE_STANDARD_ERROR_CAPTURE flag.
+  /// If the content emits large amounts of debugging noise or contains
+  /// sensitive information, you can prevent the content from being printed by
+  /// setting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.
   ///
   /// Note that only a small amount of the end of the stream is captured here.
-  /// The entire stream is stored in the /google/logs directory mounted into
-  /// each action, and may be copied off the machine as described elsewhere.
+  /// The entire stream is stored in the `/google/logs` directory mounted into
+  /// each action, and can be copied off the machine as described elsewhere.
   core.String stderr;
 
   ContainerStoppedEvent();
@@ -3979,18 +4017,18 @@ class Dataset {
   }
 }
 
-/// This event is generated whenever a resource limitation or transient error
+/// An event generated whenever a resource limitation or transient error
 /// delays execution of a pipeline that was otherwise ready to run.
 class DelayedEvent {
-  /// A textual description of the cause of the delay.  The string may change
-  /// without notice since it is often generated by another service (such as
+  /// A textual description of the cause of the delay. The string can change
+  /// without notice because it is often generated by another service (such as
   /// Compute Engine).
   core.String cause;
 
   /// If the delay was caused by a resource shortage, this field lists the
   /// Compute Engine metrics that are preventing this operation from running
-  /// (for example, CPUS or INSTANCES).  If the particular metric is not known,
-  /// a single UNKNOWN metric will be present.
+  /// (for example, `CPUS` or `INSTANCES`). If the particular metric is not
+  /// known, a single `UNKNOWN` metric will be present.
   core.List<core.String> metrics;
 
   DelayedEvent();
@@ -4069,20 +4107,20 @@ class Entry {
   }
 }
 
-/// Event carries information about events that occur during pipeline execution.
+/// Carries information about events that occur during pipeline execution.
 class Event {
-  /// A human readable description of the event.  Note that these strings may
-  /// change at any time without notice.  Any application logic must use the
-  /// information in the details field.
+  /// A human-readable description of the event. Note that these strings can
+  /// change at any time without notice. Any application logic must use the
+  /// information in the `details` field.
   core.String description;
 
-  /// Machine readable details about the event.
+  /// Machine-readable details about the event.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> details;
 
-  /// The time that the event occurred.
+  /// The time at which the event occurred.
   core.String timestamp;
 
   Event();
@@ -4342,6 +4380,68 @@ class ExportVariantSetRequest {
   }
 }
 
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 class ExternalId {
   /// The id used by the source of this data.
   core.String id;
@@ -4373,10 +4473,10 @@ class ExternalId {
   }
 }
 
-/// This event is generated when the execution of a pipeline has failed.  Note
-/// that other events may continue to occur after this event.
+/// An event generated when the execution of a pipeline has failed. Note
+/// that other events can continue to occur after this event.
 class FailedEvent {
-  /// The human readable description of the cause of the failure.
+  /// The human-readable description of the cause of the failure.
   core.String cause;
 
   /// The Google standard error code that best describes this failure.
@@ -5464,7 +5564,7 @@ class Program {
   }
 }
 
-/// This event is generated when the worker starts pulling an image.
+/// An event generated when the worker starts pulling an image.
 class PullStartedEvent {
   /// The URI of the image that was pulled.
   core.String imageUri;
@@ -5487,7 +5587,7 @@ class PullStartedEvent {
   }
 }
 
-/// This event is generated when the worker stops pulling an image.
+/// An event generated when the worker stops pulling an image.
 class PullStoppedEvent {
   /// The URI of the image that was pulled.
   core.String imageUri;
@@ -7560,10 +7660,10 @@ class UndeleteDatasetRequest {
   }
 }
 
-/// This event is generated when the execution of a container results in a
-/// non-zero exit status that was not otherwise ignored.  Execution will
-/// continue, but only actions that are flagged as ALWAYS_RUN will be executed:
-/// other actions will be skipped.
+/// An event generated when the execution of a container results in a
+/// non-zero exit status that was not otherwise ignored. Execution will
+/// continue, but only actions that are flagged as `ALWAYS_RUN` will be
+/// executed. Other actions will be skipped.
 class UnexpectedExitStatusEvent {
   /// The numeric ID of the action that started the container.
   core.int actionId;
@@ -8192,7 +8292,7 @@ class VariantSetMetadata {
   }
 }
 
-/// This event is generated once a worker VM has been assigned to run the
+/// An event generated after a worker VM has been assigned to run the
 /// pipeline.
 class WorkerAssignedEvent {
   /// The worker's instance name.
@@ -8225,8 +8325,8 @@ class WorkerAssignedEvent {
   }
 }
 
-/// This event is generated when the worker VM that was assigned to the pipeline
-/// has been released (i.e., deleted).
+/// An event generated when the worker VM that was assigned to the pipeline
+/// has been released (deleted).
 class WorkerReleasedEvent {
   /// The worker's instance name.
   core.String instance;

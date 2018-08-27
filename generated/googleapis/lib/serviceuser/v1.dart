@@ -76,8 +76,7 @@ class ProjectsServicesResourceApi {
   /// - "project:<project_id>"
   ///
   /// A valid path would be:
-  /// -
-  /// /v1/projects/my-project/services/servicemanagement.googleapis.com:disable
+  /// - projects/my-project/services/servicemanagement.googleapis.com
   /// Value must have pattern "^projects/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -134,7 +133,7 @@ class ProjectsServicesResourceApi {
   /// [name] - Name of the consumer and the service to enable for that consumer.
   ///
   /// A valid path would be:
-  /// - /v1/projects/my-project/services/servicemanagement.googleapis.com:enable
+  /// - projects/my-project/services/servicemanagement.googleapis.com
   /// Value must have pattern "^projects/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -187,11 +186,11 @@ class ProjectsServicesResourceApi {
   /// - projects/my-project
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
+  ///
+  /// [pageSize] - Requested size of the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -204,7 +203,7 @@ class ProjectsServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListEnabledServicesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -215,11 +214,11 @@ class ProjectsServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,11 +251,11 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
-  ///
-  /// [pageSize] - Requested size of the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -269,7 +268,7 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<SearchServicesResponse> search(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -277,11 +276,11 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2019,6 +2018,11 @@ class HttpRule {
   /// Used for updating a resource.
   core.String put;
 
+  /// Optional. The name of the response field whose value is mapped to the HTTP
+  /// body of response. Other response fields are ignored. When
+  /// not set, the response message will be used as HTTP body of response.
+  core.String responseBody;
+
   /// Selects methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
@@ -2059,6 +2063,9 @@ class HttpRule {
     if (_json.containsKey("put")) {
       put = _json["put"];
     }
+    if (_json.containsKey("responseBody")) {
+      responseBody = _json["responseBody"];
+    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -2097,6 +2104,9 @@ class HttpRule {
     }
     if (put != null) {
       _json["put"] = put;
+    }
+    if (responseBody != null) {
+      _json["responseBody"] = responseBody;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -2637,6 +2647,9 @@ class MetricDescriptor {
   /// for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. Metadata which can be used to guide usage of the metric.
+  MetricDescriptorMetadata metadata;
+
   /// Whether the metric records instantaneous values, changes to a value, etc.
   /// Some combinations of `metric_kind` and `value_type` might not be
   /// supported.
@@ -2655,11 +2668,12 @@ class MetricDescriptor {
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded.  All user-defined custom metric types have the DNS name
-  /// `custom.googleapis.com`.  Metric types should use a natural hierarchical
-  /// grouping. For example:
+  /// URL-encoded.  All user-defined metric types have the DNS name
+  /// `custom.googleapis.com` or `external.googleapis.com`.  Metric types should
+  /// use a natural hierarchical grouping. For example:
   ///
   ///     "custom.googleapis.com/invoice/paid/amount"
+  ///     "external.googleapis.com/prometheus/up"
   ///     "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
@@ -2759,6 +2773,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("metadata")) {
+      metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
+    }
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
@@ -2788,6 +2805,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
@@ -2802,6 +2822,85 @@ class MetricDescriptor {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// Additional annotations that can be used to guide the usage of a metric.
+class MetricDescriptorMetadata {
+  /// The delay of data points caused by ingestion. Data points older than this
+  /// age are guaranteed to be ingested and available to be read, excluding
+  /// data loss due to errors.
+  core.String ingestDelay;
+
+  /// The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use
+  /// these features, you must sign up in advance and sign a Trusted Tester
+  /// agreement (which includes confidentiality provisions). These features may
+  /// be unstable, changed in backward-incompatible ways, and are not
+  /// guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared
+  /// for widespread use. By Alpha, all significant design issues are resolved
+  /// and we are in the process of verifying functionality. Alpha customers
+  /// need to apply for access, agree to applicable terms, and have their
+  /// projects whitelisted. Alpha releases don’t have to be feature complete,
+  /// no SLAs are provided, and there are no technical support obligations, but
+  /// they will be far enough along that customers can actually use them in
+  /// test environments or for limited-use tests -- just like they would in
+  /// normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any
+  /// customer to use. There are no SLA or technical support obligations in a
+  /// Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and
+  /// fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more
+  /// information, see the “Deprecation Policy” section of our [Terms of
+  /// Service](https://cloud.google.com/terms/)
+  /// and the [Google Cloud Platform Subject to the Deprecation
+  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
+  /// The sampling period of metric data points. For metrics which are written
+  /// periodically, consecutive data points are stored at this time interval,
+  /// excluding data loss due to errors. Metrics with a higher granularity have
+  /// a smaller sampling period.
+  core.String samplePeriod;
+
+  MetricDescriptorMetadata();
+
+  MetricDescriptorMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("ingestDelay")) {
+      ingestDelay = _json["ingestDelay"];
+    }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
+    if (_json.containsKey("samplePeriod")) {
+      samplePeriod = _json["samplePeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingestDelay != null) {
+      _json["ingestDelay"] = ingestDelay;
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
+    if (samplePeriod != null) {
+      _json["samplePeriod"] = samplePeriod;
     }
     return _json;
   }

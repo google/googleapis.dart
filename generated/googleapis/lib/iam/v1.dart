@@ -47,6 +47,72 @@ class IamPoliciesResourceApi {
 
   IamPoliciesResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Lints a Cloud IAM policy object or its sub fields. Currently supports
+  /// google.iam.v1.Policy, google.iam.v1.Binding and
+  /// google.iam.v1.Binding.condition.
+  ///
+  /// Each lint operation consists of multiple lint validation units.
+  /// Validation units have the following properties:
+  ///
+  /// - Each unit inspects the input object in regard to a particular
+  ///   linting aspect and issues a google.iam.admin.v1.LintResult
+  ///   disclosing the result.
+  /// - Domain of discourse of each unit can be either
+  ///   google.iam.v1.Policy, google.iam.v1.Binding, or
+  ///   google.iam.v1.Binding.condition depending on the purpose of the
+  ///   validation.
+  /// - A unit may require additional data (like the list of all possible
+  /// enumerable values of a particular attribute used in the policy instance)
+  ///   which shall be provided by the caller. Refer to the comments of
+  ///   google.iam.admin.v1.LintPolicyRequest.context for more details.
+  ///
+  /// The set of applicable validation units is determined by the Cloud IAM
+  /// server and is not configurable.
+  ///
+  /// Regardless of any lint issues or their severities, successful calls to
+  /// `lintPolicy` return an HTTP 200 OK status code.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LintPolicyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LintPolicyResponse> lintPolicy(LintPolicyRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/iamPolicies:lintPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LintPolicyResponse.fromJson(data));
+  }
+
   /// Returns a list of services that support service level audit logging
   /// configuration for the given resource.
   ///
@@ -278,6 +344,11 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response.
   ///
@@ -285,11 +356,6 @@ class OrganizationsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -302,10 +368,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String view,
-      core.bool showDeleted,
+      {core.bool showDeleted,
       core.String pageToken,
+      core.int pageSize,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -317,17 +383,17 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1363,8 +1429,7 @@ class ProjectsServiceAccountsResourceApi {
   /// Updates a ServiceAccount.
   ///
   /// Currently, only the following fields are updatable:
-  /// `display_name` .
-  /// The `etag` is mandatory.
+  /// `display_name`, `description`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2026,6 +2091,12 @@ class AuditableService {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -2052,12 +2123,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -2069,6 +2142,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -2090,6 +2166,10 @@ class BindingDelta {
   /// - "REMOVE" : Removal of a Binding.
   core.String action;
 
+  /// Unimplemented. The condition that is associated with this binding.
+  /// This field is logged only for Cloud Audit Logging.
+  Expr condition;
+
   /// A single identity requesting access for a Cloud Platform resource.
   /// Follows the same format of Binding.members.
   /// Required
@@ -2106,6 +2186,9 @@ class BindingDelta {
     if (_json.containsKey("action")) {
       action = _json["action"];
     }
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("member")) {
       member = _json["member"];
     }
@@ -2119,6 +2202,9 @@ class BindingDelta {
         new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
+    }
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
     }
     if (member != null) {
       _json["member"] = member;
@@ -2217,9 +2303,9 @@ class CreateServiceAccountRequest {
   /// `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
   core.String accountId;
 
-  /// The ServiceAccount resource to create.
-  /// Currently, only the following values are user assignable:
-  /// `display_name` .
+  /// The ServiceAccount resource to
+  /// create. Currently, only the following values are user assignable:
+  /// `display_name`, and `description`.
   ServiceAccount serviceAccount;
 
   CreateServiceAccountRequest();
@@ -2263,6 +2349,319 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// The request to lint a Cloud IAM policy object. LintPolicy is currently
+/// functional only for `lint_object` of type `condition`.
+class LintPolicyRequest {
+  /// Binding object to be linted. The functionality of linting a binding is
+  /// not yet implemented and if this field is set, it returns NOT_IMPLEMENTED
+  /// error.
+  Binding binding;
+
+  /// google.iam.v1.Binding.condition object to be linted.
+  Expr condition;
+
+  /// `context` contains additional *permission-controlled* data that any
+  /// lint unit may depend on, in form of `{key: value}` pairs. Currently, this
+  /// field is non-operational and it will not be used during the lint
+  /// operation.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> context;
+
+  /// The full resource name of the policy this lint request is about.
+  ///
+  /// The name follows the Google Cloud Platform (GCP) resource format.
+  /// For example, a GCP project with ID `my-project` will be named
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+  ///
+  /// The resource name is not used to read the policy instance from the Cloud
+  /// IAM database. The candidate policy for lint has to be provided in the same
+  /// request object.
+  core.String fullResourceName;
+
+  /// Policy object to be linted. The functionality of linting a policy is not
+  /// yet implemented and if this field is set, it returns NOT_IMPLEMENTED
+  /// error.
+  Policy policy;
+
+  LintPolicyRequest();
+
+  LintPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("binding")) {
+      binding = new Binding.fromJson(_json["binding"]);
+    }
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
+    if (_json.containsKey("context")) {
+      context = (_json["context"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("fullResourceName")) {
+      fullResourceName = _json["fullResourceName"];
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (binding != null) {
+      _json["binding"] = (binding).toJson();
+    }
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
+    if (context != null) {
+      _json["context"] = context;
+    }
+    if (fullResourceName != null) {
+      _json["fullResourceName"] = fullResourceName;
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response of a lint operation. An empty response indicates
+/// the operation was able to fully execute and no lint issue was found.
+class LintPolicyResponse {
+  /// List of lint results sorted by a composite <severity, binding_ordinal>
+  /// key,
+  /// descending order of severity and ascending order of binding_ordinal.
+  /// There is no certain order among the same keys.
+  ///
+  /// For cross-binding results (only if the input object to lint is
+  /// instance of google.iam.v1.Policy), there will be a
+  /// google.iam.admin.v1.LintResult for each of the involved bindings,
+  /// and the associated debug_message may enumerate the other involved
+  /// binding ordinal number(s).
+  core.List<LintResult> lintResults;
+
+  LintPolicyResponse();
+
+  LintPolicyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("lintResults")) {
+      lintResults = (_json["lintResults"] as core.List)
+          .map<LintResult>((value) => new LintResult.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lintResults != null) {
+      _json["lintResults"] =
+          lintResults.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Structured response of a single validation unit.
+class LintResult {
+  /// 0-based index ordinality of the binding in the input object associated
+  /// with this result.
+  /// This field is populated only if the input object to lint is of type
+  /// google.iam.v1.Policy, which can comprise more than one binding.
+  /// It is set to -1 if the result is not associated with any particular
+  /// binding and only targets the policy as a whole, such as results about
+  /// policy size violations.
+  core.int bindingOrdinal;
+
+  /// Human readable debug message associated with the issue.
+  core.String debugMessage;
+
+  /// The name of the field for which this lint result is about, relative to the
+  /// input object to lint in the request.
+  ///
+  /// For nested messages, `field_name` consists of names of the embedded fields
+  /// separated by period character. For instance, if the lint request is on a
+  /// google.iam.v1.Policy and this lint result is about a condition
+  /// expression of one of the input policy bindings, the field would be
+  /// populated as `bindings.condition.expression`.
+  ///
+  /// This field does not identify the ordinality of the repetitive fields (for
+  /// instance bindings in a policy).
+  core.String fieldName;
+
+  /// The validation unit level.
+  /// Possible string values are:
+  /// - "LEVEL_UNSPECIFIED" : Level is unspecified.
+  /// - "POLICY" : A validation unit which operates on a policy. It is executed
+  /// only if the
+  /// input object to lint is of type google.iam.v1.Policy.
+  /// - "BINDING" : A validation unit which operates on an individual binding.
+  /// It is executed
+  /// in both cases where the input object to lint is of type
+  /// google.iam.v1.Policy or google.iam.v1.Binding.
+  /// - "CONDITION" : A validation unit which operates on an individual
+  /// condition within a
+  /// binding. It is executed in all three cases where the input object to
+  /// lint is of type google.iam.v1.Policy,
+  /// google.iam.v1.Binding or
+  /// google.iam.v1.Binding.condition.
+  core.String level;
+
+  /// 0-based character position of problematic construct within the object
+  /// identified by `field_name`. Currently, this is populated only for
+  /// condition
+  /// expression.
+  core.int locationOffset;
+
+  /// The validation unit severity.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Severity is unspecified.
+  /// - "ERROR" : A validation unit returns an error only for critical issues.
+  /// If an
+  /// attempt is made to set the problematic policy without rectifying the
+  /// critical issue, it causes the `setPolicy` operation to fail.
+  /// - "WARNING" : Any issue which is severe enough but does not cause an
+  /// error.
+  /// For example, suspicious constructs in the input object will not
+  /// necessarily fail `setPolicy`, but there is a high likelihood that they
+  /// won't behave as expected during policy evaluation in `checkPolicy`.
+  /// This includes the following common scenarios:
+  ///
+  /// - Unsatisfiable condition: Expired timestamp in date/time condition.
+  /// - Ineffective condition: Condition on a <member, role> pair which is
+  ///   granted unconditionally in another binding of the same policy.
+  /// - "NOTICE" : Reserved for the issues that are not severe as
+  /// `ERROR`/`WARNING`, but
+  /// need special handling. For instance, messages about skipped validation
+  /// units are issued as `NOTICE`.
+  /// - "INFO" : Any informative statement which is not severe enough to raise
+  /// `ERROR`/`WARNING`/`NOTICE`, like auto-correction recommendations on the
+  /// input content. Note that current version of the linter does not utilize
+  /// `INFO`.
+  /// - "DEPRECATED" : Deprecated severity level.
+  core.String severity;
+
+  /// The validation unit name, for instance
+  /// “lintValidationUnits/ConditionComplexityCheck”.
+  core.String validationUnitName;
+
+  LintResult();
+
+  LintResult.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingOrdinal")) {
+      bindingOrdinal = _json["bindingOrdinal"];
+    }
+    if (_json.containsKey("debugMessage")) {
+      debugMessage = _json["debugMessage"];
+    }
+    if (_json.containsKey("fieldName")) {
+      fieldName = _json["fieldName"];
+    }
+    if (_json.containsKey("level")) {
+      level = _json["level"];
+    }
+    if (_json.containsKey("locationOffset")) {
+      locationOffset = _json["locationOffset"];
+    }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
+    if (_json.containsKey("validationUnitName")) {
+      validationUnitName = _json["validationUnitName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bindingOrdinal != null) {
+      _json["bindingOrdinal"] = bindingOrdinal;
+    }
+    if (debugMessage != null) {
+      _json["debugMessage"] = debugMessage;
+    }
+    if (fieldName != null) {
+      _json["fieldName"] = fieldName;
+    }
+    if (level != null) {
+      _json["level"] = level;
+    }
+    if (locationOffset != null) {
+      _json["locationOffset"] = locationOffset;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
+    if (validationUnitName != null) {
+      _json["validationUnitName"] = validationUnitName;
+    }
     return _json;
   }
 }
@@ -2950,14 +3349,14 @@ class Role {
 /// the account. The `ACCOUNT` value can be the `email` address or the
 /// `unique_id` of the service account.
 class ServiceAccount {
-  /// Optional. A user-specified description of the service account.  Must be
-  /// fewer than 100 UTF-8 bytes.
+  /// Optional. A user-specified name for the service account. Must be
+  /// less than or equal to 100 UTF-8 bytes.
   core.String displayName;
 
   /// @OutputOnly The email address of the service account.
   core.String email;
 
-  /// Used to perform a consistent read-modify-write.
+  /// Optional. Not currently used.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);

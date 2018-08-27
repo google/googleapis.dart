@@ -94,14 +94,14 @@ checkError(api.Error o) {
   buildCounterError--;
 }
 
-buildUnnamed3794() {
+buildUnnamed1907() {
   var o = new core.List<api.Error>();
   o.add(buildError());
   o.add(buildError());
   return o;
 }
 
-checkUnnamed3794(core.List<api.Error> o) {
+checkUnnamed1907(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -113,7 +113,7 @@ buildErrors() {
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
     o.code = 42;
-    o.errors = buildUnnamed3794();
+    o.errors = buildUnnamed1907();
     o.message = "foo";
   }
   buildCounterErrors--;
@@ -124,33 +124,33 @@ checkErrors(api.Errors o) {
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3794(o.errors);
+    checkUnnamed1907(o.errors);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterErrors--;
 }
 
-buildUnnamed3795() {
+buildUnnamed1908() {
   var o = new core.List<api.InvoiceSummaryAdditionalChargeSummary>();
   o.add(buildInvoiceSummaryAdditionalChargeSummary());
   o.add(buildInvoiceSummaryAdditionalChargeSummary());
   return o;
 }
 
-checkUnnamed3795(core.List<api.InvoiceSummaryAdditionalChargeSummary> o) {
+checkUnnamed1908(core.List<api.InvoiceSummaryAdditionalChargeSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvoiceSummaryAdditionalChargeSummary(o[0]);
   checkInvoiceSummaryAdditionalChargeSummary(o[1]);
 }
 
-buildUnnamed3796() {
+buildUnnamed1909() {
   var o = new core.List<api.Promotion>();
   o.add(buildPromotion());
   o.add(buildPromotion());
   return o;
 }
 
-checkUnnamed3796(core.List<api.Promotion> o) {
+checkUnnamed1909(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotion(o[0]);
   checkPromotion(o[1]);
@@ -161,12 +161,12 @@ buildInvoiceSummary() {
   var o = new api.InvoiceSummary();
   buildCounterInvoiceSummary++;
   if (buildCounterInvoiceSummary < 3) {
-    o.additionalChargeSummaries = buildUnnamed3795();
+    o.additionalChargeSummaries = buildUnnamed1908();
     o.customerBalance = buildAmount();
     o.googleBalance = buildAmount();
     o.merchantBalance = buildAmount();
     o.productTotal = buildAmount();
-    o.promotionSummaries = buildUnnamed3796();
+    o.promotionSummaries = buildUnnamed1909();
   }
   buildCounterInvoiceSummary--;
   return o;
@@ -175,12 +175,12 @@ buildInvoiceSummary() {
 checkInvoiceSummary(api.InvoiceSummary o) {
   buildCounterInvoiceSummary++;
   if (buildCounterInvoiceSummary < 3) {
-    checkUnnamed3795(o.additionalChargeSummaries);
+    checkUnnamed1908(o.additionalChargeSummaries);
     checkAmount(o.customerBalance);
     checkAmount(o.googleBalance);
     checkAmount(o.merchantBalance);
     checkAmount(o.productTotal);
-    checkUnnamed3796(o.promotionSummaries);
+    checkUnnamed1909(o.promotionSummaries);
   }
   buildCounterInvoiceSummary--;
 }
@@ -207,53 +207,53 @@ checkInvoiceSummaryAdditionalChargeSummary(
   buildCounterInvoiceSummaryAdditionalChargeSummary--;
 }
 
-buildUnnamed3797() {
+buildUnnamed1910() {
   var o = new core.List<api.OrderLineItem>();
   o.add(buildOrderLineItem());
   o.add(buildOrderLineItem());
   return o;
 }
 
-checkUnnamed3797(core.List<api.OrderLineItem> o) {
+checkUnnamed1910(core.List<api.OrderLineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderLineItem(o[0]);
   checkOrderLineItem(o[1]);
 }
 
-buildUnnamed3798() {
+buildUnnamed1911() {
   var o = new core.List<api.OrderPromotion>();
   o.add(buildOrderPromotion());
   o.add(buildOrderPromotion());
   return o;
 }
 
-checkUnnamed3798(core.List<api.OrderPromotion> o) {
+checkUnnamed1911(core.List<api.OrderPromotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderPromotion(o[0]);
   checkOrderPromotion(o[1]);
 }
 
-buildUnnamed3799() {
+buildUnnamed1912() {
   var o = new core.List<api.OrderRefund>();
   o.add(buildOrderRefund());
   o.add(buildOrderRefund());
   return o;
 }
 
-checkUnnamed3799(core.List<api.OrderRefund> o) {
+checkUnnamed1912(core.List<api.OrderRefund> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderRefund(o[0]);
   checkOrderRefund(o[1]);
 }
 
-buildUnnamed3800() {
+buildUnnamed1913() {
   var o = new core.List<api.OrderShipment>();
   o.add(buildOrderShipment());
   o.add(buildOrderShipment());
   return o;
 }
 
-checkUnnamed3800(core.List<api.OrderShipment> o) {
+checkUnnamed1913(core.List<api.OrderShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderShipment(o[0]);
   checkOrderShipment(o[1]);
@@ -270,16 +270,16 @@ buildOrder() {
     o.deliveryDetails = buildOrderDeliveryDetails();
     o.id = "foo";
     o.kind = "foo";
-    o.lineItems = buildUnnamed3797();
+    o.lineItems = buildUnnamed1910();
     o.merchantId = "foo";
     o.merchantOrderId = "foo";
     o.netAmount = buildPrice();
     o.paymentMethod = buildOrderPaymentMethod();
     o.paymentStatus = "foo";
     o.placedDate = "foo";
-    o.promotions = buildUnnamed3798();
-    o.refunds = buildUnnamed3799();
-    o.shipments = buildUnnamed3800();
+    o.promotions = buildUnnamed1911();
+    o.refunds = buildUnnamed1912();
+    o.shipments = buildUnnamed1913();
     o.shippingCost = buildPrice();
     o.shippingCostTax = buildPrice();
     o.shippingOption = "foo";
@@ -298,16 +298,16 @@ checkOrder(api.Order o) {
     checkOrderDeliveryDetails(o.deliveryDetails);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3797(o.lineItems);
+    checkUnnamed1910(o.lineItems);
     unittest.expect(o.merchantId, unittest.equals('foo'));
     unittest.expect(o.merchantOrderId, unittest.equals('foo'));
     checkPrice(o.netAmount);
     checkOrderPaymentMethod(o.paymentMethod);
     unittest.expect(o.paymentStatus, unittest.equals('foo'));
     unittest.expect(o.placedDate, unittest.equals('foo'));
-    checkUnnamed3798(o.promotions);
-    checkUnnamed3799(o.refunds);
-    checkUnnamed3800(o.shipments);
+    checkUnnamed1911(o.promotions);
+    checkUnnamed1912(o.refunds);
+    checkUnnamed1913(o.shipments);
     checkPrice(o.shippingCost);
     checkPrice(o.shippingCostTax);
     unittest.expect(o.shippingOption, unittest.equals('foo'));
@@ -316,27 +316,27 @@ checkOrder(api.Order o) {
   buildCounterOrder--;
 }
 
-buildUnnamed3801() {
+buildUnnamed1914() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3801(core.List<core.String> o) {
+checkUnnamed1914(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3802() {
+buildUnnamed1915() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3802(core.List<core.String> o) {
+checkUnnamed1915(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -348,13 +348,13 @@ buildOrderAddress() {
   buildCounterOrderAddress++;
   if (buildCounterOrderAddress < 3) {
     o.country = "foo";
-    o.fullAddress = buildUnnamed3801();
+    o.fullAddress = buildUnnamed1914();
     o.isPostOfficeBox = true;
     o.locality = "foo";
     o.postalCode = "foo";
     o.recipientName = "foo";
     o.region = "foo";
-    o.streetAddress = buildUnnamed3802();
+    o.streetAddress = buildUnnamed1915();
   }
   buildCounterOrderAddress--;
   return o;
@@ -364,13 +364,13 @@ checkOrderAddress(api.OrderAddress o) {
   buildCounterOrderAddress++;
   if (buildCounterOrderAddress < 3) {
     unittest.expect(o.country, unittest.equals('foo'));
-    checkUnnamed3801(o.fullAddress);
+    checkUnnamed1914(o.fullAddress);
     unittest.expect(o.isPostOfficeBox, unittest.isTrue);
     unittest.expect(o.locality, unittest.equals('foo'));
     unittest.expect(o.postalCode, unittest.equals('foo'));
     unittest.expect(o.recipientName, unittest.equals('foo'));
     unittest.expect(o.region, unittest.equals('foo'));
-    checkUnnamed3802(o.streetAddress);
+    checkUnnamed1915(o.streetAddress);
   }
   buildCounterOrderAddress--;
 }
@@ -471,40 +471,40 @@ checkOrderDeliveryDetails(api.OrderDeliveryDetails o) {
   buildCounterOrderDeliveryDetails--;
 }
 
-buildUnnamed3803() {
+buildUnnamed1916() {
   var o = new core.List<api.OrderMerchantProvidedAnnotation>();
   o.add(buildOrderMerchantProvidedAnnotation());
   o.add(buildOrderMerchantProvidedAnnotation());
   return o;
 }
 
-checkUnnamed3803(core.List<api.OrderMerchantProvidedAnnotation> o) {
+checkUnnamed1916(core.List<api.OrderMerchantProvidedAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderMerchantProvidedAnnotation(o[0]);
   checkOrderMerchantProvidedAnnotation(o[1]);
 }
 
-buildUnnamed3804() {
+buildUnnamed1917() {
   var o = new core.List<api.OrderCancellation>();
   o.add(buildOrderCancellation());
   o.add(buildOrderCancellation());
   return o;
 }
 
-checkUnnamed3804(core.List<api.OrderCancellation> o) {
+checkUnnamed1917(core.List<api.OrderCancellation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderCancellation(o[0]);
   checkOrderCancellation(o[1]);
 }
 
-buildUnnamed3805() {
+buildUnnamed1918() {
   var o = new core.List<api.OrderReturn>();
   o.add(buildOrderReturn());
   o.add(buildOrderReturn());
   return o;
 }
 
-checkUnnamed3805(core.List<api.OrderReturn> o) {
+checkUnnamed1918(core.List<api.OrderReturn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderReturn(o[0]);
   checkOrderReturn(o[1]);
@@ -515,8 +515,8 @@ buildOrderLineItem() {
   var o = new api.OrderLineItem();
   buildCounterOrderLineItem++;
   if (buildCounterOrderLineItem < 3) {
-    o.annotations = buildUnnamed3803();
-    o.cancellations = buildUnnamed3804();
+    o.annotations = buildUnnamed1916();
+    o.cancellations = buildUnnamed1917();
     o.id = "foo";
     o.price = buildPrice();
     o.product = buildOrderLineItemProduct();
@@ -527,7 +527,7 @@ buildOrderLineItem() {
     o.quantityReturned = 42;
     o.quantityShipped = 42;
     o.returnInfo = buildOrderLineItemReturnInfo();
-    o.returns = buildUnnamed3805();
+    o.returns = buildUnnamed1918();
     o.shippingDetails = buildOrderLineItemShippingDetails();
     o.tax = buildPrice();
   }
@@ -538,8 +538,8 @@ buildOrderLineItem() {
 checkOrderLineItem(api.OrderLineItem o) {
   buildCounterOrderLineItem++;
   if (buildCounterOrderLineItem < 3) {
-    checkUnnamed3803(o.annotations);
-    checkUnnamed3804(o.cancellations);
+    checkUnnamed1916(o.annotations);
+    checkUnnamed1917(o.cancellations);
     unittest.expect(o.id, unittest.equals('foo'));
     checkPrice(o.price);
     checkOrderLineItemProduct(o.product);
@@ -550,21 +550,21 @@ checkOrderLineItem(api.OrderLineItem o) {
     unittest.expect(o.quantityReturned, unittest.equals(42));
     unittest.expect(o.quantityShipped, unittest.equals(42));
     checkOrderLineItemReturnInfo(o.returnInfo);
-    checkUnnamed3805(o.returns);
+    checkUnnamed1918(o.returns);
     checkOrderLineItemShippingDetails(o.shippingDetails);
     checkPrice(o.tax);
   }
   buildCounterOrderLineItem--;
 }
 
-buildUnnamed3806() {
+buildUnnamed1919() {
   var o = new core.List<api.OrderLineItemProductVariantAttribute>();
   o.add(buildOrderLineItemProductVariantAttribute());
   o.add(buildOrderLineItemProductVariantAttribute());
   return o;
 }
 
-checkUnnamed3806(core.List<api.OrderLineItemProductVariantAttribute> o) {
+checkUnnamed1919(core.List<api.OrderLineItemProductVariantAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderLineItemProductVariantAttribute(o[0]);
   checkOrderLineItemProductVariantAttribute(o[1]);
@@ -589,7 +589,7 @@ buildOrderLineItemProduct() {
     o.shownImage = "foo";
     o.targetCountry = "foo";
     o.title = "foo";
-    o.variantAttributes = buildUnnamed3806();
+    o.variantAttributes = buildUnnamed1919();
   }
   buildCounterOrderLineItemProduct--;
   return o;
@@ -612,7 +612,7 @@ checkOrderLineItemProduct(api.OrderLineItemProduct o) {
     unittest.expect(o.shownImage, unittest.equals('foo'));
     unittest.expect(o.targetCountry, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    checkUnnamed3806(o.variantAttributes);
+    checkUnnamed1919(o.variantAttributes);
   }
   buildCounterOrderLineItemProduct--;
 }
@@ -761,14 +761,14 @@ checkOrderPaymentMethod(api.OrderPaymentMethod o) {
   buildCounterOrderPaymentMethod--;
 }
 
-buildUnnamed3807() {
+buildUnnamed1920() {
   var o = new core.List<api.OrderPromotionBenefit>();
   o.add(buildOrderPromotionBenefit());
   o.add(buildOrderPromotionBenefit());
   return o;
 }
 
-checkUnnamed3807(core.List<api.OrderPromotionBenefit> o) {
+checkUnnamed1920(core.List<api.OrderPromotionBenefit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderPromotionBenefit(o[0]);
   checkOrderPromotionBenefit(o[1]);
@@ -779,7 +779,7 @@ buildOrderPromotion() {
   var o = new api.OrderPromotion();
   buildCounterOrderPromotion++;
   if (buildCounterOrderPromotion < 3) {
-    o.benefits = buildUnnamed3807();
+    o.benefits = buildUnnamed1920();
     o.effectiveDates = "foo";
     o.genericRedemptionCode = "foo";
     o.id = "foo";
@@ -794,7 +794,7 @@ buildOrderPromotion() {
 checkOrderPromotion(api.OrderPromotion o) {
   buildCounterOrderPromotion++;
   if (buildCounterOrderPromotion < 3) {
-    checkUnnamed3807(o.benefits);
+    checkUnnamed1920(o.benefits);
     unittest.expect(o.effectiveDates, unittest.equals('foo'));
     unittest.expect(o.genericRedemptionCode, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -805,14 +805,14 @@ checkOrderPromotion(api.OrderPromotion o) {
   buildCounterOrderPromotion--;
 }
 
-buildUnnamed3808() {
+buildUnnamed1921() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3808(core.List<core.String> o) {
+checkUnnamed1921(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -824,7 +824,7 @@ buildOrderPromotionBenefit() {
   buildCounterOrderPromotionBenefit++;
   if (buildCounterOrderPromotionBenefit < 3) {
     o.discount = buildPrice();
-    o.offerIds = buildUnnamed3808();
+    o.offerIds = buildUnnamed1921();
     o.subType = "foo";
     o.taxImpact = buildPrice();
     o.type = "foo";
@@ -837,7 +837,7 @@ checkOrderPromotionBenefit(api.OrderPromotionBenefit o) {
   buildCounterOrderPromotionBenefit++;
   if (buildCounterOrderPromotionBenefit < 3) {
     checkPrice(o.discount);
-    checkUnnamed3808(o.offerIds);
+    checkUnnamed1921(o.offerIds);
     unittest.expect(o.subType, unittest.equals('foo'));
     checkPrice(o.taxImpact);
     unittest.expect(o.type, unittest.equals('foo'));
@@ -899,14 +899,14 @@ checkOrderReturn(api.OrderReturn o) {
   buildCounterOrderReturn--;
 }
 
-buildUnnamed3809() {
+buildUnnamed1922() {
   var o = new core.List<api.OrderShipmentLineItemShipment>();
   o.add(buildOrderShipmentLineItemShipment());
   o.add(buildOrderShipmentLineItemShipment());
   return o;
 }
 
-checkUnnamed3809(core.List<api.OrderShipmentLineItemShipment> o) {
+checkUnnamed1922(core.List<api.OrderShipmentLineItemShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderShipmentLineItemShipment(o[0]);
   checkOrderShipmentLineItemShipment(o[1]);
@@ -921,7 +921,7 @@ buildOrderShipment() {
     o.creationDate = "foo";
     o.deliveryDate = "foo";
     o.id = "foo";
-    o.lineItems = buildUnnamed3809();
+    o.lineItems = buildUnnamed1922();
     o.status = "foo";
     o.trackingId = "foo";
   }
@@ -936,7 +936,7 @@ checkOrderShipment(api.OrderShipment o) {
     unittest.expect(o.creationDate, unittest.equals('foo'));
     unittest.expect(o.deliveryDate, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3809(o.lineItems);
+    checkUnnamed1922(o.lineItems);
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.trackingId, unittest.equals('foo'));
   }
@@ -966,14 +966,14 @@ checkOrderShipmentLineItemShipment(api.OrderShipmentLineItemShipment o) {
   buildCounterOrderShipmentLineItemShipment--;
 }
 
-buildUnnamed3810() {
+buildUnnamed1923() {
   var o = new core.List<api.ShipmentInvoiceLineItemInvoice>();
   o.add(buildShipmentInvoiceLineItemInvoice());
   o.add(buildShipmentInvoiceLineItemInvoice());
   return o;
 }
 
-checkUnnamed3810(core.List<api.ShipmentInvoiceLineItemInvoice> o) {
+checkUnnamed1923(core.List<api.ShipmentInvoiceLineItemInvoice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkShipmentInvoiceLineItemInvoice(o[0]);
   checkShipmentInvoiceLineItemInvoice(o[1]);
@@ -986,7 +986,7 @@ buildOrderinvoicesCreateChargeInvoiceRequest() {
   if (buildCounterOrderinvoicesCreateChargeInvoiceRequest < 3) {
     o.invoiceId = "foo";
     o.invoiceSummary = buildInvoiceSummary();
-    o.lineItemInvoices = buildUnnamed3810();
+    o.lineItemInvoices = buildUnnamed1923();
     o.operationId = "foo";
     o.shipmentGroupId = "foo";
   }
@@ -1000,7 +1000,7 @@ checkOrderinvoicesCreateChargeInvoiceRequest(
   if (buildCounterOrderinvoicesCreateChargeInvoiceRequest < 3) {
     unittest.expect(o.invoiceId, unittest.equals('foo'));
     checkInvoiceSummary(o.invoiceSummary);
-    checkUnnamed3810(o.lineItemInvoices);
+    checkUnnamed1923(o.lineItemInvoices);
     unittest.expect(o.operationId, unittest.equals('foo'));
     unittest.expect(o.shipmentGroupId, unittest.equals('foo'));
   }
@@ -1029,14 +1029,14 @@ checkOrderinvoicesCreateChargeInvoiceResponse(
   buildCounterOrderinvoicesCreateChargeInvoiceResponse--;
 }
 
-buildUnnamed3811() {
+buildUnnamed1924() {
   var o = new core.List<api.ShipmentInvoice>();
   o.add(buildShipmentInvoice());
   o.add(buildShipmentInvoice());
   return o;
 }
 
-checkUnnamed3811(core.List<api.ShipmentInvoice> o) {
+checkUnnamed1924(core.List<api.ShipmentInvoice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkShipmentInvoice(o[0]);
   checkShipmentInvoice(o[1]);
@@ -1053,7 +1053,7 @@ buildOrderinvoicesCreateRefundInvoiceRequest() {
         buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
     o.returnOption =
         buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
-    o.shipmentInvoices = buildUnnamed3811();
+    o.shipmentInvoices = buildUnnamed1924();
   }
   buildCounterOrderinvoicesCreateRefundInvoiceRequest--;
   return o;
@@ -1069,7 +1069,7 @@ checkOrderinvoicesCreateRefundInvoiceRequest(
         o.refundOnlyOption);
     checkOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption(
         o.returnOption);
-    checkUnnamed3811(o.shipmentInvoices);
+    checkUnnamed1924(o.shipmentInvoices);
   }
   buildCounterOrderinvoicesCreateRefundInvoiceRequest--;
 }
@@ -1486,6 +1486,7 @@ buildOrdersCreateTestOrderRequest() {
   var o = new api.OrdersCreateTestOrderRequest();
   buildCounterOrdersCreateTestOrderRequest++;
   if (buildCounterOrdersCreateTestOrderRequest < 3) {
+    o.country = "foo";
     o.templateName = "foo";
     o.testOrder = buildTestOrder();
   }
@@ -1496,6 +1497,7 @@ buildOrdersCreateTestOrderRequest() {
 checkOrdersCreateTestOrderRequest(api.OrdersCreateTestOrderRequest o) {
   buildCounterOrdersCreateTestOrderRequest++;
   if (buildCounterOrdersCreateTestOrderRequest < 3) {
+    unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.templateName, unittest.equals('foo'));
     checkTestOrder(o.testOrder);
   }
@@ -1523,14 +1525,14 @@ checkOrdersCreateTestOrderResponse(api.OrdersCreateTestOrderResponse o) {
   buildCounterOrdersCreateTestOrderResponse--;
 }
 
-buildUnnamed3812() {
+buildUnnamed1925() {
   var o = new core.List<api.OrdersCustomBatchRequestEntry>();
   o.add(buildOrdersCustomBatchRequestEntry());
   o.add(buildOrdersCustomBatchRequestEntry());
   return o;
 }
 
-checkUnnamed3812(core.List<api.OrdersCustomBatchRequestEntry> o) {
+checkUnnamed1925(core.List<api.OrdersCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrdersCustomBatchRequestEntry(o[0]);
   checkOrdersCustomBatchRequestEntry(o[1]);
@@ -1541,7 +1543,7 @@ buildOrdersCustomBatchRequest() {
   var o = new api.OrdersCustomBatchRequest();
   buildCounterOrdersCustomBatchRequest++;
   if (buildCounterOrdersCustomBatchRequest < 3) {
-    o.entries = buildUnnamed3812();
+    o.entries = buildUnnamed1925();
   }
   buildCounterOrdersCustomBatchRequest--;
   return o;
@@ -1550,7 +1552,7 @@ buildOrdersCustomBatchRequest() {
 checkOrdersCustomBatchRequest(api.OrdersCustomBatchRequest o) {
   buildCounterOrdersCustomBatchRequest++;
   if (buildCounterOrdersCustomBatchRequest < 3) {
-    checkUnnamed3812(o.entries);
+    checkUnnamed1925(o.entries);
   }
   buildCounterOrdersCustomBatchRequest--;
 }
@@ -1820,14 +1822,14 @@ checkOrdersCustomBatchRequestEntryReturnRefundLineItem(
   buildCounterOrdersCustomBatchRequestEntryReturnRefundLineItem--;
 }
 
-buildUnnamed3813() {
+buildUnnamed1926() {
   var o = new core.List<api.OrderMerchantProvidedAnnotation>();
   o.add(buildOrderMerchantProvidedAnnotation());
   o.add(buildOrderMerchantProvidedAnnotation());
   return o;
 }
 
-checkUnnamed3813(core.List<api.OrderMerchantProvidedAnnotation> o) {
+checkUnnamed1926(core.List<api.OrderMerchantProvidedAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderMerchantProvidedAnnotation(o[0]);
   checkOrderMerchantProvidedAnnotation(o[1]);
@@ -1838,7 +1840,7 @@ buildOrdersCustomBatchRequestEntrySetLineItemMetadata() {
   var o = new api.OrdersCustomBatchRequestEntrySetLineItemMetadata();
   buildCounterOrdersCustomBatchRequestEntrySetLineItemMetadata++;
   if (buildCounterOrdersCustomBatchRequestEntrySetLineItemMetadata < 3) {
-    o.annotations = buildUnnamed3813();
+    o.annotations = buildUnnamed1926();
     o.lineItemId = "foo";
     o.productId = "foo";
   }
@@ -1850,27 +1852,27 @@ checkOrdersCustomBatchRequestEntrySetLineItemMetadata(
     api.OrdersCustomBatchRequestEntrySetLineItemMetadata o) {
   buildCounterOrdersCustomBatchRequestEntrySetLineItemMetadata++;
   if (buildCounterOrdersCustomBatchRequestEntrySetLineItemMetadata < 3) {
-    checkUnnamed3813(o.annotations);
+    checkUnnamed1926(o.annotations);
     unittest.expect(o.lineItemId, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
   }
   buildCounterOrdersCustomBatchRequestEntrySetLineItemMetadata--;
 }
 
-buildUnnamed3814() {
+buildUnnamed1927() {
   var o = new core.List<api.OrderShipmentLineItemShipment>();
   o.add(buildOrderShipmentLineItemShipment());
   o.add(buildOrderShipmentLineItemShipment());
   return o;
 }
 
-checkUnnamed3814(core.List<api.OrderShipmentLineItemShipment> o) {
+checkUnnamed1927(core.List<api.OrderShipmentLineItemShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderShipmentLineItemShipment(o[0]);
   checkOrderShipmentLineItemShipment(o[1]);
 }
 
-buildUnnamed3815() {
+buildUnnamed1928() {
   var o = new core
       .List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>();
   o.add(buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo());
@@ -1878,7 +1880,7 @@ buildUnnamed3815() {
   return o;
 }
 
-checkUnnamed3815(
+checkUnnamed1928(
     core.List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(o[0]);
@@ -1891,10 +1893,10 @@ buildOrdersCustomBatchRequestEntryShipLineItems() {
   buildCounterOrdersCustomBatchRequestEntryShipLineItems++;
   if (buildCounterOrdersCustomBatchRequestEntryShipLineItems < 3) {
     o.carrier = "foo";
-    o.lineItems = buildUnnamed3814();
+    o.lineItems = buildUnnamed1927();
     o.shipmentGroupId = "foo";
     o.shipmentId = "foo";
-    o.shipmentInfos = buildUnnamed3815();
+    o.shipmentInfos = buildUnnamed1928();
     o.trackingId = "foo";
   }
   buildCounterOrdersCustomBatchRequestEntryShipLineItems--;
@@ -1906,10 +1908,10 @@ checkOrdersCustomBatchRequestEntryShipLineItems(
   buildCounterOrdersCustomBatchRequestEntryShipLineItems++;
   if (buildCounterOrdersCustomBatchRequestEntryShipLineItems < 3) {
     unittest.expect(o.carrier, unittest.equals('foo'));
-    checkUnnamed3814(o.lineItems);
+    checkUnnamed1927(o.lineItems);
     unittest.expect(o.shipmentGroupId, unittest.equals('foo'));
     unittest.expect(o.shipmentId, unittest.equals('foo'));
-    checkUnnamed3815(o.shipmentInfos);
+    checkUnnamed1928(o.shipmentInfos);
     unittest.expect(o.trackingId, unittest.equals('foo'));
   }
   buildCounterOrdersCustomBatchRequestEntryShipLineItems--;
@@ -1974,6 +1976,7 @@ buildOrdersCustomBatchRequestEntryUpdateShipment() {
   buildCounterOrdersCustomBatchRequestEntryUpdateShipment++;
   if (buildCounterOrdersCustomBatchRequestEntryUpdateShipment < 3) {
     o.carrier = "foo";
+    o.deliveryDate = "foo";
     o.shipmentId = "foo";
     o.status = "foo";
     o.trackingId = "foo";
@@ -1987,6 +1990,7 @@ checkOrdersCustomBatchRequestEntryUpdateShipment(
   buildCounterOrdersCustomBatchRequestEntryUpdateShipment++;
   if (buildCounterOrdersCustomBatchRequestEntryUpdateShipment < 3) {
     unittest.expect(o.carrier, unittest.equals('foo'));
+    unittest.expect(o.deliveryDate, unittest.equals('foo'));
     unittest.expect(o.shipmentId, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.trackingId, unittest.equals('foo'));
@@ -1994,14 +1998,14 @@ checkOrdersCustomBatchRequestEntryUpdateShipment(
   buildCounterOrdersCustomBatchRequestEntryUpdateShipment--;
 }
 
-buildUnnamed3816() {
+buildUnnamed1929() {
   var o = new core.List<api.OrdersCustomBatchResponseEntry>();
   o.add(buildOrdersCustomBatchResponseEntry());
   o.add(buildOrdersCustomBatchResponseEntry());
   return o;
 }
 
-checkUnnamed3816(core.List<api.OrdersCustomBatchResponseEntry> o) {
+checkUnnamed1929(core.List<api.OrdersCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrdersCustomBatchResponseEntry(o[0]);
   checkOrdersCustomBatchResponseEntry(o[1]);
@@ -2012,7 +2016,7 @@ buildOrdersCustomBatchResponse() {
   var o = new api.OrdersCustomBatchResponse();
   buildCounterOrdersCustomBatchResponse++;
   if (buildCounterOrdersCustomBatchResponse < 3) {
-    o.entries = buildUnnamed3816();
+    o.entries = buildUnnamed1929();
     o.kind = "foo";
   }
   buildCounterOrdersCustomBatchResponse--;
@@ -2022,7 +2026,7 @@ buildOrdersCustomBatchResponse() {
 checkOrdersCustomBatchResponse(api.OrdersCustomBatchResponse o) {
   buildCounterOrdersCustomBatchResponse++;
   if (buildCounterOrdersCustomBatchResponse < 3) {
-    checkUnnamed3816(o.entries);
+    checkUnnamed1929(o.entries);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterOrdersCustomBatchResponse--;
@@ -2155,14 +2159,14 @@ checkOrdersInStoreRefundLineItemResponse(
   buildCounterOrdersInStoreRefundLineItemResponse--;
 }
 
-buildUnnamed3817() {
+buildUnnamed1930() {
   var o = new core.List<api.Order>();
   o.add(buildOrder());
   o.add(buildOrder());
   return o;
 }
 
-checkUnnamed3817(core.List<api.Order> o) {
+checkUnnamed1930(core.List<api.Order> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrder(o[0]);
   checkOrder(o[1]);
@@ -2175,7 +2179,7 @@ buildOrdersListResponse() {
   if (buildCounterOrdersListResponse < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.resources = buildUnnamed3817();
+    o.resources = buildUnnamed1930();
   }
   buildCounterOrdersListResponse--;
   return o;
@@ -2186,7 +2190,7 @@ checkOrdersListResponse(api.OrdersListResponse o) {
   if (buildCounterOrdersListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3817(o.resources);
+    checkUnnamed1930(o.resources);
   }
   buildCounterOrdersListResponse--;
 }
@@ -2399,14 +2403,14 @@ checkOrdersReturnRefundLineItemResponse(
   buildCounterOrdersReturnRefundLineItemResponse--;
 }
 
-buildUnnamed3818() {
+buildUnnamed1931() {
   var o = new core.List<api.OrderMerchantProvidedAnnotation>();
   o.add(buildOrderMerchantProvidedAnnotation());
   o.add(buildOrderMerchantProvidedAnnotation());
   return o;
 }
 
-checkUnnamed3818(core.List<api.OrderMerchantProvidedAnnotation> o) {
+checkUnnamed1931(core.List<api.OrderMerchantProvidedAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderMerchantProvidedAnnotation(o[0]);
   checkOrderMerchantProvidedAnnotation(o[1]);
@@ -2417,7 +2421,7 @@ buildOrdersSetLineItemMetadataRequest() {
   var o = new api.OrdersSetLineItemMetadataRequest();
   buildCounterOrdersSetLineItemMetadataRequest++;
   if (buildCounterOrdersSetLineItemMetadataRequest < 3) {
-    o.annotations = buildUnnamed3818();
+    o.annotations = buildUnnamed1931();
     o.lineItemId = "foo";
     o.operationId = "foo";
     o.productId = "foo";
@@ -2429,7 +2433,7 @@ buildOrdersSetLineItemMetadataRequest() {
 checkOrdersSetLineItemMetadataRequest(api.OrdersSetLineItemMetadataRequest o) {
   buildCounterOrdersSetLineItemMetadataRequest++;
   if (buildCounterOrdersSetLineItemMetadataRequest < 3) {
-    checkUnnamed3818(o.annotations);
+    checkUnnamed1931(o.annotations);
     unittest.expect(o.lineItemId, unittest.equals('foo'));
     unittest.expect(o.operationId, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
@@ -2459,20 +2463,20 @@ checkOrdersSetLineItemMetadataResponse(
   buildCounterOrdersSetLineItemMetadataResponse--;
 }
 
-buildUnnamed3819() {
+buildUnnamed1932() {
   var o = new core.List<api.OrderShipmentLineItemShipment>();
   o.add(buildOrderShipmentLineItemShipment());
   o.add(buildOrderShipmentLineItemShipment());
   return o;
 }
 
-checkUnnamed3819(core.List<api.OrderShipmentLineItemShipment> o) {
+checkUnnamed1932(core.List<api.OrderShipmentLineItemShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderShipmentLineItemShipment(o[0]);
   checkOrderShipmentLineItemShipment(o[1]);
 }
 
-buildUnnamed3820() {
+buildUnnamed1933() {
   var o = new core
       .List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>();
   o.add(buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo());
@@ -2480,7 +2484,7 @@ buildUnnamed3820() {
   return o;
 }
 
-checkUnnamed3820(
+checkUnnamed1933(
     core.List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(o[0]);
@@ -2493,11 +2497,11 @@ buildOrdersShipLineItemsRequest() {
   buildCounterOrdersShipLineItemsRequest++;
   if (buildCounterOrdersShipLineItemsRequest < 3) {
     o.carrier = "foo";
-    o.lineItems = buildUnnamed3819();
+    o.lineItems = buildUnnamed1932();
     o.operationId = "foo";
     o.shipmentGroupId = "foo";
     o.shipmentId = "foo";
-    o.shipmentInfos = buildUnnamed3820();
+    o.shipmentInfos = buildUnnamed1933();
     o.trackingId = "foo";
   }
   buildCounterOrdersShipLineItemsRequest--;
@@ -2508,11 +2512,11 @@ checkOrdersShipLineItemsRequest(api.OrdersShipLineItemsRequest o) {
   buildCounterOrdersShipLineItemsRequest++;
   if (buildCounterOrdersShipLineItemsRequest < 3) {
     unittest.expect(o.carrier, unittest.equals('foo'));
-    checkUnnamed3819(o.lineItems);
+    checkUnnamed1932(o.lineItems);
     unittest.expect(o.operationId, unittest.equals('foo'));
     unittest.expect(o.shipmentGroupId, unittest.equals('foo'));
     unittest.expect(o.shipmentId, unittest.equals('foo'));
-    checkUnnamed3820(o.shipmentInfos);
+    checkUnnamed1933(o.shipmentInfos);
     unittest.expect(o.trackingId, unittest.equals('foo'));
   }
   buildCounterOrdersShipLineItemsRequest--;
@@ -2639,6 +2643,7 @@ buildOrdersUpdateShipmentRequest() {
   buildCounterOrdersUpdateShipmentRequest++;
   if (buildCounterOrdersUpdateShipmentRequest < 3) {
     o.carrier = "foo";
+    o.deliveryDate = "foo";
     o.operationId = "foo";
     o.shipmentId = "foo";
     o.status = "foo";
@@ -2652,6 +2657,7 @@ checkOrdersUpdateShipmentRequest(api.OrdersUpdateShipmentRequest o) {
   buildCounterOrdersUpdateShipmentRequest++;
   if (buildCounterOrdersUpdateShipmentRequest < 3) {
     unittest.expect(o.carrier, unittest.equals('foo'));
+    unittest.expect(o.deliveryDate, unittest.equals('foo'));
     unittest.expect(o.operationId, unittest.equals('foo'));
     unittest.expect(o.shipmentId, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -2723,14 +2729,14 @@ checkPromotion(api.Promotion o) {
   buildCounterPromotion--;
 }
 
-buildUnnamed3821() {
+buildUnnamed1934() {
   var o = new core.List<api.ShipmentInvoiceLineItemInvoice>();
   o.add(buildShipmentInvoiceLineItemInvoice());
   o.add(buildShipmentInvoiceLineItemInvoice());
   return o;
 }
 
-checkUnnamed3821(core.List<api.ShipmentInvoiceLineItemInvoice> o) {
+checkUnnamed1934(core.List<api.ShipmentInvoiceLineItemInvoice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkShipmentInvoiceLineItemInvoice(o[0]);
   checkShipmentInvoiceLineItemInvoice(o[1]);
@@ -2742,7 +2748,7 @@ buildShipmentInvoice() {
   buildCounterShipmentInvoice++;
   if (buildCounterShipmentInvoice < 3) {
     o.invoiceSummary = buildInvoiceSummary();
-    o.lineItemInvoices = buildUnnamed3821();
+    o.lineItemInvoices = buildUnnamed1934();
     o.shipmentGroupId = "foo";
   }
   buildCounterShipmentInvoice--;
@@ -2753,20 +2759,20 @@ checkShipmentInvoice(api.ShipmentInvoice o) {
   buildCounterShipmentInvoice++;
   if (buildCounterShipmentInvoice < 3) {
     checkInvoiceSummary(o.invoiceSummary);
-    checkUnnamed3821(o.lineItemInvoices);
+    checkUnnamed1934(o.lineItemInvoices);
     unittest.expect(o.shipmentGroupId, unittest.equals('foo'));
   }
   buildCounterShipmentInvoice--;
 }
 
-buildUnnamed3822() {
+buildUnnamed1935() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3822(core.List<core.String> o) {
+checkUnnamed1935(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2779,7 +2785,7 @@ buildShipmentInvoiceLineItemInvoice() {
   if (buildCounterShipmentInvoiceLineItemInvoice < 3) {
     o.lineItemId = "foo";
     o.productId = "foo";
-    o.shipmentUnitIds = buildUnnamed3822();
+    o.shipmentUnitIds = buildUnnamed1935();
     o.unitInvoice = buildUnitInvoice();
   }
   buildCounterShipmentInvoiceLineItemInvoice--;
@@ -2791,33 +2797,33 @@ checkShipmentInvoiceLineItemInvoice(api.ShipmentInvoiceLineItemInvoice o) {
   if (buildCounterShipmentInvoiceLineItemInvoice < 3) {
     unittest.expect(o.lineItemId, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
-    checkUnnamed3822(o.shipmentUnitIds);
+    checkUnnamed1935(o.shipmentUnitIds);
     checkUnitInvoice(o.unitInvoice);
   }
   buildCounterShipmentInvoiceLineItemInvoice--;
 }
 
-buildUnnamed3823() {
+buildUnnamed1936() {
   var o = new core.List<api.TestOrderLineItem>();
   o.add(buildTestOrderLineItem());
   o.add(buildTestOrderLineItem());
   return o;
 }
 
-checkUnnamed3823(core.List<api.TestOrderLineItem> o) {
+checkUnnamed1936(core.List<api.TestOrderLineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestOrderLineItem(o[0]);
   checkTestOrderLineItem(o[1]);
 }
 
-buildUnnamed3824() {
+buildUnnamed1937() {
   var o = new core.List<api.OrderPromotion>();
   o.add(buildOrderPromotion());
   o.add(buildOrderPromotion());
   return o;
 }
 
-checkUnnamed3824(core.List<api.OrderPromotion> o) {
+checkUnnamed1937(core.List<api.OrderPromotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderPromotion(o[0]);
   checkOrderPromotion(o[1]);
@@ -2829,12 +2835,13 @@ buildTestOrder() {
   buildCounterTestOrder++;
   if (buildCounterTestOrder < 3) {
     o.customer = buildTestOrderCustomer();
+    o.enableOrderinvoices = true;
     o.kind = "foo";
-    o.lineItems = buildUnnamed3823();
+    o.lineItems = buildUnnamed1936();
     o.notificationMode = "foo";
     o.paymentMethod = buildTestOrderPaymentMethod();
     o.predefinedDeliveryAddress = "foo";
-    o.promotions = buildUnnamed3824();
+    o.promotions = buildUnnamed1937();
     o.shippingCost = buildPrice();
     o.shippingCostTax = buildPrice();
     o.shippingOption = "foo";
@@ -2847,12 +2854,13 @@ checkTestOrder(api.TestOrder o) {
   buildCounterTestOrder++;
   if (buildCounterTestOrder < 3) {
     checkTestOrderCustomer(o.customer);
+    unittest.expect(o.enableOrderinvoices, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3823(o.lineItems);
+    checkUnnamed1936(o.lineItems);
     unittest.expect(o.notificationMode, unittest.equals('foo'));
     checkTestOrderPaymentMethod(o.paymentMethod);
     unittest.expect(o.predefinedDeliveryAddress, unittest.equals('foo'));
-    checkUnnamed3824(o.promotions);
+    checkUnnamed1937(o.promotions);
     checkPrice(o.shippingCost);
     checkPrice(o.shippingCostTax);
     unittest.expect(o.shippingOption, unittest.equals('foo'));
@@ -2934,14 +2942,14 @@ checkTestOrderLineItem(api.TestOrderLineItem o) {
   buildCounterTestOrderLineItem--;
 }
 
-buildUnnamed3825() {
+buildUnnamed1938() {
   var o = new core.List<api.OrderLineItemProductVariantAttribute>();
   o.add(buildOrderLineItemProductVariantAttribute());
   o.add(buildOrderLineItemProductVariantAttribute());
   return o;
 }
 
-checkUnnamed3825(core.List<api.OrderLineItemProductVariantAttribute> o) {
+checkUnnamed1938(core.List<api.OrderLineItemProductVariantAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderLineItemProductVariantAttribute(o[0]);
   checkOrderLineItemProductVariantAttribute(o[1]);
@@ -2964,7 +2972,7 @@ buildTestOrderLineItemProduct() {
     o.price = buildPrice();
     o.targetCountry = "foo";
     o.title = "foo";
-    o.variantAttributes = buildUnnamed3825();
+    o.variantAttributes = buildUnnamed1938();
   }
   buildCounterTestOrderLineItemProduct--;
   return o;
@@ -2985,7 +2993,7 @@ checkTestOrderLineItemProduct(api.TestOrderLineItemProduct o) {
     checkPrice(o.price);
     unittest.expect(o.targetCountry, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    checkUnnamed3825(o.variantAttributes);
+    checkUnnamed1938(o.variantAttributes);
   }
   buildCounterTestOrderLineItemProduct--;
 }
@@ -3017,40 +3025,40 @@ checkTestOrderPaymentMethod(api.TestOrderPaymentMethod o) {
   buildCounterTestOrderPaymentMethod--;
 }
 
-buildUnnamed3826() {
+buildUnnamed1939() {
   var o = new core.List<api.UnitInvoiceAdditionalCharge>();
   o.add(buildUnitInvoiceAdditionalCharge());
   o.add(buildUnitInvoiceAdditionalCharge());
   return o;
 }
 
-checkUnnamed3826(core.List<api.UnitInvoiceAdditionalCharge> o) {
+checkUnnamed1939(core.List<api.UnitInvoiceAdditionalCharge> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnitInvoiceAdditionalCharge(o[0]);
   checkUnitInvoiceAdditionalCharge(o[1]);
 }
 
-buildUnnamed3827() {
+buildUnnamed1940() {
   var o = new core.List<api.Promotion>();
   o.add(buildPromotion());
   o.add(buildPromotion());
   return o;
 }
 
-checkUnnamed3827(core.List<api.Promotion> o) {
+checkUnnamed1940(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotion(o[0]);
   checkPromotion(o[1]);
 }
 
-buildUnnamed3828() {
+buildUnnamed1941() {
   var o = new core.List<api.UnitInvoiceTaxLine>();
   o.add(buildUnitInvoiceTaxLine());
   o.add(buildUnitInvoiceTaxLine());
   return o;
 }
 
-checkUnnamed3828(core.List<api.UnitInvoiceTaxLine> o) {
+checkUnnamed1941(core.List<api.UnitInvoiceTaxLine> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUnitInvoiceTaxLine(o[0]);
   checkUnitInvoiceTaxLine(o[1]);
@@ -3061,10 +3069,10 @@ buildUnitInvoice() {
   var o = new api.UnitInvoice();
   buildCounterUnitInvoice++;
   if (buildCounterUnitInvoice < 3) {
-    o.additionalCharges = buildUnnamed3826();
-    o.promotions = buildUnnamed3827();
+    o.additionalCharges = buildUnnamed1939();
+    o.promotions = buildUnnamed1940();
     o.unitPricePretax = buildPrice();
-    o.unitPriceTaxes = buildUnnamed3828();
+    o.unitPriceTaxes = buildUnnamed1941();
   }
   buildCounterUnitInvoice--;
   return o;
@@ -3073,22 +3081,22 @@ buildUnitInvoice() {
 checkUnitInvoice(api.UnitInvoice o) {
   buildCounterUnitInvoice++;
   if (buildCounterUnitInvoice < 3) {
-    checkUnnamed3826(o.additionalCharges);
-    checkUnnamed3827(o.promotions);
+    checkUnnamed1939(o.additionalCharges);
+    checkUnnamed1940(o.promotions);
     checkPrice(o.unitPricePretax);
-    checkUnnamed3828(o.unitPriceTaxes);
+    checkUnnamed1941(o.unitPriceTaxes);
   }
   buildCounterUnitInvoice--;
 }
 
-buildUnnamed3829() {
+buildUnnamed1942() {
   var o = new core.List<api.Promotion>();
   o.add(buildPromotion());
   o.add(buildPromotion());
   return o;
 }
 
-checkUnnamed3829(core.List<api.Promotion> o) {
+checkUnnamed1942(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotion(o[0]);
   checkPromotion(o[1]);
@@ -3100,7 +3108,7 @@ buildUnitInvoiceAdditionalCharge() {
   buildCounterUnitInvoiceAdditionalCharge++;
   if (buildCounterUnitInvoiceAdditionalCharge < 3) {
     o.additionalChargeAmount = buildAmount();
-    o.additionalChargePromotions = buildUnnamed3829();
+    o.additionalChargePromotions = buildUnnamed1942();
     o.type = "foo";
   }
   buildCounterUnitInvoiceAdditionalCharge--;
@@ -3111,7 +3119,7 @@ checkUnitInvoiceAdditionalCharge(api.UnitInvoiceAdditionalCharge o) {
   buildCounterUnitInvoiceAdditionalCharge++;
   if (buildCounterUnitInvoiceAdditionalCharge < 3) {
     checkAmount(o.additionalChargeAmount);
-    checkUnnamed3829(o.additionalChargePromotions);
+    checkUnnamed1942(o.additionalChargePromotions);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterUnitInvoiceAdditionalCharge--;
@@ -3140,14 +3148,14 @@ checkUnitInvoiceTaxLine(api.UnitInvoiceTaxLine o) {
   buildCounterUnitInvoiceTaxLine--;
 }
 
-buildUnnamed3830() {
+buildUnnamed1943() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3830(core.List<core.String> o) {
+checkUnnamed1943(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4750,6 +4758,7 @@ main() {
       api.OrdersResourceApi res = new api.ContentApi(mock).orders;
       var arg_merchantId = "foo";
       var arg_templateName = "foo";
+      var arg_country = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4778,6 +4787,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["country"].first, unittest.equals(arg_country));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4789,7 +4800,7 @@ main() {
       }), true);
       res
           .gettestordertemplate(arg_merchantId, arg_templateName,
-              $fields: arg_$fields)
+              country: arg_country, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOrdersGetTestOrderTemplateResponse(response);
       })));
@@ -4859,7 +4870,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_placedDateEnd = "foo";
       var arg_placedDateStart = "foo";
-      var arg_statuses = buildUnnamed3830();
+      var arg_statuses = buildUnnamed1943();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

@@ -159,6 +159,15 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations`
+  /// that indicates from where listing should continue.
+  /// This field is optional.
+  ///
+  /// [pageSize] - The maximum number of Organizations to return in the
+  /// response.
+  /// This field is optional.
+  ///
   /// [filter] - An optional query string used to filter the Organizations to
   /// return in
   /// the response. Filter rules are case-insensitive.
@@ -176,15 +185,6 @@ class OrganizationsResourceApi {
   ///
   /// This field is optional.
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations`
-  /// that indicates from where listing should continue.
-  /// This field is optional.
-  ///
-  /// [pageSize] - The maximum number of Organizations to return in the
-  /// response.
-  /// This field is optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -196,9 +196,9 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -207,14 +207,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -700,6 +700,18 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListProjects
+  /// that indicates from where listing should continue.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of Projects to return in the response.
+  /// The server can return fewer Projects than requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
   /// [filter] - An expression for filtering the results of the request.  Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -733,18 +745,6 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListProjects
-  /// that indicates from where listing should continue.
-  ///
-  /// Optional.
-  ///
-  /// [pageSize] - The maximum number of Projects to return in the response.
-  /// The server can return fewer Projects than requested.
-  /// If unspecified, server picks an appropriate default.
-  ///
-  /// Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -756,9 +756,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -767,14 +767,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1219,6 +1219,12 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1245,12 +1251,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -1262,6 +1270,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1289,6 +1300,68 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
     return _json;
   }
 }

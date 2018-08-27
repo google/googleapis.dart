@@ -14,7 +14,7 @@
     "description": "An API to publish custom Android apps.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/custom-app-api",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/ywOAt8XWKM4cusVP0mF5yu49aEk\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ywOAt8XWKM4cusVP0mF5yu49aEk\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"

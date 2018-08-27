@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/ByLOW4yZfePRIGOjXTVOsRUK1H4\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kXB31Pf5jVmgvo2FmtNJIjQOGss\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1161,7 +1161,7 @@
             }
         }
     },
-    "revision": "20180531",
+    "revision": "20180823",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AndroidAppInfo": {
@@ -2055,16 +2055,8 @@
             "description": "A stacktrace.",
             "id": "StackTrace",
             "properties": {
-                "clusterId": {
-                    "description": "Exception cluster ID",
-                    "type": "string"
-                },
                 "exception": {
                     "description": "The stack trace message.\n\nRequired",
-                    "type": "string"
-                },
-                "reportId": {
-                    "description": "Exception report ID",
                     "type": "string"
                 }
             },
@@ -2260,6 +2252,20 @@
             "description": "An issue detected occurring during a test execution.",
             "id": "TestIssue",
             "properties": {
+                "category": {
+                    "description": "Category of issue. Required.",
+                    "enum": [
+                        "common",
+                        "robo",
+                        "unspecifiedCategory"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
                 "errorMessage": {
                     "description": "A brief human-readable message describing the issue. Required.",
                     "type": "string"
@@ -2269,10 +2275,12 @@
                     "enum": [
                         "info",
                         "severe",
+                        "suggestion",
                         "unspecifiedSeverity",
                         "warning"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -2288,18 +2296,32 @@
                     "description": "Type of issue. Required.",
                     "enum": [
                         "anr",
+                        "availableDeepLinks",
                         "compatibleWithOrchestrator",
                         "completeRoboScriptExecution",
+                        "encounteredLoginScreen",
+                        "encounteredNonAndroidUiWidgetScreen",
                         "failedToInstall",
                         "fatalException",
                         "incompleteRoboScriptExecution",
+                        "iosCrash",
+                        "iosException",
                         "launcherActivityNotFound",
                         "nativeCrash",
+                        "nonSdkApiUsageViolation",
+                        "performedGoogleLogin",
                         "startActivityNotFound",
                         "unspecifiedType",
                         "unusedRoboDirective"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",

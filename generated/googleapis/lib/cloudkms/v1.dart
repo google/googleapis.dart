@@ -16,8 +16,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudkms/v1';
 
-/// Manages encryption for your cloud services the same way you do on-premises.
-/// You can generate, use, rotate, and destroy AES256 encryption keys.
+/// Cloud KMS allows you to keep cryptographic keys in one central cloud
+/// service, for direct use by other cloud resources and applications. With
+/// Cloud KMS you are the ultimate custodian of your data, you can manage
+/// encryption in the cloud the same way you do on-premises, and you have a
+/// provable and monitorable root of trust over your data.
 class CloudkmsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -509,7 +512,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
   /// Create a new CryptoKey within a KeyRing.
   ///
-  /// CryptoKey.purpose is required.
+  /// CryptoKey.purpose and
+  /// CryptoKey.version_template.algorithm
+  /// are required.
   ///
   /// [request] - The metadata request object.
   ///
@@ -568,7 +573,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     return _response.then((data) => new CryptoKey.fromJson(data));
   }
 
-  /// Decrypts data that was protected by Encrypt.
+  /// Decrypts data that was protected by Encrypt. The CryptoKey.purpose
+  /// must be ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///
@@ -622,6 +628,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   }
 
   /// Encrypts data, so that it can only be recovered by a call to Decrypt.
+  /// The CryptoKey.purpose must be
+  /// ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///
@@ -781,13 +789,20 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeysResponse.next_page_token.
-  ///
   /// [pageSize] - Optional limit on the number of CryptoKeys to include in the
   /// response.  Further CryptoKeys can subsequently be obtained by
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
+  ///
+  /// [versionView] - The fields of the primary version to include in the
+  /// response.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" : A
+  /// CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED.
+  /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeysResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -800,7 +815,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize,
+      core.String versionView,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -811,11 +829,14 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (versionView != null) {
+      _queryParams["versionView"] = [versionView];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1008,7 +1029,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
-  /// Update the version of a CryptoKey that will be used in Encrypt
+  /// Update the version of a CryptoKey that will be used in Encrypt.
+  ///
+  /// Returns an error if called on an asymmetric key.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1068,6 +1091,120 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Decrypts data that was encrypted with a public key retrieved from
+  /// GetPublicKey corresponding to a CryptoKeyVersion with
+  /// CryptoKey.purpose ASYMMETRIC_DECRYPT.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// decryption.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AsymmetricDecryptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AsymmetricDecryptResponse> asymmetricDecrypt(
+      AsymmetricDecryptRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':asymmetricDecrypt';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new AsymmetricDecryptResponse.fromJson(data));
+  }
+
+  /// Signs data using a CryptoKeyVersion with CryptoKey.purpose
+  /// ASYMMETRIC_SIGN, producing a signature that can be verified with the
+  /// public
+  /// key retrieved from GetPublicKey.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// signing.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AsymmetricSignResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AsymmetricSignResponse> asymmetricSign(
+      AsymmetricSignRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':asymmetricSign';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AsymmetricSignResponse.fromJson(data));
+  }
 
   /// Create a new CryptoKeyVersion in a CryptoKey.
   ///
@@ -1233,6 +1370,56 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     return _response.then((data) => new CryptoKeyVersion.fromJson(data));
   }
 
+  /// Returns the public key for the given CryptoKeyVersion. The
+  /// CryptoKey.purpose must be
+  /// ASYMMETRIC_SIGN or
+  /// ASYMMETRIC_DECRYPT.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the CryptoKeyVersion public key to
+  /// get.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublicKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublicKey> getPublicKey(core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/publicKey';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PublicKey.fromJson(data));
+  }
+
   /// Lists CryptoKeyVersions.
   ///
   /// Request parameters:
@@ -1243,14 +1430,20 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
-  /// ListCryptoKeyVersionsResponse.next_page_token.
-  ///
   /// [pageSize] - Optional limit on the number of CryptoKeyVersions to
   /// include in the response. Further CryptoKeyVersions can
   /// subsequently be obtained by including the
   /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [view] - The fields to include in the response.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" : A
+  /// CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED.
+  /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListCryptoKeyVersionsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1263,7 +1456,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize,
+      core.String view,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1274,11 +1470,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1418,6 +1617,125 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new CryptoKeyVersion.fromJson(data));
+  }
+}
+
+/// Request message for KeyManagementService.AsymmetricDecrypt.
+class AsymmetricDecryptRequest {
+  /// Required. The data encrypted with the named CryptoKeyVersion's public
+  /// key using OAEP.
+  core.String ciphertext;
+  core.List<core.int> get ciphertextAsBytes {
+    return convert.base64.decode(ciphertext);
+  }
+
+  void set ciphertextAsBytes(core.List<core.int> _bytes) {
+    ciphertext =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  AsymmetricDecryptRequest();
+
+  AsymmetricDecryptRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ciphertext")) {
+      ciphertext = _json["ciphertext"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ciphertext != null) {
+      _json["ciphertext"] = ciphertext;
+    }
+    return _json;
+  }
+}
+
+/// Response message for KeyManagementService.AsymmetricDecrypt.
+class AsymmetricDecryptResponse {
+  /// The decrypted data originally encrypted with the matching public key.
+  core.String plaintext;
+  core.List<core.int> get plaintextAsBytes {
+    return convert.base64.decode(plaintext);
+  }
+
+  void set plaintextAsBytes(core.List<core.int> _bytes) {
+    plaintext =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  AsymmetricDecryptResponse();
+
+  AsymmetricDecryptResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("plaintext")) {
+      plaintext = _json["plaintext"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (plaintext != null) {
+      _json["plaintext"] = plaintext;
+    }
+    return _json;
+  }
+}
+
+/// Request message for KeyManagementService.AsymmetricSign.
+class AsymmetricSignRequest {
+  /// Required. The digest of the data to sign. The digest must be produced with
+  /// the same digest algorithm as specified by the key version's
+  /// algorithm.
+  Digest digest;
+
+  AsymmetricSignRequest();
+
+  AsymmetricSignRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("digest")) {
+      digest = new Digest.fromJson(_json["digest"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (digest != null) {
+      _json["digest"] = (digest).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response message for KeyManagementService.AsymmetricSign.
+class AsymmetricSignResponse {
+  /// The created signature.
+  core.String signature;
+  core.List<core.int> get signatureAsBytes {
+    return convert.base64.decode(signature);
+  }
+
+  void set signatureAsBytes(core.List<core.int> _bytes) {
+    signature =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  AsymmetricSignResponse();
+
+  AsymmetricSignResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("signature")) {
+      signature = _json["signature"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (signature != null) {
+      _json["signature"] = signature;
+    }
+    return _json;
   }
 }
 
@@ -1568,6 +1886,12 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// Unimplemented. The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -1594,12 +1918,14 @@ class Binding {
 
   /// Role that is assigned to `members`.
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  /// Required
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
     }
@@ -1611,6 +1937,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1647,6 +1976,10 @@ class CryptoKey {
   /// CreateCryptoKeyVersion and
   /// UpdateCryptoKeyPrimaryVersion
   /// do not affect next_rotation_time.
+  ///
+  /// Keys with purpose
+  /// ENCRYPT_DECRYPT support
+  /// automatic rotation. For other keys, this field must be omitted.
   core.String nextRotationTime;
 
   /// Output only. A copy of the "primary" CryptoKeyVersion that will be used
@@ -1655,22 +1988,41 @@ class CryptoKey {
   ///
   /// The CryptoKey's primary version can be updated via
   /// UpdateCryptoKeyPrimaryVersion.
+  ///
+  /// All keys with purpose
+  /// ENCRYPT_DECRYPT have a
+  /// primary. For other keys, this field will be omitted.
   CryptoKeyVersion primary;
 
-  /// The immutable purpose of this CryptoKey. Currently, the only acceptable
-  /// purpose is ENCRYPT_DECRYPT.
+  /// The immutable purpose of this CryptoKey.
   /// Possible string values are:
   /// - "CRYPTO_KEY_PURPOSE_UNSPECIFIED" : Not specified.
   /// - "ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
   /// Encrypt and
   /// Decrypt.
+  /// - "ASYMMETRIC_SIGN" : CryptoKeys with this purpose may be used with
+  /// AsymmetricSign and
+  /// GetPublicKey.
+  /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// AsymmetricDecrypt and
+  /// GetPublicKey.
   core.String purpose;
 
   /// next_rotation_time will be advanced by this period when the service
   /// automatically rotates a key. Must be at least one day.
   ///
   /// If rotation_period is set, next_rotation_time must also be set.
+  ///
+  /// Keys with purpose
+  /// ENCRYPT_DECRYPT support
+  /// automatic rotation. For other keys, this field must be omitted.
   core.String rotationPeriod;
+
+  /// A template describing settings for new CryptoKeyVersion instances.
+  /// The properties of new CryptoKeyVersion instances created by either
+  /// CreateCryptoKeyVersion or
+  /// auto-rotation are controlled by this template.
+  CryptoKeyVersionTemplate versionTemplate;
 
   CryptoKey();
 
@@ -1695,6 +2047,10 @@ class CryptoKey {
     }
     if (_json.containsKey("rotationPeriod")) {
       rotationPeriod = _json["rotationPeriod"];
+    }
+    if (_json.containsKey("versionTemplate")) {
+      versionTemplate =
+          new CryptoKeyVersionTemplate.fromJson(_json["versionTemplate"]);
     }
   }
 
@@ -1722,6 +2078,9 @@ class CryptoKey {
     if (rotationPeriod != null) {
       _json["rotationPeriod"] = rotationPeriod;
     }
+    if (versionTemplate != null) {
+      _json["versionTemplate"] = (versionTemplate).toJson();
+    }
     return _json;
   }
 }
@@ -1729,15 +2088,49 @@ class CryptoKey {
 /// A CryptoKeyVersion represents an individual cryptographic key, and the
 /// associated key material.
 ///
-/// It can be used for cryptographic operations either directly, or via its
-/// parent CryptoKey, in which case the server will choose the appropriate
-/// version for the operation.
+/// An ENABLED version can be
+/// used for cryptographic operations.
 ///
 /// For security reasons, the raw cryptographic key material represented by a
 /// CryptoKeyVersion can never be viewed or exported. It can only be used to
-/// encrypt or decrypt data when an authorized user or application invokes Cloud
-/// KMS.
+/// encrypt, decrypt, or sign data when an authorized user or application
+/// invokes
+/// Cloud KMS.
 class CryptoKeyVersion {
+  /// Output only. The CryptoKeyVersionAlgorithm that this
+  /// CryptoKeyVersion supports.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest.
+  core.String algorithm;
+
+  /// Output only. Statement that was generated and signed by the HSM at key
+  /// creation time. Use this statement to verify attributes of the key as
+  /// stored
+  /// on the HSM, independently of Google. Only provided for key versions with
+  /// protection_level HSM.
+  KeyOperationAttestation attestation;
+
   /// Output only. The time at which this CryptoKeyVersion was created.
   core.String createTime;
 
@@ -1751,16 +2144,31 @@ class CryptoKeyVersion {
   /// DESTROY_SCHEDULED.
   core.String destroyTime;
 
+  /// Output only. The time this CryptoKeyVersion's key material was
+  /// generated.
+  core.String generateTime;
+
   /// Output only. The resource name for this CryptoKeyVersion in the format
   /// `projects / * /locations / * /keyRings / * /cryptoKeys / *
   /// /cryptoKeyVersions / * `.
   core.String name;
 
+  /// Output only. The ProtectionLevel describing how crypto operations are
+  /// performed with this CryptoKeyVersion.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  core.String protectionLevel;
+
   /// The current state of the CryptoKeyVersion.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" : Not specified.
-  /// - "ENABLED" : This version may be used in Encrypt and
-  /// Decrypt requests.
+  /// - "PENDING_GENERATION" : This version is still being generated. It may not
+  /// be used, enabled,
+  /// disabled, or destroyed yet. Cloud KMS will automatically mark this
+  /// version ENABLED as soon as the version is ready.
+  /// - "ENABLED" : This version may be used for cryptographic operations.
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available,
   /// and the version can be placed back into the ENABLED state.
@@ -1777,6 +2185,12 @@ class CryptoKeyVersion {
   CryptoKeyVersion();
 
   CryptoKeyVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("algorithm")) {
+      algorithm = _json["algorithm"];
+    }
+    if (_json.containsKey("attestation")) {
+      attestation = new KeyOperationAttestation.fromJson(_json["attestation"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -1786,8 +2200,14 @@ class CryptoKeyVersion {
     if (_json.containsKey("destroyTime")) {
       destroyTime = _json["destroyTime"];
     }
+    if (_json.containsKey("generateTime")) {
+      generateTime = _json["generateTime"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("protectionLevel")) {
+      protectionLevel = _json["protectionLevel"];
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -1797,6 +2217,12 @@ class CryptoKeyVersion {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (algorithm != null) {
+      _json["algorithm"] = algorithm;
+    }
+    if (attestation != null) {
+      _json["attestation"] = (attestation).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1806,11 +2232,86 @@ class CryptoKeyVersion {
     if (destroyTime != null) {
       _json["destroyTime"] = destroyTime;
     }
+    if (generateTime != null) {
+      _json["generateTime"] = generateTime;
+    }
     if (name != null) {
       _json["name"] = name;
     }
+    if (protectionLevel != null) {
+      _json["protectionLevel"] = protectionLevel;
+    }
     if (state != null) {
       _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// A CryptoKeyVersionTemplate specifies the properties to use when creating
+/// a new CryptoKeyVersion, either manually with
+/// CreateCryptoKeyVersion or
+/// automatically as a result of auto-rotation.
+class CryptoKeyVersionTemplate {
+  /// Required. Algorithm to use
+  /// when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both
+  /// this field is omitted and CryptoKey.purpose is
+  /// ENCRYPT_DECRYPT.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest.
+  core.String algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on
+  /// this template. Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  core.String protectionLevel;
+
+  CryptoKeyVersionTemplate();
+
+  CryptoKeyVersionTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("algorithm")) {
+      algorithm = _json["algorithm"];
+    }
+    if (_json.containsKey("protectionLevel")) {
+      protectionLevel = _json["protectionLevel"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (algorithm != null) {
+      _json["algorithm"] = algorithm;
+    }
+    if (protectionLevel != null) {
+      _json["protectionLevel"] = protectionLevel;
     }
     return _json;
   }
@@ -1910,11 +2411,82 @@ class DestroyCryptoKeyVersionRequest {
   }
 }
 
+/// A Digest holds a cryptographic message digest.
+class Digest {
+  /// A message digest produced with the SHA-256 algorithm.
+  core.String sha256;
+  core.List<core.int> get sha256AsBytes {
+    return convert.base64.decode(sha256);
+  }
+
+  void set sha256AsBytes(core.List<core.int> _bytes) {
+    sha256 =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// A message digest produced with the SHA-384 algorithm.
+  core.String sha384;
+  core.List<core.int> get sha384AsBytes {
+    return convert.base64.decode(sha384);
+  }
+
+  void set sha384AsBytes(core.List<core.int> _bytes) {
+    sha384 =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// A message digest produced with the SHA-512 algorithm.
+  core.String sha512;
+  core.List<core.int> get sha512AsBytes {
+    return convert.base64.decode(sha512);
+  }
+
+  void set sha512AsBytes(core.List<core.int> _bytes) {
+    sha512 =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  Digest();
+
+  Digest.fromJson(core.Map _json) {
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
+    }
+    if (_json.containsKey("sha384")) {
+      sha384 = _json["sha384"];
+    }
+    if (_json.containsKey("sha512")) {
+      sha512 = _json["sha512"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
+    }
+    if (sha384 != null) {
+      _json["sha384"] = sha384;
+    }
+    if (sha512 != null) {
+      _json["sha512"] = sha512;
+    }
+    return _json;
+  }
+}
+
 /// Request message for KeyManagementService.Encrypt.
 class EncryptRequest {
   /// Optional data that, if specified, must also be provided during decryption
-  /// through DecryptRequest.additional_authenticated_data.  Must be no
-  /// larger than 64KiB.
+  /// through DecryptRequest.additional_authenticated_data.
+  ///
+  /// The maximum size depends on the key version's
+  /// protection_level. For
+  /// SOFTWARE keys, the AAD must be no larger than
+  /// 64KiB. For HSM keys, the combined length of the
+  /// plaintext and additional_authenticated_data fields must be no larger than
+  /// 8KiB.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes {
     return convert.base64.decode(additionalAuthenticatedData);
@@ -1926,6 +2498,13 @@ class EncryptRequest {
   }
 
   /// Required. The data to encrypt. Must be no larger than 64KiB.
+  ///
+  /// The maximum size depends on the key version's
+  /// protection_level. For
+  /// SOFTWARE keys, the plaintext must be no larger
+  /// than 64KiB. For HSM keys, the combined length of the
+  /// plaintext and additional_authenticated_data fields must be no larger than
+  /// 8KiB.
   core.String plaintext;
   core.List<core.int> get plaintextAsBytes {
     return convert.base64.decode(plaintext);
@@ -1995,6 +2574,114 @@ class EncryptResponse {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// Contains an HSM-generated attestation about a key operation.
+class KeyOperationAttestation {
+  /// Output only. The attestation data provided by the HSM when the key
+  /// operation was performed.
+  core.String content;
+  core.List<core.int> get contentAsBytes {
+    return convert.base64.decode(content);
+  }
+
+  void set contentAsBytes(core.List<core.int> _bytes) {
+    content =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Output only. The format of the attestation data.
+  /// Possible string values are:
+  /// - "ATTESTATION_FORMAT_UNSPECIFIED"
+  /// - "CAVIUM_V1_COMPRESSED" : Cavium HSM attestation compressed with gzip.
+  /// Note that this format is
+  /// defined by Cavium and subject to change at any time.
+  core.String format;
+
+  KeyOperationAttestation();
+
+  KeyOperationAttestation.fromJson(core.Map _json) {
+    if (_json.containsKey("content")) {
+      content = _json["content"];
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (content != null) {
+      _json["content"] = content;
+    }
+    if (format != null) {
+      _json["format"] = format;
     }
     return _json;
   }
@@ -2272,6 +2959,31 @@ class Location {
   }
 }
 
+/// Cloud KMS metadata for the given google.cloud.location.Location.
+class LocationMetadata {
+  /// Indicates whether CryptoKeys with
+  /// protection_level
+  /// HSM can be created in this location.
+  core.bool hsmAvailable;
+
+  LocationMetadata();
+
+  LocationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("hsmAvailable")) {
+      hsmAvailable = _json["hsmAvailable"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hsmAvailable != null) {
+      _json["hsmAvailable"] = hsmAvailable;
+    }
+    return _json;
+  }
+}
+
 /// Defines an Identity and Access Management (IAM) policy. It is used to
 /// specify access control policies for Cloud Platform resources.
 ///
@@ -2387,6 +3099,35 @@ class Policy {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// The public key for a given CryptoKeyVersion. Obtained via
+/// GetPublicKey.
+class PublicKey {
+  /// The public key, encoded in PEM format. For more information, see the
+  /// [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
+  /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
+  /// and
+  /// [Textual Encoding of Subject Public Key Info]
+  /// (https://tools.ietf.org/html/rfc7468#section-13).
+  core.String pem;
+
+  PublicKey();
+
+  PublicKey.fromJson(core.Map _json) {
+    if (_json.containsKey("pem")) {
+      pem = _json["pem"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pem != null) {
+      _json["pem"] = pem;
     }
     return _json;
   }

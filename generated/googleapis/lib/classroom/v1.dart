@@ -951,6 +951,16 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the
+  /// server may assign a maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned.
+  /// If this argument is left unspecified, the default value is `PUBLISHED`.
+  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with
   /// an optional sort direction keyword. Supported field is `updateTime`.
@@ -966,16 +976,6 @@ class CoursesAnnouncementsResourceApi {
   /// The list request
   /// must be otherwise identical to the one that resulted in this token.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the
-  /// server may assign a maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
-  /// [announcementStates] - Restriction on the `state` of announcements
-  /// returned.
-  /// If this argument is left unspecified, the default value is `PUBLISHED`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -987,10 +987,10 @@ class CoursesAnnouncementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(core.String courseId,
-      {core.String orderBy,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.List<core.String> announcementStates,
+      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1002,17 +1002,17 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (announcementStates != null) {
       _queryParams["announcementStates"] = announcementStates;
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1776,6 +1776,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the
+  /// student with the specified identifier. The identifier can be one of the
+  /// following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
+  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are
   /// restricted by the requested value.
@@ -1803,15 +1812,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the
-  /// student with the specified identifier. The identifier can be one of the
-  /// following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1824,11 +1824,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String late,
+      {core.String userId,
+      core.String late,
       core.String pageToken,
       core.List<core.String> states,
       core.int pageSize,
-      core.String userId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1843,6 +1843,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
+    }
     if (late != null) {
       _queryParams["late"] = [late];
     }
@@ -1854,9 +1857,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2830,10 +2830,6 @@ class CoursesTeachersResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
   /// [pageToken] - nextPageToken
   /// value returned from a previous
   /// list call, indicating that
@@ -2841,6 +2837,10 @@ class CoursesTeachersResourceApi {
   ///
   /// The list request must be
   /// otherwise identical to the one that resulted in this token.
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2853,7 +2853,7 @@ class CoursesTeachersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTeachersResponse> list(core.String courseId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2864,11 +2864,11 @@ class CoursesTeachersResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3111,6 +3111,14 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// [courseId] - Restricts returned invitations to those for a course with the
+  /// specified
+  /// identifier.
+  ///
   /// [userId] - Restricts returned invitations to those for a specific user.
   /// The identifier
   /// can be one of the following:
@@ -3127,14 +3135,6 @@ class InvitationsResourceApi {
   /// The list request must be
   /// otherwise identical to the one that resulted in this token.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
-  /// [courseId] - Restricts returned invitations to those for a course with the
-  /// specified
-  /// identifier.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3146,10 +3146,10 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list(
-      {core.String userId,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String courseId,
+      core.String userId,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3158,17 +3158,17 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (courseId != null) {
       _queryParams["courseId"] = [courseId];
+    }
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3192,7 +3192,8 @@ class RegistrationsResourceApi {
   RegistrationsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a `Registration`, causing Classroom to start sending notifications
-  /// from the provided `feed` to the provided `destination`.
+  /// from the provided `feed` to the destination provided in
+  /// `cloudPubSubTopic`.
   ///
   /// Returns the created `Registration`. Currently, this will be the same as
   /// the argument, but with server-assigned fields such as `expiry_time` and
@@ -3201,27 +3202,27 @@ class RegistrationsResourceApi {
   /// Note that any value specified for the `expiry_time` or `id` fields will be
   /// ignored.
   ///
-  /// While Classroom may validate the `destination` and return errors on a best
-  /// effort basis, it is the caller's responsibility to ensure that it exists
-  /// and that Classroom has permission to publish to it.
+  /// While Classroom may validate the `cloudPubSubTopic` and return errors on a
+  /// best effort basis, it is the caller's responsibility to ensure that it
+  /// exists and that Classroom has permission to publish to it.
   ///
   /// This method may return the following error codes:
   ///
   /// * `PERMISSION_DENIED` if:
   ///     * the authenticated user does not have permission to receive
   ///       notifications from the requested field; or
-  /// * the credential provided does not include the appropriate scope for the
-  ///       requested feed.
+  ///     * the credential provided does not include the appropriate scope for
+  ///       the requested feed.
   ///     * another access error is encountered.
   /// * `INVALID_ARGUMENT` if:
-  /// * no `destination` is specified, or the specified `destination` is not
-  ///       valid; or
+  ///     * no `cloudPubsubTopic` is specified, or the specified
+  ///       `cloudPubsubTopic` is not valid; or
   ///     * no `feed` is specified, or the specified `feed` is not valid.
   /// * `NOT_FOUND` if:
-  /// * the specified `feed` cannot be located, or the requesting user does not
-  ///       have permission to determine whether or not it exists; or
-  ///     * the specified `destination` cannot be located, or Classroom has not
-  ///       been granted permission to publish to it.
+  ///     * the specified `feed` cannot be located, or the requesting user does
+  ///       not have permission to determine whether or not it exists; or
+  /// * the specified `cloudPubsubTopic` cannot be located, or Classroom has
+  ///       not been granted permission to publish to it.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3560,14 +3561,6 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///   all students that the requesting user is permitted to view guardian
   ///   invitations.
   ///
-  /// [pageToken] - nextPageToken
-  /// value returned from a previous
-  /// list call,
-  /// indicating that the subsequent page of results should be returned.
-  ///
-  /// The list request
-  /// must be otherwise identical to the one that resulted in this token.
-  ///
   /// [invitedEmailAddress] - If specified, only results with the specified
   /// `invited_email_address`
   /// will be returned.
@@ -3582,6 +3575,14 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [pageToken] - nextPageToken
+  /// value returned from a previous
+  /// list call,
+  /// indicating that the subsequent page of results should be returned.
+  ///
+  /// The list request
+  /// must be otherwise identical to the one that resulted in this token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3593,10 +3594,10 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGuardianInvitationsResponse> list(core.String studentId,
-      {core.String pageToken,
-      core.String invitedEmailAddress,
+      {core.String invitedEmailAddress,
       core.List<core.String> states,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3608,9 +3609,6 @@ class UserProfilesGuardianInvitationsResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
@@ -3619,6 +3617,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4998,6 +4999,29 @@ class CourseWork {
   }
 }
 
+/// Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
+class CourseWorkChangesInfo {
+  /// The `course_id` of the course to subscribe to work changes for.
+  core.String courseId;
+
+  CourseWorkChangesInfo();
+
+  CourseWorkChangesInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("courseId")) {
+      courseId = _json["courseId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (courseId != null) {
+      _json["courseId"] = courseId;
+    }
+    return _json;
+  }
+}
+
 /// Represents a whole calendar date, e.g. date of birth. The time of day and
 /// time zone are either specified elsewhere or are not significant. The date
 /// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
@@ -5178,6 +5202,10 @@ class Feed {
   /// This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`.
   CourseRosterChangesInfo courseRosterChangesInfo;
 
+  /// Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
+  /// This field must be specified if `feed_type` is `COURSE_WORK_CHANGES`.
+  CourseWorkChangesInfo courseWorkChangesInfo;
+
   /// The type of feed.
   /// Possible string values are:
   /// - "FEED_TYPE_UNSPECIFIED" : Should never be returned or provided.
@@ -5195,6 +5223,15 @@ class Feed {
   /// No notifications will be generated when an invitation is created or
   /// deleted, but notifications will be generated when a user joins a course
   /// by accepting an invitation.
+  /// - "COURSE_WORK_CHANGES" : All course work activity for a particular
+  /// course.
+  ///
+  /// Notifications will be generated when a CourseWork or
+  /// StudentSubmission object is created or modified. No notification will be
+  /// generated when a StudentSubmission object is created in connection with
+  /// the creation or modification of its parent CourseWork object (but a
+  /// notification will be generated for that CourseWork object's creation or
+  /// modification).
   core.String feedType;
 
   Feed();
@@ -5203,6 +5240,10 @@ class Feed {
     if (_json.containsKey("courseRosterChangesInfo")) {
       courseRosterChangesInfo = new CourseRosterChangesInfo.fromJson(
           _json["courseRosterChangesInfo"]);
+    }
+    if (_json.containsKey("courseWorkChangesInfo")) {
+      courseWorkChangesInfo =
+          new CourseWorkChangesInfo.fromJson(_json["courseWorkChangesInfo"]);
     }
     if (_json.containsKey("feedType")) {
       feedType = _json["feedType"];
@@ -5214,6 +5255,9 @@ class Feed {
         new core.Map<core.String, core.Object>();
     if (courseRosterChangesInfo != null) {
       _json["courseRosterChangesInfo"] = (courseRosterChangesInfo).toJson();
+    }
+    if (courseWorkChangesInfo != null) {
+      _json["courseWorkChangesInfo"] = (courseWorkChangesInfo).toJson();
     }
     if (feedType != null) {
       _json["feedType"] = feedType;
@@ -6305,7 +6349,7 @@ class ReclaimStudentSubmissionRequest {
 }
 
 /// An instruction to Classroom to send notifications from the `feed` to the
-/// provided `destination`.
+/// provided destination.
 class Registration {
   /// The Cloud Pub/Sub topic that notifications are to be sent to.
   CloudPubsubTopic cloudPubsubTopic;
@@ -6316,7 +6360,7 @@ class Registration {
   core.String expiryTime;
 
   /// Specification for the class of notifications that Classroom should deliver
-  /// to the `destination`.
+  /// to the destination.
   Feed feed;
 
   /// A server-generated unique identifier for this `Registration`.

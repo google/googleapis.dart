@@ -519,7 +519,7 @@ class ChromeosdevicesResourceApi {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// http://support.google.com/chromeos/a/bin/answer.py?hl=en&answer=1698333
+  /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -1493,7 +1493,7 @@ class GroupsResourceApi {
   ///
   /// [query] - Query string search. Should be of the form "". Complete
   /// documentation is at
-  /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users
+  /// https://developers.google.com/admin-sdk/directory/v1/guides/search-groups
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -2419,7 +2419,7 @@ class MobiledevicesResourceApi {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// http://support.google.com/a/bin/answer.py?hl=en&answer=1408863#search
+  /// http://support.google.com/a/bin/answer.py?answer=1408863#search
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -10600,6 +10600,9 @@ class User {
   /// List of aliases (Read-only)
   core.List<core.String> aliases;
 
+  /// Indicates if user is archived
+  core.bool archived;
+
   /// Boolean indicating if the user should change password in next login
   core.bool changePasswordAtNextLogin;
 
@@ -10772,6 +10775,9 @@ class User {
     if (_json.containsKey("aliases")) {
       aliases = (_json["aliases"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
+    }
     if (_json.containsKey("changePasswordAtNextLogin")) {
       changePasswordAtNextLogin = _json["changePasswordAtNextLogin"];
     }
@@ -10908,6 +10914,9 @@ class User {
     }
     if (aliases != null) {
       _json["aliases"] = aliases;
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
     }
     if (changePasswordAtNextLogin != null) {
       _json["changePasswordAtNextLogin"] = changePasswordAtNextLogin;

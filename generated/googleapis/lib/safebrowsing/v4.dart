@@ -51,11 +51,11 @@ class EncodedFullHashesResourceApi {
   ///
   /// [encodedRequest] - A serialized FindFullHashesRequest proto.
   ///
+  /// [clientVersion] - The version of the client implementation.
+  ///
   /// [clientId] - A client ID that (hopefully) uniquely identifies the client
   /// implementation
   /// of the Safe Browsing API.
-  ///
-  /// [clientVersion] - The version of the client implementation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -68,7 +68,7 @@ class EncodedFullHashesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
-      {core.String clientId, core.String clientVersion, core.String $fields}) {
+      {core.String clientVersion, core.String clientId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -79,11 +79,11 @@ class EncodedFullHashesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientId != null) {
-      _queryParams["clientId"] = [clientId];
-    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (clientId != null) {
+      _queryParams["clientId"] = [clientId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -889,6 +889,7 @@ class ListUpdateRequest {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ListUpdateRequest();
@@ -1021,6 +1022,7 @@ class ListUpdateResponse {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ListUpdateResponse();
@@ -1478,6 +1480,7 @@ class ThreatHit {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   /// Details about the user that encountered the threat.
@@ -1640,6 +1643,7 @@ class ThreatListDescriptor {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ThreatListDescriptor();
@@ -1732,6 +1736,7 @@ class ThreatMatch {
   /// subresource filter. Interstitial
   /// will not be shown for patterns from this list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
+  /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   core.String threatType;
 
   ThreatMatch();

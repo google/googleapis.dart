@@ -39,6 +39,8 @@ class VaultApi {
 class MattersResourceApi {
   final commons.ApiRequester _requester;
 
+  MattersExportsResourceApi get exports =>
+      new MattersExportsResourceApi(_requester);
   MattersHoldsResourceApi get holds => new MattersHoldsResourceApi(_requester);
 
   MattersResourceApi(commons.ApiRequester client) : _requester = client;
@@ -287,6 +289,15 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [state] - If set, list only matters with that specific state. The default
+  /// is listing
+  /// matters of all states.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
+  /// - "OPEN" : A OPEN.
+  /// - "CLOSED" : A CLOSED.
+  /// - "DELETED" : A DELETED.
+  ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
   /// [pageSize] - The number of matters to return in the response.
@@ -297,15 +308,6 @@ class MattersResourceApi {
   /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [state] - If set, list only matters with that specific state. The default
-  /// is listing
-  /// matters of all states.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
-  /// - "OPEN" : A OPEN.
-  /// - "CLOSED" : A CLOSED.
-  /// - "DELETED" : A DELETED.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -318,10 +320,10 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
-      {core.String pageToken,
+      {core.String state,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
-      core.String state,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -330,6 +332,9 @@ class MattersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (state != null) {
+      _queryParams["state"] = [state];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -338,9 +343,6 @@ class MattersResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (state != null) {
-      _queryParams["state"] = [state];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -561,6 +563,217 @@ class MattersResourceApi {
   }
 }
 
+class MattersExportsResourceApi {
+  final commons.ApiRequester _requester;
+
+  MattersExportsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates an Export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Export].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Export> create(Export request, core.String matterId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Export.fromJson(data));
+  }
+
+  /// Deletes an Export.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [exportId] - The export ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String matterId, core.String exportId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (exportId == null) {
+      throw new core.ArgumentError("Parameter exportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/exports/' +
+        commons.Escaper.ecapeVariable('$exportId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets an Export.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [exportId] - The export ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Export].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Export> get(core.String matterId, core.String exportId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (exportId == null) {
+      throw new core.ArgumentError("Parameter exportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/exports/' +
+        commons.Escaper.ecapeVariable('$exportId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Export.fromJson(data));
+  }
+
+  /// Lists Exports.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [pageSize] - The number of exports to return in the response.
+  ///
+  /// [pageToken] - The pagination token as returned in the response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExportsResponse> list(core.String matterId,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListExportsResponse.fromJson(data));
+  }
+}
+
 class MattersHoldsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -568,6 +781,67 @@ class MattersHoldsResourceApi {
       new MattersHoldsAccountsResourceApi(_requester);
 
   MattersHoldsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Adds HeldAccounts to a hold. Returns a list of accounts that have been
+  /// successfully added. Accounts can only be added to an existing
+  /// account-based
+  /// hold.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [holdId] - The hold ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddHeldAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddHeldAccountsResponse> addHeldAccounts(
+      AddHeldAccountsRequest request, core.String matterId, core.String holdId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (holdId == null) {
+      throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/holds/' +
+        commons.Escaper.ecapeVariable('$holdId') +
+        ':addHeldAccounts';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AddHeldAccountsResponse.fromJson(data));
+  }
 
   /// Creates a hold in the given matter.
   ///
@@ -797,6 +1071,69 @@ class MattersHoldsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListHoldsResponse.fromJson(data));
+  }
+
+  /// Removes HeldAccounts from a hold. Returns a list of statuses in the same
+  /// order as the request. If this request leaves the hold with no held
+  /// accounts, the hold will not apply to any accounts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [holdId] - The hold ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoveHeldAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoveHeldAccountsResponse> removeHeldAccounts(
+      RemoveHeldAccountsRequest request,
+      core.String matterId,
+      core.String holdId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (holdId == null) {
+      throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/holds/' +
+        commons.Escaper.ecapeVariable('$holdId') +
+        ':removeHeldAccounts';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new RemoveHeldAccountsResponse.fromJson(data));
   }
 
   /// Updates the OU and/or query parameters of a hold. You cannot add accounts
@@ -1043,6 +1380,122 @@ class MattersHoldsAccountsResourceApi {
   }
 }
 
+/// Accounts to search
+class AccountInfo {
+  /// A set of accounts to search.
+  core.List<core.String> emails;
+
+  AccountInfo();
+
+  AccountInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("emails")) {
+      emails = (_json["emails"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (emails != null) {
+      _json["emails"] = emails;
+    }
+    return _json;
+  }
+}
+
+/// A status detailing the status of each account creation, and the
+/// HeldAccount, if successful.
+class AddHeldAccountResult {
+  /// If present, this account was successfully created.
+  HeldAccount account;
+
+  /// This represents the success status. If failed, check message.
+  Status status;
+
+  AddHeldAccountResult();
+
+  AddHeldAccountResult.fromJson(core.Map _json) {
+    if (_json.containsKey("account")) {
+      account = new HeldAccount.fromJson(_json["account"]);
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (account != null) {
+      _json["account"] = (account).toJson();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Add a list of accounts to a hold.
+class AddHeldAccountsRequest {
+  /// Account ids to identify which accounts to add. Only account_ids or only
+  /// emails should be specified, but not both.
+  core.List<core.String> accountIds;
+
+  /// Emails to identify which accounts to add. Only emails or only account_ids
+  /// should be specified, but not both.
+  core.List<core.String> emails;
+
+  AddHeldAccountsRequest();
+
+  AddHeldAccountsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("accountIds")) {
+      accountIds = (_json["accountIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("emails")) {
+      emails = (_json["emails"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountIds != null) {
+      _json["accountIds"] = accountIds;
+    }
+    if (emails != null) {
+      _json["emails"] = emails;
+    }
+    return _json;
+  }
+}
+
+/// Response for batch create held accounts.
+class AddHeldAccountsResponse {
+  /// The list of responses, in the same order as the batch request.
+  core.List<AddHeldAccountResult> responses;
+
+  AddHeldAccountsResponse();
+
+  AddHeldAccountsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("responses")) {
+      responses = (_json["responses"] as core.List)
+          .map<AddHeldAccountResult>(
+              (value) => new AddHeldAccountResult.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (responses != null) {
+      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Add an account with the permission specified. The role cannot be owner.
 /// If an account already has a role in the matter, it will be
 /// overwritten.
@@ -1126,6 +1579,84 @@ class CloseMatterResponse {
   }
 }
 
+/// An export file on cloud storage
+class CloudStorageFile {
+  /// The cloud storage bucket name of this export file.
+  /// Can be used in cloud storage JSON/XML API.
+  core.String bucketName;
+
+  /// The md5 hash of the file.
+  core.String md5Hash;
+
+  /// The cloud storage object name of this export file.
+  /// Can be used in cloud storage JSON/XML API.
+  core.String objectName;
+
+  /// The size of the export file.
+  core.String size;
+
+  CloudStorageFile();
+
+  CloudStorageFile.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketName")) {
+      bucketName = _json["bucketName"];
+    }
+    if (_json.containsKey("md5Hash")) {
+      md5Hash = _json["md5Hash"];
+    }
+    if (_json.containsKey("objectName")) {
+      objectName = _json["objectName"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketName != null) {
+      _json["bucketName"] = bucketName;
+    }
+    if (md5Hash != null) {
+      _json["md5Hash"] = md5Hash;
+    }
+    if (objectName != null) {
+      _json["objectName"] = objectName;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    return _json;
+  }
+}
+
+/// Export sink for cloud storage files.
+class CloudStorageSink {
+  /// Output only. The exported files on cloud storage.
+  core.List<CloudStorageFile> files;
+
+  CloudStorageSink();
+
+  CloudStorageSink.fromJson(core.Map _json) {
+    if (_json.containsKey("files")) {
+      files = (_json["files"] as core.List)
+          .map<CloudStorageFile>(
+              (value) => new CloudStorageFile.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (files != null) {
+      _json["files"] = files.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Corpus specific queries.
 class CorpusQuery {
   /// Details pertaining to Drive holds. If set, corpus must be Drive.
@@ -1178,6 +1709,67 @@ class CorpusQuery {
   }
 }
 
+/// The options for Drive export.
+class DriveExportOptions {
+  /// Set to true to include access level information for users
+  /// with <a
+  /// href="https://support.google.com/vault/answer/6099459#metadata">indirect
+  /// access</a>
+  /// to files.
+  core.bool includeAccessInfo;
+
+  DriveExportOptions();
+
+  DriveExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("includeAccessInfo")) {
+      includeAccessInfo = _json["includeAccessInfo"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeAccessInfo != null) {
+      _json["includeAccessInfo"] = includeAccessInfo;
+    }
+    return _json;
+  }
+}
+
+/// Drive search advanced options
+class DriveOptions {
+  /// Set to true to include Team Drive.
+  core.bool includeTeamDrives;
+
+  /// Search the versions of the Drive file
+  /// as of the reference date. These timestamps are in GMT and
+  /// rounded down to the given date.
+  core.String versionDate;
+
+  DriveOptions();
+
+  DriveOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("includeTeamDrives")) {
+      includeTeamDrives = _json["includeTeamDrives"];
+    }
+    if (_json.containsKey("versionDate")) {
+      versionDate = _json["versionDate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeTeamDrives != null) {
+      _json["includeTeamDrives"] = includeTeamDrives;
+    }
+    if (versionDate != null) {
+      _json["versionDate"] = versionDate;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -1195,6 +1787,308 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// An export
+class Export {
+  /// Output only. Export sink for cloud storage files.
+  CloudStorageSink cloudStorageSink;
+
+  /// Output only. The time when the export was created.
+  core.String createTime;
+
+  /// Advanced options of the export.
+  ExportOptions exportOptions;
+
+  /// Output only. The generated export ID.
+  core.String id;
+
+  /// Output only. The matter ID.
+  core.String matterId;
+
+  /// The export name.
+  core.String name;
+
+  /// The search query being exported.
+  Query query;
+
+  /// Output only. The requester of the export.
+  UserInfo requester;
+
+  /// Output only. Export statistics.
+  ExportStats stats;
+
+  /// Output only. The export status.
+  /// Possible string values are:
+  /// - "EXPORT_STATUS_UNSPECIFIED" : The status is unspecified.
+  /// - "COMPLETED" : The export completed.
+  /// - "FAILED" : The export failed.
+  /// - "IN_PROGRESS" : The export is still being executed.
+  core.String status;
+
+  Export();
+
+  Export.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudStorageSink")) {
+      cloudStorageSink =
+          new CloudStorageSink.fromJson(_json["cloudStorageSink"]);
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("exportOptions")) {
+      exportOptions = new ExportOptions.fromJson(_json["exportOptions"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("matterId")) {
+      matterId = _json["matterId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("query")) {
+      query = new Query.fromJson(_json["query"]);
+    }
+    if (_json.containsKey("requester")) {
+      requester = new UserInfo.fromJson(_json["requester"]);
+    }
+    if (_json.containsKey("stats")) {
+      stats = new ExportStats.fromJson(_json["stats"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudStorageSink != null) {
+      _json["cloudStorageSink"] = (cloudStorageSink).toJson();
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (exportOptions != null) {
+      _json["exportOptions"] = (exportOptions).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (matterId != null) {
+      _json["matterId"] = matterId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (query != null) {
+      _json["query"] = (query).toJson();
+    }
+    if (requester != null) {
+      _json["requester"] = (requester).toJson();
+    }
+    if (stats != null) {
+      _json["stats"] = (stats).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+/// Export advanced options
+class ExportOptions {
+  /// Option available for Drive export.
+  DriveExportOptions driveOptions;
+
+  /// Option available for groups export.
+  GroupsExportOptions groupsOptions;
+
+  /// Option available for hangouts chat export.
+  HangoutsChatExportOptions hangoutsChatOptions;
+
+  /// Option available for mail export.
+  MailExportOptions mailOptions;
+
+  ExportOptions();
+
+  ExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("driveOptions")) {
+      driveOptions = new DriveExportOptions.fromJson(_json["driveOptions"]);
+    }
+    if (_json.containsKey("groupsOptions")) {
+      groupsOptions = new GroupsExportOptions.fromJson(_json["groupsOptions"]);
+    }
+    if (_json.containsKey("hangoutsChatOptions")) {
+      hangoutsChatOptions =
+          new HangoutsChatExportOptions.fromJson(_json["hangoutsChatOptions"]);
+    }
+    if (_json.containsKey("mailOptions")) {
+      mailOptions = new MailExportOptions.fromJson(_json["mailOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (driveOptions != null) {
+      _json["driveOptions"] = (driveOptions).toJson();
+    }
+    if (groupsOptions != null) {
+      _json["groupsOptions"] = (groupsOptions).toJson();
+    }
+    if (hangoutsChatOptions != null) {
+      _json["hangoutsChatOptions"] = (hangoutsChatOptions).toJson();
+    }
+    if (mailOptions != null) {
+      _json["mailOptions"] = (mailOptions).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Stats of an export.
+class ExportStats {
+  /// The number of documents already processed by the export.
+  core.String exportedArtifactCount;
+
+  /// The size of export in bytes.
+  core.String sizeInBytes;
+
+  /// The number of documents to be exported.
+  core.String totalArtifactCount;
+
+  ExportStats();
+
+  ExportStats.fromJson(core.Map _json) {
+    if (_json.containsKey("exportedArtifactCount")) {
+      exportedArtifactCount = _json["exportedArtifactCount"];
+    }
+    if (_json.containsKey("sizeInBytes")) {
+      sizeInBytes = _json["sizeInBytes"];
+    }
+    if (_json.containsKey("totalArtifactCount")) {
+      totalArtifactCount = _json["totalArtifactCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exportedArtifactCount != null) {
+      _json["exportedArtifactCount"] = exportedArtifactCount;
+    }
+    if (sizeInBytes != null) {
+      _json["sizeInBytes"] = sizeInBytes;
+    }
+    if (totalArtifactCount != null) {
+      _json["totalArtifactCount"] = totalArtifactCount;
+    }
+    return _json;
+  }
+}
+
+/// The options for groups export.
+class GroupsExportOptions {
+  /// The export format for groups export.
+  /// Possible string values are:
+  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
+  /// - "MBOX" : MBOX as export format.
+  /// - "PST" : PST as export format
+  core.String exportFormat;
+
+  GroupsExportOptions();
+
+  GroupsExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("exportFormat")) {
+      exportFormat = _json["exportFormat"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exportFormat != null) {
+      _json["exportFormat"] = exportFormat;
+    }
+    return _json;
+  }
+}
+
+/// The options for hangouts chat export.
+class HangoutsChatExportOptions {
+  /// The export format for hangouts chat export.
+  /// Possible string values are:
+  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
+  /// - "MBOX" : MBOX as export format.
+  /// - "PST" : PST as export format
+  core.String exportFormat;
+
+  HangoutsChatExportOptions();
+
+  HangoutsChatExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("exportFormat")) {
+      exportFormat = _json["exportFormat"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exportFormat != null) {
+      _json["exportFormat"] = exportFormat;
+    }
+    return _json;
+  }
+}
+
+/// Accounts to search
+class HangoutsChatInfo {
+  /// A set of rooms to search.
+  core.List<core.String> roomId;
+
+  HangoutsChatInfo();
+
+  HangoutsChatInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("roomId")) {
+      roomId = (_json["roomId"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (roomId != null) {
+      _json["roomId"] = roomId;
+    }
+    return _json;
+  }
+}
+
+/// Hangouts chat search advanced options
+class HangoutsChatOptions {
+  /// Set to true to include rooms.
+  core.bool includeRooms;
+
+  HangoutsChatOptions();
+
+  HangoutsChatOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("includeRooms")) {
+      includeRooms = _json["includeRooms"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeRooms != null) {
+      _json["includeRooms"] = includeRooms;
+    }
     return _json;
   }
 }
@@ -1490,6 +2384,40 @@ class Hold {
   }
 }
 
+/// The holds for a matter.
+class ListExportsResponse {
+  /// The list of exports.
+  core.List<Export> exports;
+
+  /// Page token to retrieve the next page of results in the list.
+  core.String nextPageToken;
+
+  ListExportsResponse();
+
+  ListExportsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("exports")) {
+      exports = (_json["exports"] as core.List)
+          .map<Export>((value) => new Export.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exports != null) {
+      _json["exports"] = exports.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Returns a list of held accounts for a hold.
 class ListHeldAccountsResponse {
   /// The held accounts on a hold.
@@ -1579,6 +2507,56 @@ class ListMattersResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The options for mail export.
+class MailExportOptions {
+  /// The export file format.
+  /// Possible string values are:
+  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
+  /// - "MBOX" : MBOX as export format.
+  /// - "PST" : PST as export format
+  core.String exportFormat;
+
+  MailExportOptions();
+
+  MailExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("exportFormat")) {
+      exportFormat = _json["exportFormat"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exportFormat != null) {
+      _json["exportFormat"] = exportFormat;
+    }
+    return _json;
+  }
+}
+
+/// Mail search advanced options
+class MailOptions {
+  /// Set to true to exclude drafts.
+  core.bool excludeDrafts;
+
+  MailOptions();
+
+  MailOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("excludeDrafts")) {
+      excludeDrafts = _json["excludeDrafts"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludeDrafts != null) {
+      _json["excludeDrafts"] = excludeDrafts;
     }
     return _json;
   }
@@ -1693,6 +2671,261 @@ class MatterPermission {
   }
 }
 
+/// Org Unit to search
+class OrgUnitInfo {
+  /// Org unit to search, as provided by the
+  /// <a href="https://developers.google.com/admin-sdk/directory/">Admin SDK
+  /// Directory API</a>.
+  core.String orgUnitId;
+
+  OrgUnitInfo();
+
+  OrgUnitInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("orgUnitId")) {
+      orgUnitId = _json["orgUnitId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (orgUnitId != null) {
+      _json["orgUnitId"] = orgUnitId;
+    }
+    return _json;
+  }
+}
+
+/// A query definition relevant for search & export.
+class Query {
+  /// When 'ACCOUNT' is chosen as search method,
+  /// account_info needs to be specified.
+  AccountInfo accountInfo;
+
+  /// The corpus to search.
+  /// Possible string values are:
+  /// - "CORPUS_TYPE_UNSPECIFIED" : No corpus specified.
+  /// - "DRIVE" : Drive.
+  /// - "MAIL" : Mail.
+  /// - "GROUPS" : Groups.
+  /// - "HANGOUTS_CHAT" : Hangouts Chat.
+  core.String corpus;
+
+  /// The data source to search from.
+  /// Possible string values are:
+  /// - "DATA_SCOPE_UNSPECIFIED" : No data scope specified.
+  /// - "ALL_DATA" : All available data.
+  /// - "HELD_DATA" : Data on hold.
+  /// - "UNPROCESSED_DATA" : Data not processed.
+  core.String dataScope;
+
+  /// For Drive search, specify more options in this field.
+  DriveOptions driveOptions;
+
+  /// The end time range for the search query. These timestamps are in GMT and
+  /// rounded down to the start of the given date.
+  core.String endTime;
+
+  /// When 'ROOM' is chosen as search method, hangout_chats_info needs to be
+  /// specified. (read-only)
+  HangoutsChatInfo hangoutsChatInfo;
+
+  /// For hangouts chat search, specify more options in this field. (read-only)
+  HangoutsChatOptions hangoutsChatOptions;
+
+  /// For mail search, specify more options in this field.
+  MailOptions mailOptions;
+
+  /// When 'ORG_UNIT' is chosen as as search method, org_unit_info needs
+  /// to be specified.
+  OrgUnitInfo orgUnitInfo;
+
+  /// The search method to use.
+  /// Possible string values are:
+  /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified. If a
+  /// request does not specify a
+  /// search method, it will be rejected.
+  /// - "ACCOUNT" : Will search all accounts provided in account_info.
+  /// - "ORG_UNIT" : Will search all accounts in the OU specified in
+  /// org_unit_info.
+  /// - "TEAM_DRIVE" : Will search for all accounts in the Team Drive specified
+  /// in
+  /// team_drive_info.
+  /// - "ENTIRE_ORG" : Will search for all accounts in the organization.
+  /// No need to set account_info or org_unit_info.
+  /// - "ROOM" : Will search in the Room specified in
+  /// hangout_chats_info. (read-only)
+  core.String searchMethod;
+
+  /// The start time range for the search query. These timestamps are in GMT and
+  /// rounded down to the start of the given date.
+  core.String startTime;
+
+  /// When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be
+  /// specified.
+  TeamDriveInfo teamDriveInfo;
+
+  /// The corpus-specific
+  /// <a href="https://support.google.com/vault/answer/2474474">search
+  /// operators</a>
+  /// used to generate search results.
+  core.String terms;
+
+  /// The time zone name.
+  /// It should be an IANA TZ name, such as "America/Los_Angeles".
+  /// For more information, see
+  /// <a
+  /// href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Time
+  /// Zone</a>.
+  core.String timeZone;
+
+  Query();
+
+  Query.fromJson(core.Map _json) {
+    if (_json.containsKey("accountInfo")) {
+      accountInfo = new AccountInfo.fromJson(_json["accountInfo"]);
+    }
+    if (_json.containsKey("corpus")) {
+      corpus = _json["corpus"];
+    }
+    if (_json.containsKey("dataScope")) {
+      dataScope = _json["dataScope"];
+    }
+    if (_json.containsKey("driveOptions")) {
+      driveOptions = new DriveOptions.fromJson(_json["driveOptions"]);
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("hangoutsChatInfo")) {
+      hangoutsChatInfo =
+          new HangoutsChatInfo.fromJson(_json["hangoutsChatInfo"]);
+    }
+    if (_json.containsKey("hangoutsChatOptions")) {
+      hangoutsChatOptions =
+          new HangoutsChatOptions.fromJson(_json["hangoutsChatOptions"]);
+    }
+    if (_json.containsKey("mailOptions")) {
+      mailOptions = new MailOptions.fromJson(_json["mailOptions"]);
+    }
+    if (_json.containsKey("orgUnitInfo")) {
+      orgUnitInfo = new OrgUnitInfo.fromJson(_json["orgUnitInfo"]);
+    }
+    if (_json.containsKey("searchMethod")) {
+      searchMethod = _json["searchMethod"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("teamDriveInfo")) {
+      teamDriveInfo = new TeamDriveInfo.fromJson(_json["teamDriveInfo"]);
+    }
+    if (_json.containsKey("terms")) {
+      terms = _json["terms"];
+    }
+    if (_json.containsKey("timeZone")) {
+      timeZone = _json["timeZone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountInfo != null) {
+      _json["accountInfo"] = (accountInfo).toJson();
+    }
+    if (corpus != null) {
+      _json["corpus"] = corpus;
+    }
+    if (dataScope != null) {
+      _json["dataScope"] = dataScope;
+    }
+    if (driveOptions != null) {
+      _json["driveOptions"] = (driveOptions).toJson();
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (hangoutsChatInfo != null) {
+      _json["hangoutsChatInfo"] = (hangoutsChatInfo).toJson();
+    }
+    if (hangoutsChatOptions != null) {
+      _json["hangoutsChatOptions"] = (hangoutsChatOptions).toJson();
+    }
+    if (mailOptions != null) {
+      _json["mailOptions"] = (mailOptions).toJson();
+    }
+    if (orgUnitInfo != null) {
+      _json["orgUnitInfo"] = (orgUnitInfo).toJson();
+    }
+    if (searchMethod != null) {
+      _json["searchMethod"] = searchMethod;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (teamDriveInfo != null) {
+      _json["teamDriveInfo"] = (teamDriveInfo).toJson();
+    }
+    if (terms != null) {
+      _json["terms"] = terms;
+    }
+    if (timeZone != null) {
+      _json["timeZone"] = timeZone;
+    }
+    return _json;
+  }
+}
+
+/// Remove a list of accounts from a hold.
+class RemoveHeldAccountsRequest {
+  /// Account ids to identify HeldAccounts to remove.
+  core.List<core.String> accountIds;
+
+  RemoveHeldAccountsRequest();
+
+  RemoveHeldAccountsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("accountIds")) {
+      accountIds = (_json["accountIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountIds != null) {
+      _json["accountIds"] = accountIds;
+    }
+    return _json;
+  }
+}
+
+/// Response for batch delete held accounts.
+class RemoveHeldAccountsResponse {
+  /// A list of statuses for deleted accounts. Results have the
+  /// same order as the request.
+  core.List<Status> statuses;
+
+  RemoveHeldAccountsResponse();
+
+  RemoveHeldAccountsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("statuses")) {
+      statuses = (_json["statuses"] as core.List)
+          .map<Status>((value) => new Status.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (statuses != null) {
+      _json["statuses"] = statuses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Remove an account as a matter collaborator.
 class RemoveMatterPermissionsRequest {
   /// The account ID.
@@ -1752,6 +2985,135 @@ class ReopenMatterResponse {
   }
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different
+/// programming environments, including REST APIs and RPC APIs. It is used by
+/// [gRPC](https://github.com/grpc). The error model is designed to be:
+///
+/// - Simple to use and understand for most users
+/// - Flexible enough to meet unexpected needs
+///
+/// # Overview
+///
+/// The `Status` message contains three pieces of data: error code, error
+/// message,
+/// and error details. The error code should be an enum value of
+/// google.rpc.Code, but it may accept additional error codes if needed.  The
+/// error message should be a developer-facing English message that helps
+/// developers *understand* and *resolve* the error. If a localized user-facing
+/// error message is needed, put the localized message in the error details or
+/// localize it in the client. The optional error details may contain arbitrary
+/// information about the error. There is a predefined set of error detail types
+/// in the package `google.rpc` that can be used for common error conditions.
+///
+/// # Language mapping
+///
+/// The `Status` message is the logical representation of the error model, but
+/// it
+/// is not necessarily the actual wire format. When the `Status` message is
+/// exposed in different client libraries and different wire protocols, it can
+/// be
+/// mapped differently. For example, it will likely be mapped to some exceptions
+/// in Java, but more likely mapped to some error codes in C.
+///
+/// # Other uses
+///
+/// The error model and the `Status` message can be used in a variety of
+/// environments, either with or without APIs, to provide a
+/// consistent developer experience across different environments.
+///
+/// Example uses of this error model include:
+///
+/// - Partial errors. If a service needs to return partial errors to the client,
+/// it may embed the `Status` in the normal response to indicate the partial
+///     errors.
+///
+/// - Workflow errors. A typical workflow has multiple steps. Each step may
+///     have a `Status` message for error reporting.
+///
+/// - Batch operations. If a client uses batch request and batch response, the
+///     `Status` message should be used directly inside batch response, one for
+///     each error sub-response.
+///
+/// - Asynchronous operations. If an API call embeds asynchronous operation
+///     results in its response, the status of those operations should be
+///     represented directly using the `Status` message.
+///
+/// - Logging. If some API errors are stored in logs, the message `Status` could
+/// be used directly after any stripping needed for security/privacy reasons.
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int code;
+
+  /// A list of messages that carry the error details.  There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Team Drives to search
+class TeamDriveInfo {
+  /// List of Team Drive ids, as provided by <a
+  /// href="https://developers.google.com/drive">Drive API</a>.
+  core.List<core.String> teamDriveIds;
+
+  TeamDriveInfo();
+
+  TeamDriveInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("teamDriveIds")) {
+      teamDriveIds = (_json["teamDriveIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (teamDriveIds != null) {
+      _json["teamDriveIds"] = teamDriveIds;
+    }
+    return _json;
+  }
+}
+
 /// Undelete a matter by ID.
 class UndeleteMatterRequest {
   UndeleteMatterRequest();
@@ -1761,6 +3123,38 @@ class UndeleteMatterRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// User's information.
+class UserInfo {
+  /// The displayed name of the user.
+  core.String displayName;
+
+  /// The email address of the user.
+  core.String email;
+
+  UserInfo();
+
+  UserInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
     return _json;
   }
 }

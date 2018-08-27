@@ -275,8 +275,6 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of resources to return.
-  ///
   /// [syncToken] - A sync token, returned by a previous call to
   /// `contactgroups.list`.
   /// Only resources changed since the sync token was created will be returned.
@@ -284,6 +282,8 @@ class ContactGroupsResourceApi {
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
+  ///
+  /// [pageSize] - The maximum number of resources to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,9 +296,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.int pageSize,
-      core.String syncToken,
+      {core.String syncToken,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -307,14 +307,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -868,6 +868,14 @@ class PeopleConnectionsResourceApi {
   /// `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
   ///
+  /// [sortOrder] - The order in which the connections should be sorted.
+  /// Defaults to
+  /// `LAST_MODIFIED_ASCENDING`.
+  /// Possible string values are:
+  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+  ///
   /// [requestSyncToken] - Whether the response should include a sync token,
   /// which can be used to get
   /// all changes since the last request. For subsequent sync requests use the
@@ -925,14 +933,6 @@ class PeopleConnectionsResourceApi {
   /// * urls
   /// * userDefined
   ///
-  /// [sortOrder] - The order in which the connections should be sorted.
-  /// Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
-  /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -944,13 +944,13 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.bool requestSyncToken,
+      {core.String sortOrder,
+      core.bool requestSyncToken,
       core.String pageToken,
       core.int pageSize,
       core.String requestMask_includeField,
       core.String syncToken,
       core.String personFields,
-      core.String sortOrder,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -961,6 +961,9 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (requestSyncToken != null) {
       _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
@@ -979,9 +982,6 @@ class PeopleConnectionsResourceApi {
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

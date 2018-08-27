@@ -184,6 +184,58 @@ class AccountsAdclientsResourceApi {
   AccountsAdclientsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Get Auto ad code for a given ad client.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account which contains the ad client.
+  ///
+  /// [adClientId] - Ad client to get the code for.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdCode].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdCode> getAdCode(core.String accountId, core.String adClientId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (adClientId == null) {
+      throw new core.ArgumentError("Parameter adClientId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/adclients/' +
+        commons.Escaper.ecapeVariable('$adClientId') +
+        '/adcode';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdCode.fromJson(data));
+  }
+
   /// List all ad clients in the specified account.
   ///
   /// Request parameters:
@@ -2849,8 +2901,14 @@ class AdClients {
 }
 
 class AdCode {
-  /// The ad code snippet.
+  /// The Auto ad code snippet. The ad code snippet.
   core.String adCode;
+
+  /// The AMP Auto ad code snippet that goes in the body of an AMP page.
+  core.String ampBody;
+
+  /// The AMP Auto ad code snippet that goes in the head of an AMP page.
+  core.String ampHead;
 
   /// Kind this is, in this case adsense#adCode.
   core.String kind;
@@ -2860,6 +2918,12 @@ class AdCode {
   AdCode.fromJson(core.Map _json) {
     if (_json.containsKey("adCode")) {
       adCode = _json["adCode"];
+    }
+    if (_json.containsKey("ampBody")) {
+      ampBody = _json["ampBody"];
+    }
+    if (_json.containsKey("ampHead")) {
+      ampHead = _json["ampHead"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2871,6 +2935,12 @@ class AdCode {
         new core.Map<core.String, core.Object>();
     if (adCode != null) {
       _json["adCode"] = adCode;
+    }
+    if (ampBody != null) {
+      _json["ampBody"] = ampBody;
+    }
+    if (ampHead != null) {
+      _json["ampHead"] = ampHead;
     }
     if (kind != null) {
       _json["kind"] = kind;

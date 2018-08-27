@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client logging/v2';
 
-/// Writes log entries and manages your Stackdriver Logging configuration.
+/// Writes log entries and manages your Logging configuration.
 class LoggingApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -517,12 +517,12 @@ class BillingAccountsSinksResourceApi {
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Stackdriver Logging before the addition of writer identities to this API.
-  /// The sink's destination must be in the same project as the sink itself.If
-  /// this field is set to true, or if the sink is owned by a non-project
-  /// resource such as an organization, then the value of writer_identity will
-  /// be a unique service account used only for exports from the new sink. For
-  /// more information, see writer_identity in LogSink.
+  /// Logging before the addition of writer identities to this API. The sink's
+  /// destination must be in the same project as the sink itself.If this field
+  /// is set to true, or if the sink is owned by a non-project resource such as
+  /// an organization, then the value of writer_identity will be a unique
+  /// service account used only for exports from the new sink. For more
+  /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -677,14 +677,14 @@ class BillingAccountsSinksResourceApi {
   ///
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -697,7 +697,7 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -708,11 +708,11 @@ class BillingAccountsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -909,8 +909,8 @@ class EntriesResourceApi {
 
   EntriesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists log entries. Use this method to retrieve log entries from
-  /// Stackdriver Logging. For ways to export log entries, see Exporting Logs.
+  /// Lists log entries. Use this method to retrieve log entries from Logging.
+  /// For ways to export log entries, see Exporting Logs.
   ///
   /// [request] - The metadata request object.
   ///
@@ -953,12 +953,11 @@ class EntriesResourceApi {
     return _response.then((data) => new ListLogEntriesResponse.fromJson(data));
   }
 
-  /// Writes log entries to Stackdriver Logging. This API method is the only way
-  /// to send log entries to Stackdriver Logging. This method is used, directly
-  /// or indirectly, by the Stackdriver Logging agent (fluentd) and all logging
-  /// libraries configured to use Stackdriver Logging. A single request may
-  /// contain log entries for a maximum of 1000 different resources (projects,
-  /// organizations, billing accounts or folders)
+  /// Writes log entries to Logging. This API method is the only way to send log
+  /// entries to Logging. This method is used, directly or indirectly, by the
+  /// Logging agent (fluentd) and all logging libraries configured to use
+  /// Logging. A single request may contain log entries for a maximum of 1000
+  /// different resources (projects, organizations, billing accounts or folders)
   ///
   /// [request] - The metadata request object.
   ///
@@ -1667,14 +1666,14 @@ class FoldersLogsResourceApi {
   ///
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1687,7 +1686,7 @@ class FoldersLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1698,11 +1697,11 @@ class FoldersLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1746,12 +1745,12 @@ class FoldersSinksResourceApi {
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Stackdriver Logging before the addition of writer identities to this API.
-  /// The sink's destination must be in the same project as the sink itself.If
-  /// this field is set to true, or if the sink is owned by a non-project
-  /// resource such as an organization, then the value of writer_identity will
-  /// be a unique service account used only for exports from the new sink. For
-  /// more information, see writer_identity in LogSink.
+  /// Logging before the addition of writer identities to this API. The sink's
+  /// destination must be in the same project as the sink itself.If this field
+  /// is set to true, or if the sink is owned by a non-project resource such as
+  /// an organization, then the value of writer_identity will be a unique
+  /// service account used only for exports from the new sink. For more
+  /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2204,14 +2203,14 @@ class LogsResourceApi {
   ///
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2224,7 +2223,7 @@ class LogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2235,11 +2234,11 @@ class LogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2263,8 +2262,7 @@ class MonitoredResourceDescriptorsResourceApi {
   MonitoredResourceDescriptorsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the descriptors for monitored resource types used by Stackdriver
-  /// Logging.
+  /// Lists the descriptors for monitored resource types used by Logging.
   ///
   /// Request parameters:
   ///
@@ -2696,14 +2694,14 @@ class OrganizationsLogsResourceApi {
   ///
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2716,7 +2714,7 @@ class OrganizationsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2727,11 +2725,11 @@ class OrganizationsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2776,12 +2774,12 @@ class OrganizationsSinksResourceApi {
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Stackdriver Logging before the addition of writer identities to this API.
-  /// The sink's destination must be in the same project as the sink itself.If
-  /// this field is set to true, or if the sink is owned by a non-project
-  /// resource such as an organization, then the value of writer_identity will
-  /// be a unique service account used only for exports from the new sink. For
-  /// more information, see writer_identity in LogSink.
+  /// Logging before the addition of writer identities to this API. The sink's
+  /// destination must be in the same project as the sink itself.If this field
+  /// is set to true, or if the sink is owned by a non-project resource such as
+  /// an organization, then the value of writer_identity will be a unique
+  /// service account used only for exports from the new sink. For more
+  /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3882,12 +3880,12 @@ class ProjectsSinksResourceApi {
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Stackdriver Logging before the addition of writer identities to this API.
-  /// The sink's destination must be in the same project as the sink itself.If
-  /// this field is set to true, or if the sink is owned by a non-project
-  /// resource such as an organization, then the value of writer_identity will
-  /// be a unique service account used only for exports from the new sink. For
-  /// more information, see writer_identity in LogSink.
+  /// Logging before the addition of writer identities to this API. The sink's
+  /// destination must be in the same project as the sink itself.If this field
+  /// is set to true, or if the sink is owned by a non-project resource such as
+  /// an organization, then the value of writer_identity will be a unique
+  /// service account used only for exports from the new sink. For more
+  /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4295,12 +4293,12 @@ class SinksResourceApi {
   /// returned as writer_identity in the new sink. If this value is omitted or
   /// set to false, and if the sink's parent is a project, then the value
   /// returned as writer_identity is the same group or service account used by
-  /// Stackdriver Logging before the addition of writer identities to this API.
-  /// The sink's destination must be in the same project as the sink itself.If
-  /// this field is set to true, or if the sink is owned by a non-project
-  /// resource such as an organization, then the value of writer_identity will
-  /// be a unique service account used only for exports from the new sink. For
-  /// more information, see writer_identity in LogSink.
+  /// Logging before the addition of writer identities to this API. The sink's
+  /// destination must be in the same project as the sink itself.If this field
+  /// is set to true, or if the sink is owned by a non-project resource such as
+  /// an organization, then the value of writer_identity will be a unique
+  /// service account used only for exports from the new sink. For more
+  /// information, see writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4455,14 +4453,14 @@ class SinksResourceApi {
   ///
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4475,7 +4473,7 @@ class SinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -4486,11 +4484,11 @@ class SinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5324,11 +5322,11 @@ class LogEntry {
   HttpRequest httpRequest;
 
   /// Optional. A unique identifier for the log entry. If you provide a value,
-  /// then Stackdriver Logging considers other log entries in the same project,
-  /// with the same timestamp, and with the same insert_id to be duplicates
-  /// which can be removed. If omitted in new log entries, then Stackdriver
-  /// Logging assigns its own unique identifier. The insert_id is also used to
-  /// order log entries that have the same timestamp value.
+  /// then Logging considers other log entries in the same project, with the
+  /// same timestamp, and with the same insert_id to be duplicates which can be
+  /// removed. If omitted in new log entries, then Logging assigns its own
+  /// unique identifier. The insert_id is also used to order log entries that
+  /// have the same timestamp value.
   core.String insertId;
 
   /// The log entry payload, represented as a structure that is expressed as a
@@ -5377,7 +5375,7 @@ class LogEntry {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> protoPayload;
 
-  /// Output only. The time the log entry was received by Stackdriver Logging.
+  /// Output only. The time the log entry was received by Logging.
   core.String receiveTimestamp;
 
   /// Required. The primary monitored resource associated with this log entry.
@@ -5408,9 +5406,9 @@ class LogEntry {
   LogEntrySourceLocation sourceLocation;
 
   /// Optional. The span ID within the trace associated with the log entry. For
-  /// Stackdriver Trace spans, this is the same format that the Stackdriver
-  /// Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array,
-  /// such as <code>"000000000000004a"</code>.
+  /// Trace spans, this is the same format that the Trace API v2 uses: a
+  /// 16-character hexadecimal encoding of an 8-byte array, such as
+  /// <code>"000000000000004a"</code>.
   core.String spanId;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
@@ -5419,13 +5417,13 @@ class LogEntry {
   /// Optional. The time the event described by the log entry occurred. This
   /// time is used to compute the log entry's age and to enforce the logs
   /// retention period. If this field is omitted in a new log entry, then
-  /// Stackdriver Logging assigns it the current time. Timestamps have
-  /// nanosecond accuracy, but trailing zeros in the fractional seconds might be
-  /// omitted when the timestamp is displayed.Incoming log entries should have
-  /// timestamps that are no more than the logs retention period in the past,
-  /// and no more than 24 hours in the future. Log entries outside those time
-  /// boundaries will not be available when calling entries.list, but those log
-  /// entries can still be exported with LogSinks.
+  /// Logging assigns it the current time. Timestamps have nanosecond accuracy,
+  /// but trailing zeros in the fractional seconds might be omitted when the
+  /// timestamp is displayed.Incoming log entries should have timestamps that
+  /// are no more than the logs retention period in the past, and no more than
+  /// 24 hours in the future. Log entries outside those time boundaries will not
+  /// be available when calling entries.list, but those log entries can still be
+  /// exported with LogSinks.
   core.String timestamp;
 
   /// Optional. Resource name of the trace associated with the log entry, if
@@ -5648,12 +5646,11 @@ class LogEntrySourceLocation {
   }
 }
 
-/// Specifies a set of log entries that are not to be stored in Stackdriver
-/// Logging. If your project receives a large volume of logs, you might be able
-/// to use exclusions to reduce your chargeable logs. Exclusions are processed
-/// after log sinks, so you can export log entries before they are excluded.
-/// Audit log entries and log entries from Amazon Web Services are never
-/// excluded.
+/// Specifies a set of log entries that are not to be stored in Logging. If your
+/// project receives a large volume of logs, you might be able to use exclusions
+/// to reduce your chargeable logs. Exclusions are processed after log sinks, so
+/// you can export log entries before they are excluded. Audit log entries and
+/// log entries from Amazon Web Services are never excluded.
 class LogExclusion {
   /// Optional. A description of this exclusion.
   core.String description;
@@ -5857,8 +5854,8 @@ class LogMetric {
   /// Deprecated. The API version that created or updated this metric. The v2
   /// format is used by default and cannot be changed.
   /// Possible string values are:
-  /// - "V2" : Stackdriver Logging API v2.
-  /// - "V1" : Stackdriver Logging API v1.
+  /// - "V2" : Logging API v2.
+  /// - "V1" : Logging API v1.
   core.String version;
 
   LogMetric();
@@ -5980,13 +5977,13 @@ class LogSink {
   core.String startTime;
 
   /// Output only. An IAM identity&mdash;a service account or group&mdash;under
-  /// which Stackdriver Logging writes the exported log entries to the sink's
-  /// destination. This field is set by sinks.create and sinks.update, based on
-  /// the setting of unique_writer_identity in those methods.Until you grant
-  /// this identity write-access to the destination, log entry exports from this
-  /// sink will fail. For more information, see Granting access for a resource.
-  /// Consult the destination service's documentation to determine the
-  /// appropriate IAM roles to assign to the identity.
+  /// which Logging writes the exported log entries to the sink's destination.
+  /// This field is set by sinks.create and sinks.update, based on the setting
+  /// of unique_writer_identity in those methods.Until you grant this identity
+  /// write-access to the destination, log entry exports from this sink will
+  /// fail. For more information, see Granting access for a resource. Consult
+  /// the destination service's documentation to determine the appropriate IAM
+  /// roles to assign to the identity.
   core.String writerIdentity;
 
   LogSink();
@@ -6069,6 +6066,9 @@ class MetricDescriptor {
   /// latencies for successful responses or just for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. Metadata which can be used to guide usage of the metric.
+  MetricDescriptorMetadata metadata;
+
   /// Whether the metric records instantaneous values, changes to a value, etc.
   /// Some combinations of metric_kind and value_type might not be supported.
   /// Possible string values are:
@@ -6085,10 +6085,11 @@ class MetricDescriptor {
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded. All user-defined custom metric types have the DNS name
-  /// custom.googleapis.com. Metric types should use a natural hierarchical
-  /// grouping. For example:
+  /// URL-encoded. All user-defined metric types have the DNS name
+  /// custom.googleapis.com or external.googleapis.com. Metric types should use
+  /// a natural hierarchical grouping. For example:
   /// "custom.googleapis.com/invoice/paid/amount"
+  /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
@@ -6172,6 +6173,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("metadata")) {
+      metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
+    }
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
@@ -6201,6 +6205,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
@@ -6215,6 +6222,80 @@ class MetricDescriptor {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// Additional annotations that can be used to guide the usage of a metric.
+class MetricDescriptorMetadata {
+  /// The delay of data points caused by ingestion. Data points older than this
+  /// age are guaranteed to be ingested and available to be read, excluding data
+  /// loss due to errors.
+  core.String ingestDelay;
+
+  /// The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
+  /// Platform Subject to the Deprecation Policy
+  /// (https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
+  /// The sampling period of metric data points. For metrics which are written
+  /// periodically, consecutive data points are stored at this time interval,
+  /// excluding data loss due to errors. Metrics with a higher granularity have
+  /// a smaller sampling period.
+  core.String samplePeriod;
+
+  MetricDescriptorMetadata();
+
+  MetricDescriptorMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("ingestDelay")) {
+      ingestDelay = _json["ingestDelay"];
+    }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
+    if (_json.containsKey("samplePeriod")) {
+      samplePeriod = _json["samplePeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingestDelay != null) {
+      _json["ingestDelay"] = ingestDelay;
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
+    if (samplePeriod != null) {
+      _json["samplePeriod"] = samplePeriod;
     }
     return _json;
   }
@@ -6349,17 +6430,14 @@ class MonitoredResourceDescriptor {
 
 /// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
 /// contain the minimum set of information to uniquely identify a monitored
-/// resource instance. There is some other useful auxiliary metadata. Google
-/// Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
-/// metadata for cloud resources of all types , and stores the metadata in this
-/// message.
+/// resource instance. There is some other useful auxiliary metadata. Monitoring
+/// and Logging use an ingestion pipeline to extract metadata for cloud
+/// resources of all types, and store the metadata in this message.
 class MonitoredResourceMetadata {
   /// Output only. Values for predefined system metadata labels. System labels
-  /// are a kind of metadata extracted by Google Stackdriver. Stackdriver
-  /// determines what system labels are useful and how to obtain their values.
-  /// Some examples: "machine_image", "vpc", "subnet_id", "security_group",
-  /// "name", etc. System label values can be only strings, Boolean values, or a
-  /// list of strings. For example:
+  /// are a kind of metadata extracted by Google, including "machine_image",
+  /// "vpc", "subnet_id", "security_group", "name", etc. System label values can
+  /// be only strings, Boolean values, or a list of strings. For example:
   /// { "name": "my-test-instance",
   ///   "security_group": ["a", "b", "c"],
   ///   "spot_instance": false }
@@ -6500,6 +6578,10 @@ class RequestLog {
   /// Stackdriver Trace identifier for this request.
   core.String traceId;
 
+  /// If true, the value in the 'trace_id' field was sampled for storage in a
+  /// trace backend.
+  core.bool traceSampled;
+
   /// File or class that handled the request.
   core.String urlMapEntry;
 
@@ -6603,6 +6685,9 @@ class RequestLog {
     if (_json.containsKey("traceId")) {
       traceId = _json["traceId"];
     }
+    if (_json.containsKey("traceSampled")) {
+      traceSampled = _json["traceSampled"];
+    }
     if (_json.containsKey("urlMapEntry")) {
       urlMapEntry = _json["urlMapEntry"];
     }
@@ -6704,6 +6789,9 @@ class RequestLog {
     }
     if (traceId != null) {
       _json["traceId"] = traceId;
+    }
+    if (traceSampled != null) {
+      _json["traceSampled"] = traceSampled;
     }
     if (urlMapEntry != null) {
       _json["urlMapEntry"] = urlMapEntry;
@@ -6809,22 +6897,22 @@ class WriteLogEntriesRequest {
   /// logging API endpoints are working properly before sending valuable data.
   core.bool dryRun;
 
-  /// Required. The log entries to send to Stackdriver Logging. The order of log
-  /// entries in this list does not matter. Values supplied in this method's
-  /// log_name, resource, and labels fields are copied into those log entries in
-  /// this list that do not include values for their corresponding fields. For
-  /// more information, see the LogEntry type.If the timestamp or insert_id
-  /// fields are missing in log entries, then this method supplies the current
-  /// time or a unique identifier, respectively. The supplied values are chosen
-  /// so that, among the log entries that did not supply their own values, the
-  /// entries earlier in the list will sort before the entries later in the
-  /// list. See the entries.list method.Log entries with timestamps that are
-  /// more than the logs retention period in the past or more than 24 hours in
-  /// the future will not be available when calling entries.list. However, those
-  /// log entries can still be exported with LogSinks.To improve throughput and
-  /// to avoid exceeding the quota limit for calls to entries.write, you should
-  /// try to include several log entries in this list, rather than calling this
-  /// method for each individual log entry.
+  /// Required. The log entries to send to Logging. The order of log entries in
+  /// this list does not matter. Values supplied in this method's log_name,
+  /// resource, and labels fields are copied into those log entries in this list
+  /// that do not include values for their corresponding fields. For more
+  /// information, see the LogEntry type.If the timestamp or insert_id fields
+  /// are missing in log entries, then this method supplies the current time or
+  /// a unique identifier, respectively. The supplied values are chosen so that,
+  /// among the log entries that did not supply their own values, the entries
+  /// earlier in the list will sort before the entries later in the list. See
+  /// the entries.list method.Log entries with timestamps that are more than the
+  /// logs retention period in the past or more than 24 hours in the future will
+  /// not be available when calling entries.list. However, those log entries can
+  /// still be exported with LogSinks.To improve throughput and to avoid
+  /// exceeding the quota limit for calls to entries.write, you should try to
+  /// include several log entries in this list, rather than calling this method
+  /// for each individual log entry.
   core.List<LogEntry> entries;
 
   /// Optional. Default labels that are added to the labels field of all log

@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/naWmFZqBR_Eg7icNmYvZKp3Vbjs\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/XZ6Xpc1c07Y9sR1lBGe-k1txL6M\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -1928,7 +1928,8 @@
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ],
-                    "supportsMediaDownload": true
+                    "supportsMediaDownload": true,
+                    "useMediaDownloadService": true
                 },
                 "getIamPolicy": {
                     "description": "Returns an IAM policy for the specified object.",
@@ -2765,7 +2766,7 @@
             }
         }
     },
-    "revision": "20180518",
+    "revision": "20180620",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

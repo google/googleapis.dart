@@ -98,13 +98,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [name] - The name of the operation's parent resource.
   ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -117,10 +117,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String filter,
-      core.String name,
+      {core.String name,
       core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -129,9 +129,6 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
@@ -140,6 +137,9 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -182,11 +182,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -199,9 +199,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -213,14 +213,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -779,6 +779,11 @@ class CloudFunction {
   /// in `source_location`.
   core.String entryPoint;
 
+  /// **Beta Feature**
+  ///
+  /// Environment variables that shall be available during function execution.
+  core.Map<core.String, core.String> environmentVariables;
+
   /// A source that fires events in response to a condition in another service.
   EventTrigger eventTrigger;
 
@@ -788,9 +793,30 @@ class CloudFunction {
   /// Labels associated with this Cloud Function.
   core.Map<core.String, core.String> labels;
 
+  /// The limit on the maximum number of function instances that may coexist at
+  /// a
+  /// given time. This feature is currently in alpha, available only for
+  /// whitelisted users.
+  core.int maxInstances;
+
   /// A user-defined name of the function. Function names must be unique
   /// globally and match pattern `projects / * /locations / * /functions / * `
   core.String name;
+
+  /// The VPC Network that this cloud function can connect to. It can be
+  /// either the fully-qualified URI, or the short name of the network resource.
+  /// If the short network name is used, the network must belong to the same
+  /// project. Otherwise, it must belong to a project within the same
+  /// organization. The format of this field is either
+  /// `projects/{project}/global/networks/{network}` or `{network}`, where
+  /// {project} is a project id where the network is defined, and {network} is
+  /// the short name of the network.
+  ///
+  /// See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
+  /// more information on connecting Cloud projects.
+  ///
+  /// This feature is currently in alpha, available only for whitelisted users.
+  core.String network;
 
   /// The runtime in which the function is going to run. If empty, defaults to
   /// Node.js 6.
@@ -849,6 +875,10 @@ class CloudFunction {
     if (_json.containsKey("entryPoint")) {
       entryPoint = _json["entryPoint"];
     }
+    if (_json.containsKey("environmentVariables")) {
+      environmentVariables = (_json["environmentVariables"] as core.Map)
+          .cast<core.String, core.String>();
+    }
     if (_json.containsKey("eventTrigger")) {
       eventTrigger = new EventTrigger.fromJson(_json["eventTrigger"]);
     }
@@ -858,8 +888,14 @@ class CloudFunction {
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("maxInstances")) {
+      maxInstances = _json["maxInstances"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
     }
     if (_json.containsKey("runtime")) {
       runtime = _json["runtime"];
@@ -903,6 +939,9 @@ class CloudFunction {
     if (entryPoint != null) {
       _json["entryPoint"] = entryPoint;
     }
+    if (environmentVariables != null) {
+      _json["environmentVariables"] = environmentVariables;
+    }
     if (eventTrigger != null) {
       _json["eventTrigger"] = (eventTrigger).toJson();
     }
@@ -912,8 +951,14 @@ class CloudFunction {
     if (labels != null) {
       _json["labels"] = labels;
     }
+    if (maxInstances != null) {
+      _json["maxInstances"] = maxInstances;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
     }
     if (runtime != null) {
       _json["runtime"] = runtime;

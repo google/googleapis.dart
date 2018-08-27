@@ -533,7 +533,6 @@ class AndroidDeviceList {
 /// more information on types of Android tests.
 class AndroidInstrumentationTest {
   /// The APK for the application under test.
-  /// Required
   FileReference appApk;
 
   /// The java package for the application under test.
@@ -553,14 +552,14 @@ class AndroidInstrumentationTest {
   /// <https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator>
   /// for more information about Android Test Orchestrator.
   ///
-  /// Optional, if empty, test will be run without orchestrator.
+  /// Optional. If not set, the test will be run without the orchestrator.
   /// Possible string values are:
-  /// - "ORCHESTRATOR_OPTION_UNSPECIFIED" : This means that the server should
-  /// choose the mode. And test will be run
-  /// without orchestrator.
-  /// Using orchestrator is highly encouraged because of all the benefits it
-  /// offers. And in the future, all instrumentation tests will be run with
-  /// orchestrator by default if preference unspecified.
+  /// - "ORCHESTRATOR_OPTION_UNSPECIFIED" : Default value: the server will
+  /// choose the mode. Currently implies that
+  /// the test will run without the orchestrator. In the future,
+  /// all instrumentation tests will be run with the orchestrator.
+  /// Using the orchestrator is highly encouraged because of all the benefits it
+  /// offers.
   /// - "USE_ORCHESTRATOR" : Run test using orchestrator.
   /// ** Only compatible with AndroidJUnitRunner version 1.0 or higher! **
   /// Recommended.
@@ -727,6 +726,16 @@ class AndroidModel {
   /// - "PHYSICAL" : Actual hardware
   core.String form;
 
+  /// Whther this device is a phone, tablet, wearable, etc.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "DEVICE_FORM_FACTOR_UNSPECIFIED" : Do not use. For proto versioning
+  /// only.
+  /// - "PHONE" : This device has the shape of a phone
+  /// - "TABLET" : This device has the shape of a tablet
+  /// - "WEARABLE" : This device has the shape of a watch or other wearable
+  core.String formFactor;
+
   /// The unique opaque id for this model.
   /// Use this for invoking the TestExecutionService.
   /// @OutputOnly
@@ -790,6 +799,9 @@ class AndroidModel {
     if (_json.containsKey("form")) {
       form = _json["form"];
     }
+    if (_json.containsKey("formFactor")) {
+      formFactor = _json["formFactor"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -835,6 +847,9 @@ class AndroidModel {
     if (form != null) {
       _json["form"] = form;
     }
+    if (formFactor != null) {
+      _json["formFactor"] = formFactor;
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -873,7 +888,6 @@ class AndroidModel {
 /// or physical Android Device, finding culprits and crashes as it goes.
 class AndroidRoboTest {
   /// The APK for the application under test.
-  /// Required
   FileReference appApk;
 
   /// The initial activity that should be used to start the app.
@@ -980,7 +994,7 @@ class AndroidRoboTest {
   }
 }
 
-/// Configuration that can be selected at the time a test is run.
+/// Android configuration that can be selected at the time a test is run.
 class AndroidRuntimeConfiguration {
   /// The set of available locales.
   /// @OutputOnly
@@ -1024,7 +1038,6 @@ class AndroidRuntimeConfiguration {
 /// user of this api, for the time being.
 class AndroidTestLoop {
   /// The APK for the application under test.
-  /// Required
   FileReference appApk;
 
   /// The java package for the application under test.

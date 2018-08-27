@@ -92,6 +92,13 @@ The App Engine Admin API enables developers to provision and manage their App En
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Binary Authorization API - binaryauthorization v1beta1
+
+The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.
+
+
+Official API documentation: https://cloud.google.com/binary-authorization/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Error Reporting API - clouderrorreporting v1beta1
 
 Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.
@@ -107,9 +114,9 @@ Official API documentation: https://cloud.google.com/resource-manager
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Tasks API - cloudtasks v2beta2
 
-Manages the execution of large numbers of distributed requests. Cloud Tasks is in Alpha.
+Manages the execution of large numbers of distributed requests.
 
-Official API documentation: https://cloud.google.com/cloud-tasks/
+Official API documentation: https://cloud.google.com/tasks/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Dataflow API - dataflow v1b3
 
@@ -129,11 +136,11 @@ Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Firestore API - firestore v1beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Identity-Aware Proxy API - iap v1beta1
 
+Controls access to cloud applications running on Google Cloud Platform.
 
-
-Official API documentation: https://cloud.google.com/firestore
+Official API documentation: https://cloud.google.com/iap
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Natural Language API - language v1beta1
 
@@ -149,7 +156,7 @@ Official API documentation: https://cloud.google.com/natural-language/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Logging API - logging v2beta1
 
-Writes log entries and manages your Stackdriver Logging configuration.
+Writes log entries and manages your Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
@@ -178,23 +185,17 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Group Manager API - replicapool v1beta2
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Memorystore for Redis API - redis v1beta1
 
-[Deprecated. Please use Instance Group Manager in Compute API] Provides groups of homogenous Compute Engine instances.
+The Google Cloud Memorystore for Redis API is used for creating and managing Redis instances on the Google Cloud Platform.
 
-Official API documentation: https://developers.google.com/compute/docs/instance-groups/manager/v1beta2
+Official API documentation: https://cloud.google.com/memorystore/docs/redis/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Group Updater API - replicapoolupdater v1beta1
 
 [Deprecated. Please use compute.instanceGroupManagers.update method. replicapoolupdater API will be disabled after December 30th, 2016] Updates groups of Compute Engine instances.
 
 Official API documentation: https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Groups API - resourceviews v1beta2
-
-The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.
-
-Official API documentation: https://developers.google.com/compute/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Runtime Configuration API - runtimeconfig v1beta1
 
@@ -206,25 +207,19 @@ Official API documentation: https://cloud.google.com/deployment-manager/runtime-
 
 Converts audio to text by applying powerful neural network models.
 
-Official API documentation: https://cloud.google.com/speech/
+Official API documentation: https://cloud.google.com/speech-to-text/docs/quickstart-protocol
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Administration API - sqladmin v1beta3
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Admin API - sqladmin v1beta3
 
-Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
-
-Official API documentation: https://cloud.google.com/sql/docs/reference/latest
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Administration API - sqladmin v1beta4
-
-Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
+Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your instances programmatically.
 
 Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 
-#### ![Logo](https://www.google.com/images/icons/product/app_engine-16.png) TaskQueue API - taskqueue v1beta2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Admin API - sqladmin v1beta4
 
-Accesses a Google App Engine Pull Task Queue over REST.
+Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your instances programmatically.
 
-Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
+Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
 
@@ -237,4 +232,10 @@ Official API documentation: https://firebase.google.com/docs/test-lab/
 TPU API provides customers with access to Google TPU technology.
 
 Official API documentation: https://cloud.google.com/tpu/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Web Security Scanner API - websecurityscanner v1alpha
+
+Web Security Scanner API (under development).
+
+Official API documentation: https://cloud.google.com/security-scanner/
 

@@ -30,6 +30,11 @@
             "location": "query",
             "type": "string"
         },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
@@ -48,6 +53,11 @@
         },
         "callback": {
             "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -89,31 +99,28 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
+        "violatingSites": {
+            "methods": {
+                "list": {
+                    "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\".",
+                    "httpMethod": "GET",
+                    "id": "adexperiencereport.violatingSites.list",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/violatingSites",
+                    "response": {
+                        "$ref": "ViolatingSitesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/xapi.zoo"
+                    ]
+                }
+            }
+        },
         "sites": {
             "methods": {
                 "get": {
@@ -141,66 +148,29 @@
                     ]
                 }
             }
-        },
-        "violatingSites": {
-            "methods": {
-                "list": {
-                    "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\".",
-                    "httpMethod": "GET",
-                    "id": "adexperiencereport.violatingSites.list",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/violatingSites",
-                    "response": {
-                        "$ref": "ViolatingSitesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/xapi.zoo"
-                    ]
-                }
-            }
         }
     },
-    "revision": "20180516",
+    "revision": "20180821",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
         "PlatformSummary": {
             "description": "Summary of the ad experience rating of a site for a specific platform.",
             "id": "PlatformSummary",
             "properties": {
-                "lastChangeTime": {
-                    "description": "The last time that the site changed status.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "betterAdsStatus": {
-                    "description": "The status of the site reviewed for the Better Ads Standards.",
-                    "enum": [
-                        "UNKNOWN",
-                        "PASSING",
-                        "WARNING",
-                        "FAILING"
-                    ],
-                    "enumDescriptions": [
-                        "Not reviewed.",
-                        "Passing.",
-                        "Warning.",
-                        "Failing."
-                    ],
-                    "type": "string"
-                },
                 "region": {
                     "description": "The assigned regions for the site and platform.",
                     "enumDescriptions": [
                         "Ad standard not yet defined for your region.",
                         "Region A.",
-                        "Region B."
+                        "Region B.",
+                        "Region C."
                     ],
                     "items": {
                         "enum": [
                             "REGION_UNKNOWN",
                             "REGION_A",
-                            "REGION_B"
+                            "REGION_B",
+                            "REGION_C"
                         ],
                         "type": "string"
                     },
@@ -235,6 +205,27 @@
                 },
                 "reportUrl": {
                     "description": "A link that leads to a full ad experience report.",
+                    "type": "string"
+                },
+                "lastChangeTime": {
+                    "description": "The last time that the site changed status.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "betterAdsStatus": {
+                    "description": "The status of the site reviewed for the Better Ads Standards.",
+                    "enum": [
+                        "UNKNOWN",
+                        "PASSING",
+                        "WARNING",
+                        "FAILING"
+                    ],
+                    "enumDescriptions": [
+                        "Not reviewed.",
+                        "Passing.",
+                        "Warning.",
+                        "Failing."
+                    ],
                     "type": "string"
                 }
             },
@@ -276,5 +267,6 @@
     },
     "servicePath": "",
     "title": "Ad Experience Report API",
-    "version": "v1"
+    "version": "v1",
+    "version_module": true
 }

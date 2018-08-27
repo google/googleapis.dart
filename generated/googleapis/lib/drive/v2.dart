@@ -2722,10 +2722,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the item belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the item belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2789,10 +2788,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the item belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the item belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2906,10 +2904,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the item belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the item belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2986,10 +2983,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the item belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the item belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3063,10 +3059,9 @@ class PermissionsResourceApi {
   /// current owners to writers. Does nothing if the specified role is not
   /// 'owner'.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the item belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the item belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3150,10 +3145,9 @@ class PermissionsResourceApi {
   /// current owners to writers. Does nothing if the specified role is not
   /// 'owner'.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the item belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the item belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4422,10 +4416,9 @@ class TeamdrivesResourceApi {
   ///
   /// [teamDriveId] - The ID of the Team Drive
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then the requester
-  /// will be granted access if they are an administrator of the domain to which
-  /// the Team Drive belongs.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the Team Drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4531,9 +4524,9 @@ class TeamdrivesResourceApi {
   ///
   /// [q] - Query string for searching Team Drives.
   ///
-  /// [useDomainAdminAccess] - Whether the request should be treated as if it
-  /// was issued by a domain administrator; if set to true, then all Team Drives
-  /// of the domain in which the requester is an administrator are returned.
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then all Team Drives of the domain in which the requester is
+  /// an administrator are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4593,6 +4586,10 @@ class TeamdrivesResourceApi {
   ///
   /// [teamDriveId] - The ID of the Team Drive
   ///
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the Team Drive belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4604,7 +4601,7 @@ class TeamdrivesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId,
-      {core.String $fields}) {
+      {core.bool useDomainAdminAccess, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -4617,6 +4614,9 @@ class TeamdrivesResourceApi {
     }
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6400,8 +6400,11 @@ class FileCapabilities {
   /// false when the item is not a folder.
   core.bool canAddChildren;
 
-  /// Whether the current user can change the restricted download label of this
-  /// file.
+  /// Whether the current user can change the copyRequiresWriterPermission
+  /// restriction of this file.
+  core.bool canChangeCopyRequiresWriterPermission;
+
+  /// Deprecated
   core.bool canChangeRestrictedDownload;
 
   /// Whether the current user can comment on this file.
@@ -6415,6 +6418,10 @@ class FileCapabilities {
   /// Whether the current user can delete this file.
   core.bool canDelete;
 
+  /// Whether the current user can delete children of this folder. This is false
+  /// when the item is not a folder. Only populated for Team Drive items.
+  core.bool canDeleteChildren;
+
   /// Whether the current user can download this file.
   core.bool canDownload;
 
@@ -6425,14 +6432,34 @@ class FileCapabilities {
   /// always false when the item is not a folder.
   core.bool canListChildren;
 
+  /// Whether the current user can move children of this folder outside of the
+  /// Team Drive. This is false when the item is not a folder. Only populated
+  /// for Team Drive items.
+  core.bool canMoveChildrenOutOfTeamDrive;
+
+  /// Whether the current user can move children of this folder within the Team
+  /// Drive. This is false when the item is not a folder. Only populated for
+  /// Team Drive items.
+  core.bool canMoveChildrenWithinTeamDrive;
+
   /// Whether the current user can move this item into a Team Drive. If the item
   /// is in a Team Drive, this field is equivalent to canMoveTeamDriveItem.
   core.bool canMoveItemIntoTeamDrive;
 
-  /// Whether the current user can move this Team Drive item by changing its
-  /// parent. Note that a request to change the parent for this item may still
-  /// fail depending on the new parent that is being added. Only populated for
-  /// Team Drive files.
+  /// Whether the current user can move this Team Drive item outside of this
+  /// Team Drive by changing its parent. Note that a request to change the
+  /// parent of the item may still fail depending on the new parent that is
+  /// being added. Only populated for Team Drive items.
+  core.bool canMoveItemOutOfTeamDrive;
+
+  /// Whether the current user can move this Team Drive item within this Team
+  /// Drive. Note that a request to change the parent of the item may still fail
+  /// depending on the new parent that is being added. Only populated for Team
+  /// Drive items.
+  core.bool canMoveItemWithinTeamDrive;
+
+  /// Deprecated - use canMoveItemWithinTeamDrive or canMoveItemOutOfTeamDrive
+  /// instead.
   core.bool canMoveTeamDriveItem;
 
   /// Whether the current user can read the revisions resource of this file. For
@@ -6445,7 +6472,8 @@ class FileCapabilities {
   core.bool canReadTeamDrive;
 
   /// Whether the current user can remove children from this folder. This is
-  /// always false when the item is not a folder.
+  /// always false when the item is not a folder. For Team Drive items, use
+  /// canDeleteChildren or canTrashChildren instead.
   core.bool canRemoveChildren;
 
   /// Whether the current user can rename this file.
@@ -6457,6 +6485,10 @@ class FileCapabilities {
   /// Whether the current user can move this file to trash.
   core.bool canTrash;
 
+  /// Whether the current user can trash children of this folder. This is false
+  /// when the item is not a folder. Only populated for Team Drive items.
+  core.bool canTrashChildren;
+
   /// Whether the current user can restore this file from trash.
   core.bool canUntrash;
 
@@ -6465,6 +6497,10 @@ class FileCapabilities {
   FileCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
+    }
+    if (_json.containsKey("canChangeCopyRequiresWriterPermission")) {
+      canChangeCopyRequiresWriterPermission =
+          _json["canChangeCopyRequiresWriterPermission"];
     }
     if (_json.containsKey("canChangeRestrictedDownload")) {
       canChangeRestrictedDownload = _json["canChangeRestrictedDownload"];
@@ -6478,6 +6514,9 @@ class FileCapabilities {
     if (_json.containsKey("canDelete")) {
       canDelete = _json["canDelete"];
     }
+    if (_json.containsKey("canDeleteChildren")) {
+      canDeleteChildren = _json["canDeleteChildren"];
+    }
     if (_json.containsKey("canDownload")) {
       canDownload = _json["canDownload"];
     }
@@ -6487,8 +6526,20 @@ class FileCapabilities {
     if (_json.containsKey("canListChildren")) {
       canListChildren = _json["canListChildren"];
     }
+    if (_json.containsKey("canMoveChildrenOutOfTeamDrive")) {
+      canMoveChildrenOutOfTeamDrive = _json["canMoveChildrenOutOfTeamDrive"];
+    }
+    if (_json.containsKey("canMoveChildrenWithinTeamDrive")) {
+      canMoveChildrenWithinTeamDrive = _json["canMoveChildrenWithinTeamDrive"];
+    }
     if (_json.containsKey("canMoveItemIntoTeamDrive")) {
       canMoveItemIntoTeamDrive = _json["canMoveItemIntoTeamDrive"];
+    }
+    if (_json.containsKey("canMoveItemOutOfTeamDrive")) {
+      canMoveItemOutOfTeamDrive = _json["canMoveItemOutOfTeamDrive"];
+    }
+    if (_json.containsKey("canMoveItemWithinTeamDrive")) {
+      canMoveItemWithinTeamDrive = _json["canMoveItemWithinTeamDrive"];
     }
     if (_json.containsKey("canMoveTeamDriveItem")) {
       canMoveTeamDriveItem = _json["canMoveTeamDriveItem"];
@@ -6511,6 +6562,9 @@ class FileCapabilities {
     if (_json.containsKey("canTrash")) {
       canTrash = _json["canTrash"];
     }
+    if (_json.containsKey("canTrashChildren")) {
+      canTrashChildren = _json["canTrashChildren"];
+    }
     if (_json.containsKey("canUntrash")) {
       canUntrash = _json["canUntrash"];
     }
@@ -6521,6 +6575,10 @@ class FileCapabilities {
         new core.Map<core.String, core.Object>();
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
+    }
+    if (canChangeCopyRequiresWriterPermission != null) {
+      _json["canChangeCopyRequiresWriterPermission"] =
+          canChangeCopyRequiresWriterPermission;
     }
     if (canChangeRestrictedDownload != null) {
       _json["canChangeRestrictedDownload"] = canChangeRestrictedDownload;
@@ -6534,6 +6592,9 @@ class FileCapabilities {
     if (canDelete != null) {
       _json["canDelete"] = canDelete;
     }
+    if (canDeleteChildren != null) {
+      _json["canDeleteChildren"] = canDeleteChildren;
+    }
     if (canDownload != null) {
       _json["canDownload"] = canDownload;
     }
@@ -6543,8 +6604,20 @@ class FileCapabilities {
     if (canListChildren != null) {
       _json["canListChildren"] = canListChildren;
     }
+    if (canMoveChildrenOutOfTeamDrive != null) {
+      _json["canMoveChildrenOutOfTeamDrive"] = canMoveChildrenOutOfTeamDrive;
+    }
+    if (canMoveChildrenWithinTeamDrive != null) {
+      _json["canMoveChildrenWithinTeamDrive"] = canMoveChildrenWithinTeamDrive;
+    }
     if (canMoveItemIntoTeamDrive != null) {
       _json["canMoveItemIntoTeamDrive"] = canMoveItemIntoTeamDrive;
+    }
+    if (canMoveItemOutOfTeamDrive != null) {
+      _json["canMoveItemOutOfTeamDrive"] = canMoveItemOutOfTeamDrive;
+    }
+    if (canMoveItemWithinTeamDrive != null) {
+      _json["canMoveItemWithinTeamDrive"] = canMoveItemWithinTeamDrive;
     }
     if (canMoveTeamDriveItem != null) {
       _json["canMoveTeamDriveItem"] = canMoveTeamDriveItem;
@@ -6566,6 +6639,9 @@ class FileCapabilities {
     }
     if (canTrash != null) {
       _json["canTrash"] = canTrash;
+    }
+    if (canTrashChildren != null) {
+      _json["canTrashChildren"] = canTrashChildren;
     }
     if (canUntrash != null) {
       _json["canUntrash"] = canUntrash;
@@ -6851,8 +6927,7 @@ class FileLabels {
   /// Whether the file has been modified by this user.
   core.bool modified;
 
-  /// Whether viewers and commenters are prevented from downloading, printing,
-  /// and copying this file.
+  /// Deprecated - use copyRequiresWriterPermission instead.
   core.bool restricted;
 
   /// Whether this file is starred by the user.
@@ -7016,6 +7091,10 @@ class File {
   /// Capabilities the current user has on this file. Each capability
   /// corresponds to a fine-grained action that a user may take.
   FileCapabilities capabilities;
+
+  /// Whether the options to copy, print, or download this file, should be
+  /// disabled for readers and commenters.
+  core.bool copyRequiresWriterPermission;
 
   /// Deprecated: use capabilities/canCopy.
   core.bool copyable;
@@ -7269,6 +7348,9 @@ class File {
     if (_json.containsKey("capabilities")) {
       capabilities = new FileCapabilities.fromJson(_json["capabilities"]);
     }
+    if (_json.containsKey("copyRequiresWriterPermission")) {
+      copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
+    }
     if (_json.containsKey("copyable")) {
       copyable = _json["copyable"];
     }
@@ -7483,6 +7565,9 @@ class File {
     }
     if (capabilities != null) {
       _json["capabilities"] = (capabilities).toJson();
+    }
+    if (copyRequiresWriterPermission != null) {
+      _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
     }
     if (copyable != null) {
       _json["copyable"] = copyable;
@@ -8766,14 +8851,30 @@ class TeamDriveCapabilities {
   /// Whether the current user can add children to folders in this Team Drive.
   core.bool canAddChildren;
 
+  /// Whether the current user can change the copyRequiresWriterPermission
+  /// restriction of this Team Drive.
+  core.bool canChangeCopyRequiresWriterPermissionRestriction;
+
+  /// Whether the current user can change the domainUsersOnly restriction of
+  /// this Team Drive.
+  core.bool canChangeDomainUsersOnlyRestriction;
+
   /// Whether the current user can change the background of this Team Drive.
   core.bool canChangeTeamDriveBackground;
+
+  /// Whether the current user can change the teamMembersOnly restriction of
+  /// this Team Drive.
+  core.bool canChangeTeamMembersOnlyRestriction;
 
   /// Whether the current user can comment on files in this Team Drive.
   core.bool canComment;
 
   /// Whether the current user can copy files in this Team Drive.
   core.bool canCopy;
+
+  /// Whether the current user can delete children from folders in this Team
+  /// Drive.
+  core.bool canDeleteChildren;
 
   /// Whether the current user can delete this Team Drive. Attempting to delete
   /// the Team Drive may still fail if there are untrashed items inside the Team
@@ -8798,8 +8899,7 @@ class TeamDriveCapabilities {
   /// Team Drive.
   core.bool canReadRevisions;
 
-  /// Whether the current user can remove children from folders in this Team
-  /// Drive.
+  /// Deprecated - use canDeleteChildren or canTrashChildren instead.
   core.bool canRemoveChildren;
 
   /// Whether the current user can rename files or folders in this Team Drive.
@@ -8811,20 +8911,39 @@ class TeamDriveCapabilities {
   /// Whether the current user can share files or folders in this Team Drive.
   core.bool canShare;
 
+  /// Whether the current user can trash children from folders in this Team
+  /// Drive.
+  core.bool canTrashChildren;
+
   TeamDriveCapabilities();
 
   TeamDriveCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
     }
+    if (_json.containsKey("canChangeCopyRequiresWriterPermissionRestriction")) {
+      canChangeCopyRequiresWriterPermissionRestriction =
+          _json["canChangeCopyRequiresWriterPermissionRestriction"];
+    }
+    if (_json.containsKey("canChangeDomainUsersOnlyRestriction")) {
+      canChangeDomainUsersOnlyRestriction =
+          _json["canChangeDomainUsersOnlyRestriction"];
+    }
     if (_json.containsKey("canChangeTeamDriveBackground")) {
       canChangeTeamDriveBackground = _json["canChangeTeamDriveBackground"];
+    }
+    if (_json.containsKey("canChangeTeamMembersOnlyRestriction")) {
+      canChangeTeamMembersOnlyRestriction =
+          _json["canChangeTeamMembersOnlyRestriction"];
     }
     if (_json.containsKey("canComment")) {
       canComment = _json["canComment"];
     }
     if (_json.containsKey("canCopy")) {
       canCopy = _json["canCopy"];
+    }
+    if (_json.containsKey("canDeleteChildren")) {
+      canDeleteChildren = _json["canDeleteChildren"];
     }
     if (_json.containsKey("canDeleteTeamDrive")) {
       canDeleteTeamDrive = _json["canDeleteTeamDrive"];
@@ -8856,6 +8975,9 @@ class TeamDriveCapabilities {
     if (_json.containsKey("canShare")) {
       canShare = _json["canShare"];
     }
+    if (_json.containsKey("canTrashChildren")) {
+      canTrashChildren = _json["canTrashChildren"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8864,14 +8986,29 @@ class TeamDriveCapabilities {
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
     }
+    if (canChangeCopyRequiresWriterPermissionRestriction != null) {
+      _json["canChangeCopyRequiresWriterPermissionRestriction"] =
+          canChangeCopyRequiresWriterPermissionRestriction;
+    }
+    if (canChangeDomainUsersOnlyRestriction != null) {
+      _json["canChangeDomainUsersOnlyRestriction"] =
+          canChangeDomainUsersOnlyRestriction;
+    }
     if (canChangeTeamDriveBackground != null) {
       _json["canChangeTeamDriveBackground"] = canChangeTeamDriveBackground;
+    }
+    if (canChangeTeamMembersOnlyRestriction != null) {
+      _json["canChangeTeamMembersOnlyRestriction"] =
+          canChangeTeamMembersOnlyRestriction;
     }
     if (canComment != null) {
       _json["canComment"] = canComment;
     }
     if (canCopy != null) {
       _json["canCopy"] = canCopy;
+    }
+    if (canDeleteChildren != null) {
+      _json["canDeleteChildren"] = canDeleteChildren;
     }
     if (canDeleteTeamDrive != null) {
       _json["canDeleteTeamDrive"] = canDeleteTeamDrive;
@@ -8903,6 +9040,68 @@ class TeamDriveCapabilities {
     if (canShare != null) {
       _json["canShare"] = canShare;
     }
+    if (canTrashChildren != null) {
+      _json["canTrashChildren"] = canTrashChildren;
+    }
+    return _json;
+  }
+}
+
+/// A set of restrictions that apply to this Team Drive or items inside this
+/// Team Drive.
+class TeamDriveRestrictions {
+  /// Whether administrative privileges on this Team Drive are required to
+  /// modify restrictions.
+  core.bool adminManagedRestrictions;
+
+  /// Whether the options to copy, print, or download files inside this Team
+  /// Drive, should be disabled for readers and commenters. When this
+  /// restriction is set to true, it will override the similarly named field to
+  /// true for any file inside this Team Drive.
+  core.bool copyRequiresWriterPermission;
+
+  /// Whether access to this Team Drive and items inside this Team Drive is
+  /// restricted to users of the domain to which this Team Drive belongs. This
+  /// restriction may be overridden by other sharing policies controlled outside
+  /// of this Team Drive.
+  core.bool domainUsersOnly;
+
+  /// Whether access to items inside this Team Drive is restricted to members of
+  /// this Team Drive.
+  core.bool teamMembersOnly;
+
+  TeamDriveRestrictions();
+
+  TeamDriveRestrictions.fromJson(core.Map _json) {
+    if (_json.containsKey("adminManagedRestrictions")) {
+      adminManagedRestrictions = _json["adminManagedRestrictions"];
+    }
+    if (_json.containsKey("copyRequiresWriterPermission")) {
+      copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
+    }
+    if (_json.containsKey("domainUsersOnly")) {
+      domainUsersOnly = _json["domainUsersOnly"];
+    }
+    if (_json.containsKey("teamMembersOnly")) {
+      teamMembersOnly = _json["teamMembersOnly"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (adminManagedRestrictions != null) {
+      _json["adminManagedRestrictions"] = adminManagedRestrictions;
+    }
+    if (copyRequiresWriterPermission != null) {
+      _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
+    }
+    if (domainUsersOnly != null) {
+      _json["domainUsersOnly"] = domainUsersOnly;
+    }
+    if (teamMembersOnly != null) {
+      _json["teamMembersOnly"] = teamMembersOnly;
+    }
     return _json;
   }
 }
@@ -8928,7 +9127,7 @@ class TeamDrive {
   /// The time at which the Team Drive was created (RFC 3339 date-time).
   core.DateTime createdDate;
 
-  /// The ID of this Team Drive which is also the ID of the top level folder for
+  /// The ID of this Team Drive which is also the ID of the top level folder of
   /// this Team Drive.
   core.String id;
 
@@ -8937,6 +9136,10 @@ class TeamDrive {
 
   /// The name of this Team Drive.
   core.String name;
+
+  /// A set of restrictions that apply to this Team Drive or items inside this
+  /// Team Drive.
+  TeamDriveRestrictions restrictions;
 
   /// The ID of the theme from which the background image and color will be set.
   /// The set of possible teamDriveThemes can be retrieved from a
@@ -8974,6 +9177,9 @@ class TeamDrive {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("restrictions")) {
+      restrictions = new TeamDriveRestrictions.fromJson(_json["restrictions"]);
+    }
     if (_json.containsKey("themeId")) {
       themeId = _json["themeId"];
     }
@@ -9005,6 +9211,9 @@ class TeamDrive {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (restrictions != null) {
+      _json["restrictions"] = (restrictions).toJson();
     }
     if (themeId != null) {
       _json["themeId"] = themeId;

@@ -1515,6 +1515,40 @@ class TablesResourceApi {
   }
 }
 
+class BigQueryModelTraining {
+  /// [Output-only, Beta] Index of current ML training iteration. Updated during
+  /// create model query job to show job progress.
+  core.int currentIteration;
+
+  /// [Output-only, Beta] Expected number of iterations for the create model
+  /// query job specified as num_iterations in the input query. The actual total
+  /// number of iterations may be less than this number due to early stop.
+  core.String expectedTotalIterations;
+
+  BigQueryModelTraining();
+
+  BigQueryModelTraining.fromJson(core.Map _json) {
+    if (_json.containsKey("currentIteration")) {
+      currentIteration = _json["currentIteration"];
+    }
+    if (_json.containsKey("expectedTotalIterations")) {
+      expectedTotalIterations = _json["expectedTotalIterations"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (currentIteration != null) {
+      _json["currentIteration"] = currentIteration;
+    }
+    if (expectedTotalIterations != null) {
+      _json["expectedTotalIterations"] = expectedTotalIterations;
+    }
+    return _json;
+  }
+}
+
 class BigtableColumn {
   /// [Optional] The encoding of the values when the type is not STRING.
   /// Acceptable encoding values are: TEXT - indicates values are alphanumeric
@@ -1746,9 +1780,10 @@ class BigtableOptions {
 
 class Clustering {
   /// [Repeated] One or more fields on which data should be clustered. Only
-  /// top-level, non-repeated, simple-type fields are supported. The order of
-  /// the fields will determine how clusters will be generated, so it is
-  /// important.
+  /// top-level, non-repeated, simple-type fields are supported. When you
+  /// cluster a table using multiple columns, the order of columns you specify
+  /// is important. The order of the specified columns determines the sort order
+  /// of the data.
   core.List<core.String> fields;
 
   Clustering();
@@ -1953,6 +1988,20 @@ class Dataset {
   /// [Required] A reference that identifies the dataset.
   DatasetReference datasetReference;
 
+  /// [Optional] The default partition expiration for all partitioned tables in
+  /// the dataset, in milliseconds. Once this property is set, all newly-created
+  /// partitioned tables in the dataset will have an expirationMs property in
+  /// the timePartitioning settings set to this value, and changing the value
+  /// will only affect new tables, not existing ones. The storage in a partition
+  /// will have an expiration time of its partition time plus this value.
+  /// Setting this property overrides the use of defaultTableExpirationMs for
+  /// partitioned tables: only one of defaultTableExpirationMs and
+  /// defaultPartitionExpirationMs will be used for any new partitioned table.
+  /// If you provide an explicit timePartitioning.expirationMs when creating or
+  /// updating a partitioned table, that value takes precedence over the default
+  /// partition expiration time indicated by this property.
+  core.String defaultPartitionExpirationMs;
+
   /// [Optional] The default lifetime of all tables in the dataset, in
   /// milliseconds. The minimum value is 3600000 milliseconds (one hour). Once
   /// this property is set, all newly-created tables in the dataset will have an
@@ -1985,7 +2034,7 @@ class Dataset {
 
   /// The labels associated with this dataset. You can use these to organize and
   /// group your datasets. You can set this property when inserting or updating
-  /// a dataset. See Labeling Datasets for more information.
+  /// a dataset. See Creating and Updating Dataset Labels for more information.
   core.Map<core.String, core.String> labels;
 
   /// [Output-only] The date when this dataset or any of its tables was last
@@ -2015,6 +2064,9 @@ class Dataset {
     if (_json.containsKey("datasetReference")) {
       datasetReference =
           new DatasetReference.fromJson(_json["datasetReference"]);
+    }
+    if (_json.containsKey("defaultPartitionExpirationMs")) {
+      defaultPartitionExpirationMs = _json["defaultPartitionExpirationMs"];
     }
     if (_json.containsKey("defaultTableExpirationMs")) {
       defaultTableExpirationMs = _json["defaultTableExpirationMs"];
@@ -2059,6 +2111,9 @@ class Dataset {
     }
     if (datasetReference != null) {
       _json["datasetReference"] = (datasetReference).toJson();
+    }
+    if (defaultPartitionExpirationMs != null) {
+      _json["defaultPartitionExpirationMs"] = defaultPartitionExpirationMs;
     }
     if (defaultTableExpirationMs != null) {
       _json["defaultTableExpirationMs"] = defaultTableExpirationMs;
@@ -2709,9 +2764,10 @@ class ExternalDataConfiguration {
 
   /// [Optional] The maximum number of bad records that BigQuery can ignore when
   /// reading data. If the number of bad records exceeds this value, an invalid
-  /// error is returned in the job result. The default value is 0, which
-  /// requires that all records are valid. This setting is ignored for Google
-  /// Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+  /// error is returned in the job result. This is only valid for CSV, JSON, and
+  /// Google Sheets. The default value is 0, which requires that all records are
+  /// valid. This setting is ignored for Google Cloud Bigtable, Google Cloud
+  /// Datastore backups and Avro formats.
   core.int maxBadRecords;
 
   /// [Optional] The schema for the data. Schema is required for CSV and JSON
@@ -2982,7 +3038,7 @@ class GetServiceAccountResponse {
 }
 
 class GoogleSheetsOptions {
-  /// [Experimental] [Optional] Range of a sheet to query from. Only used when
+  /// [Beta] [Optional] Range of a sheet to query from. Only used when
   /// non-empty. Typical format: !:
   core.String range;
 
@@ -3018,6 +3074,72 @@ class GoogleSheetsOptions {
     }
     if (skipLeadingRows != null) {
       _json["skipLeadingRows"] = skipLeadingRows;
+    }
+    return _json;
+  }
+}
+
+class IterationResult {
+  /// [Output-only, Beta] Time taken to run the training iteration in
+  /// milliseconds.
+  core.String durationMs;
+
+  /// [Output-only, Beta] Eval loss computed on the eval data at the end of the
+  /// iteration. The eval loss is used for early stopping to avoid overfitting.
+  /// No eval loss if eval_split_method option is specified as no_split or
+  /// auto_split with input data size less than 500 rows.
+  core.double evalLoss;
+
+  /// [Output-only, Beta] Index of the ML training iteration, starting from zero
+  /// for each training run.
+  core.int index;
+
+  /// [Output-only, Beta] Learning rate used for this iteration, it varies for
+  /// different training iterations if learn_rate_strategy option is not
+  /// constant.
+  core.double learnRate;
+
+  /// [Output-only, Beta] Training loss computed on the training data at the end
+  /// of the iteration. The training loss function is defined by model type.
+  core.double trainingLoss;
+
+  IterationResult();
+
+  IterationResult.fromJson(core.Map _json) {
+    if (_json.containsKey("durationMs")) {
+      durationMs = _json["durationMs"];
+    }
+    if (_json.containsKey("evalLoss")) {
+      evalLoss = _json["evalLoss"].toDouble();
+    }
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("learnRate")) {
+      learnRate = _json["learnRate"].toDouble();
+    }
+    if (_json.containsKey("trainingLoss")) {
+      trainingLoss = _json["trainingLoss"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (durationMs != null) {
+      _json["durationMs"] = durationMs;
+    }
+    if (evalLoss != null) {
+      _json["evalLoss"] = evalLoss;
+    }
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (learnRate != null) {
+      _json["learnRate"] = learnRate;
+    }
+    if (trainingLoss != null) {
+      _json["trainingLoss"] = trainingLoss;
     }
     return _json;
   }
@@ -3337,7 +3459,7 @@ class JobConfigurationLoad {
   /// schema for CSV and JSON sources.
   core.bool autodetect;
 
-  /// [Experimental] Clustering specification for the destination table. Must be
+  /// [Beta] Clustering specification for the destination table. Must be
   /// specified with time-based partitioning, data in the table will be first
   /// partitioned and subsequently clustered.
   Clustering clustering;
@@ -3356,8 +3478,8 @@ class JobConfigurationLoad {
   /// [Required] The destination table to load the data into.
   TableReference destinationTable;
 
-  /// [Experimental] [Optional] Properties with which to create the destination
-  /// table if it is new.
+  /// [Beta] [Optional] Properties with which to create the destination table if
+  /// it is new.
   DestinationTableProperties destinationTableProperties;
 
   /// [Optional] The character encoding of the data. The supported values are
@@ -3386,8 +3508,9 @@ class JobConfigurationLoad {
 
   /// [Optional] The maximum number of bad records that BigQuery can ignore when
   /// running the job. If the number of bad records exceeds this value, an
-  /// invalid error is returned in the job result. The default value is 0, which
-  /// requires that all records are valid.
+  /// invalid error is returned in the job result. This is only valid for CSV
+  /// and JSON. The default value is 0, which requires that all records are
+  /// valid.
   core.int maxBadRecords;
 
   /// [Optional] Specifies a string that represents a null value in a CSV file.
@@ -3648,7 +3771,7 @@ class JobConfigurationQuery {
   /// size.
   core.bool allowLargeResults;
 
-  /// [Experimental] Clustering specification for the destination table. Must be
+  /// [Beta] Clustering specification for the destination table. Must be
   /// specified with time-based partitioning, data in the table will be first
   /// partitioned and subsequently clustered.
   Clustering clustering;
@@ -4151,8 +4274,8 @@ class JobReference {
   /// characters.
   core.String jobId;
 
-  /// [Experimental] The geographic location of the job. Required except for US
-  /// and EU. See details at
+  /// The geographic location of the job. Required except for US and EU. See
+  /// details at
   /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
   core.String location;
 
@@ -4190,7 +4313,7 @@ class JobReference {
 }
 
 class JobStatistics {
-  /// [Experimental] [Output-only] Job progress (0.0 -> 1.0) for LOAD and
+  /// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and
   /// EXTRACT jobs.
   core.double completionRatio;
 
@@ -4210,6 +4333,9 @@ class JobStatistics {
 
   /// [Output-only] Statistics for a query job.
   JobStatistics2 query;
+
+  /// [Output-only] Quotas which delayed this job's start time.
+  core.List<core.String> quotaDeferments;
 
   /// [Output-only] Start time of this job, in milliseconds since the epoch.
   /// This field will be present when the job transitions from the PENDING state
@@ -4241,6 +4367,10 @@ class JobStatistics {
     if (_json.containsKey("query")) {
       query = new JobStatistics2.fromJson(_json["query"]);
     }
+    if (_json.containsKey("quotaDeferments")) {
+      quotaDeferments =
+          (_json["quotaDeferments"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
     }
@@ -4269,6 +4399,9 @@ class JobStatistics {
     }
     if (query != null) {
       _json["query"] = (query).toJson();
+    }
+    if (quotaDeferments != null) {
+      _json["quotaDeferments"] = quotaDeferments;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -4319,22 +4452,31 @@ class JobStatistics2 {
   /// [Output-only] Whether the query result was fetched from the query cache.
   core.bool cacheHit;
 
-  /// [Output-only, Experimental] The DDL operation performed, possibly
-  /// dependent on the pre-existence of the DDL target. Possible values (new
-  /// values might be added in the future): "CREATE": The query created the DDL
-  /// target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT
-  /// EXISTS while the table already exists, or the query is DROP TABLE IF
-  /// EXISTS while the table does not exist. "REPLACE": The query replaced the
-  /// DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the
-  /// table already exists. "DROP": The query deleted the DDL target.
+  /// [Output-only, Beta] The DDL operation performed, possibly dependent on the
+  /// pre-existence of the DDL target. Possible values (new values might be
+  /// added in the future): "CREATE": The query created the DDL target. "SKIP":
+  /// No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the
+  /// table already exists, or the query is DROP TABLE IF EXISTS while the table
+  /// does not exist. "REPLACE": The query replaced the DDL target. Example
+  /// case: the query is CREATE OR REPLACE TABLE, and the table already exists.
+  /// "DROP": The query deleted the DDL target.
   core.String ddlOperationPerformed;
 
-  /// [Output-only, Experimental] The DDL target table. Present only for
-  /// CREATE/DROP TABLE/VIEW queries.
+  /// [Output-only, Beta] The DDL target table. Present only for CREATE/DROP
+  /// TABLE/VIEW queries.
   TableReference ddlTargetTable;
 
   /// [Output-only] The original estimate of bytes processed for the job.
   core.String estimatedBytesProcessed;
+
+  /// [Output-only, Beta] Information about create model query job progress.
+  BigQueryModelTraining modelTraining;
+
+  /// [Output-only, Beta] Deprecated; do not use.
+  core.int modelTrainingCurrentIteration;
+
+  /// [Output-only, Beta] Deprecated; do not use.
+  core.String modelTrainingExpectedTotalIteration;
 
   /// [Output-only] The number of rows affected by a DML statement. Present only
   /// for DML statements INSERT, UPDATE or DELETE.
@@ -4354,13 +4496,15 @@ class JobStatistics2 {
   /// run of non-legacy SQL queries.
   TableSchema schema;
 
-  /// [Output-only, Experimental] The type of query statement, if valid.
-  /// Possible values (new values might be added in the future): "SELECT":
-  /// SELECT query. "INSERT": INSERT query; see
+  /// [Output-only, Beta] The type of query statement, if valid. Possible values
+  /// (new values might be added in the future): "SELECT": SELECT query.
+  /// "INSERT": INSERT query; see
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
   /// "UPDATE": UPDATE query; see
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
   /// "DELETE": DELETE query; see
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// "MERGE": MERGE query; see
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
   /// "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT.
   /// "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ...
@@ -4368,7 +4512,7 @@ class JobStatistics2 {
   /// ... AS SELECT ... "DROP_VIEW": DROP VIEW query.
   core.String statementType;
 
-  /// [Output-only] [Experimental] Describes a timeline of job execution.
+  /// [Output-only] [Beta] Describes a timeline of job execution.
   core.List<QueryTimelineSample> timeline;
 
   /// [Output-only] Total bytes billed for the job.
@@ -4384,8 +4528,8 @@ class JobStatistics2 {
   /// [Output-only] Slot-milliseconds for the job.
   core.String totalSlotMs;
 
-  /// [Output-only, Experimental] Standard SQL only: list of undeclared query
-  /// parameters detected during a dry run validation.
+  /// [Output-only, Beta] Standard SQL only: list of undeclared query parameters
+  /// detected during a dry run validation.
   core.List<QueryParameter> undeclaredQueryParameters;
 
   JobStatistics2();
@@ -4405,6 +4549,17 @@ class JobStatistics2 {
     }
     if (_json.containsKey("estimatedBytesProcessed")) {
       estimatedBytesProcessed = _json["estimatedBytesProcessed"];
+    }
+    if (_json.containsKey("modelTraining")) {
+      modelTraining =
+          new BigQueryModelTraining.fromJson(_json["modelTraining"]);
+    }
+    if (_json.containsKey("modelTrainingCurrentIteration")) {
+      modelTrainingCurrentIteration = _json["modelTrainingCurrentIteration"];
+    }
+    if (_json.containsKey("modelTrainingExpectedTotalIteration")) {
+      modelTrainingExpectedTotalIteration =
+          _json["modelTrainingExpectedTotalIteration"];
     }
     if (_json.containsKey("numDmlAffectedRows")) {
       numDmlAffectedRows = _json["numDmlAffectedRows"];
@@ -4475,6 +4630,16 @@ class JobStatistics2 {
     }
     if (estimatedBytesProcessed != null) {
       _json["estimatedBytesProcessed"] = estimatedBytesProcessed;
+    }
+    if (modelTraining != null) {
+      _json["modelTraining"] = (modelTraining).toJson();
+    }
+    if (modelTrainingCurrentIteration != null) {
+      _json["modelTrainingCurrentIteration"] = modelTrainingCurrentIteration;
+    }
+    if (modelTrainingExpectedTotalIteration != null) {
+      _json["modelTrainingExpectedTotalIteration"] =
+          modelTrainingExpectedTotalIteration;
     }
     if (numDmlAffectedRows != null) {
       _json["numDmlAffectedRows"] = numDmlAffectedRows;
@@ -4687,6 +4852,84 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   core.Object remove(core.Object key) => _innerMap.remove(key);
+}
+
+/// [Output-only, Beta] Model options used for the first training run. These
+/// options are immutable for subsequent training runs. Default values are used
+/// for any options not specified in the input query.
+class ModelDefinitionModelOptions {
+  core.List<core.String> labels;
+  core.String lossType;
+  core.String modelType;
+
+  ModelDefinitionModelOptions();
+
+  ModelDefinitionModelOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("lossType")) {
+      lossType = _json["lossType"];
+    }
+    if (_json.containsKey("modelType")) {
+      modelType = _json["modelType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (lossType != null) {
+      _json["lossType"] = lossType;
+    }
+    if (modelType != null) {
+      _json["modelType"] = modelType;
+    }
+    return _json;
+  }
+}
+
+class ModelDefinition {
+  /// [Output-only, Beta] Model options used for the first training run. These
+  /// options are immutable for subsequent training runs. Default values are
+  /// used for any options not specified in the input query.
+  ModelDefinitionModelOptions modelOptions;
+
+  /// [Output-only, Beta] Information about ml training runs, each training run
+  /// comprises of multiple iterations and there may be multiple training runs
+  /// for the model if warm start is used or if a user decides to continue a
+  /// previously cancelled query.
+  core.List<TrainingRun> trainingRuns;
+
+  ModelDefinition();
+
+  ModelDefinition.fromJson(core.Map _json) {
+    if (_json.containsKey("modelOptions")) {
+      modelOptions =
+          new ModelDefinitionModelOptions.fromJson(_json["modelOptions"]);
+    }
+    if (_json.containsKey("trainingRuns")) {
+      trainingRuns = (_json["trainingRuns"] as core.List)
+          .map<TrainingRun>((value) => new TrainingRun.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (modelOptions != null) {
+      _json["modelOptions"] = (modelOptions).toJson();
+    }
+    if (trainingRuns != null) {
+      _json["trainingRuns"] =
+          trainingRuns.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
 }
 
 class ProjectListProjects {
@@ -5023,8 +5266,8 @@ class QueryRequest {
   /// The resource type of the request.
   core.String kind;
 
-  /// [Experimental] The geographic location where the job should run. Required
-  /// except for US and EU.
+  /// The geographic location where the job should run. Required except for US
+  /// and EU.
   core.String location;
 
   /// [Optional] The maximum number of rows of data to return per page of
@@ -5395,9 +5638,9 @@ class Streamingbuffer {
 }
 
 class Table {
-  /// [Experimental] Clustering specification for the table. Must be specified
-  /// with time-based partitioning, data in the table will be first partitioned
-  /// and subsequently clustered.
+  /// [Beta] Clustering specification for the table. Must be specified with
+  /// time-based partitioning, data in the table will be first partitioned and
+  /// subsequently clustered.
   Clustering clustering;
 
   /// [Output-only] The time when this table was created, in milliseconds since
@@ -5410,7 +5653,10 @@ class Table {
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration encryptionConfiguration;
 
-  /// [Output-only] A hash of this resource.
+  /// [Output-only] A hash of the table metadata. Used to ensure there were no
+  /// concurrent modifications to the resource when attempting an update. Not
+  /// guaranteed to change when the table contents or the fields numRows,
+  /// numBytes, numLongTermBytes or lastModifiedTime change.
   core.String etag;
 
   /// [Optional] The time when this table expires, in milliseconds since the
@@ -5449,6 +5695,11 @@ class Table {
   /// [Output-only] The geographic location where the table resides. This value
   /// is inherited from the dataset.
   core.String location;
+
+  /// [Output-only, Beta] Present iff this table represents a ML model.
+  /// Describes the training information for the model, and it is required to
+  /// run 'PREDICT' queries.
+  ModelDefinition model;
 
   /// [Output-only] The size of this table in bytes, excluding any data in the
   /// streaming buffer.
@@ -5533,6 +5784,9 @@ class Table {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("model")) {
+      model = new ModelDefinition.fromJson(_json["model"]);
+    }
     if (_json.containsKey("numBytes")) {
       numBytes = _json["numBytes"];
     }
@@ -5607,6 +5861,9 @@ class Table {
     }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (model != null) {
+      _json["model"] = (model).toJson();
     }
     if (numBytes != null) {
       _json["numBytes"] = numBytes;
@@ -5993,7 +6250,7 @@ class TableListTablesView {
 }
 
 class TableListTables {
-  /// [Experimental] Clustering specification for this table, if configured.
+  /// [Beta] Clustering specification for this table, if configured.
   Clustering clustering;
 
   /// The time when this table was created, in milliseconds since the epoch.
@@ -6266,15 +6523,15 @@ class TimePartitioning {
   /// expiration time of its partition time plus this value.
   core.String expirationMs;
 
-  /// [Experimental] [Optional] If not set, the table is partitioned by pseudo
-  /// column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
+  /// [Beta] [Optional] If not set, the table is partitioned by pseudo column,
+  /// referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
   /// '_PARTITIONDATE' as DATE type. If field is specified, the table is instead
   /// partitioned by this field. The field must be a top-level TIMESTAMP or DATE
   /// field. Its mode must be NULLABLE or REQUIRED.
   core.String field;
 
-  /// [Experimental] [Optional] If set to true, queries over this table require
-  /// a partition filter that can be used for partition elimination to be
+  /// [Beta] [Optional] If set to true, queries over this table require a
+  /// partition filter that can be used for partition elimination to be
   /// specified.
   core.bool requirePartitionFilter;
 
@@ -6313,6 +6570,150 @@ class TimePartitioning {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// [Output-only, Beta] Training options used by this training run. These
+/// options are mutable for subsequent training runs. Default values are
+/// explicitly stored for options not specified in the input query of the first
+/// training run. For subsequent training runs, any option not explicitly
+/// specified in the input query will be copied from the previous training run.
+class TrainingRunTrainingOptions {
+  core.bool earlyStop;
+  core.double l1Reg;
+  core.double l2Reg;
+  core.double learnRate;
+  core.String learnRateStrategy;
+  core.double lineSearchInitLearnRate;
+  core.String maxIteration;
+  core.double minRelProgress;
+  core.bool warmStart;
+
+  TrainingRunTrainingOptions();
+
+  TrainingRunTrainingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("earlyStop")) {
+      earlyStop = _json["earlyStop"];
+    }
+    if (_json.containsKey("l1Reg")) {
+      l1Reg = _json["l1Reg"].toDouble();
+    }
+    if (_json.containsKey("l2Reg")) {
+      l2Reg = _json["l2Reg"].toDouble();
+    }
+    if (_json.containsKey("learnRate")) {
+      learnRate = _json["learnRate"].toDouble();
+    }
+    if (_json.containsKey("learnRateStrategy")) {
+      learnRateStrategy = _json["learnRateStrategy"];
+    }
+    if (_json.containsKey("lineSearchInitLearnRate")) {
+      lineSearchInitLearnRate = _json["lineSearchInitLearnRate"].toDouble();
+    }
+    if (_json.containsKey("maxIteration")) {
+      maxIteration = _json["maxIteration"];
+    }
+    if (_json.containsKey("minRelProgress")) {
+      minRelProgress = _json["minRelProgress"].toDouble();
+    }
+    if (_json.containsKey("warmStart")) {
+      warmStart = _json["warmStart"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (earlyStop != null) {
+      _json["earlyStop"] = earlyStop;
+    }
+    if (l1Reg != null) {
+      _json["l1Reg"] = l1Reg;
+    }
+    if (l2Reg != null) {
+      _json["l2Reg"] = l2Reg;
+    }
+    if (learnRate != null) {
+      _json["learnRate"] = learnRate;
+    }
+    if (learnRateStrategy != null) {
+      _json["learnRateStrategy"] = learnRateStrategy;
+    }
+    if (lineSearchInitLearnRate != null) {
+      _json["lineSearchInitLearnRate"] = lineSearchInitLearnRate;
+    }
+    if (maxIteration != null) {
+      _json["maxIteration"] = maxIteration;
+    }
+    if (minRelProgress != null) {
+      _json["minRelProgress"] = minRelProgress;
+    }
+    if (warmStart != null) {
+      _json["warmStart"] = warmStart;
+    }
+    return _json;
+  }
+}
+
+class TrainingRun {
+  /// [Output-only, Beta] List of each iteration results.
+  core.List<IterationResult> iterationResults;
+
+  /// [Output-only, Beta] Training run start time in milliseconds since the
+  /// epoch.
+  core.DateTime startTime;
+
+  /// [Output-only, Beta] Different state applicable for a training run. IN
+  /// PROGRESS: Training run is in progress. FAILED: Training run ended due to a
+  /// non-retryable failure. SUCCEEDED: Training run successfully completed.
+  /// CANCELLED: Training run cancelled by the user.
+  core.String state;
+
+  /// [Output-only, Beta] Training options used by this training run. These
+  /// options are mutable for subsequent training runs. Default values are
+  /// explicitly stored for options not specified in the input query of the
+  /// first training run. For subsequent training runs, any option not
+  /// explicitly specified in the input query will be copied from the previous
+  /// training run.
+  TrainingRunTrainingOptions trainingOptions;
+
+  TrainingRun();
+
+  TrainingRun.fromJson(core.Map _json) {
+    if (_json.containsKey("iterationResults")) {
+      iterationResults = (_json["iterationResults"] as core.List)
+          .map<IterationResult>((value) => new IterationResult.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = core.DateTime.parse(_json["startTime"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("trainingOptions")) {
+      trainingOptions =
+          new TrainingRunTrainingOptions.fromJson(_json["trainingOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (iterationResults != null) {
+      _json["iterationResults"] =
+          iterationResults.map((value) => (value).toJson()).toList();
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toIso8601String();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (trainingOptions != null) {
+      _json["trainingOptions"] = (trainingOptions).toJson();
     }
     return _json;
   }

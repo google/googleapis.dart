@@ -15,8 +15,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client poly/v1';
 
-/// The Poly API provides read-only access to assets hosted on <a
-/// href="https://poly.google.com">poly.google.com</a>.
+/// The Poly API provides read access to assets hosted on <a
+/// href="https://poly.google.com">poly.google.com</a> to all, and upload access
+/// to <a href="https://poly.google.com">poly.google.com</a> for whitelisted
+/// accounts.
 class PolyApi {
   final commons.ApiRequester _requester;
 
@@ -110,11 +112,6 @@ class AssetsResourceApi {
   /// `scenes`,
   /// `technology`, and `transport`.
   ///
-  /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from next_page_token.
-  ///
   /// [maxComplexity] - Returns assets that are of the specified complexity or
   /// less. Defaults to
   /// COMPLEX. For example, a request for
@@ -125,6 +122,11 @@ class AssetsResourceApi {
   /// - "COMPLEX" : A COMPLEX.
   /// - "MEDIUM" : A MEDIUM.
   /// - "SIMPLE" : A SIMPLE.
+  ///
+  /// [pageToken] - Specifies a continuation token from a previous search whose
+  /// results were
+  /// split into multiple pages. To get the next page, submit the same request
+  /// specifying the value from next_page_token.
   ///
   /// [pageSize] - The maximum number of assets to be returned. This value must
   /// be between `1`
@@ -146,8 +148,8 @@ class AssetsResourceApi {
       core.String format,
       core.bool curated,
       core.String category,
-      core.String pageToken,
       core.String maxComplexity,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -172,11 +174,11 @@ class AssetsResourceApi {
     if (category != null) {
       _queryParams["category"] = [category];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxComplexity != null) {
       _queryParams["maxComplexity"] = [maxComplexity];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -227,6 +229,17 @@ class UsersAssetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
+  /// [visibility] - The visibility of the assets to be returned.
+  /// Defaults to VISIBILITY_UNSPECIFIED which returns all assets.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
+  /// - "PUBLISHED" : A PUBLISHED.
+  /// - "PRIVATE" : A PRIVATE.
+  ///
+  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
+  /// based on a combination of popularity and other features.
+  ///
   /// [format] - Return only assets with the matching format. Acceptable values
   /// are:
   /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
@@ -241,17 +254,6 @@ class UsersAssetsResourceApi {
   /// be between `1`
   /// and `100`. Defaults to `20`.
   ///
-  /// [visibility] - The visibility of the assets to be returned.
-  /// Defaults to VISIBILITY_UNSPECIFIED which returns all assets.
-  /// Possible string values are:
-  /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
-  /// - "PUBLISHED" : A PUBLISHED.
-  /// - "PRIVATE" : A PRIVATE.
-  ///
-  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -263,11 +265,11 @@ class UsersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String format,
+      {core.String visibility,
+      core.String orderBy,
+      core.String format,
       core.String pageToken,
       core.int pageSize,
-      core.String visibility,
-      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -279,6 +281,12 @@ class UsersAssetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (visibility != null) {
+      _queryParams["visibility"] = [visibility];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (format != null) {
       _queryParams["format"] = [format];
     }
@@ -287,12 +295,6 @@ class UsersAssetsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (visibility != null) {
-      _queryParams["visibility"] = [visibility];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -328,14 +330,6 @@ class UsersLikedassetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
-  ///
-  /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
-  ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
   /// `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which
   /// ranks assets based on how recently they were liked.
@@ -345,6 +339,14 @@ class UsersLikedassetsResourceApi {
   /// split into multiple pages. To get the next page, submit the same request
   /// specifying the value from
   /// next_page_token.
+  ///
+  /// [pageSize] - The maximum number of assets to be returned. This value must
+  /// be between `1`
+  /// and `100`. Defaults to `20`.
+  ///
+  /// [format] - Return only assets with the matching format. Acceptable values
+  /// are:
+  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,10 +359,10 @@ class UsersLikedassetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLikedAssetsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String format,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
+      core.int pageSize,
+      core.String format,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -372,17 +374,17 @@ class UsersLikedassetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (format != null) {
-      _queryParams["format"] = [format];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (format != null) {
+      _queryParams["format"] = [format];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -454,6 +456,9 @@ class Asset {
   /// immutable; the author of an asset may change them post-publication.
   PresentationParams presentationParams;
 
+  /// The remix info for the asset.
+  RemixInfo remixInfo;
+
   /// The thumbnail image for the asset.
   File thumbnail;
 
@@ -515,6 +520,9 @@ class Asset {
       presentationParams =
           new PresentationParams.fromJson(_json["presentationParams"]);
     }
+    if (_json.containsKey("remixInfo")) {
+      remixInfo = new RemixInfo.fromJson(_json["remixInfo"]);
+    }
     if (_json.containsKey("thumbnail")) {
       thumbnail = new File.fromJson(_json["thumbnail"]);
     }
@@ -558,6 +566,9 @@ class Asset {
     }
     if (presentationParams != null) {
       _json["presentationParams"] = (presentationParams).toJson();
+    }
+    if (remixInfo != null) {
+      _json["remixInfo"] = (remixInfo).toJson();
     }
     if (thumbnail != null) {
       _json["thumbnail"] = (thumbnail).toJson();
@@ -1094,6 +1105,14 @@ class ObjParseError {
 /// asset
 /// was uploaded.
 class PresentationParams {
+  /// A background color which could be used for displaying the 3D asset in a
+  /// 'thumbnail' or 'palette' style view. Authors have the option to set this
+  /// background color when publishing or editing their asset.
+  ///
+  /// This is represented as a six-digit hexademical triplet specifying the
+  /// RGB components of the background color, e.g. #FF0000 for Red.
+  core.String backgroundColor;
+
   /// The materials' diffuse/albedo color. This does not apply to vertex colors
   /// or texture maps.
   /// Possible string values are:
@@ -1123,6 +1142,9 @@ class PresentationParams {
   PresentationParams();
 
   PresentationParams.fromJson(core.Map _json) {
+    if (_json.containsKey("backgroundColor")) {
+      backgroundColor = _json["backgroundColor"];
+    }
     if (_json.containsKey("colorSpace")) {
       colorSpace = _json["colorSpace"];
     }
@@ -1134,6 +1156,9 @@ class PresentationParams {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (backgroundColor != null) {
+      _json["backgroundColor"] = backgroundColor;
+    }
     if (colorSpace != null) {
       _json["colorSpace"] = colorSpace;
     }
@@ -1196,12 +1221,37 @@ class Quaternion {
   }
 }
 
-/// A response message from a request to list.
+/// Info about the sources of this asset (i.e. assets that were remixed to
+/// create this asset).
+class RemixInfo {
+  /// Resource ids for the sources of this remix, of the form:
+  /// `assets/{ASSET_ID}`
+  core.List<core.String> sourceAsset;
+
+  RemixInfo();
+
+  RemixInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("sourceAsset")) {
+      sourceAsset = (_json["sourceAsset"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sourceAsset != null) {
+      _json["sourceAsset"] = sourceAsset;
+    }
+    return _json;
+  }
+}
+
+/// A response message from a request to startImport.
 /// This is returned in the response field of the Operation.
 class StartAssetImportResponse {
   /// The id of newly created asset. If this is empty when the operation is
   /// complete it means the import failed. Please refer to the
-  /// asset_import_message field to understand what went wrong.
+  /// assetImportMessages field to understand what went wrong.
   core.String assetId;
 
   /// The id of the asset import.

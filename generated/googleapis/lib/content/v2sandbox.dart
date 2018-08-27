@@ -105,7 +105,10 @@ class OrderinvoicesResourceApi {
   }
 
   /// Creates a refund invoice for one or more shipment groups, and triggers a
-  /// refund for non-facilitated payment orders.
+  /// refund for non-facilitated payment orders. This can only be used for line
+  /// items that have previously been charged using createChargeInvoice. All
+  /// amounts (except for the summary) are incremental with respect to the
+  /// previous invoice.
   ///
   /// [request] - The metadata request object.
   ///
@@ -875,6 +878,8 @@ class OrdersResourceApi {
   /// - "template1b"
   /// - "template2"
   ///
+  /// [country] - The country of the template to retrieve. Defaults to US.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -887,7 +892,7 @@ class OrdersResourceApi {
   /// this method will complete with the same error.
   async.Future<OrdersGetTestOrderTemplateResponse> gettestordertemplate(
       core.String merchantId, core.String templateName,
-      {core.String $fields}) {
+      {core.String country, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -900,6 +905,9 @@ class OrdersResourceApi {
     }
     if (templateName == null) {
       throw new core.ArgumentError("Parameter templateName is required.");
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -919,7 +927,8 @@ class OrdersResourceApi {
         .then((data) => new OrdersGetTestOrderTemplateResponse.fromJson(data));
   }
 
-  /// Notifies that item return and refund was handled directly in store.
+  /// Notifies that item return and refund was handled directly by merchant
+  /// outside of Google payments processing (e.g. cash refund done in store).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1088,7 +1097,7 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersListResponse.fromJson(data));
   }
 
-  /// Refund a portion of the order, up to the full amount paid.
+  /// Deprecated, please use returnRefundLineItem instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1638,10 +1647,10 @@ class OrdersResourceApi {
 }
 
 class Amount {
-  /// Value before taxes.
+  /// [required] Value before taxes.
   Price pretax;
 
-  /// Tax value.
+  /// [required] Tax value.
   Price tax;
 
   Amount();
@@ -1756,24 +1765,28 @@ class InvoiceSummary {
   /// Summary of the total amounts of the additional charges.
   core.List<InvoiceSummaryAdditionalChargeSummary> additionalChargeSummaries;
 
-  /// Customer balance on this invoice. A positive amount means the customer is
-  /// paying, a negative one means the customer is receiving money. Note that it
-  /// must always be true that merchant_balance + customer_balance +
-  /// google_balance = 0.
+  /// [required] Customer balance on this invoice. A negative amount means the
+  /// customer is paying, a positive one means the customer is receiving money.
+  /// Note: the sum of merchant_balance, customer_balance and google_balance
+  /// must always be zero.
+  ///
+  /// Furthermore the absolute value of this amount is expected to be equal to
+  /// the sum of product amount and additional charges, minus promotions.
   Amount customerBalance;
 
-  /// Google balance on this invoice. A positive amount means Google is paying,
-  /// a negative one means Google is receiving money. Note that it must always
-  /// be true that merchant_balance + customer_balance + google_balance = 0.
+  /// [required] Google balance on this invoice. A negative amount means Google
+  /// is paying, a positive one means Google is receiving money. Note: the sum
+  /// of merchant_balance, customer_balance and google_balance must always be
+  /// zero.
   Amount googleBalance;
 
-  /// Merchant balance on this invoice. A positive amount means the merchant is
-  /// paying, a negative one means the merchant is receiving money. Note that it
-  /// must always be true that merchant_balance + customer_balance +
-  /// google_balance = 0.
+  /// [required] Merchant balance on this invoice. A negative amount means the
+  /// merchant is paying, a positive one means the merchant is receiving money.
+  /// Note: the sum of merchant_balance, customer_balance and google_balance
+  /// must always be zero.
   Amount merchantBalance;
 
-  /// Total price for the product.
+  /// [required] Total price for the product.
   Amount productTotal;
 
   /// Summary for each promotion.
@@ -1836,10 +1849,10 @@ class InvoiceSummary {
 }
 
 class InvoiceSummaryAdditionalChargeSummary {
-  /// Total additional charge for this type.
+  /// [required] Total additional charge for this type.
   Amount totalAmount;
 
-  /// Type of the additional charge.
+  /// [required] Type of the additional charge.
   core.String type;
 
   InvoiceSummaryAdditionalChargeSummary();
@@ -2096,7 +2109,8 @@ class OrderAddress {
   /// Name of the recipient.
   core.String recipientName;
 
-  /// Top-level administrative subdivision of the country (e.g. "CA").
+  /// Top-level administrative subdivision of the country. For example, a state
+  /// like California ("CA") or a province like Quebec ("QC").
   core.String region;
 
   /// Street-level part of the address.
@@ -3224,7 +3238,7 @@ class OrderShipment {
   core.String creationDate;
 
   /// Date on which the shipment has been delivered, in ISO 8601 format. Present
-  /// only if status is delievered
+  /// only if status is delivered
   core.String deliveryDate;
 
   /// The id of the shipment.
@@ -3339,19 +3353,20 @@ class OrderShipmentLineItemShipment {
 }
 
 class OrderinvoicesCreateChargeInvoiceRequest {
-  /// The ID of the invoice.
+  /// [required] The ID of the invoice.
   core.String invoiceId;
 
-  /// Invoice summary.
+  /// [required] Invoice summary.
   InvoiceSummary invoiceSummary;
 
-  /// Invoice details per line item.
+  /// [required] Invoice details per line item.
   core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
 
-  /// The ID of the operation, unique across all operations for a given order.
+  /// [required] The ID of the operation, unique across all operations for a
+  /// given order.
   core.String operationId;
 
-  /// ID of the shipment group.
+  /// [required] ID of the shipment group.
   core.String shipmentGroupId;
 
   OrderinvoicesCreateChargeInvoiceRequest();
@@ -3433,19 +3448,20 @@ class OrderinvoicesCreateChargeInvoiceResponse {
 }
 
 class OrderinvoicesCreateRefundInvoiceRequest {
-  /// The ID of the invoice.
+  /// [required] The ID of the invoice.
   core.String invoiceId;
 
-  /// The ID of the operation, unique across all operations for a given order.
+  /// [required] The ID of the operation, unique across all operations for a
+  /// given order.
   core.String operationId;
 
-  /// Option to create a refund-only invoice. Exactly one of refund_option and
-  /// return_option must be provided.
+  /// Option to create a refund-only invoice. Exactly one of refundOnlyOption or
+  /// returnOption must be provided.
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
       refundOnlyOption;
 
   /// Option to create an invoice for a refund and mark all items within the
-  /// invoice as returned. Exactly one of refund_option and return_option must
+  /// invoice as returned. Exactly one of refundOnlyOption or returnOption must
   /// be provided.
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
       returnOption;
@@ -3538,7 +3554,7 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   /// Optional description of the refund reason.
   core.String description;
 
-  /// Reason for the refund.
+  /// [required] Reason for the refund.
   core.String reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
@@ -3570,7 +3586,7 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   /// Optional description of the return reason.
   core.String description;
 
-  /// Reason for the return.
+  /// [required] Reason for the return.
   core.String reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
@@ -3916,9 +3932,7 @@ class OrdersAdvanceTestOrderResponse {
 }
 
 class OrdersCancelLineItemRequest {
-  /// Amount to refund for the cancelation. Optional. If not set, Google will
-  /// calculate the default based on the price and tax of the items involved.
-  /// The amount must not be larger than the net amount left on the order.
+  /// Deprecated. Please use amountPretax and amountTax instead.
   Price amount;
 
   /// Amount to refund for the cancelation. Optional. If not set, Google will
@@ -4120,6 +4134,15 @@ class OrdersCancelResponse {
 }
 
 class OrdersCreateTestOrderRequest {
+  /// The  CLDR territory code of the country of the test order to create.
+  /// Affects the currency and addresses of orders created via template_name, or
+  /// the addresses of orders created via test_order.
+  ///
+  /// Acceptable values are:
+  /// - "US"
+  /// - "FR"  Defaults to US.
+  core.String country;
+
   /// The test order template to use. Specify as an alternative to testOrder as
   /// a shortcut for retrieving a template and then creating an order using that
   /// template.
@@ -4131,6 +4154,9 @@ class OrdersCreateTestOrderRequest {
   OrdersCreateTestOrderRequest();
 
   OrdersCreateTestOrderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
     if (_json.containsKey("templateName")) {
       templateName = _json["templateName"];
     }
@@ -4142,6 +4168,9 @@ class OrdersCreateTestOrderRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (country != null) {
+      _json["country"] = country;
+    }
     if (templateName != null) {
       _json["templateName"] = templateName;
     }
@@ -4427,9 +4456,7 @@ class OrdersCustomBatchRequestEntryCancel {
 }
 
 class OrdersCustomBatchRequestEntryCancelLineItem {
-  /// Amount to refund for the cancelation. Optional. If not set, Google will
-  /// calculate the default based on the price and tax of the items involved.
-  /// The amount must not be larger than the net amount left on the order.
+  /// Deprecated. Please use amountPretax and amountTax instead.
   Price amount;
 
   /// Amount to refund for the cancelation. Optional. If not set, Google will
@@ -4596,7 +4623,7 @@ class OrdersCustomBatchRequestEntryInStoreRefundLineItem {
 }
 
 class OrdersCustomBatchRequestEntryRefund {
-  /// The amount that is refunded.
+  /// Deprecated. Please use amountPretax and amountTax instead.
   Price amount;
 
   /// The amount that is refunded. Either amount or amountPretax and amountTax
@@ -4775,7 +4802,8 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
 }
 
 class OrdersCustomBatchRequestEntryReturnRefundLineItem {
-  /// The amount that is refunded. Optional, but if filled then both
+  /// The amount that is refunded. If omitted, refundless return is assumed
+  /// (same as calling returnLineItem method). Optional, but if filled then both
   /// amountPretax and amountTax must be set.
   Price amountPretax;
 
@@ -5082,6 +5110,10 @@ class OrdersCustomBatchRequestEntryUpdateShipment {
   /// acceptable values.
   core.String carrier;
 
+  /// Date on which the shipment has been delivered, in ISO 8601 format.
+  /// Optional and can be provided only if status is delivered.
+  core.String deliveryDate;
+
   /// The ID of the shipment.
   core.String shipmentId;
 
@@ -5096,6 +5128,9 @@ class OrdersCustomBatchRequestEntryUpdateShipment {
   OrdersCustomBatchRequestEntryUpdateShipment.fromJson(core.Map _json) {
     if (_json.containsKey("carrier")) {
       carrier = _json["carrier"];
+    }
+    if (_json.containsKey("deliveryDate")) {
+      deliveryDate = _json["deliveryDate"];
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
@@ -5113,6 +5148,9 @@ class OrdersCustomBatchRequestEntryUpdateShipment {
         new core.Map<core.String, core.Object>();
     if (carrier != null) {
       _json["carrier"] = carrier;
+    }
+    if (deliveryDate != null) {
+      _json["deliveryDate"] = deliveryDate;
     }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
@@ -5169,8 +5207,9 @@ class OrdersCustomBatchResponseEntry {
   /// A list of errors defined if and only if the request failed.
   Errors errors;
 
-  /// The status of the execution. Only defined if the method is not get or
-  /// getByMerchantOrderId and if the request was successful.
+  /// The status of the execution. Only defined if
+  /// - the request was successful; and
+  /// - the method is not get, getByMerchantOrderId, or one of the test methods.
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -5448,7 +5487,7 @@ class OrdersListResponse {
 }
 
 class OrdersRefundRequest {
-  /// The amount that is refunded.
+  /// Deprecated. Please use amountPretax and amountTax instead.
   Price amount;
 
   /// The amount that is refunded. Either amount or amountPretax and amountTax
@@ -5750,7 +5789,8 @@ class OrdersReturnLineItemResponse {
 }
 
 class OrdersReturnRefundLineItemRequest {
-  /// The amount that is refunded. Optional, but if filled then both
+  /// The amount that is refunded. If omitted, refundless return is assumed
+  /// (same as calling returnLineItem method). Optional, but if filled then both
   /// amountPretax and amountTax must be set.
   Price amountPretax;
 
@@ -6242,6 +6282,10 @@ class OrdersUpdateShipmentRequest {
   /// acceptable values.
   core.String carrier;
 
+  /// Date on which the shipment has been delivered, in ISO 8601 format.
+  /// Optional and can be provided only if status is delivered.
+  core.String deliveryDate;
+
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
@@ -6259,6 +6303,9 @@ class OrdersUpdateShipmentRequest {
   OrdersUpdateShipmentRequest.fromJson(core.Map _json) {
     if (_json.containsKey("carrier")) {
       carrier = _json["carrier"];
+    }
+    if (_json.containsKey("deliveryDate")) {
+      deliveryDate = _json["deliveryDate"];
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
@@ -6279,6 +6326,9 @@ class OrdersUpdateShipmentRequest {
         new core.Map<core.String, core.Object>();
     if (carrier != null) {
       _json["carrier"] = carrier;
+    }
+    if (deliveryDate != null) {
+      _json["deliveryDate"] = deliveryDate;
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
@@ -6360,11 +6410,11 @@ class Price {
 }
 
 class Promotion {
-  /// Amount of the promotion. The values here are the promotion applied to the
-  /// unit price pretax and to the total of the tax amounts.
+  /// [required] Amount of the promotion. The values here are the promotion
+  /// applied to the unit price pretax and to the total of the tax amounts.
   Amount promotionAmount;
 
-  /// ID of the promotion.
+  /// [required] ID of the promotion.
   core.String promotionId;
 
   Promotion();
@@ -6392,13 +6442,13 @@ class Promotion {
 }
 
 class ShipmentInvoice {
-  /// Invoice summary.
+  /// [required] Invoice summary.
   InvoiceSummary invoiceSummary;
 
-  /// Invoice details per line item.
+  /// [required] Invoice details per line item.
   core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
 
-  /// ID of the shipment group.
+  /// [required] ID of the shipment group.
   core.String shipmentGroupId;
 
   ShipmentInvoice();
@@ -6443,10 +6493,10 @@ class ShipmentInvoiceLineItemInvoice {
   /// Either lineItemId or productId must be set.
   core.String productId;
 
-  /// Unit IDs to define specific units within the line item.
+  /// [required] Unit IDs to define specific units within the line item.
   core.List<core.String> shipmentUnitIds;
 
-  /// Invoice details for a single unit.
+  /// [required] Invoice details for a single unit.
   UnitInvoice unitInvoice;
 
   ShipmentInvoiceLineItemInvoice();
@@ -6490,6 +6540,9 @@ class TestOrder {
   /// The details of the customer who placed the order.
   TestOrderCustomer customer;
 
+  /// Whether the orderinvoices service should support this order.
+  core.bool enableOrderinvoices;
+
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "content#testOrder".
   core.String kind;
@@ -6525,6 +6578,9 @@ class TestOrder {
   TestOrder.fromJson(core.Map _json) {
     if (_json.containsKey("customer")) {
       customer = new TestOrderCustomer.fromJson(_json["customer"]);
+    }
+    if (_json.containsKey("enableOrderinvoices")) {
+      enableOrderinvoices = _json["enableOrderinvoices"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6566,6 +6622,9 @@ class TestOrder {
         new core.Map<core.String, core.Object>();
     if (customer != null) {
       _json["customer"] = (customer).toJson();
+    }
+    if (enableOrderinvoices != null) {
+      _json["enableOrderinvoices"] = enableOrderinvoices;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -6941,7 +7000,7 @@ class UnitInvoice {
   /// Promotions applied to a unit.
   core.List<Promotion> promotions;
 
-  /// Price of the unit, before applying taxes.
+  /// [required] Price of the unit, before applying taxes.
   Price unitPricePretax;
 
   /// Tax amounts to apply to the unit price.
@@ -6995,13 +7054,13 @@ class UnitInvoice {
 }
 
 class UnitInvoiceAdditionalCharge {
-  /// Amount of the additional charge.
+  /// [required] Amount of the additional charge.
   Amount additionalChargeAmount;
 
   /// Promotions applied to the additional charge.
   core.List<Promotion> additionalChargePromotions;
 
-  /// Type of the additional charge.
+  /// [required] Type of the additional charge.
   core.String type;
 
   UnitInvoiceAdditionalCharge();
@@ -7040,13 +7099,14 @@ class UnitInvoiceAdditionalCharge {
 }
 
 class UnitInvoiceTaxLine {
-  /// Tax amount for the tax type.
+  /// [required] Tax amount for the tax type.
   Price taxAmount;
 
-  /// Optional name of the tax type.
+  /// Optional name of the tax type. This should only be provided if taxType is
+  /// otherFeeTax.
   core.String taxName;
 
-  /// Type of the tax.
+  /// [required] Type of the tax.
   core.String taxType;
 
   UnitInvoiceTaxLine();

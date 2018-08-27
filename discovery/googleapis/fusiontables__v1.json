@@ -17,7 +17,7 @@
     "description": "API for working with Fusion Tables data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fusiontables",
-    "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/p0G2jAuETxZYQccv9ZDgRCaOWJQ\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/p0G2jAuETxZYQccv9ZDgRCaOWJQ\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -301,7 +301,8 @@
                         "https://www.googleapis.com/auth/fusiontables",
                         "https://www.googleapis.com/auth/fusiontables.readonly"
                     ],
-                    "supportsMediaDownload": true
+                    "supportsMediaDownload": true,
+                    "useMediaDownloadService": true
                 },
                 "sqlGet": {
                     "description": "Executes an SQL SELECT/SHOW/DESCRIBE statement.",
@@ -336,7 +337,8 @@
                         "https://www.googleapis.com/auth/fusiontables",
                         "https://www.googleapis.com/auth/fusiontables.readonly"
                     ],
-                    "supportsMediaDownload": true
+                    "supportsMediaDownload": true,
+                    "useMediaDownloadService": true
                 }
             }
         },

@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-translation": {
-                    "description": "Translate text from one language to another using Google Translate"
-                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/cloud-translation": {
+                    "description": "Translate text from one language to another using Google Translate"
                 }
             }
         }
@@ -31,6 +31,27 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -42,13 +63,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -86,89 +107,21 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
-        "languages": {
-            "methods": {
-                "list": {
-                    "description": "Returns a list of supported languages for translation.",
-                    "httpMethod": "GET",
-                    "id": "language.languages.list",
-                    "parameters": {
-                        "target": {
-                            "description": "The language to use to return localized, human readable names of supported\nlanguages.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "model": {
-                            "description": "The model type for which supported languages should be returned.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v2/languages",
-                    "response": {
-                        "$ref": "LanguagesListResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-translation",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                }
-            }
-        },
         "translations": {
             "methods": {
-                "translate": {
-                    "description": "Translates input text, returning translated text.",
-                    "httpMethod": "POST",
-                    "id": "language.translations.translate",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v2",
-                    "request": {
-                        "$ref": "TranslateTextRequest"
-                    },
-                    "response": {
-                        "$ref": "TranslationsListResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-translation",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
                 "list": {
                     "description": "Translates input text, returning translated text.",
                     "httpMethod": "GET",
@@ -229,6 +182,24 @@
                         "https://www.googleapis.com/auth/cloud-translation",
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "translate": {
+                    "description": "Translates input text, returning translated text.",
+                    "httpMethod": "POST",
+                    "id": "language.translations.translate",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v2",
+                    "request": {
+                        "$ref": "TranslateTextRequest"
+                    },
+                    "response": {
+                        "$ref": "TranslationsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         },
@@ -278,11 +249,54 @@
                     ]
                 }
             }
+        },
+        "languages": {
+            "methods": {
+                "list": {
+                    "description": "Returns a list of supported languages for translation.",
+                    "httpMethod": "GET",
+                    "id": "language.languages.list",
+                    "parameters": {
+                        "model": {
+                            "description": "The model type for which supported languages should be returned.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "target": {
+                            "description": "The language to use to return localized, human readable names of supported\nlanguages.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v2/languages",
+                    "response": {
+                        "$ref": "LanguagesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
         }
     },
     "revision": "20170525",
     "rootUrl": "https://translation.googleapis.com/",
     "schemas": {
+        "LanguagesResource": {
+            "id": "LanguagesResource",
+            "properties": {
+                "language": {
+                    "description": "Supported language code, generally consisting of its ISO 639-1\nidentifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including\nlanguage + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human readable name of the language localized to the target language.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DetectionsListResponse": {
             "id": "DetectionsListResponse",
             "properties": {
@@ -415,20 +429,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "LanguagesResource": {
-            "id": "LanguagesResource",
-            "properties": {
-                "language": {
-                    "description": "Supported language code, generally consisting of its ISO 639-1\nidentifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including\nlanguage + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Human readable name of the language localized to the target language.",
-                    "type": "string"
                 }
             },
             "type": "object"

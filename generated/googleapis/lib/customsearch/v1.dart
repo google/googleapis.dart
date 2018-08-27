@@ -83,16 +83,19 @@ class CseResourceApi {
   /// - "gray" : gray
   /// - "mono" : mono
   ///
-  /// [imgDominantColor] - Returns images of a specific dominant color: yellow,
-  /// green, teal, blue, purple, pink, white, gray, black and brown.
+  /// [imgDominantColor] - Returns images of a specific dominant color: red,
+  /// orange, yellow, green, teal, blue, purple, pink, white, gray, black and
+  /// brown.
   /// Possible string values are:
   /// - "black" : black
   /// - "blue" : blue
   /// - "brown" : brown
   /// - "gray" : gray
   /// - "green" : green
+  /// - "orange" : orange
   /// - "pink" : pink
   /// - "purple" : purple
+  /// - "red" : red
   /// - "teal" : teal
   /// - "white" : white
   /// - "yellow" : yellow
@@ -176,8 +179,9 @@ class CseResourceApi {
   ///
   /// [safe] - Search safety level
   /// Possible string values are:
-  /// - "high" : Enables highest level of safe search filtering.
-  /// - "medium" : Enables moderate safe search filtering.
+  /// - "active" : Enables safe search filtering.
+  /// - "high" : (Deprecated) Same as active.
+  /// - "medium" : (Deprecated) Same as active.
   /// - "off" : Disables safe search filtering.
   ///
   /// [searchType] - Specifies the search type: image.
@@ -361,9 +365,9 @@ class CseSiterestrictResourceApi {
 
   CseSiterestrictResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// (Closed Beta API) Returns metadata about the search performed, metadata
-  /// about the custom search engine used for the search, and the search results
-  /// only for site-restrict cses.
+  /// Returns metadata about the search performed, metadata about the custom
+  /// search engine used for the search, and the search results. Uses a small
+  /// set of url patterns.
   ///
   /// Request parameters:
   ///
@@ -409,16 +413,19 @@ class CseSiterestrictResourceApi {
   /// - "gray" : gray
   /// - "mono" : mono
   ///
-  /// [imgDominantColor] - Returns images of a specific dominant color: yellow,
-  /// green, teal, blue, purple, pink, white, gray, black and brown.
+  /// [imgDominantColor] - Returns images of a specific dominant color: red,
+  /// orange, yellow, green, teal, blue, purple, pink, white, gray, black and
+  /// brown.
   /// Possible string values are:
   /// - "black" : black
   /// - "blue" : blue
   /// - "brown" : brown
   /// - "gray" : gray
   /// - "green" : green
+  /// - "orange" : orange
   /// - "pink" : pink
   /// - "purple" : purple
+  /// - "red" : red
   /// - "teal" : teal
   /// - "white" : white
   /// - "yellow" : yellow
