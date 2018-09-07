@@ -856,8 +856,20 @@ Future<http.StreamedResponse> _validateResponse(
       var jsonResponse = await stringStream.transform(json.decoder).first;
       if (jsonResponse is Map && jsonResponse['error'] is Map) {
         final Map error = jsonResponse['error'];
-        final code = error['code'] as int;
+        final codeValue = error['code'];
         final message = error['message'] as String;
+
+        int code;
+        if (codeValue is String) {
+          code = int.tryParse(codeValue) ?? 0;
+          if (code == null) {
+            // This can happen on some non-google services.
+            throw new client_requests.ApiRequestError(message);
+          }
+        } else {
+          code = codeValue as int;
+        }
+
         var errors = <client_requests.ApiRequestErrorDetail>[];
         if (error.containsKey('errors') && error['errors'] is List) {
           errors = (error['errors'] as List)
