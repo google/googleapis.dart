@@ -859,16 +859,8 @@ Future<http.StreamedResponse> _validateResponse(
         final codeValue = error['code'];
         final message = error['message'] as String;
 
-        int code;
-        if (codeValue is String) {
-          code = int.tryParse(codeValue) ?? 0;
-          if (code == null) {
-            // This can happen on some non-google services.
-            throw new client_requests.ApiRequestError(message);
-          }
-        } else {
-          code = codeValue as int;
-        }
+        final code =
+            codeValue is String ? int.tryParse(codeValue) : codeValue as int;
 
         var errors = <client_requests.ApiRequestErrorDetail>[];
         if (error.containsKey('errors') && error['errors'] is List) {
@@ -878,7 +870,7 @@ Future<http.StreamedResponse> _validateResponse(
               .toList();
         }
         throw client_requests.DetailedApiRequestError(code, message,
-            errors: errors);
+            errors: errors, jsonResponse: jsonResponse as Map<String, Object>);
       }
     }
     throw client_requests.DetailedApiRequestError(
