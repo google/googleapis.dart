@@ -856,8 +856,12 @@ Future<http.StreamedResponse> _validateResponse(
       var jsonResponse = await stringStream.transform(json.decoder).first;
       if (jsonResponse is Map && jsonResponse['error'] is Map) {
         final Map error = jsonResponse['error'];
-        final code = error['code'] as int;
+        final codeValue = error['code'];
         final message = error['message'] as String;
+
+        final code =
+            codeValue is String ? int.tryParse(codeValue) : codeValue as int;
+
         var errors = <client_requests.ApiRequestErrorDetail>[];
         if (error.containsKey('errors') && error['errors'] is List) {
           errors = (error['errors'] as List)
@@ -866,7 +870,7 @@ Future<http.StreamedResponse> _validateResponse(
               .toList();
         }
         throw client_requests.DetailedApiRequestError(code, message,
-            errors: errors);
+            errors: errors, jsonResponse: jsonResponse as Map<String, dynamic>);
       }
     }
     throw client_requests.DetailedApiRequestError(

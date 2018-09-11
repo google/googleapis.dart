@@ -1,3 +1,8 @@
+## 0.1.8
+
+- Support Dart 2.
+- Allow response errors with non-integer error codes.
+
 ## 0.1.6+1
 
 - Require Dart 2.0.0-dev.64

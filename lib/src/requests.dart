@@ -176,12 +176,16 @@ class ApiRequestError extends core.Error {
  * Represents a specific error reported by the API endpoint.
  */
 class DetailedApiRequestError extends ApiRequestError {
+  /// The error code. For some non-google services this can be `null`.
   final core.int status;
 
   final core.List<ApiRequestErrorDetail> errors;
 
+  /// The full error response as decoded json if available. `null` otherwise.
+  final core.Map<core.String, core.dynamic> jsonResponse;
+
   DetailedApiRequestError(this.status, core.String message,
-      {this.errors = const []})
+      {this.errors = const [], this.jsonResponse})
       : super(message);
 
   core.String toString() =>
