@@ -870,7 +870,7 @@ Future<http.StreamedResponse> _validateResponse(
               .toList();
         }
         throw client_requests.DetailedApiRequestError(code, message,
-            errors: errors, jsonResponse: jsonResponse as Map<String, Object>);
+            errors: errors, jsonResponse: jsonResponse as Map<String, dynamic>);
       }
     }
     throw client_requests.DetailedApiRequestError(
