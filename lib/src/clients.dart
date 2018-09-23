@@ -93,7 +93,10 @@ class ApiRequester {
           "No 'content-type' header in media response.");
     }
 
-    var contentLength = int.tryParse(response.headers['content-length']);
+    int contentLength;
+    if (response.headers['content-length'] != null) {
+      contentLength = int.tryParse(response.headers['content-length']);
+    }
 
     if (downloadRange != null) {
       if (contentLength != downloadRange.length) {
