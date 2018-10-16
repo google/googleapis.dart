@@ -1,3 +1,8 @@
+## 0.1.8+1
+
+- Fix `content-length` bug introduced in `0.1.8`.
+- Support `package:http` `>=0.11.1 <0.13.0`.
+
 ## 0.1.8
 
 - Support Dart 2.
