@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.52.0
+    version: 0.52.0+1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -152,7 +152,7 @@ packages:
     - youtube:v3 # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.47.0
+    version: 0.47.0+1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md

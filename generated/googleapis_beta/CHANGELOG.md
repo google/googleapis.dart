@@ -1,3 +1,7 @@
+## 0.47.0+1
+
+* Regenerate package with widened constraint for `package:http`
+
 ## 0.47.0
 
 * [api-new] iap:v1beta1

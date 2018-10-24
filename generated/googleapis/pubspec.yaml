@@ -1,5 +1,5 @@
 name: googleapis
-version: 0.52.0
+version: 0.52.0+1
 author: Dart Team <misc@dartlang.org>
 description: "Auto-generated client libraries for accessing the following APIs:abusiveexperiencereport:v1, acceleratedmobilepageurl:v1, adexchangebuyer:v1.3, adexchangebuyer:v1.4, adexchangeseller:v1.1, adexchangeseller:v2.0, adexperiencereport:v1, admin:datatransfer_v1, admin:directory_v1, admin:reports_v1, adsense:v1.4, adsensehost:v4.1, analytics:v3, analyticsreporting:v4, androiddeviceprovisioning:v1, androidenterprise:v1, androidmanagement:v1, androidpublisher:v2, androidpublisher:v3, appengine:v1, appsactivity:v1, appstate:v1, bigquery:v2, bigquerydatatransfer:v1, blogger:v3, books:v1, calendar:v3, chat:v1, civicinfo:v2, classroom:v1, cloudbilling:v1, cloudbuild:v1, clouddebugger:v2, cloudfunctions:v1, cloudiot:v1, cloudkms:v1, cloudprofiler:v2, cloudresourcemanager:v1, cloudresourcemanager:v2, cloudshell:v1, cloudtrace:v1, cloudtrace:v2, composer:v1, compute:v1, container:v1, content:v2, content:v2sandbox, customsearch:v1, dataproc:v1, datastore:v1, deploymentmanager:v2, dfareporting:v2.8, dfareporting:v3.0, dfareporting:v3.1, dfareporting:v3.2, dialogflow:v2, digitalassetlinks:v1, discovery:v1, dlp:v2, dns:v1, doubleclickbidmanager:v1, doubleclicksearch:v2, drive:v2, drive:v3, firebasedynamiclinks:v1, firebaserules:v1, firestore:v1, fitness:v1, fusiontables:v1, fusiontables:v2, games:v1, gamesConfiguration:v1configuration, gamesManagement:v1management, genomics:v1, gmail:v1, groupsmigration:v1, groupssettings:v1, iam:v1, iamcredentials:v1, identitytoolkit:v3, indexing:v3, jobs:v2, jobs:v3, kgsearch:v1, language:v1, licensing:v1, logging:v2, manufacturers:v1, mirror:v1, ml:v1, monitoring:v3, oauth2:v2, oslogin:v1, pagespeedonline:v1, pagespeedonline:v2, pagespeedonline:v4, partners:v2, people:v1, playcustomapp:v1, plus:v1, plusDomains:v1, poly:v1, pubsub:v1, reseller:v1, runtimeconfig:v1, safebrowsing:v4, script:v1, searchconsole:v1, servicebroker:v1, serviceconsumermanagement:v1, servicecontrol:v1, servicemanagement:v1, serviceusage:v1, serviceuser:v1, sheets:v4, siteVerification:v1, slides:v1, sourcerepo:v1, spanner:v1, speech:v1, storage:v1, storagetransfer:v1, streetviewpublish:v1, surveys:v2, tagmanager:v1, tagmanager:v2, tasks:v1, testing:v1, texttospeech:v1, tpu:v1, translate:v2, urlshortener:v1, vault:v1, videointelligence:v1, vision:v1, webfonts:v1, webmasters:v3, youtube:v3, youtubeAnalytics:v1, youtubeAnalytics:v2, youtubereporting:v1"
 homepage: http://www.dartlang.org/googleapis/
@@ -8,6 +8,6 @@ environment:
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: '>=0.1.0 <0.2.0'
-  http: '>=0.11.1 <0.12.0'
+  http: '>=0.11.1 <0.13.0'
 dev_dependencies:
   test: '>=0.12.0 <2.0.0'
