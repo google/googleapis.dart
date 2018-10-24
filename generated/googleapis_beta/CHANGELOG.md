@@ -1,6 +1,6 @@
 ## 0.47.0+1
 
-* Regenerate packages with widened constraint for `package:http`
+* Regenerate package with widened constraint for `package:http`
 
 ## 0.47.0
 
