@@ -1,3 +1,7 @@
+## 0.52.0+1
+
+* Regenerate packages with widened constraint for `package:http`
+
 ## 0.52.0
 
 * [api-new] dfareporting:v3_1

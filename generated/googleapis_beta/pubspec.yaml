@@ -1,5 +1,5 @@
 name: googleapis_beta
-version: 0.47.0
+version: 0.47.0+1
 author: Dart Team <misc@dartlang.org>
 description: "Auto-generated client libraries for accessing the following APIs:adexchangebuyer2:v2beta1, appengine:v1beta, appengine:v1beta4, appengine:v1beta5, binaryauthorization:v1beta1, clouderrorreporting:v1beta1, cloudresourcemanager:v1beta1, cloudtasks:v2beta2, dataflow:v1b3, dialogflow:v2beta1, dns:v2beta1, iap:v1beta1, language:v1beta1, language:v1beta2, logging:v2beta1, oslogin:v1alpha, oslogin:v1beta, proximitybeacon:v1beta1, pubsub:v1beta2, redis:v1beta1, replicapoolupdater:v1beta1, runtimeconfig:v1beta1, speech:v1beta1, sqladmin:v1beta3, sqladmin:v1beta4, toolresults:v1beta3, tpu:v1alpha1, websecurityscanner:v1alpha"
 homepage: http://www.dartlang.org/googleapis/
@@ -8,6 +8,6 @@ environment:
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: '>=0.1.0 <0.2.0'
-  http: '>=0.11.1 <0.12.0'
+  http: '>=0.11.1 <0.13.0'
 dev_dependencies:
   test: '>=0.12.0 <2.0.0'
