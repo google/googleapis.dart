@@ -286,7 +286,7 @@ Let's look at the relevant parts of the example.
   you need to declare dependencies
   in the pubspec.yaml file.
 
-```
+```yaml
 dependencies:
   googleapis_auth: '>=0.1.0 < 0.2.0'
   googleapis: '>=0.1.1 < 0.2.0'
@@ -298,7 +298,7 @@ dependencies:
   This example has only one Dart file, index.dart,
   which imports the libraries like this:
 
-```
+```dart
 import 'package:googleapis_auth/auth_browser.dart' as auth;
 import 'package:googleapis/drive/v2.dart' as drive;
 ```
@@ -310,7 +310,7 @@ import 'package:googleapis/drive/v2.dart' as drive;
   token permits. During the access-token request,
   your application sends one or more values in the scope parameter.
 
-```
+```dart
 final identifier = new auth.ClientId(
      "<custom-app-id>.apps.googleusercontent.com",
      null);
@@ -322,7 +322,7 @@ final scopes = [drive.DriveApi.DriveScope];
   the client with a call to authorizedClient(),
   passing the identifier and scopes in as parameters.
 
-```
+```dart
 authorizedClient(loginButton, identifier, scopes).then((client) {
   ...
 }
@@ -330,7 +330,7 @@ authorizedClient(loginButton, identifier, scopes).then((client) {
 
 Let's take a look at authorizedClient().
 
-```
+```dart
 Future authorizedClient(ButtonElement loginButton, auth.ClientId id, scopes) {
   return auth.createImplicitBrowserFlow(id, scopes)
       .then((auth.BrowserOAuth2Flow flow) {
@@ -360,14 +360,14 @@ again using <code>true</code> for the parameter value.
   the code gets access to the Drive API by creating a new DriveApi object
   and passing in the HTTP client.
 
-```
+```dart
 var api = new drive.DriveApi(client);
 ```
 
 * The code uses the API provided by the DriveApi object to
   search the user's documents:
 
-```
+```dart
 Future<List<drive.File>> searchTextDocuments(drive.DriveApi api,
                                              int max,
                                              String query) {
@@ -412,7 +412,7 @@ you can download the JSON from the Cloud Console.
 Then enter the appropriate information to replace the
 <strong><please fill in></strong> placeholders.
 
-```
+```dart
 final accountCredentials = new auth.ServiceAccountCredentials.fromJson(r'''
 {
   "private_key_id": "<please fill in>",
@@ -427,7 +427,7 @@ final accountCredentials = new auth.ServiceAccountCredentials.fromJson(r'''
 The program selects the scopes it will use
 and gets the StorageAPI, just like the previous example retrieved the Drive API.
 
-```
+```dart
 final scopes = [storage.StorageApi.DevstorageFullControlScope];
 ...
 var api = new storage.StorageApi(client);
@@ -437,7 +437,7 @@ Using the credentials and scopes parameters,
 a call to clientViaServiceAccount
 gets an authenticated client that can use the Storage APIs.
 
-```
+```dart
 auth.clientViaServiceAccount(accountCredentials, scopes).then((client) {
   ...
   var regexp = new RegExp(r'^gs://([^/]+)/(.+)$');
@@ -455,7 +455,7 @@ or downloads a file as indicated.
 The following line of code uses the Storage API to upload a
 media file to Google Cloud Storage.
 
-```
+```dart
 return api.objects.insert(null, bucket, name: object, uploadMedia: media);
 ```
 
