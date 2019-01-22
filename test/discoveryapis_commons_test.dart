@@ -12,7 +12,7 @@ import 'package:_discoveryapis_commons/src/requests.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
-typedef Future<http.StreamedResponse> ServerMockCallback<T>(
+typedef ServerMockCallback<T> = Future<http.StreamedResponse> Function(
     http.BaseRequest request, dynamic json);
 
 const String USER_AGENT = 'google-api-dart-client test.client/0.1.0-dev';
