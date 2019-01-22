@@ -697,7 +697,7 @@ void main() {
           Function backoffWrapper(int callCount) {
             return expectAsync1((int failedAttempts) {
               var exp = ResumableUploadOptions.ExponentialBackoff;
-              Duration duration = exp(failedAttempts);
+              var duration = exp(failedAttempts) as Duration;
               expect(duration.inSeconds, equals(1 << (failedAttempts - 1)));
               return const Duration(milliseconds: 1);
             }, count: callCount);
@@ -883,7 +883,7 @@ void main() {
               .request('abc', 'GET')
               .catchError(expectAsync2((error, stack) {
             expect(error, isDetailedApiRequestError);
-            DetailedApiRequestError e = error;
+            var e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
           }));
@@ -895,7 +895,7 @@ void main() {
               .request('abc', 'GET')
               .catchError(expectAsync2((error, stack) {
             expect(error, isDetailedApiRequestError);
-            DetailedApiRequestError e = error;
+            var e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
             expect(e.errors.length, equals(2));
@@ -928,7 +928,7 @@ void main() {
               .request('abc', 'GET')
               .catchError(expectAsync2((error, stack) {
             expect(error, isDetailedApiRequestError);
-            DetailedApiRequestError e = error;
+            var e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
           }));

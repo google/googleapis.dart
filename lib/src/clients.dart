@@ -555,7 +555,7 @@ class ResumableMediaUploader {
           return response.stream.drain().then((_) {
             // Delay the next attempt. Default backoff function is exponential.
             var failedAttemts = _options.numberOfAttempts - attemptsLeft;
-            Duration duration = _options.backoffFunction(failedAttemts);
+            var duration = _options.backoffFunction(failedAttemts) as Duration;
             if (duration == null) {
               throw client_requests.DetailedApiRequestError(
                   status,
@@ -858,7 +858,7 @@ Future<http.StreamedResponse> _validateResponse(
     if (stringStream != null) {
       var jsonResponse = await stringStream.transform(json.decoder).first;
       if (jsonResponse is Map && jsonResponse['error'] is Map) {
-        final Map error = jsonResponse['error'];
+        final error = jsonResponse['error'] as Map;
         final codeValue = error['code'];
         final message = error['message'] as String;
 
