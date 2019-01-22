@@ -214,7 +214,7 @@ class ApiRequester {
 
     if (uploadMedia != null) {
       // Three upload types:
-      // 1. Resumable: Upload of data + metdata with multiple requests.
+      // 1. Resumable: Upload of data + metadata with multiple requests.
       // 2. Simple: Upload of media.
       // 3. Multipart: Upload of data + metadata.
 
@@ -339,7 +339,7 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
 
       // Convert & Send main bytes.
       if (start == 0 && end == bytes.length) {
-        // Fast path if [bytes] are devisible by 3.
+        // Fast path if [bytes] are divisible by 3.
         controller.add(base64.encode(bytes));
       } else {
         controller.add(base64.encode(bytes.sublist(start, end)));
@@ -391,7 +391,7 @@ class ResumableMediaUploader {
   ResumableMediaUploader(this._httpClient, this._uploadMedia, this._body,
       this._uri, this._method, this._options, this._userAgent);
 
-  /// Returns the final [http.StreamedResponse] if the upload succeded and
+  /// Returns the final [http.StreamedResponse] if the upload succeed and
   /// completes with an error otherwise.
   ///
   /// The returned response stream has not been listened to.
@@ -536,8 +536,8 @@ class ResumableMediaUploader {
             (status == 500 || (502 <= status && status < 504))) {
           return response.stream.drain().then((_) {
             // Delay the next attempt. Default backoff function is exponential.
-            var failedAttemts = _options.numberOfAttempts - attemptsLeft;
-            var duration = _options.backoffFunction(failedAttemts) as Duration;
+            var failedAttempts = _options.numberOfAttempts - attemptsLeft;
+            var duration = _options.backoffFunction(failedAttempts) as Duration;
             if (duration == null) {
               throw client_requests.DetailedApiRequestError(
                   status,
@@ -764,7 +764,7 @@ class Escaper {
     // allowed characters being those in the set
     // (unreserved / reserved / pct-encoded)
 
-    // NOTE: The chracters [ and ] need (according to URI Template spec) not be
+    // NOTE: The characters [ and ] need (according to URI Template spec) not be
     // percent encoded. The dart implementation does percent-encode [ and ].
     // This gives us in effect a conservative encoding, since the server side
     // must interpret percent-encoded parts anyway due to arbitrary unicode.

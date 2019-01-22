@@ -610,12 +610,12 @@ void main() {
               var firstRange = 'bytes=0-${end - 1}';
 
               // We issue [numberOfServerErrors] 503 errors first, and then a
-              // successfull response.
+              // successful response.
               for (var j = 0; j < (numberOfServerErrors + 1); j++) {
-                var successfullResponse = j == numberOfServerErrors;
+                var successfulResponse = j == numberOfServerErrors;
 
                 http.StreamedResponse response;
-                if (successfullResponse) {
+                if (successfulResponse) {
                   final headers = isLast
                       ? {'content-type': 'application/json; charset=utf-8'}
                       : {'range': firstRange};
@@ -666,7 +666,7 @@ void main() {
             var expectations = buildExpectations(bytes, chunkSize, false,
                 numberOfServerErrors: numberOfServerErrors);
             // If the server simulates 50X errors and the client resumes only
-            // a limited amount of time, we'll trunkate the number of requests
+            // a limited amount of time, we'll truncate the number of requests
             // the server expects.
             // [The client will give up and if the server expects more, the test
             //  would timeout.]
