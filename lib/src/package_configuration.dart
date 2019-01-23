@@ -8,6 +8,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
+import 'package:pool/pool.dart';
 import 'package:yaml/yaml.dart';
 
 import '../googleapis_generator.dart';
@@ -31,7 +32,8 @@ class Package {
 class DiscoveryPackagesConfiguration {
   String configFile;
   Map yaml;
-  Map<String, Package> packages = {};
+  Map<String, Package> packages;
+
   Iterable<String> excessApis;
   Iterable<String> missingApis;
 
@@ -98,13 +100,19 @@ class DiscoveryPackagesConfiguration {
 
     // Download the discovery documents for the packages to build
     // (only the APIs we're interested in).
-    var futures = <Future>[];
-    packages.forEach((name, package) {
-      futures.add(downloadDiscoveryDocuments('$discoveryDocsDir/$name',
-          ids: package.apis));
-    });
 
-    return Future.wait(futures);
+    var pool = Pool(10);
+
+    var count = 0;
+    try {
+      await pool.forEach(packages.entries, (e) async {
+        print(' ${++count} of ${packages.length} - ${e.key}');
+        await downloadDiscoveryDocuments('$discoveryDocsDir/${e.key}',
+            ids: e.value.apis);
+      }).drain();
+    } finally {
+      await pool.close();
+    }
   }
 
   /**
