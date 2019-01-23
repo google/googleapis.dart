@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
-                },
                 "https://www.googleapis.com/auth/cloud-language": {
                     "description": "Apply machine learning models to reveal the structure and meaning of text"
+                },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
                 }
             }
         }
@@ -15,7 +15,7 @@
     "baseUrl": "https://language.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Cloud Natural Language",
-    "description": "Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.",
+    "description": "Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/natural-language/",
     "icons": {
@@ -28,6 +28,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -44,13 +54,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -92,58 +102,12 @@
             ],
             "location": "query",
             "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
         "documents": {
             "methods": {
-                "classifyText": {
-                    "description": "Classifies a document into categories.",
-                    "httpMethod": "POST",
-                    "id": "language.documents.classifyText",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/documents:classifyText",
-                    "request": {
-                        "$ref": "ClassifyTextRequest"
-                    },
-                    "response": {
-                        "$ref": "ClassifyTextResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-language",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
-                "analyzeSentiment": {
-                    "description": "Analyzes the sentiment of the provided text.",
-                    "httpMethod": "POST",
-                    "id": "language.documents.analyzeSentiment",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/documents:analyzeSentiment",
-                    "request": {
-                        "$ref": "AnalyzeSentimentRequest"
-                    },
-                    "response": {
-                        "$ref": "AnalyzeSentimentResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-language",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
                 "analyzeEntitySentiment": {
                     "description": "Finds entities, similar to AnalyzeEntities in the text and analyzes\nsentiment associated with each entity and its mentions.",
                     "httpMethod": "POST",
@@ -215,11 +179,47 @@
                         "https://www.googleapis.com/auth/cloud-language",
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "classifyText": {
+                    "description": "Classifies a document into categories.",
+                    "httpMethod": "POST",
+                    "id": "language.documents.classifyText",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/documents:classifyText",
+                    "request": {
+                        "$ref": "ClassifyTextRequest"
+                    },
+                    "response": {
+                        "$ref": "ClassifyTextResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-language",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "analyzeSentiment": {
+                    "description": "Analyzes the sentiment of the provided text.",
+                    "httpMethod": "POST",
+                    "id": "language.documents.analyzeSentiment",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/documents:analyzeSentiment",
+                    "request": {
+                        "$ref": "AnalyzeSentimentRequest"
+                    },
+                    "response": {
+                        "$ref": "AnalyzeSentimentResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-language",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20180818",
+    "revision": "20190114",
     "rootUrl": "https://language.googleapis.com/",
     "schemas": {
         "AnalyzeSyntaxResponse": {
@@ -294,11 +294,6 @@
             "description": "Represents dependency parse tree information for a token. (For more\ninformation on dependency labels, see\nhttp://www.aclweb.org/anthology/P13-2017",
             "id": "DependencyEdge",
             "properties": {
-                "headTokenIndex": {
-                    "description": "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "label": {
                     "description": "The parse label for the token.",
                     "enum": [
@@ -472,6 +467,11 @@
                         "Nominal complement of a noun"
                     ],
                     "type": "string"
+                },
+                "headTokenIndex": {
+                    "description": "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -496,10 +496,6 @@
             "description": "Represents the smallest syntactic building block of the text.",
             "id": "Token",
             "properties": {
-                "lemma": {
-                    "description": "[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.",
-                    "type": "string"
-                },
                 "partOfSpeech": {
                     "$ref": "PartOfSpeech",
                     "description": "Parts of speech tag for this token."
@@ -511,6 +507,10 @@
                 "dependencyEdge": {
                     "$ref": "DependencyEdge",
                     "description": "Dependency tree parse for this token."
+                },
+                "lemma": {
+                    "description": "[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -617,24 +617,26 @@
             },
             "type": "object"
         },
+        "ClassificationCategory": {
+            "description": "Represents a category returned from the text classifier.",
+            "id": "ClassificationCategory",
+            "properties": {
+                "confidence": {
+                    "description": "The classifier's confidence of the category. Number represents how certain\nthe classifier is that this category represents the given text.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "description": "The name of the category representing the document, from the [predefined\ntaxonomy](/natural-language/docs/categories).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PartOfSpeech": {
             "description": "Represents part of speech information for a token. Parts of speech\nare as defined in\nhttp://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf",
             "id": "PartOfSpeech",
             "properties": {
-                "reciprocity": {
-                    "description": "The grammatical reciprocity.",
-                    "enum": [
-                        "RECIPROCITY_UNKNOWN",
-                        "RECIPROCAL",
-                        "NON_RECIPROCAL"
-                    ],
-                    "enumDescriptions": [
-                        "Reciprocity is not applicable in the analyzed language or is not\npredicted.",
-                        "Reciprocal",
-                        "Non-reciprocal"
-                    ],
-                    "type": "string"
-                },
                 "form": {
                     "description": "The grammatical form.",
                     "enum": [
@@ -880,21 +882,19 @@
                         "Pluperfect"
                     ],
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ClassificationCategory": {
-            "description": "Represents a category returned from the text classifier.",
-            "id": "ClassificationCategory",
-            "properties": {
-                "confidence": {
-                    "description": "The classifier's confidence of the category. Number represents how certain\nthe classifier is that this category represents the given text.",
-                    "format": "float",
-                    "type": "number"
                 },
-                "name": {
-                    "description": "The name of the category representing the document, from the [predefined\ntaxonomy](/natural-language/docs/categories).",
+                "reciprocity": {
+                    "description": "The grammatical reciprocity.",
+                    "enum": [
+                        "RECIPROCITY_UNKNOWN",
+                        "RECIPROCAL",
+                        "NON_RECIPROCAL"
+                    ],
+                    "enumDescriptions": [
+                        "Reciprocity is not applicable in the analyzed language or is not\npredicted.",
+                        "Reciprocal",
+                        "Non-reciprocal"
+                    ],
                     "type": "string"
                 }
             },
@@ -1007,6 +1007,10 @@
             "description": "The request message for the text annotation API, which can perform multiple\nanalysis types (sentiment, entities, and syntax) in one call.",
             "id": "AnnotateTextRequest",
             "properties": {
+                "features": {
+                    "$ref": "Features",
+                    "description": "The enabled features."
+                },
                 "encodingType": {
                     "description": "The encoding type used by the API to calculate offsets.",
                     "enum": [
@@ -1026,10 +1030,6 @@
                 "document": {
                     "$ref": "Document",
                     "description": "Input document."
-                },
-                "features": {
-                    "$ref": "Features",
-                    "description": "The enabled features."
                 }
             },
             "type": "object"
@@ -1092,6 +1092,10 @@
             "description": "All available features for sentiment, syntax, and semantic analysis.\nSetting each one to true will enable that specific analysis for the input.",
             "id": "Features",
             "properties": {
+                "classifyText": {
+                    "description": "Classify the full document into categories.",
+                    "type": "boolean"
+                },
                 "extractSyntax": {
                     "description": "Extract syntax information.",
                     "type": "boolean"
@@ -1106,10 +1110,6 @@
                 },
                 "extractEntities": {
                     "description": "Extract entities.",
-                    "type": "boolean"
-                },
-                "classifyText": {
-                    "description": "Classify the full document into categories.",
                     "type": "boolean"
                 }
             },
@@ -1208,6 +1208,10 @@
             "description": "The sentiment analysis response message.",
             "id": "AnalyzeSentimentResponse",
             "properties": {
+                "documentSentiment": {
+                    "$ref": "Sentiment",
+                    "description": "The overall sentiment of the input document."
+                },
                 "language": {
                     "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
                     "type": "string"
@@ -1218,10 +1222,6 @@
                         "$ref": "Sentence"
                     },
                     "type": "array"
-                },
-                "documentSentiment": {
-                    "$ref": "Sentiment",
-                    "description": "The overall sentiment of the input document."
                 }
             },
             "type": "object"

@@ -23,7 +23,7 @@
     "canonicalName": "Cloud OS Login",
     "description": "Manages OS login configuration for Google account users.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://cloud.google.com/compute/docs/oslogin/rest/",
+    "documentationLink": "https://cloud.google.com/compute/docs/oslogin/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -44,6 +44,16 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -54,16 +64,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -98,16 +98,16 @@
             "location": "query",
             "type": "string"
         },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -155,6 +155,26 @@
                         "name"
                     ],
                     "parameters": {
+                        "operatingSystemType": {
+                            "description": "The type of operating system associated with the account.",
+                            "enum": [
+                                "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+                                "LINUX",
+                                "WINDOWS"
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project ID of the Google Cloud Platform project.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "systemId": {
+                            "description": "A system ID for filtering the results of the request.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "name": {
                             "description": "The unique ID for the user in format `users/{user}`.",
                             "location": "path",
@@ -306,9 +326,35 @@
             }
         }
     },
-    "revision": "20180822",
+    "revision": "20190107",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "SshPublicKey": {
+            "description": "The SSH public key information associated with a Google account.",
+            "id": "SshPublicKey",
+            "properties": {
+                "expirationTimeUsec": {
+                    "description": "An expiration time in microseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ImportSshPublicKeyResponse": {
             "description": "A response message from importing an SSH public key.",
             "id": "ImportSshPublicKeyResponse",
@@ -324,16 +370,20 @@
             "description": "The POSIX account information associated with a Google account.",
             "id": "PosixAccount",
             "properties": {
+                "shell": {
+                    "description": "The path to the logic shell for this account.",
+                    "type": "string"
+                },
                 "homeDirectory": {
                     "description": "The path to the home directory for this account.",
                     "type": "string"
                 },
-                "systemId": {
-                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
-                    "type": "string"
-                },
                 "gecos": {
                     "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
+                },
+                "systemId": {
+                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
                     "type": "string"
                 },
                 "primary": {
@@ -371,10 +421,6 @@
                 "username": {
                     "description": "The username of the POSIX account.",
                     "type": "string"
-                },
-                "shell": {
-                    "description": "The path to the logic shell for this account.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -383,13 +429,6 @@
             "description": "The user profile information used for logging in to a virtual machine on\nGoogle Compute Engine.",
             "id": "LoginProfile",
             "properties": {
-                "sshPublicKeys": {
-                    "additionalProperties": {
-                        "$ref": "SshPublicKey"
-                    },
-                    "description": "A map from SSH public key fingerprint to the associated key object.",
-                    "type": "object"
-                },
                 "name": {
                     "description": "A unique user ID.",
                     "type": "string"
@@ -400,32 +439,13 @@
                         "$ref": "PosixAccount"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
-            "type": "object"
-        },
-        "SshPublicKey": {
-            "description": "The SSH public key information associated with a Google account.",
-            "id": "SshPublicKey",
-            "properties": {
-                "expirationTimeUsec": {
-                    "description": "An expiration time in microseconds since epoch.",
-                    "format": "int64",
-                    "type": "string"
                 },
-                "fingerprint": {
-                    "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
-                    "type": "string"
-                },
-                "key": {
-                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
-                    "type": "string"
+                "sshPublicKeys": {
+                    "additionalProperties": {
+                        "$ref": "SshPublicKey"
+                    },
+                    "description": "A map from SSH public key fingerprint to the associated key object.",
+                    "type": "object"
                 }
             },
             "type": "object"

@@ -12,7 +12,7 @@
     "baseUrl": "https://adexperiencereport.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Ad Experience Report",
-    "description": "View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.",
+    "description": "Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-experience-report/",
     "icons": {
@@ -25,39 +25,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -71,6 +45,16 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -99,28 +83,26 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
-        "violatingSites": {
-            "methods": {
-                "list": {
-                    "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\".",
-                    "httpMethod": "GET",
-                    "id": "adexperiencereport.violatingSites.list",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/violatingSites",
-                    "response": {
-                        "$ref": "ViolatingSitesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/xapi.zoo"
-                    ]
-                }
-            }
-        },
         "sites": {
             "methods": {
                 "get": {
@@ -148,11 +130,62 @@
                     ]
                 }
             }
+        },
+        "violatingSites": {
+            "methods": {
+                "list": {
+                    "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\".",
+                    "httpMethod": "GET",
+                    "id": "adexperiencereport.violatingSites.list",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/violatingSites",
+                    "response": {
+                        "$ref": "ViolatingSitesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/xapi.zoo"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20180821",
+    "revision": "20190108",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
+        "ViolatingSitesResponse": {
+            "description": "Response message for ListViolatingSites.",
+            "id": "ViolatingSitesResponse",
+            "properties": {
+                "violatingSites": {
+                    "description": "A list of summaries of violating sites.",
+                    "items": {
+                        "$ref": "SiteSummaryResponse"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SiteSummaryResponse": {
+            "description": "Response message for GetSiteSummary.",
+            "id": "SiteSummaryResponse",
+            "properties": {
+                "reviewedSite": {
+                    "description": "The name of the site reviewed.",
+                    "type": "string"
+                },
+                "desktopSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "Summary for the desktop review of the site."
+                },
+                "mobileSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "Summary for the mobile review of the site."
+                }
+            },
+            "type": "object"
+        },
         "PlatformSummary": {
             "description": "Summary of the ad experience rating of a site for a specific platform.",
             "id": "PlatformSummary",
@@ -227,39 +260,6 @@
                         "Failing."
                     ],
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ViolatingSitesResponse": {
-            "description": "Response message for ListViolatingSites.",
-            "id": "ViolatingSitesResponse",
-            "properties": {
-                "violatingSites": {
-                    "description": "A list of summaries of violating sites.",
-                    "items": {
-                        "$ref": "SiteSummaryResponse"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "SiteSummaryResponse": {
-            "description": "Response message for GetSiteSummary.\nDo not confuse with same message in google.chrome.abusiveexperiencereport.v1",
-            "id": "SiteSummaryResponse",
-            "properties": {
-                "mobileSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "Summary for the mobile review of the site."
-                },
-                "reviewedSite": {
-                    "description": "The name of the site reviewed.",
-                    "type": "string"
-                },
-                "desktopSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "Summary for the desktop review of the site."
                 }
             },
             "type": "object"

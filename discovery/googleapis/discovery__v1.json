@@ -5,7 +5,7 @@
     "description": "Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/discovery/",
-    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/LE3unvJNrxdcTBtqgYbHkuXLm6M\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/l4cpI09Eeg9KQag8hBMbz6gjFOI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png",
         "x32": "http://www.google.com/images/icons/feature/filing_cabinet_search-g32.png"
@@ -116,7 +116,7 @@
             }
         }
     },
-    "revision": "20180821",
+    "revision": "20190116",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DirectoryList": {

@@ -17,7 +17,7 @@
     "description": "Verifies ownership of websites or domains with Google.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/site-verification/",
-    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/WFX1D75txXvaD4jKhqXOlf6TR6A\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kSip8rR-KZuJdTguujfTfMpKj7w\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -229,7 +229,7 @@
             }
         }
     },
-    "revision": "20180521",
+    "revision": "20180830",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "SiteVerificationWebResourceGettokenRequest": {

@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/drive": {
-                    "description": "View and manage the files in your Google Drive"
+                    "description": "See, edit, create, and delete all of your Google Drive files"
                 },
                 "https://www.googleapis.com/auth/drive.appdata": {
                     "description": "View and manage its own configuration data in your Google Drive"
@@ -24,7 +24,7 @@
                     "description": "View the photos, videos and albums in your Google Photos"
                 },
                 "https://www.googleapis.com/auth/drive.readonly": {
-                    "description": "View the files in your Google Drive"
+                    "description": "See and download all your Google Drive files"
                 },
                 "https://www.googleapis.com/auth/drive.scripts": {
                     "description": "Modify your Google Apps Script scripts' behavior"
@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/vcFg4XvnJphVDI9nV4QRqptz1mw\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/8dfMo9ZoN-kwErqNP-2rJUUbhnA\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1442,7 +1442,7 @@
                     ]
                 },
                 "trash": {
-                    "description": "Moves a file to the trash. The currently authenticated user must own the file or be an organizer on the parent for Team Drive files.",
+                    "description": "Moves a file to the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for Team Drive files.",
                     "httpMethod": "POST",
                     "id": "drive.files.trash",
                     "parameterOrder": [
@@ -3080,7 +3080,7 @@
             }
         }
     },
-    "revision": "20180816",
+    "revision": "20190110",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -4051,6 +4051,7 @@
                     "type": "string"
                 },
                 "downloadUrl": {
+                    "description": "Short lived download URL for the file. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
                     "type": "string"
                 },
                 "editable": {
@@ -4673,7 +4674,7 @@
                             "drive.permissions.insert"
                         ]
                     },
-                    "description": "The primary role for this user. While new values may be supported in the future, the following are currently allowed:  \n- organizer \n- owner \n- reader \n- writer",
+                    "description": "The primary role for this user. While new values may be supported in the future, the following are currently allowed:  \n- owner \n- organizer \n- fileOrganizer \n- writer \n- reader",
                     "type": "string"
                 },
                 "selfLink": {
@@ -4700,7 +4701,7 @@
                                 "type": "string"
                             },
                             "role": {
-                                "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- reader \n- writer",
+                                "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- fileOrganizer \n- writer \n- reader",
                                 "type": "string"
                             },
                             "teamDrivePermissionType": {
