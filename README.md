@@ -483,7 +483,8 @@ $ rm -rf .pub
 $ pub upgrade
 ```
 
-* Download and generate the APIs using the `config.yaml` configuration.
+* Download and generate the APIs using the `config.yaml` configuration
+  (avoid doing this on corp network, use cloudshell instead).
 
 ```
 $ dart bin/generate.dart run_config download
