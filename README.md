@@ -478,16 +478,16 @@ If you are only using this package, you can skip this section.
 
 * Clone this package and run `pub upgrade` from the top-level directory.
 
-```
-$ rm -rf .pub
-$ pub upgrade
-```
+  ```console
+  $ rm -rf .dart_tool
+  $ pub upgrade
+  ```
 
 * Download and generate the APIs using the `config.yaml` configuration.
 
-```
-$ dart bin/generate.dart run_config download
-```
+  ```console
+  $ dart bin/generate.dart run_config download
+  ```
 
 **Note:**
 You may need to reset some of the downloaded discovery documents,
@@ -496,9 +496,9 @@ or [prediction](https://cloud.google.com/prediction/docs/developer-guide).
 
 * Generate the APIs.
 
-```
-$ dart bin/generate.dart run_config generate
-```
+  ```console
+  $ dart bin/generate.dart run_config generate
+  ```
 
 * Create a diff with the previous APIs to determine whether a minor or a major
   update to the version number is required.
@@ -507,21 +507,21 @@ $ dart bin/generate.dart run_config generate
 
 * Update `config.yaml` with a new version number and generate again.
 
-```
-    $ dart bin/generate.dart run_config generate
-```
+  ```console
+  $ dart bin/generate.dart run_config generate
+  ```
 
 * Run the tests.
 
-```
-$ pushd generated/googleapis
-$ pub get
-$ pub run test
-$ cd ../googleapis_beta
-$ pub get
-$ pub run test
-$ popd
-```
+  ```console
+  $ pushd generated/googleapis
+  $ pub get
+  $ pub run test
+  $ cd ../googleapis_beta
+  $ pub get
+  $ pub run test
+  $ popd
+  ```
 
 * Commit the downloaded discovery documents and generated packages.
 
