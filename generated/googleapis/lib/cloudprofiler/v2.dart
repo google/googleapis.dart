@@ -35,8 +35,8 @@ class CloudprofilerApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   CloudprofilerApi(http.Client client,
-      {core.String rootUrl: "https://cloudprofiler.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://cloudprofiler.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -90,12 +90,12 @@ class ProjectsProfilesResourceApi {
   /// this method will complete with the same error.
   async.Future<Profile> create(CreateProfileRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -143,12 +143,12 @@ class ProjectsProfilesResourceApi {
   /// this method will complete with the same error.
   async.Future<Profile> createOffline(Profile request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -203,12 +203,12 @@ class ProjectsProfilesResourceApi {
   /// this method will complete with the same error.
   async.Future<Profile> patch(Profile request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -358,7 +358,7 @@ class Profile {
     return convert.base64.decode(profileBytes);
   }
 
-  void set profileBytesAsBytes(core.List<core.int> _bytes) {
+  set profileBytesAsBytes(core.List<core.int> _bytes) {
     profileBytes =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

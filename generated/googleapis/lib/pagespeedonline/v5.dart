@@ -24,8 +24,8 @@ class PagespeedonlineApi {
       new PagespeedapiResourceApi(_requester);
 
   PagespeedonlineApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "pagespeedonline/v5/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "pagespeedonline/v5/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -77,12 +77,12 @@ class PagespeedapiResourceApi {
       core.String utmCampaign,
       core.String utmSource,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (url == null) {
       throw new core.ArgumentError("Parameter url is required.");

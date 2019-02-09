@@ -24,8 +24,8 @@ class DigitalassetlinksApi {
   StatementsResourceApi get statements => new StatementsResourceApi(_requester);
 
   DigitalassetlinksApi(http.Client client,
-      {core.String rootUrl: "https://digitalassetlinks.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://digitalassetlinks.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -230,12 +230,12 @@ class AssetlinksResourceApi {
       core.String target_web_site,
       core.String target_androidApp_certificate_sha256Fingerprint,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (source_androidApp_packageName != null) {
       _queryParams["source.androidApp.packageName"] = [
@@ -406,12 +406,12 @@ class StatementsResourceApi {
       core.String source_androidApp_certificate_sha256Fingerprint,
       core.String relation,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (source_web_site != null) {
       _queryParams["source.web.site"] = [source_web_site];

@@ -144,8 +144,8 @@ class DfareportingApi {
       new VideoFormatsResourceApi(_requester);
 
   DfareportingApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "dfareporting/v3.2/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "dfareporting/v3.2/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -177,12 +177,12 @@ class AccountActiveAdSummariesResourceApi {
   async.Future<AccountActiveAdSummary> get(
       core.String profileId, core.String summaryAccountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -236,12 +236,12 @@ class AccountPermissionGroupsResourceApi {
   async.Future<AccountPermissionGroup> get(
       core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -285,12 +285,12 @@ class AccountPermissionGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountPermissionGroupsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -340,12 +340,12 @@ class AccountPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountPermission> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -389,12 +389,12 @@ class AccountPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountPermissionsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -444,12 +444,12 @@ class AccountUserProfilesResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -496,12 +496,12 @@ class AccountUserProfilesResourceApi {
   async.Future<AccountUserProfile> insert(
       AccountUserProfile request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -586,12 +586,12 @@ class AccountUserProfilesResourceApi {
       core.String subaccountId,
       core.String userRoleId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -665,12 +665,12 @@ class AccountUserProfilesResourceApi {
   async.Future<AccountUserProfile> patch(
       AccountUserProfile request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -720,12 +720,12 @@ class AccountUserProfilesResourceApi {
   async.Future<AccountUserProfile> update(
       AccountUserProfile request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -776,12 +776,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -860,12 +860,12 @@ class AccountsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -931,12 +931,12 @@ class AccountsResourceApi {
   async.Future<Account> patch(
       Account request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -985,12 +985,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> update(Account request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1041,12 +1041,12 @@ class AdsResourceApi {
   /// this method will complete with the same error.
   async.Future<Ad> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -1092,12 +1092,12 @@ class AdsResourceApi {
   /// this method will complete with the same error.
   async.Future<Ad> insert(Ad request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1237,12 +1237,12 @@ class AdsResourceApi {
       core.bool sslRequired,
       core.List<core.String> type,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -1355,12 +1355,12 @@ class AdsResourceApi {
   /// this method will complete with the same error.
   async.Future<Ad> patch(Ad request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1408,12 +1408,12 @@ class AdsResourceApi {
   /// this method will complete with the same error.
   async.Future<Ad> update(Ad request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1462,12 +1462,12 @@ class AdvertiserGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -1515,12 +1515,12 @@ class AdvertiserGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -1567,12 +1567,12 @@ class AdvertiserGroupsResourceApi {
   async.Future<AdvertiserGroup> insert(
       AdvertiserGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1647,12 +1647,12 @@ class AdvertiserGroupsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -1717,12 +1717,12 @@ class AdvertiserGroupsResourceApi {
   async.Future<AdvertiserGroup> patch(
       AdvertiserGroup request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1772,12 +1772,12 @@ class AdvertiserGroupsResourceApi {
   async.Future<AdvertiserGroup> update(
       AdvertiserGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1829,12 +1829,12 @@ class AdvertiserLandingPagesResourceApi {
   /// this method will complete with the same error.
   async.Future<LandingPage> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -1880,12 +1880,12 @@ class AdvertiserLandingPagesResourceApi {
   /// this method will complete with the same error.
   async.Future<LandingPage> insert(LandingPage request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1974,12 +1974,12 @@ class AdvertiserLandingPagesResourceApi {
       core.String sortOrder,
       core.String subaccountId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2055,12 +2055,12 @@ class AdvertiserLandingPagesResourceApi {
   async.Future<LandingPage> patch(
       LandingPage request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2109,12 +2109,12 @@ class AdvertiserLandingPagesResourceApi {
   /// this method will complete with the same error.
   async.Future<LandingPage> update(LandingPage request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2165,12 +2165,12 @@ class AdvertisersResourceApi {
   /// this method will complete with the same error.
   async.Future<Advertiser> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2216,12 +2216,12 @@ class AdvertisersResourceApi {
   /// this method will complete with the same error.
   async.Future<Advertiser> insert(Advertiser request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2321,12 +2321,12 @@ class AdvertisersResourceApi {
       core.String status,
       core.String subaccountId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2409,12 +2409,12 @@ class AdvertisersResourceApi {
   async.Future<Advertiser> patch(
       Advertiser request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2463,12 +2463,12 @@ class AdvertisersResourceApi {
   /// this method will complete with the same error.
   async.Future<Advertiser> update(Advertiser request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2517,12 +2517,12 @@ class BrowsersResourceApi {
   /// this method will complete with the same error.
   async.Future<BrowsersListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2578,12 +2578,12 @@ class CampaignCreativeAssociationsResourceApi {
       core.String profileId,
       core.String campaignId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2649,12 +2649,12 @@ class CampaignCreativeAssociationsResourceApi {
       core.String pageToken,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2717,12 +2717,12 @@ class CampaignsResourceApi {
   /// this method will complete with the same error.
   async.Future<Campaign> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2768,12 +2768,12 @@ class CampaignsResourceApi {
   /// this method will complete with the same error.
   async.Future<Campaign> insert(Campaign request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2873,12 +2873,12 @@ class CampaignsResourceApi {
       core.String sortOrder,
       core.String subaccountId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -2964,12 +2964,12 @@ class CampaignsResourceApi {
   async.Future<Campaign> patch(
       Campaign request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3018,12 +3018,12 @@ class CampaignsResourceApi {
   /// this method will complete with the same error.
   async.Future<Campaign> update(Campaign request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3074,12 +3074,12 @@ class ChangeLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ChangeLog> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3223,12 +3223,12 @@ class ChangeLogsResourceApi {
       core.String searchString,
       core.List<core.String> userProfileIds,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3316,12 +3316,12 @@ class CitiesResourceApi {
       core.String namePrefix,
       core.List<core.String> regionDartIds,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3381,12 +3381,12 @@ class ConnectionTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<ConnectionType> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3430,12 +3430,12 @@ class ConnectionTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<ConnectionTypesListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3483,12 +3483,12 @@ class ContentCategoriesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3536,12 +3536,12 @@ class ContentCategoriesResourceApi {
   /// this method will complete with the same error.
   async.Future<ContentCategory> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3588,12 +3588,12 @@ class ContentCategoriesResourceApi {
   async.Future<ContentCategory> insert(
       ContentCategory request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3668,12 +3668,12 @@ class ContentCategoriesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -3738,12 +3738,12 @@ class ContentCategoriesResourceApi {
   async.Future<ContentCategory> patch(
       ContentCategory request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3793,12 +3793,12 @@ class ContentCategoriesResourceApi {
   async.Future<ContentCategory> update(
       ContentCategory request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3850,12 +3850,12 @@ class ConversionsResourceApi {
   async.Future<ConversionsBatchInsertResponse> batchinsert(
       ConversionsBatchInsertRequest request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3902,12 +3902,12 @@ class ConversionsResourceApi {
   async.Future<ConversionsBatchUpdateResponse> batchupdate(
       ConversionsBatchUpdateRequest request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3959,12 +3959,12 @@ class CountriesResourceApi {
   /// this method will complete with the same error.
   async.Future<Country> get(core.String profileId, core.String dartId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4008,12 +4008,12 @@ class CountriesResourceApi {
   /// this method will complete with the same error.
   async.Future<CountriesListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4070,14 +4070,14 @@ class CreativeAssetsResourceApi {
   async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request,
       core.String profileId, core.String advertiserId,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4152,12 +4152,12 @@ class CreativeFieldValuesResourceApi {
   async.Future delete(
       core.String profileId, core.String creativeFieldId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4213,12 +4213,12 @@ class CreativeFieldValuesResourceApi {
   async.Future<CreativeFieldValue> get(
       core.String profileId, core.String creativeFieldId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4272,12 +4272,12 @@ class CreativeFieldValuesResourceApi {
   async.Future<CreativeFieldValue> insert(CreativeFieldValue request,
       core.String profileId, core.String creativeFieldId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4355,12 +4355,12 @@ class CreativeFieldValuesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4432,12 +4432,12 @@ class CreativeFieldValuesResourceApi {
   async.Future<CreativeFieldValue> patch(CreativeFieldValue request,
       core.String profileId, core.String creativeFieldId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4494,12 +4494,12 @@ class CreativeFieldValuesResourceApi {
   async.Future<CreativeFieldValue> update(CreativeFieldValue request,
       core.String profileId, core.String creativeFieldId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4553,12 +4553,12 @@ class CreativeFieldsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4606,12 +4606,12 @@ class CreativeFieldsResourceApi {
   /// this method will complete with the same error.
   async.Future<CreativeField> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4658,12 +4658,12 @@ class CreativeFieldsResourceApi {
   async.Future<CreativeField> insert(
       CreativeField request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4743,12 +4743,12 @@ class CreativeFieldsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4815,12 +4815,12 @@ class CreativeFieldsResourceApi {
   async.Future<CreativeField> patch(
       CreativeField request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4870,12 +4870,12 @@ class CreativeFieldsResourceApi {
   async.Future<CreativeField> update(
       CreativeField request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4926,12 +4926,12 @@ class CreativeGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<CreativeGroup> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -4978,12 +4978,12 @@ class CreativeGroupsResourceApi {
   async.Future<CreativeGroup> insert(
       CreativeGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5067,12 +5067,12 @@ class CreativeGroupsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -5142,12 +5142,12 @@ class CreativeGroupsResourceApi {
   async.Future<CreativeGroup> patch(
       CreativeGroup request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5197,12 +5197,12 @@ class CreativeGroupsResourceApi {
   async.Future<CreativeGroup> update(
       CreativeGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5253,12 +5253,12 @@ class CreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -5304,12 +5304,12 @@ class CreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> insert(Creative request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5418,12 +5418,12 @@ class CreativesResourceApi {
       core.String studioCreativeId,
       core.List<core.String> types,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -5516,12 +5516,12 @@ class CreativesResourceApi {
   async.Future<Creative> patch(
       Creative request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5570,12 +5570,12 @@ class CreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> update(Creative request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5632,12 +5632,12 @@ class DimensionValuesResourceApi {
   async.Future<DimensionValueList> query(
       DimensionValueRequest request, core.String profileId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5695,12 +5695,12 @@ class DirectorySiteContactsResourceApi {
   /// this method will complete with the same error.
   async.Future<DirectorySiteContact> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -5781,12 +5781,12 @@ class DirectorySiteContactsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -5856,12 +5856,12 @@ class DirectorySitesResourceApi {
   /// this method will complete with the same error.
   async.Future<DirectorySite> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -5908,12 +5908,12 @@ class DirectorySitesResourceApi {
   async.Future<DirectorySite> insert(
       DirectorySite request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6014,12 +6014,12 @@ class DirectorySitesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6126,12 +6126,12 @@ class DynamicTargetingKeysResourceApi {
   async.Future delete(core.String profileId, core.String objectId,
       core.String name, core.String objectType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6191,12 +6191,12 @@ class DynamicTargetingKeysResourceApi {
   async.Future<DynamicTargetingKey> insert(
       DynamicTargetingKey request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6257,12 +6257,12 @@ class DynamicTargetingKeysResourceApi {
       core.String objectId,
       core.String objectType,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6321,12 +6321,12 @@ class EventTagsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6374,12 +6374,12 @@ class EventTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<EventTag> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6425,12 +6425,12 @@ class EventTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<EventTag> insert(EventTag request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6529,12 +6529,12 @@ class EventTagsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6609,12 +6609,12 @@ class EventTagsResourceApi {
   async.Future<EventTag> patch(
       EventTag request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6663,12 +6663,12 @@ class EventTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<EventTag> update(EventTag request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6728,14 +6728,14 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future get(core.String reportId, core.String fileId,
       {core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
@@ -6812,12 +6812,12 @@ class FilesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6879,12 +6879,12 @@ class FloodlightActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6935,12 +6935,12 @@ class FloodlightActivitiesResourceApi {
       core.String profileId,
       {core.String floodlightActivityId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -6986,12 +6986,12 @@ class FloodlightActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -7038,12 +7038,12 @@ class FloodlightActivitiesResourceApi {
   async.Future<FloodlightActivity> insert(
       FloodlightActivity request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7154,12 +7154,12 @@ class FloodlightActivitiesResourceApi {
       core.String sortOrder,
       core.String tagString,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -7251,12 +7251,12 @@ class FloodlightActivitiesResourceApi {
   async.Future<FloodlightActivity> patch(
       FloodlightActivity request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7306,12 +7306,12 @@ class FloodlightActivitiesResourceApi {
   async.Future<FloodlightActivity> update(
       FloodlightActivity request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7364,12 +7364,12 @@ class FloodlightActivityGroupsResourceApi {
   async.Future<FloodlightActivityGroup> get(
       core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -7416,12 +7416,12 @@ class FloodlightActivityGroupsResourceApi {
   async.Future<FloodlightActivityGroup> insert(
       FloodlightActivityGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7517,12 +7517,12 @@ class FloodlightActivityGroupsResourceApi {
       core.String sortOrder,
       core.String type,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -7596,12 +7596,12 @@ class FloodlightActivityGroupsResourceApi {
   async.Future<FloodlightActivityGroup> patch(
       FloodlightActivityGroup request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7651,12 +7651,12 @@ class FloodlightActivityGroupsResourceApi {
   async.Future<FloodlightActivityGroup> update(
       FloodlightActivityGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7709,12 +7709,12 @@ class FloodlightConfigurationsResourceApi {
   async.Future<FloodlightConfiguration> get(
       core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -7761,12 +7761,12 @@ class FloodlightConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<FloodlightConfigurationsListResponse> list(core.String profileId,
       {core.List<core.String> ids, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -7816,12 +7816,12 @@ class FloodlightConfigurationsResourceApi {
   async.Future<FloodlightConfiguration> patch(
       FloodlightConfiguration request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7871,12 +7871,12 @@ class FloodlightConfigurationsResourceApi {
   async.Future<FloodlightConfiguration> update(
       FloodlightConfiguration request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7930,12 +7930,12 @@ class InventoryItemsResourceApi {
   async.Future<InventoryItem> get(
       core.String profileId, core.String projectId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8026,12 +8026,12 @@ class InventoryItemsResourceApi {
       core.String sortOrder,
       core.String type,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8110,12 +8110,12 @@ class LanguagesResourceApi {
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8161,12 +8161,12 @@ class MetrosResourceApi {
   /// this method will complete with the same error.
   async.Future<MetrosListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8214,12 +8214,12 @@ class MobileAppsResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileApp> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8284,12 +8284,12 @@ class MobileAppsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8352,12 +8352,12 @@ class MobileCarriersResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileCarrier> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8401,12 +8401,12 @@ class MobileCarriersResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileCarriersListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8457,12 +8457,12 @@ class OperatingSystemVersionsResourceApi {
   async.Future<OperatingSystemVersion> get(
       core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8506,12 +8506,12 @@ class OperatingSystemVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<OperatingSystemVersionsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8561,12 +8561,12 @@ class OperatingSystemsResourceApi {
   /// this method will complete with the same error.
   async.Future<OperatingSystem> get(core.String profileId, core.String dartId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8610,12 +8610,12 @@ class OperatingSystemsResourceApi {
   /// this method will complete with the same error.
   async.Future<OperatingSystemsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8667,12 +8667,12 @@ class OrderDocumentsResourceApi {
   async.Future<OrderDocument> get(
       core.String profileId, core.String projectId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8768,12 +8768,12 @@ class OrderDocumentsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8857,12 +8857,12 @@ class OrdersResourceApi {
   async.Future<Order> get(
       core.String profileId, core.String projectId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -8948,12 +8948,12 @@ class OrdersResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9027,12 +9027,12 @@ class PlacementGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<PlacementGroup> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9079,12 +9079,12 @@ class PlacementGroupsResourceApi {
   async.Future<PlacementGroup> insert(
       PlacementGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9223,12 +9223,12 @@ class PlacementGroupsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9331,12 +9331,12 @@ class PlacementGroupsResourceApi {
   async.Future<PlacementGroup> patch(
       PlacementGroup request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9386,12 +9386,12 @@ class PlacementGroupsResourceApi {
   async.Future<PlacementGroup> update(
       PlacementGroup request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9441,12 +9441,12 @@ class PlacementStrategiesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9494,12 +9494,12 @@ class PlacementStrategiesResourceApi {
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9546,12 +9546,12 @@ class PlacementStrategiesResourceApi {
   async.Future<PlacementStrategy> insert(
       PlacementStrategy request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9627,12 +9627,12 @@ class PlacementStrategiesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9697,12 +9697,12 @@ class PlacementStrategiesResourceApi {
   async.Future<PlacementStrategy> patch(
       PlacementStrategy request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9752,12 +9752,12 @@ class PlacementStrategiesResourceApi {
   async.Future<PlacementStrategy> update(
       PlacementStrategy request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9819,12 +9819,12 @@ class PlacementsResourceApi {
       core.List<core.String> placementIds,
       core.List<core.String> tagFormats,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9876,12 +9876,12 @@ class PlacementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Placement> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -9927,12 +9927,12 @@ class PlacementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Placement> insert(Placement request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10075,12 +10075,12 @@ class PlacementsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10191,12 +10191,12 @@ class PlacementsResourceApi {
   async.Future<Placement> patch(
       Placement request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10245,12 +10245,12 @@ class PlacementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Placement> update(Placement request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10301,12 +10301,12 @@ class PlatformTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<PlatformType> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10350,12 +10350,12 @@ class PlatformTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<PlatformTypesListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10404,12 +10404,12 @@ class PostalCodesResourceApi {
   /// this method will complete with the same error.
   async.Future<PostalCode> get(core.String profileId, core.String code,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10453,12 +10453,12 @@ class PostalCodesResourceApi {
   /// this method will complete with the same error.
   async.Future<PostalCodesListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10506,12 +10506,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Project> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10590,12 +10590,12 @@ class ProjectsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10662,12 +10662,12 @@ class RegionsResourceApi {
   /// this method will complete with the same error.
   async.Future<RegionsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10717,12 +10717,12 @@ class RemarketingListSharesResourceApi {
   async.Future<RemarketingListShare> get(
       core.String profileId, core.String remarketingListId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10772,12 +10772,12 @@ class RemarketingListSharesResourceApi {
   async.Future<RemarketingListShare> patch(RemarketingListShare request,
       core.String profileId, core.String remarketingListId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10827,12 +10827,12 @@ class RemarketingListSharesResourceApi {
   async.Future<RemarketingListShare> update(
       RemarketingListShare request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10884,12 +10884,12 @@ class RemarketingListsResourceApi {
   /// this method will complete with the same error.
   async.Future<RemarketingList> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -10936,12 +10936,12 @@ class RemarketingListsResourceApi {
   async.Future<RemarketingList> insert(
       RemarketingList request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11023,12 +11023,12 @@ class RemarketingListsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11100,12 +11100,12 @@ class RemarketingListsResourceApi {
   async.Future<RemarketingList> patch(
       RemarketingList request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11155,12 +11155,12 @@ class RemarketingListsResourceApi {
   async.Future<RemarketingList> update(
       RemarketingList request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11213,12 +11213,12 @@ class ReportsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String reportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11266,12 +11266,12 @@ class ReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Report> get(core.String profileId, core.String reportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11317,12 +11317,12 @@ class ReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Report> insert(Report request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11391,12 +11391,12 @@ class ReportsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11456,12 +11456,12 @@ class ReportsResourceApi {
   async.Future<Report> patch(
       Report request, core.String profileId, core.String reportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11512,12 +11512,12 @@ class ReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<File> run(core.String profileId, core.String reportId,
       {core.bool synchronous, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11570,12 +11570,12 @@ class ReportsResourceApi {
   async.Future<Report> update(
       Report request, core.String profileId, core.String reportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11633,12 +11633,12 @@ class ReportsCompatibleFieldsResourceApi {
   /// this method will complete with the same error.
   async.Future<CompatibleFields> query(Report request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11700,14 +11700,14 @@ class ReportsFilesResourceApi {
   async.Future get(
       core.String profileId, core.String reportId, core.String fileId,
       {core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11784,12 +11784,12 @@ class ReportsFilesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11854,12 +11854,12 @@ class SitesResourceApi {
   /// this method will complete with the same error.
   async.Future<Site> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -11905,12 +11905,12 @@ class SitesResourceApi {
   /// this method will complete with the same error.
   async.Future<Site> insert(Site request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12014,12 +12014,12 @@ class SitesResourceApi {
       core.String subaccountId,
       core.bool unmappedSite,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12114,12 +12114,12 @@ class SitesResourceApi {
   /// this method will complete with the same error.
   async.Future<Site> patch(Site request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12168,12 +12168,12 @@ class SitesResourceApi {
   /// this method will complete with the same error.
   async.Future<Site> update(Site request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12224,12 +12224,12 @@ class SizesResourceApi {
   /// this method will complete with the same error.
   async.Future<Size> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12275,12 +12275,12 @@ class SizesResourceApi {
   /// this method will complete with the same error.
   async.Future<Size> insert(Size request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12340,12 +12340,12 @@ class SizesResourceApi {
       core.List<core.String> ids,
       core.int width,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12405,12 +12405,12 @@ class SubaccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subaccount> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12456,12 +12456,12 @@ class SubaccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subaccount> insert(Subaccount request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12536,12 +12536,12 @@ class SubaccountsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12604,12 +12604,12 @@ class SubaccountsResourceApi {
   async.Future<Subaccount> patch(
       Subaccount request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12658,12 +12658,12 @@ class SubaccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subaccount> update(Subaccount request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12716,12 +12716,12 @@ class TargetableRemarketingListsResourceApi {
   async.Future<TargetableRemarketingList> get(
       core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12803,12 +12803,12 @@ class TargetableRemarketingListsResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12880,12 +12880,12 @@ class TargetingTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -12932,12 +12932,12 @@ class TargetingTemplatesResourceApi {
   async.Future<TargetingTemplate> insert(
       TargetingTemplate request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13015,12 +13015,12 @@ class TargetingTemplatesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13088,12 +13088,12 @@ class TargetingTemplatesResourceApi {
   async.Future<TargetingTemplate> patch(
       TargetingTemplate request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13143,12 +13143,12 @@ class TargetingTemplatesResourceApi {
   async.Future<TargetingTemplate> update(
       TargetingTemplate request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13196,12 +13196,12 @@ class UserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserProfile> get(core.String profileId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13236,12 +13236,12 @@ class UserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserProfileList> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13286,12 +13286,12 @@ class UserRolePermissionGroupsResourceApi {
   async.Future<UserRolePermissionGroup> get(
       core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13335,12 +13335,12 @@ class UserRolePermissionGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<UserRolePermissionGroupsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13390,12 +13390,12 @@ class UserRolePermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<UserRolePermission> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13441,12 +13441,12 @@ class UserRolePermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<UserRolePermissionsListResponse> list(core.String profileId,
       {core.List<core.String> ids, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13496,12 +13496,12 @@ class UserRolesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13549,12 +13549,12 @@ class UserRolesResourceApi {
   /// this method will complete with the same error.
   async.Future<UserRole> get(core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13600,12 +13600,12 @@ class UserRolesResourceApi {
   /// this method will complete with the same error.
   async.Future<UserRole> insert(UserRole request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13687,12 +13687,12 @@ class UserRolesResourceApi {
       core.String sortOrder,
       core.String subaccountId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13761,12 +13761,12 @@ class UserRolesResourceApi {
   async.Future<UserRole> patch(
       UserRole request, core.String profileId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13815,12 +13815,12 @@ class UserRolesResourceApi {
   /// this method will complete with the same error.
   async.Future<UserRole> update(UserRole request, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13871,12 +13871,12 @@ class VideoFormatsResourceApi {
   /// this method will complete with the same error.
   async.Future<VideoFormat> get(core.String profileId, core.int id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
@@ -13920,12 +13920,12 @@ class VideoFormatsResourceApi {
   /// this method will complete with the same error.
   async.Future<VideoFormatsListResponse> list(core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");

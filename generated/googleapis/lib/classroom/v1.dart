@@ -104,8 +104,8 @@ class ClassroomApi {
       new UserProfilesResourceApi(_requester);
 
   ClassroomApi(http.Client client,
-      {core.String rootUrl: "https://classroom.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://classroom.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -157,12 +157,12 @@ class CoursesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Course> create(Course request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -208,12 +208,12 @@ class CoursesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String id, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -259,12 +259,12 @@ class CoursesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Course> get(core.String id, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -348,12 +348,12 @@ class CoursesResourceApi {
       core.String teacherId,
       core.List<core.String> courseStates,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (studentId != null) {
       _queryParams["studentId"] = [studentId];
@@ -439,12 +439,12 @@ class CoursesResourceApi {
   /// this method will complete with the same error.
   async.Future<Course> patch(Course request, core.String id,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -501,12 +501,12 @@ class CoursesResourceApi {
   /// this method will complete with the same error.
   async.Future<Course> update(Course request, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -568,12 +568,12 @@ class CoursesAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<CourseAlias> create(CourseAlias request, core.String courseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -630,12 +630,12 @@ class CoursesAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String courseId, core.String alias,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -702,12 +702,12 @@ class CoursesAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCourseAliasesResponse> list(core.String courseId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -775,12 +775,12 @@ class CoursesAnnouncementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Announcement> create(Announcement request, core.String courseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -841,12 +841,12 @@ class CoursesAnnouncementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String courseId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -902,12 +902,12 @@ class CoursesAnnouncementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Announcement> get(core.String courseId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -992,12 +992,12 @@ class CoursesAnnouncementsResourceApi {
       core.int pageSize,
       core.List<core.String> announcementStates,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1070,12 +1070,12 @@ class CoursesAnnouncementsResourceApi {
       core.String courseId,
       core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1155,12 +1155,12 @@ class CoursesAnnouncementsResourceApi {
   async.Future<Announcement> patch(
       Announcement request, core.String courseId, core.String id,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1242,12 +1242,12 @@ class CoursesCourseWorkResourceApi {
   /// this method will complete with the same error.
   async.Future<CourseWork> create(CourseWork request, core.String courseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1308,12 +1308,12 @@ class CoursesCourseWorkResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String courseId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1369,12 +1369,12 @@ class CoursesCourseWorkResourceApi {
   /// this method will complete with the same error.
   async.Future<CourseWork> get(core.String courseId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1460,12 +1460,12 @@ class CoursesCourseWorkResourceApi {
       core.int pageSize,
       core.List<core.String> courseWorkStates,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1537,12 +1537,12 @@ class CoursesCourseWorkResourceApi {
       core.String courseId,
       core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1637,12 +1637,12 @@ class CoursesCourseWorkResourceApi {
   async.Future<CourseWork> patch(
       CourseWork request, core.String courseId, core.String id,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1714,12 +1714,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   async.Future<StudentSubmission> get(
       core.String courseId, core.String courseWorkId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1830,12 +1830,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       core.List<core.String> states,
       core.String userId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -1926,12 +1926,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       core.String courseWorkId,
       core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2020,12 +2020,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   async.Future<StudentSubmission> patch(StudentSubmission request,
       core.String courseId, core.String courseWorkId, core.String id,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2111,12 +2111,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   async.Future<Empty> reclaim(ReclaimStudentSubmissionRequest request,
       core.String courseId, core.String courseWorkId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2201,12 +2201,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   async.Future<Empty> return_(ReturnStudentSubmissionRequest request,
       core.String courseId, core.String courseWorkId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2288,12 +2288,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   async.Future<Empty> turnIn(TurnInStudentSubmissionRequest request,
       core.String courseId, core.String courseWorkId, core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2374,12 +2374,12 @@ class CoursesStudentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Student> create(Student request, core.String courseId,
       {core.String enrollmentCode, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2442,12 +2442,12 @@ class CoursesStudentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String courseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2508,12 +2508,12 @@ class CoursesStudentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Student> get(core.String courseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2577,12 +2577,12 @@ class CoursesStudentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentsResponse> list(core.String courseId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2652,12 +2652,12 @@ class CoursesTeachersResourceApi {
   /// this method will complete with the same error.
   async.Future<Teacher> create(Teacher request, core.String courseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2719,12 +2719,12 @@ class CoursesTeachersResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String courseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2785,12 +2785,12 @@ class CoursesTeachersResourceApi {
   /// this method will complete with the same error.
   async.Future<Teacher> get(core.String courseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2854,12 +2854,12 @@ class CoursesTeachersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTeachersResponse> list(core.String courseId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
@@ -2924,12 +2924,12 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> accept(core.String id, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -2977,12 +2977,12 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Invitation> create(Invitation request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3026,12 +3026,12 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String id, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -3074,12 +3074,12 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Invitation> get(core.String id, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -3151,12 +3151,12 @@ class InvitationsResourceApi {
       core.int pageSize,
       core.String courseId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId != null) {
       _queryParams["userId"] = [userId];
@@ -3240,12 +3240,12 @@ class RegistrationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Registration> create(Registration request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3285,12 +3285,12 @@ class RegistrationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String registrationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (registrationId == null) {
       throw new core.ArgumentError("Parameter registrationId is required.");
@@ -3351,12 +3351,12 @@ class UserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserProfile> get(core.String userId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -3434,12 +3434,12 @@ class UserProfilesGuardianInvitationsResourceApi {
   async.Future<GuardianInvitation> create(
       GuardianInvitation request, core.String studentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3500,12 +3500,12 @@ class UserProfilesGuardianInvitationsResourceApi {
   async.Future<GuardianInvitation> get(
       core.String studentId, core.String invitationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
@@ -3599,12 +3599,12 @@ class UserProfilesGuardianInvitationsResourceApi {
       core.List<core.String> states,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
@@ -3693,12 +3693,12 @@ class UserProfilesGuardianInvitationsResourceApi {
   async.Future<GuardianInvitation> patch(GuardianInvitation request,
       core.String studentId, core.String invitationId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3780,12 +3780,12 @@ class UserProfilesGuardiansResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String studentId, core.String guardianId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
@@ -3850,12 +3850,12 @@ class UserProfilesGuardiansResourceApi {
   /// this method will complete with the same error.
   async.Future<Guardian> get(core.String studentId, core.String guardianId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
@@ -3947,12 +3947,12 @@ class UserProfilesGuardiansResourceApi {
       core.String invitedEmailAddress,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");

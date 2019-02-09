@@ -32,8 +32,8 @@ class IdentitytoolkitApi {
       new RelyingpartyResourceApi(_requester);
 
   IdentitytoolkitApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "identitytoolkit/v3/relyingparty/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "identitytoolkit/v3/relyingparty/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -62,12 +62,12 @@ class RelyingpartyResourceApi {
   async.Future<CreateAuthUriResponse> createAuthUri(
       IdentitytoolkitRelyingpartyCreateAuthUriRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -106,12 +106,12 @@ class RelyingpartyResourceApi {
   async.Future<DeleteAccountResponse> deleteAccount(
       IdentitytoolkitRelyingpartyDeleteAccountRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -150,12 +150,12 @@ class RelyingpartyResourceApi {
   async.Future<DownloadAccountResponse> downloadAccount(
       IdentitytoolkitRelyingpartyDownloadAccountRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -194,12 +194,12 @@ class RelyingpartyResourceApi {
   async.Future<EmailLinkSigninResponse> emailLinkSignin(
       IdentitytoolkitRelyingpartyEmailLinkSigninRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -238,12 +238,12 @@ class RelyingpartyResourceApi {
   async.Future<GetAccountInfoResponse> getAccountInfo(
       IdentitytoolkitRelyingpartyGetAccountInfoRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -282,12 +282,12 @@ class RelyingpartyResourceApi {
   async.Future<GetOobConfirmationCodeResponse> getOobConfirmationCode(
       Relyingparty request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -331,12 +331,12 @@ class RelyingpartyResourceApi {
           {core.String delegatedProjectNumber,
           core.String projectNumber,
           core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (delegatedProjectNumber != null) {
       _queryParams["delegatedProjectNumber"] = [delegatedProjectNumber];
@@ -376,12 +376,12 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys(
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -415,12 +415,12 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<GetRecaptchaParamResponse> getRecaptchaParam(
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -457,12 +457,12 @@ class RelyingpartyResourceApi {
   async.Future<ResetPasswordResponse> resetPassword(
       IdentitytoolkitRelyingpartyResetPasswordRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -503,12 +503,12 @@ class RelyingpartyResourceApi {
       sendVerificationCode(
           IdentitytoolkitRelyingpartySendVerificationCodeRequest request,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -549,12 +549,12 @@ class RelyingpartyResourceApi {
   async.Future<SetAccountInfoResponse> setAccountInfo(
       IdentitytoolkitRelyingpartySetAccountInfoRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -594,12 +594,12 @@ class RelyingpartyResourceApi {
       setProjectConfig(
           IdentitytoolkitRelyingpartySetProjectConfigRequest request,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -639,12 +639,12 @@ class RelyingpartyResourceApi {
   async.Future<IdentitytoolkitRelyingpartySignOutUserResponse> signOutUser(
       IdentitytoolkitRelyingpartySignOutUserRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -684,12 +684,12 @@ class RelyingpartyResourceApi {
   async.Future<SignupNewUserResponse> signupNewUser(
       IdentitytoolkitRelyingpartySignupNewUserRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -728,12 +728,12 @@ class RelyingpartyResourceApi {
   async.Future<UploadAccountResponse> uploadAccount(
       IdentitytoolkitRelyingpartyUploadAccountRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -772,12 +772,12 @@ class RelyingpartyResourceApi {
   async.Future<VerifyAssertionResponse> verifyAssertion(
       IdentitytoolkitRelyingpartyVerifyAssertionRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -816,12 +816,12 @@ class RelyingpartyResourceApi {
   async.Future<VerifyCustomTokenResponse> verifyCustomToken(
       IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -861,12 +861,12 @@ class RelyingpartyResourceApi {
   async.Future<VerifyPasswordResponse> verifyPassword(
       IdentitytoolkitRelyingpartyVerifyPasswordRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -907,12 +907,12 @@ class RelyingpartyResourceApi {
       verifyPhoneNumber(
           IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2617,7 +2617,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     return convert.base64.decode(saltSeparator);
   }
 
-  void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
+  set saltSeparatorAsBytes(core.List<core.int> _bytes) {
     saltSeparator =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2632,7 +2632,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     return convert.base64.decode(signerKey);
   }
 
-  void set signerKeyAsBytes(core.List<core.int> _bytes) {
+  set signerKeyAsBytes(core.List<core.int> _bytes) {
     signerKey =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3559,7 +3559,7 @@ class SetAccountInfoResponse {
     return convert.base64.decode(passwordHash);
   }
 
-  void set passwordHashAsBytes(core.List<core.int> _bytes) {
+  set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3928,7 +3928,7 @@ class UserInfo {
     return convert.base64.decode(passwordHash);
   }
 
-  void set passwordHashAsBytes(core.List<core.int> _bytes) {
+  set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3954,7 +3954,7 @@ class UserInfo {
     return convert.base64.decode(salt);
   }
 
-  void set saltAsBytes(core.List<core.int> _bytes) {
+  set saltAsBytes(core.List<core.int> _bytes) {
     salt =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

@@ -68,93 +68,93 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Access Context Manager API - accesscontextmanager v1beta
+#### Access Context Manager API - accesscontextmanager v1beta
 
 An API for setting attribute based access control to requests to GCP services.
 
 Official API documentation: https://cloud.google.com/access-context-manager/docs/reference/rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
+#### Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
 
 Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
 
 Official API documentation: https://developers.google.com/authorized-buyers/apis/reference/rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) G Suite Alert Center API - alertcenter v1beta1
+#### G Suite Alert Center API - alertcenter v1beta1
 
 Manages alerts on issues affecting your domain.
 
 Official API documentation: https://developers.google.com/admin-sdk/alertcenter/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) App Engine Admin API - appengine v1beta
+#### App Engine Admin API - appengine v1beta
 
 Provisions and manages developers' App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) App Engine Admin API - appengine v1beta4
+#### App Engine Admin API - appengine v1beta4
 
 Provisions and manages developers' App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) App Engine Admin API - appengine v1beta5
+#### App Engine Admin API - appengine v1beta5
 
 Provisions and manages developers' App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Binary Authorization API - binaryauthorization v1beta1
+#### Binary Authorization API - binaryauthorization v1beta1
 
 The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.
 
 
 Official API documentation: https://cloud.google.com/binary-authorization/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Asset API - cloudasset v1beta1
+#### Cloud Asset API - cloudasset v1beta1
 
 The cloud asset API manages the history and inventory of cloud resources.
 
 Official API documentation: https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Error Reporting API - clouderrorreporting v1beta1
+#### Stackdriver Error Reporting API - clouderrorreporting v1beta1
 
 Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.
 
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Resource Manager API - cloudresourcemanager v1beta1
+#### Cloud Resource Manager API - cloudresourcemanager v1beta1
 
 Creates, reads, and updates metadata for Google Cloud Platform resource containers.
 
 Official API documentation: https://cloud.google.com/resource-manager
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Scheduler API - cloudscheduler v1beta1
+#### Cloud Scheduler API - cloudscheduler v1beta1
 
 Creates and manages jobs run on a regular recurring schedule.
 
 Official API documentation: https://cloud.google.com/scheduler/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Tasks API - cloudtasks v2beta3
+#### Cloud Tasks API - cloudtasks v2beta3
 
 Manages the execution of large numbers of distributed requests.
 
 Official API documentation: https://cloud.google.com/tasks/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Container Analysis API - containeranalysis v1beta1
+#### Container Analysis API - containeranalysis v1beta1
 
 An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.
 
 Official API documentation: https://cloud.google.com/container-analysis/api/reference/rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Dataflow API - dataflow v1b3
+#### Dataflow API - dataflow v1b3
 
 Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataflow
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Dialogflow API - dialogflow v2beta1
+#### Dialogflow API - dialogflow v2beta1
 
 Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).
 
@@ -166,55 +166,55 @@ Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Filestore API - file v1beta1
+#### Cloud Filestore API - file v1beta1
 
 The Cloud Filestore API is used for creating and managing cloud file servers.
 
 Official API documentation: https://cloud.google.com/filestore/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Hosting API - firebasehosting v1beta1
+#### Firebase Hosting API - firebasehosting v1beta1
 
 The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.
 
 Official API documentation: https://firebase.google.com/docs/hosting/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Natural Language API - language v1beta1
+#### Cloud Natural Language API - language v1beta1
 
 Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
 
 Official API documentation: https://cloud.google.com/natural-language/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Natural Language API - language v1beta2
+#### Cloud Natural Language API - language v1beta2
 
 Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
 
 Official API documentation: https://cloud.google.com/natural-language/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Logging API - logging v2beta1
+#### Stackdriver Logging API - logging v2beta1
 
 Writes log entries and manages your Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud OS Login API - oslogin v1alpha
+#### Cloud OS Login API - oslogin v1alpha
 
 Manages OS login configuration for Google account users.
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud OS Login API - oslogin v1beta
+#### Cloud OS Login API - oslogin v1beta
 
 Manages OS login configuration for Google account users.
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Proximity Beacon API - proximitybeacon v1beta1
+#### Proximity Beacon API - proximitybeacon v1beta1
 
 Registers, manages, indexes, and searches beacons.
 
 Official API documentation: https://developers.google.com/beacons/proximity/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Pub/Sub API - pubsub v1beta2
+#### Cloud Pub/Sub API - pubsub v1beta2
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
 
@@ -227,13 +227,13 @@ The Replica Pool API allows users to declaratively provision and manage groups o
 
 Official API documentation: https://developers.google.com/compute/docs/replica-pool/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Runtime Configuration API - runtimeconfig v1beta1
+#### Cloud Runtime Configuration API - runtimeconfig v1beta1
 
 The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Networking API - servicenetworking v1beta
+#### Service Networking API - servicenetworking v1beta
 
 Provides automatic management of network configurations necessary for certain services.
 
@@ -251,13 +251,13 @@ Reads and publishes results from Firebase Test Lab.
 
 Official API documentation: https://firebase.google.com/docs/test-lab/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud TPU API - tpu v1alpha1
+#### Cloud TPU API - tpu v1alpha1
 
 TPU API provides customers with access to Google TPU technology.
 
 Official API documentation: https://cloud.google.com/tpu/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Web Security Scanner API - websecurityscanner v1alpha
+#### Web Security Scanner API - websecurityscanner v1alpha
 
 Scans your Compute and App Engine apps for common web vulnerabilities.
 

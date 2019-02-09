@@ -50,8 +50,8 @@ class ReplicapoolApi {
   ReplicasResourceApi get replicas => new ReplicasResourceApi(_requester);
 
   ReplicapoolApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "replicapool/v1beta1/projects/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "replicapool/v1beta1/projects/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -84,12 +84,12 @@ class PoolsResourceApi {
   async.Future delete(PoolsDeleteRequest request, core.String projectName,
       core.String zone, core.String poolName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -147,12 +147,12 @@ class PoolsResourceApi {
   async.Future<Pool> get(
       core.String projectName, core.String zone, core.String poolName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -205,12 +205,12 @@ class PoolsResourceApi {
   async.Future<Pool> insert(
       Pool request, core.String projectName, core.String zone,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -268,12 +268,12 @@ class PoolsResourceApi {
   async.Future<PoolsListResponse> list(
       core.String projectName, core.String zone,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -335,12 +335,12 @@ class PoolsResourceApi {
   async.Future<Pool> resize(
       core.String projectName, core.String zone, core.String poolName,
       {core.int numReplicas, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -397,12 +397,12 @@ class PoolsResourceApi {
   async.Future updatetemplate(Template request, core.String projectName,
       core.String zone, core.String poolName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -475,12 +475,12 @@ class ReplicasResourceApi {
       core.String poolName,
       core.String replicaName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -543,12 +543,12 @@ class ReplicasResourceApi {
   async.Future<Replica> get(core.String projectName, core.String zone,
       core.String poolName, core.String replicaName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -614,12 +614,12 @@ class ReplicasResourceApi {
   async.Future<ReplicasListResponse> list(
       core.String projectName, core.String zone, core.String poolName,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -681,12 +681,12 @@ class ReplicasResourceApi {
   async.Future<Replica> restart(core.String projectName, core.String zone,
       core.String poolName, core.String replicaName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");

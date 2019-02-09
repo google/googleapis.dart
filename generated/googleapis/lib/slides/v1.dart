@@ -51,8 +51,8 @@ class SlidesApi {
       new PresentationsResourceApi(_requester);
 
   SlidesApi(http.Client client,
-      {core.String rootUrl: "https://slides.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://slides.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -106,12 +106,12 @@ class PresentationsResourceApi {
   async.Future<BatchUpdatePresentationResponse> batchUpdate(
       BatchUpdatePresentationRequest request, core.String presentationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -160,12 +160,12 @@ class PresentationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Presentation> create(Presentation request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -204,12 +204,12 @@ class PresentationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Presentation> get(core.String presentationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (presentationId == null) {
       throw new core.ArgumentError("Parameter presentationId is required.");
@@ -257,12 +257,12 @@ class PresentationsPagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> get(core.String presentationId, core.String pageObjectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (presentationId == null) {
       throw new core.ArgumentError("Parameter presentationId is required.");
@@ -332,12 +332,12 @@ class PresentationsPagesResourceApi {
       {core.String thumbnailProperties_mimeType,
       core.String thumbnailProperties_thumbnailSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (presentationId == null) {
       throw new core.ArgumentError("Parameter presentationId is required.");

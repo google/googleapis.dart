@@ -44,8 +44,8 @@ class YoutubereportingApi {
       new ReportTypesResourceApi(_requester);
 
   YoutubereportingApi(http.Client client,
-      {core.String rootUrl: "https://youtubereporting.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://youtubereporting.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -79,12 +79,12 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(Job request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -129,12 +129,12 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String jobId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
@@ -179,12 +179,12 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> get(core.String jobId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
@@ -246,12 +246,12 @@ class JobsResourceApi {
       core.String pageToken,
       core.bool includeSystemManaged,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -310,12 +310,12 @@ class JobsReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Report> get(core.String jobId, core.String reportId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
@@ -394,12 +394,12 @@ class JobsReportsResourceApi {
       core.String pageToken,
       core.String startTimeAtOrAfter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
@@ -471,14 +471,14 @@ class MediaResourceApi {
   /// this method will complete with the same error.
   async.Future download(core.String resourceName,
       {core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -550,12 +550,12 @@ class ReportTypesResourceApi {
       core.int pageSize,
       core.String onBehalfOfContentOwner,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -620,7 +620,7 @@ class GdataBlobstore2Info {
     return convert.base64.decode(downloadReadHandle);
   }
 
-  void set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
+  set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
     downloadReadHandle =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -634,7 +634,7 @@ class GdataBlobstore2Info {
     return convert.base64.decode(uploadMetadataContainer);
   }
 
-  void set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
+  set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
     uploadMetadataContainer =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -689,7 +689,7 @@ class GdataCompositeMedia {
     return convert.base64.decode(blobRef);
   }
 
-  void set blobRefAsBytes(core.List<core.int> _bytes) {
+  set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -703,7 +703,7 @@ class GdataCompositeMedia {
     return convert.base64.decode(cosmoBinaryReference);
   }
 
-  void set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
+  set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -717,7 +717,7 @@ class GdataCompositeMedia {
     return convert.base64.decode(inline);
   }
 
-  void set inlineAsBytes(core.List<core.int> _bytes) {
+  set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -731,7 +731,7 @@ class GdataCompositeMedia {
     return convert.base64.decode(md5Hash);
   }
 
-  void set md5HashAsBytes(core.List<core.int> _bytes) {
+  set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -757,7 +757,7 @@ class GdataCompositeMedia {
     return convert.base64.decode(sha1Hash);
   }
 
-  void set sha1HashAsBytes(core.List<core.int> _bytes) {
+  set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1134,7 +1134,7 @@ class GdataMedia {
     return convert.base64.decode(bigstoreObjectRef);
   }
 
-  void set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
+  set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
     bigstoreObjectRef =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1145,7 +1145,7 @@ class GdataMedia {
     return convert.base64.decode(blobRef);
   }
 
-  void set blobRefAsBytes(core.List<core.int> _bytes) {
+  set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1168,7 +1168,7 @@ class GdataMedia {
     return convert.base64.decode(cosmoBinaryReference);
   }
 
-  void set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
+  set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1209,7 +1209,7 @@ class GdataMedia {
     return convert.base64.decode(inline);
   }
 
-  void set inlineAsBytes(core.List<core.int> _bytes) {
+  set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1226,7 +1226,7 @@ class GdataMedia {
     return convert.base64.decode(md5Hash);
   }
 
-  void set md5HashAsBytes(core.List<core.int> _bytes) {
+  set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1237,7 +1237,7 @@ class GdataMedia {
     return convert.base64.decode(mediaId);
   }
 
-  void set mediaIdAsBytes(core.List<core.int> _bytes) {
+  set mediaIdAsBytes(core.List<core.int> _bytes) {
     mediaId =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1271,7 +1271,7 @@ class GdataMedia {
     return convert.base64.decode(sha1Hash);
   }
 
-  void set sha1HashAsBytes(core.List<core.int> _bytes) {
+  set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1282,7 +1282,7 @@ class GdataMedia {
     return convert.base64.decode(sha256Hash);
   }
 
-  void set sha256HashAsBytes(core.List<core.int> _bytes) {
+  set sha256HashAsBytes(core.List<core.int> _bytes) {
     sha256Hash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

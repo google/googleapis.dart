@@ -50,8 +50,8 @@ class ContentApi {
       new ShippingsettingsResourceApi(_requester);
 
   ContentApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "content/v2.1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "content/v2.1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -76,12 +76,12 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsAuthInfoResponse> authinfo({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -126,12 +126,12 @@ class AccountsResourceApi {
   async.Future<AccountsClaimWebsiteResponse> claimwebsite(
       core.String merchantId, core.String accountId,
       {core.bool overwrite, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -181,12 +181,12 @@ class AccountsResourceApi {
   async.Future<AccountsCustomBatchResponse> custombatch(
       AccountsCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -229,12 +229,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String accountId,
       {core.bool force, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -286,12 +286,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> get(core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -337,12 +337,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> insert(Account request, core.String merchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -391,12 +391,12 @@ class AccountsResourceApi {
   async.Future<AccountsLinkResponse> link(AccountsLinkRequest request,
       core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -449,12 +449,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -505,12 +505,12 @@ class AccountsResourceApi {
   async.Future<Account> update(
       Account request, core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -561,12 +561,12 @@ class AccountstatusesResourceApi {
   async.Future<AccountstatusesCustomBatchResponse> custombatch(
       AccountstatusesCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -613,12 +613,12 @@ class AccountstatusesResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountStatus> get(core.String merchantId, core.String accountId,
       {core.List<core.String> destinations, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -676,12 +676,12 @@ class AccountstatusesResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -737,12 +737,12 @@ class AccounttaxResourceApi {
   async.Future<AccounttaxCustomBatchResponse> custombatch(
       AccounttaxCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -786,12 +786,12 @@ class AccounttaxResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountTax> get(core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -841,12 +841,12 @@ class AccounttaxResourceApi {
   /// this method will complete with the same error.
   async.Future<AccounttaxListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -898,12 +898,12 @@ class AccounttaxResourceApi {
   async.Future<AccountTax> update(
       AccountTax request, core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -954,12 +954,12 @@ class DatafeedsResourceApi {
   async.Future<DatafeedsCustomBatchResponse> custombatch(
       DatafeedsCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -999,12 +999,12 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String datafeedId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1053,12 +1053,12 @@ class DatafeedsResourceApi {
   async.Future<DatafeedsFetchNowResponse> fetchnow(
       core.String merchantId, core.String datafeedId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1106,12 +1106,12 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future<Datafeed> get(core.String merchantId, core.String datafeedId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1157,12 +1157,12 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future<Datafeed> insert(Datafeed request, core.String merchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1209,12 +1209,12 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future<DatafeedsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1264,12 +1264,12 @@ class DatafeedsResourceApi {
   async.Future<Datafeed> update(
       Datafeed request, core.String merchantId, core.String datafeedId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1321,12 +1321,12 @@ class DatafeedstatusesResourceApi {
   async.Future<DatafeedstatusesCustomBatchResponse> custombatch(
       DatafeedstatusesCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1379,12 +1379,12 @@ class DatafeedstatusesResourceApi {
   async.Future<DatafeedStatus> get(
       core.String merchantId, core.String datafeedId,
       {core.String country, core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1439,12 +1439,12 @@ class DatafeedstatusesResourceApi {
   /// this method will complete with the same error.
   async.Future<DatafeedstatusesListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1497,12 +1497,12 @@ class LiasettingsResourceApi {
   async.Future<LiasettingsCustomBatchResponse> custombatch(
       LiasettingsCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1546,12 +1546,12 @@ class LiasettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiaSettings> get(core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1600,12 +1600,12 @@ class LiasettingsResourceApi {
   async.Future<LiasettingsGetAccessibleGmbAccountsResponse>
       getaccessiblegmbaccounts(core.String merchantId, core.String accountId,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1657,12 +1657,12 @@ class LiasettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiasettingsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1705,12 +1705,12 @@ class LiasettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiasettingsListPosDataProvidersResponse> listposdataproviders(
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1753,12 +1753,12 @@ class LiasettingsResourceApi {
   async.Future<LiasettingsRequestGmbAccessResponse> requestgmbaccess(
       core.String merchantId, core.String accountId, core.String gmbEmail,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1816,12 +1816,12 @@ class LiasettingsResourceApi {
       requestinventoryverification(
           core.String merchantId, core.String accountId, core.String country,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1890,12 +1890,12 @@ class LiasettingsResourceApi {
           core.String country,
           core.String language,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -1971,12 +1971,12 @@ class LiasettingsResourceApi {
       {core.String posDataProviderId,
       core.String posExternalAccountId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -2039,12 +2039,12 @@ class LiasettingsResourceApi {
   async.Future<LiaSettings> update(
       LiaSettings request, core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2105,12 +2105,12 @@ class OrderinvoicesResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2170,12 +2170,12 @@ class OrderinvoicesResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2239,12 +2239,12 @@ class OrderpaymentsResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2301,12 +2301,12 @@ class OrderpaymentsResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2362,12 +2362,12 @@ class OrderpaymentsResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2423,12 +2423,12 @@ class OrderpaymentsResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2498,12 +2498,12 @@ class OrderreportsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -2579,12 +2579,12 @@ class OrderreportsResourceApi {
       core.String pageToken,
       core.String transactionEndDate,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -2653,12 +2653,12 @@ class OrderreturnsResourceApi {
   async.Future<MerchantOrderReturn> get(
       core.String merchantId, core.String returnId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -2724,12 +2724,12 @@ class OrderreturnsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -2797,12 +2797,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2855,12 +2855,12 @@ class OrdersResourceApi {
   async.Future<OrdersAdvanceTestOrderResponse> advancetestorder(
       core.String merchantId, core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -2911,12 +2911,12 @@ class OrdersResourceApi {
   async.Future<OrdersCancelResponse> cancel(
       OrdersCancelRequest request, core.String merchantId, core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2971,12 +2971,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3031,12 +3031,12 @@ class OrdersResourceApi {
       canceltestorderbycustomer(OrdersCancelTestOrderByCustomerRequest request,
           core.String merchantId, core.String orderId,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3088,12 +3088,12 @@ class OrdersResourceApi {
   async.Future<OrdersCreateTestOrderResponse> createtestorder(
       OrdersCreateTestOrderRequest request, core.String merchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3143,12 +3143,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3199,12 +3199,12 @@ class OrdersResourceApi {
   /// this method will complete with the same error.
   async.Future<Order> get(core.String merchantId, core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -3251,12 +3251,12 @@ class OrdersResourceApi {
   async.Future<OrdersGetByMerchantOrderIdResponse> getbymerchantorderid(
       core.String merchantId, core.String merchantOrderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -3312,12 +3312,12 @@ class OrdersResourceApi {
   async.Future<OrdersGetTestOrderTemplateResponse> gettestordertemplate(
       core.String merchantId, core.String templateName,
       {core.String country, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -3373,12 +3373,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3470,12 +3470,12 @@ class OrdersResourceApi {
       core.String placedDateStart,
       core.List<core.String> statuses,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -3542,12 +3542,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3604,12 +3604,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3665,12 +3665,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3726,12 +3726,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3788,12 +3788,12 @@ class OrdersResourceApi {
           core.String merchantId,
           core.String orderId,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3849,12 +3849,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3910,12 +3910,12 @@ class OrdersResourceApi {
       core.String merchantId,
       core.String orderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3970,12 +3970,12 @@ class PosResourceApi {
   async.Future<PosCustomBatchResponse> custombatch(
       PosCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4016,12 +4016,12 @@ class PosResourceApi {
   async.Future delete(core.String merchantId, core.String targetMerchantId,
       core.String storeCode,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4076,12 +4076,12 @@ class PosResourceApi {
   async.Future<PosStore> get(core.String merchantId,
       core.String targetMerchantId, core.String storeCode,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4134,12 +4134,12 @@ class PosResourceApi {
   async.Future<PosStore> insert(
       PosStore request, core.String merchantId, core.String targetMerchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4191,12 +4191,12 @@ class PosResourceApi {
   async.Future<PosInventoryResponse> inventory(PosInventoryRequest request,
       core.String merchantId, core.String targetMerchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4246,12 +4246,12 @@ class PosResourceApi {
   async.Future<PosListResponse> list(
       core.String merchantId, core.String targetMerchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4300,12 +4300,12 @@ class PosResourceApi {
   async.Future<PosSaleResponse> sale(PosSaleRequest request,
       core.String merchantId, core.String targetMerchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4359,12 +4359,12 @@ class ProductsResourceApi {
   async.Future<ProductsCustomBatchResponse> custombatch(
       ProductsCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4404,12 +4404,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String productId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4457,12 +4457,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<Product> get(core.String merchantId, core.String productId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4510,12 +4510,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<Product> insert(Product request, core.String merchantId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4562,12 +4562,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<ProductsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4618,12 +4618,12 @@ class ProductstatusesResourceApi {
   async.Future<ProductstatusesCustomBatchResponse> custombatch(
       ProductstatusesCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4668,12 +4668,12 @@ class ProductstatusesResourceApi {
   /// this method will complete with the same error.
   async.Future<ProductStatus> get(core.String merchantId, core.String productId,
       {core.List<core.String> destinations, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4731,12 +4731,12 @@ class ProductstatusesResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4793,12 +4793,12 @@ class ShippingsettingsResourceApi {
   async.Future<ShippingsettingsCustomBatchResponse> custombatch(
       ShippingsettingsCustomBatchRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4843,12 +4843,12 @@ class ShippingsettingsResourceApi {
   async.Future<ShippingSettings> get(
       core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4892,12 +4892,12 @@ class ShippingsettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ShippingsettingsGetSupportedCarriersResponse>
       getsupportedcarriers(core.String merchantId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4937,12 +4937,12 @@ class ShippingsettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ShippingsettingsGetSupportedHolidaysResponse>
       getsupportedholidays(core.String merchantId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -4988,12 +4988,12 @@ class ShippingsettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ShippingsettingsListResponse> list(core.String merchantId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
@@ -5046,12 +5046,12 @@ class ShippingsettingsResourceApi {
   async.Future<ShippingSettings> update(
       ShippingSettings request, core.String merchantId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

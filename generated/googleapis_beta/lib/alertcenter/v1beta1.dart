@@ -27,8 +27,8 @@ class AlertcenterApi {
   V1beta1ResourceApi get v1beta1 => new V1beta1ResourceApi(_requester);
 
   AlertcenterApi(http.Client client,
-      {core.String rootUrl: "https://alertcenter.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://alertcenter.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -68,12 +68,12 @@ class AlertsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String alertId,
       {core.String customerId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
@@ -120,12 +120,12 @@ class AlertsResourceApi {
   /// this method will complete with the same error.
   async.Future<Alert> get(core.String alertId,
       {core.String customerId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
@@ -196,12 +196,12 @@ class AlertsResourceApi {
       core.String customerId,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -260,12 +260,12 @@ class AlertsResourceApi {
   async.Future<Alert> undelete(
       UndeleteAlertRequest request, core.String alertId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -323,12 +323,12 @@ class AlertsFeedbackResourceApi {
   /// this method will complete with the same error.
   async.Future<AlertFeedback> create(AlertFeedback request, core.String alertId,
       {core.String customerId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -387,12 +387,12 @@ class AlertsFeedbackResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAlertFeedbackResponse> list(core.String alertId,
       {core.String customerId, core.String filter, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
@@ -448,12 +448,12 @@ class V1beta1ResourceApi {
   /// this method will complete with the same error.
   async.Future<Settings> getSettings(
       {core.String customerId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -496,12 +496,12 @@ class V1beta1ResourceApi {
   /// this method will complete with the same error.
   async.Future<Settings> updateSettings(Settings request,
       {core.String customerId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

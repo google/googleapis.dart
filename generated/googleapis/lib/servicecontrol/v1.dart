@@ -32,8 +32,8 @@ class ServicecontrolApi {
   ServicesResourceApi get services => new ServicesResourceApi(_requester);
 
   ServicecontrolApi(http.Client client,
-      {core.String rootUrl: "https://servicecontrol.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://servicecontrol.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -78,12 +78,12 @@ class ServicesResourceApi {
   async.Future<AllocateQuotaResponse> allocateQuota(
       AllocateQuotaRequest request, core.String serviceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -151,12 +151,12 @@ class ServicesResourceApi {
   async.Future<CheckResponse> check(
       CheckRequest request, core.String serviceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -221,12 +221,12 @@ class ServicesResourceApi {
   async.Future<ReportResponse> report(
       ReportRequest request, core.String serviceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

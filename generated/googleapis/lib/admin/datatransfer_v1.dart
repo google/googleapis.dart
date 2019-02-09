@@ -33,8 +33,8 @@ class AdminApi {
   TransfersResourceApi get transfers => new TransfersResourceApi(_requester);
 
   AdminApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "admin/datatransfer/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "admin/datatransfer/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -62,12 +62,12 @@ class ApplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Application> get(core.String applicationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -113,12 +113,12 @@ class ApplicationsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -170,12 +170,12 @@ class TransfersResourceApi {
   /// this method will complete with the same error.
   async.Future<DataTransfer> get(core.String dataTransferId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (dataTransferId == null) {
       throw new core.ArgumentError("Parameter dataTransferId is required.");
@@ -213,12 +213,12 @@ class TransfersResourceApi {
   /// this method will complete with the same error.
   async.Future<DataTransfer> insert(DataTransfer request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -274,12 +274,12 @@ class TransfersResourceApi {
       core.String pageToken,
       core.String status,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];

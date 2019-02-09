@@ -43,8 +43,8 @@ class BooksApi {
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
   BooksApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "books/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "books/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -79,12 +79,12 @@ class BookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future<Bookshelf> get(core.String userId, core.String shelf,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -133,12 +133,12 @@ class BookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future<Bookshelves> list(core.String userId,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -201,12 +201,12 @@ class BookshelvesVolumesResourceApi {
       core.String source,
       core.int startIndex,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -280,12 +280,12 @@ class CloudloadingResourceApi {
       core.String name,
       core.String uploadClientToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (driveDocumentId != null) {
       _queryParams["drive_document_id"] = [driveDocumentId];
@@ -330,12 +330,12 @@ class CloudloadingResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future deleteBook(core.String volumeId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -375,12 +375,12 @@ class CloudloadingResourceApi {
   async.Future<BooksCloudloadingResource> updateBook(
       BooksCloudloadingResource request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -425,12 +425,12 @@ class DictionaryResourceApi {
   /// this method will complete with the same error.
   async.Future<Metadata> listOfflineMetadata(core.String cpksver,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (cpksver == null) {
       throw new core.ArgumentError("Parameter cpksver is required.");
@@ -475,12 +475,12 @@ class FamilysharingResourceApi {
   /// this method will complete with the same error.
   async.Future<FamilyInfo> getFamilyInfo(
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (source != null) {
       _queryParams["source"] = [source];
@@ -524,12 +524,12 @@ class FamilysharingResourceApi {
       core.String source,
       core.String volumeId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (docId != null) {
       _queryParams["docId"] = [docId];
@@ -581,12 +581,12 @@ class FamilysharingResourceApi {
       core.String source,
       core.String volumeId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (docId != null) {
       _queryParams["docId"] = [docId];
@@ -649,12 +649,12 @@ class LayersResourceApi {
   /// this method will complete with the same error.
   async.Future<Layersummary> get(core.String volumeId, core.String summaryId,
       {core.String contentVersion, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -717,12 +717,12 @@ class LayersResourceApi {
       core.String pageToken,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -811,12 +811,12 @@ class LayersAnnotationDataResourceApi {
       core.String source,
       core.int w,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -929,12 +929,12 @@ class LayersAnnotationDataResourceApi {
       core.String updatedMin,
       core.int w,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -1030,12 +1030,12 @@ class LayersVolumeAnnotationsResourceApi {
   async.Future<Volumeannotation> get(
       core.String volumeId, core.String layerId, core.String annotationId,
       {core.String locale, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -1137,12 +1137,12 @@ class LayersVolumeAnnotationsResourceApi {
       core.String updatedMin,
       core.String volumeAnnotationsVersion,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -1229,12 +1229,12 @@ class MyconfigResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Usersettings> getUserSettings({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1277,12 +1277,12 @@ class MyconfigResourceApi {
   async.Future<DownloadAccesses> releaseDownloadAccess(
       core.List<core.String> volumeIds, core.String cpksver,
       {core.String locale, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeIds == null || volumeIds.isEmpty) {
       throw new core.ArgumentError("Parameter volumeIds is required.");
@@ -1348,12 +1348,12 @@ class MyconfigResourceApi {
   async.Future<RequestAccess> requestAccess(core.String source,
       core.String volumeId, core.String nonce, core.String cpksver,
       {core.String licenseTypes, core.String locale, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (source == null) {
       throw new core.ArgumentError("Parameter source is required.");
@@ -1434,12 +1434,12 @@ class MyconfigResourceApi {
       core.bool showPreorders,
       core.List<core.String> volumeIds,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (source == null) {
       throw new core.ArgumentError("Parameter source is required.");
@@ -1503,12 +1503,12 @@ class MyconfigResourceApi {
   /// this method will complete with the same error.
   async.Future<Usersettings> updateUserSettings(Usersettings request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1566,12 +1566,12 @@ class MylibraryAnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String annotationId,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
@@ -1628,12 +1628,12 @@ class MylibraryAnnotationsResourceApi {
       core.bool showOnlySummaryInResponse,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1717,12 +1717,12 @@ class MylibraryAnnotationsResourceApi {
       core.String updatedMin,
       core.String volumeId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (contentVersion != null) {
       _queryParams["contentVersion"] = [contentVersion];
@@ -1790,12 +1790,12 @@ class MylibraryAnnotationsResourceApi {
   async.Future<AnnotationsSummary> summary(
       core.List<core.String> layerIds, core.String volumeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (layerIds == null || layerIds.isEmpty) {
       throw new core.ArgumentError("Parameter layerIds is required.");
@@ -1842,12 +1842,12 @@ class MylibraryAnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Annotation> update(Annotation request, core.String annotationId,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1910,12 +1910,12 @@ class MylibraryBookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future addVolume(core.String shelf, core.String volumeId,
       {core.String reason, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
@@ -1967,12 +1967,12 @@ class MylibraryBookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future clearVolumes(core.String shelf,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
@@ -2020,12 +2020,12 @@ class MylibraryBookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future<Bookshelf> get(core.String shelf,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
@@ -2065,12 +2065,12 @@ class MylibraryBookshelvesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Bookshelves> list({core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (source != null) {
       _queryParams["source"] = [source];
@@ -2115,12 +2115,12 @@ class MylibraryBookshelvesResourceApi {
   async.Future moveVolume(
       core.String shelf, core.String volumeId, core.int volumePosition,
       {core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
@@ -2179,12 +2179,12 @@ class MylibraryBookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future removeVolume(core.String shelf, core.String volumeId,
       {core.String reason, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
@@ -2268,12 +2268,12 @@ class MylibraryBookshelvesVolumesResourceApi {
       core.String source,
       core.int startIndex,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
@@ -2346,12 +2346,12 @@ class MylibraryReadingpositionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ReadingPosition> get(core.String volumeId,
       {core.String contentVersion, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -2420,12 +2420,12 @@ class MylibraryReadingpositionsResourceApi {
       core.String deviceCookie,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -2498,12 +2498,12 @@ class NotificationResourceApi {
   /// this method will complete with the same error.
   async.Future<Notification> get(core.String notificationId,
       {core.String locale, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
@@ -2555,12 +2555,12 @@ class OnboardingResourceApi {
   /// this method will complete with the same error.
   async.Future<Category> listCategories(
       {core.String locale, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -2617,12 +2617,12 @@ class OnboardingResourceApi {
       core.int pageSize,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (categoryId != null) {
       _queryParams["categoryId"] = categoryId;
@@ -2692,12 +2692,12 @@ class PersonalizedstreamResourceApi {
       core.String maxAllowedMaturityRating,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -2765,12 +2765,12 @@ class PromoofferResourceApi {
       core.String serial,
       core.String volumeId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (androidId != null) {
       _queryParams["androidId"] = [androidId];
@@ -2846,12 +2846,12 @@ class PromoofferResourceApi {
       core.String product,
       core.String serial,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (androidId != null) {
       _queryParams["androidId"] = [androidId];
@@ -2925,12 +2925,12 @@ class PromoofferResourceApi {
       core.String product,
       core.String serial,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (androidId != null) {
       _queryParams["androidId"] = [androidId];
@@ -2992,12 +2992,12 @@ class SeriesResourceApi {
   /// this method will complete with the same error.
   async.Future<Series> get(core.List<core.String> seriesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (seriesId == null || seriesId.isEmpty) {
       throw new core.ArgumentError("Parameter seriesId is required.");
@@ -3048,12 +3048,12 @@ class SeriesMembershipResourceApi {
   /// this method will complete with the same error.
   async.Future<Seriesmembership> get(core.String seriesId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (seriesId == null) {
       throw new core.ArgumentError("Parameter seriesId is required.");
@@ -3135,12 +3135,12 @@ class VolumesResourceApi {
       core.String source,
       core.bool userLibraryConsistentRead,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -3265,12 +3265,12 @@ class VolumesResourceApi {
       core.String source,
       core.int startIndex,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null) {
       throw new core.ArgumentError("Parameter q is required.");
@@ -3377,12 +3377,12 @@ class VolumesAssociatedResourceApi {
       core.String maxAllowedMaturityRating,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
@@ -3462,12 +3462,12 @@ class VolumesMybooksResourceApi {
       core.String source,
       core.int startIndex,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (acquireMethod != null) {
       _queryParams["acquireMethod"] = acquireMethod;
@@ -3543,12 +3543,12 @@ class VolumesRecommendedResourceApi {
       core.String maxAllowedMaturityRating,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -3603,12 +3603,12 @@ class VolumesRecommendedResourceApi {
   async.Future<BooksVolumesRecommendedRateResponse> rate(
       core.String rating, core.String volumeId,
       {core.String locale, core.String source, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (rating == null) {
       throw new core.ArgumentError("Parameter rating is required.");
@@ -3685,12 +3685,12 @@ class VolumesUseruploadedResourceApi {
       core.int startIndex,
       core.List<core.String> volumeId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -4072,7 +4072,7 @@ class Annotationdata {
     return convert.base64.decode(encodedData);
   }
 
-  void set encodedDataAsBytes(core.List<core.int> _bytes) {
+  set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

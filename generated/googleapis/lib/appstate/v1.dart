@@ -26,8 +26,8 @@ class AppstateApi {
   StatesResourceApi get states => new StatesResourceApi(_requester);
 
   AppstateApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "appstate/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "appstate/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -61,12 +61,12 @@ class StatesResourceApi {
   /// this method will complete with the same error.
   async.Future<WriteResult> clear(core.int stateKey,
       {core.String currentDataVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
@@ -109,12 +109,12 @@ class StatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.int stateKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
@@ -155,12 +155,12 @@ class StatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetResponse> get(core.int stateKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
@@ -199,12 +199,12 @@ class StatesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListResponse> list(
       {core.bool includeData, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (includeData != null) {
       _queryParams["includeData"] = ["${includeData}"];
@@ -253,12 +253,12 @@ class StatesResourceApi {
   /// this method will complete with the same error.
   async.Future<WriteResult> update(UpdateRequest request, core.int stateKey,
       {core.String currentStateVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

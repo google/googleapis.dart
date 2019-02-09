@@ -29,8 +29,8 @@ class VideointelligenceApi {
   VideosResourceApi get videos => new VideosResourceApi(_requester);
 
   VideointelligenceApi(http.Client client,
-      {core.String rootUrl: "https://videointelligence.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://videointelligence.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -71,12 +71,12 @@ class OperationsResourceApi {
   async.Future<GoogleProtobufEmpty> cancel(
       GoogleLongrunningCancelOperationRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -123,12 +123,12 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -169,12 +169,12 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -233,12 +233,12 @@ class OperationsResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -296,12 +296,12 @@ class VideosResourceApi {
   async.Future<GoogleLongrunningOperation> annotate(
       GoogleCloudVideointelligenceV1AnnotateVideoRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -367,7 +367,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
     return convert.base64.decode(inputContent);
   }
 
-  void set inputContentAsBytes(core.List<core.int> _bytes) {
+  set inputContentAsBytes(core.List<core.int> _bytes) {
     inputContent =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

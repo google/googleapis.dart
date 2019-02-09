@@ -36,8 +36,8 @@ class TestingApi {
       new TestEnvironmentCatalogResourceApi(_requester);
 
   TestingApi(http.Client client,
-      {core.String rootUrl: "https://testing.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://testing.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -66,12 +66,12 @@ class ApplicationDetailServiceResourceApi {
   /// this method will complete with the same error.
   async.Future<GetApkDetailsResponse> getApkDetails(FileReference request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -136,12 +136,12 @@ class ProjectsTestMatricesResourceApi {
   async.Future<CancelTestMatrixResponse> cancel(
       core.String projectId, core.String testMatrixId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -204,12 +204,12 @@ class ProjectsTestMatricesResourceApi {
   /// this method will complete with the same error.
   async.Future<TestMatrix> create(TestMatrix request, core.String projectId,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -263,12 +263,12 @@ class ProjectsTestMatricesResourceApi {
   /// this method will complete with the same error.
   async.Future<TestMatrix> get(core.String projectId, core.String testMatrixId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -335,12 +335,12 @@ class TestEnvironmentCatalogResourceApi {
   /// this method will complete with the same error.
   async.Future<TestEnvironmentCatalog> get(core.String environmentType,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (environmentType == null) {
       throw new core.ArgumentError("Parameter environmentType is required.");

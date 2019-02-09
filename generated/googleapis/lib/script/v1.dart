@@ -92,8 +92,8 @@ class ScriptApi {
   ScriptsResourceApi get scripts => new ScriptsResourceApi(_requester);
 
   ScriptApi(http.Client client,
-      {core.String rootUrl: "https://script.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://script.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -175,12 +175,12 @@ class ProcessesResourceApi {
       core.String userProcessFilter_endTime,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userProcessFilter_startTime != null) {
       _queryParams["userProcessFilter.startTime"] = [
@@ -305,12 +305,12 @@ class ProcessesResourceApi {
       core.String scriptProcessFilter_endTime,
       core.List<core.String> scriptProcessFilter_userAccessLevels,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptProcessFilter_statuses != null) {
       _queryParams["scriptProcessFilter.statuses"] =
@@ -398,12 +398,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Project> create(CreateProjectRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -440,12 +440,12 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Project> get(core.String scriptId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -488,12 +488,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Content> getContent(core.String scriptId,
       {core.int versionNumber, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -549,12 +549,12 @@ class ProjectsResourceApi {
       {core.String metricsFilter_deploymentId,
       core.String metricsGranularity,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -606,12 +606,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Content> updateContent(Content request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -664,12 +664,12 @@ class ProjectsDeploymentsResourceApi {
   async.Future<Deployment> create(
       DeploymentConfig request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -714,12 +714,12 @@ class ProjectsDeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -765,12 +765,12 @@ class ProjectsDeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Deployment> get(core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -821,12 +821,12 @@ class ProjectsDeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDeploymentsResponse> list(core.String scriptId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -877,12 +877,12 @@ class ProjectsDeploymentsResourceApi {
   async.Future<Deployment> update(UpdateDeploymentRequest request,
       core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -939,12 +939,12 @@ class ProjectsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Version> create(Version request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -989,12 +989,12 @@ class ProjectsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Version> get(core.String scriptId, core.int versionNumber,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -1045,12 +1045,12 @@ class ProjectsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String scriptId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -1120,12 +1120,12 @@ class ScriptsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> run(ExecutionRequest request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

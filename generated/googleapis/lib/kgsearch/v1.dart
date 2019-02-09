@@ -22,8 +22,8 @@ class KgsearchApi {
   EntitiesResourceApi get entities => new EntitiesResourceApi(_requester);
 
   KgsearchApi(http.Client client,
-      {core.String rootUrl: "https://kgsearch.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://kgsearch.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -79,12 +79,12 @@ class EntitiesResourceApi {
       core.List<core.String> ids,
       core.int limit,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (prefix != null) {
       _queryParams["prefix"] = ["${prefix}"];

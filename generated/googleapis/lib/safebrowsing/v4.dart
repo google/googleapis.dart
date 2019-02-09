@@ -35,8 +35,8 @@ class SafebrowsingApi {
       new ThreatMatchesResourceApi(_requester);
 
   SafebrowsingApi(http.Client client,
-      {core.String rootUrl: "https://safebrowsing.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://safebrowsing.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -69,12 +69,12 @@ class EncodedFullHashesResourceApi {
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
       {core.String clientId, core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
@@ -129,12 +129,12 @@ class EncodedUpdatesResourceApi {
   /// this method will complete with the same error.
   async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest,
       {core.String clientId, core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
@@ -186,12 +186,12 @@ class FullHashesResourceApi {
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> find(FindFullHashesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -235,12 +235,12 @@ class ThreatHitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> create(ThreatHit request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -287,12 +287,12 @@ class ThreatListUpdatesResourceApi {
   async.Future<FetchThreatListUpdatesResponse> fetch(
       FetchThreatListUpdatesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -334,12 +334,12 @@ class ThreatListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListThreatListsResponse> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -380,12 +380,12 @@ class ThreatMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<FindThreatMatchesResponse> find(FindThreatMatchesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -416,7 +416,7 @@ class Checksum {
     return convert.base64.decode(sha256);
   }
 
-  void set sha256AsBytes(core.List<core.int> _bytes) {
+  set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -849,7 +849,7 @@ class ListUpdateRequest {
     return convert.base64.decode(state);
   }
 
-  void set stateAsBytes(core.List<core.int> _bytes) {
+  set stateAsBytes(core.List<core.int> _bytes) {
     state =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -953,7 +953,7 @@ class ListUpdateResponse {
     return convert.base64.decode(newClientState);
   }
 
-  void set newClientStateAsBytes(core.List<core.int> _bytes) {
+  set newClientStateAsBytes(core.List<core.int> _bytes) {
     newClientState =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1097,7 +1097,7 @@ class MetadataEntry {
     return convert.base64.decode(key);
   }
 
-  void set keyAsBytes(core.List<core.int> _bytes) {
+  set keyAsBytes(core.List<core.int> _bytes) {
     key =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1108,7 +1108,7 @@ class MetadataEntry {
     return convert.base64.decode(value);
   }
 
-  void set valueAsBytes(core.List<core.int> _bytes) {
+  set valueAsBytes(core.List<core.int> _bytes) {
     value =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1159,7 +1159,7 @@ class RawHashes {
     return convert.base64.decode(rawHashes);
   }
 
-  void set rawHashesAsBytes(core.List<core.int> _bytes) {
+  set rawHashesAsBytes(core.List<core.int> _bytes) {
     rawHashes =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1220,7 +1220,7 @@ class RiceDeltaEncoding {
     return convert.base64.decode(encodedData);
   }
 
-  void set encodedDataAsBytes(core.List<core.int> _bytes) {
+  set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1286,7 +1286,7 @@ class ThreatEntry {
     return convert.base64.decode(digest);
   }
 
-  void set digestAsBytes(core.List<core.int> _bytes) {
+  set digestAsBytes(core.List<core.int> _bytes) {
     digest =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1299,7 +1299,7 @@ class ThreatEntry {
     return convert.base64.decode(hash);
   }
 
-  void set hashAsBytes(core.List<core.int> _bytes) {
+  set hashAsBytes(core.List<core.int> _bytes) {
     hash =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1860,7 +1860,7 @@ class UserInfo {
     return convert.base64.decode(userId);
   }
 
-  void set userIdAsBytes(core.List<core.int> _bytes) {
+  set userIdAsBytes(core.List<core.int> _bytes) {
     userId =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

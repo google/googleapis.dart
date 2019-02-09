@@ -37,8 +37,8 @@ class WebmastersApi {
       new UrlcrawlerrorssamplesResourceApi(_requester);
 
   WebmastersApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "webmasters/v3/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "webmasters/v3/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -77,12 +77,12 @@ class SearchanalyticsResourceApi {
   async.Future<SearchAnalyticsQueryResponse> query(
       SearchAnalyticsQueryRequest request, core.String siteUrl,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -134,12 +134,12 @@ class SitemapsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String siteUrl, core.String feedpath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -189,12 +189,12 @@ class SitemapsResourceApi {
   /// this method will complete with the same error.
   async.Future<WmxSitemap> get(core.String siteUrl, core.String feedpath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -243,12 +243,12 @@ class SitemapsResourceApi {
   /// this method will complete with the same error.
   async.Future<SitemapsListResponse> list(core.String siteUrl,
       {core.String sitemapIndex, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -291,12 +291,12 @@ class SitemapsResourceApi {
   /// this method will complete with the same error.
   async.Future submit(core.String siteUrl, core.String feedpath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -345,12 +345,12 @@ class SitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future add(core.String siteUrl, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -390,12 +390,12 @@ class SitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String siteUrl, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -437,12 +437,12 @@ class SitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WmxSite> get(core.String siteUrl, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -477,12 +477,12 @@ class SitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SitesListResponse> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -551,12 +551,12 @@ class UrlcrawlerrorscountsResourceApi {
       core.bool latestCountsOnly,
       core.String platform,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -639,12 +639,12 @@ class UrlcrawlerrorssamplesResourceApi {
   async.Future<UrlCrawlErrorsSample> get(core.String siteUrl, core.String url,
       core.String category, core.String platform,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -718,12 +718,12 @@ class UrlcrawlerrorssamplesResourceApi {
   async.Future<UrlCrawlErrorsSamplesListResponse> list(
       core.String siteUrl, core.String category, core.String platform,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
@@ -797,12 +797,12 @@ class UrlcrawlerrorssamplesResourceApi {
   async.Future markAsFixed(core.String siteUrl, core.String url,
       core.String category, core.String platform,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");

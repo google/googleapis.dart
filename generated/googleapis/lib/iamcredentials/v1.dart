@@ -27,8 +27,8 @@ class IamcredentialsApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   IamcredentialsApi(http.Client client,
-      {core.String rootUrl: "https://iamcredentials.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://iamcredentials.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -73,12 +73,12 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<GenerateAccessTokenResponse> generateAccessToken(
       GenerateAccessTokenRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -129,12 +129,12 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<GenerateIdTokenResponse> generateIdToken(
       GenerateIdTokenRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -183,12 +183,12 @@ class ProjectsServiceAccountsResourceApi {
       generateIdentityBindingAccessToken(
           GenerateIdentityBindingAccessTokenRequest request, core.String name,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -239,12 +239,12 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<SignBlobResponse> signBlob(
       SignBlobRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -292,12 +292,12 @@ class ProjectsServiceAccountsResourceApi {
   async.Future<SignJwtResponse> signJwt(
       SignJwtRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -608,7 +608,7 @@ class SignBlobRequest {
     return convert.base64.decode(payload);
   }
 
-  void set payloadAsBytes(core.List<core.int> _bytes) {
+  set payloadAsBytes(core.List<core.int> _bytes) {
     payload =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -647,7 +647,7 @@ class SignBlobResponse {
     return convert.base64.decode(signedBlob);
   }
 
-  void set signedBlobAsBytes(core.List<core.int> _bytes) {
+  set signedBlobAsBytes(core.List<core.int> _bytes) {
     signedBlob =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

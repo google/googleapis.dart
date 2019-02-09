@@ -29,8 +29,8 @@ class ClouderrorreportingApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   ClouderrorreportingApi(http.Client client,
-      {core.String rootUrl: "https://clouderrorreporting.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://clouderrorreporting.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -71,12 +71,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<DeleteEventsResponse> deleteEvents(core.String projectName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -161,12 +161,12 @@ class ProjectsEventsResourceApi {
       core.String serviceFilter_resourceType,
       core.String timeRange_period,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -245,12 +245,12 @@ class ProjectsEventsResourceApi {
   async.Future<ReportErrorEventResponse> report(
       ReportedErrorEvent request, core.String projectName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -374,12 +374,12 @@ class ProjectsGroupStatsResourceApi {
       core.String serviceFilter_resourceType,
       core.String alignmentTime,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -466,12 +466,12 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ErrorGroup> get(core.String groupName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
@@ -514,12 +514,12 @@ class ProjectsGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ErrorGroup> update(ErrorGroup request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

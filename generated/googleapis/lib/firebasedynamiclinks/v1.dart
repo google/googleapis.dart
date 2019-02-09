@@ -29,8 +29,8 @@ class FirebasedynamiclinksApi {
   V1ResourceApi get v1 => new V1ResourceApi(_requester);
 
   FirebasedynamiclinksApi(http.Client client,
-      {core.String rootUrl: "https://firebasedynamiclinks.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://firebasedynamiclinks.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -73,12 +73,12 @@ class ManagedShortLinksResourceApi {
   async.Future<CreateManagedShortLinkResponse> create(
       CreateManagedShortLinkRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -132,12 +132,12 @@ class ShortLinksResourceApi {
   async.Future<CreateShortDynamicLinkResponse> create(
       CreateShortDynamicLinkRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -189,12 +189,12 @@ class V1ResourceApi {
   /// this method will complete with the same error.
   async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink,
       {core.String sdkVersion, core.String durationDays, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (dynamicLink == null) {
       throw new core.ArgumentError("Parameter dynamicLink is required.");
@@ -239,12 +239,12 @@ class V1ResourceApi {
   async.Future<GetIosPostInstallAttributionResponse> installAttribution(
       GetIosPostInstallAttributionRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -284,12 +284,12 @@ class V1ResourceApi {
   async.Future<GetIosReopenAttributionResponse> reopenAttribution(
       GetIosReopenAttributionRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

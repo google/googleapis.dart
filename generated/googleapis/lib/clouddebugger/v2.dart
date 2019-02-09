@@ -33,8 +33,8 @@ class ClouddebuggerApi {
   DebuggerResourceApi get debugger => new DebuggerResourceApi(_requester);
 
   ClouddebuggerApi(http.Client client,
-      {core.String rootUrl: "https://clouddebugger.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://clouddebugger.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,12 +86,12 @@ class ControllerDebuggeesResourceApi {
   async.Future<RegisterDebuggeeResponse> register(
       RegisterDebuggeeRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -166,12 +166,12 @@ class ControllerDebuggeesBreakpointsResourceApi {
       {core.String waitToken,
       core.bool successOnTimeout,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -232,12 +232,12 @@ class ControllerDebuggeesBreakpointsResourceApi {
       core.String debuggeeId,
       core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -315,12 +315,12 @@ class DebuggerDebuggeesResourceApi {
       core.String clientVersion,
       core.bool includeInactive,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project != null) {
       _queryParams["project"] = [project];
@@ -376,12 +376,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId,
       {core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -434,12 +434,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   async.Future<GetBreakpointResponse> get(
       core.String debuggeeId, core.String breakpointId,
       {core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -520,12 +520,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       core.bool includeAllUsers,
       core.bool stripResults,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -589,12 +589,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   async.Future<SetBreakpointResponse> set(
       Breakpoint request, core.String debuggeeId,
       {core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

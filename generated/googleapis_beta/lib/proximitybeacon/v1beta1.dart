@@ -30,8 +30,8 @@ class ProximitybeaconApi {
   V1beta1ResourceApi get v1beta1 => new V1beta1ResourceApi(_requester);
 
   ProximitybeaconApi(http.Client client,
-      {core.String rootUrl: "https://proximitybeacon.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://proximitybeacon.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -64,12 +64,12 @@ class BeaconinfoResourceApi {
   async.Future<GetInfoForObservedBeaconsResponse> getforobserved(
       GetInfoForObservedBeaconsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -141,12 +141,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> activate(core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -211,12 +211,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> deactivate(core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -281,12 +281,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> decommission(core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -348,12 +348,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -418,12 +418,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Beacon> get(core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -554,12 +554,12 @@ class BeaconsResourceApi {
       core.String projectId,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q != null) {
       _queryParams["q"] = [q];
@@ -618,12 +618,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Beacon> register(Beacon request,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -691,12 +691,12 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<Beacon> update(Beacon request, core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -782,12 +782,12 @@ class BeaconsAttachmentsResourceApi {
       {core.String namespacedType,
       core.String projectId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -867,12 +867,12 @@ class BeaconsAttachmentsResourceApi {
   async.Future<BeaconAttachment> create(
       BeaconAttachment request, core.String beaconName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -938,12 +938,12 @@ class BeaconsAttachmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String attachmentName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (attachmentName == null) {
       throw new core.ArgumentError("Parameter attachmentName is required.");
@@ -1019,12 +1019,12 @@ class BeaconsAttachmentsResourceApi {
       {core.String projectId,
       core.String namespacedType,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -1113,12 +1113,12 @@ class BeaconsDiagnosticsResourceApi {
       core.String alertFilter,
       core.String projectId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
@@ -1184,12 +1184,12 @@ class NamespacesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNamespacesResponse> list(
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -1239,12 +1239,12 @@ class NamespacesResourceApi {
   /// this method will complete with the same error.
   async.Future<Namespace> update(Namespace request, core.String namespaceName,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1298,12 +1298,12 @@ class V1beta1ResourceApi {
   /// this method will complete with the same error.
   async.Future<EphemeralIdRegistrationParams> getEidparams(
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1335,7 +1335,7 @@ class AdvertisedId {
     return convert.base64.decode(id);
   }
 
-  void set idAsBytes(core.List<core.int> _bytes) {
+  set idAsBytes(core.List<core.int> _bytes) {
     id =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1387,7 +1387,7 @@ class AttachmentInfo {
     return convert.base64.decode(data);
   }
 
-  void set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> _bytes) {
     data =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1525,7 +1525,7 @@ class Beacon {
     return convert.base64.decode(provisioningKey);
   }
 
-  void set provisioningKeyAsBytes(core.List<core.int> _bytes) {
+  set provisioningKeyAsBytes(core.List<core.int> _bytes) {
     provisioningKey =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1641,7 +1641,7 @@ class BeaconAttachment {
     return convert.base64.decode(data);
   }
 
-  void set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> _bytes) {
     data =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1938,7 +1938,7 @@ class EphemeralIdRegistration {
     return convert.base64.decode(beaconEcdhPublicKey);
   }
 
-  void set beaconEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
+  set beaconEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
     beaconEcdhPublicKey =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1951,7 +1951,7 @@ class EphemeralIdRegistration {
     return convert.base64.decode(beaconIdentityKey);
   }
 
-  void set beaconIdentityKeyAsBytes(core.List<core.int> _bytes) {
+  set beaconIdentityKeyAsBytes(core.List<core.int> _bytes) {
     beaconIdentityKey =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1973,7 +1973,7 @@ class EphemeralIdRegistration {
     return convert.base64.decode(initialEid);
   }
 
-  void set initialEidAsBytes(core.List<core.int> _bytes) {
+  set initialEidAsBytes(core.List<core.int> _bytes) {
     initialEid =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1995,7 +1995,7 @@ class EphemeralIdRegistration {
     return convert.base64.decode(serviceEcdhPublicKey);
   }
 
-  void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
+  set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
     serviceEcdhPublicKey =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2070,7 +2070,7 @@ class EphemeralIdRegistrationParams {
     return convert.base64.decode(serviceEcdhPublicKey);
   }
 
-  void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
+  set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
     serviceEcdhPublicKey =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2430,7 +2430,7 @@ class Observation {
     return convert.base64.decode(telemetry);
   }
 
-  void set telemetryAsBytes(core.List<core.int> _bytes) {
+  set telemetryAsBytes(core.List<core.int> _bytes) {
     telemetry =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

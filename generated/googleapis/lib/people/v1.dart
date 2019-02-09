@@ -59,8 +59,8 @@ class PeopleApi {
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PeopleApi(http.Client client,
-      {core.String rootUrl: "https://people.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://people.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -97,12 +97,12 @@ class ContactGroupsResourceApi {
       {core.int maxMembers,
       core.List<core.String> resourceNames,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
@@ -144,12 +144,12 @@ class ContactGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContactGroup> create(CreateContactGroupRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -192,12 +192,12 @@ class ContactGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String resourceName,
       {core.bool deleteContacts, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -242,12 +242,12 @@ class ContactGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContactGroup> get(core.String resourceName,
       {core.int maxMembers, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -300,12 +300,12 @@ class ContactGroupsResourceApi {
       core.int pageSize,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -357,12 +357,12 @@ class ContactGroupsResourceApi {
   async.Future<ContactGroup> update(
       UpdateContactGroupRequest request, core.String resourceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -414,12 +414,12 @@ class ContactGroupsMembersResourceApi {
   async.Future<ModifyContactGroupMembersResponse> modify(
       ModifyContactGroupMembersRequest request, core.String resourceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -474,12 +474,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<Person> createContact(Person request,
       {core.String parent, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -521,12 +521,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> deleteContact(core.String resourceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -620,12 +620,12 @@ class PeopleResourceApi {
       {core.String personFields,
       core.String requestMask_includeField,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -726,12 +726,12 @@ class PeopleResourceApi {
       core.String requestMask_includeField,
       core.List<core.String> resourceNames,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
@@ -817,12 +817,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<Person> updateContact(Person request, core.String resourceName,
       {core.String updatePersonFields, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -952,12 +952,12 @@ class PeopleConnectionsResourceApi {
       core.String personFields,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");

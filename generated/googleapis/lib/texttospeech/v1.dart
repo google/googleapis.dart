@@ -29,8 +29,8 @@ class TexttospeechApi {
   VoicesResourceApi get voices => new VoicesResourceApi(_requester);
 
   TexttospeechApi(http.Client client,
-      {core.String rootUrl: "https://texttospeech.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://texttospeech.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -60,12 +60,12 @@ class TextResourceApi {
   async.Future<SynthesizeSpeechResponse> synthesize(
       SynthesizeSpeechRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -117,12 +117,12 @@ class VoicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVoicesResponse> list(
       {core.String languageCode, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
@@ -365,7 +365,7 @@ class SynthesizeSpeechResponse {
     return convert.base64.decode(audioContent);
   }
 
-  void set audioContentAsBytes(core.List<core.int> _bytes) {
+  set audioContentAsBytes(core.List<core.int> _bytes) {
     audioContent =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

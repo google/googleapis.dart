@@ -36,8 +36,8 @@ class TranslateApi {
       new TranslationsResourceApi(_requester);
 
   TranslateApi(http.Client client,
-      {core.String rootUrl: "https://translation.googleapis.com/",
-      core.String servicePath: "language/translate/"})
+      {core.String rootUrl = "https://translation.googleapis.com/",
+      core.String servicePath = "language/translate/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -65,12 +65,12 @@ class DetectionsResourceApi {
   /// this method will complete with the same error.
   async.Future<DetectionsListResponse> detect(DetectLanguageRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -110,12 +110,12 @@ class DetectionsResourceApi {
   /// this method will complete with the same error.
   async.Future<DetectionsListResponse> list(core.List<core.String> q,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null || q.isEmpty) {
       throw new core.ArgumentError("Parameter q is required.");
@@ -165,12 +165,12 @@ class LanguagesResourceApi {
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(
       {core.String target, core.String model, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (target != null) {
       _queryParams["target"] = [target];
@@ -248,12 +248,12 @@ class TranslationsResourceApi {
       core.String model,
       core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null || q.isEmpty) {
       throw new core.ArgumentError("Parameter q is required.");
@@ -309,12 +309,12 @@ class TranslationsResourceApi {
   /// this method will complete with the same error.
   async.Future<TranslationsListResponse> translate(TranslateTextRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -451,7 +451,7 @@ class DetectionsResource
 
   core.int get length => _inner.length;
 
-  void set length(core.int newLength) {
+  set length(core.int newLength) {
     _inner.length = newLength;
   }
 }

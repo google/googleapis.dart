@@ -30,8 +30,8 @@ class VaultApi {
   MattersResourceApi get matters => new MattersResourceApi(_requester);
 
   VaultApi(http.Client client,
-      {core.String rootUrl: "https://vault.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://vault.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -68,12 +68,12 @@ class MattersResourceApi {
   async.Future<MatterPermission> addPermissions(
       AddMatterPermissionsRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -119,12 +119,12 @@ class MattersResourceApi {
   async.Future<CloseMatterResponse> close(
       CloseMatterRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -168,12 +168,12 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Matter> create(Matter request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -210,12 +210,12 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Matter> delete(core.String matterId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -259,12 +259,12 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<Matter> get(core.String matterId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -327,12 +327,12 @@ class MattersResourceApi {
       core.int pageSize,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (state != null) {
       _queryParams["state"] = [state];
@@ -382,12 +382,12 @@ class MattersResourceApi {
   async.Future<Empty> removePermissions(
       RemoveMatterPermissionsRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -433,12 +433,12 @@ class MattersResourceApi {
   async.Future<ReopenMatterResponse> reopen(
       ReopenMatterRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -483,12 +483,12 @@ class MattersResourceApi {
   async.Future<Matter> undelete(
       UndeleteMatterRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -536,12 +536,12 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<Matter> update(Matter request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -590,12 +590,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Export> create(Export request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -639,12 +639,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String matterId, core.String exportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -690,12 +690,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Export> get(core.String matterId, core.String exportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -743,12 +743,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExportsResponse> list(core.String matterId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -810,12 +810,12 @@ class MattersHoldsResourceApi {
   async.Future<AddHeldAccountsResponse> addHeldAccounts(
       AddHeldAccountsRequest request, core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -865,12 +865,12 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<Hold> create(Hold request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -914,12 +914,12 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -971,12 +971,12 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<Hold> get(core.String matterId, core.String holdId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1040,12 +1040,12 @@ class MattersHoldsResourceApi {
       core.int pageSize,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1102,12 +1102,12 @@ class MattersHoldsResourceApi {
       core.String matterId,
       core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1163,12 +1163,12 @@ class MattersHoldsResourceApi {
   async.Future<Hold> update(
       Hold request, core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1229,12 +1229,12 @@ class MattersHoldsAccountsResourceApi {
   async.Future<HeldAccount> create(
       HeldAccount request, core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1288,12 +1288,12 @@ class MattersHoldsAccountsResourceApi {
   async.Future<Empty> delete(
       core.String matterId, core.String holdId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1348,12 +1348,12 @@ class MattersHoldsAccountsResourceApi {
   async.Future<ListHeldAccountsResponse> list(
       core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1410,12 +1410,12 @@ class MattersSavedQueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedQuery> create(SavedQuery request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1462,12 +1462,12 @@ class MattersSavedQueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String matterId, core.String savedQueryId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1515,12 +1515,12 @@ class MattersSavedQueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedQuery> get(core.String matterId, core.String savedQueryId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1572,12 +1572,12 @@ class MattersSavedQueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(core.String matterId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
