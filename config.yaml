@@ -4,10 +4,11 @@ packages:
 - googleapis:
     version: 0.53.0
     author: Dart Team <misc@dartlang.org>
-    homepage: http://www.dartlang.org/googleapis/
+    homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
+    example: resources/googleapis/examples/main.dart
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
@@ -151,7 +152,7 @@ packages:
 - googleapis_beta:
     version: 0.48.0
     author: Dart Team <misc@dartlang.org>
-    homepage: http://www.dartlang.org/googleapis/
+    homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
