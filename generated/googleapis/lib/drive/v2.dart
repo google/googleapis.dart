@@ -27,7 +27,7 @@ const core.String USER_AGENT = 'dart-api-client drive/v2';
 /// Manages files in Drive including uploading, downloading, searching,
 /// detecting changes, and updating sharing permissions.
 class DriveApi {
-  /// View and manage the files in your Google Drive
+  /// See, edit, create, and delete all of your Google Drive files
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /// View and manage its own configuration data in your Google Drive
@@ -54,7 +54,7 @@ class DriveApi {
   static const DrivePhotosReadonlyScope =
       "https://www.googleapis.com/auth/drive.photos.readonly";
 
-  /// View the files in your Google Drive
+  /// See and download all your Google Drive files
   static const DriveReadonlyScope =
       "https://www.googleapis.com/auth/drive.readonly";
 
@@ -2119,7 +2119,7 @@ class FilesResourceApi {
   }
 
   /// Moves a file to the trash. The currently authenticated user must own the
-  /// file or be an organizer on the parent for Team Drive files.
+  /// file or be at least a fileOrganizer on the parent for Team Drive files.
   ///
   /// Request parameters:
   ///
@@ -7108,6 +7108,10 @@ class File {
 
   /// A short description of the file.
   core.String description;
+
+  /// Short lived download URL for the file. This field is only populated for
+  /// files with content stored in Drive; it is not populated for Google Docs or
+  /// shortcut files.
   core.String downloadUrl;
 
   /// Deprecated: use capabilities/canEdit.
@@ -8014,8 +8018,9 @@ class PermissionTeamDrivePermissionDetails {
   /// The primary role for this user. While new values may be added in the
   /// future, the following are currently possible:
   /// - organizer
-  /// - reader
+  /// - fileOrganizer
   /// - writer
+  /// - reader
   core.String role;
 
   /// The Team Drive permission type for this user. While new values may be
@@ -8120,10 +8125,11 @@ class Permission {
 
   /// The primary role for this user. While new values may be supported in the
   /// future, the following are currently allowed:
-  /// - organizer
   /// - owner
-  /// - reader
+  /// - organizer
+  /// - fileOrganizer
   /// - writer
+  /// - reader
   core.String role;
 
   /// A link back to this permission.

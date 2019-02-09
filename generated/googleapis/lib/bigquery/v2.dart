@@ -443,9 +443,9 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the job to cancel
   ///
-  /// [location] - [Experimental] The geographic location of the job. Required
-  /// except for US and EU. See details at
-  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
+  /// [location] - The geographic location of the job. Required except for US
+  /// and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -505,9 +505,9 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the requested job
   ///
-  /// [location] - [Experimental] The geographic location of the job. Required
-  /// except for US and EU. See details at
-  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
+  /// [location] - The geographic location of the job. Required except for US
+  /// and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,9 +563,9 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the query job
   ///
-  /// [location] - [Experimental] The geographic location where the job should
-  /// run. Required except for US and EU. See details at
-  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
+  /// [location] - The geographic location where the job should run. Required
+  /// except for US and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
   /// [maxResults] - Maximum number of results to read
   ///
@@ -1894,11 +1894,16 @@ class CsvOptions {
 class DatasetAccess {
   /// [Pick one] A domain to grant access to. Any users signed in with the
   /// domain specified will be granted the specified access. Example:
-  /// "example.com".
+  /// "example.com". Maps to IAM policy member "domain:DOMAIN".
   core.String domain;
 
-  /// [Pick one] An email address of a Google Group to grant access to.
+  /// [Pick one] An email address of a Google Group to grant access to. Maps to
+  /// IAM policy member "group:GROUP".
   core.String groupByEmail;
+
+  /// [Pick one] Some other type of member that appears in the IAM Policy but
+  /// isn't a user, group, domain, or special group.
+  core.String iamMember;
 
   /// [Required] Describes the rights granted to the user specified by the other
   /// member of the access object. The following string values are supported:
@@ -1908,11 +1913,13 @@ class DatasetAccess {
   /// [Pick one] A special group to grant access to. Possible values include:
   /// projectOwners: Owners of the enclosing project. projectReaders: Readers of
   /// the enclosing project. projectWriters: Writers of the enclosing project.
-  /// allAuthenticatedUsers: All authenticated BigQuery users.
+  /// allAuthenticatedUsers: All authenticated BigQuery users. Maps to
+  /// similarly-named IAM members.
   core.String specialGroup;
 
   /// [Pick one] An email address of a user to grant access to. For example:
-  /// fred@example.com.
+  /// fred@example.com. Maps to IAM policy member "user:EMAIL" or
+  /// "serviceAccount:EMAIL".
   core.String userByEmail;
 
   /// [Pick one] A view from a different dataset to grant access to. Queries
@@ -1930,6 +1937,9 @@ class DatasetAccess {
     }
     if (_json.containsKey("groupByEmail")) {
       groupByEmail = _json["groupByEmail"];
+    }
+    if (_json.containsKey("iamMember")) {
+      iamMember = _json["iamMember"];
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -1953,6 +1963,9 @@ class DatasetAccess {
     }
     if (groupByEmail != null) {
       _json["groupByEmail"] = groupByEmail;
+    }
+    if (iamMember != null) {
+      _json["iamMember"] = iamMember;
     }
     if (role != null) {
       _json["role"] = role;
@@ -2042,8 +2055,7 @@ class Dataset {
   core.String lastModifiedTime;
 
   /// The geographic location where the dataset should reside. The default value
-  /// is US. See details at
-  /// https://cloud.google.com/bigquery/docs/dataset-locations.
+  /// is US. See details at https://cloud.google.com/bigquery/docs/locations.
   core.String location;
 
   /// [Output-only] A URL that can be used to access the resource again. You can
@@ -2168,7 +2180,7 @@ class DatasetListDatasets {
   /// group your datasets.
   core.Map<core.String, core.String> labels;
 
-  /// [Experimental] The geographic location where the data resides.
+  /// The geographic location where the data resides.
   core.String location;
 
   DatasetListDatasets();
@@ -2751,6 +2763,14 @@ class ExternalDataConfiguration {
   /// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
   GoogleSheetsOptions googleSheetsOptions;
 
+  /// [Optional, Experimental] If hive partitioning is enabled, which mode to
+  /// use. Two modes are supported: - AUTO: automatically infer partition key
+  /// name(s) and type(s). - STRINGS: automatic infer partition key name(s). All
+  /// types are strings. Not all storage formats support hive partitioning --
+  /// requesting hive partitioning on an unsupported format will lead to an
+  /// error.
+  core.String hivePartitioningMode;
+
   /// [Optional] Indicates if BigQuery should allow extra values that are not
   /// represented in the table schema. If true, the extra values are ignored. If
   /// false, records with extra columns are treated as bad records, and if there
@@ -2811,6 +2831,9 @@ class ExternalDataConfiguration {
       googleSheetsOptions =
           new GoogleSheetsOptions.fromJson(_json["googleSheetsOptions"]);
     }
+    if (_json.containsKey("hivePartitioningMode")) {
+      hivePartitioningMode = _json["hivePartitioningMode"];
+    }
     if (_json.containsKey("ignoreUnknownValues")) {
       ignoreUnknownValues = _json["ignoreUnknownValues"];
     }
@@ -2845,6 +2868,9 @@ class ExternalDataConfiguration {
     }
     if (googleSheetsOptions != null) {
       _json["googleSheetsOptions"] = (googleSheetsOptions).toJson();
+    }
+    if (hivePartitioningMode != null) {
+      _json["hivePartitioningMode"] = hivePartitioningMode;
     }
     if (ignoreUnknownValues != null) {
       _json["ignoreUnknownValues"] = ignoreUnknownValues;
@@ -3039,7 +3065,9 @@ class GetServiceAccountResponse {
 
 class GoogleSheetsOptions {
   /// [Beta] [Optional] Range of a sheet to query from. Only used when
-  /// non-empty. Typical format: !:
+  /// non-empty. Typical format:
+  /// sheet_name!top_left_cell_id:bottom_right_cell_id For example:
+  /// sheet1!A1:B20
   core.String range;
 
   /// [Optional] The number of rows at the top of a sheet that BigQuery will
@@ -3289,6 +3317,10 @@ class JobConfiguration {
   /// BigQuery may attempt to terminate the job.
   core.String jobTimeoutMs;
 
+  /// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or
+  /// UNKNOWN.
+  core.String jobType;
+
   /// The labels associated with this job. You can use these to organize and
   /// group your jobs. Label keys and values can be no longer than 63
   /// characters, can only contain lowercase letters, numeric characters,
@@ -3318,6 +3350,9 @@ class JobConfiguration {
     if (_json.containsKey("jobTimeoutMs")) {
       jobTimeoutMs = _json["jobTimeoutMs"];
     }
+    if (_json.containsKey("jobType")) {
+      jobType = _json["jobType"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -3343,6 +3378,9 @@ class JobConfiguration {
     }
     if (jobTimeoutMs != null) {
       _json["jobTimeoutMs"] = jobTimeoutMs;
+    }
+    if (jobType != null) {
+      _json["jobType"] = jobType;
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -3497,6 +3535,14 @@ class JobConfigurationLoad {
   /// a comma (',').
   core.String fieldDelimiter;
 
+  /// [Optional, Experimental] If hive partitioning is enabled, which mode to
+  /// use. Two modes are supported: - AUTO: automatically infer partition key
+  /// name(s) and type(s). - STRINGS: automatic infer partition key name(s). All
+  /// types are strings. Not all storage formats support hive partitioning --
+  /// requesting hive partitioning on an unsupported format will lead to an
+  /// error.
+  core.String hivePartitioningMode;
+
   /// [Optional] Indicates if BigQuery should allow extra values that are not
   /// represented in the table schema. If true, the extra values are ignored. If
   /// false, records with extra columns are treated as bad records, and if there
@@ -3538,6 +3584,10 @@ class JobConfigurationLoad {
   /// your data contains quoted newline characters, you must also set the
   /// allowQuotedNewlines property to true.
   core.String quote;
+
+  /// [TrustedTester] Range partitioning specification for this table. Only one
+  /// of timePartitioning and rangePartitioning should be specified.
+  RangePartitioning rangePartitioning;
 
   /// [Optional] The schema for the destination table. The schema can be omitted
   /// if the destination table already exists, or if you're loading data from
@@ -3585,8 +3635,14 @@ class JobConfigurationLoad {
   /// the '*' wildcard character is not allowed.
   core.List<core.String> sourceUris;
 
-  /// Time-based partitioning specification for the destination table.
+  /// Time-based partitioning specification for the destination table. Only one
+  /// of timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
+
+  /// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable
+  /// interpreting logical types into their corresponding types (ie. TIMESTAMP),
+  /// instead of only using their raw types (ie. INTEGER).
+  core.bool useAvroLogicalTypes;
 
   /// [Optional] Specifies the action that occurs if the destination table
   /// already exists. The following values are supported: WRITE_TRUNCATE: If the
@@ -3634,6 +3690,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("fieldDelimiter")) {
       fieldDelimiter = _json["fieldDelimiter"];
     }
+    if (_json.containsKey("hivePartitioningMode")) {
+      hivePartitioningMode = _json["hivePartitioningMode"];
+    }
     if (_json.containsKey("ignoreUnknownValues")) {
       ignoreUnknownValues = _json["ignoreUnknownValues"];
     }
@@ -3649,6 +3708,10 @@ class JobConfigurationLoad {
     }
     if (_json.containsKey("quote")) {
       quote = _json["quote"];
+    }
+    if (_json.containsKey("rangePartitioning")) {
+      rangePartitioning =
+          new RangePartitioning.fromJson(_json["rangePartitioning"]);
     }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
@@ -3675,6 +3738,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("timePartitioning")) {
       timePartitioning =
           new TimePartitioning.fromJson(_json["timePartitioning"]);
+    }
+    if (_json.containsKey("useAvroLogicalTypes")) {
+      useAvroLogicalTypes = _json["useAvroLogicalTypes"];
     }
     if (_json.containsKey("writeDisposition")) {
       writeDisposition = _json["writeDisposition"];
@@ -3716,6 +3782,9 @@ class JobConfigurationLoad {
     if (fieldDelimiter != null) {
       _json["fieldDelimiter"] = fieldDelimiter;
     }
+    if (hivePartitioningMode != null) {
+      _json["hivePartitioningMode"] = hivePartitioningMode;
+    }
     if (ignoreUnknownValues != null) {
       _json["ignoreUnknownValues"] = ignoreUnknownValues;
     }
@@ -3730,6 +3799,9 @@ class JobConfigurationLoad {
     }
     if (quote != null) {
       _json["quote"] = quote;
+    }
+    if (rangePartitioning != null) {
+      _json["rangePartitioning"] = (rangePartitioning).toJson();
     }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
@@ -3754,6 +3826,9 @@ class JobConfigurationLoad {
     }
     if (timePartitioning != null) {
       _json["timePartitioning"] = (timePartitioning).toJson();
+    }
+    if (useAvroLogicalTypes != null) {
+      _json["useAvroLogicalTypes"] = useAvroLogicalTypes;
     }
     if (writeDisposition != null) {
       _json["writeDisposition"] = writeDisposition;
@@ -3785,7 +3860,8 @@ class JobConfigurationQuery {
   core.String createDisposition;
 
   /// [Optional] Specifies the default dataset to use for unqualified table
-  /// names in the query.
+  /// names in the query. Note that this does not alter behavior of unqualified
+  /// dataset names.
   DatasetReference defaultDataset;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -3832,6 +3908,10 @@ class JobConfigurationQuery {
   /// Query parameters for standard SQL queries.
   core.List<QueryParameter> queryParameters;
 
+  /// [TrustedTester] Range partitioning specification for this table. Only one
+  /// of timePartitioning and rangePartitioning should be specified.
+  RangePartitioning rangePartitioning;
+
   /// Allows the schema of the destination table to be updated as a side effect
   /// of the query job. Schema update options are supported in two cases: when
   /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
@@ -3849,7 +3929,8 @@ class JobConfigurationQuery {
   /// as if it were a standard BigQuery table.
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
 
-  /// Time-based partitioning specification for the destination table.
+  /// Time-based partitioning specification for the destination table. Only one
+  /// of timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The
@@ -3929,6 +4010,10 @@ class JobConfigurationQuery {
           .map<QueryParameter>((value) => new QueryParameter.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("rangePartitioning")) {
+      rangePartitioning =
+          new RangePartitioning.fromJson(_json["rangePartitioning"]);
+    }
     if (_json.containsKey("schemaUpdateOptions")) {
       schemaUpdateOptions =
           (_json["schemaUpdateOptions"] as core.List).cast<core.String>();
@@ -4006,6 +4091,9 @@ class JobConfigurationQuery {
     if (queryParameters != null) {
       _json["queryParameters"] =
           queryParameters.map((value) => (value).toJson()).toList();
+    }
+    if (rangePartitioning != null) {
+      _json["rangePartitioning"] = (rangePartitioning).toJson();
     }
     if (schemaUpdateOptions != null) {
       _json["schemaUpdateOptions"] = schemaUpdateOptions;
@@ -4274,9 +4362,8 @@ class JobReference {
   /// characters.
   core.String jobId;
 
-  /// The geographic location of the job. Required except for US and EU. See
-  /// details at
-  /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.
+  /// The geographic location of the job. See details at
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   core.String location;
 
   /// [Required] The ID of the project containing this job.
@@ -4312,6 +4399,38 @@ class JobReference {
   }
 }
 
+class JobStatisticsReservationUsage {
+  /// [Output-only] Reservation name or "unreserved" for on-demand resources
+  /// usage.
+  core.String name;
+
+  /// [Output-only] Slot-milliseconds the job spent in the given reservation.
+  core.String slotMs;
+
+  JobStatisticsReservationUsage();
+
+  JobStatisticsReservationUsage.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("slotMs")) {
+      slotMs = _json["slotMs"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (slotMs != null) {
+      _json["slotMs"] = slotMs;
+    }
+    return _json;
+  }
+}
+
 class JobStatistics {
   /// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and
   /// EXTRACT jobs.
@@ -4337,6 +4456,9 @@ class JobStatistics {
   /// [Output-only] Quotas which delayed this job's start time.
   core.List<core.String> quotaDeferments;
 
+  /// [Output-only] Job resource usage breakdown by reservation.
+  core.List<JobStatisticsReservationUsage> reservationUsage;
+
   /// [Output-only] Start time of this job, in milliseconds since the epoch.
   /// This field will be present when the job transitions from the PENDING state
   /// to either RUNNING or DONE.
@@ -4345,6 +4467,9 @@ class JobStatistics {
   /// [Output-only] [Deprecated] Use the bytes processed in the query statistics
   /// instead.
   core.String totalBytesProcessed;
+
+  /// [Output-only] Slot-milliseconds for the job.
+  core.String totalSlotMs;
 
   JobStatistics();
 
@@ -4371,11 +4496,20 @@ class JobStatistics {
       quotaDeferments =
           (_json["quotaDeferments"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("reservationUsage")) {
+      reservationUsage = (_json["reservationUsage"] as core.List)
+          .map<JobStatisticsReservationUsage>(
+              (value) => new JobStatisticsReservationUsage.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
     }
     if (_json.containsKey("totalBytesProcessed")) {
       totalBytesProcessed = _json["totalBytesProcessed"];
+    }
+    if (_json.containsKey("totalSlotMs")) {
+      totalSlotMs = _json["totalSlotMs"];
     }
   }
 
@@ -4403,11 +4537,18 @@ class JobStatistics {
     if (quotaDeferments != null) {
       _json["quotaDeferments"] = quotaDeferments;
     }
+    if (reservationUsage != null) {
+      _json["reservationUsage"] =
+          reservationUsage.map((value) => (value).toJson()).toList();
+    }
     if (startTime != null) {
       _json["startTime"] = startTime;
     }
     if (totalBytesProcessed != null) {
       _json["totalBytesProcessed"] = totalBytesProcessed;
+    }
+    if (totalSlotMs != null) {
+      _json["totalSlotMs"] = totalSlotMs;
     }
     return _json;
   }
@@ -4452,18 +4593,17 @@ class JobStatistics2 {
   /// [Output-only] Whether the query result was fetched from the query cache.
   core.bool cacheHit;
 
-  /// [Output-only, Beta] The DDL operation performed, possibly dependent on the
-  /// pre-existence of the DDL target. Possible values (new values might be
-  /// added in the future): "CREATE": The query created the DDL target. "SKIP":
-  /// No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the
-  /// table already exists, or the query is DROP TABLE IF EXISTS while the table
-  /// does not exist. "REPLACE": The query replaced the DDL target. Example
-  /// case: the query is CREATE OR REPLACE TABLE, and the table already exists.
-  /// "DROP": The query deleted the DDL target.
+  /// The DDL operation performed, possibly dependent on the pre-existence of
+  /// the DDL target. Possible values (new values might be added in the future):
+  /// "CREATE": The query created the DDL target. "SKIP": No-op. Example cases:
+  /// the query is CREATE TABLE IF NOT EXISTS while the table already exists, or
+  /// the query is DROP TABLE IF EXISTS while the table does not exist.
+  /// "REPLACE": The query replaced the DDL target. Example case: the query is
+  /// CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query
+  /// deleted the DDL target.
   core.String ddlOperationPerformed;
 
-  /// [Output-only, Beta] The DDL target table. Present only for CREATE/DROP
-  /// TABLE/VIEW queries.
+  /// The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.
   TableReference ddlTargetTable;
 
   /// [Output-only] The original estimate of bytes processed for the job.
@@ -4496,20 +4636,21 @@ class JobStatistics2 {
   /// run of non-legacy SQL queries.
   TableSchema schema;
 
-  /// [Output-only, Beta] The type of query statement, if valid. Possible values
-  /// (new values might be added in the future): "SELECT": SELECT query.
-  /// "INSERT": INSERT query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// The type of query statement, if valid. Possible values (new values might
+  /// be added in the future): "SELECT": SELECT query. "INSERT": INSERT query;
+  /// see
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "UPDATE": UPDATE query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "DELETE": DELETE query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "MERGE": MERGE query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT.
-  /// "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ...
+  /// "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... .
   /// "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW
-  /// ... AS SELECT ... "DROP_VIEW": DROP VIEW query.
+  /// ... AS SELECT ... . "DROP_VIEW": DROP VIEW query. "ALTER_TABLE": ALTER
+  /// TABLE query. "ALTER_VIEW": ALTER VIEW query.
   core.String statementType;
 
   /// [Output-only] [Beta] Describes a timeline of job execution.
@@ -4521,6 +4662,13 @@ class JobStatistics2 {
   /// [Output-only] Total bytes processed for the job.
   core.String totalBytesProcessed;
 
+  /// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and
+  /// this field specifies the accuracy of the estimate. Possible values can be:
+  /// UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is
+  /// precise. LOWER_BOUND: estimate is lower bound of what the query would
+  /// cost. UPPER_BOUND: estiamte is upper bound of what the query would cost.
+  core.String totalBytesProcessedAccuracy;
+
   /// [Output-only] Total number of partitions processed from all partitioned
   /// tables referenced in the job.
   core.String totalPartitionsProcessed;
@@ -4528,8 +4676,8 @@ class JobStatistics2 {
   /// [Output-only] Slot-milliseconds for the job.
   core.String totalSlotMs;
 
-  /// [Output-only, Beta] Standard SQL only: list of undeclared query parameters
-  /// detected during a dry run validation.
+  /// Standard SQL only: list of undeclared query parameters detected during a
+  /// dry run validation.
   core.List<QueryParameter> undeclaredQueryParameters;
 
   JobStatistics2();
@@ -4598,6 +4746,9 @@ class JobStatistics2 {
     }
     if (_json.containsKey("totalBytesProcessed")) {
       totalBytesProcessed = _json["totalBytesProcessed"];
+    }
+    if (_json.containsKey("totalBytesProcessedAccuracy")) {
+      totalBytesProcessedAccuracy = _json["totalBytesProcessedAccuracy"];
     }
     if (_json.containsKey("totalPartitionsProcessed")) {
       totalPartitionsProcessed = _json["totalPartitionsProcessed"];
@@ -4669,6 +4820,9 @@ class JobStatistics2 {
     }
     if (totalBytesProcessed != null) {
       _json["totalBytesProcessed"] = totalBytesProcessed;
+    }
+    if (totalBytesProcessedAccuracy != null) {
+      _json["totalBytesProcessedAccuracy"] = totalBytesProcessedAccuracy;
     }
     if (totalPartitionsProcessed != null) {
       _json["totalPartitionsProcessed"] = totalPartitionsProcessed;
@@ -4852,6 +5006,38 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   core.Object remove(core.Object key) => _innerMap.remove(key);
+}
+
+class MaterializedViewDefinition {
+  /// [Output-only] [TrustedTester] The time when this materialized view was
+  /// last modified, in milliseconds since the epoch.
+  core.String lastRefreshTime;
+
+  /// [Required] A query whose result is persisted.
+  core.String query;
+
+  MaterializedViewDefinition();
+
+  MaterializedViewDefinition.fromJson(core.Map _json) {
+    if (_json.containsKey("lastRefreshTime")) {
+      lastRefreshTime = _json["lastRefreshTime"];
+    }
+    if (_json.containsKey("query")) {
+      query = _json["query"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lastRefreshTime != null) {
+      _json["lastRefreshTime"] = lastRefreshTime;
+    }
+    if (query != null) {
+      _json["query"] = query;
+    }
+    return _json;
+  }
 }
 
 /// [Output-only, Beta] Model options used for the first training run. These
@@ -5266,8 +5452,8 @@ class QueryRequest {
   /// The resource type of the request.
   core.String kind;
 
-  /// The geographic location where the job should run. Required except for US
-  /// and EU.
+  /// The geographic location where the job should run. See details at
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   core.String location;
 
   /// [Optional] The maximum number of rows of data to return per page of
@@ -5593,6 +5779,80 @@ class QueryTimelineSample {
   }
 }
 
+/// [TrustedTester] [Required] Defines the ranges for range partitioning.
+class RangePartitioningRange {
+  /// [TrustedTester] [Required] The end of range partitioning, exclusive.
+  core.String end;
+
+  /// [TrustedTester] [Required] The width of each interval.
+  core.String interval;
+
+  /// [TrustedTester] [Required] The start of range partitioning, inclusive.
+  core.String start;
+
+  RangePartitioningRange();
+
+  RangePartitioningRange.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("interval")) {
+      interval = _json["interval"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (interval != null) {
+      _json["interval"] = interval;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
+class RangePartitioning {
+  /// [TrustedTester] [Required] The table is partitioned by this field. The
+  /// field must be a top-level NULLABLE/REQUIRED field. The only supported type
+  /// is INTEGER/INT64.
+  core.String field;
+
+  /// [TrustedTester] [Required] Defines the ranges for range partitioning.
+  RangePartitioningRange range;
+
+  RangePartitioning();
+
+  RangePartitioning.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = _json["field"];
+    }
+    if (_json.containsKey("range")) {
+      range = new RangePartitioningRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = field;
+    }
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
 class Streamingbuffer {
   /// [Output-only] A lower-bound estimate of the number of bytes currently in
   /// the streaming buffer.
@@ -5639,8 +5899,8 @@ class Streamingbuffer {
 
 class Table {
   /// [Beta] Clustering specification for the table. Must be specified with
-  /// time-based partitioning, data in the table will be first partitioned and
-  /// subsequently clustered.
+  /// partitioning, data in the table will be first partitioned and subsequently
+  /// clustered.
   Clustering clustering;
 
   /// [Output-only] The time when this table was created, in milliseconds since
@@ -5696,6 +5956,9 @@ class Table {
   /// is inherited from the dataset.
   core.String location;
 
+  /// [Optional] Materialized view definition.
+  MaterializedViewDefinition materializedView;
+
   /// [Output-only, Beta] Present iff this table represents a ML model.
   /// Describes the training information for the model, and it is required to
   /// run 'PREDICT' queries.
@@ -5709,9 +5972,23 @@ class Table {
   /// "long-term storage".
   core.String numLongTermBytes;
 
+  /// [Output-only] [TrustedTester] The physical size of this table in bytes,
+  /// excluding any data in the streaming buffer. This includes compression and
+  /// storage used for time travel.
+  core.String numPhysicalBytes;
+
   /// [Output-only] The number of rows of data in this table, excluding any data
   /// in the streaming buffer.
   core.String numRows;
+
+  /// [TrustedTester] Range partitioning specification for this table. Only one
+  /// of timePartitioning and rangePartitioning should be specified.
+  RangePartitioning rangePartitioning;
+
+  /// [Beta] [Optional] If set to true, queries over this table require a
+  /// partition filter that can be used for partition elimination to be
+  /// specified.
+  core.bool requirePartitionFilter;
 
   /// [Optional] Describes the schema of this table.
   TableSchema schema;
@@ -5727,14 +6004,15 @@ class Table {
   /// [Required] Reference describing the ID of this table.
   TableReference tableReference;
 
-  /// Time-based partitioning specification for this table.
+  /// Time-based partitioning specification for this table. Only one of
+  /// timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
 
   /// [Output-only] Describes the table type. The following values are
   /// supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined
-  /// by a SQL query. EXTERNAL: A table that references data stored in an
-  /// external storage system, such as Google Cloud Storage. The default value
-  /// is TABLE.
+  /// by a SQL query. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result
+  /// is persisted. EXTERNAL: A table that references data stored in an external
+  /// storage system, such as Google Cloud Storage. The default value is TABLE.
   core.String type;
 
   /// [Optional] The view definition.
@@ -5784,6 +6062,10 @@ class Table {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("materializedView")) {
+      materializedView =
+          new MaterializedViewDefinition.fromJson(_json["materializedView"]);
+    }
     if (_json.containsKey("model")) {
       model = new ModelDefinition.fromJson(_json["model"]);
     }
@@ -5793,8 +6075,18 @@ class Table {
     if (_json.containsKey("numLongTermBytes")) {
       numLongTermBytes = _json["numLongTermBytes"];
     }
+    if (_json.containsKey("numPhysicalBytes")) {
+      numPhysicalBytes = _json["numPhysicalBytes"];
+    }
     if (_json.containsKey("numRows")) {
       numRows = _json["numRows"];
+    }
+    if (_json.containsKey("rangePartitioning")) {
+      rangePartitioning =
+          new RangePartitioning.fromJson(_json["rangePartitioning"]);
+    }
+    if (_json.containsKey("requirePartitionFilter")) {
+      requirePartitionFilter = _json["requirePartitionFilter"];
     }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
@@ -5862,6 +6154,9 @@ class Table {
     if (location != null) {
       _json["location"] = location;
     }
+    if (materializedView != null) {
+      _json["materializedView"] = (materializedView).toJson();
+    }
     if (model != null) {
       _json["model"] = (model).toJson();
     }
@@ -5871,8 +6166,17 @@ class Table {
     if (numLongTermBytes != null) {
       _json["numLongTermBytes"] = numLongTermBytes;
     }
+    if (numPhysicalBytes != null) {
+      _json["numPhysicalBytes"] = numPhysicalBytes;
+    }
     if (numRows != null) {
       _json["numRows"] = numRows;
+    }
+    if (rangePartitioning != null) {
+      _json["rangePartitioning"] = (rangePartitioning).toJson();
+    }
+    if (requirePartitionFilter != null) {
+      _json["requirePartitionFilter"] = requirePartitionFilter;
     }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
@@ -5974,10 +6278,10 @@ class TableDataInsertAllRequest {
   /// invalid rows exist.
   core.bool skipInvalidRows;
 
-  /// [Experimental] If specified, treats the destination table as a base
-  /// template, and inserts the rows into an instance table named
-  /// "{destination}{templateSuffix}". BigQuery will manage creation of the
-  /// instance table, using the schema of the base template table. See
+  /// If specified, treats the destination table as a base template, and inserts
+  /// the rows into an instance table named "{destination}{templateSuffix}".
+  /// BigQuery will manage creation of the instance table, using the schema of
+  /// the base template table. See
   /// https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables
   /// for considerations when working with templates tables.
   core.String templateSuffix;
@@ -6529,10 +6833,6 @@ class TimePartitioning {
   /// partitioned by this field. The field must be a top-level TIMESTAMP or DATE
   /// field. Its mode must be NULLABLE or REQUIRED.
   core.String field;
-
-  /// [Beta] [Optional] If set to true, queries over this table require a
-  /// partition filter that can be used for partition elimination to be
-  /// specified.
   core.bool requirePartitionFilter;
 
   /// [Required] The only type supported is DAY, which will generate one

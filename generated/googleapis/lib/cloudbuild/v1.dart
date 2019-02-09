@@ -159,11 +159,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -176,9 +176,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -190,14 +190,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -406,11 +406,11 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
-  /// [filter] - The raw filter text to constrain the results.
-  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of results to return in the list.
+  ///
+  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,9 +423,9 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -437,14 +437,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1327,6 +1327,16 @@ class BuildOptions {
   /// more than the maximum are rejected with an error.
   core.String diskSizeGb;
 
+  /// A list of global environment variable definitions that will exist for all
+  /// build steps in this build. If a variable is defined in both globally and
+  /// in
+  /// a build step, the variable will use the build step value.
+  ///
+  /// The elements are of the form "KEY=VALUE" for the environment variable
+  /// "KEY"
+  /// being given the value "VALUE".
+  core.List<core.String> env;
+
   /// Option to define build log streaming behavior to Google Cloud
   /// Storage.
   /// Possible string values are:
@@ -1337,6 +1347,16 @@ class BuildOptions {
   /// Storage; they will be
   /// written when the build is completed.
   core.String logStreamingOption;
+
+  /// Option to specify the logging mode, which determines where the logs are
+  /// stored.
+  /// Possible string values are:
+  /// - "LOGGING_UNSPECIFIED" : The service determines the logging mode. The
+  /// default is `LEGACY`. Do not
+  /// rely on the default logging behavior as it may change in the future.
+  /// - "LEGACY" : Stackdriver logging and Cloud Storage logging are enabled.
+  /// - "GCS_ONLY" : Only Cloud Storage logging is enabled.
+  core.String logging;
 
   /// Compute Engine machine type on which to run the build.
   /// Possible string values are:
@@ -1351,6 +1371,12 @@ class BuildOptions {
   /// - "VERIFIED" : Verified build.
   core.String requestedVerifyOption;
 
+  /// A list of global environment variables, which are encrypted using a Cloud
+  /// Key Management Service crypto key. These values must be specified in the
+  /// build's `Secret`. These variables will be available to all build steps
+  /// in this build.
+  core.List<core.String> secretEnv;
+
   /// Requested hash for SourceProvenance.
   core.List<core.String> sourceProvenanceHash;
 
@@ -1363,14 +1389,36 @@ class BuildOptions {
   /// - "ALLOW_LOOSE" : Do not fail the build if error in substitutions checks.
   core.String substitutionOption;
 
+  /// Global list of volumes to mount for ALL build steps
+  ///
+  /// Each volume is created as an empty volume prior to starting the build
+  /// process. Upon completion of the build, volumes and their contents are
+  /// discarded. Global volume names and paths cannot conflict with the volumes
+  /// defined a build step.
+  ///
+  /// Using a global volume in a build with only one step is not valid as
+  /// it is indicative of a build request with an incorrect configuration.
+  core.List<Volume> volumes;
+
+  /// Option to specify a `WorkerPool` for the build. User specifies the pool
+  /// with the format "[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]".
+  /// This is an experimental field.
+  core.String workerPool;
+
   BuildOptions();
 
   BuildOptions.fromJson(core.Map _json) {
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
     }
+    if (_json.containsKey("env")) {
+      env = (_json["env"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("logStreamingOption")) {
       logStreamingOption = _json["logStreamingOption"];
+    }
+    if (_json.containsKey("logging")) {
+      logging = _json["logging"];
     }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
@@ -1378,12 +1426,23 @@ class BuildOptions {
     if (_json.containsKey("requestedVerifyOption")) {
       requestedVerifyOption = _json["requestedVerifyOption"];
     }
+    if (_json.containsKey("secretEnv")) {
+      secretEnv = (_json["secretEnv"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("sourceProvenanceHash")) {
       sourceProvenanceHash =
           (_json["sourceProvenanceHash"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("substitutionOption")) {
       substitutionOption = _json["substitutionOption"];
+    }
+    if (_json.containsKey("volumes")) {
+      volumes = (_json["volumes"] as core.List)
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("workerPool")) {
+      workerPool = _json["workerPool"];
     }
   }
 
@@ -1393,8 +1452,14 @@ class BuildOptions {
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
     }
+    if (env != null) {
+      _json["env"] = env;
+    }
     if (logStreamingOption != null) {
       _json["logStreamingOption"] = logStreamingOption;
+    }
+    if (logging != null) {
+      _json["logging"] = logging;
     }
     if (machineType != null) {
       _json["machineType"] = machineType;
@@ -1402,11 +1467,20 @@ class BuildOptions {
     if (requestedVerifyOption != null) {
       _json["requestedVerifyOption"] = requestedVerifyOption;
     }
+    if (secretEnv != null) {
+      _json["secretEnv"] = secretEnv;
+    }
     if (sourceProvenanceHash != null) {
       _json["sourceProvenanceHash"] = sourceProvenanceHash;
     }
     if (substitutionOption != null) {
       _json["substitutionOption"] = substitutionOption;
+    }
+    if (volumes != null) {
+      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
+    }
+    if (workerPool != null) {
+      _json["workerPool"] = workerPool;
     }
     return _json;
   }
@@ -1474,6 +1548,10 @@ class BuildStep {
   /// later build step.
   core.String name;
 
+  /// Output only. Stores timing information for pulling this build step's
+  /// builder image only.
+  TimeSpan pullTiming;
+
   /// A list of environment variables which are encrypted using a Cloud Key
   /// Management Service crypto key. These values must be specified in the
   /// build's `Secret`.
@@ -1504,12 +1582,12 @@ class BuildStep {
 
   /// List of volumes to mount into the build step.
   ///
-  /// Each volume will be created as an empty volume prior to execution of the
-  /// build step. Upon completion of the build, volumes and their contents will
-  /// be discarded.
+  /// Each volume is created as an empty volume prior to execution of the
+  /// build step. Upon completion of the build, volumes and their contents are
+  /// discarded.
   ///
   /// Using a named volume in only one step is not valid as it is indicative
-  /// of a mis-configured build request.
+  /// of a build request with an incorrect configuration.
   core.List<Volume> volumes;
 
   /// The ID(s) of the step(s) that this build step depends on.
@@ -1539,6 +1617,9 @@ class BuildStep {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("pullTiming")) {
+      pullTiming = new TimeSpan.fromJson(_json["pullTiming"]);
     }
     if (_json.containsKey("secretEnv")) {
       secretEnv = (_json["secretEnv"] as core.List).cast<core.String>();
@@ -1582,6 +1663,9 @@ class BuildStep {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (pullTiming != null) {
+      _json["pullTiming"] = (pullTiming).toJson();
     }
     if (secretEnv != null) {
       _json["secretEnv"] = secretEnv;
@@ -2233,7 +2317,7 @@ class Secret {
   /// Secret environment variables must be unique across all of a build's
   /// secrets, and must be used by at least one build step. Values can be at
   /// most
-  /// 1 KB in size. There can be at most ten secret values across all of a
+  /// 64 KB in size. There can be at most 100 secret values across all of a
   /// build's secrets.
   core.Map<core.String, core.String> secretEnv;
 
@@ -2300,8 +2384,8 @@ class Source {
 class SourceProvenance {
   /// Output only. Hash(es) of the build source, which can be used to verify
   /// that
-  /// the originalsource integrity was maintained in the build. Note that
-  /// `FileHashes` willonly be populated if `BuildOptions` has requested a
+  /// the original source integrity was maintained in the build. Note that
+  /// `FileHashes` will only be populated if `BuildOptions` has requested a
   /// `SourceProvenanceHash`.
   ///
   /// The keys to this map are file paths used as build source and the values

@@ -240,10 +240,6 @@ class ProjectsAlertPoliciesResourceApi {
   /// name, use the GetAlertPolicy operation, instead.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by alert policies to be included in the response.For more details, see
-  /// sorting and filtering.
-  ///
   /// [orderBy] - A comma-separated list of fields by which to sort the result.
   /// Supports the same set of field references as the filter field. Entries can
   /// be prefixed with a minus sign to sort by the field in descending order.For
@@ -256,6 +252,10 @@ class ProjectsAlertPoliciesResourceApi {
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by alert policies to be included in the response.For more details, see
+  /// sorting and filtering.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -267,10 +267,10 @@ class ProjectsAlertPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertPoliciesResponse> list(core.String name,
-      {core.String filter,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -282,9 +282,6 @@ class ProjectsAlertPoliciesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -293,6 +290,9 @@ class ProjectsAlertPoliciesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -615,17 +615,6 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [childrenOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-  /// parentName field contains the group name. If no groups have this parent,
-  /// the results are empty.
-  ///
-  /// [descendantsOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns the
-  /// descendants of the specified group. This is a superset of the results
-  /// returned by the childrenOfGroup filter, and includes children-of-children,
-  /// and so forth.
-  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -641,6 +630,17 @@ class ProjectsGroupsResourceApi {
   /// ancestor. If the specified group has no immediate parent, the results are
   /// empty.
   ///
+  /// [childrenOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+  /// parentName field contains the group name. If no groups have this parent,
+  /// the results are empty.
+  ///
+  /// [descendantsOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns the
+  /// descendants of the specified group. This is a superset of the results
+  /// returned by the childrenOfGroup filter, and includes children-of-children,
+  /// and so forth.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -652,11 +652,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.String childrenOfGroup,
-      core.String descendantsOfGroup,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String ancestorsOfGroup,
+      core.String childrenOfGroup,
+      core.String descendantsOfGroup,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -668,12 +668,6 @@ class ProjectsGroupsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (childrenOfGroup != null) {
-      _queryParams["childrenOfGroup"] = [childrenOfGroup];
-    }
-    if (descendantsOfGroup != null) {
-      _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -682,6 +676,12 @@ class ProjectsGroupsResourceApi {
     }
     if (ancestorsOfGroup != null) {
       _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
+    }
+    if (childrenOfGroup != null) {
+      _queryParams["childrenOfGroup"] = [childrenOfGroup];
+    }
+    if (descendantsOfGroup != null) {
+      _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -773,13 +773,6 @@ class ProjectsGroupsMembersResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [filter] - An optional list filter describing the members to be returned.
@@ -793,6 +786,13 @@ class ProjectsGroupsMembersResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -804,11 +804,11 @@ class ProjectsGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(core.String name,
-      {core.String interval_startTime,
-      core.int pageSize,
-      core.String interval_endTime,
+      {core.String interval_endTime,
       core.String filter,
       core.String pageToken,
+      core.String interval_startTime,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -820,12 +820,6 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (interval_endTime != null) {
       _queryParams["interval.endTime"] = [interval_endTime];
     }
@@ -834,6 +828,12 @@ class ProjectsGroupsMembersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1145,6 +1145,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
   /// [filter] - An optional filter describing the descriptors to be returned.
   /// The filter can reference the descriptor's type and labels. For example,
   /// the following filter returns only Google Compute Engine descriptors that
@@ -1155,9 +1158,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1170,9 +1170,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1184,14 +1184,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1279,13 +1279,13 @@ class ProjectsNotificationChannelDescriptorsResourceApi {
   /// GetNotificationChannelDescriptor operation, instead.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// If not set to a positive number, a reasonable value will be chosen by the
-  /// service.
-  ///
   /// [pageToken] - If non-empty, page_token must contain a value returned as
   /// the next_page_token in a previous response to request the next set of
   /// results.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// If not set to a positive number, a reasonable value will be chosen by the
+  /// service.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1299,8 +1299,8 @@ class ProjectsNotificationChannelDescriptorsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNotificationChannelDescriptorsResponse> list(
       core.String name,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1312,11 +1312,11 @@ class ProjectsNotificationChannelDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1344,7 +1344,7 @@ class ProjectsNotificationChannelsResourceApi {
       : _requester = client;
 
   /// Creates a new notification channel, representing a single notification
-  /// endpoint such as an email address, SMS number, or pagerduty service.
+  /// endpoint such as an email address, SMS number, or PagerDuty service.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3208,11 +3208,10 @@ class Condition {
   }
 }
 
-/// Used to perform string matching. Currently, this matches on the exact
-/// content. In the future, it can be expanded to allow for regular expressions
-/// and more complex matching.
+/// Used to perform string matching. It allows substring and regular
+/// expressions, together with their negations.
 class ContentMatcher {
-  /// String content to match (max 1024 bytes)
+  /// String or regex content to match (max 1024 bytes)
   core.String content;
 
   ContentMatcher();
@@ -3315,7 +3314,8 @@ class CreateTimeSeriesRequest {
   /// point to each of several time series. The new data point must be more
   /// recent than any other point in its time series. Each TimeSeries value must
   /// fully specify a unique time series by supplying all label values for the
-  /// metric and the monitored resource.
+  /// metric and the monitored resource.The maximum number of TimeSeries objects
+  /// per Create request is 200.
   core.List<TimeSeries> timeSeries;
 
   CreateTimeSeriesRequest();
@@ -4040,62 +4040,90 @@ class HttpCheck {
   }
 }
 
-/// Nimbus InternalCheckers.
+/// An internal checker allows uptime checks to run on private/internal GCP
+/// resources.
 class InternalChecker {
-  /// The checker ID.
-  core.String checkerId;
-
-  /// The checker's human-readable name.
+  /// The checker's human-readable name. The display name should be unique
+  /// within a Stackdriver Workspace in order to make it easier to identify;
+  /// however, uniqueness is not enforced.
   core.String displayName;
 
   /// The GCP zone the uptime check should egress from. Only respected for
   /// internal uptime checks, where internal_network is specified.
   core.String gcpZone;
 
-  /// The internal network to perform this uptime check on.
+  /// A unique resource name for this InternalChecker. The format
+  /// is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID
+  /// is the stackdriver workspace project for the uptime check config
+  /// associated with the internal checker.
+  core.String name;
+
+  /// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the
+  /// internal resource lives (ex: "default").
   core.String network;
 
-  /// The GCP project ID. Not necessarily the same as the project_id for the
-  /// config.
-  core.String projectId;
+  /// The GCP project_id where the internal checker lives. Not necessary the
+  /// same as the workspace project.
+  core.String peerProjectId;
+
+  /// The current operational state of the internal checker.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : An internal checker should never be in the unspecified
+  /// state.
+  /// - "CREATING" : The checker is being created, provisioned, and configured.
+  /// A checker in this state can be returned by ListInternalCheckers or
+  /// GetInternalChecker, as well as by examining the longrunning.Operation that
+  /// created it.
+  /// - "RUNNING" : The checker is running and available for use. A checker in
+  /// this state can be returned by ListInternalCheckers or GetInternalChecker
+  /// as well as by examining the longrunning.Operation that created it. If a
+  /// checker is being torn down, it is neither visible nor usable, so there is
+  /// no "deleting" or "down" state.
+  core.String state;
 
   InternalChecker();
 
   InternalChecker.fromJson(core.Map _json) {
-    if (_json.containsKey("checkerId")) {
-      checkerId = _json["checkerId"];
-    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("gcpZone")) {
       gcpZone = _json["gcpZone"];
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
+    if (_json.containsKey("peerProjectId")) {
+      peerProjectId = _json["peerProjectId"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (checkerId != null) {
-      _json["checkerId"] = checkerId;
-    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
     if (gcpZone != null) {
       _json["gcpZone"] = gcpZone;
     }
+    if (name != null) {
+      _json["name"] = name;
+    }
     if (network != null) {
       _json["network"] = network;
     }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
+    if (peerProjectId != null) {
+      _json["peerProjectId"] = peerProjectId;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -5141,7 +5169,8 @@ class MonitoredResource {
 
   /// Required. The monitored resource type. This field must match the type
   /// field of a MonitoredResourceDescriptor object. For example, the type of a
-  /// Compute Engine VM instance is gce_instance.
+  /// Compute Engine VM instance is gce_instance. For a list of types, see
+  /// Monitoring resource types and Logging resource types.
   core.String type;
 
   MonitoredResource();
@@ -5875,9 +5904,13 @@ class TcpCheck {
   }
 }
 
-/// A time interval extending just after a start time through an end time. If
-/// the start time is the same as the end time, then the interval represents a
-/// single point in time.
+/// A time interval extending just after a start time through an end time. The
+/// start time must not be later than the end time. The default start time is
+/// the end time, making the startTime value technically optional. Whether this
+/// is useful depends on the MetricKind. If the start and end times are the
+/// same, the interval represents a point in time. This is appropriate for GAUGE
+/// metrics, but not for DELTA and CUMULATIVE metrics, which cover a span of
+/// time.
 class TimeInterval {
   /// Required. The end of the time interval.
   core.String endTime;
@@ -6205,7 +6238,7 @@ class UptimeCheckConfig {
   core.List<ContentMatcher> contentMatchers;
 
   /// A human-friendly name for the uptime check configuration. The display name
-  /// should be unique within a Stackdriver Account in order to make it easier
+  /// should be unique within a Stackdriver Workspace in order to make it easier
   /// to identify; however, uniqueness is not enforced. Required.
   core.String displayName;
 
@@ -6213,11 +6246,14 @@ class UptimeCheckConfig {
   HttpCheck httpCheck;
 
   /// The internal checkers that this check will egress from. If is_internal is
-  /// true and this list is empty, the check will egress from all
+  /// true and this list is empty, the check will egress from all the
   /// InternalCheckers configured for the project that owns this CheckConfig.
   core.List<InternalChecker> internalCheckers;
 
-  /// Denotes whether this is a check that egresses from InternalCheckers.
+  /// If this is true, then checks are made only from the 'internal_checkers'.
+  /// If it is false, then checks are made only from the 'selected_regions'. It
+  /// is an error to provide 'selected_regions' when is_internal is true, or to
+  /// provide 'internal_checkers' when is_internal is false.
   core.bool isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
@@ -6240,7 +6276,8 @@ class UptimeCheckConfig {
   /// The group resource associated with the configuration.
   ResourceGroup resourceGroup;
 
-  /// The list of regions from which the check will be run. If this field is
+  /// The list of regions from which the check will be run. Some regions contain
+  /// one location, and others contain more than one. If this field is
   /// specified, enough regions to include a minimum of 3 locations must be
   /// provided, or an error message is returned. Not specifying this field will
   /// result in uptime checks running from all regions.

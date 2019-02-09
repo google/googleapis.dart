@@ -457,9 +457,6 @@ class BeaconsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token obtained from a previous request to list
-  /// beacons.
-  ///
   /// [q] - Filter query string that supports the following field filters:
   ///
   /// * **description:`"<string>"`**
@@ -538,6 +535,9 @@ class BeaconsResourceApi {
   /// credential that made the request is used as the project.
   /// Optional.
   ///
+  /// [pageToken] - A pagination token obtained from a previous request to list
+  /// beacons.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -549,10 +549,10 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconsResponse> list(
-      {core.String pageToken,
-      core.String q,
+      {core.String q,
       core.int pageSize,
       core.String projectId,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -561,9 +561,6 @@ class BeaconsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (q != null) {
       _queryParams["q"] = [q];
     }
@@ -572,6 +569,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -754,18 +754,18 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
+  /// [namespacedType] - Specifies the namespace and type of attachments to
+  /// delete in
+  /// `namespace/type` format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
+  /// Optional.
+  ///
   /// [projectId] - The project id to delete beacon attachments under. This
   /// field can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
   /// may have multiple attachments with multiple namespaces. If "*" is
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
-  /// Optional.
-  ///
-  /// [namespacedType] - Specifies the namespace and type of attachments to
-  /// delete in
-  /// `namespace/type` format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
   /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -779,8 +779,8 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName,
-      {core.String projectId,
-      core.String namespacedType,
+      {core.String namespacedType,
+      core.String projectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -792,11 +792,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -992,11 +992,6 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
-  /// [namespacedType] - Specifies the namespace and type of attachment to
-  /// include in response in
-  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
-  ///
   /// [projectId] - The project id to list beacon attachments under. This field
   /// can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
@@ -1004,6 +999,11 @@ class BeaconsAttachmentsResourceApi {
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
   /// Optional.
+  ///
+  /// [namespacedType] - Specifies the namespace and type of attachment to
+  /// include in response in
+  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1016,8 +1016,8 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName,
-      {core.String namespacedType,
-      core.String projectId,
+      {core.String projectId,
+      core.String namespacedType,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1029,11 +1029,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1760,21 +1760,27 @@ class BeaconInfo {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without

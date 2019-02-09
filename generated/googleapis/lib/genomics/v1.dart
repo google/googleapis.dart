@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
-/// Upload, process, query, and search Genomics data in the cloud.
+/// Uploads, processes, queries, and searches Genomics data in the cloud.
 class GenomicsApi {
   /// View and manage your data in Google BigQuery
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
@@ -1374,11 +1374,16 @@ class OperationsResourceApi {
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed. Clients may use Operations.GetOperation or
-  /// Operations.ListOperations to check whether the cancellation succeeded or
-  /// the operation completed despite cancellation.
+  /// Starts asynchronous cancellation on a long-running operation.
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. Clients may use Operations.GetOperation
+  /// or Operations.ListOperations
+  /// to check whether the cancellation succeeded or the operation completed
+  /// despite cancellation.
+  /// Authorization requires the following [Google
+  /// IAM](https://cloud.google.com/iam) permission&#58;
+  ///
+  /// * `genomics.operations.cancel`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1427,9 +1432,13 @@ class OperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  /// Authorization requires the following [Google
+  /// IAM](https://cloud.google.com/iam) permission&#58;
+  ///
+  /// * `genomics.operations.get`
   ///
   /// Request parameters:
   ///
@@ -1473,6 +1482,10 @@ class OperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request.
+  /// Authorization requires the following [Google
+  /// IAM](https://cloud.google.com/iam) permission&#58;
+  ///
+  /// * `genomics.operations.list`
   ///
   /// Request parameters:
   ///
@@ -1916,10 +1929,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// [readGroupSetId] - Required. The ID of the read group set over which
   /// coverage is requested.
   ///
-  /// [referenceName] - The name of the reference to query, within the reference
-  /// set associated
-  /// with this query. Optional.
-  ///
   /// [end] - The end position of the range on the reference, 0-based exclusive.
   /// If
   /// specified, `referenceName` must also be specified. If unset or 0, defaults
@@ -1947,6 +1956,10 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// `bucketWidth` is currently 2048 base pairs; this is subject to
   /// change.
   ///
+  /// [referenceName] - The name of the reference to query, within the reference
+  /// set associated
+  /// with this query. Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1958,12 +1971,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId,
-      {core.String referenceName,
-      core.String end,
+      {core.String end,
       core.String pageToken,
       core.int pageSize,
       core.String start,
       core.String targetBucketWidth,
+      core.String referenceName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1974,9 +1987,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
-    }
-    if (referenceName != null) {
-      _queryParams["referenceName"] = [referenceName];
     }
     if (end != null) {
       _queryParams["end"] = [end];
@@ -1992,6 +2002,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (targetBucketWidth != null) {
       _queryParams["targetBucketWidth"] = [targetBucketWidth];
+    }
+    if (referenceName != null) {
+      _queryParams["referenceName"] = [referenceName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6377,6 +6390,20 @@ class ReferenceSet {
     if (sourceUri != null) {
       _json["sourceUri"] = sourceUri;
     }
+    return _json;
+  }
+}
+
+/// The response to the RunPipeline method, returned in the operation's result
+/// field on success.
+class RunPipelineResponse {
+  RunPipelineResponse();
+
+  RunPipelineResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }

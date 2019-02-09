@@ -22,9 +22,6 @@ class GamesManagementApi {
   /// activity
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
-  /// Know the list of people in your circles, your age range, and language
-  static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
-
   final commons.ApiRequester _requester;
 
   AchievementsResourceApi get achievements =>

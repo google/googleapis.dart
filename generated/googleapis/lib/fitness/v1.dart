@@ -922,9 +922,13 @@ class UsersSessionsResourceApi {
   /// true, sessions returned in this response will only have an ID and will not
   /// have any other fields.
   ///
-  /// [pageToken] - The continuation token, which is used to page through large
-  /// result sets. To get the next page of results, set this parameter to the
-  /// value of nextPageToken from the previous response.
+  /// [pageToken] - The continuation token, which is used for incremental
+  /// syncing. To get the next batch of changes, set this parameter to the value
+  /// of nextPageToken from the previous response. This token is treated as a
+  /// timestamp (in millis since epoch). If specified, the API returns sessions
+  /// modified since this time. The page token is ignored if either start or end
+  /// time is specified. If none of start time, end time, and the page token is
+  /// specified, sessions modified in the last 7 days are returned.
   ///
   /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response.
@@ -1197,9 +1201,9 @@ class AggregateRequest {
   /// will be aggregated. The time is in milliseconds since epoch, inclusive.
   core.String endTimeMillis;
 
-  /// A list of acceptable data quality standards. Only data points which
-  /// conform to at least one of the specified data quality standards will be
-  /// returned. If the list is empty, all data points are returned.
+  /// DO NOT POPULATE THIS FIELD. As data quality standards are deprecated,
+  /// filling it in will result in no data sources being returned. It will be
+  /// removed in a future version entirely.
   core.List<core.String> filteredDataQualityStandard;
 
   /// The start of a window of time. Data that intersects with this time window
@@ -1495,8 +1499,7 @@ class BucketByTimePeriod {
 ///
 /// Data points always contain one value for each field of the data type.
 class DataPoint {
-  /// Used for version checking during transformation; that is, a datapoint can
-  /// only replace another datapoint that has an older computation time stamp.
+  /// DO NOT USE THIS FIELD. It is ignored, and not stored.
   core.String computationTimeMillis;
 
   /// The data type defining the format of the values in this data point.
@@ -1612,6 +1615,10 @@ class DataSource {
   /// Information about an application which feeds sensor data into the
   /// platform.
   Application application;
+
+  /// DO NOT POPULATE THIS FIELD. It is never populated in responses from the
+  /// platform, and is ignored in queries. It will be removed in a future
+  /// version entirely.
   core.List<core.String> dataQualityStandard;
 
   /// A unique identifier for the data stream produced by this data source. The
@@ -1832,7 +1839,7 @@ class Dataset {
 
   /// The largest end time of all data points in this possibly partial
   /// representation of the dataset. Time is in nanoseconds from epoch. This
-  /// should also match the first part of the dataset identifier.
+  /// should also match the second part of the dataset identifier.
   core.String maxEndTimeNs;
 
   /// The smallest start time of all data points in this possibly partial

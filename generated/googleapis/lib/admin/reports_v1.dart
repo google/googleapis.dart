@@ -85,6 +85,10 @@ class ActivitiesResourceApi {
   /// [maxResults] - Number of activity records to be shown in each page.
   /// Value must be between "1" and "1000".
   ///
+  /// [orgUnitID] - the organizational unit's(OU) ID to filter activities from
+  /// users belonging to a specific OU or one of its sub-OU(s)
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
   /// [pageToken] - Token to specify next page.
   ///
   /// [startTime] - Return events which occurred at or after this time.
@@ -109,6 +113,7 @@ class ActivitiesResourceApi {
       core.String eventName,
       core.String filters,
       core.int maxResults,
+      core.String orgUnitID,
       core.String pageToken,
       core.String startTime,
       core.String $fields}) {
@@ -142,6 +147,9 @@ class ActivitiesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -204,6 +212,10 @@ class ActivitiesResourceApi {
   /// [maxResults] - Number of activity records to be shown in each page.
   /// Value must be between "1" and "1000".
   ///
+  /// [orgUnitID] - the organizational unit's(OU) ID to filter activities from
+  /// users belonging to a specific OU or one of its sub-OU(s)
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
   /// [pageToken] - Token to specify next page.
   ///
   /// [startTime] - Return events which occurred at or after this time.
@@ -228,6 +240,7 @@ class ActivitiesResourceApi {
       core.String eventName,
       core.String filters,
       core.int maxResults,
+      core.String orgUnitID,
       core.String pageToken,
       core.String startTime,
       core.String $fields}) {
@@ -264,6 +277,9 @@ class ActivitiesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -553,6 +569,10 @@ class UserUsageReportResourceApi {
   /// [maxResults] - Maximum number of results to return. Maximum allowed is
   /// 1000
   ///
+  /// [orgUnitID] - the organizational unit's ID to filter usage parameters from
+  /// users belonging to a specific OU or one of its sub-OU(s).
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
   /// [pageToken] - Token to specify next page.
   ///
   /// [parameters] - Represents the application name, parameter name pairs to
@@ -574,6 +594,7 @@ class UserUsageReportResourceApi {
       {core.String customerId,
       core.String filters,
       core.int maxResults,
+      core.String orgUnitID,
       core.String pageToken,
       core.String parameters,
       core.String $fields}) {
@@ -598,6 +619,9 @@ class UserUsageReportResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];

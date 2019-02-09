@@ -16,8 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client appengine/v1';
 
-/// The App Engine Admin API enables developers to provision and manage their
-/// App Engine applications.
+/// Provisions and manages developers' App Engine applications.
 class AppengineApi {
   /// View and manage your applications deployed on Google App Engine
   static const AppengineAdminScope =
@@ -1368,11 +1367,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1385,9 +1384,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1399,14 +1398,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1496,11 +1495,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1513,9 +1512,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1527,14 +1526,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1736,11 +1735,11 @@ class AppsServicesResourceApi {
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
   /// instances that are configured for both warmup requests
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#inboundservicetype)
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType)
   /// and automatic scaling
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#automaticscaling).
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling).
   /// You must specify the shardBy
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#shardby)
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy)
   /// field in the Service resource. Gradual traffic migration is not supported
   /// in the App Engine flexible environment. For examples, see Migrating and
   /// Splitting Traffic
@@ -2611,7 +2610,7 @@ class Application {
 
   /// HTTP path dispatch rules for requests to the application that do not
   /// explicitly target a service or version. Rules are order-dependent. Up to
-  /// 20 dispatch rules can be supported.@OutputOnly
+  /// 20 dispatch rules can be supported.
   core.List<UrlDispatchRule> dispatchRules;
 
   /// The feature specific settings to be used in the application.
@@ -2897,10 +2896,12 @@ class AuthorizedDomain {
 /// Automatic scaling is based on request rate, response latencies, and other
 /// application metrics.
 class AutomaticScaling {
-  /// Amount of time that the Autoscaler
-  /// (https://cloud.google.com/compute/docs/autoscaler/) should wait between
-  /// changes to the number of virtual machines. Only applicable in the App
-  /// Engine flexible environment.
+  /// The time period that the Autoscaler
+  /// (https://cloud.google.com/compute/docs/autoscaler/) should wait before it
+  /// starts collecting information from a new instance. This prevents the
+  /// autoscaler from collecting information when the instance is initializing,
+  /// during which the collected usage would not be reliable. Only applicable in
+  /// the App Engine flexible environment.
   core.String coolDownPeriod;
 
   /// Target scaling by CPU usage.
@@ -3371,10 +3372,9 @@ class DebugInstanceRequest {
 /// Code and application artifacts used to deploy a version to App Engine.
 class Deployment {
   /// Options for any Google Cloud Build builds created as a part of this
-  /// deployment.Note that this is orthogonal to the build parameter, where the
-  /// deployment depends on an already existing cloud build. These options will
-  /// only be used if a new build is created, such as when deploying to the App
-  /// Engine flexible environment using files or zip.
+  /// deployment.These options will only be used if a new build is created, such
+  /// as when deploying to the App Engine flexible environment using files or
+  /// zip.
   CloudBuildOptions cloudBuildOptions;
 
   /// The Docker image for the container that runs the version. Only applicable
@@ -3575,6 +3575,10 @@ class EndpointsApiService {
   /// need the configuration ID. In this case, config_id must be omitted.
   core.String configId;
 
+  /// Enable or disable trace sampling. By default, this is set to false for
+  /// enabled.
+  core.bool disableTraceSampling;
+
   /// Endpoints service name which is the name of the "service" resource in the
   /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
   core.String name;
@@ -3595,6 +3599,9 @@ class EndpointsApiService {
     if (_json.containsKey("configId")) {
       configId = _json["configId"];
     }
+    if (_json.containsKey("disableTraceSampling")) {
+      disableTraceSampling = _json["disableTraceSampling"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3608,6 +3615,9 @@ class EndpointsApiService {
         new core.Map<core.String, core.Object>();
     if (configId != null) {
       _json["configId"] = configId;
+    }
+    if (disableTraceSampling != null) {
+      _json["disableTraceSampling"] = disableTraceSampling;
     }
     if (name != null) {
       _json["name"] = name;
@@ -6201,7 +6211,7 @@ class Version {
 
   /// Duration that static files should be cached by web proxies and browsers.
   /// Only applicable if the corresponding StaticFilesHandler
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler)
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler)
   /// does not specify its own expiration time.Only returned in GET requests if
   /// view=FULL is set.
   core.String defaultExpiration;
@@ -6305,6 +6315,9 @@ class Version {
   /// The channel of the runtime to use. Only available for some runtimes.
   /// Defaults to the default channel.
   core.String runtimeChannel;
+
+  /// The path or name of the app's main executable.
+  core.String runtimeMainExecutablePath;
 
   /// Current serving status of this version. Only the versions with a SERVING
   /// status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
@@ -6435,6 +6448,9 @@ class Version {
     if (_json.containsKey("runtimeChannel")) {
       runtimeChannel = _json["runtimeChannel"];
     }
+    if (_json.containsKey("runtimeMainExecutablePath")) {
+      runtimeMainExecutablePath = _json["runtimeMainExecutablePath"];
+    }
     if (_json.containsKey("servingStatus")) {
       servingStatus = _json["servingStatus"];
     }
@@ -6545,6 +6561,9 @@ class Version {
     }
     if (runtimeChannel != null) {
       _json["runtimeChannel"] = runtimeChannel;
+    }
+    if (runtimeMainExecutablePath != null) {
+      _json["runtimeMainExecutablePath"] = runtimeMainExecutablePath;
     }
     if (servingStatus != null) {
       _json["servingStatus"] = servingStatus;

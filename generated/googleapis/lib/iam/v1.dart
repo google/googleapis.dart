@@ -1203,6 +1203,72 @@ class ProjectsServiceAccountsResourceApi {
         .then((data) => new ListServiceAccountsResponse.fromJson(data));
   }
 
+  /// Patches a ServiceAccount.
+  ///
+  /// Currently, only the following fields are updatable:
+  /// `display_name` and `description`.
+  ///
+  /// Only fields specified in the request are garaunteed to be returned in
+  /// the response. Other fields in the response may be empty.
+  ///
+  /// Note: The field mask is required.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  ///
+  /// Requests using `-` as a wildcard for the `PROJECT_ID` will infer the
+  /// project from the `account` and the `ACCOUNT` value can be the `email`
+  /// address or the `unique_id` of the service account.
+  ///
+  /// In responses the resource name will always be in the format
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccount> patch(
+      PatchServiceAccountRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceAccount.fromJson(data));
+  }
+
   /// Sets the IAM access control policy for a
   /// ServiceAccount.
   ///
@@ -1429,7 +1495,8 @@ class ProjectsServiceAccountsResourceApi {
   /// Updates a ServiceAccount.
   ///
   /// Currently, only the following fields are updatable:
-  /// `display_name`, `description`.
+  /// `display_name` .
+  /// The `etag` is mandatory.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2303,9 +2370,9 @@ class CreateServiceAccountRequest {
   /// `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
   core.String accountId;
 
-  /// The ServiceAccount resource to
-  /// create. Currently, only the following values are user assignable:
-  /// `display_name`, and `description`.
+  /// The ServiceAccount resource to create.
+  /// Currently, only the following values are user assignable:
+  /// `display_name` .
   ServiceAccount serviceAccount;
 
   CreateServiceAccountRequest();
@@ -2543,14 +2610,14 @@ class LintResult {
   /// Human readable debug message associated with the issue.
   core.String debugMessage;
 
-  /// The name of the field for which this lint result is about, relative to the
-  /// input object to lint in the request.
+  /// The name of the field for which this lint result is about.
   ///
   /// For nested messages, `field_name` consists of names of the embedded fields
-  /// separated by period character. For instance, if the lint request is on a
+  /// separated by period character. The top-level qualifier is the input object
+  /// to lint in the request. For instance, if the lint request is on a
   /// google.iam.v1.Policy and this lint result is about a condition
   /// expression of one of the input policy bindings, the field would be
-  /// populated as `bindings.condition.expression`.
+  /// populated as `policy.bindings.condition.expression`.
   ///
   /// This field does not identify the ordinality of the repetitive fields (for
   /// instance bindings in a policy).
@@ -2758,6 +2825,35 @@ class ListServiceAccountsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The patch service account request.
+class PatchServiceAccountRequest {
+  ServiceAccount serviceAccount;
+  core.String updateMask;
+
+  PatchServiceAccountRequest();
+
+  PatchServiceAccountRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = new ServiceAccount.fromJson(_json["serviceAccount"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = (serviceAccount).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
     }
     return _json;
   }
@@ -3260,17 +3356,21 @@ class Role {
   /// and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
   core.String name;
 
-  /// The current launch stage of the role.
+  /// The current launch stage of the role. If the `ALPHA` launch stage has been
+  /// selected for a role, the `stage` field will not be included in the
+  /// returned definition for the role.
   /// Possible string values are:
-  /// - "ALPHA" : The user has indicated this role is currently in an alpha
-  /// phase.
-  /// - "BETA" : The user has indicated this role is currently in a beta phase.
+  /// - "ALPHA" : The user has indicated this role is currently in an Alpha
+  /// phase. If this
+  /// launch stage is selected, the `stage` field will not be included when
+  /// requesting the definition for a given role.
+  /// - "BETA" : The user has indicated this role is currently in a Beta phase.
   /// - "GA" : The user has indicated this role is generally available.
   /// - "DEPRECATED" : The user has indicated this role is being deprecated.
   /// - "DISABLED" : This role is disabled and will not contribute permissions
   /// to any members
   /// it is granted to in policies.
-  /// - "EAP" : The user has indicated this role is currently in an eap phase.
+  /// - "EAP" : The user has indicated this role is currently in an EAP phase.
   core.String stage;
 
   /// Optional.  A human-readable title for the role.  Typically this
@@ -3349,14 +3449,15 @@ class Role {
 /// the account. The `ACCOUNT` value can be the `email` address or the
 /// `unique_id` of the service account.
 class ServiceAccount {
-  /// Optional. A user-specified name for the service account. Must be
-  /// less than or equal to 100 UTF-8 bytes.
+  /// Optional. A user-specified name for the service account.
+  /// Must be less than or equal to 100 UTF-8 bytes.
   core.String displayName;
 
   /// @OutputOnly The email address of the service account.
   core.String email;
 
-  /// Optional. Not currently used.
+  /// Optional. Note: `etag` is an inoperable legacy field that is only returned
+  /// for backwards compatibility.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -3453,9 +3554,11 @@ class ServiceAccount {
 /// their service accounts.  Users retain the private key of these key-pairs,
 /// and Google retains ONLY the public key.
 ///
-/// System-managed key-pairs are managed automatically by Google, and rotated
-/// daily without user intervention.  The private key never leaves Google's
-/// servers to maximize security.
+/// System-managed keys are automatically rotated by Google, and are used for
+/// signing for a maximum of two weeks. The rotation process is probabilistic,
+/// and usage of the new key will gradually ramp up and down over the key's
+/// lifetime. We recommend caching the public key set for a service account for
+/// no more than 24 hours to ensure you have access to the latest keys.
 ///
 /// Public keys for all service accounts are also published at the OAuth2
 /// Service Account API.

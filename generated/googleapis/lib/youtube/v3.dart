@@ -30,7 +30,8 @@ class YoutubeApi {
   /// Manage your YouTube account
   static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
 
-  /// Manage your YouTube account
+  /// See, edit, and permanently delete your YouTube videos, ratings, comments
+  /// and captions
   static const YoutubeForceSslScope =
       "https://www.googleapis.com/auth/youtube.force-ssl";
 

@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudresourcemanager/v2';
 
-/// The Google Cloud Resource Manager API provides methods for creating,
-/// reading, and updating project metadata.
+/// Creates, reads, and updates metadata for Google Cloud Platform resource
+/// containers.
 class CloudresourcemanagerApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -287,6 +287,15 @@ class FoldersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [showDeleted] - Controls whether Folders in the
+  /// DELETE_REQUESTED
+  /// state should be returned. Defaults to false. This field is optional.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListFolders`
+  /// that indicates where this listing should continue from.
+  /// This field is optional.
+  ///
   /// [pageSize] - The maximum number of Folders to return in the response.
   /// This field is optional.
   ///
@@ -296,15 +305,6 @@ class FoldersResourceApi {
   /// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
   /// Access to this method is controlled by checking the
   /// `resourcemanager.folders.list` permission on the `parent`.
-  ///
-  /// [showDeleted] - Controls whether Folders in the
-  /// DELETE_REQUESTED
-  /// state should be returned. Defaults to false. This field is optional.
-  ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListFolders`
-  /// that indicates where this listing should continue from.
-  /// This field is optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -317,10 +317,10 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(
-      {core.int pageSize,
-      core.String parent,
-      core.bool showDeleted,
+      {core.bool showDeleted,
       core.String pageToken,
+      core.int pageSize,
+      core.String parent,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -329,17 +329,17 @@ class FoldersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
-    }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

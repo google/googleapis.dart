@@ -26,9 +26,6 @@ class GamesApi {
   /// activity
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
-  /// Know the list of people in your circles, your age range, and language
-  static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
-
   final commons.ApiRequester _requester;
 
   AchievementDefinitionsResourceApi get achievementDefinitions =>
@@ -385,6 +382,9 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [builtinGameId] - Override used only by built-in games in Play Games
+  /// application.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -396,7 +396,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
-      {core.String $fields}) {
+      {core.String builtinGameId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -406,6 +406,9 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if (builtinGameId != null) {
+      _queryParams["builtinGameId"] = [builtinGameId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -431,6 +434,9 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [builtinGameId] - Override used only by built-in games in Play Games
+  /// application.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -443,7 +449,8 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
       AchievementUpdateMultipleRequest request,
-      {core.String $fields}) {
+      {core.String builtinGameId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -453,6 +460,9 @@ class AchievementsResourceApi {
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
+    }
+    if (builtinGameId != null) {
+      _queryParams["builtinGameId"] = [builtinGameId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -543,6 +553,9 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [builtinGameId] - Override used only by built-in games in Play Games
+  /// application.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -551,7 +564,7 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({core.String $fields}) {
+  async.Future played({core.String builtinGameId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -559,6 +572,9 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (builtinGameId != null) {
+      _queryParams["builtinGameId"] = [builtinGameId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }

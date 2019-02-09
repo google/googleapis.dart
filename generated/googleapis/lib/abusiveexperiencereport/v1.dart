@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client abusiveexperiencereport/v1';
 
-/// View Abusive Experience Report data, and get a list of sites that have a
+/// Views Abusive Experience Report data, and gets a list of sites that have a
 /// significant number of abusive experiences.
 class AbusiveexperiencereportApi {
   /// Test scope for access to the Zoo service
@@ -135,7 +135,6 @@ class ViolatingSitesResourceApi {
 }
 
 /// Response message for GetSiteSummary.
-/// Do not confuse with same message in google.ads.experiencereport.v1
 class SiteSummaryResponse {
   /// The status of the site reviewed for the abusive experiences.
   /// Possible string values are:

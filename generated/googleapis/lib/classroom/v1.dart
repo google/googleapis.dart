@@ -951,16 +951,6 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the
-  /// server may assign a maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
-  /// [announcementStates] - Restriction on the `state` of announcements
-  /// returned.
-  /// If this argument is left unspecified, the default value is `PUBLISHED`.
-  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with
   /// an optional sort direction keyword. Supported field is `updateTime`.
@@ -976,6 +966,16 @@ class CoursesAnnouncementsResourceApi {
   /// The list request
   /// must be otherwise identical to the one that resulted in this token.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the
+  /// server may assign a maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned.
+  /// If this argument is left unspecified, the default value is `PUBLISHED`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -987,10 +987,10 @@ class CoursesAnnouncementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(core.String courseId,
-      {core.int pageSize,
-      core.List<core.String> announcementStates,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
+      core.int pageSize,
+      core.List<core.String> announcementStates,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1002,17 +1002,17 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (announcementStates != null) {
-      _queryParams["announcementStates"] = announcementStates;
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (announcementStates != null) {
+      _queryParams["announcementStates"] = announcementStates;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1776,15 +1776,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the
-  /// student with the specified identifier. The identifier can be one of the
-  /// following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
-  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are
   /// restricted by the requested value.
@@ -1802,15 +1793,24 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// The list request
   /// must be otherwise identical to the one that resulted in this token.
   ///
-  /// [states] - Requested submission states. If specified, returned student
-  /// submissions
-  /// match one of the specified submission states.
-  ///
   /// [pageSize] - Maximum number of items to return. Zero or unspecified
   /// indicates that the
   /// server may assign a maximum.
   ///
   /// The server may return fewer than the specified number of results.
+  ///
+  /// [states] - Requested submission states. If specified, returned student
+  /// submissions
+  /// match one of the specified submission states.
+  ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the
+  /// student with the specified identifier. The identifier can be one of the
+  /// following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1824,11 +1824,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String userId,
-      core.String late,
+      {core.String late,
       core.String pageToken,
-      core.List<core.String> states,
       core.int pageSize,
+      core.List<core.String> states,
+      core.String userId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1843,20 +1843,20 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
-    }
     if (late != null) {
       _queryParams["late"] = [late];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (states != null) {
       _queryParams["states"] = states;
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2065,7 +2065,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// Reclaims a student submission on behalf of the student that owns it.
   ///
   /// Reclaiming a student submission transfers ownership of attached Drive
-  /// files to the student and update the submission state.
+  /// files to the student and updates the submission state.
   ///
   /// Only the student that owns the requested student submission may call this
   /// method, and only for a student submission that has been turned in.
@@ -3111,14 +3111,6 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
-  ///
-  /// The server may return fewer than the specified number of results.
-  ///
-  /// [courseId] - Restricts returned invitations to those for a course with the
-  /// specified
-  /// identifier.
-  ///
   /// [userId] - Restricts returned invitations to those for a specific user.
   /// The identifier
   /// can be one of the following:
@@ -3135,6 +3127,14 @@ class InvitationsResourceApi {
   /// The list request must be
   /// otherwise identical to the one that resulted in this token.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero means no maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// [courseId] - Restricts returned invitations to those for a course with the
+  /// specified
+  /// identifier.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3146,10 +3146,10 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list(
-      {core.int pageSize,
-      core.String courseId,
-      core.String userId,
+      {core.String userId,
       core.String pageToken,
+      core.int pageSize,
+      core.String courseId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3158,17 +3158,17 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (courseId != null) {
-      _queryParams["courseId"] = [courseId];
-    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseId != null) {
+      _queryParams["courseId"] = [courseId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3561,6 +3561,14 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///   all students that the requesting user is permitted to view guardian
   ///   invitations.
   ///
+  /// [pageToken] - nextPageToken
+  /// value returned from a previous
+  /// list call,
+  /// indicating that the subsequent page of results should be returned.
+  ///
+  /// The list request
+  /// must be otherwise identical to the one that resulted in this token.
+  ///
   /// [invitedEmailAddress] - If specified, only results with the specified
   /// `invited_email_address`
   /// will be returned.
@@ -3575,14 +3583,6 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
-  /// [pageToken] - nextPageToken
-  /// value returned from a previous
-  /// list call,
-  /// indicating that the subsequent page of results should be returned.
-  ///
-  /// The list request
-  /// must be otherwise identical to the one that resulted in this token.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3594,10 +3594,10 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGuardianInvitationsResponse> list(core.String studentId,
-      {core.String invitedEmailAddress,
+      {core.String pageToken,
+      core.String invitedEmailAddress,
       core.List<core.String> states,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3609,6 +3609,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
@@ -3617,9 +3620,6 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4769,11 +4769,11 @@ class CourseWork {
   /// than 30,000 characters.
   core.String description;
 
-  /// Optional date, in UTC, that submissions for this this course work are due.
+  /// Optional date, in UTC, that submissions for this course work are due.
   /// This must be specified if `due_time` is specified.
   Date dueDate;
 
-  /// Optional time of day, in UTC, that submissions for this this course work
+  /// Optional time of day, in UTC, that submissions for this course work
   /// are due.
   /// This must be specified if `due_date` is specified.
   TimeOfDay dueTime;
@@ -4831,9 +4831,9 @@ class CourseWork {
   /// Possible string values are:
   /// - "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED" : No modification mode
   /// specified. This is never returned.
-  /// - "MODIFIABLE_UNTIL_TURNED_IN" : Submisisons can be modified before being
+  /// - "MODIFIABLE_UNTIL_TURNED_IN" : Submissions can be modified before being
   /// turned in.
-  /// - "MODIFIABLE" : Submisisons can be modified at any time.
+  /// - "MODIFIABLE" : Submissions can be modified at any time.
   core.String submissionModificationMode;
 
   /// Title of this course work.
@@ -5022,21 +5022,27 @@ class CourseWorkChangesInfo {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without

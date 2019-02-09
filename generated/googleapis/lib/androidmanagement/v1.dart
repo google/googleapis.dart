@@ -59,13 +59,13 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
+  /// enterprise.
+  ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
-  ///
-  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
-  /// enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -78,9 +78,9 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
-      {core.String projectId,
+      {core.String signupUrlName,
+      core.String projectId,
       core.String enterpriseToken,
-      core.String signupUrlName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -92,14 +92,14 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
+    if (signupUrlName != null) {
+      _queryParams["signupUrlName"] = [signupUrlName];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
     if (enterpriseToken != null) {
       _queryParams["enterpriseToken"] = [enterpriseToken];
-    }
-    if (signupUrlName != null) {
-      _queryParams["signupUrlName"] = [signupUrlName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1436,6 +1436,8 @@ class ApplicationPolicy {
   /// by the user.
   /// - "FORCE_INSTALLED" : The app is automatically installed and can't be
   /// removed by the user.
+  /// - "BLOCKED" : The app is blocked and can't be installed. If the app was
+  /// installed under a previous policy, it will be uninstalled.
   /// - "AVAILABLE" : The app is available to install.
   core.String installType;
 
@@ -1457,6 +1459,11 @@ class ApplicationPolicy {
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> managedConfiguration;
+
+  /// The managed configurations template for the app, saved from the managed
+  /// configurations iframe. This field is ignored if managed_configuration is
+  /// set.
+  ManagedConfigurationTemplate managedConfigurationTemplate;
 
   /// The minimum version of the app that runs on the device. If set, the device
   /// attempts to update the app to at least this version code. If the app is
@@ -1498,6 +1505,10 @@ class ApplicationPolicy {
       managedConfiguration = (_json["managedConfiguration"] as core.Map)
           .cast<core.String, core.Object>();
     }
+    if (_json.containsKey("managedConfigurationTemplate")) {
+      managedConfigurationTemplate = new ManagedConfigurationTemplate.fromJson(
+          _json["managedConfigurationTemplate"]);
+    }
     if (_json.containsKey("minimumVersionCode")) {
       minimumVersionCode = _json["minimumVersionCode"];
     }
@@ -1531,6 +1542,10 @@ class ApplicationPolicy {
     }
     if (managedConfiguration != null) {
       _json["managedConfiguration"] = managedConfiguration;
+    }
+    if (managedConfigurationTemplate != null) {
+      _json["managedConfigurationTemplate"] =
+          (managedConfigurationTemplate).toJson();
     }
     if (minimumVersionCode != null) {
       _json["minimumVersionCode"] = minimumVersionCode;
@@ -1907,8 +1922,8 @@ class Device {
   /// - "ACTIVE" : The device is active.
   /// - "DISABLED" : The device is disabled.
   /// - "DELETED" : The device was deleted. This state will never be returned by
-  /// an API call, but is used in the final policy compliance report published
-  /// to Cloud Pub/Sub when the device acknowledges the deletion.
+  /// an API call, but is used in the final status report published to Cloud
+  /// Pub/Sub when the device acknowledges the deletion.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
   core.String appliedState;
@@ -2018,11 +2033,14 @@ class Device {
   /// - "ACTIVE" : The device is active.
   /// - "DISABLED" : The device is disabled.
   /// - "DELETED" : The device was deleted. This state will never be returned by
-  /// an API call, but is used in the final policy compliance report published
-  /// to Cloud Pub/Sub when the device acknowledges the deletion.
+  /// an API call, but is used in the final status report published to Cloud
+  /// Pub/Sub when the device acknowledges the deletion.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
   core.String state;
+
+  /// The user who owns the device.
+  User user;
 
   /// The resource name of the user that owns this device in the form
   /// enterprises/{enterpriseId}/users/{userId}.
@@ -2131,6 +2149,9 @@ class Device {
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
+    if (_json.containsKey("user")) {
+      user = new User.fromJson(_json["user"]);
+    }
     if (_json.containsKey("userName")) {
       userName = _json["userName"];
     }
@@ -2227,6 +2248,9 @@ class Device {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (user != null) {
+      _json["user"] = (user).toJson();
     }
     if (userName != null) {
       _json["userName"] = userName;
@@ -2472,6 +2496,12 @@ class EnrollmentToken {
   /// representation of the properties in the JSON.
   core.String qrCode;
 
+  /// The user associated with this enrollment token. If it's specified when the
+  /// enrollment token is created and the user does not exist, the user will be
+  /// created. This field must not contain personally identifiable information.
+  /// Only the account_identifier field needs to be set.
+  User user;
+
   /// The token value that's passed to the device and authorizes the device to
   /// enroll. This is a read-only field generated by the server.
   core.String value;
@@ -2499,6 +2529,9 @@ class EnrollmentToken {
     }
     if (_json.containsKey("qrCode")) {
       qrCode = _json["qrCode"];
+    }
+    if (_json.containsKey("user")) {
+      user = new User.fromJson(_json["user"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -2528,6 +2561,9 @@ class EnrollmentToken {
     }
     if (qrCode != null) {
       _json["qrCode"] = qrCode;
+    }
+    if (user != null) {
+      _json["user"] = (user).toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -2567,6 +2603,9 @@ class Enterprise {
   /// notifications are enabled.
   core.String pubsubTopic;
 
+  /// Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.
+  core.List<SigninDetail> signinDetails;
+
   /// Terms and conditions that must be accepted when provisioning a device for
   /// this enterprise. A page of terms is generated for each value in this list.
   core.List<TermsAndConditions> termsAndConditions;
@@ -2595,6 +2634,11 @@ class Enterprise {
     }
     if (_json.containsKey("pubsubTopic")) {
       pubsubTopic = _json["pubsubTopic"];
+    }
+    if (_json.containsKey("signinDetails")) {
+      signinDetails = (_json["signinDetails"] as core.List)
+          .map<SigninDetail>((value) => new SigninDetail.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("termsAndConditions")) {
       termsAndConditions = (_json["termsAndConditions"] as core.List)
@@ -2627,6 +2671,10 @@ class Enterprise {
     }
     if (pubsubTopic != null) {
       _json["pubsubTopic"] = pubsubTopic;
+    }
+    if (signinDetails != null) {
+      _json["signinDetails"] =
+          signinDetails.map((value) => (value).toJson()).toList();
     }
     if (termsAndConditions != null) {
       _json["termsAndConditions"] =
@@ -3033,6 +3081,41 @@ class ListPoliciesResponse {
     }
     if (policies != null) {
       _json["policies"] = policies.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The managed configurations template for the app, saved from the managed
+/// configurations iframe.
+class ManagedConfigurationTemplate {
+  /// Optional, a map containing <key, value> configuration variables defined
+  /// for the configuration.
+  core.Map<core.String, core.String> configurationVariables;
+
+  /// The ID of the managed configurations template.
+  core.String templateId;
+
+  ManagedConfigurationTemplate();
+
+  ManagedConfigurationTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("configurationVariables")) {
+      configurationVariables = (_json["configurationVariables"] as core.Map)
+          .cast<core.String, core.String>();
+    }
+    if (_json.containsKey("templateId")) {
+      templateId = _json["templateId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (configurationVariables != null) {
+      _json["configurationVariables"] = configurationVariables;
+    }
+    if (templateId != null) {
+      _json["templateId"] = templateId;
     }
     return _json;
   }
@@ -3670,6 +3753,17 @@ class PasswordRequirements {
   /// password_minimum_letters are enforced.
   core.String passwordQuality;
 
+  /// The scope that the password requirement applies to.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : The scope is unspecified. The password
+  /// requirements are applied to the work profile for work profile devices and
+  /// the whole device for fully managed or dedicated devices.
+  /// - "SCOPE_DEVICE" : The password requirements are only applied to the
+  /// device.
+  /// - "SCOPE_PROFILE" : The password requirements are only applied to the work
+  /// profile.
+  core.String passwordScope;
+
   PasswordRequirements();
 
   PasswordRequirements.fromJson(core.Map _json) {
@@ -3705,6 +3799,9 @@ class PasswordRequirements {
     }
     if (_json.containsKey("passwordQuality")) {
       passwordQuality = _json["passwordQuality"];
+    }
+    if (_json.containsKey("passwordScope")) {
+      passwordScope = _json["passwordScope"];
     }
   }
 
@@ -3743,6 +3840,9 @@ class PasswordRequirements {
     }
     if (passwordQuality != null) {
       _json["passwordQuality"] = passwordQuality;
+    }
+    if (passwordScope != null) {
+      _json["passwordScope"] = passwordScope;
     }
     return _json;
   }
@@ -4043,7 +4143,12 @@ class Policy {
   /// Whether outgoing calls are disabled.
   core.bool outgoingCallsDisabled;
 
-  /// Password requirements.
+  /// Password requirement policies. Different policies can be set for work
+  /// profile or fully managed devices by setting the password_scope field in
+  /// the policy.
+  core.List<PasswordRequirements> passwordPolicies;
+
+  /// Password requirements. DEPRECATED - Use password_policies
   PasswordRequirements passwordRequirements;
 
   /// Explicit permission or group grants or denials for all apps. These values
@@ -4057,6 +4162,17 @@ class Policy {
 
   /// Default intent handler activities.
   core.List<PersistentPreferredActivity> persistentPreferredActivities;
+
+  /// This mode controls which apps are available to the user in the Play Store
+  /// and the behavior on the device when apps are removed from the policy.
+  /// Possible string values are:
+  /// - "PLAY_STORE_MODE_UNSPECIFIED" : Unspecified. Defaults to WHITELIST.
+  /// - "WHITELIST" : Only apps that are in the policy are available and any app
+  /// not in the policy will be automatically uninstalled from the device.
+  /// - "BLACKLIST" : All apps are available and any app that should not be on
+  /// the device should be explicitly marked as 'BLOCKED' in the applications
+  /// policy.
+  core.String playStoreMode;
 
   /// Allows showing UI on a device for a user to choose a private key alias if
   /// there are no matching rules in ChoosePrivateKeyRules. For devices below
@@ -4131,7 +4247,7 @@ class Policy {
   /// Whether transferring files over USB is disabled.
   core.bool usbFileTransferDisabled;
 
-  /// Whether USB storage is enabled.
+  /// Whether USB storage is enabled. Deprecated.
   core.bool usbMassStorageEnabled;
 
   /// The version of the policy. This is a read-only field. The version is
@@ -4301,6 +4417,12 @@ class Policy {
     if (_json.containsKey("outgoingCallsDisabled")) {
       outgoingCallsDisabled = _json["outgoingCallsDisabled"];
     }
+    if (_json.containsKey("passwordPolicies")) {
+      passwordPolicies = (_json["passwordPolicies"] as core.List)
+          .map<PasswordRequirements>(
+              (value) => new PasswordRequirements.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("passwordRequirements")) {
       passwordRequirements =
           new PasswordRequirements.fromJson(_json["passwordRequirements"]);
@@ -4320,6 +4442,9 @@ class Policy {
               .map<PersistentPreferredActivity>(
                   (value) => new PersistentPreferredActivity.fromJson(value))
               .toList();
+    }
+    if (_json.containsKey("playStoreMode")) {
+      playStoreMode = _json["playStoreMode"];
     }
     if (_json.containsKey("privateKeySelectionEnabled")) {
       privateKeySelectionEnabled = _json["privateKeySelectionEnabled"];
@@ -4539,6 +4664,10 @@ class Policy {
     if (outgoingCallsDisabled != null) {
       _json["outgoingCallsDisabled"] = outgoingCallsDisabled;
     }
+    if (passwordPolicies != null) {
+      _json["passwordPolicies"] =
+          passwordPolicies.map((value) => (value).toJson()).toList();
+    }
     if (passwordRequirements != null) {
       _json["passwordRequirements"] = (passwordRequirements).toJson();
     }
@@ -4553,6 +4682,9 @@ class Policy {
       _json["persistentPreferredActivities"] = persistentPreferredActivities
           .map((value) => (value).toJson())
           .toList();
+    }
+    if (playStoreMode != null) {
+      _json["playStoreMode"] = playStoreMode;
     }
     if (privateKeySelectionEnabled != null) {
       _json["privateKeySelectionEnabled"] = privateKeySelectionEnabled;
@@ -4729,6 +4861,57 @@ class ProxyInfo {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    return _json;
+  }
+}
+
+/// A resource containing sign in details for an enterprise.
+class SigninDetail {
+  /// A JSON string whose UTF-8 representation can be used to generate a QR code
+  /// to enroll a device with this enrollment token. To enroll a device using
+  /// NFC, the NFC record must contain a serialized java.util.Properties
+  /// representation of the properties in the JSON. This is a read-only field
+  /// generated by the server.
+  core.String qrCode;
+
+  /// An enterprise wide enrollment token used to trigger custom sign-in flow.
+  /// This is a read-only field generated by the server.
+  core.String signinEnrollmentToken;
+
+  /// Sign-in URL for authentication when device is provisioned with a sign-in
+  /// enrollment token. The sign-in endpoint should finish authentication flow
+  /// with a URL in the form of
+  /// https://enterprise.google.com/android/enroll?et=<token> for a successful
+  /// login, or https://enterprise.google.com/android/enroll/invalid for a
+  /// failed login.
+  core.String signinUrl;
+
+  SigninDetail();
+
+  SigninDetail.fromJson(core.Map _json) {
+    if (_json.containsKey("qrCode")) {
+      qrCode = _json["qrCode"];
+    }
+    if (_json.containsKey("signinEnrollmentToken")) {
+      signinEnrollmentToken = _json["signinEnrollmentToken"];
+    }
+    if (_json.containsKey("signinUrl")) {
+      signinUrl = _json["signinUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (qrCode != null) {
+      _json["qrCode"] = qrCode;
+    }
+    if (signinEnrollmentToken != null) {
+      _json["signinEnrollmentToken"] = signinEnrollmentToken;
+    }
+    if (signinUrl != null) {
+      _json["signinUrl"] = signinUrl;
     }
     return _json;
   }
@@ -4974,7 +5157,7 @@ class StatusReportingSettings {
   /// Whether hardware status reporting is enabled.
   core.bool hardwareStatusEnabled;
 
-  /// Whether memory info reporting is enabled.
+  /// Whether memory reporting is enabled.
   core.bool memoryInfoEnabled;
 
   /// Whether network info reporting is enabled.
@@ -5132,6 +5315,33 @@ class TermsAndConditions {
     }
     if (header != null) {
       _json["header"] = (header).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A user belonging to an enterprise.
+class User {
+  /// A unique identifier you create for this user, such as user342 or
+  /// asset#44418. This field must be set when the user is created and can't be
+  /// updated. This field must not contain personally identifiable information
+  /// (PII). This identifier must be 1024 characters or less; otherwise, the
+  /// update policy request will fail.
+  core.String accountIdentifier;
+
+  User();
+
+  User.fromJson(core.Map _json) {
+    if (_json.containsKey("accountIdentifier")) {
+      accountIdentifier = _json["accountIdentifier"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountIdentifier != null) {
+      _json["accountIdentifier"] = accountIdentifier;
     }
     return _json;
   }

@@ -18,7 +18,7 @@ const core.String USER_AGENT = 'dart-api-client tasks/v1';
 
 /// Lets you manage your tasks and task lists.
 class TasksApi {
-  /// Manage your tasks
+  /// Create, edit, organize, and delete all your tasks
   static const TasksScope = "https://www.googleapis.com/auth/tasks";
 
   /// View your tasks

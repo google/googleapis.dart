@@ -27,7 +27,7 @@ const core.String USER_AGENT = 'dart-api-client drive/v3';
 /// Manages files in Drive including uploading, downloading, searching,
 /// detecting changes, and updating sharing permissions.
 class DriveApi {
-  /// View and manage the files in your Google Drive
+  /// See, edit, create, and delete all of your Google Drive files
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /// View and manage its own configuration data in your Google Drive
@@ -50,7 +50,7 @@ class DriveApi {
   static const DrivePhotosReadonlyScope =
       "https://www.googleapis.com/auth/drive.photos.readonly";
 
-  /// View the files in your Google Drive
+  /// See and download all your Google Drive files
   static const DriveReadonlyScope =
       "https://www.googleapis.com/auth/drive.readonly";
 
@@ -4083,6 +4083,9 @@ class File {
   /// trashed from a parent folder.
   core.bool explicitlyTrashed;
 
+  /// Links for exporting Google Docs to specific formats.
+  core.Map<core.String, core.String> exportLinks;
+
   /// The final component of fullFileExtension. This is only available for files
   /// with binary content in Drive.
   core.String fileExtension;
@@ -4296,6 +4299,10 @@ class File {
     if (_json.containsKey("explicitlyTrashed")) {
       explicitlyTrashed = _json["explicitlyTrashed"];
     }
+    if (_json.containsKey("exportLinks")) {
+      exportLinks =
+          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("fileExtension")) {
       fileExtension = _json["fileExtension"];
     }
@@ -4466,6 +4473,9 @@ class File {
     }
     if (explicitlyTrashed != null) {
       _json["explicitlyTrashed"] = explicitlyTrashed;
+    }
+    if (exportLinks != null) {
+      _json["exportLinks"] = exportLinks;
     }
     if (fileExtension != null) {
       _json["fileExtension"] = fileExtension;
@@ -4726,6 +4736,7 @@ class PermissionTeamDrivePermissionDetails {
   /// The primary role for this user. While new values may be added in the
   /// future, the following are currently possible:
   /// - organizer
+  /// - fileOrganizer
   /// - writer
   /// - commenter
   /// - reader
@@ -4813,8 +4824,9 @@ class Permission {
 
   /// The role granted by this permission. While new values may be supported in
   /// the future, the following are currently allowed:
-  /// - organizer
   /// - owner
+  /// - organizer
+  /// - fileOrganizer
   /// - writer
   /// - commenter
   /// - reader
@@ -5120,6 +5132,9 @@ class ReplyList {
 
 /// The metadata for a revision to a file.
 class Revision {
+  /// Links for exporting Google Docs to specific formats.
+  core.Map<core.String, core.String> exportLinks;
+
   /// The ID of the revision.
   core.String id;
 
@@ -5170,6 +5185,10 @@ class Revision {
   Revision();
 
   Revision.fromJson(core.Map _json) {
+    if (_json.containsKey("exportLinks")) {
+      exportLinks =
+          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -5211,6 +5230,9 @@ class Revision {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (exportLinks != null) {
+      _json["exportLinks"] = exportLinks;
+    }
     if (id != null) {
       _json["id"] = id;
     }

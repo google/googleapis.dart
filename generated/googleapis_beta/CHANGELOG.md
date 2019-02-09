@@ -1,3 +1,19 @@
+## 0.48.0
+
+ * [api-new] accesscontextmanager:v1beta
+ * [api-new] alertcenter:v1beta1
+ * [api-new] cloudasset:v1beta1
+ * [api-new] cloudscheduler:v1beta1
+ * [api-new] containeranalysis:v1beta1
+ * [api-new] file:v1beta1
+ * [api-new] firebasehosting:v1beta1
+ * [api-new] replicapool:v1beta1
+ * [api-new] servicenetworking:v1beta
+ * [api-removed] replicapool:v1beta2
+ * [api-removed] replicapoolupdater:v1beta1
+ * [api-removed] speech:v1beta1
+ * [api-removed] sqladmin:v1beta3
+
 ## 0.47.0+1
 
 * Regenerate package with widened constraint for `package:http`

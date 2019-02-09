@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client websecurityscanner/v1alpha';
 
-/// Web Security Scanner API (under development).
+/// Scans your Compute and App Engine apps for common web vulnerabilities.
 class WebsecurityscannerApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -441,15 +441,15 @@ class ProjectsScanConfigsScanRunsResourceApi {
   /// format 'projects/{projectId}/scanConfigs/{scanConfigId}'.
   /// Value must have pattern "^projects/[^/]+/scanConfigs/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of ScanRuns to return, can be limited by
-  /// server.
-  /// If not specified or not positive, the implementation will select a
-  /// reasonable value.
-  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a
   /// `next_page_token` value returned from a previous List request.
   /// If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - The maximum number of ScanRuns to return, can be limited by
+  /// server.
+  /// If not specified or not positive, the implementation will select a
+  /// reasonable value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -462,7 +462,7 @@ class ProjectsScanConfigsScanRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScanRunsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -473,11 +473,11 @@ class ProjectsScanConfigsScanRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -568,15 +568,15 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of CrawledUrls to return, can be limited
-  /// by server.
-  /// If not specified or not positive, the implementation will select a
-  /// reasonable value.
-  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a
   /// `next_page_token` value returned from a previous List request.
   /// If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - The maximum number of CrawledUrls to return, can be limited
+  /// by server.
+  /// If not specified or not positive, the implementation will select a
+  /// reasonable value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,7 +589,7 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCrawledUrlsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -600,11 +600,11 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1021,6 +1021,10 @@ class Finding {
   /// - "XSS_ANGULAR_CALLBACK" : A cross-site scripting (XSS) vulnerability in
   /// AngularJS module that
   /// occurs when a user-provided string is interpolated by Angular.
+  /// - "INVALID_HEADER" : A malformed or invalid valued header.
+  /// - "MISSPELLED_SECURITY_HEADER_NAME" : Misspelled security header name.
+  /// - "MISMATCHING_SECURITY_HEADER_VALUES" : Mismatching values in a duplicate
+  /// security header.
   core.String findingType;
 
   /// Output only.
@@ -1234,6 +1238,10 @@ class FindingTypeStats {
   /// - "XSS_ANGULAR_CALLBACK" : A cross-site scripting (XSS) vulnerability in
   /// AngularJS module that
   /// occurs when a user-provided string is interpolated by Angular.
+  /// - "INVALID_HEADER" : A malformed or invalid valued header.
+  /// - "MISSPELLED_SECURITY_HEADER_NAME" : Misspelled security header name.
+  /// - "MISMATCHING_SECURITY_HEADER_VALUES" : Mismatching values in a duplicate
+  /// security header.
   core.String findingType;
 
   FindingTypeStats();
@@ -1539,6 +1547,7 @@ class OutdatedLibrary {
 }
 
 /// A ScanConfig resource contains the configurations to launch a scan.
+/// next id: 12
 class ScanConfig {
   /// The authentication configuration. If specified, service will use the
   /// authentication configuration during scanning.
@@ -1551,6 +1560,9 @@ class ScanConfig {
   /// Required.
   /// The user provided display name of the ScanConfig.
   core.String displayName;
+
+  /// Latest ScanRun if available.
+  ScanRun latestRun;
 
   /// The maximum QPS during scanning. A valid value ranges from 5 to 20
   /// inclusively. If the field is unspecified or its value is set 0, server
@@ -1598,6 +1610,9 @@ class ScanConfig {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("latestRun")) {
+      latestRun = new ScanRun.fromJson(_json["latestRun"]);
+    }
     if (_json.containsKey("maxQps")) {
       maxQps = _json["maxQps"];
     }
@@ -1630,6 +1645,9 @@ class ScanConfig {
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (latestRun != null) {
+      _json["latestRun"] = (latestRun).toJson();
     }
     if (maxQps != null) {
       _json["maxQps"] = maxQps;

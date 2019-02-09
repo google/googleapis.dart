@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client sourcerepo/v1';
 
-/// Access source code repositories hosted by Google.
+/// Accesses source code repositories hosted by Google.
 class SourcerepoApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -356,12 +356,12 @@ class ProjectsReposResourceApi {
   /// `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
+  /// If not set or zero, defaults to 100 at the server.
+  ///
   /// [pageToken] - Resume listing repositories where a prior ListReposResponse
   /// left off. This is an opaque token that must be obtained from
   /// a recent, prior ListReposResponse's next_page_token field.
-  ///
-  /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
-  /// If not set or zero, defaults to 100 at the server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -374,7 +374,7 @@ class ProjectsReposResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReposResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -385,11 +385,11 @@ class ProjectsReposResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

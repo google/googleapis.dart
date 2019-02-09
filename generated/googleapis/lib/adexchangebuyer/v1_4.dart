@@ -3321,6 +3321,16 @@ class Creative {
   /// field should not be set in requests.
   core.List<CreativeCorrections> corrections;
 
+  /// Creative status identity type that the creative item applies to. Ad
+  /// Exchange real-time bidding is migrating to the sizeless creative
+  /// verification. Originally, Ad Exchange assigned creative verification
+  /// status to a unique combination of a buyer creative ID and creative
+  /// dimensions. Post-migration, a single verification status will be assigned
+  /// at the buyer creative ID level. This field allows to distinguish whether a
+  /// given creative status applies to a unique combination of a buyer creative
+  /// ID and creative dimensions, or to a buyer creative ID as a whole.
+  core.String creativeStatusIdentityType;
+
   /// Top-level deals status. Read-only. This field should not be set in
   /// requests. If disapproved, an entry for auctionType=DIRECT_DEALS (or ALL)
   /// in servingRestrictions will also exist. Note that this may be nuanced with
@@ -3443,6 +3453,9 @@ class Creative {
               (value) => new CreativeCorrections.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("creativeStatusIdentityType")) {
+      creativeStatusIdentityType = _json["creativeStatusIdentityType"];
+    }
     if (_json.containsKey("dealsStatus")) {
       dealsStatus = _json["dealsStatus"];
     }
@@ -3544,6 +3557,9 @@ class Creative {
     if (corrections != null) {
       _json["corrections"] =
           corrections.map((value) => (value).toJson()).toList();
+    }
+    if (creativeStatusIdentityType != null) {
+      _json["creativeStatusIdentityType"] = creativeStatusIdentityType;
     }
     if (dealsStatus != null) {
       _json["dealsStatus"] = dealsStatus;
@@ -6457,9 +6473,6 @@ class Proposal {
 }
 
 class PublisherProfileApiProto {
-  /// Deprecated: use the seller.account_id. The account id of the seller.
-  core.String accountId;
-
   /// Publisher provided info on its audience.
   core.String audience;
 
@@ -6531,9 +6544,6 @@ class PublisherProfileApiProto {
   PublisherProfileApiProto();
 
   PublisherProfileApiProto.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
-    }
     if (_json.containsKey("audience")) {
       audience = _json["audience"];
     }
@@ -6607,9 +6617,6 @@ class PublisherProfileApiProto {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (accountId != null) {
-      _json["accountId"] = accountId;
-    }
     if (audience != null) {
       _json["audience"] = audience;
     }

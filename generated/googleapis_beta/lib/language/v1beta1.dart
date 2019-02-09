@@ -16,9 +16,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client language/v1beta1';
 
-/// Provides natural language understanding technologies to developers. Examples
-/// include sentiment analysis, entity recognition, entity sentiment analysis,
-/// and text annotations.
+/// Provides natural language understanding technologies, such as sentiment
+/// analysis, entity recognition, entity sentiment analysis, and other text
+/// annotations, to developers.
 class LanguageApi {
   /// Apply machine learning models to reveal the structure and meaning of text
   static const CloudLanguageScope =

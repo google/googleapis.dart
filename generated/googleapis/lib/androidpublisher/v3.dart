@@ -24,7 +24,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androidpublisher/v3';
 
-/// Lets Android application developers access their Google Play accounts.
+/// Accesses Android application developers' Google Play accounts.
 class AndroidpublisherApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
@@ -592,6 +592,10 @@ class EditsBundlesResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [ackBundleInstallationWarning] - Must be set to true if the bundle
+  /// installation may trigger a warning on user devices (for example, if
+  /// installation size may be over a threshold, typically 100 MB).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -609,7 +613,8 @@ class EditsBundlesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Bundle> upload(core.String packageName, core.String editId,
-      {core.String $fields,
+      {core.bool ackBundleInstallationWarning,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -624,6 +629,11 @@ class EditsBundlesResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if (ackBundleInstallationWarning != null) {
+      _queryParams["ackBundleInstallationWarning"] = [
+        "${ackBundleInstallationWarning}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4931,6 +4941,7 @@ class ProductPurchase {
   /// values are:
   /// - Test (i.e. purchased from a license testing account)
   /// - Promo (i.e. purchased using a promo code)
+  /// - Rewarded (i.e. from watching a video ad instead of paying)
   core.int purchaseType;
 
   ProductPurchase();
@@ -5347,6 +5358,11 @@ class SubscriptionPurchase {
   /// current expiry time.
   core.bool autoRenewing;
 
+  /// Time at which the subscription will be automatically resumed, in
+  /// milliseconds since the Epoch. Only present if the user has requested to
+  /// pause the subscription.
+  core.String autoResumeTimeMillis;
+
   /// The reason why a subscription was canceled or is not auto-renewing.
   /// Possible values are:
   /// - User canceled the subscription
@@ -5409,6 +5425,7 @@ class SubscriptionPurchase {
   /// - Payment pending
   /// - Payment received
   /// - Free trial
+  /// - Pending deferred upgrade/downgrade
   core.int paymentState;
 
   /// Price of the subscription, not including tax. Price is expressed in
@@ -5456,6 +5473,9 @@ class SubscriptionPurchase {
   SubscriptionPurchase.fromJson(core.Map _json) {
     if (_json.containsKey("autoRenewing")) {
       autoRenewing = _json["autoRenewing"];
+    }
+    if (_json.containsKey("autoResumeTimeMillis")) {
+      autoResumeTimeMillis = _json["autoResumeTimeMillis"];
     }
     if (_json.containsKey("cancelReason")) {
       cancelReason = _json["cancelReason"];
@@ -5525,6 +5545,9 @@ class SubscriptionPurchase {
         new core.Map<core.String, core.Object>();
     if (autoRenewing != null) {
       _json["autoRenewing"] = autoRenewing;
+    }
+    if (autoResumeTimeMillis != null) {
+      _json["autoResumeTimeMillis"] = autoResumeTimeMillis;
     }
     if (cancelReason != null) {
       _json["cancelReason"] = cancelReason;

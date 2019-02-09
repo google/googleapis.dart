@@ -16,9 +16,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client indexing/v3';
 
-/// The Indexing API allows developers to share the life cycle of a Web Document
-/// with Google.
+/// Notifies Google when your web pages change.
 class IndexingApi {
+  /// Submit data to Google for indexing
+  static const IndexingScope = "https://www.googleapis.com/auth/indexing";
+
   final commons.ApiRequester _requester;
 
   UrlNotificationsResourceApi get urlNotifications =>

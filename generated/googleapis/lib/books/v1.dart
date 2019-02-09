@@ -8449,6 +8449,9 @@ class VolumeVolumeInfo {
   /// A list of subject categories, such as "Fiction", "Suspense", etc.
   core.List<core.String> categories;
 
+  /// Whether the volume has comics content.
+  core.bool comicsContent;
+
   /// An identifier for the version of the volume content (text & images). (In
   /// LITE projection)
   core.String contentVersion;
@@ -8539,6 +8542,9 @@ class VolumeVolumeInfo {
     if (_json.containsKey("categories")) {
       categories = (_json["categories"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("comicsContent")) {
+      comicsContent = _json["comicsContent"];
+    }
     if (_json.containsKey("contentVersion")) {
       contentVersion = _json["contentVersion"];
     }
@@ -8628,6 +8634,9 @@ class VolumeVolumeInfo {
     }
     if (categories != null) {
       _json["categories"] = categories;
+    }
+    if (comicsContent != null) {
+      _json["comicsContent"] = comicsContent;
     }
     if (contentVersion != null) {
       _json["contentVersion"] = contentVersion;

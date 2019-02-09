@@ -593,14 +593,14 @@ class ProjectsIndexesResourceApi {
   ///
   /// [projectId] - Project ID against which to make the request.
   ///
+  /// [filter] - null
+  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [pageSize] - The maximum number of items to return.  If zero, then all
   /// results will be
   /// returned.
-  ///
-  /// [filter] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -614,9 +614,9 @@ class ProjectsIndexesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleDatastoreAdminV1ListIndexesResponse> list(
       core.String projectId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -628,14 +628,14 @@ class ProjectsIndexesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -824,11 +824,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -841,9 +841,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -855,14 +855,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -937,8 +937,8 @@ class AllocateIdsResponse {
 /// An array value.
 class ArrayValue {
   /// Values in the array.
-  /// The order of this array may not be preserved if it contains a mix of
-  /// indexed and unindexed values.
+  /// The order of values in an array is preserved as long as all values have
+  /// identical settings for 'exclude_from_indexes'.
   core.List<Value> values;
 
   ArrayValue();
@@ -1744,7 +1744,6 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
 }
 
 /// A minimal index definition.
-/// Next tag: 8
 class GoogleDatastoreAdminV1Index {
   /// The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
   /// Required.
@@ -1889,7 +1888,7 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
   }
 }
 
-/// Next tag: 3
+/// A property of an index.
 class GoogleDatastoreAdminV1IndexedProperty {
   /// The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
   /// Required.

@@ -16,16 +16,16 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client slides/v1';
 
-/// An API for creating and editing Google Slides presentations.
+/// Reads and writes Google Slides presentations.
 class SlidesApi {
-  /// View and manage the files in your Google Drive
+  /// See, edit, create, and delete all of your Google Drive files
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /// View and manage Google Drive files and folders that you have opened or
   /// created with this app
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
-  /// View the files in your Google Drive
+  /// See and download all your Google Drive files
   static const DriveReadonlyScope =
       "https://www.googleapis.com/auth/drive.readonly";
 
@@ -37,7 +37,7 @@ class SlidesApi {
   static const PresentationsReadonlyScope =
       "https://www.googleapis.com/auth/presentations.readonly";
 
-  /// View and manage your spreadsheets in Google Drive
+  /// See, edit, create, and delete your spreadsheets in Google Drive
   static const SpreadsheetsScope =
       "https://www.googleapis.com/auth/spreadsheets";
 
@@ -137,9 +137,11 @@ class PresentationsResourceApi {
         .then((data) => new BatchUpdatePresentationResponse.fromJson(data));
   }
 
-  /// Creates a new presentation using the title given in the request. If a
-  /// presentationId is provided, uses it as the ID of the new presentation.
-  /// Otherwise, a new presentationId is generated.
+  /// Creates a blank presentation using the title given in the request. If a
+  /// `presentationId` is provided, it is used as the ID of the new
+  /// presentation.
+  /// Otherwise, a new ID is generated. Other fields in the request, including
+  /// any provided content, are ignored.
   /// Returns the created presentation.
   ///
   /// [request] - The metadata request object.
@@ -808,10 +810,39 @@ class CreateImageResponse {
 
 /// Creates a line.
 class CreateLineRequest {
+  /// The category of the line to be created.
+  ///
+  /// The exact line type created is
+  /// determined based on the category and how it's routed to connect to other
+  /// page elements.
+  ///
+  /// If you specify both a `category` and a `line_category`, the `category`
+  /// takes precedence.
+  ///
+  /// If you do not specify a value for `category`, but specify a value for
+  /// `line_category`, then the specified `line_category` value is used.
+  ///
+  /// If you do not specify either, then STRAIGHT is used.
+  /// Possible string values are:
+  /// - "LINE_CATEGORY_UNSPECIFIED" : Unspecified line category.
+  /// - "STRAIGHT" : Straight connectors, including straight connector 1.
+  /// - "BENT" : Bent connectors, including bent connector 2 to 5.
+  /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
+  core.String category;
+
   /// The element properties for the line.
   PageElementProperties elementProperties;
 
-  /// The category of line to be created.
+  /// The category of the line to be created.
+  ///
+  /// <b>Deprecated</b>: use `category` instead.
+  ///
+  /// The exact line type created is
+  /// determined based on the category and how it's routed to connect to other
+  /// page elements.
+  ///
+  /// If you specify both a `category` and a `line_category`, the `category`
+  /// takes precedence.
   /// Possible string values are:
   /// - "STRAIGHT" : Straight connectors, including straight connector 1. The is
   /// the default
@@ -836,6 +867,9 @@ class CreateLineRequest {
   CreateLineRequest();
 
   CreateLineRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
     if (_json.containsKey("elementProperties")) {
       elementProperties =
           new PageElementProperties.fromJson(_json["elementProperties"]);
@@ -851,6 +885,9 @@ class CreateLineRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (category != null) {
+      _json["category"] = category;
+    }
     if (elementProperties != null) {
       _json["elementProperties"] = (elementProperties).toJson();
     }
@@ -2788,6 +2825,18 @@ class LayoutReference {
 /// A PageElement kind representing a
 /// non-connector line, straight connector, curved connector, or bent connector.
 class Line {
+  /// The category of the line.
+  ///
+  /// It matches the `category` specified in CreateLineRequest, and can be
+  /// updated with
+  /// UpdateLineCategoryRequest.
+  /// Possible string values are:
+  /// - "LINE_CATEGORY_UNSPECIFIED" : Unspecified line category.
+  /// - "STRAIGHT" : Straight connectors, including straight connector 1.
+  /// - "BENT" : Bent connectors, including bent connector 2 to 5.
+  /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
+  core.String lineCategory;
+
   /// The properties of the line.
   LineProperties lineProperties;
 
@@ -2829,6 +2878,9 @@ class Line {
   Line();
 
   Line.fromJson(core.Map _json) {
+    if (_json.containsKey("lineCategory")) {
+      lineCategory = _json["lineCategory"];
+    }
     if (_json.containsKey("lineProperties")) {
       lineProperties = new LineProperties.fromJson(_json["lineProperties"]);
     }
@@ -2840,11 +2892,62 @@ class Line {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (lineCategory != null) {
+      _json["lineCategory"] = lineCategory;
+    }
     if (lineProperties != null) {
       _json["lineProperties"] = (lineProperties).toJson();
     }
     if (lineType != null) {
       _json["lineType"] = lineType;
+    }
+    return _json;
+  }
+}
+
+/// The properties for one end of a Line
+/// connection.
+class LineConnection {
+  /// The object ID of the connected page element.
+  ///
+  /// Some page elements, such as groups, tables, and lines
+  /// do not have connection sites and therefore cannot be connected to a
+  /// connector line.
+  core.String connectedObjectId;
+
+  /// The index of the connection site on the connected page element.
+  ///
+  /// In most cases, it corresponds to the predefined connection site index from
+  /// the ECMA-376 standard. More information on those connection sites can be
+  /// found in the description of the "cnx" attribute in section 20.1.9.9 and
+  /// Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open
+  /// XML File Formats-Fundamentals and Markup Language Reference", part 1 of
+  /// [ECMA-376 5th edition]
+  /// (http://www.ecma-international.org/publications/standards/Ecma-376.htm).
+  ///
+  /// The position of each connection site can also be viewed from Slides
+  /// editor.
+  core.int connectionSiteIndex;
+
+  LineConnection();
+
+  LineConnection.fromJson(core.Map _json) {
+    if (_json.containsKey("connectedObjectId")) {
+      connectedObjectId = _json["connectedObjectId"];
+    }
+    if (_json.containsKey("connectionSiteIndex")) {
+      connectionSiteIndex = _json["connectionSiteIndex"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (connectedObjectId != null) {
+      _json["connectedObjectId"] = connectedObjectId;
+    }
+    if (connectionSiteIndex != null) {
+      _json["connectionSiteIndex"] = connectionSiteIndex;
     }
     return _json;
   }
@@ -2919,6 +3022,12 @@ class LineProperties {
   /// - "OPEN_DIAMOND" : Hollow diamond.
   core.String endArrow;
 
+  /// The connection at the end of the line. If unset, there is no connection.
+  ///
+  /// Only lines with a Type indicating it is
+  /// a "connector" can have an `end_connection`.
+  LineConnection endConnection;
+
   /// The fill of the line. The default line fill matches the defaults for new
   /// lines created in the Slides editor.
   LineFill lineFill;
@@ -2946,6 +3055,13 @@ class LineProperties {
   /// - "OPEN_DIAMOND" : Hollow diamond.
   core.String startArrow;
 
+  /// The connection at the beginning of the line. If unset, there is no
+  /// connection.
+  ///
+  /// Only lines with a Type indicating it is
+  /// a "connector" can have a `start_connection`.
+  LineConnection startConnection;
+
   /// The thickness of the line.
   Dimension weight;
 
@@ -2958,6 +3074,9 @@ class LineProperties {
     if (_json.containsKey("endArrow")) {
       endArrow = _json["endArrow"];
     }
+    if (_json.containsKey("endConnection")) {
+      endConnection = new LineConnection.fromJson(_json["endConnection"]);
+    }
     if (_json.containsKey("lineFill")) {
       lineFill = new LineFill.fromJson(_json["lineFill"]);
     }
@@ -2966,6 +3085,9 @@ class LineProperties {
     }
     if (_json.containsKey("startArrow")) {
       startArrow = _json["startArrow"];
+    }
+    if (_json.containsKey("startConnection")) {
+      startConnection = new LineConnection.fromJson(_json["startConnection"]);
     }
     if (_json.containsKey("weight")) {
       weight = new Dimension.fromJson(_json["weight"]);
@@ -2981,6 +3103,9 @@ class LineProperties {
     if (endArrow != null) {
       _json["endArrow"] = endArrow;
     }
+    if (endConnection != null) {
+      _json["endConnection"] = (endConnection).toJson();
+    }
     if (lineFill != null) {
       _json["lineFill"] = (lineFill).toJson();
     }
@@ -2989,6 +3114,9 @@ class LineProperties {
     }
     if (startArrow != null) {
       _json["startArrow"] = startArrow;
+    }
+    if (startConnection != null) {
+      _json["startConnection"] = (startConnection).toJson();
     }
     if (weight != null) {
       _json["weight"] = (weight).toJson();
@@ -4285,7 +4413,7 @@ class Recolor {
   /// color from its color scheme.
   /// - "LIGHT7" : A recolor effect that lightens the image using the page's
   /// seventh
-  /// available color from its color scheme.e.
+  /// available color from its color scheme.
   /// - "LIGHT8" : A recolor effect that lightens the image using the page's
   /// eighth
   /// available color from its color scheme.
@@ -4450,7 +4578,8 @@ class ReplaceAllShapesWithImageRequest {
   core.List<core.String> pageObjectIds;
 
   /// The replace method.
-  /// Deprecated: use `image_replace_method` instead.
+  ///
+  /// <b>Deprecated</b>: use `image_replace_method` instead.
   ///
   /// If you specify both a `replace_method` and an `image_replace_method`, the
   /// `image_replace_method` takes precedence.
@@ -4837,6 +4966,10 @@ class Request {
   /// Replaces an existing image with a new image.
   ReplaceImageRequest replaceImage;
 
+  /// Reroutes a line such that it's connected
+  /// at the two closest connection sites on the connected page elements.
+  RerouteLineRequest rerouteLine;
+
   /// Ungroups objects, such as groups.
   UngroupObjectsRequest ungroupObjects;
 
@@ -4845,6 +4978,9 @@ class Request {
 
   /// Updates the properties of an Image.
   UpdateImagePropertiesRequest updateImageProperties;
+
+  /// Updates the category of a line.
+  UpdateLineCategoryRequest updateLineCategory;
 
   /// Updates the properties of a Line.
   UpdateLinePropertiesRequest updateLineProperties;
@@ -4855,6 +4991,9 @@ class Request {
 
   /// Updates the transform of a page element.
   UpdatePageElementTransformRequest updatePageElementTransform;
+
+  /// Updates the Z-order of page elements.
+  UpdatePageElementsZOrderRequest updatePageElementsZOrder;
 
   /// Updates the properties of a Page.
   UpdatePagePropertiesRequest updatePageProperties;
@@ -4976,6 +5115,9 @@ class Request {
     if (_json.containsKey("replaceImage")) {
       replaceImage = new ReplaceImageRequest.fromJson(_json["replaceImage"]);
     }
+    if (_json.containsKey("rerouteLine")) {
+      rerouteLine = new RerouteLineRequest.fromJson(_json["rerouteLine"]);
+    }
     if (_json.containsKey("ungroupObjects")) {
       ungroupObjects =
           new UngroupObjectsRequest.fromJson(_json["ungroupObjects"]);
@@ -4987,6 +5129,10 @@ class Request {
     if (_json.containsKey("updateImageProperties")) {
       updateImageProperties = new UpdateImagePropertiesRequest.fromJson(
           _json["updateImageProperties"]);
+    }
+    if (_json.containsKey("updateLineCategory")) {
+      updateLineCategory =
+          new UpdateLineCategoryRequest.fromJson(_json["updateLineCategory"]);
     }
     if (_json.containsKey("updateLineProperties")) {
       updateLineProperties = new UpdateLinePropertiesRequest.fromJson(
@@ -5000,6 +5146,10 @@ class Request {
       updatePageElementTransform =
           new UpdatePageElementTransformRequest.fromJson(
               _json["updatePageElementTransform"]);
+    }
+    if (_json.containsKey("updatePageElementsZOrder")) {
+      updatePageElementsZOrder = new UpdatePageElementsZOrderRequest.fromJson(
+          _json["updatePageElementsZOrder"]);
     }
     if (_json.containsKey("updatePageProperties")) {
       updatePageProperties = new UpdatePagePropertiesRequest.fromJson(
@@ -5121,6 +5271,9 @@ class Request {
     if (replaceImage != null) {
       _json["replaceImage"] = (replaceImage).toJson();
     }
+    if (rerouteLine != null) {
+      _json["rerouteLine"] = (rerouteLine).toJson();
+    }
     if (ungroupObjects != null) {
       _json["ungroupObjects"] = (ungroupObjects).toJson();
     }
@@ -5129,6 +5282,9 @@ class Request {
     }
     if (updateImageProperties != null) {
       _json["updateImageProperties"] = (updateImageProperties).toJson();
+    }
+    if (updateLineCategory != null) {
+      _json["updateLineCategory"] = (updateLineCategory).toJson();
     }
     if (updateLineProperties != null) {
       _json["updateLineProperties"] = (updateLineProperties).toJson();
@@ -5139,6 +5295,9 @@ class Request {
     if (updatePageElementTransform != null) {
       _json["updatePageElementTransform"] =
           (updatePageElementTransform).toJson();
+    }
+    if (updatePageElementsZOrder != null) {
+      _json["updatePageElementsZOrder"] = (updatePageElementsZOrder).toJson();
     }
     if (updatePageProperties != null) {
       _json["updatePageProperties"] = (updatePageProperties).toJson();
@@ -5171,6 +5330,34 @@ class Request {
     }
     if (updateVideoProperties != null) {
       _json["updateVideoProperties"] = (updateVideoProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Reroutes a line such that it's connected at the
+/// two closest connection sites on the connected page elements.
+class RerouteLineRequest {
+  /// The object ID of the line to reroute.
+  ///
+  /// Only a line with a category
+  /// indicating it is a "connector" can be rerouted. The start and end
+  /// connections of the line must be on different page elements.
+  core.String objectId;
+
+  RerouteLineRequest();
+
+  RerouteLineRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectId != null) {
+      _json["objectId"] = objectId;
     }
     return _json;
   }
@@ -5357,7 +5544,7 @@ class RgbColor {
 /// the page element kind.
 class Shadow {
   /// The alignment point of the shadow, that sets the origin for translate,
-  /// scale and skew of the shadow.
+  /// scale and skew of the shadow. This property is read-only.
   /// Possible string values are:
   /// - "RECTANGLE_POSITION_UNSPECIFIED" : Unspecified.
   /// - "TOP_LEFT" : Top left.
@@ -5407,14 +5594,15 @@ class Shadow {
   /// not inherit will never have an INHERIT property state.
   core.String propertyState;
 
-  /// Whether the shadow should rotate with the shape.
+  /// Whether the shadow should rotate with the shape. This property is
+  /// read-only.
   core.bool rotateWithShape;
 
   /// Transform that encodes the translate, scale, and skew of the shadow,
   /// relative to the alignment position.
   AffineTransform transform;
 
-  /// The type of the shadow.
+  /// The type of the shadow. This property is read-only.
   /// Possible string values are:
   /// - "SHADOW_TYPE_UNSPECIFIED" : Unspecified shadow type.
   /// - "OUTER" : Outer shadow.
@@ -6768,7 +6956,7 @@ class TableColumnProperties {
 /// specifies the following cells:
 ///
 ///       x     x
-///      [      x      ]
+///      [ x    x    x ]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -7462,6 +7650,52 @@ class UpdateImagePropertiesRequest {
   }
 }
 
+/// Updates the category of a line.
+class UpdateLineCategoryRequest {
+  /// The line category to update to.
+  ///
+  /// The exact line type is determined based
+  /// on the category to update to and how it's routed to connect to other page
+  /// elements.
+  /// Possible string values are:
+  /// - "LINE_CATEGORY_UNSPECIFIED" : Unspecified line category.
+  /// - "STRAIGHT" : Straight connectors, including straight connector 1.
+  /// - "BENT" : Bent connectors, including bent connector 2 to 5.
+  /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
+  core.String lineCategory;
+
+  /// The object ID of the line the update is applied to.
+  ///
+  /// Only a line with a category
+  /// indicating it is a "connector" can be updated.
+  ///
+  /// The line may be rerouted after updating its category.
+  core.String objectId;
+
+  UpdateLineCategoryRequest();
+
+  UpdateLineCategoryRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("lineCategory")) {
+      lineCategory = _json["lineCategory"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lineCategory != null) {
+      _json["lineCategory"] = lineCategory;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    return _json;
+  }
+}
+
 /// Updates the properties of a Line.
 class UpdateLinePropertiesRequest {
   /// The fields that should be updated.
@@ -7609,6 +7843,56 @@ class UpdatePageElementTransformRequest {
     }
     if (transform != null) {
       _json["transform"] = (transform).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates the Z-order of page elements. Z-order is an ordering of the elements
+/// on the page from back to front. The page element in the front may cover the
+/// elements that are behind it.
+class UpdatePageElementsZOrderRequest {
+  /// The Z-order operation to apply on the page elements.
+  ///
+  /// When applying the operation on multiple page elements, the relative
+  /// Z-orders within these page elements before the operation is maintained.
+  /// Possible string values are:
+  /// - "Z_ORDER_OPERATION_UNSPECIFIED" : Unspecified operation.
+  /// - "BRING_TO_FRONT" : Brings the page elements to the front of the page.
+  /// - "BRING_FORWARD" : Brings the page elements forward on the page by one
+  /// element relative to the
+  /// forwardmost one in the specified page elements.
+  /// - "SEND_BACKWARD" : Sends the page elements backward on the page by one
+  /// element relative to the
+  /// furthest behind one in the specified page elements.
+  /// - "SEND_TO_BACK" : Sends the page elements to the back of the page.
+  core.String operation;
+
+  /// The object IDs of the page elements to update.
+  ///
+  /// All the page elements must be on the same page and must not be grouped.
+  core.List<core.String> pageElementObjectIds;
+
+  UpdatePageElementsZOrderRequest();
+
+  UpdatePageElementsZOrderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("operation")) {
+      operation = _json["operation"];
+    }
+    if (_json.containsKey("pageElementObjectIds")) {
+      pageElementObjectIds =
+          (_json["pageElementObjectIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (operation != null) {
+      _json["operation"] = operation;
+    }
+    if (pageElementObjectIds != null) {
+      _json["pageElementObjectIds"] = pageElementObjectIds;
     }
     return _json;
   }

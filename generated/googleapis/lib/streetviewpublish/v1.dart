@@ -173,6 +173,13 @@ class PhotoResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
   ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// If language_code is unspecified, the user's language preference for Google
+  /// services will be used.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -184,7 +191,7 @@ class PhotoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Photo> get(core.String photoId,
-      {core.String view, core.String $fields}) {
+      {core.String view, core.String languageCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -197,6 +204,9 @@ class PhotoResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -461,16 +471,23 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [photoIds] - Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
-  ///
   /// [view] - Specifies if a download URL for the photo bytes should be
   /// returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// If language_code is unspecified, the user's language preference for Google
+  /// services will be used.
+  ///
+  /// [photoIds] - Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -483,8 +500,9 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.List<core.String> photoIds,
-      core.String view,
+      {core.String view,
+      core.String languageCode,
+      core.List<core.String> photoIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -493,11 +511,14 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (photoIds != null) {
-      _queryParams["photoIds"] = photoIds;
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+    if (photoIds != null) {
+      _queryParams["photoIds"] = photoIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -537,6 +558,12 @@ class PhotosResourceApi {
   /// updateMask
   /// field are used. If `updateMask` is not present, the update applies to all
   /// fields.
+  ///
+  /// The number of
+  /// UpdatePhotoRequest
+  /// messages in a
+  /// BatchUpdatePhotosRequest
+  /// must not exceed 20.
   ///
   /// <aside class="note"><b>Note:</b> To update
   /// Pose.altitude,
@@ -594,11 +621,6 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-  ///
-  /// The only filter supported at the moment is `placeId`.
-  ///
   /// [pageToken] - The
   /// nextPageToken
   /// value returned from a previous
@@ -618,6 +640,18 @@ class PhotosResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
   ///
+  /// [filter] - The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+  ///
+  /// The only filter supported at the moment is `placeId`.
+  ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// If language_code is unspecified, the user's language preference for Google
+  /// services will be used.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -629,10 +663,11 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
+      core.String languageCode,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -641,9 +676,6 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -652,6 +684,12 @@ class PhotosResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1062,6 +1100,14 @@ class Photo {
   /// PhotoView.INCLUDE_DOWNLOAD_URL.
   core.String downloadUrl;
 
+  /// Output only. Status in Google Maps, whether this photo was published, or
+  /// rejected for a possibly specified reason.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
+  /// - "PUBLISHED" : The photo is published to the public through Google Maps.
+  /// - "REJECTED_UNKNOWN" : The photo has been rejected for an unknown reason.
+  core.String mapsPublishStatus;
+
   /// Required when updating a photo. Output only when creating a photo.
   /// Identifier for the photo, which is unique among all photos in
   /// Google.
@@ -1078,6 +1124,24 @@ class Photo {
 
   /// Output only. The thumbnail URL for showing a preview of the given photo.
   core.String thumbnailUrl;
+
+  /// Output only. Status of rights transfer on this photo.
+  /// Possible string values are:
+  /// - "TRANSFER_STATUS_UNKNOWN" : The status of this transfer is unspecified.
+  /// - "NEVER_TRANSFERRED" : This photo has never been in a transfer.
+  /// - "PENDING" : This photo transfer has been initiated, but the receiver has
+  /// not yet
+  /// responded.
+  /// - "COMPLETED" : The photo transfer has been completed, and this photo has
+  /// been
+  /// transferred to the recipient.
+  /// - "REJECTED" : The recipient rejected this photo transfer.
+  /// - "EXPIRED" : The photo transfer expired before the recipient took any
+  /// action.
+  /// - "CANCELLED" : The sender cancelled this photo transfer.
+  /// - "RECEIVED_VIA_TRANSFER" : The recipient owns this photo due to a rights
+  /// transfer.
+  core.String transferStatus;
 
   /// Required when creating a photo. Input only. The resource URL where the
   /// photo bytes are uploaded to.
@@ -1100,6 +1164,9 @@ class Photo {
     if (_json.containsKey("downloadUrl")) {
       downloadUrl = _json["downloadUrl"];
     }
+    if (_json.containsKey("mapsPublishStatus")) {
+      mapsPublishStatus = _json["mapsPublishStatus"];
+    }
     if (_json.containsKey("photoId")) {
       photoId = new PhotoId.fromJson(_json["photoId"]);
     }
@@ -1116,6 +1183,9 @@ class Photo {
     }
     if (_json.containsKey("thumbnailUrl")) {
       thumbnailUrl = _json["thumbnailUrl"];
+    }
+    if (_json.containsKey("transferStatus")) {
+      transferStatus = _json["transferStatus"];
     }
     if (_json.containsKey("uploadReference")) {
       uploadReference = new UploadRef.fromJson(_json["uploadReference"]);
@@ -1138,6 +1208,9 @@ class Photo {
     if (downloadUrl != null) {
       _json["downloadUrl"] = downloadUrl;
     }
+    if (mapsPublishStatus != null) {
+      _json["mapsPublishStatus"] = mapsPublishStatus;
+    }
     if (photoId != null) {
       _json["photoId"] = (photoId).toJson();
     }
@@ -1152,6 +1225,9 @@ class Photo {
     }
     if (thumbnailUrl != null) {
       _json["thumbnailUrl"] = thumbnailUrl;
+    }
+    if (transferStatus != null) {
+      _json["transferStatus"] = transferStatus;
     }
     if (uploadReference != null) {
       _json["uploadReference"] = (uploadReference).toJson();
@@ -1227,6 +1303,14 @@ class PhotoResponse {
 
 /// Place metadata for an entity.
 class Place {
+  /// Output-only. The language_code that the name is localized with. This
+  /// should
+  /// be the language_code specified in the request, but may be a fallback.
+  core.String languageCode;
+
+  /// Output-only. The name of the place, localized to the language_code.
+  core.String name;
+
   /// Place identifier, as described in
   /// https://developers.google.com/places/place-id.
   core.String placeId;
@@ -1234,6 +1318,12 @@ class Place {
   Place();
 
   Place.fromJson(core.Map _json) {
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("placeId")) {
       placeId = _json["placeId"];
     }
@@ -1242,6 +1332,12 @@ class Place {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
     if (placeId != null) {
       _json["placeId"] = placeId;
     }
@@ -1251,6 +1347,15 @@ class Place {
 
 /// Raw pose measurement for an entity.
 class Pose {
+  /// The estimated horizontal accuracy of this pose in meters with 68%
+  /// confidence (one standard deviation). For example, on Android, this value
+  /// is
+  /// available from this method:
+  /// https://developer.android.com/reference/android/location/Location#getAccuracy().
+  /// Other platforms have different methods of obtaining similar accuracy
+  /// estimations.
+  core.double accuracyMeters;
+
   /// Altitude of the pose in meters above WGS84 ellipsoid.
   /// NaN indicates an unmeasured quantity.
   core.double altitude;
@@ -1287,6 +1392,9 @@ class Pose {
   Pose();
 
   Pose.fromJson(core.Map _json) {
+    if (_json.containsKey("accuracyMeters")) {
+      accuracyMeters = _json["accuracyMeters"].toDouble();
+    }
     if (_json.containsKey("altitude")) {
       altitude = _json["altitude"].toDouble();
     }
@@ -1310,6 +1418,9 @@ class Pose {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accuracyMeters != null) {
+      _json["accuracyMeters"] = accuracyMeters;
+    }
     if (altitude != null) {
       _json["altitude"] = altitude;
     }

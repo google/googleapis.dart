@@ -184,6 +184,11 @@ class CompaniesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Optional.
+  ///
+  /// The maximum number of companies to be returned, at most 100.
+  /// Default is 100 if a non-positive number is provided.
+  ///
   /// [mustHaveOpenJobs] - Optional.
   ///
   /// Set to true if the companies request must have open jobs.
@@ -197,11 +202,6 @@ class CompaniesResourceApi {
   ///
   /// The starting indicator from which to return results.
   ///
-  /// [pageSize] - Optional.
-  ///
-  /// The maximum number of companies to be returned, at most 100.
-  /// Default is 100 if a non-positive number is provided.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -213,9 +213,9 @@ class CompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(
-      {core.bool mustHaveOpenJobs,
+      {core.int pageSize,
+      core.bool mustHaveOpenJobs,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -224,14 +224,14 @@ class CompaniesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (mustHaveOpenJobs != null) {
       _queryParams["mustHaveOpenJobs"] = ["${mustHaveOpenJobs}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -752,22 +752,6 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Required.
-  ///
-  /// The filter string specifies the jobs to be enumerated.
-  ///
-  /// Supported operator: =, AND
-  ///
-  /// The fields eligible for filtering are:
-  ///
-  /// * `companyName` (Required)
-  /// * `requisitionId` (Optional)
-  ///
-  /// Sample Query:
-  ///
-  /// * companyName = "companies/123"
-  /// * companyName = "companies/123" AND requisitionId = "req-1"
-  ///
   /// [pageToken] - Optional.
   ///
   /// The starting point of a query result.
@@ -790,6 +774,22 @@ class JobsResourceApi {
   ///
   /// Defaults to false.
   ///
+  /// [filter] - Required.
+  ///
+  /// The filter string specifies the jobs to be enumerated.
+  ///
+  /// Supported operator: =, AND
+  ///
+  /// The fields eligible for filtering are:
+  ///
+  /// * `companyName` (Required)
+  /// * `requisitionId` (Optional)
+  ///
+  /// Sample Query:
+  ///
+  /// * companyName = "companies/123"
+  /// * companyName = "companies/123" AND requisitionId = "req-1"
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -801,10 +801,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.bool idsOnly,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -813,9 +813,6 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -824,6 +821,9 @@ class JobsResourceApi {
     }
     if (idsOnly != null) {
       _queryParams["idsOnly"] = ["${idsOnly}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1006,27 +1006,6 @@ class V2ResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [type] - Optional.
-  ///
-  /// The completion topic. The default is CompletionType.COMBINED.
-  /// Possible string values are:
-  /// - "COMPLETION_TYPE_UNSPECIFIED" : A COMPLETION_TYPE_UNSPECIFIED.
-  /// - "JOB_TITLE" : A JOB_TITLE.
-  /// - "COMPANY_NAME" : A COMPANY_NAME.
-  /// - "COMBINED" : A COMBINED.
-  ///
-  /// [companyName] - Optional.
-  ///
-  /// If provided, restricts completion to the specified company.
-  ///
-  /// [scope] - Optional.
-  ///
-  /// The scope of the completion. The defaults is CompletionScope.PUBLIC.
-  /// Possible string values are:
-  /// - "COMPLETION_SCOPE_UNSPECIFIED" : A COMPLETION_SCOPE_UNSPECIFIED.
-  /// - "TENANT" : A TENANT.
-  /// - "PUBLIC" : A PUBLIC.
-  ///
   /// [pageSize] - Required.
   ///
   /// Completion result count.
@@ -1054,6 +1033,27 @@ class V2ResourceApi {
   /// language_code or companies having open jobs with same
   /// language_code are returned.
   ///
+  /// [type] - Optional.
+  ///
+  /// The completion topic. The default is CompletionType.COMBINED.
+  /// Possible string values are:
+  /// - "COMPLETION_TYPE_UNSPECIFIED" : A COMPLETION_TYPE_UNSPECIFIED.
+  /// - "JOB_TITLE" : A JOB_TITLE.
+  /// - "COMPANY_NAME" : A COMPANY_NAME.
+  /// - "COMBINED" : A COMBINED.
+  ///
+  /// [companyName] - Optional.
+  ///
+  /// If provided, restricts completion to the specified company.
+  ///
+  /// [scope] - Optional.
+  ///
+  /// The scope of the completion. The defaults is CompletionScope.PUBLIC.
+  /// Possible string values are:
+  /// - "COMPLETION_SCOPE_UNSPECIFIED" : A COMPLETION_SCOPE_UNSPECIFIED.
+  /// - "TENANT" : A TENANT.
+  /// - "PUBLIC" : A PUBLIC.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1065,12 +1065,12 @@ class V2ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(
-      {core.String type,
-      core.String companyName,
-      core.String scope,
-      core.int pageSize,
+      {core.int pageSize,
       core.String query,
       core.String languageCode,
+      core.String type,
+      core.String companyName,
+      core.String scope,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1079,15 +1079,6 @@ class V2ResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (type != null) {
-      _queryParams["type"] = [type];
-    }
-    if (companyName != null) {
-      _queryParams["companyName"] = [companyName];
-    }
-    if (scope != null) {
-      _queryParams["scope"] = [scope];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -1096,6 +1087,15 @@ class V2ResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
+    }
+    if (companyName != null) {
+      _queryParams["companyName"] = [companyName];
+    }
+    if (scope != null) {
+      _queryParams["scope"] = [scope];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1285,7 +1285,7 @@ class CommutePreference {
 
   /// Optional.
   ///
-  /// Specifies the traffic density to use when caculating commute time.
+  /// Specifies the traffic density to use when calculating commute time.
   /// Must not be present if departure_hour_local is specified.
   /// Possible string values are:
   /// - "ROAD_TRAFFIC_UNSPECIFIED" : Road traffic situation is not specified.
@@ -2148,14 +2148,19 @@ class CompensationInfo {
 
 /// Compensation range.
 class CompensationRange {
-  /// Required.
+  /// Optional.
   ///
-  /// The maximum amount of compensation.
+  /// The maximum amount of compensation. If left empty, the value is set
+  /// to a maximal compensation value and the currency code is set to
+  /// match the currency code of
+  /// min_compensation.
   Money max;
 
-  /// Required.
+  /// Optional.
   ///
-  /// The minimum amount of compensation.
+  /// The minimum amount of compensation. If left empty, the value is set
+  /// to zero and the currency code is set to match the
+  /// currency code of max_compensation.
   Money min;
 
   CompensationRange();
@@ -2338,7 +2343,7 @@ class CustomAttribute {
   ///
   /// This field is used to perform number range search.
   /// (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. For
-  /// `long_value`, a value between Long.MIN and Long.MIN is allowed.
+  /// `long_value`, a value between Long.MIN and Long.MAX is allowed.
   core.String longValue;
 
   /// Optional but at least one of string_values or long_value must
@@ -2558,21 +2563,27 @@ class CustomFieldFilter {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -3223,9 +3234,8 @@ class GetHistogramRequest {
   JobQuery query;
 
   /// Meta information, such as `user_id`, collected from the job searcher or
-  /// other entity conducting the job search, which is used to improve the
-  /// search
-  /// quality of the service. Users determine identifier values, which must be
+  /// other entity conducting a job search, is used to improve the service's
+  /// search quality. Users determine identifier values, which must be
   /// unique and consist.
   RequestMetadata requestMetadata;
 
@@ -3782,7 +3792,9 @@ class Job {
   ///
   /// Job compensation information.
   ///
-  /// This field replaces compensation_info.
+  /// This field replaces compensation_info. Only
+  /// CompensationInfo.entries or extended_compensation_info can be set,
+  /// otherwise an exception is thrown.
   ExtendedCompensationInfo extendedCompensationInfo;
 
   /// Deprecated. Use custom_attributes instead.
@@ -3834,7 +3846,9 @@ class Job {
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
   /// class="external" target="_blank" }.
   ///
-  /// The default value is `en-US`.
+  /// If this field is unspecified and Job.description is present, detected
+  /// language code based on Job.description is assigned, otherwise
+  /// defaults to 'en_US'.
   core.String languageCode;
 
   /// Optional.
@@ -4354,8 +4368,9 @@ class JobFilters {
   ///
   /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of
   /// nesting (For example, "((A AND B AND C) OR NOT D) AND E"), and there can
-  /// be a maximum of 50 comparisons/functions in the expression. The expression
-  /// must be < 2000 characters in length.
+  /// be a maximum of 100 comparisons/functions in the expression. The
+  /// expression
+  /// must be < 3000 bytes in length.
   ///
   /// Sample Query:
   /// (key1 = "TEST" OR LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100
@@ -4427,13 +4442,13 @@ class JobFilters {
   /// The location filter specifies geo-regions containing the jobs to
   /// search against. See LocationFilter for more information.
   ///
-  /// If a location value is not specified, jobs are be retrieved
+  /// If a location value is not specified, jobs are retrieved
   /// from all locations.
   ///
   /// If multiple values are specified, jobs are retrieved from any of the
-  /// specified locations, and, if different values are specified
-  /// for the LocationFilter.distance_in_miles parameter, the maximum
-  /// provided distance is used for all locations.
+  /// specified locations. If different values are specified for the
+  /// LocationFilter.distance_in_miles parameter, the maximum provided
+  /// distance is used for all locations.
   ///
   /// At most 5 location filters are allowed.
   core.List<LocationFilter> locationFilters;
@@ -4853,9 +4868,9 @@ class JobQuery {
   /// criteria are retrieved regardless of where they're located.
   ///
   /// If multiple values are specified, jobs are retrieved from any of the
-  /// specified locations, and, if different values are specified
-  /// for the LocationFilter.distance_in_miles parameter, the maximum
-  /// provided distance is used for all locations.
+  /// specified locations. If different values are specified for the
+  /// LocationFilter.distance_in_miles parameter, the maximum provided
+  /// distance is used for all locations.
   ///
   /// At most 5 location filters are allowed.
   core.List<LocationFilter> locationFilters;
@@ -5827,8 +5842,6 @@ class ResponseMetadata {
 ///
 /// The Request body of the `SearchJobs` call.
 class SearchJobsRequest {
-  /// Deprecated. Any value provided in this field is ignored.
-  ///
   /// Optional.
   ///
   /// Controls whether to disable relevance thresholding. Relevance
@@ -5995,7 +6008,7 @@ class SearchJobsRequest {
   /// Required.
   ///
   /// The meta information collected about the job searcher, used to improve the
-  /// search quality of the service.. The identifiers, (such as `user_id`) are
+  /// search quality of the service. The identifiers, (such as `user_id`) are
   /// provided by users, and must be unique and consistent.
   RequestMetadata requestMetadata;
 
@@ -6147,7 +6160,7 @@ class SearchJobsResponse {
   /// seenenable_precise_result_size.
   core.String estimatedTotalSize;
 
-  /// The histogram results that match with specified
+  /// The histogram results that match specified
   /// SearchJobsRequest.HistogramFacets.
   HistogramResults histogramResults;
 

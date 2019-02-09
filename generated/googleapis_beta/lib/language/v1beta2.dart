@@ -16,9 +16,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client language/v1beta2';
 
-/// Provides natural language understanding technologies to developers. Examples
-/// include sentiment analysis, entity recognition, entity sentiment analysis,
-/// and text annotations.
+/// Provides natural language understanding technologies, such as sentiment
+/// analysis, entity recognition, entity sentiment analysis, and other text
+/// annotations, to developers.
 class LanguageApi {
   /// Apply machine learning models to reveal the structure and meaning of text
   static const CloudLanguageScope =
@@ -1235,6 +1235,7 @@ class EntityMention {
 
 /// All available features for sentiment, syntax, and semantic analysis.
 /// Setting each one to true will enable that specific analysis for the input.
+/// Next ID: 10
 class Features {
   /// Classify the full document into categories. If this is true,
   /// the API will use the default model which classifies into a
@@ -1559,6 +1560,7 @@ class Sentence {
 
 /// Represents the feeling associated with the entire text or entities in
 /// the text.
+/// Next ID: 6
 class Sentiment {
   /// A non-negative number in the [0, +inf) range, which represents
   /// the absolute magnitude of sentiment regardless of score (positive or

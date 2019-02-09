@@ -361,6 +361,13 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
+  /// results. If there
+  /// are more remaining results than this number, the response message will
+  /// contain a valid value in the `next_page_token` field.
+  ///
+  /// The default value is 20, and the maximum page size is 100.
+  ///
   /// [filter] - Optional. Specifies the subset of jobs to retrieve.
   /// You can filter on the value of one or more attributes of the job object.
   /// For example, retrieve jobs with a job identifier that starts with
@@ -377,13 +384,6 @@ class ProjectsJobsResourceApi {
   /// You get the token from the `next_page_token` field of the response from
   /// the previous call.
   ///
-  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
-  /// results. If there
-  /// are more remaining results than this number, the response message will
-  /// contain a valid value in the `next_page_token` field.
-  ///
-  /// The default value is 20, and the maximum page size is 100.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -395,9 +395,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -409,14 +409,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -966,8 +966,6 @@ class ProjectsModelsResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - Optional. Specifies the subset of models to retrieve.
-  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -980,6 +978,8 @@ class ProjectsModelsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
+  /// [filter] - Optional. Specifies the subset of models to retrieve.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -991,9 +991,9 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1005,14 +1005,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1403,6 +1403,11 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
+  ///
   /// [pageSize] - Optional. The number of versions to retrieve per "page" of
   /// results. If
   /// there are more remaining results than this number, the response message
@@ -1411,11 +1416,6 @@ class ProjectsModelsVersionsResourceApi {
   /// The default value is 20, and the maximum page size is 100.
   ///
   /// [filter] - Optional. Specifies the subset of versions to retrieve.
-  ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1428,9 +1428,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1442,14 +1442,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1771,11 +1771,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1788,9 +1788,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1802,14 +1802,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1868,10 +1868,11 @@ class ProjectsOperationsResourceApi {
 /// Use of this type only changes how the request and response bodies are
 /// handled, all other features will continue to work unchanged.
 class GoogleApiHttpBody {
-  /// The HTTP Content-Type string representing the content type of the body.
+  /// The HTTP Content-Type header value specifying the content type of the
+  /// body.
   core.String contentType;
 
-  /// HTTP body binary data.
+  /// The HTTP request/response body as raw binary.
   core.String data;
   core.List<core.int> get dataAsBytes {
     return convert.base64.decode(data);
@@ -1964,10 +1965,11 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Unspecified accelerator type. Default
   /// to no GPU.
-  /// - "NVIDIA_TESLA_K80" : Nvidia tesla k80 GPU.
-  /// - "NVIDIA_TESLA_P100" : Nvidia tesla P100 GPU.
-  /// - "NVIDIA_TESLA_V100" : Nvidia tesla V100 GPU. Not supported for batch
-  /// prediction.
+  /// - "NVIDIA_TESLA_K80" : Nvidia Tesla K80 GPU.
+  /// - "NVIDIA_TESLA_P100" : Nvidia Tesla P100 GPU.
+  /// - "NVIDIA_TESLA_V100" : Nvidia Tesla V100 GPU.
+  /// - "NVIDIA_TESLA_P4" : Nvidia Tesla P4 GPU.
+  /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
   core.String type;
 
   GoogleCloudMlV1AcceleratorConfig();
@@ -2241,8 +2243,9 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// Uses the default CloudML Engine hyperparameter tuning
   /// algorithm if unspecified.
   /// Possible string values are:
-  /// - "ALGORITHM_UNSPECIFIED" : The default algorithm used by hyperparameter
-  /// tuning service.
+  /// - "ALGORITHM_UNSPECIFIED" : The default algorithm used by the
+  /// hyperparameter tuning service. This is
+  /// a Bayesian optimization algorithm.
   /// - "GRID_SEARCH" : Simple grid search within the feasible space. To use
   /// grid search,
   /// all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`.
@@ -3104,6 +3107,9 @@ class GoogleCloudMlV1PredictionInput {
   /// - "TF_RECORD" : INPUT ONLY. The source file is a TFRecord file.
   /// - "TF_RECORD_GZIP" : INPUT ONLY. The source file is a GZIP-compressed
   /// TFRecord file.
+  /// - "CSV" : OUTPUT ONLY. Output values will be in comma-separated rows, with
+  /// keys
+  /// in a separate file.
   core.String dataFormat;
 
   /// Required. The Google Cloud Storage location of the input data files.
@@ -3121,6 +3127,20 @@ class GoogleCloudMlV1PredictionInput {
   /// `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
   core.String modelName;
 
+  /// Optional. Format of the output data files, defaults to JSON.
+  /// Possible string values are:
+  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
+  /// - "JSON" : Each line of the file is a JSON dictionary representing one
+  /// record.
+  /// - "TEXT" : Deprecated. Use JSON instead.
+  /// - "TF_RECORD" : INPUT ONLY. The source file is a TFRecord file.
+  /// - "TF_RECORD_GZIP" : INPUT ONLY. The source file is a GZIP-compressed
+  /// TFRecord file.
+  /// - "CSV" : OUTPUT ONLY. Output values will be in comma-separated rows, with
+  /// keys
+  /// in a separate file.
+  core.String outputDataFormat;
+
   /// Required. The output Google Cloud Storage location.
   core.String outputPath;
 
@@ -3129,8 +3149,8 @@ class GoogleCloudMlV1PredictionInput {
   /// for ML Engine services.
   core.String region;
 
-  /// Optional. The Google Cloud ML runtime version to use for this batch
-  /// prediction. If not set, Google Cloud ML will pick the runtime version used
+  /// Optional. The Cloud ML Engine runtime version to use for this batch
+  /// prediction. If not set, Cloud ML Engine will pick the runtime version used
   /// during the CreateVersion request for this model version, or choose the
   /// latest stable version when model version information is not available
   /// such as when the model is specified by uri.
@@ -3179,6 +3199,9 @@ class GoogleCloudMlV1PredictionInput {
     if (_json.containsKey("modelName")) {
       modelName = _json["modelName"];
     }
+    if (_json.containsKey("outputDataFormat")) {
+      outputDataFormat = _json["outputDataFormat"];
+    }
     if (_json.containsKey("outputPath")) {
       outputPath = _json["outputPath"];
     }
@@ -3219,6 +3242,9 @@ class GoogleCloudMlV1PredictionInput {
     }
     if (modelName != null) {
       _json["modelName"] = modelName;
+    }
+    if (outputDataFormat != null) {
+      _json["outputDataFormat"] = outputDataFormat;
     }
     if (outputPath != null) {
       _json["outputPath"] = outputPath;
@@ -3381,14 +3407,32 @@ class GoogleCloudMlV1TrainingInput {
   ///   <dt>standard_p100</dt>
   ///   <dd>
   ///   A machine equivalent to <i>standard</i> that
-  ///   also includes a single NVIDIA Tesla P100 GPU. The availability of these
-  ///   GPUs is in the <i>Beta</i> launch stage.
+  ///   also includes a single NVIDIA Tesla P100 GPU.
   ///   </dd>
   ///   <dt>complex_model_m_p100</dt>
   ///   <dd>
   ///   A machine equivalent to <i>complex_model_m</i> that also includes
-  ///   four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
-  ///   the <i>Beta</i> launch stage.
+  ///   four NVIDIA Tesla P100 GPUs.
+  ///   </dd>
+  ///   <dt>standard_v100</dt>
+  ///   <dd>
+  ///   A machine equivalent to <i>standard</i> that
+  ///   also includes a single NVIDIA Tesla V100 GPU.
+  ///   </dd>
+  ///   <dt>large_model_v100</dt>
+  ///   <dd>
+  ///   A machine equivalent to <i>large_model</i> that
+  ///   also includes a single NVIDIA Tesla V100 GPU.
+  ///   </dd>
+  ///   <dt>complex_model_m_v100</dt>
+  ///   <dd>
+  ///   A machine equivalent to <i>complex_model_m</i> that
+  ///   also includes four NVIDIA Tesla V100 GPUs.
+  ///   </dd>
+  ///   <dt>complex_model_l_v100</dt>
+  ///   <dd>
+  ///   A machine equivalent to <i>complex_model_l</i> that
+  ///   also includes eight NVIDIA Tesla V100 GPUs.
   ///   </dd>
   ///   <dt>cloud_tpu</dt>
   ///   <dd>
@@ -3412,6 +3456,8 @@ class GoogleCloudMlV1TrainingInput {
   ///
   /// This value can only be used when `scale_tier` is set to `CUSTOM`.If you
   /// set this value, you must also set `parameter_server_type`.
+  ///
+  /// The default value is zero.
   core.String parameterServerCount;
 
   /// Optional. Specifies the type of virtual machine to use for your training
@@ -3429,8 +3475,8 @@ class GoogleCloudMlV1TrainingInput {
 
   /// Optional. The version of Python used in training. If not set, the default
   /// version is '2.7'. Python '3.5' is available when `runtime_version` is set
-  /// to '1.4' and above. Python '2.7' works with all supported runtime
-  /// versions.
+  /// to '1.4' and above. Python '2.7' works with all supported
+  /// <a href="/ml-engine/docs/runtime-version-list">runtime versions</a>.
   core.String pythonVersion;
 
   /// Required. The Google Compute Engine region to run the training job in.
@@ -3438,9 +3484,12 @@ class GoogleCloudMlV1TrainingInput {
   /// for ML Engine services.
   core.String region;
 
-  /// Optional. The Google Cloud ML runtime version to use for training.  If not
-  /// set, Google Cloud ML will choose a stable version, which is defined in the
-  /// documentation of runtime version list.
+  /// Optional. The Cloud ML Engine runtime version to use for training. If not
+  /// set, Cloud ML Engine uses the default stable version, 1.0. For more
+  /// information, see the
+  /// <a href="/ml-engine/docs/runtime-version-list">runtime version list</a>
+  /// and
+  /// <a href="/ml-engine/docs/versioning">how to manage runtime versions</a>.
   core.String runtimeVersion;
 
   /// Required. Specifies the machine types, the number of replicas for workers
@@ -3486,6 +3535,8 @@ class GoogleCloudMlV1TrainingInput {
   ///
   /// This value can only be used when `scale_tier` is set to `CUSTOM`. If you
   /// set this value, you must also set `worker_type`.
+  ///
+  /// The default value is zero.
   core.String workerCount;
 
   /// Optional. Specifies the type of virtual machine to use for your training
@@ -3705,11 +3756,13 @@ class GoogleCloudMlV1Version {
 
   /// Optional. The machine learning framework Cloud ML Engine uses to train
   /// this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
-  /// and `XGBOOST`. If you do not specify a framework, Cloud ML Engine uses
-  /// TensorFlow. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set
-  /// the runtime version of the model to 1.4 or greater.
+  /// `XGBOOST`. If you do not specify a framework, Cloud ML Engine
+  /// will analyze files in the deployment_uri to determine a framework. If you
+  /// choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version
+  /// of the model to 1.4 or greater.
   /// Possible string values are:
-  /// - "FRAMEWORK_UNSPECIFIED" : Unspecified framework. Defaults to TensorFlow.
+  /// - "FRAMEWORK_UNSPECIFIED" : Unspecified framework. Assigns a value based
+  /// on the file suffix.
   /// - "TENSORFLOW" : Tensorflow framework.
   /// - "SCIKIT_LEARN" : Scikit-learn framework.
   /// - "XGBOOST" : XGBoost framework.
@@ -3763,8 +3816,11 @@ class GoogleCloudMlV1Version {
   /// versions.
   core.String pythonVersion;
 
-  /// Optional. The Google Cloud ML runtime version to use for this deployment.
-  /// If not set, Google Cloud ML will choose a version.
+  /// Optional. The Cloud ML Engine runtime version to use for this deployment.
+  /// If not set, Cloud ML Engine uses the default stable version, 1.0. For more
+  /// information, see the
+  /// [runtime version list](/ml-engine/docs/runtime-version-list) and
+  /// [how to manage runtime versions](/ml-engine/docs/versioning).
   core.String runtimeVersion;
 
   /// Output only. The state of a version.

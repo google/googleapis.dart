@@ -172,6 +172,9 @@ class V1ResourceApi {
   ///
   /// [dynamicLink] - Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
   ///
+  /// [sdkVersion] - Google SDK version. Version takes the form
+  /// "$major.$minor.$patch"
+  ///
   /// [durationDays] - The span of time requested in days.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -185,7 +188,7 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink,
-      {core.String durationDays, core.String $fields}) {
+      {core.String sdkVersion, core.String durationDays, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -195,6 +198,9 @@ class V1ResourceApi {
 
     if (dynamicLink == null) {
       throw new core.ArgumentError("Parameter dynamicLink is required.");
+    }
+    if (sdkVersion != null) {
+      _queryParams["sdkVersion"] = [sdkVersion];
     }
     if (durationDays != null) {
       _queryParams["durationDays"] = [durationDays];
@@ -257,6 +263,51 @@ class V1ResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new GetIosPostInstallAttributionResponse.fromJson(data));
+  }
+
+  /// Get iOS reopen attribution for app universal link open deeplinking.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetIosReopenAttributionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetIosReopenAttributionResponse> reopenAttribution(
+      GetIosReopenAttributionRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/reopenAttribution';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetIosReopenAttributionResponse.fromJson(data));
   }
 }
 
@@ -365,6 +416,9 @@ class CreateManagedShortLinkRequest {
   /// Links must be named to be tracked.
   core.String name;
 
+  /// Google SDK version. Version takes the form "$major.$minor.$patch"
+  core.String sdkVersion;
+
   /// Short Dynamic Link suffix. Optional.
   Suffix suffix;
 
@@ -379,6 +433,9 @@ class CreateManagedShortLinkRequest {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("sdkVersion")) {
+      sdkVersion = _json["sdkVersion"];
     }
     if (_json.containsKey("suffix")) {
       suffix = new Suffix.fromJson(_json["suffix"]);
@@ -396,6 +453,9 @@ class CreateManagedShortLinkRequest {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (sdkVersion != null) {
+      _json["sdkVersion"] = sdkVersion;
     }
     if (suffix != null) {
       _json["suffix"] = (suffix).toJson();
@@ -463,6 +523,9 @@ class CreateShortDynamicLinkRequest {
   /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   core.String longDynamicLink;
 
+  /// Google SDK version. Version takes the form "$major.$minor.$patch"
+  core.String sdkVersion;
+
   /// Short Dynamic Link suffix. Optional.
   Suffix suffix;
 
@@ -474,6 +537,9 @@ class CreateShortDynamicLinkRequest {
     }
     if (_json.containsKey("longDynamicLink")) {
       longDynamicLink = _json["longDynamicLink"];
+    }
+    if (_json.containsKey("sdkVersion")) {
+      sdkVersion = _json["sdkVersion"];
     }
     if (_json.containsKey("suffix")) {
       suffix = new Suffix.fromJson(_json["suffix"]);
@@ -488,6 +554,9 @@ class CreateShortDynamicLinkRequest {
     }
     if (longDynamicLink != null) {
       _json["longDynamicLink"] = longDynamicLink;
+    }
+    if (sdkVersion != null) {
+      _json["sdkVersion"] = sdkVersion;
     }
     if (suffix != null) {
       _json["suffix"] = (suffix).toJson();
@@ -723,6 +792,8 @@ class DynamicLinkInfo {
   /// E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps
   /// More examples can be found in description of getNormalizedUriPrefix in
   /// j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
+  ///
+  /// Will fallback to dynamic_link_domain is this field is missing
   core.String domainUriPrefix;
 
   /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
@@ -731,7 +802,7 @@ class DynamicLinkInfo {
   /// on how to set up Dynamic Link domain associated with your Firebase
   /// project.
   ///
-  /// Required.
+  /// Required if missing domain_uri_prefix.
   core.String dynamicLinkDomain;
 
   /// iOS related information. See iOS related parameters in the
@@ -968,7 +1039,7 @@ class GetIosPostInstallAttributionRequest {
   /// API call.
   core.String retrievalMethod;
 
-  /// Google SDK version.
+  /// Google SDK version. Version takes the form "$major.$minor.$patch"
   core.String sdkVersion;
 
   /// Possible unique matched link that server need to check before performing
@@ -1216,6 +1287,136 @@ class GetIosPostInstallAttributionResponse {
   }
 }
 
+/// Request for iSDK to get reopen attribution for app universal link open
+/// deeplinking. This endpoint is meant for only iOS requests.
+class GetIosReopenAttributionRequest {
+  /// APP bundle ID.
+  core.String bundleId;
+
+  /// FDL link to be verified from an app universal link open.
+  /// The FDL link can be one of:
+  /// 1) short FDL.
+  /// e.g. <app_code>.page.link/<ddl_id>, or
+  /// 2) long FDL.
+  /// e.g. <app_code>.page.link/?{query params}, or
+  /// 3) Invite FDL.
+  /// e.g. <app_code>.page.link/i/<invite_id_or_alias>
+  core.String requestedLink;
+
+  /// Google SDK version. Version takes the form "$major.$minor.$patch"
+  core.String sdkVersion;
+
+  GetIosReopenAttributionRequest();
+
+  GetIosReopenAttributionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bundleId")) {
+      bundleId = _json["bundleId"];
+    }
+    if (_json.containsKey("requestedLink")) {
+      requestedLink = _json["requestedLink"];
+    }
+    if (_json.containsKey("sdkVersion")) {
+      sdkVersion = _json["sdkVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bundleId != null) {
+      _json["bundleId"] = bundleId;
+    }
+    if (requestedLink != null) {
+      _json["requestedLink"] = requestedLink;
+    }
+    if (sdkVersion != null) {
+      _json["sdkVersion"] = sdkVersion;
+    }
+    return _json;
+  }
+}
+
+/// Response for iSDK to get reopen attribution for app universal link open
+/// deeplinking. This endpoint is meant for only iOS requests.
+class GetIosReopenAttributionResponse {
+  /// The deep-link attributed the app universal link open. For both regular
+  /// FDL links and invite FDL links.
+  core.String deepLink;
+
+  /// Optional invitation ID, for only invite typed requested FDL links.
+  core.String invitationId;
+
+  /// FDL input value of the "&imv=" parameter, minimum app version to be
+  /// returned to Google Firebase SDK running on iOS-9.
+  core.String iosMinAppVersion;
+
+  /// The entire FDL, expanded from a short link. It is the same as the
+  /// requested_link, if it is long.
+  core.String resolvedLink;
+
+  /// Scion campaign value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmCampaign;
+
+  /// Scion medium value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmMedium;
+
+  /// Scion source value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmSource;
+
+  GetIosReopenAttributionResponse();
+
+  GetIosReopenAttributionResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("deepLink")) {
+      deepLink = _json["deepLink"];
+    }
+    if (_json.containsKey("invitationId")) {
+      invitationId = _json["invitationId"];
+    }
+    if (_json.containsKey("iosMinAppVersion")) {
+      iosMinAppVersion = _json["iosMinAppVersion"];
+    }
+    if (_json.containsKey("resolvedLink")) {
+      resolvedLink = _json["resolvedLink"];
+    }
+    if (_json.containsKey("utmCampaign")) {
+      utmCampaign = _json["utmCampaign"];
+    }
+    if (_json.containsKey("utmMedium")) {
+      utmMedium = _json["utmMedium"];
+    }
+    if (_json.containsKey("utmSource")) {
+      utmSource = _json["utmSource"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deepLink != null) {
+      _json["deepLink"] = deepLink;
+    }
+    if (invitationId != null) {
+      _json["invitationId"] = invitationId;
+    }
+    if (iosMinAppVersion != null) {
+      _json["iosMinAppVersion"] = iosMinAppVersion;
+    }
+    if (resolvedLink != null) {
+      _json["resolvedLink"] = resolvedLink;
+    }
+    if (utmCampaign != null) {
+      _json["utmCampaign"] = utmCampaign;
+    }
+    if (utmMedium != null) {
+      _json["utmMedium"] = utmMedium;
+    }
+    if (utmSource != null) {
+      _json["utmSource"] = utmSource;
+    }
+    return _json;
+  }
+}
+
 /// Parameters for Google Play Campaign Measurements.
 /// [Learn
 /// more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)
@@ -1367,6 +1568,9 @@ class IosInfo {
   /// If specified, this overrides the ios_fallback_link value on iPads.
   core.String iosIpadFallbackLink;
 
+  /// iOS minimum version.
+  core.String iosMinimumVersion;
+
   IosInfo();
 
   IosInfo.fromJson(core.Map _json) {
@@ -1387,6 +1591,9 @@ class IosInfo {
     }
     if (_json.containsKey("iosIpadFallbackLink")) {
       iosIpadFallbackLink = _json["iosIpadFallbackLink"];
+    }
+    if (_json.containsKey("iosMinimumVersion")) {
+      iosMinimumVersion = _json["iosMinimumVersion"];
     }
   }
 
@@ -1410,6 +1617,9 @@ class IosInfo {
     }
     if (iosIpadFallbackLink != null) {
       _json["iosIpadFallbackLink"] = iosIpadFallbackLink;
+    }
+    if (iosMinimumVersion != null) {
+      _json["iosMinimumVersion"] = iosMinimumVersion;
     }
     return _json;
   }

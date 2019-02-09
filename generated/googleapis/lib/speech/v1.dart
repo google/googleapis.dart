@@ -25,6 +25,7 @@ class SpeechApi {
   final commons.ApiRequester _requester;
 
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   SpeechResourceApi get speech => new SpeechResourceApi(_requester);
 
   SpeechApi(http.Client client,
@@ -46,7 +47,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern "^.+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -74,6 +75,290 @@ class OperationsResourceApi {
     }
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists operations that match the specified filter in the request. If the
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// NOTE: the `name` binding allows API services to override the binding
+  /// to use different resource name schemes, such as `users / * /operations`.
+  /// To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration.
+  /// For backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding
+  /// is the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [name] - The name of the operation's parent resource.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+      {core.String filter,
+      core.String name,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/operations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
+  ProjectsOperationsResourceApi get operations =>
+      new ProjectsOperationsResourceApi(_requester);
+
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResourceApi get operations =>
+      new ProjectsLocationsOperationsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists operations that match the specified filter in the request. If the
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// NOTE: the `name` binding allows API services to override the binding
+  /// to use different resource name schemes, such as `users / * /operations`.
+  /// To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration.
+  /// For backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding
+  /// is the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(core.String name,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
+class ProjectsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsManualRecognitionTasksResourceApi
+      get manualRecognitionTasks =>
+          new ProjectsOperationsManualRecognitionTasksResourceApi(_requester);
+
+  ProjectsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsOperationsManualRecognitionTasksResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsManualRecognitionTasksResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/operations/manualRecognitionTasks/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -182,6 +467,85 @@ class SpeechResourceApi {
   }
 }
 
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation> operations;
+
+  ListOperationsResponse();
+
+  ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("operations")) {
+      operations = (_json["operations"] as core.List)
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (operations != null) {
+      _json["operations"] =
+          operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Describes the progress of a long-running `LongRunningRecognize` call. It is
+/// included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
+class LongRunningRecognizeMetadata {
+  /// Time of the most recent processing update.
+  core.String lastUpdateTime;
+
+  /// Approximate percentage of audio processed thus far. Guaranteed to be 100
+  /// when the audio is fully processed and the results are available.
+  core.int progressPercent;
+
+  /// Time when the request was received.
+  core.String startTime;
+
+  LongRunningRecognizeMetadata();
+
+  LongRunningRecognizeMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("lastUpdateTime")) {
+      lastUpdateTime = _json["lastUpdateTime"];
+    }
+    if (_json.containsKey("progressPercent")) {
+      progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lastUpdateTime != null) {
+      _json["lastUpdateTime"] = lastUpdateTime;
+    }
+    if (progressPercent != null) {
+      _json["progressPercent"] = progressPercent;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 /// The top-level message sent by the client for the `LongRunningRecognize`
 /// method.
 class LongRunningRecognizeRequest {
@@ -211,6 +575,38 @@ class LongRunningRecognizeRequest {
     }
     if (config != null) {
       _json["config"] = (config).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The only message returned to the client by the `LongRunningRecognize`
+/// method.
+/// It contains the result as zero or more sequential `SpeechRecognitionResult`
+/// messages. It is included in the `result.response` field of the `Operation`
+/// returned by the `GetOperation` call of the `google::longrunning::Operations`
+/// service.
+class LongRunningRecognizeResponse {
+  /// Output only. Sequential list of transcription results corresponding to
+  /// sequential portions of audio.
+  core.List<SpeechRecognitionResult> results;
+
+  LongRunningRecognizeResponse();
+
+  LongRunningRecognizeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<SpeechRecognitionResult>(
+              (value) => new SpeechRecognitionResult.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -302,7 +698,7 @@ class Operation {
 /// Contains audio data in the encoding specified in the `RecognitionConfig`.
 /// Either `content` or `uri` must be supplied. Supplying both or neither
 /// returns google.rpc.Code.INVALID_ARGUMENT. See
-/// [audio limits](https://cloud.google.com/speech/limits#content).
+/// [content limits](/speech-to-text/quotas#content).
 class RecognitionAudio {
   /// The audio data bytes encoded as specified in
   /// `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
@@ -318,7 +714,8 @@ class RecognitionAudio {
   }
 
   /// URI that points to a file that contains audio data bytes as specified in
-  /// `RecognitionConfig`. Currently, only Google Cloud Storage URIs are
+  /// `RecognitionConfig`. The file must not be compressed (for example, gzip).
+  /// Currently, only Google Cloud Storage URIs are
   /// supported, which must be specified in the following format:
   /// `gs://bucket_name/object_name` (other URI formats return
   /// google.rpc.Code.INVALID_ARGUMENT). For more information, see
@@ -352,6 +749,23 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
+  /// *Optional* If 'true', adds punctuation to recognition result hypotheses.
+  /// This feature is only available in select languages. Setting this for
+  /// requests in other languages has no effect at all.
+  /// The default 'false' value does not add punctuation to result hypotheses.
+  /// Note: This is currently offered as an experimental service, complimentary
+  /// to all users. In the future this may be exclusively available as a
+  /// premium feature.
+  core.bool enableAutomaticPunctuation;
+
+  /// This needs to be set to `true` explicitly and `audio_channel_count` > 1
+  /// to get each channel recognized separately. The recognition result will
+  /// contain a `channel_tag` field to state which channel that result belongs
+  /// to. If this is not true, we will only recognize the first channel. The
+  /// request is billed cumulatively for all channels recognized:
+  /// `audio_channel_count` multiplied by the length of the audio.
+  core.bool enableSeparateRecognitionPerChannel;
+
   /// *Optional* If `true`, the top result includes a list of words and
   /// the start and end time offsets (timestamps) for those words. If
   /// `false`, no word-level time offset information is returned. The default is
@@ -399,7 +813,7 @@ class RecognitionConfig {
   /// *Required* The language of the supplied audio as a
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   /// Example: "en-US".
-  /// See [Language Support](https://cloud.google.com/speech/docs/languages)
+  /// See [Language Support](/speech-to-text/docs/languages)
   /// for a list of the currently supported language codes.
   core.String languageCode;
 
@@ -411,6 +825,40 @@ class RecognitionConfig {
   /// Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
   /// one. If omitted, will return a maximum of one.
   core.int maxAlternatives;
+
+  /// *Optional* Which model to select for the given request. Select the model
+  /// best suited to your domain to get best results. If a model is not
+  /// explicitly specified, then we auto-select a model based on the parameters
+  /// in the RecognitionConfig.
+  /// <table>
+  ///   <tr>
+  ///     <td><b>Model</b></td>
+  ///     <td><b>Description</b></td>
+  ///   </tr>
+  ///   <tr>
+  ///     <td><code>command_and_search</code></td>
+  /// <td>Best for short queries such as voice commands or voice search.</td>
+  ///   </tr>
+  ///   <tr>
+  ///     <td><code>phone_call</code></td>
+  ///     <td>Best for audio that originated from a phone call (typically
+  ///     recorded at an 8khz sampling rate).</td>
+  ///   </tr>
+  ///   <tr>
+  ///     <td><code>video</code></td>
+  /// <td>Best for audio that originated from from video or includes multiple
+  ///         speakers. Ideally the audio is recorded at a 16khz or greater
+  ///         sampling rate. This is a premium model that costs more than the
+  ///         standard rate.</td>
+  ///   </tr>
+  ///   <tr>
+  ///     <td><code>default</code></td>
+  ///     <td>Best for audio that is not one of the specific audio models.
+  ///         For example, long-form audio. Ideally the audio is high-fidelity,
+  ///         recorded at a 16khz or greater sampling rate.</td>
+  ///   </tr>
+  /// </table>
+  core.String model;
 
   /// *Optional* If set to `true`, the server will attempt to filter out
   /// profanities, replacing all but the initial character in each filtered word
@@ -427,12 +875,38 @@ class RecognitionConfig {
   /// for all other audio formats. For details, see AudioEncoding.
   core.int sampleRateHertz;
 
-  /// *Optional* A means to provide context to assist the speech recognition.
+  /// *Optional* array of SpeechContext.
+  /// A means to provide context to assist the speech recognition. For more
+  /// information, see [Phrase Hints](/speech-to-text/docs/basics#phrase-hints).
   core.List<SpeechContext> speechContexts;
+
+  /// *Optional* Set to true to use an enhanced model for speech recognition.
+  /// If `use_enhanced` is set to true and the `model` field is not set, then
+  /// an appropriate enhanced model is chosen if:
+  /// 1. project is eligible for requesting enhanced models
+  /// 2. an enhanced model exists for the audio
+  ///
+  /// If `use_enhanced` is true and an enhanced version of the specified model
+  /// does not exist, then the speech is recognized using the standard version
+  /// of the specified model.
+  ///
+  /// Enhanced speech models require that you opt-in to data logging using
+  /// instructions in the
+  /// [documentation](/speech-to-text/docs/enable-data-logging). If you set
+  /// `use_enhanced` to true and you have not enabled audio logging, then you
+  /// will receive an error.
+  core.bool useEnhanced;
 
   RecognitionConfig();
 
   RecognitionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableAutomaticPunctuation")) {
+      enableAutomaticPunctuation = _json["enableAutomaticPunctuation"];
+    }
+    if (_json.containsKey("enableSeparateRecognitionPerChannel")) {
+      enableSeparateRecognitionPerChannel =
+          _json["enableSeparateRecognitionPerChannel"];
+    }
     if (_json.containsKey("enableWordTimeOffsets")) {
       enableWordTimeOffsets = _json["enableWordTimeOffsets"];
     }
@@ -445,6 +919,9 @@ class RecognitionConfig {
     if (_json.containsKey("maxAlternatives")) {
       maxAlternatives = _json["maxAlternatives"];
     }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
     if (_json.containsKey("profanityFilter")) {
       profanityFilter = _json["profanityFilter"];
     }
@@ -456,11 +933,21 @@ class RecognitionConfig {
           .map<SpeechContext>((value) => new SpeechContext.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("useEnhanced")) {
+      useEnhanced = _json["useEnhanced"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (enableAutomaticPunctuation != null) {
+      _json["enableAutomaticPunctuation"] = enableAutomaticPunctuation;
+    }
+    if (enableSeparateRecognitionPerChannel != null) {
+      _json["enableSeparateRecognitionPerChannel"] =
+          enableSeparateRecognitionPerChannel;
+    }
     if (enableWordTimeOffsets != null) {
       _json["enableWordTimeOffsets"] = enableWordTimeOffsets;
     }
@@ -473,6 +960,9 @@ class RecognitionConfig {
     if (maxAlternatives != null) {
       _json["maxAlternatives"] = maxAlternatives;
     }
+    if (model != null) {
+      _json["model"] = model;
+    }
     if (profanityFilter != null) {
       _json["profanityFilter"] = profanityFilter;
     }
@@ -482,6 +972,9 @@ class RecognitionConfig {
     if (speechContexts != null) {
       _json["speechContexts"] =
           speechContexts.map((value) => (value).toJson()).toList();
+    }
+    if (useEnhanced != null) {
+      _json["useEnhanced"] = useEnhanced;
     }
     return _json;
   }
@@ -558,7 +1051,7 @@ class SpeechContext {
   /// to improve the accuracy for specific words and phrases, for example, if
   /// specific commands are typically spoken by the user. This can also be used
   /// to add additional words to the vocabulary of the recognizer. See
-  /// [usage limits](https://cloud.google.com/speech/limits#content).
+  /// [usage limits](/speech-to-text/quotas#content).
   core.List<core.String> phrases;
 
   SpeechContext();
@@ -596,7 +1089,8 @@ class SpeechRecognitionAlternative {
   core.String transcript;
 
   /// Output only. A list of word-specific information for each recognized word.
-  /// Note: When enable_speaker_diarization is true, you will see all the words
+  /// Note: When `enable_speaker_diarization` is true, you will see all the
+  /// words
   /// from the beginning of the audio.
   core.List<WordInfo> words;
 
@@ -640,6 +1134,11 @@ class SpeechRecognitionResult {
   /// alternative being the most probable, as ranked by the recognizer.
   core.List<SpeechRecognitionAlternative> alternatives;
 
+  /// For multi-channel audio, this is the channel number corresponding to the
+  /// recognized result for the audio from that channel.
+  /// For audio_channel_count = N, its output values can range from '1' to 'N'.
+  core.int channelTag;
+
   SpeechRecognitionResult();
 
   SpeechRecognitionResult.fromJson(core.Map _json) {
@@ -649,6 +1148,9 @@ class SpeechRecognitionResult {
               (value) => new SpeechRecognitionAlternative.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("channelTag")) {
+      channelTag = _json["channelTag"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -657,6 +1159,9 @@ class SpeechRecognitionResult {
     if (alternatives != null) {
       _json["alternatives"] =
           alternatives.map((value) => (value).toJson()).toList();
+    }
+    if (channelTag != null) {
+      _json["channelTag"] = channelTag;
     }
     return _json;
   }
@@ -777,14 +1282,6 @@ class WordInfo {
   /// vary.
   core.String endTime;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to
-  /// have spoken this word. Value ranges from '1' to diarization_speaker_count.
-  /// speaker_tag is set if enable_speaker_diarization = 'true' and only in the
-  /// top alternative.
-  core.int speakerTag;
-
   /// Output only. Time offset relative to the beginning of the audio,
   /// and corresponding to the start of the spoken word.
   /// This field is only set if `enable_word_time_offsets=true` and only
@@ -802,9 +1299,6 @@ class WordInfo {
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
-    if (_json.containsKey("speakerTag")) {
-      speakerTag = _json["speakerTag"];
-    }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
     }
@@ -818,9 +1312,6 @@ class WordInfo {
         new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
-    }
-    if (speakerTag != null) {
-      _json["speakerTag"] = speakerTag;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;

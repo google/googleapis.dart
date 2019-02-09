@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client container/v1';
 
-/// The Google Kubernetes Engine API is used for building and managing container
-/// based applications, powered by the open source Kubernetes technology.
+/// Builds and manages container-based applications, powered by the open source
+/// Kubernetes technology.
 class ContainerApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -64,13 +64,13 @@ class ProjectsLocationsResourceApi {
   /// Specified in the format 'projects / * /locations / * '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for.
+  /// This field has been deprecated and replaced by the name field.
+  ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -84,7 +84,7 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServerConfig> getServerConfig(core.String name,
-      {core.String projectId, core.String zone, core.String $fields}) {
+      {core.String zone, core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -95,11 +95,11 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -124,6 +124,8 @@ class ProjectsLocationsClustersResourceApi {
 
   ProjectsLocationsClustersNodePoolsResourceApi get nodePools =>
       new ProjectsLocationsClustersNodePoolsResourceApi(_requester);
+  ProjectsLocationsClustersWell_knownResourceApi get well_known =>
+      new ProjectsLocationsClustersWell_knownResourceApi(_requester);
 
   ProjectsLocationsClustersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -334,17 +336,17 @@ class ProjectsLocationsClustersResourceApi {
   /// Specified in the format 'projects / * /locations / * /clusters / * '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://support.google.com/cloud/answer/6158840).
-  /// This field has been deprecated and replaced by the name field.
-  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to retrieve.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -358,9 +360,9 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Cluster> get(core.String name,
-      {core.String projectId,
-      core.String zone,
+      {core.String zone,
       core.String clusterId,
+      core.String projectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -372,14 +374,14 @@ class ProjectsLocationsClustersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -394,6 +396,55 @@ class ProjectsLocationsClustersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Cluster.fromJson(data));
+  }
+
+  /// GetJSONWebKeys gets the public component of the cluster signing keys in
+  /// JSON Web Key format.
+  /// This API is not yet intended for general use, and is not available for all
+  /// clusters.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The cluster (project, location, cluster id) to get keys for.
+  /// Specified in
+  /// the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetJSONWebKeysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetJSONWebKeysResponse> getJwks(core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jwks';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetJSONWebKeysResponse.fromJson(data));
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -1178,6 +1229,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
+  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
+  /// This field has been deprecated and replaced by the name field.
+  ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
@@ -1191,9 +1245,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
-  /// This field has been deprecated and replaced by the name field.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1205,10 +1256,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
-      {core.String projectId,
+      {core.String nodePoolId,
+      core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1220,6 +1271,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (nodePoolId != null) {
+      _queryParams["nodePoolId"] = [nodePoolId];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
@@ -1228,9 +1282,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
-    }
-    if (nodePoolId != null) {
-      _queryParams["nodePoolId"] = [nodePoolId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1337,17 +1388,17 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
-  /// This field has been deprecated and replaced by the parent field.
-  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
+  /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1361,9 +1412,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNodePoolsResponse> list(core.String parent,
-      {core.String projectId,
-      core.String zone,
+      {core.String zone,
       core.String clusterId,
+      core.String projectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1375,14 +1426,14 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1678,6 +1729,66 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   }
 }
 
+class ProjectsLocationsClustersWell_knownResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsClustersWell_knownResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetOpenIDConfig gets the OIDC discovery document for the cluster.
+  /// See the OpenID Connect Discovery 1.0 specification for details.
+  /// https://openid.net/specs/openid-connect-discovery-1_0.html
+  /// This API is not yet intended for general use, and is not available for all
+  /// clusters.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The cluster (project, location, cluster id) to get the
+  /// discovery document
+  /// for. Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetOpenIDConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetOpenIDConfigResponse> getOpenid_configuration(
+      core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/.well-known/openid-configuration';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetOpenIDConfigResponse.fromJson(data));
+  }
+}
+
 class ProjectsLocationsOperationsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1746,17 +1857,17 @@ class ProjectsLocationsOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
-  ///
   /// [operationId] - Deprecated. The server-assigned `name` of the operation.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1770,9 +1881,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name,
-      {core.String zone,
-      core.String operationId,
+      {core.String operationId,
       core.String projectId,
+      core.String zone,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1784,14 +1895,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
-    }
     if (operationId != null) {
       _queryParams["operationId"] = [operationId];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1818,15 +1929,15 @@ class ProjectsLocationsOperationsResourceApi {
   /// Location "-" matches all zones and all regions.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://support.google.com/cloud/answer/6158840).
-  /// This field has been deprecated and replaced by the parent field.
-  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
   /// all zones. This field has been deprecated and replaced by the parent
   /// field.
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1839,7 +1950,7 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String parent,
-      {core.String projectId, core.String zone, core.String $fields}) {
+      {core.String zone, core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -1850,11 +1961,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4399,6 +4510,9 @@ class Cluster {
   /// one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
   core.String clusterIpv4Cidr;
 
+  /// Which conditions caused the current cluster state.
+  core.List<StatusCondition> conditions;
+
   /// [Output only] The time the cluster was created, in
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   core.String createTime;
@@ -4406,7 +4520,8 @@ class Cluster {
   /// [Output only] The current software version of the master endpoint.
   core.String currentMasterVersion;
 
-  /// [Output only] The number of nodes currently in the cluster.
+  /// [Output only]  The number of nodes currently in the cluster. Deprecated.
+  /// Call Kubernetes API directly to retrieve node information.
   core.int currentNodeCount;
 
   /// [Output only] Deprecated, use
@@ -4484,7 +4599,7 @@ class Cluster {
   core.String location;
 
   /// The list of Google Compute Engine
-  /// [locations](/compute/docs/zones#available) in which the cluster's nodes
+  /// [zones](/compute/docs/zones#available) in which the cluster's nodes
   /// should be located.
   core.List<core.String> locations;
 
@@ -4500,6 +4615,10 @@ class Cluster {
   MaintenancePolicy maintenancePolicy;
 
   /// The authentication information for accessing the master endpoint.
+  /// If unspecified, the defaults are used:
+  /// For clusters before v1.12, if master_auth is unspecified, `username` will
+  /// be set to "admin", a random password will be generated, and a client
+  /// certificate will be issued.
   MasterAuth masterAuth;
 
   /// The configuration options for master authorized networks feature.
@@ -4554,6 +4673,9 @@ class Cluster {
   /// This field should not be set if "node_config" or "initial_node_count" are
   /// specified.
   core.List<NodePool> nodePools;
+
+  /// Configuration for private cluster.
+  PrivateClusterConfig privateClusterConfig;
 
   /// The resource labels for the cluster to use to annotate any related
   /// Google Compute Engine resources.
@@ -4612,6 +4734,11 @@ class Cluster {
     }
     if (_json.containsKey("clusterIpv4Cidr")) {
       clusterIpv4Cidr = _json["clusterIpv4Cidr"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = (_json["conditions"] as core.List)
+          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -4704,6 +4831,10 @@ class Cluster {
           .map<NodePool>((value) => new NodePool.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("privateClusterConfig")) {
+      privateClusterConfig =
+          new PrivateClusterConfig.fromJson(_json["privateClusterConfig"]);
+    }
     if (_json.containsKey("resourceLabels")) {
       resourceLabels = (_json["resourceLabels"] as core.Map)
           .cast<core.String, core.String>();
@@ -4736,6 +4867,10 @@ class Cluster {
     }
     if (clusterIpv4Cidr != null) {
       _json["clusterIpv4Cidr"] = clusterIpv4Cidr;
+    }
+    if (conditions != null) {
+      _json["conditions"] =
+          conditions.map((value) => (value).toJson()).toList();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -4822,6 +4957,9 @@ class Cluster {
     if (nodePools != null) {
       _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
     }
+    if (privateClusterConfig != null) {
+      _json["privateClusterConfig"] = (privateClusterConfig).toJson();
+    }
     if (resourceLabels != null) {
       _json["resourceLabels"] = resourceLabels;
     }
@@ -4859,7 +4997,7 @@ class ClusterUpdate {
   core.String desiredImageType;
 
   /// The desired list of Google Compute Engine
-  /// [locations](/compute/docs/zones#available) in which the cluster's nodes
+  /// [zones](/compute/docs/zones#available) in which the cluster's nodes
   /// should be located. Changing the locations a cluster is in will result
   /// in nodes being either created or removed from the cluster, depending on
   /// whether locations are being added or removed.
@@ -5227,6 +5365,116 @@ class Empty {
   }
 }
 
+/// GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
+class GetJSONWebKeysResponse {
+  /// The public component of the keys used by the cluster to sign token
+  /// requests.
+  core.List<Jwk> keys;
+
+  GetJSONWebKeysResponse();
+
+  GetJSONWebKeysResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("keys")) {
+      keys = (_json["keys"] as core.List)
+          .map<Jwk>((value) => new Jwk.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (keys != null) {
+      _json["keys"] = keys.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// GetOpenIDConfigResponse is an OIDC discovery document for the cluster.
+/// See the OpenID Connect Discovery 1.0 specification for details.
+class GetOpenIDConfigResponse {
+  /// NOLINT
+  core.List<core.String> claimsSupported;
+
+  /// NOLINT
+  core.List<core.String> grantTypes;
+
+  /// NOLINT
+  core.List<core.String> idTokenSigningAlgValuesSupported;
+
+  /// NOLINT
+  core.String issuer;
+
+  /// NOLINT
+  core.String jwksUri;
+
+  /// NOLINT
+  core.List<core.String> responseTypesSupported;
+
+  /// NOLINT
+  core.List<core.String> subjectTypesSupported;
+
+  GetOpenIDConfigResponse();
+
+  GetOpenIDConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("claims_supported")) {
+      claimsSupported =
+          (_json["claims_supported"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("grant_types")) {
+      grantTypes = (_json["grant_types"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("id_token_signing_alg_values_supported")) {
+      idTokenSigningAlgValuesSupported =
+          (_json["id_token_signing_alg_values_supported"] as core.List)
+              .cast<core.String>();
+    }
+    if (_json.containsKey("issuer")) {
+      issuer = _json["issuer"];
+    }
+    if (_json.containsKey("jwks_uri")) {
+      jwksUri = _json["jwks_uri"];
+    }
+    if (_json.containsKey("response_types_supported")) {
+      responseTypesSupported =
+          (_json["response_types_supported"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("subject_types_supported")) {
+      subjectTypesSupported =
+          (_json["subject_types_supported"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (claimsSupported != null) {
+      _json["claims_supported"] = claimsSupported;
+    }
+    if (grantTypes != null) {
+      _json["grant_types"] = grantTypes;
+    }
+    if (idTokenSigningAlgValuesSupported != null) {
+      _json["id_token_signing_alg_values_supported"] =
+          idTokenSigningAlgValuesSupported;
+    }
+    if (issuer != null) {
+      _json["issuer"] = issuer;
+    }
+    if (jwksUri != null) {
+      _json["jwks_uri"] = jwksUri;
+    }
+    if (responseTypesSupported != null) {
+      _json["response_types_supported"] = responseTypesSupported;
+    }
+    if (subjectTypesSupported != null) {
+      _json["subject_types_supported"] = subjectTypesSupported;
+    }
+    return _json;
+  }
+}
+
 /// Configuration options for the horizontal pod autoscaling feature, which
 /// increases or decreases the number of replica pods a replication controller
 /// has based on the resource usage of the existing pods.
@@ -5446,6 +5694,103 @@ class IPAllocationPolicy {
     }
     if (useIpAliases != null) {
       _json["useIpAliases"] = useIpAliases;
+    }
+    return _json;
+  }
+}
+
+/// Jwk is a JSON Web Key as specified in RFC 7517
+class Jwk {
+  /// NOLINT
+  core.String alg;
+
+  /// NOLINT
+  core.String crv;
+
+  /// NOLINT
+  core.String e;
+
+  /// NOLINT
+  core.String kid;
+
+  /// NOLINT
+  core.String kty;
+
+  /// Fields for RSA keys.
+  /// NOLINT
+  core.String n;
+
+  /// NOLINT
+  core.String use;
+
+  /// Fields for ECDSA keys.
+  /// NOLINT
+  core.String x;
+
+  /// NOLINT
+  core.String y;
+
+  Jwk();
+
+  Jwk.fromJson(core.Map _json) {
+    if (_json.containsKey("alg")) {
+      alg = _json["alg"];
+    }
+    if (_json.containsKey("crv")) {
+      crv = _json["crv"];
+    }
+    if (_json.containsKey("e")) {
+      e = _json["e"];
+    }
+    if (_json.containsKey("kid")) {
+      kid = _json["kid"];
+    }
+    if (_json.containsKey("kty")) {
+      kty = _json["kty"];
+    }
+    if (_json.containsKey("n")) {
+      n = _json["n"];
+    }
+    if (_json.containsKey("use")) {
+      use = _json["use"];
+    }
+    if (_json.containsKey("x")) {
+      x = _json["x"];
+    }
+    if (_json.containsKey("y")) {
+      y = _json["y"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alg != null) {
+      _json["alg"] = alg;
+    }
+    if (crv != null) {
+      _json["crv"] = crv;
+    }
+    if (e != null) {
+      _json["e"] = e;
+    }
+    if (kid != null) {
+      _json["kid"] = kid;
+    }
+    if (kty != null) {
+      _json["kty"] = kty;
+    }
+    if (n != null) {
+      _json["n"] = n;
+    }
+    if (use != null) {
+      _json["use"] = use;
+    }
+    if (x != null) {
+      _json["x"] = x;
+    }
+    if (y != null) {
+      _json["y"] = y;
     }
     return _json;
   }
@@ -5673,8 +6018,8 @@ class MasterAuth {
   core.String password;
 
   /// The username to use for HTTP basic authentication to the master endpoint.
-  /// For clusters v1.6.0 and later, you can disable basic authentication by
-  /// providing an empty username.
+  /// For clusters v1.6.0 and later, basic authentication can be disabled by
+  /// leaving username unspecified (or setting it to the empty string).
   core.String username;
 
   MasterAuth();
@@ -5921,6 +6266,7 @@ class NodeConfig {
   ///  "cluster-name"
   ///  "cluster-uid"
   ///  "configure-sh"
+  ///  "enable-os-login"
   ///  "gci-update-strategy"
   ///  "gci-ensure-gke-docker"
   ///  "instance-template"
@@ -5976,6 +6322,12 @@ class NodeConfig {
   /// must comply with RFC1035.
   core.List<core.String> tags;
 
+  /// List of kubernetes taints to be applied to each node.
+  ///
+  /// For more information, including usage and the valid values, see:
+  /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  core.List<NodeTaint> taints;
+
   NodeConfig();
 
   NodeConfig.fromJson(core.Map _json) {
@@ -6022,6 +6374,11 @@ class NodeConfig {
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("taints")) {
+      taints = (_json["taints"] as core.List)
+          .map<NodeTaint>((value) => new NodeTaint.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6066,6 +6423,9 @@ class NodeConfig {
     }
     if (tags != null) {
       _json["tags"] = tags;
+    }
+    if (taints != null) {
+      _json["taints"] = taints.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6129,6 +6489,9 @@ class NodePool {
   /// only if a valid configuration is present.
   NodePoolAutoscaling autoscaling;
 
+  /// Which conditions caused the current node pool state.
+  core.List<StatusCondition> conditions;
+
   /// The node configuration of the pool.
   NodeConfig config;
 
@@ -6188,6 +6551,11 @@ class NodePool {
     if (_json.containsKey("autoscaling")) {
       autoscaling = new NodePoolAutoscaling.fromJson(_json["autoscaling"]);
     }
+    if (_json.containsKey("conditions")) {
+      conditions = (_json["conditions"] as core.List)
+          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("config")) {
       config = new NodeConfig.fromJson(_json["config"]);
     }
@@ -6223,6 +6591,10 @@ class NodePool {
         new core.Map<core.String, core.Object>();
     if (autoscaling != null) {
       _json["autoscaling"] = (autoscaling).toJson();
+    }
+    if (conditions != null) {
+      _json["conditions"] =
+          conditions.map((value) => (value).toJson()).toList();
     }
     if (config != null) {
       _json["config"] = (config).toJson();
@@ -6299,9 +6671,63 @@ class NodePoolAutoscaling {
   }
 }
 
+/// Kubernetes taint is comprised of three fields: key, value, and effect.
+/// Effect
+/// can only be one of three types:  NoSchedule, PreferNoSchedule or NoExecute.
+///
+/// For more information, including usage and the valid values, see:
+/// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+class NodeTaint {
+  /// Effect for taint.
+  /// Possible string values are:
+  /// - "EFFECT_UNSPECIFIED" : Not set
+  /// - "NO_SCHEDULE" : NoSchedule
+  /// - "PREFER_NO_SCHEDULE" : PreferNoSchedule
+  /// - "NO_EXECUTE" : NoExecute
+  core.String effect;
+
+  /// Key for taint.
+  core.String key;
+
+  /// Value for taint.
+  core.String value;
+
+  NodeTaint();
+
+  NodeTaint.fromJson(core.Map _json) {
+    if (_json.containsKey("effect")) {
+      effect = _json["effect"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (effect != null) {
+      _json["effect"] = effect;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// This operation resource represents operations that may have happened or are
 /// happening on the cluster. All fields are output only.
 class Operation {
+  /// Which conditions caused the current cluster state.
+  core.List<StatusCondition> clusterConditions;
+
   /// Detailed operation progress, if available.
   core.String detail;
 
@@ -6317,6 +6743,9 @@ class Operation {
 
   /// The server-assigned ID for the operation.
   core.String name;
+
+  /// Which conditions caused the current node pool state.
+  core.List<StatusCondition> nodepoolConditions;
 
   /// The operation type.
   /// Possible string values are:
@@ -6370,6 +6799,11 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterConditions")) {
+      clusterConditions = (_json["clusterConditions"] as core.List)
+          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("detail")) {
       detail = _json["detail"];
     }
@@ -6381,6 +6815,11 @@ class Operation {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("nodepoolConditions")) {
+      nodepoolConditions = (_json["nodepoolConditions"] as core.List)
+          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
@@ -6408,6 +6847,10 @@ class Operation {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterConditions != null) {
+      _json["clusterConditions"] =
+          clusterConditions.map((value) => (value).toJson()).toList();
+    }
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -6419,6 +6862,10 @@ class Operation {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (nodepoolConditions != null) {
+      _json["nodepoolConditions"] =
+          nodepoolConditions.map((value) => (value).toJson()).toList();
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
@@ -6440,6 +6887,70 @@ class Operation {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// Configuration options for private clusters.
+class PrivateClusterConfig {
+  /// Whether the master's internal IP address is used as the cluster endpoint.
+  core.bool enablePrivateEndpoint;
+
+  /// Whether nodes have internal IP addresses only. If enabled, all nodes are
+  /// given only RFC 1918 private addresses and communicate with the master via
+  /// private networking.
+  core.bool enablePrivateNodes;
+
+  /// The IP range in CIDR notation to use for the hosted master network. This
+  /// range will be used for assigning internal IP addresses to the master or
+  /// set of masters, as well as the ILB VIP. This range must not overlap with
+  /// any other ranges in use within the cluster's network.
+  core.String masterIpv4CidrBlock;
+
+  /// Output only. The internal IP address of this cluster's master endpoint.
+  core.String privateEndpoint;
+
+  /// Output only. The external IP address of this cluster's master endpoint.
+  core.String publicEndpoint;
+
+  PrivateClusterConfig();
+
+  PrivateClusterConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enablePrivateEndpoint")) {
+      enablePrivateEndpoint = _json["enablePrivateEndpoint"];
+    }
+    if (_json.containsKey("enablePrivateNodes")) {
+      enablePrivateNodes = _json["enablePrivateNodes"];
+    }
+    if (_json.containsKey("masterIpv4CidrBlock")) {
+      masterIpv4CidrBlock = _json["masterIpv4CidrBlock"];
+    }
+    if (_json.containsKey("privateEndpoint")) {
+      privateEndpoint = _json["privateEndpoint"];
+    }
+    if (_json.containsKey("publicEndpoint")) {
+      publicEndpoint = _json["publicEndpoint"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enablePrivateEndpoint != null) {
+      _json["enablePrivateEndpoint"] = enablePrivateEndpoint;
+    }
+    if (enablePrivateNodes != null) {
+      _json["enablePrivateNodes"] = enablePrivateNodes;
+    }
+    if (masterIpv4CidrBlock != null) {
+      _json["masterIpv4CidrBlock"] = masterIpv4CidrBlock;
+    }
+    if (privateEndpoint != null) {
+      _json["privateEndpoint"] = privateEndpoint;
+    }
+    if (publicEndpoint != null) {
+      _json["publicEndpoint"] = publicEndpoint;
     }
     return _json;
   }
@@ -6804,7 +7315,7 @@ class SetLocationsRequest {
   core.String clusterId;
 
   /// The desired list of Google Compute Engine
-  /// [locations](/compute/docs/zones#available) in which the cluster's nodes
+  /// [zones](/compute/docs/zones#available) in which the cluster's nodes
   /// should be located. Changing the locations a cluster is in will result
   /// in nodes being either created or removed from the cluster, depending on
   /// whether locations are being added or removed.
@@ -7525,6 +8036,50 @@ class StartIPRotationRequest {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// StatusCondition describes why a cluster or a node pool has a certain status
+/// (e.g., ERROR or DEGRADED).
+class StatusCondition {
+  /// Machine-friendly representation of the condition
+  /// Possible string values are:
+  /// - "UNKNOWN" : UNKNOWN indicates a generic condition.
+  /// - "GCE_STOCKOUT" : GCE_STOCKOUT indicates a Google Compute Engine
+  /// stockout.
+  /// - "GKE_SERVICE_ACCOUNT_DELETED" : GKE_SERVICE_ACCOUNT_DELETED indicates
+  /// that the user deleted their robot
+  /// service account.
+  /// - "GCE_QUOTA_EXCEEDED" : Google Compute Engine quota was exceeded.
+  /// - "SET_BY_OPERATOR" : Cluster state was manually changed by an SRE due to
+  /// a system logic error.
+  /// More codes TBA
+  core.String code;
+
+  /// Human-friendly representation of the condition
+  core.String message;
+
+  StatusCondition();
+
+  StatusCondition.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }

@@ -201,10 +201,6 @@ class BillingAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. The maximum page size is 100; this is
-  /// also the
-  /// default.
-  ///
   /// [filter] - Options for how to filter the returned billing accounts.
   /// Currently this only supports filtering for
   /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
@@ -217,6 +213,10 @@ class BillingAccountsResourceApi {
   /// `next_page_token` value returned from a previous `ListBillingAccounts`
   /// call. If unspecified, the first page of results is returned.
   ///
+  /// [pageSize] - Requested page size. The maximum page size is 100; this is
+  /// also the
+  /// default.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -228,9 +228,9 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list(
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -239,14 +239,14 @@ class BillingAccountsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1808,6 +1808,10 @@ class ProjectBillingInfo {
 
 /// Encapsulates a single service in Google Cloud Platform.
 class Service {
+  /// The business under which the service is offered.
+  /// Ex. "businessEntities/GCP", "businessEntities/Maps"
+  core.String businessEntityName;
+
   /// A human readable display name for this service.
   core.String displayName;
 
@@ -1822,6 +1826,9 @@ class Service {
   Service();
 
   Service.fromJson(core.Map _json) {
+    if (_json.containsKey("businessEntityName")) {
+      businessEntityName = _json["businessEntityName"];
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -1836,6 +1843,9 @@ class Service {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (businessEntityName != null) {
+      _json["businessEntityName"] = businessEntityName;
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

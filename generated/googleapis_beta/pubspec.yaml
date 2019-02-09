@@ -1,7 +1,7 @@
 name: googleapis_beta
-version: 0.47.0+1
+version: 0.48.0
 author: Dart Team <misc@dartlang.org>
-description: "Auto-generated client libraries for accessing the following APIs:adexchangebuyer2:v2beta1, appengine:v1beta, appengine:v1beta4, appengine:v1beta5, binaryauthorization:v1beta1, clouderrorreporting:v1beta1, cloudresourcemanager:v1beta1, cloudtasks:v2beta2, dataflow:v1b3, dialogflow:v2beta1, dns:v2beta1, iap:v1beta1, language:v1beta1, language:v1beta2, logging:v2beta1, oslogin:v1alpha, oslogin:v1beta, proximitybeacon:v1beta1, pubsub:v1beta2, redis:v1beta1, replicapoolupdater:v1beta1, runtimeconfig:v1beta1, speech:v1beta1, sqladmin:v1beta3, sqladmin:v1beta4, toolresults:v1beta3, tpu:v1alpha1, websecurityscanner:v1alpha"
+description: "Auto-generated client libraries for accessing the following APIs:accesscontextmanager:v1beta, adexchangebuyer2:v2beta1, alertcenter:v1beta1, appengine:v1beta, appengine:v1beta4, appengine:v1beta5, binaryauthorization:v1beta1, cloudasset:v1beta1, clouderrorreporting:v1beta1, cloudresourcemanager:v1beta1, cloudscheduler:v1beta1, cloudtasks:v2beta3, containeranalysis:v1beta1, dataflow:v1b3, dialogflow:v2beta1, dns:v2beta1, file:v1beta1, firebasehosting:v1beta1, language:v1beta1, language:v1beta2, logging:v2beta1, oslogin:v1alpha, oslogin:v1beta, proximitybeacon:v1beta1, pubsub:v1beta2, replicapool:v1beta1, runtimeconfig:v1beta1, servicenetworking:v1beta, sqladmin:v1beta4, toolresults:v1beta3, tpu:v1alpha1, websecurityscanner:v1alpha"
 homepage: http://www.dartlang.org/googleapis/
 environment:
   sdk: '>=2.0.0-dev.22.0 <3.0.0'

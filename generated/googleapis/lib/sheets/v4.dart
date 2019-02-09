@@ -18,18 +18,18 @@ const core.String USER_AGENT = 'dart-api-client sheets/v4';
 
 /// Reads and writes Google Sheets.
 class SheetsApi {
-  /// View and manage the files in your Google Drive
+  /// See, edit, create, and delete all of your Google Drive files
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /// View and manage Google Drive files and folders that you have opened or
   /// created with this app
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
-  /// View the files in your Google Drive
+  /// See and download all your Google Drive files
   static const DriveReadonlyScope =
       "https://www.googleapis.com/auth/drive.readonly";
 
-  /// View and manage your spreadsheets in Google Drive
+  /// See, edit, create, and delete your spreadsheets in Google Drive
   static const SpreadsheetsScope =
       "https://www.googleapis.com/auth/spreadsheets";
 
@@ -538,6 +538,11 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were appended. By default, responses
+  /// do not include the updated values.
+  ///
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -567,11 +572,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were appended. By default, responses
-  /// do not include the updated values.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -584,11 +584,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String responseValueRenderOption,
+      {core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
       core.String insertDataOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
-      core.bool includeValuesInResponse,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -606,6 +606,9 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -619,9 +622,6 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -760,6 +760,20 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
+  /// [ranges] - The A1 notation of the values to retrieve.
+  ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -777,20 +791,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
-  ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -802,10 +802,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.String valueRenderOption,
-      core.String dateTimeRenderOption,
-      core.List<core.String> ranges,
+      {core.List<core.String> ranges,
       core.String majorDimension,
+      core.String valueRenderOption,
+      core.String dateTimeRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -817,17 +817,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
-    }
-    if (dateTimeRenderOption != null) {
-      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
+    }
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
+    if (dateTimeRenderOption != null) {
+      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2160,7 +2160,8 @@ class BasicChartSeries {
   /// - "COLUMN" : A <a
   /// href="/chart/interactive/docs/gallery/columnchart">column chart</a>.
   /// - "SCATTER" : A <a
-  /// href="/chart/interactive/docs/gallery/scatterchart">scatter chart</a>.
+  /// href="/chart/interactive/docs/gallery/scatterchart">scatter
+  /// chart</a>.
   /// - "COMBO" : A <a href="/chart/interactive/docs/gallery/combochart">combo
   /// chart</a>.
   /// - "STEPPED_AREA" : A <a
@@ -2228,7 +2229,8 @@ class BasicChartSpec {
   /// - "COLUMN" : A <a
   /// href="/chart/interactive/docs/gallery/columnchart">column chart</a>.
   /// - "SCATTER" : A <a
-  /// href="/chart/interactive/docs/gallery/scatterchart">scatter chart</a>.
+  /// href="/chart/interactive/docs/gallery/scatterchart">scatter
+  /// chart</a>.
   /// - "COMBO" : A <a href="/chart/interactive/docs/gallery/combochart">combo
   /// chart</a>.
   /// - "STEPPED_AREA" : A <a

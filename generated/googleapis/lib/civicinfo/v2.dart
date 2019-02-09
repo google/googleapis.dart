@@ -1892,6 +1892,18 @@ class PollingLocation {
   /// from the Request more link on the Quotas page.
   core.String id;
 
+  /// Latitude of the location, in degrees north of the equator. Only some
+  /// locations -- generally, ballot drop boxes for vote-by-mail elections --
+  /// will have this set; for others, use a geocoding service like the Google
+  /// Maps API to resolve the address to a geographic point.
+  core.double latitude;
+
+  /// Longitude of the location, in degrees east of the Prime Meridian. Only
+  /// some locations -- generally, ballot drop boxes for vote-by-mail elections
+  /// -- will have this set; for others, use a geocoding service like the Google
+  /// Maps API to resolve the address to a geographic point.
+  core.double longitude;
+
   /// The name of the early vote site or drop off location. This field is not
   /// populated for polling locations.
   core.String name;
@@ -1926,6 +1938,12 @@ class PollingLocation {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("latitude")) {
+      latitude = _json["latitude"].toDouble();
+    }
+    if (_json.containsKey("longitude")) {
+      longitude = _json["longitude"].toDouble();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1959,6 +1977,12 @@ class PollingLocation {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (latitude != null) {
+      _json["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      _json["longitude"] = longitude;
     }
     if (name != null) {
       _json["name"] = name;

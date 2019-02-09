@@ -4949,15 +4949,15 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ManagementWebPropertyAdWordsLinksResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes a web property-AdWords link.
+  /// Deletes a web property-Google Ads link.
   ///
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to delete the AdWords link for.
+  /// [webPropertyId] - Web property ID to delete the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5009,15 +5009,15 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Returns a web property-AdWords link to which the user has access.
+  /// Returns a web property-Google Ads link to which the user has access.
   ///
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords link for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property-Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5069,7 +5069,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLink.fromJson(data));
   }
 
-  /// Creates a webProperty-AdWords link.
+  /// Creates a webProperty-Google Ads link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5127,19 +5127,19 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLink.fromJson(data));
   }
 
-  /// Lists webProperty-AdWords links for a given web property.
+  /// Lists webProperty-Google Ads links for a given web property.
   ///
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   /// Value must have pattern "\d+".
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords links for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads links for.
   ///
-  /// [max_results] - The maximum number of webProperty-AdWords links to include
-  /// in this response.
+  /// [max_results] - The maximum number of webProperty-Google Ads links to
+  /// include in this response.
   ///
-  /// [start_index] - An index of the first webProperty-AdWords link to
+  /// [start_index] - An index of the first webProperty-Google Ads link to
   /// retrieve. Use this parameter as a pagination mechanism along with the
   /// max-results parameter.
   ///
@@ -5194,8 +5194,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLinks.fromJson(data));
   }
 
-  /// Updates an existing webProperty-AdWords link. This method supports patch
-  /// semantics.
+  /// Updates an existing webProperty-Google Ads link. This method supports
+  /// patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5203,9 +5203,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords link for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property-Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5263,7 +5263,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLink.fromJson(data));
   }
 
-  /// Updates an existing webProperty-AdWords link.
+  /// Updates an existing webProperty-Google Ads link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5271,9 +5271,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords link for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property-Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6519,55 +6519,12 @@ class AccountTicket {
   }
 }
 
-class AccountTreeRequestAccountSettings {
-  core.bool shareAnonymouslyWithOthers;
-  core.bool shareWithGoogleProducts;
-  core.bool shareWithSpecialists;
-  core.bool shareWithSupport;
-
-  AccountTreeRequestAccountSettings();
-
-  AccountTreeRequestAccountSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("shareAnonymouslyWithOthers")) {
-      shareAnonymouslyWithOthers = _json["shareAnonymouslyWithOthers"];
-    }
-    if (_json.containsKey("shareWithGoogleProducts")) {
-      shareWithGoogleProducts = _json["shareWithGoogleProducts"];
-    }
-    if (_json.containsKey("shareWithSpecialists")) {
-      shareWithSpecialists = _json["shareWithSpecialists"];
-    }
-    if (_json.containsKey("shareWithSupport")) {
-      shareWithSupport = _json["shareWithSupport"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (shareAnonymouslyWithOthers != null) {
-      _json["shareAnonymouslyWithOthers"] = shareAnonymouslyWithOthers;
-    }
-    if (shareWithGoogleProducts != null) {
-      _json["shareWithGoogleProducts"] = shareWithGoogleProducts;
-    }
-    if (shareWithSpecialists != null) {
-      _json["shareWithSpecialists"] = shareWithSpecialists;
-    }
-    if (shareWithSupport != null) {
-      _json["shareWithSupport"] = shareWithSupport;
-    }
-    return _json;
-  }
-}
-
 /// JSON template for an Analytics account tree requests. The account tree
 /// request is used in the provisioning api to create an account, property, and
 /// view (profile). It contains the basic information required to make these
 /// fields.
 class AccountTreeRequest {
   core.String accountName;
-  AccountTreeRequestAccountSettings accountSettings;
 
   /// Resource type for account ticket.
   core.String kind;
@@ -6581,10 +6538,6 @@ class AccountTreeRequest {
   AccountTreeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("accountName")) {
       accountName = _json["accountName"];
-    }
-    if (_json.containsKey("accountSettings")) {
-      accountSettings = new AccountTreeRequestAccountSettings.fromJson(
-          _json["accountSettings"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6609,9 +6562,6 @@ class AccountTreeRequest {
     if (accountName != null) {
       _json["accountName"] = accountName;
     }
-    if (accountSettings != null) {
-      _json["accountSettings"] = (accountSettings).toJson();
-    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6631,55 +6581,12 @@ class AccountTreeRequest {
   }
 }
 
-class AccountTreeResponseAccountSettings {
-  core.bool shareAnonymouslyWithOthers;
-  core.bool shareWithGoogleProducts;
-  core.bool shareWithSpecialists;
-  core.bool shareWithSupport;
-
-  AccountTreeResponseAccountSettings();
-
-  AccountTreeResponseAccountSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("shareAnonymouslyWithOthers")) {
-      shareAnonymouslyWithOthers = _json["shareAnonymouslyWithOthers"];
-    }
-    if (_json.containsKey("shareWithGoogleProducts")) {
-      shareWithGoogleProducts = _json["shareWithGoogleProducts"];
-    }
-    if (_json.containsKey("shareWithSpecialists")) {
-      shareWithSpecialists = _json["shareWithSpecialists"];
-    }
-    if (_json.containsKey("shareWithSupport")) {
-      shareWithSupport = _json["shareWithSupport"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (shareAnonymouslyWithOthers != null) {
-      _json["shareAnonymouslyWithOthers"] = shareAnonymouslyWithOthers;
-    }
-    if (shareWithGoogleProducts != null) {
-      _json["shareWithGoogleProducts"] = shareWithGoogleProducts;
-    }
-    if (shareWithSpecialists != null) {
-      _json["shareWithSpecialists"] = shareWithSpecialists;
-    }
-    if (shareWithSupport != null) {
-      _json["shareWithSupport"] = shareWithSupport;
-    }
-    return _json;
-  }
-}
-
 /// JSON template for an Analytics account tree response. The account tree
 /// response is used in the provisioning api to return the result of creating an
 /// account, property, and view (profile).
 class AccountTreeResponse {
   /// The account created.
   Account account;
-  AccountTreeResponseAccountSettings accountSettings;
 
   /// Resource type for account ticket.
   core.String kind;
@@ -6695,10 +6602,6 @@ class AccountTreeResponse {
   AccountTreeResponse.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
       account = new Account.fromJson(_json["account"]);
-    }
-    if (_json.containsKey("accountSettings")) {
-      accountSettings = new AccountTreeResponseAccountSettings.fromJson(
-          _json["accountSettings"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6716,9 +6619,6 @@ class AccountTreeResponse {
         new core.Map<core.String, core.Object>();
     if (account != null) {
       _json["account"] = (account).toJson();
-    }
-    if (accountSettings != null) {
-      _json["accountSettings"] = (accountSettings).toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -6829,16 +6729,16 @@ class Accounts {
   }
 }
 
-/// JSON template for an AdWords account.
+/// JSON template for an Google Ads account.
 class AdWordsAccount {
-  /// True if auto-tagging is enabled on the AdWords account. Read-only after
+  /// True if auto-tagging is enabled on the Google Ads account. Read-only after
   /// the insert operation.
   core.bool autoTaggingEnabled;
 
-  /// Customer ID. This field is required when creating an AdWords link.
+  /// Customer ID. This field is required when creating a Google Ads link.
   core.String customerId;
 
-  /// Resource type for AdWords account.
+  /// Resource type for Google Ads account.
   core.String kind;
 
   AdWordsAccount();
@@ -7871,28 +7771,28 @@ class EntityAdWordsLinkEntity {
   }
 }
 
-/// JSON template for Analytics Entity AdWords Link.
+/// JSON template for Analytics Entity Google Ads Link.
 class EntityAdWordsLink {
-  /// A list of AdWords client accounts. These cannot be MCC accounts. This
-  /// field is required when creating an AdWords link. It cannot be empty.
+  /// A list of Google Ads client accounts. These cannot be MCC accounts. This
+  /// field is required when creating a Google Ads link. It cannot be empty.
   core.List<AdWordsAccount> adWordsAccounts;
 
   /// Web property being linked.
   EntityAdWordsLinkEntity entity;
 
-  /// Entity AdWords link ID
+  /// Entity Google Ads link ID
   core.String id;
 
-  /// Resource type for entity AdWords link.
+  /// Resource type for entity Google Ads link.
   core.String kind;
 
-  /// Name of the link. This field is required when creating an AdWords link.
+  /// Name of the link. This field is required when creating a Google Ads link.
   core.String name;
 
   /// IDs of linked Views (Profiles) represented as strings.
   core.List<core.String> profileIds;
 
-  /// URL link for this Google Analytics - Google AdWords link.
+  /// URL link for this Google Analytics - Google Ads link.
   core.String selfLink;
 
   EntityAdWordsLink();
@@ -7952,10 +7852,10 @@ class EntityAdWordsLink {
   }
 }
 
-/// An entity AdWords link collection provides a list of GA-AdWords links Each
-/// resource in this collection corresponds to a single link.
+/// An entity Google Ads link collection provides a list of GA-Google Ads links
+/// Each resource in this collection corresponds to a single link.
 class EntityAdWordsLinks {
-  /// A list of entity AdWords links.
+  /// A list of entity Google Ads links.
   core.List<EntityAdWordsLink> items;
 
   /// The maximum number of entries the response can contain, regardless of the
@@ -7967,10 +7867,10 @@ class EntityAdWordsLinks {
   /// Collection type.
   core.String kind;
 
-  /// Next link for this AdWords link collection.
+  /// Next link for this Google Ads link collection.
   core.String nextLink;
 
-  /// Previous link for this AdWords link collection.
+  /// Previous link for this Google Ads link collection.
   core.String previousLink;
 
   /// The starting index of the entries, which is 1 by default or otherwise
@@ -10805,8 +10705,8 @@ class LinkedForeignAccount {
   /// Resource type for linked foreign account.
   core.String kind;
 
-  /// The foreign account ID. For example the an AdWords `linkedAccountId` has
-  /// the following format XXX-XXX-XXXX.
+  /// The foreign account ID. For example the an Google Ads `linkedAccountId`
+  /// has the following format XXX-XXX-XXXX.
   core.String linkedAccountId;
 
   /// Remarketing audience ID to which this linked foreign account belongs.

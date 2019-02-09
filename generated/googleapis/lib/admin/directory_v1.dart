@@ -7441,6 +7441,82 @@ class ChromeOsDeviceActiveTimeRanges {
   }
 }
 
+class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
+  /// CPU label
+  core.String label;
+
+  /// Temperature in Celsius degrees.
+  core.int temperature;
+
+  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo();
+
+  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("temperature")) {
+      temperature = _json["temperature"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (temperature != null) {
+      _json["temperature"] = temperature;
+    }
+    return _json;
+  }
+}
+
+class ChromeOsDeviceCpuStatusReports {
+  /// List of CPU temperature samples.
+  core.List<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>
+      cpuTemperatureInfo;
+  core.List<core.int> cpuUtilizationPercentageInfo;
+
+  /// Date and time the report was received.
+  core.DateTime reportTime;
+
+  ChromeOsDeviceCpuStatusReports();
+
+  ChromeOsDeviceCpuStatusReports.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuTemperatureInfo")) {
+      cpuTemperatureInfo = (_json["cpuTemperatureInfo"] as core.List)
+          .map<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>((value) =>
+              new ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("cpuUtilizationPercentageInfo")) {
+      cpuUtilizationPercentageInfo =
+          (_json["cpuUtilizationPercentageInfo"] as core.List).cast<core.int>();
+    }
+    if (_json.containsKey("reportTime")) {
+      reportTime = core.DateTime.parse(_json["reportTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cpuTemperatureInfo != null) {
+      _json["cpuTemperatureInfo"] =
+          cpuTemperatureInfo.map((value) => (value).toJson()).toList();
+    }
+    if (cpuUtilizationPercentageInfo != null) {
+      _json["cpuUtilizationPercentageInfo"] = cpuUtilizationPercentageInfo;
+    }
+    if (reportTime != null) {
+      _json["reportTime"] = (reportTime).toIso8601String();
+    }
+    return _json;
+  }
+}
+
 class ChromeOsDeviceDeviceFiles {
   /// Date and time the file was created
   core.DateTime createTime;
@@ -7490,6 +7566,72 @@ class ChromeOsDeviceDeviceFiles {
   }
 }
 
+class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
+  /// Free disk space [in bytes]
+  core.String storageFree;
+
+  /// Total disk space [in bytes]
+  core.String storageTotal;
+
+  /// Volume id
+  core.String volumeId;
+
+  ChromeOsDeviceDiskVolumeReportsVolumeInfo();
+
+  ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("storageFree")) {
+      storageFree = _json["storageFree"];
+    }
+    if (_json.containsKey("storageTotal")) {
+      storageTotal = _json["storageTotal"];
+    }
+    if (_json.containsKey("volumeId")) {
+      volumeId = _json["volumeId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (storageFree != null) {
+      _json["storageFree"] = storageFree;
+    }
+    if (storageTotal != null) {
+      _json["storageTotal"] = storageTotal;
+    }
+    if (volumeId != null) {
+      _json["volumeId"] = volumeId;
+    }
+    return _json;
+  }
+}
+
+class ChromeOsDeviceDiskVolumeReports {
+  /// Disk volumes
+  core.List<ChromeOsDeviceDiskVolumeReportsVolumeInfo> volumeInfo;
+
+  ChromeOsDeviceDiskVolumeReports();
+
+  ChromeOsDeviceDiskVolumeReports.fromJson(core.Map _json) {
+    if (_json.containsKey("volumeInfo")) {
+      volumeInfo = (_json["volumeInfo"] as core.List)
+          .map<ChromeOsDeviceDiskVolumeReportsVolumeInfo>((value) =>
+              new ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (volumeInfo != null) {
+      _json["volumeInfo"] =
+          volumeInfo.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class ChromeOsDeviceRecentUsers {
   /// Email address of the user. Present only if the user type is managed
   core.String email;
@@ -7516,6 +7658,36 @@ class ChromeOsDeviceRecentUsers {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class ChromeOsDeviceSystemRamFreeReports {
+  /// Date and time the report was received.
+  core.DateTime reportTime;
+  core.List<core.String> systemRamFreeInfo;
+
+  ChromeOsDeviceSystemRamFreeReports();
+
+  ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map _json) {
+    if (_json.containsKey("reportTime")) {
+      reportTime = core.DateTime.parse(_json["reportTime"]);
+    }
+    if (_json.containsKey("systemRamFreeInfo")) {
+      systemRamFreeInfo =
+          (_json["systemRamFreeInfo"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reportTime != null) {
+      _json["reportTime"] = (reportTime).toIso8601String();
+    }
+    if (systemRamFreeInfo != null) {
+      _json["systemRamFreeInfo"] = systemRamFreeInfo;
     }
     return _json;
   }
@@ -7606,11 +7778,17 @@ class ChromeOsDevice {
   /// Chromebook boot mode (Read-only)
   core.String bootMode;
 
+  /// Reports of CPU utilization and temperature (Read-only)
+  core.List<ChromeOsDeviceCpuStatusReports> cpuStatusReports;
+
   /// List of device files to download (Read-only)
   core.List<ChromeOsDeviceDeviceFiles> deviceFiles;
 
   /// Unique identifier of Chrome OS Device (Read-only)
   core.String deviceId;
+
+  /// Reports of disk space and other info about mounted/connected volumes.
+  core.List<ChromeOsDeviceDiskVolumeReports> diskVolumeReports;
 
   /// ETag of the resource.
   core.String etag;
@@ -7669,6 +7847,12 @@ class ChromeOsDevice {
   /// Final date the device will be supported (Read-only)
   core.DateTime supportEndDate;
 
+  /// Reports of amounts of available RAM memory (Read-only)
+  core.List<ChromeOsDeviceSystemRamFreeReports> systemRamFreeReports;
+
+  /// Total RAM on the device [in bytes] (Read-only)
+  core.String systemRamTotal;
+
   /// Trusted Platform Module (TPM) (Read-only)
   ChromeOsDeviceTpmVersionInfo tpmVersionInfo;
 
@@ -7696,6 +7880,12 @@ class ChromeOsDevice {
     if (_json.containsKey("bootMode")) {
       bootMode = _json["bootMode"];
     }
+    if (_json.containsKey("cpuStatusReports")) {
+      cpuStatusReports = (_json["cpuStatusReports"] as core.List)
+          .map<ChromeOsDeviceCpuStatusReports>(
+              (value) => new ChromeOsDeviceCpuStatusReports.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("deviceFiles")) {
       deviceFiles = (_json["deviceFiles"] as core.List)
           .map<ChromeOsDeviceDeviceFiles>(
@@ -7704,6 +7894,12 @@ class ChromeOsDevice {
     }
     if (_json.containsKey("deviceId")) {
       deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("diskVolumeReports")) {
+      diskVolumeReports = (_json["diskVolumeReports"] as core.List)
+          .map<ChromeOsDeviceDiskVolumeReports>(
+              (value) => new ChromeOsDeviceDiskVolumeReports.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -7762,6 +7958,15 @@ class ChromeOsDevice {
     if (_json.containsKey("supportEndDate")) {
       supportEndDate = core.DateTime.parse(_json["supportEndDate"]);
     }
+    if (_json.containsKey("systemRamFreeReports")) {
+      systemRamFreeReports = (_json["systemRamFreeReports"] as core.List)
+          .map<ChromeOsDeviceSystemRamFreeReports>(
+              (value) => new ChromeOsDeviceSystemRamFreeReports.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("systemRamTotal")) {
+      systemRamTotal = _json["systemRamTotal"];
+    }
     if (_json.containsKey("tpmVersionInfo")) {
       tpmVersionInfo =
           new ChromeOsDeviceTpmVersionInfo.fromJson(_json["tpmVersionInfo"]);
@@ -7790,12 +7995,20 @@ class ChromeOsDevice {
     if (bootMode != null) {
       _json["bootMode"] = bootMode;
     }
+    if (cpuStatusReports != null) {
+      _json["cpuStatusReports"] =
+          cpuStatusReports.map((value) => (value).toJson()).toList();
+    }
     if (deviceFiles != null) {
       _json["deviceFiles"] =
           deviceFiles.map((value) => (value).toJson()).toList();
     }
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
+    }
+    if (diskVolumeReports != null) {
+      _json["diskVolumeReports"] =
+          diskVolumeReports.map((value) => (value).toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -7851,6 +8064,13 @@ class ChromeOsDevice {
     }
     if (supportEndDate != null) {
       _json["supportEndDate"] = (supportEndDate).toIso8601String();
+    }
+    if (systemRamFreeReports != null) {
+      _json["systemRamFreeReports"] =
+          systemRamFreeReports.map((value) => (value).toJson()).toList();
+    }
+    if (systemRamTotal != null) {
+      _json["systemRamTotal"] = systemRamTotal;
     }
     if (tpmVersionInfo != null) {
       _json["tpmVersionInfo"] = (tpmVersionInfo).toJson();
@@ -8706,6 +8926,9 @@ class Groups {
 
 /// JSON template for Member resource in Directory API.
 class Member {
+  /// Delivery settings of member
+  core.String deliverySettings;
+
   /// Email of member (Read-only)
   core.String email;
 
@@ -8731,6 +8954,9 @@ class Member {
   Member();
 
   Member.fromJson(core.Map _json) {
+    if (_json.containsKey("delivery_settings")) {
+      deliverySettings = _json["delivery_settings"];
+    }
     if (_json.containsKey("email")) {
       email = _json["email"];
     }
@@ -8757,6 +8983,9 @@ class Member {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (deliverySettings != null) {
+      _json["delivery_settings"] = deliverySettings;
+    }
     if (email != null) {
       _json["email"] = email;
     }
@@ -10600,7 +10829,7 @@ class User {
   /// List of aliases (Read-only)
   core.List<core.String> aliases;
 
-  /// Indicates if user is archived
+  /// Indicates if user is archived.
   core.bool archived;
 
   /// Boolean indicating if the user should change password in next login
@@ -10745,7 +10974,7 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object sshPublicKeys;
 
-  /// Indicates if user is suspended
+  /// Indicates if user is suspended.
   core.bool suspended;
 
   /// Suspension reason if user is suspended (Read-only)

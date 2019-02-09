@@ -69,14 +69,14 @@ checkEmptyResponse(api.EmptyResponse o) {
   buildCounterEmptyResponse--;
 }
 
-buildUnnamed2() {
+buildUnnamed4040() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2(core.List<core.String> o) {
+checkUnnamed4040(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -87,7 +87,7 @@ buildErrorProto() {
   var o = new api.ErrorProto();
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
-    o.argument = buildUnnamed2();
+    o.argument = buildUnnamed4040();
     o.code = "foo";
     o.debugInfo = "foo";
     o.domain = "foo";
@@ -102,7 +102,7 @@ buildErrorProto() {
 checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
-    checkUnnamed2(o.argument);
+    checkUnnamed4040(o.argument);
     unittest.expect(o.code, unittest.equals('foo'));
     unittest.expect(o.debugInfo, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
@@ -113,14 +113,14 @@ checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto--;
 }
 
-buildUnnamed3() {
+buildUnnamed4041() {
   var o = new core.List<api.ErrorProto>();
   o.add(buildErrorProto());
   o.add(buildErrorProto());
   return o;
 }
 
-checkUnnamed3(core.List<api.ErrorProto> o) {
+checkUnnamed4041(core.List<api.ErrorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorProto(o[0]);
   checkErrorProto(o[1]);
@@ -132,7 +132,7 @@ buildErrors() {
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
     o.code = "foo";
-    o.error = buildUnnamed3();
+    o.error = buildUnnamed4041();
     o.requestId = "foo";
   }
   buildCounterErrors--;
@@ -143,7 +143,7 @@ checkErrors(api.Errors o) {
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed3(o.error);
+    checkUnnamed4041(o.error);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterErrors--;
@@ -270,14 +270,14 @@ checkGroupSnippet(api.GroupSnippet o) {
   buildCounterGroupSnippet--;
 }
 
-buildUnnamed4() {
+buildUnnamed4042() {
   var o = new core.List<api.GroupItem>();
   o.add(buildGroupItem());
   o.add(buildGroupItem());
   return o;
 }
 
-checkUnnamed4(core.List<api.GroupItem> o) {
+checkUnnamed4042(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -290,7 +290,7 @@ buildListGroupItemsResponse() {
   if (buildCounterListGroupItemsResponse < 3) {
     o.errors = buildErrors();
     o.etag = "foo";
-    o.items = buildUnnamed4();
+    o.items = buildUnnamed4042();
     o.kind = "foo";
   }
   buildCounterListGroupItemsResponse--;
@@ -302,20 +302,20 @@ checkListGroupItemsResponse(api.ListGroupItemsResponse o) {
   if (buildCounterListGroupItemsResponse < 3) {
     checkErrors(o.errors);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4(o.items);
+    checkUnnamed4042(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterListGroupItemsResponse--;
 }
 
-buildUnnamed5() {
+buildUnnamed4043() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed5(core.List<api.Group> o) {
+checkUnnamed4043(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -328,7 +328,7 @@ buildListGroupsResponse() {
   if (buildCounterListGroupsResponse < 3) {
     o.errors = buildErrors();
     o.etag = "foo";
-    o.items = buildUnnamed5();
+    o.items = buildUnnamed4043();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -341,27 +341,27 @@ checkListGroupsResponse(api.ListGroupsResponse o) {
   if (buildCounterListGroupsResponse < 3) {
     checkErrors(o.errors);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed5(o.items);
+    checkUnnamed4043(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGroupsResponse--;
 }
 
-buildUnnamed6() {
+buildUnnamed4044() {
   var o = new core.List<api.ResultTableColumnHeader>();
   o.add(buildResultTableColumnHeader());
   o.add(buildResultTableColumnHeader());
   return o;
 }
 
-checkUnnamed6(core.List<api.ResultTableColumnHeader> o) {
+checkUnnamed4044(core.List<api.ResultTableColumnHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeader(o[0]);
   checkResultTableColumnHeader(o[1]);
 }
 
-buildUnnamed7() {
+buildUnnamed4045() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -376,7 +376,7 @@ buildUnnamed7() {
   return o;
 }
 
-checkUnnamed7(core.List<core.Object> o) {
+checkUnnamed4045(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -390,17 +390,17 @@ checkUnnamed7(core.List<core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed8() {
+buildUnnamed4046() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed7());
-  o.add(buildUnnamed7());
+  o.add(buildUnnamed4045());
+  o.add(buildUnnamed4045());
   return o;
 }
 
-checkUnnamed8(core.List<core.List<core.Object>> o) {
+checkUnnamed4046(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed7(o[0]);
-  checkUnnamed7(o[1]);
+  checkUnnamed4045(o[0]);
+  checkUnnamed4045(o[1]);
 }
 
 core.int buildCounterQueryResponse = 0;
@@ -408,10 +408,10 @@ buildQueryResponse() {
   var o = new api.QueryResponse();
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
-    o.columnHeaders = buildUnnamed6();
+    o.columnHeaders = buildUnnamed4044();
     o.errors = buildErrors();
     o.kind = "foo";
-    o.rows = buildUnnamed8();
+    o.rows = buildUnnamed4046();
   }
   buildCounterQueryResponse--;
   return o;
@@ -420,10 +420,10 @@ buildQueryResponse() {
 checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
-    checkUnnamed6(o.columnHeaders);
+    checkUnnamed4044(o.columnHeaders);
     checkErrors(o.errors);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed8(o.rows);
+    checkUnnamed4046(o.rows);
   }
   buildCounterQueryResponse--;
 }
@@ -845,10 +845,10 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
+      var arg_pageToken = "foo";
       var arg_onBehalfOfContentOwner = "foo";
       var arg_id = "foo";
       var arg_mine = true;
-      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -880,12 +880,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["id"].first, unittest.equals(arg_id));
         unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -896,10 +896,10 @@ main() {
       }), true);
       res
           .list(
+              pageToken: arg_pageToken,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               id: arg_id,
               mine: arg_mine,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGroupsResponse(response);
@@ -969,9 +969,6 @@ main() {
     unittest.test("method--query", () {
       var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.YoutubeAnalyticsApi(mock).reports;
-      var arg_includeHistoricalChannelData = true;
-      var arg_ids = "foo";
-      var arg_currency = "foo";
       var arg_startIndex = 42;
       var arg_dimensions = "foo";
       var arg_endDate = "foo";
@@ -980,6 +977,9 @@ main() {
       var arg_sort = "foo";
       var arg_startDate = "foo";
       var arg_metrics = "foo";
+      var arg_includeHistoricalChannelData = true;
+      var arg_ids = "foo";
+      var arg_currency = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1011,11 +1011,6 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["includeHistoricalChannelData"].first,
-            unittest.equals("$arg_includeHistoricalChannelData"));
-        unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
-        unittest.expect(
-            queryMap["currency"].first, unittest.equals(arg_currency));
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
         unittest.expect(
@@ -1031,6 +1026,11 @@ main() {
             queryMap["startDate"].first, unittest.equals(arg_startDate));
         unittest.expect(
             queryMap["metrics"].first, unittest.equals(arg_metrics));
+        unittest.expect(queryMap["includeHistoricalChannelData"].first,
+            unittest.equals("$arg_includeHistoricalChannelData"));
+        unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["currency"].first, unittest.equals(arg_currency));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1041,9 +1041,6 @@ main() {
       }), true);
       res
           .query(
-              includeHistoricalChannelData: arg_includeHistoricalChannelData,
-              ids: arg_ids,
-              currency: arg_currency,
               startIndex: arg_startIndex,
               dimensions: arg_dimensions,
               endDate: arg_endDate,
@@ -1052,6 +1049,9 @@ main() {
               sort: arg_sort,
               startDate: arg_startDate,
               metrics: arg_metrics,
+              includeHistoricalChannelData: arg_includeHistoricalChannelData,
+              ids: arg_ids,
+              currency: arg_currency,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkQueryResponse(response);

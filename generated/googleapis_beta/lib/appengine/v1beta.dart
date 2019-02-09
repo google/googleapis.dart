@@ -16,8 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client appengine/v1beta';
 
-/// The App Engine Admin API enables developers to provision and manage their
-/// App Engine applications.
+/// Provisions and manages developers' App Engine applications.
 class AppengineApi {
   /// View and manage your applications deployed on Google App Engine
   static const AppengineAdminScope =
@@ -596,9 +595,9 @@ class AppsAuthorizedDomainsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -611,7 +610,7 @@ class AppsAuthorizedDomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedDomainsResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -622,11 +621,11 @@ class AppsAuthorizedDomainsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1182,13 +1181,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [matchingAddress] - A valid IP Address. If set, only rules matching this
   /// address will be returned. The first returned rule will be the rule that
   /// fires on requests from this IP.
-  ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1201,9 +1200,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String matchingAddress,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1215,14 +1214,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (matchingAddress != null) {
       _queryParams["matchingAddress"] = [matchingAddress];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1369,11 +1368,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1386,9 +1385,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1400,14 +1399,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,11 +1498,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1516,9 +1515,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1530,14 +1529,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1739,11 +1738,11 @@ class AppsServicesResourceApi {
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
   /// instances that are configured for both warmup requests
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#inboundservicetype)
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType)
   /// and automatic scaling
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#automaticscaling).
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling).
   /// You must specify the shardBy
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#shardby)
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy)
   /// field in the Service resource. Gradual traffic migration is not supported
   /// in the App Engine flexible environment. For examples, see Migrating and
   /// Splitting Traffic
@@ -2011,14 +2010,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2032,9 +2031,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2049,14 +2048,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2616,7 +2615,7 @@ class Application {
 
   /// HTTP path dispatch rules for requests to the application that do not
   /// explicitly target a service or version. Rules are order-dependent. Up to
-  /// 20 dispatch rules can be supported.@OutputOnly
+  /// 20 dispatch rules can be supported.
   core.List<UrlDispatchRule> dispatchRules;
 
   /// The feature specific settings to be used in the application.
@@ -2902,10 +2901,12 @@ class AuthorizedDomain {
 /// Automatic scaling is based on request rate, response latencies, and other
 /// application metrics.
 class AutomaticScaling {
-  /// Amount of time that the Autoscaler
-  /// (https://cloud.google.com/compute/docs/autoscaler/) should wait between
-  /// changes to the number of virtual machines. Only applicable in the App
-  /// Engine flexible environment.
+  /// The time period that the Autoscaler
+  /// (https://cloud.google.com/compute/docs/autoscaler/) should wait before it
+  /// starts collecting information from a new instance. This prevents the
+  /// autoscaler from collecting information when the instance is initializing,
+  /// during which the collected usage would not be reliable. Only applicable in
+  /// the App Engine flexible environment.
   core.String coolDownPeriod;
 
   /// Target scaling by CPU usage.
@@ -3479,10 +3480,9 @@ class Deployment {
   BuildInfo build;
 
   /// Options for any Google Cloud Build builds created as a part of this
-  /// deployment.Note that this is orthogonal to the build parameter, where the
-  /// deployment depends on an already existing cloud build. These options will
-  /// only be used if a new build is created, such as when deploying to the App
-  /// Engine flexible environment using files or zip.
+  /// deployment.These options will only be used if a new build is created, such
+  /// as when deploying to the App Engine flexible environment using files or
+  /// zip.
   CloudBuildOptions cloudBuildOptions;
 
   /// The Docker image for the container that runs the version. Only applicable
@@ -6395,7 +6395,7 @@ class Version {
 
   /// Duration that static files should be cached by web proxies and browsers.
   /// Only applicable if the corresponding StaticFilesHandler
-  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#staticfileshandler)
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler)
   /// does not specify its own expiration time.Only returned in GET requests if
   /// view=FULL is set.
   core.String defaultExpiration;
@@ -6500,6 +6500,9 @@ class Version {
   /// Defaults to the default channel.
   core.String runtimeChannel;
 
+  /// The path or name of the app's main executable.
+  core.String runtimeMainExecutablePath;
+
   /// Current serving status of this version. Only the versions with a SERVING
   /// status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
   /// invalid value. Defaults to SERVING.
@@ -6520,6 +6523,9 @@ class Version {
 
   /// Whether to deploy this version in a container on a virtual machine.
   core.bool vm;
+
+  /// Enables VPC connectivity for standard apps.
+  VpcAccessConnector vpcAccessConnector;
 
   /// The Google Compute Engine zones that are supported by this version in the
   /// App Engine flexible environment.
@@ -6629,6 +6635,9 @@ class Version {
     if (_json.containsKey("runtimeChannel")) {
       runtimeChannel = _json["runtimeChannel"];
     }
+    if (_json.containsKey("runtimeMainExecutablePath")) {
+      runtimeMainExecutablePath = _json["runtimeMainExecutablePath"];
+    }
     if (_json.containsKey("servingStatus")) {
       servingStatus = _json["servingStatus"];
     }
@@ -6640,6 +6649,10 @@ class Version {
     }
     if (_json.containsKey("vm")) {
       vm = _json["vm"];
+    }
+    if (_json.containsKey("vpcAccessConnector")) {
+      vpcAccessConnector =
+          new VpcAccessConnector.fromJson(_json["vpcAccessConnector"]);
     }
     if (_json.containsKey("zones")) {
       zones = (_json["zones"] as core.List).cast<core.String>();
@@ -6740,6 +6753,9 @@ class Version {
     if (runtimeChannel != null) {
       _json["runtimeChannel"] = runtimeChannel;
     }
+    if (runtimeMainExecutablePath != null) {
+      _json["runtimeMainExecutablePath"] = runtimeMainExecutablePath;
+    }
     if (servingStatus != null) {
       _json["servingStatus"] = servingStatus;
     }
@@ -6751,6 +6767,9 @@ class Version {
     }
     if (vm != null) {
       _json["vm"] = vm;
+    }
+    if (vpcAccessConnector != null) {
+      _json["vpcAccessConnector"] = (vpcAccessConnector).toJson();
     }
     if (zones != null) {
       _json["zones"] = zones;
@@ -6796,6 +6815,30 @@ class Volume {
     }
     if (volumeType != null) {
       _json["volumeType"] = volumeType;
+    }
+    return _json;
+  }
+}
+
+/// VPC access connector specification.
+class VpcAccessConnector {
+  /// Full Serverless VPC Access Connector name e.g.
+  /// /projects/my-project/locations/us-central1/connectors/c1.
+  core.String name;
+
+  VpcAccessConnector();
+
+  VpcAccessConnector.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }

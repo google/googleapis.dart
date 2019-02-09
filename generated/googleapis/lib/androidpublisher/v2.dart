@@ -24,7 +24,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androidpublisher/v2';
 
-/// Lets Android application developers access their Google Play accounts.
+/// Accesses Android application developers' Google Play accounts.
 class AndroidpublisherApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
@@ -1013,6 +1013,10 @@ class EditsBundlesResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [ackBundleInstallationWarning] - Must be set to true if the bundle
+  /// installation may trigger a warning on user devices (for example, if
+  /// installation size may be over a threshold, typically 100 MB).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1030,7 +1034,8 @@ class EditsBundlesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Bundle> upload(core.String packageName, core.String editId,
-      {core.String $fields,
+      {core.bool ackBundleInstallationWarning,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -1045,6 +1050,11 @@ class EditsBundlesResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if (ackBundleInstallationWarning != null) {
+      _queryParams["ackBundleInstallationWarning"] = [
+        "${ackBundleInstallationWarning}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5384,6 +5394,7 @@ class ProductPurchase {
   /// values are:
   /// - Test (i.e. purchased from a license testing account)
   /// - Promo (i.e. purchased using a promo code)
+  /// - Rewarded (i.e. from watching a video ad instead of paying)
   core.int purchaseType;
 
   ProductPurchase();
@@ -5862,6 +5873,7 @@ class SubscriptionPurchase {
   /// - Payment pending
   /// - Payment received
   /// - Free trial
+  /// - Pending deferred upgrade/downgrade
   core.int paymentState;
 
   /// Price of the subscription, not including tax. Price is expressed in

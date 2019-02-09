@@ -40,13 +40,9 @@ class LoggingApi {
 
   final commons.ApiRequester _requester;
 
-  BillingAccountsResourceApi get billingAccounts =>
-      new BillingAccountsResourceApi(_requester);
   EntriesResourceApi get entries => new EntriesResourceApi(_requester);
   MonitoredResourceDescriptorsResourceApi get monitoredResourceDescriptors =>
       new MonitoredResourceDescriptorsResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   LoggingApi(http.Client client,
@@ -56,148 +52,14 @@ class LoggingApi {
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
-class BillingAccountsResourceApi {
-  final commons.ApiRequester _requester;
-
-  BillingAccountsLogsResourceApi get logs =>
-      new BillingAccountsLogsResourceApi(_requester);
-
-  BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
-}
-
-class BillingAccountsLogsResourceApi {
-  final commons.ApiRequester _requester;
-
-  BillingAccountsLogsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Deletes all the log entries in a log. The log reappears if it receives new
-  /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
-  ///
-  /// Request parameters:
-  ///
-  /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
-  /// [LOG_ID] must be URL-encoded. For example,
-  /// "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^billingAccounts/[^/]+/logs/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (logName == null) {
-      throw new core.ArgumentError("Parameter logName is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /// Lists the logs in projects, organizations, folders, or billing accounts.
-  /// Only logs that have entries are listed.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]"
-  /// "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
-  /// "folders/[FOLDER_ID]"
-  ///
-  /// Value must have pattern "^billingAccounts/[^/]+$".
-  ///
-  /// [pageToken] - Optional. If present, then retrieve the next batch of
-  /// results from the preceding call to this method. pageToken must be the
-  /// value of nextPageToken from the previous response. The values of other
-  /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListLogsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url =
-        'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLogsResponse.fromJson(data));
-  }
-}
-
 class EntriesResourceApi {
   final commons.ApiRequester _requester;
 
   EntriesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists log entries. Use this method to retrieve log entries from Logging.
-  /// For ways to export log entries, see Exporting Logs.
+  /// Lists log entries. Use this method to retrieve log entries that originated
+  /// from a project/folder/organization/billing account. For ways to export log
+  /// entries, see Exporting Logs.
   ///
   /// [request] - The metadata request object.
   ///
@@ -298,14 +160,14 @@ class MonitoredResourceDescriptorsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -318,7 +180,7 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -326,11 +188,11 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,276 +211,15 @@ class MonitoredResourceDescriptorsResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  OrganizationsLogsResourceApi get logs =>
-      new OrganizationsLogsResourceApi(_requester);
-
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
-}
-
-class OrganizationsLogsResourceApi {
-  final commons.ApiRequester _requester;
-
-  OrganizationsLogsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Deletes all the log entries in a log. The log reappears if it receives new
-  /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
-  ///
-  /// Request parameters:
-  ///
-  /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
-  /// [LOG_ID] must be URL-encoded. For example,
-  /// "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^organizations/[^/]+/logs/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (logName == null) {
-      throw new core.ArgumentError("Parameter logName is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /// Lists the logs in projects, organizations, folders, or billing accounts.
-  /// Only logs that have entries are listed.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]"
-  /// "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
-  /// "folders/[FOLDER_ID]"
-  ///
-  /// Value must have pattern "^organizations/[^/]+$".
-  ///
-  /// [pageToken] - Optional. If present, then retrieve the next batch of
-  /// results from the preceding call to this method. pageToken must be the
-  /// value of nextPageToken from the previous response. The values of other
-  /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListLogsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url =
-        'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLogsResponse.fromJson(data));
-  }
-}
-
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsLogsResourceApi get logs => new ProjectsLogsResourceApi(_requester);
   ProjectsMetricsResourceApi get metrics =>
       new ProjectsMetricsResourceApi(_requester);
   ProjectsSinksResourceApi get sinks =>
       new ProjectsSinksResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLogsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLogsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Deletes all the log entries in a log. The log reappears if it receives new
-  /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
-  ///
-  /// Request parameters:
-  ///
-  /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
-  /// [LOG_ID] must be URL-encoded. For example,
-  /// "projects/my-project-id/logs/syslog",
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^projects/[^/]+/logs/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (logName == null) {
-      throw new core.ArgumentError("Parameter logName is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /// Lists the logs in projects, organizations, folders, or billing accounts.
-  /// Only logs that have entries are listed.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]"
-  /// "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
-  /// "folders/[FOLDER_ID]"
-  ///
-  /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [pageToken] - Optional. If present, then retrieve the next batch of
-  /// results from the preceding call to this method. pageToken must be the
-  /// value of nextPageToken from the previous response. The values of other
-  /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListLogsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url =
-        'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLogsResponse.fromJson(data));
-  }
 }
 
 class ProjectsMetricsResourceApi {
@@ -778,14 +379,14 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -798,7 +399,7 @@ class ProjectsMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogMetricsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -809,11 +410,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1129,7 +730,7 @@ class ProjectsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -1164,7 +765,7 @@ class ProjectsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1792,41 +1393,6 @@ class ListLogMetricsResponse {
   }
 }
 
-/// Result returned from ListLogs.
-class ListLogsResponse {
-  /// A list of log names. For example, "projects/my-project/syslog" or
-  /// "organizations/123/cloudresourcemanager.googleapis.com%2Factivity".
-  core.List<core.String> logNames;
-
-  /// If there might be more results than those appearing in this response, then
-  /// nextPageToken is included. To get the next set of results, call this
-  /// method again using the value of nextPageToken as pageToken.
-  core.String nextPageToken;
-
-  ListLogsResponse();
-
-  ListLogsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("logNames")) {
-      logNames = (_json["logNames"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (logNames != null) {
-      _json["logNames"] = logNames;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
 /// Result returned from ListMonitoredResourceDescriptors.
 class ListMonitoredResourceDescriptorsResponse {
   /// If there might be more results than those appearing in this response, then
@@ -1945,7 +1511,7 @@ class LogEntry {
   /// with a leading slash will never return any results.
   core.String logName;
 
-  /// Output only. Additional metadata about the monitored resource. Only
+  /// Output only. Additional metadata about the monitored resource.Only
   /// k8s_container, k8s_pod, and k8s_node MonitoredResources have this field
   /// populated.
   MonitoredResourceMetadata metadata;
@@ -1964,10 +1530,10 @@ class LogEntry {
   /// Output only. The time the log entry was received by Logging.
   core.String receiveTimestamp;
 
-  /// Required. The primary monitored resource associated with this log entry.
-  /// Example: a log entry that reports a database error would be associated
-  /// with the monitored resource designating the particular database that
-  /// reported the error.
+  /// Required. The primary monitored resource associated with this log
+  /// entry.Example: a log entry that reports a database error would be
+  /// associated with the monitored resource designating the particular database
+  /// that reported the error.
   MonitoredResource resource;
 
   /// Optional. The severity of the log entry. The default value is
@@ -1991,7 +1557,7 @@ class LogEntry {
   /// if any.
   LogEntrySourceLocation sourceLocation;
 
-  /// Optional. The span ID within the trace associated with the log entry. For
+  /// Optional. The span ID within the trace associated with the log entry.For
   /// Trace spans, this is the same format that the Trace API v2 uses: a
   /// 16-character hexadecimal encoding of an 8-byte array, such as
   /// <code>"000000000000004a"</code>.
@@ -2017,6 +1583,14 @@ class LogEntry {
   /// relative to //tracing.googleapis.com. Example:
   /// projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824
   core.String trace;
+
+  /// Optional. The sampling decision of the trace associated with the log
+  /// entry.True means that the trace resource name in the trace field was
+  /// sampled for storage in a trace backend. False means that the trace was not
+  /// sampled for storage when this log entry was written, or the sampling
+  /// decision was unknown at the time. A non-sampled trace value is still
+  /// useful as a request correlation identifier. The default is False.
+  core.bool traceSampled;
 
   LogEntry();
 
@@ -2072,6 +1646,9 @@ class LogEntry {
     if (_json.containsKey("trace")) {
       trace = _json["trace"];
     }
+    if (_json.containsKey("traceSampled")) {
+      traceSampled = _json["traceSampled"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2124,6 +1701,9 @@ class LogEntry {
     }
     if (trace != null) {
       _json["trace"] = trace;
+    }
+    if (traceSampled != null) {
+      _json["traceSampled"] = traceSampled;
     }
     return _json;
   }
@@ -2307,7 +1887,12 @@ class LogMetric {
   /// used to create a histogram of the extracted values.
   BucketOptions bucketOptions;
 
+  /// Output only. The creation timestamp of the metric.This field may not be
+  /// present for older metrics.
+  core.String createTime;
+
   /// Optional. A description of this metric, which is used in documentation.
+  /// The maximum length of the description is 8000 characters.
   core.String description;
 
   /// Required. An advanced logs filter which is used to match log entries.
@@ -2357,6 +1942,10 @@ class LogMetric {
   /// "projects/my-project/metrics/nginx%2Frequests".
   core.String name;
 
+  /// Output only. The last update timestamp of the metric.This field may not be
+  /// present for older metrics.
+  core.String updateTime;
+
   /// Optional. A value_extractor is required when using a distribution
   /// logs-based metric to extract the values to record from a log entry. Two
   /// functions are supported for value extraction: EXTRACT(field) or
@@ -2387,6 +1976,9 @@ class LogMetric {
     if (_json.containsKey("bucketOptions")) {
       bucketOptions = new BucketOptions.fromJson(_json["bucketOptions"]);
     }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -2404,6 +1996,9 @@ class LogMetric {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
     if (_json.containsKey("valueExtractor")) {
       valueExtractor = _json["valueExtractor"];
     }
@@ -2417,6 +2012,9 @@ class LogMetric {
         new core.Map<core.String, core.Object>();
     if (bucketOptions != null) {
       _json["bucketOptions"] = (bucketOptions).toJson();
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
     }
     if (description != null) {
       _json["description"] = description;
@@ -2432,6 +2030,9 @@ class LogMetric {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     if (valueExtractor != null) {
       _json["valueExtractor"] = valueExtractor;
@@ -2449,17 +2050,18 @@ class LogMetric {
 /// exported. The sink must be created within a project, organization, billing
 /// account, or folder.
 class LogSink {
+  /// Output only. The creation timestamp of the sink.This field may not be
+  /// present for older sinks.
+  core.String createTime;
+
   /// Required. The export destination:
   /// "storage.googleapis.com/[GCS_BUCKET]"
   /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
   /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
   /// The sink's writer_identity, set when the sink is created, must have
   /// permission to write to the destination or else the log entries are not
-  /// exported. For more information, see Exporting Logs With Sinks.
+  /// exported. For more information, see Exporting Logs with Sinks.
   core.String destination;
-
-  /// Deprecated. This field is ignored when creating or updating sinks.
-  core.String endTime;
 
   /// Optional. An advanced logs filter. The only exported log entries are those
   /// that are in the resource owning the sink and that match the filter. For
@@ -2496,15 +2098,16 @@ class LogSink {
   /// - "V1" : LogEntry version 1 format.
   core.String outputVersionFormat;
 
-  /// Deprecated. This field is ignored when creating or updating sinks.
-  core.String startTime;
+  /// Output only. The last update timestamp of the sink.This field may not be
+  /// present for older sinks.
+  core.String updateTime;
 
   /// Output only. An IAM identity&mdash;a service account or group&mdash;under
   /// which Logging writes the exported log entries to the sink's destination.
-  /// This field is set by sinks.create and sinks.update, based on the setting
-  /// of unique_writer_identity in those methods.Until you grant this identity
+  /// This field is set by sinks.create and sinks.update based on the value of
+  /// unique_writer_identity in those methods.Until you grant this identity
   /// write-access to the destination, log entry exports from this sink will
-  /// fail. For more information, see Granting access for a resource. Consult
+  /// fail. For more information, see Granting Access for a Resource. Consult
   /// the destination service's documentation to determine the appropriate IAM
   /// roles to assign to the identity.
   core.String writerIdentity;
@@ -2512,11 +2115,11 @@ class LogSink {
   LogSink();
 
   LogSink.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
     }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
@@ -2530,8 +2133,8 @@ class LogSink {
     if (_json.containsKey("outputVersionFormat")) {
       outputVersionFormat = _json["outputVersionFormat"];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
     }
     if (_json.containsKey("writerIdentity")) {
       writerIdentity = _json["writerIdentity"];
@@ -2541,11 +2144,11 @@ class LogSink {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
     if (destination != null) {
       _json["destination"] = destination;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -2559,8 +2162,8 @@ class LogSink {
     if (outputVersionFormat != null) {
       _json["outputVersionFormat"] = outputVersionFormat;
     }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     if (writerIdentity != null) {
       _json["writerIdentity"] = writerIdentity;
@@ -3450,10 +3053,13 @@ class WriteLogEntriesRequest {
   /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
   /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
   /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
-  /// [LOG_ID] must be URL-encoded. For example,
-  /// "projects/my-project-id/logs/syslog" or
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// [LOG_ID] must be URL-encoded. For example:
+  /// "projects/my-project-id/logs/syslog"
+  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
+  /// The permission <code>logging.logEntries.create</code> is needed on each
+  /// project, organization, billing account, or folder that is receiving new
+  /// log entries, whether the resource is specified in <code>logName</code> or
+  /// in an individual log entry.
   core.String logName;
 
   /// Optional. Whether valid entries should be written even if some other

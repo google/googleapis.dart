@@ -67,6 +67,61 @@ class ProjectsLocationsRegistriesResourceApi {
   ProjectsLocationsRegistriesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Associates the device with the gateway.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the registry. For example,
+  /// `projects/example-project/locations/us-central1/registries/my-registry`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BindDeviceToGatewayResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BindDeviceToGatewayResponse> bindDeviceToGateway(
+      BindDeviceToGatewayRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':bindDeviceToGateway';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BindDeviceToGatewayResponse.fromJson(data));
+  }
+
   /// Creates a device registry that contains devices.
   ///
   /// [request] - The metadata request object.
@@ -276,16 +331,16 @@ class ProjectsLocationsRegistriesResourceApi {
   /// `projects/example-project/locations/us-central1`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - The value returned by the last
+  /// `ListDeviceRegistriesResponse`; indicates
+  /// that this is a continuation of a prior `ListDeviceRegistries` call and
+  /// the system should return the next page of data.
+  ///
   /// [pageSize] - The maximum number of registries to return in the response.
   /// If this value
   /// is zero, the service will select a default size. A call may return fewer
-  /// objects than requested, but if there is a non-empty `page_token`, it
-  /// indicates that more entries are available.
-  ///
-  /// [pageToken] - The value returned by the last
-  /// `ListDeviceRegistriesResponse`; indicates
-  /// that this is a continuation of a prior `ListDeviceRegistries` call, and
-  /// that the system should return the next page of data.
+  /// objects than requested. A non-empty `next_page_token` in the response
+  /// indicates that more data is available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -298,7 +353,7 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDeviceRegistriesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -309,11 +364,11 @@ class ProjectsLocationsRegistriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -507,6 +562,61 @@ class ProjectsLocationsRegistriesResourceApi {
     return _response
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
+
+  /// Deletes the association between the device and the gateway.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the registry. For example,
+  /// `projects/example-project/locations/us-central1/registries/my-registry`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UnbindDeviceFromGatewayResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UnbindDeviceFromGatewayResponse> unbindDeviceFromGateway(
+      UnbindDeviceFromGatewayRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':unbindDeviceFromGateway';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UnbindDeviceFromGatewayResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsRegistriesDevicesResourceApi {
@@ -687,30 +797,50 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`.
+  /// If empty, this field is ignored. Maximum IDs: 10,000
+  ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum
+  /// IDs: 10,000.
+  ///
+  /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
+  /// gateways with which the specified device is
+  /// associated. The device ID can be numeric (`num_id`) or the user-defined
+  /// string (`id`). For example, if `456` is specified, returns only the
+  /// gateways to which the device with `num_id` 456 is bound.
+  ///
+  /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
+  /// gateways are returned. If `NON_GATEWAY`
+  /// is specified, only non-gateway devices are returned. If
+  /// `GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.
+  /// Possible string values are:
+  /// - "GATEWAY_TYPE_UNSPECIFIED" : A GATEWAY_TYPE_UNSPECIFIED.
+  /// - "GATEWAY" : A GATEWAY.
+  /// - "NON_GATEWAY" : A NON_GATEWAY.
+  ///
+  /// [gatewayListOptions_associationsGatewayId] - If set, only devices
+  /// associated with the specified gateway are returned.
+  /// The gateway ID can be numeric (`num_id`) or the user-defined string
+  /// (`id`). For example, if `123` is specified, only devices bound to the
+  /// gateway with `num_id` 123 are returned.
   ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
-  /// that this is a continuation of a prior `ListDevices` call, and
-  /// that the system should return the next page of data.
+  /// that this is a continuation of a prior `ListDevices` call and
+  /// the system should return the next page of data.
   ///
   /// [fieldMask] - The fields of the `Device` resource to be returned in the
   /// response. The
-  /// fields `id`, and `num_id` are always returned by default, along with any
+  /// fields `id` and `num_id` are always returned, along with any
   /// other fields specified.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// this value
   /// is zero, the service will select a default size. A call may return fewer
-  /// objects than requested, but if there is a non-empty `page_token`, it
-  /// indicates that more entries are available.
-  ///
-  /// [deviceIds] - A list of device string identifiers. If empty, it will
-  /// ignore this field.
-  /// For example, `['device0', 'device12']`. This field cannot hold more than
-  /// 10,000 entries.
+  /// objects than requested. A non-empty `next_page_token` in the response
+  /// indicates that more data is available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -723,11 +853,14 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.List<core.String> deviceNumIds,
+      {core.List<core.String> deviceIds,
+      core.List<core.String> deviceNumIds,
+      core.String gatewayListOptions_associationsDeviceId,
+      core.String gatewayListOptions_gatewayType,
+      core.String gatewayListOptions_associationsGatewayId,
       core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
-      core.List<core.String> deviceIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -739,8 +872,26 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
+    }
     if (deviceNumIds != null) {
       _queryParams["deviceNumIds"] = deviceNumIds;
+    }
+    if (gatewayListOptions_associationsDeviceId != null) {
+      _queryParams["gatewayListOptions.associationsDeviceId"] = [
+        gatewayListOptions_associationsDeviceId
+      ];
+    }
+    if (gatewayListOptions_gatewayType != null) {
+      _queryParams["gatewayListOptions.gatewayType"] = [
+        gatewayListOptions_gatewayType
+      ];
+    }
+    if (gatewayListOptions_associationsGatewayId != null) {
+      _queryParams["gatewayListOptions.associationsGatewayId"] = [
+        gatewayListOptions_associationsGatewayId
+      ];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -750,9 +901,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -888,6 +1036,75 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Device.fromJson(data));
+  }
+
+  /// Sends a command to the specified device. In order for a device to be able
+  /// to receive commands, it must:
+  /// 1) be connected to Cloud IoT Core using the MQTT protocol, and
+  /// 2) be subscribed to the group of MQTT topics specified by
+  /// /devices/{device-id}/commands/#. This subscription will receive commands
+  /// at the top-level topic /devices/{device-id}/commands as well as commands
+  ///    for subfolders, like /devices/{device-id}/commands/subfolder.
+  ///    Note that subscribing to specific subfolders is not supported.
+  /// If the command could not be delivered to the device, this method will
+  /// return an error; in particular, if the device is not subscribed, this
+  /// method will return FAILED_PRECONDITION. Otherwise, this method will
+  /// return OK. If the subscription is QoS 1, at least once delivery will be
+  /// guaranteed; for QoS 0, no acknowledgment will be expected from the device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SendCommandToDeviceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SendCommandToDeviceResponse> sendCommandToDevice(
+      SendCommandToDeviceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':sendCommandToDevice';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SendCommandToDeviceResponse.fromJson(data));
   }
 }
 
@@ -1033,6 +1250,61 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
 
   ProjectsLocationsRegistriesGroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Associates the device with the gateway.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the registry. For example,
+  /// `projects/example-project/locations/us-central1/registries/my-registry`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BindDeviceToGatewayResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BindDeviceToGatewayResponse> bindDeviceToGateway(
+      BindDeviceToGatewayRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':bindDeviceToGateway';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BindDeviceToGatewayResponse.fromJson(data));
+  }
 
   /// Gets the access control policy for a resource.
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1204,6 +1476,61 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
     return _response
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
+
+  /// Deletes the association between the device and the gateway.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the registry. For example,
+  /// `projects/example-project/locations/us-central1/registries/my-registry`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UnbindDeviceFromGatewayResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UnbindDeviceFromGatewayResponse> unbindDeviceFromGateway(
+      UnbindDeviceFromGatewayRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':unbindDeviceFromGateway';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UnbindDeviceFromGatewayResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
@@ -1284,30 +1611,50 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
-  /// indicates
-  /// that this is a continuation of a prior `ListDevices` call, and
-  /// that the system should return the next page of data.
+  /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
+  /// gateways are returned. If `NON_GATEWAY`
+  /// is specified, only non-gateway devices are returned. If
+  /// `GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.
+  /// Possible string values are:
+  /// - "GATEWAY_TYPE_UNSPECIFIED" : A GATEWAY_TYPE_UNSPECIFIED.
+  /// - "GATEWAY" : A GATEWAY.
+  /// - "NON_GATEWAY" : A NON_GATEWAY.
+  ///
+  /// [gatewayListOptions_associationsGatewayId] - If set, only devices
+  /// associated with the specified gateway are returned.
+  /// The gateway ID can be numeric (`num_id`) or the user-defined string
+  /// (`id`). For example, if `123` is specified, only devices bound to the
+  /// gateway with `num_id` 123 are returned.
   ///
   /// [fieldMask] - The fields of the `Device` resource to be returned in the
   /// response. The
-  /// fields `id`, and `num_id` are always returned by default, along with any
+  /// fields `id` and `num_id` are always returned, along with any
   /// other fields specified.
+  ///
+  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
+  /// indicates
+  /// that this is a continuation of a prior `ListDevices` call and
+  /// the system should return the next page of data.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// this value
   /// is zero, the service will select a default size. A call may return fewer
-  /// objects than requested, but if there is a non-empty `page_token`, it
-  /// indicates that more entries are available.
+  /// objects than requested. A non-empty `next_page_token` in the response
+  /// indicates that more data is available.
   ///
-  /// [deviceIds] - A list of device string identifiers. If empty, it will
-  /// ignore this field.
-  /// For example, `['device0', 'device12']`. This field cannot hold more than
-  /// 10,000 entries.
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`.
+  /// If empty, this field is ignored. Maximum IDs: 10,000
   ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
+  /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
+  /// gateways with which the specified device is
+  /// associated. The device ID can be numeric (`num_id`) or the user-defined
+  /// string (`id`). For example, if `456` is specified, returns only the
+  /// gateways to which the device with `num_id` 456 is bound.
+  ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum
+  /// IDs: 10,000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1320,10 +1667,13 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String gatewayListOptions_gatewayType,
+      core.String gatewayListOptions_associationsGatewayId,
       core.String fieldMask,
+      core.String pageToken,
       core.int pageSize,
       core.List<core.String> deviceIds,
+      core.String gatewayListOptions_associationsDeviceId,
       core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
@@ -1336,17 +1686,32 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (gatewayListOptions_gatewayType != null) {
+      _queryParams["gatewayListOptions.gatewayType"] = [
+        gatewayListOptions_gatewayType
+      ];
+    }
+    if (gatewayListOptions_associationsGatewayId != null) {
+      _queryParams["gatewayListOptions.associationsGatewayId"] = [
+        gatewayListOptions_associationsGatewayId
+      ];
     }
     if (fieldMask != null) {
       _queryParams["fieldMask"] = [fieldMask];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (deviceIds != null) {
       _queryParams["deviceIds"] = deviceIds;
+    }
+    if (gatewayListOptions_associationsDeviceId != null) {
+      _queryParams["gatewayListOptions.associationsDeviceId"] = [
+        gatewayListOptions_associationsDeviceId
+      ];
     }
     if (deviceNumIds != null) {
       _queryParams["deviceNumIds"] = deviceNumIds;
@@ -1486,6 +1851,75 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Device.fromJson(data));
   }
+
+  /// Sends a command to the specified device. In order for a device to be able
+  /// to receive commands, it must:
+  /// 1) be connected to Cloud IoT Core using the MQTT protocol, and
+  /// 2) be subscribed to the group of MQTT topics specified by
+  /// /devices/{device-id}/commands/#. This subscription will receive commands
+  /// at the top-level topic /devices/{device-id}/commands as well as commands
+  ///    for subfolders, like /devices/{device-id}/commands/subfolder.
+  ///    Note that subscribing to specific subfolders is not supported.
+  /// If the command could not be delivered to the device, this method will
+  /// return an error; in particular, if the device is not subscribed, this
+  /// method will return FAILED_PRECONDITION. Otherwise, this method will
+  /// return OK. If the subscription is QoS 1, at least once delivery will be
+  /// guaranteed; for QoS 0, no acknowledgment will be expected from the device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the device. For example,
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
+  /// or
+  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SendCommandToDeviceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SendCommandToDeviceResponse> sendCommandToDevice(
+      SendCommandToDeviceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':sendCommandToDevice';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SendCommandToDeviceResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi {
@@ -1622,6 +2056,54 @@ class ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi {
   }
 }
 
+/// Request for `BindDeviceToGateway`.
+class BindDeviceToGatewayRequest {
+  /// The device to associate with the specified gateway. The value of
+  /// `device_id` can be either the device numeric ID or the user-defined device
+  /// identifier.
+  core.String deviceId;
+
+  /// The value of `gateway_id` can be either the device numeric ID or the
+  /// user-defined device identifier.
+  core.String gatewayId;
+
+  BindDeviceToGatewayRequest();
+
+  BindDeviceToGatewayRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceId")) {
+      deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("gatewayId")) {
+      gatewayId = _json["gatewayId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceId != null) {
+      _json["deviceId"] = deviceId;
+    }
+    if (gatewayId != null) {
+      _json["gatewayId"] = gatewayId;
+    }
+    return _json;
+  }
+}
+
+/// Response for `BindDeviceToGateway`.
+class BindDeviceToGatewayResponse {
+  BindDeviceToGatewayResponse();
+
+  BindDeviceToGatewayResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Associates `members` with a `role`.
 class Binding {
   /// Unimplemented. The condition that is associated with this binding.
@@ -1711,6 +2193,9 @@ class Device {
   /// `DeviceRegistry.credentials` field.
   core.List<DeviceCredential> credentials;
 
+  /// Gateway-related configuration and state.
+  GatewayConfig gatewayConfig;
+
   /// The user-defined device identifier. The device ID must be unique
   /// within a device registry.
   core.String id;
@@ -1755,6 +2240,20 @@ class Device {
   /// periodically collected and written to storage; they may be stale by a few
   /// minutes.
   core.String lastStateTime;
+
+  /// **Beta Feature**
+  ///
+  /// The logging verbosity for device activity. If unspecified,
+  /// DeviceRegistry.log_level will be used.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : No logging specified. If not specified,
+  /// logging will be disabled.
+  /// - "NONE" : Disables logging.
+  /// - "ERROR" : Error events will be logged.
+  /// - "INFO" : Informational events will be logged, such as connections and
+  /// disconnections.
+  /// - "DEBUG" : All events will be logged.
+  core.String logLevel;
 
   /// The metadata key-value pairs assigned to the device. This metadata is not
   /// interpreted or indexed by Cloud IoT Core. It can be used to add contextual
@@ -1801,6 +2300,9 @@ class Device {
               (value) => new DeviceCredential.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("gatewayConfig")) {
+      gatewayConfig = new GatewayConfig.fromJson(_json["gatewayConfig"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1824,6 +2326,9 @@ class Device {
     }
     if (_json.containsKey("lastStateTime")) {
       lastStateTime = _json["lastStateTime"];
+    }
+    if (_json.containsKey("logLevel")) {
+      logLevel = _json["logLevel"];
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -1853,6 +2358,9 @@ class Device {
       _json["credentials"] =
           credentials.map((value) => (value).toJson()).toList();
     }
+    if (gatewayConfig != null) {
+      _json["gatewayConfig"] = (gatewayConfig).toJson();
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -1876,6 +2384,9 @@ class Device {
     }
     if (lastStateTime != null) {
       _json["lastStateTime"] = lastStateTime;
+    }
+    if (logLevel != null) {
+      _json["logLevel"] = logLevel;
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -2040,6 +2551,20 @@ class DeviceRegistry {
   /// The identifier of this device registry. For example, `myRegistry`.
   core.String id;
 
+  /// **Beta Feature**
+  ///
+  /// The default logging verbosity for activity from devices in this registry.
+  /// The verbosity level can be overridden by Device.log_level.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : No logging specified. If not specified,
+  /// logging will be disabled.
+  /// - "NONE" : Disables logging.
+  /// - "ERROR" : Error events will be logged.
+  /// - "INFO" : Informational events will be logged, such as connections and
+  /// disconnections.
+  /// - "DEBUG" : All events will be logged.
+  core.String logLevel;
+
   /// The MQTT configuration for this device registry.
   MqttConfig mqttConfig;
 
@@ -2077,6 +2602,9 @@ class DeviceRegistry {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("logLevel")) {
+      logLevel = _json["logLevel"];
+    }
     if (_json.containsKey("mqttConfig")) {
       mqttConfig = new MqttConfig.fromJson(_json["mqttConfig"]);
     }
@@ -2105,6 +2633,9 @@ class DeviceRegistry {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (logLevel != null) {
+      _json["logLevel"] = logLevel;
     }
     if (mqttConfig != null) {
       _json["mqttConfig"] = (mqttConfig).toJson();
@@ -2274,6 +2805,78 @@ class Expr {
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// Gateway-related configuration and state.
+class GatewayConfig {
+  /// Indicates how to authorize and/or authenticate devices to access the
+  /// gateway.
+  /// Possible string values are:
+  /// - "GATEWAY_AUTH_METHOD_UNSPECIFIED" : No authentication/authorization
+  /// method specified. No devices are allowed to
+  /// access the gateway.
+  /// - "ASSOCIATION_ONLY" : The device is authenticated through the gateway
+  /// association only. Device
+  /// credentials are ignored even if provided.
+  /// - "DEVICE_AUTH_TOKEN_ONLY" : The device is authenticated through its own
+  /// credentials. Gateway
+  /// association is not checked.
+  /// - "ASSOCIATION_AND_DEVICE_AUTH_TOKEN" : The device is authenticated
+  /// through both device credentials and gateway
+  /// association. The device must be bound to the gateway and must provide its
+  /// own credentials.
+  core.String gatewayAuthMethod;
+
+  /// Indicates whether the device is a gateway.
+  /// Possible string values are:
+  /// - "GATEWAY_TYPE_UNSPECIFIED" : If unspecified, the device is considered a
+  /// non-gateway device.
+  /// - "GATEWAY" : The device is a gateway.
+  /// - "NON_GATEWAY" : The device is not a gateway.
+  core.String gatewayType;
+
+  /// [Output only] The ID of the gateway the device accessed most recently.
+  core.String lastAccessedGatewayId;
+
+  /// [Output only] The most recent time at which the device accessed the
+  /// gateway
+  /// specified in `last_accessed_gateway`.
+  core.String lastAccessedGatewayTime;
+
+  GatewayConfig();
+
+  GatewayConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("gatewayAuthMethod")) {
+      gatewayAuthMethod = _json["gatewayAuthMethod"];
+    }
+    if (_json.containsKey("gatewayType")) {
+      gatewayType = _json["gatewayType"];
+    }
+    if (_json.containsKey("lastAccessedGatewayId")) {
+      lastAccessedGatewayId = _json["lastAccessedGatewayId"];
+    }
+    if (_json.containsKey("lastAccessedGatewayTime")) {
+      lastAccessedGatewayTime = _json["lastAccessedGatewayTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gatewayAuthMethod != null) {
+      _json["gatewayAuthMethod"] = gatewayAuthMethod;
+    }
+    if (gatewayType != null) {
+      _json["gatewayType"] = gatewayType;
+    }
+    if (lastAccessedGatewayId != null) {
+      _json["lastAccessedGatewayId"] = lastAccessedGatewayId;
+    }
+    if (lastAccessedGatewayTime != null) {
+      _json["lastAccessedGatewayTime"] = lastAccessedGatewayTime;
     }
     return _json;
   }
@@ -2758,6 +3361,64 @@ class RegistryCredential {
   }
 }
 
+/// Request for `SendCommandToDevice`.
+class SendCommandToDeviceRequest {
+  /// The command data to send to the device.
+  core.String binaryData;
+  core.List<core.int> get binaryDataAsBytes {
+    return convert.base64.decode(binaryData);
+  }
+
+  void set binaryDataAsBytes(core.List<core.int> _bytes) {
+    binaryData =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Optional subfolder for the command. If empty, the command will be
+  /// delivered
+  /// to the /devices/{device-id}/commands topic, otherwise it will be delivered
+  /// to the /devices/{device-id}/commands/{subfolder} topic. Multi-level
+  /// subfolders are allowed. This field must not have more than 256 characters,
+  /// and must not contain any MQTT wildcards ("+" or "#") or null characters.
+  core.String subfolder;
+
+  SendCommandToDeviceRequest();
+
+  SendCommandToDeviceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("binaryData")) {
+      binaryData = _json["binaryData"];
+    }
+    if (_json.containsKey("subfolder")) {
+      subfolder = _json["subfolder"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (binaryData != null) {
+      _json["binaryData"] = binaryData;
+    }
+    if (subfolder != null) {
+      _json["subfolder"] = subfolder;
+    }
+    return _json;
+  }
+}
+
+/// Response for `SendCommandToDevice`.
+class SendCommandToDeviceResponse {
+  SendCommandToDeviceResponse();
+
+  SendCommandToDeviceResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -2959,6 +3620,54 @@ class TestIamPermissionsResponse {
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
+    return _json;
+  }
+}
+
+/// Request for `UnbindDeviceFromGateway`.
+class UnbindDeviceFromGatewayRequest {
+  /// The device to disassociate from the specified gateway. The value of
+  /// `device_id` can be either the device numeric ID or the user-defined device
+  /// identifier.
+  core.String deviceId;
+
+  /// The value of `gateway_id` can be either the device numeric ID or the
+  /// user-defined device identifier.
+  core.String gatewayId;
+
+  UnbindDeviceFromGatewayRequest();
+
+  UnbindDeviceFromGatewayRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceId")) {
+      deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("gatewayId")) {
+      gatewayId = _json["gatewayId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceId != null) {
+      _json["deviceId"] = deviceId;
+    }
+    if (gatewayId != null) {
+      _json["gatewayId"] = gatewayId;
+    }
+    return _json;
+  }
+}
+
+/// Response for `UnbindDeviceFromGateway`.
+class UnbindDeviceFromGatewayResponse {
+  UnbindDeviceFromGatewayResponse();
+
+  UnbindDeviceFromGatewayResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }

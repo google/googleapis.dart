@@ -107,11 +107,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -124,9 +124,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -138,14 +138,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -221,14 +221,14 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [filter] - List filter.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [orderBy] - Sort results.
-  ///
-  /// [pageSize] - The maximum number of items to return.
-  ///
-  /// [filter] - List filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -241,10 +241,10 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.String orderBy,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
+      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -256,17 +256,17 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1115,6 +1115,9 @@ class ListNodesResponse {
   /// The listed nodes.
   core.List<Node> nodes;
 
+  /// Locations that could not be reached.
+  core.List<core.String> unreachable;
+
   ListNodesResponse();
 
   ListNodesResponse.fromJson(core.Map _json) {
@@ -1126,6 +1129,9 @@ class ListNodesResponse {
           .map<Node>((value) => new Node.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("unreachable")) {
+      unreachable = (_json["unreachable"] as core.List).cast<core.String>();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1136,6 +1142,9 @@ class ListNodesResponse {
     }
     if (nodes != null) {
       _json["nodes"] = nodes.map((value) => (value).toJson()).toList();
+    }
+    if (unreachable != null) {
+      _json["unreachable"] = unreachable;
     }
     return _json;
   }
@@ -1405,6 +1414,9 @@ class Node {
   /// - "STARTING" : TPU node is currently starting.
   /// - "PREEMPTED" : TPU node has been preempted. Only applies to Preemptible
   /// TPU Nodes.
+  /// - "TERMINATED" : TPU node has been terminated due to maintenance or has
+  /// reached the end of
+  /// its life cycle (for preemptible nodes).
   core.String state;
 
   /// The version of Tensorflow running in the Node.

@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta4';
 
-/// Cloud SQL provides the Cloud SQL Admin API, a REST API for administering
-/// your instances programmatically.
+/// Creates and manages Cloud SQL instances, which provide fully managed MySQL
+/// or PostgreSQL databases.
 class SqladminApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -229,7 +229,7 @@ class BackupRunsResourceApi {
   }
 
   /// Lists all backup runs associated with a given instance and configuration
-  /// in the reverse chronological order of the enqueued time.
+  /// in the reverse chronological order of the backup initiation time.
   ///
   /// Request parameters:
   ///
@@ -670,8 +670,9 @@ class FlagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [databaseVersion] - Database version for flag retrieval. Flags are
-  /// specific to the database version.
+  /// [databaseVersion] - Database type and version you want to retrieve flags
+  /// for. By default, this method returns flags for all database types and
+  /// versions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2567,9 +2568,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
-  /// [host] - Host of the user in the instance.
-  ///
   /// [name] - Name of the user in the instance.
+  ///
+  /// [host] - Host of the user in the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2581,9 +2582,9 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> update(User request, core.String project,
-      core.String instance, core.String host, core.String name,
-      {core.String $fields}) {
+  async.Future<Operation> update(
+      User request, core.String project, core.String instance, core.String name,
+      {core.String host, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -2600,14 +2601,13 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (host == null) {
-      throw new core.ArgumentError("Parameter host is required.");
-    }
-    _queryParams["host"] = [host];
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
     _queryParams["name"] = [name];
+    if (host != null) {
+      _queryParams["host"] = [host];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -2679,6 +2679,38 @@ class AclEntry {
   }
 }
 
+/// An Admin API warning message.
+class ApiWarning {
+  /// Code to uniquely identify the warning type.
+  core.String code;
+
+  /// The warning message.
+  core.String message;
+
+  ApiWarning();
+
+  ApiWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Database instance backup configuration.
 class BackupConfiguration {
   /// Whether binary log is enabled. If backup configuration is disabled, binary
@@ -2740,7 +2772,7 @@ class BackupConfiguration {
   }
 }
 
-/// A database instance backup run resource.
+/// A BackupRun resource.
 class BackupRun {
   /// The description of this run, only applicable to on-demand backups.
   core.String description;
@@ -2757,8 +2789,8 @@ class BackupRun {
   /// the run has the FAILED status.
   OperationError error;
 
-  /// A unique identifier for this backup run. Note that this is unique only
-  /// within the scope of a particular Cloud SQL instance.
+  /// The identifier for this backup run. Unique only for a specific Cloud SQL
+  /// instance.
   core.String id;
 
   /// Name of the database instance.
@@ -3006,7 +3038,7 @@ class CloneContext {
   }
 }
 
-/// A database resource inside a Cloud SQL instance.
+/// Represents a SQL database on the Cloud SQL instance.
 class Database {
   /// The MySQL charset value.
   core.String charset;
@@ -3014,7 +3046,8 @@ class Database {
   /// The MySQL collation value.
   core.String collation;
 
-  /// HTTP 1.1 Entity tag for the resource.
+  /// This field is deprecated and will be removed from a future version of the
+  /// API.
   core.String etag;
 
   /// The name of the Cloud SQL instance. This does not include the project ID.
@@ -3094,13 +3127,12 @@ class Database {
   }
 }
 
-/// MySQL flags for Cloud SQL instances.
+/// Database flags for Cloud SQL instances.
 class DatabaseFlags {
   /// The name of the flag. These flags are passed at instance startup, so
-  /// include both MySQL server options and MySQL system variables. Flags should
+  /// include both server options and system variables for MySQL. Flags should
   /// be specified with underscores, not hyphens. For more information, see
-  /// Configuring MySQL Flags in the Google Cloud SQL documentation, as well as
-  /// the official MySQL documentation for server options and system variables.
+  /// Configuring Database Flags in the Cloud SQL documentation.
   core.String name;
 
   /// The value of the flag. Booleans should be set to on for true and off for
@@ -3171,10 +3203,11 @@ class DatabaseInstanceFailoverReplica {
 
 /// A Cloud SQL instance resource.
 class DatabaseInstance {
-  /// FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed
-  /// container.
-  /// SECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.
-  /// EXTERNAL: A MySQL server that is not managed by Google.
+  /// FIRST_GEN: First Generation instance. MySQL only.
+  /// SECOND_GEN: Second Generation instance or PostgreSQL instance.
+  /// EXTERNAL: A database server that is not managed by Google.
+  /// This property is read-only; use the tier property in the settings object
+  /// to determine the database type and Second or First Generation.
   core.String backendType;
 
   /// Connection name of the Cloud SQL instance used in connection strings.
@@ -3183,9 +3216,7 @@ class DatabaseInstance {
   /// The current disk usage of the instance in bytes. This property has been
   /// deprecated. Users should use the
   /// "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud
-  /// Monitoring API instead. Please see
-  /// https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ
-  /// for details.
+  /// Monitoring API instead. Please see this announcement for details.
   core.String currentDiskSize;
 
   /// The database engine type and version. The databaseVersion field can not be
@@ -3194,7 +3225,8 @@ class DatabaseInstance {
   /// First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5
   core.String databaseVersion;
 
-  /// HTTP 1.1 Entity tag for the resource.
+  /// This field is deprecated and will be removed from a future version of the
+  /// API. Use the settings.settingsVersion field instead.
   core.String etag;
 
   /// The name and status of the failover replica. This property is applicable
@@ -3248,8 +3280,7 @@ class DatabaseInstance {
   /// after instance creation.
   core.String region;
 
-  /// Configuration specific to read-replicas replicating from on-premises
-  /// masters.
+  /// Configuration specific to failover replicas and read replicas.
   ReplicaConfiguration replicaConfiguration;
 
   /// The replicas of the instance.
@@ -3678,8 +3709,37 @@ class ExportContextCsvExportOptions {
   }
 }
 
+/// Options for exporting from MySQL.
+class ExportContextSqlExportOptionsMysqlExportOptions {
+  /// Option to include SQL statement required to set up replication. If set to
+  /// 1, the dump file includes a CHANGE MASTER TO statement with the binary log
+  /// coordinates. If set to 2, the CHANGE MASTER TO statement is written as a
+  /// SQL comment, and has no effect. All other values are ignored.
+  core.int masterData;
+
+  ExportContextSqlExportOptionsMysqlExportOptions();
+
+  ExportContextSqlExportOptionsMysqlExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("masterData")) {
+      masterData = _json["masterData"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (masterData != null) {
+      _json["masterData"] = masterData;
+    }
+    return _json;
+  }
+}
+
 /// Options for exporting data as SQL statements.
 class ExportContextSqlExportOptions {
+  /// Options for exporting from MySQL.
+  ExportContextSqlExportOptionsMysqlExportOptions mysqlExportOptions;
+
   /// Export only schemas.
   core.bool schemaOnly;
 
@@ -3691,6 +3751,11 @@ class ExportContextSqlExportOptions {
   ExportContextSqlExportOptions();
 
   ExportContextSqlExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("mysqlExportOptions")) {
+      mysqlExportOptions =
+          new ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
+              _json["mysqlExportOptions"]);
+    }
     if (_json.containsKey("schemaOnly")) {
       schemaOnly = _json["schemaOnly"];
     }
@@ -3702,6 +3767,9 @@ class ExportContextSqlExportOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (mysqlExportOptions != null) {
+      _json["mysqlExportOptions"] = (mysqlExportOptions).toJson();
+    }
     if (schemaOnly != null) {
       _json["schemaOnly"] = schemaOnly;
     }
@@ -3831,7 +3899,7 @@ class FailoverContext {
   }
 }
 
-/// A Google Cloud SQL service flag resource.
+/// A flag resource.
 class Flag {
   /// For STRING flags, a list of strings that the value can be set to.
   core.List<core.String> allowedStringValues;
@@ -4202,6 +4270,9 @@ class InstancesListResponse {
   /// this value in a subsequent request to return the next page of results.
   core.String nextPageToken;
 
+  /// List of warnings that ocurred while handling the request.
+  core.List<ApiWarning> warnings;
+
   InstancesListResponse();
 
   InstancesListResponse.fromJson(core.Map _json) {
@@ -4217,6 +4288,11 @@ class InstancesListResponse {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
+    if (_json.containsKey("warnings")) {
+      warnings = (_json["warnings"] as core.List)
+          .map<ApiWarning>((value) => new ApiWarning.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4230,6 +4306,9 @@ class InstancesListResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (warnings != null) {
+      _json["warnings"] = warnings.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4359,7 +4438,10 @@ class IpConfiguration {
   /// Whether the instance should be assigned an IP address or not.
   core.bool ipv4Enabled;
 
-  /// Reserved for future use.
+  /// The resource link for the VPC network from which the Cloud SQL instance is
+  /// accessible for private IP. For example,
+  /// /projects/myProject/global/networks/default. This setting can be updated,
+  /// but it cannot be removed after it is set.
   core.String privateNetwork;
 
   /// Whether SSL connections over IP should be enforced or not.
@@ -4497,7 +4579,7 @@ class LocationPreference {
 }
 
 /// Maintenance window. This specifies when a v2 Cloud SQL instance should
-/// preferably be restarted for system maintenance puruposes.
+/// preferably be restarted for system maintenance purposes.
 class MaintenanceWindow {
   /// day of week (1-7), starting on Monday.
   core.int day;
@@ -5117,8 +5199,8 @@ class Settings {
   /// PER_PACKAGE pricing turn off after 12 hours of inactivity.
   core.String activationPolicy;
 
-  /// The App Engine app IDs that can access this instance. This property is
-  /// only applicable to First Generation instances.
+  /// The App Engine app IDs that can access this instance. First Generation
+  /// instances only.
   core.List<core.String> authorizedGaeApplications;
 
   /// Availability type (PostgreSQL instances only). Potential values:
@@ -5137,12 +5219,12 @@ class Settings {
   /// only applicable to First Generation instances.
   core.bool crashSafeReplicationEnabled;
 
-  /// The size of data disk, in GB. The data disk size minimum is 10GB. Applies
-  /// only to Second Generation instances.
+  /// The size of data disk, in GB. The data disk size minimum is 10GB. Not used
+  /// for First Generation instances.
   core.String dataDiskSizeGb;
 
-  /// The type of data disk. Only supported for Second Generation instances. The
-  /// default type is PD_SSD. Applies only to Second Generation instances.
+  /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First
+  /// Generation instances.
   core.String dataDiskType;
 
   /// The database flags passed to the instance at startup.
@@ -5168,8 +5250,8 @@ class Settings {
   LocationPreference locationPreference;
 
   /// The maintenance window for this instance. This specifies when the instance
-  /// may be restarted for maintenance purposes. Applies only to Second
-  /// Generation instances.
+  /// can be restarted for maintenance purposes. Not used for First Generation
+  /// instances.
   MaintenanceWindow maintenanceWindow;
 
   /// The pricing plan for this instance. This can be either PER_USE or PACKAGE.
@@ -5188,16 +5270,18 @@ class Settings {
   core.String settingsVersion;
 
   /// Configuration to increase storage size automatically. The default value is
-  /// true. Applies only to Second Generation instances.
+  /// true. Not used for First Generation instances.
   core.bool storageAutoResize;
 
   /// The maximum size to which storage capacity can be automatically increased.
-  /// The default value is 0, which specifies that there is no limit. Applies
-  /// only to Second Generation instances.
+  /// The default value is 0, which specifies that there is no limit. Not used
+  /// for First Generation instances.
   core.String storageAutoResizeLimit;
 
-  /// The tier of service for this instance, for example D1, D2. For more
-  /// information, see pricing.
+  /// The tier (or machine type) for this instance, for example db-n1-standard-1
+  /// (MySQL instances) or db-custom-1-3840 (PostgreSQL instances). For MySQL
+  /// instances, this property determines whether the instance is First or
+  /// Second Generation. For more information, see Instance Settings.
   core.String tier;
 
   /// User-provided labels, represented as a dictionary where each label is a
@@ -5738,7 +5822,8 @@ class TruncateLogContext {
 
 /// A Cloud SQL user resource.
 class User {
-  /// HTTP 1.1 Entity tag for the resource.
+  /// This field is deprecated and will be removed from a future version of the
+  /// API.
   core.String etag;
 
   /// The host name from which the user can connect. For insert operations, host
@@ -5754,7 +5839,7 @@ class User {
   core.String kind;
 
   /// The name of the user in the Cloud SQL instance. Can be omitted for update
-  /// since it is already specified on the URL.
+  /// since it is already specified in the URL.
   core.String name;
 
   /// The password for the user.

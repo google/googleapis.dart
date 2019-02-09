@@ -47,6 +47,8 @@ class ProjectsLocationsResourceApi {
 
   ProjectsLocationsEnvironmentsResourceApi get environments =>
       new ProjectsLocationsEnvironmentsResourceApi(_requester);
+  ProjectsLocationsImageVersionsResourceApi get imageVersions =>
+      new ProjectsLocationsImageVersionsResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
       new ProjectsLocationsOperationsResourceApi(_requester);
 
@@ -211,10 +213,10 @@ class ProjectsLocationsEnvironmentsResourceApi {
   /// "projects/{projectId}/locations/{locationId}"
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of environments to return.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of environments to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -227,7 +229,7 @@ class ProjectsLocationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia = null;
@@ -238,11 +240,11 @@ class ProjectsLocationsEnvironmentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -389,14 +391,14 @@ class ProjectsLocationsEnvironmentsResourceApi {
   ///  more individual config overrides.</td>
   ///  </tr>
   ///  <tr>
-  ///  <td>config.softwareConfig.properties.<var>section</var>-<var>name
+  /// <td>config.softwareConfig.airflowConfigOverrides.<var>section</var>-<var>name
   ///  </var></td>
-  ///  <td>Override the Apache Airflow property <var>name</var> in the section
-  ///  named <var>section</var>, preserving other properties. To delete the
-  ///  property override, include it in `updateMask` and omit its mapping
-  ///  in `environment.config.softwareConfig.properties`.
+  ///  <td>Override the Apache Airflow config property <var>name</var> in the
+  ///  section named <var>section</var>, preserving other properties. To delete
+  ///  the property override, include it in `updateMask` and omit its mapping
+  ///  in `environment.config.softwareConfig.airflowConfigOverrides`.
   ///  It is an error to provide both a mask of this form and the
-  ///  "config.softwareConfig.properties" mask.</td>
+  ///  "config.softwareConfig.airflowConfigOverrides" mask.</td>
   ///  </tr>
   ///  <tr>
   ///  <td>config.softwareConfig.envVariables</td>
@@ -450,6 +452,73 @@ class ProjectsLocationsEnvironmentsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsLocationsImageVersionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsImageVersionsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List ImageVersions for provided location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - List ImageVersions in the given project and location, in the
+  /// form:
+  /// "projects/{projectId}/locations/{locationId}"
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of image_versions to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListImageVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListImageVersionsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/imageVersions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListImageVersionsResponse.fromJson(data));
   }
 }
 
@@ -569,11 +638,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -586,9 +655,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -600,14 +669,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -748,6 +817,7 @@ class Environment {
 
 /// Configuration information for an environment.
 class EnvironmentConfig {
+  /// Output only.
   /// The URI of the Apache Airflow Web UI hosted within this environment (see
   /// [Airflow web
   /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
@@ -822,6 +892,50 @@ class EnvironmentConfig {
   }
 }
 
+/// ImageVersion information
+class ImageVersion {
+  /// The string identifier of the ImageVersion, in the form:
+  /// "composer-x.y.z-airflow-a.b(.c)"
+  core.String imageVersionId;
+
+  /// Whether this is the default ImageVersion used by Composer during
+  /// environment creation if no input ImageVersion is specified.
+  core.bool isDefault;
+
+  /// supported python versions
+  core.List<core.String> supportedPythonVersions;
+
+  ImageVersion();
+
+  ImageVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("imageVersionId")) {
+      imageVersionId = _json["imageVersionId"];
+    }
+    if (_json.containsKey("isDefault")) {
+      isDefault = _json["isDefault"];
+    }
+    if (_json.containsKey("supportedPythonVersions")) {
+      supportedPythonVersions =
+          (_json["supportedPythonVersions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageVersionId != null) {
+      _json["imageVersionId"] = imageVersionId;
+    }
+    if (isDefault != null) {
+      _json["isDefault"] = isDefault;
+    }
+    if (supportedPythonVersions != null) {
+      _json["supportedPythonVersions"] = supportedPythonVersions;
+    }
+    return _json;
+  }
+}
+
 /// The environments in a project and location.
 class ListEnvironmentsResponse {
   /// The list of environments returned by a ListEnvironmentsRequest.
@@ -849,6 +963,41 @@ class ListEnvironmentsResponse {
     if (environments != null) {
       _json["environments"] =
           environments.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The ImageVersions in a project and location.
+class ListImageVersionsResponse {
+  /// The list of supported ImageVersions in a location.
+  core.List<ImageVersion> imageVersions;
+
+  /// The page token used to query for the next page if one exists.
+  core.String nextPageToken;
+
+  ListImageVersionsResponse();
+
+  ListImageVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("imageVersions")) {
+      imageVersions = (_json["imageVersions"] as core.List)
+          .map<ImageVersion>((value) => new ImageVersion.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageVersions != null) {
+      _json["imageVersions"] =
+          imageVersions.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -945,7 +1094,7 @@ class NodeConfig {
   /// [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The
   /// network must belong to the environment's project. If unspecified, the
   /// "default" network ID in the environment's project is used.  If a
-  /// [Custom Subnet Network]((/vpc/docs/vpc#vpc_networks_and_subnets)
+  /// [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets)
   /// is provided, `nodeConfig.subnetwork` must also be provided.
   core.String network;
 
@@ -1279,6 +1428,13 @@ class SoftwareConfig {
   /// the value.
   core.Map<core.String, core.String> pypiPackages;
 
+  /// Optional. The major version of Python used to run the Apache Airflow
+  /// scheduler, worker, and webserver processes.
+  ///
+  /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+  /// updated.
+  core.String pythonVersion;
+
   SoftwareConfig();
 
   SoftwareConfig.fromJson(core.Map _json) {
@@ -1297,6 +1453,9 @@ class SoftwareConfig {
       pypiPackages =
           (_json["pypiPackages"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("pythonVersion")) {
+      pythonVersion = _json["pythonVersion"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1313,6 +1472,9 @@ class SoftwareConfig {
     }
     if (pypiPackages != null) {
       _json["pypiPackages"] = pypiPackages;
+    }
+    if (pythonVersion != null) {
+      _json["pythonVersion"] = pythonVersion;
     }
     return _json;
   }

@@ -786,11 +786,12 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the transfer config.
-  /// Transfer config names have the form
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
-  /// Where `config_id` is usually a uuid, even though it is not
-  /// guaranteed or required. The name is ignored when creating a transfer
-  /// config.
+  /// Transfer config names have the form of
+  /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+  /// The name is automatically generated based on the config_id specified in
+  /// CreateTransferConfigRequest along with project_id and region. If config_id
+  /// is not provided, usually a uuid, even though it is not guaranteed or
+  /// required, will be generated for config_id.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -1035,13 +1036,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferRunsRequest` list results. For multiple-page
-  /// results, `ListTransferRunsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
-  ///
   /// [states] - When specified, only transfer runs with requested states are
   /// returned.
   ///
@@ -1052,6 +1046,13 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Possible string values are:
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
   /// - "LATEST" : A LATEST.
+  ///
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page
+  /// of `ListTransferRunsRequest` list results. For multiple-page
+  /// results, `ListTransferRunsResponse` outputs
+  /// a `next_page` token, which can be used as the
+  /// `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1064,10 +1065,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.List<core.String> states,
+      {core.List<core.String> states,
       core.int pageSize,
       core.String runAttempt,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1079,9 +1080,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (states != null) {
       _queryParams["states"] = states;
     }
@@ -1090,6 +1088,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1124,19 +1125,19 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferLogsRequest` list results. For multiple-page
-  /// results, `ListTransferLogsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
-  ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
   /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
   /// and ERROR
   /// messages are returned.
+  ///
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page
+  /// of `ListTransferLogsRequest` list results. For multiple-page
+  /// results, `ListTransferLogsResponse` outputs
+  /// a `next_page` token, which can be used as the
+  /// `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1149,9 +1150,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.List<core.String> messageTypes,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1163,14 +1164,14 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (messageTypes != null) {
       _queryParams["messageTypes"] = messageTypes;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1376,9 +1377,6 @@ class ProjectsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
   /// [dataSourceIds] - When specified, only configurations of requested data
   /// sources are returned.
   ///
@@ -1388,6 +1386,9 @@ class ProjectsTransferConfigsResourceApi {
   /// results, `ListTransfersResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1400,9 +1401,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.List<core.String> dataSourceIds,
+      {core.List<core.String> dataSourceIds,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1414,14 +1415,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1449,11 +1450,12 @@ class ProjectsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the transfer config.
-  /// Transfer config names have the form
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
-  /// Where `config_id` is usually a uuid, even though it is not
-  /// guaranteed or required. The name is ignored when creating a transfer
-  /// config.
+  /// Transfer config names have the form of
+  /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+  /// The name is automatically generated based on the config_id specified in
+  /// CreateTransferConfigRequest along with project_id and region. If config_id
+  /// is not provided, usually a uuid, even though it is not guaranteed or
+  /// required, will be generated for config_id.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
@@ -2751,11 +2753,12 @@ class TransferConfig {
   core.String displayName;
 
   /// The resource name of the transfer config.
-  /// Transfer config names have the form
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
-  /// Where `config_id` is usually a uuid, even though it is not
-  /// guaranteed or required. The name is ignored when creating a transfer
-  /// config.
+  /// Transfer config names have the form of
+  /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+  /// The name is automatically generated based on the config_id specified in
+  /// CreateTransferConfigRequest along with project_id and region. If config_id
+  /// is not provided, usually a uuid, even though it is not guaranteed or
+  /// required, will be generated for config_id.
   core.String name;
 
   /// Output only. Next time when data transfer will run.
@@ -2787,7 +2790,7 @@ class TransferConfig {
   /// - "PENDING" : Data transfer is scheduled and is waiting to be picked up by
   /// data transfer backend.
   /// - "RUNNING" : Data transfer is in progress.
-  /// - "SUCCEEDED" : Data transfer completed successsfully.
+  /// - "SUCCEEDED" : Data transfer completed successfully.
   /// - "FAILED" : Data transfer failed.
   /// - "CANCELLED" : Data transfer is cancelled.
   core.String state;
@@ -2795,11 +2798,7 @@ class TransferConfig {
   /// Output only. Data transfer modification time. Ignored by server on input.
   core.String updateTime;
 
-  /// Output only. Unique ID of the user on whose behalf transfer is done.
-  /// Applicable only to data sources that do not support service accounts.
-  /// When set to 0, the data source service account credentials are used.
-  /// May be negative. Note, that this identifier is not stable.
-  /// It may change over time even for the same user.
+  /// Deprecated. Unique ID of the user on whose behalf transfer is done.
   core.String userId;
 
   TransferConfig();
@@ -2989,7 +2988,7 @@ class TransferRun {
   /// - "PENDING" : Data transfer is scheduled and is waiting to be picked up by
   /// data transfer backend.
   /// - "RUNNING" : Data transfer is in progress.
-  /// - "SUCCEEDED" : Data transfer completed successsfully.
+  /// - "SUCCEEDED" : Data transfer completed successfully.
   /// - "FAILED" : Data transfer failed.
   /// - "CANCELLED" : Data transfer is cancelled.
   core.String state;
@@ -2997,11 +2996,7 @@ class TransferRun {
   /// Output only. Last time the data transfer run state was updated.
   core.String updateTime;
 
-  /// Output only. Unique ID of the user on whose behalf transfer is done.
-  /// Applicable only to data sources that do not support service accounts.
-  /// When set to 0, the data source service account credentials are used.
-  /// May be negative. Note, that this identifier is not stable.
-  /// It may change over time even for the same user.
+  /// Deprecated. Unique ID of the user on whose behalf transfer is done.
   core.String userId;
 
   TransferRun();

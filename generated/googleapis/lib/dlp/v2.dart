@@ -286,13 +286,27 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional size of the page, can be limited by server. If zero
+  /// server returns
+  /// a page of max size 100.
+  ///
   /// [pageToken] - Optional page token to continue retrieval. Comes from
   /// previous call
   /// to `ListDeidentifyTemplates`.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
-  /// a page of max size 100.
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -306,8 +320,9 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -319,11 +334,14 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -574,6 +592,20 @@ class OrganizationsInspectTemplatesResourceApi {
   /// previous call
   /// to `ListInspectTemplates`.
   ///
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
   /// [pageSize] - Optional size of the page, can be limited by server. If zero
   /// server returns
   /// a page of max size 100.
@@ -591,6 +623,7 @@ class OrganizationsInspectTemplatesResourceApi {
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
       core.String parent,
       {core.String pageToken,
+      core.String orderBy,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -605,6 +638,9 @@ class OrganizationsInspectTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -858,6 +894,21 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// previous call
   /// to `ListStoredInfoTypes`.
   ///
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc, display_name, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the most recent version of the
+  /// resource was created.
+  /// - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name.
+  /// - `display_name`: corresponds to info type's display name.
+  ///
   /// [pageSize] - Optional size of the page, can be limited by server. If zero
   /// server returns
   /// a page of max size 100.
@@ -875,6 +926,7 @@ class OrganizationsStoredInfoTypesResourceApi {
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
       core.String parent,
       {core.String pageToken,
+      core.String orderBy,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -889,6 +941,9 @@ class OrganizationsStoredInfoTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1353,6 +1408,20 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// previous call
   /// to `ListDeidentifyTemplates`.
   ///
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
   /// [pageSize] - Optional size of the page, can be limited by server. If zero
   /// server returns
   /// a page of max size 100.
@@ -1370,6 +1439,7 @@ class ProjectsDeidentifyTemplatesResourceApi {
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
       core.String parent,
       {core.String pageToken,
+      core.String orderBy,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -1384,6 +1454,9 @@ class ProjectsDeidentifyTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1686,9 +1759,19 @@ class ProjectsDlpJobsResourceApi {
   /// [parent] - The parent resource name, for example projects/my-project-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
   ///
-  /// [pageSize] - The standard list page size.
+  /// Example: `name asc, end_time asc, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the job was created.
+  /// - `end_time`: corresponds to time the job ended.
+  /// - `name`: corresponds to job's name.
+  /// - `state`: corresponds to `state`
   ///
   /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
   /// Possible string values are:
@@ -1720,6 +1803,10 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// The length of this field should be no more than 500 characters.
   ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1731,10 +1818,11 @@ class ProjectsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.String orderBy,
       core.String type,
       core.String filter,
+      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1746,17 +1834,20 @@ class ProjectsDlpJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (type != null) {
       _queryParams["type"] = [type];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2020,6 +2111,20 @@ class ProjectsInspectTemplatesResourceApi {
   /// previous call
   /// to `ListInspectTemplates`.
   ///
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2034,6 +2139,7 @@ class ProjectsInspectTemplatesResourceApi {
       core.String parent,
       {core.int pageSize,
       core.String pageToken,
+      core.String orderBy,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2050,6 +2156,9 @@ class ProjectsInspectTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2302,8 +2411,8 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Supported fields are:
   ///
-  /// - `create_time`: corresponds to time the triggeredJob was created.
-  /// - `update_time`: corresponds to time the triggeredJob was last updated.
+  /// - `create_time`: corresponds to time the JobTrigger was created.
+  /// - `update_time`: corresponds to time the JobTrigger was last updated.
   /// - `name`: corresponds to JobTrigger's name.
   /// - `display_name`: corresponds to JobTrigger's display name.
   /// - `status`: corresponds to JobTrigger's status.
@@ -2592,6 +2701,21 @@ class ProjectsStoredInfoTypesResourceApi {
   /// previous call
   /// to `ListStoredInfoTypes`.
   ///
+  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc, display_name, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the most recent version of the
+  /// resource was created.
+  /// - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name.
+  /// - `display_name`: corresponds to info type's display name.
+  ///
   /// [pageSize] - Optional size of the page, can be limited by server. If zero
   /// server returns
   /// a page of max size 100.
@@ -2609,6 +2733,7 @@ class ProjectsStoredInfoTypesResourceApi {
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
       core.String parent,
       {core.String pageToken,
+      core.String orderBy,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -2623,6 +2748,9 @@ class ProjectsStoredInfoTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2958,6 +3086,10 @@ class GooglePrivacyDlpV2BigQueryKey {
 
 /// Options defining BigQuery table and row identifiers.
 class GooglePrivacyDlpV2BigQueryOptions {
+  /// References to fields excluded from scanning. This allows you to skip
+  /// inspection of entire columns which you know have no findings.
+  core.List<GooglePrivacyDlpV2FieldId> excludedFields;
+
   /// References to fields uniquely identifying rows within the table.
   /// Nested fields in the format, like `person.birthdate.year`, are allowed.
   core.List<GooglePrivacyDlpV2FieldId> identifyingFields;
@@ -2991,6 +3123,12 @@ class GooglePrivacyDlpV2BigQueryOptions {
   GooglePrivacyDlpV2BigQueryOptions();
 
   GooglePrivacyDlpV2BigQueryOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedFields")) {
+      excludedFields = (_json["excludedFields"] as core.List)
+          .map<GooglePrivacyDlpV2FieldId>(
+              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("identifyingFields")) {
       identifyingFields = (_json["identifyingFields"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
@@ -3015,6 +3153,10 @@ class GooglePrivacyDlpV2BigQueryOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (excludedFields != null) {
+      _json["excludedFields"] =
+          excludedFields.map((value) => (value).toJson()).toList();
+    }
     if (identifyingFields != null) {
       _json["identifyingFields"] =
           identifyingFields.map((value) => (value).toJson()).toList();
@@ -3547,7 +3689,8 @@ class GooglePrivacyDlpV2CloudStorageOptions {
 
   /// List of file type groups to include in the scan.
   /// If empty, all files are scanned and available data format processors
-  /// are applied.
+  /// are applied. In addition, the binary content of the selected files
+  /// is always scanned as well.
   core.List<core.String> fileTypes;
 
   /// Limits the number of files to scan to this percentage of the input
@@ -3632,6 +3775,94 @@ class GooglePrivacyDlpV2CloudStoragePath {
         new core.Map<core.String, core.Object>();
     if (path != null) {
       _json["path"] = path;
+    }
+    return _json;
+  }
+}
+
+/// Message representing a set of files in a Cloud Storage bucket. Regular
+/// expressions are used to allow fine-grained control over which files in the
+/// bucket to include.
+///
+/// Included files are those that match at least one item in `include_regex` and
+/// do not match any items in `exclude_regex`. Note that a file that matches
+/// items from both lists will _not_ be included. For a match to occur, the
+/// entire file path (i.e., everything in the url after the bucket name) must
+/// match the regular expression.
+///
+/// For example, given the input `{bucket_name: "mybucket", include_regex:
+/// ["directory1/.*"], exclude_regex:
+/// ["directory1/excluded.*"]}`:
+///
+/// * `gs://mybucket/directory1/myfile` will be included
+/// * `gs://mybucket/directory1/directory2/myfile` will be included (`.*`
+/// matches
+/// across `/`)
+/// * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the
+/// full path doesn't match any items in `include_regex`)
+/// * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path
+/// matches an item in `exclude_regex`)
+///
+/// If `include_regex` is left empty, it will match all files by default
+/// (this is equivalent to setting `include_regex: [".*"]`).
+///
+/// Some other common use cases:
+///
+/// * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all
+/// files in `mybucket` except for .pdf files
+/// * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will
+/// include all files directly under `gs://mybucket/directory/`, without
+/// matching
+/// across `/`
+class GooglePrivacyDlpV2CloudStorageRegexFileSet {
+  /// The name of a Cloud Storage bucket. Required.
+  core.String bucketName;
+
+  /// A list of regular expressions matching file paths to exclude. All files in
+  /// the bucket that match at least one of these regular expressions will be
+  /// excluded from the scan.
+  ///
+  /// Regular expressions use RE2
+  /// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
+  /// under the google/re2 repository on GitHub.
+  core.List<core.String> excludeRegex;
+
+  /// A list of regular expressions matching file paths to include. All files in
+  /// the bucket that match at least one of these regular expressions will be
+  /// included in the set of files, except for those that also match an item in
+  /// `exclude_regex`. Leaving this field empty will match all files by default
+  /// (this is equivalent to including `.*` in the list).
+  ///
+  /// Regular expressions use RE2
+  /// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
+  /// under the google/re2 repository on GitHub.
+  core.List<core.String> includeRegex;
+
+  GooglePrivacyDlpV2CloudStorageRegexFileSet();
+
+  GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketName")) {
+      bucketName = _json["bucketName"];
+    }
+    if (_json.containsKey("excludeRegex")) {
+      excludeRegex = (_json["excludeRegex"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("includeRegex")) {
+      includeRegex = (_json["includeRegex"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketName != null) {
+      _json["bucketName"] = bucketName;
+    }
+    if (excludeRegex != null) {
+      _json["excludeRegex"] = excludeRegex;
+    }
+    if (includeRegex != null) {
+      _json["includeRegex"] = includeRegex;
     }
     return _json;
   }
@@ -3818,9 +4049,15 @@ class GooglePrivacyDlpV2ContentItem {
 /// Findings container location data.
 class GooglePrivacyDlpV2ContentLocation {
   /// Name of the container where the finding is located.
-  /// The top level name is the source file name or table name. Nested names
-  /// could be absent if the embedded object has no string identifier
-  /// (for an example an image contained within a document).
+  /// The top level name is the source file name or table name. Names of some
+  /// common storage containers are formatted as follows:
+  ///
+  /// * BigQuery tables:  `<project_id>:<dataset_id>.<table_id>`
+  /// * Cloud Storage files: `gs://<bucket>/<path>`
+  /// * Datastore namespace: <namespace>
+  ///
+  /// Nested names could be absent if the embedded object has no string
+  /// identifier (for an example an image contained within a document).
   core.String containerName;
 
   /// Findings container modification timestamp, if applicable.
@@ -4085,9 +4322,10 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
 /// Pseudonymization method that generates surrogates via cryptographic hashing.
 /// Uses SHA-256.
 /// The key size must be either 32 or 64 bytes.
-/// Outputs a 32 byte digest as an uppercase hex string
-/// (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).
+/// Outputs a base64 encoded representation of the hashed output
+/// (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
 /// Currently, only string and integer values can be hashed.
+/// See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
 class GooglePrivacyDlpV2CryptoHashConfig {
   /// The key used by the hash function.
   GooglePrivacyDlpV2CryptoKey cryptoKey;
@@ -4298,8 +4536,23 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// A list of phrases to detect as a CustomInfoType.
   GooglePrivacyDlpV2Dictionary dictionary;
 
-  /// All CustomInfoTypes must have a name
-  /// that does not conflict with built-in InfoTypes or other CustomInfoTypes.
+  /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding
+  /// to be returned. It still can be used for rules matching.
+  /// Possible string values are:
+  /// - "EXCLUSION_TYPE_UNSPECIFIED" : A finding of this custom info type will
+  /// not be excluded from results.
+  /// - "EXCLUSION_TYPE_EXCLUDE" : A finding of this custom info type will be
+  /// excluded from final results,
+  /// but can still affect rule execution.
+  core.String exclusionType;
+
+  /// CustomInfoType can either be a new infoType, or an extension of built-in
+  /// infoType, when the name matches one of existing infoTypes and that
+  /// infoType
+  /// is specified in `InspectContent.info_types` field. Specifying the latter
+  /// adds findings to the one detected by the system. If built-in info type is
+  /// not specified in `InspectContent.info_types` list then the name is treated
+  /// as a custom info type.
   GooglePrivacyDlpV2InfoType infoType;
 
   /// Likelihood to return for this CustomInfoType. This base value can be
@@ -4338,6 +4591,9 @@ class GooglePrivacyDlpV2CustomInfoType {
       dictionary =
           new GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
     }
+    if (_json.containsKey("exclusionType")) {
+      exclusionType = _json["exclusionType"];
+    }
     if (_json.containsKey("infoType")) {
       infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
@@ -4366,6 +4622,9 @@ class GooglePrivacyDlpV2CustomInfoType {
     }
     if (dictionary != null) {
       _json["dictionary"] = (dictionary).toJson();
+    }
+    if (exclusionType != null) {
+      _json["exclusionType"] = exclusionType;
     }
     if (infoType != null) {
       _json["infoType"] = (infoType).toJson();
@@ -4506,6 +4765,7 @@ class GooglePrivacyDlpV2DateShiftConfig {
 }
 
 /// Message for a date time object.
+/// e.g. 2018-01-01, 5th August.
 class GooglePrivacyDlpV2DateTime {
   /// One or more of the following must be set. All fields are optional, but
   /// when set must be valid date or time values.
@@ -5286,6 +5546,109 @@ class GooglePrivacyDlpV2Error {
   }
 }
 
+/// List of exclude infoTypes.
+class GooglePrivacyDlpV2ExcludeInfoTypes {
+  /// InfoType list in ExclusionRule rule drops a finding when it overlaps or
+  /// contained within with a finding of an infoType from this list. For
+  /// example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and
+  /// `exclusion_rule` containing `exclude_info_types.info_types` with
+  /// "EMAIL_ADDRESS" the phone number findings are dropped if they overlap
+  /// with EMAIL_ADDRESS finding.
+  /// That leads to "555-222-2222@example.org" to generate only a single
+  /// finding, namely email address.
+  core.List<GooglePrivacyDlpV2InfoType> infoTypes;
+
+  GooglePrivacyDlpV2ExcludeInfoTypes();
+
+  GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(core.Map _json) {
+    if (_json.containsKey("infoTypes")) {
+      infoTypes = (_json["infoTypes"] as core.List)
+          .map<GooglePrivacyDlpV2InfoType>(
+              (value) => new GooglePrivacyDlpV2InfoType.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (infoTypes != null) {
+      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The rule that specifies conditions when findings of infoTypes specified in
+/// `InspectionRuleSet` are removed from results.
+class GooglePrivacyDlpV2ExclusionRule {
+  /// Dictionary which defines the rule.
+  GooglePrivacyDlpV2Dictionary dictionary;
+
+  /// Set of infoTypes for which findings would affect this rule.
+  GooglePrivacyDlpV2ExcludeInfoTypes excludeInfoTypes;
+
+  /// How the rule is applied, see MatchingType documentation for details.
+  /// Possible string values are:
+  /// - "MATCHING_TYPE_UNSPECIFIED" : Invalid.
+  /// - "MATCHING_TYPE_FULL_MATCH" : Full match.
+  ///
+  /// - Dictionary: join of Dictionary results matched complete finding quote
+  /// - Regex: all regex matches fill a finding quote start to end
+  /// - Exclude info type: completely inside affecting info types findings
+  /// - "MATCHING_TYPE_PARTIAL_MATCH" : Partial match.
+  ///
+  /// - Dictionary: at least one of the tokens in the finding matches
+  /// - Regex: substring of the finding matches
+  /// - Exclude info type: intersects with affecting info types findings
+  /// - "MATCHING_TYPE_INVERSE_MATCH" : Inverse match.
+  ///
+  /// - Dictionary: no tokens in the finding match the dictionary
+  /// - Regex: finding doesn't match the regex
+  /// - Exclude info type: no intersection with affecting info types findings
+  core.String matchingType;
+
+  /// Regular expression which defines the rule.
+  GooglePrivacyDlpV2Regex regex;
+
+  GooglePrivacyDlpV2ExclusionRule();
+
+  GooglePrivacyDlpV2ExclusionRule.fromJson(core.Map _json) {
+    if (_json.containsKey("dictionary")) {
+      dictionary =
+          new GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+    }
+    if (_json.containsKey("excludeInfoTypes")) {
+      excludeInfoTypes = new GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
+          _json["excludeInfoTypes"]);
+    }
+    if (_json.containsKey("matchingType")) {
+      matchingType = _json["matchingType"];
+    }
+    if (_json.containsKey("regex")) {
+      regex = new GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dictionary != null) {
+      _json["dictionary"] = (dictionary).toJson();
+    }
+    if (excludeInfoTypes != null) {
+      _json["excludeInfoTypes"] = (excludeInfoTypes).toJson();
+    }
+    if (matchingType != null) {
+      _json["matchingType"] = matchingType;
+    }
+    if (regex != null) {
+      _json["regex"] = (regex).toJson();
+    }
+    return _json;
+  }
+}
+
 /// An expression, consisting or an operator and conditions.
 class GooglePrivacyDlpV2Expressions {
   GooglePrivacyDlpV2Conditions conditions;
@@ -5414,13 +5777,29 @@ class GooglePrivacyDlpV2FieldTransformation {
 
 /// Set of files to scan.
 class GooglePrivacyDlpV2FileSet {
+  /// The regex-filtered set of files to scan. Exactly one of `url` or
+  /// `regex_file_set` must be set.
+  GooglePrivacyDlpV2CloudStorageRegexFileSet regexFileSet;
+
   /// The Cloud Storage url of the file(s) to scan, in the format
   /// `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
+  ///
+  /// If the url ends in a trailing slash, the bucket or directory represented
+  /// by the url will be scanned non-recursively (content in sub-directories
+  /// will not be scanned). This means that `gs://mybucket/` is equivalent to
+  /// `gs://mybucket / * `, and `gs://mybucket/directory/` is equivalent to
+  /// `gs://mybucket/directory / * `.
+  ///
+  /// Exactly one of `url` or `regex_file_set` must be set.
   core.String url;
 
   GooglePrivacyDlpV2FileSet();
 
   GooglePrivacyDlpV2FileSet.fromJson(core.Map _json) {
+    if (_json.containsKey("regexFileSet")) {
+      regexFileSet = new GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
+          _json["regexFileSet"]);
+    }
     if (_json.containsKey("url")) {
       url = _json["url"];
     }
@@ -5429,6 +5808,9 @@ class GooglePrivacyDlpV2FileSet {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (regexFileSet != null) {
+      _json["regexFileSet"] = (regexFileSet).toJson();
+    }
     if (url != null) {
       _json["url"] = url;
     }
@@ -5765,7 +6147,8 @@ class GooglePrivacyDlpV2InfoType {
   /// Name of the information type. Either a name of your choosing when
   /// creating a CustomInfoType, or one of the names listed
   /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
-  /// a built-in type.
+  /// a built-in type. InfoType names should conform to the pattern
+  /// [a-zA-Z0-9_]{1,64}.
   core.String name;
 
   GooglePrivacyDlpV2InfoType();
@@ -6014,6 +6397,11 @@ class GooglePrivacyDlpV2InspectConfig {
   /// - "VERY_LIKELY" : Many matching elements.
   core.String minLikelihood;
 
+  /// Set of rules to apply to the findings for this InspectConfig.
+  /// Exclusion rules, contained in the set are executed in the end, other
+  /// rules are executed in the order they are specified for each info type.
+  core.List<GooglePrivacyDlpV2InspectionRuleSet> ruleSet;
+
   GooglePrivacyDlpV2InspectConfig();
 
   GooglePrivacyDlpV2InspectConfig.fromJson(core.Map _json) {
@@ -6045,6 +6433,12 @@ class GooglePrivacyDlpV2InspectConfig {
     if (_json.containsKey("minLikelihood")) {
       minLikelihood = _json["minLikelihood"];
     }
+    if (_json.containsKey("ruleSet")) {
+      ruleSet = (_json["ruleSet"] as core.List)
+          .map<GooglePrivacyDlpV2InspectionRuleSet>((value) =>
+              new GooglePrivacyDlpV2InspectionRuleSet.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6071,6 +6465,9 @@ class GooglePrivacyDlpV2InspectConfig {
     }
     if (minLikelihood != null) {
       _json["minLikelihood"] = minLikelihood;
+    }
+    if (ruleSet != null) {
+      _json["ruleSet"] = ruleSet.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6353,6 +6750,81 @@ class GooglePrivacyDlpV2InspectTemplate {
   }
 }
 
+/// A single inspection rule to be applied to infoTypes, specified in
+/// `InspectionRuleSet`.
+class GooglePrivacyDlpV2InspectionRule {
+  /// Exclusion rule.
+  GooglePrivacyDlpV2ExclusionRule exclusionRule;
+
+  /// Hotword-based detection rule.
+  GooglePrivacyDlpV2HotwordRule hotwordRule;
+
+  GooglePrivacyDlpV2InspectionRule();
+
+  GooglePrivacyDlpV2InspectionRule.fromJson(core.Map _json) {
+    if (_json.containsKey("exclusionRule")) {
+      exclusionRule =
+          new GooglePrivacyDlpV2ExclusionRule.fromJson(_json["exclusionRule"]);
+    }
+    if (_json.containsKey("hotwordRule")) {
+      hotwordRule =
+          new GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exclusionRule != null) {
+      _json["exclusionRule"] = (exclusionRule).toJson();
+    }
+    if (hotwordRule != null) {
+      _json["hotwordRule"] = (hotwordRule).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Rule set for modifying a set of infoTypes to alter behavior under certain
+/// circumstances, depending on the specific details of the rules within the
+/// set.
+class GooglePrivacyDlpV2InspectionRuleSet {
+  /// List of infoTypes this rule set is applied to.
+  core.List<GooglePrivacyDlpV2InfoType> infoTypes;
+
+  /// Set of rules to be applied to infoTypes. The rules are applied in order.
+  core.List<GooglePrivacyDlpV2InspectionRule> rules;
+
+  GooglePrivacyDlpV2InspectionRuleSet();
+
+  GooglePrivacyDlpV2InspectionRuleSet.fromJson(core.Map _json) {
+    if (_json.containsKey("infoTypes")) {
+      infoTypes = (_json["infoTypes"] as core.List)
+          .map<GooglePrivacyDlpV2InfoType>(
+              (value) => new GooglePrivacyDlpV2InfoType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("rules")) {
+      rules = (_json["rules"] as core.List)
+          .map<GooglePrivacyDlpV2InspectionRule>(
+              (value) => new GooglePrivacyDlpV2InspectionRule.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (infoTypes != null) {
+      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+    }
+    if (rules != null) {
+      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Contains a configuration to make dlp api calls on a repeating basis.
 /// See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
 class GooglePrivacyDlpV2JobTrigger {
@@ -6366,7 +6838,7 @@ class GooglePrivacyDlpV2JobTrigger {
   core.String displayName;
 
   /// A stream of errors encountered when the trigger was activated. Repeated
-  /// errors may result in the JobTrigger automaticaly being paused.
+  /// errors may result in the JobTrigger automatically being paused.
   /// Will return the last 100 errors. Whenever the JobTrigger is modified
   /// this list will be cleared. Output only field.
   core.List<GooglePrivacyDlpV2Error> errors;
@@ -6480,7 +6952,7 @@ class GooglePrivacyDlpV2JobTrigger {
 class GooglePrivacyDlpV2KAnonymityConfig {
   /// Optional message indicating that multiple rows might be associated to a
   /// single individual. If the same entity_id is associated to multiple
-  /// quasi-identifier tuples over distict rows, we consider the entire
+  /// quasi-identifier tuples over distinct rows, we consider the entire
   /// collection of tuples as the composite quasi-identifier. This collection
   /// is a multiset: the order in which the different tuples appear in the
   /// dataset is ignored, but their frequency is taken into account.
@@ -7616,8 +8088,9 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// from the predefined schema that are missing will be added. No columns in
   /// the existing table will be deleted.
   ///
-  /// If unspecified, then all available columns will be used for a new table,
-  /// and no changes will be made to an existing table.
+  /// If unspecified, then all available columns will be used for a new table or
+  /// an (existing) table with no schema, and no changes will be made to an
+  /// existing table that has a schema.
   /// Possible string values are:
   /// - "OUTPUT_SCHEMA_UNSPECIFIED"
   /// - "BASIC_COLUMNS" : Basic schema including only `info_type`, `quote`,
@@ -8128,6 +8601,7 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
 
 /// Message for infoType-dependent details parsed from quote.
 class GooglePrivacyDlpV2QuoteInfo {
+  /// The date time indicated by the quote.
   GooglePrivacyDlpV2DateTime dateTime;
 
   GooglePrivacyDlpV2QuoteInfo();
@@ -8210,6 +8684,10 @@ class GooglePrivacyDlpV2RecordKey {
   GooglePrivacyDlpV2BigQueryKey bigQueryKey;
   GooglePrivacyDlpV2DatastoreKey datastoreKey;
 
+  /// Values of identifying columns in the given row. Order of values matches
+  /// the order of field identifiers specified in the scanning request.
+  core.List<core.String> idValues;
+
   GooglePrivacyDlpV2RecordKey();
 
   GooglePrivacyDlpV2RecordKey.fromJson(core.Map _json) {
@@ -8221,6 +8699,9 @@ class GooglePrivacyDlpV2RecordKey {
       datastoreKey =
           new GooglePrivacyDlpV2DatastoreKey.fromJson(_json["datastoreKey"]);
     }
+    if (_json.containsKey("idValues")) {
+      idValues = (_json["idValues"] as core.List).cast<core.String>();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8231,6 +8712,9 @@ class GooglePrivacyDlpV2RecordKey {
     }
     if (datastoreKey != null) {
       _json["datastoreKey"] = (datastoreKey).toJson();
+    }
+    if (idValues != null) {
+      _json["idValues"] = idValues;
     }
     return _json;
   }
@@ -9511,7 +9995,7 @@ class GooglePrivacyDlpV2TransformationSummary {
   /// this list will contain all of them; otherwise, only one is supplied.
   core.List<GooglePrivacyDlpV2FieldTransformation> fieldTransformations;
 
-  /// Set if the transformation was limited to a specific info_type.
+  /// Set if the transformation was limited to a specific InfoType.
   GooglePrivacyDlpV2InfoType infoType;
 
   /// The specific suppression option these stats apply to.
@@ -10075,21 +10559,27 @@ class GoogleRpcStatus {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class GoogleTypeDate {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without

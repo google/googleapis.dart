@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client adexperiencereport/v1';
 
-/// View Ad Experience Report data, and get a list of sites that have a
+/// Views Ad Experience Report data, and gets a list of sites that have a
 /// significant number of annoying ads.
 class AdexperiencereportApi {
   /// Test scope for access to the Zoo service
@@ -223,7 +223,6 @@ class PlatformSummary {
 }
 
 /// Response message for GetSiteSummary.
-/// Do not confuse with same message in google.chrome.abusiveexperiencereport.v1
 class SiteSummaryResponse {
   /// Summary for the desktop review of the site.
   PlatformSummary desktopSummary;

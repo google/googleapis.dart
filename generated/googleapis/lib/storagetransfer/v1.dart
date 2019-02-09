@@ -203,8 +203,6 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The list page token.
-  ///
   /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [filter] - A list of query parameters specified as JSON text in the form
@@ -218,6 +216,8 @@ class TransferJobsResourceApi {
   /// and `job_statuses` are optional.  The valid values for `job_statuses` are
   /// case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
   ///
+  /// [pageToken] - The list page token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -229,9 +229,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -240,14 +240,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -713,21 +713,27 @@ class AwsS3Data {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without

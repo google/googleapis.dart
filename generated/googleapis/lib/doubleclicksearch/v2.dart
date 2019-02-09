@@ -1699,7 +1699,7 @@ class ReportRequest {
   /// that are available for each type.
   core.String reportType;
 
-  /// Synchronous report only. The maxinum number of rows to return; additional
+  /// Synchronous report only. The maximum number of rows to return; additional
   /// rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to
   /// 10000.
   core.int rowCount;

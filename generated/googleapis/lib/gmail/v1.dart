@@ -26,7 +26,7 @@ const core.String USER_AGENT = 'dart-api-client gmail/v1';
 
 /// Access Gmail mailboxes including sending user email.
 class GmailApi {
-  /// Read, send, delete, and manage your email
+  /// Read, compose, send, and permanently delete all your email from Gmail
   static const MailGoogleComScope = "https://mail.google.com/";
 
   /// Manage drafts and send emails
@@ -4080,7 +4080,7 @@ class BatchModifyMessagesRequest {
 }
 
 /// Settings for a delegate. Delegates can read, send, and delete messages, as
-/// well as manage contacts, for the delegator's account. See "Set up mail
+/// well as view and add contacts, for the delegator's account. See "Set up mail
 /// delegation" for more information about delegates.
 class Delegate {
   /// The email address of the delegate.
@@ -4992,7 +4992,9 @@ class ListLabelsResponse {
 }
 
 class ListMessagesResponse {
-  /// List of messages.
+  /// List of messages. Note that each message resource contains only an id and
+  /// a threadId. Additional message details can be fetched using the
+  /// messages.get method.
   core.List<Message> messages;
 
   /// Token to retrieve the next page of results in the list.
@@ -5089,7 +5091,9 @@ class ListThreadsResponse {
   /// Estimated total number of results.
   core.int resultSizeEstimate;
 
-  /// List of threads.
+  /// List of threads. Note that each thread resource does not contain a list of
+  /// messages. The list of messages for a given thread can be fetched using the
+  /// threads.get method.
   core.List<Thread> threads;
 
   ListThreadsResponse();

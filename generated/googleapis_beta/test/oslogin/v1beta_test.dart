@@ -84,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed5578() {
+buildUnnamed4985() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed5578(core.List<api.PosixAccount> o) {
+checkUnnamed4985(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed5579() {
+buildUnnamed4986() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed5579(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed4986(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed5578();
-    o.sshPublicKeys = buildUnnamed5579();
+    o.posixAccounts = buildUnnamed4985();
+    o.sshPublicKeys = buildUnnamed4986();
   }
   buildCounterLoginProfile--;
   return o;
@@ -127,8 +127,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5578(o.posixAccounts);
-    checkUnnamed5579(o.sshPublicKeys);
+    checkUnnamed4985(o.posixAccounts);
+    checkUnnamed4986(o.sshPublicKeys);
   }
   buildCounterLoginProfile--;
 }
@@ -239,6 +239,8 @@ main() {
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.OsloginApi(mock).users;
       var arg_name = "foo";
+      var arg_projectId = "foo";
+      var arg_systemId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -271,6 +273,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(
+            queryMap["systemId"].first, unittest.equals(arg_systemId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -280,7 +286,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getLoginProfile(arg_name, $fields: arg_$fields)
+          .getLoginProfile(arg_name,
+              projectId: arg_projectId,
+              systemId: arg_systemId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLoginProfile(response);
       })));
