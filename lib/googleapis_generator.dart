@@ -4,12 +4,14 @@
 
 library googleapis_generator;
 
-import "dart:io";
 import "dart:async";
 import "dart:convert";
+import "dart:io";
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 import 'package:http/http.dart' as http;
+import 'package:io/ansi.dart' as ansi;
+import 'package:pool/pool.dart';
 
 import 'src/package_configuration.dart';
 
@@ -35,32 +37,48 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
       var file = new File(name);
       var encoder = new JsonEncoder.withIndent('    ');
       file.writeAsStringSync(encoder.convert(description.toJson()));
-      print('Written: $name');
+      print('Wrote: $name');
     }
     return apis;
   });
 }
 
-Future<List<RestDescription>> fetchDiscoveryDocuments({List<String> ids}) {
-  var apiDescriptions = <RestDescription>[];
-
+Future<List<RestDescription>> fetchDiscoveryDocuments(
+    {List<String> ids}) async {
   var client = new http.Client();
-  var discovery = _discoveryClient(client);
-  return discovery.apis.list().then((DirectoryList list) async {
-    for (var item in list.items) {
-      if (ids == null || ids.contains(item.id)) {
-        try {
-          var doc = await discovery.apis.getRest(item.name, item.version);
-          apiDescriptions.add(doc);
-        } catch (e) {
-          print('Failed to retrieve document for "${item.name}:${item.version}"'
-              ' -> Ignoring!');
-        }
-      }
+
+  try {
+    var discovery = _discoveryClient(client);
+
+    var list = await discovery.apis.list();
+
+    var pool = Pool(10);
+    try {
+      var count = 0;
+      return await pool
+          .forEach(list.items, (item) async {
+            print(ansi.darkGray.wrap(
+                'Requesting ${++count} of ${list.items.length} - ${item.id}'));
+            if (ids == null || ids.contains(item.id)) {
+              try {
+                // NOTE: await is intentional here – ensures the catch clause
+                // is executed on an async error
+                return await discovery.apis.getRest(item.name, item.version);
+              } catch (e) {
+                print(ansi.red.wrap(
+                    'Failed to retrieve document for "${item.name}:${item.version}"'
+                    ' -> Ignoring!'));
+              }
+            }
+          })
+          .where((rd) => rd != null)
+          .toList();
+    } finally {
+      await pool.close();
     }
+  } finally {
     await client.close();
-    return apiDescriptions;
-  });
+  }
 }
 
 List<RestDescription> loadDiscoveryDocuments(String directory) {
@@ -74,26 +92,24 @@ List<RestDescription> loadDiscoveryDocuments(String directory) {
   return apiDescriptions;
 }
 
-Future downloadFromConfiguration(String configFile) {
-  return _listAllApis().then((List<DirectoryListItems> items) {
-    var configuration = new DiscoveryPackagesConfiguration(configFile);
+Future downloadFromConfiguration(String configFile) async {
+  var items = await _listAllApis();
 
-    // Generate the packages.
-    var configFileUri = new Uri.file(configFile);
-    return configuration
-        .download(configFileUri.resolve('discovery').path, items)
-        .then((_) {
-      // Print warnings for APIs not mentioned.
-      if (configuration.missingApis.isNotEmpty) {
-        print('WARNING: No configuration for the following APIs:');
-        configuration.missingApis.forEach((id) => print('- $id'));
-      }
-      if (configuration.excessApis.isNotEmpty) {
-        print('WARNING: The following APIs do not exist:');
-        configuration.excessApis.forEach((id) => print('- $id'));
-      }
-    });
-  });
+  var configuration = new DiscoveryPackagesConfiguration(configFile);
+
+  // Generate the packages.
+  var configFileUri = new Uri.file(configFile);
+  await configuration.download(configFileUri.resolve('discovery').path, items);
+
+  // Print warnings for APIs not mentioned.
+  if (configuration.missingApis.isNotEmpty) {
+    print('WARNING: No configuration for the following APIs:');
+    configuration.missingApis.forEach((id) => print('- $id'));
+  }
+  if (configuration.excessApis.isNotEmpty) {
+    print('WARNING: The following APIs do not exist:');
+    configuration.excessApis.forEach((id) => print('- $id'));
+  }
 }
 
 void generateFromConfiguration(String configFile) {
